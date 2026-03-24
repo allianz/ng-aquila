@@ -1,0 +1,13 @@
+<nx-virtual-viewport>
+  <div
+    class="user-item"
+    *nxVirtualFor="let user of users; let i = index; trackBy: 'id'"
+  >
+    <span class="user-name">{{ user.name }}</span>
+    <span>
+      <nx-link>
+        <a href="#">{{ user.email }}</a>
+      </nx-link>
+    </span>
+  </div>
+</nx-virtual-viewport>

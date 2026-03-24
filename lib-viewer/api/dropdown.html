@@ -397,6 +397,25 @@ This function is used for displaying and filtering the content.</p>
    
 
 <tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                virtualScroll: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Enable virtual scrolling.
+Requires using the <code>options</code> input (data-driven mode).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
                 <span class="docs-api-output__badge">Output{ alias:  <strong>filterInput</strong> }</span><span class="docs-api-output__keyword">
                         @Output
@@ -501,15 +520,16 @@ This function is used for displaying and filtering the content.</p>
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                activeId: 
+                activeDescendantId: 
                 </span>
                  
-                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+                <span class="docs-api-property__type">Signal&lt;string&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Computed ID for aria-activedescendant, works for both modes</p>
+</td>
 </tr>
    
 
@@ -646,6 +666,23 @@ This function is used for displaying and filtering the content.</p>
    
 
 <tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                virtualViewport: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxVirtualViewportComponent&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>ViewChild reference to virtual viewport component</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
@@ -759,6 +796,86 @@ This is mostly for special use cases like the country code dropdown in the phone
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
+            <span class="docs-api-method-name">scrollToIndex(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>,
+                        
+                            behavior:  
+                                <span class="docs-api-property__type">
+                                    ScrollBehavior = 'auto'
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Scrolls to the option at the specified index.
+Works for both virtual and non-virtual scroll modes.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                index:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> The zero-based index of the option to scroll to </p>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                behavior:
+                <span class="docs-api-method-parameter-type">ScrollBehavior = 'auto'</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Scroll behavior ('auto' or 'smooth'). Default: 'auto' </p>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">scrollToValue(
+                            value:  
+                                <span class="docs-api-property__type">
+                                    unknown
+                                </span>,
+                        
+                            behavior:  
+                                <span class="docs-api-property__type">
+                                    ScrollBehavior = 'auto'
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Scrolls to the option with the specified value.
+Uses the compareWith function to match values.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                value:
+                <span class="docs-api-method-parameter-type">unknown</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> The value of the option to scroll to </p>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                behavior:
+                <span class="docs-api-method-parameter-type">ScrollBehavior = 'auto'</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Scroll behavior ('auto' or 'smooth'). Default: 'auto' </p>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
             <span class="docs-api-method-name">setReadonly(
                             value:  
                                 <span class="docs-api-property__type">
@@ -856,6 +973,24 @@ This is mostly for special use cases like the country code dropdown in the phone
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>active</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                activeInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the item is active (reactive input for virtual scroll).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
@@ -869,6 +1004,42 @@ This is mostly for special use cases like the country code dropdown in the phone
     </td>
     <td class="docs-api-property-description">
         <p>Whether the dropdown item is disabled.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>id</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                idInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Optional ID input. If not provided, an auto-generated ID is used.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>selected</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                selectedInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the item is selected (reactive input for virtual scroll).</p>
 </td>
 </tr>
    
@@ -917,23 +1088,6 @@ as they are sentinel values signalling empty data.</p>
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                active: 
-                </span>
-                 
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the item is active.</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">
                 id: 
                 </span>
                  
@@ -942,7 +1096,24 @@ as they are sentinel values signalling empty data.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>The unique ID of the option.</p>
+        <p>The unique ID of the option. Returns the input ID if provided, otherwise auto-generated.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                isActive: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Computed active state combining input and internal styles.</p>
 </td>
 </tr>
    
@@ -1474,6 +1645,22 @@ When providing objects as options, it is recommended to set selectValue to speci
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
+                overlayOrigin: 
+                </span>
+                 
+                <span class="docs-api-property__type">any</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
                 selectedItems: 
                 </span>
                  
@@ -1978,6 +2165,103 @@ If no label is specified, the value will be displayed instead.</p>
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="NxDropdownItemTemplateContext" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxDropdownItemTemplateContext"></span>
+    <code>NxDropdownItemTemplateContext</code>
+</h4><p class="docs-api-interface-description"><p>Context provided to custom item templates.
+Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                $implicit: 
+                </span>
+                 
+                <span class="docs-api-property__type">T</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The option value (use <code>let-item</code> to access directly)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                index: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Index in the filtered options array</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                selected: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the item is currently selected</p>
+</td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="NxDropdownDefaultOptions" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxDropdownDefaultOptions"></span>
+    <code>NxDropdownDefaultOptions</code>
+</h4><p class="docs-api-interface-description"><p>Default options for dropdown that can be overridden globally.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                virtualScroll?: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Enable virtual scrolling for all dropdowns (default: false)</p>
+</td>
 </tr>
   
 </table>   

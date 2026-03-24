@@ -1,0 +1,27 @@
+nx-virtual-viewport {
+  height: 300px;
+}
+
+.virtual-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.virtual-item:hover {
+  background: var(--ui-01);
+}
+
+.event-info {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--ui-01);
+  border-radius: 4px;
+}
+
+.event-info p {
+  margin: 0 0 8px;
+}
+
+.event-info p:last-child {
+  margin-bottom: 0;
+}

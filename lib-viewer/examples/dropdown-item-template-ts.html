@@ -1,0 +1,56 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownOption</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">CarOption</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">brand</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Custom item template example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-item-template-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-item-template-example.html&#x27;</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxIconComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+  ],
+  <span class="hljs-attr">styles</span>: <span class="hljs-string">`
+    .custom-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .custom-item nx-icon {
+      font-size: 16px;
+    }
+  `</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownItemTemplateExampleComponent</span> {
+  <span class="hljs-attr">cars</span>: <span class="hljs-title class_">NxDropdownOption</span>[] = [
+    { <span class="hljs-attr">value</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;BMW&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span> }, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;BMW&#x27;</span> },
+    { <span class="hljs-attr">value</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Audi&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span> }, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Audi&#x27;</span> },
+    { <span class="hljs-attr">value</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Volvo&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span> }, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Volvo&#x27;</span> },
+    { <span class="hljs-attr">value</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-attr">brand</span>: <span class="hljs-string">&#x27;Mini&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span> }, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Mini&#x27;</span> },
+  ];
+
+  <span class="hljs-attr">selectedCar</span>: <span class="hljs-title class_">CarOption</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+}

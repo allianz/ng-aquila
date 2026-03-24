@@ -1,0 +1,22 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;event-info&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Last clicked:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+    @if (lastClicked(); as clicked) { Index {{ clicked.index }} (value: {{
+    clicked.value }}) } @else { None }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Visible range:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+    @if (visibleRange(); as range) { {{ range.start }} - {{ range.end }} } @else
+    { Unknown }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-virtual-viewport</span> (<span class="hljs-attr">visibleRangeChange</span>)=<span class="hljs-string">&quot;visibleRange.set($event)&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+    *<span class="hljs-attr">nxVirtualFor</span>=<span class="hljs-string">&quot;let item of items; let i = index&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;virtual-item&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;onItemClick(item, i)&quot;</span>
+  &gt;</span>
+    {{ item.label }}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-virtual-viewport</span>&gt;</span>

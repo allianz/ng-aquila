@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { NxPriceComponent } from '@allianz/ng-aquila/price';
+import { Component } from '@angular/core';
 
 /**
  * @title Price with prefix and suffix

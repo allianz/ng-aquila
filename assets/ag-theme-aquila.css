@@ -44,7 +44,7 @@
   --ag-checkbox-unchecked-color: var(--checkbox-border-color);
   --ag-checkbox-checked-color: var(--checkbox-selected-background-color);
   --ag-row-hover-color: var(--selectable-table-row-hover-background-color);
-  --ag-selected-row-background-color: var(--zebra-table-row-selected-background-color);
+  --ag-selected-row-background-color: var(--selectable-table-row-selected-background-color);
   --ag-header-column-resize-handle-color: var(--table-resize-handle-color);
   --ag-header-column-separator-color: var(--table-resize-handle-color);
   --ag-header-column-resize-handle-height: 50%;

@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { NxPriceModule } from '@allianz/ng-aquila/price';
+import { NgModule } from '@angular/core';
 
 import { PriceBasicExampleComponent } from './price-basic/price-basic-example';
-import { PriceLocaleExampleComponent } from './price-locale/price-locale-example';
 import { PriceInverseExampleComponent } from './price-inverse/price-inverse-example';
+import { PriceLocaleExampleComponent } from './price-locale/price-locale-example';
 import { PricePrefixSuffixExampleComponent } from './price-prefix-suffix/price-prefix-suffix-example';
 import { PriceSizesExampleComponent } from './price-sizes/price-sizes-example';
 import { PriceSuperscriptExampleComponent } from './price-superscript/price-superscript-example';

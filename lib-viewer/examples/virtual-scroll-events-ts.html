@@ -1,0 +1,34 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxVirtualFor</span>,
+  <span class="hljs-title class_">NxVirtualViewportComponent</span>,
+  <span class="hljs-title class_">VirtualRangeChangeEvent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/virtual-scroll&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ItemClickInfo</span> {
+  <span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Events example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;virtual-scroll-events-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./virtual-scroll-events-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./virtual-scroll-events-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxVirtualViewportComponent</span>, <span class="hljs-title class_">NxVirtualFor</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">VirtualScrollEventsExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> items = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">length</span>: <span class="hljs-number">1000</span> }, <span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> ({
+    <span class="hljs-attr">value</span>: i,
+    <span class="hljs-attr">label</span>: <span class="hljs-string">`Item <span class="hljs-subst">${i + <span class="hljs-number">1</span>}</span>`</span>,
+  }));
+
+  <span class="hljs-keyword">readonly</span> lastClicked = signal&lt;<span class="hljs-title class_">ItemClickInfo</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+  <span class="hljs-keyword">readonly</span> visibleRange = signal&lt;<span class="hljs-title class_">VirtualRangeChangeEvent</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+
+  <span class="hljs-title function_">onItemClick</span>(<span class="hljs-attr">item</span>: { <span class="hljs-attr">value</span>: <span class="hljs-built_in">number</span>; <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span> }, <span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">lastClicked</span>.<span class="hljs-title function_">set</span>({ index, <span class="hljs-attr">value</span>: item.<span class="hljs-property">value</span> });
+  }
+}

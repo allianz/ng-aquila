@@ -1,0 +1,30 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-variable constant_">DROPDOWN_DEFAULT_OPTIONS</span>,
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Default Options Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-default-options-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-default-options-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-default-options-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [
+    {
+      <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">DROPDOWN_DEFAULT_OPTIONS</span>,
+      <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">virtualScroll</span>: <span class="hljs-literal">true</span> },
+    },
+  ],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxDropdownComponent</span>, <span class="hljs-title class_">NxFormfieldComponent</span>, <span class="hljs-title class_">FormsModule</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownDefaultOptionsExampleComponent</span> {
+  options = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">length</span>: <span class="hljs-number">100</span> }, <span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> ({
+    <span class="hljs-attr">value</span>: <span class="hljs-string">`option-<span class="hljs-subst">${i}</span>`</span>,
+    <span class="hljs-attr">label</span>: <span class="hljs-string">`Option <span class="hljs-subst">${i + <span class="hljs-number">1</span>}</span>`</span>,
+  }));
+  <span class="hljs-attr">selectedValue</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+}

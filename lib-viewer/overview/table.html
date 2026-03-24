@@ -47,6 +47,9 @@
 </code></pre>
 <h3 id="sorting-header" tabindex="-1" class="docs-markdown--h3">Sorting header</h3>
 <p class="docs-markdown--p">This example shows how you can implement a basic sorting functionality for a table with <code>nxSort</code> and <code>nxSortHeaderCell</code>. As we don't know how your data looks like, you can implement the actual sorting function by yourself and call the function every time an <code>(sortChange)</code> event is outputted.</p>
+<div class="docs-deprecation-warning">
+  <strong>Deprecation Warning:</strong> The CSS classes <code>nx-sort-header__icons-container</code>, <code>nx-sort-header__unsorted</code>, <code>nx-sort-header__ascend</code>, and <code>nx-sort-header__descend</code> are deprecated and will be removed in the next major version (v22). If you need to query the sort header element, use the class <code>nx-sort-header</code> instead.
+</div>
 <div nx-docs-example="table-sorting" config="{}">exampleID: table-sorting</div>
 <h3 id="advanced-example%3A-combine-sorting%2C-filtering-and-pagination" tabindex="-1" class="docs-markdown--h3">Advanced example: Combine sorting, filtering and pagination</h3>
 <p class="docs-markdown--p">By using the <code>nx-pagination</code> and <code>nx-formfield</code> you can filter and paginate the table items as shown in the example below:</p>

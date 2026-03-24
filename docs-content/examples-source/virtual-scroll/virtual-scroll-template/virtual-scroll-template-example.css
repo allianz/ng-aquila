@@ -1,0 +1,14 @@
+nx-virtual-viewport {
+  height: 300px;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+}
+
+.user-name {
+  font-weight: 600;
+}

@@ -17,8 +17,13 @@
 }
 
 cdk-tree-node {
-  margin-bottom: 16px;
+  margin-bottom: var(--action-button-gap);
   align-items: center;
+  padding: var(--tree-item-padding-vertical) 0;
+
+  :last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 cdk-tree-node:focus-visible {

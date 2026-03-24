@@ -31,6 +31,31 @@ export class TabsNavBarExampleComponent {
       path: '...',
       disabled: true,
     },
+    {
+      label: 'Subpage 4',
+      path: '...',
+      disabled: false,
+    },
+    {
+      label: 'Subpage 5',
+      path: '...',
+      disabled: false,
+    },
+    {
+      label: 'Subpage 6',
+      path: '...',
+      disabled: true,
+    },
+    {
+      label: 'Subpage 7',
+      path: '...',
+      disabled: false,
+    },
+    {
+      label: 'Subpage 8',
+      path: '...',
+      disabled: false,
+    },
   ];
 
   currentLink = this.links[0];

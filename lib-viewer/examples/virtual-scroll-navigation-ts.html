@@ -1,0 +1,57 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxVirtualFor</span>,
+  <span class="hljs-title class_">NxVirtualViewportComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/virtual-scroll&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, viewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Programmatic navigation example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;virtual-scroll-navigation-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./virtual-scroll-navigation-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./virtual-scroll-navigation-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxVirtualViewportComponent</span>,
+    <span class="hljs-title class_">NxVirtualFor</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">VirtualScrollNavigationExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> viewport = <span class="hljs-title function_">viewChild</span>(<span class="hljs-title class_">NxVirtualViewportComponent</span>);
+
+  <span class="hljs-keyword">readonly</span> items = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>({ <span class="hljs-attr">length</span>: <span class="hljs-number">10000</span> }, <span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> ({
+    <span class="hljs-attr">value</span>: i,
+    <span class="hljs-attr">label</span>: <span class="hljs-string">`Item <span class="hljs-subst">${i + <span class="hljs-number">1</span>}</span>`</span>,
+  }));
+
+  targetIndex = <span class="hljs-number">5000</span>;
+
+  <span class="hljs-title function_">scrollToTop</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">viewport</span>()?.<span class="hljs-title function_">scrollToIndex</span>(<span class="hljs-number">0</span>, <span class="hljs-string">&#x27;smooth&#x27;</span>);
+  }
+
+  <span class="hljs-title function_">scrollToBottom</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">viewport</span>()?.<span class="hljs-title function_">scrollToIndex</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;smooth&#x27;</span>);
+  }
+
+  <span class="hljs-title function_">scrollToIndex</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">viewport</span>()?.<span class="hljs-title function_">scrollToIndex</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">targetIndex</span>, <span class="hljs-string">&#x27;smooth&#x27;</span>);
+  }
+
+  <span class="hljs-title function_">scrollToValue</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> index = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-title function_">findIndex</span>(
+      <span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item.<span class="hljs-property">value</span> === <span class="hljs-variable language_">this</span>.<span class="hljs-property">targetIndex</span>,
+    );
+    <span class="hljs-keyword">if</span> (index &gt;= <span class="hljs-number">0</span>) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">viewport</span>()?.<span class="hljs-title function_">scrollToIndex</span>(index, <span class="hljs-string">&#x27;smooth&#x27;</span>);
+    }
+  }
+}

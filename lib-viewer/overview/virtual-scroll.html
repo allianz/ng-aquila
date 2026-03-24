@@ -1,0 +1,153 @@
+<p class="docs-markdown--p">The virtual scroll component provides efficient rendering of large lists by only rendering items visible in the viewport. The items can be of various and dynamic height.</p>
+<h3 id="basic-usage" tabindex="-1" class="docs-markdown--h3">Basic Usage</h3>
+<p class="docs-markdown--p">The simplest usage requires only an array of items. By default, the component expects items to have a <code>value</code> property for tracking.</p>
+<div nx-docs-example="virtual-scroll-basic" config="{}">exampleID: virtual-scroll-basic</div>
+<h3 id="custom-item-template" tabindex="-1" class="docs-markdown--h3">Custom Item Template</h3>
+<p class="docs-markdown--p">Items are rendered using the <code>*nxVirtualFor</code> structural directive, similar to <code>*ngFor</code>. The template context provides the following variables:</p>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$implicit</code></td>
+<td><code>T</code></td>
+<td>The item data (accessed via <code>let item</code>)</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td><code>number</code></td>
+<td>The index in the items array</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>number</code></td>
+<td>Total number of items</td>
+</tr>
+<tr>
+<td><code>first</code></td>
+<td><code>boolean</code></td>
+<td>Whether this is the first item</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td><code>boolean</code></td>
+<td>Whether this is the last item</td>
+</tr>
+<tr>
+<td><code>even</code></td>
+<td><code>boolean</code></td>
+<td>Whether the index is even</td>
+</tr>
+<tr>
+<td><code>odd</code></td>
+<td><code>boolean</code></td>
+<td>Whether the index is odd</td>
+</tr>
+</tbody>
+</table>
+<div nx-docs-example="virtual-scroll-template" config="{}">exampleID: virtual-scroll-template</div>
+<h3 id="track-by" tabindex="-1" class="docs-markdown--h3">Track By</h3>
+<p class="docs-markdown--p">Use the <code>trackBy</code> option on <code>*nxVirtualFor</code> to optimize rendering and height caching when items change.</p>
+<p class="docs-markdown--p"><strong>String accessor</strong> (property name):</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">nxVirtualFor</span>=<span class="hljs-string">&quot;let item of items; trackBy: &#x27;id&#x27;&quot;</span>&gt;</span>
+</code></pre>
+<p class="docs-markdown--p"><strong>Function accessor</strong> (for complex objects):</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">nxVirtualFor</span>=<span class="hljs-string">&quot;let item of items; trackBy: trackByFn&quot;</span>&gt;</span>
+</code></pre>
+<pre><code class="language-typescript">trackByFn = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">item</span>: <span class="hljs-title class_">MyItem</span></span>) =&gt;</span> item.<span class="hljs-property">id</span>;
+</code></pre>
+<h3 id="item-height-and-performance" tabindex="-1" class="docs-markdown--h3">Item Height and Performance</h3>
+<p class="docs-markdown--p">The component uses a hybrid approach for item heights:</p>
+<ol>
+<li class="docs-markdown--li"><strong>Initial estimate</strong>: Items start with the <code>itemHeight</code> value (default: 36px)</li>
+<li class="docs-markdown--li"><strong>Dynamic measurement</strong>: After rendering, actual heights are measured via ResizeObserver</li>
+<li class="docs-markdown--li"><strong>Height cache</strong>: Measured heights are cached for optimal performance</li>
+</ol>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Input</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemHeight</code></td>
+<td><code>36</code></td>
+<td>Estimated height in pixels for items before measurement</td>
+</tr>
+<tr>
+<td><code>overscan</code></td>
+<td><code>20</code></td>
+<td>Number of items to render above/below visible area</td>
+</tr>
+</tbody>
+</table>
+<p class="docs-markdown--p"><strong>Performance tips:</strong></p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">Set <code>itemHeight</code> close to your actual item height for smoother initial scroll</li>
+<li class="docs-markdown--li">Increase <code>overscan</code> if you see blank areas during fast scrolling</li>
+</ul>
+<h3 id="events" tabindex="-1" class="docs-markdown--h3">Events</h3>
+<p class="docs-markdown--p">The viewport emits events when the visible range changes. For item clicks, use standard Angular <code>(click)</code> event binding on your item template.</p>
+<div nx-docs-example="virtual-scroll-events" config="{}">exampleID: virtual-scroll-events</div>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Output</th>
+<th>Event Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visibleRangeChange</code></td>
+<td><code>VirtualRangeChangeEvent</code></td>
+<td>Emitted when the visible range changes</td>
+</tr>
+</tbody>
+</table>
+<p class="docs-markdown--p"><strong>VirtualRangeChangeEvent properties:</strong></p>
+<pre><code class="language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">VirtualRangeChangeEvent</span> {
+    <span class="hljs-attr">start</span>: <span class="hljs-built_in">number</span>;  <span class="hljs-comment">// First visible index (including overscan)</span>
+    <span class="hljs-attr">end</span>: <span class="hljs-built_in">number</span>;    <span class="hljs-comment">// Last visible index (including overscan)</span>
+}
+</code></pre>
+<h3 id="programmatic-navigation" tabindex="-1" class="docs-markdown--h3">Programmatic Navigation</h3>
+<p class="docs-markdown--p">The viewport provides methods for programmatic scrolling.</p>
+<div nx-docs-example="virtual-scroll-navigation" config="{}">exampleID: virtual-scroll-navigation</div>
+<p class="docs-markdown--p"><strong>Viewport methods:</strong></p>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Method</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scrollToIndex(index, behavior?)</code></td>
+<td><code>index: number</code>, <code>behavior: ScrollBehavior = 'auto'</code></td>
+<td>Scroll to put a specific index at the top</td>
+</tr>
+<tr>
+<td><code>scrollIntoView(index)</code></td>
+<td><code>index: number</code></td>
+<td>Minimal scroll to make an item visible (no-op if already visible)</td>
+</tr>
+</tbody>
+</table>
+<p class="docs-markdown--p"><strong>ScrollBehavior options:</strong></p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>'auto'</code> - Instant scroll (default)</li>
+<li class="docs-markdown--li"><code>'smooth'</code> - Animated smooth scroll</li>
+</ul>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">When integrating the virtual viewport with form controls like dropdowns, the parent component is responsible for managing keyboard navigation and active state. Ensure proper ARIA attributes are applied to the container for screen reader support.</p>

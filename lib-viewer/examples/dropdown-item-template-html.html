@@ -1,0 +1,16 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12, 12, 6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Select a car&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;cars&quot;</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;selectedCar&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">nxDropdownItemTemplate</span> <span class="hljs-attr">let-car</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;custom-item&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;car.icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ car.brand }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

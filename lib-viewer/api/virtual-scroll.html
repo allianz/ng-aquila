@@ -1,0 +1,1126 @@
+       
+
+<div class="docs-api"><p class="docs-api-module-import">
+        <code>
+            <span class="docs-api-module-import__import-span">import </span>
+            { NxVirtualScrollModule }
+            <span class="docs-api-module-import__from-span">from</span>
+            <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/virtual-scroll'</span>;
+        </code>
+    </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
+    </h3>
+     
+
+<h4 id="NxVirtualViewportComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxVirtualViewportComponent"></span>
+    <code>NxVirtualViewportComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-virtual-viewport</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                itemHeight: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Estimated height in pixels for items before measurement (default: 36)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                overscan: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Number of items to render above/below the visible area (default: 20)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                visibleRangeChange: 
+                </span>
+                 
+                <span class="docs-api-property__type">OutputEmitterRef&lt;VirtualRangeChangeEvent&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Emitted when the visible range changes</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                totalHeight: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Total content height in pixels (read-only, for template)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                viewportHeight: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Viewport height - directive reads this for resize updates</p>
+</td>
+</tr>
+  
+</table> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getDomScrollTop(): <span class="docs-api-method-returns-type">number</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the current DOM scroll position directly (bypassing signal)</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getDomViewportHeight(): <span class="docs-api-method-returns-type">number</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the current DOM viewport height directly (bypassing signal)</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">isAtBottom(): <span class="docs-api-method-returns-type">boolean</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Check if viewport is currently scrolled to the bottom (using DOM values)</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">isScrollActive(): <span class="docs-api-method-returns-type">boolean</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Check if a smooth scroll animation is in progress</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">scrollIntoView(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Scroll an item into view using &#39;nearest&#39; behavior (minimal scrolling)</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                index:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">scrollToIndex(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>,
+                        
+                            behavior:  
+                                <span class="docs-api-property__type">
+                                    ScrollBehavior = 'auto'
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Scroll to a specific index</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                index:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> The index to scroll to </p>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                behavior:
+                <span class="docs-api-method-parameter-type">ScrollBehavior = 'auto'</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Scroll behavior ('auto' | 'smooth') </p>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setForOf(
+                            forOf:  
+                                <span class="docs-api-property__type">
+                                    VirtualForOf
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Register the VirtualFor directive so viewport can call its methods.
+We register it instead of a contentChild query that it is available as early as possible and
+for edge cases when the directive would be wrapped in another component.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                forOf:
+                <span class="docs-api-method-parameter-type">VirtualForOf</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setScrollTop(
+                            scrollTop:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Set the scroll position directly</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                scrollTop:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">updateSpacerHeight(
+                            height:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Imperatively update the spacer height on the DOM.
+This bypasses the async signal → computed → template binding cycle,
+ensuring the browser has the correct scrollHeight before scrolling.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                height:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+  <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
+    </h3>
+     
+
+<h4 id="NxVirtualFor" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxVirtualFor"></span>
+    <code>NxVirtualFor</code></h4><p class="docs-api-class-description"><p>Structural directive for rendering items in a virtual scroll viewport.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxVirtualFor][nxVirtualForOf]</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                nxVirtualForOf: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;T[]&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The data source (array of items)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                nxVirtualForTrackBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;TrackByAccessor&lt;T&gt;&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Property name or function to use for tracking items</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                totalContentHeight: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Total height of all content (viewport reads this reactively)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                visibleRange: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;ListRange&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Public accessor for visible range (viewport reads this reactively to emit visibleRangeChange)</p>
+</td>
+</tr>
+  
+</table> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getHeightForIndex(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the height for an item (called by viewport for scrollIntoView)</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                index:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getOffsetForIndex(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the offset position for an item (called by viewport for scrollToIndex)</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                index:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">updateForScroll(
+                            scrollTop:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>,
+                        
+                            viewportHeight:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Called by viewport when scroll position changes.
+Directly updates visible range and renders items.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                scrollTop:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                viewportHeight:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
+    </h3>
+     
+
+<h4 id="NxVirtualForContext" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxVirtualForContext"></span>
+    <code>NxVirtualForContext</code>
+</h4><p class="docs-api-interface-description"><p>Context provided to templates rendered by NxVirtualFor</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                $implicit: 
+                </span>
+                 
+                <span class="docs-api-property__type">T</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The item data (available as implicit)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                count: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Total number of items</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                even: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the index is even</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                first: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether this is the first item</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                index: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The index in the source array</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                last: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether this is the last item</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                odd: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the index is odd</p>
+</td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="VirtualRangeChangeEvent" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="VirtualRangeChangeEvent"></span>
+    <code>VirtualRangeChangeEvent</code>
+</h4><p class="docs-api-interface-description"><p>Event emitted when visible range changes</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                end: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                start: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="ListRange" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="ListRange"></span>
+    <code>ListRange</code>
+</h4><p class="docs-api-interface-description"><p>Represents a range of indices in a list</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                end: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                start: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="VirtualForOf" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="VirtualForOf"></span>
+    <code>VirtualForOf</code>
+</h4><p class="docs-api-interface-description"><p>Interface for the VirtualFor directive that the viewport communicates with</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                totalContentHeight: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Total height of all content (viewport reads this reactively)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                visibleRange: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;ListRange&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Current visible range (viewport reads this reactively to emit visibleRangeChange)</p>
+</td>
+</tr>
+  
+</table>  <h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getHeightForIndex(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the height for an item by index</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                index:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getOffsetForIndex(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        ): <span class="docs-api-method-returns-type">number</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the offset position for an item by index</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                index:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">updateForScroll(
+                            scrollTop:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>,
+                        
+                            viewportHeight:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Called by viewport when scroll position changes</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                scrollTop:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                viewportHeight:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+   
+
+<h4 id="VirtualScrollViewport" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="VirtualScrollViewport"></span>
+    <code>VirtualScrollViewport</code>
+</h4><p class="docs-api-interface-description"><p>Interface for the virtual scroll viewport that the directive communicates with</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                itemHeight: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Estimated item height for initial calculations</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                overscan: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Number of items to render above/below the visible area</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                viewportHeight: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Viewport height - directive reads this for resize updates</p>
+</td>
+</tr>
+  
+</table>  <h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getDomScrollTop(): <span class="docs-api-method-returns-type">number</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the current DOM scroll position directly (bypassing signal)</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getDomViewportHeight(): <span class="docs-api-method-returns-type">number</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Get the current DOM viewport height directly (bypassing signal)</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">isAtBottom(): <span class="docs-api-method-returns-type">boolean</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Check if viewport is currently scrolled to the bottom (using DOM values)</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">isScrollActive(): <span class="docs-api-method-returns-type">boolean</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Check if scroll is currently active (to avoid interrupting animations)</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">scrollIntoView(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Scroll an item into view using &#39;nearest&#39; behavior (minimal scrolling)</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                index:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">scrollToIndex(
+                            index:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>,
+                        
+                            behavior?:  
+                                <span class="docs-api-property__type">
+                                    ScrollBehavior
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Scroll to a specific index</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                index:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                behavior<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">ScrollBehavior</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setForOf(
+                            forOf:  
+                                <span class="docs-api-property__type">
+                                    VirtualForOf
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Register the VirtualFor directive so viewport can call its methods</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                forOf:
+                <span class="docs-api-method-parameter-type">VirtualForOf</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setScrollTop(
+                            scrollTop:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Set the scroll position directly</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                scrollTop:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">updateSpacerHeight(
+                            height:  
+                                <span class="docs-api-property__type">
+                                    number
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Imperatively update the spacer height on the DOM (bypasses signal/template async)</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                height:
+                <span class="docs-api-method-parameter-type">number</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
+    </h3>
+     
+
+<h4 id="TrackByFunction" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="TrackByFunction"></span>
+    <code>TrackByFunction</code>
+</h4><p class="docs-api-type-alias-description"><p>Function type for trackBy</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">(index: number, item: T) => unknown</code>
+</p>
+   
+
+<h4 id="TrackByAccessor" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="TrackByAccessor"></span>
+    <code>TrackByAccessor</code>
+</h4><p class="docs-api-type-alias-description"><p>Accessor type - can be a property name string or a function</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">string | TrackByFunction<T></code>
+</p>
+  </div>

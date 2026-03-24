@@ -1,0 +1,124 @@
+# Aquila (ng-aquila) – Angular Component Library
+
+> Aquila is the open-source version of Angular Brand Kit (formerly Angular NDBX), the Allianz Design System component library for Angular. It provides 60+ accessible, enterprise-grade Angular components with full theming support.
+
+Docs: https://allianz.github.io/ng-aquila
+Source: https://github.com/allianz/ng-aquila
+Package: `@allianz/ng-aquila` (npm)
+
+## URL Structure
+
+Each entry under General, Components, and Third-party sections may have up to three subpages:
+- {base-url}/overview – Main documentation with usage guidance
+- {base-url}/api – API reference (inputs, outputs, properties, methods)
+- {base-url}/examples – Code examples
+
+For example: https://allianz.github.io/ng-aquila/documentation/accordion/overview
+
+## Guides
+
+- [Getting Started](https://allianz.github.io/ng-aquila/guides/getting-started): Installation, setup, and first steps
+- [Releases and Updating](https://allianz.github.io/ng-aquila/guides/releases): Version history and migration guides
+- [MCP Integration](https://allianz.github.io/ng-aquila/guides/mcp): Model Context Protocol support for AI-assisted development
+
+## General
+
+Each topic's documentation is at: https://allianz.github.io/ng-aquila/documentation/{topic-name}
+
+- accessibility
+- config
+- error-handling
+- layout
+- patterns
+- rtl
+- theming
+- typography
+- utils
+- web-components
+
+## Components
+
+Each component's documentation is at: https://allianz.github.io/ng-aquila/documentation/{component-name}
+
+- accordion: Expandable panels for collapsible content sections
+- action: Clickable action items for navigation or menus
+- autocomplete: Input with typeahead suggestions
+- avatar: User avatar display
+- badge: Status badges and labels
+- base: Base label and error message components
+- breadcrumb: Navigation breadcrumb trail
+- button: Buttons with variants (primary, secondary, tertiary, danger, cta)
+- card: Content card containers
+- checkbox: Checkbox form control
+- circle-toggle: Circular toggle buttons for option selection
+- code-input: Multi-digit code entry (e.g., OTP)
+- comparison-table: Product/feature comparison tables
+- context-menu: Right-click or trigger-based context menus
+- copytext: Body text with consistent typography
+- data-display: Key-value data display pairs
+- datefield: Date input with datepicker
+- divider: Horizontal divider line
+- dropdown: Select dropdown for single or multi-selection
+- dynamic-table: Configurable data tables
+- eyebrow: Small text above headlines for additional context
+- file-uploader: File upload with drag-and-drop
+- footer: Page footer component
+- formfield: Form field wrapper with label, hints, and error messages
+- grid: 12-column responsive grid layout system
+- header: Application header/navigation bar
+- headline: Heading typography (h1-h6)
+- icon: SVG icon system
+- image: Responsive image component
+- indicator: Status indicator dots
+- info-icon: Icon button that reveals contextual information via a popover
+- input: Text input directive (used inside formfield)
+- licence-plate: Vehicle licence plate input
+- link: Styled link component
+- list: Styled ordered and unordered lists
+- mask: Input mask for formatted text entry
+- menu: Navigation menu component
+- message: Inline message banners (info, success, warning, error)
+- modal: Dialog/modal overlay
+- natural-language-form: Sentence-style form layout
+- notification-panel: Notification dropdown panel
+- number-stepper: Numeric input with increment/decrement
+- overlay: Programmatic overlay positioning service
+- page-search: In-page search functionality
+- pagination: Page navigation for paged content
+- phone-input: International phone number input
+- popover: Popover tooltip with rich content
+- price: Formatted price display with locale-aware currency formatting
+- progress-stepper: Multi-step wizard/progress indicator
+- progressbar: Progress bar indicator
+- radio-button: Radio button form control
+- radio-toggle: Toggle-style radio button group
+- rating: Star rating input
+- selection: Purely presentational selection indicators (checkbox and radio) for use in custom UI
+- sidebar: Collapsible sidebar navigation
+- sidepanel: Slide-in side panel
+- signal-button: Button with integrated status signal
+- slider: Range slider input
+- small-stage: Hero/stage banner area
+- spinner: Loading spinner
+- switcher: Toggle switch control
+- table: Data table with sorting and filtering
+- tabs: Tabbed content navigation
+- taglist: Tag/chip list with add/remove
+- text: Inline text styling utilities including attention colors
+- tile: Selectable tile with icon, label, and hint
+- timefield: Time input field
+- toolbar: Action toolbar
+- tooltip: Simple text tooltip on hover
+- tree: Hierarchical tree view
+- video: Video player component
+- virtual-scroll: Efficient rendering of large lists by virtualizing viewport items
+
+## Third-party
+
+Each integration's documentation is at: https://allianz.github.io/ng-aquila/documentation/{integration-name}
+
+- ag-grid: Allianz-themed AG Grid integration
+
+## Others
+
+- [GitHub Repository](https://github.com/allianz/ng-aquila): Source code

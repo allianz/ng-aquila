@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 
 import { TreeExampleComponent } from './tree/tree-example';
 import { TreeA1ExampleComponent } from './tree-a1/tree-a1-example';
-
 import { TreeWithCheckboxesExampleComponent } from './tree-with-checkboxes/tree-with-checkboxes-example';
 
 const EXAMPLES = [TreeExampleComponent, TreeA1ExampleComponent];

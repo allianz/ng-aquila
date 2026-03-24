@@ -1,0 +1,25 @@
+<div class="controls">
+  <button nxButton="secondary small" type="button" (click)="scrollToTop()">
+    Scroll to Top
+  </button>
+  <button nxButton="secondary small" type="button" (click)="scrollToBottom()">
+    Scroll to Bottom
+  </button>
+
+  <nx-formfield label="Target index">
+    <input nxInput type="number" [(ngModel)]="targetIndex" />
+  </nx-formfield>
+
+  <button nxButton="secondary small" type="button" (click)="scrollToIndex()">
+    Scroll to Index
+  </button>
+  <button nxButton="secondary small" type="button" (click)="scrollToValue()">
+    Scroll to Value
+  </button>
+</div>
+
+<nx-virtual-viewport>
+  <div *nxVirtualFor="let item of items" class="virtual-item">
+    {{ item.label }}
+  </div>
+</nx-virtual-viewport>
