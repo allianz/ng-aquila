@@ -79,7 +79,11 @@ import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
 import { NxDropdownClosedLabelDirective } from './closed-label.directive';
 import { NxDropdownControl } from './dropdown.control';
 import { getNxDropdownNonArrayValueError } from './dropdown-errors';
-import { getPositionOffset, getPositions } from './dropdown-position';
+import {
+  getOverlayOffsetYForNonOutlineAppearance,
+  getOverlayOffsetYForOutlineAppearance,
+  getPositions,
+} from './dropdown-position';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemChange, NxDropdownItemComponent } from './item/dropdown-item';
 
@@ -1126,18 +1130,24 @@ export class NxDropdownComponent
     }
   }
 
-  /** Adds a offset to the overlay position, so the formfield label and the dropdown panel header are vertically aligned. */
   private _updatePosition(): void {
     if (this.formFieldComponent) {
       const panelHeader = this.overlayDir.overlayRef.overlayElement.querySelector(
         '.nx-dropdown__panel-header',
       );
-      const offset = getPositionOffset(
-        this._elementRef.nativeElement,
-        this.formFieldComponent.elementRef.nativeElement,
-        panelHeader,
-      );
-      this._positions = getPositions(this.formFieldComponent.appearance, offset);
+      let offsetY;
+      if (this.formFieldComponent?.appearance !== 'outline') {
+        // Adds an offset to the overlay position, so the formfield label and the dropdown panel header are vertically aligned.
+        offsetY = getOverlayOffsetYForNonOutlineAppearance(
+          this._elementRef.nativeElement,
+          this.formFieldComponent.elementRef.nativeElement,
+          panelHeader,
+        );
+      } else {
+        // Adds an offset via '--dropdown-panel-offset-y' CSS custom property, so there's a small gap between input and overlay
+        offsetY = getOverlayOffsetYForOutlineAppearance(this.overlayOrigin);
+      }
+      this._positions = getPositions(this.formFieldComponent.appearance, offsetY);
     }
   }
 

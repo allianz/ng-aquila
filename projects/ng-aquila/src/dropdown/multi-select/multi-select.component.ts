@@ -1,4 +1,3 @@
-import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
 import {
   AppearanceType,
   NxFormfieldComponent,
@@ -51,7 +50,11 @@ import { Observable, Subject } from 'rxjs';
 import { filter, map, take, takeUntil } from 'rxjs/operators';
 
 import { NxDropdownIntl } from '../dropdown';
-import { getPositionOffset, getPositions } from '../dropdown-position';
+import {
+  getOverlayOffsetYForNonOutlineAppearance,
+  getOverlayOffsetYForOutlineAppearance,
+  getPositions,
+} from '../dropdown-position';
 import { NxMultiSelectAllComponent } from './multi-select-all.component';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 
@@ -265,6 +268,13 @@ export class NxMultiSelectComponent<S, T>
   _divider = 0;
 
   @ViewChild('trigger') private readonly _trigger?: ElementRef;
+  @ViewChild('origin') private readonly _origin?: CdkOverlayOrigin;
+
+  get overlayOrigin(): ElementRef | CdkOverlayOrigin {
+    return this._formFieldComponent
+      ? this._formFieldComponent.getConnectedOverlayOrigin()
+      : this._origin!;
+  }
   @ViewChild('filterInput') private readonly _filterInput?: ElementRef;
   @ViewChild('itemsList') private readonly _optionsList?: ElementRef;
   @ViewChild('panelHeader') private readonly _panelHeader?: ElementRef;
@@ -448,25 +458,20 @@ export class NxMultiSelectComponent<S, T>
     return selectLabel(option);
   }
 
-  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
-    optional: true,
-  });
-
   private _updatePositions() {
     if (this._formFieldComponent) {
-      const offset = getPositionOffset(
-        this._elementRef.nativeElement,
-        this._formFieldComponent.elementRef.nativeElement,
-        this._panelHeader?.nativeElement,
-      );
-      const positions = getPositions(this._appearance, offset);
-
-      if (this._allianzOneOptions?.enabled?.() && positions.length > 1) {
-        // make panel align on A1 theme
-        positions[0].offsetY = A1_OVERLAY_OFFSET;
-        positions[1].offsetY = -A1_OVERLAY_OFFSET;
+      let offset;
+      if (this._formFieldComponent.appearance !== 'outline') {
+        offset = getOverlayOffsetYForNonOutlineAppearance(
+          this._elementRef.nativeElement,
+          this._formFieldComponent.elementRef.nativeElement,
+          this._panelHeader?.nativeElement,
+        );
+      } else {
+        offset = getOverlayOffsetYForOutlineAppearance(this.overlayOrigin);
       }
-      this._positions = positions;
+
+      this._positions = getPositions(this._appearance, offset);
     }
   }
 
