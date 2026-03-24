@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 21.5.0 (2026-03-24)
+
+### Dropdown virtual scrolling support
+This release adds an opt-in virtual scrolling option for the dropdown which greatly improves performance, especially for large amount of options. See the [documentation](https://ngx-ndbx.frameworks.allianz.io/documentation/dropdown/overview#virtual-scrolling) how to use it. You can also enable it globally see [dropdown default options](https://ngx-ndbx.frameworks.allianz.io/documentation/dropdown/overview#default-options). Keep in mind that in test environments virtual scrolling means the elements are only eventually rendered in the DOM so querying the options directly is not possible.
+
+### Bug Fixes 🐛
+
+* **checkbox:** force repaint in Safari to fix :has() CSS selector rendering bug ([50b78bb](https://github.com/allianz/ng-aquila/commit/50b78bb6f20340e19ded0392df2235fe77817c77))
+* **formfield:** remove inner padding and align licence-plate prefix ([6363626](https://github.com/allianz/ng-aquila/commit/636362641d249201c00a4ecee682ccdb92ec270c))
+* **formfield:** wrong prefix and suffix text color on readonly/disabled state ([f3996e9](https://github.com/allianz/ng-aquila/commit/f3996e980a3058b9c1ec77fe6feff601c7b156f5))
+* **menu:** add hover background to menulink ([16f1574](https://github.com/allianz/ng-aquila/commit/16f15742cad6d66c4cb8f5cefb7fb0c8a84f56c9))
+* **popover:** wrong close icon color on NDBX theme ([17e555e](https://github.com/allianz/ng-aquila/commit/17e555e02e86ac62de07ca16ec355296356efe21))
+* smaller A1 style inconsistencies ([83ed37d](https://github.com/allianz/ng-aquila/commit/83ed37d8dd64b64eb0357a8f35b4ae525fe89497))
+
+
+### Features ✨
+
+* add llms.txt for AI-friendly documentation navigation ([8b78877](https://github.com/allianz/ng-aquila/commit/8b7887704ee173e2ca022a3b103fc402e22fdb85))
+* **autocomplete:** implement A1 densities ([477ae1e](https://github.com/allianz/ng-aquila/commit/477ae1ee8e03359c03ce176080b5badbd04b340f))
+* **button:** add plain button inverse option ([1d5776a](https://github.com/allianz/ng-aquila/commit/1d5776afaf40db0c958c5c0ed281d6ed6d192b57))
+* **card:** support a1 densitiy ([0c83888](https://github.com/allianz/ng-aquila/commit/0c83888a849ba9c9b20d0370f6a69eace28ba2c2))
+* **dropdown & multi-select:** reduce overlay positioning offset similar to A1 ([07ebd00](https://github.com/allianz/ng-aquila/commit/07ebd00886155ef318667ffc8afd63523e9627c6))
+* **dropdown:** add virtual scrolling option ([fede91b](https://github.com/allianz/ng-aquila/commit/fede91b85db0373447ebfe118b1ee1a3d0100149))
+* **icon:** add arrow up and down icons and update mapping for opensource theme ([7215aae](https://github.com/allianz/ng-aquila/commit/7215aae36bf1f122d7f342a2af31afeb9862b2d0))
+* **table:** support A1 densities ([2d75808](https://github.com/allianz/ng-aquila/commit/2d75808db41e3782082181bdd69ff0741f77a66c))
+* **tabs:** update scrolling indicator style to always use gradient ([57f50a2](https://github.com/allianz/ng-aquila/commit/57f50a2817db56e7b3710dd64525f2a04604d07c))
+* **tooltip:** implement A1 densities  ([264a3bf](https://github.com/allianz/ng-aquila/commit/264a3bf690d03030bf7de45b33b847e20274c256))
+
+### Deprecations ⚠️
+
+* **table:** The CSS classes `nx-sort-header__icons-container`, `nx-sort-header__unsorted`, `nx-sort-header__ascend`, and `nx-sort-header__descend` are deprecated, use the class `nx-sort-header` instead.
+
 ## [21.4.0](https://github.com/allianz/ng-aquila/compare/v21.3.1...v21.4.0) (2026-03-05)
 
 
