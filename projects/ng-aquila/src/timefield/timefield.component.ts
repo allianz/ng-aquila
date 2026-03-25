@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
-import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import {
   AppearanceType,
   FORMFIELD_DEFAULT_OPTIONS,

@@ -1,6 +1,6 @@
 import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
-import type { AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
-import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one';
+import type { AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxRadioIndicatorComponent } from '@allianz/ng-aquila/selection';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';

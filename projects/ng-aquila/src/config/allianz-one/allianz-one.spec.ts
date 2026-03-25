@@ -1,8 +1,9 @@
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@allianz/ng-aquila/formfield';
 import { Component, Inject, Optional, Type } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { ALLIANZ_ONE, NxAllianzOneModule } from './allianz-one.module';
+import { NxAllianzOneModule } from './allianz-one.module';
 
 @Component({
   template: ` <p>Doesn't matter</p> `,
