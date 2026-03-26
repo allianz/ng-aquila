@@ -7,7 +7,16 @@
     (animate.enter)="onEnter()"
     (animate.leave)="onLeave()"
   >
-    <div [ngClass]="arrowClass" class="nx-tooltip__arrow" [ngStyle]="arrowStyle"></div>
+    <svg
+      class="nx-tooltip__arrow"
+      [ngClass]="arrowClass"
+      [ngStyle]="arrowStyle"
+      viewBox="0 0 1 1"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path [attr.d]="_svgPath()" />
+    </svg>
     {{ message }}
   </div>
 }

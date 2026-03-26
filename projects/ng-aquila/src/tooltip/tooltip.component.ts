@@ -1,12 +1,15 @@
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { NgClass, NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ElementRef,
   inject,
   OnDestroy,
+  signal,
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
@@ -59,17 +62,17 @@ export class NxTooltipComponent implements OnDestroy {
     return this._visibility;
   }
 
-  private _position: TooltipPosition = 'bottom';
+  private readonly _position = signal<TooltipPosition>('bottom');
 
   /** @docs-private */
   set position(value: TooltipPosition) {
-    this._position = value;
+    this._position.set(value);
     this._cdr.markForCheck();
   }
 
   /** @docs-private */
   get position() {
-    return this._position;
+    return this._position();
   }
 
   _arrowStyle: { [key: string]: string } = {};
@@ -90,11 +93,28 @@ export class NxTooltipComponent implements OnDestroy {
     return `nx-tooltip__arrow--${this.position}`;
   }
 
+  /** @docs-private */
+  protected readonly _svgPath = computed(() => {
+    const isVertical = this._position() === 'left' || this._position() === 'right';
+    if (this.isAllianzOne()) {
+      return isVertical
+        ? 'M0.88097 0.43185C0.94670 0.46407 0.94774 0.51684 0.88328 0.54970L0 1L0 0Z'
+        : 'M0.56815 0.88097C0.53593 0.94670 0.48316 0.94774 0.45030 0.88328L0 0L1 0Z';
+    }
+    return isVertical ? 'M1 0.50980L0 0L0 1Z' : 'M0.50980 1L0 0L1 0Z';
+  });
+
   /** Whether interactions on the page should close the tooltip */
   private _closeOnInteraction = false;
 
   /** Subject for notifying that the tooltip has been hidden from the view */
   private readonly _onHide = new Subject<void>();
+
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+
+  protected readonly isAllianzOne = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,

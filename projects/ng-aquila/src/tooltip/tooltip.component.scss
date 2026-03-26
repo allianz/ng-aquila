@@ -1,7 +1,5 @@
 @use '../shared-styles/index' as *;
 
-$tooltip-arrow-offset: calc(#{v(tooltip-arrow-size)} * -0.5);
-
 ::ng-deep .nx-tooltip-panel {
   // The overlay reference updates the pointer-events style property directly on the HTMLElement
   // depending on the state of the overlay. For tooltips the overlay panel should never enable
@@ -31,50 +29,63 @@ $tooltip-arrow-offset: calc(#{v(tooltip-arrow-size)} * -0.5);
 
 .nx-tooltip__arrow {
   position: absolute;
-  width: v(tooltip-arrow-size);
-  height: v(tooltip-arrow-size);
-  background-color: inherit;
-  z-index: -1;
-  opacity: inherit; //IE FIX
+  opacity: inherit;
+
+  path {
+    fill: v(tooltip-background-color);
+  }
+
+  &--top,
+  &--bottom {
+    width: v(tooltip-arrow-width);
+    height: v(tooltip-arrow-height);
+  }
+
+  &--left,
+  &--right {
+    width: v(tooltip-arrow-height);
+    height: v(tooltip-arrow-width);
+  }
 
   &--top {
-    transform: translate(-50%, 0) rotate(45deg);
-    bottom: $tooltip-arrow-offset;
+    transform: translateX(-50%);
+    bottom: calc(v(tooltip-arrow-height) * -1);
+  }
+
+  &--bottom {
+    transform: translateX(-50%) rotate(180deg);
+    top: calc(v(tooltip-arrow-height) * -1);
   }
 
   &--right {
-    transform: translate(0, -50%) rotate(45deg);
-    left: $tooltip-arrow-offset;
+    transform: translateY(-50%) rotate(180deg);
+    left: calc(v(tooltip-arrow-height) * -1);
 
     :host-context([dir='rtl']) & {
-      right: $tooltip-arrow-offset;
+      right: calc(v(tooltip-arrow-height) * -1);
       left: auto;
     }
   }
 
-  &--bottom {
-    transform: translate(-50%, 0) rotate(45deg);
-    top: $tooltip-arrow-offset;
-  }
-
   &--left {
-    transform: translate(0, -50%) rotate(45deg);
-    right: $tooltip-arrow-offset;
+    transform: translateY(-50%);
+    right: calc(v(tooltip-arrow-height) * -1);
 
     :host-context([dir='rtl']) & {
       right: auto;
-      left: $tooltip-arrow-offset;
+      left: calc(v(tooltip-arrow-height) * -1);
     }
   }
 }
 
 @media screen and (forced-colors: active) {
-  .nx-tooltip__arrow {
-    border: nx-border-size(xs) solid CanvasText;
-  }
-
   .nx-tooltip {
     border: nx-border-size(xs) solid CanvasText;
     border-radius: nx-border-radius(s);
+  }
+
+  .nx-tooltip__arrow path {
+    stroke: CanvasText;
+    stroke-width: nx-border-size(xs);
   }
 }
