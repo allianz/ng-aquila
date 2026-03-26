@@ -42,3 +42,6 @@ npx ng build ng-aquila
 - Input properties use the `input()` function (signal-based inputs)
 - Output events use the `output()` function
 - View queries use `viewChild()` / `viewChildren()`
+
+## Naming Conventions
+- Protected variables must be prefixed with an underscore (e.g., `protected _myVariable`)
