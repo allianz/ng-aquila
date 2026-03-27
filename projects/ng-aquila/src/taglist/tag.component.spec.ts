@@ -59,6 +59,9 @@ describe('NxTagComponent', () => {
         TagInGroupWithFormControl,
         TagInGroupRemovableContentProjection,
         TagInGroupContentProjection,
+        TagInverse,
+        TagInGroupInverse,
+        TagInGroupWithIndividualInverse,
       ],
     }).compileComponents();
   }));
@@ -67,6 +70,16 @@ describe('NxTagComponent', () => {
     it('creates the Tag', () => {
       createTestComponent(BasicTag);
       expect(testInstance.tagInstance()).toBeTruthy();
+    });
+
+    it('should add nx-tag--inverse class when inverse is set', () => {
+      createTestComponent(TagInverse);
+      expect(tagNativeElement.classList).toContain('nx-tag--inverse');
+    });
+
+    it('should not add nx-tag--inverse class by default', () => {
+      createTestComponent(BasicTag);
+      expect(tagNativeElement.classList).not.toContain('nx-tag--inverse');
     });
 
     it('should bind the value', () => {
@@ -236,6 +249,26 @@ describe('NxTagComponent', () => {
       expect(testInstance.tagInstances()?.[0]?.disabled()).toBeTrue();
     });
 
+    it('should add nx-tag--inverse class to all tags when inverse is set on tag group', () => {
+      createTestComponent(TagInGroupInverse);
+      const tagElements = fixture.nativeElement.querySelectorAll('nx-tag');
+      tagElements.forEach((el: HTMLElement) => {
+        expect(el.classList).toContain('nx-tag--inverse');
+      });
+    });
+
+    it('should inherit inverse property from tag group', () => {
+      createTestComponent(TagInGroupInverse);
+      expect(testInstance.tagInstances()?.[0]?.['_inverse']()).toBeTrue();
+    });
+
+    it('should apply nx-tag--inverse class on individual tag inside non-inverse group', () => {
+      createTestComponent(TagInGroupWithIndividualInverse);
+      const tagElements = fixture.nativeElement.querySelectorAll('nx-tag');
+      expect(tagElements[0].classList).toContain('nx-tag--inverse');
+      expect(tagElements[1].classList).not.toContain('nx-tag--inverse');
+    });
+
     it('should show custom content when removable', () => {
       createTestComponent(TagInGroupRemovableContentProjection);
       expect(fixture.nativeElement.querySelectorAll('nx-tag')[0].textContent.trim()).toBe(
@@ -322,6 +355,32 @@ describe('NxTagComponent', () => {
 
 @Component({ template: `<nx-tag value="foo"></nx-tag>`, imports: [NxTaglistModule] })
 class BasicTag extends TagTest {}
+
+@Component({ template: `<nx-tag value="foo" inverse></nx-tag>`, imports: [NxTaglistModule] })
+class TagInverse extends TagTest {}
+
+@Component({
+  template: `
+    <nx-tag-group [value]="value()" inverse>
+      @for (tag of tags(); track tag) {
+        <nx-tag [value]="tag"></nx-tag>
+      }
+    </nx-tag-group>
+  `,
+  imports: [NxTaglistModule],
+})
+class TagInGroupInverse extends TagTest {}
+
+@Component({
+  template: `
+    <nx-tag-group [value]="value()">
+      <nx-tag [value]="tags()[0]" inverse></nx-tag>
+      <nx-tag [value]="tags()[1]"></nx-tag>
+    </nx-tag-group>
+  `,
+  imports: [NxTaglistModule],
+})
+class TagInGroupWithIndividualInverse extends TagTest {}
 
 @Injectable()
 class MyIntl extends NxTagIntl {

@@ -64,6 +64,8 @@ export class NxTagGroupComponent implements ControlValueAccessor, NxAbstractCont
   readonly removable = input(false, { transform: booleanAttribute });
   /** Switches the appearance of the tags. */
   readonly type = input<NxTagType>('tag');
+  /** Whether the tags should use the inverse style for dark backgrounds. */
+  readonly inverse = input(false, { transform: booleanAttribute });
 
   private _onChange: (value: any) => void = () => {};
   private _onTouched: () => void = () => {};
@@ -123,6 +125,7 @@ export class NxTagGroupComponent implements ControlValueAccessor, NxAbstractCont
     '[class.nx-tag--removable]': 'removable()',
     '[class.nx-tag--disabled]': 'disabled()',
     '[class.nx-tag--readonly]': 'readonly()',
+    '[class.nx-tag--inverse]': '_inverse()',
     '[class.can-hover]': 'canHover()',
     '[attr.role]': 'role()',
     '[attr.aria-labelledby]': 'role() === "group" ? id : null',
@@ -168,6 +171,10 @@ export class NxTagComponent implements OnDestroy, NxAbstractControl {
   /** Whether the tag should be readonly. */
   readonly readonlyInput = model(false, { alias: 'readonly' });
   readonly readonly = computed(() => this.tagGroup?.readonly() || this.readonlyInput());
+
+  /** Whether the tag should use the inverse style for dark backgrounds. */
+  readonly inverseInput = input(false, { transform: booleanAttribute, alias: 'inverse' });
+  protected readonly _inverse = computed(() => this.tagGroup?.inverse() || this.inverseInput());
 
   readonly canHover = computed(() => !this.disabled() && !this.readonly() && !this.removable());
 

@@ -29,7 +29,7 @@ $border-size: nx-border-size(m);
 :host.nx-tag-content,
 .nx-tag-content {
   padding: v(tag-padding);
-  border: 2px solid v(tag-border-color);
+  border: v(tag-border-width) solid v(tag-border-color);
   border-radius: v(tag-border-radius);
   transition:
     background-color 0.2s ease,
@@ -46,8 +46,8 @@ $border-size: nx-border-size(m);
 }
 
 :host.can-hover {
-  .nx-tag-content:not(:has(input:disabled)),
-  &.nx-tag-content:not(.nx-tag--removable) {
+  .nx-tag-content,
+  &.nx-tag-content {
     &:hover {
       border-color: v(tag-hover-border-color);
       color: v(tag-hover-color);
@@ -161,10 +161,6 @@ input {
     margin-right: nx-spacer(2xs);
     margin-left: initial;
   }
-
-  nx-icon {
-    font-size: v(tag-close-icon-size);
-  }
 }
 
 // deprecated, remove once nxTaglist is removed
@@ -176,6 +172,87 @@ input {
   &.nx-tag-content,
   .nx-tag-content {
     padding: tag-padding(nx-spacer(s)) tag-padding(nx-spacer(m));
+  }
+}
+
+:host.nx-tag--inverse {
+  color: v(tag-inverse-color);
+
+  &.nx-tag-content,
+  .nx-tag-content {
+    background-color: v(tag-inverse-background-color);
+    border-color: v(tag-inverse-border-color);
+  }
+
+  label.nx-tag--selected {
+    color: v(tag-inverse-selected-color);
+    background-color: v(tag-inverse-selected-background-color);
+    border-color: v(tag-inverse-selected-background-color);
+  }
+}
+
+:host.nx-tag--inverse.can-hover {
+  .nx-tag-content,
+  &.nx-tag-content {
+    &:hover {
+      color: v(tag-inverse-color);
+      background-color: v(tag-inverse-hover-background-color);
+      border-color: v(tag-inverse-hover-border-color);
+    }
+
+    &:active {
+      color: v(tag-inverse-color);
+      background-color: v(tag-inverse-active-background-color);
+      border-color: v(tag-inverse-active-border-color);
+    }
+
+    &.nx-tag--selected:hover {
+      color: v(tag-inverse-selected-color);
+      background-color: v(tag-inverse-selected-hover-background-color);
+      border-color: v(tag-inverse-selected-hover-background-color);
+    }
+
+    &.nx-tag--selected:active {
+      color: v(tag-inverse-selected-color);
+      background-color: v(tag-inverse-selected-active-background-color);
+      border-color: v(tag-inverse-selected-active-background-color);
+    }
+  }
+}
+
+:host.nx-tag--inverse.nx-tag--readonly {
+  cursor: initial;
+
+  label {
+    cursor: initial;
+  }
+
+  &.nx-tag-content,
+  .nx-tag-content {
+    color: v(tag-inverse-readonly-color);
+    background-color: v(tag-inverse-background-color);
+    border-color: v(tag-inverse-disabled-border-color);
+  }
+
+  .nx-tag-content.nx-tag--selected {
+    color: v(tag-inverse-readonly-color);
+    background-color: v(tag-inverse-selected-disabled-background-color);
+    border-color: transparent;
+  }
+}
+
+:host.nx-tag--inverse.nx-tag--disabled {
+  &.nx-tag-content,
+  .nx-tag-content {
+    color: v(tag-inverse-disabled-color);
+    background-color: v(tag-inverse-background-color);
+    border-color: v(tag-inverse-disabled-border-color);
+  }
+
+  .nx-tag-content.nx-tag--selected {
+    color: v(tag-inverse-selected-disabled-color);
+    background-color: v(tag-inverse-selected-disabled-background-color);
+    border-color: transparent;
   }
 }
 

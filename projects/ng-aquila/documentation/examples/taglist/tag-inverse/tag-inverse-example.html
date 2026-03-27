@@ -1,0 +1,41 @@
+<div class="docs-inverse-container">
+  <h3>Selectable</h3>
+  <nx-tag-group inverse aria-label="Filter fruits" [value]="['apples']">
+    @for (tag of tags(); track tag) {
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    }
+  </nx-tag-group>
+  <nx-tag-group>
+    <nx-tag inverse>Individual tag</nx-tag>
+  </nx-tag-group>
+
+  <h3>Removable</h3>
+  <nx-tag-group inverse removable aria-label="Active filters">
+    @for (tag of removableTags(); track tag) {
+    <nx-tag (removed)="removeTag(tag)">{{ tag }}</nx-tag>
+    }
+  </nx-tag-group>
+
+  <h3>Disabled</h3>
+  <nx-tag-group inverse aria-label="States" [value]="['x']">
+    <nx-tag disabled value="x">Selected Disabled</nx-tag>
+    <nx-tag disabled>Disabled</nx-tag>
+  </nx-tag-group>
+  <nx-tag-group inverse removable aria-label="Active filters">
+    <nx-tag disabled>Disabled removable</nx-tag>
+  </nx-tag-group>
+
+  <h3>Readonly</h3>
+  <nx-tag-group
+    inverse
+    [readonly]="true"
+    [value]="selectedReadonly"
+    aria-label="Selected readonly states"
+  >
+    <nx-tag value="selected">Selected Readonly</nx-tag>
+    <nx-tag value="unselected">Readonly</nx-tag>
+  </nx-tag-group>
+  <nx-tag-group inverse removable [readonly]="true" aria-label="Active filters">
+    <nx-tag>Readonly removable</nx-tag>
+  </nx-tag-group>
+</div>

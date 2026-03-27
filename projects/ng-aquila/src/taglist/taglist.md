@@ -39,6 +39,12 @@ Please note that for reactive forms you should not use the `disabled` property i
 
 <!-- example(tags-readonly) -->
 
+### Inverse
+
+Use the `inverse` input on `nx-tag-group` to apply the inverse style.
+
+<!-- example(tag-inverse) -->
+
 ### Customizing the label content
 By default the tag will show the value input as the text. Instead of the value you can provide your own template by providing it as content.
 

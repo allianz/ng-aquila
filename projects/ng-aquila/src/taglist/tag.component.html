@@ -23,14 +23,15 @@
   @if (removable()) {
     <button
       (keydown.enter)="$event.stopPropagation()"
+      [inverse]="_inverse()"
+      [attr.aria-label]="deleteAriaLabel() || intl.deleteAriaLabel"
+      [disabled]="disabled() || readonly()"
+      (click)="removeHandler($event)"
       nxPlainButton
       variant="secondary"
       size="small"
       type="button"
-      [attr.aria-label]="deleteAriaLabel() || intl.deleteAriaLabel"
       class="nx-tag__close"
-      (click)="removeHandler($event)"
-      [disabled]="disabled() || readonly()"
     >
       <nx-icon name="close" aria-hidden="true"></nx-icon>
     </button>
