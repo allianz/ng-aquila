@@ -16,9 +16,10 @@
   color: v(table-header-cell-color);
   background: v(table-header-cell-background-color);
   border-bottom: v(table-border-bottom-width) solid v(table-header-border-bottom-color);
-  border-top: v(table-border-top-width) solid v(table-header-border-top-color);
-  padding: v(table-header-padding-top) v(table-cell-horizontal-padding)
-    v(table-header-padding-bottom);
+  border-top: v(table-header-border-top-width) solid v(table-header-border-top-color);
+  padding: calc(v(table-cell-vertical-padding) - v(table-header-border-top-width))
+    v(table-cell-horizontal-padding)
+    calc(v(table-cell-vertical-padding) - v(table-header-border-bottom-width));
   text-align: left;
   white-space: nowrap;
   vertical-align: top;
@@ -51,8 +52,9 @@
 :host ::ng-deep .nx-table-cell {
   @include type-style(table-cell);
   color: v(table-cell-color);
-  padding: v(table-cell-vertical-padding) v(table-cell-horizontal-padding);
-  border-top: v(table-border-width) solid v(table-cell-border-top-color);
+  padding: calc(v(table-cell-vertical-padding) - v(table-cell-border-top-width))
+    v(table-cell-horizontal-padding) v(table-cell-vertical-padding);
+  border-top: v(table-cell-border-top-width) solid v(table-cell-border-top-color);
   min-height: v(table-cell-min-height);
 
   &:first-child {
@@ -78,14 +80,15 @@
 
 :host(.nx-table--condensed) {
   ::ng-deep .nx-header-cell {
-    padding-top: v(table-condense-vertical-padding);
-    padding-bottom: v(table-condense-vertical-padding);
+    padding: calc(v(table-condense-vertical-padding) - v(table-cell-border-top-width))
+      v(table-condense-horizontal-padding)
+      calc(v(table-condense-vertical-padding) - v(table-border-bottom-width));
     min-height: v(table-cell-condense-min-height);
   }
 
   ::ng-deep .nx-table-cell {
-    padding-bottom: v(table-condense-vertical-padding);
-    padding-top: v(table-condense-vertical-padding);
+    padding: calc(v(table-condense-vertical-padding) - v(table-cell-border-top-width))
+      v(table-condense-horizontal-padding) v(table-condense-vertical-padding);
     min-height: v(table-cell-condense-min-height);
   }
 
@@ -94,8 +97,8 @@
     padding-top: 0;
 
     .nx-expandable-table-cell__wrapper {
-      padding-bottom: v(table-condense-vertical-padding);
-      padding-top: v(table-condense-vertical-padding);
+      padding: calc(v(table-condense-vertical-padding) - v(table-cell-border-top-width))
+        v(table-condense-horizontal-padding) v(table-condense-vertical-padding);
     }
   }
 }
@@ -109,8 +112,8 @@
   }
 
   &__wrapper {
-    padding: v(table-header-padding-top) v(table-cell-horizontal-padding)
-      v(table-header-padding-bottom);
+    padding: calc(v(table-cell-vertical-padding) - v(table-cell-border-top-width))
+      v(table-cell-horizontal-padding) v(table-cell-vertical-padding);
   }
 
   &--indented {
@@ -135,7 +138,7 @@
     }
   }
   &.is-expanded {
-    border-top: 1px solid v(table-cell-border-top-color);
+    border-top: v(table-cell-border-top-width) solid v(table-cell-border-top-color);
   }
 }
 :host(.nx-table--zebra) ::ng-deep tbody {
@@ -178,7 +181,7 @@
   }
 
   .nx-table-cell {
-    border-top: v(table-border-width) solid v(zebra-table-cell-border-top-color);
+    border-top: v(table-cell-border-top-width) solid v(zebra-table-cell-border-top-color);
   }
 }
 
