@@ -522,6 +522,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         });
       }
 
+      // Reset margin before detach so CDK's position strategy isn't affected on next open
+      this.overlayRef!.overlayElement.style.marginLeft = '';
       this.overlayRef!.detach();
       this._embeddedViewRef = null;
 
@@ -577,6 +579,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     position.positionChanges.pipe(takeUntil(this._overlayDestroyed)).subscribe((change) => {
       const pair = change.connectionPair;
       this.positionOverlay(pair);
+      this._adjustOverlayOffset();
       this.positionArrow(pair);
 
       this.closeOnLeftViewport?.observe(this.elementRef.nativeElement);
@@ -669,10 +672,12 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     const overlayElementLeftOffset = this.overlayRef!.overlayElement.offsetLeft;
 
     // calculation for x position of the parent element. In this case, overlay left offset is the one thing to consider.
+    // pair.offsetX counteracts any horizontal shift applied by a fallback position (e.g. start/start with offsetX).
     const targetPosition =
       parentElementPositionX +
       parentElementWidth -
-      (parentElementLeftOffset + overlayElementLeftOffset);
+      (parentElementLeftOffset + overlayElementLeftOffset) -
+      (pair.offsetX ?? 0);
     const popover = this.popover();
     if (pair.originX === pair.overlayX) {
       const direction = 'left';
@@ -893,6 +898,20 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     verticalFallbackPositionPairs.push(
       {
         ...basePositionPair,
+        offsetX: -1 * this._calculateOffsetX(),
+        originX: 'start',
+        overlayX: 'start',
+      },
+      {
+        ...basePositionPair,
+        offsetX: this._calculateOffsetX(),
+        originX: 'end',
+        overlayX: 'end',
+      },
+    );
+    verticalFallbackPositionPairs.push(
+      {
+        ...basePositionPair,
         originX: 'start',
         overlayX: 'start',
       },
@@ -920,6 +939,28 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     ];
   }
 
+  /**
+   * Offsets the overlay horizontally when the popover goes off-screen
+   * This runs post-open when the actual overlay dimensions are known.
+   */
+  private _adjustOverlayOffset(): void {
+    if (!this.overlayRef) return;
+
+    const overlayEl = this.overlayRef.overlayElement;
+
+    // Reset before measuring so getBoundingClientRect reflects the un-shifted position
+    overlayEl.style.marginLeft = '';
+
+    const overlayRect = overlayEl.getBoundingClientRect();
+    const viewportWidth = document.documentElement.clientWidth;
+
+    if (overlayRect.left < 0) {
+      overlayEl.style.marginLeft = `${Math.abs(overlayRect.left)}px`;
+    } else if (overlayRect.right > viewportWidth) {
+      overlayEl.style.marginLeft = `${viewportWidth - overlayRect.right}px`;
+    }
+  }
+
   private _dirChangeHandler() {
     if (this.overlayRef) {
       this.closePopover();
@@ -931,5 +972,11 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
 
   get isRtl(): boolean {
     return this._dir?.value === 'rtl';
+  }
+
+  private _calculateOffsetX(): number {
+    const triggerRect = this.elementRef.nativeElement.getBoundingClientRect();
+
+    return triggerRect.width / 2;
   }
 }
