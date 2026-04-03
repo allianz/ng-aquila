@@ -1,11 +1,5 @@
 @use '../shared-styles/index' as *;
 
-$padding-vertical: nx-spacer(m);
-$padding-sides: nx-spacer(s);
-
-$border-size-large: nx-border-size(m);
-$border-size-small: nx-border-size(xs);
-
 .nx-table {
   // we include the cell typography here that it also gets set for the appendix
   @include type-style(table-cell);
@@ -13,6 +7,7 @@ $border-size-small: nx-border-size(xs);
   text-align: left;
   width: 100%;
   display: table;
+  border-bottom: v(table-border-bottom-width) solid v(table-border-bottom-color);
 
   :host-context([dir='rtl']) & {
     text-align: right;
@@ -29,10 +24,11 @@ $border-size-small: nx-border-size(xs);
   @include type-style(table-header-cell);
   color: v(table-header-cell-color);
   background: v(table-header-cell-background-color);
-  border-top: $border-size-small solid v(table-cell-border-top-color);
-  border-bottom: $border-size-large solid v(table-header-border-bottom-color);
-  padding: ($padding-vertical - $border-size-small) $padding-sides
-    ($padding-vertical - $border-size-large);
+  border-top: v(table-header-border-top-width) solid v(table-cell-border-top-color);
+  border-bottom: v(table-header-border-bottom-width) solid v(table-header-border-bottom-color);
+  padding: calc(v(table-cell-vertical-padding) - v(table-header-border-top-width))
+    v(table-cell-horizontal-padding)
+    calc(v(table-cell-vertical-padding) - v(table-header-border-bottom-width));
   position: relative;
 }
 
@@ -58,22 +54,22 @@ $border-size-small: nx-border-size(xs);
 .nx-table__row {
   display: table-row;
   vertical-align: inherit;
-  background-color: transparent;
-}
-
-.nx-table__row {
   background: v(table-row-background-color);
 }
 
 .nx-table__cell {
-  border-bottom: $border-size-small solid v(table-header-border-top-color);
-  padding: $padding-vertical $padding-sides ($padding-vertical - $border-size-small) $padding-sides;
+  border-top: v(table-cell-border-top-width) solid v(table-cell-border-top-color);
+  padding: calc(v(table-cell-vertical-padding) - v(table-cell-border-top-width))
+    v(table-cell-horizontal-padding) v(table-cell-vertical-padding);
   vertical-align: top;
 }
 
+.nx-table__header-row + .nx-table__row .nx-table__cell {
+  border-top: 0;
+}
+
 .nx-table__row:last-child .nx-table__cell {
-  padding-bottom: $padding-vertical - $border-size-large;
-  border-bottom: $border-size-large solid v(table-header-border-bottom-color);
+  padding-bottom: v(table-cell-vertical-padding);
 }
 
 .nx-table__header-cell,
