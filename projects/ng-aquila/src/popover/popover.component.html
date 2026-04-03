@@ -9,10 +9,6 @@
     (cdkFocusChange)="_onFocusChange($event)"
   >
     <div class="nx-popover__content" [attr.tabindex]="tabIndex" cdkFocusInitial>
-      @if (!hidePopoverArrow) {
-        <div class="nx-popover__arrow" [ngStyle]="arrowStyle"></div>
-      }
-
       <div [id]="id">
         <ng-content></ng-content>
         <ng-container [ngTemplateOutlet]="_lazyContent?._template ?? null"></ng-container>
@@ -31,5 +27,17 @@
         </button>
       }
     </div>
+    @if (!hidePopoverArrow) {
+      <svg
+        class="nx-popover__arrow"
+        [ngStyle]="arrowStyle"
+        viewBox="0 0 1 1"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path [attr.d]="svgTrianglePath()" />
+        <path class="nx-popover__arrow-border" [attr.d]="svgTriangleBorderPath()" />
+      </svg>
+    }
   </div>
 </ng-template>

@@ -1,4 +1,5 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { A11yModule, FocusOrigin } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
@@ -7,9 +8,11 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChild,
   Directive,
   EventEmitter,
+  inject,
   input,
   OnDestroy,
   OnInit,
@@ -85,7 +88,11 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
   id!: string;
 
   /** @docs-private */
-  direction!: string;
+  direction = signal<string>('');
+
+  private readonly isVerticalDirection = computed(
+    () => this.direction() === 'left' || this.direction() === 'right',
+  );
 
   /** @docs-private */
   hidePopoverArrow = false;
@@ -118,6 +125,39 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
   /** @docs-private */
   arrowStyle = {};
+
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+
+  protected readonly isAllianzOne = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
+
+  /** @docs-private */
+  protected readonly svgTrianglePath = computed<string>(() => {
+    if (this.isAllianzOne()) {
+      // Allianz One: filled triangle shape with a rounded tip (cubic bezier) on one side.
+      return this.isVerticalDirection()
+        ? 'M0.88097 0.43185C0.94670 0.46407 0.94774 0.51684 0.88328 0.54970L0 1L0 0Z'
+        : 'M0.56815 0.88097C0.53593 0.94670 0.48316 0.94774 0.45030 0.88328L0 0L1 0Z';
+    }
+    // Default theme: filled sharp triangle shape.
+    return this.isVerticalDirection() ? 'M1 0.50980L0 0L0 1Z' : 'M0.50980 1L0 0L1 0Z';
+  });
+
+  /**
+   * Outer edges the arrow only used for the border stroke.
+   * @docs-private
+   */
+  protected readonly svgTriangleBorderPath = computed<string>(() => {
+    if (this.isAllianzOne()) {
+      // Allianz One: open path with a rounded tip (cubic bezier), tracing two visible sides of the triangle.
+      return this.isVerticalDirection()
+        ? 'M0 0L0.88097 0.43185C0.94670 0.46407 0.94774 0.51684 0.88328 0.54970L0 1'
+        : 'M1 0L0.56815 0.88097C0.53593 0.94670 0.48316 0.94774 0.45030 0.88328L0 0';
+    }
+    // Default theme: open sharp path tracing the two visible sides of the triangle.
+    return this.isVerticalDirection() ? 'M0.04 0L1 0.50980L0.04 1' : 'M0 0.04L0.50980 1L1 0.04';
+  });
 
   private readonly _destroyed = new Subject<void>();
 
@@ -173,12 +213,12 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
   /** @docs-private */
   get classList(): string {
-    if (this.direction) {
+    if (this.direction()) {
       // Returning an array here caused an error that the classes were not set
       // after a prod build. Couldn't reproduce it properly in an isolated way.
       // As it doesn't make sense to return an array for a single value anyway
       // changed it to a string and that seems to work.
-      return `nx-popover--${this.direction}`;
+      return `nx-popover--${this.direction()}`;
     }
     return '';
   }

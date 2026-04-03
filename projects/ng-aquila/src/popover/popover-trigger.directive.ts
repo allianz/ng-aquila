@@ -655,13 +655,13 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
 
   private positionOverlay(pair: ConnectionPositionPair) {
     if (pair.originX === 'end' && pair.overlayX === 'start') {
-      this.popover().direction = this.isRtl ? 'left' : 'right';
+      this.popover().direction.set(this.isRtl ? 'left' : 'right');
     } else if (pair.originY === 'bottom' && pair.overlayY === 'top') {
-      this.popover().direction = 'bottom';
+      this.popover().direction.set('bottom');
     } else if (pair.originX === 'start' && pair.overlayX === 'end') {
-      this.popover().direction = this.isRtl ? 'right' : 'left';
+      this.popover().direction.set(this.isRtl ? 'right' : 'left');
     } else if (pair.originY === 'top' && pair.overlayY === 'bottom') {
-      this.popover().direction = 'top';
+      this.popover().direction.set('top');
     }
   }
 

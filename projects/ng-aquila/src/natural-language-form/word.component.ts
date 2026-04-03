@@ -338,9 +338,9 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         (parentElementLeftOffset + overlayElementLeftOffset);
 
       if (pair.originY === 'top' && pair.overlayY === 'bottom') {
-        this._popover.direction = 'top';
+        this._popover.direction.set('top');
       } else {
-        this._popover.direction = 'bottom';
+        this._popover.direction.set('bottom');
       }
 
       this._popover.arrowStyle = { left: targetPosition + 'px' };

@@ -116,10 +116,8 @@ describe('NxPopoverTriggerDirective', () => {
       .querySelector('.nx-popover__close-icon') as HTMLSpanElement;
   }
 
-  function getPopoverArrow(): HTMLDivElement {
-    return overlayContainer
-      .getContainerElement()
-      .querySelector('.nx-popover__arrow') as HTMLDivElement;
+  function getPopoverArrow(): SVGElement {
+    return overlayContainer.getContainerElement().querySelector('.nx-popover__arrow') as SVGElement;
   }
 
   function getPopoverByDirection(direction: any): HTMLDivElement {
