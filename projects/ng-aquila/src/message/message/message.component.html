@@ -1,5 +1,5 @@
-@if (_iconName) {
-  <nx-icon class="nx-message__icon" [name]="_iconName" size="s" aria-hidden="true"> </nx-icon>
+@if (_iconName() && !_hideIcon()) {
+  <nx-icon class="nx-message__icon" [name]="_iconName()" size="s" aria-hidden="true"> </nx-icon>
 }
 
 @if (closable) {

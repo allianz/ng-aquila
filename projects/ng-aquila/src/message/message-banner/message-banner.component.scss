@@ -2,4 +2,8 @@
 
 :host {
   border-radius: v(message-banner-border-radius);
+  border-width: v(message-banner-border-width);
+}
+:host(.nx-message--closable) {
+  --message-icon-gap: var(--message-icon-gap-banner);
 }

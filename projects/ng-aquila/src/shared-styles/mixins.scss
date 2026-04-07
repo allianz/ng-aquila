@@ -6,12 +6,6 @@
 @use './typography' as *;
 @use './functions' as *;
 
-$border-size: nx-border-size(xs);
-
-@function message-padding($padding) {
-  @return $padding - $border-size;
-}
-
 @mixin focus-style {
   box-shadow: v(focus-box-shadow);
 
@@ -246,8 +240,8 @@ $border-size: nx-border-size(xs);
   align-items: flex-start;
   text-align: left;
   position: relative;
-  border: $border-size solid;
-  padding: message-padding(nx-spacer(m));
+  border: v(message-border-size) solid;
+  padding: v(message-padding);
 
   @include media-breakpoint-response(mobile) {
     display: block;
@@ -261,12 +255,12 @@ $border-size: nx-border-size(xs);
 
 @mixin message__close-icon {
   position: absolute;
-  top: nx-spacer(s);
-  right: nx-spacer(s);
+  right: v(message-close-icon-offset);
+  top: v(message-close-icon-offset);
 
   :host-context([dir='rtl']) & {
     right: auto;
-    left: nx-spacer(s);
+    left: v(message-close-icon-offset);
   }
 }
 

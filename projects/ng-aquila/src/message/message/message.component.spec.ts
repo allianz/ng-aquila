@@ -51,7 +51,7 @@ describe('NxMessageComponent', () => {
     fixture.detectChanges();
     const icon = fixture.nativeElement.querySelector('.nx-message__icon') as HTMLButtonElement;
     expect(icon).toBeTruthy();
-    expect(componentInstance._iconName).toBe(iconName);
+    expect(componentInstance._iconName()).toBe(iconName);
   }
 
   beforeEach(waitForAsync(() => {

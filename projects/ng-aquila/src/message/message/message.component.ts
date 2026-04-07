@@ -1,4 +1,5 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -8,25 +9,36 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ElementRef,
   EventEmitter,
-  HostBinding,
   inject,
   Input,
   input,
   OnDestroy,
   Output,
+  signal,
   ViewChild,
 } from '@angular/core';
 
+/** @deprecated Use a specific context ('info', 'error', 'success', 'warning') instead. */
+type RegularContext = 'regular';
+
 /** The contextual type of a message. */
-export type CONTEXT = 'regular' | 'info' | 'error' | 'success' | 'warning';
+export type CONTEXT = RegularContext | 'info' | 'error' | 'success' | 'warning';
 
 const ICONS: { [k: string]: string } = {
   info: 'info-circle',
   error: 'exclamation-triangle',
   success: 'check-circle',
   warning: 'exclamation-circle-warning',
+};
+
+const A1ICONS: { [k: string]: string } = {
+  info: 'info-circle',
+  error: 'exclamation-circle',
+  success: 'check-circle',
+  warning: 'exclamation-triangle',
 };
 
 @Component({
@@ -38,28 +50,28 @@ const ICONS: { [k: string]: string } = {
   imports: [NxIconModule, NxButtonModule],
   host: {
     '[attr.id]': 'id()',
+    '[class.context-info]': '_effectiveContext() === "info"',
+    '[class.context-success]': '_effectiveContext() === "success"',
+    '[class.context-warning]': '_effectiveContext() === "warning"',
+    '[class.context-error]': '_effectiveContext() === "error"',
+    '[class.nx-message--closable]': '_closable',
   },
 })
 export class NxMessageComponent implements AfterViewInit, OnDestroy {
   private readonly _idGenerator = inject(IdGenerationService);
+  protected readonly _allianzOneOptions = inject(ALLIANZ_ONE, { optional: true });
+  protected readonly _isAllianzOne = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
 
   readonly id = input<string>(this._idGenerator.nextId('nx-message'));
 
-  @HostBinding('class.context-info') get _isInfo() {
-    return this._context === 'info';
-  }
+  protected readonly _effectiveContext = computed<CONTEXT>(() => {
+    if (this._context() === 'regular' && this._isAllianzOne()) {
+      return 'info';
+    }
+    return this._context();
+  });
 
-  @HostBinding('class.context-success') get _isSuccess() {
-    return this._context === 'success';
-  }
-
-  @HostBinding('class.context-warning') get _isWarning() {
-    return this._context === 'warning';
-  }
-
-  @HostBinding('class.context-error') get _isError() {
-    return this._context === 'error';
-  }
+  protected _hideIcon = computed(() => false);
 
   _allowedContexts: CONTEXT[] = ['regular', 'info', 'error', 'warning', 'success'];
 
@@ -73,12 +85,12 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     this._updateContext(value);
   }
   get context(): CONTEXT {
-    return this._context;
+    return this._context();
   }
-  _context: CONTEXT = 'regular';
+  _context = signal<CONTEXT>('regular');
 
   /** Whether a message should have a close icon in order to be dismissed. */
-  @Input() @HostBinding('class.nx-message--closable') set closable(value: BooleanInput) {
+  @Input() set closable(value: BooleanInput) {
     const newValue = coerceBooleanProperty(value);
     if (newValue !== this._closable) {
       this._closable = newValue;
@@ -102,13 +114,13 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
   }
   private _closeButtonLabel = 'Close dialog';
 
-  get _iconName(): string {
-    const context = this._allowedContexts.includes(this._context)
-      ? this._context
+  readonly _iconName = computed<string>(() => {
+    const context = this._allowedContexts.includes(this._effectiveContext())
+      ? this._effectiveContext()
       : this._allowedContexts[0];
 
-    return ICONS[context];
-  }
+    return this._isAllianzOne() ? A1ICONS[context] : ICONS[context];
+  });
 
   /** Event emitted when the close icon of the message has been clicked. */
   @Output('close') readonly closeEvent = new EventEmitter<void>();
@@ -133,9 +145,13 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
   }
 
   _updateContext(value: CONTEXT) {
-    if (value !== this._context) {
-      this._context = value;
-      this._cdr.markForCheck();
+    if (value === 'regular') {
+      console.warn(
+        `NxMessageComponent: context 'regular' is deprecated and will be removed in a future version. Use a specific context ('info', 'error', 'success', 'warning') instead.`,
+      );
+    }
+    if (value !== this._context()) {
+      this._context.set(value);
     }
   }
 }

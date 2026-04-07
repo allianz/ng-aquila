@@ -1,7 +1,14 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  computed,
+  Input,
+  signal,
+} from '@angular/core';
 
 import { CONTEXT, NxMessageComponent } from '../message/message.component';
 
@@ -16,6 +23,7 @@ export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
   imports: [NxIconModule, NxButtonModule],
 })
 export class NxMessageBannerComponent extends NxMessageComponent {
+  protected override _hideIcon = computed(() => this._isAllianzOne());
   /**
    * Sets the context of the message banner. The message box will color accordingly.
    *
@@ -25,9 +33,9 @@ export class NxMessageBannerComponent extends NxMessageComponent {
     this._updateContext(value);
   }
   get context(): BANNER_CONTEXT {
-    return this._context as BANNER_CONTEXT;
+    return this._context();
   }
-  _context: CONTEXT = 'info';
+  _context = signal<BANNER_CONTEXT>('info');
 
   _closable = true;
 

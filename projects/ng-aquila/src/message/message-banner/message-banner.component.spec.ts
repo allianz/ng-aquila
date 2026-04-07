@@ -54,7 +54,7 @@ describe('NxMessageBannerComponent', () => {
   function setContextAndAssertIcon(context: BANNER_CONTEXT, iconName: string) {
     testInstance.context = context;
     fixture.detectChanges();
-    expect(componentInstance._iconName).toBe(iconName);
+    expect(componentInstance._iconName()).toBe(iconName);
   }
 
   beforeEach(waitForAsync(() => {
@@ -85,7 +85,7 @@ describe('NxMessageBannerComponent', () => {
 
     it('should render an info context per default', () => {
       createTestComponent(BasicMessageBannerComponent);
-      expect(componentInstance._iconName).toBe('info-circle');
+      expect(componentInstance._iconName()).toBe('info-circle');
     });
 
     it('should show the icon', () => {

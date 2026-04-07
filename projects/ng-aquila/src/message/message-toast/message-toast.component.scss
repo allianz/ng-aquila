@@ -21,7 +21,7 @@
 
 nx-message {
   box-shadow: v(message-box-shadow);
-  max-width: 352px;
+  max-width: v(message-toast-max-width);
   margin-bottom: nx-spacer(s);
 
   @include media-breakpoint-down(small) {
