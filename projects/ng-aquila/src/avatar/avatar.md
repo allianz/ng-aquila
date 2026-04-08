@@ -27,11 +27,23 @@ Depending on the use case the avatar can be used as a non-clickable element or a
 
 <!-- example(avatar-disabled) -->
 
+
 ### Size
 
 The size of the avatar can be chosen with the `[size]` property.
 
+
+<div class="docs-hide-a1">
+
 <!-- example(avatar-size) -->
+
+</div>
+
+<div class="docs-a1">
+
+<!-- example(avatar-size-a1) -->
+
+</div>
 
 ### Using different colors
 

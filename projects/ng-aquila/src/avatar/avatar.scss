@@ -1,11 +1,14 @@
 @use '../shared-styles/index' as *;
 
+// ====================
+// Mixins
+// ====================
+
 @mixin avatar-size($size) {
   height: v(avatar-#{$size}-size);
   width: v(avatar-#{$size}-size);
   min-width: v(avatar-#{$size}-size);
   @include type-style(avatar-#{$size});
-
   ::ng-deep nx-icon {
     font-size: v(avatar-#{$size}-icon-size);
   }
@@ -21,12 +24,44 @@
   }
 }
 
-:host.nx-avatar--disabled {
-  cursor: not-allowed;
-  opacity: v(avatar-disabled-opacity);
+@mixin button-color-states($color, $attention) {
+  &:hover:not(:disabled) {
+    @if ($attention) {
+      background-color: v(color-attention-#{$color}-hover);
+    } @else {
+      background-color: v(color-subtle-#{$color}-hover);
+    }
+    &:before,
+    ::ng-deep .nx-image:after {
+      background-color: transparent;
+    }
+  }
+  &:active:not(:disabled) {
+    @if ($attention) {
+      background-color: v(color-attention-#{$color}-active);
+    } @else {
+      background-color: v(color-subtle-#{$color}-active);
+    }
+    &:before,
+    ::ng-deep .nx-image:after {
+      background-color: transparent;
+    }
+  }
+}
 
+// ====================
+// Base styles
+// ====================
+
+:host.nx-avatar--disabled {
+  cursor: not-allowed !important;
+  opacity: v(avatar-disabled-opacity);
   color: v(avatar-color-on-subtle-disabled) !important;
   background-color: v(avatar-color-subtle-disabled) !important;
+
+  ::ng-deep .nx-image {
+    opacity: v(avatar-image-disabled-opacity);
+  }
 
   &.is-attention {
     background-color: v(avatar-color-attention-disabled) !important;
@@ -39,6 +74,7 @@
   color: v(avatar-color);
   border-radius: 50%;
   text-align: center;
+  position: relative;
 
   .nx-avatar__content-wrapper {
     display: flex;
@@ -51,43 +87,52 @@
   ::ng-deep figure {
     width: 100%;
   }
+
+  &:before,
+  ::ng-deep .nx-image:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+  }
 }
 
-// Sizes
-:host.nx-avatar--xsmall {
-  @include avatar-size(xsmall);
+// ====================
+// Generated variants
+// ====================
+
+// Size variants
+@each $size in (xsmall, small, small-medium, medium, large, xlarge) {
+  :host.nx-avatar--#{$size} {
+    @include avatar-size($size);
+  }
 }
 
-:host.nx-avatar--small {
-  @include avatar-size(small);
-}
-
-:host.nx-avatar--small-medium {
-  @include avatar-size(small-medium);
-}
-
-:host.nx-avatar--medium {
-  @include avatar-size(medium);
-}
-
-:host.nx-avatar--large {
-  @include avatar-size(large);
-}
-
-:host.nx-avatar--xlarge {
-  @include avatar-size(xlarge);
-}
-
+// Color variants (base + button states)
 @each $color in ('yellow', 'blue', 'red', 'green', 'orange', 'purple', 'teal', 'aqua', 'gray') {
   :host.nx-avatar--accent-attention-#{$color} {
     @include accent-color($color, true);
+
+    &.is-button {
+      @include button-color-states($color, true);
+    }
   }
+
   :host.nx-avatar--accent-subtle-#{$color} {
     @include accent-color($color, false);
+
+    &.is-button {
+      @include button-color-states($color, false);
+    }
   }
 }
 
-// Additional button styles
+// ====================
+// Button styles
+// ====================
 :host.is-button {
   border: none;
   padding: 0;
@@ -106,34 +151,24 @@
   }
 
   &:hover:not(:disabled) {
-    // for text and icons
-    &:before {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
+    background-color: v(avatar-background-color-hover);
 
-    // for images
+    &:before {
+      background-color: v(avatar-overlay-color-hover);
+    }
     ::ng-deep .nx-image:after {
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: v(avatar-image-overlay-color-hover);
     }
   }
 
   &:active:not(:disabled) {
-    // for text and icons
+    background-color: v(avatar-background-color-active);
+
     &:before {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: v(avatar-overlay-color-active);
     }
-
-    // for images
     ::ng-deep .nx-image:after {
-      background-color: rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: v(avatar-disabled-opacity);
-    ::ng-deep .nx-image {
-      opacity: v(avatar-image-disabled-opacity);
+      background-color: v(avatar-image-overlay-color-active);
     }
   }
 
