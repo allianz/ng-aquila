@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: chip, Tags
+alias: chip, Tags, tag, token
 a1Densities: true
 ---
 

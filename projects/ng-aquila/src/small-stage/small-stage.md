@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: page banner
+alias: page banner, hero, banner
 a1Densities: true
 ---
 

@@ -5,6 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: progress, loading bar
 a1Light: true
 ---
 

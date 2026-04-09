@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: slide toggle, checkbox
+alias: slide toggle, checkbox, switch, toggle
 a1Densities: true
 ---
 

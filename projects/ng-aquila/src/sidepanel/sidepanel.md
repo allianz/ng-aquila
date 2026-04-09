@@ -5,7 +5,7 @@ category: components
 b2c: false
 expert: true
 stable: done
-alias: sidebar, drawer
+alias: sidebar, drawer, sheet, side sheet
 a1Densities: true
 ---
 

@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: radio toggle, segmented control
+alias: radio toggle, segmented control, button group, toggle group
 a1Full: true
 ---
 

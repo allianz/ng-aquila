@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: timepicker
+alias: timepicker, time input
 a1Light: true
 a1Densities: true
 ---

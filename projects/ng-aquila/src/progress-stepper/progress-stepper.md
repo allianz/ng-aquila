@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: stepper
+alias: stepper, wizard, multi step
 a1Light: true
 ---
 

@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: dialog
+alias: dialog, popup
 a1Light: true
 
 desc: |

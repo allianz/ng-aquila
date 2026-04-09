@@ -5,6 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: otp, pin input
 a1Light: true
 ---
 

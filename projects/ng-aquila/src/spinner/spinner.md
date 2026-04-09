@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: progress spinner
+alias: progress spinner, loading, loader
 a1Densities: true
 ---
 

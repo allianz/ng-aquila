@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: sidenav, side navigation
+alias: sidenav, side navigation, side menu
 a1Light: true
 a1Densities: true
 ---

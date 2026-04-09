@@ -5,6 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+alias: file upload, attachment
 a1Densities: true
 ---
 

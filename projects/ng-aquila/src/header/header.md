@@ -5,7 +5,7 @@ category: components
 b2c: false
 expert: true
 stable: done
-alias: toolbar, navbar
+alias: toolbar, navbar, app bar, navigation bar
 a1Densities: true
 ---
 
