@@ -3,7 +3,7 @@ import { NxGridModule } from '@allianz/ng-aquila/grid';
 import { NxLinkModule } from '@allianz/ng-aquila/link';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { AsyncPipe } from '@angular/common';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { filter, switchMap, takeUntil } from 'rxjs/operators';
@@ -18,9 +18,9 @@ import { FuseSearchService } from '../../service/fuse-search.service';
 })
 export class NxvSearchResultsComponent implements OnInit, OnDestroy {
   maxEntriesPerCategory = 15;
-  searchTerm = '';
+  readonly searchTerm = signal('');
   initializing = false;
-  searchResults: any;
+  readonly searchResults = signal<any>(null);
   initReady$ = new BehaviorSubject(false);
   searchChanged$ = new BehaviorSubject('');
   private readonly _destroyed = new Subject<void>();
@@ -57,8 +57,8 @@ export class NxvSearchResultsComponent implements OnInit, OnDestroy {
         switchMap(() => this.activeRoute.params),
       )
       .subscribe((params) => {
-        this.searchTerm = params.term;
-        this.searchResults = this.groupResults(this.fuseSearch.search(params.term));
+        this.searchTerm.set(params.term);
+        this.searchResults.set(this.groupResults(this.fuseSearch.search(this.searchTerm())));
       });
   }
 

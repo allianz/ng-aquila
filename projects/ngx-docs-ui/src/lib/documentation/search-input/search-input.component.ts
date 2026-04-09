@@ -26,7 +26,7 @@ export class NxvSearchInputComponent implements OnInit {
   ngOnInit() {
     this.searchTermChanged$
       .pipe(
-        debounceTime(500),
+        debounceTime(300),
         distinctUntilChanged(),
         filter((term) => !!term),
       )
