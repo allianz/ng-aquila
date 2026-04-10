@@ -89,6 +89,7 @@
       [id]="modalId"
       [class.keyboard-focused]="openedByKeyboard"
       #panelBody
+      [attr.aria-labelledby]="_getAriaLabelledBy()"
       [attr.aria-activedescendant]="activeDescendantId()"
       [attr.aria-multiselectable]="isMultiSelect()"
     >
