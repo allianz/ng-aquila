@@ -31,6 +31,7 @@ import {
   FormsModule,
   NgControl,
   NgForm,
+  Validators,
 } from '@angular/forms';
 import { LocalizedCountryNames } from 'i18n-iso-countries';
 import { Subject } from 'rxjs';
@@ -104,16 +105,13 @@ export class NxPhoneInputComponent
 
   /** Whether the component should be required. */
   @Input() set required(value: BooleanInput) {
-    const coercedValue = coerceBooleanProperty(value);
-    if (this.#required !== coercedValue) {
-      this.#required = coercedValue;
-      this._cdr.markForCheck();
-    }
+    this._required = coerceBooleanProperty(value);
+    this._cdr.markForCheck();
   }
   get required(): boolean {
-    return this.#required;
+    return this._required ?? this.ngControl?.control?.hasValidator(Validators.required) ?? false;
   }
-  #required = false;
+  protected _required: boolean | undefined;
 
   /** Whether the component should be disabled. */
   @Input() set disabled(value: BooleanInput) {

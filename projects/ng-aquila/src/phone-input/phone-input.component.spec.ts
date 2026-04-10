@@ -404,6 +404,33 @@ describe('PhoneInputComponent', () => {
     );
   });
 
+  describe('required', () => {
+    it('should set required on input and dropdown when required input is set', () => {
+      createTestComponent(ConfigurablePhoneInput);
+      testInstance.required = true;
+      fixture.detectChanges();
+      const input = getInput().nativeElement;
+      expect(input.required).toBeTrue();
+      expect(dropdown.componentInstance.required).toBeTrue();
+    });
+
+    it('should set required on input and dropdown when formControl has required validator', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      fixture.detectChanges();
+      const input = getInput().nativeElement;
+      expect(input.required).toBeTrue();
+      expect(dropdown.componentInstance.required).toBeTrue();
+    }));
+
+    it('should not be required by default', () => {
+      createTestComponent(DefaultPhoneInput);
+      const input = getInput().nativeElement;
+      expect(input.required).toBeFalse();
+      expect(dropdown.componentInstance.required).toBeFalse();
+    });
+  });
+
   it('should update focused state when focus', () => {
     createTestComponent(DefaultPhoneInput);
     expect(testInstance.phoneInput.focused).toBe(false);
@@ -433,6 +460,7 @@ abstract class PhoneInputTest {
   @ViewChild(NxPhoneInputComponent) phoneInput!: NxPhoneInputComponent;
   disabled = false;
   readonly = false;
+  required = false;
   areaCodeLabel = 'My area code';
   countries = countries.getNames('de', { select: 'official' });
   placeholder = '89 7531';
@@ -453,6 +481,7 @@ class DefaultPhoneInput extends PhoneInputTest {}
       [(ngModel)]="value"
       [disabled]="disabled"
       [readonly]="readonly"
+      [required]="required"
       [areaCodeLabel]="areaCodeLabel"
       [countryNames]="countries"
       [placeholder]="placeholder"

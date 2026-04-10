@@ -5,6 +5,7 @@
     #dropdown
     [showFilter]="true"
     [disabled]="disabled"
+    [required]="required"
     [overlayLabel]="areaCodeLabel"
     (valueChange)="_onCountryChange($event)"
     [options]="_sortedCountries"
@@ -31,6 +32,7 @@
     [attr.aria-label]="lineNumberLabel"
     [attr.aria-invalid]="errorState"
     [attr.placeholder]="placeholder"
+    [attr.aria-required]="required"
     [required]="required"
     [disabled]="disabled"
   />
