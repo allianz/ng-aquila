@@ -989,6 +989,14 @@ describe('NxDropdownComponent', () => {
       ]);
     }));
 
+    it('should have aria-expanded on filter input', fakeAsync(() => {
+      createTestComponent(FilterDropdownComponent);
+      openDropdownByClick();
+
+      const filterInput = getFilterInput();
+      expect(filterInput.getAttribute('aria-expanded')).toBe('true');
+    }));
+
     it('should handle filtering correctly', fakeAsync(() => {
       createTestComponent(FilterDropdownComponent);
       openDropdownByClick();

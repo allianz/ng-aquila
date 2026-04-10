@@ -71,6 +71,7 @@
           [(ngModel)]="filterValue"
           (ngModelChange)="_onFilter($event)"
           role="combobox"
+          aria-expanded="true"
           [placeholder]="filterPlaceholder()"
         />
         @if (!isFilterEmpty) {
