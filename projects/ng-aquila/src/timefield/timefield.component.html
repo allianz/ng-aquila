@@ -1,7 +1,5 @@
 <div class="nx-timefield__wrapper" [ngClass]="{ 'has-outline': appearance() === 'outline' }">
   <nx-formfield
-    cdkOverlayOrigin
-    #overlayOrigin="cdkOverlayOrigin"
     [label]="label"
     [optionalLabel]="optionalLabel()"
     [appearance]="appearance()"
@@ -125,6 +123,7 @@
   [cdkConnectedOverlayHasBackdrop]="true"
   [cdkConnectedOverlayOrigin]="overlayOrigin"
   [cdkConnectedOverlayMinWidth]="_overlayWidth"
+  [cdkConnectedOverlayPositions]="_overlayPositions"
   [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
   (backdropClick)="closeOverlay()"
   (detach)="closeOverlay()"

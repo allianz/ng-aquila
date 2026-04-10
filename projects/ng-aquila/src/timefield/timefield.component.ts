@@ -21,7 +21,7 @@ import {
 } from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager, FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { CdkConnectedOverlay, CdkOverlayOrigin, OverlayModule } from '@angular/cdk/overlay';
+import { CdkConnectedOverlay, ConnectionPositionPair, OverlayModule } from '@angular/cdk/overlay';
 import { NgClass } from '@angular/common';
 import {
   AfterViewInit,
@@ -33,6 +33,7 @@ import {
   ContentChild,
   DestroyRef,
   DoCheck,
+  DOCUMENT,
   ElementRef,
   EventEmitter,
   forwardRef,
@@ -71,6 +72,7 @@ import {
   Validator,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { getOverlayOffsetYForOutlineAppearance } from '@allianz/ng-aquila/dropdown';
 
 import { NxTimefieldIntl } from './timefield-intl';
 import { NxTimefieldOption } from './timefield-option';
@@ -193,6 +195,10 @@ export class NxTimefieldComponent
   _toggleAMPM!: string | null;
   protected isOpen = false;
 
+  get overlayOrigin(): ElementRef {
+    return this.formfield?.getConnectedOverlayOrigin();
+  }
+
   protected readonly intl = inject(NxTimefieldIntl);
   protected readonly focusMonitor = inject(FocusMonitor);
   private readonly _textMeasurementService = inject(TextMeasurementService);
@@ -229,7 +235,6 @@ export class NxTimefieldComponent
 
   @ViewChild('list') timePickerList?: ElementRef<HTMLUListElement>;
   @ViewChild('toggleButton') toggleButton!: ElementRef<HTMLButtonElement>;
-  @ViewChild('overlayOrigin') overlayOrigin!: CdkOverlayOrigin;
   private readonly inputMinutes = viewChild<ElementRef<HTMLInputElement>>('inputMinutes');
   private readonly inputHours = viewChild<ElementRef<HTMLInputElement>>('inputHours');
   @ViewChild(CdkConnectedOverlay) overlay?: CdkConnectedOverlay;
@@ -457,6 +462,7 @@ export class NxTimefieldComponent
   }
 
   protected _overlayWidth: string | number = '';
+  protected _overlayPositions: ConnectionPositionPair[] = [];
 
   /**
    * @docs-private
@@ -589,7 +595,18 @@ export class NxTimefieldComponent
     if (this.disabled) {
       return;
     }
-    this._overlayWidth = this.overlayOrigin.elementRef.nativeElement.getBoundingClientRect().width;
+    this._overlayWidth = this.overlayOrigin.nativeElement.getBoundingClientRect().width;
+    const offsetY = getOverlayOffsetYForOutlineAppearance(this.overlayOrigin);
+    this._overlayPositions = [
+      { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top', offsetY },
+      {
+        originX: 'start',
+        originY: 'top',
+        overlayX: 'start',
+        overlayY: 'bottom',
+        offsetY: -offsetY,
+      },
+    ];
     this.isOpen = true;
     setTimeout(() => {
       this.scrollSelectedItemIntoView();

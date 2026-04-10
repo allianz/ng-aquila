@@ -107,7 +107,7 @@ nx-radio-toggle {
     }
 
     .nx-formfield__input {
-      padding: 2px 8px;
+      padding: v(timefield-padding);
     }
   }
 }
@@ -224,13 +224,12 @@ section {
   height: 252px;
   background: v(timepicker-layout-background-color);
   text-align: left;
-  padding: 8px 0;
-  margin: 6px 0;
+  padding: v(timepicker-overlay-padding);
   overflow-y: scroll;
   color: v(timepicker-label-color);
   font-weight: nx-font-weight(regular);
-  box-shadow: 0px 2px 4px rgba(65, 65, 65, 0.5);
-  border-radius: 4px;
+  box-shadow: v(timepicker-overlay-box-shadow);
+  border-radius: v(timepicker-overlay-border-radius);
   width: 100%;
 }
 
@@ -242,11 +241,16 @@ section {
   font-size: nx-font-size(xs);
   line-height: 1.75rem;
   outline: none;
-  padding: 8px 32px;
+  padding: v(timepicker-item-padding-vertical) v(timepicker-item-padding-horizontal);
 
   &:hover {
     color: v(timepicker-label-hover-color);
+    background-color: v(dropdown-item-hover-background-color);
     cursor: pointer;
+  }
+
+  &:active {
+    background-color: v(dropdown-item-active-background-color);
   }
 }
 
