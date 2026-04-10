@@ -10,6 +10,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
+  afterRenderEffect,
   AfterViewChecked,
   AfterViewInit,
   booleanAttribute,
@@ -26,6 +27,7 @@ import {
   OnDestroy,
   Optional,
   Output,
+  Renderer2,
   signal,
   ViewChild,
 } from '@angular/core';
@@ -50,16 +52,8 @@ export class NxDropdownItemChange {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['dropdown-item.scss'],
   host: {
-    '[id]': 'id',
     role: 'option',
-    '[attr.tabindex]': '_getTabIndex()',
-    '[attr.aria-disabled]': 'disabled.toString()',
-    '[attr.aria-selected]': '_getAriaSelected()',
     '[class.nx-hidden]': '_hidden',
-    '[class.nx-dropdown-item--active]': 'isActive()',
-    '[class.nx-dropdown-item--disabled]': 'disabled',
-    '[class.nx-selected]': 'selected',
-    '[class.nx-multiselect]': 'multiselect',
     '(click)': '_onClick($event)',
   },
   imports: [
@@ -103,7 +97,9 @@ export class NxDropdownItemComponent
     return this.idInput() ?? this._generatedId;
   }
 
-  private readonly _disabled = signal(false);
+  readonly idSignal = computed(() => this.idInput() ?? this._generatedId);
+
+  protected readonly _disabled = signal(false);
 
   /** Whether the dropdown item is disabled. */
   @Input() set disabled(value: BooleanInput) {
@@ -117,11 +113,14 @@ export class NxDropdownItemComponent
     return this._disabled();
   }
 
-  private readonly _selected = signal(false);
+  protected readonly _selectedFromInteraction = signal(false);
+  protected readonly _selected = computed(
+    () => this._selectedFromInteraction() || this.selectedInput(),
+  );
 
   /** Whether the item is selected. */
   get selected(): boolean {
-    return this._selected() || this.selectedInput();
+    return this._selected();
   }
 
   /** Whether the item is selected (reactive input for virtual scroll). */
@@ -143,6 +142,8 @@ export class NxDropdownItemComponent
   get multiselect(): boolean {
     return this._dropdown?.isMultiSelect();
   }
+
+  protected readonly multiSelectSignal = computed(() => this._dropdown?.isMultiSelect());
 
   private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
     optional: true,
@@ -170,6 +171,7 @@ export class NxDropdownItemComponent
   /** Reference to the content element for checking emptiness. */
   @ViewChild('content', { static: false })
   private readonly contentElement!: ElementRef<HTMLElement>;
+  private readonly _renderer = inject(Renderer2);
 
   constructor(
     @Inject(NxDropdownControl) private readonly _dropdown: NxDropdownControl,
@@ -177,6 +179,22 @@ export class NxDropdownItemComponent
     private readonly _cdr: ChangeDetectorRef,
     private readonly _elementRef: ElementRef,
   ) {
+    // workaround because of https://github.com/angular/angular/issues/67454
+    // that added significant performance regressions when signals are read in host bindings
+    // TODO: remove this workaround once the issue is resolved by Angular
+    afterRenderEffect({
+      write: () => {
+        this._updateHostAttribute('id', this.idSignal());
+        this._updateHostAttribute('tabindex', this._getTabIndex());
+        this._updateHostAttribute('aria-disabled', this._disabled().toString());
+        this._updateHostAttribute('aria-selected', this._getAriaSelected());
+        this._updateClass('nx-dropdown-item--active', this.isActive());
+        this._updateClass('nx-dropdown-item--disabled', this._disabled());
+        this._updateClass('nx-selected', this._selected());
+        this._updateClass('nx-multiselect', this.multiSelectSignal());
+      },
+    });
+
     this._dropdown.filterChanges.pipe(takeUntil(this._destroyed)).subscribe((value) => {
       this._showOrHideByFilter(value);
     });
@@ -185,6 +203,22 @@ export class NxDropdownItemComponent
       this._hidden = false;
     });
   }
+
+  private readonly _updateHostAttribute = (name: string, value: unknown) => {
+    if (value == null) {
+      this._renderer.removeAttribute(this._elementRef.nativeElement, name);
+    } else {
+      this._renderer.setAttribute(this._elementRef.nativeElement, name, value as string);
+    }
+  };
+
+  private readonly _updateClass = (className: string, add: boolean) => {
+    if (add) {
+      this._renderer.addClass(this._elementRef.nativeElement, className);
+    } else {
+      this._renderer.removeClass(this._elementRef.nativeElement, className);
+    }
+  };
 
   ngAfterViewInit(): void {
     // Initialize content empty state after view is ready
@@ -243,8 +277,8 @@ export class NxDropdownItemComponent
    */
   _selectViaInteraction(): void {
     if (!this.disabled) {
-      const nextSelected = this.multiselect ? !this._selected() : true;
-      this._selected.set(nextSelected);
+      const nextSelected = this.multiselect ? !this._selectedFromInteraction() : true;
+      this._selectedFromInteraction.set(nextSelected);
       this._updateViewValue();
       this._cdr.markForCheck();
       this._emitSelectionChangeEvent(true);
@@ -298,22 +332,22 @@ export class NxDropdownItemComponent
   }
 
   select() {
-    if (!this._selected() && !this.disabled) {
-      this._selected.set(true);
+    if (!this._selectedFromInteraction() && !this.disabled) {
+      this._selectedFromInteraction.set(true);
       this._emitSelectionChangeEvent();
     }
   }
 
   /** @docs-private */
   deselect() {
-    if (this._selected()) {
-      this._selected.set(false);
+    if (this._selectedFromInteraction()) {
+      this._selectedFromInteraction.set(false);
       this._emitSelectionChangeEvent();
     }
   }
 
   _initSelected(selected: boolean) {
-    this._selected.set(selected);
+    this._selectedFromInteraction.set(selected);
   }
 
   /** @docs-private */
