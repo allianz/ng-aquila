@@ -9,11 +9,13 @@ import { AvatarButtonExampleComponent } from './avatar-button/avatar-button-exam
 import { AvatarColorsExampleComponent } from './avatar-colors/avatar-colors-example';
 import { AvatarDisabledExampleComponent } from './avatar-disabled/avatar-disabled-example';
 import { AvatarSizeExampleComponent } from './avatar-size/avatar-size-example';
+import { AvatarSizeA1ExampleComponent } from './avatar-size-a1/avatar-size-a1-example';
 
 const EXAMPLES = [
   AvatarExampleComponent,
   AvatarButtonExampleComponent,
   AvatarSizeExampleComponent,
+  AvatarSizeA1ExampleComponent,
   AvatarColorsExampleComponent,
   AvatarAccentColorsExampleComponent,
   AvatarDisabledExampleComponent,
@@ -29,6 +31,7 @@ export class AvatarExamplesModule {
       avatar: AvatarExampleComponent,
       'avatar-button': AvatarButtonExampleComponent,
       'avatar-size': AvatarSizeExampleComponent,
+      'avatar-size-a1': AvatarSizeA1ExampleComponent,
       'avatar-colors': AvatarColorsExampleComponent,
       'avatar-accent-colors': AvatarAccentColorsExampleComponent,
       'avatar-disabled': AvatarDisabledExampleComponent,

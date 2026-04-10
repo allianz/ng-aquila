@@ -1,0 +1,41 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-inverse-container&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Selectable<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">inverse</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter fruits&quot;</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;[&#x27;apples&#x27;]&quot;</span>&gt;</span>
+    @for (tag of tags(); track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.toLowerCase()&quot;</span>&gt;</span>{{ tag }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> <span class="hljs-attr">inverse</span>&gt;</span>Individual tag<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Removable<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">inverse</span> <span class="hljs-attr">removable</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Active filters&quot;</span>&gt;</span>
+    @for (tag of removableTags(); track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> (<span class="hljs-attr">removed</span>)=<span class="hljs-string">&quot;removeTag(tag)&quot;</span>&gt;</span>{{ tag }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">inverse</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;States&quot;</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;[&#x27;x&#x27;]&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> <span class="hljs-attr">disabled</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;x&quot;</span>&gt;</span>Selected Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> <span class="hljs-attr">disabled</span>&gt;</span>Disabled<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">inverse</span> <span class="hljs-attr">removable</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Active filters&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> <span class="hljs-attr">disabled</span>&gt;</span>Disabled removable<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Readonly<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span>
+    <span class="hljs-attr">inverse</span>
+    [<span class="hljs-attr">readonly</span>]=<span class="hljs-string">&quot;true&quot;</span>
+    [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;selectedReadonly&quot;</span>
+    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Selected readonly states&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;selected&quot;</span>&gt;</span>Selected Readonly<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;unselected&quot;</span>&gt;</span>Readonly<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">inverse</span> <span class="hljs-attr">removable</span> [<span class="hljs-attr">readonly</span>]=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Active filters&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span>&gt;</span>Readonly removable<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

@@ -1,0 +1,11 @@
+.docs-inverse-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+h3 {
+  margin: 0;
+  &:not(:first-child) {
+    margin: 24px 0 0 0;
+  }
+}
