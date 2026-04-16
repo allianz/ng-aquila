@@ -38,6 +38,22 @@ For Example:
 
 ---
 
+## Migration Skill 
+
+You can use the `a1-migration` Skill to migrate your current Application to the new Design System. 
+
+**Important:** The Skill is currently in beta phase. So double-check the changes done by AI
+
+**Installation** using vercel skill management package just run:
+
+```sh
+npx skills add allianz/ng-aquila --skill a1-migration 
+```
+
+**Manual installation:** copy the skill file to your local machine into the skills directory of your AI Tool.
+
+---
+
 ## MCP
 
 ### Why MCP?
