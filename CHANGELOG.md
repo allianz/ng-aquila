@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 21.7.0 (2026-04-16)
+
+
+### Features ✨
+
+* A1 migration AI skill  ([7a95d86](https://github.com/allianz/ng-aquila/commit/7a95d863105b503f5d2a327118b0eb09610e20c8))
+* provide coding skill for AI tools ([3e66254](https://github.com/allianz/ng-aquila/commit/3e662547517c672bf19f49410e453e0706f5affc))
+
 ## 21.6.0 (2026-04-10)
 
 ### Performance fix
@@ -10,23 +18,23 @@ This release includes a work around for an Angular performance regression in sig
 
 ### Features ✨
 
-* **avatar:** support a1 density ([#1808](https://github.com/allianz/ng-aquila/issues/1808)) ([6d19e22](https://github.com/allianz/ng-aquila/commit/6d19e228602672a5683341ba929f4f9d355532a5))
-* **dynamic-table:** support A1 densities ([#1812](https://github.com/allianz/ng-aquila/issues/1812)) ([7da478f](https://github.com/allianz/ng-aquila/commit/7da478f08bc47dfacaa21c7b32e063f771f105e1))
-* **notification:** add A1 densities ([#1802](https://github.com/allianz/ng-aquila/issues/1802)) ([73ee782](https://github.com/allianz/ng-aquila/commit/73ee7821c8d50e1dfb5d3d8cf52d6718664d0fa0))
-* **progress-bar:** support A1 densities ([#1803](https://github.com/allianz/ng-aquila/issues/1803)) ([352bb0a](https://github.com/allianz/ng-aquila/commit/352bb0af11f757cee94b2941879bfa1f3517f1be))
-* **tag:** add inverse option ([#1792](https://github.com/allianz/ng-aquila/issues/1792)) ([3ab783a](https://github.com/allianz/ng-aquila/commit/3ab783a59135394b34aabb6cec4a5bc6e45ed8f9))
-* **timefield:** support A1 densities ([#1814](https://github.com/allianz/ng-aquila/issues/1814)) ([c93fe93](https://github.com/allianz/ng-aquila/commit/c93fe93df3540ce17186ad2b501e212fb26af382))
+* **avatar:** support a1 density ([6d19e22](https://github.com/allianz/ng-aquila/commit/6d19e228602672a5683341ba929f4f9d355532a5))
+* **dynamic-table:** support A1 densities ([7da478f](https://github.com/allianz/ng-aquila/commit/7da478f08bc47dfacaa21c7b32e063f771f105e1))
+* **notification:** add A1 densities ([73ee782](https://github.com/allianz/ng-aquila/commit/73ee7821c8d50e1dfb5d3d8cf52d6718664d0fa0))
+* **progress-bar:** support A1 densities ([352bb0a](https://github.com/allianz/ng-aquila/commit/352bb0af11f757cee94b2941879bfa1f3517f1be))
+* **tag:** add inverse option ([3ab783a](https://github.com/allianz/ng-aquila/commit/3ab783a59135394b34aabb6cec4a5bc6e45ed8f9))
+* **timefield:** support A1 densities ([c93fe93](https://github.com/allianz/ng-aquila/commit/c93fe93df3540ce17186ad2b501e212fb26af382))
 
 
 ### Bug Fixes 🐛
 
-* **dropdown:** add aria-labelledby to internal listbox ([#1818](https://github.com/allianz/ng-aquila/issues/1818)) ([fc48422](https://github.com/allianz/ng-aquila/commit/fc4842222e00d029b237dd6d4ecd5e2e129ce710))
-* **dropdown:** add missing aria-expanded attribute to filter input ([#1819](https://github.com/allianz/ng-aquila/issues/1819)) ([33c98cc](https://github.com/allianz/ng-aquila/commit/33c98cc38e2a7570bbb15821d47a1c1ae0dc5a17))
-* **dropdown:** work around Angular performance regression ([#1829](https://github.com/allianz/ng-aquila/issues/1829)) ([d2587ea](https://github.com/allianz/ng-aquila/commit/d2587ea69c6238c9d55c35dd6af03b9b5c83d71b))
-* **link:** add unit ([#1824](https://github.com/allianz/ng-aquila/issues/1824)) ([d14606a](https://github.com/allianz/ng-aquila/commit/d14606ade847b2a62449cedc19a48e29c8d4b5d7))
-* **phone-input:** propagate required state to internal input and dropdown ([#1817](https://github.com/allianz/ng-aquila/issues/1817)) ([7b25e49](https://github.com/allianz/ng-aquila/commit/7b25e4997a3ee2141512399ee1180e6b6d7b3070))
-* **popover:** add padding to button ([#1797](https://github.com/allianz/ng-aquila/issues/1797)) ([4b2d34c](https://github.com/allianz/ng-aquila/commit/4b2d34c35d4bcb782d94af4a041504f423dc6072))
-* **table:** update table padding to exclude border width ([#1811](https://github.com/allianz/ng-aquila/issues/1811)) ([6f14551](https://github.com/allianz/ng-aquila/commit/6f14551ec239d9f2f5646e29d3eef48a830c029d))
+* **dropdown:** add aria-labelledby to internal listbox ([fc48422](https://github.com/allianz/ng-aquila/commit/fc4842222e00d029b237dd6d4ecd5e2e129ce710))
+* **dropdown:** add missing aria-expanded attribute to filter input ([33c98cc](https://github.com/allianz/ng-aquila/commit/33c98cc38e2a7570bbb15821d47a1c1ae0dc5a17))
+* **dropdown:** work around Angular performance regression ([d2587ea](https://github.com/allianz/ng-aquila/commit/d2587ea69c6238c9d55c35dd6af03b9b5c83d71b))
+* **link:** add unit ([d14606a](https://github.com/allianz/ng-aquila/commit/d14606ade847b2a62449cedc19a48e29c8d4b5d7))
+* **phone-input:** propagate required state to internal input and dropdown ([7b25e49](https://github.com/allianz/ng-aquila/commit/7b25e4997a3ee2141512399ee1180e6b6d7b3070))
+* **popover:** add padding to button ([4b2d34c](https://github.com/allianz/ng-aquila/commit/4b2d34c35d4bcb782d94af4a041504f423dc6072))
+* **table:** update table padding to exclude border width ([6f14551](https://github.com/allianz/ng-aquila/commit/6f14551ec239d9f2f5646e29d3eef48a830c029d))
 
 ### Deprecations ⚠️
 
