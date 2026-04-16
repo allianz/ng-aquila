@@ -15,7 +15,14 @@ const directoriesPath = {
 
 const excludedResources = {
   folders: ['mcp', 'static'],
-  files: ['README.md', 'accessibility.md', 'config.md', 'mcp.md', 'typography.md', 'utils.md'],
+  files: [
+    'README.md',
+    'accessibility.md',
+    'config.md',
+    'develop-with-ai.md',
+    'typography.md',
+    'utils.md',
+  ],
 };
 
 const regexPatterns = {

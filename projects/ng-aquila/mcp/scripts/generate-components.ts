@@ -26,7 +26,7 @@ const settings = {
       'accessibility.md',
       'config.md',
       'getting-started.md',
-      'mcp.md',
+      'develop-with-ai.md',
       'releases.md',
       'typography.md',
       'utils.md',
