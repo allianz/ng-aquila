@@ -3673,33 +3673,6 @@
   ],
   "components": [
     {
-      "id": "action",
-      "title": "Action",
-      "examples": [
-        {
-          "name": "action",
-          "config": {}
-        },
-        {
-          "name": "action-with-router",
-          "config": {}
-        },
-        {
-          "name": "action-indicator",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/action.html",
-      "overviewFile": "lib-viewer/overview/action.html",
-      "description": "Clickable action items for navigation or menus",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "menu",
-      "a1Densities": true
-    },
-    {
       "id": "accordion",
       "title": "Accordion",
       "examples": [
@@ -3763,6 +3736,33 @@
       "a1Densities": true
     },
     {
+      "id": "action",
+      "title": "Action",
+      "examples": [
+        {
+          "name": "action",
+          "config": {}
+        },
+        {
+          "name": "action-with-router",
+          "config": {}
+        },
+        {
+          "name": "action-indicator",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/action.html",
+      "overviewFile": "lib-viewer/overview/action.html",
+      "description": "Clickable action items for navigation or menus",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "menu",
+      "a1Densities": true
+    },
+    {
       "id": "autocomplete",
       "title": "Autocomplete",
       "examples": [
@@ -3804,24 +3804,6 @@
       "stable": "done",
       "a1Light": true,
       "a1Densities": true
-    },
-    {
-      "id": "accessibility",
-      "title": "Accessibility",
-      "examples": [
-        {
-          "name": "accessibility-high-contrast-svg",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/accessibility.html",
-      "overviewFile": "lib-viewer/overview/accessibility.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1Light": true
     },
     {
       "id": "avatar",
@@ -3866,29 +3848,6 @@
       "a1Densities": true
     },
     {
-      "id": "ag-grid",
-      "title": "Ag-grid",
-      "examples": [
-        {
-          "name": "ag-grid-opensource-theming-api",
-          "config": {}
-        },
-        {
-          "name": "ag-grid-theming-api",
-          "config": {}
-        }
-      ],
-      "category": "Third-party",
-      "apiFile": "lib-viewer/api/ag-grid.html",
-      "overviewFile": "lib-viewer/overview/ag-grid.html",
-      "description": "Allianz-themed AG Grid integration",
-      "b2c": false,
-      "expert": true,
-      "stable": "progress",
-      "noApi": true,
-      "a1Light": true
-    },
-    {
       "id": "base",
       "title": "Base Components",
       "examples": [
@@ -3911,6 +3870,57 @@
       "alias": "label, error",
       "a1Light": true,
       "a1Densities": true
+    },
+    {
+      "id": "badge",
+      "title": "Badge",
+      "examples": [
+        {
+          "name": "badge-color-scheme",
+          "config": {}
+        },
+        {
+          "name": "badge-brand",
+          "config": {}
+        },
+        {
+          "name": "badge-prominence",
+          "config": {}
+        },
+        {
+          "name": "badge-character",
+          "config": {}
+        },
+        {
+          "name": "badge-disabled",
+          "config": {}
+        },
+        {
+          "name": "badge-inverse",
+          "config": {}
+        },
+        {
+          "name": "badge",
+          "config": {}
+        },
+        {
+          "name": "badge-vibrant",
+          "config": {}
+        },
+        {
+          "name": "badge-character-ndbx",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/badge.html",
+      "overviewFile": "lib-viewer/overview/badge.html",
+      "description": "Status badges and labels",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "chip",
+      "a1Full": true
     },
     {
       "id": "breadcrumb",
@@ -3943,6 +3953,193 @@
       "alias": "location",
       "a1Light": true,
       "a1Densities": true
+    },
+    {
+      "id": "ag-grid",
+      "title": "Ag-grid",
+      "examples": [
+        {
+          "name": "ag-grid-opensource-theming-api",
+          "config": {}
+        },
+        {
+          "name": "ag-grid-theming-api",
+          "config": {}
+        }
+      ],
+      "category": "Third-party",
+      "apiFile": "lib-viewer/api/ag-grid.html",
+      "overviewFile": "lib-viewer/overview/ag-grid.html",
+      "description": "Allianz-themed AG Grid integration",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress",
+      "noApi": true,
+      "a1Light": true
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "examples": [
+        {
+          "name": "accessibility-high-contrast-svg",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/accessibility.html",
+      "overviewFile": "lib-viewer/overview/accessibility.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1Light": true
+    },
+    {
+      "id": "checkbox",
+      "title": "Checkbox",
+      "examples": [
+        {
+          "name": "checkbox-states",
+          "config": {}
+        },
+        {
+          "name": "checkbox-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "checkbox-label-size",
+          "config": {}
+        },
+        {
+          "name": "checkbox-negative",
+          "config": {}
+        },
+        {
+          "name": "checkbox-template-driven",
+          "config": {}
+        },
+        {
+          "name": "checkbox-reactive",
+          "config": {}
+        },
+        {
+          "name": "checkbox-outputs",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-basic",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-reactive",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-layout",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-label-size",
+          "config": {}
+        },
+        {
+          "name": "checkbox-readonly",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-validation",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-dynamic",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-inheritance",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/checkbox.html",
+      "overviewFile": "lib-viewer/overview/checkbox.html",
+      "description": "Checkbox form control",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Densities": true
+    },
+    {
+      "id": "circle-toggle",
+      "title": "Circle Toggle",
+      "examples": [
+        {
+          "name": "circle-toggle-standalone",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-group",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-responsive",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-text",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-negative",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-group-expert",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-expert",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-layout",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-template-driven",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-reactive",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-reactive-disabled",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-readonly",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-validation",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/circle-toggle.html",
+      "overviewFile": "lib-viewer/overview/circle-toggle.html",
+      "description": "Circular toggle buttons for option selection",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "button, radio, toggle, checkbox",
+      "a1Light": true,
+      "a1": false
     },
     {
       "id": "button",
@@ -4023,317 +4220,6 @@
       "a1Densities": true
     },
     {
-      "id": "badge",
-      "title": "Badge",
-      "examples": [
-        {
-          "name": "badge-color-scheme",
-          "config": {}
-        },
-        {
-          "name": "badge-brand",
-          "config": {}
-        },
-        {
-          "name": "badge-prominence",
-          "config": {}
-        },
-        {
-          "name": "badge-character",
-          "config": {}
-        },
-        {
-          "name": "badge-disabled",
-          "config": {}
-        },
-        {
-          "name": "badge-inverse",
-          "config": {}
-        },
-        {
-          "name": "badge",
-          "config": {}
-        },
-        {
-          "name": "badge-vibrant",
-          "config": {}
-        },
-        {
-          "name": "badge-character-ndbx",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/badge.html",
-      "overviewFile": "lib-viewer/overview/badge.html",
-      "description": "Status badges and labels",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "chip",
-      "a1Full": true
-    },
-    {
-      "id": "checkbox",
-      "title": "Checkbox",
-      "examples": [
-        {
-          "name": "checkbox-states",
-          "config": {}
-        },
-        {
-          "name": "checkbox-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "checkbox-label-size",
-          "config": {}
-        },
-        {
-          "name": "checkbox-negative",
-          "config": {}
-        },
-        {
-          "name": "checkbox-template-driven",
-          "config": {}
-        },
-        {
-          "name": "checkbox-reactive",
-          "config": {}
-        },
-        {
-          "name": "checkbox-outputs",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-basic",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-reactive",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-layout",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-label-size",
-          "config": {}
-        },
-        {
-          "name": "checkbox-readonly",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-validation",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-dynamic",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-inheritance",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/checkbox.html",
-      "overviewFile": "lib-viewer/overview/checkbox.html",
-      "description": "Checkbox form control",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Densities": true
-    },
-    {
-      "id": "code-input",
-      "title": "Code Input",
-      "examples": [
-        {
-          "name": "code-input-four-char",
-          "config": {}
-        },
-        {
-          "name": "code-input-six-char",
-          "config": {}
-        },
-        {
-          "name": "code-input-seven-char",
-          "config": {}
-        },
-        {
-          "name": "code-input-disabled",
-          "config": {}
-        },
-        {
-          "name": "code-input-type",
-          "config": {}
-        },
-        {
-          "name": "code-input-negative",
-          "config": {}
-        },
-        {
-          "name": "code-input-model",
-          "config": {}
-        },
-        {
-          "name": "code-input-localize",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/code-input.html",
-      "overviewFile": "lib-viewer/overview/code-input.html",
-      "description": "Multi-digit code entry (e.g., OTP)",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "otp, pin input",
-      "a1Light": true
-    },
-    {
-      "id": "card",
-      "title": "Cards",
-      "examples": [
-        {
-          "name": "card",
-          "config": {}
-        },
-        {
-          "name": "highlight-card",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-basic",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-radio",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-product",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-states",
-          "config": {}
-        },
-        {
-          "name": "highlight-selectable-card",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-reactive",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-dynamic",
-          "config": {}
-        },
-        {
-          "name": "clickable-card",
-          "config": {}
-        },
-        {
-          "name": "clickable-card-disabled",
-          "config": {}
-        },
-        {
-          "name": "clickable-card-raised-content",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-expert",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/card.html",
-      "overviewFile": "lib-viewer/overview/card.html",
-      "description": "Content card containers",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "card, selectable card",
-      "a1Densities": true
-    },
-    {
-      "id": "circle-toggle",
-      "title": "Circle Toggle",
-      "examples": [
-        {
-          "name": "circle-toggle-standalone",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-group",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-responsive",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-text",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-negative",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-group-expert",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-expert",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-layout",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-template-driven",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-reactive",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-reactive-disabled",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-readonly",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-validation",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/circle-toggle.html",
-      "overviewFile": "lib-viewer/overview/circle-toggle.html",
-      "description": "Circular toggle buttons for option selection",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "button, radio, toggle, checkbox",
-      "a1Light": true,
-      "a1": false
-    },
-    {
       "id": "config",
       "title": "Expert",
       "examples": [],
@@ -4345,6 +4231,78 @@
       "stable": "done",
       "noApi": true,
       "a1": false
+    },
+    {
+      "id": "context-menu",
+      "title": "Context Menu",
+      "examples": [
+        {
+          "name": "context-menu-basic",
+          "config": {}
+        },
+        {
+          "name": "context-menu-programmatic",
+          "config": {}
+        },
+        {
+          "name": "context-menu-icons",
+          "config": {}
+        },
+        {
+          "name": "context-menu-indicator",
+          "config": {}
+        },
+        {
+          "name": "context-menu-group",
+          "config": {}
+        },
+        {
+          "name": "context-menu-nested",
+          "config": {}
+        },
+        {
+          "name": "context-menu-disabled",
+          "config": {}
+        },
+        {
+          "name": "context-menu-lazy",
+          "config": {}
+        },
+        {
+          "name": "context-menu-data",
+          "config": {}
+        },
+        {
+          "name": "context-menu-scroll-strategy",
+          "config": {}
+        },
+        {
+          "name": "context-menu-cursor-mode",
+          "config": {}
+        },
+        {
+          "name": "context-menu-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "context-menu-selection",
+          "config": {}
+        },
+        {
+          "name": "context-menu-select-multiple",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/context-menu.html",
+      "overviewFile": "lib-viewer/overview/context-menu.html",
+      "description": "Right-click or trigger-based context menus",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "menu",
+      "a1Light": true,
+      "a1Densities": true
     },
     {
       "id": "comparison-table",
@@ -4450,123 +4408,6 @@
       "stable": "done",
       "a1Light": true,
       "a1Densities": true
-    },
-    {
-      "id": "datefield",
-      "title": "Date Field",
-      "examples": [
-        {
-          "name": "datefield-iso",
-          "config": {}
-        },
-        {
-          "name": "datefield-basic",
-          "config": {}
-        },
-        {
-          "name": "datefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "datefield-min-max",
-          "config": {}
-        },
-        {
-          "name": "datefield-filter",
-          "config": {}
-        },
-        {
-          "name": "datefield-today-button",
-          "config": {}
-        },
-        {
-          "name": "datefield-reactive",
-          "config": {}
-        },
-        {
-          "name": "datefield-readonly",
-          "config": {}
-        },
-        {
-          "name": "datefield-range",
-          "config": {}
-        },
-        {
-          "name": "datefield-range-validation",
-          "config": {}
-        },
-        {
-          "name": "datefield-range-format",
-          "config": {}
-        },
-        {
-          "name": "datemask-basic",
-          "config": {}
-        },
-        {
-          "name": "datemask-format",
-          "config": {}
-        },
-        {
-          "name": "datemask-reactive-form",
-          "config": {}
-        },
-        {
-          "name": "datemask-disabled",
-          "config": {}
-        },
-        {
-          "name": "datefield-format-injection",
-          "config": {}
-        },
-        {
-          "name": "datefield-parsing",
-          "config": {}
-        },
-        {
-          "name": "datefield-formatting",
-          "config": {}
-        },
-        {
-          "name": "datefield-startview",
-          "config": {}
-        },
-        {
-          "name": "datefield-manual",
-          "config": {}
-        },
-        {
-          "name": "datefield-localize-date",
-          "config": {}
-        },
-        {
-          "name": "datefield-localize-texts",
-          "config": {}
-        },
-        {
-          "name": "datefield-toggle-focus",
-          "config": {}
-        },
-        {
-          "name": "datefield-injection-token",
-          "config": {}
-        },
-        {
-          "name": "datefield-scroll-strategy-provider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/datefield.html",
-      "overviewFile": "lib-viewer/overview/datefield.html",
-      "description": "Date input with datepicker",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "datepicker, calendar, date input",
-      "a1Light": true,
-      "a1Densities": true,
-      "desc": "This component requires a date adapter module. Choose one:\n\n| Module               | Date Type                   | Locale Support                          | Dependency | Import From                             |\n| -------------------- | --------------------------- | --------------------------------------- | ---------- | --------------------------------------- |\n| `NxNativeDateModule` | `Date`                      | `en-US` only                            | None       | `@aposin/ng-aquila/datefield`           |\n| `NxMomentDateModule` | `Moment`                    | [Moment locales](https://momentjs.com/) | Moment.js  | `@aposin/ng-aquila/moment-date-adapter` |\n| `NxIsoDateModule`    | ISO `string` (`YYYY-MM-DD`) | [dayjs locales](https://day.js.org/)    | dayjs      | `@aposin/ng-aquila/iso-date-adapter`    |\n"
     },
     {
       "id": "divider",
@@ -4733,6 +4574,142 @@
       "a1Light": true
     },
     {
+      "id": "datefield",
+      "title": "Date Field",
+      "examples": [
+        {
+          "name": "datefield-iso",
+          "config": {}
+        },
+        {
+          "name": "datefield-basic",
+          "config": {}
+        },
+        {
+          "name": "datefield-disabled",
+          "config": {}
+        },
+        {
+          "name": "datefield-min-max",
+          "config": {}
+        },
+        {
+          "name": "datefield-filter",
+          "config": {}
+        },
+        {
+          "name": "datefield-today-button",
+          "config": {}
+        },
+        {
+          "name": "datefield-reactive",
+          "config": {}
+        },
+        {
+          "name": "datefield-readonly",
+          "config": {}
+        },
+        {
+          "name": "datefield-range",
+          "config": {}
+        },
+        {
+          "name": "datefield-range-validation",
+          "config": {}
+        },
+        {
+          "name": "datefield-range-format",
+          "config": {}
+        },
+        {
+          "name": "datemask-basic",
+          "config": {}
+        },
+        {
+          "name": "datemask-format",
+          "config": {}
+        },
+        {
+          "name": "datemask-reactive-form",
+          "config": {}
+        },
+        {
+          "name": "datemask-disabled",
+          "config": {}
+        },
+        {
+          "name": "datefield-format-injection",
+          "config": {}
+        },
+        {
+          "name": "datefield-parsing",
+          "config": {}
+        },
+        {
+          "name": "datefield-formatting",
+          "config": {}
+        },
+        {
+          "name": "datefield-startview",
+          "config": {}
+        },
+        {
+          "name": "datefield-manual",
+          "config": {}
+        },
+        {
+          "name": "datefield-localize-date",
+          "config": {}
+        },
+        {
+          "name": "datefield-localize-texts",
+          "config": {}
+        },
+        {
+          "name": "datefield-toggle-focus",
+          "config": {}
+        },
+        {
+          "name": "datefield-injection-token",
+          "config": {}
+        },
+        {
+          "name": "datefield-scroll-strategy-provider",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/datefield.html",
+      "overviewFile": "lib-viewer/overview/datefield.html",
+      "description": "Date input with datepicker",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "datepicker, calendar, date input",
+      "a1Light": true,
+      "a1Densities": true,
+      "desc": "This component requires a date adapter module. Choose one:\n\n| Module               | Date Type                   | Locale Support                          | Dependency | Import From                             |\n| -------------------- | --------------------------- | --------------------------------------- | ---------- | --------------------------------------- |\n| `NxNativeDateModule` | `Date`                      | `en-US` only                            | None       | `@aposin/ng-aquila/datefield`           |\n| `NxMomentDateModule` | `Moment`                    | [Moment locales](https://momentjs.com/) | Moment.js  | `@aposin/ng-aquila/moment-date-adapter` |\n| `NxIsoDateModule`    | ISO `string` (`YYYY-MM-DD`) | [dayjs locales](https://day.js.org/)    | dayjs      | `@aposin/ng-aquila/iso-date-adapter`    |\n"
+    },
+    {
+      "id": "eyebrow",
+      "title": "Eyebrow",
+      "examples": [
+        {
+          "name": "eyebrow-headline",
+          "config": {}
+        },
+        {
+          "name": "eyebrow",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/eyebrow.html",
+      "overviewFile": "lib-viewer/overview/eyebrow.html",
+      "description": "Small text above headlines for additional context",
+      "a1Full": true
+    },
+    {
       "id": "error-handling",
       "title": "Error handling",
       "examples": [
@@ -4757,25 +4734,6 @@
       "stable": "done",
       "noApi": true,
       "a1Light": true
-    },
-    {
-      "id": "eyebrow",
-      "title": "Eyebrow",
-      "examples": [
-        {
-          "name": "eyebrow-headline",
-          "config": {}
-        },
-        {
-          "name": "eyebrow",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/eyebrow.html",
-      "overviewFile": "lib-viewer/overview/eyebrow.html",
-      "description": "Small text above headlines for additional context",
-      "a1Full": true
     },
     {
       "id": "footer",
@@ -4883,105 +4841,70 @@
       "a1Densities": true
     },
     {
-      "id": "data-display",
-      "title": "Data Display",
+      "id": "card",
+      "title": "Cards",
       "examples": [
         {
-          "name": "data-display-standard",
+          "name": "card",
           "config": {}
         },
         {
-          "name": "data-display-condensed",
+          "name": "highlight-card",
           "config": {}
         },
         {
-          "name": "data-display-horizontal",
+          "name": "selectable-card-basic",
           "config": {}
         },
         {
-          "name": "data-display-responsive",
+          "name": "selectable-card-radio",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-product",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-states",
+          "config": {}
+        },
+        {
+          "name": "highlight-selectable-card",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-reactive",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-dynamic",
+          "config": {}
+        },
+        {
+          "name": "clickable-card",
+          "config": {}
+        },
+        {
+          "name": "clickable-card-disabled",
+          "config": {}
+        },
+        {
+          "name": "clickable-card-raised-content",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-expert",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/data-display.html",
-      "overviewFile": "lib-viewer/overview/data-display.html",
-      "description": "Key-value data display pairs",
+      "apiFile": "lib-viewer/api/card.html",
+      "overviewFile": "lib-viewer/overview/card.html",
+      "description": "Content card containers",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "a1Densities": true
-    },
-    {
-      "id": "context-menu",
-      "title": "Context Menu",
-      "examples": [
-        {
-          "name": "context-menu-basic",
-          "config": {}
-        },
-        {
-          "name": "context-menu-programmatic",
-          "config": {}
-        },
-        {
-          "name": "context-menu-icons",
-          "config": {}
-        },
-        {
-          "name": "context-menu-indicator",
-          "config": {}
-        },
-        {
-          "name": "context-menu-group",
-          "config": {}
-        },
-        {
-          "name": "context-menu-nested",
-          "config": {}
-        },
-        {
-          "name": "context-menu-disabled",
-          "config": {}
-        },
-        {
-          "name": "context-menu-lazy",
-          "config": {}
-        },
-        {
-          "name": "context-menu-data",
-          "config": {}
-        },
-        {
-          "name": "context-menu-scroll-strategy",
-          "config": {}
-        },
-        {
-          "name": "context-menu-cursor-mode",
-          "config": {}
-        },
-        {
-          "name": "context-menu-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "context-menu-selection",
-          "config": {}
-        },
-        {
-          "name": "context-menu-select-multiple",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/context-menu.html",
-      "overviewFile": "lib-viewer/overview/context-menu.html",
-      "description": "Right-click or trigger-based context menus",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "alias": "menu",
-      "a1Light": true,
+      "alias": "card, selectable card",
       "a1Densities": true
     },
     {
@@ -5135,6 +5058,103 @@
       "a1Densities": true
     },
     {
+      "id": "headline",
+      "title": "Headline",
+      "examples": [
+        {
+          "name": "headline-sizes-deprecated",
+          "config": {}
+        },
+        {
+          "name": "headline-font-weights",
+          "config": {}
+        },
+        {
+          "name": "headline-links",
+          "config": {}
+        },
+        {
+          "name": "headline-attention-text",
+          "config": {}
+        },
+        {
+          "name": "headline-negative",
+          "config": {}
+        },
+        {
+          "name": "headline-sizes-a1",
+          "config": {}
+        },
+        {
+          "name": "headline-type",
+          "config": {}
+        },
+        {
+          "name": "headline-sizes-mapping",
+          "config": {
+            "hideHeader": true
+          }
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/headline.html",
+      "overviewFile": "lib-viewer/overview/headline.html",
+      "description": "Heading typography (h1-h6)",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "heading, title",
+      "a1Light": true,
+      "a1Densities": true
+    },
+    {
+      "id": "code-input",
+      "title": "Code Input",
+      "examples": [
+        {
+          "name": "code-input-four-char",
+          "config": {}
+        },
+        {
+          "name": "code-input-six-char",
+          "config": {}
+        },
+        {
+          "name": "code-input-seven-char",
+          "config": {}
+        },
+        {
+          "name": "code-input-disabled",
+          "config": {}
+        },
+        {
+          "name": "code-input-type",
+          "config": {}
+        },
+        {
+          "name": "code-input-negative",
+          "config": {}
+        },
+        {
+          "name": "code-input-model",
+          "config": {}
+        },
+        {
+          "name": "code-input-localize",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/code-input.html",
+      "overviewFile": "lib-viewer/overview/code-input.html",
+      "description": "Multi-digit code entry (e.g., OTP)",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "otp, pin input",
+      "a1Light": true
+    },
+    {
       "id": "icon",
       "title": "Icons",
       "examples": [
@@ -5174,102 +5194,6 @@
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "a1Light": true
-    },
-    {
-      "id": "image",
-      "title": "Images",
-      "examples": [
-        {
-          "name": "image-default",
-          "config": {}
-        },
-        {
-          "name": "image-fixed-ratios",
-          "config": {}
-        },
-        {
-          "name": "image-attribute",
-          "config": {}
-        },
-        {
-          "name": "image-rounded",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/image.html",
-      "overviewFile": "lib-viewer/overview/image.html",
-      "description": "Responsive image component",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Light": true
-    },
-    {
-      "id": "info-icon",
-      "title": "Info Icon",
-      "examples": [
-        {
-          "name": "info-icon",
-          "config": {}
-        },
-        {
-          "name": "info-icon-inline",
-          "config": {}
-        },
-        {
-          "name": "info-icon-modal",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/info-icon.html",
-      "overviewFile": "lib-viewer/overview/info-icon.html",
-      "description": "Icon button that reveals contextual information via a popover",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true,
-      "a1Densities": true
-    },
-    {
-      "id": "indicator",
-      "title": "Indicator",
-      "examples": [
-        {
-          "name": "indicator",
-          "config": {}
-        },
-        {
-          "name": "action-indicator",
-          "config": {}
-        },
-        {
-          "name": "context-menu-indicator",
-          "config": {}
-        },
-        {
-          "name": "button-icon-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-with-indicator",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/indicator.html",
-      "overviewFile": "lib-viewer/overview/indicator.html",
-      "description": "Status indicator dots",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "badge",
       "a1Light": true
     },
     {
@@ -5321,6 +5245,267 @@
       "expert": true,
       "stable": "done",
       "a1Light": true,
+      "a1Densities": true
+    },
+    {
+      "id": "image",
+      "title": "Images",
+      "examples": [
+        {
+          "name": "image-default",
+          "config": {}
+        },
+        {
+          "name": "image-fixed-ratios",
+          "config": {}
+        },
+        {
+          "name": "image-attribute",
+          "config": {}
+        },
+        {
+          "name": "image-rounded",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/image.html",
+      "overviewFile": "lib-viewer/overview/image.html",
+      "description": "Responsive image component",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Light": true
+    },
+    {
+      "id": "indicator",
+      "title": "Indicator",
+      "examples": [
+        {
+          "name": "indicator",
+          "config": {}
+        },
+        {
+          "name": "action-indicator",
+          "config": {}
+        },
+        {
+          "name": "context-menu-indicator",
+          "config": {}
+        },
+        {
+          "name": "button-icon-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-with-indicator",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/indicator.html",
+      "overviewFile": "lib-viewer/overview/indicator.html",
+      "description": "Status indicator dots",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "badge",
+      "a1Light": true
+    },
+    {
+      "id": "link",
+      "title": "Link",
+      "examples": [
+        {
+          "name": "link-default",
+          "config": {}
+        },
+        {
+          "name": "link-size",
+          "config": {}
+        },
+        {
+          "name": "link-type",
+          "config": {}
+        },
+        {
+          "name": "link-prominence",
+          "config": {}
+        },
+        {
+          "name": "link-icons",
+          "config": {}
+        },
+        {
+          "name": "link-black",
+          "config": {}
+        },
+        {
+          "name": "link-negative",
+          "config": {}
+        },
+        {
+          "name": "link-multiple",
+          "config": {}
+        },
+        {
+          "name": "link-within-text",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/link.html",
+      "overviewFile": "lib-viewer/overview/link.html",
+      "description": "Styled link component",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Full": true
+    },
+    {
+      "id": "layout",
+      "title": "Layout",
+      "examples": [
+        {
+          "name": "margin-sizes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "margin-usage",
+          "config": {}
+        },
+        {
+          "name": "hidden-classes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "viewport-change",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/layout.html",
+      "overviewFile": "lib-viewer/overview/layout.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1Light": true
+    },
+    {
+      "id": "data-display",
+      "title": "Data Display",
+      "examples": [
+        {
+          "name": "data-display-standard",
+          "config": {}
+        },
+        {
+          "name": "data-display-condensed",
+          "config": {}
+        },
+        {
+          "name": "data-display-horizontal",
+          "config": {}
+        },
+        {
+          "name": "data-display-responsive",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/data-display.html",
+      "overviewFile": "lib-viewer/overview/data-display.html",
+      "description": "Key-value data display pairs",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Densities": true
+    },
+    {
+      "id": "mask",
+      "title": "Input Mask",
+      "examples": [
+        {
+          "name": "mask",
+          "config": {}
+        },
+        {
+          "name": "iban-mask",
+          "config": {}
+        },
+        {
+          "name": "mask-separators",
+          "config": {}
+        },
+        {
+          "name": "mask-drop-characters",
+          "config": {}
+        },
+        {
+          "name": "mask-validation",
+          "config": {}
+        },
+        {
+          "name": "mask-case",
+          "config": {}
+        },
+        {
+          "name": "mask-deactivate",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/mask.html",
+      "overviewFile": "lib-viewer/overview/mask.html",
+      "description": "Input mask for formatted text entry",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "input mask, masked input",
+      "a1Light": true,
+      "a1Densities": true
+    },
+    {
+      "id": "menu",
+      "title": "Menu",
+      "examples": [
+        {
+          "name": "menu-button",
+          "config": {}
+        },
+        {
+          "name": "menu-link",
+          "config": {}
+        },
+        {
+          "name": "menu-item",
+          "config": {}
+        },
+        {
+          "name": "menu-item-with-icons",
+          "config": {}
+        },
+        {
+          "name": "menu",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/menu.html",
+      "overviewFile": "lib-viewer/overview/menu.html",
+      "description": "Navigation menu component",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
       "a1Densities": true
     },
     {
@@ -5378,251 +5563,31 @@
       "a1Densities": true
     },
     {
-      "id": "layout",
-      "title": "Layout",
+      "id": "info-icon",
+      "title": "Info Icon",
       "examples": [
         {
-          "name": "margin-sizes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "margin-usage",
+          "name": "info-icon",
           "config": {}
         },
         {
-          "name": "hidden-classes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "viewport-change",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/layout.html",
-      "overviewFile": "lib-viewer/overview/layout.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1Light": true
-    },
-    {
-      "id": "link",
-      "title": "Link",
-      "examples": [
-        {
-          "name": "link-default",
+          "name": "info-icon-inline",
           "config": {}
         },
         {
-          "name": "link-size",
-          "config": {}
-        },
-        {
-          "name": "link-type",
-          "config": {}
-        },
-        {
-          "name": "link-prominence",
-          "config": {}
-        },
-        {
-          "name": "link-icons",
-          "config": {}
-        },
-        {
-          "name": "link-black",
-          "config": {}
-        },
-        {
-          "name": "link-negative",
-          "config": {}
-        },
-        {
-          "name": "link-multiple",
-          "config": {}
-        },
-        {
-          "name": "link-within-text",
+          "name": "info-icon-modal",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/link.html",
-      "overviewFile": "lib-viewer/overview/link.html",
-      "description": "Styled link component",
+      "apiFile": "lib-viewer/api/info-icon.html",
+      "overviewFile": "lib-viewer/overview/info-icon.html",
+      "description": "Icon button that reveals contextual information via a popover",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "a1Full": true
-    },
-    {
-      "id": "list",
-      "title": "List",
-      "examples": [
-        {
-          "name": "list-unordered",
-          "config": {}
-        },
-        {
-          "name": "list-ordered",
-          "config": {}
-        },
-        {
-          "name": "list-circles",
-          "config": {}
-        },
-        {
-          "name": "list-icons",
-          "config": {}
-        },
-        {
-          "name": "list-copytext",
-          "config": {}
-        },
-        {
-          "name": "list-type",
-          "config": {}
-        },
-        {
-          "name": "list-condensed",
-          "config": {}
-        },
-        {
-          "name": "list-negative",
-          "config": {}
-        },
-        {
-          "name": "list-custom-color",
-          "config": {}
-        },
-        {
-          "name": "list-nesting",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/list.html",
-      "overviewFile": "lib-viewer/overview/list.html",
-      "description": "Styled ordered and unordered lists",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Full": true
-    },
-    {
-      "id": "menu",
-      "title": "Menu",
-      "examples": [
-        {
-          "name": "menu-button",
-          "config": {}
-        },
-        {
-          "name": "menu-link",
-          "config": {}
-        },
-        {
-          "name": "menu-item",
-          "config": {}
-        },
-        {
-          "name": "menu-item-with-icons",
-          "config": {}
-        },
-        {
-          "name": "menu",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/menu.html",
-      "overviewFile": "lib-viewer/overview/menu.html",
-      "description": "Navigation menu component",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
+      "a1": true,
       "a1Densities": true
-    },
-    {
-      "id": "mask",
-      "title": "Input Mask",
-      "examples": [
-        {
-          "name": "mask",
-          "config": {}
-        },
-        {
-          "name": "iban-mask",
-          "config": {}
-        },
-        {
-          "name": "mask-separators",
-          "config": {}
-        },
-        {
-          "name": "mask-drop-characters",
-          "config": {}
-        },
-        {
-          "name": "mask-validation",
-          "config": {}
-        },
-        {
-          "name": "mask-case",
-          "config": {}
-        },
-        {
-          "name": "mask-deactivate",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/mask.html",
-      "overviewFile": "lib-viewer/overview/mask.html",
-      "description": "Input mask for formatted text entry",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "input mask, masked input",
-      "a1Light": true,
-      "a1Densities": true
-    },
-    {
-      "id": "notification-panel",
-      "title": "Notification panel",
-      "examples": [
-        {
-          "name": "notification-panel-clickable",
-          "config": {}
-        },
-        {
-          "name": "notification-panel-mixed",
-          "config": {}
-        },
-        {
-          "name": "notification-panel-actions",
-          "config": {}
-        },
-        {
-          "name": "notification-panel-scroll-strategy-provider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/notification-panel.html",
-      "overviewFile": "lib-viewer/overview/notification-panel.html",
-      "description": "Notification dropdown panel",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "alias": "popover",
-      "a1Light": true
     },
     {
       "id": "grid",
@@ -5697,54 +5662,131 @@
       "a1Light": true
     },
     {
-      "id": "headline",
-      "title": "Headline",
+      "id": "notification-panel",
+      "title": "Notification panel",
       "examples": [
         {
-          "name": "headline-sizes-deprecated",
+          "name": "notification-panel-clickable",
           "config": {}
         },
         {
-          "name": "headline-font-weights",
+          "name": "notification-panel-mixed",
           "config": {}
         },
         {
-          "name": "headline-links",
+          "name": "notification-panel-actions",
           "config": {}
         },
         {
-          "name": "headline-attention-text",
+          "name": "notification-panel-scroll-strategy-provider",
           "config": {}
-        },
-        {
-          "name": "headline-negative",
-          "config": {}
-        },
-        {
-          "name": "headline-sizes-a1",
-          "config": {}
-        },
-        {
-          "name": "headline-type",
-          "config": {}
-        },
-        {
-          "name": "headline-sizes-mapping",
-          "config": {
-            "hideHeader": true
-          }
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/headline.html",
-      "overviewFile": "lib-viewer/overview/headline.html",
-      "description": "Heading typography (h1-h6)",
+      "apiFile": "lib-viewer/api/notification-panel.html",
+      "overviewFile": "lib-viewer/overview/notification-panel.html",
+      "description": "Notification dropdown panel",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "popover",
+      "a1Light": true
+    },
+    {
+      "id": "modal",
+      "title": "Modal",
+      "examples": [
+        {
+          "name": "modal-opening",
+          "config": {}
+        },
+        {
+          "name": "modal-closing",
+          "config": {}
+        },
+        {
+          "name": "modal-closing-behaviour",
+          "config": {}
+        },
+        {
+          "name": "modal-content-actions",
+          "config": {}
+        },
+        {
+          "name": "modal-fixed-width",
+          "config": {}
+        },
+        {
+          "name": "modal-status",
+          "config": {}
+        },
+        {
+          "name": "modal-fullscreen",
+          "config": {}
+        },
+        {
+          "name": "modal-data-injection",
+          "config": {}
+        },
+        {
+          "name": "modal-with-direction",
+          "config": {}
+        },
+        {
+          "name": "modal-unsaved",
+          "config": {}
+        },
+        {
+          "name": "modal-autofocus",
+          "config": {}
+        },
+        {
+          "name": "modal-basic",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/modal.html",
+      "overviewFile": "lib-viewer/overview/modal.html",
+      "description": "Dialog/modal overlay",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "heading, title",
+      "alias": "dialog, popup",
       "a1Light": true,
-      "a1Densities": true
+      "desc": "this require adding cdk style to angular.json\n\n\"styles\": [\n...,\n\"node_modules/@angular/cdk/overlay-prebuilt.css\"\n]\n"
+    },
+    {
+      "id": "natural-language-form",
+      "title": "Natural Language Form",
+      "examples": [
+        {
+          "name": "natural-language-form-basic",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-extended",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-negative",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-sizes",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/natural-language-form.html",
+      "overviewFile": "lib-viewer/overview/natural-language-form.html",
+      "description": "Sentence-style form layout",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "text form, inline field",
+      "a1": false,
+      "a1Light": true
     },
     {
       "id": "number-stepper",
@@ -5830,35 +5872,25 @@
       "a1Light": true
     },
     {
-      "id": "natural-language-form",
-      "title": "Natural Language Form",
+      "id": "overlay",
+      "title": "Overlay",
       "examples": [
         {
-          "name": "natural-language-form-basic",
+          "name": "overlay-positioning",
           "config": {}
         },
         {
-          "name": "natural-language-form-extended",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-negative",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-sizes",
+          "name": "overlay-limiting-fallbacks",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/natural-language-form.html",
-      "overviewFile": "lib-viewer/overview/natural-language-form.html",
-      "description": "Sentence-style form layout",
+      "apiFile": "lib-viewer/api/overlay.html",
+      "overviewFile": "lib-viewer/overview/overlay.html",
+      "description": "Programmatic overlay positioning service",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "text form, inline field",
-      "a1": false,
       "a1Light": true
     },
     {
@@ -5892,53 +5924,6 @@
       "alias": "search field, search, search bar",
       "a1Light": true,
       "a1Densities": true
-    },
-    {
-      "id": "message",
-      "title": "Notifications",
-      "examples": [
-        {
-          "name": "message-info",
-          "config": {}
-        },
-        {
-          "name": "message-error",
-          "config": {}
-        },
-        {
-          "name": "message-success",
-          "config": {}
-        },
-        {
-          "name": "message-warning",
-          "config": {}
-        },
-        {
-          "name": "message-closable",
-          "config": {}
-        },
-        {
-          "name": "message-banner",
-          "config": {}
-        },
-        {
-          "name": "message-toast-opening",
-          "config": {}
-        },
-        {
-          "name": "message-toast-custom-settings",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/message.html",
-      "overviewFile": "lib-viewer/overview/message.html",
-      "description": "Inline message banners (info, success, warning, error)",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "message banner, toast, snackbar, alert, info, error, warning, success, notification",
-      "a1Light": true
     },
     {
       "id": "pagination",
@@ -5978,92 +5963,6 @@
       "stable": "done",
       "alias": "pager, paginator",
       "a1Light": true
-    },
-    {
-      "id": "overlay",
-      "title": "Overlay",
-      "examples": [
-        {
-          "name": "overlay-positioning",
-          "config": {}
-        },
-        {
-          "name": "overlay-limiting-fallbacks",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/overlay.html",
-      "overviewFile": "lib-viewer/overview/overlay.html",
-      "description": "Programmatic overlay positioning service",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Light": true
-    },
-    {
-      "id": "modal",
-      "title": "Modal",
-      "examples": [
-        {
-          "name": "modal-opening",
-          "config": {}
-        },
-        {
-          "name": "modal-closing",
-          "config": {}
-        },
-        {
-          "name": "modal-closing-behaviour",
-          "config": {}
-        },
-        {
-          "name": "modal-content-actions",
-          "config": {}
-        },
-        {
-          "name": "modal-fixed-width",
-          "config": {}
-        },
-        {
-          "name": "modal-status",
-          "config": {}
-        },
-        {
-          "name": "modal-fullscreen",
-          "config": {}
-        },
-        {
-          "name": "modal-data-injection",
-          "config": {}
-        },
-        {
-          "name": "modal-with-direction",
-          "config": {}
-        },
-        {
-          "name": "modal-unsaved",
-          "config": {}
-        },
-        {
-          "name": "modal-autofocus",
-          "config": {}
-        },
-        {
-          "name": "modal-basic",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/modal.html",
-      "overviewFile": "lib-viewer/overview/modal.html",
-      "description": "Dialog/modal overlay",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "dialog, popup",
-      "a1Light": true,
-      "desc": "this require adding cdk style to angular.json\n\n\"styles\": [\n...,\n\"node_modules/@angular/cdk/overlay-prebuilt.css\"\n]\n"
     },
     {
       "id": "phone-input",
@@ -6114,6 +6013,45 @@
       "expert": true,
       "stable": "done",
       "a1Light": true,
+      "a1Densities": true
+    },
+    {
+      "id": "price",
+      "title": "Price",
+      "examples": [
+        {
+          "name": "price-basic",
+          "config": {}
+        },
+        {
+          "name": "price-locale",
+          "config": {}
+        },
+        {
+          "name": "price-sizes",
+          "config": {}
+        },
+        {
+          "name": "price-prefix-suffix",
+          "config": {}
+        },
+        {
+          "name": "price-superscript",
+          "config": {}
+        },
+        {
+          "name": "price-inverse",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/price.html",
+      "overviewFile": "lib-viewer/overview/price.html",
+      "description": "Formatted price display with locale-aware currency formatting",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true,
       "a1Densities": true
     },
     {
@@ -6197,43 +6135,67 @@
       "a1Densities": true
     },
     {
-      "id": "price",
-      "title": "Price",
+      "id": "progress-stepper",
+      "title": "Progress Indicator",
       "examples": [
         {
-          "name": "price-basic",
+          "name": "progress-stepper",
           "config": {}
         },
         {
-          "name": "price-locale",
+          "name": "progress-stepper-custom",
           "config": {}
         },
         {
-          "name": "price-sizes",
+          "name": "progress-stepper-title",
           "config": {}
         },
         {
-          "name": "price-prefix-suffix",
+          "name": "progress-stepper-multi",
           "config": {}
         },
         {
-          "name": "price-superscript",
+          "name": "progress-stepper-form",
           "config": {}
         },
         {
-          "name": "price-inverse",
+          "name": "progress-stepper-nonlinear",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-multi-vertical",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-multi-groups",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-step",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-reactivesingle",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-reactivemulti",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-progress",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/price.html",
-      "overviewFile": "lib-viewer/overview/price.html",
-      "description": "Formatted price display with locale-aware currency formatting",
+      "apiFile": "lib-viewer/api/progress-stepper.html",
+      "overviewFile": "lib-viewer/overview/progress-stepper.html",
+      "description": "Multi-step wizard/progress indicator",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "a1": true,
-      "a1Densities": true
+      "alias": "stepper, wizard, multi step",
+      "a1Light": true
     },
     {
       "id": "progressbar",
@@ -6261,76 +6223,6 @@
       "stable": "done",
       "alias": "progress, loading bar",
       "a1Light": true
-    },
-    {
-      "id": "radio-button",
-      "title": "Radio Button",
-      "examples": [
-        {
-          "name": "radio-button",
-          "config": {}
-        },
-        {
-          "name": "radio-button-sample",
-          "config": {}
-        },
-        {
-          "name": "radio-button-group",
-          "config": {}
-        },
-        {
-          "name": "radio-button-form",
-          "config": {}
-        },
-        {
-          "name": "radio-button-reactive",
-          "config": {}
-        },
-        {
-          "name": "radio-button-group-horizontal",
-          "config": {}
-        },
-        {
-          "name": "radio-button-sizes",
-          "config": {}
-        },
-        {
-          "name": "radio-button-negative",
-          "config": {}
-        },
-        {
-          "name": "radio-button-disabled",
-          "config": {}
-        },
-        {
-          "name": "radio-button-event",
-          "config": {}
-        },
-        {
-          "name": "radio-button-error-retail",
-          "config": {}
-        },
-        {
-          "name": "radio-button-group-label-size",
-          "config": {}
-        },
-        {
-          "name": "radio-button-group-validation",
-          "config": {}
-        },
-        {
-          "name": "radio-button-readonly",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/radio-button.html",
-      "overviewFile": "lib-viewer/overview/radio-button.html",
-      "description": "Radio button form control",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Densities": true
     },
     {
       "id": "radio-toggle",
@@ -6423,66 +6315,25 @@
       "a1Densities": true
     },
     {
-      "id": "progress-stepper",
-      "title": "Progress Indicator",
+      "id": "rtl",
+      "title": "Right-to-left support",
       "examples": [
         {
-          "name": "progress-stepper",
+          "name": "rtl-basic",
           "config": {}
         },
         {
-          "name": "progress-stepper-custom",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-title",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-multi",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-form",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-nonlinear",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-multi-vertical",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-multi-groups",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-step",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-reactivesingle",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-reactivemulti",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-progress",
+          "name": "rtl-dynamic",
           "config": {}
         }
       ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/progress-stepper.html",
-      "overviewFile": "lib-viewer/overview/progress-stepper.html",
-      "description": "Multi-step wizard/progress indicator",
+      "category": "general",
+      "apiFile": "lib-viewer/api/rtl.html",
+      "overviewFile": "lib-viewer/overview/rtl.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "stepper, wizard, multi step",
+      "noApi": true,
       "a1Light": true
     },
     {
@@ -6552,28 +6403,6 @@
       "expert": true,
       "stable": true,
       "a1Densities": true
-    },
-    {
-      "id": "signal-button",
-      "title": "Signal Button",
-      "examples": [
-        {
-          "name": "signal-button-context",
-          "config": {}
-        },
-        {
-          "name": "signal-button-disabled",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/signal-button.html",
-      "overviewFile": "lib-viewer/overview/signal-button.html",
-      "description": "Button with integrated status signal",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Light": true
     },
     {
       "id": "slider",
@@ -6647,6 +6476,76 @@
       "a1Densities": true
     },
     {
+      "id": "sidebar",
+      "title": "Side Navigation",
+      "examples": [
+        {
+          "name": "sidebar",
+          "config": {}
+        },
+        {
+          "name": "sidebar-resizeable",
+          "config": {}
+        },
+        {
+          "name": "sidebar-a1-resizeable",
+          "config": {}
+        },
+        {
+          "name": "sidebar-methods",
+          "config": {}
+        },
+        {
+          "name": "sidebar-color-scheme",
+          "config": {}
+        },
+        {
+          "name": "sidebar-footer",
+          "config": {}
+        },
+        {
+          "name": "sidebar-outputs",
+          "config": {}
+        },
+        {
+          "name": "sidebar-a1-outputs",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidebar.html",
+      "overviewFile": "lib-viewer/overview/sidebar.html",
+      "description": "Collapsible sidebar navigation",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "sidenav, side navigation, side menu",
+      "a1Light": true,
+      "a1Densities": true
+    },
+    {
+      "id": "signal-button",
+      "title": "Signal Button",
+      "examples": [
+        {
+          "name": "signal-button-context",
+          "config": {}
+        },
+        {
+          "name": "signal-button-disabled",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/signal-button.html",
+      "overviewFile": "lib-viewer/overview/signal-button.html",
+      "description": "Button with integrated status signal",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Light": true
+    },
+    {
       "id": "sidepanel",
       "title": "Sidepanel",
       "examples": [
@@ -6683,6 +6582,57 @@
       "expert": true,
       "stable": "done",
       "alias": "sidebar, drawer, sheet, side sheet",
+      "a1Densities": true
+    },
+    {
+      "id": "switcher",
+      "title": "Switcher",
+      "examples": [
+        {
+          "name": "switcher-default",
+          "config": {}
+        },
+        {
+          "name": "switcher-large",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-small",
+          "config": {}
+        },
+        {
+          "name": "switcher-negative",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-left",
+          "config": {}
+        },
+        {
+          "name": "switcher-template-driven",
+          "config": {}
+        },
+        {
+          "name": "switcher-reactive-form",
+          "config": {}
+        },
+        {
+          "name": "switcher-disabled",
+          "config": {}
+        },
+        {
+          "name": "switcher-readonly",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/switcher.html",
+      "overviewFile": "lib-viewer/overview/switcher.html",
+      "description": "Toggle switch control",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "slide toggle, checkbox, switch, toggle",
       "a1Densities": true
     },
     {
@@ -6741,191 +6691,121 @@
       "a1Densities": true
     },
     {
-      "id": "switcher",
-      "title": "Switcher",
+      "id": "table",
+      "title": "Table",
       "examples": [
         {
-          "name": "switcher-default",
+          "name": "table",
           "config": {}
         },
         {
-          "name": "switcher-large",
+          "name": "table-condensed",
           "config": {}
         },
         {
-          "name": "switcher-label-small",
+          "name": "table-zebra",
           "config": {}
         },
         {
-          "name": "switcher-negative",
+          "name": "table-sticky-column",
           "config": {}
         },
         {
-          "name": "switcher-label-left",
+          "name": "table-sticky-header",
           "config": {}
         },
         {
-          "name": "switcher-template-driven",
+          "name": "table-column-hiding",
           "config": {}
         },
         {
-          "name": "switcher-reactive-form",
+          "name": "table-column-reorder",
           "config": {}
         },
         {
-          "name": "switcher-disabled",
+          "name": "table-sorting",
           "config": {}
         },
         {
-          "name": "switcher-readonly",
+          "name": "table-filter-sort-paginate",
+          "config": {}
+        },
+        {
+          "name": "table-single-select",
+          "config": {}
+        },
+        {
+          "name": "table-selecting",
+          "config": {}
+        },
+        {
+          "name": "table-expandable",
+          "config": {}
+        },
+        {
+          "name": "table-expandable-indent",
+          "config": {}
+        },
+        {
+          "name": "table-form-elements",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/switcher.html",
-      "overviewFile": "lib-viewer/overview/switcher.html",
-      "description": "Toggle switch control",
+      "apiFile": "lib-viewer/api/table.html",
+      "overviewFile": "lib-viewer/overview/table.html",
+      "description": "Data table with sorting and filtering",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "slide toggle, checkbox, switch, toggle",
       "a1Densities": true
     },
     {
-      "id": "spinner",
-      "title": "Spinner",
+      "id": "message",
+      "title": "Notifications",
       "examples": [
         {
-          "name": "spinner-sizes",
+          "name": "message-info",
           "config": {}
         },
         {
-          "name": "spinner-negative",
+          "name": "message-error",
           "config": {}
         },
         {
-          "name": "spinner-aria-announcement",
+          "name": "message-success",
+          "config": {}
+        },
+        {
+          "name": "message-warning",
+          "config": {}
+        },
+        {
+          "name": "message-closable",
+          "config": {}
+        },
+        {
+          "name": "message-banner",
+          "config": {}
+        },
+        {
+          "name": "message-toast-opening",
+          "config": {}
+        },
+        {
+          "name": "message-toast-custom-settings",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/spinner.html",
-      "overviewFile": "lib-viewer/overview/spinner.html",
-      "description": "Loading spinner",
+      "apiFile": "lib-viewer/api/message.html",
+      "overviewFile": "lib-viewer/overview/message.html",
+      "description": "Inline message banners (info, success, warning, error)",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "progress spinner, loading, loader",
-      "a1Densities": true
-    },
-    {
-      "id": "tabs",
-      "title": "Tabs",
-      "examples": [
-        {
-          "name": "tabs-basic",
-          "config": {}
-        },
-        {
-          "name": "tabs-styling",
-          "config": {}
-        },
-        {
-          "name": "tabs-template",
-          "config": {}
-        },
-        {
-          "name": "tabs-lazy",
-          "config": {}
-        },
-        {
-          "name": "tabs-dynamic",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar",
-          "config": {}
-        },
-        {
-          "name": "tabs-negative",
-          "config": {}
-        },
-        {
-          "name": "tabs-disabled",
-          "config": {}
-        },
-        {
-          "name": "tabs-output-events",
-          "config": {}
-        },
-        {
-          "name": "tabs-responsive",
-          "config": {}
-        },
-        {
-          "name": "tabs-appearance",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-appearance",
-          "config": {}
-        },
-        {
-          "name": "tabs-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-auto-manual-select",
-          "config": {}
-        },
-        {
-          "name": "tabs-injection-token",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-injection-token",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tabs.html",
-      "overviewFile": "lib-viewer/overview/tabs.html",
-      "description": "Tabbed content navigation",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "navigation tabs",
-      "a1Densities": true
-    },
-    {
-      "id": "text",
-      "title": "Text",
-      "examples": [
-        {
-          "name": "attention-color-basic",
-          "config": {}
-        },
-        {
-          "name": "attention-color-integration",
-          "config": {}
-        },
-        {
-          "name": "attention-color-negative",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/text.html",
-      "overviewFile": "lib-viewer/overview/text.html",
-      "description": "Inline text styling utilities including attention colors",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Full": true
+      "alias": "message banner, toast, snackbar, alert, info, error, warning, success, notification",
+      "a1Light": true
     },
     {
       "id": "taglist",
@@ -7019,6 +6899,62 @@
       "a1Densities": true
     },
     {
+      "id": "tile",
+      "title": "Tile",
+      "examples": [
+        {
+          "name": "tile-group-auto-grid",
+          "config": {}
+        },
+        {
+          "name": "tile-group-custom-grid",
+          "config": {}
+        },
+        {
+          "name": "tile-layouts",
+          "config": {}
+        },
+        {
+          "name": "tile-group-single-select",
+          "config": {}
+        },
+        {
+          "name": "tile-group-multi-select",
+          "config": {}
+        },
+        {
+          "name": "tile-readonly-disabled",
+          "config": {}
+        },
+        {
+          "name": "tile-content-projection",
+          "config": {}
+        },
+        {
+          "name": "tile-template-driven",
+          "config": {}
+        },
+        {
+          "name": "tile-reactive-forms",
+          "config": {}
+        },
+        {
+          "name": "tile-validation-error-state",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tile.html",
+      "overviewFile": "lib-viewer/overview/tile.html",
+      "description": "Selectable tile with icon, label, and hint",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Full": true,
+      "alias": "Tiles",
+      "components": null
+    },
+    {
       "id": "timefield",
       "title": "Timefield",
       "examples": [
@@ -7100,132 +7036,6 @@
       "a1Light": true
     },
     {
-      "id": "tile",
-      "title": "Tile",
-      "examples": [
-        {
-          "name": "tile-group-auto-grid",
-          "config": {}
-        },
-        {
-          "name": "tile-group-custom-grid",
-          "config": {}
-        },
-        {
-          "name": "tile-layouts",
-          "config": {}
-        },
-        {
-          "name": "tile-group-single-select",
-          "config": {}
-        },
-        {
-          "name": "tile-group-multi-select",
-          "config": {}
-        },
-        {
-          "name": "tile-readonly-disabled",
-          "config": {}
-        },
-        {
-          "name": "tile-content-projection",
-          "config": {}
-        },
-        {
-          "name": "tile-template-driven",
-          "config": {}
-        },
-        {
-          "name": "tile-reactive-forms",
-          "config": {}
-        },
-        {
-          "name": "tile-validation-error-state",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tile.html",
-      "overviewFile": "lib-viewer/overview/tile.html",
-      "description": "Selectable tile with icon, label, and hint",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Full": true,
-      "alias": "Tiles",
-      "components": null
-    },
-    {
-      "id": "table",
-      "title": "Table",
-      "examples": [
-        {
-          "name": "table",
-          "config": {}
-        },
-        {
-          "name": "table-condensed",
-          "config": {}
-        },
-        {
-          "name": "table-zebra",
-          "config": {}
-        },
-        {
-          "name": "table-sticky-column",
-          "config": {}
-        },
-        {
-          "name": "table-sticky-header",
-          "config": {}
-        },
-        {
-          "name": "table-column-hiding",
-          "config": {}
-        },
-        {
-          "name": "table-column-reorder",
-          "config": {}
-        },
-        {
-          "name": "table-sorting",
-          "config": {}
-        },
-        {
-          "name": "table-filter-sort-paginate",
-          "config": {}
-        },
-        {
-          "name": "table-single-select",
-          "config": {}
-        },
-        {
-          "name": "table-selecting",
-          "config": {}
-        },
-        {
-          "name": "table-expandable",
-          "config": {}
-        },
-        {
-          "name": "table-expandable-indent",
-          "config": {}
-        },
-        {
-          "name": "table-form-elements",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/table.html",
-      "overviewFile": "lib-viewer/overview/table.html",
-      "description": "Data table with sorting and filtering",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Densities": true
-    },
-    {
       "id": "toolbar",
       "title": "Toolbar",
       "examples": [
@@ -7260,74 +7070,58 @@
       "a1Densities": true
     },
     {
-      "id": "sidebar",
-      "title": "Side Navigation",
+      "id": "tree",
+      "title": "Tree",
       "examples": [
         {
-          "name": "sidebar",
+          "name": "tree",
           "config": {}
         },
         {
-          "name": "sidebar-resizeable",
+          "name": "tree-a1",
           "config": {}
         },
         {
-          "name": "sidebar-a1-resizeable",
-          "config": {}
-        },
-        {
-          "name": "sidebar-methods",
-          "config": {}
-        },
-        {
-          "name": "sidebar-color-scheme",
-          "config": {}
-        },
-        {
-          "name": "sidebar-footer",
-          "config": {}
-        },
-        {
-          "name": "sidebar-outputs",
-          "config": {}
-        },
-        {
-          "name": "sidebar-a1-outputs",
+          "name": "tree-with-checkboxes",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/sidebar.html",
-      "overviewFile": "lib-viewer/overview/sidebar.html",
-      "description": "Collapsible sidebar navigation",
-      "b2c": true,
+      "apiFile": "lib-viewer/api/tree.html",
+      "overviewFile": "lib-viewer/overview/tree.html",
+      "description": "Hierarchical tree view",
+      "b2c": false,
       "expert": true,
       "stable": "done",
-      "alias": "sidenav, side navigation, side menu",
-      "a1Light": true,
+      "alias": "treeview",
       "a1Densities": true
     },
     {
-      "id": "rtl",
-      "title": "Right-to-left support",
+      "id": "spinner",
+      "title": "Spinner",
       "examples": [
         {
-          "name": "rtl-basic",
+          "name": "spinner-sizes",
           "config": {}
         },
         {
-          "name": "rtl-dynamic",
+          "name": "spinner-negative",
+          "config": {}
+        },
+        {
+          "name": "spinner-aria-announcement",
           "config": {}
         }
       ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/rtl.html",
-      "overviewFile": "lib-viewer/overview/rtl.html",
+      "category": "components",
+      "apiFile": "lib-viewer/api/spinner.html",
+      "overviewFile": "lib-viewer/overview/spinner.html",
+      "description": "Loading spinner",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "noApi": true,
-      "a1Light": true
+      "alias": "progress spinner, loading, loader",
+      "a1Densities": true
     },
     {
       "id": "tooltip",
@@ -7382,6 +7176,42 @@
       "a1Densities": true
     },
     {
+      "id": "typography",
+      "title": "Typography",
+      "examples": [
+        {
+          "name": "headline-font-weights",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/typography.html",
+      "overviewFile": "lib-viewer/overview/typography.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1Light": true
+    },
+    {
+      "id": "utils",
+      "title": "Utilities",
+      "examples": [
+        {
+          "name": "utils-type-guards",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/utils.html",
+      "overviewFile": "lib-viewer/overview/utils.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress",
+      "noApi": true,
+      "a1Light": true
+    },
+    {
       "id": "video",
       "title": "Video",
       "examples": [
@@ -7408,67 +7238,185 @@
       "a1": false
     },
     {
-      "id": "typography",
-      "title": "Typography",
+      "id": "web-components",
+      "title": "Web Components & ShadowDOM",
       "examples": [
         {
-          "name": "headline-font-weights",
+          "name": "web-components-modal-shadow-dom",
           "config": {}
         }
       ],
       "category": "general",
-      "apiFile": "lib-viewer/api/typography.html",
-      "overviewFile": "lib-viewer/overview/typography.html",
+      "apiFile": "lib-viewer/api/web-components.html",
+      "overviewFile": "lib-viewer/overview/web-components.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
       "noApi": true,
-      "a1Light": true
+      "a1": true
     },
     {
-      "id": "tree",
-      "title": "Tree",
+      "id": "list",
+      "title": "List",
       "examples": [
         {
-          "name": "tree",
+          "name": "list-unordered",
           "config": {}
         },
         {
-          "name": "tree-a1",
+          "name": "list-ordered",
           "config": {}
         },
         {
-          "name": "tree-with-checkboxes",
+          "name": "list-circles",
+          "config": {}
+        },
+        {
+          "name": "list-icons",
+          "config": {}
+        },
+        {
+          "name": "list-copytext",
+          "config": {}
+        },
+        {
+          "name": "list-type",
+          "config": {}
+        },
+        {
+          "name": "list-condensed",
+          "config": {}
+        },
+        {
+          "name": "list-negative",
+          "config": {}
+        },
+        {
+          "name": "list-custom-color",
+          "config": {}
+        },
+        {
+          "name": "list-nesting",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/tree.html",
-      "overviewFile": "lib-viewer/overview/tree.html",
-      "description": "Hierarchical tree view",
-      "b2c": false,
+      "apiFile": "lib-viewer/api/list.html",
+      "overviewFile": "lib-viewer/overview/list.html",
+      "description": "Styled ordered and unordered lists",
+      "b2c": true,
       "expert": true,
       "stable": "done",
-      "alias": "treeview",
-      "a1Densities": true
+      "a1Full": true
     },
     {
-      "id": "utils",
-      "title": "Utilities",
+      "id": "text",
+      "title": "Text",
       "examples": [
         {
-          "name": "utils-type-guards",
+          "name": "attention-color-basic",
+          "config": {}
+        },
+        {
+          "name": "attention-color-integration",
+          "config": {}
+        },
+        {
+          "name": "attention-color-negative",
           "config": {}
         }
       ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/utils.html",
-      "overviewFile": "lib-viewer/overview/utils.html",
+      "category": "components",
+      "apiFile": "lib-viewer/api/text.html",
+      "overviewFile": "lib-viewer/overview/text.html",
+      "description": "Inline text styling utilities including attention colors",
       "b2c": true,
       "expert": true,
-      "stable": "progress",
-      "noApi": true,
-      "a1Light": true
+      "stable": "done",
+      "a1Full": true
+    },
+    {
+      "id": "tabs",
+      "title": "Tabs",
+      "examples": [
+        {
+          "name": "tabs-basic",
+          "config": {}
+        },
+        {
+          "name": "tabs-styling",
+          "config": {}
+        },
+        {
+          "name": "tabs-template",
+          "config": {}
+        },
+        {
+          "name": "tabs-lazy",
+          "config": {}
+        },
+        {
+          "name": "tabs-dynamic",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar",
+          "config": {}
+        },
+        {
+          "name": "tabs-negative",
+          "config": {}
+        },
+        {
+          "name": "tabs-disabled",
+          "config": {}
+        },
+        {
+          "name": "tabs-output-events",
+          "config": {}
+        },
+        {
+          "name": "tabs-responsive",
+          "config": {}
+        },
+        {
+          "name": "tabs-appearance",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-appearance",
+          "config": {}
+        },
+        {
+          "name": "tabs-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-auto-manual-select",
+          "config": {}
+        },
+        {
+          "name": "tabs-injection-token",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-injection-token",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tabs.html",
+      "overviewFile": "lib-viewer/overview/tabs.html",
+      "description": "Tabbed content navigation",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "navigation tabs",
+      "a1Densities": true
     },
     {
       "id": "virtual-scroll",
@@ -7501,22 +7449,74 @@
       "a1": true
     },
     {
-      "id": "web-components",
-      "title": "Web Components & ShadowDOM",
+      "id": "radio-button",
+      "title": "Radio Button",
       "examples": [
         {
-          "name": "web-components-modal-shadow-dom",
+          "name": "radio-button",
+          "config": {}
+        },
+        {
+          "name": "radio-button-sample",
+          "config": {}
+        },
+        {
+          "name": "radio-button-group",
+          "config": {}
+        },
+        {
+          "name": "radio-button-form",
+          "config": {}
+        },
+        {
+          "name": "radio-button-reactive",
+          "config": {}
+        },
+        {
+          "name": "radio-button-group-horizontal",
+          "config": {}
+        },
+        {
+          "name": "radio-button-sizes",
+          "config": {}
+        },
+        {
+          "name": "radio-button-negative",
+          "config": {}
+        },
+        {
+          "name": "radio-button-disabled",
+          "config": {}
+        },
+        {
+          "name": "radio-button-event",
+          "config": {}
+        },
+        {
+          "name": "radio-button-error-retail",
+          "config": {}
+        },
+        {
+          "name": "radio-button-group-label-size",
+          "config": {}
+        },
+        {
+          "name": "radio-button-group-validation",
+          "config": {}
+        },
+        {
+          "name": "radio-button-readonly",
           "config": {}
         }
       ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/web-components.html",
-      "overviewFile": "lib-viewer/overview/web-components.html",
+      "category": "components",
+      "apiFile": "lib-viewer/api/radio-button.html",
+      "overviewFile": "lib-viewer/overview/radio-button.html",
+      "description": "Radio button form control",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "noApi": true,
-      "a1": true
+      "a1Densities": true
     }
   ],
   "examples": [
@@ -14640,14 +14640,14 @@
   ],
   "guides": [
     {
-      "id": "mcp",
-      "title": "MCP",
-      "file": "lib-viewer/guides/mcp.html"
-    },
-    {
       "id": "getting-started",
       "title": "Getting started",
       "file": "lib-viewer/guides/getting-started.html"
+    },
+    {
+      "id": "develop-with-ai",
+      "title": "Develop with AI",
+      "file": "lib-viewer/guides/develop-with-ai.html"
     },
     {
       "id": "releases",

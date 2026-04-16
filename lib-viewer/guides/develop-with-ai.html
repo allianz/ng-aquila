@@ -1,0 +1,64 @@
+<h1 class="docs-markdown--h1" id="develop-with-ai" tabindex="-1">Develop with AI</h1>
+<p class="docs-markdown--p">Aquila provides two complementary ways to give AI assistants context about the library: a <strong>Skill</strong> and an <strong>MCP server</strong>. Use whichever fits your tooling.</p>
+<hr>
+<h2 class="docs-markdown--h2" id="skill" tabindex="-1">Skill</h2>
+<p class="docs-markdown--p">A Skill is a lightweight Markdown file that teaches an AI assistant how to use Aquila components. It works with Claude code (and other tools that support skills) without requiring a running server.</p>
+<h3 class="docs-markdown--h3" id="skill-setup" tabindex="-1">Skill setup</h3>
+<p class="docs-markdown--p">You can set up the skill in two ways: automatic setup using the command line, or manual setup by copying the skill file into your project.</p>
+<h4 class="docs-markdown--h4" id="automatic-setup" tabindex="-1">Automatic setup</h4>
+<p class="docs-markdown--p">Run the following command in your project root:</p>
+<p class="docs-markdown--p"><code>npx skills add allianz/ng-aquila --skill aquila</code></p>
+<p class="docs-markdown--p">This command downloads the Aquila skill from the <code>allianz/ng-aquila</code> GitHub repository and places it into your project's skills directory (e.g. <code>.agents/skills/aquila/SKILL.md</code> for Copilot or <code>.claude/skills/aquila/SKILL.md</code> for Claude code). If the skills directory does not exist yet, it will be created.</p>
+<p class="docs-markdown--p">See more options of the <code>skills</code> package here: <a href="https://github.com/vercel-labs/skills">https://github.com/vercel-labs/skills</a></p>
+<h4 class="docs-markdown--h4" id="manual-setup" tabindex="-1">Manual setup</h4>
+<p class="docs-markdown--p">Copy the skill folder from <code>https://github.com/allianz/ng-aquila/tree/main/skills/aquila</code></p>
+<p class="docs-markdown--p">Then paste it into your project's skills directory (depend on your AI assistant).</p>
+<p class="docs-markdown--p">For Example:</p>
+<pre><code class="language-bash">.agents/skills/aquila/SKILL.md // Copilot, Antigravity, Codex
+.claude/skills/aquila/SKILL.md // Claude code
+</code></pre>
+<hr>
+<h2 class="docs-markdown--h2" id="migration-skill" tabindex="-1">Migration Skill</h2>
+<p class="docs-markdown--p">You can use the <code>a1-migration</code> Skill to migrate your current Application to the new Design System.</p>
+<p class="docs-markdown--p"><strong>Important:</strong> The Skill is currently in beta phase. So double-check the changes done by AI</p>
+<p class="docs-markdown--p"><strong>Installation</strong> using vercel skill management package just run:</p>
+<pre><code class="language-sh">npx skills add allianz/ng-aquila --skill a1-migration 
+</code></pre>
+<p class="docs-markdown--p"><strong>Manual installation:</strong> copy the skill file to your local machine into the skills directory of your AI Tool.</p>
+<hr>
+<h2 class="docs-markdown--h2" id="mcp" tabindex="-1">MCP</h2>
+<h3 class="docs-markdown--h3" id="why-mcp%3F" tabindex="-1">Why MCP?</h3>
+<p class="docs-markdown--p">We use the Model Context Protocol (MCP) to provide context that makes it possible for Large Language Models (LLMs) to fully understand and correctly use our library components. Without MCP, LLMs often lack the necessary context and generate incomplete or incorrect code. With MCP in place, the LLM knows our components — enabling accurate and helpful code completions.</p>
+<h3 class="docs-markdown--h3" id="how-are-we-shipping-it%3F" tabindex="-1">How are we shipping it?</h3>
+<p class="docs-markdown--p">We are now (starting from version 20.3.0) shipping a local MCP server alongside our library. It runs within the IDE (e.g. Visual Studio Code) and uses GitHub Copilot as the MCP client to interact with the MCP server. This setup provides the LLM with the context it needs to work effectively with our components.</p>
+<h3 class="docs-markdown--h3" id="mcp-versions" tabindex="-1">MCP versions</h3>
+<p class="docs-markdown--p">Each library version comes with its own MCP definition, ensuring the context always matches the version of the library you’re using — just like we do for our documentation.</p>
+<h3 class="docs-markdown--h3" id="developer-preview" tabindex="-1">Developer preview</h3>
+<p class="docs-markdown--p">This is a developer preview, and we’d love your feedback. It will help us improve the experience and make MCP even more valuable for your development workflow.</p>
+<h3 class="docs-markdown--h3" id="mcp-installation" tabindex="-1">MCP Installation</h3>
+<h4 class="docs-markdown--h4" id="visual-studio-code%3A-automatic-setup" tabindex="-1">Visual Studio Code: Automatic setup</h4>
+<p class="docs-markdown--p">Run the following command in your terminal:</p>
+<pre><code class="language-bash">npx --no-install ng-aquila-add-mcp-server
+</code></pre>
+<p class="docs-markdown--p">This automatically creates or updates the <code>.vscode/mcp.json</code> file in your project root, adding the necessary MCP server configuration.</p>
+<p class="docs-markdown--p"><strong>Note:</strong>
+The <code>--no-install</code> flag ensures that <code>npx</code> only runs the locally installed `ng-aquila-add-mcp-server script from your project's dependencies, rather than downloading it from the npm registry.</p>
+<h4 class="docs-markdown--h4" id="visual-studio-code%3A-manual-setup" tabindex="-1">Visual Studio Code: Manual setup</h4>
+<p class="docs-markdown--p">You can also configure MCP manually in VS Code.</p>
+<ol>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>Edit <code>mcp.json</code> in <code>./vscode/</code> and add:</strong></p>
+<pre><code class="language-json"><span class="hljs-attr">&quot;servers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;ng-aquila-mcp-server&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;npx&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+            <span class="hljs-string">&quot;ng-aquila-mcp&quot;</span>
+        <span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+</li>
+</ol>
+<h4 class="docs-markdown--h4" id="claude-code-setup" tabindex="-1">Claude code setup</h4>
+<p class="docs-markdown--p">Run the following command in your terminal:</p>
+<p class="docs-markdown--p"><code>claude mcp add ng-aquila-mcp-server -- npx ng-aquila-mcp --scope project</code></p>
