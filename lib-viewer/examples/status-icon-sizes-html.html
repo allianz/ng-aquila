@@ -1,0 +1,14 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  @for (size of sizes; track size) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>{{ size }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  } @for (type of types; track type) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ type }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  @for (size of sizes; track size) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- type can be &quot;success&quot;, &quot;warning&quot;, &quot;info&quot;, &quot;error&quot; --&gt;</span>
+    <span class="hljs-comment">&lt;!-- size can be &quot;s&quot;, &quot;m&quot;, &quot;l&quot;, &quot;xl&quot;, &quot;2xl&quot; --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-status-icon</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;type&quot;</span> [<span class="hljs-attr">size</span>]=<span class="hljs-string">&quot;size&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-status-icon</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  } }
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

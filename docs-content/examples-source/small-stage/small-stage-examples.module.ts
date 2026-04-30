@@ -13,9 +13,9 @@ import { SmallStageExpertContentNarrowExampleComponent } from './small-stage-exp
 import { SmallStageExpertDefaultExampleComponent } from './small-stage-expert-default/small-stage-expert-default-example';
 import { SmallStageHeaderExampleComponent } from './small-stage-header/small-stage-header-example';
 import { SmallStageImageExampleComponent } from './small-stage-image/small-stage-image-example';
-import { SmallStageWithBackgroundExampleComponent } from './small-stage-w-bg/small-stage-w-bg-example';
-import { SmallStageFunctionalGridExampleComponent } from './small-stage-functional-grid/small-stage-functional-grid-example';
+import { SmallStageMaxWidthExampleComponent } from './small-stage-max-width/small-stage-max-width-example';
 import { SmallStageStyleExampleComponent } from './small-stage-style/small-stage-style-example';
+import { SmallStageWithBackgroundExampleComponent } from './small-stage-w-bg/small-stage-w-bg-example';
 
 const EXAMPLES = [
   SmallStageExampleComponent,
@@ -26,7 +26,7 @@ const EXAMPLES = [
   SmallStageExpertDefaultExampleComponent,
   SmallStageHeaderExampleComponent,
   SmallStageImageExampleComponent,
-  SmallStageFunctionalGridExampleComponent,
+  SmallStageMaxWidthExampleComponent,
   SmallStageStyleExampleComponent,
 ];
 
@@ -49,7 +49,7 @@ export class SmallExamplesModule {
       'small-stage-style': SmallStageStyleExampleComponent,
       'small-stage-header': SmallStageHeaderExampleComponent,
       'small-stage-image': SmallStageImageExampleComponent,
-      'small-stage-functional-grid': SmallStageFunctionalGridExampleComponent,
+      'small-stage-max-width': SmallStageMaxWidthExampleComponent,
       'small-stage-default': SmallStageDefaultExampleComponent,
       'small-stage-content-variation':
         SmallStageContentVariationExampleComponent,

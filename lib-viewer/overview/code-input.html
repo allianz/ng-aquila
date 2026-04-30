@@ -17,9 +17,16 @@
 <p class="docs-markdown--p">The default type of the inputs is <code>text</code>. The value can be changed by setting the property <code>type</code>. For example, a PIN code that accepts only four digits.</p>
 <p class="docs-markdown--p"><strong>Please note</strong> that the selection is not possible on <code>input[&quot;type=number&quot;]</code>. To get cross browser support for text selection on focus use <code>input[&quot;type=tel&quot;]</code> instead. For further information see <a href="https://html.spec.whatwg.org/multipage/input.html#concept-input-apply">WHATWG forms spec</a>.</p>
 <div nx-docs-example="code-input-type" config="{}">exampleID: code-input-type</div>
+<div class="docs-hide-ndbx">
+<h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
+<p class="docs-markdown--p">For use on dark backgrounds, add <code>inverse</code> input.</p>
+<div nx-docs-example="code-input-inverse" config="{}">exampleID: code-input-inverse</div>
+</div>
+<div class="docs-hide-a1">
 <h3 id="negative-styling" tabindex="-1" class="docs-markdown--h3">Negative styling</h3>
 <p class="docs-markdown--p">You can apply the negative styling to the code input by using the <code>[negative]</code> input.</p>
 <div nx-docs-example="code-input-negative" config="{}">exampleID: code-input-negative</div>
+</div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <h4 id="limitations" tabindex="-1" class="docs-markdown--h4">Limitations</h4>
 <p class="docs-markdown--p">The value of the model is a truncated string with no spaces between characters. This means that when the user enters a value and skips one or more inputs, these skipped inputs are not reflected as spaces in the model string and therefore the control is invalid.</p>

@@ -1,0 +1,14 @@
+<div class="grid">
+  <span></span>
+  @for (size of sizes; track size) {
+  <span class="header">{{ size }}</span>
+  } @for (type of types; track type) {
+  <span>{{ type }}</span>
+  @for (size of sizes; track size) {
+  <span>
+    <!-- type can be "success", "warning", "info", "error" -->
+    <!-- size can be "s", "m", "l", "xl", "2xl" -->
+    <nx-status-icon [type]="type" [size]="size"></nx-status-icon>
+  </span>
+  } }
+</div>

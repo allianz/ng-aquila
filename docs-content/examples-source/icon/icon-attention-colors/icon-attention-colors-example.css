@@ -1,0 +1,39 @@
+.colors-grid {
+  display: grid;
+  grid-template-columns: 80px 0.5fr 0.5fr 0.5fr 0.5fr;
+  gap: var(--semantic-gap-all-linear-400) var(--semantic-gap-all-linear-800);
+  align-items: center;
+  justify-items: center;
+  width: fit-content;
+  padding: var(--semantic-gap-all-linear-400) var(--semantic-gap-all-linear-400)
+    var(--semantic-gap-all-linear-400) 0;
+  margin-top: var(--semantic-gap-all-linear-600);
+}
+
+.colors-grid__group-label {
+  grid-column: 4 / 6;
+  justify-self: center;
+  font-weight: bold;
+  border-bottom: 1px solid currentColor;
+  width: 100%;
+  text-align: center;
+  padding-bottom: var(--semantic-gap-all-linear-100);
+}
+
+.colors-grid__col-header {
+  white-space: nowrap;
+}
+
+.colors-grid__row-label {
+  justify-self: end;
+  white-space: nowrap;
+}
+
+.colors-grid--inverse {
+  background-color: var(--documentation-inverse-container-background);
+  border-radius: 6px;
+}
+
+.inverse-label {
+  color: white;
+}

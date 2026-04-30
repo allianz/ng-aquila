@@ -29,7 +29,7 @@
   border: 1px solid var(--ui-04);
   padding: 1rem;
   margin-bottom: 1rem;
-  background: var(--ui-02);
+  background: var(--semantic-color-surface-emphasis-resting, var(--ui-02));
   box-sizing: border-box;
 }
 

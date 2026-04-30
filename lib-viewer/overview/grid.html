@@ -136,3 +136,17 @@ An empty <code>nxCol</code> will automatically take up all the remaining space o
 <h4 id="colorder" tabindex="-1" class="docs-markdown--h4">colOrder</h4>
 <p class="docs-markdown--p">To specify the order within the row, apply the <code>colOrder</code> property.</p>
 <div nx-docs-example="grid-col-order" config="{}">exampleID: grid-col-order</div>
+<div class="docs-a1">
+<h3 id="functional-grid" tabindex="-1" class="docs-markdown--h3">Functional Grid</h3>
+<p class="docs-markdown--p">The functional grid is a variant of the grid optimized for data-dense, task-oriented interfaces in the A1 design system. It uses tighter spacing to accommodate more content.</p>
+<p class="docs-markdown--p">To activate the functional grid, pass <code>gridType: 'functional'</code> to <code>provideA1Theme()</code> in your application config:</p>
+<pre><code class="language-typescript"><span class="hljs-comment">// app.config.ts</span>
+<span class="hljs-keyword">import</span> { provideA1Theme } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-brand-kit&#x27;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">appConfig</span>: <span class="hljs-title class_">ApplicationConfig</span> = {
+  <span class="hljs-attr">providers</span>: [
+    <span class="hljs-title function_">provideA1Theme</span>({ <span class="hljs-attr">gridType</span>: <span class="hljs-string">&#x27;functional&#x27;</span> }),
+  ],
+};
+</code></pre>
+</div>

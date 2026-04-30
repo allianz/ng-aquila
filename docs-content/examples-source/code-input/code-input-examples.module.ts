@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CodeInputDisabledExampleComponent } from './code-input-disabled/code-input-disabled-example';
 import { CodeInputFourCharExampleComponent } from './code-input-four-char/code-input-four-char-example';
+import { CodeInputInverseExampleComponent } from './code-input-inverse/code-input-inverse-example';
 import { CodeInputLocalizeExampleComponent } from './code-input-localize/code-input-localize-example';
 import { CodeInputModelExampleComponent } from './code-input-model/code-input-model-example';
 import { CodeInputNegativeExampleComponent } from './code-input-negative/code-input-negative-example';
@@ -15,6 +16,7 @@ import { CodeInputTypeExampleComponent } from './code-input-type/code-input-type
 const EXAMPLES = [
   CodeInputDisabledExampleComponent,
   CodeInputFourCharExampleComponent,
+  CodeInputInverseExampleComponent,
   CodeInputLocalizeExampleComponent,
   CodeInputModelExampleComponent,
   CodeInputNegativeExampleComponent,
@@ -34,6 +36,7 @@ export class CodeExamplesModule {
       'code-input-four-char': CodeInputFourCharExampleComponent,
       'code-input-localize': CodeInputLocalizeExampleComponent,
       'code-input-model': CodeInputModelExampleComponent,
+      'code-input-inverse': CodeInputInverseExampleComponent,
       'code-input-negative': CodeInputNegativeExampleComponent,
       'code-input-seven-char': CodeInputSevenCharExampleComponent,
       'code-input-six-char': CodeInputSixCharExampleComponent,

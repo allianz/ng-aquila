@@ -15,6 +15,7 @@ import { ButtonLargeExampleComponent } from './button-large/button-large-example
 import { ButtonLoadingExampleComponent } from './button-loading/button-loading-example';
 import { ButtonMediumExampleComponent } from './button-medium/button-medium-example';
 import { ButtonNegativeExampleComponent } from './button-negative/button-negative-example';
+import { ButtonNegativeA1ExampleComponent } from './button-negative-a1/button-negative-a1-example';
 import { ButtonPlainExampleComponent } from './button-plain/button-plain-example';
 import { ButtonPlainA1ExampleComponent } from './button-plain-a1/button-plain-a1-example';
 import { ButtonPlainInverseExampleComponent } from './button-plain-inverse/button-plain-inverse-example';
@@ -30,6 +31,7 @@ const EXAMPLES = [
   ButtonLargeExampleComponent,
   ButtonMediumExampleComponent,
   ButtonNegativeExampleComponent,
+  ButtonNegativeA1ExampleComponent,
   ButtonPlainExampleComponent,
   ButtonSmallExampleComponent,
   ButtonSmallMediumExampleComponent,
@@ -62,6 +64,7 @@ export class ButtonExamplesModule {
       'button-large': ButtonLargeExampleComponent,
       'button-medium': ButtonMediumExampleComponent,
       'button-negative': ButtonNegativeExampleComponent,
+      'button-negative-a1': ButtonNegativeA1ExampleComponent,
       'button-plain': ButtonPlainExampleComponent,
       'button-small': ButtonSmallExampleComponent,
       'button-small-medium': ButtonSmallMediumExampleComponent,

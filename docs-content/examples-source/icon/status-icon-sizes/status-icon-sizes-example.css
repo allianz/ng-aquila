@@ -1,0 +1,15 @@
+.grid {
+  display: grid;
+  grid-template-columns: auto repeat(5, 1fr);
+  align-items: center;
+  gap: var(--semantic-gap-all-linear-300);
+  text-align: center;
+}
+
+.grid span:first-child {
+  text-align: left;
+}
+
+.grid .header {
+  font-weight: bold;
+}

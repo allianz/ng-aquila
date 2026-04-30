@@ -1,0 +1,13 @@
+<div class="grid">
+  @for (size of sizes; track size) {
+  <div class="col">
+    <nx-icon
+      name="product-heart"
+      contained="true"
+      [size]="size"
+      aria-hidden="true"
+    ></nx-icon>
+    <span class="label">{{ size }}</span>
+  </div>
+  }
+</div>

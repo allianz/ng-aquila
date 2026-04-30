@@ -1,0 +1,39 @@
+<span class="hljs-selector-class">.icon-type-outer</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-number">100px</span> <span class="hljs-built_in">repeat</span>(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>fr);
+  <span class="hljs-attribute">column-gap</span>: <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">800</span>);
+  <span class="hljs-attribute">width</span>: fit-content;
+}
+
+<span class="hljs-selector-class">.icon-type-overview</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: subgrid;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">row-gap</span>: <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">600</span>);
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">justify-items</span>: center;
+}
+
+<span class="hljs-selector-class">.icon-type-overview__col-header</span> {
+  <span class="hljs-attribute">white-space</span>: nowrap;
+}
+
+<span class="hljs-selector-class">.icon-type-overview__row-label</span> {
+  <span class="hljs-attribute">justify-self</span>: end;
+  <span class="hljs-attribute">white-space</span>: nowrap;
+}
+
+<span class="hljs-selector-class">.grid-header</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">400</span>) <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">400</span>)
+    <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+}
+<span class="hljs-selector-class">.subgrid</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">400</span>) <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">400</span>)
+    <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">400</span>) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.inverse</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--documentation-inverse-container-background);
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">6px</span>;
+}

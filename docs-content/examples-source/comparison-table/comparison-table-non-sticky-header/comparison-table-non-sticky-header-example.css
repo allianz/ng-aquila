@@ -59,6 +59,10 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+
+  nx-icon {
+    color: var(--semantic-color-on-accent-attention-resting);
+  }
 }
 
 .popular-cell__title {
