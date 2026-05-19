@@ -909,6 +909,8 @@ body,
   --checkbox-on-selection-readonly-selected-background-color: var(--readonly-surface-color);
   --checkbox-on-selection-readonly-selected-border-color: var(--readonly-surface-color);
   --checkbox-on-selection-readonly-selected-icon-color: var(--readonly-on-surface-color);
+  --checkbox-error-margin-top: 8px;
+  --checkbox-label-margin-bottom: 16px;
   --eyebrow-font-m: paragraph-01-font-weight paragraph-01-font-size/paragraph-01-line-height font-family;
   --eyebrow-font-m-letter-spacing: var(--paragraph-01-letter-spacing);
   --eyebrow-font-s: paragraph-02-font-weight paragraph-02-font-size/paragraph-02-line-height font-family;
@@ -2226,6 +2228,10 @@ body,
   --tab-expert-bottom-border-color: #dadada;
   --tab-item-disabled-negative-color: var(--negative-dimmed);
   --tab-item-disabled-negative-border-color: var(--negative-dimmed);
+  --tab-header-offset: 16px;
+  --tab-item-gap-horizontal: 32px;
+  --tab-expert-item-padding: 8px;
+  --tab-expert-item-active-padding: 4px;
   --tab-header-indicator-display: block;
   --tab-item-scroll-color: var(--ui-05);
   --tab-scroll-indicator-width: 40px;

@@ -1,3 +1,8 @@
+<div class="docs-deprecation-warning">
+<strong>NDBX Only</strong></br>
+The Video component is only supported in NDBX and is not part of the A1 design system. For A1 applications, embed videos directly using a standard HTML <code>&lt;iframe&gt;</code> (for YouTube and similar providers) or the native HTML <code>&lt;video&gt;</code> element for self-hosted media. Wrap the embed in a container with a 16:9 aspect ratio and provide descriptive <code>title</code> / <code>aria-label</code> attributes for accessibility.
+<div class="docs-a1"><small><a href="./guides/a1#tl%253Bdr">More A1 Design System infos</a></small></div>
+</div>
 <p class="docs-markdown--p">The video component only supports YouTube videos. We embedded the YouTube player as iframe tag. For detailed information about this technique, please check out the official <a href="https://developers.google.com/youtube/player_parameters?hl=en">documentation</a>. In order to save bandwidth, the iframe will only be loaded after the user has selected the preview image. Please note that the width of the video depends on the enclosing element and that the player has a fixed aspect ratio of 16:9. YouTube recommends that players should be at least 480px wide and 270px tall.</p>
 <h2 id="examples" tabindex="-1" class="docs-markdown--h2">Examples</h2>
 <h3 id="basic-use-case" tabindex="-1" class="docs-markdown--h3">Basic use case</h3>
