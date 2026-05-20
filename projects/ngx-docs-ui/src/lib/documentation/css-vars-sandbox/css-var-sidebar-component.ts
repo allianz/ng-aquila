@@ -30,7 +30,7 @@ export class CssVarSidebarComponent {
         Array.from(styleSheet.cssRules).reduce((innerRules: string[], cssRule: any) => {
           if (cssRule.selectorText?.includes(':root')) {
             let css = cssRule.cssText.split('{');
-            css = css[1].replace('}', '').split(';');
+            css = css[1].replaceAll('}', '').split(';');
             for (let i = 0; i < css.length; i++) {
               const prop = css[i].split(':');
               if (prop.length === 2 && prop[0].indexOf('--') === 1) {
