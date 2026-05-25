@@ -66,6 +66,16 @@ Attention colors can be used with the [Attention Color directive](./documentatio
 
 </div>
 
+<div class="docs-a1">
+
+## Color Scheme
+Use `colorScheme` input to change small stage background color. The available values are `'default'` (standard background) and `'emphasis'`.
+
+
+<!-- example(small-stage-color-scheme)-->
+
+</div>
+
 
 <div class="docs-hide-a1">
 

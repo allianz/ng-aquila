@@ -300,6 +300,9 @@
     }
   }
 }
+:host(.is-emphasis) {
+  background-color: v(small-stage-emphasis-background-color);
+}
 
 @include media-breakpoint-down(small) {
   .container {

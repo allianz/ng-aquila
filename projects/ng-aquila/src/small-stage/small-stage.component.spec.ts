@@ -26,7 +26,13 @@ describe('NxSmallStageComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxSmallStageModule, BasicSmallStage, SmallTextSmallStage, ExpertSmallStage],
+      imports: [
+        NxSmallStageModule,
+        BasicSmallStage,
+        SmallTextSmallStage,
+        ExpertSmallStage,
+        ColorSchemeSmallStage,
+      ],
     }).compileComponents();
   }));
 
@@ -93,6 +99,18 @@ describe('NxSmallStageComponent', () => {
     });
   });
 
+  describe('colorScheme', () => {
+    it('has default colorScheme', () => {
+      createTestComponent(BasicSmallStage);
+      expect(smallStageDebugElement.nativeElement).not.toHaveClass('is-emphasis');
+    });
+
+    it('has emphasis class when colorScheme is emphasis', () => {
+      createTestComponent(ColorSchemeSmallStage);
+      expect(smallStageDebugElement.nativeElement).toHaveClass('is-emphasis');
+    });
+  });
+
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicSmallStage);
@@ -140,3 +158,9 @@ class ExpertSmallStage extends SmallStageTest {}
   imports: [NxSmallStageModule],
 })
 class SmallTextSmallStage extends SmallStageTest {}
+
+@Component({
+  template: ` <nx-small-stage colorScheme="emphasis"> text </nx-small-stage> `,
+  imports: [NxSmallStageModule],
+})
+class ColorSchemeSmallStage extends SmallStageTest {}

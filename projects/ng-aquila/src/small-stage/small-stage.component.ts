@@ -17,6 +17,8 @@ import {
  */
 export type NxSmallStageAppearance = 'default' | 'expert';
 
+export type NxSmallStageColorScheme = 'default' | 'emphasis';
+
 /**
  * Represents the default options for the small stage.
  * It can be configured using the `NX_SMALL_STAGE_DEFAULT_OPTIONS` injection token.
@@ -47,6 +49,7 @@ export const SMALL_STAGE_DEFAULT_OPTIONS = new InjectionToken<SmallStageDefaultO
   host: {
     '[class.is-expert]': 'expertActive()',
     '[class.max-width]': 'maxWidth()',
+    '[class.is-emphasis]': 'colorScheme() === "emphasis"',
   },
 })
 export class NxSmallStageComponent {
@@ -89,6 +92,8 @@ export class NxSmallStageComponent {
     // return true as default value
     return true;
   });
+
+  readonly colorScheme = input<NxSmallStageColorScheme>('default');
 
   /**
    * Reduces the width of the text to 6/12 instead of 8/12.

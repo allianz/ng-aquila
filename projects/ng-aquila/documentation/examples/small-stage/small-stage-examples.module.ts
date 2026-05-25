@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SmallStageExampleComponent } from './small-stage/small-stage-example';
+import { SmallStageColorSchemeExampleComponent } from './small-stage-color-scheme/small-stage-color-scheme-example';
 import { SmallStageContentVariationExampleComponent } from './small-stage-content-variation/small-stage-content-variation-example';
 import { SmallStageDefaultExampleComponent } from './small-stage-default/small-stage-default-example';
 import { SmallStageExpertContentNarrowExampleComponent } from './small-stage-expert-content-narrow/small-stage-expert-content-narrow-example';
@@ -28,6 +29,7 @@ const EXAMPLES = [
   SmallStageImageExampleComponent,
   SmallStageMaxWidthExampleComponent,
   SmallStageStyleExampleComponent,
+  SmallStageColorSchemeExampleComponent,
 ];
 
 @NgModule({
@@ -57,6 +59,7 @@ export class SmallExamplesModule {
       'small-stage-expert-default': SmallStageExpertDefaultExampleComponent,
       'small-stage-expert-content-narrow':
         SmallStageExpertContentNarrowExampleComponent,
+      'small-stage-color-scheme': SmallStageColorSchemeExampleComponent,
     };
   }
 }
