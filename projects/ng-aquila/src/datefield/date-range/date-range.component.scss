@@ -11,7 +11,7 @@
 
   .date-range-container {
     display: flex;
-    gap: nx-spacer(2xs);
+    gap: v(datefield-range-input-gap);
     width: 100%;
     text-align: inherit;
     font-size: inherit;
