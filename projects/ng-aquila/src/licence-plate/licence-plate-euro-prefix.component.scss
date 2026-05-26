@@ -10,20 +10,21 @@
   height: 100%;
   min-width: nx-spacer(m);
   max-width: nx-spacer(3m);
-  border-radius: nx-border-radius(s);
+  border-radius: v(licence-plate-prefix-border-radius);
   padding: 0 v(licence-plate-prefix-padding-horizontal);
-  @include type-style(paragraph-03);
+  @include type-style(licence-plate-prefix);
   color: v(licence-plate-prefix-color);
 }
 
 :host(.has-outline) {
   margin-left: v(licence-plate-prefix-spacing);
-  border-radius: v(licence-plate-prefix-border-radius) 0 0 v(licence-plate-prefix-border-radius);
+  border-radius: v(licence-plate-prefix-outline-border-radius) 0 0
+    v(licence-plate-prefix-outline-border-radius);
 }
 
 :host(.is-disabled) {
-  -webkit-text-fill-color: v(licence-plate-prefix-color);
-  color: v(licence-plate-prefix-color);
-  background-color: v(licence-plate-prefix-background);
-  opacity: 0.4;
+  -webkit-text-fill-color: v(licence-plate-prefix-disabled-color);
+  color: v(licence-plate-prefix-disabled-color);
+  background-color: v(licence-plate-prefix-disabled-background);
+  opacity: v(licence-plate-prefix-disabled-opacity);
 }

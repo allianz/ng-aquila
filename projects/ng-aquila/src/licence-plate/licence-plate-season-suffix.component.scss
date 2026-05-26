@@ -5,25 +5,21 @@
   flex-direction: column;
   justify-content: center;
 
-  @include type-style(paragraph-05);
-  line-height: 0.875rem;
+  @include type-style(licence-plate-season);
   color: v(text-01);
 }
 
-span {
-  width: 14px;
-}
-
 span:first-child {
-  border-bottom: nx-border-size(xs) solid;
+  border-bottom: v(licence-plate-season-divider-size) solid;
 }
 
 :host(.has-outline) {
-  @include type-style(paragraph-04);
-  line-height: 1rem;
+  @include type-style(licence-plate-season-outline);
 }
 
 :host(.is-disabled) {
+  color: v(formfield-disabled-text-color);
+
   span {
     border-color: v(formfield-disabled-border-color);
   }
