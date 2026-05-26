@@ -2332,6 +2332,26 @@ describe('NxDropdownComponent', () => {
 
         expect(getVirtualActiveLabel()).toBe('BMW');
       }));
+
+      it('should update rendered items when options input changes', fakeAsync(() => {
+        createTestComponent(VirtualScrollDropdown);
+        openDropdownByClickVirtual();
+
+        expect(getVirtualItems().length).toBe(4);
+
+        (testInstance as VirtualScrollDropdown).options = [
+          { value: 'tesla', label: 'Tesla' },
+          { value: 'rivian', label: 'Rivian' },
+        ];
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        const items = getVirtualItems();
+        expect(items.length).toBe(2);
+        expect(getVirtualItemLabels().item(0).textContent?.trim()).toBe('Tesla');
+        expect(getVirtualItemLabels().item(1).textContent?.trim()).toBe('Rivian');
+      }));
     });
 
     describe('keyboard navigation', () => {

@@ -43,6 +43,7 @@ import {
   contentChild,
   ContentChildren,
   DoCheck,
+  effect,
   ElementRef,
   EventEmitter,
   Inject,
@@ -73,7 +74,7 @@ import {
   NgControl,
   NgForm,
 } from '@angular/forms';
-import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
+import { merge, Observable, Subject } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
 
 import { NxDropdownClosedLabelDirective } from './closed-label.directive';
@@ -371,13 +372,19 @@ export class NxDropdownComponent
    * Array of options for the dropdown.
    */
   @Input() set options(value: NxDropdownOption[]) {
-    this._options.next(value);
+    this._options.set(value);
   }
-  get options(): NxDropdownOption[] {
-    return this._options.value;
+  get options(): NxDropdownOption[] | null {
+    return this._options();
   }
-  // @ts-expect-error TODO: refactor to be TS compatible
-  private readonly _options = new BehaviorSubject<NxDropdownOption[]>(null);
+  private readonly _options = signal<NxDropdownOption[] | null>(null);
+
+  private readonly _optionsEffect = effect(() => {
+    this._options();
+    if (this._isLazy) {
+      this._initializeSelection();
+    }
+  });
 
   /**
    * Type of filter input (default: text).
@@ -789,13 +796,14 @@ export class NxDropdownComponent
   /** Filtered options for virtual mode (respects filter) */
   protected readonly _filteredOptions = computed(() => {
     const filterValue = this._filterValue();
-    if (!this.virtualScroll() || !this.options) {
+    const options = this._options();
+    if (!this.virtualScroll() || !options) {
       return [];
     }
     if (!filterValue || !this.showFilter()) {
-      return this.options;
+      return options;
     }
-    return this.options.filter((opt) => this.filterFn(filterValue, this._getLabel(opt)));
+    return options.filter((opt) => this.filterFn(filterValue, this._getLabel(opt)));
   });
 
   /** Typeahead buffer (shared) */
@@ -869,11 +877,7 @@ export class NxDropdownComponent
       });
     });
 
-    if (this._isLazy) {
-      this._options.pipe(takeUntil(this._destroyed)).subscribe(() => {
-        this._initializeSelection();
-      });
-    } else {
+    if (!this._isLazy) {
       this.dropdownItems.changes
         .pipe(startWith<any, any>(null), takeUntil(this._destroyed))
         .subscribe(() => {
@@ -1091,7 +1095,7 @@ export class NxDropdownComponent
       }
     };
 
-    const options = this._isLazy ? this.options : this.dropdownItems.toArray();
+    const options = this._isLazy ? (this.options ?? []) : this.dropdownItems.toArray();
     const option = options.find(filterFn);
 
     if (option) {
@@ -1120,7 +1124,7 @@ export class NxDropdownComponent
   /** Sorts the selected values in the selected based on their order in the panel. */
   private _sortValues() {
     if (this.isMultiSelect()) {
-      const options = this._isLazy ? this.options : this.dropdownItems.toArray();
+      const options = this._isLazy ? (this.options ?? []) : this.dropdownItems.toArray();
       this._selectionModel.sort(
         (a, b) =>
           options.findIndex((o) => o.value === a.value) -
