@@ -4,12 +4,12 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   Input,
   OnDestroy,
   ViewChild,
+  signal,
 } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
@@ -40,7 +40,8 @@ export interface NxExpandable {
   imports: [NxIconModule, NxPlainButtonComponent],
 })
 export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
-  _expanded = false;
+  readonly _expanded = signal(false);
+  readonly _ariaLabel = signal('');
 
   @ViewChild('button') _buttonElement!: ElementRef;
 
@@ -48,42 +49,27 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
    * This is the expandable target that will be toggled when the user clicks the button.
    */
   @Input() set target(value: NxExpandable) {
-    this._target = value;
-
     this._subscription?.unsubscribe();
-
-    if (this._target) {
-      this._subscription = this._target.expanded.subscribe((expanded) => {
-        this._expanded = expanded;
-        setTimeout(() => {
-          this._cdr.markForCheck();
-        });
-      });
+    this._targetSignal.set(value);
+    if (value) {
+      this._subscription = value.expanded.subscribe((v) => this._expanded.set(v));
     }
   }
-  _target!: NxExpandable;
-
-  @Input() set ariaLabel(value: string) {
-    this._ariaLabel = value;
-    this._cdr.markForCheck();
-  }
-  _ariaLabel = '';
-
+  private readonly _targetSignal = signal<NxExpandable | null>(null);
   private _subscription = Subscription.EMPTY;
 
-  constructor(
-    private readonly _cdr: ChangeDetectorRef,
-    private readonly _focusMonitor: FocusMonitor,
-  ) {}
+  @Input() set ariaLabel(value: string) {
+    this._ariaLabel.set(value);
+  }
+
+  constructor(private readonly _focusMonitor: FocusMonitor) {}
 
   ngAfterViewInit(): void {
     this._focusMonitor.monitor(this._buttonElement);
   }
 
   _onClick() {
-    if (this._target) {
-      this._target.toggle();
-    }
+    this._targetSignal()?.toggle();
   }
 
   ngOnDestroy(): void {

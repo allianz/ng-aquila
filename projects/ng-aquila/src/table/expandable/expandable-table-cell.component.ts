@@ -1,13 +1,5 @@
-import {
-  booleanAttribute,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  input,
-  OnDestroy,
-} from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input, Signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
 
@@ -22,29 +14,16 @@ import { NxExpandableTableRowComponent } from './expandable-table-row.component'
   host: {
     class: 'nx-expandable-table-cell',
     '[class.nx-expandable-table-cell--indented]': 'indented()',
-    '[class.is-expanded]': '_open',
+    '[class.is-expanded]': '_open()',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class NxExpandableTableCellComponent implements OnDestroy {
+export class NxExpandableTableCellComponent {
   readonly indented = input(false, { transform: booleanAttribute });
-  _open = false;
+  readonly _open: Signal<boolean>;
 
-  private readonly _destroyed = new Subject<void>();
-
-  constructor(
-    _row: NxExpandableTableRowComponent,
-    private readonly _cdr: ChangeDetectorRef,
-  ) {
-    _row.expanded.pipe(takeUntil(this._destroyed)).subscribe((open) => {
-      this._open = open;
-      this._cdr.markForCheck();
-    });
-  }
-
-  ngOnDestroy(): void {
-    this._destroyed.next();
-    this._destroyed.complete();
+  constructor(_row: NxExpandableTableRowComponent) {
+    this._open = toSignal(_row.expanded, { initialValue: false });
   }
 }

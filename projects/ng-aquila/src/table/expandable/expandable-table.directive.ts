@@ -1,5 +1,5 @@
 import { AfterViewInit, ContentChildren, Directive, OnDestroy, QueryList } from '@angular/core';
-import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, mergeMap, startWith, takeUntil } from 'rxjs/operators';
 
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
@@ -58,13 +58,13 @@ export class NxExpandableTableDirective implements OnDestroy, AfterViewInit, NxE
    * Expands all expandable rows.
    */
   expand() {
-    this.rows.forEach((row) => row.expanded.next(true));
+    this.rows.forEach((row) => row.expand());
   }
 
   /**
    * Closes all expandable rows.
    */
   close() {
-    this.rows.forEach((row) => row.expanded.next(false));
+    this.rows.forEach((row) => row.close());
   }
 }

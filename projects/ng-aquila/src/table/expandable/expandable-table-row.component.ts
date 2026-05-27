@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { NxExpandable } from './toggle-button.component';
@@ -23,7 +23,6 @@ export class NxExpandableTableRowComponent implements NxExpandable {
   @Input() set isExpanded(value: BooleanInput) {
     this._isExpanded = coerceBooleanProperty(value);
     this.expanded.next(this._isExpanded);
-    this._cdr.markForCheck();
   }
   get isExpanded() {
     return this._isExpanded;
@@ -31,8 +30,6 @@ export class NxExpandableTableRowComponent implements NxExpandable {
   private _isExpanded!: boolean;
 
   readonly expanded = new BehaviorSubject<boolean>(false);
-
-  constructor(private readonly _cdr: ChangeDetectorRef) {}
 
   /**
    * Toggles the expansion of this row.
@@ -51,7 +48,6 @@ export class NxExpandableTableRowComponent implements NxExpandable {
   expand() {
     if (!this.expanded.value) {
       this.expanded.next(true);
-      this._cdr.markForCheck();
     }
   }
 
@@ -61,7 +57,6 @@ export class NxExpandableTableRowComponent implements NxExpandable {
   close() {
     if (this.expanded.value) {
       this.expanded.next(false);
-      this._cdr.markForCheck();
     }
   }
 }

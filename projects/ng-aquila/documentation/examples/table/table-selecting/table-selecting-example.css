@@ -6,3 +6,7 @@
   overflow-x: auto;
   display: block;
 }
+
+.pagination {
+  margin-top: 16px;
+}

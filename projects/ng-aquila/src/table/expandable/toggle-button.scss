@@ -6,14 +6,14 @@
 
 .nx-toggle-button {
   .nx-toggle-button__icon {
-    transform: rotate(0);
+    transform: v(table-expandable-toggle-collapsed-rotation);
     transition: transform 200ms ease;
     color: v(expandable-table-arrow-icon-color);
   }
 
   &.is-expanded {
     .nx-toggle-button__icon {
-      transform: rotate(90deg);
+      transform: v(table-expandable-toggle-expanded-rotation);
     }
   }
 
