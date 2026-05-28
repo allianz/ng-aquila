@@ -55,9 +55,13 @@ import { takeUntil } from 'rxjs/operators';
 import { NxAutoResizeDirective } from './auto-resize.directive';
 import { NxNumberStepperIntl } from './number-stepper-intl';
 
+// `big` and `normal` are kept as deprecated aliases for `m` and `s`
+// TODO: and should be removed with the next breaking change release.
 const SIZE_MAPPING = {
   big: 'nx-stepper--big',
   normal: '',
+  m: 'nx-stepper--big',
+  s: '',
 };
 const DEFAULT_CLASSES = ['nx-stepper'];
 const INPUT_CLASSES = ['nx-stepper__input'];
@@ -77,9 +81,11 @@ const CUSTOM_VALIDATOR = {
 /**
  * `Input('size') classNames` defines the size of the number stepper.
  *
- * Values: `'big' | 'normal'`.
+ * Values: `'s' | 'm'`. Legacy values `'normal'` and `'big'` are still
+ * accepted as aliases for `'s'` and `'m'` but are deprecated and will be
+ * removed with the next breaking change release.
  *
- * Default: `'normal'`.
+ * Default: `'s'`.
  */
 @Component({
   selector: 'nx-number-stepper',

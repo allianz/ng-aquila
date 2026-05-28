@@ -12,7 +12,7 @@ group: Forms & Inputs
 
 ### Examples
 
-This component has two sizes - big and normal.
+This component has two sizes - `s` and `m`. The default size is `s`.
 
 <!-- example(number-stepper-sizes) -->
 
