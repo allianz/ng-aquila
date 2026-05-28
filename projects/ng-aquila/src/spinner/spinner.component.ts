@@ -55,7 +55,10 @@ export class NxSpinnerComponent implements OnInit, OnDestroy {
 
   private _size: SpinnerSize = DEFAULT_SIZE;
 
-  /** Whether the spinner should use a negative styling. This will be deprecated in favor of `inverse`. */
+  /**
+   * Whether the spinner should use a negative styling.
+   * @deprecated use `inverse` instead.
+   */
   @Input() set negative(value: BooleanInput) {
     if (value !== this._negative) {
       this._negative = coerceBooleanProperty(value);
@@ -69,7 +72,7 @@ export class NxSpinnerComponent implements OnInit, OnDestroy {
 
   private _negative = false;
 
-  /** Whether the spinner should use a negative styling. */
+  /** Whether the spinner should use an inverse styling. */
   readonly inverse = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
 
   /**

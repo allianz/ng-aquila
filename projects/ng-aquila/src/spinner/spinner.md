@@ -16,11 +16,11 @@ The spinner is available in three sizes: small, medium, large.
 
 <!-- example(spinner-sizes) -->
 
-### Negative styling
+### Inverse styling
 
-You can apply a negative styling by using the `[negative]` property.
+You can apply an inverse styling by using the `[inverse]` property. The `[negative]` property is deprecated, please use `[inverse]` instead.
 
-<!-- example(spinner-negative) -->
+<!-- example(spinner-inverse) -->
 
 ### Accessibility
 

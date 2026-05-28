@@ -3,12 +3,12 @@ import { NxSpinnerComponent } from '@allianz/ng-aquila/spinner';
 import { Component } from '@angular/core';
 
 /**
- * @title Negative styling example
+ * @title Inverse styling example
  */
 @Component({
-  selector: 'spinner-negative-example',
-  templateUrl: './spinner-negative-example.html',
-  styleUrls: ['./spinner-negative-example.css'],
+  selector: 'spinner-inverse-example',
+  templateUrl: './spinner-inverse-example.html',
+  styleUrls: ['./spinner-inverse-example.css'],
   imports: [NxSpinnerComponent, NxHeadlineComponent],
 })
-export class SpinnerNegativeExampleComponent {}
+export class SpinnerInverseExampleComponent {}
