@@ -96,3 +96,12 @@ The sidepanel can contain a lot of different content. This is an example how tab
 
 ### Focus on open sidepanel
 <!-- example(sidepanel-focus) -->
+
+<div class="docs-a1">
+
+### Color Scheme
+
+Use `colorScheme` input to change sidepanel background color. The available values are `'default'` (standard background) and `'emphasis'`.
+
+<!-- example(sidepanel-with-color-scheme) -->
+</div>

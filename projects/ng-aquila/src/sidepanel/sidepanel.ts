@@ -11,6 +11,7 @@ import {
   forwardRef,
   inject,
   Input,
+  input,
   OnDestroy,
   Output,
 } from '@angular/core';
@@ -25,6 +26,8 @@ export type PositionType = 'floating' | 'static';
 /** Type for the appearance of the sidepanel. */
 export type Appearance = 'light' | 'dark';
 
+/** Type for the color scheme */
+export type NxSidepanelColorScheme = 'default' | 'emphasis';
 @Component({
   selector: 'nx-sidepanel',
   template: '<ng-content></ng-content>',
@@ -34,6 +37,7 @@ export type Appearance = 'light' | 'dark';
     '[class.is-open]': 'opened',
     '[class.is-static]': 'position === "static"',
     '[class.is-floating]': 'position === "floating"',
+    '[class.is-emphasis]': 'colorScheme() === "emphasis"',
     '[class.light]': 'appearance === "light"',
     '[class.without-wrapper]': '!this._wrapper',
     '[attr.data-animation-state]': '_getOpenState()',
@@ -78,6 +82,8 @@ export class NxSidepanelComponent {
   private _appearance: Appearance = 'dark';
 
   private _openState = 'open-instant';
+
+  readonly colorScheme = input<NxSidepanelColorScheme>('default');
 
   triggerElem?: HTMLElement | null;
 

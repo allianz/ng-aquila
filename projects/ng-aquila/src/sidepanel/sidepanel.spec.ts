@@ -5,6 +5,7 @@ import { By } from '@angular/platform-browser';
 
 import {
   Appearance,
+  NxSidepanelColorScheme,
   NxSidepanelComponent,
   NxSidepanelOuterContainerComponent,
   PositionType,
@@ -48,6 +49,7 @@ describe('NxSidepanelComponent', () => {
         SidepanelWithoutHeaderAndContent,
         ConfigurableSidepanel,
         SidepanelWithDirection,
+        ColorSchemeSidepanel,
       ],
     }).compileComponents();
   }));
@@ -240,6 +242,25 @@ describe('NxSidepanelComponent', () => {
     });
   });
 
+  describe('colorScheme', () => {
+    it('does not have emphasis class by default', () => {
+      createTestComponent(BasicSidepanel);
+      expect(sidepanelElement.nativeElement).not.toHaveClass('is-emphasis');
+    });
+
+    it('has emphasis class when colorScheme is emphasis', () => {
+      createTestComponent(ColorSchemeSidepanel);
+      expect(sidepanelElement.nativeElement).toHaveClass('is-emphasis');
+    });
+
+    it('does not have emphasis class when colorScheme is default', () => {
+      createTestComponent(ColorSchemeSidepanel);
+      (testInstance as ColorSchemeSidepanel).colorScheme = 'default';
+      fixture.detectChanges();
+      expect(sidepanelElement.nativeElement).not.toHaveClass('is-emphasis');
+    });
+  });
+
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicSidepanel);
@@ -300,4 +321,20 @@ class ConfigurableSidepanel extends SidepanelTest {}
 })
 class SidepanelWithDirection extends SidepanelTest {
   direction: Direction = 'rtl';
+}
+
+@Component({
+  template: `
+    <nx-sidepanel-outer-container>
+      Main content
+      <nx-sidepanel [colorScheme]="colorScheme">
+        <nx-sidepanel-header>Sidepanel header</nx-sidepanel-header>
+        <nx-sidepanel-content>Sidepanel content</nx-sidepanel-content>
+      </nx-sidepanel>
+    </nx-sidepanel-outer-container>
+  `,
+  imports: [NxSidepanelModule, BidiModule],
+})
+class ColorSchemeSidepanel extends SidepanelTest {
+  colorScheme: NxSidepanelColorScheme = 'emphasis';
 }

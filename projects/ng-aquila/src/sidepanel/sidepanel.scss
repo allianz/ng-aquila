@@ -60,6 +60,9 @@
     }
   }
 }
+:host(.is-emphasis) {
+  background: v(sidepanel-emphasis-background-color);
+}
 
 // Deprecated: styles for a nx-sidepanel without a wrapping nx-sidepanel-outer-container.
 // if no wrapper is used, the sidepanel currently is not animated when opening closing,
