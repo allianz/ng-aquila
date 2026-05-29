@@ -71,6 +71,6 @@ You can change the color of the list item circles by overwriting the default col
 
 #### List Nesting
 
-You can also nest different type of lists in each other, as shown in the example below.
+Lists can be nested within each other. You can combine simple ordered, circle ordered, unordered, and icon lists, including mixed types where different list styles are nested inside one another.
 
 <!-- example(list-nesting) -->
