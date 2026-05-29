@@ -20,7 +20,6 @@ import {
  */
 @Component({
   selector: 'nx-multi-select-all',
-  styleUrls: ['./multi-select-all.component.scss'],
   templateUrl: './multi-select-all.component.html',
   host: {
     role: 'option',

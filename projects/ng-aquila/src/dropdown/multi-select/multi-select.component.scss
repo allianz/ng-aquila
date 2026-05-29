@@ -163,6 +163,11 @@
   border-bottom: 1px solid v(dropdown-group-divider);
 }
 
+.panel.keyboard-focused .select-all:has(.is-active) {
+  border-radius: v(dropdown-item-active-border-radius);
+  @include focus-style-inset;
+}
+
 .hidden {
   display: none;
 }

@@ -32,6 +32,11 @@
   }
 }
 
+:host-context(.keyboard-focused) :host(:has(.nx-checkbox.is-active)) {
+  border-radius: v(dropdown-item-active-border-radius);
+  @include focus-style-inset;
+}
+
 .nx-checkbox {
   @include type-style(checkbox-large-label);
   color: v(checkbox-label-color);
@@ -40,14 +45,6 @@
   align-items: flex-start;
   flex: 1;
   gap: v(checkbox-small-label-text-margin-left);
-
-  &.is-active {
-    border-radius: 4px;
-
-    :host-context(.keyboard-focused) & {
-      @include focus-style;
-    }
-  }
 
   &.is-disabled {
     cursor: not-allowed;

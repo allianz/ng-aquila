@@ -108,9 +108,9 @@ nx-checkbox {
 /* clean-css ignore:start */
 
 :host-context(.keyboard-focused) :host(.nx-dropdown-item--active) {
-  .nx-dropdown-results__option .nx-dropdown-results__option-label {
-    border-radius: nx-border-radius(s);
-    @include focus-style;
+  .nx-dropdown-results__option {
+    border-radius: v(dropdown-item-active-border-radius);
+    @include focus-style-inset;
   }
 }
 
