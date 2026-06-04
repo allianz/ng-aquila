@@ -12,7 +12,7 @@ group: Data Display
 
 ### Sizes
 
-The spinner is available in three sizes: small, medium, large.
+The spinner is available in three sizes: `s`, `m`, `l`. The legacy size values `small`, `medium` and `large` are still supported but will be removed in a future version, please use the short forms instead.
 
 <!-- example(spinner-sizes) -->
 

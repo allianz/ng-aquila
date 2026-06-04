@@ -5,7 +5,7 @@
       @if (calculationInProgress) {
       <div>
         <h3>Calculating Price. This can take a minute.</h3>
-        <nx-spinner size="large" class="margin-auto"></nx-spinner>
+        <nx-spinner size="l" class="margin-auto"></nx-spinner>
       </div>
       } @if (!calculationInProgress) {
       <div>
@@ -32,7 +32,7 @@
       <div>
         <h3>Calculating Price. This can take a minute.</h3>
         <nx-spinner
-          size="large"
+          size="l"
           class="margin-auto"
           [activationAnnouncement]="'Calculating, please wait.'"
           [completionAnnouncement]="'Calculation complete.'"

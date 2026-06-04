@@ -12,14 +12,14 @@ import {
 } from '@angular/core';
 
 /** Options for sizing of the spinner. */
-export type SpinnerSize = 'small' | 'medium' | 'large';
+export type SpinnerSize = 'small' | 'medium' | 'large' | 's' | 'm' | 'l';
 
 /** Options for aria live regions of the spinner. */
 export type AriaPolite = 'polite' | 'assertive' | 'off';
 
-const DEFAULT_SIZE = 'small';
+const DEFAULT_SIZE: SpinnerSize = 'small';
 
-const ARIA_POLITENESS_ASSERTIVE = 'assertive';
+const ARIA_POLITENESS_ASSERTIVE: AriaPolite = 'assertive';
 
 /** required to be able to read same message multiple times https://github.com/angular/components/blob/7beb95219ddc9a16cd28ee2524bf1594e04c1c58/src/cdk/a11y/live-announcer/live-announcer.ts#L112-L127 */
 const ANNOUNCER_DURATION = 1000;
@@ -30,9 +30,9 @@ const ANNOUNCER_DURATION = 1000;
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./spinner.component.scss'],
   host: {
-    '[class.nx-spinner--small]': 'size === "small"',
-    '[class.nx-spinner--medium]': 'size === "medium"',
-    '[class.nx-spinner--large]': 'size === "large"',
+    '[class.nx-spinner--small]': 'size === "small" || size === "s"',
+    '[class.nx-spinner--medium]': 'size === "medium" || size === "m"',
+    '[class.nx-spinner--large]': 'size === "large" || size === "l"',
     '[class.nx-spinner--negative]': 'negative || inverse()',
     '[attr.role]': '"status"',
     '[attr.aria-live]': 'ariaPoliteness()',
