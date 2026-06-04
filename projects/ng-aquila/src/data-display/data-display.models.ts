@@ -12,7 +12,7 @@ export type NxDataDisplayOrientation = 'vertical' | 'horizontal' | 'horizontal-c
 /**
  * Sizes of the NxDataDisplayComponent.
  */
-export type NxDataDisplaySize = 'small' | 'medium' | 'large';
+export type NxDataDisplaySize = 'small' | 's' | 'medium' | 'm' | 'large';
 
 /**
  * Default options for the NxDataDisplayComponent.
@@ -21,7 +21,7 @@ export interface DataDisplayDefaultOptions {
   /**
    * Size of the data display.
    *
-   * Default: `'large'`.
+   * Default: `'m'` for A1, `'large'` for non-A1.
    */
   size?: NxDataDisplaySize;
 }

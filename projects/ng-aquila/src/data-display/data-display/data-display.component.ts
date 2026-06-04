@@ -20,8 +20,8 @@ import { NxDataDisplayLabelComponent } from '../data-display-label/data-display-
   host: {
     '[class.is-horizontal]': 'orientation === "horizontal"',
     '[class.is-horizontal-columns]': 'orientation === "horizontal-columns"',
-    '[class.is-small]': 'size === "small"',
-    '[class.is-medium]': 'size === "medium"',
+    '[class.is-small]': 'size === "small" || size === "s"',
+    '[class.is-medium]': 'size === "medium" || size === "m"',
     '[class.is-large]': 'size === "large"',
     '[class.nx-data-display__label-columns-3]': 'labelColumns === 3',
     '[class.nx-data-display__label-columns-4]': 'labelColumns === 4',
@@ -54,7 +54,7 @@ export class NxDataDisplayComponent {
   /**
    * Size of the data display.
    *
-   * Default: `'large'`.
+   * Default: `'m'` for A1, `'large'` for non-A1.
    */
   @Input() set size(value: NxDataDisplaySize | null | undefined) {
     this.#size = value;
