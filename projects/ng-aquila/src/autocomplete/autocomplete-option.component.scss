@@ -13,10 +13,8 @@
 
   // keyboard focus styling
   &.nx-active {
-    .nx-autocomplete-option__label {
-      border-radius: nx-border-radius(s);
-      @include focus-style;
-    }
+    border-radius: v(autocomplete-option-active-border-radius);
+    @include focus-style-inset;
   }
 
   :host-context([dir='rtl']) & {
@@ -47,7 +45,7 @@
       .nx-autocomplete-option__label {
         color: highlightText;
         background-color: highlight;
-        border-radius: nx-border-radius(s);
+        border-radius: v(autocomplete-option-active-border-radius);
         forced-color-adjust: none;
       }
     }
