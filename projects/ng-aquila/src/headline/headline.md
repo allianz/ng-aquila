@@ -48,10 +48,14 @@ To draw more attention to parts of a headline, use [`[nx-attention-color]`](./do
 
 </div>
 
-### Negative
+
+### Inverse
+
 <div class="docs-deprecation-warning">
-  <strong><code>nxHeadline="negative"</code></strong> is deprecated. Use the boolean <code>negative</code> input instead.
+  <strong><code>nxHeadline="negative"</code></strong> is deprecated. Use the boolean <code>inverse</code> input instead.
 </div>
+
+For dark background, use the `inverse` input to apply inverse styling
 
 <!-- example(headline-negative) -->
 

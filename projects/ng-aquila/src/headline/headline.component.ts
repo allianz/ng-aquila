@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, Input, input } from '@angular/core';
+import { booleanAttribute, Component, Input, input } from '@angular/core';
 
 /** Types of headlines */
 export type HeadlineType =
@@ -47,7 +47,8 @@ const DEFAULT_TYPE = 'section';
     '[class.nx-heading--4xl]': 'size() === "4xl"',
     '[class.nx-heading--5xl]': 'size() === "5xl"',
     '[class.nx-heading--6xl]': 'size() === "6xl"',
-    '[class.nx-heading--negative]': 'negative',
+    '[class.nx-heading--negative]': 'negative', // To be removed in favor of nx-heading--inverse in the future
+    '[class.nx-heading--inverse]': 'inverse()',
     '[class.nx-heading--primary]': 'type() === "primary"',
     '[class.nx-heading--secondary]': 'type() === "secondary"',
   },
@@ -57,7 +58,7 @@ export class NxHeadlineComponent {
   /**
    * Changes the type of the headline which affects the visual appearance.
    *
-   * You can combine a HeadlineType and 'negative'.
+   * You can combine a HeadlineType and 'inverse'.
    */
   @Input('nxHeadline') set classNames(value: string) {
     if (this._classNames === value) {
@@ -79,6 +80,10 @@ export class NxHeadlineComponent {
   private _classNames = '';
 
   readonly size = input<NxHeadlineSize>();
+
+  /**
+   * @deprecated The `negative` input is deprecated and will be removed in favor of `inverse`.
+   */
   @Input() set negative(value: BooleanInput) {
     this._negative = coerceBooleanProperty(value);
   }
@@ -86,6 +91,13 @@ export class NxHeadlineComponent {
     return this._negative;
   }
   private _negative = false;
+
+  /**
+   * Whether the headline should use inverse (light-on-dark) colors.
+   * Replaces the deprecated `negative` input.
+   */
+  readonly inverse = input(false, { transform: booleanAttribute });
+
   readonly type = input<NxHeadlineType>('primary');
 
   /** @docs-private */

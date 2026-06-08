@@ -84,19 +84,21 @@
   }
 }
 
-:host(.nx-heading--negative) {
-  color: v(negative);
+:host(.nx-heading--negative),
+:host(.nx-heading--inverse) {
+  color: v(headline-inverse-color);
 
   ::ng-deep a {
-    color: v(negative);
+    color: v(headline-inverse-color);
   }
 }
 
-:host(.nx-heading--secondary.nx-heading--negative) {
-  color: v(headline-negative-secondary-color);
+:host(.nx-heading--secondary.nx-heading--negative),
+:host(.nx-heading--secondary.nx-heading--inverse) {
+  color: v(headline-inverse-secondary-color);
 
   ::ng-deep a {
-    color: v(headline-negative-secondary-color);
+    color: v(headline-inverse-secondary-color);
   }
 }
 

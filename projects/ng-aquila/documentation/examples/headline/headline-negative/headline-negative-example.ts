@@ -3,7 +3,7 @@ import { NxLinkComponent } from '@allianz/ng-aquila/link';
 import { Component } from '@angular/core';
 
 /**
- * @title Headline Negative Example
+ * @title Headline Inverse Example
  */
 @Component({
   selector: 'headline-negative-example',
