@@ -45,6 +45,63 @@ $border-size: nx-border-size(m);
   font-size: 16px;
 }
 
+::ng-deep [nxTagCount] {
+  color: v(tag-count-color);
+}
+
+.nx-tag-text-wrapper ::ng-deep [nxTagCount] {
+  margin-inline-start: v(tag-content-gap);
+}
+
+:host(.nx-tag--readonly) {
+  ::ng-deep [nxTagCount] {
+    color: v(tag-count-readonly-color);
+  }
+  label.nx-tag--selected ::ng-deep [nxTagCount] {
+    color: v(tag-count-selected-readonly-color);
+  }
+}
+
+:host(.nx-tag--disabled) {
+  ::ng-deep [nxTagCount] {
+    color: v(tag-count-disabled-color);
+  }
+  label.nx-tag--selected ::ng-deep [nxTagCount] {
+    color: v(tag-count-selected-disabled-color);
+  }
+}
+
+label.nx-tag--selected ::ng-deep [nxTagCount] {
+  color: v(tag-count-selected-color);
+}
+
+:host(.nx-tag--inverse) {
+  ::ng-deep [nxTagCount] {
+    color: v(tag-count-inverse-color);
+  }
+  label.nx-tag--selected ::ng-deep [nxTagCount] {
+    color: v(tag-count-inverse-selected-color);
+  }
+}
+
+:host(.nx-tag--inverse.nx-tag--readonly) {
+  ::ng-deep [nxTagCount] {
+    color: v(tag-count-inverse-readonly-color);
+  }
+  label.nx-tag--selected ::ng-deep [nxTagCount] {
+    color: v(tag-count-inverse-selected-readonly-color);
+  }
+}
+
+:host(.nx-tag--inverse.nx-tag--disabled) {
+  ::ng-deep [nxTagCount] {
+    color: v(tag-count-inverse-disabled-color);
+  }
+  label.nx-tag--selected ::ng-deep [nxTagCount] {
+    color: v(tag-count-inverse-selected-disabled-color);
+  }
+}
+
 :host.can-hover {
   .nx-tag-content,
   &.nx-tag-content {

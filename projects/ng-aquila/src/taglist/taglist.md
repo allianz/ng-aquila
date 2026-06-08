@@ -46,6 +46,16 @@ Use the `inverse` input on `nx-tag-group` to apply the inverse style.
 
 <!-- example(tag-inverse) -->
 
+### Tag with count
+
+Project a `<span nxTagCount>` next to the label to show a secondary count or badge. The count color follows the tag's state (selected, readonly, disabled, inverse) automatically.
+
+For accessibility, a bare number reads ambiguously to screen readers (e.g. "Bugs 12"). Add a `cdk-visually-hidden` span inside the count to clarify what the number represents.
+
+Alternatively, set `aria-label` on the `nx-tag` to override the accessible name entirely.
+
+<!-- example(tag-count) -->
+
 ### Customizing the label content
 By default the tag will show the value input as the text. Instead of the value you can provide your own template by providing it as content.
 

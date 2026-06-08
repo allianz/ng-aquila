@@ -22,7 +22,9 @@
   @for (tag of tagsWithCount(); track tag.label) {
   <nx-tag [value]="tag.label">
     {{ tag.label | titlecase }}
-    <span class="tag-count">{{ tag.count }}</span>
+    <span nxTagCount
+      >{{ tag.count }}<span class="cdk-visually-hidden"> items</span></span
+    >
   </nx-tag>
   }
 </nx-tag-group>
@@ -31,7 +33,9 @@
   @for (tag of tagsWithCount(); track tag.label) {
   <nx-tag [value]="tag.label" (removed)="removeTagWithCount(tag.label)">
     {{ tag.label | titlecase }}
-    <span class="tag-count">{{ tag.count }}</span>
+    <span nxTagCount
+      >{{ tag.count }}<span class="cdk-visually-hidden"> items</span></span
+    >
   </nx-tag>
   }
 </nx-tag-group>

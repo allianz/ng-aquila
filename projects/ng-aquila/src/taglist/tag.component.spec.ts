@@ -59,6 +59,7 @@ describe('NxTagComponent', () => {
         TagInGroupWithFormControl,
         TagInGroupRemovableContentProjection,
         TagInGroupContentProjection,
+        TagWithCount,
         TagInverse,
         TagInGroupInverse,
         TagInGroupWithIndividualInverse,
@@ -196,6 +197,15 @@ describe('NxTagComponent', () => {
       expect(fixture.nativeElement.querySelectorAll('nx-tag')[0].textContent.trim()).toBe(
         'foo 123',
       );
+    });
+
+    it('should project content with the [nxTagCount] selector', () => {
+      createTestComponent(TagWithCount);
+      const tagEl = fixture.nativeElement.querySelector('nx-tag');
+      const countEl = tagEl.querySelector('[nxTagCount]');
+      expect(countEl).toBeTruthy();
+      expect(countEl.textContent.trim()).toBe('12');
+      expect(tagEl.textContent.replace(/\s+/g, ' ').trim()).toBe('Bugs 12');
     });
 
     it('should select tag from value in the tag group', () => {
@@ -437,6 +447,16 @@ class TagInGroupContentProjection extends TagTest {}
   imports: [NxTaglistModule],
 })
 class TagInGroupDisabled extends TagTest {}
+
+@Component({
+  template: `
+    <nx-tag-group>
+      <nx-tag value="bugs">Bugs <span nxTagCount>12</span></nx-tag>
+    </nx-tag-group>
+  `,
+  imports: [NxTaglistModule],
+})
+class TagWithCount extends TagTest {}
 
 @Component({
   template: `

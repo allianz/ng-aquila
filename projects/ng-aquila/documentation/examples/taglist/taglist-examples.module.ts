@@ -19,6 +19,7 @@ import { TaglistObjectsExampleComponent } from './taglist-objects/taglist-object
 import { TaglistOutputExampleComponent } from './taglist-output/taglist-output-example';
 import { TaglistReactiveExampleComponent } from './taglist-reactive/taglist-reactive-example';
 import { TaglistTemplatedrivenExampleComponent } from './taglist-templatedriven/taglist-templatedriven-example';
+import { TagCountExampleComponent } from './tag-count/tag-count-example';
 import { TagInverseExampleComponent } from './tag-inverse/tag-inverse-example';
 import { TagsDisabledExampleComponent } from './tags-disabled/tags-disabled-example';
 import { TagsReadonlyExampleComponent } from './tags-readonly/tags-readonly-example';
@@ -64,6 +65,7 @@ export class TaglistExamplesModule {
       'tags-readonly': TagsReadonlyExampleComponent,
       'tags-disabled': TagsDisabledExampleComponent,
       'tag-inverse': TagInverseExampleComponent,
+      'tag-count': TagCountExampleComponent,
     };
   }
 }
