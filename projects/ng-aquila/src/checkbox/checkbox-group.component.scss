@@ -3,7 +3,11 @@
 :host {
   ::ng-deep {
     nx-error {
-      margin-top: v(checkbox-error-margin-top);
+      margin-top: v(checkbox-group-text-error-margin-top);
+
+      &.nx-error--message {
+        margin-top: v(checkbox-group-message-error-margin-top);
+      }
     }
 
     nx-label {

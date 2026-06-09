@@ -289,6 +289,20 @@
   }
 }
 
+:host {
+  ::ng-deep {
+    .nx-checkbox__error {
+      nx-error {
+        margin-top: v(checkbox-text-error-margin-top);
+
+        &.nx-error--message {
+          margin-top: v(checkbox-message-error-margin-top);
+        }
+      }
+    }
+  }
+}
+
 // focus styles
 :host:has(.cdk-keyboard-focused) {
   .nx-checkbox__control {
