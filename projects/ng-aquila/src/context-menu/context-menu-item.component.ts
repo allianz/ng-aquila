@@ -44,6 +44,7 @@ import { NxContextMenuItemBase, NxContextMenuItemWrapBase } from './context-menu
     '(click)': '_checkDisabled($event)',
     '[class.is-selectable]': '_selectable',
     '[class.is-disabled]': 'disabled',
+    '[class.nx-context-menu-item--has-leading-icon]': '_hasLeadingIcon',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -104,6 +105,26 @@ export class NxContextMenuItemComponent
 
   /** Whether the context menu item acts as a trigger for a sub-menu. */
   _triggersSubmenu = false;
+
+  protected get _hasLeadingIcon(): boolean {
+    const wrapper = this._elementRef.nativeElement.querySelector<HTMLElement>(
+      '.nx-context-menu-item__content-wrapper',
+    );
+    if (!wrapper) return false;
+    const textNodeType = this._document ? this._document.TEXT_NODE : 3;
+    const elementNodeType = this._document ? this._document.ELEMENT_NODE : 1;
+    for (const node of Array.from(wrapper.childNodes)) {
+      if (node.nodeType === textNodeType && node.textContent?.trim()) return false;
+      if (node.nodeType === elementNodeType) {
+        const el = node as Element;
+        return (
+          el.tagName.toLowerCase() === 'nx-icon' &&
+          !el.classList.contains('nx-context-menu-item__expand')
+        );
+      }
+    }
+    return false;
+  }
 
   constructor(
     private readonly _elementRef: ElementRef<HTMLElement>,

@@ -1781,7 +1781,152 @@ describe('nxContextMenu', () => {
       flush();
     }));
   });
+
+  describe('label alignment', () => {
+    function getItems(): HTMLElement[] {
+      return Array.from(
+        overlayContainerElement.querySelectorAll<HTMLElement>('.nx-context-menu-item'),
+      );
+    }
+
+    it('flags items whose first projected element is an nx-icon', fakeAsync(() => {
+      const fixture = createComponent(MixedIconMenu);
+      fixture.componentInstance.trigger.openContextMenu();
+      fixture.detectChanges();
+      flush();
+
+      const [withIcon, withoutIcon, trailingIcon] = getItems();
+      expect(withIcon).toHaveClass('nx-context-menu-item--has-leading-icon');
+      expect(withoutIcon).not.toHaveClass('nx-context-menu-item--has-leading-icon');
+      // A stylistic icon placed after the label must not count as "leading".
+      expect(trailingIcon).not.toHaveClass('nx-context-menu-item--has-leading-icon');
+    }));
+
+    it('does not flag the internal submenu chevron as a leading icon', fakeAsync(() => {
+      const fixture = createComponent(SubmenuParentMenu);
+      fixture.componentInstance.trigger.openContextMenu();
+      fixture.detectChanges();
+      flush();
+
+      const [submenuTrigger] = getItems();
+      // The chevron icon is appended by the item template, not projected — it must not flip the flag.
+      expect(submenuTrigger).not.toHaveClass('nx-context-menu-item--has-leading-icon');
+    }));
+
+    it('updates the leading-icon flag when an icon-bearing item is added to the menu at runtime', fakeAsync(() => {
+      const fixture = createComponent(DynamicItemMenu);
+      fixture.componentInstance.trigger.openContextMenu();
+      fixture.detectChanges();
+      flush();
+
+      // Initially only a plain item — no indentation needed.
+      const [plain] = getItems();
+      expect(plain).not.toHaveClass('nx-context-menu-item--has-leading-icon');
+
+      // Adding an icon-bearing item should re-run detection on existing items.
+      fixture.componentInstance.showIconItem = true;
+      fixture.detectChanges();
+      flush();
+
+      const [, withIcon] = getItems();
+      expect(plain).not.toHaveClass('nx-context-menu-item--has-leading-icon');
+      expect(withIcon).toHaveClass('nx-context-menu-item--has-leading-icon');
+    }));
+
+    it('flags items inside a group whose first projected element is an nx-icon', fakeAsync(() => {
+      const fixture = createComponent(GroupedMixedIconMenu);
+      fixture.componentInstance.trigger.openContextMenu();
+      fixture.detectChanges();
+      flush();
+
+      const [withIcon, withoutIcon] = getItems();
+      expect(withIcon).toHaveClass('nx-context-menu-item--has-leading-icon');
+      expect(withoutIcon).not.toHaveClass('nx-context-menu-item--has-leading-icon');
+    }));
+  });
 });
+
+@Component({
+  template: `
+    <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #triggerEl>
+      Toggle menu
+    </button>
+    <nx-context-menu #menu="nxContextMenu">
+      <nx-context-menu-group>
+        <button nxContextMenuItem type="button">
+          <nx-icon name="settings"></nx-icon>
+          With leading icon
+        </button>
+        <button nxContextMenuItem type="button">Without icon</button>
+      </nx-context-menu-group>
+    </nx-context-menu>
+  `,
+  imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
+})
+class GroupedMixedIconMenu {
+  @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+}
+
+@Component({
+  template: `
+    <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #triggerEl>
+      Toggle menu
+    </button>
+    <nx-context-menu #menu="nxContextMenu">
+      <button nxContextMenuItem>
+        <nx-icon name="settings"></nx-icon>
+        With leading icon
+      </button>
+      <button nxContextMenuItem>Without icon</button>
+      <button nxContextMenuItem>
+        Trailing icon
+        <nx-icon name="info-circle-o"></nx-icon>
+      </button>
+    </nx-context-menu>
+  `,
+  imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
+})
+class MixedIconMenu {
+  @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+}
+
+@Component({
+  template: `
+    <button nxButton="tertiary small" [nxContextMenuTriggerFor]="rootMenu">Toggle menu</button>
+    <nx-context-menu #rootMenu="nxContextMenu">
+      <button nxContextMenuItem [nxContextMenuTriggerFor]="subMenu">Has submenu</button>
+    </nx-context-menu>
+    <nx-context-menu #subMenu="nxContextMenu">
+      <button nxContextMenuItem>Sub item</button>
+    </nx-context-menu>
+  `,
+  imports: [NxContextMenuModule, NxButtonComponent],
+})
+class SubmenuParentMenu {
+  @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+}
+
+@Component({
+  template: `
+    <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #triggerEl>
+      Toggle menu
+    </button>
+    <nx-context-menu #menu="nxContextMenu">
+      <button nxContextMenuItem type="button">Plain item</button>
+      @if (showIconItem) {
+        <button nxContextMenuItem type="button">
+          <nx-icon name="settings"></nx-icon>
+          With icon
+        </button>
+      }
+    </nx-context-menu>
+  `,
+  imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
+})
+class DynamicItemMenu {
+  @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+  showIconItem = false;
+}
 
 @Component({
   template: `

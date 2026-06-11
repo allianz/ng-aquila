@@ -6,3 +6,15 @@
   letter-spacing: v(context-menu-group-header-letter-spacing);
   padding: v(context-menu-group-padding-vertical) v(context-menu-group-padding-horizontal);
 }
+
+// When at least one item in the group has a leading icon, indent items without one so their
+// labels align with their icon-bearing siblings. Selectable items are intentionally excluded —
+// they already reserve a fixed icon column via `context-menu-with-icon-padding-left`.
+.nx-context-menu-group__items:has(::ng-deep .nx-context-menu-item--has-leading-icon)
+  ::ng-deep
+  .nx-context-menu-item:not(.nx-context-menu-item--has-leading-icon):not(.is-selectable) {
+  padding-inline-start: calc(
+    #{v(context-menu-item-horizontal-padding)} + #{v(context-menu-item-icon-size)} +
+      #{v(context-menu-icon-margin)}
+  );
+}

@@ -7,6 +7,7 @@ export const ICON_MAPPINGS: { [key: string]: FontIcon } = {
   bars: { alias: 'bars', font: 'far' },
   'bell-o': { alias: 'bell', font: 'far' },
   'bookmark-o': { alias: 'bookmark', font: 'far' },
+  cut: { alias: 'cut', font: 'fas' },
   download: { alias: 'download', font: 'fas' },
   duplicate: { alias: 'copy', font: 'far' },
   facebook: { alias: 'facebook-square', font: 'fab' },

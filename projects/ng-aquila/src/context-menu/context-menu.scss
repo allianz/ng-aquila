@@ -59,3 +59,17 @@ $divider-vertical-margin: v(context-menu-item-vertical-padding);
     background-color: buttonFace;
   }
 }
+
+// When at least one top-level item has a leading icon, indent items without one so their labels
+// align with their icon-bearing siblings. Items inside a group are excluded here — they are
+// handled per-group in `context-menu-group.component.scss`.
+.nx-context-menu__content:has(> ::ng-deep .nx-context-menu-item--has-leading-icon)
+  ::ng-deep
+  .nx-context-menu-item:not(.nx-context-menu-item--has-leading-icon):not(.is-selectable):not(
+    .nx-context-menu-group__items *
+  ) {
+  padding-inline-start: calc(
+    #{v(context-menu-item-horizontal-padding)} + #{v(context-menu-item-icon-size)} +
+      #{v(context-menu-icon-margin)}
+  );
+}
