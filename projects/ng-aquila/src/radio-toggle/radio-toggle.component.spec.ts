@@ -603,6 +603,24 @@ describe('NxRadioToggleComponent', () => {
       expect(toggleButtons[1].componentInstance.selected).toBeFalse();
     });
 
+    it('should not deselect a selected button on space keyup', () => {
+      createTestComponent(RadioToggleGroupTest);
+      const toggleButtons = fixture.debugElement.queryAll(
+        By.directive(NxRadioToggleButtonComponent),
+      );
+
+      click(0);
+      fixture.detectChanges();
+      expect(toggleButtons[0].componentInstance.selected).toBeTrue();
+
+      toggleButtons[0].nativeElement.dispatchEvent(
+        new KeyboardEvent('keyup', { key: ' ', code: 'Space' }),
+      );
+      fixture.detectChanges();
+
+      expect(toggleButtons[0].componentInstance.selected).toBeTrue();
+    });
+
     it('should set readonly programmatically with NxAbstractControl', () => {
       createTestComponent(RadioToggleGroupTest);
       const testInstance = fixture.componentInstance as RadioToggleGroupTest;

@@ -12,7 +12,6 @@ import {
   Component,
   computed,
   forwardRef,
-  HostListener,
   Inject,
   Input,
   input,
@@ -202,13 +201,6 @@ export class NxRadioToggleButtonComponent
     }
 
     this._cdr.markForCheck();
-  }
-
-  /** @docs-private */
-  @HostListener('keyup.space')
-  onKeyupSpace(): void {
-    this._selected = false;
-    this._notifySiblings();
   }
 
   /** Forward focus from host to hidden input field */
