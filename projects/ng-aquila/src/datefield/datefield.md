@@ -135,11 +135,11 @@ It's possible to validate date ranges. As default the component will return
 - `nxDateRangeInvalid` if the start date is after the end date
 - `nxDateRangeIncomplete` if the date range is set only partially
 
-additionally the following validations can be configured
-- `min` will check if the start date is >= `min` date and will return `nxDatefieldMin` if does not match
-- `max` will check if the start date is <= `max` date and will return `nxDatefieldMax` if does not match
-- `filter` will check if the start and and date matches the filter and will return `nxDateRangeStartFilter` and `nxDateRangeEndFilter` respectively
-- `required` will check if a complete value is present, will return a `required` validation error otherwise
+additionally the following validations can be activated by setting the corresponding component inputs, or applied directly as form control validators using `NxDateRangeValidators`:
+- `[minDate]` / `NxDateRangeValidators.min` will check if the start date is >= the min date and will return `nxDatefieldMin` if it does not match
+- `[maxDate]` / `NxDateRangeValidators.max` will check if the end date is <= the max date and will return `nxDatefieldMax` if it does not match
+- `[dateFilter]` / `NxDateRangeValidators.filter` will check if the start and end date match the filter and will return `nxDateRangeStartFilter` and `nxDateRangeEndFilter` respectively
+- `required` will check if a complete value is present and will return a `required` validation error otherwise. Can be set via the `required` input on the component, `Validators.required`, or `NxDateRangeValidators.required` on the form control.
 
 <!-- example(datefield-range-validation) -->
 
@@ -152,16 +152,16 @@ This example will except and parse inputs of `MM/DD/YYYY | MM--DD-->YYYY | MMDDY
 
 ### Datemask
 
-The Datemask supports full dates with numeric inputs (e.g. _DD.MM.YYYY_ or _YYYY-MM-DD_). 
+The Datemask supports full dates with numeric inputs (e.g. _DD.MM.YYYY_ or _YYYY-MM-DD_).
 The Datemask can be used with and without the datepicker.
 
 <!-- example(datemask-basic) -->
 
-#### Formats 
+#### Formats
 
 <!-- example(datemask-format) -->
 
-#### Reactive Forms 
+#### Reactive Forms
 
 <!-- example(datemask-reactive-form) -->
 

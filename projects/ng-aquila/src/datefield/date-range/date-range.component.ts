@@ -164,6 +164,9 @@ export class NxDateRangeComponent<D>
    */
   readonly maxDate: InputSignal<D | null> = input<D | null>(null);
 
+  /**
+   * Filters which dates are selectable; dates returning `false` are disabled in the calendar and trigger validation errors when entered manually.
+   */
   readonly dateFilter: InputSignal<((date: D | null) => boolean) | null> = input<
     ((date: D | null) => boolean) | null
   >(null);
