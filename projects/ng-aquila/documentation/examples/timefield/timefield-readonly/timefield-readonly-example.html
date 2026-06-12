@@ -1,0 +1,17 @@
+<form>
+  <nx-timefield
+    [readonly]="true"
+    [(ngModel)]="templateModel"
+    name="templateTest"
+    label="Time"
+    twelveHourFormat
+  ></nx-timefield>
+  <nx-timefield
+    class="nx-margin-top-s"
+    [readonly]="true"
+    [(ngModel)]="templateModel"
+    name="timepickerTest"
+    label="Time with timepicker"
+    withTimepicker
+  ></nx-timefield>
+</form>

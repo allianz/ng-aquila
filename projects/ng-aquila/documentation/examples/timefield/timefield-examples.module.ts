@@ -8,6 +8,7 @@ import { TimefieldFormatTogglerExampleComponent } from './timefield-format-toggl
 import { TimefieldLocalizeExampleComponent } from './timefield-localize/timefield-localize-example';
 import { TimefieldNegativeExampleComponent } from './timefield-negative/timefield-negative-example';
 import { TimefieldOptionsIntervalExampleComponent } from './timefield-options-interval/timefield-options-interval-example';
+import { TimefieldReadonlyExampleComponent } from './timefield-readonly/timefield-readonly-example';
 import { TimefieldReactiveExampleComponent } from './timefield-reactive/timefield-reactive-example';
 import { TimefieldTemplateDrivenExampleComponent } from './timefield-template-driven/timefield-template-driven-example';
 import { TimefieldWithInputmode } from './timefield-with-inputmode/timefield-with-inputmode-example';
@@ -17,6 +18,7 @@ import { TimefieldWithTimepickerGlobalExampleComponent } from './timefield-with-
 const EXAMPLES = [
   TimefieldExpertExampleComponent,
   TimefieldDisabledExampleComponent,
+  TimefieldReadonlyExampleComponent,
   TimefieldFormatTogglerExampleComponent,
   TimefieldLocalizeExampleComponent,
   TimefieldNegativeExampleComponent,
@@ -35,6 +37,7 @@ export class TimefieldExamplesModule {
     return {
       'timefield-expert': TimefieldExpertExampleComponent,
       'timefield-disabled': TimefieldDisabledExampleComponent,
+      'timefield-readonly': TimefieldReadonlyExampleComponent,
       'timefield-format-toggler': TimefieldFormatTogglerExampleComponent,
       'timefield-localize': TimefieldLocalizeExampleComponent,
       'timefield-negative': TimefieldNegativeExampleComponent,

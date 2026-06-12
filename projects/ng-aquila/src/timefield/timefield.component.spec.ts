@@ -44,6 +44,7 @@ abstract class TimefieldTest {
   label = '';
   negative = false;
   disabled = false;
+  readonly = false;
   required = false;
   time = '';
   twelveHourFormat = false;
@@ -427,6 +428,39 @@ describe('NxTimefieldComponent', () => {
       timefieldInstance.disabled = true;
       fixture.detectChanges();
       expect(timefieldElement).toHaveClass('is-disabled');
+    });
+  });
+
+  describe('readonly', () => {
+    it('should mark hours and minutes inputs as readonly', () => {
+      createTestComponent(ConfigurableTimefield);
+      testInstance.readonly = true;
+      fixture.detectChanges();
+      expect(inputElementHours.readOnly).toBe(true);
+      expect(inputElementMinutes.readOnly).toBe(true);
+    });
+
+    it('should not open the timepicker overlay when readonly', () => {
+      createTestComponent(ConfigurableTimefield);
+      testInstance.withTimepicker = true;
+      testInstance.readonly = true;
+      fixture.detectChanges();
+      getToggleButton().click();
+      fixture.detectChanges();
+      expect(getPickerListElement()).toBeFalsy();
+    });
+
+    it('should set readonly programmatically with setReadonly', () => {
+      createTestComponent(ConfigurableTimefield);
+      timefieldInstance.setReadonly(true);
+      fixture.detectChanges();
+      expect(inputElementHours.readOnly).toBe(true);
+      expect(inputElementMinutes.readOnly).toBe(true);
+
+      timefieldInstance.setReadonly(false);
+      fixture.detectChanges();
+      expect(inputElementHours.readOnly).toBe(false);
+      expect(inputElementMinutes.readOnly).toBe(false);
     });
   });
 
@@ -860,6 +894,7 @@ class SimpleTimefield extends TimefieldTest {}
       [withTimepicker]="withTimepicker"
       [negative]="negative"
       [disabled]="disabled"
+      [readonly]="readonly"
       [required]="required"
     ></nx-timefield>
   `,

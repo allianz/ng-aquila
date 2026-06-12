@@ -24,6 +24,7 @@
           [style.width]="_hourInputWidth()"
           [required]="required"
           [disabled]="disabled"
+          [readonly]="readonly()"
           [placeholder]="placeholderHours()"
           aria-autocomplete="list"
           [attr.aria-required]="required"
@@ -51,6 +52,7 @@
           (keydown)="handleKeyDown($event)"
           [required]="required"
           [disabled]="disabled"
+          [readonly]="readonly()"
           [placeholder]="placeholderMinutes()"
           aria-autocomplete="list"
           [attr.aria-required]="required"
@@ -66,12 +68,12 @@
         <button
           nxFormfieldSuffix
           #toggleButton
-          [ngClass]="{ 'nx-timepicker-toggle--disabled': disabled }"
-          (click)="!disabled && toggleButtonClick()"
+          [ngClass]="{ 'nx-timepicker-toggle--disabled': disabled || readonly() }"
+          (click)="toggleButtonClick()"
           (focus)="_onFocus()"
           class="nx-timepicker-toggle-button"
           type="button"
-          [disabled]="disabled"
+          [disabled]="disabled || readonly()"
           [attr.aria-label]="intl.buttonOpenTimepickerAriaLabel"
           [attr.aria-expanded]="isOpen.toString()"
           [attr.aria-controls]="isOpen ? idOptionList : null"
@@ -84,6 +86,7 @@
       <nx-timefield-control
         [errorState]="errorState()"
         [disabled]="disabled"
+        [readonly]="readonly()"
         [required]="required"
         [value]="time"
         [focused]="hasFocus"
@@ -101,6 +104,7 @@
       (ngModelChange)="_updateTime()"
       (click)="_updateTime()"
       [disabled]="disabled"
+      [readonly]="readonly()"
       [variant]="timeToggleSize()"
       disableMobile
       [class.ndbx-formfield-toggle-align]="!a1Options?.enabled?.()"

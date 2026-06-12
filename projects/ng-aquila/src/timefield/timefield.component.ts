@@ -1,6 +1,7 @@
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
+import { getOverlayOffsetYForOutlineAppearance } from '@allianz/ng-aquila/dropdown';
 import {
   AppearanceType,
   FORMFIELD_DEFAULT_OPTIONS,
@@ -13,6 +14,7 @@ import {
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
 import { NxRadioToggleModule } from '@allianz/ng-aquila/radio-toggle';
+import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import {
   ErrorStateMatcher,
   IdGenerationService,
@@ -33,7 +35,6 @@ import {
   ContentChild,
   DestroyRef,
   DoCheck,
-  DOCUMENT,
   ElementRef,
   EventEmitter,
   forwardRef,
@@ -43,6 +44,7 @@ import {
   Injector,
   Input,
   input,
+  model,
   numberAttribute,
   OnChanges,
   OnDestroy,
@@ -72,7 +74,6 @@ import {
   Validator,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { getOverlayOffsetYForOutlineAppearance } from '@allianz/ng-aquila/dropdown';
 
 import { NxTimefieldIntl } from './timefield-intl';
 import { NxTimefieldOption } from './timefield-option';
@@ -162,6 +163,7 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
       useExisting: forwardRef(() => NxTimefieldComponent),
       multi: true,
     },
+    { provide: NxAbstractControl, useExisting: forwardRef(() => NxTimefieldComponent) },
   ],
   imports: [
     NgClass,
@@ -176,7 +178,15 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
   ],
 })
 export class NxTimefieldComponent
-  implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck, OnInit, OnChanges, Validator
+  implements
+    ControlValueAccessor,
+    AfterViewInit,
+    OnDestroy,
+    DoCheck,
+    OnInit,
+    OnChanges,
+    Validator,
+    NxAbstractControl
 {
   /** @docs-private */
   errorState: WritableSignal<boolean> = signal(false);
@@ -249,7 +259,7 @@ export class NxTimefieldComponent
 
   handleKeyDown(event: KeyboardEvent) {
     this._focusOrigin.set('keyboard');
-    if (!this.withTimepicker) {
+    if (!this.withTimepicker || this.readonly()) {
       return;
     }
     if (
@@ -424,6 +434,14 @@ export class NxTimefieldComponent
   readonly pickerEndTime = input(DEFAULT_END_TIME);
   readonly pickerTimeInterval = input(DEFAULT_TIME_SPAN, { transform: numberAttribute });
 
+  /** Whether the timefield is readonly. */
+  readonly readonly = model(false);
+
+  /** set readonly state */
+  setReadonly(value: boolean): void {
+    this.readonly.set(value);
+  }
+
   /** Whether the timefield is disabled. */
   @Input() set disabled(value: BooleanInput) {
     const newValue = coerceBooleanProperty(value);
@@ -592,7 +610,7 @@ export class NxTimefieldComponent
   }
 
   openOverlay() {
-    if (this.disabled) {
+    if (this.disabled || this.readonly()) {
       return;
     }
     this._overlayWidth = this.overlayOrigin.nativeElement.getBoundingClientRect().width;

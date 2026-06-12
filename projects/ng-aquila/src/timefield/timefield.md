@@ -65,6 +65,12 @@ With `[disabled]` the timefield inputs and radio group can be disabled.
 
 <!-- example(timefield-disabled) -->
 
+### Readonly
+
+With `[readonly]` the timefield inputs and radio group can be set to readonly.
+
+<!-- example(timefield-readonly) -->
+
 ### Negative styling
 
 You can apply the negative styling to the timefield by using the `[negative]` input.
