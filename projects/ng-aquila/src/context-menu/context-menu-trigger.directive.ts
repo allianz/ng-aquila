@@ -1,5 +1,5 @@
 import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
-import { FocusOrigin } from '@angular/cdk/a11y';
+import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import {
@@ -196,6 +196,9 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
   private _rightClicked = false;
 
+  /** The focus origin the context menu was last opened with, used to restore focus on close. */
+  private _openedBy: FocusOrigin = null;
+
   constructor(
     private readonly _overlay: Overlay,
     private readonly _element: ElementRef<HTMLElement>,
@@ -209,6 +212,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     @Inject(NX_CONTEXT_MENU_SCROLL_STRATEGY)
     private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
     private readonly _cdr: ChangeDetectorRef,
+    private readonly _focusMonitor: FocusMonitor,
   ) {
     if (_contextMenuItemInstance) {
       _contextMenuItemInstance._triggersSubmenu = this.triggersSubmenu();
@@ -257,6 +261,8 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     if (this.contextMenuOpen) {
       return;
     }
+
+    this._openedBy = origin ?? null;
 
     this._checkContextMenu();
 
@@ -348,9 +354,19 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
   /**
    * Focuses the context menu trigger.
+   *
+   * When an origin is provided, focus is restored through the `FocusMonitor` so the
+   * trigger reflects the correct focus origin (e.g. shows the keyboard focus indicator).
+   * Relying on the browser/`FocusMonitor` heuristic alone is unreliable here because
+   * SPACE activates a menu item on `keyup` and the menu closes after an exit animation,
+   * by which point the keyboard interaction is no longer detected.
    */
-  focus() {
-    this._element.nativeElement.focus();
+  focus(origin?: FocusOrigin) {
+    if (origin) {
+      this._focusMonitor.focusVia(this._element.nativeElement, origin);
+    } else {
+      this._element.nativeElement.focus();
+    }
   }
 
   /**
@@ -359,7 +375,8 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
    */
   private _resetContextMenu(): void {
     this._setIsContextMenuOpen(false);
-    this.focus();
+    this.focus(this._openedBy);
+    this._openedBy = null;
   }
 
   /** Set state rather than toggle to support triggers sharing a menu. */

@@ -2,6 +2,7 @@ import { NxButtonComponent, NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
 import { NxIconComponent, NxIconModule } from '@allianz/ng-aquila/icon';
 import { fakeScrollStrategyFunction } from '@allianz/ng-aquila/utils';
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import {
   DOWN_ARROW,
@@ -11,6 +12,7 @@ import {
   HOME,
   LEFT_ARROW,
   RIGHT_ARROW,
+  SPACE,
   TAB,
 } from '@angular/cdk/keycodes';
 import { OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
@@ -686,6 +688,59 @@ describe('nxContextMenu', () => {
 
       expect(item!.textContent!.trim()).toBe('two');
       flush();
+    }));
+  });
+
+  describe('focus restoration on close', () => {
+    // Restoring focus through the FocusMonitor with the keyboard origin is what makes
+    // the trigger show its focus indicator after the menu closes. The browser's own
+    // heuristic is unreliable here, especially for SPACE (which activates on keyup
+    // after the menu's exit animation), so we assert the deterministic mechanism.
+    function openViaKeyboardAndActivate(keyCode: number) {
+      const fixture = createComponent(SimpleMenu);
+      const triggerEl = fixture.componentInstance.triggerEl.nativeElement;
+      const focusMonitor = TestBed.inject(FocusMonitor);
+      const focusViaSpy = spyOn(focusMonitor, 'focusVia').and.callThrough();
+
+      // keyboard open (click with no preceding mousedown / detail 0)
+      triggerEl.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      fixture.detectChanges();
+      flush();
+
+      const panel = overlayContainerElement.querySelector('.nx-context-menu') as HTMLElement;
+      const items = Array.from(
+        panel.querySelectorAll('.nx-context-menu-item'),
+      ) as HTMLButtonElement[];
+      const first = items[0];
+      first.focus();
+      fixture.detectChanges();
+      focusViaSpy.calls.reset();
+
+      // simulate native button: ENTER fires click on keydown, SPACE on keyup
+      dispatchKeyboardEvent(first, 'keydown', keyCode);
+      if (keyCode === ENTER) {
+        first.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      } else {
+        dispatchKeyboardEvent(first, 'keyup', keyCode);
+        first.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      }
+      fixture.detectChanges();
+      tick(500);
+      flush();
+
+      return { fixture, triggerEl, focusViaSpy };
+    }
+
+    it('restores keyboard focus to the trigger when an item is activated with ENTER', fakeAsync(() => {
+      const { triggerEl, focusViaSpy } = openViaKeyboardAndActivate(ENTER);
+      expect(focusViaSpy).toHaveBeenCalledWith(triggerEl as any, 'keyboard');
+      expect(document.activeElement).toBe(triggerEl);
+    }));
+
+    it('restores keyboard focus to the trigger when an item is activated with SPACE', fakeAsync(() => {
+      const { triggerEl, focusViaSpy } = openViaKeyboardAndActivate(SPACE);
+      expect(focusViaSpy).toHaveBeenCalledWith(triggerEl as any, 'keyboard');
+      expect(document.activeElement).toBe(triggerEl);
     }));
   });
 
