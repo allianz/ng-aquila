@@ -258,15 +258,18 @@
 :host(.nx-sidebar__toggle-button) {
   padding: v(icon-button-medium-padding);
   flex: 0 0 auto;
+  line-height: 1;
 
   &.nx-button--small {
     width: v(button-small-height);
     font-size: v(icon-button-small-icon-size);
+    padding: v(icon-button-small-padding);
   }
 
   &.nx-button--small-medium {
     width: v(button-small-medium-height);
     font-size: v(icon-button-small-medium-icon-size);
+    padding: v(icon-button-small-medium-padding);
   }
 
   &.nx-button--medium {

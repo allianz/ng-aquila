@@ -1,18 +1,60 @@
-<button nxIconButton="primary" aria-label="send mail" type="button">
-  <nx-icon name="mail-o" aria-hidden="true"></nx-icon>
-</button>
-<button nxIconButton="secondary" aria-label="like on facebook" type="button">
-  <nx-icon name="facebook" aria-hidden="true"></nx-icon>
-</button>
-<button nxIconButton="tertiary" aria-label="tweet" type="button">
-  <nx-icon name="twitter" aria-hidden="true"></nx-icon>
-</button>
-<button nxIconButton="cta" aria-label="send mail" type="button">
-  <nx-icon name="mail" aria-hidden="true"></nx-icon>
-</button>
-<button nxIconButton="emphasis" aria-label="send mail" type="button">
-  <nx-icon name="mail-o" aria-hidden="true"></nx-icon>
-</button>
-<button nxIconButton="attention" disabled aria-label="send mail" type="button">
-  <nx-icon name="mail-o" aria-hidden="true"></nx-icon>
-</button>
+<nx-formfield label="Icon button size">
+  <nx-dropdown [(ngModel)]="size">
+    <nx-dropdown-item value="small">Small</nx-dropdown-item>
+    <nx-dropdown-item value="small-medium">Small-Medium</nx-dropdown-item>
+    <nx-dropdown-item value="medium">Medium</nx-dropdown-item>
+    <nx-dropdown-item value="large">Large</nx-dropdown-item>
+  </nx-dropdown>
+</nx-formfield>
+
+<div class="buttons">
+  <button
+    nxIconButton="primary"
+    [size]="size()"
+    aria-label="send mail"
+    type="button"
+  >
+    <nx-icon name="mail-o" aria-hidden="true"></nx-icon>
+  </button>
+  <button
+    nxIconButton="secondary"
+    [size]="size()"
+    aria-label="like on facebook"
+    type="button"
+  >
+    <nx-icon name="facebook" aria-hidden="true"></nx-icon>
+  </button>
+  <button
+    nxIconButton="tertiary"
+    [size]="size()"
+    aria-label="tweet"
+    type="button"
+  >
+    <nx-icon name="twitter" aria-hidden="true"></nx-icon>
+  </button>
+  <button
+    nxIconButton="cta"
+    [size]="size()"
+    aria-label="send mail"
+    type="button"
+  >
+    <nx-icon name="mail" aria-hidden="true"></nx-icon>
+  </button>
+  <button
+    nxIconButton="emphasis"
+    [size]="size()"
+    aria-label="send mail"
+    type="button"
+  >
+    <nx-icon name="mail-o" aria-hidden="true"></nx-icon>
+  </button>
+  <button
+    nxIconButton="attention"
+    [size]="size()"
+    disabled
+    aria-label="send mail"
+    type="button"
+  >
+    <nx-icon name="mail-o" aria-hidden="true"></nx-icon>
+  </button>
+</div>

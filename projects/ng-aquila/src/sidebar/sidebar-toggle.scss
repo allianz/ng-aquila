@@ -10,30 +10,11 @@
   // always place toggle on the right
   order: 100;
 
-  .nx-sidebar__toggle-icons-container {
-    display: flex;
-
-    nx-icon {
-      font-size: nx-font-size(s);
-      margin-left: 2px;
-    }
-
-    nx-icon:last-child {
-      margin-left: -18px;
-    }
+  nx-icon {
+    transform: rotate(-90deg);
 
     [dir='rtl'] & {
-      transform: rotate(180deg);
-
-      nx-icon {
-        margin-right: 2px;
-        margin-left: initial;
-      }
-
-      nx-icon:last-child {
-        margin-right: -18px;
-        margin-left: initial;
-      }
+      transform: rotate(90deg);
     }
   }
 }

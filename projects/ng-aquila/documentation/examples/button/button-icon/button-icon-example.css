@@ -1,4 +1,8 @@
 :host {
+  display: block;
+}
+
+.buttons {
   display: flex;
   flex-wrap: wrap;
   margin: -4px;
