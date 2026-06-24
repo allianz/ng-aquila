@@ -5,6 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+a1Full: true
 alias: progress spinner, loading, loader
 a1Densities: true
 group: Data Display

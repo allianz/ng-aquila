@@ -5,6 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
+a1Full: true
 alias: otp, pin input
 a1Densities: true
 group: Forms & Inputs
