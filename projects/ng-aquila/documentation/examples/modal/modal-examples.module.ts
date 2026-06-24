@@ -16,6 +16,7 @@ import { ModalClosingExampleComponent } from './modal-closing/modal-closing-exam
 import { ModalClosingBehaviourExampleComponent } from './modal-closing-behaviour/modal-closing-behaviour-example';
 import { ModalContentActionsExampleComponent } from './modal-content-actions/modal-content-actions-example';
 import { ModalDataInjectionExampleComponent } from './modal-data-injection/modal-data-injection-example';
+import { ModalDefaultOptionsExampleComponent } from './modal-default-options/modal-default-options-example';
 import { ModalFixedWidthExampleComponent } from './modal-fixed-width/modal-fixed-width-example';
 import { ModalFullscreenExampleComponent } from './modal-fullscreen/modal-fullscreen-example';
 import { ModalOpeningExampleComponent } from './modal-opening/modal-opening-example';
@@ -32,6 +33,7 @@ const EXAMPLES = [
   ModalClosingBehaviourExampleComponent,
   ModalContentActionsExampleComponent,
   ModalDataInjectionExampleComponent,
+  ModalDefaultOptionsExampleComponent,
   ModalFixedWidthExampleComponent,
   ModalOpeningExampleComponent,
   ModalWithDirectionExampleComponent,
@@ -65,6 +67,7 @@ export class ModalExamplesModule {
       'modal-closing-behaviour': ModalClosingBehaviourExampleComponent,
       'modal-content-actions': ModalContentActionsExampleComponent,
       'modal-data-injection': ModalDataInjectionExampleComponent,
+      'modal-default-options': ModalDefaultOptionsExampleComponent,
       'modal-fixed-width': ModalFixedWidthExampleComponent,
       'modal-fullscreen': ModalFullscreenExampleComponent,
       'modal-opening': ModalOpeningExampleComponent,

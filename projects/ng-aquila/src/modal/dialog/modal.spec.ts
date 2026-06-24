@@ -1872,6 +1872,106 @@ describe('NxDialog with default options', () => {
 
     expect(overlayContainerElement.querySelector('nx-modal-container')).toBeFalsy();
   }));
+
+  it('should preserve NxModalConfig base defaults (e.g. role) when NX_MODAL_DEFAULT_OPTIONS is set', () => {
+    const modalRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+    viewContainerFixture.detectChanges();
+
+    const dialogContainer = overlayContainerElement.querySelector('nx-modal-container');
+
+    // role is not part of the provided default options, so it must fall back to the
+    // NxModalConfig base default instead of being dropped to undefined.
+    expect(dialogContainer?.getAttribute('role')).toBe('dialog');
+
+    // Other base defaults that are not part of the provided default options must survive too.
+    const config = modalRef['_containerInstance']._config;
+    expect(config.showCloseIcon).toBe(false);
+    expect(config.closeIconButtonLabel).toBe('Close dialog');
+    expect(config.restoreFocus).toBe(true);
+    expect(config.closeOnNavigation).toBe(true);
+    expect(typeof config.shouldClose).toBe('function');
+
+    // `direction` is intentionally not seeded from the base defaults so that an
+    // unset direction can still fall back to the app-wide Directionality service.
+    expect(config.direction).toBeUndefined();
+  });
+
+  it('should not force a direction when none is provided so the CDK Directionality fallback applies', fakeAsync(() => {
+    // No direction in the provided default options and none at the call site, so the
+    // overlay must inherit the app-wide direction (here the default ltr) instead of a
+    // hard-coded 'ltr' baked into the merged config.
+    const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+    viewContainerFixture.detectChanges();
+
+    expect(dialogRef['_containerInstance']._config.direction).toBeUndefined();
+    expect((dialogRef as any)._overlayRef.getDirection()).toBe('ltr');
+  }));
+
+  it('should let a provided default direction win over the CDK fallback', fakeAsync(() => {
+    TestBed.resetTestingModule().configureTestingModule({
+      imports: [NxModalModule, DialogTestModule],
+      providers: [
+        {
+          provide: NX_MODAL_DEFAULT_OPTIONS,
+          useValue: { direction: 'rtl' },
+        },
+      ],
+    });
+
+    dialog = TestBed.inject(NxDialogService);
+    overlayContainer = TestBed.inject(OverlayContainer);
+    overlayContainerElement = overlayContainer.getContainerElement();
+
+    viewContainerFixture = TestBed.createComponent(ComponentWithChildViewContainer);
+    viewContainerFixture.detectChanges();
+    testViewContainerRef = viewContainerFixture.componentInstance.childViewContainer;
+
+    const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+    viewContainerFixture.detectChanges();
+
+    expect(dialogRef['_containerInstance']._config.direction).toBe('rtl');
+    expect((dialogRef as any)._overlayRef.getDirection()).toBe('rtl');
+  }));
+
+  it('should let open() direction override a provided default direction', fakeAsync(() => {
+    const dialogRef = dialog.open(PizzaMsg, {
+      viewContainerRef: testViewContainerRef,
+      direction: 'rtl',
+    });
+    viewContainerFixture.detectChanges();
+
+    expect(dialogRef['_containerInstance']._config.direction).toBe('rtl');
+    expect((dialogRef as any)._overlayRef.getDirection()).toBe('rtl');
+  }));
+
+  it('should let provided default options override base defaults', () => {
+    const modalRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+    viewContainerFixture.detectChanges();
+
+    // The provided default options set these, so they must win over the base defaults.
+    const config = modalRef['_containerInstance']._config;
+    expect(config.hasBackdrop).toBe(false);
+    expect(config.disableClose).toBe(true);
+    expect(config.width).toBe('100px');
+  });
+
+  it('should let open() config override both provided defaults and base defaults', () => {
+    const modalRef = dialog.open(PizzaMsg, {
+      viewContainerRef: testViewContainerRef,
+      // overrides a provided default option...
+      width: '200px',
+      // ...and a base default not present in the provided default options.
+      role: 'alertdialog',
+    });
+    viewContainerFixture.detectChanges();
+
+    const config = modalRef['_containerInstance']._config;
+    expect(config.width).toBe('200px');
+    expect(config.role).toBe('alertdialog');
+    expect(overlayContainerElement.querySelector('nx-modal-container')?.getAttribute('role')).toBe(
+      'alertdialog',
+    );
+  });
 });
 
 @Directive({

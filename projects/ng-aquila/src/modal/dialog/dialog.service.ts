@@ -144,7 +144,7 @@ export class NxDialogService implements OnDestroy {
     componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
     config?: NxModalConfig<D>,
   ): NxModalRef<T, R> {
-    config = _applyConfigDefaults(config, this._defaultOptions || new NxModalConfig());
+    config = _applyConfigDefaults(config, this._defaultOptions);
 
     if (config.id && this.getModalById(config.id)) {
       throw Error(`Modal with id "${config.id}" exists already. The modal id must be unique.`);
@@ -489,14 +489,22 @@ export class NxDialogService implements OnDestroy {
 }
 
 /**
- * Applies default options to the modal config.
+ * Applies default options to the modal config. Merges in order: base defaults → user-provided
+ * default options → call-site config, so that NX_MODAL_DEFAULT_OPTIONS overrides base defaults
+ * but never silently drops properties (e.g. role) that are not set by the consumer. The base
+ * `direction` is intentionally not seeded so an unset direction keeps falling back CDK default.
  * @param config Config to be modified.
- * @param defaultOptions Default options provided.
+ * @param defaultOptions Default options provided via NX_MODAL_DEFAULT_OPTIONS. Nullish means no defaults were provided.
  * @returns The new configuration object.
  */
 function _applyConfigDefaults(
   config?: NxModalConfig,
-  defaultOptions?: NxModalConfig,
+  defaultOptions?: NxModalConfig | null,
 ): NxModalConfig {
-  return { ...defaultOptions, ...config };
+  const baseDefaults = new NxModalConfig();
+  // `direction` is the one base default with an external fallback: when it is left
+  // unset, the CDK overlay falls back to the CDK default (which may be `rtl`). Seeding the base `'ltr'` here would always force LTR and silently
+  // break RTL apps, so we drop it and only honour an explicitly provided direction.
+  delete baseDefaults.direction;
+  return { ...baseDefaults, ...defaultOptions, ...config };
 }

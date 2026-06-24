@@ -128,17 +128,23 @@ If you are using a template for the content of your dialog the data object will 
 
 ### Global Settings
 
-You can also overwrite the default dialog configuration by using the NX_MODAL_DEFAULT_CONFIG injection token as shown in the code snippet below:
+You can also overwrite the default dialog configuration by using the `NX_MODAL_DEFAULT_OPTIONS` injection token as shown in the code snippet below. Only the options you set are overridden; all other `NxModalConfig` defaults (such as `role` or `hasBackdrop`) are preserved.
 
 ```ts
 @NgModule({
   providers: [
     {
-        provide: NX_MODAL_DEFAULT_OPTIONS,
-        useValue: { width: 700px, showCloseIcon: true}
-    }
-  ]
+      provide: NX_MODAL_DEFAULT_OPTIONS,
+      useValue: { width: '600px', showCloseIcon: true },
+    },
+  ],
+})
+export class AppModule {}
 ```
+
+Options passed directly to `NxDialogService.open()` take precedence over the provided defaults:
+
+<!-- example(modal-default-options) -->
 
 If you want to use a custom scroll strategy, you can use the `NX_MODAL_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
 
