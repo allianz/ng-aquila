@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 21.10.0 (2026-06-25)
+
+
+### Documentation 📚
+
+* **date-range:** clarify date range validation inputs ([add88fb](https://github.com/allianz/ng-aquila/commit/add88fb2bd20e43d8edefaa9c289c7e134d6119f))
+* **list:** show more examples for nested list ([b402406](https://github.com/allianz/ng-aquila/commit/b40240682a3cecd261a51390a89d6240973f8159))
+* **spinner:** update docs for inverse style ([85847f3](https://github.com/allianz/ng-aquila/commit/85847f34d62c19696b64fa703e558f381394458d))
+* **tag:** add count example ([c7db38e](https://github.com/allianz/ng-aquila/commit/c7db38eb4bb39ac3c7a9929f3fa803bbbcdfbc50))
+
+
+### Bug Fixes 🐛
+
+* **checkbox:** correct checkbox error margin for NDBX ([5c6be5a](https://github.com/allianz/ng-aquila/commit/5c6be5aa00e7d6f033fed83c4d1c3aec21775a88))
+* **context-menu:** restore keyboard focus indicator on SPACE ([a3028d2](https://github.com/allianz/ng-aquila/commit/a3028d2a7a3a1312265ecf3893586797c61169f3))
+* **date-range:** adjust date range style ([080f20d](https://github.com/allianz/ng-aquila/commit/080f20d6dff10ec7829c51e946e03dee6f290178))
+* **dropdown:** rerender when options array changes ([f6a5878](https://github.com/allianz/ng-aquila/commit/f6a5878db711ea9d88232eaa615c710c1e0ba50a))
+* **licence-plate:** correct disable color ([9a7e57d](https://github.com/allianz/ng-aquila/commit/9a7e57d775a62da311f8b6e3f31a65a970c6174a))
+* **modal:** preserve base defaults when NX_MODAL_DEFAULT_OPTIONS is set ([8199795](https://github.com/allianz/ng-aquila/commit/8199795a95cd13592c435202a258db5c24585fff)), closes [#5109](https://github.com/allianz/ng-aquila/issues/5109)
+* **radio-toggle:** prevent keyboard interaction on readonly button ([0462f05](https://github.com/allianz/ng-aquila/commit/0462f05c386364021c6dbf823ed894ae816ca5c9))
+* **small-stage:** support emphasis color ([736932a](https://github.com/allianz/ng-aquila/commit/736932a6c4d84e992db085cd064de9a7b5354f6d))
+* **timefield:** make readonly works ([c647387](https://github.com/allianz/ng-aquila/commit/c647387a33cf61742b86ab1ab83a973eee6a1d42))
+
+
+### Features ✨
+
+* **autocomplete:** move focus ring from option content to option item ([aecb1a5](https://github.com/allianz/ng-aquila/commit/aecb1a54788357602b7aead8c1b2d6cbdd58c5fb))
+* **button:** add icon button padding tokens for A1 ([ced4828](https://github.com/allianz/ng-aquila/commit/ced48284c362d8507547f13a05207a06e29f36ce))
+* **comparison-table:** add tokens for A1  ([41a1d45](https://github.com/allianz/ng-aquila/commit/41a1d45165b839e84924184d765c9bb92831facc))
+* **context-menu:** indent items depending on icon-bearing sibling items ([a8447fc](https://github.com/allianz/ng-aquila/commit/a8447fc73a81e2b5328a24a0697462409aaadb98))
+* **data-display:** edit size variation in our document ([b31e6e4](https://github.com/allianz/ng-aquila/commit/b31e6e4ba9c6d5688338a7044fef96b088a5c531))
+* **dropdown:** move focus ring from option content to option item ([8521cf7](https://github.com/allianz/ng-aquila/commit/8521cf7aef52b62f5e36f0dd3a1fb161f9957546))
+* **headline:** map inverse style ([ad6606c](https://github.com/allianz/ng-aquila/commit/ad6606cc419c6f868e3b310212b419f48398cc41))
+* **number-stepper:** replace sizes with A1 t-shirt sizes ([821c75c](https://github.com/allianz/ng-aquila/commit/821c75cb2be04fb26bf618a3fbc06d924421e277))
+* **sidepanel:** support emphasis color ([11e8acf](https://github.com/allianz/ng-aquila/commit/11e8acfe0e218447538216d523a92f56ac59e7d6))
+* **spinner:** map T-shirt sizes ([0a34c1f](https://github.com/allianz/ng-aquila/commit/0a34c1f1a87b978b6c3337fd997821d2196e4810))
+* **table:** update chevron style for expandable table ([677df45](https://github.com/allianz/ng-aquila/commit/677df4536cd09046c776c83d90937cf8b86b5a99))
+* **tag:** add nxTagCount attribute ([2d6f369](https://github.com/allianz/ng-aquila/commit/2d6f3697301e04a154a89defd9db1e798b73c4c9))
+
+### Deprecations ⚠️
+
+* **headline:** The `headline-negative-secondary-color` token has been renamed to `headline-inverse-secondary-color`.
+
 ## 21.9.0 (2026-05-19)
 
 
