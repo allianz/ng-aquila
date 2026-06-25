@@ -19,13 +19,23 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-m&quot;</span>&gt;</span>Content projection<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter by product&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
-  @for (tag of tags(); track tag) {
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag&quot;</span>&gt;</span>{{ tag | titlecase }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+  @for (tag of tagsWithCount(); track tag.label) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.label&quot;</span>&gt;</span>
+    {{ tag.label | titlecase }}
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxTagCount</span>
+      &gt;</span>{{ tag.count }}<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cdk-visually-hidden&quot;</span>&gt;</span> items<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>&lt;/span
+    &gt;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
   }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">removable</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Filter by product&quot;</span>&gt;</span>
-  @for (tag of tags(); track tag) {
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> (<span class="hljs-attr">removed</span>)=<span class="hljs-string">&quot;removeTag(tag)&quot;</span>&gt;</span>{{ tag | titlecase }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+  @for (tag of tagsWithCount(); track tag.label) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tag.label&quot;</span> (<span class="hljs-attr">removed</span>)=<span class="hljs-string">&quot;removeTagWithCount(tag.label)&quot;</span>&gt;</span>
+    {{ tag.label | titlecase }}
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxTagCount</span>
+      &gt;</span>{{ tag.count }}<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cdk-visually-hidden&quot;</span>&gt;</span> items<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>&lt;/span
+    &gt;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
   }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>

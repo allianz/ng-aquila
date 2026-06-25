@@ -17,6 +17,7 @@ import { ExamplesSharedModule } from '../examples-shared.module';
 import { BreakdownTableExampleComponent } from './breakdown-table/breakdown-table-example';
 import { BreakdownTableExpertExampleComponent } from './breakdown-table-expert/breakdown-table-expert-example';
 import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
+import { ComparisonTableBreakpointPlaygroundExampleComponent } from './comparison-table-breakpoint-playground/comparison-table-breakpoint-playground-example';
 import { ComparisonTableDisabledColumnsExampleComponent } from './comparison-table-disabled-columns/comparison-table-disabled-columns-example';
 import { ComparisonTableDynamicExampleComponent } from './comparison-table-dynamic/comparison-table-dynamic-example';
 import { ComparisonTableErrorExampleComponent } from './comparison-table-error/comparison-table-error-example';
@@ -24,6 +25,7 @@ import { ComparisonTableExpandableAreaExampleComponent } from './comparison-tabl
 import { ComparisonTableFormElementsExampleComponent } from './comparison-table-form-elements/comparison-table-form-elements-example';
 import { ComparisonTableHiddenColumnsExampleComponent } from './comparison-table-hidden-columns/comparison-table-hidden-columns-example';
 import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-table-non-sticky-header/comparison-table-non-sticky-header-example';
+import { ComparisonTableOverflowExampleComponent } from './comparison-table-overflow/comparison-table-overflow-example';
 import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-group/comparison-table-row-group-example';
 import { ComparisonTableStaticExampleComponent } from './comparison-table-static/comparison-table-static-example';
 import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
@@ -44,6 +46,8 @@ const EXAMPLES = [
   ComparisonTableExpandableAreaExampleComponent,
   ComparisonTableHiddenColumnsExampleComponent,
   ComparisonTableNonStickyHeaderExampleComponent,
+  ComparisonTableOverflowExampleComponent,
+  ComparisonTableBreakpointPlaygroundExampleComponent,
   BreakdownTableExampleComponent,
   BreakdownTableExpertExampleComponent,
   RecommendationTableExampleComponent,
@@ -92,6 +96,9 @@ export class ComparisonExamplesModule {
         ComparisonTableHiddenColumnsExampleComponent,
       'comparison-table-non-sticky-header':
         ComparisonTableNonStickyHeaderExampleComponent,
+      'comparison-table-overflow': ComparisonTableOverflowExampleComponent,
+      'comparison-table-breakpoint-playground':
+        ComparisonTableBreakpointPlaygroundExampleComponent,
       'breakdown-table': BreakdownTableExampleComponent,
       'breakdown-table-expert': BreakdownTableExpertExampleComponent,
       'recommendation-table': RecommendationTableExampleComponent,

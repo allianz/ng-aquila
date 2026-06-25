@@ -10,6 +10,7 @@ import { SidepanelFloatingExampleComponent } from './sidepanel-floating/sidepane
 import { SidepanelFocuskExampleComponent } from './sidepanel-focus/sidepanel-focus-example';
 import { SidepanelLightExampleComponent } from './sidepanel-light/sidepanel-light-example';
 import { SidepanelStaticExampleComponent } from './sidepanel-static/sidepanel-static-example';
+import { SidepanelWithColorSchemeExampleComponent } from './sidepanel-with-color-scheme/sidepanel-with-color-scheme-example';
 import { SidepanelWithTabsExampleComponent } from './sidepanel-with-tabs/sidepanel-with-tabs-example';
 
 const EXAMPLES = [
@@ -19,6 +20,7 @@ const EXAMPLES = [
   SidepanelWithTabsExampleComponent,
   SidepanelDarkExampleComponent,
   SidepanelFocuskExampleComponent,
+  SidepanelWithColorSchemeExampleComponent,
 ];
 
 @NgModule({
@@ -41,6 +43,7 @@ export class SidepanelExamplesModule {
       'sidepanel-with-tabs': SidepanelWithTabsExampleComponent,
       'sidepanel-dark': SidepanelDarkExampleComponent,
       'sidepanel-focus': SidepanelFocuskExampleComponent,
+      'sidepanel-with-color-scheme': SidepanelWithColorSchemeExampleComponent,
     };
   }
 }

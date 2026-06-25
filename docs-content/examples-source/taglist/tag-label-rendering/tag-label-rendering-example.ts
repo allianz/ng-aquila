@@ -24,13 +24,27 @@ import { Component, signal } from '@angular/core';
   ],
 })
 export class TagLabelRenderingExampleComponent {
-  tags = signal(['fruits', 'vegetables', 'meat', 'fish']);
+  private readonly initialTags = ['fruits', 'vegetables', 'meat', 'fish'];
+  private readonly initialTagsWithCount = [
+    { label: 'fruits', count: 2 },
+    { label: 'vegetables', count: 5 },
+    { label: 'meat', count: 3 },
+    { label: 'fish', count: 8 },
+  ];
+
+  tags = signal([...this.initialTags]);
+  tagsWithCount = signal([...this.initialTagsWithCount]);
 
   removeTag(tag: string) {
     this.tags.update((tags) => tags.filter((t) => t !== tag));
   }
 
+  removeTagWithCount(label: string) {
+    this.tagsWithCount.update((tags) => tags.filter((t) => t.label !== label));
+  }
+
   reset() {
-    this.tags.set(['fruits', 'vegetables', 'meat', 'fish']);
+    this.tags.set([...this.initialTags]);
+    this.tagsWithCount.set([...this.initialTagsWithCount]);
   }
 }

@@ -19,6 +19,11 @@ From now on the supported patterns are for multi selection filter tags and delet
 <h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
 <p class="docs-markdown--p">Use the <code>inverse</code> input on <code>nx-tag-group</code> to apply the inverse style.</p>
 <div nx-docs-example="tag-inverse" config="{}">exampleID: tag-inverse</div>
+<h3 id="tag-with-count" tabindex="-1" class="docs-markdown--h3">Tag with count</h3>
+<p class="docs-markdown--p">Project a <code>&lt;span nxTagCount&gt;</code> next to the label to show a secondary count or badge. The count color follows the tag's state (selected, readonly, disabled, inverse) automatically.</p>
+<p class="docs-markdown--p">For accessibility, a bare number reads ambiguously to screen readers (e.g. &quot;Bugs 12&quot;). Add a <code>cdk-visually-hidden</code> span inside the count to clarify what the number represents.</p>
+<p class="docs-markdown--p">Alternatively, set <code>aria-label</code> on the <code>nx-tag</code> to override the accessible name entirely.</p>
+<div nx-docs-example="tag-count" config="{}">exampleID: tag-count</div>
 <h3 id="customizing-the-label-content" tabindex="-1" class="docs-markdown--h3">Customizing the label content</h3>
 <p class="docs-markdown--p">By default the tag will show the value input as the text. Instead of the value you can provide your own template by providing it as content.</p>
 <div nx-docs-example="tag-label-rendering" config="{}">exampleID: tag-label-rendering</div>

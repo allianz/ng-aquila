@@ -4,19 +4,48 @@
     <button nxContextMenuItem type="button">Download</button>
   </nx-context-menu-group>
   <nx-divider />
-  <nx-context-menu-group label="More Options">
-    <button nxContextMenuItem type="button">Share</button>
-    <button nxContextMenuItem type="button">Archive</button>
+  <nx-context-menu-group label="Edit">
+    <button nxContextMenuItem type="button">Undo</button>
+    <button nxContextMenuItem type="button">Redo</button>
+    <button nxContextMenuItem type="button">
+      <nx-icon aria-hidden="true" name="cut"></nx-icon>Cut
+    </button>
+    <button nxContextMenuItem type="button">
+      <nx-icon aria-hidden="true" name="duplicate"></nx-icon>
+      Copy
+    </button>
+    <button nxContextMenuItem type="button">Paste</button>
+    <button
+      nxContextMenuItem
+      [nxContextMenuTriggerFor]="copyAsSubMenu"
+      type="button"
+    >
+      <nx-icon aria-hidden="true" name="download"></nx-icon>
+      Copy As
+    </button>
   </nx-context-menu-group>
   <nx-divider />
-  <nx-context-menu-group>
-    <button nxContextMenuItem type="button">No Label Item 1</button>
-    <button nxContextMenuItem type="button">No Label Item 2</button>
+  <nx-context-menu-group label="More">
+    <button
+      nxContextMenuItem
+      [nxContextMenuTriggerFor]="openWithSubMenu"
+      type="button"
+    >
+      Open With
+    </button>
+    <button nxContextMenuItem type="button">Properties</button>
   </nx-context-menu-group>
-  <nx-divider />
-  <nx-context-menu-group label="Support">
-    <button nxContextMenuItem type="button">Help</button>
-  </nx-context-menu-group>
+</nx-context-menu>
+
+<nx-context-menu #copyAsSubMenu="nxContextMenu">
+  <button nxContextMenuItem type="button">CSS</button>
+  <button nxContextMenuItem type="button">SVG</button>
+  <button nxContextMenuItem type="button">PNG</button>
+</nx-context-menu>
+
+<nx-context-menu #openWithSubMenu="nxContextMenu">
+  <button nxContextMenuItem type="button">Editor</button>
+  <button nxContextMenuItem type="button">Browser</button>
 </nx-context-menu>
 
 <button

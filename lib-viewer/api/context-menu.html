@@ -635,11 +635,31 @@ It is responsible for toggling the display of the provided context menu instance
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">focus()</span>
+            <span class="docs-api-method-name">focus(
+                            origin?:  
+                                <span class="docs-api-property__type">
+                                    FocusOrigin
+                                </span>
+                        )</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Focuses the context menu trigger.</p>
-</div></div>
+<p>When an origin is provided, focus is restored through the <code>FocusMonitor</code> so the
+trigger reflects the correct focus origin (e.g. shows the keyboard focus indicator).
+Relying on the browser/<code>FocusMonitor</code> heuristic alone is unreliable here because
+SPACE activates a menu item on <code>keyup</code> and the menu closes after an exit animation,
+by which point the keyboard interaction is no longer detected.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                origin<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">FocusOrigin</span>
+            </code>
+        </div>
+        
+    </div></div>
    
 
 <div class="docs-api-method-card">

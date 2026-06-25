@@ -1,0 +1,21 @@
+<button nxButton class="nx-margin-right-xs" (click)="openWithDefaults()">
+  open with defaults
+</button>
+<button nxButton="secondary" (click)="openWithOverride()">
+  open with per-call override
+</button>
+
+<ng-template #template>
+  <div class="u-text-center">
+    <h3 nxHeadline="subsection-medium" class="nx-modal-margin-bottom">
+      Modal with global default options
+    </h3>
+    <p nxCopytext="small" class="nx-modal-margin-bottom">
+      This dialog uses the <code>width</code> and
+      <code>showCloseIcon</code> values provided through the
+      <code>NX_MODAL_DEFAULT_OPTIONS</code> token, while all other defaults
+      (such as the dialog <code>role</code>) are preserved.
+    </p>
+    <button nxButton (click)="closeDialog()">Close</button>
+  </div>
+</ng-template>

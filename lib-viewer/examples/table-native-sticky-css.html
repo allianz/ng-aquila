@@ -1,0 +1,49 @@
+<span class="hljs-comment">/* The scroll container: scrolls horizontally and vertically. */</span>
+<span class="hljs-selector-class">.sticky-table-container</span> {
+  <span class="hljs-attribute">max-height</span>: <span class="hljs-number">300px</span>;
+  <span class="hljs-attribute">overflow</span>: auto;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#d4d4d4</span>;
+}
+
+<span class="hljs-selector-class">.sticky-table</span> {
+  <span class="hljs-attribute">border-collapse</span>: collapse;
+  <span class="hljs-comment">/* Wider than the container so it scrolls horizontally. */</span>
+  <span class="hljs-attribute">width</span>: max-content;
+  <span class="hljs-attribute">font-family</span>: sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+}
+
+<span class="hljs-selector-class">.sticky-table</span> <span class="hljs-selector-tag">th</span>,
+<span class="hljs-selector-class">.sticky-table</span> <span class="hljs-selector-tag">td</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span> <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#e4e4e4</span>;
+  <span class="hljs-attribute">text-align</span>: right;
+  <span class="hljs-attribute">white-space</span>: nowrap;
+}
+
+<span class="hljs-comment">/* The header row: sticks to the top while scrolling vertically. */</span>
+<span class="hljs-selector-class">.sticky-table</span> <span class="hljs-selector-tag">thead</span> <span class="hljs-selector-tag">th</span> {
+  <span class="hljs-attribute">position</span>: sticky;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#f4f4f4</span>;
+  <span class="hljs-attribute">text-align</span>: right;
+}
+
+<span class="hljs-comment">/* The first column (row headers): sticks to the left while scrolling horizontally. */</span>
+<span class="hljs-selector-class">.sticky-table</span> <span class="hljs-selector-tag">tbody</span> <span class="hljs-selector-tag">th</span> {
+  <span class="hljs-attribute">position</span>: sticky;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#fafafa</span>;
+  <span class="hljs-attribute">text-align</span>: left;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+}
+
+<span class="hljs-comment">/* The top-left cell belongs to both the sticky header and the sticky column,
+   so it needs the highest stacking order to stay above everything. */</span>
+<span class="hljs-selector-class">.sticky-table</span> <span class="hljs-selector-tag">thead</span> <span class="hljs-selector-tag">th</span><span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">3</span>;
+  <span class="hljs-attribute">text-align</span>: left;
+}

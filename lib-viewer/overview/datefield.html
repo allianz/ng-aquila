@@ -92,12 +92,12 @@ We suggest not showing the Today button when today’s date cannot be displayed 
 <li class="docs-markdown--li"><code>nxDateRangeInvalid</code> if the start date is after the end date</li>
 <li class="docs-markdown--li"><code>nxDateRangeIncomplete</code> if the date range is set only partially</li>
 </ul>
-<p class="docs-markdown--p">additionally the following validations can be configured</p>
+<p class="docs-markdown--p">additionally the following validations can be activated by setting the corresponding component inputs, or applied directly as form control validators using <code>NxDateRangeValidators</code>:</p>
 <ul class="docs-markdown--ul">
-<li class="docs-markdown--li"><code>min</code> will check if the start date is &gt;= <code>min</code> date and will return <code>nxDatefieldMin</code> if does not match</li>
-<li class="docs-markdown--li"><code>max</code> will check if the start date is &lt;= <code>max</code> date and will return <code>nxDatefieldMax</code> if does not match</li>
-<li class="docs-markdown--li"><code>filter</code> will check if the start and and date matches the filter and will return <code>nxDateRangeStartFilter</code> and <code>nxDateRangeEndFilter</code> respectively</li>
-<li class="docs-markdown--li"><code>required</code> will check if a complete value is present, will return a <code>required</code> validation error otherwise</li>
+<li class="docs-markdown--li"><code>[minDate]</code> / <code>NxDateRangeValidators.min</code> will check if the start date is &gt;= the min date and will return <code>nxDatefieldMin</code> if it does not match</li>
+<li class="docs-markdown--li"><code>[maxDate]</code> / <code>NxDateRangeValidators.max</code> will check if the end date is &lt;= the max date and will return <code>nxDatefieldMax</code> if it does not match</li>
+<li class="docs-markdown--li"><code>[dateFilter]</code> / <code>NxDateRangeValidators.filter</code> will check if the start and end date match the filter and will return <code>nxDateRangeStartFilter</code> and <code>nxDateRangeEndFilter</code> respectively</li>
+<li class="docs-markdown--li"><code>required</code> will check if a complete value is present and will return a <code>required</code> validation error otherwise. Can be set via the <code>required</code> input on the component, <code>Validators.required</code>, or <code>NxDateRangeValidators.required</code> on the form control.</li>
 </ul>
 <div nx-docs-example="datefield-range-validation" config="{}">exampleID: datefield-range-validation</div>
 <h4 id="range-parsing-%26-formatting" tabindex="-1" class="docs-markdown--h4">Range Parsing &amp; Formatting</h4>

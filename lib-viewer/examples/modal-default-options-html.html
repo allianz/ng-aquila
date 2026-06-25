@@ -1,0 +1,21 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openWithDefaults()&quot;</span>&gt;</span>
+  open with defaults
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openWithOverride()&quot;</span>&gt;</span>
+  open with per-call override
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;u-text-center&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-modal-margin-bottom&quot;</span>&gt;</span>
+      Modal with global default options
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-modal-margin-bottom&quot;</span>&gt;</span>
+      This dialog uses the <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>width<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> and
+      <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>showCloseIcon<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> values provided through the
+      <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>NX_MODAL_DEFAULT_OPTIONS<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> token, while all other defaults
+      (such as the dialog <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>role<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>) are preserved.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;closeDialog()&quot;</span>&gt;</span>Close<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>

@@ -1,27 +1,97 @@
-<ol nxList="big">
-  <li>
-    I am authorised to submit this claim as:
-    <ul nxList="small">
-      <li>the insured person,</li>
+<div class="list-nesting-grid">
+  <!-- Simple Ordered List -->
+  <div class="list-nesting-grid__item">
+    <h3>Simple Ordered List</h3>
+    <ol nxList class="my-custom-normal-list">
       <li>
-        a broker who has been appointed as the agent of the insured person,
+        First item
+        <ol nxList>
+          <li>Nested item</li>
+          <li>Nested item</li>
+        </ol>
       </li>
-      <li>a fleet manager or custodian of a fleet vehicle,</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ol>
+  </div>
+
+  <!-- Circle Ordered List -->
+  <div class="list-nesting-grid__item">
+    <h3>Circle Ordered List</h3>
+    <ol nxList="ordered-circle">
       <li>
-        an authorised representative of the insured person or an insured
-        company, or
+        First item
+        <ol nxList="ordered-circle">
+          <li>Nested item</li>
+          <li>Nested item</li>
+        </ol>
       </li>
-      <li>a nominated driver on a policy;</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ol>
+  </div>
+
+  <!-- Unordered List -->
+  <div class="list-nesting-grid__item">
+    <h3>Unordered List</h3>
+    <ul nxList>
+      <li>
+        First item
+        <ul nxList>
+          <li>Nested item</li>
+          <li>Nested item</li>
+        </ul>
+      </li>
+      <li>Second item</li>
+      <li>Third item</li>
     </ul>
-  </li>
-  <li>
-    I am authorised to provide this information to you for the purpose of making
-    this claim; and
-  </li>
-  <li>
-    the information given in this form is truthful, accurate and complete, and
-    no information likely to affect this claim has been withheld. I understand
-    that this claim may be refused if information is untrue, inaccurate or
-    concealed.
-  </li>
-</ol>
+  </div>
+
+  <!-- Icon List -->
+  <div class="list-nesting-grid__item">
+    <h3>Icon List</h3>
+    <ul nxList>
+      <li nxListIcon="check">
+        First item
+        <ul nxList>
+          <li nxListIcon="check">Nested item</li>
+          <li nxListIcon="check">Nested item</li>
+        </ul>
+      </li>
+      <li nxListIcon="check">Second item</li>
+      <li nxListIcon="check">Third item</li>
+    </ul>
+  </div>
+
+  <!-- Mixed -->
+  <div class="list-nesting-grid__item">
+    <h3>Mixed List</h3>
+    <ol nxList="ordered-circle" class="my-custom-circle-mixed-list">
+      <li>
+        First item
+        <ol nxList>
+          <li>Nested item</li>
+          <li>Nested item</li>
+        </ol>
+      </li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ol>
+  </div>
+
+  <!-- Mixed -->
+  <div class="list-nesting-grid__item">
+    <h3>Mixed List</h3>
+    <ul nxList>
+      <li>
+        First item
+        <ul nxList>
+          <li nxListIcon="check">Nested item</li>
+          <li nxListIcon="check">Nested item</li>
+        </ul>
+      </li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ul>
+  </div>
+</div>

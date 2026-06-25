@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { NxPriceComponent, NxPriceSize } from '@allianz/ng-aquila/price';
+import { Component } from '@angular/core';
 
 /**
  * @title Superscript formatting example

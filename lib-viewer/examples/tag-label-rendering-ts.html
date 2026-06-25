@@ -24,13 +24,27 @@
   ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TagLabelRenderingExampleComponent</span> {
-  tags = <span class="hljs-title function_">signal</span>([<span class="hljs-string">&#x27;fruits&#x27;</span>, <span class="hljs-string">&#x27;vegetables&#x27;</span>, <span class="hljs-string">&#x27;meat&#x27;</span>, <span class="hljs-string">&#x27;fish&#x27;</span>]);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> initialTags = [<span class="hljs-string">&#x27;fruits&#x27;</span>, <span class="hljs-string">&#x27;vegetables&#x27;</span>, <span class="hljs-string">&#x27;meat&#x27;</span>, <span class="hljs-string">&#x27;fish&#x27;</span>];
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> initialTagsWithCount = [
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;fruits&#x27;</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">2</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;vegetables&#x27;</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">5</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;meat&#x27;</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">3</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;fish&#x27;</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">8</span> },
+  ];
+
+  tags = <span class="hljs-title function_">signal</span>([...<span class="hljs-variable language_">this</span>.<span class="hljs-property">initialTags</span>]);
+  tagsWithCount = <span class="hljs-title function_">signal</span>([...<span class="hljs-variable language_">this</span>.<span class="hljs-property">initialTagsWithCount</span>]);
 
   <span class="hljs-title function_">removeTag</span>(<span class="hljs-params"><span class="hljs-attr">tag</span>: <span class="hljs-built_in">string</span></span>) {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">tags</span>.<span class="hljs-title function_">update</span>(<span class="hljs-function">(<span class="hljs-params">tags</span>) =&gt;</span> tags.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">t</span>) =&gt;</span> t !== tag));
   }
 
+  <span class="hljs-title function_">removeTagWithCount</span>(<span class="hljs-params"><span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tagsWithCount</span>.<span class="hljs-title function_">update</span>(<span class="hljs-function">(<span class="hljs-params">tags</span>) =&gt;</span> tags.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">t</span>) =&gt;</span> t.<span class="hljs-property">label</span> !== label));
+  }
+
   <span class="hljs-title function_">reset</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tags</span>.<span class="hljs-title function_">set</span>([<span class="hljs-string">&#x27;fruits&#x27;</span>, <span class="hljs-string">&#x27;vegetables&#x27;</span>, <span class="hljs-string">&#x27;meat&#x27;</span>, <span class="hljs-string">&#x27;fish&#x27;</span>]);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tags</span>.<span class="hljs-title function_">set</span>([...<span class="hljs-variable language_">this</span>.<span class="hljs-property">initialTags</span>]);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tagsWithCount</span>.<span class="hljs-title function_">set</span>([...<span class="hljs-variable language_">this</span>.<span class="hljs-property">initialTagsWithCount</span>]);
   }
 }

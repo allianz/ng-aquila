@@ -19,13 +19,23 @@
 <p nxCopytext class="nx-margin-y-m">Content projection</p>
 
 <nx-tag-group aria-label="Filter by product" class="nx-margin-bottom-m">
-  @for (tag of tags(); track tag) {
-  <nx-tag [value]="tag">{{ tag | titlecase }}</nx-tag>
+  @for (tag of tagsWithCount(); track tag.label) {
+  <nx-tag [value]="tag.label">
+    {{ tag.label | titlecase }}
+    <span nxTagCount
+      >{{ tag.count }}<span class="cdk-visually-hidden"> items</span></span
+    >
+  </nx-tag>
   }
 </nx-tag-group>
 
 <nx-tag-group removable aria-label="Filter by product">
-  @for (tag of tags(); track tag) {
-  <nx-tag (removed)="removeTag(tag)">{{ tag | titlecase }}</nx-tag>
+  @for (tag of tagsWithCount(); track tag.label) {
+  <nx-tag [value]="tag.label" (removed)="removeTagWithCount(tag.label)">
+    {{ tag.label | titlecase }}
+    <span nxTagCount
+      >{{ tag.count }}<span class="cdk-visually-hidden"> items</span></span
+    >
+  </nx-tag>
   }
 </nx-tag-group>

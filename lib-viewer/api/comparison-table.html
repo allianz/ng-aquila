@@ -151,6 +151,42 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                responsiveBreakpoints: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxComparisonTableBreakpoint[]&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Breakpoint configuration for container-based responsive behavior.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                responsiveMode: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;&quot;viewport&quot; | &quot;container&quot;&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Switches viewType detection between viewport-based and container-based.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
@@ -223,7 +259,28 @@
   
 </table> 
 
+<h5 class="docs-api-method-header">Methods</h5>
  
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">scrollNext()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Advance the carousel by one product column toward the end. (Keeps the public name.)</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">scrollPrev()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Move the carousel back by one product column toward the start. (Keeps the public name.)</p>
+</div></div>
+   
    
 
 <h4 id="NxComparisonTableDescriptionCell" class="docs-header-link docs-api-h4 docs-api-class-name">
@@ -434,6 +491,38 @@
         <p>Sets the label that is displayed when the column is not selected. Default: &#39;Select&#39;.</p>
 </td>
 </tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                iconFilled: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;&quot;false&quot; | &quot;true&quot;&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                iconOutlined: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;&quot;false&quot; | &quot;true&quot;&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
   
 </table> 
 
@@ -629,6 +718,22 @@
         <p>An event emitted every time the expanded state of the group changes</p>
 </td>
 </tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                kind: 
+                </span>
+                 
+                <span class="docs-api-property__type">&quot;rowGroup&quot;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
   
 </table> 
 
@@ -690,6 +795,22 @@
         <p>Sets the type of the row. Default: &#39;content&#39;.</p>
 </td>
 </tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                kind: 
+                </span>
+                 
+                <span class="docs-api-property__type">&quot;row&quot;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
   
 </table> 
 
@@ -733,6 +854,22 @@
         <p>Whether the toggle section is expanded. Default: true.</p>
 </td>
 </tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                kind: 
+                </span>
+                 
+                <span class="docs-api-property__type">&quot;toggleSection&quot;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
   
 </table> 
 
@@ -748,11 +885,142 @@
     <div class="docs-api-method-description"><p>Toggles the toggle section.</p>
 </div></div>
    
+  <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+        <span header-link="additional_classes"></span>
+        Additional classes
+    </h3>
+     
+
+<h4 id="NxComparisonTableIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxComparisonTableIntl"></span>
+    <code>NxComparisonTableIntl</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                changes: 
+                </span>
+                 
+                <span class="docs-api-property__type">Subject&lt;void&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Stream that emits whenever the labels here are changed. Use this to notify
+components if the labels have changed after initialization.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                nextAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Aria label for the &quot;next&quot; navigation button in overflow mode.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                previousAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Aria label for the &quot;previous&quot; navigation button in overflow mode.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
   <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
         <span header-link="additional_interfaces"></span>
         Additional interfaces
     </h3>
      
+
+<h4 id="NxComparisonTableBreakpoint" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxComparisonTableBreakpoint"></span>
+    <code>NxComparisonTableBreakpoint</code>
+</h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                columns?: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                minWidth: 
+                </span>
+                 
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                viewType?: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxComparisonTableViewType</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
+   
 
 <h4 id="ComparisonTableDefaultOptions" class="docs-header-link docs-api-h4 docs-api-interface-name">
     <span header-link="ComparisonTableDefaultOptions"></span>
@@ -764,6 +1032,38 @@
         <th class="docs-api-properties-th">Description</th>
     </tr>
      
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                responsiveBreakpoints?: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxComparisonTableBreakpoint[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                responsiveMode?: 
+                </span>
+                 
+                <span class="docs-api-property__type">&quot;viewport&quot; | &quot;container&quot;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
@@ -795,5 +1095,24 @@
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
     <code class="docs-api-type-alias-value">'header' | 'content' | 'footer'</code>
+</p>
+   
+
+<h4 id="NxComparisonTableColorScheme" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxComparisonTableColorScheme"></span>
+    <code>NxComparisonTableColorScheme</code>
+</h4><p class="docs-api-type-alias-description"><p>Color scheme for the comparison table header row (A1 only).</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'plain' | 'attention' | 'emphasis' | 'accent-attention'</code>
+</p>
+   
+
+<h4 id="TableContentElementKind" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="TableContentElementKind"></span>
+    <code>TableContentElementKind</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'row' | 'toggleSection' | 'rowGroup'</code>
 </p>
   </div>

@@ -1,0 +1,69 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Native table with sticky header and sticky first column
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-native-sticky-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-native-sticky-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./table-native-sticky-example.css&#x27;</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TableNativeStickyExampleComponent</span> {
+  months = [
+    <span class="hljs-string">&#x27;January&#x27;</span>,
+    <span class="hljs-string">&#x27;February&#x27;</span>,
+    <span class="hljs-string">&#x27;March&#x27;</span>,
+    <span class="hljs-string">&#x27;April&#x27;</span>,
+    <span class="hljs-string">&#x27;May&#x27;</span>,
+    <span class="hljs-string">&#x27;June&#x27;</span>,
+    <span class="hljs-string">&#x27;July&#x27;</span>,
+    <span class="hljs-string">&#x27;August&#x27;</span>,
+    <span class="hljs-string">&#x27;September&#x27;</span>,
+    <span class="hljs-string">&#x27;October&#x27;</span>,
+    <span class="hljs-string">&#x27;November&#x27;</span>,
+    <span class="hljs-string">&#x27;December&#x27;</span>,
+  ];
+
+  rows = [
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car Insurance&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">12</span>, <span class="hljs-number">18</span>, <span class="hljs-number">9</span>, <span class="hljs-number">24</span>, <span class="hljs-number">31</span>, <span class="hljs-number">22</span>, <span class="hljs-number">14</span>, <span class="hljs-number">27</span>, <span class="hljs-number">19</span>, <span class="hljs-number">33</span>, <span class="hljs-number">28</span>, <span class="hljs-number">21</span>],
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Health Insurance&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">42</span>, <span class="hljs-number">38</span>, <span class="hljs-number">51</span>, <span class="hljs-number">47</span>, <span class="hljs-number">39</span>, <span class="hljs-number">55</span>, <span class="hljs-number">61</span>, <span class="hljs-number">44</span>, <span class="hljs-number">49</span>, <span class="hljs-number">52</span>, <span class="hljs-number">58</span>, <span class="hljs-number">63</span>],
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Liability Insurance&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">7</span>, <span class="hljs-number">11</span>, <span class="hljs-number">5</span>, <span class="hljs-number">14</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">12</span>, <span class="hljs-number">8</span>, <span class="hljs-number">13</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>, <span class="hljs-number">18</span>],
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Pension Plan&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">25</span>, <span class="hljs-number">29</span>, <span class="hljs-number">22</span>, <span class="hljs-number">34</span>, <span class="hljs-number">41</span>, <span class="hljs-number">38</span>, <span class="hljs-number">30</span>, <span class="hljs-number">27</span>, <span class="hljs-number">36</span>, <span class="hljs-number">44</span>, <span class="hljs-number">39</span>, <span class="hljs-number">47</span>],
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Home Insurance&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">19</span>, <span class="hljs-number">23</span>, <span class="hljs-number">17</span>, <span class="hljs-number">28</span>, <span class="hljs-number">32</span>, <span class="hljs-number">26</span>, <span class="hljs-number">21</span>, <span class="hljs-number">30</span>, <span class="hljs-number">24</span>, <span class="hljs-number">35</span>, <span class="hljs-number">31</span>, <span class="hljs-number">29</span>],
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Travel Insurance&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">14</span>, <span class="hljs-number">22</span>, <span class="hljs-number">35</span>, <span class="hljs-number">48</span>, <span class="hljs-number">52</span>, <span class="hljs-number">49</span>, <span class="hljs-number">31</span>, <span class="hljs-number">17</span>, <span class="hljs-number">9</span>, <span class="hljs-number">6</span>],
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Life Insurance&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">56</span>, <span class="hljs-number">52</span>, <span class="hljs-number">61</span>, <span class="hljs-number">58</span>, <span class="hljs-number">64</span>, <span class="hljs-number">70</span>, <span class="hljs-number">67</span>, <span class="hljs-number">59</span>, <span class="hljs-number">63</span>, <span class="hljs-number">72</span>, <span class="hljs-number">68</span>, <span class="hljs-number">75</span>],
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Legal Protection&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">11</span>, <span class="hljs-number">8</span>, <span class="hljs-number">13</span>, <span class="hljs-number">10</span>, <span class="hljs-number">12</span>, <span class="hljs-number">9</span>, <span class="hljs-number">15</span>, <span class="hljs-number">14</span>],
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Pet Insurance&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">6</span>, <span class="hljs-number">9</span>, <span class="hljs-number">12</span>, <span class="hljs-number">14</span>, <span class="hljs-number">11</span>, <span class="hljs-number">8</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>],
+    },
+    {
+      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Accident Insurance&#x27;</span>,
+      <span class="hljs-attr">values</span>: [<span class="hljs-number">21</span>, <span class="hljs-number">26</span>, <span class="hljs-number">18</span>, <span class="hljs-number">31</span>, <span class="hljs-number">28</span>, <span class="hljs-number">24</span>, <span class="hljs-number">33</span>, <span class="hljs-number">29</span>, <span class="hljs-number">22</span>, <span class="hljs-number">36</span>, <span class="hljs-number">30</span>, <span class="hljs-number">27</span>],
+    },
+  ];
+}

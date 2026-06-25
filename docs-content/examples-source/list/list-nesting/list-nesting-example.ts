@@ -1,4 +1,4 @@
-import { NxListComponent } from '@allianz/ng-aquila/list';
+import { NxListComponent, NxListIconComponent } from '@allianz/ng-aquila/list';
 import { Component } from '@angular/core';
 
 /**
@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
   selector: 'list-nesting-example',
   templateUrl: './list-nesting-example.html',
   styleUrls: ['./list-nesting-example.css'],
-  imports: [NxListComponent],
+  imports: [NxListComponent, NxListIconComponent],
 })
 export class ListNestingExampleComponent {}
