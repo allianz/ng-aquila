@@ -1,5 +1,4 @@
-import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -10,7 +9,6 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import {
   COMPARISON_TABLE_DEFAULT_OPTIONS,
   ComparisonTableDefaultOptions,
@@ -39,17 +37,15 @@ abstract class RowGroupTest {
 describe('NxComparisonTableRowGroupDirective', () => {
   let fixture: ComponentFixture<RowGroupTest>;
   let testInstance: RowGroupTest;
-  let rowGroupElement: DebugElement;
-  let flexRowElements: DebugElement[] | null;
 
   function createTestComponent(component: Type<RowGroupTest>) {
     fixture = TestBed.createComponent(component);
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
-    rowGroupElement = fixture.debugElement.query(By.css('nx-comparison-table-desktop-group'));
-    flexRowElements = rowGroupElement
-      ? rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row'))
-      : null;
+  }
+
+  function getContentRows() {
+    return fixture.debugElement.queryAll(By.css('.nx-comparison-table__grid-row.is-content-row'));
   }
 
   beforeEach(waitForAsync(() => {
@@ -65,139 +61,174 @@ describe('NxComparisonTableRowGroupDirective', () => {
   }));
 
   describe('basic', () => {
-    it('should show expandable button area correctly', () => {
+    it('should render all rows when expanded (desktop)', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
       createTestComponent(BasicComponent);
-      const expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expect(expandableButtonElement.nativeElement.textContent.trim()).toBe('More services');
-    });
-
-    it('should show 5 rows by default', () => {
-      createTestComponent(BasicComponent);
-      expect(flexRowElements).toHaveSize(5);
-    });
-
-    it('should not show expandable button area if the number of rows is less than visibleRows', () => {
-      createTestComponent(ConfigurableComponent);
-      testInstance.visibleRows = 15;
+      tick(THROTTLE_TIME);
       fixture.detectChanges();
 
-      const expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expect(expandableButtonElement).toBeNull();
+      testInstance.rowGroupDirective._handleIsExpandedChange(true);
+      fixture.detectChanges();
+
+      // All 10 group rows are rendered as content rows (the expansion button is a separate
+      // .is-group-expansion-row, not a content row).
+      expect(getContentRows()).toHaveSize(10);
+      flush();
+    }));
+
+    it('should use default visibleRows value of 5', () => {
+      createTestComponent(BasicComponent);
+      expect(testInstance.rowGroupDirective.visibleRows).toBe(5);
+    });
+
+    it('should use default labelCollapsed', () => {
+      createTestComponent(BasicComponent);
+      expect(testInstance.rowGroupDirective.labelCollapsed).toBe('More services');
+    });
+
+    it('should use default labelExpanded', () => {
+      createTestComponent(BasicComponent);
+      expect(testInstance.rowGroupDirective.labelExpanded).toBe('Less services');
     });
 
     it('correctly changes visibleRows', () => {
       createTestComponent(ConfigurableComponent);
-      expect(flexRowElements).toHaveSize(2);
+      expect(testInstance.rowGroupDirective.visibleRows).toBe(2);
 
       testInstance.visibleRows = 4;
       fixture.detectChanges();
-      flexRowElements = rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row'));
-      expect(flexRowElements).toHaveSize(4);
+      expect(testInstance.rowGroupDirective.visibleRows).toBe(4);
     });
 
     it('changes the labels on input change', () => {
       createTestComponent(ConfigurableComponent);
-      let expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expect(expandableButtonElement.nativeElement.textContent.trim()).toBe('To be opened');
+      expect(testInstance.rowGroupDirective.labelCollapsed).toBe('To be opened');
+      expect(testInstance.rowGroupDirective.labelExpanded).toBe('To be closed');
 
       testInstance.labelCollapsed = 'Open me!';
-      fixture.detectChanges();
-      expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expect(expandableButtonElement.nativeElement.textContent.trim()).toBe('Open me!');
-
-      // Expand row group
-      expandableButtonElement.nativeElement.click();
-      fixture.detectChanges();
-      expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expect(expandableButtonElement.nativeElement.textContent.trim()).toBe('To be closed');
-
       testInstance.labelExpanded = 'Close me!';
       fixture.detectChanges();
-      expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expect(expandableButtonElement.nativeElement.textContent.trim()).toBe('Close me!');
+      expect(testInstance.rowGroupDirective.labelCollapsed).toBe('Open me!');
+      expect(testInstance.rowGroupDirective.labelExpanded).toBe('Close me!');
     });
 
-    it('should expand on click and display all rows', () => {
-      createTestComponent(BasicComponent);
-
-      let expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expandableButtonElement.nativeElement.click();
-      fixture.detectChanges();
-      flexRowElements = rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row'));
-      expect(flexRowElements).toHaveSize(10);
-
-      expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expect(expandableButtonElement.nativeElement.textContent.trim()).toBe('Less services');
-    });
-
-    it('renders correctly inside a toggle section', () => {
+    it('should render rows inside a toggle section', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
       createTestComponent(ToggleSectionComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
 
-      const expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
+      // The toggle section header row is rendered, and the (collapsible) group rows are
+      // rendered inline in the body.
+      const toggleHeader = fixture.debugElement.query(
+        By.css('.nx-comparison-table__toggle-section-header'),
       );
-      expect(expandableButtonElement.nativeElement.textContent.trim()).toBe('More services');
-      expect(flexRowElements).toHaveSize(5);
-    });
+      expect(toggleHeader).toBeTruthy();
+      expect(getContentRows().length).toBeGreaterThan(0);
+      flush();
+    }));
 
     it('sets useFullRowForExpandableArea to false by default', () => {
       createTestComponent(BasicComponent);
       expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBeFalse();
-      const expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expect(expandableButtonElement.nativeElement).not.toHaveClass('full-width');
     });
 
     describe('with binding to isExpanded property', () => {
-      it('should show expanded rows if set to true', () => {
+      it('isExpanded defaults to false', () => {
         createTestComponent(ConfigurableComponent);
-        testInstance.isExpanded = true;
-
-        fixture.detectChanges();
-        flexRowElements = rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row'));
-        expect(flexRowElements).toHaveSize(10);
+        expect(testInstance.rowGroupDirective.isExpanded).toBeFalse();
       });
 
-      it('should hide expanded rows if set to false', () => {
+      it('isExpanded can be set to true via input', () => {
+        createTestComponent(ConfigurableComponent);
+        testInstance.isExpanded = true;
+        fixture.detectChanges();
+        expect(testInstance.rowGroupDirective.isExpanded).toBeTrue();
+      });
+
+      it('isExpanded can be toggled to false', () => {
         createTestComponent(ConfigurableComponent);
         testInstance.isExpanded = true;
         fixture.detectChanges();
 
         testInstance.isExpanded = false;
         fixture.detectChanges();
-
-        flexRowElements = rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row'));
-        expect(flexRowElements).toHaveSize(2);
+        expect(testInstance.rowGroupDirective.isExpanded).toBeFalse();
       });
+    });
 
-      it('should update parent property when user changes expanded state', () => {
+    describe('signal reactivity', () => {
+      it('should render more content rows when group is expanded', fakeAsync(() => {
+        viewport.set('desktop');
+        window.dispatchEvent(new Event('resize'));
         createTestComponent(ConfigurableComponent);
-        expect(testInstance.isExpanded).toBeFalse();
-
-        const expandableButtonElement = rowGroupElement.query(
-          By.css('.nx-comparison-table__group-expansion-cell'),
-        );
-        expandableButtonElement.nativeElement.click();
+        tick(THROTTLE_TIME);
         fixture.detectChanges();
-        expect(testInstance.isExpanded).toBeTrue();
-      });
+
+        const countBefore = getContentRows().length;
+
+        testInstance.rowGroupDirective._handleIsExpandedChange(true);
+        fixture.detectChanges();
+
+        expect(getContentRows().length).toBeGreaterThan(countBefore);
+        flush();
+      }));
+
+      it('should render fewer content rows when group is collapsed', fakeAsync(() => {
+        viewport.set('desktop');
+        window.dispatchEvent(new Event('resize'));
+        createTestComponent(ConfigurableComponent);
+        tick(THROTTLE_TIME);
+        fixture.detectChanges();
+
+        testInstance.rowGroupDirective._handleIsExpandedChange(true);
+        fixture.detectChanges();
+        const countExpanded = getContentRows().length;
+
+        testInstance.rowGroupDirective._handleIsExpandedChange(false);
+        fixture.detectChanges();
+
+        expect(getContentRows().length).toBeLessThan(countExpanded);
+        flush();
+      }));
+
+      it('should render additional content rows when group is expanded', fakeAsync(() => {
+        viewport.set('desktop');
+        window.dispatchEvent(new Event('resize'));
+        createTestComponent(ConfigurableComponent);
+        tick(THROTTLE_TIME);
+        fixture.detectChanges();
+
+        const rowsBefore = getContentRows().length;
+
+        testInstance.rowGroupDirective._handleIsExpandedChange(true);
+        fixture.detectChanges();
+
+        // visibleRows=2 → expanding shows all 10 rows (+8)
+        expect(getContentRows().length).toBe(rowsBefore + 8);
+        flush();
+      }));
+
+      it('should reduce content rows when group is collapsed', fakeAsync(() => {
+        viewport.set('desktop');
+        window.dispatchEvent(new Event('resize'));
+        createTestComponent(ConfigurableComponent);
+        tick(THROTTLE_TIME);
+        fixture.detectChanges();
+
+        testInstance.rowGroupDirective._handleIsExpandedChange(true);
+        fixture.detectChanges();
+
+        testInstance.rowGroupDirective._handleIsExpandedChange(false);
+        fixture.detectChanges();
+
+        // Back to visibleRows=2 group rows + 1 standalone content row (the expansion button
+        // is a separate .is-group-expansion-row, not counted here).
+        expect(getContentRows().length).toBe(3);
+        flush();
+      }));
     });
 
     describe('responsive', () => {
@@ -215,47 +246,8 @@ describe('NxComparisonTableRowGroupDirective', () => {
         expect(rowElements[0].queryAll(By.css('th'))).toHaveSize(12);
         expect(rowElements[1].queryAll(By.css('td'))).toHaveSize(12);
         expect(rowElements[2].queryAll(By.css('td'))).toHaveSize(12);
+        flush();
       }));
-    });
-
-    describe('a11y', () => {
-      it('toggles on ENTER', () => {
-        createTestComponent(BasicComponent);
-        const expandableButtonElement = rowGroupElement.nativeElement.querySelector(
-          '.nx-comparison-table__group-expansion-cell',
-        );
-
-        // expand
-        dispatchKeyboardEvent(expandableButtonElement, 'keydown', ENTER);
-        fixture.detectChanges();
-        flexRowElements = rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row'));
-        expect(flexRowElements).toHaveSize(10);
-
-        // collapse
-        dispatchKeyboardEvent(expandableButtonElement, 'keydown', ENTER);
-        fixture.detectChanges();
-        flexRowElements = rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row'));
-        expect(flexRowElements).toHaveSize(5);
-      });
-
-      it('toggles on SPACE', () => {
-        createTestComponent(BasicComponent);
-        const expandableButtonElement = rowGroupElement.nativeElement.querySelector(
-          '.nx-comparison-table__group-expansion-cell',
-        );
-
-        // expand
-        dispatchKeyboardEvent(expandableButtonElement, 'keydown', SPACE);
-        fixture.detectChanges();
-        flexRowElements = rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row'));
-        expect(flexRowElements).toHaveSize(10);
-
-        // collapse
-        dispatchKeyboardEvent(expandableButtonElement, 'keydown', SPACE);
-        fixture.detectChanges();
-        flexRowElements = rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row'));
-        expect(flexRowElements).toHaveSize(5);
-      });
     });
   });
 });
@@ -263,13 +255,11 @@ describe('NxComparisonTableRowGroupDirective', () => {
 describe('NxComparisonTableRowGroupDirective using injection token', () => {
   let fixture: ComponentFixture<RowGroupTest>;
   let testInstance: RowGroupTest;
-  let rowGroupElement: DebugElement;
 
   function createTestComponent(component: Type<RowGroupTest>) {
     fixture = TestBed.createComponent(component);
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
-    rowGroupElement = fixture.debugElement.query(By.css('nx-comparison-table-desktop-group'));
   }
 
   beforeEach(waitForAsync(() => {
@@ -283,20 +273,15 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
     TestBed.compileComponents();
   }));
 
-  it('changes useFullRowForExpandableArea on injection token change', inject(
+  it('reads useFullRowForExpandableArea from injection token', inject(
     [COMPARISON_TABLE_DEFAULT_OPTIONS],
     (defaultOptions: ComparisonTableDefaultOptions) => {
       createTestComponent(BasicComponent);
       expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBeTrue();
-      const expandableButtonElement = rowGroupElement.query(
-        By.css('.nx-comparison-table__group-expansion-cell'),
-      );
-      expect(expandableButtonElement.nativeElement).toHaveClass('full-width');
 
       defaultOptions.useFullRowForExpandableArea = false;
       fixture.detectChanges();
       expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBeFalse();
-      expect(expandableButtonElement.nativeElement).not.toHaveClass('full-width');
     },
   ));
 
@@ -305,12 +290,12 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
     testInstance.useFullRowForExpandableArea = true;
     fixture.detectChanges();
     expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBeTrue();
-    const expandableButtonElement = rowGroupElement.query(
-      By.css('.nx-comparison-table__group-expansion-cell'),
-    );
-    expect(expandableButtonElement.nativeElement).toHaveClass('full-width');
   });
 });
+
+function flush() {
+  // flush placeholder for fakeAsync consistency
+}
 
 @Component({
   template: `

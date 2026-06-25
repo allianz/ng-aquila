@@ -1,7 +1,6 @@
 import { NxLabelComponent, NxLabelModule } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxTileComponent, NxTileGroupComponent } from '@allianz/ng-aquila/tile';
-
 import { Component, signal } from '@angular/core';
 
 /**

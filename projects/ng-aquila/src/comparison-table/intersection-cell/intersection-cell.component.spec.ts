@@ -62,17 +62,26 @@ describe('NxComparisonTableIntersectionCell', () => {
     it('renders the content', () => {
       createTestComponent(IntersectionCellComponent);
       expect(intersectionCellInstances).toHaveSize(2);
-      expect(intersectionCellElements[0].nativeElement.textContent).toBe(
+      expect(intersectionCellElements[0].nativeElement.textContent.trim()).toBe(
         'This is an intersection cell',
       );
-      expect(intersectionCellElements[1].nativeElement.textContent).toBe(
+      expect(intersectionCellElements[1].nativeElement.textContent.trim()).toBe(
         'This is a second intersection cell',
       );
     });
 
-    it('should set the flex-grow styling correctly', () => {
+    it('should span all product columns via colspan', () => {
       createTestComponent(IntersectionCellComponent);
-      expect(intersectionCellElements[0].styles['flex-grow']).toBe('3');
+      // 3 product columns in this fixture.
+      expect(intersectionCellElements[0].nativeElement.getAttribute('colspan')).toBe('3');
+    });
+
+    it('should wrap its content in a sticky banner', () => {
+      createTestComponent(IntersectionCellComponent);
+      const banner = intersectionCellElements[0].query(
+        By.css('.nx-comparison-table__sticky-banner'),
+      );
+      expect(banner).not.toBeNull();
     });
   });
 
@@ -105,7 +114,7 @@ describe('NxComparisonTableIntersectionCell', () => {
       const headers = intersectionCellElements[0].attributes.headers;
       expect(headers?.split(' ')).toHaveSize(2);
       expect(headers).toContain(descriptionCellInstance.id);
-      expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
+      expect(headers).toContain(toggleSectionInstance.toggleSectionHeader().id);
     }));
 
     it('should have set the correct headers (mobile)', () => {
@@ -114,17 +123,17 @@ describe('NxComparisonTableIntersectionCell', () => {
       const headers = intersectionCellElements[0].attributes.headers;
       expect(headers?.split(' ')).toHaveSize(2);
       expect(headers).toContain(descriptionCellInstance.id);
-      expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
+      expect(headers).toContain(toggleSectionInstance.toggleSectionHeader().id);
     });
 
-    it('should have the correct role defined', () => {
+    it('should be a native <td> cell', () => {
       createTestComponent(IntersectionCellComponent);
-      expect(intersectionCellElements[0].attributes.role).toBe('cell');
+      expect(intersectionCellElements[0].nativeElement.tagName).toBe('TD');
     });
 
-    it('should have set the correct aria-colspan (desktop)', () => {
+    it('should have set the correct colspan (desktop)', () => {
       createTestComponent(IntersectionCellComponent);
-      expect(intersectionCellElements[0].attributes['aria-colspan']).toBe('3');
+      expect(intersectionCellElements[0].nativeElement.getAttribute('colspan')).toBe('3');
       expect(intersectionCellElements[0].attributes.rowspan).toBeUndefined();
     });
 
@@ -140,8 +149,8 @@ describe('NxComparisonTableIntersectionCell', () => {
       intersectionCellElements = fixture.debugElement.queryAll(
         By.css('.nx-comparison-table__intersection-cell'),
       );
-      expect(intersectionCellElements[0].attributes['aria-colspan']).toBeUndefined();
-      expect(intersectionCellElements[0].attributes.rowspan).toBe('3');
+      expect(intersectionCellElements[0].attributes.colspan).toBeUndefined();
+      expect(intersectionCellElements[0].nativeElement.getAttribute('rowspan')).toBe('3');
     }));
 
     it('has no accessibility violations', (done) => {

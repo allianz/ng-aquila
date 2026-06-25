@@ -1,8 +1,10 @@
 import { NxButtonBase } from '@allianz/ng-aquila/button';
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   effect,
   inject,
   Input,
@@ -18,15 +20,20 @@ import { NxComparisonTableCell } from '../cell/cell.component';
   styleUrls: ['../../button/button.scss', './select-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[disabled]': '_cell._isCellDisabled',
+    '[disabled]': '_cell._isCellDisabled()',
     class: 'nx-comparison-table__select-button',
     '(click)': '_selectCell()',
     '[attr.aria-pressed]': '_cell._isSelected()',
+    '[class.is-a1]': '_isA1()',
+    '[class.nx-button]': 'true',
   },
   imports: [NxIconModule],
 })
 export class NxComparisonTableSelectButton extends NxButtonBase implements OnDestroy {
   protected readonly _cell = inject(NxComparisonTableCell);
+  private readonly _allianzOneOptions = inject<AllianzOneOptions>(ALLIANZ_ONE, { optional: true });
+  protected readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
+
   /** Sets the label that is displayed when the column is selected. Default: 'Selected'. */
   @Input() set selectedLabel(value: string) {
     this._selectedLabel = value;
@@ -68,6 +75,9 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
     return this._selectedClassNames;
   }
   private _selectedClassNames = 'primary small';
+
+  protected iconFilled = computed(() => (this._isA1() ? 'false' : 'true'));
+  protected iconOutlined = computed(() => (this._isA1() ? 'false' : 'true'));
 
   _ariaPressed = false;
 

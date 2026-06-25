@@ -5,14 +5,14 @@ import {
   NumberInput,
 } from '@angular/cdk/coercion';
 import {
-  ContentChildren,
+  contentChildren,
   Directive,
   EventEmitter,
   Inject,
   Input,
   Optional,
   Output,
-  QueryList,
+  signal,
 } from '@angular/core';
 
 import {
@@ -36,8 +36,10 @@ export class NxComparisonTableRowGroupDirective
   extends NxComparisonTableRowGroupBase
   implements NxTableContentElement
 {
+  readonly kind = 'rowGroup';
+
   /** @docs-private */
-  @ContentChildren(NxComparisonTableRowDirective) rows!: QueryList<NxComparisonTableRowDirective>;
+  readonly rows = contentChildren(NxComparisonTableRowDirective);
 
   /**
    * Sets the label of the expandable area that is shown when the row group is collapsed.
@@ -77,15 +79,12 @@ export class NxComparisonTableRowGroupDirective
 
   /** Sets the expanded state of the row group */
   @Input() set isExpanded(value: BooleanInput) {
-    const newValue = coerceBooleanProperty(value);
-    if (newValue !== this._isExpanded) {
-      this._isExpanded = newValue;
-    }
+    this._isExpandedSignal.set(coerceBooleanProperty(value));
   }
   get isExpanded(): boolean {
-    return this._isExpanded;
+    return this._isExpandedSignal();
   }
-  private _isExpanded = false;
+  private readonly _isExpandedSignal = signal(false);
 
   /**
    * **Expert Option**.

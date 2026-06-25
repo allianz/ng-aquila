@@ -8,8 +8,8 @@ import {
   ElementRef,
   Input,
   OnDestroy,
-  ViewChild,
   signal,
+  ViewChild,
 } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 

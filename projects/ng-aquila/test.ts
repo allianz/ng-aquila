@@ -1,9 +1,9 @@
 /// <reference types="karma-viewport" />
 
-import { getTestBed } from '@angular/core/testing';
-import axe from 'axe-core';
 import { NgModule, provideZoneChangeDetection } from '@angular/core';
+import { getTestBed } from '@angular/core/testing';
 import { BrowserTestingModule, platformBrowserTesting } from '@angular/platform-browser/testing';
+import axe from 'axe-core';
 
 @NgModule({
   providers: [provideZoneChangeDetection()],

@@ -1,5 +1,5 @@
 import { AfterViewInit, ContentChildren, Directive, OnDestroy, QueryList } from '@angular/core';
-import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
 import { distinctUntilChanged, map, mergeMap, startWith, takeUntil } from 'rxjs/operators';
 
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';

@@ -17,7 +17,6 @@ import {
   NxMessageToastConfig,
   NxMessageToastService,
 } from '@allianz/ng-aquila/message';
-
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   Component,

@@ -89,20 +89,6 @@ describe('NxComparisonTableRowDirective', () => {
 
       expect(rowInstances.toArray()[0].mayStick).toBeFalse();
     });
-
-    it('should request a cell clipping update on changes to mayStick', () => {
-      createTestComponent(NonStickyHeaderComponent);
-      let emitCount = 0;
-      rowInstances.toArray()[0]._requestCellClippingUpdate$.subscribe(() => emitCount++);
-
-      (testInstance as NonStickyHeaderComponent).mayStick = true;
-      fixture.detectChanges();
-      expect(emitCount).toBe(1);
-
-      (testInstance as NonStickyHeaderComponent).mayStick = false;
-      fixture.detectChanges();
-      expect(emitCount).toBe(2);
-    });
   });
 });
 

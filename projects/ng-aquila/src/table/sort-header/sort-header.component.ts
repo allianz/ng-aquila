@@ -1,3 +1,4 @@
+import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
@@ -18,7 +19,6 @@ import { takeUntil } from 'rxjs/operators';
 
 import { NxSortDirective } from './sort.directive';
 import { NxSortHeaderIntl } from './sort-header-intl';
-import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
 
 @Component({
   selector: 'th[nxSortHeaderCell]',

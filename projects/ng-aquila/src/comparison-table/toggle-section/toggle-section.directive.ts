@@ -1,6 +1,5 @@
-import { ContentChild, ContentChildren, Directive, Input, QueryList } from '@angular/core';
+import { computed, contentChild, contentChildren, Directive, Input } from '@angular/core';
 
-import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { NxTableContentElement } from '../table-content-element.directive';
 import { NxToggleSectionBase } from './toggle-section-base';
 import { NxToggleSectionHeaderComponent } from './toggle-section-header.component';
@@ -14,12 +13,13 @@ import { NxToggleSectionHeaderComponent } from './toggle-section-header.componen
   standalone: true,
 })
 export class NxToggleSectionDirective extends NxToggleSectionBase implements NxTableContentElement {
-  /** @docs-private */
-  @ContentChild(NxToggleSectionHeaderComponent, { static: false })
-  toggleSectionHeader!: NxToggleSectionHeaderComponent;
+  readonly kind = 'toggleSection';
 
   /** @docs-private */
-  @ContentChildren(NxTableContentElement) rows!: QueryList<NxTableContentElement>;
+  readonly toggleSectionHeader = contentChild.required(NxToggleSectionHeaderComponent);
+
+  /** @docs-private */
+  readonly rows = contentChildren(NxTableContentElement);
 
   /** Whether the toggle section is expanded. Default: true. */
   @Input() set isExpanded(value: boolean) {
@@ -32,7 +32,5 @@ export class NxToggleSectionDirective extends NxToggleSectionBase implements NxT
   }
   private _isExpanded = true;
 
-  _numberOfRows(): number {
-    return this.rows.filter((row) => row instanceof NxComparisonTableRowDirective).length;
-  }
+  readonly _numberOfRows = computed(() => this.rows().filter((row) => row.kind === 'row').length);
 }

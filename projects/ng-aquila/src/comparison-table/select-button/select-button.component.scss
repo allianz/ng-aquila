@@ -1,26 +1,35 @@
 @use '../../shared-styles/index' as *;
 
 :host {
-  .nx-comparison-table__select-button-icon ::ng-deep {
+  // to be more specific than the button styles
+  &.nx-button.nx-button.nx-button {
+    display: flex;
+    align-items: center;
+    hyphens: auto;
+    word-break: break-word;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: v(button-gap);
+    width: auto;
+    margin: 0 auto;
+
+    &.is-a1 {
+      width: 100%;
+    }
+  }
+
+  @media screen and (forced-colors: active) {
+    background: buttonFace;
+    border: 1px solid buttonText;
+    border-radius: 50%;
+  }
+
+  &:not(.is-a1) .nx-comparison-table__select-button-icon ::ng-deep {
     background: v(button-primary-text-color);
     color: v(button-primary-background-color);
     width: 16px;
     height: 16px;
-
     vertical-align: bottom;
-
-    [dir='ltr'] & {
-      margin-right: 4px;
-    }
-
-    [dir='rtl'] & {
-      margin-left: 4px;
-    }
-
-    @media screen and (forced-colors: active) {
-      background: buttonFace;
-      border: 1px solid buttonText;
-      border-radius: 50%;
-    }
   }
 }

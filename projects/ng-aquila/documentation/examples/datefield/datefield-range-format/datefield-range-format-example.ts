@@ -15,7 +15,6 @@ import {
   NxLayoutComponent,
   NxRowComponent,
 } from '@allianz/ng-aquila/grid';
-
 import { Component } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import moment from 'moment';

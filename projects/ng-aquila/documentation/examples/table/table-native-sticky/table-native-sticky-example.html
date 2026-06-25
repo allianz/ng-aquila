@@ -1,0 +1,22 @@
+<div class="sticky-table-container">
+  <table class="sticky-table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        @for (month of months; track month) {
+        <th>{{ month }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rows; track row.product) {
+      <tr>
+        <th>{{ row.product }}</th>
+        @for (value of row.values; track $index) {
+        <td>{{ value }}</td>
+        }
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

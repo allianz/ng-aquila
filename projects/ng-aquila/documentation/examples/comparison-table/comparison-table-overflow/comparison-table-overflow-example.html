@@ -1,0 +1,276 @@
+<nx-comparison-table
+  selectedIndex="1"
+  [responsiveBreakpoints]="comparisonTableBreakpoints"
+>
+  <ng-container nxComparisonTableRow type="header">
+    <nx-comparison-table-cell type="header">
+      <div class="header-container">
+        <p class="product-title">Product One</p>
+        <p class="product-price">105,99 €</p>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </div>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell type="header">
+      <div class="header-container">
+        <p class="product-title">Product Two</p>
+        <p class="product-price">110,99 €</p>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </div>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell type="header">
+      <div class="header-container">
+        <p class="product-title">Product Three</p>
+        <p class="product-price">115,99 €</p>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </div>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell type="header">
+      <div class="header-container">
+        <p class="product-title">Product Four</p>
+        <p class="product-price">120,99 €</p>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </div>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell type="header">
+      <div class="header-container">
+        <p class="product-title">Product Five</p>
+        <p class="product-price">125,99 €</p>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </div>
+    </nx-comparison-table-cell>
+  </ng-container>
+
+  <ng-container nxComparisonTableRow>
+    <nx-comparison-table-description-cell
+      >Coverage amount</nx-comparison-table-description-cell
+    >
+    <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
+    <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
+    <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
+    <nx-comparison-table-cell>250 Mio. Euro</nx-comparison-table-cell>
+    <nx-comparison-table-cell>300 Mio. Euro</nx-comparison-table-cell>
+  </ng-container>
+
+  <ng-container nxComparisonTableRow>
+    <nx-comparison-table-description-cell
+      >Liability protection</nx-comparison-table-description-cell
+    >
+    <nx-comparison-table-cell>
+      <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+    </nx-comparison-table-cell>
+  </ng-container>
+
+  <ng-container nxComparisonTableRow>
+    <nx-comparison-table-description-cell
+      >Good to know</nx-comparison-table-description-cell
+    >
+    <nx-comparison-table-intersection-cell>
+      All plans include 24/7 claims support and a 14-day cancellation window.
+      This row spans every product column and stays in view while you scroll the
+      columns horizontally.
+    </nx-comparison-table-intersection-cell>
+  </ng-container>
+
+  <ng-container
+    nxComparisonTableRowGroup
+    [visibleRows]="1"
+    labelCollapsed="More features"
+    labelExpanded="Less features"
+  >
+    <ng-container nxComparisonTableRow>
+      <nx-comparison-table-description-cell
+        >Extended warranty</nx-comparison-table-description-cell
+      >
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+    </ng-container>
+
+    <ng-container nxComparisonTableRow>
+      <nx-comparison-table-description-cell
+        >Premium support</nx-comparison-table-description-cell
+      >
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+    </ng-container>
+  </ng-container>
+
+  <ng-container nxComparisonTableToggleSection>
+    <nx-comparison-table-toggle-section-header
+      >Additional Services</nx-comparison-table-toggle-section-header
+    >
+
+    <ng-container nxComparisonTableRow>
+      <nx-comparison-table-description-cell
+        >Roadside assistance</nx-comparison-table-description-cell
+      >
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+    </ng-container>
+
+    <ng-container nxComparisonTableRow>
+      <nx-comparison-table-description-cell
+        >Travel insurance</nx-comparison-table-description-cell
+      >
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+    </ng-container>
+
+    <ng-container nxComparisonTableRow>
+      <nx-comparison-table-description-cell
+        >Legal protection</nx-comparison-table-description-cell
+      >
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell>
+        <nx-icon name="check" size="s" aria-label="Included"></nx-icon>
+      </nx-comparison-table-cell>
+    </ng-container>
+  </ng-container>
+
+  <ng-container nxComparisonTableRow type="footer">
+    <nx-comparison-table-cell>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
+      <p class="product-underline">Some short information</p>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
+      <p class="product-underline">Some short information</p>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
+      <p class="product-underline">Some short information</p>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
+      <p class="product-underline">Some short information</p>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
+      <p class="product-underline">Some short information</p>
+    </nx-comparison-table-cell>
+  </ng-container>
+</nx-comparison-table>

@@ -1,7 +1,96 @@
 @use '../../shared-styles/index' as *;
+@use '../comparison-table-mixins' as ct;
+
+// ── Desktop / tablet ──────────────────────────────────────────────────────────
+// The cell itself is a real table cell (<td>/<th>); layout of its content lives on
+// the inner wrapper so the cell keeps `display: table-cell` (a flex/grid display on
+// the cell would drop it out of table layout and the row would mis-render).
+
+.nx-comparison-table__cell {
+  min-width: 0;
+  vertical-align: top;
+  text-align: v(comparison-table-cell-text-align);
+  padding: v(comparison-table-cell-padding);
+  background-color: v(comparison-table-cell-background-color);
+  border-inline-end: nx-border-size(xs) solid v(comparison-table-border-color);
+  box-shadow: v(comparison-table-column-shadow);
+
+  @include ct.cell-content-reset;
+
+  &:first-child {
+    border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+  }
+
+  &.is-selected {
+    background-color: v(comparison-table-selected-column-background-color);
+  }
+}
+
+// Inner wrapper fills the cell height so stacked content (title / price / button)
+// distributes vertically the way the header/footer layout expects.
+.nx-comparison-table__cell-inner {
+  display: block;
+  height: 100%;
+}
+
+.nx-comparison-table__header-cell .nx-comparison-table__cell-inner,
+.nx-comparison-table__footer-cell .nx-comparison-table__cell-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Radio indicator (A1 only) ─────────────────────────────────────────────────
+
+.nx-comparison-table__radio-indicator {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 4px; //TODO change to A1 token
+}
+
+// ── Mobile ────────────────────────────────────────────────────────────────────
+
+// Rendered as <td class="nx-comparison-table__mobile-cell"> in the transposed table.
+td.nx-comparison-table__mobile-cell.nx-comparison-table__cell {
+  text-align: v(comparison-table-cell-text-align);
+  vertical-align: top;
+  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+  padding: 8px;
+  background-color: v(comparison-table-cell-background-color);
+  width: 128px;
+  min-width: 128px;
+  // reset the desktop card styles that the shared .nx-comparison-table__cell rule sets
+  height: auto;
+  box-shadow: none;
+
+  & + .nx-comparison-table__placeholder-cell {
+    border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+  }
+
+  @include ct.cell-content-reset;
+}
+
+// Mobile header cell (rendered as <td class="nx-comparison-table__mobile-header-cell">)
+.nx-comparison-table__mobile-header-cell {
+  text-align: v(comparison-table-cell-text-align);
+  vertical-align: top;
+  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+  padding: 8px 4px;
+  width: 128px;
+  min-width: 128px;
+  border-inline-end: nx-border-size(xs) solid v(comparison-table-border-color);
+
+  &:not(.is-selected) {
+    background-color: v(comparison-table-header-background-color);
+    color: v(comparison-table-header-text-color);
+  }
+
+  @include ct.cell-content-reset;
+}
 
 .nx-comparison-table__mobile-header-cell.is-selected,
-.nx-comparison-table__cell.is-selected {
+td.nx-comparison-table__mobile-cell.nx-comparison-table__cell.is-selected {
   background-color: v(comparison-table-selected-column-background-color);
   color: v(comparison-table-selected-column-text-color);
 }
@@ -11,28 +100,7 @@
   display: none;
 }
 
-//  Error state : desktop
-.nx-comparison-table__footer-cell,
-.nx-comparison-table__header-cell {
-  &.is-error {
-    .nx-comparison-table__cell-content {
-      border-top: 1px solid var(--danger);
-      border-bottom: 1px solid var(--danger);
-    }
-  }
-  &.first.is-error {
-    .nx-comparison-table__cell-content {
-      border-left: 1px solid var(--danger);
-    }
-  }
-  &.last.is-error {
-    .nx-comparison-table__cell-content {
-      border-right: 1px solid var(--danger);
-    }
-  }
-}
-
-//  Error state : mobile
+// Error state: mobile
 .nx-comparison-table__mobile-header-cell {
   &.is-error {
     border-left: 1px solid var(--danger) !important;

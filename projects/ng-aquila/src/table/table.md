@@ -16,6 +16,12 @@ We provide the following directives: `nxTableCell`, `nxTableRow` and `nxHeaderCe
 
 According to our UX guidelines we recommend wrapping your tables in a horizontal scrolling container (if they are not 100% responsive). Please note how our examples do that.
 
+### Native sticky table
+
+This example uses a plain native HTML `<table>` without any ng-aquila components. It demonstrates how to build a table with both a sticky header and a sticky first column that scrolls horizontally, using only CSS `position: sticky`. The top-left corner cell stays pinned in both directions.
+
+<!-- example(table-native-sticky) -->
+
 <!-- example(table) -->
 
 ### Condensed mode

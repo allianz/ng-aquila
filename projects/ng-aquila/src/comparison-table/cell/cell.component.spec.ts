@@ -64,6 +64,7 @@ describe('NxComparisonTableCell', () => {
         BasicCellComponent,
         ConfigurableCellComponent,
         ToggleSectionCellComponent,
+        MultiColumnCellComponent,
       ],
     });
     TestBed.compileComponents();
@@ -157,12 +158,15 @@ describe('NxComparisonTableCell', () => {
   });
 
   describe('a11y', () => {
-    it('should have set the roles correctly (desktop / tablet)', fakeAsync(() => {
+    it('should use native header/data cell elements (desktop / tablet)', fakeAsync(() => {
       createTestComponent(BasicCellComponent);
 
-      expect(cellElements[0].attributes.role).toBe('columnheader');
-      expect(cellElements[1].attributes.role).toBe('cell');
-      expect(cellElements[2].attributes.role).toBe('cell');
+      // Header cell is a <th scope="col">; content/footer cells are <td>. Native semantics
+      // provide the columnheader/cell roles, so no explicit role attributes are set.
+      expect(cellElements[0].nativeElement.tagName).toBe('TH');
+      expect(cellElements[0].nativeElement.getAttribute('scope')).toBe('col');
+      expect(cellElements[1].nativeElement.tagName).toBe('TD');
+      expect(cellElements[2].nativeElement.tagName).toBe('TD');
 
       viewport.set('tablet');
       window.dispatchEvent(new Event('resize'));
@@ -170,9 +174,10 @@ describe('NxComparisonTableCell', () => {
       tick(THROTTLE_TIME);
       fixture.detectChanges();
 
-      expect(cellElements[0].attributes.role).toBe('columnheader');
-      expect(cellElements[1].attributes.role).toBe('cell');
-      expect(cellElements[2].attributes.role).toBe('cell');
+      expect(cellElements[0].nativeElement.tagName).toBe('TH');
+      expect(cellElements[0].nativeElement.getAttribute('scope')).toBe('col');
+      expect(cellElements[1].nativeElement.tagName).toBe('TD');
+      expect(cellElements[2].nativeElement.tagName).toBe('TD');
       flush();
     }));
 
@@ -198,14 +203,14 @@ describe('NxComparisonTableCell', () => {
       createTestComponent(ConfigurableCellComponent);
       tick(THROTTLE_TIME);
 
-      let headers = cellInstances.toArray()[1]._getHeaderIds();
+      let headers = cellInstances.toArray()[1]._headerIds();
       expect(headers.split(' ')).toHaveSize(2);
       expect(headers).toContain('header-cell-0');
       expect(headers).toContain(descriptionCellInstance.id);
 
       testInstance.headerTestId = 'header-test-cell';
       fixture.detectChanges();
-      headers = cellInstances.toArray()[1]._getHeaderIds();
+      headers = cellInstances.toArray()[1]._headerIds();
       expect(headers).toContain('header-test-cell');
       expect(headers).toContain(descriptionCellInstance.id);
     }));
@@ -217,7 +222,7 @@ describe('NxComparisonTableCell', () => {
       expect(headers?.split(' ')).toHaveSize(3);
       expect(headers).toContain(cellInstances.toArray()[0].id);
       expect(headers).toContain(descriptionCellInstance.id);
-      expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
+      expect(headers).toContain(toggleSectionInstance.toggleSectionHeader().id);
     });
 
     it('should have set the correct headers (with a toggle section) (mobile)', fakeAsync(() => {
@@ -233,7 +238,7 @@ describe('NxComparisonTableCell', () => {
       expect(headers?.split(' ')).toHaveSize(3);
       expect(headers).toContain(cellInstances.toArray()[0].id);
       expect(headers).toContain(descriptionCellInstance.id);
-      expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
+      expect(headers).toContain(toggleSectionInstance.toggleSectionHeader().id);
     }));
 
     it('has no accessibility violations', (done) => {
@@ -256,6 +261,31 @@ describe('NxComparisonTableCell', () => {
           done();
         },
       );
+    });
+  });
+
+  describe('computed signals', () => {
+    it('should apply first and last classes correctly', () => {
+      createTestComponent(MultiColumnCellComponent);
+      const headerCells = fixture.debugElement.queryAll(
+        By.css('.nx-comparison-table__header-cell'),
+      );
+      expect(headerCells[0].nativeElement).toHaveClass('first');
+      expect(headerCells[0].nativeElement).not.toHaveClass('last');
+      expect(headerCells[1].nativeElement).not.toHaveClass('first');
+      expect(headerCells[1].nativeElement).not.toHaveClass('last');
+      expect(headerCells[2].nativeElement).not.toHaveClass('first');
+      expect(headerCells[2].nativeElement).toHaveClass('last');
+    });
+
+    it('should apply has-popular-above class on correct header cell', () => {
+      createTestComponent(MultiColumnCellComponent);
+      const headerCells = fixture.debugElement.queryAll(
+        By.css('.nx-comparison-table__header-cell'),
+      );
+      expect(headerCells[0].nativeElement).toHaveClass('has-popular-above');
+      expect(headerCells[1].nativeElement).not.toHaveClass('has-popular-above');
+      expect(headerCells[2].nativeElement).not.toHaveClass('has-popular-above');
     });
   });
 });
@@ -325,3 +355,33 @@ class ToggleSectionCellComponent extends CellTest {
     { type: 'footer', cells: ['This is a footer cell'] },
   ];
 }
+
+@Component({
+  template: `
+    <nx-comparison-table>
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-cell type="header">
+          <nx-comparison-table-popular-cell [forColumn]="1"
+            >Popular</nx-comparison-table-popular-cell
+          >
+          H1
+        </nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">H2</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">H3</nx-comparison-table-cell>
+      </ng-container>
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell>Desc</nx-comparison-table-description-cell>
+        <nx-comparison-table-cell>A</nx-comparison-table-cell>
+        <nx-comparison-table-cell>B</nx-comparison-table-cell>
+        <nx-comparison-table-cell>C</nx-comparison-table-cell>
+      </ng-container>
+      <ng-container nxComparisonTableRow type="footer">
+        <nx-comparison-table-cell type="footer">F1</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="footer">F2</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="footer">F3</nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+  `,
+  imports: [NxComparisonTableModule],
+})
+class MultiColumnCellComponent extends CellTest {}

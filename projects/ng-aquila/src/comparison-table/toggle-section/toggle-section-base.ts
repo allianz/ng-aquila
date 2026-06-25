@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, Signal } from '@angular/core';
 
 import { NxToggleSectionHeaderComponent } from './toggle-section-header.component';
 
@@ -8,9 +8,9 @@ export abstract class NxToggleSectionBase {
   /** Whether the toggle section is expanded. */
   abstract isExpanded: boolean;
 
-  toggleSectionHeader!: NxToggleSectionHeaderComponent;
+  abstract readonly toggleSectionHeader: Signal<NxToggleSectionHeaderComponent>;
   /** @docs-private */
-  abstract _numberOfRows(): number;
+  abstract readonly _numberOfRows: Signal<number>;
 
   /** Toggles the toggle section. */
   toggleExpanded() {

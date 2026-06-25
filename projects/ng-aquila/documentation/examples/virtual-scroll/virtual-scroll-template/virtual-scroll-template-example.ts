@@ -1,5 +1,4 @@
 import { NxLinkComponent } from '@allianz/ng-aquila/link';
-import { NxListComponent } from '@allianz/ng-aquila/list';
 import {
   NxVirtualFor,
   NxVirtualViewportComponent,

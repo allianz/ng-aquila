@@ -139,12 +139,20 @@ describe('NxComparisonTableDescriptionCell', () => {
   });
 
   describe('a11y', () => {
-    it('should have set the roles correctly (desktop)', () => {
+    it('should be a row-header (scope="row") on desktop', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
       createTestComponent(DescriptionCellComponent);
-      expect(descriptionCellElements[0].attributes.role).toBe('rowheader');
-    });
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      descriptionCellElements = fixture.debugElement.queryAll(
+        By.css('.nx-comparison-table__description-cell'),
+      );
+      expect(descriptionCellElements[0].nativeElement.tagName).toBe('TH');
+      expect(descriptionCellElements[0].nativeElement.getAttribute('scope')).toBe('row');
+    }));
 
-    it('should have set the roles correctly (tablet)', fakeAsync(() => {
+    it('should be a column-group header (scope="colgroup") on tablet', fakeAsync(() => {
       viewport.set('tablet');
       window.dispatchEvent(new Event('resize'));
 
@@ -155,10 +163,10 @@ describe('NxComparisonTableDescriptionCell', () => {
       descriptionCellElements = fixture.debugElement.queryAll(
         By.css('.nx-comparison-table__description-cell'),
       );
-      expect(descriptionCellElements[0].attributes.role).toBe('columnheader');
+      expect(descriptionCellElements[0].nativeElement.getAttribute('scope')).toBe('colgroup');
     }));
 
-    it('should have set the roles correctly (mobile)', fakeAsync(() => {
+    it('should have set the scope correctly (mobile)', fakeAsync(() => {
       viewport.set('mobile');
       window.dispatchEvent(new Event('resize'));
 
@@ -174,12 +182,19 @@ describe('NxComparisonTableDescriptionCell', () => {
       expect(descriptionCellElements[0].attributes.scope).toBe('col');
     }));
 
-    it('should not have set an aria-colspan (desktop)', () => {
+    it('should not span columns on desktop (the first-column cell)', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
       createTestComponent(DescriptionCellComponent);
-      expect(descriptionCellElements[0].attributes['aria-colspan']).toBe('1');
-    });
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      descriptionCellElements = fixture.debugElement.queryAll(
+        By.css('.nx-comparison-table__description-cell'),
+      );
+      expect(descriptionCellElements[0].attributes.colspan).toBeUndefined();
+    }));
 
-    it('should have set the correct aria-colspan (tablet)', fakeAsync(() => {
+    it('should span all product columns on tablet (full-width spanning row)', fakeAsync(() => {
       createTestComponent(DescriptionCellComponent);
       viewport.set('tablet');
       window.dispatchEvent(new Event('resize'));
@@ -190,7 +205,7 @@ describe('NxComparisonTableDescriptionCell', () => {
       descriptionCellElements = fixture.debugElement.queryAll(
         By.css('.nx-comparison-table__description-cell'),
       );
-      expect(descriptionCellElements[0].attributes['aria-colspan']).toBe('2');
+      expect(descriptionCellElements[0].nativeElement.getAttribute('colspan')).toBe('2');
     }));
 
     it('has no accessibility violations', (done) => {

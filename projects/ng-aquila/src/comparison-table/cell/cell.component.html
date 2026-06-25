@@ -1,26 +1,49 @@
 <ng-template #content>
   @if (_table.viewType === 'desktop' || _table.viewType === 'tablet') {
-    <div
-      class="nx-comparison-table__cell"
-      [class.nx-comparison-table__header-cell]="type === 'header'"
-      [class.nx-comparison-table__footer-cell]="type === 'footer'"
-      [class.is-disabled]="_isCellDisabled"
-      [attr.role]="type === 'header' ? 'columnheader' : 'cell'"
-      [class.is-selected]="_isSelected()"
-      [class.is-hidden]="_isCellHidden()"
-      [attr.id]="id"
-      [attr.headers]="_getHeaderIds()"
-      [class.is-error]="_table.isError"
-      [class.first]="_isFirst()"
-      [class.last]="_isLast()"
-    >
-      <div class="nx-comparison-table__cell-content">
-        <ng-container *ngTemplateOutlet="ngContent"></ng-container>
-      </div>
-    </div>
+    @if (type === 'header') {
+      <th
+        class="nx-comparison-table__cell nx-comparison-table__product-cell nx-comparison-table__header-cell"
+        [class.is-disabled]="_isCellDisabled()"
+        scope="col"
+        role="columnheader"
+        [class.is-selected]="_isSelected()"
+        [class.has-popular-above]="_hasPopularAbove()"
+        [class.is-hidden]="_isCellHidden()"
+        [attr.id]="id"
+        [attr.data-ct-col]="_visiblePosition()"
+        [class.is-error]="_table.isError"
+        [class.first]="_isFirst()"
+        [class.last]="_isLast()"
+      >
+        <span class="nx-comparison-table__cell-inner">
+          <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+        </span>
+      </th>
+    } @else {
+      <td
+        class="nx-comparison-table__cell nx-comparison-table__product-cell"
+        [class.nx-comparison-table__footer-cell]="type === 'footer'"
+        [class.is-disabled]="_isCellDisabled()"
+        role="cell"
+        [class.is-selected]="_isSelected()"
+        [class.is-hidden]="_isCellHidden()"
+        [class.is-faded]="_isOutsidePage()"
+        [attr.id]="id"
+        [attr.data-ct-col]="_visiblePosition()"
+        [attr.headers]="_headerIds()"
+        [class.is-error]="_table.isError"
+        [class.first]="_isFirst()"
+        [class.last]="_isLast()"
+      >
+        <span class="nx-comparison-table__cell-inner">
+          <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+        </span>
+      </td>
+    }
   }
   @if (_table.viewType === 'mobile') {
     <td
+      class="nx-comparison-table__mobile-cell"
       [class.nx-comparison-table__mobile-header-cell]="type === 'header'"
       [class.nx-comparison-table__cell]="type !== 'header'"
       [class.nx-comparison-table__footer-cell]="type === 'footer'"
@@ -28,7 +51,7 @@
       [class.is-hidden]="_isCellHidden()"
       [attr.scope]="type === 'header' ? 'row' : ''"
       [attr.id]="id"
-      [attr.headers]="_getHeaderIds()"
+      [attr.headers]="_headerIds()"
       [class.is-error]="_table.isError"
       [class.first]="_isFirst()"
       [class.last]="_isLast()"
@@ -39,5 +62,13 @@
 </ng-template>
 
 <ng-template #ngContent>
+  @if (_showRadioIndicator()) {
+    <span class="nx-comparison-table__radio-indicator" aria-hidden="true">
+      <nx-radio-indicator
+        [checked]="_isSelected()"
+        [disabled]="_isCellDisabled()"
+      ></nx-radio-indicator>
+    </span>
+  }
   <ng-content></ng-content>
 </ng-template>

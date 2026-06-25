@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, input, inject } from '@angular/core';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 
 @Component({
   selector: 'nx-context-menu-group',

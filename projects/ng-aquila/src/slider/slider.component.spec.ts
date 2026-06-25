@@ -158,6 +158,7 @@ describe('NxSliderComponent', () => {
 
       expect(handleElement.getAttribute('aria-labelledby')).toBe('another-label');
     });
+
     it('renders the Slider with a thumb label', () => {
       createTestComponent(BasicSlider);
       const thumbLabel = fixture.nativeElement.querySelector('.nx-slider__value');

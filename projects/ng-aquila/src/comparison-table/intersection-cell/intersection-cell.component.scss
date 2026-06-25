@@ -1,0 +1,32 @@
+@use '../../shared-styles/index' as *;
+@use '../comparison-table-mixins' as ct;
+
+// ── Desktop / tablet ──────────────────────────────────────────────────────────
+
+// The cell spans every product column (its box is as wide as the whole table); the visible
+// surface is the inner sticky banner, sized to 100cqi so it fills the viewport and stays put
+// while the product columns scroll underneath.
+.nx-comparison-table__intersection-cell {
+  padding: 0;
+
+  .nx-comparison-table__sticky-banner {
+    @include ct.intersection-cell-base;
+  }
+}
+
+// ── Mobile ────────────────────────────────────────────────────────────────────
+
+// Rendered as <td class="…__mobile-cell"> in the transposed table.
+td.nx-comparison-table__mobile-cell.nx-comparison-table__intersection-cell {
+  text-align: v(comparison-table-cell-text-align);
+  vertical-align: top;
+  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+  padding: 8px;
+  border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
+  min-width: 256px;
+  width: 256px;
+  background: v(comparison-table-intersection-cell-background-color);
+
+  @include ct.cell-content-reset;
+}

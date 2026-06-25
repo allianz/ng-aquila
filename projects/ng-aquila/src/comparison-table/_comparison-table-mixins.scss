@@ -1,0 +1,52 @@
+// Private mixins shared across comparison-table cell components.
+// Not part of the public API — do not @forward from shared-styles.
+
+@use '../shared-styles/index' as *;
+
+// Base styles for an intersection cell (grid layout, desktop/tablet).
+@mixin intersection-cell-base {
+  min-width: 0;
+  text-align: v(comparison-table-cell-text-align);
+  padding: v(comparison-table-intersection-cell-padding);
+  height: 100%;
+  background-color: v(comparison-table-intersection-cell-background-color);
+  border-inline-end: nx-border-size(xs) solid v(comparison-table-border-color);
+
+  @include cell-content-reset;
+}
+
+// Resets default margins/padding of design-system components placed inside
+// table cells, where the cell itself already provides the correct spacing.
+@mixin cell-content-reset {
+  nx-checkbox {
+    margin: 0;
+
+    .nx-checkbox__label {
+      padding: 0;
+    }
+  }
+
+  .nx-button {
+    margin: 0;
+  }
+
+  nx-formfield .nx-formfield__wrapper {
+    padding-bottom: 0;
+  }
+
+  nx-formfield.has-outline .nx-formfield__wrapper {
+    padding-top: 0;
+  }
+
+  .nx-list {
+    margin: 0;
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  nx-link a {
+    display: inline-flex;
+  }
+}

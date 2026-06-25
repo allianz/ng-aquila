@@ -1,22 +1,21 @@
 <ng-template #content>
   @if (_table.viewType === 'desktop' || _table.viewType === 'tablet') {
-    <div
+    <td
       class="nx-comparison-table__intersection-cell"
       role="cell"
-      [attr.aria-colspan]="_table._infoColumnCount()"
-      [style.flex-grow]="_table._infoColumnCount()"
-      [attr.headers]="_getHeaderIds()"
+      [attr.colspan]="_intersectionColspan()"
+      [attr.headers]="_headerIds()"
     >
-      <div class="nx-comparison-table__cell-content">
+      <div class="nx-comparison-table__sticky-banner">
         <ng-container *ngTemplateOutlet="ngContent"></ng-container>
       </div>
-    </div>
+    </td>
   }
   @if (_table.viewType === 'mobile') {
     <td
-      class="nx-comparison-table__intersection-cell"
-      [attr.rowspan]="_getMobileRowspan()"
-      [attr.headers]="_getHeaderIds()"
+      class="nx-comparison-table__intersection-cell nx-comparison-table__mobile-cell"
+      [attr.rowspan]="_mobileRowspan()"
+      [attr.headers]="_headerIds()"
     >
       <ng-container *ngTemplateOutlet="ngContent"></ng-container>
     </td>

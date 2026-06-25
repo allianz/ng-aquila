@@ -9,31 +9,39 @@
   border-top: nx-border-size(xs) solid v(comparison-table-border-color);
 }
 
-.nx-comparison-table-toggle-section__header-wrapper {
-  display: block;
-  width: 100%;
-  cursor: pointer;
-}
-
-.nx-comparison-table-toggle-section__header-wrapper:focus {
-  // don't show inner dotted border on firefox
-  outline: 0;
+// On desktop/tablet the interactive element is the host <th class="…__toggle-section-header-cell">
+// in the table template; bold the label when that header is expanded.
+::ng-deep
+  .nx-comparison-table__toggle-section-header-cell[aria-expanded='true']
+  .nx-comparison-table-toggle-section__header-content {
+  font-weight: v(comparison-table-toggle-section-header-expanded-font-weight);
 }
 
 .nx-comparison-table-toggle-section__header-content {
   @include type-style(comparison-table-toggle-section-header);
-  border: nx-border-size(xs) solid v(comparison-table-border-color);
-  background-color: v(comparison-table-toggle-section-header-background-color);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  // Animate the bold-on-expand on the SAME clock as the chevron and the row collapse, so the
+  // whole toggle-section interaction moves together instead of the weight snapping instantly.
+  transition: font-weight v(comparison-table-toggle-section-animation-duration)
+    v(comparison-table-toggle-section-animation-easing);
+
   @media screen and (forced-colors: active) {
-    border-color: buttonText;
-    background-color: buttonFace;
     color: buttonText;
   }
+}
+
+// we need this workaround with ng-deep because :host-context would not work with the toggle section header
+// which is outside of the flex-row container that sets the direction of the table
+::ng-deep nx-comparison-table[dir='ltr'] .nx-comparison-table-toggle-section__header-content {
+  padding: v(comparison-table-toggle-section-header-padding);
+}
+
+::ng-deep nx-comparison-table[dir='rtl'] .nx-comparison-table-toggle-section__header-content {
+  padding: v(comparison-table-toggle-section-header-padding-rtl);
 }
 
 .nx-expansion-panel__chevron {
@@ -41,7 +49,9 @@
   font-size: v(comparison-table-toggle-section-chevron-size);
   color: v(comparison-table-toggle-section-chevron-color);
   transform: rotate(0deg);
-  transition: transform $accordion-chevron-duration $accordion-chevron-easing;
+  // Same clock as the header font-weight and the row collapse so the interaction moves as one.
+  transition: transform v(comparison-table-toggle-section-animation-duration)
+    v(comparison-table-toggle-section-animation-easing);
 
   &.open {
     transform: rotate(180deg);

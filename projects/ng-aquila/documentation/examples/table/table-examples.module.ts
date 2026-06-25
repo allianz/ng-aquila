@@ -26,6 +26,7 @@ import { TableExpandableExampleComponent } from './table-expandable/table-expand
 import { TableExpandableIndentExampleComponent } from './table-expandable-indent/table-expandable-indent-example';
 import { TableFilterSortPaginateExampleComponent } from './table-filter-sort-paginate/table-filter-sort-paginate-example';
 import { TableFormElementsExampleComponent } from './table-form-elements/table-form-elements-example';
+import { TableNativeStickyExampleComponent } from './table-native-sticky/table-native-sticky-example';
 import { TableSelectingExampleComponent } from './table-selecting/table-selecting-example';
 import { TableSingleSelectExampleComponent } from './table-single-select/table-single-select-example';
 import { TableSortingExampleComponent } from './table-sorting/table-sorting-example';
@@ -46,6 +47,7 @@ const EXAMPLES = [
   TableSortingExampleComponent,
   TableZebraExampleComponent,
   TableFormElementsExampleComponent,
+  TableNativeStickyExampleComponent,
   TableStickyColumnExampleComponent,
   TableStickyHeaderExampleComponent,
   TableColumnHidingExampleComponent,
@@ -89,6 +91,7 @@ export class TableExamplesModule {
       'table-sorting': TableSortingExampleComponent,
       'table-zebra': TableZebraExampleComponent,
       'table-form-elements': TableFormElementsExampleComponent,
+      'table-native-sticky': TableNativeStickyExampleComponent,
       'table-sticky-column': TableStickyColumnExampleComponent,
       'table-sticky-header': TableStickyHeaderExampleComponent,
       'table-column-hiding': TableColumnHidingExampleComponent,

@@ -1,0 +1,62 @@
+@use '../../shared-styles/index' as *;
+@use '../comparison-table-mixins' as ct;
+
+// ── Desktop / tablet ──────────────────────────────────────────────────────────
+
+// Desktop: this is the sticky first column — the opaque surface/borders live on the cell
+// itself so it occludes the product columns scrolling underneath.
+.nx-comparison-table__description-cell {
+  min-width: 0;
+  font-weight: nx-font-weight(semibold);
+  text-align: start;
+  padding: v(comparison-table-description-cell-padding);
+  height: 100%;
+  background-color: v(comparison-table-description-cell-background-color);
+  border-inline-end: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+  border-inline-start: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+
+  @include ct.cell-content-reset;
+}
+
+// Tablet: the description is a full-width spanning row. The cell box is as wide as the whole
+// table; the visible surface is the inner sticky banner (sized to 100cqi) so it fills the
+// viewport and stays put while the product columns scroll underneath.
+.nx-comparison-table__description-cell.is-description-banner {
+  padding: 0;
+  border-inline: none;
+  background-color: transparent;
+
+  .nx-comparison-table__sticky-banner {
+    padding: v(comparison-table-description-cell-padding);
+    background-color: v(comparison-table-description-cell-background-color);
+    border-inline-end: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+    border-inline-start: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+  }
+}
+
+// ── Mobile ────────────────────────────────────────────────────────────────────
+
+// Rendered as <th class="…__mobile-cell"> in the transposed table.
+th.nx-comparison-table__mobile-cell.nx-comparison-table__description-cell {
+  text-align: v(comparison-table-cell-text-align);
+  vertical-align: top;
+  border-top: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+  border-inline-start: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+  padding: 8px;
+  background-color: v(comparison-table-description-cell-background-color);
+  @include type-style(comparison-table-description-cell-mobile);
+  width: 128px;
+  min-width: 128px;
+  height: auto;
+
+  &.is-intersection-column {
+    background: v(comparison-table-intersection-cell-background-color);
+  }
+
+  & + .nx-comparison-table__placeholder-cell {
+    border-inline-start: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+    min-width: 8px;
+  }
+
+  @include ct.cell-content-reset;
+}

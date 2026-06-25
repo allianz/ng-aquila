@@ -1,6 +1,6 @@
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
-import { NgStyle, NgTemplateOutlet } from '@angular/common';
-import { Component, ElementRef, inject, Input, TemplateRef, ViewChild } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import { Component, inject, Input, TemplateRef, ViewChild } from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
@@ -8,11 +8,11 @@ import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 @Component({
   selector: 'nx-comparison-table-description-cell',
   templateUrl: './description-cell.component.html',
-  imports: [NgTemplateOutlet, NgStyle],
+  styleUrls: ['./description-cell.component.scss'],
+  imports: [NgTemplateOutlet],
 })
 export class NxComparisonTableDescriptionCell {
   @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
-  @ViewChild('mobileCell') _mobileCell!: ElementRef;
 
   /** Sets the Id of the description cell. */
   @Input() set id(value: string) {
@@ -34,13 +34,5 @@ export class NxComparisonTableDescriptionCell {
         '`nxComparisonTableRow` should not contain a `nx-comparison-table-description-cell` for type === "header" or type === "footer".',
       );
     }
-  }
-
-  _getMobileClipPathInset(): string {
-    if (this._mobileCell) {
-      const cellRect = this._mobileCell.nativeElement.getBoundingClientRect();
-      return this._table._getMobileClipPathInset(cellRect);
-    }
-    return '0';
   }
 }

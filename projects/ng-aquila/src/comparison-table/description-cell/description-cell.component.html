@@ -1,25 +1,30 @@
 <ng-template #content>
-  @if (_table.viewType === 'desktop' || _table.viewType === 'tablet') {
-    <div
-      class="nx-comparison-table__description-cell"
-      [attr.role]="_table.viewType === 'desktop' ? 'rowheader' : 'columnheader'"
-      [attr.aria-colspan]="_table.viewType === 'tablet' ? _table._infoColumnCount() : '1'"
+  @if (_table.viewType === 'desktop') {
+    <th class="nx-comparison-table__description-cell" scope="row" role="rowheader" [attr.id]="id">
+      <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+    </th>
+  }
+
+  @if (_table.viewType === 'tablet') {
+    <th
+      class="nx-comparison-table__description-cell is-description-banner"
+      scope="colgroup"
+      role="columnheader"
+      [attr.colspan]="_table._infoColumnCount()"
       [attr.id]="id"
     >
-      <div class="nx-comparison-table__cell-content">
+      <div class="nx-comparison-table__sticky-banner">
         <ng-container *ngTemplateOutlet="ngContent"></ng-container>
       </div>
-    </div>
+    </th>
   }
 
   @if (_table.viewType === 'mobile') {
     <th
-      #mobileCell
-      class="nx-comparison-table__description-cell"
+      class="nx-comparison-table__description-cell nx-comparison-table__mobile-cell"
       [class.is-intersection-column]="_row._isIntersectionRow()"
       scope="col"
       [attr.id]="id"
-      [ngStyle]="{ 'clip-path': 'inset(' + _getMobileClipPathInset() + ')' }"
     >
       <ng-container *ngTemplateOutlet="ngContent"></ng-container>
     </th>

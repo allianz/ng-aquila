@@ -37,6 +37,29 @@ You can also set the initially selected product by using the `[selectedIndex]` i
 
 <!-- example(comparison-table) -->
 
+#### Container based responsive layout
+
+The component automatically switches into a carousel when the `responsiveMode` is set to `container` (default for A1, not supported in NDBX) and if there is not enough space to show all products.
+In addition it always switches between the tablet and desktop view depending on the size of the container.
+
+The amount of visible columns and the view type per breakpoint can be customized. A breakpoint is a `NxComparisonTableBreakpoint` object: its `minWidth` defines the container width (in pixels) from which it applies, while `columns` sets how many product columns are shown and `viewType` (`tablet` or `desktop`, `mobile` is legacy and not intended to be used together with responsiveBreakpoints) controls the look. Both `columns` and `viewType` are optional and are carried over from the previous matching breakpoint when omitted.
+
+These breakpoints can either be set via the `responsiveBreakpoints` input on a single comparison table or be provided globally via the `COMPARISON_TABLE_DEFAULT_OPTIONS` provider token.
+
+The default breakpoints are exported through the `DEFAULT_BREAKPOINTS` constant.
+
+The following example uses custom breakpoints: it keeps the default breakpoints below `BREAKPOINT_LARGE` and replaces the largest one with a `tablet` view that shows 3 columns, so the table stays in the tablet look on wide containers instead of switching to desktop.
+
+<!-- example(comparison-table-overflow) -->
+
+#### Breakpoint playground
+
+To see how `columns` and `viewType` interact, the following example wires both fields of a single breakpoint to dropdowns. It uses just one breakpoint at `minWidth: 0`, which always matches regardless of the container width — this takes the container size out of the equation so the layout is driven purely by the two dropdowns.
+
+Note that `columns` and `viewType` are independent: setting `columns` to 3 with `viewType` left at its `tablet` default looks different from the tablet or desktop view with the same column count. Pick the `viewType` that matches the look you want, then set `columns` for the number of products shown.
+
+<!-- example(comparison-table-breakpoint-playground) -->
+
 #### Static Layout
 
 If a specific layout is needed, the `view` input can be used to override the layout auto-set by the viewport width.

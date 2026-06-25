@@ -1,9 +1,18 @@
-import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { Component, DebugElement, Directive, QueryList, Type, ViewChildren } from '@angular/core';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
+import {
+  Component,
+  DebugElement,
+  Directive,
+  QueryList,
+  signal,
+  Type,
+  ViewChildren,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { dispatchKeyboardEvent } from '../../cdk-test-utils';
+import { NxComparisonTableBreakpoint } from '../comparison-table.models';
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxToggleSectionHeaderComponent } from './toggle-section-header.component';
 
@@ -40,7 +49,12 @@ describe('ToggleSectionHeaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxComparisonTableModule, BasicComponent, IdTestingComponent],
+      imports: [
+        NxComparisonTableModule,
+        BasicComponent,
+        IdTestingComponent,
+        OverflowToggleComponent,
+      ],
     });
     TestBed.compileComponents();
   }));
@@ -59,44 +73,44 @@ describe('ToggleSectionHeaderComponent', () => {
       expect(headerInstances.toArray()[0].id).toMatch(
         /nx-comparison-table-toggle-section-header-\d+$/,
       );
-      const wrapper = headerElements[0].nativeElement.querySelector(
-        '.nx-comparison-table-toggle-section__header-wrapper',
+      // The id lives on the real <th> (so the content cells' headers= can reference a <th>).
+      const cell = headerElements[0].nativeElement.querySelector(
+        '.nx-comparison-table__toggle-section-header-cell',
       );
-      expect(wrapper.id).toMatch(/nx-comparison-table-toggle-section-header-\d+$/);
+      expect(cell.id).toMatch(/nx-comparison-table-toggle-section-header-\d+$/);
     });
 
     it('should set id on input change', () => {
       createTestComponent(IdTestingComponent);
       expect(headerInstances.toArray()[1].id).toBe('toggle-header');
-      let wrapper = headerElements[1].nativeElement.querySelector(
-        '.nx-comparison-table-toggle-section__header-wrapper',
+      let cell = headerElements[1].nativeElement.querySelector(
+        '.nx-comparison-table__toggle-section-header-cell',
       );
-      expect(wrapper.id).toBe('toggle-header');
+      expect(cell.id).toBe('toggle-header');
 
       testInstance.headerId = 'test-toggle-header';
       fixture.detectChanges();
       expect(headerInstances.toArray()[1].id).toBe('test-toggle-header');
-      wrapper = headerElements[1].nativeElement.querySelector(
-        '.nx-comparison-table-toggle-section__header-wrapper',
+      cell = headerElements[1].nativeElement.querySelector(
+        '.nx-comparison-table__toggle-section-header-cell',
       );
-      expect(wrapper.id).toBe('test-toggle-header');
+      expect(cell.id).toBe('test-toggle-header');
     });
 
-    it('should call toggle() on desktop', fakeAsync(() => {
+    it('should toggle the section when the header cell is clicked (desktop)', fakeAsync(() => {
       createTestComponent(BasicComponent);
       tick(THROTTLE_TIME);
       expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
 
-      const spy = spyOn(headerInstances.toArray()[0], 'toggle').and.callThrough();
-      const wrapper = headerElements[0].nativeElement.querySelector(
-        '.nx-comparison-table-toggle-section__header-wrapper',
+      // The interactive element is the host <th> in the table template.
+      const headerCell = headerElements[0].query(
+        By.css('.nx-comparison-table__toggle-section-header-cell'),
       );
-      wrapper.click();
+      headerCell.nativeElement.click();
       tick();
       fixture.detectChanges();
       tick();
 
-      expect(spy).toHaveBeenCalledTimes(1);
       expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeFalse();
     }));
   });
@@ -162,12 +176,12 @@ describe('ToggleSectionHeaderComponent', () => {
     it('should have set the correct roles / scopes (desktop)', fakeAsync(() => {
       createTestComponent(BasicComponent);
       tick(THROTTLE_TIME);
+      // The row carries role="row"; the interactive header cell carries scope="colgroup".
       expect(headerElements[0].attributes.role).toBe('row');
-      const wrapper = headerElements[0].nativeElement.querySelector(
-        '.nx-comparison-table-toggle-section__header-wrapper',
-      ) as HTMLElement;
-      expect(wrapper.getAttribute('role')).toBe('rowheader');
-      expect(wrapper.getAttribute('aria-colspan')).toBe('2');
+      const cell = headerElements[0].query(
+        By.css('.nx-comparison-table__toggle-section-header-cell'),
+      );
+      expect(cell.nativeElement.getAttribute('scope')).toBe('colgroup');
     }));
 
     it('should have set the correct roles / scopes (mobile)', fakeAsync(() => {
@@ -189,16 +203,14 @@ describe('ToggleSectionHeaderComponent', () => {
       createTestComponent(BasicComponent);
 
       // expanded toggle section
-      let wrapper = headerElements[0].nativeElement.querySelector(
-        '.nx-comparison-table-toggle-section__header-wrapper',
-      ) as HTMLElement;
-      expect(wrapper.getAttribute('aria-expanded')).toBe('true');
+      let cell = headerElements[0].query(
+        By.css('.nx-comparison-table__toggle-section-header-cell'),
+      );
+      expect(cell.nativeElement.getAttribute('aria-expanded')).toBe('true');
 
       // collapsed toggle section
-      wrapper = headerElements[1].nativeElement.querySelector(
-        '.nx-comparison-table-toggle-section__header-wrapper',
-      ) as HTMLElement;
-      expect(wrapper.getAttribute('aria-expanded')).toBe('false');
+      cell = headerElements[1].query(By.css('.nx-comparison-table__toggle-section-header-cell'));
+      expect(cell.nativeElement.getAttribute('aria-expanded')).toBe('false');
     });
 
     it('should not have set aria-expanded (mobile)', fakeAsync(() => {
@@ -220,17 +232,37 @@ describe('ToggleSectionHeaderComponent', () => {
       createTestComponent(BasicComponent);
       expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
 
-      const wrapper = headerElements[0].nativeElement.querySelector(
-        '.nx-comparison-table-toggle-section__header-wrapper',
-      ) as HTMLElement;
-      dispatchKeyboardEvent(wrapper, 'keydown', ENTER);
+      const cell = headerElements[0].query(
+        By.css('.nx-comparison-table__toggle-section-header-cell'),
+      ).nativeElement as HTMLElement;
+      dispatchKeyboardEvent(cell, 'keydown', 0, 'Enter');
       fixture.detectChanges();
       expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeFalse();
 
-      dispatchKeyboardEvent(wrapper, 'keydown', SPACE);
+      dispatchKeyboardEvent(cell, 'keydown', 0, ' ');
       fixture.detectChanges();
       expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
     });
+  });
+
+  describe('overflow mode', () => {
+    it('should toggle when clicking the full-width header cell', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(OverflowToggleComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const headerCell = fixture.debugElement.query(
+        By.css('.nx-comparison-table__toggle-section-header-cell'),
+      );
+
+      const expanded = headerInstances.toArray()[0]._toggleSection.isExpanded;
+      headerCell.nativeElement.click();
+      tick();
+      fixture.detectChanges();
+      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(!expanded);
+    }));
   });
 });
 
@@ -348,3 +380,43 @@ class BasicComponent extends ToggleSectionTest {
   imports: [NxComparisonTableModule],
 })
 class IdTestingComponent extends ToggleSectionTest {}
+
+@Component({
+  template: `
+    <nx-comparison-table [responsiveBreakpoints]="breakpoints" style="width: 600px;">
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-cell type="header">Product 1</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">Product 2</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">Product 3</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">Product 4</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">Product 5</nx-comparison-table-cell>
+      </ng-container>
+      <ng-container nxComparisonTableToggleSection [isExpanded]="true">
+        <nx-comparison-table-toggle-section-header
+          >Toggle section header</nx-comparison-table-toggle-section-header
+        >
+        <ng-container nxComparisonTableRow>
+          <nx-comparison-table-description-cell>Description</nx-comparison-table-description-cell>
+          <nx-comparison-table-cell>A</nx-comparison-table-cell>
+          <nx-comparison-table-cell>B</nx-comparison-table-cell>
+          <nx-comparison-table-cell>C</nx-comparison-table-cell>
+          <nx-comparison-table-cell>D</nx-comparison-table-cell>
+          <nx-comparison-table-cell>E</nx-comparison-table-cell>
+        </ng-container>
+      </ng-container>
+      <ng-container nxComparisonTableRow type="footer">
+        <nx-comparison-table-cell type="footer">F1</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="footer">F2</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="footer">F3</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="footer">F4</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="footer">F5</nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+  `,
+  imports: [NxComparisonTableModule],
+  // A1 enables carousel/overflow mode; scoped to this host so it doesn't flip other hosts to tablet.
+  providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }],
+})
+class OverflowToggleComponent extends ToggleSectionTest {
+  breakpoints: NxComparisonTableBreakpoint[] = [{ minWidth: 0, columns: 3 }];
+}

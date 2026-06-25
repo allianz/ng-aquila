@@ -786,6 +786,7 @@ $nx-theme: (
   comparison-table-border-color: ui-04,
   comparison-table-header-background-color: ui-01,
   comparison-table-header-text-color: text-01,
+  comparison-table-header-spacing-bottom: 8px,
   comparison-table-placeholder-cell-background-color: transparent,
   comparison-table-placeholder-cell-border-color: transparent,
   comparison-table-disabled-text-color: disabled-01,
@@ -798,6 +799,7 @@ $nx-theme: (
   comparison-table-toggle-section-header-padding: 24px 32px 24px 16px,
   comparison-table-toggle-section-header-padding-rtl: 24px 16px 24px 32px,
   comparison-table-expansion-cell-color: interactive-text,
+  comparison-table-expansion-cell-background-color: transparent,
   comparison-table-font-size: 1rem,
   comparison-table-line-height: 1.25rem,
   comparison-table-font-weight: 400,
@@ -822,6 +824,41 @@ $nx-theme: (
   comparison-table-toggle-section-header-line-height: heading-04-line-height,
   comparison-table-toggle-section-header-font-weight: heading-04-font-weight,
   comparison-table-toggle-section-header-letter-spacing: heading-04-letter-spacing,
+  comparison-table-toggle-section-header-expanded-font-weight:
+    comparison-table-toggle-section-header-font-weight,
+  comparison-table-description-cell-background-color: comparison-table-cell-background-color,
+  comparison-table-description-cell-border-color: comparison-table-border-color,
+  // needs to have px unit to work in calc()
+  comparison-table-row-gap: 0px,
+  comparison-table-column-shadow: none,
+  // needs to have px unit to work in calc()
+  comparison-table-column-shadow-space: 0px,
+  // Minimum width of a product/row-header column in overflow mode. Acts as the floor when
+  // the computed cqi-based column width (visible width / columns shown) would be smaller,
+  // so the table reliably overflows and becomes horizontally scrollable.
+  comparison-table-min-column-width: 160px,
+  // Width reserved at the trailing edge in overflow mode so a sliver of the next (hidden)
+  // column peeks into view, signalling that more columns are scrollable. Subtracted from the
+  // visible width before it is divided across the shown columns. 0 = columns tile edge-to-edge.
+  comparison-table-overflow-peek: 0px,
+  comparison-table-cell-border-radius: 0,
+  comparison-table-popular-cell-border-radius: 0,
+  comparison-table-description-cell-padding: 16px,
+  comparison-table-cell-padding: 16px,
+  comparison-table-header-cell-padding: 16px 4px,
+  comparison-table-intersection-cell-padding: 16px,
+  comparison-table-description-cell-intersection-padding: 16px,
+  comparison-table-toggle-section-spacing: 16px,
+  comparison-table-row-group-spacing: 0px,
+  comparison-table-toggle-section-header-border-color: comparison-table-border-color,
+  comparison-table-toggle-section-header-border-width: 1px,
+  comparison-table-toggle-section-content-padding-top: 0,
+  comparison-table-toggle-section-animation-duration: 500ms,
+  comparison-table-toggle-section-animation-easing: cubic-bezier(0#{','} 0#{','} 0.2#{','} 1),
+  comparison-table-intersection-row-margin-bottom: 0,
+  comparison-table-expansion-cell-margin-top: 0,
+  comparison-table-expansion-cell-border-size: 1px,
+  comparison-table-cell-text-align: center,
   data-display-label-font-weight: 600,
   data-display-large-font-size: paragraph-02-font-size,
   data-display-large-line-height: paragraph-02-line-height,

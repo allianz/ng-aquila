@@ -60,34 +60,35 @@ describe('NxComparisonTablePopularCell', () => {
   it('places the popular cell above the correct column', () => {
     createTestComponent(PopularCellComponent);
 
-    const popularCellColumn = popularCellInstance.forColumn + 1; // +1 for the row header
-    const popularCell = fixture.nativeElement.querySelector(
-      `.nx-comparison-table__popular-cell:nth-child(${popularCellColumn})`,
-    );
-    // make sure the placeholder cells are not the popular cell
-    const placeholder1 = fixture.nativeElement.querySelector(
-      '.nx-comparison-table__popular-cell:nth-child(1)',
-    );
-    const placeholder2 = fixture.nativeElement.querySelector(
-      '.nx-comparison-table__popular-cell:nth-child(2)',
-    );
-    const placeholder4 = fixture.nativeElement.querySelector(
-      '.nx-comparison-table__popular-cell:nth-child(4)',
+    // popular row lives inside thead .is-popular-row
+    const popularRow = fixture.nativeElement.querySelector('thead .is-popular-row');
+    expect(popularRow).toBeTruthy();
+
+    // Among the product-column cells (placeholders + popular cell, excluding the
+    // desktop-only leading corner cell), the popular cell sits at index forColumn - 1.
+    const productCells = Array.from(popularRow.children as HTMLCollectionOf<HTMLElement>).filter(
+      (el) => !el.classList.contains('nx-comparison-table__corner-cell'),
     );
 
-    expect(popularCell).toBeDefined();
-    expect(placeholder1).toBeNull();
-    expect(placeholder2).toBeNull();
-    expect(placeholder4).toBeNull();
+    const popularIndex = productCells.findIndex((el) =>
+      el.classList.contains('nx-comparison-table__popular-cell'),
+    );
+    expect(popularIndex).toBe(popularCellInstance.forColumn - 1);
   });
 
-  it('should have the correct number of placeholder cells in the popular cell row (desktop)', () => {
+  it('should have the correct number of placeholder cells in the popular cell row (desktop)', fakeAsync(() => {
+    viewport.set('desktop');
+    window.dispatchEvent(new Event('resize'));
     createTestComponent(PopularCellComponent);
-    const placeholderCells = fixture.nativeElement.querySelectorAll(
-      '.nx-comparison-table__placeholder-cell.is-popular-placeholder-cell',
-    );
-    expect(placeholderCells).toHaveSize(3);
-  });
+    tick(THROTTLE_TIME);
+    fixture.detectChanges();
+
+    // forColumn=2, headerCells=3 → 1 before + 1 after = 2 placeholders in the popular row
+    const popularRow = fixture.nativeElement.querySelector('thead .is-popular-row');
+    const placeholderCells = popularRow.querySelectorAll('.nx-comparison-table__placeholder-cell');
+    expect(placeholderCells).toHaveSize(2);
+    flush();
+  }));
 
   it('should have the correct number of placeholder cells in the popular cell row (tablet)', fakeAsync(() => {
     viewport.set('tablet');
@@ -97,10 +98,11 @@ describe('NxComparisonTablePopularCell', () => {
     tick(THROTTLE_TIME);
     fixture.detectChanges();
 
-    const placeholderCells = fixture.nativeElement.querySelectorAll(
-      '.nx-comparison-table__placeholder-cell.is-popular-placeholder-cell',
-    );
+    // tablet: same header-track structure, same 2 placeholders
+    const popularRow = fixture.nativeElement.querySelector('thead .is-popular-row');
+    const placeholderCells = popularRow.querySelectorAll('.nx-comparison-table__placeholder-cell');
     expect(placeholderCells).toHaveSize(2);
+    flush();
   }));
 
   it('should display cell on mobile', fakeAsync(() => {

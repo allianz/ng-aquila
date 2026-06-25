@@ -1,0 +1,27 @@
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+  align-items: baseline;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.product-price {
+  margin-bottom: 12px;
+}
+
+.product-underline {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+}

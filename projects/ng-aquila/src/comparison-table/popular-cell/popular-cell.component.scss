@@ -1,6 +1,59 @@
+@use '../../shared-styles/index' as *;
+
+// ── Desktop / tablet ──────────────────────────────────────────────────────────
+
+// The popular cell is a real table cell (<td>); its flex layout lives on the inner
+// wrapper so the cell keeps `display: table-cell`.
+.nx-comparison-table__popular-cell {
+  min-width: 0;
+  vertical-align: bottom;
+  background-color: v(comparison-table-popular-cell-background-color);
+  color: v(comparison-table-popular-cell-text-color);
+  padding: nx-spacer(2xs) nx-spacer(xs);
+  box-shadow: v(comparison-table-column-shadow);
+  border-radius: v(comparison-table-popular-cell-border-radius);
+  clip-path: inset(
+    calc(-1 * v(comparison-table-column-shadow-space))
+      calc(-1 * v(comparison-table-column-shadow-space)) 0
+      calc(-1 * v(comparison-table-column-shadow-space))
+  );
+}
+
+.nx-comparison-table__popular-cell-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: nx-font-weight(semibold);
+  text-align: start;
+  @include type-style(comparison-table-popular-cell);
+}
+
+// quick override because e.g. the info icon/button with a popover is sometimes used in the popular cell,
+// as it is content we cannot control it (yet). The class is repeated (.is-a1.is-a1.is-a1) purely to
+// raise specificity above the projected content's own button/icon color rules.
+::ng-deep nx-comparison-table.is-a1.is-a1.is-a1 .nx-comparison-table__popular-cell {
+  margin-inline-end: 0;
+
+  button,
+  nx-icon {
+    color: v(comparison-table-popular-cell-text-color) !important;
+  }
+}
+
 .nx-comparison-table__popular-cell.is-hidden,
 ::ng-deep td.nx-comparison-table__mobile-popular-cell.is-hidden div {
   display: none;
+}
+
+// ── Mobile ────────────────────────────────────────────────────────────────────
+
+// Rendered as <td> in a <table>.
+.nx-comparison-table__mobile-popular-cell {
+  @include type-style(comparison-table-popular-cell);
+  background-color: v(comparison-table-popular-cell-background-color);
+  color: v(comparison-table-popular-cell-text-color);
+  padding: 4px;
+  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
 }
 
 td.nx-comparison-table__mobile-popular-cell.is-hidden {
@@ -11,5 +64,16 @@ td.nx-comparison-table__mobile-popular-cell.is-hidden {
   &.is-error {
     border-left: 1px solid var(--danger) !important;
     border-right: 1px solid var(--danger) !important;
+  }
+}
+
+// ── Forced colors (Windows High Contrast) ────────────────────────────────────
+// Background color is overridden by the OS — use borders as fallback visual cue.
+@media screen and (forced-colors: active) {
+  .nx-comparison-table__popular-cell,
+  .nx-comparison-table__mobile-popular-cell {
+    border-top: 1px solid CanvasText;
+    border-inline-end: 1px solid CanvasText;
+    border-inline-start: 1px solid CanvasText;
   }
 }

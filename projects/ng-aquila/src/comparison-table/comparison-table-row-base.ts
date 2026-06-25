@@ -1,4 +1,4 @@
-import { Directive, QueryList } from '@angular/core';
+import { Directive, Signal } from '@angular/core';
 
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableRowType } from './comparison-table.models';
@@ -8,9 +8,9 @@ import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.compon
 /** @docs-private */
 @Directive({ standalone: true })
 export abstract class NxComparisonTableRowBase {
-  cells!: QueryList<NxComparisonTableCell>;
-  descriptionCell!: NxComparisonTableDescriptionCell;
-  popularCell?: NxComparisonTablePopularCell;
+  abstract readonly cells: Signal<readonly NxComparisonTableCell[]>;
+  abstract readonly descriptionCell: Signal<NxComparisonTableDescriptionCell | undefined>;
+  abstract readonly popularCell: Signal<NxComparisonTablePopularCell | undefined>;
   abstract type: NxComparisonTableRowType;
   abstract mayStick: boolean;
   abstract _isPartOfToggleSection(): boolean;

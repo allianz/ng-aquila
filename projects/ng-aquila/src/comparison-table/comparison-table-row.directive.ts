@@ -1,16 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import {
-  AfterContentInit,
-  ContentChild,
-  ContentChildren,
-  Directive,
-  Input,
-  OnDestroy,
-  Optional,
-  QueryList,
-} from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { contentChild, contentChildren, Directive, effect, Input, Optional } from '@angular/core';
 
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableRowType } from './comparison-table.models';
@@ -32,24 +21,21 @@ import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
 })
 export class NxComparisonTableRowDirective
   extends NxComparisonTableRowBase
-  implements AfterContentInit, OnDestroy, NxTableContentElement
+  implements NxTableContentElement
 {
-  /** @docs-private */
-  @ContentChildren(NxComparisonTableCell) cells!: QueryList<NxComparisonTableCell>;
+  readonly kind = 'row';
 
   /** @docs-private */
-  @ContentChild(NxComparisonTableIntersectionCell, { static: false })
-  intersectionCell!: NxComparisonTableIntersectionCell;
+  readonly cells = contentChildren(NxComparisonTableCell);
 
   /** @docs-private */
-  @ContentChild(NxComparisonTableDescriptionCell, { static: false })
-  descriptionCell!: NxComparisonTableDescriptionCell;
+  readonly intersectionCell = contentChild(NxComparisonTableIntersectionCell);
 
   /** @docs-private */
-  @ContentChild(NxComparisonTablePopularCell, { static: false })
-  popularCell!: NxComparisonTablePopularCell;
+  readonly descriptionCell = contentChild(NxComparisonTableDescriptionCell);
 
-  readonly _requestCellClippingUpdate$ = new Subject<void>();
+  /** @docs-private */
+  readonly popularCell = contentChild(NxComparisonTablePopularCell);
 
   /** Sets the type of the row. Default: 'content'. */
   @Input() set type(newValue: NxComparisonTableRowType) {
@@ -65,7 +51,6 @@ export class NxComparisonTableRowDirective
   @Input() set mayStick(newValue: BooleanInput) {
     if (newValue !== this._mayStick) {
       this._mayStick = coerceBooleanProperty(newValue);
-      this._requestCellClippingUpdate$.next(undefined);
     }
   }
   get mayStick(): boolean {
@@ -73,31 +58,15 @@ export class NxComparisonTableRowDirective
   }
   private _mayStick = true;
 
-  private readonly _destroyed = new Subject<void>();
-
   constructor(
     @Optional() private readonly _toggleSection: NxToggleSectionBase | null,
     @Optional() private readonly _rowGroup: NxComparisonTableRowGroupBase | null,
   ) {
     super();
-  }
-
-  ngAfterContentInit(): void {
-    this._setCellIndexes();
-
-    this.cells.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
-      this._setCellIndexes();
-    });
-  }
-
-  ngOnDestroy(): void {
-    this._destroyed.next();
-    this._destroyed.complete();
-  }
-
-  _setCellIndexes(): void {
-    this.cells.forEach((cell, index) => {
-      cell.index = index;
+    effect(() => {
+      this.cells().forEach((cell, index) => {
+        cell.index = index;
+      });
     });
   }
 
@@ -110,6 +79,6 @@ export class NxComparisonTableRowDirective
   }
 
   _isIntersectionRow(): boolean {
-    return !!this.intersectionCell;
+    return !!this.intersectionCell();
   }
 }
