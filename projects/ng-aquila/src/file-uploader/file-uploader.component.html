@@ -43,10 +43,10 @@
 }
 
 <ng-template #defaultFileRow let-templateContext="templateContext" let-file="file">
-  <nx-file-upload-name [name]="file?.name"></nx-file-upload-name>
+  <nx-file-upload-name [name]="$safeNavigationMigration(file?.name)"></nx-file-upload-name>
 
   <nx-file-upload-size
-    [size]="file?.size"
+    [size]="$safeNavigationMigration(file?.size)"
     [isUploading]="file.isUploading"
     [uploadingLabel]="templateContext.uploadingLabel"
   ></nx-file-upload-size>

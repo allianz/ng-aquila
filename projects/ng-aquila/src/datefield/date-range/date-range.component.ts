@@ -259,7 +259,7 @@ export class NxDateRangeComponent<D>
     const test = this.startDateAriaLabelInput() || this._intl.startDateAriaLabel();
     return test;
   });
-  readonly endDateAriaLabelInput = input<string | null>(null, { alias: 'startDateAriaLabel' });
+  readonly endDateAriaLabelInput = input<string | null>(null, { alias: 'endDateAriaLabel' });
   readonly endDateAriaLabel = computed<string>(
     () => this.endDateAriaLabelInput() || this._intl.endDateAriaLabel(),
   );

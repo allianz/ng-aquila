@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -84,6 +84,7 @@ describe('NxvTableOfContentsComponent', () => {
     </div>
     <nxv-table-of-contents container="test-content"> </nxv-table-of-contents>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxvTableOfContentsModule, RouterTestingModule],
 })
 class TableOfContentsTest {}

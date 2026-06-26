@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxIndicatorComponent } from './indicator.component';
@@ -75,6 +75,7 @@ describe('NxIndicatorComponent', () => {
 
 @Component({
   template: `<nx-indicator [position]="position">99</nx-indicator>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIndicatorModule],
 })
 class BasicIndicator extends IndicatorTest {
@@ -83,6 +84,7 @@ class BasicIndicator extends IndicatorTest {
 
 @Component({
   template: `<nx-indicator [position]="position">A</nx-indicator>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIndicatorModule],
 })
 class SingleLetterIndicator extends IndicatorTest {

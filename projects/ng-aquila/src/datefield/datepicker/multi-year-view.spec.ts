@@ -9,7 +9,7 @@ import {
   RIGHT_ARROW,
   UP_ARROW,
 } from '@angular/cdk/keycodes';
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -241,6 +241,7 @@ describe('NxMultiYearView', () => {
     [(selected)]="selected"
     (yearSelected)="selectedYear = $event"
   ></nx-multi-year-view>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxMultiYearViewComponent],
 })
 class StandardMultiYearView {
@@ -256,6 +257,7 @@ class StandardMultiYearView {
     [(activeDate)]="activeDate"
     [dateFilter]="dateFilter"
   ></nx-multi-year-view>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxMultiYearViewComponent],
 })
 class MultiYearViewWithDateFilter {

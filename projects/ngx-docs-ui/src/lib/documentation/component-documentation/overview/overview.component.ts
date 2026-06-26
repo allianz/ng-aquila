@@ -15,13 +15,20 @@ import {
 import { NxTableModule } from '@allianz/ng-aquila/table';
 import { NxTagComponent, NxTagGroupComponent } from '@allianz/ng-aquila/taglist';
 import { NX_DOCS_GITHUB_LINK, ThemeSwitcherService } from '@allianz/ngx-docs-ui';
-import { Component, computed, Inject, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  Inject,
+  inject,
+  signal,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
-import { NxvComponentIconComponent } from '../../../documentation/component-icon/component-icon.component';
 import { ComponentDescriptor } from '../../../core/manifest';
 import { GithubLinkConfig } from '../../../core/types';
+import { NxvComponentIconComponent } from '../../../documentation/component-icon/component-icon.component';
 import { ManifestService } from '../../../service/manifest.service';
 
 type A1FilterTag = 'a1Light' | 'densities' | 'a1Full' | 'ndbxOnly';
@@ -30,6 +37,7 @@ type A1FilterTag = 'a1Light' | 'densities' | 'a1Full' | 'ndbxOnly';
   selector: 'nxv-overview',
   templateUrl: 'overview.component.html',
   styleUrls: ['overview.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldModule,
     NxGridModule,

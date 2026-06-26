@@ -171,6 +171,7 @@ describe('NxMessageComponent', () => {
 
 @Component({
   template: `<nx-message [context]="context"> lorem ipsum </nx-message>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
 })
 class MessageBasicComponent extends MessageTest {}
@@ -184,6 +185,7 @@ class MessageOnPushComponent extends MessageTest {}
 
 @Component({
   template: `<nx-message [closable]="closable"> lorem ipsum </nx-message>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
 })
 class ClosableMessageComponent extends MessageTest {
@@ -196,6 +198,7 @@ class ClosableMessageComponent extends MessageTest {
       <nx-message [closable]="closable"> lorem ipsum </nx-message>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
 })
 class ClosableFormMessageComponent extends MessageTest {

@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {
@@ -86,12 +86,14 @@ describe('NxLabelComponent', () => {
 
 @Component({
   template: `<nx-label>I am a label</nx-label>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLabelModule],
 })
 class BasicLabel extends LabelTest {}
 
 @Component({
   template: `<nx-label [size]="size">I am a label</nx-label>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLabelModule],
 })
 class ConfigurableLabel extends LabelTest {}

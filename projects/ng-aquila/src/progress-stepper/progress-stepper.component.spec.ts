@@ -1,4 +1,11 @@
-import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  ElementRef,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
@@ -59,6 +66,7 @@ describe('NxProgressStepperDirective', () => {
       }
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressStepperModule, FormsModule],
 })
 class ProgressStepperBasicComponent extends ProgressStepperTest {

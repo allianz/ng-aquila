@@ -3,6 +3,9 @@
 </h2>
 
 @for (example of (componentService.current | async)?.examples; track example) {
-<nxv-example-viewer [example]="$any(example)?.name" [config]="$any(example)?.config">
+<nxv-example-viewer
+  [example]="$safeNavigationMigration($any(example)?.name)"
+  [config]="$safeNavigationMigration($any(example)?.config)"
+>
 </nxv-example-viewer>
 }

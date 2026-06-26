@@ -3,7 +3,7 @@ import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxFormfieldHarness } from '@allianz/ng-aquila/formfield/testing';
 import { HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { NxDropdownHarness } from './nx-dropdown-harness';
@@ -220,6 +220,7 @@ describe('NxDropdownHarness', () => {
       <nx-dropdown-item value="bar">Bar</nx-dropdown-item>
     </nx-dropdown>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule],
 })
 class DropdownHarnessTest {}

@@ -14,7 +14,12 @@ import { NxModalModule } from '@allianz/ng-aquila/modal';
 import { NxOverlayModule } from '@allianz/ng-aquila/overlay';
 import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { NxSmallStageModule } from '@allianz/ng-aquila/small-stage';
-import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+  withJsonpSupport,
+  withXhr,
+} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -48,7 +53,7 @@ import { AppComponent } from './app.component';
     NxSmallStageModule,
     NxIconButtonComponent,
   ],
-  providers: [provideHttpClient(withInterceptorsFromDi(), withJsonpSupport())],
+  providers: [provideHttpClient(withXhr(), withInterceptorsFromDi(), withJsonpSupport())],
 })
 export class AppModule {}
 

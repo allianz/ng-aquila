@@ -1,4 +1,12 @@
-import { Component, DebugElement, Directive, ElementRef, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  ElementRef,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -77,17 +85,20 @@ describe('NxProgressbarComponent', () => {
 
 @Component({
   template: `<nx-progressbar></nx-progressbar>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarBasicComponent extends ProgressBarTest {}
 
 @Component({
   template: `<nx-progressbar value="0.5"></nx-progressbar>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarValueComponent extends ProgressBarTest {}
 @Component({
   template: `<nx-progressbar value="15" min="12" max="33"></nx-progressbar>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarCustomRangeComponent extends ProgressBarTest {}

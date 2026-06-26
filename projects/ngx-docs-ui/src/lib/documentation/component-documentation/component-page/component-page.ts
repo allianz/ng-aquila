@@ -6,7 +6,15 @@ import { NxMessageModule } from '@allianz/ng-aquila/message';
 import { NxTabsModule } from '@allianz/ng-aquila/tabs';
 import { ThemeSwitcherService } from '@allianz/ngx-docs-ui';
 import { AsyncPipe } from '@angular/common';
-import { Component, computed, Inject, isDevMode, OnDestroy, Optional } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  Inject,
+  isDevMode,
+  OnDestroy,
+  Optional,
+} from '@angular/core';
 import {
   ActivatedRoute,
   Router,
@@ -33,6 +41,7 @@ export interface DocItem {
   selector: 'nxv-single-component',
   templateUrl: 'component-page.html',
   styleUrls: ['component-page.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxMessageModule,
     NxBadgeModule,

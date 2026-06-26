@@ -171,6 +171,7 @@ describe('nxSpinnerComponent', () => {
 
 @Component({
   template: `<nx-spinner [ariaPoliteness]="ariaPoliteness"></nx-spinner>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSpinnerModule],
 })
 class BasicTestSpinner extends SpinnerTest {
@@ -179,6 +180,7 @@ class BasicTestSpinner extends SpinnerTest {
 
 @Component({
   template: `<nx-spinner [size]="size" [negative]="negative" [inverse]="inverse"></nx-spinner>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSpinnerModule],
 })
 class ConfigurableSpinner extends SpinnerTest {}
@@ -192,6 +194,7 @@ class OnPushSpinner extends SpinnerTest {}
 
 @Component({
   template: ` <nx-spinner [ariaPoliteness]="'off'"></nx-spinner> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSpinnerModule],
 })
 class TestAriaLiveSpinnerComponent extends SpinnerTest {}

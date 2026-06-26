@@ -1,6 +1,13 @@
 import { FocusableOption, FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -14,6 +21,7 @@ import { Subject } from 'rxjs';
     '(focus)': 'focus()',
     '(blur)': '_blur()',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxNotificationPanelItemComponent implements FocusableOption, OnDestroy, AfterViewInit {

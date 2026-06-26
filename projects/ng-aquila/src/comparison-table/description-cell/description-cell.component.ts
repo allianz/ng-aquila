@@ -1,6 +1,13 @@
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, inject, Input, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
@@ -8,6 +15,7 @@ import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 @Component({
   selector: 'nx-comparison-table-description-cell',
   templateUrl: './description-cell.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./description-cell.component.scss'],
   imports: [NgTemplateOutlet],
 })

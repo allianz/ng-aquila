@@ -14,7 +14,7 @@ import { NxDialogService, NxModalModule, NxModalRef } from '@allianz/ng-aquila/m
 import { NxOverlayModule } from '@allianz/ng-aquila/overlay';
 import { NxPopoverModule } from '@allianz/ng-aquila/popover';
 import { NxSmallStageModule } from '@allianz/ng-aquila/small-stage';
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, TemplateRef, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -48,6 +48,7 @@ import { RouterModule } from '@angular/router';
     NxSmallStageModule,
     NxIconButtonComponent,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './app.component.html',
 })
 export class AppComponent {

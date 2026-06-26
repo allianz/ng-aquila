@@ -694,6 +694,7 @@ const styles = `
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSlider extends SliderTest {}
@@ -727,6 +728,7 @@ class BasicSliderOnPush extends SliderTest {}
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class ConfigurableSlider extends SliderTest {}
@@ -738,6 +740,7 @@ class ConfigurableSlider extends SliderTest {}
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class NegativeSlider extends SliderTest {}
@@ -749,6 +752,7 @@ class NegativeSlider extends SliderTest {}
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class TruncateTestSlider extends SliderTest {}
@@ -760,6 +764,7 @@ class TruncateTestSlider extends SliderTest {}
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class FloatSlider extends SliderTest {}
@@ -771,6 +776,7 @@ class FloatSlider extends SliderTest {}
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class DisabledSlider extends SliderTest {}
@@ -782,6 +788,7 @@ class DisabledSlider extends SliderTest {}
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class InvertedSlider extends SliderTest {}
@@ -793,6 +800,7 @@ class InvertedSlider extends SliderTest {}
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleBindingSlider extends SliderTest {
@@ -806,6 +814,7 @@ class SimpleBindingSlider extends SliderTest {
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelSlider extends SliderTest {
@@ -819,6 +828,7 @@ class NgModelSlider extends SliderTest {
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveFormsSlider extends SliderTest {
@@ -836,6 +846,7 @@ class ReactiveFormsSlider extends SliderTest {
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class AppendixSlider extends SliderTest {}
@@ -848,6 +859,7 @@ class AppendixSlider extends SliderTest {}
     </div>
   `,
   styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class AriaLabelledBySlider extends SliderTest {

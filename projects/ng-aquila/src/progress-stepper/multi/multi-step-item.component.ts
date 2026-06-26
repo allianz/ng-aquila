@@ -7,7 +7,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef,
+  inject,
   Input,
   input,
   OnDestroy,
@@ -116,13 +116,8 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
   }
   private _ariaControls!: string;
 
-  constructor(
-    private readonly _cdr: ChangeDetectorRef,
-    readonly _elementRef: ElementRef<HTMLElement>,
-    private readonly _focusMonitor: FocusMonitor,
-  ) {
-    super(_elementRef);
-  }
+  private readonly _cdr = inject(ChangeDetectorRef);
+  private readonly _focusMonitor = inject(FocusMonitor);
 
   ngAfterViewInit(): void {
     this._focusMonitor.monitor(this._elementRef);

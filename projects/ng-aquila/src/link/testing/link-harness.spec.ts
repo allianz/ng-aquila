@@ -1,7 +1,7 @@
 import { NxLinkModule } from '@allianz/ng-aquila/link';
 import { HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxLinkHarness } from './link-harness';
@@ -53,6 +53,7 @@ describe('NxLinkHarness', () => {
     <nx-link><a (click)="onClick()" href="https://localhost">Foo</a></nx-link>
     <nx-link><a href="https://localhost/path">Bar</a></nx-link>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLinkModule],
 })
 class LinkHarnessTest {

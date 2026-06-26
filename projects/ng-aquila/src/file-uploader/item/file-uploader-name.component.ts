@@ -1,5 +1,5 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { Component, input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, OnInit } from '@angular/core';
 
 import { getFileExtension } from '../file-uploader.validations';
 
@@ -18,6 +18,7 @@ import { getFileExtension } from '../file-uploader.validations';
     </span>
     <span class="file-name">{{ name() }}</span>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 export class NxFileUploaderItemName implements OnInit {

@@ -1,4 +1,3 @@
-/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { ERROR_DEFAULT_OPTIONS, NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';

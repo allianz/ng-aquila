@@ -1,10 +1,17 @@
-import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+  ViewContainerRef,
+} from '@angular/core';
 
 import { NXV_TOP_INFO } from './../../../core/tokens';
 
 @Component({
   selector: 'nxv-top-info',
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxvTopInfoComponent implements OnInit {

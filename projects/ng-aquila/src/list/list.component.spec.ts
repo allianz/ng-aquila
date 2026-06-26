@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -111,6 +111,7 @@ describe('NxListComponent', () => {
       <li>2</li>
     </ul>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxListModule],
 })
 class BasicList extends ListTest {}
@@ -123,6 +124,7 @@ class BasicList extends ListTest {}
       <li>2</li>
     </ul>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxListModule],
 })
 class ListWithModifier extends ListTest {}
@@ -135,6 +137,7 @@ class ListWithModifier extends ListTest {}
       <li nxListIcon="product-cross">2</li>
     </ul>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxListModule],
 })
 class ListWithIcons extends ListTest {}
@@ -147,6 +150,7 @@ class ListWithIcons extends ListTest {}
       <li>2</li>
     </ul>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxListModule],
 })
 class ConfigurableList extends ListTest {

@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxDropdownModule } from '../dropdown.module';
@@ -105,12 +105,14 @@ describe('NxDropdownItem component', () => {
 
 @Component({
   template: `<nx-dropdown><nx-dropdown-item value="option"></nx-dropdown-item></nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class BasicItem extends DropdownItemTest {}
 
 @Component({
   template: `<nx-dropdown><nx-dropdown-item></nx-dropdown-item></nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class EmptyItem extends DropdownItemTest {}
@@ -119,6 +121,7 @@ class EmptyItem extends DropdownItemTest {}
   template: `<nx-dropdown
     ><nx-dropdown-item value="option"><span>label</span></nx-dropdown-item></nx-dropdown
   >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class ProjectedItem extends DropdownItemTest {}
@@ -127,6 +130,7 @@ class ProjectedItem extends DropdownItemTest {}
   template: `<nx-dropdown
     ><nx-dropdown-item id="custom-id" value="option"></nx-dropdown-item
   ></nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class CustomIdItem extends DropdownItemTest {}

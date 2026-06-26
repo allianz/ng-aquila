@@ -157,9 +157,9 @@ describe('NxNaturalLanguageFormComponent', () => {
     it('should throw an error if a word has no input', fakeAsync(() => {
       expect(() => {
         createTestComponent(NaturalLanguageFormErrorComponent);
-      }).toThrowError(
-        'NG0951: Child query result is required but no value is available. Find more at https://v21.angular.dev/errors/NG0951',
-      );
+        // Match only the stable part of the message; the docs URL carries the
+        // Angular major version (e.g. v22.angular.dev) and changes each bump.
+      }).toThrowError(/NG0951: Child query result is required but no value is available\./);
     }));
   });
 
@@ -347,6 +347,7 @@ describe('NxNaturalLanguageFormComponent', () => {
       with copy.
     </nx-natural-language-form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
@@ -357,6 +358,7 @@ class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
       <nx-word></nx-word>
     </nx-natural-language-form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
@@ -370,6 +372,7 @@ class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
       <nx-error>This field is required.</nx-error>
     </nx-natural-language-form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormNoDescribedByComponent extends NaturalLanguageFormTest {}
@@ -382,6 +385,7 @@ class NaturalLanguageFormNoDescribedByComponent extends NaturalLanguageFormTest 
       <div nxError>This field is required.</div>
     </nx-natural-language-form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormErrorInNlfComponent extends NaturalLanguageFormTest {}
@@ -394,6 +398,7 @@ class NaturalLanguageFormErrorInNlfComponent extends NaturalLanguageFormTest {}
       </nx-word>
     </nx-natural-language-form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
@@ -407,6 +412,7 @@ class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
       </nx-word>
     </nx-natural-language-form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormWithErrorId extends NaturalLanguageFormTest {}
@@ -441,6 +447,7 @@ class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
       <button type="submit">submit</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class FormWithPreviousFormfieldComponent extends NaturalLanguageFormTest {

@@ -3,7 +3,7 @@ import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxInputHarness } from '@allianz/ng-aquila/input/testing';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -202,6 +202,7 @@ describe('NxFormfieldHarness', () => {
       <input nxInput readonly />
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],
 })
 class MainFormfieldTest {}
@@ -214,6 +215,7 @@ class MainFormfieldTest {}
       <nx-error nxFormfieldError>Error 2</nx-error>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],
 })
 class ValidControlTest {
@@ -228,6 +230,7 @@ class ValidControlTest {
       <nx-error nxFormfieldError>Error 2</nx-error>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],
 })
 class InvalidControlTest {
@@ -242,6 +245,7 @@ class InvalidControlTest {
       <div nxFormfieldNote>Note 2</div>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],
 })
 class NotesTest {
@@ -255,6 +259,7 @@ class NotesTest {
       <nx-error nxFormfieldError>Error 1</nx-error>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],
 })
 class ValidationErrorTest {
@@ -269,6 +274,7 @@ class ValidationErrorTest {
     <nx-formfield><input nxInput [readonly]="true" /></nx-formfield>
     <nx-formfield><input nxInput /></nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],
 })
 class FilterTest {}
@@ -284,6 +290,7 @@ class FilterTest {}
       <nx-error nxFormfieldError>ErrorMessage</nx-error>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],
 })
 class ErrorFilterTest {

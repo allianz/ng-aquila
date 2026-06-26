@@ -3,7 +3,7 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxIconHarness } from '@allianz/ng-aquila/icon/testing';
 import { HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxButtonHarness } from './button-harness';
@@ -174,6 +174,7 @@ describe('NxButtonHarness', () => {
     <a nxPlainButton>Plain anchor</a>
     <a nxIconButton></a>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonModule, NxIconModule],
 })
 class ButtonHarnessTest {

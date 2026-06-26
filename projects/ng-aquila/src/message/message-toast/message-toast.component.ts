@@ -6,7 +6,7 @@ import {
   TemplatePortal,
 } from '@angular/cdk/portal';
 import {
-  AnimationCallbackEvent,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ComponentRef,
@@ -38,8 +38,8 @@ import {
     '[attr.role]': '_role',
     '[class.nx-message-toast--visible]': '_animationState === "visible"',
     '[class.nx-message-toast--hidden]': '_animationState === "hidden"',
-    '(animate.enter)': 'onAnimateEnter($event)',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageComponent, CdkPortalOutlet],
 })
 export class NxMessageToastComponent extends BasePortalOutlet implements OnDestroy {
@@ -95,7 +95,8 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     return this._portalOutlet.attachTemplatePortal(portal);
   }
 
-  protected onAnimateEnter(event: AnimationCallbackEvent) {
+  /** Notify subscribers that the message toast has finished entering the view. */
+  private _notifyEntered() {
     const onEnter = this._onEnter;
 
     // Note: we shouldn't use `this` inside the zone callback,
@@ -115,6 +116,12 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
       if (inertElement && liveElement) {
         inertElement.removeAttribute('aria-hidden');
         liveElement.appendChild(inertElement);
+      }
+      // Notify asynchronously: subscribers (e.g. the auto-dismiss timer set up
+      // in NxMessageToastService) attach to `afterOpened()` right after `enter()`
+      // is called, so the emission must be deferred until after that subscription.
+      if (!this._destroyed) {
+        this._notifyEntered();
       }
     }, 0);
     if (!this._destroyed) {

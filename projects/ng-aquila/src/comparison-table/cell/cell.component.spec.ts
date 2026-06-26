@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   DebugElement,
   Directive,
@@ -307,6 +308,7 @@ describe('NxComparisonTableCell', () => {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class BasicCellComponent extends CellTest {}
@@ -330,12 +332,14 @@ class BasicCellComponent extends CellTest {}
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ConfigurableCellComponent extends CellTest {}
 
 @Component({
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ToggleSectionCellComponent extends CellTest {

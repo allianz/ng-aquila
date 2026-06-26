@@ -1,6 +1,7 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   contentChild,
@@ -28,6 +29,7 @@ export type NxTileSelectionMode = 'single' | 'multi';
   selector: 'nx-tile-group',
   templateUrl: './tile-group.component.html',
   styleUrl: './tile-group.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     '[class.nx-tile-group]': 'true',
     '[class.is-multi-select]': "selectionMode() === 'multi'",

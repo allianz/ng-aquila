@@ -1,4 +1,4 @@
-import { CdkAccordion } from '@angular/cdk/accordion';
+import { CDK_ACCORDION, CdkAccordion } from '@angular/cdk/accordion';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { booleanAttribute, Directive, Input, signal } from '@angular/core';
 
@@ -13,6 +13,7 @@ const DEFAULT_TYPE: AccordionStyle = 'regular';
     role: 'presentation',
   },
   standalone: true,
+  providers: [{ provide: CDK_ACCORDION, useExisting: NxAccordionDirective }],
 })
 export class NxAccordionDirective extends CdkAccordion {
   /**

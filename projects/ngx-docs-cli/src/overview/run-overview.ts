@@ -11,7 +11,7 @@ import { manifest } from './manifest';
 import { transform } from './transform';
 
 // prepare callback functions to use in rxjs
-const mdFiles$ = bindNodeCallback(glob);
+const mdFiles$ = bindNodeCallback(glob.glob);
 const outputFile$ = bindNodeCallback(fs.outputFile);
 
 // This is our stream of relevant files we want to transform.

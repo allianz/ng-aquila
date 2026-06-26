@@ -50,7 +50,7 @@ export type AnimationState = 'opening' | 'opened' | 'closing' | 'closed';
   templateUrl: 'modal-container.component.html',
   styleUrls: ['modal-container.component.scss'],
   // Using OnPush for modals caused some G3 sync issues. Disabled until we can track them down.
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     class: 'nx-modal__container',
     tabindex: '-1',

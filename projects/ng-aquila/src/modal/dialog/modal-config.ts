@@ -1,6 +1,6 @@
 import { Direction } from '@angular/cdk/bidi';
 import { ScrollStrategy } from '@angular/cdk/overlay';
-import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { ViewContainerRef } from '@angular/core';
 
 /** Valid ARIA roles for a modal element. */
 export type NxModalRole = 'dialog' | 'alertdialog';
@@ -115,12 +115,6 @@ export class NxModalConfig<D = any> {
    * the `HashLocationStrategy`).
    */
   closeOnNavigation?: boolean = true;
-
-  /**
-   * Alternate `ComponentFactoryResolver` to use when resolving the associated component.
-   * @deprecated No longer used.
-   */
-  componentFactoryResolver?: ComponentFactoryResolver;
 
   /**
    * Whether a close button with icon should be displayed in the top right corner of the modal.

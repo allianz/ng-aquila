@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxHeaderComponent } from './header.component';
@@ -143,6 +143,7 @@ describe(NxHeaderComponent.name, () => {
       <nx-header-actions> Example action </nx-header-actions>
     </nx-header>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeaderModule],
 })
 class BasicHeader extends HeaderTest {}
@@ -155,6 +156,7 @@ class BasicHeader extends HeaderTest {}
       <nx-header-row> </nx-header-row>
     </nx-header>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeaderModule],
 })
 class MultiRowHeader extends HeaderTest {}
@@ -176,6 +178,7 @@ class MultiRowHeader extends HeaderTest {}
       <nx-header-row> </nx-header-row>
     </nx-header>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeaderModule],
 })
 class CobrandingHeader extends HeaderTest {

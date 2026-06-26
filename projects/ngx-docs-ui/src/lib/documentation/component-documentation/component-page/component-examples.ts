@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ExampleViewerComponent } from '../../../example-viewer/example-viewer.component';
 import { ComponentService } from '../../../service/component.service';
@@ -7,6 +7,7 @@ import { ComponentService } from '../../../service/component.service';
 @Component({
   selector: 'nxv-component-examples',
   templateUrl: 'component-examples.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ExampleViewerComponent, AsyncPipe],
 })
 export class ComponentExamples {

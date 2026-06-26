@@ -1,5 +1,12 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, computed, Optional, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  Optional,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
@@ -8,6 +15,7 @@ import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
 @Component({
   selector: 'nx-comparison-table-intersection-cell',
   templateUrl: './intersection-cell.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./intersection-cell.component.scss'],
   imports: [NgTemplateOutlet],
 })

@@ -38,7 +38,7 @@ export function throwNxOverlayContentAlreadyAttachedError() {
   templateUrl: 'overlay-container.component.html',
   styleUrls: ['overlay-container.component.scss'],
   // Using OnPush for overlays caused some G3 sync issues. Disabled until we can track them down.
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     class: 'nx-overlay-container',
     '[attr.id]': '_id',

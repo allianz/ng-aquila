@@ -1,6 +1,6 @@
 import { AppearanceType, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxLicencePlateModule } from './licence-plate.module';
@@ -89,6 +89,7 @@ describe('NxLicencePlateEuroPrefixComponent', () => {
       <input nxInput [disabled]="disabled" />
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
 })
 class BasicLicencePlateEuroPrefix extends LicencePlateEuroPrefixTest {}

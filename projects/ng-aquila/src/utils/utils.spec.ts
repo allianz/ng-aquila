@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Renderer2 } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 
 import { appendClasses, clamp, mapClassNames, numberOfDecimals, removeClasses } from './utils';
@@ -108,6 +108,7 @@ describe('shared utils', () => {
   host: {
     '[class.testClass]': 'true',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class TestComponent {

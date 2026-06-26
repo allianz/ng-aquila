@@ -1,7 +1,7 @@
 import { NxCardModule } from '@allianz/ng-aquila/card';
 import { HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxCardHarness } from './card-harness';
@@ -69,6 +69,7 @@ describe('NxCardHarness', () => {
       <div role="heading">Baz</div>
     </nx-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class CardHarnessTest {}

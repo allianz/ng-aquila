@@ -38,14 +38,11 @@ export const upgradeData: UpgradeData = {
   cssTokens: {},
 };
 
-export const customMigrations: NullableDevkitMigration[] = [
-  PackageImportMigration,
-  replaceIbanjsInPackageJson as any,
-];
+export const customMigrations: NullableDevkitMigration[] = [];
 
 export default function (): Rule {
   return createMigrationSchematicRule(
-    TargetVersion.V21,
+    TargetVersion.V22,
     customMigrations,
     upgradeData,
     onMigrationComplete,

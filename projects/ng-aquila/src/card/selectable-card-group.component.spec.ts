@@ -1,5 +1,12 @@
 import { NxErrorModule } from '@allianz/ng-aquila/base';
-import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  QueryList,
+  Type,
+  ViewChildren,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import {
   FormBuilder,
@@ -84,6 +91,7 @@ describe('NxSelectableCardGroupComponent', () => {
       </nx-selectable-card-group>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class BasicSelectableCardGroup extends SelectableCardTest {

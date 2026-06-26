@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxFooterComponent } from './footer.component';
@@ -100,12 +100,14 @@ describe(NxFooterComponent.name, () => {
       </nx-footer-navigation>
     </nx-footer>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFooterModule],
 })
 class BasicFooter extends FooterTest {}
 
 @Component({
   template: `<nx-footer copyright="Other company"></nx-footer>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFooterModule],
 })
 class DefaultCopyrightFooter extends FooterTest {}

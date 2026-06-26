@@ -1,7 +1,7 @@
 <div [dir]="directionQuery">
   @if (exampleComponent) {
     <ng-template
-      [ngComponentOutlet]="exampleComponent?.componentType"
+      [ngComponentOutlet]="$safeNavigationMigration(exampleComponent?.componentType)"
       [ngComponentOutletEnvironmentInjector]="environmentInjector"
     ></ng-template>
   } @else {

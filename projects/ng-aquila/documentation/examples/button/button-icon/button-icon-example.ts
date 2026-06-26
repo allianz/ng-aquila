@@ -1,11 +1,11 @@
 import { NxButtonSize, NxIconButtonComponent } from '@allianz/ng-aquila/button';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
-import { Component, model } from '@angular/core';
-import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import {
   NxDropdownComponent,
   NxDropdownItemComponent,
 } from '@allianz/ng-aquila/dropdown';
+import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
+import { NxIconComponent } from '@allianz/ng-aquila/icon';
+import { Component, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 /**

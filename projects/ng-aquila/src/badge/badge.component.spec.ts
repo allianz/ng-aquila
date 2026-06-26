@@ -186,6 +186,7 @@ class BasicBadgeComponent extends BadgeTest {}
 @Component({
   selector: 'test-default-badge-component',
   template: `<nx-badge [type]="type">Active</nx-badge>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxBadgeModule],
 })
 class DefaultBadgeComponent extends BadgeTest {}
@@ -193,6 +194,7 @@ class DefaultBadgeComponent extends BadgeTest {}
 @Component({
   selector: 'test-single-letter-component',
   template: `<nx-badge [type]="type">A</nx-badge>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxBadgeModule],
 })
 class SingleLetterComponent extends BadgeTest {}
@@ -200,6 +202,7 @@ class SingleLetterComponent extends BadgeTest {}
 @Component({
   selector: 'test-vibrant-badge-component',
   template: '<nx-badge vibrant></nx-badge>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxBadgeModule],
 })
 class VibrantBadgeComponent extends BadgeTest {}
@@ -213,6 +216,7 @@ class VibrantBadgeComponent extends BadgeTest {}
     [inverse]="inverse"
     >Badge</nx-badge
   >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxBadgeModule],
 })
 class ConfigurableBadgeComponent extends BadgeTest {}

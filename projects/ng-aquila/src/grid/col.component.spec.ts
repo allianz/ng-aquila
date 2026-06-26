@@ -1,5 +1,12 @@
 import { NxGridModule } from '@allianz/ng-aquila/grid';
-import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -296,6 +303,7 @@ describe('NxColDirective', () => {
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol="8,3,5,7"></div></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicTestNxColFourInputs extends DirectiveTest {}
@@ -305,6 +313,7 @@ class BasicTestNxColFourInputs extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol="7,2"></div></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicTestNxColTwoInputs extends DirectiveTest {}
@@ -313,6 +322,7 @@ class BasicTestNxColTwoInputs extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol="7,3,4"></div></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicTestNxColTrheeInputs extends DirectiveTest {}
@@ -321,6 +331,7 @@ class BasicTestNxColTrheeInputs extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol="10"></div></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicTestNxColOneInputs extends DirectiveTest {}
@@ -329,6 +340,7 @@ class BasicTestNxColOneInputs extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol=""></div></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicTestNxColEmptyInputs extends DirectiveTest {}
@@ -337,6 +349,7 @@ class BasicTestNxColEmptyInputs extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol="10" class="test"></div></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicTestNxColClassTest extends DirectiveTest {}
@@ -347,6 +360,7 @@ class BasicTestNxColClassTest extends DirectiveTest {}
       <div nxCol="10" colOrder="first,first,last,first">Hello World 1</div>
     </div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicTestNxOrderInputs extends DirectiveTest {}
@@ -357,6 +371,7 @@ class BasicTestNxOrderInputs extends DirectiveTest {}
       <div nxCol="10" alignSelf="start">Hello World 1</div>
     </div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicTestColAlignSelf extends DirectiveTest {}
@@ -367,6 +382,7 @@ class BasicTestColAlignSelf extends DirectiveTest {}
       <div nxCol="10" colOrder="first">Hello World 1</div>
     </div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicTestColOrder extends DirectiveTest {}
@@ -375,6 +391,7 @@ class BasicTestColOrder extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol="10" colOffset="9">Hello World 1</div></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class OffsetTest extends DirectiveTest {}
@@ -383,6 +400,7 @@ class OffsetTest extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row"><div nxCol="10" colOffset="9,6">Hello World 1</div></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class OffsetTestTwoInputs extends DirectiveTest {}
@@ -393,6 +411,7 @@ class OffsetTestTwoInputs extends DirectiveTest {}
       <div nxCol="10" colOffset="9,6,5">Hello World 1</div>
     </div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class OffsetTestThreeInputs extends DirectiveTest {}
@@ -403,6 +422,7 @@ class OffsetTestThreeInputs extends DirectiveTest {}
       <div nxCol="10" colOffset="9,6,5,3">Hello World 1</div>
     </div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class OffsetTestFourInputs extends DirectiveTest {}
@@ -413,6 +433,7 @@ class OffsetTestFourInputs extends DirectiveTest {}
       <div nxCol="10" colOffset="9,6,5,0">Hello World 1</div>
     </div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class OffsetTestFourInputsWithZero extends DirectiveTest {}
@@ -425,6 +446,7 @@ class OffsetTestFourInputsWithZero extends DirectiveTest {}
       </div>
     </div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class DynamicTest extends DirectiveTest {
@@ -440,6 +462,7 @@ class DynamicTest extends DirectiveTest {
       <div nxCol="12">Hello World</div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class ColWithoutLayout extends DirectiveTest {}
@@ -450,6 +473,7 @@ class ColWithoutLayout extends DirectiveTest {}
       <div nxCol="12">Hello World</div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class ColWithoutRow extends DirectiveTest {}
@@ -464,6 +488,7 @@ class ColWithoutRow extends DirectiveTest {}
       </div>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class ConditionalCol extends DirectiveTest {}

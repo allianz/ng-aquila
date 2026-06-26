@@ -449,6 +449,7 @@ abstract class ButtonToggleGroupTest {
       <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
     </nx-circle-toggle-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {}
@@ -470,6 +471,7 @@ class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {}
       ></nx-circle-toggle>
     </nx-circle-toggle-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class BooleanCircleToggleGroupComponent extends ButtonToggleGroupTest {}
@@ -512,6 +514,7 @@ class EmptyToggleOnPushComponent extends ButtonToggleGroupTest {}
       <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
     </nx-circle-toggle-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelCircleToggleGroupComponent extends ButtonToggleGroupTest {}
@@ -541,6 +544,7 @@ class NgModelCircleToggleGroupComponent extends ButtonToggleGroupTest {}
       </nx-circle-toggle-group>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveCircleToggleGroupComponent extends ButtonToggleGroupTest {
@@ -572,6 +576,7 @@ class ReactiveCircleToggleGroupComponent extends ButtonToggleGroupTest {
       }
     </nx-circle-toggle-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class NgForCircleToggleGroupComponent extends ButtonToggleGroupTest {
@@ -594,6 +599,7 @@ class NgForCircleToggleGroupComponent extends ButtonToggleGroupTest {
       <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
     </nx-circle-toggle-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
@@ -611,6 +617,7 @@ class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
       <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
     </nx-circle-toggle-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ReadonlyCircleToggleGroupComponent extends ButtonToggleGroupTest {
@@ -643,6 +650,7 @@ class ReadonlyCircleToggleGroupComponent extends ButtonToggleGroupTest {
       </div>
     </nx-circle-toggle-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class CircleToggleGroupWithDivComponent extends ButtonToggleGroupTest {}
@@ -660,6 +668,7 @@ class CircleToggleGroupWithDivComponent extends ButtonToggleGroupTest {}
       <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
     </nx-circle-toggle-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ExpertCircleToggleGroupComponent extends ButtonToggleGroupTest {}

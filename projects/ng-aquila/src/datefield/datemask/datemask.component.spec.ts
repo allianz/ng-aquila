@@ -1,7 +1,14 @@
 import { NxDatepickerComponent, NxDatepickerToggleComponent } from '@allianz/ng-aquila/datefield';
 import { NxFormfieldComponent, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
-import { Component, Directive, Signal, ViewChild, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  Signal,
+  ViewChild,
+  viewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import {
   FormControl,
@@ -447,6 +454,7 @@ abstract class DateRangeTestBase {
       <nx-datemask [(ngModel)]="datemaskModel"></nx-datemask>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxMomentDateModule,
@@ -472,6 +480,7 @@ export class DatemaskTestBasic extends DateRangeTestBase {
       </nx-formfield>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxMomentDateModule,
@@ -510,6 +519,7 @@ export class DatemaskTestForm extends DateRangeTestBase {
       </nx-formfield>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxMomentDateModule,
@@ -531,6 +541,7 @@ export class DatemaskIncompleteTestForm extends DateRangeTestBase {
       <nx-datemask [(ngModel)]="datemaskModel" [format]="format"></nx-datemask>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxMomentDateModule,
@@ -558,6 +569,7 @@ export class DatemaskTestFormat extends DateRangeTestBase {
       <nx-datepicker #myDatepicker></nx-datepicker>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxMomentDateModule,

@@ -1,5 +1,4 @@
 import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
-import { Directionality } from '@angular/cdk/bidi';
 import { CdkStep, CdkStepHeader, CdkStepper } from '@angular/cdk/stepper';
 import {
   AfterContentInit,
@@ -8,15 +7,12 @@ import {
   Component,
   ContentChildren,
   Directive,
-  ElementRef,
   forwardRef,
-  Inject,
+  inject,
   input,
   OnChanges,
   OnDestroy,
-  Optional,
   QueryList,
-  SkipSelf,
 } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -35,12 +31,13 @@ import { takeUntil, takeWhile } from 'rxjs/operators';
   standalone: true,
 })
 export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnChanges, OnDestroy {
-  constructor(
-    @Inject(forwardRef(() => NxProgressStepperDirective))
-    readonly stepper: NxProgressStepperDirective,
-    @SkipSelf() private readonly _errorStateMatcher: ErrorStateMatcher,
-  ) {
-    super(stepper as CdkStepper);
+  readonly stepper = inject<NxProgressStepperDirective>(
+    forwardRef(() => NxProgressStepperDirective),
+  );
+  private readonly _errorStateMatcher = inject(ErrorStateMatcher, { skipSelf: true });
+
+  constructor() {
+    super();
 
     this.interacted = false;
   }
@@ -127,13 +124,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
   /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
   readonly currentStepLabel = input<string>();
 
-  constructor(
-    private readonly _cdr: ChangeDetectorRef,
-    @Optional() _dir: Directionality | null,
-    _elementRef: ElementRef<HTMLElement>,
-  ) {
-    super(_dir!, _cdr, _elementRef);
-  }
+  private readonly _cdr = inject(ChangeDetectorRef);
 
   ngAfterContentInit(): void {
     super.ngAfterContentInit();

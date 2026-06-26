@@ -6,6 +6,7 @@ import {
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   contentChild,
@@ -33,6 +34,7 @@ export type NxTileLayout = 'horizontal' | 'vertical';
   imports: [NxIconModule, NxCheckboxIndicatorComponent, NxRadioIndicatorComponent, FormsModule],
   templateUrl: './tile.component.html',
   styleUrls: ['./tile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     '[class.nx-tile]': 'true',
     '[class.is-selected]': 'selected()',

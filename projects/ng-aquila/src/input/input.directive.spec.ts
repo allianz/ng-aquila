@@ -1,6 +1,6 @@
 import { AppearanceType, FloatLabelType } from '@allianz/ng-aquila/formfield';
 import { NxInputDirective, NxInputModule } from '@allianz/ng-aquila/input';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -353,30 +353,35 @@ describe('NxInputDirective', () => {
       <input nxInput />
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class BasicInput extends InputTest {}
 
 @Component({
   template: `<input nxInput [type]="type" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class TypedAndRequiredInput extends InputTest {}
 
 @Component({
   template: `<input nxInput required />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class RequiredInput extends InputTest {}
 
 @Component({
   template: `<input nxInput [(ngModel)]="currentValue" required />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class NgModelInput extends InputTest {}
 
 @Component({
   template: `<input nxInput [(ngModel)]="currentValue" required [updateOn]="'blur'" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class NoChangeDetectionInput extends InputTest {}
@@ -387,6 +392,7 @@ class NoChangeDetectionInput extends InputTest {}
       <textarea nxInput></textarea>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class BasicTextarea extends InputTest {}
@@ -397,6 +403,7 @@ class BasicTextarea extends InputTest {}
       <input nxInput [formControl]="formControl" />
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class BasicInputWithFormControl extends InputTest {
@@ -409,6 +416,7 @@ class BasicInputWithFormControl extends InputTest {
       <input nxInput [formControl]="formControl" />
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class BasicInputWithRequiredFormControl extends InputTest {
@@ -417,6 +425,7 @@ class BasicInputWithRequiredFormControl extends InputTest {
 
 @Component({
   template: `<input nxInput [required]="required" [disabled]="disabled" [readonly]="readonly" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class ConfigurableInput extends InputTest {}
@@ -427,6 +436,7 @@ class ConfigurableInput extends InputTest {}
       <input nxInput [placeholder]="placeholderText" />
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
 })
 class InputWithLabelAndPlaceholder extends InputTest {
@@ -437,6 +447,7 @@ class InputWithLabelAndPlaceholder extends InputTest {
 
 @Component({
   template: `<input nxInput nxAriaLabel="template label" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
 })
 class InputWithAriaLabelInput extends InputTest {}

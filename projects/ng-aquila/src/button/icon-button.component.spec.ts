@@ -1,5 +1,5 @@
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
-import { Component, Directive, Type, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, viewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxAnchorIconButtonComponent, NxIconButtonComponent } from '.';
@@ -20,6 +20,7 @@ abstract class AnchorButtonTest {}
     <a nxIconButton #anchor href="#" class="some-arbitrary-class-name" aria-label="Link Text">
       <nx-icon name="info"></nx-icon>
     </a>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconButtonComponent, NxAnchorIconButtonComponent, NxIconComponent],
 })
 class TestInstance extends AnchorButtonTest {

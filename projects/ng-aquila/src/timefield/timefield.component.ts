@@ -1,4 +1,3 @@
-/* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { getOverlayOffsetYForOutlineAppearance } from '@allianz/ng-aquila/dropdown';

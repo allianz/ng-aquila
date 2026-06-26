@@ -1,7 +1,7 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { ComponentHarness, HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxDropdownModule } from '../dropdown.module';
@@ -204,6 +204,7 @@ abstract class MultiSelectAllTest {
     >
     </nx-multi-select-all>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMultiSelectAllComponent],
 })
 class BasicMultiSelectAllComponent extends MultiSelectAllTest {}

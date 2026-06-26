@@ -465,23 +465,27 @@ describe('NxCheckboxComponent', () => {
   template: `<nx-checkbox [(checked)]="checked" [(indeterminate)]="indeterminate"
     >Hello NX</nx-checkbox
   >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class BasicCheckbox extends CheckboxTest {}
 
 @Component({
   template: `<nx-checkbox></nx-checkbox>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class LabellessCheckbox extends CheckboxTest {}
 
 @Component({
   template: `<nx-checkbox disabled="true">Label</nx-checkbox>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxDisabled extends CheckboxTest {}
 @Component({
   template: `<nx-checkbox [labelSize]="labelSize">Label</nx-checkbox>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxLabelSize extends CheckboxTest {}
@@ -516,12 +520,14 @@ class AbstractControlCheckbox extends CheckboxTest {
     [labelSize]="labelSize"
     >Label</nx-checkbox
   >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxConfigurable extends CheckboxTest {}
 
 @Component({
   template: `<nx-checkbox [(ngModel)]="checked" [required]="required"></nx-checkbox>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxTemplateDriven extends CheckboxTest {
@@ -530,6 +536,7 @@ class CheckboxTemplateDriven extends CheckboxTest {
 
 @Component({
   template: `<nx-checkbox [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy"></nx-checkbox>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule],
 })
 class CheckboxA11y extends CheckboxTest {
@@ -539,6 +546,7 @@ class CheckboxA11y extends CheckboxTest {
 
 @Component({
   template: `<nx-checkbox [negative]="negative"></nx-checkbox>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxNegative extends CheckboxTest {}
@@ -553,6 +561,7 @@ class CheckboxNegative extends CheckboxTest {}
       <button nxButton="primary small" type="submit" id="submit-button">Click</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class ReactiveCheckbox extends CheckboxTest {
@@ -575,6 +584,7 @@ class ReactiveCheckbox extends CheckboxTest {
 
 @Component({
   template: `<nx-checkbox [ariaDescribedBy]="ariaDescribedBy"></nx-checkbox>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule],
 })
 class CheckboxAriaDescribedBy extends CheckboxTest {
@@ -591,6 +601,7 @@ class CheckboxAriaDescribedBy extends CheckboxTest {
       <button nxButton="primary small" type="submit" id="submit-button">Click</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class ReactiveCheckboxWithDescribedBy extends CheckboxTest {

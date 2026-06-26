@@ -113,6 +113,7 @@ class BreadcrumbOnPushComponent extends BreadcrumbTest {
       </li>
     </ol>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxBreadcrumbModule],
 })
 class BasicBreadcrumbComponent extends BreadcrumbTest {
@@ -131,6 +132,7 @@ class BasicBreadcrumbComponent extends BreadcrumbTest {
       }
     </ol>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxBreadcrumbModule],
 })
 class DynamicBreadcrumbComponent extends BreadcrumbTest {
@@ -148,6 +150,7 @@ class DynamicBreadcrumbComponent extends BreadcrumbTest {
       </li>
     </ol>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxBreadcrumbModule],
 })
 class LinkBreadcrumbComponent extends BreadcrumbTest {

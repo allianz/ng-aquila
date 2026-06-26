@@ -1,6 +1,6 @@
 import { HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -114,6 +114,7 @@ describe('NxSelectableCardHarness', () => {
     <nx-selectable-card />
     <nx-selectable-card />
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class BasicTest {}
@@ -124,6 +125,7 @@ class BasicTest {}
     <nx-selectable-card><h6>Bar</h6></nx-selectable-card>
     <nx-selectable-card><div role="heading">Baz</div></nx-selectable-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class HeadingElementsTest {}
@@ -133,12 +135,14 @@ class HeadingElementsTest {}
     <nx-selectable-card><h2>Foo</h2></nx-selectable-card>
     <nx-selectable-card checked><h2>Bar</h2></nx-selectable-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class CheckedStateTest {}
 
 @Component({
   template: `<nx-selectable-card>123</nx-selectable-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class ClickTest {}
@@ -160,12 +164,14 @@ class ClickTest {}
     <nx-selectable-card><h2>UncheckedFoo</h2></nx-selectable-card>
     <nx-selectable-card checked><h2>CheckedBar</h2></nx-selectable-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class FilterTest {}
 
 @Component({
   template: `<nx-selectable-card [formControl]="control"></nx-selectable-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, FormsModule, ReactiveFormsModule],
 })
 class ErrorTest {

@@ -1,5 +1,6 @@
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import {
+  ChangeDetectionStrategy,
   Component,
   Directive,
   Injectable,
@@ -363,10 +364,18 @@ describe('NxTagComponent', () => {
   });
 });
 
-@Component({ template: `<nx-tag value="foo"></nx-tag>`, imports: [NxTaglistModule] })
+@Component({
+  template: `<nx-tag value="foo"></nx-tag>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTaglistModule],
+})
 class BasicTag extends TagTest {}
 
-@Component({ template: `<nx-tag value="foo" inverse></nx-tag>`, imports: [NxTaglistModule] })
+@Component({
+  template: `<nx-tag value="foo" inverse></nx-tag>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTaglistModule],
+})
 class TagInverse extends TagTest {}
 
 @Component({
@@ -377,6 +386,7 @@ class TagInverse extends TagTest {}
       }
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TagInGroupInverse extends TagTest {}
@@ -388,6 +398,7 @@ class TagInGroupInverse extends TagTest {}
       <nx-tag [value]="tags()[1]"></nx-tag>
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TagInGroupWithIndividualInverse extends TagTest {}
@@ -400,12 +411,14 @@ class MyIntl extends NxTagIntl {
 @Component({
   template: `<nx-tag value="foo" removable="true"></nx-tag>`,
   imports: [NxTaglistModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [{ provide: NxTagIntl, useClass: MyIntl }],
 })
 class IntlTag extends TagTest {}
 
 @Component({
   template: `<nx-tag value="bar" removable="true" [deleteAriaLabel]="deleteAriaLabel()"></nx-tag>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class RemovableTag extends TagTest {
@@ -420,6 +433,7 @@ class RemovableTag extends TagTest {
       }
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TagInGroup extends TagTest {}
@@ -432,6 +446,7 @@ class TagInGroup extends TagTest {}
       }
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TagInGroupContentProjection extends TagTest {}
@@ -444,6 +459,7 @@ class TagInGroupContentProjection extends TagTest {}
       }
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TagInGroupDisabled extends TagTest {}
@@ -454,6 +470,7 @@ class TagInGroupDisabled extends TagTest {}
       <nx-tag value="bugs">Bugs <span nxTagCount>12</span></nx-tag>
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TagWithCount extends TagTest {}
@@ -466,6 +483,7 @@ class TagWithCount extends TagTest {}
       }
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TagInGroupReadonly extends TagTest {}
@@ -478,6 +496,7 @@ class TagInGroupReadonly extends TagTest {}
       }
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TagInGroupRemovable extends TagTest {}
@@ -490,6 +509,7 @@ class TagInGroupRemovable extends TagTest {}
       }
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TagInGroupRemovableContentProjection extends TagTest {}
@@ -502,6 +522,7 @@ class TagInGroupRemovableContentProjection extends TagTest {}
       }
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule, FormsModule],
 })
 class TagInGroupWithNgModel extends TagTest {}
@@ -514,6 +535,7 @@ class TagInGroupWithNgModel extends TagTest {}
       }
     </nx-tag-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule, ReactiveFormsModule],
 })
 class TagInGroupWithFormControl extends TagTest {

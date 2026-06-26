@@ -446,6 +446,7 @@ abstract class AbstractButtonToggleComponent {
     label="text1"
     hint="hint1"
   ></nx-circle-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleCircleToggleButtonComponent extends AbstractButtonToggleComponent {}
@@ -464,12 +465,14 @@ class CircleToggleButtonOnPushComponent extends AbstractButtonToggleComponent {}
     svgChecked="testInverted.svg"
     label="text1"
   ></nx-circle-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SvgCircleToggleButtonComponent extends AbstractButtonToggleComponent {}
 
 @Component({
   template: `<nx-circle-toggle value="A" circleText="TEXT" label="text1"></nx-circle-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class TextCircleToggleButtonComponent extends AbstractButtonToggleComponent {}
@@ -481,18 +484,21 @@ class TextCircleToggleButtonComponent extends AbstractButtonToggleComponent {}
     icon="product-heart"
     label="text1"
   ></nx-circle-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class PreselectedCircleToggleButtoncComponent extends AbstractButtonToggleComponent {}
 
 @Component({
   template: `<nx-circle-toggle disabled="true" label="Label"></nx-circle-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class DisabledToggleButtonComponent extends AbstractButtonToggleComponent {}
 
 @Component({
   template: `<nx-circle-toggle readonly label="Label"></nx-circle-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule],
 })
 class ReadonlyToggleButtonComponent extends AbstractButtonToggleComponent {
@@ -506,6 +512,7 @@ class ReadonlyToggleButtonComponent extends AbstractButtonToggleComponent {
     icon="product-heart"
     label="text1"
   ></nx-circle-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelToggleButtonComponent extends AbstractButtonToggleComponent {}
@@ -516,6 +523,7 @@ class NgModelToggleButtonComponent extends AbstractButtonToggleComponent {}
       <nx-circle-toggle formControlName="reactiveToggle"></nx-circle-toggle>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveToggleButtonComponent extends AbstractButtonToggleComponent {
@@ -544,6 +552,7 @@ class ReactiveToggleButtonComponent extends AbstractButtonToggleComponent {
       [appearance]="appearance"
     ></nx-circle-toggle>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ExpertCircleToggleComponent extends AbstractButtonToggleComponent {

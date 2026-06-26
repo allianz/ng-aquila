@@ -81,6 +81,7 @@ export class NxHeaderActionsDirective {
     role: 'navigation',
   },
   template: '<div role="list" class="nx-header__navigation-items"><ng-content></ng-content></div>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxHeaderNavigationComponent {}
@@ -106,6 +107,7 @@ export class NxHeaderNavigationItemDirective {}
     '[attr.text-content]': 'textContent',
   },
   template: '<span class="nx-header__link-title"><ng-content></ng-content></span>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxHeaderLinkComponent implements OnDestroy, AfterViewInit {

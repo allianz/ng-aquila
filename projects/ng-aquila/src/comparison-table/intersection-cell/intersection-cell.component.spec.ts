@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   DebugElement,
   Directive,
@@ -179,6 +180,7 @@ describe('NxComparisonTableIntersectionCell', () => {
 
 @Component({
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class IntersectionCellComponent extends IntersectionCellTest {
@@ -203,6 +205,7 @@ class IntersectionCellComponent extends IntersectionCellTest {
 
 @Component({
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ToggleSectionComponent extends IntersectionCellTest {

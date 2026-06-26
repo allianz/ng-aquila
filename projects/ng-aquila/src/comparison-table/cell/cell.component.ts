@@ -4,6 +4,7 @@ import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgTemplateOutlet } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   contentChild,
@@ -28,6 +29,7 @@ import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
   selector: 'nx-comparison-table-cell',
   styleUrls: ['./cell.component.scss'],
   templateUrl: './cell.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgTemplateOutlet, NxRadioIndicatorComponent],
 })
 export class NxComparisonTableCell {

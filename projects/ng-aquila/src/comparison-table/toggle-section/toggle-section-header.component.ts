@@ -1,7 +1,14 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
-import { Component, inject, Input, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxToggleSectionBase } from './toggle-section-base';
@@ -10,6 +17,7 @@ import { NxToggleSectionBase } from './toggle-section-base';
   selector: 'nx-comparison-table-toggle-section-header',
   templateUrl: './toggle-section-header.component.html',
   styleUrls: ['./toggle-section-header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgTemplateOutlet, NxIconModule, NgClass],
 })
 export class NxToggleSectionHeaderComponent {

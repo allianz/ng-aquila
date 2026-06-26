@@ -1,7 +1,7 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxContextMenuModule } from '@allianz/ng-aquila/context-menu';
 import { NxIconModule, NxIconRegistry } from '@allianz/ng-aquila/icon';
-import { Component, input, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, model } from '@angular/core';
 
 import { Theme } from './theme-switcher.service';
 
@@ -9,6 +9,7 @@ import { Theme } from './theme-switcher.service';
   selector: 'nxv-theme-switch',
   templateUrl: 'theme-switcher.component.html',
   styleUrls: ['theme-switcher.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonModule, NxContextMenuModule, NxIconModule],
 })
 export class NxvThemeSwitcherComponent {

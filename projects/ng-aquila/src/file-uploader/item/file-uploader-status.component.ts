@@ -1,6 +1,6 @@
 import { NxStatusIconComponent } from '@allianz/ng-aquila/icon';
 import { NxSpinnerModule } from '@allianz/ng-aquila/spinner';
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /** Shows the current uploading status of a file. */
 @Component({
@@ -15,6 +15,7 @@ import { Component, input } from '@angular/core';
       </nx-status-icon>
     }
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSpinnerModule, NxStatusIconComponent],
 })
 export class NxFileUploaderItemStatus {

@@ -2,7 +2,14 @@ import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
 import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { DOWN_ARROW, ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes';
-import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  ElementRef,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import {
   FormBuilder,
@@ -418,6 +425,7 @@ describe('NxMultiStepperComponent', () => {
       <nx-step label="Step 2"> step 2 content </nx-step>
     </nx-multi-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxProgressStepperModule,
     NxInputModule,
@@ -444,6 +452,7 @@ class MultiStepDirectionTest extends MultiStepTest {
       <nx-step label="Step2"></nx-step>
     </nx-multi-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxProgressStepperModule,
     NxInputModule,
@@ -465,6 +474,7 @@ class LinearStepBasicTest extends MultiStepTest {
       <nx-step label="Step 2" [completed]="completedTwo"> step 2 content </nx-step>
     </nx-multi-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxProgressStepperModule,
     NxInputModule,
@@ -498,6 +508,7 @@ class MultiStepCompletionTest extends MultiStepTest {
       <nx-step label="Done"> asdf </nx-step>
     </nx-multi-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxProgressStepperModule,
     NxInputModule,
@@ -521,6 +532,7 @@ class MultiStepValidationTest extends MultiStepTest {
       <nx-step label="Step 2"> step 2 content </nx-step>
     </nx-multi-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxProgressStepperModule,
     NxInputModule,
@@ -545,6 +557,7 @@ class MultiStepBasicTest extends MultiStepTest {}
       </nx-step-group>
     </nx-multi-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxProgressStepperModule,
     NxInputModule,

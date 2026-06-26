@@ -20,20 +20,5 @@ export interface AquilaCssSelectorData {
 }
 
 export const cssSelectors: VersionChanges<AquilaCssSelectorData> = {
-  [TargetVersion.V21]: [
-    {
-      pr: '',
-      changes: [
-        {
-          replace: 'aposin',
-          replaceWith: 'aquila',
-          replaceIn: {
-            stylesheet: true,
-            html: true,
-            tsStringLiterals: true,
-          },
-        },
-      ],
-    },
-  ],
+  [TargetVersion.V22]: [],
 };

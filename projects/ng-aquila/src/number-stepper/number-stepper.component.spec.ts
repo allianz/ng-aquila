@@ -851,6 +851,7 @@ describe('NxNumberStepperComponent', () => {
 
 @Component({
   template: `<nx-number-stepper [label]="label"></nx-number-stepper>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class BasicStepper extends NumberStepperTest {
@@ -859,6 +860,7 @@ class BasicStepper extends NumberStepperTest {
 
 @Component({
   template: `<nx-number-stepper [(value)]="value"></nx-number-stepper>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleBindingStepper extends NumberStepperTest {}
@@ -870,6 +872,7 @@ class SimpleBindingStepper extends NumberStepperTest {}
     [(value)]="value"
     resize="true"
   ></nx-number-stepper>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ResizeOnInitTest extends NumberStepperTest {
@@ -887,6 +890,7 @@ class ResizeOnInitTestOnPush extends NumberStepperTest {
 
 @Component({
   template: `<nx-number-stepper [(ngModel)]="value"></nx-number-stepper>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelStepper extends NumberStepperTest {}
@@ -906,12 +910,14 @@ class NgModelStepper extends NumberStepperTest {}
       [inputFieldReadonly]="inputFieldReadonly"
     ></nx-number-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ConfigurableStepper extends NumberStepperTest {}
 
 @Component({
   template: `<nx-number-stepper [disabled]="disabled" [min]="-10"></nx-number-stepper>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class DisableableStepper extends NumberStepperTest {}
@@ -942,6 +948,7 @@ class DirectivesStepper extends NumberStepperTest {}
       <button id="submit-button">Submit</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveFormStepper extends NumberStepperTest {}
@@ -954,6 +961,7 @@ class ReactiveFormStepper extends NumberStepperTest {}
     </form>
   `,
   providers: [{ provide: LOCALE_ID, useValue: 'de-DE' }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class LocaleStepper extends NumberStepperTest {}
@@ -966,6 +974,7 @@ class LocaleStepper extends NumberStepperTest {}
     </form>
   `,
   providers: [{ provide: LOCALE_ID, useValue: 'en-US' }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class LocaleUsStepper extends NumberStepperTest {}
@@ -976,6 +985,7 @@ class LocaleUsStepper extends NumberStepperTest {}
       <nx-number-stepper formControlName="count"></nx-number-stepper>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveFormOnBlurStepper extends NumberStepperTest {
@@ -996,6 +1006,7 @@ class ReactiveFormOnBlurStepper extends NumberStepperTest {
       <nx-error>error</nx-error>
     </nx-number-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, NxErrorComponent],
 })
 class ErrorStepper extends NumberStepperTest {
@@ -1010,6 +1021,7 @@ class ErrorStepper extends NumberStepperTest {
       </nx-number-stepper>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, ReactiveFormsModule, NxErrorComponent],
 })
 class ReactiveInvalidStepOnInit extends NumberStepperTest {

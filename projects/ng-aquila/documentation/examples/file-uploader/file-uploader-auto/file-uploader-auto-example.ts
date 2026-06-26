@@ -49,7 +49,7 @@ export class FileUploaderAutoExampleComponent implements OnInit, OnDestroy {
       headers: new HttpHeaders({
         'My-Custom-Header': 'custom-header-value',
       }),
-      reportProgress: true,
+      reportUploadProgress: true,
     },
   };
 

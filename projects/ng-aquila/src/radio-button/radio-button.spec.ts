@@ -674,6 +674,7 @@ describe('NxRadioComponent', () => {
 
 @Component({
   template: `<nx-radio>Label</nx-radio>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class BasicRadio extends RadioTest {}
@@ -687,6 +688,7 @@ class BasicRadioOnPush extends RadioTest {}
 
 @Component({
   template: `<nx-radio [negative]="negative">Label</nx-radio>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class ConfigurableRadio extends RadioTest {
@@ -695,6 +697,7 @@ class ConfigurableRadio extends RadioTest {
 
 @Component({
   template: `<nx-radio></nx-radio>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class LabellessRadio extends RadioTest {}
@@ -704,6 +707,7 @@ class LabellessRadio extends RadioTest {}
     <nx-radio name="standaloneTest">1</nx-radio>
     <nx-radio name="standaloneTest">2</nx-radio>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class BasicRadioWithSameName extends RadioTest {}
@@ -717,6 +721,7 @@ class BasicRadioWithSameName extends RadioTest {}
       <nx-radio value="1">1</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class DynamicRadio extends RadioTest {
@@ -731,6 +736,7 @@ class DynamicRadio extends RadioTest {
       <nx-radio value="1">1</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class BasicRadioGroup extends RadioTest {}
@@ -742,6 +748,7 @@ class BasicRadioGroup extends RadioTest {}
       <nx-radio value="1">1</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class MultipleRadio extends RadioTest {
@@ -770,6 +777,7 @@ class MultipleRadioOnPush extends RadioTest {
       <nx-radio value="1">1</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class MultipleRadioDisabled extends RadioTest {
@@ -787,6 +795,7 @@ class MultipleRadioDisabled extends RadioTest {
       <p>Form status: {{ testForm.status | json }}</p>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxRadioModule,
     FormsModule,
@@ -816,6 +825,7 @@ class ReactiveRadio extends RadioTest {
       <nx-radio value="1">1</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class GroupWithNgModel extends RadioTest {}
@@ -834,6 +844,7 @@ class GroupWithNgModel extends RadioTest {}
       <button type="submit" nxButton="primary">Submit</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class RadioGroupValidation extends RadioTest {
@@ -872,6 +883,7 @@ class RadioGroupValidation extends RadioTest {
       <button type="submit" nxButton="primary">Submit</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class RadioGroupValidationTouched extends RadioTest {
@@ -907,6 +919,7 @@ class RadioGroupValidationTouched extends RadioTest {
       <nx-radio value="1">1</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class RadioGroupTest extends RadioTest {
@@ -921,6 +934,7 @@ class RadioGroupTest extends RadioTest {
       <nx-radio value="1">1</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class RadioA11y extends RadioTest {

@@ -1,4 +1,4 @@
-import { Component, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxEyebrowComponent } from './eyebrow.component';
@@ -28,6 +28,7 @@ describe('NxEyebrowComponent', () => {
 @Component({
   selector: 'eyebrow-example',
   template: ` <nx-eyebrow size="s">Eyebrow Text</nx-eyebrow> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxEyebrowComponent],
 })
 export class EyebrowExampleComponent {}

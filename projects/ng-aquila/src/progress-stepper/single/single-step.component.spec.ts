@@ -1,5 +1,12 @@
 import { NxLabelModule } from '@allianz/ng-aquila/base';
-import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  ElementRef,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import {
   ComponentFixture,
   ComponentFixtureAutoDetect,
@@ -133,6 +140,7 @@ describe('NxSingleStepperComponent', () => {
       <nx-step label="Step 2"> step 2 content </nx-step>
     </nx-single-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressStepperModule, NxLabelModule],
 })
 class SingleStepBasicTest extends SingleStepTest {}
@@ -144,6 +152,7 @@ class SingleStepBasicTest extends SingleStepTest {}
       <nx-step label="Step 2"> step 2 content </nx-step>
     </nx-single-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressStepperModule, NxLabelModule],
 })
 class SingleStepCustomLabelTest extends SingleStepTest {}
@@ -156,6 +165,7 @@ class SingleStepCustomLabelTest extends SingleStepTest {}
       <nx-step label="Step 2"> step 2 content </nx-step>
     </nx-single-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressStepperModule, NxLabelModule],
 })
 class SingleStepTitleTest extends SingleStepTest {}
@@ -189,6 +199,7 @@ class SingleStepTitleTest extends SingleStepTest {}
       </nx-step>
     </nx-single-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressStepperModule, NxLabelModule],
 })
 class DirectivesTest extends SingleStepTest {}

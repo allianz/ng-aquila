@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -321,6 +321,7 @@ function flush() {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class BasicComponent extends RowGroupTest {}
@@ -363,6 +364,7 @@ class BasicComponent extends RowGroupTest {}
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ConfigurableComponent extends RowGroupTest {}
@@ -396,6 +398,7 @@ class ConfigurableComponent extends RowGroupTest {}
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ToggleSectionComponent extends RowGroupTest {}

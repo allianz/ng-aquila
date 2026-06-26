@@ -1,4 +1,4 @@
-import { Component, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { NxVirtualFor } from './virtual-for';
@@ -24,6 +24,7 @@ function generateItems(count: number): TestItem[] {
       </div>
     </nx-virtual-viewport>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxVirtualViewportComponent, NxVirtualFor],
 })
 class BasicTestComponent {
@@ -40,6 +41,7 @@ class BasicTestComponent {
       </div>
     </nx-virtual-viewport>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxVirtualViewportComponent, NxVirtualFor],
 })
 class FunctionAccessorTestComponent {
@@ -60,6 +62,7 @@ class FunctionAccessorTestComponent {
       </div>
     </nx-virtual-viewport>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxVirtualViewportComponent, NxVirtualFor],
 })
 class CustomTemplateTestComponent {
@@ -80,6 +83,7 @@ class CustomTemplateTestComponent {
       </div>
     </nx-virtual-viewport>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxVirtualViewportComponent, NxVirtualFor],
 })
 class VisibleRangeTestComponent {

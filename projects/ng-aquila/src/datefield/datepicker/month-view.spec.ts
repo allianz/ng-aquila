@@ -12,7 +12,7 @@ import {
   SPACE,
   UP_ARROW,
 } from '@angular/cdk/keycodes';
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -366,6 +366,7 @@ describe('NxMonthView', () => {
 
 @Component({
   template: `<nx-month-view [(activeDate)]="activeDate" [(selected)]="selected"></nx-month-view>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxMonthViewComponent],
 })
 class StandardMonthView {
@@ -376,6 +377,7 @@ class StandardMonthView {
 
 @Component({
   template: `<nx-month-view [activeDate]="activeDate" [dateFilter]="dateFilter"></nx-month-view>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxMonthViewComponent],
 })
 class MonthViewWithDateFilter {

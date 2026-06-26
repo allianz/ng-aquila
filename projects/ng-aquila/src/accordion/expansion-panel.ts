@@ -1,29 +1,24 @@
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
-import { CdkAccordionItem } from '@angular/cdk/accordion';
+import { CDK_ACCORDION, CdkAccordionItem } from '@angular/cdk/accordion';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import {
   AfterContentInit,
   booleanAttribute,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   computed,
   ContentChild,
   ElementRef,
-  Inject,
   inject,
   InjectionToken,
   Input,
   input,
   OnChanges,
   OnDestroy,
-  Optional,
   signal,
   SimpleChanges,
-  SkipSelf,
   ViewContainerRef,
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
@@ -72,9 +67,10 @@ export const EXPANSION_PANEL_DEFAULT_OPTIONS = new InjectionToken<ExpansionPanel
     '[class.is-disabled]': 'disabled',
   },
   providers: [
-    // Provide NxAccordionDirective as undefined to prevent nested expansion panels from registering
-    // to the same accordion.
-    { provide: NxAccordionDirective, useValue: undefined },
+    // Provide CDK_ACCORDION as undefined to prevent nested expansion panels from registering
+    // to the same accordion (mirrors what CdkAccordionItem does on its own decorator, which is
+    // not inherited by this subclass).
+    { provide: CDK_ACCORDION, useValue: undefined },
   ],
   imports: [CdkPortalOutlet, CommonModule],
 })
@@ -82,6 +78,18 @@ export class NxExpansionPanelComponent
   extends CdkAccordionItem
   implements AfterContentInit, OnChanges, OnDestroy
 {
+  /** @docs-private */
+  // not typed as nullable: the parent accordion provides CDK_ACCORDION as itself
+  override readonly accordion = inject(CDK_ACCORDION, {
+    optional: true,
+    skipSelf: true,
+  }) as NxAccordionDirective;
+  private readonly _viewContainerRef = inject(ViewContainerRef);
+  private readonly _defaultOptions = inject<ExpansionPanelDefaultOptions>(
+    EXPANSION_PANEL_DEFAULT_OPTIONS,
+    { optional: true },
+  )!;
+
   /** Whether the negative set of styles should be used. */
   @Input() set negative(value: BooleanInput) {
     this._negative = coerceBooleanProperty(value);
@@ -150,18 +158,6 @@ export class NxExpansionPanelComponent
 
   /** Stream that emits for changes in `@Input` properties. */
   readonly _inputChanges = new Subject<SimpleChanges>();
-
-  constructor(
-    /** @docs-private */ @Optional() @SkipSelf() readonly accordion: NxAccordionDirective, // not typed as nullable: super class does not support `null`
-    _cdr: ChangeDetectorRef,
-    _expansionDispatcher: UniqueSelectionDispatcher,
-    private readonly _viewContainerRef: ViewContainerRef,
-    @Optional()
-    @Inject(EXPANSION_PANEL_DEFAULT_OPTIONS)
-    private readonly _defaultOptions: ExpansionPanelDefaultOptions,
-  ) {
-    super(accordion!, _cdr, _expansionDispatcher);
-  }
 
   ngAfterContentInit(): void {
     if (this.lazyContent) {

@@ -6,6 +6,7 @@ import { DOWN_ARROW } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule, ScrollStrategy } from '@angular/cdk/overlay';
 import { CommonModule, JsonPipe, LowerCasePipe } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   Directive,
   ElementRef,
@@ -480,6 +481,7 @@ class AutocompleteComponent {
     />
     <nx-autocomplete #auto1></nx-autocomplete>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class BasicAutocompleteComponent extends AutocompleteComponent {}
@@ -503,6 +505,7 @@ class BasicAutocompleteComponent extends AutocompleteComponent {}
     </nx-autocomplete>
   `,
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class LongContentComponent extends AutocompleteComponent {
@@ -523,6 +526,7 @@ class LongContentComponent extends AutocompleteComponent {
     />
     <nx-autocomplete #auto1></nx-autocomplete>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ScrollStrategyOverrideComponent extends AutocompleteComponent {
@@ -545,6 +549,7 @@ class ScrollStrategyOverrideComponent extends AutocompleteComponent {
       }
     </nx-autocomplete>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     OverlayModule,
     NxAutocompleteModule,
@@ -569,6 +574,7 @@ class CustomAutocompleteComponent extends AutocompleteComponent {}
     </nx-autocomplete>
     {{ inputVal | json }}
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     OverlayModule,
     NxAutocompleteModule,
@@ -598,6 +604,7 @@ class ComplexDataAutocompleteComponent extends AutocompleteComponent {
       <nx-autocomplete #auto1></nx-autocomplete>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelBindingAutocompleteComponent extends AutocompleteComponent {
@@ -626,6 +633,7 @@ class NgModelBindingAutocompleteComponent extends AutocompleteComponent {
       </nx-formfield>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveAutocompleteComponent extends AutocompleteComponent {
@@ -660,6 +668,7 @@ class ReactiveAutocompleteComponent extends AutocompleteComponent {
       <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody"> </nx-modal>
     }
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     OverlayModule,
     NxAutocompleteModule,
@@ -688,6 +697,7 @@ class AutocompleteInModalComponent extends AutocompleteComponent {
       <nx-autocomplete #auto1></nx-autocomplete>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class AutocompleteComponentWithDirection extends AutocompleteComponent {
@@ -706,6 +716,7 @@ class AutocompleteComponentWithDirection extends AutocompleteComponent {
     </nx-autocomplete>
   `,
   encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ShadowAutoCompleteComponent extends AutocompleteComponent {

@@ -14,7 +14,7 @@ import {
   RIGHT_ARROW,
   UP_ARROW,
 } from '@angular/cdk/keycodes';
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -343,6 +343,7 @@ describe('NxYearView', () => {
     [(selected)]="selected"
     (monthSelected)="selectedMonth = $event"
   ></nx-year-view>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxYearViewComponent],
 })
 class StandardYearView {
@@ -355,6 +356,7 @@ class StandardYearView {
 
 @Component({
   template: `<nx-year-view [(activeDate)]="activeDate" [dateFilter]="dateFilter"></nx-year-view>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxYearViewComponent],
 })
 class YearViewWithDateFilter {

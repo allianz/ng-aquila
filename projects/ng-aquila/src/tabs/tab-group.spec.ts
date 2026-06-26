@@ -641,6 +641,7 @@ describe('NxTabGroupComponent', () => {
       <nx-tab label="Second label">Second</nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class BasicTabs extends TabsTest {}
@@ -664,6 +665,7 @@ class OnPushTabs extends TabsTest {}
       <nx-tab label="Second label">Second</nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class ConfigurableTabs extends TabsTest {}
@@ -675,6 +677,7 @@ class ConfigurableTabs extends TabsTest {}
       <nx-tab label="Second label">Second</nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class BindingTabs extends TabsTest {
@@ -688,6 +691,7 @@ class BindingTabs extends TabsTest {
       <nx-tab label="Second label">Second</nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class EventTabsTest extends TabsTest {
@@ -715,6 +719,7 @@ class EventTabsTest extends TabsTest {
       }
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class DynamicTabTest extends TabsTest {
@@ -741,6 +746,7 @@ class DynamicTabTest extends TabsTest {
 @Component({
   template: '<span>I am a test component</span>',
   selector: 'my-test-component',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class TestComponent implements OnDestroy {
@@ -759,6 +765,7 @@ class TestComponent implements OnDestroy {
       <nx-tab label="Second label">Second</nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule, TestComponent],
 })
 class CustomElementTest extends TabsTest {
@@ -773,6 +780,7 @@ class CustomElementTest extends TabsTest {
       <nx-tab label="Second label">Second</nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class DisabledTabs extends TabsTest {
@@ -796,6 +804,7 @@ class DisabledTabs extends TabsTest {
       </nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule, TestComponent],
 })
 class TemplateTabs extends TabsTest {
@@ -827,6 +836,7 @@ class TemplateTabs extends TabsTest {
       </nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class NestedTabGroups extends TabsTest {}

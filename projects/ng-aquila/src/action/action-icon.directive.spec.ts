@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxActionModule } from './action.module';
@@ -50,6 +50,7 @@ describe(NxActionIconDirective.name, () => {
 @Component({
   selector: 'test-basic-action-icon',
   template: `<span nxActionIcon></span>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxActionModule],
 })
 class BasicActionIcon extends ActionIconTest {}

@@ -152,6 +152,7 @@ describe('NxLinkComponent', () => {
       <a>link</a>
     </nx-link>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLinkModule, NxIconModule],
 })
 class BasicLink extends LinkTest {}
@@ -162,6 +163,7 @@ class BasicLink extends LinkTest {}
       <a>link</a>
     </nx-link>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLinkModule, NxIconModule],
 })
 class DynamicLink extends LinkTest {
@@ -174,6 +176,7 @@ class DynamicLink extends LinkTest {
       <a><nx-icon name="user-o"></nx-icon>link</a>
     </nx-link>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLinkModule, NxIconModule],
 })
 class IconLink extends LinkTest {

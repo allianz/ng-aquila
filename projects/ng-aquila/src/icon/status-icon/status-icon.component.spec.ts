@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxStatusIconComponent, NxStatusIconType } from './status-icon.component';
@@ -25,6 +25,7 @@ describe('StatusIconComponent', () => {
 
 @Component({
   template: `<nx-status-icon [type]="status"></nx-status-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxStatusIconComponent],
 })
 class StatusIconTestComponent {

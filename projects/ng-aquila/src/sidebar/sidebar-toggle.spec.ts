@@ -1,6 +1,6 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxSidebarModule } from '@allianz/ng-aquila/sidebar';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxSidebarToggleComponent } from './sidebar-toggle';
@@ -45,6 +45,7 @@ describe('NxSidebarToggleButton', () => {
       </nx-sidebar-footer>
     </nx-sidebar>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonModule, NxSidebarModule],
 })
 class BasicSidebarToggleComponent extends ToggleTest {}

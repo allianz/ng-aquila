@@ -1,8 +1,8 @@
 import { DocVersions, NX_DOC_VERSIONS } from '@allianz/ngx-docs-ui';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -50,7 +50,10 @@ describe('NxvVersionSelectComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxvVersionSelectModule, BasicVersionSelect, VersionSelectWithToken],
-      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+      providers: [
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
 
     inject([OverlayContainer], (oc: OverlayContainer) => {
@@ -94,6 +97,7 @@ describe('NxvVersionSelectComponent', () => {
 
 @Component({
   template: `<nxv-version-select [versions]="versions"> </nxv-version-select>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxvVersionSelectModule],
 })
 class BasicVersionSelect extends VersionSelectTest {}
@@ -111,6 +115,7 @@ const versions: DocVersions = {
 @Component({
   template: `<nxv-version-select> </nxv-version-select>`,
   providers: [{ provide: NX_DOC_VERSIONS, useValue: versions }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxvVersionSelectModule],
 })
 class VersionSelectWithToken extends VersionSelectTest {}

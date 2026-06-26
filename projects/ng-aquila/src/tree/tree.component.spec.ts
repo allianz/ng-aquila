@@ -1,5 +1,5 @@
 import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -695,6 +695,7 @@ function expectNestedTreeToNxch(treeElement: Element, ...expectedTree: any[]) {
       </nx-tree-node>
     </nx-tree>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTreeModule],
 })
 class SimpleNxTreeApp {
@@ -727,6 +728,7 @@ class SimpleNxTreeApp {
       </nx-tree-node>
     </nx-tree>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTreeModule],
 })
 class NxTreeAppWithToggle {
@@ -769,6 +771,7 @@ class NxTreeAppWithToggle {
       </nx-tree-node>
     </nx-tree>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTreeModule],
 })
 class WhenNodeNxTreeApp {
@@ -804,6 +807,7 @@ class WhenNodeNxTreeApp {
       </nx-tree-node>
     </nx-tree>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTreeModule],
 })
 class NxTreeAppWithButton {

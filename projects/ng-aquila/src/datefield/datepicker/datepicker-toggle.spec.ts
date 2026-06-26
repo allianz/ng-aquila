@@ -1,6 +1,6 @@
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -203,6 +203,7 @@ describe('NxDatepickerToggleComponent using injection token', () => {
     <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
     <nx-datepicker #myDatepicker1></nx-datepicker>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
 })
 class BasicToggleDateComponent extends DatepickerToggleTest {}
@@ -217,6 +218,7 @@ class BasicToggleDateComponent extends DatepickerToggleTest {}
     ></nx-datepicker-toggle>
     <nx-datepicker #myDatepicker1></nx-datepicker>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
 })
 class ConfigurableToggleDateComponent extends DatepickerToggleTest {}
@@ -228,6 +230,7 @@ class ConfigurableToggleDateComponent extends DatepickerToggleTest {}
     <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
     <nx-datepicker #myDatepicker1></nx-datepicker>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
 })
 class DoubleToggleErrorComponent extends DatepickerToggleTest {}
@@ -238,6 +241,7 @@ class DoubleToggleErrorComponent extends DatepickerToggleTest {}
     <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
     <nx-datepicker #myDatepicker1></nx-datepicker>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
 })
 class ReadonlyDatefield extends DatepickerToggleTest {}

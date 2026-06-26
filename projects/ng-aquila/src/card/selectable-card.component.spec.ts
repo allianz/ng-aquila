@@ -1,5 +1,6 @@
 import { NxErrorComponent, NxErrorModule } from '@allianz/ng-aquila/base';
 import {
+  ChangeDetectionStrategy,
   Component,
   DebugElement,
   Directive,
@@ -230,6 +231,7 @@ describe('NxSelectableCardComponent', () => {
       </p>
     </nx-selectable-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class BasicSelectableCard extends SelectableCardTest {}
@@ -242,6 +244,7 @@ class BasicSelectableCard extends SelectableCardTest {}
       </p>
     </nx-selectable-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class ExpertSelectableCard extends SelectableCardTest {}
@@ -255,6 +258,7 @@ class ExpertSelectableCard extends SelectableCardTest {}
       </p>
     </nx-selectable-card>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class HighlightSelectableCard extends SelectableCardTest {}
@@ -270,6 +274,7 @@ class HighlightSelectableCard extends SelectableCardTest {}
       </nx-selectable-card>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class ReactiveSelectableCard extends SelectableCardTest {
@@ -301,6 +306,7 @@ class ReactiveSelectableCard extends SelectableCardTest {
       </nx-selectable-card>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class DynamicErrorSelectableCard extends SelectableCardTest {

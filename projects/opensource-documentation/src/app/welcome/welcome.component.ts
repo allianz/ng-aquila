@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { NxButtonComponent } from '../../../../ng-aquila/src/button/button.component';
@@ -11,6 +11,7 @@ import { FooterComponent } from '../footer/footer.component';
   selector: 'doc-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxLayoutComponent,
     NxRowComponent,

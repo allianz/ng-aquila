@@ -25,7 +25,7 @@ import {
 } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { CommonModule } from '@angular/common';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -1187,6 +1187,7 @@ abstract class DropdownTest {
   template: `<nx-formfield label="Car brand" [appearance]="appearance">
     <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class BasicMultiSelectComponent extends DropdownTest {
@@ -1198,6 +1199,7 @@ class BasicMultiSelectComponent extends DropdownTest {
     <nx-multi-select [(ngModel)]="model" [filter]="filter" [options]="options"></nx-multi-select>
   </nx-formfield>`,
   imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [{ provide: NxDropdownIntl, useClass: CustomIntl }],
 })
 class IntlOverrideMultiSelect extends DropdownTest {
@@ -1218,6 +1220,7 @@ class IntlOverrideMultiSelect extends DropdownTest {
       [panelMaxWidth]="panelMaxWidth"
     ></nx-multi-select>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, NxFormfieldModule, FormsModule],
 })
 class LongOptionLabelComponent extends DropdownTest {
@@ -1245,6 +1248,7 @@ interface ComplexOption {
       [options]="options"
     ></nx-multi-select>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class ComplexMultiSelectComponent extends DropdownTest {
@@ -1276,6 +1280,7 @@ class ComplexMultiSelectComponent extends DropdownTest {
       <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select>
     </nx-formfield>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class ReactiveMultiSelectComponent extends DropdownTest {
@@ -1293,6 +1298,7 @@ class ReactiveMultiSelectComponent extends DropdownTest {
       <nx-error nxFormfieldError> this is error </nx-error>
     </nx-formfield>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     OverlayModule,
     NxDropdownModule,
@@ -1317,6 +1323,7 @@ class ErrorMultiSelectComponent extends DropdownTest {
   template: `<nx-formfield>
     <nx-multi-select [options]="options" filter (filterInput)="test($event)"></nx-multi-select>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class MultiSelectWithFilterComponent extends DropdownTest {
@@ -1336,6 +1343,7 @@ class MultiSelectWithFilterComponent extends DropdownTest {
       [disabled]="disabled"
     ></nx-multi-select>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class TabIndexMultiSelectComponent extends DropdownTest {

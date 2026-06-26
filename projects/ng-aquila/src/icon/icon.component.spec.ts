@@ -1,6 +1,6 @@
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -32,7 +32,10 @@ describe('NxIconComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxIconModule, BasicIcon, SizeIcon, OutlineIcon, FillIcon, DynamicIcon, FontIcon],
-      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+      providers: [
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
   }));
 
@@ -273,30 +276,35 @@ describe('NxIconComponent', () => {
 
 @Component({
   template: `<nx-icon name="heart"></nx-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 class BasicIcon extends IconTest {}
 
 @Component({
   template: `<nx-icon name="heart" size="m"></nx-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 class SizeIcon extends IconTest {}
 
 @Component({
   template: `<nx-icon name="heart" outline="true"></nx-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 class OutlineIcon extends IconTest {}
 
 @Component({
   template: `<nx-icon name="heart" fill="true"></nx-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 class FillIcon extends IconTest {}
 
 @Component({
   template: `<nx-icon [name]="name" [size]="size" fill="true"></nx-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 class DynamicIcon extends IconTest {
@@ -306,6 +314,7 @@ class DynamicIcon extends IconTest {
 
 @Component({
   template: `<nx-icon [name]="name" [font]="font"></nx-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 class FontIcon extends IconTest {

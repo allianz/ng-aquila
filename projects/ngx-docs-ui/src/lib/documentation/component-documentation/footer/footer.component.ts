@@ -1,4 +1,10 @@
-import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+  ViewContainerRef,
+} from '@angular/core';
 
 import { NXV_FOOTER } from './../../../core/tokens';
 
@@ -13,6 +19,7 @@ import { NXV_FOOTER } from './../../../core/tokens';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxvFooterComponent implements OnInit {

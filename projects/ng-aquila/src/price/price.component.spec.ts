@@ -460,6 +460,7 @@ class BasicPriceComponent extends PriceTest {}
 @Component({
   selector: 'test-price-with-locale',
   template: `<nx-price [value]="value" [currency]="currency" [locale]="locale" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPriceModule],
 })
 class PriceWithLocaleComponent extends PriceTest {}
@@ -467,6 +468,7 @@ class PriceWithLocaleComponent extends PriceTest {}
 @Component({
   selector: 'test-price-with-size',
   template: `<nx-price [value]="value" [currency]="currency" [size]="size" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPriceModule],
 })
 class PriceWithSizeComponent extends PriceTest {}
@@ -474,6 +476,7 @@ class PriceWithSizeComponent extends PriceTest {}
 @Component({
   selector: 'test-price-with-inverse',
   template: `<nx-price [value]="value" [currency]="currency" [inverse]="inverse" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPriceModule],
 })
 class PriceWithInverseComponent extends PriceTest {}
@@ -486,6 +489,7 @@ class PriceWithInverseComponent extends PriceTest {}
     [prefix]="prefix"
     [suffix]="suffix"
   />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPriceModule],
 })
 class PriceWithPrefixSuffixComponent extends PriceTest {}
@@ -499,6 +503,7 @@ class PriceWithPrefixSuffixComponent extends PriceTest {}
     [size]="size"
     [superscript]="superscript"
   />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPriceModule],
 })
 class PriceWithSuperscriptComponent extends PriceTest {}
@@ -506,6 +511,7 @@ class PriceWithSuperscriptComponent extends PriceTest {}
 @Component({
   selector: 'test-price-with-different-currency',
   template: `<nx-price [value]="value" [currency]="currency" [locale]="locale" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPriceModule],
 })
 class PriceWithDifferentCurrencyComponent extends PriceTest {

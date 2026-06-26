@@ -1,6 +1,6 @@
 import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxDirectModule } from './nx-direct.module';
@@ -47,6 +47,7 @@ describe('NxDirectPreset', () => {
       <input nxInput />
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDirectModule, NxInputModule],
 })
 class FormfieldPresetComponent extends PresetTest {}

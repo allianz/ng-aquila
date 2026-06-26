@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxGridModule } from './grid.module';
@@ -113,65 +113,76 @@ describe('NxLayoutDirective', () => {
 
 @Component({
   template: `<div nxLayout=""></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicLayout extends DirectiveTest {}
 
 @Component({
   template: `<div nxLayout="grid"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicGridLayout extends DirectiveTest {}
 @Component({
   template: `<div nxLayout="grid" [containerQuery]="true"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicContainerQueryGridLayout extends DirectiveTest {}
 
 @Component({
   template: `<div nxLayout="grid" class="test"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicGridLayoutClassTest extends DirectiveTest {}
 
 @Component({
   template: `<div nxLayout="grid nogutters"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicNoGutters extends DirectiveTest {}
 
 @Component({
   template: `<div nxLayout="grid maxwidth"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicMaxWidth extends DirectiveTest {}
 
 @Component({
   template: `<div nxLayout="grid maxwidth nogutters"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicCombinate extends DirectiveTest {}
 
 @Component({
   template: `<div nxLayout="grid nogutters maxwidth"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class Basic2Combinate extends DirectiveTest {}
 
 @Component({
   template: `<div nxLayout="maxwidth grid nogutters"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicCompleteReverse extends DirectiveTest {}
 
 @Component({
   template: `<div nxLayout="grid nopadding"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicNoPadding extends DirectiveTest {}
 
 @Component({
   template: `<div [nxLayout]="layout"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class DynamicLayout extends DirectiveTest {

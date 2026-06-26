@@ -1,5 +1,5 @@
 import { CdkStepper, CdkStepperNext, CdkStepperPrevious } from '@angular/cdk/stepper';
-import { ChangeDetectorRef, Directive, DoCheck } from '@angular/core';
+import { ChangeDetectorRef, Directive, DoCheck, inject } from '@angular/core';
 
 import { NxProgressStepperDirective } from './progress-stepper.component';
 
@@ -17,12 +17,7 @@ export class NxStepperNextDirective extends CdkStepperNext implements DoCheck {
   /** @docs-private */
   disabled = false;
 
-  constructor(
-    _stepper: CdkStepper,
-    private readonly _cdr: ChangeDetectorRef,
-  ) {
-    super(_stepper);
-  }
+  private readonly _cdr = inject(ChangeDetectorRef);
 
   /**
    * Implemented to prevent changed after checked error after stepper init.
@@ -52,10 +47,6 @@ export class NxStepperNextDirective extends CdkStepperNext implements DoCheck {
   standalone: true,
 })
 export class NxStepperPreviousDirective extends CdkStepperPrevious {
-  constructor(_stepper: CdkStepper) {
-    super(_stepper);
-  }
-
   get stepper(): NxProgressStepperDirective {
     return this._stepper as NxProgressStepperDirective;
   }

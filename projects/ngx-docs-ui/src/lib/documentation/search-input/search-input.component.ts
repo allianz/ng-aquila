@@ -4,6 +4,7 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import {
   booleanAttribute,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   input,
@@ -20,6 +21,7 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
   selector: 'nxv-search',
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonModule, NxFormfieldModule, NxIconModule, NxInputModule, FormsModule],
 })
 export class NxvSearchInputComponent implements OnInit {

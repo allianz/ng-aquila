@@ -11,7 +11,7 @@ import { readMarkdownFileStream } from '../shared/read-markdown-file';
 import { manifest } from './manifest';
 import { transform } from './transform';
 
-const mdFiles$ = bindNodeCallback(glob);
+const mdFiles$ = bindNodeCallback(glob.glob);
 const outputFile$ = bindNodeCallback(fs.outputFile);
 
 const getChangelogFile = () => of([path.join(process.cwd(), 'CHANGELOG.md')]);

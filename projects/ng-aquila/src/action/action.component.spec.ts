@@ -153,6 +153,7 @@ class DefaultAction extends ActionTest {}
   template: `<a nxAction [expandable]="expandable" [expanded]="expanded" [selected]="selected">
     example action
   </a>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxActionModule],
 })
 class BasicAction extends ActionTest {}

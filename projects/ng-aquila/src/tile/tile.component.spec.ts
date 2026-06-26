@@ -1,7 +1,7 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxTileGroupComponent } from '@allianz/ng-aquila/tile';
-import { Component, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -28,6 +28,7 @@ import { NxTileSelectionMode } from './tile-group.component';
       />
     }
   </nx-tile-group>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTileComponent, NxTileGroupComponent, NxIconModule],
 })
 class TileTestComponent {
@@ -57,6 +58,7 @@ class TileTestComponent {
     }
     <nx-error>This is an error</nx-error>
   </nx-tile-group>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxTileComponent,
     NxTileGroupComponent,
@@ -85,6 +87,7 @@ class TileReactiveFormsTestComponent {
       </nx-tile>
     </nx-tile-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTileGroupComponent, NxTileComponent, NxTileLabelDirective, NxTileHintDirective],
 })
 class TileContentProjectionTestComponent {}

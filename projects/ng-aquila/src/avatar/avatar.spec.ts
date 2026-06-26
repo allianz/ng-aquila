@@ -1,5 +1,5 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxAvatarAccent, NxAvatarComponent, NxAvatarSize } from './avatar';
@@ -150,6 +150,7 @@ describe('NxAvatarComponent', () => {
 
 @Component({
   template: `<div nxAvatar>SM</div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithText extends AvatarTest {}
@@ -160,6 +161,7 @@ class AvatarWithText extends AvatarTest {}
       <nx-icon name="user-o"></nx-icon>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithIcon extends AvatarTest {}
@@ -172,24 +174,28 @@ class AvatarWithIcon extends AvatarTest {}
       </figure>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithImage extends AvatarTest {}
 
 @Component({
   template: `<button nxAvatar>SM</button>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarButton extends AvatarTest {}
 
 @Component({
   template: `<div nxAvatar [size]="size">SM</div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })
 class ConfigurableAvatar extends AvatarTest {}
 
 @Component({
   template: `<div nxAvatar [accentColor]="accentColor" [attention]="attention">SM</div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithAccent extends AvatarTest {
@@ -199,6 +205,7 @@ class AvatarWithAccent extends AvatarTest {
 
 @Component({
   template: `<div nxAvatar [disabled]="disabled">MD</div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })
 class ConfigurableDisabledAvatar extends AvatarTest {
@@ -207,6 +214,7 @@ class ConfigurableDisabledAvatar extends AvatarTest {
 
 @Component({
   template: `<div nxAvatar [disabled]="true" [attention]="true" [accentColor]="'blue'">MD</div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })
 class DisabledAvatarWithAccent extends AvatarTest {}

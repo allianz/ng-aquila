@@ -462,6 +462,7 @@ describe('NxCodeInputComponent', () => {
       <nx-code-input [length]="4" convertTo="upper" formControlName="keyCode"></nx-code-input>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class CodeInputTest1 extends CodeInputTest {
@@ -485,6 +486,7 @@ class CodeInputTest1 extends CodeInputTest {
       <nx-code-input formControlName="keyCode2"></nx-code-input>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class CodeInputTest2 extends CodeInputTest {
@@ -538,6 +540,7 @@ class NumberCodeInput extends CodeInputTest {}
     [type]="type"
   >
   </nx-code-input>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class ConfigurableCodeInput extends CodeInputTest {}
@@ -545,6 +548,7 @@ class ConfigurableCodeInput extends CodeInputTest {}
 @Component({
   template: `<nx-code-input [length]="4"></nx-code-input>`,
   providers: [{ provide: NxCodeInputIntl, useClass: MyIntl }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
 })
 class OverrideDefaultLabelsCodeInput extends CodeInputTest {}

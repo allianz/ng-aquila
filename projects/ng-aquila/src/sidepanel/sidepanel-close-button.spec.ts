@@ -1,4 +1,11 @@
-import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -66,6 +73,7 @@ describe('NxSidepanelCloseButtonComponent', () => {
       <button nxSidepanelCloseButton aria-label="Close Sidepanel"></button>
     </nx-sidepanel>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSidepanelModule],
 })
 class BasicSidepanel extends SidepanelCloseButtonTest {}

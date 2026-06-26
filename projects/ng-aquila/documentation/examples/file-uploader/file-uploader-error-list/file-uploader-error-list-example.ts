@@ -61,7 +61,7 @@ export class FileUploaderErrorListExampleComponent
     requestUrl: 'file-upload',
     options: {
       params: new HttpParams(),
-      reportProgress: true,
+      reportUploadProgress: true,
     },
   };
 

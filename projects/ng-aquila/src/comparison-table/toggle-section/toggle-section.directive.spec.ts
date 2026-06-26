@@ -1,4 +1,11 @@
-import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  QueryList,
+  Type,
+  ViewChildren,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxComparisonTableModule } from '../comparison-table.module';
@@ -136,6 +143,7 @@ describe('ToggleSectionHeaderComponent', () => {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class BasicComponent extends ToggleSectionTest {}

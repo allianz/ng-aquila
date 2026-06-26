@@ -1,4 +1,11 @@
-import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -129,6 +136,7 @@ describe('NxSmallStageComponent', () => {
       <nx-small-stage-image nxSmallStageImageBottom src="baz"></nx-small-stage-image>
     </nx-small-stage>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSmallStageModule],
 })
 class BasicSmallStage extends SmallStageTest {}
@@ -142,6 +150,7 @@ class BasicSmallStage extends SmallStageTest {}
       <nx-small-stage-image nxSmallStageImageEnd src="bar"></nx-small-stage-image>
     </nx-small-stage>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSmallStageModule],
 })
 class ExpertSmallStage extends SmallStageTest {}
@@ -155,12 +164,14 @@ class ExpertSmallStage extends SmallStageTest {}
       <nx-small-stage-image nxSmallStageImageEnd src="bar"></nx-small-stage-image>
     </nx-small-stage>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSmallStageModule],
 })
 class SmallTextSmallStage extends SmallStageTest {}
 
 @Component({
   template: ` <nx-small-stage colorScheme="emphasis"> text </nx-small-stage> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSmallStageModule],
 })
 class ColorSchemeSmallStage extends SmallStageTest {}

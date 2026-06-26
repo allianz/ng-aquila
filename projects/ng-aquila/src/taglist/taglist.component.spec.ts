@@ -1,5 +1,5 @@
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -278,24 +278,28 @@ describe('NxTaglistComponent', () => {
 
 @Component({
   template: `<nx-taglist [tags]="tags">empty</nx-taglist>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class BasicTaglist extends TaglistTest {}
 
 @Component({
   template: `<nx-taglist [tags]="tags" [labelProperty]="labelProperty">empty</nx-taglist>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class LabelPropertyTaglist extends TaglistTest {}
 
 @Component({
   template: `<nx-taglist [tags]="tags" [allowTagDeletion]="false"></nx-taglist>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TaglistNoDelete extends TaglistTest {}
 
 @Component({
   template: `<nx-taglist [tags]="tags" labelProperty="testLabelProp"></nx-taglist>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TaglistObjects extends TaglistTest {
@@ -304,6 +308,7 @@ class TaglistObjects extends TaglistTest {
 
 @Component({
   template: `<nx-taglist [tags]="tags" [valueFormatter]="myFormatter">empty</nx-taglist>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class TaglistWithFormatter extends TaglistTest {
@@ -316,6 +321,7 @@ class TaglistWithFormatter extends TaglistTest {
     <h5 id="taglist-headline2">Other label</h5>
     <nx-taglist [tags]="tags" [aria-labelledby]="labelledBy"></nx-taglist>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class AriaLabelledByTaglist extends TaglistTest {
@@ -324,6 +330,7 @@ class AriaLabelledByTaglist extends TaglistTest {
 
 @Component({
   template: ` <nx-taglist [tags]="tags" isKeywordList></nx-taglist> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
 })
 class KeywordTaglist extends TaglistTest {}

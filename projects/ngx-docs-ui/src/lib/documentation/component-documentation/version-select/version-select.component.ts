@@ -4,7 +4,14 @@ import {
   NxContextMenuTriggerDirective,
 } from '@allianz/ng-aquila/context-menu';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { Component, Inject, Input, Optional, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Input,
+  Optional,
+  ViewChild,
+} from '@angular/core';
 
 import { NX_DOC_VERSIONS } from '../../../core/tokens';
 import { DocVersionChannel, DocVersions } from './../../../core/types';
@@ -13,6 +20,7 @@ import { DocVersionChannel, DocVersions } from './../../../core/types';
   selector: 'nxv-version-select',
   templateUrl: 'version-select.component.html',
   styleUrls: ['version-select.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonModule, NxContextMenuModule, NxIconModule],
 })
 export class NxVersionSelectComponent {

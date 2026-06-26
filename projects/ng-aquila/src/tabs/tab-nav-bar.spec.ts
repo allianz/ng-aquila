@@ -192,6 +192,7 @@ describe('NxTabBarNavComponent', () => {
       }
     </nx-tab-nav-bar>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class SimpleTabNavBar extends TabNavBarTest {
@@ -211,6 +212,7 @@ class SimpleTabNavBar extends TabNavBarTest {
       }
     </nx-tab-nav-bar>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class ConfigurableTabNavBar extends TabNavBarTest {

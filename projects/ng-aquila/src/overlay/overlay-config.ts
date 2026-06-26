@@ -1,5 +1,5 @@
 import { FlexibleConnectedPositionStrategy, ScrollStrategy } from '@angular/cdk/overlay';
-import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { ViewContainerRef } from '@angular/core';
 
 import { NxTriggerButton } from './trigger-button';
 
@@ -111,12 +111,6 @@ export class NxOverlayConfig<D = any> {
    * the `HashLocationStrategy`).
    */
   closeOnNavigation?: boolean = true;
-
-  /**
-   * Alternate `ComponentFactoryResolver` to use when resolving the associated component.
-   * @deprecated No longer used.
-   */
-  componentFactoryResolver?: ComponentFactoryResolver;
 
   triggerButton?: NxTriggerButton;
 

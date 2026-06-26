@@ -1,5 +1,12 @@
 import { BidiModule, Direction } from '@angular/cdk/bidi';
-import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -279,6 +286,7 @@ describe('NxSidepanelComponent', () => {
       </nx-sidepanel>
     </nx-sidepanel-outer-container>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSidepanelModule, BidiModule],
 })
 class BasicSidepanel extends SidepanelTest {}
@@ -290,6 +298,7 @@ class BasicSidepanel extends SidepanelTest {}
       <nx-sidepanel>My sidepanel</nx-sidepanel>
     </nx-sidepanel-outer-container>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSidepanelModule, BidiModule],
 })
 class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
@@ -304,6 +313,7 @@ class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
       </nx-sidepanel>
     </nx-sidepanel-outer-container>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSidepanelModule, BidiModule],
 })
 class ConfigurableSidepanel extends SidepanelTest {}
@@ -317,6 +327,7 @@ class ConfigurableSidepanel extends SidepanelTest {}
       </nx-sidepanel-outer-container>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSidepanelModule, BidiModule],
 })
 class SidepanelWithDirection extends SidepanelTest {
@@ -333,6 +344,7 @@ class SidepanelWithDirection extends SidepanelTest {
       </nx-sidepanel>
     </nx-sidepanel-outer-container>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSidepanelModule, BidiModule],
 })
 class ColorSchemeSidepanel extends SidepanelTest {

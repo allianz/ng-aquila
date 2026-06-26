@@ -316,7 +316,10 @@ export default tseslint.config(
 
       // Angular rules
       '@angular-eslint/contextual-lifecycle': 'warn',
-      '@angular-eslint/no-conflicting-lifecycle': 'warn',
+      // v22 defaults components to OnPush and flags explicit Eager. The v22
+      // migration added explicit Eager to preserve existing behavior, so keep
+      // this as a warning rather than blocking on it.
+      '@angular-eslint/prefer-on-push-component-change-detection': 'warn',
       '@angular-eslint/no-empty-lifecycle-method': 'off',
       '@angular-eslint/no-output-native': 'warn',
       '@angular-eslint/no-output-on-prefix': 'warn',

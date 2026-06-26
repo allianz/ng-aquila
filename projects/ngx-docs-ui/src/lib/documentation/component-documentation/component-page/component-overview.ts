@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ComponentDescriptor } from '../../../core/manifest';
 import { ExampleLoaderComponent } from '../../../example-loader/example-loader.component';
@@ -10,6 +10,7 @@ import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-co
   selector: 'nxv-component-overview',
   templateUrl: 'component-overview.html',
   styleUrls: ['component-overview.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ExampleLoaderComponent, NxvTableOfContentsComponent, AsyncPipe],
 })
 export class ComponentOverview {

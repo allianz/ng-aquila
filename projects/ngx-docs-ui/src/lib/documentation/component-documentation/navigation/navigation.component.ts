@@ -5,7 +5,7 @@ import {
   NxTreeFlatDataSource,
   NxTreeModule,
 } from '@allianz/ng-aquila/tree';
-import { Component, OnDestroy, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Subject } from 'rxjs';
 
@@ -31,6 +31,7 @@ class MyFlatTreeNode {
   selector: 'nxv-navigation',
   templateUrl: 'navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTreeModule, NxActionModule, RouterLinkActive, RouterLink],
 })
 export class NavigationComponent implements OnDestroy {

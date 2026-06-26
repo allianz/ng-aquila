@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { booleanAttribute, Component, Input, input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
 
 /** Types of headlines */
 export type HeadlineType =
@@ -52,6 +52,7 @@ const DEFAULT_TYPE = 'section';
     '[class.nx-heading--primary]': 'type() === "primary"',
     '[class.nx-heading--secondary]': 'type() === "secondary"',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxHeadlineComponent {

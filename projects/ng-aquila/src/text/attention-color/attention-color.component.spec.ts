@@ -1,4 +1,4 @@
-import { Component, Directive, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxAttentionColorComponent, NxAttentionColorOption } from './attention-color.component';
@@ -44,6 +44,7 @@ describe('NxAttentionColorComponent', () => {
 
 @Component({
   template: `<span [nx-attention-color]="color" [negative]="neg">highlight</span>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAttentionColorComponent],
 })
 class TextAttentionColorTestComponent extends AttentionColorTest {}

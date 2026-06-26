@@ -1,8 +1,15 @@
 import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { JsonPipe } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {
   FormBuilder,
@@ -58,7 +65,7 @@ describe('NxFileUploaderComponent', () => {
         NxErrorModule,
         DropZoneFileUpload,
       ],
-      providers: [provideHttpClient(withInterceptorsFromDi())],
+      providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())],
     }).compileComponents();
   }));
 
@@ -151,6 +158,7 @@ describe('NxFileUploaderComponent', () => {
       <button nxButton="primary" type="submit" id="submit-button">Upload files</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFileUploaderModule,
     NxLabelModule,

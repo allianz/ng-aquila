@@ -2,7 +2,7 @@ import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { ENTER, RIGHT_ARROW } from '@angular/cdk/keycodes';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -685,6 +685,7 @@ describe('NxCalendarComponent', () => {
     (monthSelected)="selectedMonth = $event"
   >
   </nx-calendar>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxCalendarComponent],
 })
 class StandardCalendar {
@@ -699,6 +700,7 @@ class StandardCalendar {
     <nx-calendar [startAt]="startDate" [showTodayButton]="true" [(selected)]="selected">
     </nx-calendar>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxCalendarComponent],
 })
 class CalendarWithTodayButton {
@@ -712,6 +714,7 @@ class CalendarWithTodayButton {
     [minDate]="minDate"
     [maxDate]="maxDate"
   ></nx-calendar>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxCalendarComponent],
 })
 class CalendarWithMinMax {
@@ -723,6 +726,7 @@ class CalendarWithMinMax {
 @Component({
   template: `<nx-calendar [startAt]="startDate" [(selected)]="selected" [dateFilter]="dateFilter">
   </nx-calendar>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxCalendarComponent],
 })
 class CalendarWithDateFilter {

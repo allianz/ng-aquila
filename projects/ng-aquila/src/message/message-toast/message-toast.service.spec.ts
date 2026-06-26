@@ -1,7 +1,14 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-import { Component, forwardRef, NgModule, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  NgModule,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 
 import { NxMessageModule } from '../message.module';
@@ -417,12 +424,14 @@ describe('NxMessageToast with parent and child service', () => {
 
 @Component({
   template: ``,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class BasicMessageToastTest {}
 
 @Component({
   template: `<ng-template> Testing template </ng-template>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class ComponentWithTemplateRef {
@@ -432,6 +441,7 @@ class ComponentWithTemplateRef {
 @Component({
   template: '',
   providers: [NxMessageToastService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [forwardRef(() => NxMessageToastTestModule)],
 })
 class ComponentProvidingService {
@@ -446,6 +456,7 @@ class NxMessageToastTestModule {}
 
 @Component({
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `<div class="u-text-center">
     <h3>Message from a component</h3>
     <p>This text comes from the SimpleMessageToastComponent.</p>

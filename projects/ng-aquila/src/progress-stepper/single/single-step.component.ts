@@ -1,16 +1,7 @@
 import { NxProgressbarModule } from '@allianz/ng-aquila/progressbar';
-import { Directionality } from '@angular/cdk/bidi';
 import { CdkStepper } from '@angular/cdk/stepper';
 import { NgTemplateOutlet } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Input,
-  input,
-  Optional,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
 
 import { NxProgressStepperDirective } from '../progress-stepper.component';
 
@@ -69,13 +60,5 @@ export class NxSingleStepperComponent extends NxProgressStepperDirective {
     }
 
     return null;
-  }
-
-  constructor(
-    _cdr: ChangeDetectorRef,
-    @Optional() _dir: Directionality | null,
-    _el: ElementRef<HTMLElement>,
-  ) {
-    super(_cdr, _dir, _el);
   }
 }

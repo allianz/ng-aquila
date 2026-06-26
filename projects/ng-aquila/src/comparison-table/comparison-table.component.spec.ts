@@ -1591,6 +1591,7 @@ describe('NxComparisonTableComponent Allianz One mode', () => {
 
 @Component({
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class BasicComponent extends TableTest {
@@ -1710,6 +1711,7 @@ class BasicOnPushComponent extends TableTest {
       }
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class SelectableIndexComponent extends TableTest {
@@ -1799,6 +1801,7 @@ class SelectableIndexComponent extends TableTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class DisabledColumnsComponent extends TableTest {
@@ -1812,6 +1815,7 @@ class DisabledColumnsComponent extends TableTest {
     '<div style="height: 200px; width: 200px; overflow: scroll;">' +
     BASIC_COMPARISON_TABLE_TEMPLATE +
     '</div>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class LongPageWithTableComponent extends TableTest {
@@ -1844,6 +1848,7 @@ class LongPageWithTableComponent extends TableTest {
 
 @Component({
   template: HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class HiddenColumnsComponent extends TableTest {
@@ -1883,6 +1888,7 @@ class HiddenColumnsComponent extends TableTest {
 
 @Component({
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ToggleSectionOverlayComponent extends TableTest {
@@ -1936,6 +1942,7 @@ class ToggleSectionOverlayComponent extends TableTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
   providers: A1_PROVIDERS,
 })
@@ -1945,6 +1952,7 @@ class OverflowComponent extends TableTest {
 
 @Component({
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class AllianzOneComponent extends TableTest {
@@ -1999,6 +2007,7 @@ class AllianzOneComponent extends TableTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class RowGroupWithToggleSectionComponent extends TableTest {}
@@ -2041,6 +2050,7 @@ class RowGroupWithToggleSectionComponent extends TableTest {}
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
   providers: A1_PROVIDERS,
 })
@@ -2068,6 +2078,7 @@ class OverflowRowGroupComponent extends TableTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class IntersectionComponent extends TableTest {}
@@ -2088,6 +2099,7 @@ class IntersectionComponent extends TableTest {}
       </nx-comparison-table>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule, BidiModule],
 })
 class RtlComponent extends TableTest {}
@@ -2332,6 +2344,7 @@ abstract class ResponsiveTableTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ResponsiveDefaultComponent extends ResponsiveTableTest {}
@@ -2367,6 +2380,7 @@ class ResponsiveDefaultComponent extends ResponsiveTableTest {}
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ResponsiveCustomBreakpointsComponent extends ResponsiveTableTest {
@@ -2405,6 +2419,7 @@ class ResponsiveCustomBreakpointsComponent extends ResponsiveTableTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ResponsiveContainerModeComponent extends ResponsiveTableTest {}
@@ -2436,6 +2451,7 @@ class ResponsiveContainerModeComponent extends ResponsiveTableTest {}
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ResponsiveWithViewOverrideComponent extends ResponsiveTableTest {}
@@ -2467,6 +2483,7 @@ class ResponsiveWithViewOverrideComponent extends ResponsiveTableTest {}
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule, NxAllianzOneModule],
 })
 class ResponsiveA1Component extends ResponsiveTableTest {}

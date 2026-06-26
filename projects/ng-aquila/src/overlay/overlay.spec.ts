@@ -1,7 +1,14 @@
 import { NxButtonComponent, NxButtonModule } from '@allianz/ng-aquila/button';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, ElementRef, NgModule, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  NgModule,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -174,6 +181,7 @@ describe('NxOverlayService', () => {
     <ng-template let-data let-overlayRef="overlayRef">
       Hello {{ localValue }} {{ data?.value }}{{ setDialogRef(overlayRef) }}</ng-template
     >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonComponent],
 })
 class ComponentWithTemplateRef {
@@ -192,6 +200,7 @@ class ComponentWithTemplateRef {
 
 @Component({
   template: `<div class="hello">Hello World</div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class PlainComponent {}
@@ -204,6 +213,7 @@ class OverlayTestModule {}
 
 @Component({
   template: `<button #button>Trigger</button> <router-outlet></router-outlet>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxOverlayModule, NxButtonModule, RouterTestingModule],
 })
 export class TestRootComponent {

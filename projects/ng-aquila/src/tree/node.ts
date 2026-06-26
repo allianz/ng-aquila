@@ -1,13 +1,14 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { CdkTree, CdkTreeNode, CdkTreeNodeDef } from '@angular/cdk/tree';
+import { CdkTreeNode, CdkTreeNodeDef } from '@angular/cdk/tree';
 import {
   AfterViewChecked,
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   computed,
   contentChild,
   Directive,
-  ElementRef,
+  inject,
   input,
   OnDestroy,
 } from '@angular/core';
@@ -34,19 +35,14 @@ import { NxTreeComponent } from './tree.component';
   },
   providers: [{ provide: CdkTreeNode, useExisting: NxTreeNodeComponent }],
   templateUrl: './node.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxTreeNodeComponent<T>
   extends CdkTreeNode<T>
   implements OnDestroy, AfterViewInit, AfterViewChecked
 {
-  constructor(
-    _elementRef: ElementRef<HTMLElement>,
-    _tree: CdkTree<T>,
-    protected readonly _focusMonitor: FocusMonitor,
-  ) {
-    super(_elementRef, _tree);
-  }
+  protected readonly _focusMonitor = inject(FocusMonitor);
 
   private readonly actionItem = contentChild(NxTreeNodeActionItem);
 

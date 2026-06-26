@@ -1,9 +1,15 @@
 import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { JsonPipe } from '@angular/common';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+  withXhr,
+} from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import {
+  ChangeDetectionStrategy,
   Component,
   Directive,
   Injectable,
@@ -106,7 +112,10 @@ describe('NxFileUploaderComponent', () => {
         UploadFail,
         IntlOverrideFileUpload,
       ],
-      providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+      providers: [
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
 
     httpTestingController = TestBed.inject(HttpTestingController);
@@ -946,6 +955,7 @@ describe('NxFileUploaderComponent', () => {
       </nx-file-uploader>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFileUploaderModule,
     NxLabelModule,
@@ -991,6 +1001,7 @@ class BasicFileUpload extends FileUploaderTest {
     FormsModule,
     NxErrorModule,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [{ provide: NxFileUploaderIntl, useClass: CustomIntl }],
 })
 class IntlOverrideFileUpload extends FileUploaderTest {
@@ -1044,6 +1055,7 @@ class IntlOverrideFileUpload extends FileUploaderTest {
       <button nxButton="primary" type="submit" id="submit-button">Upload files</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFileUploaderModule,
     NxLabelModule,
@@ -1083,6 +1095,7 @@ class ReactiveFileUpload extends FileUploaderTest {
       </button>
     </nx-file-uploader>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFileUploaderModule,
     NxLabelModule,
@@ -1113,10 +1126,10 @@ class DynamicFileUpload extends FileUploaderTest {
       {{ setOutputFile(file) }}
 
       <section class="customWrapper">
-        <nx-file-upload-name [name]="file?.name"></nx-file-upload-name>
+        <nx-file-upload-name [name]="$safeNavigationMigration(file?.name)"></nx-file-upload-name>
 
         <nx-file-upload-size
-          [size]="file?.size"
+          [size]="$safeNavigationMigration(file?.size)"
           [isUploading]="file.isUploading"
           [uploadingLabel]="templateContext.uploadingLabel"
         ></nx-file-upload-size>
@@ -1137,6 +1150,7 @@ class DynamicFileUpload extends FileUploaderTest {
       </section>
     </ng-template>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFileUploaderModule,
     NxLabelModule,
@@ -1176,6 +1190,7 @@ class CustomItemTemplateFileUpload extends FileUploaderTest {
       </button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFileUploaderModule,
     NxLabelModule,
@@ -1191,7 +1206,7 @@ class UploadFail extends FileUploaderTest {
   uploadConfig = {
     requestUrl: '/file-upload-error',
     options: {
-      reportProgress: true,
+      reportUploadProgress: true,
     },
     uploadSeparately: false,
   };

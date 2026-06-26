@@ -1,21 +1,30 @@
 import { NxBadgeModule } from '@allianz/ng-aquila/badge';
 import { NxGridModule } from '@allianz/ng-aquila/grid';
 import { NxLinkModule } from '@allianz/ng-aquila/link';
+import { NxAttentionColorComponent } from '@allianz/ng-aquila/text';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { AsyncPipe } from '@angular/common';
-import { Component, computed, Input, OnDestroy, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  Input,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { filter, switchMap, takeUntil } from 'rxjs/operators';
 
-import { NxvComponentIconComponent } from '../component-icon/component-icon.component';
 import { FuseSearchService } from '../../service/fuse-search.service';
-import { NxAttentionColorComponent } from '@allianz/ng-aquila/text';
+import { NxvComponentIconComponent } from '../component-icon/component-icon.component';
 
 @Component({
   selector: 'nxv-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CdkScrollable,
     NxGridModule,
@@ -34,7 +43,7 @@ export class NxvSearchResultsComponent implements OnInit, OnDestroy {
   readonly searchResults = signal<any>(null);
   readonly componentGroups = computed(() => {
     const entries: any[] = this.searchResults()?.component?.entries ?? [];
-    const groups = entries.reduce<Record<string, any[]>>((acc, entry) => {
+    const groups = entries.reduce<{ [key: string]: any[] }>((acc, entry) => {
       const groupValue = entry.item.group;
       const groupKeys: string[] = Array.isArray(groupValue)
         ? groupValue.length > 0

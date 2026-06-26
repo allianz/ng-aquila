@@ -3098,6 +3098,7 @@ abstract class DropdownTest {
       <nx-dropdown-item value="Mini">M</nx-dropdown-item>
     </nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule],
 })
 class SimpleDropdownComponent extends DropdownTest {
@@ -3118,6 +3119,7 @@ class SimpleDropdownComponent extends DropdownTest {
     </nx-dropdown>
   </nx-formfield>`,
   imports: [NxFormfieldModule, NxDropdownModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [{ provide: NxDropdownIntl, useClass: CustomIntl }],
 })
 class IntlOverrideDropdown extends DropdownTest {
@@ -3143,6 +3145,7 @@ class IntlOverrideDropdown extends DropdownTest {
       <nx-dropdown-item value="Mini">M</nx-dropdown-item>
     </nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule],
 })
 class OverlayFallbackOriginDropdownComponent extends DropdownTest {}
@@ -3153,6 +3156,7 @@ class OverlayFallbackOriginDropdownComponent extends DropdownTest {}
       <nx-dropdown-item value="BMW">B</nx-dropdown-item>
     </nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule],
 })
 class DropdownInOutlineFieldComponent extends DropdownTest {}
@@ -3168,6 +3172,7 @@ class DropdownInOutlineFieldComponent extends DropdownTest {}
       et dolore magna aliqua, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
     </nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule],
 })
 class ignoreItemTruncationDropdownComponent extends DropdownTest {}
@@ -3184,6 +3189,7 @@ class ignoreItemTruncationDropdownComponent extends DropdownTest {}
       et dolore magna aliqua, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
     </nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule],
 })
 class LongOptionLabelDropdownComponent extends DropdownTest {}
@@ -3201,6 +3207,7 @@ class LongOptionLabelDropdownComponent extends DropdownTest {}
       et dolore magna aliqua, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
     </nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule],
 })
 class LongOptionLabelPanelgrowDropdownComponent extends DropdownTest {}
@@ -3216,6 +3223,7 @@ class LongOptionLabelPanelgrowDropdownComponent extends DropdownTest {}
       }
     </nx-dropdown>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, FormsModule, NxFormfieldModule],
 })
 class CustomClosedLabelComponent extends DropdownTest {
@@ -3232,6 +3240,7 @@ class CustomClosedLabelComponent extends DropdownTest {
       <nx-dropdown-item [value]="item.value">{{ item.label }}</nx-dropdown-item>
     }
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, FormsModule],
 })
 class DynamicDropdownComponent extends DropdownTest {}
@@ -3243,6 +3252,7 @@ class DynamicDropdownComponent extends DropdownTest {}
     <nx-dropdown-item value="Volvo"></nx-dropdown-item>
     <nx-dropdown-item value="Mini"></nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class MultiSelectDropdownComponent extends DropdownTest {}
@@ -3254,6 +3264,7 @@ class MultiSelectDropdownComponent extends DropdownTest {}
     <nx-dropdown-item value="Volvo"></nx-dropdown-item>
     <nx-dropdown-item value="Mini"></nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class MultiSelectSimpleBinding extends DropdownTest {
@@ -3267,6 +3278,7 @@ class MultiSelectSimpleBinding extends DropdownTest {
     <nx-dropdown-item value="Volvo"></nx-dropdown-item>
     <nx-dropdown-item value="Mini"></nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, FormsModule],
 })
 class MultiSelectTemplateBinding extends DropdownTest {
@@ -3287,6 +3299,7 @@ class MultiSelectTemplateBinding extends DropdownTest {
       <nx-dropdown-item value="Mini">Mini</nx-dropdown-item>
     </nx-dropdown>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class MultiselectReactiveBinding extends DropdownTest {
@@ -3302,6 +3315,7 @@ class MultiselectReactiveBinding extends DropdownTest {
     <nx-dropdown-item value="Volvo">V</nx-dropdown-item>
     <nx-dropdown-item value="Mini">M</nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class MultiSelectDropdownContentProjectionComponent extends DropdownTest {}
@@ -3317,6 +3331,7 @@ class MultiSelectDropdownContentProjectionComponent extends DropdownTest {}
     <nx-dropdown-item value="Volvo"></nx-dropdown-item>
     <nx-dropdown-item value="Mini"></nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class MultiSelectDropdownRenderFunctionComponent extends DropdownTest {
@@ -3337,6 +3352,7 @@ class MultiSelectDropdownRenderFunctionComponent extends DropdownTest {
     <nx-dropdown-item value="Volvo"></nx-dropdown-item>
     <nx-dropdown-item value="Mini"></nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class DropdownCustomToTextFunctionComponent extends DropdownTest {
@@ -3358,6 +3374,7 @@ class DropdownCustomToTextFunctionComponent extends DropdownTest {
     <nx-dropdown-item value="IT">Italy</nx-dropdown-item>
     <nx-dropdown-item value="NZ">New Zealand</nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class FilterDropdownComponent extends DropdownTest {
@@ -3371,6 +3388,7 @@ class FilterDropdownComponent extends DropdownTest {
     <nx-dropdown-item value="SWE"></nx-dropdown-item>
     <nx-dropdown-item value="IT"></nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class FilterDropdownNoLabelComponent extends DropdownTest {}
@@ -3387,6 +3405,7 @@ class FilterDropdownNoLabelComponent extends DropdownTest {}
     <nx-dropdown-item value="Volvo">Volvo</nx-dropdown-item>
     <nx-dropdown-item value="Mini">Mini</nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class CustomFilterDropdownComponent extends DropdownTest {
@@ -3404,6 +3423,7 @@ class CustomFilterDropdownComponent extends DropdownTest {
       <nx-dropdown-item value="Volvo">Volvo</nx-dropdown-item>
     </nx-dropdown-group>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class GroupDropdownComponent extends DropdownTest {}
@@ -3415,6 +3435,7 @@ class GroupDropdownComponent extends DropdownTest {}
     <nx-dropdown-item value="Volvo">Volvo</nx-dropdown-item>
     <nx-dropdown-item value="Mini">Mini</nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class SimpleBindingDropdownComponent extends DropdownTest {
@@ -3430,6 +3451,7 @@ class SimpleBindingDropdownComponent extends DropdownTest {
       <nx-dropdown-item value="Mini">Mini</nx-dropdown-item>
     </nx-dropdown>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, ReactiveFormsModule],
 })
 class ReactiveBindingDropdownComponent extends DropdownTest {
@@ -3447,6 +3469,7 @@ class ReactiveBindingDropdownComponent extends DropdownTest {
       <nx-dropdown-item value="Mini">Mini</nx-dropdown-item>
     </nx-dropdown>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, ReactiveFormsModule],
 })
 class ReactiveDropdownUpdateOnBlurComponent extends DropdownTest {
@@ -3478,6 +3501,7 @@ class ReactiveDropdownUpdateOnBlurComponent extends DropdownTest {
       </div>
     </nx-formfield>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, NxFormfieldModule, ReactiveFormsModule],
 })
 class FormFieldDropdownComponent extends DropdownTest {
@@ -3503,6 +3527,7 @@ class FormFieldDropdownComponent extends DropdownTest {
     '::ng-deep .nx-dropdown__panel-body {max-height: 200px!important;}',
     '* { box-sizing: border-box; }',
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class ScrollingTestComponent extends DropdownTest {
@@ -3530,6 +3555,7 @@ class ScrollingTestComponent extends DropdownTest {
   >
     <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class TabIndexTestComponent extends DropdownTest {
@@ -3541,6 +3567,7 @@ class TabIndexTestComponent extends DropdownTest {
   template: `<nx-dropdown nxLabel="Car brand" tabindex="5" [placeholder]="placeholder">
     <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class PlainTabIndexTestComponent extends DropdownTest {}
@@ -3550,6 +3577,7 @@ class PlainTabIndexTestComponent extends DropdownTest {}
     <nx-dropdown-item value="monarch">a Monarch</nx-dropdown-item>
     <nx-dropdown-item value="dictator">a Dictator</nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, FormsModule],
 })
 class PreselectedTestComponent extends DropdownTest {
@@ -3563,6 +3591,7 @@ const mutationCallbacks: (() => void)[] = [];
     <nx-dropdown-item [value]="value">{{ asyncLabel | async }}</nx-dropdown-item>
   </nx-dropdown>`,
   imports: [NxDropdownModule, AsyncPipe],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [
     {
       provide: MutationObserverFactory,
@@ -3595,6 +3624,7 @@ class DeferredTestComponent extends DropdownTest {
       <nx-dropdown-item [value]="item"> {{ item.prefix }} ({{ item.countryId }}) </nx-dropdown-item>
     }
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, FormsModule],
 })
 class DropdownCustomLabelComponent extends DropdownTest {
@@ -3622,6 +3652,7 @@ class DropdownCustomLabelComponent extends DropdownTest {
       <nx-dropdown-item [disabled]="disabled" value="test"><span>label</span></nx-dropdown-item>
     </nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule],
 })
 class DisabledItemDropdown extends DropdownTest {
@@ -3634,6 +3665,7 @@ class DisabledItemDropdown extends DropdownTest {
       <nx-dropdown-item [disabled]="disabled" value="test"><span>label</span></nx-dropdown-item>
     </nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule],
 })
 class DisabledItemMultiDropdown extends DropdownTest {
@@ -3655,6 +3687,7 @@ class DropdownOnPush extends DropdownTest {}
   template: `<nx-formfield>
     <nx-dropdown [options]="options" [(ngModel)]="model" name="dropdown"></nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
 })
 class DropdownLazy extends DropdownTest {
@@ -3684,6 +3717,7 @@ class DropdownLazy extends DropdownTest {
   >
     <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
   </nx-dropdown>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
 })
 class VerticalAlignCheckmarkComponent extends DropdownTest {
@@ -3696,6 +3730,7 @@ class VerticalAlignCheckmarkComponent extends DropdownTest {
       <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
     </nx-dropdown>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, SelectOnFocusDirective],
 })
 class TestSelectOnFocus extends DropdownTest {}
@@ -3709,6 +3744,7 @@ class TestSelectOnFocus extends DropdownTest {}
       >
     </nx-dropdown>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule, ReactiveFormsModule],
 })
 class TooltipProgrammaticUpdateComponent extends DropdownTest {
@@ -3724,6 +3760,7 @@ class TooltipProgrammaticUpdateComponent extends DropdownTest {
       [virtualScroll]="true"
     ></nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
 })
 class VirtualScrollTypeaheadDropdown extends DropdownTest {
@@ -3745,6 +3782,7 @@ class VirtualScrollTypeaheadDropdown extends DropdownTest {
   template: `<nx-formfield>
     <nx-dropdown [options]="options" [(ngModel)]="model" [virtualScroll]="true"></nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
 })
 class VirtualScrollDropdown extends DropdownTest {
@@ -3767,6 +3805,7 @@ class VirtualScrollDropdown extends DropdownTest {
       [showFilter]="true"
     ></nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
 })
 class VirtualScrollFilterDropdown extends DropdownTest {
@@ -3789,6 +3828,7 @@ class VirtualScrollFilterDropdown extends DropdownTest {
       [isMultiSelect]="true"
     ></nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
 })
 class VirtualScrollMultiSelectDropdown extends DropdownTest {
@@ -3805,6 +3845,7 @@ class VirtualScrollMultiSelectDropdown extends DropdownTest {
   template: `<nx-formfield>
     <nx-dropdown [options]="options" [(ngModel)]="model" [virtualScroll]="true"></nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
 })
 class VirtualScrollLargeDatasetDropdown extends DropdownTest {
@@ -3820,6 +3861,7 @@ class VirtualScrollLargeDatasetDropdown extends DropdownTest {
   template: `<nx-formfield>
     <nx-dropdown [options]="options" [(ngModel)]="model" [virtualScroll]="true"></nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
 })
 class VirtualScrollPreselectedDropdown extends DropdownTest {
@@ -3843,6 +3885,7 @@ class VirtualScrollPreselectedDropdown extends DropdownTest {
       </ng-template>
     </nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
 })
 class ItemTemplateDropdown extends DropdownTest {
@@ -3865,6 +3908,7 @@ class ItemTemplateDropdown extends DropdownTest {
       </ng-template>
     </nx-dropdown>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
 })
 class ItemTemplateVirtualScrollDropdown extends DropdownTest {

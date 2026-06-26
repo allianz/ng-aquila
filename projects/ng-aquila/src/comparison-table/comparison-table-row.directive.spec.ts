@@ -1,4 +1,11 @@
-import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  QueryList,
+  Type,
+  ViewChildren,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxComparisonTableCell } from './cell/cell.component';
@@ -94,6 +101,7 @@ describe('NxComparisonTableRowDirective', () => {
 
 @Component({
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class BasicComponent extends RowTest {
@@ -137,6 +145,7 @@ class BasicComponent extends RowTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class DynamicTypeComponent extends RowTest {}
@@ -158,6 +167,7 @@ class DynamicTypeComponent extends RowTest {}
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class NonStickyHeaderComponent extends RowTest {

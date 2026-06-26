@@ -1,6 +1,13 @@
 import { END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB } from '@angular/cdk/keycodes';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
-import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -203,6 +210,7 @@ describe('NxTabHeaderComponent', () => {
       }
     </nx-tab-header>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule, FormsModule, ReactiveFormsModule],
 })
 class BasicHeader extends TabHeaderTest {
@@ -229,6 +237,7 @@ class BasicHeader extends TabHeaderTest {
       }
     </nx-tab-header>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleHeader extends TabHeaderTest {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'nx-sidebar-footer',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   },
   styleUrls: ['./sidebar-footer.scss'],
   template: '<div class="nx-sidebar__footer-container"><ng-content></ng-content></div>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxSidebarFooterComponent {}

@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxFigureComponent } from './figure.component';
@@ -77,6 +77,7 @@ describe('NxImageDirective', () => {
       <img alt="foo" />
     </figure>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxImageModule],
 })
 class BasicImage extends ImageTest {}
@@ -87,6 +88,7 @@ class BasicImage extends ImageTest {}
       <img alt="foo" />
     </figure>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxImageModule],
 })
 class FigureWithModifier extends ImageTest {}

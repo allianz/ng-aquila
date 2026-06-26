@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -109,6 +109,7 @@ describe('NxAccordion', () => {
       <p>Content</p>
     </nx-expansion-panel>
   </nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class SetOfItems {
@@ -131,6 +132,7 @@ class SetOfItems {
       </nx-expansion-panel>
     </nx-expansion-panel>
   </nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class NestedPanel {
@@ -145,6 +147,7 @@ class NestedPanel {
       Some Content
     </nx-expansion-panel>
   </nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class FlushAccordion {

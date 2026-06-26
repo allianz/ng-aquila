@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -208,6 +208,7 @@ describe('NxVideoComponent', () => {
       [allowFullScreen]="fullscreen"
     ></nx-video>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxVideoModule],
 })
 class BasicVideo extends VideoTest {}

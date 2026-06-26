@@ -1,12 +1,13 @@
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@allianz/ng-aquila/formfield';
-import { Component, Inject, Optional, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Optional, Type } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxAllianzOneModule } from './allianz-one.module';
 
 @Component({
   template: ` <p>Doesn't matter</p> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAllianzOneModule],
 })
 class AllianzOnePresetTest {
@@ -20,6 +21,7 @@ class AllianzOnePresetTest {
 
 @Component({
   template: ` <p>Doesn't matter</p> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [],
 })
 class AllianzOneWithoutModuleImportPresetTest {

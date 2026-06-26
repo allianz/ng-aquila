@@ -105,6 +105,7 @@ describe('NxPasswordToggleComponent', () => {
       </span>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule, FormsModule],
 })
 class BasicPasswordToggle extends PasswordToggleTest {
@@ -129,6 +130,7 @@ class BasicPasswordToggleOnPush extends PasswordToggleTest {
 
 @Component({
   template: `<nx-password-toggle></nx-password-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule, FormsModule],
 })
 class NoControlToggle extends PasswordToggleTest {}

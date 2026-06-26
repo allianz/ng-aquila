@@ -379,6 +379,7 @@ describe('NxSwitcherComponent', () => {
 
 @Component({
   template: `<nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSwitcher extends SwitcherTest {}
@@ -392,6 +393,7 @@ class BasicSwitcherOnPush extends SwitcherTest {}
 
 @Component({
   template: `<nx-switcher [(ngModel)]="checked" [required]="required">templateLabel</nx-switcher>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class SwitcherTemplateDriven extends SwitcherTest {
@@ -406,6 +408,7 @@ class SwitcherTemplateDriven extends SwitcherTest {
       </nx-switcher>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class SwitcherReactiveForm extends SwitcherTest {
@@ -422,6 +425,7 @@ class SwitcherReactiveForm extends SwitcherTest {
 
 @Component({
   template: `<nx-switcher [labelSize]="labelSize" id="testSwitcher">basicLabel</nx-switcher>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class LabelSizeSwitcher extends SwitcherTest {}
@@ -430,6 +434,7 @@ class LabelSizeSwitcher extends SwitcherTest {}
   template: `<nx-switcher [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy"
     >basicLabel</nx-switcher
   >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule],
 })
 class SwitcherA11y extends SwitcherTest {
@@ -445,6 +450,7 @@ class SwitcherA11y extends SwitcherTest {
       </nx-switcher>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class ValidationSwitcherForm extends SwitcherTest {
@@ -464,6 +470,7 @@ class ValidationSwitcherForm extends SwitcherTest {
 
 @Component({
   template: `<nx-switcher [(checked)]="checked" id="testSwitcher"></nx-switcher>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class LabellessSwitcher extends SwitcherTest {}

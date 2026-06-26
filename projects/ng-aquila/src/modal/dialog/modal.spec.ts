@@ -1993,6 +1993,7 @@ class ComponentWithOnPushViewContainer {
 
 @Component({
   template: `<nx-with-view-container></nx-with-view-container>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [DirectiveWithViewContainer],
 })
 class ComponentWithChildViewContainer {
@@ -2007,6 +2008,7 @@ class ComponentWithChildViewContainer {
   template: `<ng-template let-data let-modalRef="modalRef">
     Cheese {{ localValue }} {{ data?.value }}{{ setDialogRef(modalRef) }}</ng-template
   >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class ComponentWithTemplateRef {
@@ -2025,6 +2027,7 @@ class ComponentWithTemplateRef {
 @Component({
   template:
     '<h1>Header</h1><p>Pizza</p><div class="custom">custom</div><input> <button>Close</button>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class PizzaMsg {
@@ -2043,6 +2046,7 @@ class PizzaMsg {
       {{ headline }}
     </h2>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxModalTitleComponent],
 })
 class TitleStatusDialog {
@@ -2070,6 +2074,7 @@ class TitleStatusDialog {
       <button class="with-submit" type="submit" nxModalClose>Should have submit</button>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxModalContentDirective, NxModalActionsDirective, NxModalCloseDirective],
 })
 class ContentElementDialog {}
@@ -2091,6 +2096,7 @@ class ContentElementDialog {}
       </div>
     </ng-template>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxModalContentDirective, NxModalActionsDirective, NxModalCloseDirective],
 })
 class ComponentWithContentElementTemplateRef {
@@ -2100,6 +2106,7 @@ class ComponentWithContentElementTemplateRef {
 @Component({
   template: '',
   providers: [NxDialogService],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxModalModule, forwardRef(() => DialogTestModule)],
 })
 class ComponentThatProvidesNxDialog {
@@ -2109,6 +2116,7 @@ class ComponentThatProvidesNxDialog {
 /** Simple component for testing ComponentPortal. */
 @Component({
   template: '',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class DialogWithInjectedData {
@@ -2117,6 +2125,7 @@ class DialogWithInjectedData {
 
 @Component({
   template: '<p>Pasta</p>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class DialogWithoutFocusableElements {}
@@ -2124,6 +2133,7 @@ class DialogWithoutFocusableElements {}
 @Component({
   template: `<button>I'm a button</button>`,
   encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class ShadowDomComponent {}
@@ -2131,6 +2141,7 @@ class ShadowDomComponent {}
 @Component({
   selector: 'opener-b',
   template: 'Hi, please wait',
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [NxDialogService],
 })
 class OpenerBComponent implements OnInit {
@@ -2149,6 +2160,7 @@ class OpenerBComponent implements OnInit {
 }
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: 'Closing in a Second',
 })
 class Closer implements OnInit {

@@ -1,5 +1,11 @@
 import { LoadableStyle } from '@allianz/ng-aquila/config';
-import { Component, computed, inject, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  ViewEncapsulation,
+} from '@angular/core';
 
 import { LAYOUT_DEFAULT_OPTIONS } from './layout-appearance.model';
 
@@ -23,6 +29,7 @@ import { LAYOUT_DEFAULT_OPTIONS } from './layout-appearance.model';
   host: {
     '[class.nx-grid--functional]': 'functionalGrid()',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
 })
 export class GridStylesLoaderComponent implements LoadableStyle {

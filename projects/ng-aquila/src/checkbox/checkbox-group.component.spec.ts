@@ -361,6 +361,7 @@ describe('NxCheckboxGroupComponent', () => {
       <nx-checkbox>Term 3</nx-checkbox>
     </nx-checkbox-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class BasicCheckboxGroup extends CheckboxGroupTest {}
@@ -374,6 +375,7 @@ class BasicCheckboxGroup extends CheckboxGroupTest {}
       <nx-checkbox>Term 3</nx-checkbox>
     </nx-checkbox-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class ConfigurableCheckboxGroup extends CheckboxGroupTest {}
@@ -390,6 +392,7 @@ class ConfigurableCheckboxGroup extends CheckboxGroupTest {}
       </nx-checkbox-group>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class CheckboxGroupValidation extends CheckboxGroupTest {
@@ -422,6 +425,7 @@ class CheckboxGroupValidation extends CheckboxGroupTest {
       <button type="submit">submit</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class CheckboxGroupValidationNoInitialSelect extends CheckboxGroupTest {
@@ -453,6 +457,7 @@ class CheckboxGroupValidationNoInitialSelect extends CheckboxGroupTest {
       </nx-checkbox-group>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class CheckboxGroupDynamic extends CheckboxGroupTest {
@@ -496,6 +501,7 @@ class CheckboxGroupDynamic extends CheckboxGroupTest {
       <button nxButton="primary small" id="submit-button" type="submit">Click</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxCheckboxModule,
     FormsModule,
@@ -526,6 +532,7 @@ export class CheckboxGroupReactive extends CheckboxGroupTest {
       </nx-checkbox-group>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 export class ConditionalCheckboxGroupReactive extends CheckboxGroupTest {
@@ -567,6 +574,7 @@ export class CheckboxGroupOnPush extends CheckboxGroupTest {
       <nx-checkbox>Term 2</nx-checkbox>
     </nx-checkbox-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class CheckboxGroupAriaLabelledBy extends CheckboxGroupTest {
@@ -589,6 +597,7 @@ class CheckboxGroupAriaLabelledBy extends CheckboxGroupTest {
       </nx-checkbox-group>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class CheckboxGroupAriaLabelledByWithError extends CheckboxGroupTest {

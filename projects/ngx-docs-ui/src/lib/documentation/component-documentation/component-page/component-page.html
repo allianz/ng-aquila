@@ -1,7 +1,7 @@
 <div class="component-overview__header-container" [class.a1-themed]="!aquilaThemeActive()">
   <h1 nxHeadline class="component-overview__header" size="2xl">{{componentDescriptor?.title}}</h1>
-  @if (!aquilaThemeActive()) { @let isNdbxOnly = componentDescriptor?.a1 !== undefined &&
-  !componentDescriptor?.a1; @let hasAnyA1 = componentDescriptor?.a1Light ||
+  @if (!aquilaThemeActive()) { @let isNdbxOnly = $safeNavigationMigration(componentDescriptor?.a1)
+  !== undefined && !componentDescriptor?.a1; @let hasAnyA1 = componentDescriptor?.a1Light ||
   componentDescriptor?.a1Densities || componentDescriptor?.a1Full; @if (isNdbxOnly) {
   <nx-badge type="critical" class="icon-badge-baseline-offset">
     <div class="badge-content-centered">

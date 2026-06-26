@@ -1,7 +1,7 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { Component, computed, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 
 /** Shows a delete button. */
 @Component({
@@ -30,6 +30,7 @@ import { Component, computed, inject, input } from '@angular/core';
     }
   `,
   styleUrls: ['file-uploader-delete.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonModule, NxIconModule],
 })
 export class NxFileUploaderItemDelete {

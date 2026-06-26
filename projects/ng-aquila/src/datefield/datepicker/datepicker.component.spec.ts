@@ -5,7 +5,13 @@ import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
-import { Component, EventEmitter, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -153,6 +159,7 @@ describe('NxDatepicker with ShadowDom encapsulation', () => {
     <input nxDatefield [datepicker]="d" [value]="date" />
     <nx-datepicker #d [disabled]="disabled" [opened]="opened"></nx-datepicker>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxFormfieldModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class StandardDatepicker {
@@ -182,6 +189,7 @@ class StandardDatepicker {
       <nx-datepicker #myDatepicker></nx-datepicker>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 class ShadowDomDatefield {}

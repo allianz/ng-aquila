@@ -1,5 +1,5 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { NxIndicatorAppearance } from './types';
 
@@ -22,6 +22,7 @@ import { NxIndicatorAppearance } from './types';
     '[class.default-appearance]': 'defaultAppearance()',
   },
   styleUrls: ['./checkbox-indicator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxCheckboxIndicatorComponent {

@@ -1,7 +1,7 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
-import { Component, HostListener, Input, NgModule } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Input, NgModule } from '@angular/core';
 
 import { ExampleDescriptor } from './../core/manifest';
 import { ManifestService } from './../service/manifest.service';
@@ -12,6 +12,7 @@ import { StackBlitzWriter } from './stack-blitz-writer';
   selector: 'nxv-stack-blitz-button',
   templateUrl: './stack-blitz-button.html',
   providers: [StackBlitzWriter],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonModule, NxTooltipModule, NxIconModule],
 })
 export class StackBlitzButton {

@@ -10,7 +10,7 @@ import {
   SEMICOLON,
   ZERO,
 } from '@angular/cdk/keycodes';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -1173,6 +1173,7 @@ describe('NxMaskDirective', () => {
 
 @Component({
   template: `<input [nxMask]="mask" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class BasicMaskComponent extends MaskTest {}
@@ -1189,6 +1190,7 @@ class BasicMaskComponent extends MaskTest {}
       [(ngModel)]="modelVal"
     />
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class ConfigurableMaskComponent extends MaskTest {}
@@ -1204,6 +1206,7 @@ class ConfigurableMaskComponent extends MaskTest {}
       />
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class ValidationMaskComponent extends MaskTest {}
@@ -1217,6 +1220,7 @@ class ValidationMaskComponent extends MaskTest {}
       [deactivateMask]="true"
     />
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class PresetDeactiveMaskComponent extends MaskTest {
@@ -1229,6 +1233,7 @@ class PresetDeactiveMaskComponent extends MaskTest {
 
 @Component({
   template: ` <input [nxMask]="mask" [(ngModel)]="modelVal" /> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class NgModelMask extends MaskTest {
@@ -1238,6 +1243,7 @@ class NgModelMask extends MaskTest {
 
 @Component({
   template: `<input [nxMask]="mask" [separators]="separators" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class HookedMaskComponent extends MaskTest {

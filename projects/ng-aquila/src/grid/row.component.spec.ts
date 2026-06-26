@@ -1,4 +1,11 @@
-import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -211,6 +218,7 @@ describe('NxRowDirective', () => {
 @Component({
   selector: 'test-basic-row-default',
   template: `<div nxLayout="grid"><div nxRow></div></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowDefault extends DirectiveTest {}
@@ -218,6 +226,7 @@ class BasicRowDefault extends DirectiveTest {}
 @Component({
   selector: 'test-basic-row-incorrect',
   template: `<div nxLayout="grid"><div nxRow="test"></div></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowIncorrect extends DirectiveTest {}
@@ -225,6 +234,7 @@ class BasicRowIncorrect extends DirectiveTest {}
 @Component({
   selector: 'test-basic-row',
   template: `<div nxLayout="grid"><div nxRow="row"></div></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRow extends DirectiveTest {}
@@ -232,6 +242,7 @@ class BasicRow extends DirectiveTest {}
 @Component({
   selector: 'test-basic-row-class-test',
   template: `<div nxLayout="grid"><div nxRow="row" class="test"></div></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowClassTest extends DirectiveTest {}
@@ -239,6 +250,7 @@ class BasicRowClassTest extends DirectiveTest {}
 @Component({
   selector: 'test-basic-row-reverse',
   template: `<div nxLayout="grid"><div nxRow="row-reverse"></div></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowReverse extends DirectiveTest {}
@@ -248,6 +260,7 @@ class BasicRowReverse extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row" rowWrap="wrap"></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowWrap extends DirectiveTest {}
@@ -257,6 +270,7 @@ class BasicRowWrap extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row" rowWrap="wrap,reverse"></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowWrapReverse extends DirectiveTest {}
@@ -266,6 +280,7 @@ class BasicRowWrapReverse extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row" rowWrap="nowrap,nowrap,wrap,reverse"></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowNoWrap extends DirectiveTest {}
@@ -275,6 +290,7 @@ class BasicRowNoWrap extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row" rowJustify="start,start,start,start"></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowJustifyStart extends DirectiveTest {}
@@ -284,6 +300,7 @@ class BasicRowJustifyStart extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row" rowJustify="around,end"></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowJustifyEnd extends DirectiveTest {}
@@ -293,6 +310,7 @@ class BasicRowJustifyEnd extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row" rowAlignContent="start,start,end,around"></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowContentStart extends DirectiveTest {}
@@ -302,6 +320,7 @@ class BasicRowContentStart extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row" rowAlignContent="end"></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowContentEnd extends DirectiveTest {}
@@ -311,6 +330,7 @@ class BasicRowContentEnd extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row" rowAlignItems="start,start,stretch"></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowItemsStart extends DirectiveTest {}
@@ -320,6 +340,7 @@ class BasicRowItemsStart extends DirectiveTest {}
   template: `<div nxLayout="grid">
     <div nxRow="row" rowAlignItems="end"></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicRowItemsEnd extends DirectiveTest {}
@@ -335,6 +356,7 @@ class BasicRowItemsEnd extends DirectiveTest {}
       [rowWrap]="wrap"
     ></div>
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class DynamicTest extends DirectiveTest {
@@ -348,6 +370,7 @@ class DynamicTest extends DirectiveTest {
 @Component({
   selector: 'test-row-without-layout',
   template: `<div nxRow="row"></div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class RowWithoutLayout extends DirectiveTest {}

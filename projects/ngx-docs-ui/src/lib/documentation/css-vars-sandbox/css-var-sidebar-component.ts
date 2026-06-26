@@ -2,7 +2,6 @@ import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ColorPickerModule } from 'ngx-color-picker';
 import parseColor from 'parse-color';
 
 @Component({
@@ -13,7 +12,7 @@ import parseColor from 'parse-color';
     '[class.sidebar-hidden]': '!shown',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NxButtonModule, NxIconModule, FormsModule, ColorPickerModule],
+  imports: [NxButtonModule, NxIconModule, FormsModule],
 })
 export class CssVarSidebarComponent {
   shown = true;
@@ -72,6 +71,17 @@ export class CssVarSidebarComponent {
 
   updateProperty(newValue: string | null, prop: { name: string }) {
     document.documentElement.style.setProperty(prop.name, newValue);
+  }
+
+  /** Converts any CSS color value to a `#rrggbb` hex string for the native color input. */
+  toHexColor(value: string) {
+    return parseColor(value).hex ?? '#000000';
+  }
+
+  /** Updates a color property and keeps the bound value in sync with the picker. */
+  updateColorProperty(newValue: string, prop: { name: string; value: string }) {
+    prop.value = newValue;
+    this.updateProperty(newValue, prop);
   }
 
   toggle() {

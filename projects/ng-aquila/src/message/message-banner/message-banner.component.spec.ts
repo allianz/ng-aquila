@@ -163,6 +163,7 @@ describe('NxMessageBannerComponent', () => {
 
 @Component({
   template: `<nx-message-banner [context]="context"> lorem ipsum </nx-message-banner>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
 })
 class BasicMessageBannerComponent extends MessageBannerTest {}
@@ -176,6 +177,7 @@ class MessageBannerOnPushComponent extends MessageBannerTest {}
 
 @Component({
   template: `<nx-message-banner [closable]="closable"> lorem ipsum </nx-message-banner>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
 })
 class ClosableMessageBannerComponent extends MessageBannerTest {
@@ -188,6 +190,7 @@ class ClosableMessageBannerComponent extends MessageBannerTest {
       <nx-message-banner [closable]="closable"> lorem ipsum </nx-message-banner>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
 })
 class ClosableMessageBannerWithFormComponent extends MessageBannerTest {

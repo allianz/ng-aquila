@@ -1,5 +1,5 @@
 import { CdkTableModule } from '@angular/cdk/table';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxDynamicTableComponent } from './dynamic-table.component';
@@ -180,6 +180,7 @@ describe('NxDynamicTableComponent', () => {
 
 @Component({
   template: `<nx-dynamic-table [data]="data"> </nx-dynamic-table>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],
 })
 class TableEmptyRows extends DynamicTableTest {
@@ -188,6 +189,7 @@ class TableEmptyRows extends DynamicTableTest {
 
 @Component({
   template: `<nx-dynamic-table [data]="data"> </nx-dynamic-table>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],
 })
 class TableWrongRows extends DynamicTableTest {
@@ -199,6 +201,7 @@ class TableWrongRows extends DynamicTableTest {
     [data]="data"
     [displayedColumns]="displayedColumns"
   ></nx-dynamic-table>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],
 })
 class BasicDynamicTable extends DynamicTableTest {
@@ -211,12 +214,14 @@ class BasicDynamicTable extends DynamicTableTest {
     [displayedColumns]="displayedColumns"
     (rowClick)="handleRowClick($event)"
   ></nx-dynamic-table>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],
 })
 class DynamicTableEvent extends DynamicTableTest {}
 
 @Component({
   template: `<nx-dynamic-table [data]="data">Information: No data to display</nx-dynamic-table>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],
 })
 class EmptyDynamicTable extends DynamicTableTest {
@@ -225,6 +230,7 @@ class EmptyDynamicTable extends DynamicTableTest {
 
 @Component({
   template: `<nx-dynamic-table></nx-dynamic-table>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],
 })
 class ProgrammaticTable extends DynamicTableTest {}

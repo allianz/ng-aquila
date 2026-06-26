@@ -1,6 +1,6 @@
 import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { NxRadioGroupHarness } from './radio-group-harness';
@@ -114,6 +114,7 @@ describe('NxRadioGroupHarness', () => {
 
     <nx-radio>Outside</nx-radio>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
 })
 class AllRadioButtonsTest {}
@@ -125,6 +126,7 @@ class AllRadioButtonsTest {}
       <nx-radio value="SECOND">Second</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
 })
 class SelectedRadioTest {}
@@ -135,6 +137,7 @@ class SelectedRadioTest {}
       <nx-radio value="FIRST">First</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
 })
 class NoSelectionTest {}
@@ -146,18 +149,21 @@ class NoSelectionTest {}
       <nx-label>Foo</nx-label>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
 })
 class NxLabelTest {}
 
 @Component({
   template: `<nx-radio-group aria-label="Some Name"></nx-radio-group>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
 })
 class AriaLabelTest {}
 
 @Component({
   template: `<nx-radio-group aria-label="Some Name" [disabled]="true"></nx-radio-group>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
 })
 class DisabledTest {}
@@ -169,6 +175,7 @@ class DisabledTest {}
       <nx-radio value="SECOND">Second</nx-radio>
     </nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
 })
 class ClickItemTest {}
@@ -178,6 +185,7 @@ class ClickItemTest {}
     <nx-radio-group><nx-label>First</nx-label></nx-radio-group>
     <nx-radio-group><nx-label>Second</nx-label></nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
 })
 class FilterLabelTest {}
@@ -187,6 +195,7 @@ class FilterLabelTest {}
     <nx-radio-group [disabled]="false"><nx-label>First</nx-label></nx-radio-group>
     <nx-radio-group [disabled]="true"><nx-label>Second</nx-label></nx-radio-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
 })
 class FilterDisabledTest {}

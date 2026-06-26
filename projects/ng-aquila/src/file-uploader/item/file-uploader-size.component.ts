@@ -1,5 +1,5 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 /** Shows a file size in Megabyte (MB) or an alternative label while the file is uploading. */
 @Component({
@@ -12,6 +12,7 @@ import { Component, input } from '@angular/core';
       <span>{{ size() / 1024 / 1024 | number: '.2' }} MB</span>
     }
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [DecimalPipe],
 })
 export class NxFileUploaderItemSize {

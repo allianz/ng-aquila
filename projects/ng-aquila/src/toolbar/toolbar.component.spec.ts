@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxToolbarComponent } from './toolbar.component';
@@ -42,6 +42,7 @@ describe('NxToolbarComponent', () => {
 
 @Component({
   template: `<nx-toolbar></nx-toolbar>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxToolbarModule],
 })
 class BasicToolbar extends ToolbarTest {}

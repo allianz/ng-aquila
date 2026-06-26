@@ -1,4 +1,12 @@
-import { Component, DebugElement, Directive, QueryList, Type, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  QueryList,
+  Type,
+  ViewChildren,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -221,6 +229,7 @@ describe('NxComparisonTableSelectButton', () => {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class BasicComponent extends ToggleTest {}
@@ -284,6 +293,7 @@ class BasicComponent extends ToggleTest {}
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ConfigurableComponent extends ToggleTest {}
@@ -334,6 +344,7 @@ class ConfigurableComponent extends ToggleTest {}
       }
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class DynamicComponent extends ToggleTest {

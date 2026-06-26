@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxHeadlineComponent, NxHeadlineSize } from './headline.component';
@@ -136,18 +136,21 @@ describe('NxHeadlineDirective', () => {
 
 @Component({
   template: `<h1 [nxHeadline]="size">Hello Headline</h1>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeadlineModule],
 })
 class BasicHeadline extends HeadlineTest {}
 
 @Component({
   template: `<h1 nxHeadline="page" class="some-arbitray-class-name">With arbitrary class</h1>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeadlineModule],
 })
 class HeadlineWithArbitraryClass extends HeadlineTest {}
 
 @Component({
   template: `<h1 nxHeadline [size]="typedSize" [negative]="negative">Hello Headline</h1>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeadlineModule],
 })
 class DynamicHeadline extends HeadlineTest {}

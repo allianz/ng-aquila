@@ -199,6 +199,7 @@ describe('NxModalComponent', () => {
     >
     </nx-modal>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxModalModule, NxButtonComponent],
 })
 class BasicModal extends ModalTest {
@@ -216,6 +217,7 @@ class BasicModal extends ModalTest {
       <nx-modal #basicModal id="basicModal" [modalBody]="basicModalBody"> </nx-modal>
     }
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxModalModule],
 })
 class ManualModal extends ModalTest {}
@@ -232,6 +234,7 @@ class ManualModal extends ModalTest {}
       </nx-modal>
     }
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxModalModule],
 })
 class FixedWidthModal extends ModalTest {}

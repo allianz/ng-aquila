@@ -20,7 +20,7 @@ import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
 import { NxSmallStageComponent, NxSmallStageModule } from '@allianz/ng-aquila/small-stage';
 import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@allianz/ng-aquila/tabs';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxExpertModule } from './nx-expert.module';
@@ -192,6 +192,7 @@ describe('NxExpertPreset', () => {
     <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
     <nx-datepicker #myDatepicker1></nx-datepicker>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -211,6 +212,7 @@ class DatepickerPresetComponent extends PresetTest {}
 
 @Component({
   template: `<nx-error>This is a preset error</nx-error>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -234,6 +236,7 @@ class ErrorPresetComponent extends PresetTest {}
       <input nxInput />
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -253,6 +256,7 @@ class FormfieldPresetComponent extends PresetTest {}
 
 @Component({
   template: `<nx-label>I am a preset label</nx-label>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -277,6 +281,7 @@ class LabelPresetComponent extends PresetTest {}
       <nx-tab label="Second tab"> Fill in your second content! </nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -309,6 +314,7 @@ class TabGroupPresetComponent extends PresetTest {}
       }
     </nx-tab-nav-bar>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -360,6 +366,7 @@ class TabNavBarPresetComponent extends PresetTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -382,6 +389,7 @@ class ComparisonTablePresetComponent extends PresetTest {
 
 @Component({
   template: `<nx-selectable-card></nx-selectable-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -401,6 +409,7 @@ class SelectableCardPresetComponent extends PresetTest {}
 
 @Component({
   template: `<nx-small-stage></nx-small-stage>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -420,6 +429,7 @@ class SmallStagePresetComponent extends PresetTest {}
 
 @Component({
   template: `<nx-circle-toggle-group></nx-circle-toggle-group>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,
@@ -439,6 +449,7 @@ class CircleToggleGroupPresetComponent extends PresetTest {}
 
 @Component({
   template: `<nx-data-display></nx-data-display>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxComparisonTableModule,
     NxDatefieldModule,

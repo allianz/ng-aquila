@@ -1,7 +1,7 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxIconHarness } from './icon-harness';
@@ -44,6 +44,7 @@ describe('NxIconHarness', () => {
     <nx-icon name="info"></nx-icon>
     <nx-icon [name]="'warning'"></nx-icon>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 class IconHarnessTest {}

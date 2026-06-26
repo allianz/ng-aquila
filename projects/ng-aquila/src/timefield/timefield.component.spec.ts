@@ -882,6 +882,7 @@ describe('NxTimefieldComponent', () => {
 });
 @Component({
   template: `<nx-timefield label="Time"></nx-timefield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleTimefield extends TimefieldTest {}
@@ -898,6 +899,7 @@ class SimpleTimefield extends TimefieldTest {}
       [required]="required"
     ></nx-timefield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class ConfigurableTimefield extends TimefieldTest {}
@@ -914,6 +916,7 @@ class ConfigurableTimefield extends TimefieldTest {}
       </nx-timefield>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class ReactiveTimefield extends TimefieldTest {
@@ -935,6 +938,7 @@ class ReactiveTimefield extends TimefieldTest {
     [twelveHourFormat]="twelveHourFormat"
     [(ngModel)]="today"
   ></nx-timefield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class TemplateDrivenTimefield extends TimefieldTest {
@@ -956,6 +960,7 @@ class TemplateDrivenOnPushTimefield extends TimefieldTest {
 @Component({
   template: `<nx-timefield twelveHourFormat></nx-timefield>`,
   providers: [{ provide: NxTimefieldIntl, useClass: MyIntl }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class OverrideDefaultLabelsTimefield extends TimefieldTest {}
@@ -963,6 +968,7 @@ class OverrideDefaultLabelsTimefield extends TimefieldTest {}
 @Component({
   template: `<nx-timefield twelveHourFormat></nx-timefield>`,
   providers: [{ provide: TIMEFIELD_DEFAULT_OPTIONS, useValue: { withTimepicker: true } }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule],
 })
 class DefaultOptionsProvderTimefield extends TimefieldTest {}
@@ -979,6 +985,7 @@ class DefaultOptionsProvderTimefield extends TimefieldTest {}
       </nx-timefield>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class CustomValidationTimefield extends TimefieldTest {
@@ -997,6 +1004,7 @@ class CustomValidationTimefield extends TimefieldTest {
 }
 @Component({
   template: `<nx-timefield label="Time" [inputMode]="inputMode"></nx-timefield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class InputModeTimefield extends TimefieldTest {

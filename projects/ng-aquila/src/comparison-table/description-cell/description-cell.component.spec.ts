@@ -1,4 +1,12 @@
-import { Component, DebugElement, Directive, QueryList, Type, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  QueryList,
+  Type,
+  ViewChildren,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import axe from 'axe-core';
@@ -234,6 +242,7 @@ describe('NxComparisonTableDescriptionCell', () => {
 
 @Component({
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class DescriptionCellComponent extends DescriptionCellTest {
@@ -270,6 +279,7 @@ class DescriptionCellComponent extends DescriptionCellTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class ConfigurableDescriptionCellComponent extends DescriptionCellTest {}

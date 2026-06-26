@@ -2,7 +2,7 @@ import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxFormfieldHarness } from '@allianz/ng-aquila/formfield/testing';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { NxInputHarness } from './nx-input-harness';
@@ -112,42 +112,49 @@ describe('NxInputHarness', () => {
 
 @Component({
   template: `<input id="my-id" nxInput />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
 })
 class IdTest {}
 
 @Component({
   template: `<input type="color" nxInput />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
 })
 class TypeTest {}
 
 @Component({
   template: `<textarea type="color" nxInput></textarea>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
 })
 class TextareaTypeTest {}
 
 @Component({
   template: `<input nxInput placeholder="my-placeholder" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
 })
 class PlaceholderTest {}
 
 @Component({
   template: `<input nxInput disabled /><input nxInput />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
 })
 class DisabledTest {}
 
 @Component({
   template: `<input nxInput />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
 })
 class FocusTest {}
 
 @Component({
   template: `<nx-formfield><input nxInput /></nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule],
 })
 class FormfieldTest {}
@@ -157,6 +164,7 @@ class FormfieldTest {}
     <input nxInput placeholder="age" />
     <input nxInput placeholder="name" />
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
 })
 class FilterPlaceholderTest {}
@@ -166,6 +174,7 @@ class FilterPlaceholderTest {}
     <input nxInput value="foo" />
     <input nxInput value="bar" />
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
 })
 class FilterValueTest {}

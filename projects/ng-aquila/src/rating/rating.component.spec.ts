@@ -310,12 +310,14 @@ class RatingTest {
 
 @Component({
   template: `<nx-rating startLabel="poor" endLabel="great"></nx-rating>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SimpleRatingComponent extends RatingTest {}
 
 @Component({
   template: `<nx-rating [(value)]="theValue"></nx-rating>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SimpleBindingRatingComponent extends RatingTest {
@@ -324,6 +326,7 @@ class SimpleBindingRatingComponent extends RatingTest {
 
 @Component({
   template: `<nx-rating [(ngModel)]="theValue"></nx-rating>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class NgModelBindingRatingComponent extends RatingTest {
@@ -336,6 +339,7 @@ class NgModelBindingRatingComponent extends RatingTest {
       <nx-rating formControlName="rating"></nx-rating>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class ReactiveBindingRatingComponent extends RatingTest {
@@ -373,6 +377,7 @@ class TemplateDrivenOnPushComponent extends RatingTest {
 
 @Component({
   template: `<nx-rating [size]="size"></nx-rating>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
 })
 class SizeRatingComponent extends RatingTest {

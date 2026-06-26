@@ -2,6 +2,7 @@ import { NxDropdownComponent } from '@allianz/ng-aquila/dropdown';
 import { NxFormfieldComponent, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import {
+  ChangeDetectionStrategy,
   Component,
   DebugElement,
   Directive,
@@ -471,6 +472,7 @@ abstract class PhoneInputTest {
   template: `<nx-formfield label="Telephone number">
     <nx-phone-input [countryCode]="countryCode"></nx-phone-input>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class DefaultPhoneInput extends PhoneInputTest {}
@@ -488,6 +490,7 @@ class DefaultPhoneInput extends PhoneInputTest {}
       [countryCode]="countryCode"
     ></nx-phone-input>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class ConfigurablePhoneInput extends PhoneInputTest {
@@ -503,6 +506,7 @@ class ConfigurablePhoneInput extends PhoneInputTest {
     ></nx-phone-input>
     <nx-error nxFormfieldError>Error message</nx-error>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class ReactiveFormsPhoneInput extends PhoneInputTest {
@@ -520,6 +524,7 @@ class MyIntl extends NxPhoneInputIntl {
     <nx-phone-input></nx-phone-input>
   </nx-formfield>`,
   providers: [{ provide: NxPhoneInputIntl, useClass: MyIntl }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class I18nProviderTest extends PhoneInputTest {}
@@ -529,6 +534,7 @@ class I18nProviderTest extends PhoneInputTest {}
     <nx-phone-input [inputFormatter]="formatter" [formControl]="formControl"></nx-phone-input>
     <nx-error nxFormfieldError>Error message</nx-error>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
 })
 class CustomFormatter extends PhoneInputTest {
@@ -546,6 +552,7 @@ class CustomFormatter extends PhoneInputTest {
       areaCodeLabel="custom area code"
     ></nx-phone-input>
   </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxPhoneInputModule],
 })
 class PhoneInputA11y extends PhoneInputTest {}

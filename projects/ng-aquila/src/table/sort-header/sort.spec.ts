@@ -1,5 +1,12 @@
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  Injectable,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { dispatchKeyboardEvent } from '../../cdk-test-utils';
@@ -347,6 +354,7 @@ describe('NxSort', () => {
       </thead>
     </table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTableModule],
 })
 class BasicSortTableComponent extends SortHeaderTest {}
@@ -368,6 +376,7 @@ class BasicSortTableComponent extends SortHeaderTest {}
       </thead>
     </table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTableModule],
 })
 class ConfigurableSortTableComponent extends SortHeaderTest {}

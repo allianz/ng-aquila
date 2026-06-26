@@ -7,7 +7,14 @@ import {
 } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
-import { Component, contentChildren, Directive, Signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  contentChildren,
+  Directive,
+  Signal,
+  viewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import moment, { Moment } from 'moment';
@@ -452,6 +459,7 @@ abstract class DateRangeTestBase {
       <nx-datepicker #formRangeDatePicker [rangeMode]="true"></nx-datepicker>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxDateRangeComponent,
@@ -476,6 +484,7 @@ class BasicDateRangeField implements DateRangeTestBase {
       <nx-date-range [(ngModel)]="dateRangeModel"></nx-date-range>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxDateRangeComponent,
@@ -508,6 +517,7 @@ class DateRangeWithNull implements DateRangeTestBase {
       <button #focusTarget>FocusTarget</button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxFormfieldHintDirective,
@@ -549,6 +559,7 @@ class DateRangeReactiveForm implements DateRangeTestBase {
       <nx-datepicker #myDatePicker [rangeMode]="true"></nx-datepicker>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxDateRangeComponent,
@@ -589,6 +600,7 @@ class DateRangeDisabledTestComponent implements DateRangeTestBase {
       <nx-datepicker #myDatePicker [rangeMode]="true"></nx-datepicker>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxDateRangeComponent,
@@ -623,6 +635,7 @@ class DateRangeReadonlyTestComponent implements DateRangeTestBase {
       <nx-datepicker #myDatePicker [rangeMode]="true"></nx-datepicker>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxFormfieldComponent,
     NxDateRangeComponent,

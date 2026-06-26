@@ -1016,6 +1016,7 @@ describe('NxTooltipComponent', () => {
       Button
     </button>
   }`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTooltipModule, OverlayModule],
 })
 class BasicTooltipDemo {
@@ -1043,6 +1044,7 @@ class BasicTooltipDemo {
       </button>
     }
   </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTooltipModule, OverlayModule],
 })
 class ScrollableTooltipDemo {
@@ -1079,6 +1081,7 @@ class OnPushTooltipDemo {
   template: `@for (tooltip of tooltips; track tooltip) {
     <button [nxTooltip]="tooltip">Button {{ tooltip }}</button>
   }`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTooltipModule, OverlayModule],
 })
 class DynamicTooltipsDemo {
@@ -1097,6 +1100,7 @@ class DynamicTooltipsDemo {
 
     <textarea #textarea nxTooltip="Another thing"></textarea>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTooltipModule, OverlayModule],
 })
 class TooltipOnTextFields {
@@ -1107,6 +1111,7 @@ class TooltipOnTextFields {
 @Component({
   selector: 'nx-app',
   template: `<button #button [nxTooltip]="message">Button</button>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTooltipModule],
 })
 class TooltipDemoWithoutPositionBinding {
@@ -1127,6 +1132,7 @@ class TooltipDemoWithoutPositionBinding {
   >
     Delayed tooltip
   </button>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTooltipModule, OverlayModule],
 })
 class TooltipDispose {
@@ -1142,6 +1148,7 @@ class TooltipDispose {
 
     <textarea #textarea [nxTooltipSelectable]="selectable" nxTooltip="Another thing"></textarea>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTooltipModule, OverlayModule],
 })
 class SelectableTooltip {
@@ -1156,6 +1163,7 @@ class SelectableTooltip {
   template: `<button #button [nxTooltip]="'Tooltip'" [manualTrigger]="manualTrigger">
     Button
   </button>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTooltipModule],
 })
 class ManualTriggerTooltipTestComponent {

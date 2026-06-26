@@ -1,6 +1,6 @@
 import { NxCardModule } from '@allianz/ng-aquila/card';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
@@ -56,6 +56,7 @@ describe('NxSelectableCardGroupHarness', () => {
     <nx-selectable-card-group />
     <nx-selectable-card-group />
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class GroupCountTest {}
@@ -67,6 +68,7 @@ class GroupCountTest {}
       <nx-selectable-card />
     </nx-selectable-card-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class CardsInGroupTest {}
@@ -78,6 +80,7 @@ class CardsInGroupTest {}
       <nx-selectable-card value="BAR"><h3>Bar</h3></nx-selectable-card>
     </nx-selectable-card-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class FilteredCardsTest {}
@@ -88,6 +91,7 @@ class FilteredCardsTest {}
     <nx-selectable-card><h3>Bar</h3></nx-selectable-card>
     <nx-error>Error Text</nx-error>
   </nx-selectable-card-group>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, ReactiveFormsModule],
 })
 class ErrorTest {

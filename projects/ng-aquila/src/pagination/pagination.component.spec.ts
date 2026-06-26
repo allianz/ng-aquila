@@ -1,5 +1,6 @@
 import { BidiModule, Direction } from '@angular/cdk/bidi';
 import {
+  ChangeDetectionStrategy,
   Component,
   DebugElement,
   Directive,
@@ -545,6 +546,7 @@ describe('NxPaginationComponent', () => {
     >
     </nx-pagination>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPagination extends PaginationTest {
@@ -564,6 +566,7 @@ class AdvancedPagination extends PaginationTest {
       (goPage)="goToPage($event)"
     ></nx-pagination>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class SimplePagination extends PaginationTest {
@@ -584,6 +587,7 @@ class SimplePagination extends PaginationTest {
     >
     </nx-pagination>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationLess10 extends PaginationTest {
@@ -605,6 +609,7 @@ class AdvancedPaginationLess10 extends PaginationTest {
     >
     </nx-pagination>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationMore10 extends PaginationTest {
@@ -626,6 +631,7 @@ class AdvancedPaginationMore10 extends PaginationTest {
     >
     </nx-pagination>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationBeginat10 extends PaginationTest {
@@ -646,6 +652,7 @@ class AdvancedPaginationBeginat10 extends PaginationTest {
       (goPage)="goToPage($event)"
     ></nx-pagination>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class SimplePaginationBeginat10 extends PaginationTest {
@@ -666,6 +673,7 @@ class SimplePaginationBeginat10 extends PaginationTest {
     ></nx-pagination>
   `,
   providers: [{ provide: NX_PAGINATION_TEXTS, useValue: customTexts }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class LocalizationToken extends PaginationTest {
@@ -686,6 +694,7 @@ class LocalizationToken extends PaginationTest {
       ></nx-pagination>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class SimplePaginationWithDirection extends PaginationTest {
@@ -709,6 +718,7 @@ class SimplePaginationWithDirection extends PaginationTest {
       </nx-pagination>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class AdvancedPaginationWithDirection extends PaginationTest {
@@ -729,6 +739,7 @@ class AdvancedPaginationWithDirection extends PaginationTest {
       (goPage)="goToPage($event)"
     ></nx-pagination>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class SliderPagination extends PaginationTest {
@@ -748,6 +759,7 @@ class SliderPagination extends PaginationTest {
     >
     </nx-pagination>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class SliderPaginationBeginat6 extends PaginationTest {
@@ -766,6 +778,7 @@ class SliderPaginationBeginat6 extends PaginationTest {
       (goPage)="goToPage($event)"
     ></nx-pagination>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPaginationModule, BidiModule],
 })
 class FocusCurrentPageButtonPagination extends PaginationTest {

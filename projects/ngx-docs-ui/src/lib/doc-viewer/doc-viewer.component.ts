@@ -1,5 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { NxvVersionHashService } from '../core/version-hash';
 
@@ -7,6 +15,7 @@ import { NxvVersionHashService } from '../core/version-hash';
   selector: 'nxv-doc-viewer',
   template: 'Loading document...',
   styleUrls: ['./doc-viewer.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class DocViewerComponent {

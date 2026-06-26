@@ -2,7 +2,7 @@ import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
 import { HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxCheckboxGroupHarness } from './checkbox-group-harness';
@@ -78,6 +78,7 @@ describe('NxCheckboxGroupHarness', () => {
     </nx-checkbox-group>
     <nx-checkbox-group><nx-label>Second</nx-label></nx-checkbox-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, NxLabelComponent],
 })
 class CheckboxHarnessGroupTest {

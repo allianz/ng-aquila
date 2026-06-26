@@ -5,7 +5,7 @@ import {
   PopoverTriggerScrollStrategy,
 } from '@allianz/ng-aquila/popover';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 /** The contextual type of a signal button. */
 export type NxSignalButtonContext = 'success' | 'warning' | 'error' | 'info';
@@ -20,6 +20,7 @@ export type NxSignalButtonContext = 'success' | 'warning' | 'error' | 'info';
     '[class.context-error]': 'this._context === "error"',
     '[class.context-info]': 'this._context === "info"',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPopoverModule, NxStatusIconComponent],
 })
 export class NxSignalButtonComponent {

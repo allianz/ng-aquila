@@ -65,7 +65,7 @@ export class FileUploaderValidationExampleComponent
     requestUrl: 'file-upload',
     options: {
       params: new HttpParams(),
-      reportProgress: true,
+      reportUploadProgress: true,
     },
   };
 

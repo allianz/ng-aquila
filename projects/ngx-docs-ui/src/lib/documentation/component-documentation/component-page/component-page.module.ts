@@ -3,7 +3,7 @@ import { NxMessageModule } from '@allianz/ng-aquila/message';
 import { NxTabsModule } from '@allianz/ng-aquila/tabs';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -35,6 +35,6 @@ import { NxvComponentPage } from './component-page';
     ComponentApi,
     ComponentExamples,
   ],
-  providers: [provideHttpClient(withInterceptorsFromDi())],
+  providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())],
 })
 export class ComponentPageModule {}

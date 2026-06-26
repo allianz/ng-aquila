@@ -1,6 +1,7 @@
 import { ComponentPortal, DomPortalOutlet } from '@angular/cdk/portal';
 import {
   ApplicationRef,
+  ChangeDetectionStrategy,
   Component,
   DOCUMENT,
   ElementRef,
@@ -21,6 +22,7 @@ const EXAMPLE_SELECTOR = 'nx-docs-example';
 @Component({
   selector: 'nxv-example-loader',
   templateUrl: 'example-loader.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [DocViewerComponent],
 })
 export class ExampleLoaderComponent {

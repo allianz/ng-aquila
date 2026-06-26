@@ -1,6 +1,7 @@
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import {
   AfterContentInit,
+  ChangeDetectionStrategy,
   Component,
   ContentChildren,
   OnDestroy,
@@ -22,6 +23,7 @@ import { NxNotificationPanelItemComponent } from './../notification-item/notific
     '[class.nx-notification-panel]': 'true',
     '(keydown)': '_handleKeydown($event)',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxNotificationPanelComponent implements OnDestroy, AfterContentInit {

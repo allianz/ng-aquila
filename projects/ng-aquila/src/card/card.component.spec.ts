@@ -91,6 +91,7 @@ class BasicCard extends CardTest {}
     ><a href="/" nxCardMainLink>Card title</a>
     <p>Hello Text</p></nx-card
   >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
 })
 class ClickableCardTest extends CardTest {}

@@ -1,4 +1,4 @@
-import { Component, Type, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Type, viewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxButtonModule } from './button.module';
@@ -109,6 +109,7 @@ describe('NxPlainButtonComponent', () => {
         [tabIndex]="tabIndex"
         >Hello Anchor Button</a
       >`,
+      changeDetection: ChangeDetectionStrategy.Eager,
       imports: [NxPlainButtonComponent],
     })
     class AnchorTestInstance {
@@ -196,6 +197,7 @@ describe('NxPlainButtonComponent', () => {
   >
     Hello Button
   </button>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonModule],
 })
 class ButtonTest {

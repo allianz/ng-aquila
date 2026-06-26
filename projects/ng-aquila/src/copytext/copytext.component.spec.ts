@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxCopytextComponent } from './copytext.component';
@@ -72,6 +72,7 @@ describe('NxCopytextDirective', () => {
 
 @Component({
   template: `<p [nxCopytext]="size">Hello Text</p>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCopytextModule],
 })
 class BasicCopytext extends CopytextTest {}

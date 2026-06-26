@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
@@ -13,6 +13,7 @@ import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-co
   selector: 'nxv-guide-view',
   templateUrl: 'guide-view.component.html',
   styleUrls: ['guide-view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [DocViewerComponent, NxvTableOfContentsComponent],
 })
 export class NxvGuideViewComponent implements OnDestroy {

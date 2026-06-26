@@ -2,7 +2,7 @@ import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
-import { Component, Directive, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -134,6 +134,7 @@ describe('NxLinkComponent', () => {
       </nx-notification-panel>
     </ng-template>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNotificationPanelModule, NxButtonModule, NxIconModule, RouterTestingModule],
 })
 class TestComponent extends NotificationPanelTest {}

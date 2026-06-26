@@ -5,6 +5,7 @@ import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { NgTemplateOutlet } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   Inject,
@@ -27,6 +28,7 @@ import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
     '[class.is-mobile]': 'showMobileView',
     '[class.is-desktop]': '!showMobileView',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgTemplateOutlet, NxPopoverModule, NxIconModule, NxButtonModule],
 })
 export class NxvFeedbackComponent implements OnInit, OnDestroy {

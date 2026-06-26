@@ -1,17 +1,13 @@
-import { Directionality } from '@angular/cdk/bidi';
 import { CdkStepper } from '@angular/cdk/stepper';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   AfterContentInit,
   AfterViewChecked,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ContentChildren,
-  ElementRef,
   Input,
   OnDestroy,
-  Optional,
   QueryList,
   ViewChildren,
 } from '@angular/core';
@@ -57,14 +53,6 @@ export class NxMultiStepperComponent
     return this._direction;
   }
   private _direction: NxMultiStepperDirection = 'horizontal';
-
-  constructor(
-    _cdr: ChangeDetectorRef,
-    @Optional() _dir: Directionality | null,
-    _el: ElementRef<HTMLElement>,
-  ) {
-    super(_cdr, _dir, _el);
-  }
 
   ngAfterViewChecked(): void {
     // the _keyManager is currently private in the CdkStepper and the CDK/Material way

@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 export const NX_ATTENTION_COLOR_VALUES = [
   'yellow',
@@ -23,6 +23,7 @@ export type NxAttentionColorOption = (typeof NX_ATTENTION_COLOR_VALUES)[number];
   standalone: true,
   template: '<ng-content></ng-content>',
   styleUrls: ['./attention-color.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     '[class.nx-attention-color--negative]': 'negative()',
     '[attr.nx-attention-color]': 'color()',

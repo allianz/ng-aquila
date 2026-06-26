@@ -2,7 +2,15 @@ import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { JsonPipe } from '@angular/common';
-import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  QueryList,
+  Type,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -650,6 +658,7 @@ abstract class RadioToggleTest {
     <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
     <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
   </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class NoSelectionRadioToggle extends RadioToggleTest {}
@@ -660,6 +669,7 @@ class NoSelectionRadioToggle extends RadioToggleTest {}
     <nx-radio-toggle-button [selected]="true" value="B">B</nx-radio-toggle-button>
     <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
   </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SelectionRadioToggle extends RadioToggleTest {}
@@ -668,6 +678,7 @@ class SelectionRadioToggle extends RadioToggleTest {}
   template: `<nx-radio-toggle [variant]="'small negative'">
     <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
   </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ModifiedRadioToggle extends RadioToggleTest {}
@@ -678,6 +689,7 @@ class ModifiedRadioToggle extends RadioToggleTest {}
     <nx-radio-toggle-button value="B" [disabled]="true">B</nx-radio-toggle-button>
     <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
   </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class SingleDisableRadioToggle extends RadioToggleTest {}
@@ -688,6 +700,7 @@ class SingleDisableRadioToggle extends RadioToggleTest {}
     <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
     <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
   </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class AllDisableRadioToggle extends RadioToggleTest {}
@@ -697,6 +710,7 @@ class AllDisableRadioToggle extends RadioToggleTest {}
     <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
     <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
   </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ModelRadioToggle extends RadioToggleTest {
@@ -709,6 +723,7 @@ class ModelRadioToggle extends RadioToggleTest {
       <nx-radio-toggle-button [value]="value"> {{ value }} </nx-radio-toggle-button>
     }
   </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class LoopedRadioToggle extends RadioToggleTest {
@@ -717,6 +732,7 @@ class LoopedRadioToggle extends RadioToggleTest {
 
 @Component({
   template: `<nx-radio-toggle> </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class EmptyRadioToggle extends RadioToggleTest {}
@@ -732,6 +748,7 @@ class EmptyRadioToggle extends RadioToggleTest {}
       <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
     </nx-radio-toggle>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class MultiRadioToggle extends RadioToggleTest {}
@@ -742,6 +759,7 @@ class MultiRadioToggle extends RadioToggleTest {}
       <nx-radio-toggle-button value="B" ariaLabel="dog">B</nx-radio-toggle-button>
     </nx-radio-toggle>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class AriaRadioToggle extends RadioToggleTest {}
@@ -757,6 +775,7 @@ class AriaRadioToggle extends RadioToggleTest {}
     <p>Form value: {{ testForm.value | json }}</p>
     <p>Form status: {{ testForm.status | json }}</p>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule, JsonPipe],
 })
 class ReactiveFormToggle extends RadioToggleTest {
@@ -783,6 +802,7 @@ class ReactiveFormToggle extends RadioToggleTest {
       <nx-radio-toggle-button value="C">C</nx-radio-toggle-button>
     </nx-radio-toggle>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ValidationToggle extends RadioToggleTest {
@@ -812,6 +832,7 @@ class ValidationToggle extends RadioToggleTest {
     >
     <nx-radio-toggle-button value="B" tabindex="0">Label B</nx-radio-toggle-button>
   </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class FocusRadioToggle extends RadioToggleTest {}
@@ -821,6 +842,7 @@ class FocusRadioToggle extends RadioToggleTest {}
     <nx-radio-toggle-button value="0">0</nx-radio-toggle-button>
     <nx-radio-toggle-button value="1">1</nx-radio-toggle-button>
   </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class RadioToggleGroupTest extends RadioToggleTest {
@@ -838,6 +860,7 @@ class RadioToggleGroupTest extends RadioToggleTest {
 
     <button type="submit" id="submit-button">submit</button>
   </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class RadioToggleGroupErrorTest extends RadioToggleTest {

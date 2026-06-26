@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { Subject } from 'rxjs';
 
@@ -131,6 +131,7 @@ describe('NxErrorComponent', () => {
 
 @Component({
   template: `<nx-error>I am an error message.</nx-error>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxErrorModule],
 })
 class BasicError extends ErrorTest {}
@@ -139,6 +140,7 @@ class BasicError extends ErrorTest {}
   template: `<nx-error [appearance]="appearance" [id]="id"
     >I am an error message with an icon.</nx-error
   >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxErrorModule],
 })
 class ConfigurableError extends ErrorTest {}

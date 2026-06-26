@@ -1,5 +1,12 @@
 import { NxAutocompleteModule } from '@allianz/ng-aquila/autocomplete';
-import { Component, Directive, provideNgReflectAttributes, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  provideNgReflectAttributes,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxPageSearchComponent } from './page-search.component';
@@ -99,6 +106,7 @@ class PageSearchTestComponent {
       <input />
     </nx-page-search>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPageSearchModule, NxAutocompleteModule],
 })
 class PageSearchSimpleComponent extends PageSearchTestComponent {}
@@ -109,6 +117,7 @@ class PageSearchSimpleComponent extends PageSearchTestComponent {}
       <input />
     </nx-page-search>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPageSearchModule, NxAutocompleteModule],
 })
 class PageSearchHideButtonComponent extends PageSearchTestComponent {}

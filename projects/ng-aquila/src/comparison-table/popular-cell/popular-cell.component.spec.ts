@@ -1,4 +1,12 @@
-import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  QueryList,
+  Type,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -184,6 +192,7 @@ describe('NxComparisonTablePopularCell', () => {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class PopularCellComponent extends PopularCellTest {}

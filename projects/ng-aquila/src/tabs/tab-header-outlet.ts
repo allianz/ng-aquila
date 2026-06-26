@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EmbeddedViewRef,
   input,
@@ -16,6 +17,7 @@ import { NxTabGroupBase } from './tab-group-base';
 @Component({
   selector: 'nx-tab-header-outlet',
   template: '<ng-container #outlet></ng-container>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {

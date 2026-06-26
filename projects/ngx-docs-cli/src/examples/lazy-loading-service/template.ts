@@ -1,22 +1,20 @@
 export function lazyServiceTemplate(modules: any[]): string {
   const resolvedImports = modules.map((m) => buildImportForModule(m));
 
-  return `import { Injectable, Compiler, Injector } from '@angular/core';
+  return `import { Injectable, Compiler } from '@angular/core';
 import { BaseLazyLoadingService } from '@allianz/ngx-docs-ui';
 
 @Injectable({ providedIn: 'root' })
 export class LazyLoadingService implements BaseLazyLoadingService {
 
-    constructor(private readonly compiler: Compiler, private readonly injector: Injector) {}
+    constructor(private readonly compiler: Compiler) {}
 
     getComponent(id: string, moduleId: string) {
         return this.load(moduleId).then((moduleClass: any) => {
             return this.compiler.compileModuleAsync(moduleClass).then(ngModuleFactory => {
-                const ngModuleRef = ngModuleFactory.create(this.injector);
-                const componentClass = moduleClass.components()[id];
-                const componentFactory = ngModuleRef.componentFactoryResolver.resolveComponentFactory(componentClass);
+                const componentType = moduleClass.components()[id];
 
-                return { componentFactory, ngModuleFactory };
+                return { componentFactory: { componentType }, ngModuleFactory };
             });
         });
     }

@@ -20,6 +20,7 @@ import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -63,6 +64,7 @@ import {
     <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #trigger>Open</button>
   `,
   encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule, NxButtonComponent],
 })
 class ShadowDomTestComponent {
@@ -1976,6 +1978,7 @@ class SubmenuParentMenu {
       }
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class DynamicItemMenu {
@@ -2000,6 +2003,7 @@ class DynamicItemMenu {
       }
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class SimpleMenu {
@@ -2029,6 +2033,7 @@ class SimpleMenu {
       }
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class OverrideScrollStrategyMenu {
@@ -2051,6 +2056,7 @@ class OverrideScrollStrategyMenu {
       </button>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class SelectionMenu {
@@ -2122,6 +2128,7 @@ class SelectionMenu {
       <button nxContextMenuItem>Twelve</button>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule, NxButtonComponent],
 })
 class NestedMenu {
@@ -2165,6 +2172,7 @@ class NestedMenu {
       <button nxContextMenuItem>Two</button>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule],
 })
 class NestedMenuCustomElevation {
@@ -2188,6 +2196,7 @@ class NestedMenuCustomElevation {
       <button nxContextMenuItem>Five</button>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule],
 })
 class NestedMenuRepeater {
@@ -2211,6 +2220,7 @@ class NestedMenuRepeater {
       </nx-context-menu>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule],
 })
 class SubmenuDeclaredInsideParentMenu {
@@ -2228,6 +2238,7 @@ class SubmenuDeclaredInsideParentMenu {
       </ng-template>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule],
 })
 class SimpleLazyMenu {
@@ -2260,6 +2271,7 @@ class SimpleLazyMenu {
       </ng-template>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule],
 })
 class LazyMenuWithContext {
@@ -2278,6 +2290,7 @@ class LazyMenuWithContext {
       <button nxContextMenuItem>Two</button>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule],
 })
 class DynamicPanelMenu {
@@ -2298,6 +2311,7 @@ class DynamicPanelMenu {
       <button nxContextMenuItem>Item</button>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule],
 })
 class RightClickMenu {
@@ -2321,6 +2335,7 @@ class RightClickMenu {
       </nx-checkbox-group>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule, NxCheckboxModule, FormsModule],
 })
 class CheckboxMenu {
@@ -2351,6 +2366,7 @@ class CheckboxMenu {
       </button>
     </nx-context-menu>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxContextMenuModule, NxButtonComponent, NxIconComponent],
 })
 class DisabledItemsMenu {

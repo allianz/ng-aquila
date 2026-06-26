@@ -10,8 +10,16 @@ import {
   HttpResponse,
   provideHttpClient,
   withInterceptorsFromDi,
+  withXhr,
 } from '@angular/common/http';
-import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  Injectable,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable, of } from 'rxjs';
@@ -45,7 +53,7 @@ abstract class FileUploaderTest {
     requestUrl: 'file-upload',
     options: {
       params: new HttpParams(),
-      reportProgress: true,
+      reportUploadProgress: true,
     },
     uploadSeparately: false,
   };
@@ -63,7 +71,7 @@ abstract class FileUploaderSendsSuccessOnEmptyListTest extends FileUploaderTest 
     requestUrl: 'file-upload',
     options: {
       params: new HttpParams(),
-      reportProgress: true,
+      reportUploadProgress: true,
     },
   };
 }
@@ -96,7 +104,7 @@ describe('NxFileUploaderComponent', () => {
         ],
         providers: [
           { provide: HTTP_INTERCEPTORS, useClass: UploadInterceptor, multi: true },
-          provideHttpClient(withInterceptorsFromDi()),
+          provideHttpClient(withXhr(), withInterceptorsFromDi()),
         ],
       }).compileComponents();
     }));
@@ -408,6 +416,7 @@ describe('NxFileUploaderComponent', () => {
       </button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFileUploaderModule, NxLabelModule, ReactiveFormsModule, FormsModule],
 })
 class BasicFileUpload extends FileUploaderTest {
@@ -438,6 +447,7 @@ class BasicFileUpload extends FileUploaderTest {
       </button>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFileUploaderModule, NxLabelModule, ReactiveFormsModule, FormsModule],
 })
 class BasicFileUploadSuccessOnEmptyList extends FileUploaderSendsSuccessOnEmptyListTest {

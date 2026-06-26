@@ -2,7 +2,7 @@ import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { ENTER, ESCAPE, SPACE } from '@angular/cdk/keycodes';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -288,6 +288,7 @@ describe('NxSignalButtonComponent', () => {
   template: `<nx-signal-button [context]="context"
     >This is the content of the success popover</nx-signal-button
   >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxSignalButtonModule, NxFormfieldModule, NxInputModule],
 })
 class SignalButtonComponent extends SignalButtonTestDirective {

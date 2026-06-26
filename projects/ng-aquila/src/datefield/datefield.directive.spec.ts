@@ -6,6 +6,7 @@ import { NxIsoDateModule } from '@allianz/ng-aquila/iso-date-adapter';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import {
+  ChangeDetectionStrategy,
   Component,
   Directive,
   inject,
@@ -413,6 +414,7 @@ describe('NxDatefieldDirective with Moment', () => {
       <input nxInput nxDatefield [disabled]="disabled" />
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class BasicDatefield extends DatefieldTest {}
@@ -426,6 +428,7 @@ class BasicDatefield extends DatefieldTest {}
     ReactiveFormsModule,
     NxFormfieldModule,
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <nx-formfield label="Birthday">
       <input
@@ -476,12 +479,14 @@ class ReadonlyDatefield extends DatefieldTest {
     [displayFormat]="displayFormat"
     [strict]="strict"
   />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class AdvancedDatefield extends DatefieldTest {}
 
 @Component({
   template: `<input nxInput nxDatefield [(ngModel)]="value" [min]="min" [max]="max" />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class MinMaxDatefield extends DatefieldTest {}
@@ -501,6 +506,7 @@ class MinMaxDatefield extends DatefieldTest {}
       </nx-formfield>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveDatefield extends DatefieldTest {
@@ -597,6 +603,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
       </nx-formfield>
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxIsoDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
 })
 class ReactiveIsoDatefield extends DatefieldIsoTest {

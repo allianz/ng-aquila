@@ -1,7 +1,7 @@
 import { NxActionModule } from '@allianz/ng-aquila/action';
 import { NxGridModule } from '@allianz/ng-aquila/grid';
 import { NxSidebarModule } from '@allianz/ng-aquila/sidebar';
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import {
   ActivatedRoute,
   Router,
@@ -21,6 +21,7 @@ import { DocumentationFrameComponent } from '../documentation-frame.component';
   selector: 'nxv-guides',
   templateUrl: 'guides.component.html',
   styleUrls: ['guides.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxSidebarModule,
     NxActionModule,

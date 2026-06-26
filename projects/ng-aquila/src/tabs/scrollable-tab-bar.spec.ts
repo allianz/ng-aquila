@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -261,6 +261,7 @@ describe('Scrollable TabNavBar', () => {
       }
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class NotScrollableTabGroupTest extends TabHeaderScrollableTest {
@@ -283,6 +284,7 @@ class NotScrollableTabGroupTest extends TabHeaderScrollableTest {
       </nx-tab-group>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class ScrollableTabGroupTest extends TabHeaderScrollableTest {
@@ -305,6 +307,7 @@ class ScrollableTabGroupTest extends TabHeaderScrollableTest {
       }
     </nx-tab-nav-bar>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class NotScrollableTabNavBarTest extends TabNavBarScrollableTest {
@@ -327,6 +330,7 @@ class NotScrollableTabNavBarTest extends TabNavBarScrollableTest {
       </nx-tab-nav-bar>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class ScrollableTabNavBarTest extends TabNavBarScrollableTest {

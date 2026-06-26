@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxTabComponent } from './tab';
@@ -44,6 +44,7 @@ describe('NxTabComponent', () => {
 
 @Component({
   template: `<nx-tab>Some content</nx-tab>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class NoGroupTest extends TabTest {}
@@ -54,6 +55,7 @@ class NoGroupTest extends TabTest {}
       <nx-tab><ng-template nxTabLabel>Label</ng-template>Some content</nx-tab>
     </nx-tab-group>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
 })
 class WithGroup extends TabTest {}

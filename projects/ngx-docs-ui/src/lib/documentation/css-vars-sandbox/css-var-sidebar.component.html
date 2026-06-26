@@ -35,11 +35,10 @@
         <div class="picker-container">
           <input
             class="picker"
-            cpOutputFormat="rgba"
-            [(colorPicker)]="prop.value"
-            (colorPickerChange)="updateProperty($event, prop)"
+            type="color"
+            [value]="toHexColor(prop.value)"
+            (input)="updateColorProperty($any($event.target).value, prop)"
             [style.background-color]="prop.value"
-            cpPosition="left"
           />
         </div>
       }

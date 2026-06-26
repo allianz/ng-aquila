@@ -1,6 +1,6 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { Location } from '@angular/common';
-import { Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { NxvThemeSwitcherComponent } from '../documentation/theme-switcher/theme-switcher.component';
@@ -15,6 +15,7 @@ type ExampleBackgroundType = '' | 'blank';
 @Component({
   templateUrl: './example-full-screen.component.html',
   styleUrls: ['./example-full-screen.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxButtonModule, LazyExampleOutletComponent, NxvThemeSwitcherComponent],
 })
 export class ExampleFullScreenComponent {

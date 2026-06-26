@@ -6,6 +6,7 @@ import { NxLinkModule } from '@allianz/ng-aquila/link';
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
@@ -59,6 +60,7 @@ export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_
     '[class.hide-nav]': 'hideNavigation',
     '[style.padding-top.px]': 'showAnnouncement ? 120 : null',
   },
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     NxHeaderModule,
     NxErrorModule,

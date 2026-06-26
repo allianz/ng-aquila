@@ -22,7 +22,6 @@ import { importProvidersFrom, provideZonelessChangeDetection } from '@angular/co
 import { ReactiveFormsModule } from '@angular/forms';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import { provideRouter, Routes } from '@angular/router';
-import { ColorPickerModule } from 'ngx-color-picker';
 import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
 import MANIFEST from 'projects/ng-aquila/documentation/generated/manifest.json';
 import PACKAGE from 'projects/ng-aquila/src/package.json';
@@ -72,7 +71,6 @@ bootstrapApplication(AppComponent, {
         welcomeComponent: WelcomeComponent,
         footerComponent: FooterComponent,
       }),
-      ColorPickerModule,
       NxDocumentationIconModule,
       NxFooterModule,
       NxButtonModule,

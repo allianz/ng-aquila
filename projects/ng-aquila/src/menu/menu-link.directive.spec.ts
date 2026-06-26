@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxMenuModule } from './menu.module';
@@ -53,6 +53,7 @@ describe(NxMenuLinkDirective.name, () => {
 
 @Component({
   template: `<a nxMenuLink>Link</a>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMenuModule],
 })
 class BasicMenuLink extends MenuLinkTest {}

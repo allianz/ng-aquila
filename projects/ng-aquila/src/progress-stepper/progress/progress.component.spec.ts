@@ -1,4 +1,11 @@
-import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  ElementRef,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -73,6 +80,7 @@ describe('NxProgressStepperComponent', () => {
       <nx-step label="Step 2"> step 2 content </nx-step> </nx-progress-stepper
     >>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressStepperModule],
 })
 class ProgressBasicTest extends ProgressTest {}
@@ -84,6 +92,7 @@ class ProgressBasicTest extends ProgressTest {}
       <nx-step label="Step 2"> step 2 content </nx-step>
     </nx-progress-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressStepperModule],
 })
 class ProgressBindingTest extends ProgressTest {}
@@ -94,6 +103,7 @@ class ProgressBindingTest extends ProgressTest {}
       <nx-step label="Step 2"> step 2 content </nx-step>
     </nx-progress-stepper>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressStepperModule],
 })
 class ProgressClampTest extends ProgressTest {}

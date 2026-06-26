@@ -1,7 +1,7 @@
 import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { NxCheckboxHarness } from './checkbox-harness';
@@ -84,6 +84,7 @@ describe('NxCheckboxHarness', () => {
     <nx-checkbox>StateFoo</nx-checkbox>
     <nx-checkbox checked>StateBar</nx-checkbox>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule],
 })
 class CheckboxHarnessTest {}

@@ -2,6 +2,7 @@ import { NxSpinnerModule } from '@allianz/ng-aquila/spinner';
 import { Dir, Direction } from '@angular/cdk/bidi';
 import { NgComponentOutlet } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EnvironmentInjector,
@@ -20,6 +21,7 @@ import { ManifestService } from './../service/manifest.service';
 @Component({
   selector: 'nxv-lazy-example',
   templateUrl: 'lazy-example-outlet.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [Dir, NgComponentOutlet, NxSpinnerModule],
 })
 export class LazyExampleOutletComponent implements OnInit, OnDestroy {

@@ -1,4 +1,4 @@
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { dispatchFakeEvent } from 'projects/ng-aquila/src/cdk-test-utils';
@@ -483,6 +483,7 @@ describe('NxIbanMaskDirective', () => {
 
 @Component({
   template: `<input nxMask nxIbanMask />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class BasicIbanMaskComponent extends IbanMaskTest {}
@@ -493,6 +494,7 @@ class BasicIbanMaskComponent extends IbanMaskTest {}
       <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class FormIbanMaskComponent extends IbanMaskTest {}
@@ -503,6 +505,7 @@ class FormIbanMaskComponent extends IbanMaskTest {}
       <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class FormWithInitalIbanMaskComponent extends IbanMaskTest {
@@ -517,6 +520,7 @@ class FormWithInitalIbanMaskComponent extends IbanMaskTest {
       <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
     </form>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
 })
 class FormIbanOnBlurMaskComponent extends IbanMaskTest {

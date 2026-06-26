@@ -158,6 +158,7 @@ class DefaultMenuButton extends MenuButtonTest {}
   >
     example menuButton
   </a>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMenuModule],
 })
 class BasicMenuButton extends MenuButtonTest {}

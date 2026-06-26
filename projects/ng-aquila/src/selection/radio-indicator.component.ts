@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { NxIndicatorAppearance } from './types';
 
@@ -7,6 +7,7 @@ import { NxIndicatorAppearance } from './types';
   template: ` <span class="nx-radio__control"></span>`,
   styleUrls: ['./radio-indicator.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     '[class.checked]': 'checked()',
     '[class.disabled]': 'disabled()',

@@ -56,6 +56,7 @@ export class NxModalContentDirective {}
       <nx-status-icon [type]="status()!" class="nx-modal__status"></nx-status-icon>
     }
     <ng-content></ng-content>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 export class NxModalTitleComponent {

@@ -3,19 +3,11 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ColorPickerModule } from 'ngx-color-picker';
 
 import { CssVarSidebarComponent } from './css-var-sidebar-component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ColorPickerModule,
-    NxIconModule,
-    NxButtonModule,
-    CssVarSidebarComponent,
-  ],
+  imports: [CommonModule, FormsModule, NxIconModule, NxButtonModule, CssVarSidebarComponent],
   exports: [CssVarSidebarComponent],
 })
 export class CssVarSidebarModule {}

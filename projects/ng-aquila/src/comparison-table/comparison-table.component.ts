@@ -8,6 +8,7 @@ import { isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
 import {
   afterNextRender,
   AfterViewInit,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   computed,
@@ -56,6 +57,7 @@ export const DEFAULT_BREAKPOINTS: NxComparisonTableBreakpoint[] = [
   templateUrl: './comparison-table.component.html',
   styleUrls: ['./comparison-table.component.scss'],
   providers: [{ provide: NxComparisonTableBase, useExisting: NxComparisonTableComponent }],
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     '[class.is-desktop-view]': 'viewType === "desktop"',
     '[class.is-tablet-view]': 'viewType === "tablet"',

@@ -17,7 +17,7 @@ import fs = require('fs');
 
 const program = new Command();
 
-const parsePath = (value) => path.resolve(value);
+const parsePath = (value: string) => path.resolve(value);
 
 const pathCompiled = path.join(__dirname, './package.json');
 let packageJson;
@@ -65,7 +65,7 @@ program
     'Where to save all generated files. By default `./generated` in your documentaiton folder .',
     parsePath,
   )
-  .option('-pe, --private-examples <path>', 'An additional private examples folder.', null)
+  .option('-pe, --private-examples <path>', 'An additional private examples folder.')
 
   .option(
     '-m, --with-module <path>',
@@ -98,7 +98,9 @@ program
       guideFiles = guideConfig.guides;
 
       // resolve relative guide file paths against the current directory
-      guideFiles = guideFiles.map((filePath) => path.resolve(path.dirname(cmd.config), filePath));
+      guideFiles = guideFiles.map((filePath: string) =>
+        path.resolve(path.dirname(cmd.config), filePath),
+      );
     } else {
       guideFiles = cmd.guides || path.join(documentationFiles, 'guides');
     }
@@ -115,7 +117,7 @@ program
 
     // include the parent folder when displaying the relative path.
     // this way we can repeat the folder name of the librayr which is the given source root
-    const generateDisplayPath = (pathValue) =>
+    const generateDisplayPath = (pathValue: string) =>
       path.relative(path.resolve(rootPath, '../'), pathValue);
 
     // REMOVE, it is unused, or print it out? :)
@@ -175,7 +177,12 @@ program
       )
       .subscribe(
         () => {},
-        () => {},
+        (error) => {
+          console.error(chalk.red('Documentation Build failed'));
+          console.error(error);
+          watcher.close();
+          process.exit(1);
+        },
         () => {
           console.log(chalk.green('Documentation Build completed'));
           buildSearchIndex({ manifest, guides: guidesOutputFile });

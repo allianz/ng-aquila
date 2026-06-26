@@ -38,6 +38,7 @@ abstract class ButtonTest {
 
 @Component({
   template: `<button nxButton #button class="some-arbitray-class-name">Hello Button</button>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule, NxButtonModule],
 })
 class BasicButton extends ButtonTest {}
@@ -48,6 +49,7 @@ class BasicButton extends ButtonTest {}
       <nx-icon name="settings"></nx-icon>
     </button>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule, NxButtonModule],
 })
 class BasicIconButton extends ButtonTest {}
@@ -63,6 +65,7 @@ class BasicIconButton extends ButtonTest {}
   >
     Configurable button
   </button>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule, NxButtonModule],
 })
 class ConfigurableButton extends ButtonTest {}
@@ -81,6 +84,7 @@ class ConfigurableButton extends ButtonTest {}
       <nx-icon name="settings"></nx-icon>
     </button>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule, NxButtonModule],
 })
 class ConfigurableIconButton extends ButtonTest {}
@@ -443,6 +447,7 @@ describe('NxButton Implementations', () => {
         [tabIndex]="tabIndexInput"
         >Hello Anchor Button</a
       >`,
+      changeDetection: ChangeDetectionStrategy.Eager,
       imports: [NxAnchorButtonComponent],
     })
     class AnchorTestInstance {

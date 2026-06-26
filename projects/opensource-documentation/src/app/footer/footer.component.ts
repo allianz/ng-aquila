@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import {
   NxFooterComponent,
@@ -10,6 +10,7 @@ import {
   selector: 'doc-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFooterComponent, NxFooterNavigationDirective, NxFooterLinkDirective],
 })
 export class FooterComponent {}

@@ -1,6 +1,6 @@
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -413,6 +413,7 @@ abstract class PanelTest {
     <p>Some content</p>
     <button id="test-button">I am a button</button>
   </nx-expansion-panel>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class PanelWithContent extends PanelTest {
@@ -429,6 +430,7 @@ class PanelWithContent extends PanelTest {
       </nx-expansion-panel>
     </div>
   }`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class PanelWithContentInNgIf extends PanelTest {
@@ -448,6 +450,7 @@ class PanelWithContentInNgIf extends PanelTest {
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores officia, aliquam dicta
     corrupti maxime voluptate accusamus impedit atque incidunt pariatur.
   </nx-expansion-panel>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class PanelWithCustomMargin extends PanelTest {}
@@ -464,6 +467,7 @@ class PanelWithCustomMargin extends PanelTest {}
       <button>I am a button</button>
     </ng-template>
   </nx-expansion-panel>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class LazyPanelWithContent extends PanelTest {}
@@ -479,6 +483,7 @@ class LazyPanelWithContent extends PanelTest {}
       <p>Some content</p>
     </ng-template>
   </nx-expansion-panel>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class LazyPanelOpenOnLoad extends PanelTest {}
@@ -488,6 +493,7 @@ class LazyPanelOpenOnLoad extends PanelTest {}
   template: `<nx-expansion-panel [(expanded)]="expanded">
     <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
   </nx-expansion-panel>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class PanelWithTwoWayBinding extends PanelTest {}
@@ -497,6 +503,7 @@ class PanelWithTwoWayBinding extends PanelTest {}
   template: `<nx-expansion-panel [negative]="negative" [variant]="style">
     <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
   </nx-expansion-panel>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class PanelWithDifferentAppearances extends PanelTest {
@@ -515,6 +522,7 @@ class PanelWithDifferentAppearances extends PanelTest {
     </nx-expansion-panel>
     <nx-accordion></nx-accordion
   ></nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class PanelWithAccordion extends PanelTest {}
@@ -530,6 +538,7 @@ class PanelWithAccordion extends PanelTest {}
       >
     </nx-expansion-panel>
   </nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccordionModule],
 })
 class FlushPanelWithAccordion extends PanelTest {

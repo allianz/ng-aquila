@@ -1,5 +1,11 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { Component, input, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 
 @Component({
   selector: 'li[nxListIcon]',
@@ -10,6 +16,7 @@ import { Component, input, ViewChild, ViewContainerRef } from '@angular/core';
       <nx-icon [name]="name()" aria-hidden="true"></nx-icon>
     </span>
     <ng-content></ng-content>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
 })
 export class NxListIconComponent {

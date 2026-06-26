@@ -69,7 +69,7 @@ export class FileUploadernoBlockingValidatorsExampleComponent
     requestUrl: 'file-upload',
     options: {
       params: new HttpParams(),
-      reportProgress: true,
+      reportUploadProgress: true,
     },
   };
 

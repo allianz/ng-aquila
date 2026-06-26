@@ -1,5 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import {
   ComponentFixture,
   fakeAsync,
@@ -224,6 +224,7 @@ describe('NxInfoIconComponent', () => {
 
 @Component({
   template: `<nx-info-icon>Test content</nx-info-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInfoIconModule],
 })
 class BasicInfoIconComponent extends InfoIconTest {}
@@ -240,18 +241,21 @@ class BasicInfoIconComponent extends InfoIconTest {}
       Configurable content
     </nx-info-icon>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInfoIconModule],
 })
 class ConfigurableInfoIconComponent extends InfoIconTest {}
 
 @Component({
   template: `<nx-info-icon [popoverModal]="true">Modal content</nx-info-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInfoIconModule],
 })
 class ModalInfoIconComponent extends InfoIconTest {}
 
 @Component({
   template: `<nx-info-icon [disabled]="true">Disabled content</nx-info-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInfoIconModule],
 })
 class DisabledInfoIconComponent extends InfoIconTest {}

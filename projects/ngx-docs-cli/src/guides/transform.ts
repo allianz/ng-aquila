@@ -7,7 +7,10 @@ import { logFile } from '../shared/logging';
 import { markdownDocsClasses } from '../shared/markdown-docs';
 import { MarkdownFile } from '../shared/markdown-file';
 
-const fm = fmImport as any;
+// front-matter 4.0.2 exports the type declarations incorrectly.
+// Under commonjs the namespace import is not directly callable; the callable
+// front-matter function lives on `.default`.
+const fm = ((fmImport as any).default || fmImport) as any;
 
 const md = require('markdown-it')({
   html: true,

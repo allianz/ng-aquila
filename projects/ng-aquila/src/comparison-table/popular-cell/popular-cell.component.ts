@@ -1,7 +1,14 @@
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, inject, Input, TemplateRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
@@ -10,6 +17,7 @@ import { NxComparisonTableRowBase } from '../comparison-table-row-base';
   selector: 'nx-comparison-table-popular-cell',
   styleUrls: ['./popular-cell.component.scss'],
   templateUrl: './popular-cell.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgTemplateOutlet],
 })
 export class NxComparisonTablePopularCell {

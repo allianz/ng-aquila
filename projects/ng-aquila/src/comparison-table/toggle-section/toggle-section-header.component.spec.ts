@@ -1,5 +1,6 @@
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import {
+  ChangeDetectionStrategy,
   Component,
   DebugElement,
   Directive,
@@ -319,6 +320,7 @@ describe('ToggleSectionHeaderComponent', () => {
       }
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class BasicComponent extends ToggleSectionTest {
@@ -377,6 +379,7 @@ class BasicComponent extends ToggleSectionTest {
       </ng-container>
     </nx-comparison-table>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
 })
 class IdTestingComponent extends ToggleSectionTest {}

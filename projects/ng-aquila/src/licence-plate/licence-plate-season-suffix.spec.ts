@@ -1,6 +1,6 @@
 import { AppearanceType, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxLicencePlateModule } from './licence-plate.module';
@@ -103,6 +103,7 @@ describe('NxLicencePlateSeasonSuffixComponent', () => {
       ></nx-licence-plate-season-suffix>
     </nx-formfield>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
 })
 class BasicLicencePlateSeasonSuffix extends LicencePlateSeasonSuffixTest {}

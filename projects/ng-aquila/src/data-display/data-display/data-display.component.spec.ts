@@ -1,6 +1,6 @@
 import { ComponentHarness } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxDataDisplayOrientation, NxDataDisplaySize } from '../data-display.models';
@@ -134,6 +134,7 @@ abstract class DataDisplayTestComponent {
 
 @Component({
   template: `<nx-data-display label="Example label"> Example value </nx-data-display>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDataDisplayModule],
 })
 class BasicDataDisplayTestComponent extends DataDisplayTestComponent {}
@@ -145,6 +146,7 @@ class BasicDataDisplayTestComponent extends DataDisplayTestComponent {}
       Example value
     </nx-data-display>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDataDisplayModule],
 })
 class CustomLabelDataDisplayTestComponent extends DataDisplayTestComponent {}
@@ -153,6 +155,7 @@ class CustomLabelDataDisplayTestComponent extends DataDisplayTestComponent {}
   template: `<nx-data-display label="Example label" [orientation]="orientation" [size]="size">
     Example value
   </nx-data-display>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDataDisplayModule],
 })
 class ConfigurableDataDisplayTestComponent extends DataDisplayTestComponent {}
