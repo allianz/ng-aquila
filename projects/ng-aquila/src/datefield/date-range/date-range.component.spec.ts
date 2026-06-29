@@ -400,6 +400,112 @@ describe('DateRangeComponent', () => {
     });
   });
 
+  describe('maxStartDate validation', () => {
+    let component: DateRangeMaxStartDateTestComponent;
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DateRangeMaxStartDateTestComponent],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DateRangeMaxStartDateTestComponent);
+      component = fixture.componentInstance as DateRangeMaxStartDateTestComponent;
+      nativeInputs = fixture.nativeElement.querySelectorAll('input');
+      fixture.detectChanges();
+    });
+
+    it('should return nxDateRangeMaxStart error when start date exceeds maxStartDate', async () => {
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      const startDateInput = nativeInputs[0];
+      startDateInput.value = '05/01/2020';
+      startDateInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(component.dateRangeComponent().ngControl?.errors?.nxDateRangeMaxStart).toBeTruthy();
+    });
+
+    it('should not return nxDateRangeMaxStart error when start date equals maxStartDate', async () => {
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      const startDateInput = nativeInputs[0];
+      startDateInput.value = '04/15/2020';
+      startDateInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(component.dateRangeComponent().ngControl?.errors?.nxDateRangeMaxStart).toBeFalsy();
+    });
+
+    it('should not return nxDateRangeMaxStart error when start date is before maxStartDate', async () => {
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      const startDateInput = nativeInputs[0];
+      startDateInput.value = '04/01/2020';
+      startDateInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(component.dateRangeComponent().ngControl?.errors?.nxDateRangeMaxStart).toBeFalsy();
+    });
+  });
+
+  describe('minEndDate validation', () => {
+    let component: DateRangeMinEndDateTestComponent;
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DateRangeMinEndDateTestComponent],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DateRangeMinEndDateTestComponent);
+      component = fixture.componentInstance as DateRangeMinEndDateTestComponent;
+      nativeInputs = fixture.nativeElement.querySelectorAll('input');
+      fixture.detectChanges();
+    });
+
+    it('should return nxDateRangeMinEnd error when end date is before minEndDate', async () => {
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      const endDateInput = nativeInputs[1];
+      endDateInput.value = '04/01/2020';
+      endDateInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(component.dateRangeComponent().ngControl?.errors?.nxDateRangeMinEnd).toBeTruthy();
+    });
+
+    it('should not return nxDateRangeMinEnd error when end date equals minEndDate', async () => {
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      const endDateInput = nativeInputs[1];
+      endDateInput.value = '04/20/2020';
+      endDateInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(component.dateRangeComponent().ngControl?.errors?.nxDateRangeMinEnd).toBeFalsy();
+    });
+
+    it('should not return nxDateRangeMinEnd error when end date is after minEndDate', async () => {
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      const endDateInput = nativeInputs[1];
+      endDateInput.value = '05/01/2020';
+      endDateInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(component.dateRangeComponent().ngControl?.errors?.nxDateRangeMinEnd).toBeFalsy();
+    });
+  });
+
   describe('with tabindex -1 on toggle', () => {
     let component: DateRangeWithExpert;
     beforeEach(async () => {
@@ -655,5 +761,53 @@ class DateRangeWithExpert implements DateRangeTestBase {
   dateRangeModel = {
     start: moment([2020, 2, 5]),
     end: moment([2021, 2, 5]),
+  };
+}
+
+@Component({
+  template: `
+    <nx-formfield>
+      <nx-date-range [(ngModel)]="dateRangeModel" [maxStartDate]="maxStartDate"></nx-date-range>
+    </nx-formfield>
+  `,
+  imports: [
+    NxFormfieldComponent,
+    NxDateRangeComponent,
+    NxMomentDateModule,
+    NxInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+})
+class DateRangeMaxStartDateTestComponent implements DateRangeTestBase {
+  dateRangeComponent = viewChild.required(NxDateRangeComponent<Moment>);
+  maxStartDate = moment([2020, 3, 15]);
+  dateRangeModel = {
+    start: moment([2020, 2, 5]),
+    end: moment([2020, 5, 1]),
+  };
+}
+
+@Component({
+  template: `
+    <nx-formfield>
+      <nx-date-range [(ngModel)]="dateRangeModel" [minEndDate]="minEndDate"></nx-date-range>
+    </nx-formfield>
+  `,
+  imports: [
+    NxFormfieldComponent,
+    NxDateRangeComponent,
+    NxMomentDateModule,
+    NxInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+})
+class DateRangeMinEndDateTestComponent implements DateRangeTestBase {
+  dateRangeComponent = viewChild.required(NxDateRangeComponent<Moment>);
+  minEndDate = moment([2020, 3, 20]);
+  dateRangeModel = {
+    start: moment([2020, 2, 5]),
+    end: moment([2020, 5, 1]),
   };
 }

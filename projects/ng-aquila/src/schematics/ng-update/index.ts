@@ -6,8 +6,7 @@ import {
 } from '@angular/cdk/schematics';
 import { Rule, SchematicContext } from '@angular-devkit/schematics';
 
-import { PackageImportMigration } from './custom-update-tool-migrations/package-import-migration';
-import replaceIbanjsInPackageJson from './custom-update-tool-migrations/replace-ibanjs-in-package-json';
+import { DateRangeValidationMigration } from './custom-update-tool-migrations/date-range-validation-migration';
 import {
   attributeSelectors,
   classNames,
@@ -38,7 +37,7 @@ export const upgradeData: UpgradeData = {
   cssTokens: {},
 };
 
-export const customMigrations: NullableDevkitMigration[] = [];
+export const customMigrations: NullableDevkitMigration[] = [DateRangeValidationMigration];
 
 export default function (): Rule {
   return createMigrationSchematicRule(

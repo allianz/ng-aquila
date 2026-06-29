@@ -81,8 +81,8 @@ export class DatefieldRangeValidationExampleComponent {
     range: [this.dateRange, notSameMonthValidator()],
   });
 
-  minDate = moment([2020, 3, 1]);
-  maxDate = moment([2020, 4, 1]);
+  minStartDate = moment([2020, 3, 1]);
+  maxEndDate = moment([2020, 4, 1]);
 
   dateFilterWithFirstDay = (date: Moment | null) => date?.date() === 1;
 }

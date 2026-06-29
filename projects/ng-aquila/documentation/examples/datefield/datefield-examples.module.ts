@@ -21,6 +21,7 @@ import { DatefieldParsingExampleComponent } from './datefield-parsing/datefield-
 import { DatefieldRangeExampleComponent } from './datefield-range/datefield-range-example';
 import { DatefieldRangeFormatExampleComponent } from './datefield-range-format/datefield-range-format-example';
 import { DatefieldRangeValidationExampleComponent } from './datefield-range-validation/datefield-range-validation-example';
+import { DatefieldRangeValidationPinnedExampleComponent } from './datefield-range-validation-pinned/datefield-range-validation-pinned-example';
 import { DatefieldReactiveExampleComponent } from './datefield-reactive/datefield-reactive-example';
 import { DatefieldReadonlyExampleComponent } from './datefield-readonly/datefield-readonly-example';
 import { DatefieldScrollStrategyProviderExampleComponent } from './datefield-scroll-strategy-provider/datefield-scroll-strategy-provider-example';
@@ -47,6 +48,7 @@ const EXAMPLES = [
   DatefieldParsingExampleComponent,
   DatefieldRangeExampleComponent,
   DatefieldRangeValidationExampleComponent,
+  DatefieldRangeValidationPinnedExampleComponent,
   DatefieldReactiveExampleComponent,
   DatefieldStartviewExampleComponent,
   DatefieldTodayButtonExampleComponent,
@@ -86,6 +88,8 @@ export class DatefieldExamplesModule {
       'datefield-parsing': DatefieldParsingExampleComponent,
       'datefield-range': DatefieldRangeExampleComponent,
       'datefield-range-validation': DatefieldRangeValidationExampleComponent,
+      'datefield-range-validation-pinned':
+        DatefieldRangeValidationPinnedExampleComponent,
       'datefield-reactive': DatefieldReactiveExampleComponent,
       'datefield-startview': DatefieldStartviewExampleComponent,
       'datefield-today-button': DatefieldTodayButtonExampleComponent,

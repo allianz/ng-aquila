@@ -155,14 +155,24 @@ export class NxDateRangeComponent<D>
   protected readonly startDateInputWidth = model<string>();
 
   /**
-   * The minimum date that can be selected. The date must be same or after the minimum date.
+   * The minimum date that the start date can be. The start date must be same or after this date.
    */
-  readonly minDate: InputSignal<D | null> = input<D | null>(null);
+  readonly minStartDate: InputSignal<D | null> = input<D | null>(null);
 
   /**
-   * The maximum date that can be selected. The date must be same or before the maximum date.
+   * The maximum date that the start date can be. The start date must be same or before this date.
    */
-  readonly maxDate: InputSignal<D | null> = input<D | null>(null);
+  readonly maxStartDate: InputSignal<D | null> = input<D | null>(null);
+
+  /**
+   * The minimum date that the end date can be. The end date must be same or after this date.
+   */
+  readonly minEndDate: InputSignal<D | null> = input<D | null>(null);
+
+  /**
+   * The maximum date that the end date can be. The end date must be same or before this date.
+   */
+  readonly maxEndDate: InputSignal<D | null> = input<D | null>(null);
 
   /**
    * Filters which dates are selectable; dates returning `false` are disabled in the calendar and trigger validation errors when entered manually.
@@ -361,8 +371,10 @@ export class NxDateRangeComponent<D>
     const validators = [
       NxDateRangeValidators.complete(this._dateAdapter),
       NxDateRangeValidators.range(this._dateAdapter),
-      NxDateRangeValidators.min(this._dateAdapter, this.minDate()),
-      NxDateRangeValidators.max(this._dateAdapter, this.maxDate()),
+      NxDateRangeValidators.minStart(this._dateAdapter, this.minStartDate()),
+      NxDateRangeValidators.maxStart(this._dateAdapter, this.maxStartDate()),
+      NxDateRangeValidators.minEnd(this._dateAdapter, this.minEndDate()),
+      NxDateRangeValidators.maxEnd(this._dateAdapter, this.maxEndDate()),
       NxDateRangeValidators.filter(this._dateAdapter, this.dateFilter()!),
     ];
     if (this.required) {

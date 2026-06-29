@@ -160,30 +160,61 @@ export class NxDateValidators {
   }
 }
 
+/**
+ * Provides a set of date range validators that can be used by form controls.
+ * @dynamic
+ */
 export class NxDateRangeValidators {
-  static min<D>(dateAdapter: NxDateAdapter<D>, min: D): ValidatorFn {
+  /** The form control validator for the min start date. */
+  static minStart<D>(dateAdapter: NxDateAdapter<D>, minStart: D): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const controlValue = getValidDateOrNull(
         dateAdapter,
         dateAdapter.deserialize(control.value?.start),
       );
 
-      return !min || !controlValue || dateAdapter.compareDate(min, controlValue) <= 0
+      return !minStart || !controlValue || dateAdapter.compareDate(minStart, controlValue) <= 0
         ? null
-        : { nxDatefieldMin: { min, actual: controlValue } };
+        : { nxDateRangeMinStart: { minStart, actual: controlValue } };
     };
   }
 
-  /** The form control validator for the max date. */
-  static max<D>(dateAdapter: NxDateAdapter<D>, max: D): ValidatorFn {
+  /** The form control validator for the max start date. */
+  static maxStart<D>(dateAdapter: NxDateAdapter<D>, maxStart: D): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const controlValue = getValidDateOrNull(
+        dateAdapter,
+        dateAdapter.deserialize(control.value?.start),
+      );
+      return !maxStart || !controlValue || dateAdapter.compareDate(controlValue, maxStart) <= 0
+        ? null
+        : { nxDateRangeMaxStart: { maxStart, actual: controlValue } };
+    };
+  }
+
+  /** The form control validator for the min end date. */
+  static minEnd<D>(dateAdapter: NxDateAdapter<D>, minEnd: D): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const controlValue = getValidDateOrNull(
         dateAdapter,
         dateAdapter.deserialize(control.value?.end),
       );
-      return !max || !controlValue || dateAdapter.compareDate(max, controlValue) >= 0
+      return !minEnd || !controlValue || dateAdapter.compareDate(controlValue, minEnd) >= 0
         ? null
-        : { nxDatefieldMax: { max, actual: controlValue } };
+        : { nxDateRangeMinEnd: { minEnd, actual: controlValue } };
+    };
+  }
+
+  /** The form control validator for the max end date. */
+  static maxEnd<D>(dateAdapter: NxDateAdapter<D>, maxEnd: D): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const controlValue = getValidDateOrNull(
+        dateAdapter,
+        dateAdapter.deserialize(control.value?.end),
+      );
+      return !maxEnd || !controlValue || dateAdapter.compareDate(maxEnd, controlValue) >= 0
+        ? null
+        : { nxDateRangeMaxEnd: { maxEnd, actual: controlValue } };
     };
   }
 

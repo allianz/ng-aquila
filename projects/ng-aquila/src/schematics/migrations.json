@@ -1,6 +1,12 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "migration-v22": {
+      "version": "22.0.0-0",
+      "description": "Updates ng-aquila to v22",
+      "factory": "./ng-update/index#migrationV22",
+      "cli": "ng"
+    },
     "migration-v20": {
       "version": "20.0.0-0",
       "description": "Updates ng-aquila to v20",

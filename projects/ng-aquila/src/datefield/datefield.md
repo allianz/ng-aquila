@@ -136,12 +136,20 @@ It's possible to validate date ranges. As default the component will return
 - `nxDateRangeIncomplete` if the date range is set only partially
 
 additionally the following validations can be activated by setting the corresponding component inputs, or applied directly as form control validators using `NxDateRangeValidators`:
-- `[minDate]` / `NxDateRangeValidators.min` will check if the start date is >= the min date and will return `nxDatefieldMin` if it does not match
-- `[maxDate]` / `NxDateRangeValidators.max` will check if the end date is <= the max date and will return `nxDatefieldMax` if it does not match
+- `[minStartDate]` / `NxDateRangeValidators.minStart` will check if the start date is >= the min start date and will return `nxDateRangeMinStart` if it does not match
+- `[maxStartDate]` / `NxDateRangeValidators.maxStart` will check if the start date is <= the max start date and will return `nxDateRangeMaxStart` if it does not match
+- `[minEndDate]` / `NxDateRangeValidators.minEnd` will check if the end date is >= the min end date and will return `nxDateRangeMinEnd` if it does not match
+- `[maxEndDate]` / `NxDateRangeValidators.maxEnd` will check if the end date is <= the max end date and will return `nxDateRangeMaxEnd` if it does not match
 - `[dateFilter]` / `NxDateRangeValidators.filter` will check if the start and end date match the filter and will return `nxDateRangeStartFilter` and `nxDateRangeEndFilter` respectively
 - `required` will check if a complete value is present and will return a `required` validation error otherwise. Can be set via the `required` input on the component, `Validators.required`, or `NxDateRangeValidators.required` on the form control.
 
 <!-- example(datefield-range-validation) -->
+
+#### Pinned Start and End Date
+
+By setting `[minStartDate]` and `[maxStartDate]` to the same date, you can pin the start date to a single valid value. Similarly, setting `[minEndDate]` and `[maxEndDate]` to the same date pins the end date. When a validation error fires for a pinned field, compare the input values directly in the template to detect this case and show a specific "must be exactly" message.
+
+<!-- example(datefield-range-validation-pinned) -->
 
 #### Range Parsing & Formatting
 
