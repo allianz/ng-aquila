@@ -20,5 +20,20 @@ export interface AquilaCssSelectorData {
 }
 
 export const cssSelectors: VersionChanges<AquilaCssSelectorData> = {
-  [TargetVersion.V22]: [],
+  [TargetVersion.V22]: [
+    {
+      pr: '',
+      changes: [
+        {
+          replace: 'signal-button-warning-icon-background-color',
+          replaceWith: 'status-icon-warning-background-color',
+          replaceIn: {
+            stylesheet: true,
+            html: true,
+            tsStringLiterals: true,
+          },
+        },
+      ],
+    },
+  ],
 };

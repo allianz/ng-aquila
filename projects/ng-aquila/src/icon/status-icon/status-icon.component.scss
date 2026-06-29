@@ -13,11 +13,8 @@
 :host(.nx-status-icon--warning) {
   color: v(warning);
 }
-// TODO: replace with a status-icon-specific token (e.g. status-icon-warning-background-color).
-// This signal-button token is a leftover from when the signal button owned this style;
-// now the responsibility belongs to status-icon, so this token can be removed once replaced.
 :host(.nx-status-icon--warning:not(.nx-status-icon--contained)) nx-icon {
-  background: v(signal-button-warning-icon-background-color);
+  background: v(status-icon-warning-background-color);
   border-radius: 50%;
   width: 0.8em;
   height: 0.8em;
