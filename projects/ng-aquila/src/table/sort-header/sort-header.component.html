@@ -8,16 +8,13 @@
 >
   <ng-content></ng-content>
 
-  <div
-    [attr.aria-label]="_getAriaLabel()"
-    class="nx-sort-header__icon-container nx-sort-header__icons-container"
-  >
+  <div [attr.aria-label]="_getAriaLabel()" class="nx-sort-header__icon-container">
     @if (!_isSorted()) {
-      <nx-icon name="popout" class="nx-sort-header__unsorted" aria-hidden="true" />
+      <nx-icon name="popout" aria-hidden="true" />
     } @else if (_isSortedAscending()) {
-      <nx-icon name="arrow-up" class="nx-sort-header__ascend" aria-hidden="true" />
+      <nx-icon name="arrow-up" aria-hidden="true" />
     } @else if (_isSortedDescending()) {
-      <nx-icon name="arrow-down" class="nx-sort-header__descend" aria-hidden="true" />
+      <nx-icon name="arrow-down" aria-hidden="true" />
     }
   </div>
 </div>

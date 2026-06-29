@@ -269,7 +269,7 @@ describe('NxSort', () => {
     it('has the correct aria label for an unsorted column', () => {
       createTestComponent(BasicSortTableComponent);
       const nameHeaderElement = fixture.nativeElement.querySelector(
-        '#nameHeader .nx-sort-header__icons-container',
+        '#nameHeader .nx-sort-header__icon-container',
       );
       expect(nameHeaderElement.getAttribute('aria-label')).toBeNull();
     });
@@ -280,7 +280,7 @@ describe('NxSort', () => {
         '#nameHeader .nx-sort-header__focus-container',
       );
       const nameHeaderElement = fixture.nativeElement.querySelector(
-        '#nameHeader .nx-sort-header__icons-container',
+        '#nameHeader .nx-sort-header__icon-container',
       );
       nameHeaderElement.click();
       fixture.detectChanges();
@@ -312,7 +312,7 @@ describe('NxSort', () => {
 
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
       const iconButtonElement = nameHeaderElement.querySelector(
-        '.nx-sort-header__icons-container',
+        '.nx-sort-header__icon-container',
       ) as HTMLDivElement;
       dispatchKeyboardEvent(iconButtonElement, 'keydown', ENTER);
       fixture.detectChanges();
@@ -329,7 +329,7 @@ describe('NxSort', () => {
 
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
       const iconButtonElement = nameHeaderElement.querySelector(
-        '.nx-sort-header__icons-container',
+        '.nx-sort-header__icon-container',
       ) as HTMLDivElement;
       dispatchKeyboardEvent(iconButtonElement, 'keydown', SPACE);
       fixture.detectChanges();

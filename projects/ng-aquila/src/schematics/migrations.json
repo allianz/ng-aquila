@@ -1,12 +1,6 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "migration-v22": {
-      "version": "22.0.0-0",
-      "description": "Updates ng-aquila to v22",
-      "factory": "./ng-update/index#migrationV22",
-      "cli": "ng"
-    },
     "migration-v20": {
       "version": "20.0.0-0",
       "description": "Updates ng-aquila to v20",
@@ -23,6 +17,12 @@
       "version": "21.0.0",
       "description": "remove iban.js and add ibantools to package.json",
       "factory": "./ng-update/custom-update-tool-migrations/replace-ibanjs-in-package-json",
+      "cli": "ng"
+    },
+    "migration-v22": {
+      "version": "22.0.0-0",
+      "description": "Updates ng-aquila to v22",
+      "factory": "./ng-update/index",
       "cli": "ng"
     }
   }
