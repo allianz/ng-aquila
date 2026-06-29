@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-a1Densities: true
+a1Full: true
 group: Data Display
 ---
 
@@ -159,6 +159,18 @@ The outline option should only be used with **product** icons.
 
 <div class="docs-a1">
 <!-- example(status-icon-sizes) -->
+
+#### Contained
+
+Status icons can be displayed inside a filled, circular surface by setting the `contained` input. Contained status icons are available in sizes `s`, `m`, `l`, `xl` and `2xl`.
+
+<!-- example(status-icon-contained) -->
+
+#### Inverse
+
+For placement on dark or inverse surfaces, set the `inverse` input. It can be combined with `contained`.
+
+<!-- example(status-icon-inverse) -->
 </div>
 
 ### Icon Catalogue

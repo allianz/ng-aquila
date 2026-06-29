@@ -1,6 +1,12 @@
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
-import { NgClass } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 
 import { NxIconComponent } from '../icon.component';
 
@@ -13,7 +19,20 @@ export type NxStatusIconSize = 'auto' | 's' | 'm' | 'l' | 'xl' | '2xl';
   templateUrl: './status-icon.component.html',
   styleUrls: ['./status-icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NxIconComponent, NgClass],
+  imports: [NxIconComponent],
+  host: {
+    '[class.nx-status-icon--error]': "type() === 'error'",
+    '[class.nx-status-icon--warning]': "type() === 'warning'",
+    '[class.nx-status-icon--success]': "type() === 'success'",
+    '[class.nx-status-icon--info]': "type() === 'info'",
+    '[class.nx-status-icon--contained]': 'contained()',
+    '[class.nx-status-icon--inverse]': 'inverse()',
+    '[class.nx-status-icon--s]': "size() === 's'",
+    '[class.nx-status-icon--m]': "size() === 'm'",
+    '[class.nx-status-icon--l]': "size() === 'l'",
+    '[class.nx-status-icon--xl]': "size() === 'xl'",
+    '[class.nx-status-icon--2xl]': "size() === '2xl'",
+  },
 })
 export class NxStatusIconComponent {
   private readonly allianzOne = inject(ALLIANZ_ONE, { optional: true }) as AllianzOneOptions | null;
@@ -26,6 +45,12 @@ export class NxStatusIconComponent {
   /** Specifies the size of the icon. */
   readonly size = input<NxStatusIconSize>('auto');
 
+  /** Whether the status icon is rendered inside a filled, circular surface. */
+  readonly contained = input(false, { transform: booleanAttribute });
+
+  /** Whether the status icon uses the inverse color scheme (for placement on dark/inverse surfaces). */
+  readonly inverse = input(false, { transform: booleanAttribute });
+
   private readonly statusListNdbx: { [key in NxStatusIconType]: any } = {
     error: { icon: 'exclamation-triangle' },
     warning: { icon: 'exclamation-circle' },
@@ -34,27 +59,53 @@ export class NxStatusIconComponent {
   };
 
   private readonly statusListA1: { [key in NxStatusIconType]: any } = {
-    error: { iconSmall: 'exclamation-circle', iconLarge: 'product-important-info' },
-    warning: { iconSmall: 'exclamation-triangle', iconLarge: 'exclamation-triangle-o' },
-    success: { iconSmall: 'check-circle', iconLarge: 'product-check' },
-    info: { iconSmall: 'info-circle', iconLarge: 'product-help-information' },
+    error: {
+      iconSmall: 'exclamation-circle',
+      iconContainedSmall: 'exclamation-circle-o',
+      iconLarge: 'product-important-info',
+    },
+    warning: {
+      iconSmall: 'exclamation-triangle',
+      iconContainedSmall: 'exclamation-triangle-o',
+      iconLarge: 'exclamation-triangle-o',
+    },
+    success: {
+      iconSmall: 'check-circle',
+      iconContainedSmall: 'check',
+      iconLarge: 'product-check',
+    },
+    info: {
+      iconSmall: 'info-circle',
+      iconContainedSmall: 'info-circle-o',
+      iconLarge: 'product-help-information',
+    },
   };
 
   /** @docs-private */
   protected readonly icon = computed(() => {
-    if (this.a1Enabled() && ['auto', 's', 'm'].includes(this.size())) {
-      return this.statusListA1[this.type()]?.iconSmall;
+    if (!this.a1Enabled()) {
+      return this.statusListNdbx[this.type()]?.icon;
     }
 
-    if (this.a1Enabled()) {
-      return this.statusListA1[this.type()]?.iconLarge;
+    const status = this.statusListA1[this.type()];
+    const isSmall = ['auto', 's', 'm'].includes(this.size());
+
+    if (!isSmall) {
+      // l, xl and 2xl always use the illustrative glyph (plain and contained).
+      return status?.iconLarge;
     }
 
-    return this.statusListNdbx[this.type()]?.icon;
+    // For s and m the contained variant uses the dedicated outline glyph,
+    // while the plain variant uses the filled functional glyph.
+    return this.contained() ? status?.iconContainedSmall : status?.iconSmall;
   });
 
-  /** @docs-private */
-  get typeClass(): string {
-    return `nx-status-icon--${this.type()}`;
-  }
+  /**
+   * Size passed to the inner glyph. In contained mode the glyph inherits the
+   * font-size of the surface, so we keep it on `auto`.
+   * @docs-private
+   */
+  protected readonly glyphSize = computed<NxStatusIconSize>(() =>
+    this.contained() ? 'auto' : this.size(),
+  );
 }

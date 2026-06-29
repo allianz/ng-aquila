@@ -4,22 +4,117 @@
   display: inline-flex;
 }
 
-.nx-status-icon--error {
+// Plain variants
+// -------------------------
+// The glyph picks up `color` via `currentColor` (svg `fill: currentColor`).
+:host(.nx-status-icon--error) {
   color: v(danger);
 }
-.nx-status-icon--warning {
+:host(.nx-status-icon--warning) {
   color: v(warning);
-  // TODO: replace with a status-icon-specific token (e.g. status-icon-warning-background-color).
-  // This signal-button token is a leftover from when the signal button owned this style;
-  // now the responsibility belongs to status-icon, so this token can be removed once replaced.
+}
+// TODO: replace with a status-icon-specific token (e.g. status-icon-warning-background-color).
+// This signal-button token is a leftover from when the signal button owned this style;
+// now the responsibility belongs to status-icon, so this token can be removed once replaced.
+:host(.nx-status-icon--warning:not(.nx-status-icon--contained)) nx-icon {
   background: v(signal-button-warning-icon-background-color);
   border-radius: 50%;
   width: 0.8em;
   height: 0.8em;
 }
-.nx-status-icon--info {
+:host(.nx-status-icon--info) {
   color: v(info);
 }
-.nx-status-icon--success {
+:host(.nx-status-icon--success) {
   color: v(success);
+}
+
+// Plain inverse variants (for placement on dark/inverse surfaces)
+// -------------------------
+:host(.nx-status-icon--inverse.nx-status-icon--error) {
+  color: v(status-icon-error-inverse-color);
+}
+:host(.nx-status-icon--inverse.nx-status-icon--warning) {
+  color: v(status-icon-warning-inverse-color);
+}
+:host(.nx-status-icon--inverse.nx-status-icon--info) {
+  color: v(status-icon-info-inverse-color);
+}
+:host(.nx-status-icon--inverse.nx-status-icon--success) {
+  color: v(status-icon-success-inverse-color);
+}
+
+// Contained variants
+// -------------------------
+// The inner glyph becomes a filled, circular surface sized via the contained tokens.
+:host(.nx-status-icon--contained) nx-icon {
+  border-radius: 50%;
+  // Default (size "auto") matches the smallest contained size.
+  width: v(icon-contained-s-container-size);
+  height: v(icon-contained-s-container-size);
+  font-size: v(icon-contained-s-font-size);
+}
+
+:host(.nx-status-icon--contained.nx-status-icon--error) nx-icon {
+  color: v(status-icon-error-contained-color);
+  background-color: v(status-icon-error-contained-background-color);
+}
+:host(.nx-status-icon--contained.nx-status-icon--warning) nx-icon {
+  color: v(status-icon-warning-contained-color);
+  background-color: v(status-icon-warning-contained-background-color);
+}
+:host(.nx-status-icon--contained.nx-status-icon--info) nx-icon {
+  color: v(status-icon-info-contained-color);
+  background-color: v(status-icon-info-contained-background-color);
+}
+:host(.nx-status-icon--contained.nx-status-icon--success) nx-icon {
+  color: v(status-icon-success-contained-color);
+  background-color: v(status-icon-success-contained-background-color);
+}
+
+// Contained inverse variants
+// -------------------------
+:host(.nx-status-icon--contained.nx-status-icon--inverse.nx-status-icon--error) nx-icon {
+  color: v(status-icon-error-contained-inverse-color);
+  background-color: v(status-icon-error-contained-inverse-background-color);
+}
+:host(.nx-status-icon--contained.nx-status-icon--inverse.nx-status-icon--warning) nx-icon {
+  color: v(status-icon-warning-contained-inverse-color);
+  background-color: v(status-icon-warning-contained-inverse-background-color);
+}
+:host(.nx-status-icon--contained.nx-status-icon--inverse.nx-status-icon--info) nx-icon {
+  color: v(status-icon-info-contained-inverse-color);
+  background-color: v(status-icon-info-contained-inverse-background-color);
+}
+:host(.nx-status-icon--contained.nx-status-icon--inverse.nx-status-icon--success) nx-icon {
+  color: v(status-icon-success-contained-inverse-color);
+  background-color: v(status-icon-success-contained-inverse-background-color);
+}
+
+// Contained sizes
+// -------------------------
+:host(.nx-status-icon--contained.nx-status-icon--s) nx-icon {
+  width: v(icon-contained-s-container-size);
+  height: v(icon-contained-s-container-size);
+  font-size: v(icon-contained-s-font-size);
+}
+:host(.nx-status-icon--contained.nx-status-icon--m) nx-icon {
+  width: v(icon-contained-m-container-size);
+  height: v(icon-contained-m-container-size);
+  font-size: v(icon-contained-m-font-size);
+}
+:host(.nx-status-icon--contained.nx-status-icon--l) nx-icon {
+  width: v(icon-contained-l-container-size);
+  height: v(icon-contained-l-container-size);
+  font-size: v(icon-contained-l-font-size);
+}
+:host(.nx-status-icon--contained.nx-status-icon--xl) nx-icon {
+  width: v(icon-contained-xl-container-size);
+  height: v(icon-contained-xl-container-size);
+  font-size: v(icon-contained-xl-font-size);
+}
+:host(.nx-status-icon--contained.nx-status-icon--2xl) nx-icon {
+  width: v(icon-contained-2xl-container-size);
+  height: v(icon-contained-2xl-container-size);
+  font-size: v(icon-contained-2xl-font-size);
 }

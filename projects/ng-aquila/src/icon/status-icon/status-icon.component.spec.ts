@@ -21,13 +21,35 @@ describe('StatusIconComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should apply the type class on the host', () => {
+    expect(fixture.nativeElement.querySelector('.nx-status-icon--info')).toBeTruthy();
+  });
+
+  it('should apply the contained class when contained is set', () => {
+    testInstance.contained = true;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.nx-status-icon--contained')).toBeTruthy();
+  });
+
+  it('should apply the inverse class when inverse is set', () => {
+    testInstance.inverse = true;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.nx-status-icon--inverse')).toBeTruthy();
+  });
 });
 
 @Component({
-  template: `<nx-status-icon [type]="status"></nx-status-icon>`,
+  template: `<nx-status-icon
+    [type]="status"
+    [contained]="contained"
+    [inverse]="inverse"
+  ></nx-status-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxStatusIconComponent],
 })
 class StatusIconTestComponent {
   status: NxStatusIconType = 'info';
+  contained = false;
+  inverse = false;
 }
