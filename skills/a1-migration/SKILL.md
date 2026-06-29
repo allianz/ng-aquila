@@ -3,7 +3,7 @@ name: a1-migration
 description: 'Migrate an Angular application to the One Allianz (A1) Design System. Use when: migrating to A1 design system, applying One Allianz theme, migrating circle toggles to tiles, updating small stages, updating layout to left-alignment, A1 brand kit, ngx-brand-kit, ng-aquila migration, NDBX to A1.'
 argument-hint: 'Theme (optional): spacious | compact | dense'
 metadata:
-  version: 0.1.3
+  version: 0.1.4
 ---
 
 # A1 Design System Migration
@@ -24,7 +24,7 @@ metadata:
 
 ---
 
-**IMPORTANT:** Before starting, tell the user the skill version "0.1.3" and that it's in beta phase. This is important for tracking and future updates.
+**IMPORTANT:** Before starting, tell the user the skill version "0.1.4" and that it's in beta phase. This is important for tracking and future updates.
 
 ## Step 1: Apply A1 Theme
 
@@ -230,6 +230,61 @@ If used in a Standalone Component, add the `NxAttentionColorComponent` to the co
 
 ---
 
+## Step 6: Migrate Context Menu Selection
+
+`nxContextMenuItem` now has built-in single/multi selection. Hand-rolled patterns that combine `selectable`, a `<nx-icon name="check">`, an explicit `role="menuitemradio|menuitemcheckbox"` and `[attr.aria-checked]` should be migrated to the new API.
+
+### Detection
+
+Look for `nxContextMenuItem` usages that match any of these signals:
+
+- `selectable` (bare attribute) **plus** a manual `<nx-icon name="check">` rendered conditionally on the selected value.
+- `role="menuitemradio"` or `role="menuitemcheckbox"` set by hand on a menu item.
+- `[attr.aria-checked]` bound by hand on a menu item.
+
+### Replacement
+
+**Before**:
+
+```html
+<button
+  nxContextMenuItem
+  selectable
+  type="button"
+  (click)="selectedLanguage = o.value"
+  role="menuitemradio"
+  [attr.aria-checked]="selectedLanguage === o.value ? 'true' : 'false'"
+>
+  @if (selectedLanguage === o.value) {
+    <nx-icon aria-hidden="true" name="check" nxIconPositionStart></nx-icon>
+  }
+  {{ o.label }}
+</button>
+```
+
+**After**:
+
+```html
+<button
+  nxContextMenuItem
+  selectable="single"
+  [selected]="selectedLanguage === o.value"
+  type="button"
+  (click)="selectedLanguage = o.value"
+>
+  {{ o.label }}
+</button>
+```
+
+For multi-select menus use `selectable="multi"` and keep `disableCloseOnSelect` if the menu should stay open between toggles. Drop any manual `<nx-icon name="check">`, `role`, and `[attr.aria-checked]` bindings — the component renders the indicator and sets the role for you.
+
+### Notes
+
+- Legacy `selectable` without a value still works and is treated as `"true"`. but this is a legacy behavior. This is a behavior change vs. older versions where the bare attribute only adjusted padding; templates relying on the old purely-stylistic behavior should set `[selectable]="null"` (or remove the attribute) if they don't want a radio role.
+- After applying this step, append `"context-menu-selection"` to the `a1Migration.steps` array in `package.json`.
+
+---
+
 ## Migration Tracking
 
 After completing each step, record the migration so adoption can be tracked across teams via GitHub search.
@@ -240,20 +295,20 @@ After **Step 1** (theme applied), add an `a1Migration` key to `package.json`. Af
 
 ```json
 "a1Migration": {
-  "skillVersion": "0.1.3",
+  "skillVersion": "0.1.4",
   "appliedAt": "YYYY-MM-DD",
   "theme": "<spacious|compact|dense>",
   "steps": ["theme"]
 }
 ```
 
-Append step names as they complete: `"theme"`, `"tiles"`, `"info-icons"`, `"layout"`, `"small-stage"`.
+Append step names as they complete: `"theme"`, `"tiles"`, `"info-icons"`, `"layout"`, `"small-stage"`, `"context-menu-selection"`.
 
 A fully migrated project looks like:
 
 ```json
 "a1Migration": {
-  "skillVersion": "0.1.3",
+  "skillVersion": "0.1.4",
   "appliedAt": "YYYY-MM-DD",
   "theme": "<spacious|compact|dense>",
   "steps": ["theme", "tiles", "info-icons", "layout", "small-stage"]

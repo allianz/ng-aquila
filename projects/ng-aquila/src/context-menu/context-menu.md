@@ -108,12 +108,37 @@ Alternatively, the `NX_CONTEXT_MENU_SCROLL_STRATEGY` injection token can be prov
 
 ### Selection Menu
 
-Selection menu stores its state. It can easily be built on top of Context Menu, simply copy the source code of the examples below and modify as needed. Use the `selectable` option on the menu items for the correct styling.
+`nxContextMenuItem` can manage its own selection presentation while the application keeps ownership of the selected value(s). Set `selectable` to `"single"` or `"multi"` and bind `[selected]` to your state. The component takes care of:
+
+- setting `role="menuitemradio"` (single) or `role="menuitemcheckbox"` (multi),
+- toggling `aria-checked`,
+- rendering the radio / checkbox indicator.
+
+Setting `selectable` to `null` (or omitting it) restores the default `menuitem` behavior.
+<div class="docs-a1">
 
 #### Single selection
 
-<!-- example(context-menu-selection) -->
+<!-- example(context-menu-single-selectable) -->
 
 #### Multiple selection
 
+Use `disableCloseOnSelect` to keep the menu open while the user toggles multiple options. The example below also wraps the items in `<nx-context-menu-group>` to label the section.
+
+<!-- example(context-menu-multi-selectable) -->
+
+</div>
+
+
+### Legacy: hand-rolled selection (deprecated pattern)
+
+The examples below predate the built-in `selectable` modes and render their own indicator, role and `aria-checked`. They are kept for reference. **Prefer One Allianz API.** To migrate, drop the manual `<nx-icon name="check">`, `role` and `[attr.aria-checked]` and replace them with `selectable="single|multi"` plus `[selected]`.
+
+#### Single selection (legacy)
+
+<!-- example(context-menu-selection) -->
+
+#### Multiple selection (legacy)
+
 <!-- example(context-menu-select-multiple) -->
+

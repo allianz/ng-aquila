@@ -1,0 +1,29 @@
+<nx-context-menu #menu="nxContextMenu">
+  <nx-context-menu-header>Car damage</nx-context-menu-header>
+  <nx-context-menu-group>
+    @for (o of options; track o.value) {
+    <button
+      nxContextMenuItem
+      selectable="multi"
+      disableCloseOnSelect
+      [selected]="isSelected(o.value)"
+      type="button"
+      (click)="toggle(o.value)"
+    >
+      {{ o.label }}
+    </button>
+    }
+  </nx-context-menu-group>
+</nx-context-menu>
+
+<button
+  nxButton="tertiary small"
+  class="uppercase"
+  [nxContextMenuTriggerFor]="menu"
+  aria-label="Open damage menu"
+  type="button"
+>
+  CAR DAMAGE
+  <nx-icon aria-hidden="true" name="chevron-down" nxIconPositionEnd></nx-icon>
+</button>
+<div class="nx-margin-top-s">Selected: {{ selectedLabel() || 'none' }}</div>

@@ -69,6 +69,13 @@
     }
   }
 
+  &.is-selectable-single,
+  &.is-selectable-multi {
+    .nx-context-menu-item__content-wrapper {
+      width: 100%;
+    }
+  }
+
   .nx-context-menu-item__content-wrapper ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
     margin-right: v(context-menu-icon-margin);
     font-size: v(context-menu-item-icon-size);
@@ -98,6 +105,33 @@
       padding-left: initial;
       padding-right: v(context-menu-with-icon-padding-left);
     }
+  }
+
+  &.is-selectable-single ::ng-deep nx-radio,
+  &.is-selectable-multi ::ng-deep nx-checkbox {
+    width: 100%;
+  }
+
+  &.is-selectable-single ::ng-deep .nx-radio__label,
+  &.is-selectable-multi ::ng-deep .nx-checkbox__label {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  &.is-selectable-single
+    ::ng-deep
+    .nx-radio-button--big-label
+    .nx-radio__label
+    .nx-radio__label--text:not(:empty) {
+    margin-left: 0;
+    margin-right: v(radio-button-large-label-margin-left);
+  }
+
+  &.is-selectable-multi ::ng-deep .nx-checkbox__label-text {
+    margin-left: 0;
+    margin-right: v(checkbox-small-label-text-margin-left);
   }
 
   .nx-context-menu-item__expand {

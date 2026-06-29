@@ -17,12 +17,14 @@ import { ContextMenuGroupExampleComponent } from './context-menu-group/context-m
 import { ContextMenuIconsExampleComponent } from './context-menu-icons/context-menu-icons-example';
 import { ContextMenuIndicatorExampleComponent } from './context-menu-indicator/context-menu-indicator-example';
 import { ContextMenuLazyExampleComponent } from './context-menu-lazy/context-menu-lazy-example';
+import { ContextMenuMultiSelectableExampleComponent } from './context-menu-multi-selectable/context-menu-multi-selectable-example';
 import { ContextMenuNestedExampleComponent } from './context-menu-nested/context-menu-nested-example';
 import { ContextMenuProgrammaticExampleComponent } from './context-menu-programmatic/context-menu-programmatic-example';
 import { ContextMenuScrollStrategyExampleComponent } from './context-menu-scroll-strategy/context-menu-scroll-strategy-example';
 import { ContextMenuScrollStrategyProviderExampleComponent } from './context-menu-scroll-strategy-provider/context-menu-scroll-strategy-provider-example';
 import { ContextMenuSelectMultipleExampleComponent } from './context-menu-select-multiple/context-menu-select-multiple-example';
 import { ContextMenuSelectionExampleComponent } from './context-menu-selection/context-menu-selection-example';
+import { ContextMenuSingleSelectableExampleComponent } from './context-menu-single-selectable/context-menu-single-selectable-example';
 
 const EXAMPLES = [
   ContextMenuBasicExampleComponent,
@@ -38,6 +40,8 @@ const EXAMPLES = [
   ContextMenuScrollStrategyProviderExampleComponent,
   ContextMenuSelectionExampleComponent,
   ContextMenuSelectMultipleExampleComponent,
+  ContextMenuSingleSelectableExampleComponent,
+  ContextMenuMultiSelectableExampleComponent,
   ContextMenuGroupExampleComponent,
 ];
 
@@ -73,6 +77,10 @@ export class ContextExamplesModule {
       'context-menu-cursor-mode': ContextMenuCursorModeExampleComponent,
       'context-menu-selection': ContextMenuSelectionExampleComponent,
       'context-menu-select-multiple': ContextMenuSelectMultipleExampleComponent,
+      'context-menu-single-selectable':
+        ContextMenuSingleSelectableExampleComponent,
+      'context-menu-multi-selectable':
+        ContextMenuMultiSelectableExampleComponent,
       'context-menu-group': ContextMenuGroupExampleComponent,
     };
   }
