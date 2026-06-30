@@ -44,7 +44,7 @@
 
 :host.checked {
   .nx-radio__control {
-    --nx-radio-cutout-radius: calc(var(--radio-button-dot-size) / 2);
+    --nx-radio-cutout-radius: calc(var(--radio-button-inner-dot-size) / 2);
   }
 }
 

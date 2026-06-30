@@ -51,8 +51,8 @@
 }
 
 .check-dot {
-  width: v(radio-button-dot-size);
-  height: v(radio-button-dot-size);
+  width: v(radio-button-inner-dot-size);
+  height: v(radio-button-inner-dot-size);
   border-radius: 50%;
   transition: background-color 0.2s ease;
   background-color: v(radio-button-selected-dot-color);

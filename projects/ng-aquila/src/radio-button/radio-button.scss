@@ -98,8 +98,8 @@
 }
 
 .nx-radio__dot {
-  width: v(radio-button-dot-size);
-  height: v(radio-button-dot-size);
+  width: v(radio-button-inner-dot-size);
+  height: v(radio-button-inner-dot-size);
   background-color: v(radio-button-dot-background-color);
   border-radius: v(radio-button-border-radius);
   transition: background-color 0.2s ease;

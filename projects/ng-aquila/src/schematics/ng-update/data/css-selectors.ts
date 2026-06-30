@@ -25,8 +25,8 @@ export const cssSelectors: VersionChanges<AquilaCssSelectorData> = {
       pr: '',
       changes: [
         {
-          replace: 'signal-button-warning-icon-background-color',
-          replaceWith: 'status-icon-warning-background-color',
+          replace: 'radio-button-dot-size',
+          replaceWith: 'radio-button-inner-dot-size',
           replaceIn: {
             stylesheet: true,
             html: true,
