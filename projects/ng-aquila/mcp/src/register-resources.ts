@@ -4,6 +4,9 @@ import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mc
 import { Resource } from '@modelcontextprotocol/sdk/types.js';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const ALL_COMPONENT_RESOURCES: Resource[] = fs
   .readdirSync(path.resolve(__dirname, '../generated/components'))

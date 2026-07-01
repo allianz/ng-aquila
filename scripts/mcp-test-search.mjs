@@ -5,10 +5,11 @@
  *   npm run mcp:test-search -- <componentName> [usage]
  *
  * Examples:
+ *   requires to run `npm run mcp:build` first and then run the following commands:
  *   npm run mcp:test-search -- button
  *   npm run mcp:test-search -- 'date field' 'reactive forms'
  */
-import { searchNdbxComponentsToolConfig } from '../projects/ng-aquila/mcp/src/tools/search-ndbx-components/search-ndbx-components';
+import { searchNdbxComponentsToolConfig } from '../dist/ng-aquila/mcp/src/tools/search-ndbx-components/search-ndbx-components.js';
 
 const [, , componentName, usage] = process.argv;
 
@@ -19,9 +20,7 @@ if (!componentName) {
   process.exit(1);
 }
 
-(async () => {
-  const result = await searchNdbxComponentsToolConfig.cb({ componentName, usage });
-  for (const item of result.content) {
-    console.log(item.text);
-  }
-})();
+const result = await searchNdbxComponentsToolConfig.cb({ componentName, usage });
+for (const item of result.content) {
+  console.log(item.text);
+}

@@ -2,7 +2,8 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "CommonJS",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "dist/",
     "rootDir": "./src",
     "strict": true,
@@ -10,7 +11,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     // TS 6.0 no longer auto-includes @types/node; the generator scripts run via
-    // ts-node and need node globals (fs, path, __dirname) explicitly.
+    // ts-node and need node globals (fs, path) explicitly.
     "types": ["node"]
   },
   "include": ["src/**/*"],

@@ -1,9 +1,12 @@
 import fs from 'fs';
 import Fuse, { type IFuseOptions } from 'fuse.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import z from 'zod/v3';
 
-import { SectionDoc } from '../models';
+import { SectionDoc } from '../models.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const inputSchema = z.object({
   componentName: z.string().describe(

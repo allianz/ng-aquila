@@ -2,8 +2,8 @@
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
-import { ndbxGuideToolConfig } from './tools/ndbx-guide/ndbx-guide';
-import { searchNdbxComponentsToolConfig } from './tools/search-ndbx-components/search-ndbx-components';
+import { ndbxGuideToolConfig } from './tools/ndbx-guide/ndbx-guide.js';
+import { searchNdbxComponentsToolConfig } from './tools/search-ndbx-components/search-ndbx-components.js';
 
 export function registerTools(mcpServer: McpServer) {
   // Register Tool 'Search NDBX Components'
