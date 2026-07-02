@@ -2176,6 +2176,8 @@ $nx-theme: (
   slider-label-disabled-color: text-01,
   slider-value-color: text-02,
   slider-handle-background-color: ui-05,
+  // defaults to the resting background so non-A1 themes show no hover change
+  slider-handle-hover-background-color: slider-handle-background-color,
   slider-value-disabled-color: text-02,
   slider-value-label-color: text-01,
   slider-value-background-color: ui-05,
@@ -2186,6 +2188,13 @@ $nx-theme: (
   slider-handle-disabled-background-color: disabled-01,
   slider-handle-focus-border-color: interactive-primary,
   slider-handle-active-inset-color: rgba(39, 171, 214, 0.2),
+  // defaults to the resting border color so non-A1 themes keep their border on active
+  slider-handle-active-border-color: slider-handle-border-color,
+  slider-handle-hover-border-color: slider-handle-border-color,
+  // defaults to no shrink so non-A1 themes keep the handle at full size
+  slider-handle-active-scale: scale(1),
+  // duration of the handle active-state scaling transition
+  slider-handle-active-scale-duration: 100ms,
   slider-label-font-size: base-label-large-font-size,
   slider-label-line-height: base-label-large-line-height,
   slider-label-letter-spacing: base-label-large-letter-spacing,

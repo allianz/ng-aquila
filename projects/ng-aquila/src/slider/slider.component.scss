@@ -84,14 +84,30 @@ $arrow-size: 1.5 * nx-spacer(3xs);
   height: v(slider-handle-size);
   right: 0;
   transform: translateX(50%);
-  border-radius: 50%;
-  border: v(slider-handle-border);
-  box-shadow: v(slider-handle-box-shadow);
-  background: v(slider-handle-background-color);
   box-sizing: border-box;
   top: calc((v(slider-handle-size) - v(slider-background-height)) * 0.5 * -1);
   z-index: 2;
   cursor: grab;
+
+  // The visible circle lives on a pseudo-element so the active-state scaling
+  // only shrinks the handle itself and not the value label/arrow, which are
+  // rendered as children of the handle.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: v(slider-handle-border);
+    box-shadow: v(slider-handle-box-shadow);
+    background: v(slider-handle-background-color);
+    box-sizing: border-box;
+    // Short animation for the active-state scaling (see &:active::before).
+    transition: transform v(slider-handle-active-scale-duration) $animation-easing-standard;
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
 
   :host-context([dir='rtl']) & {
     left: 0;
@@ -99,22 +115,47 @@ $arrow-size: 1.5 * nx-spacer(3xs);
     transform: translateX(-50%);
   }
 
+  &:hover::before {
+    background: v(slider-handle-hover-background-color);
+    border-color: v(slider-handle-hover-border-color);
+  }
+
   &:focus {
     outline: none;
-    border-color: v(slider-handle-focus-border-color);
   }
 
   &:active {
-    box-shadow:
-      v(slider-handle-box-shadow),
-      inset 0 0 0 v(slider-handle-active-inset-border) v(slider-handle-background-color),
-      inset 0 0 0 v(slider-handle-size) v(slider-handle-active-inset-color);
     cursor: grabbing;
+
+    &::before {
+      box-shadow:
+        v(slider-handle-box-shadow),
+        inset 0 0 0 v(slider-handle-active-inset-border) v(slider-handle-background-color),
+        inset 0 0 0 v(slider-handle-size) v(slider-handle-active-inset-color);
+      transform: v(slider-handle-active-scale);
+      border-color: v(slider-handle-active-border-color);
+    }
   }
 
-  &.cdk-keyboard-focused {
+  &.cdk-keyboard-focused::before {
     border-color: v(slider-handle-focus-border-color);
     @include focus-style;
+  }
+}
+
+// A1 is the default. Legacy themes (NDBX, Aposin) don't get the A1 hover and
+// active-state handle styling (background change on hover, scale + border on
+// active), only their baseline active box-shadow and grab cursor.
+:host(:not(.nx-a1-slider)) {
+  .nx-slider__handle {
+    &::before {
+      transition: none;
+    }
+
+    &:active::before {
+      transform: none;
+      border-color: v(slider-handle-border-color);
+    }
   }
 }
 
@@ -198,7 +239,7 @@ $arrow-size: 1.5 * nx-spacer(3xs);
     background-color: v(slider-value-disabled-background-color);
   }
 
-  .nx-slider__handle {
+  .nx-slider__handle::before {
     background-color: v(slider-handle-disabled-background-color);
     border-color: v(slider-handle-disabled-border);
   }
@@ -238,12 +279,28 @@ $arrow-size: 1.5 * nx-spacer(3xs);
     color: v(negative);
   }
 
+  // A1 is the default: the inverse slider recolors the value label to the
+  // brand-inverse colors.
+  .nx-slider__value {
+    background-color: v(color-brand-inverse);
+    color: v(color-on-brand-inverse);
+  }
+
   .nx-slider__filler {
     background-color: v(negative);
   }
 
   .nx-slider__background {
     background-color: v(slider-negative-background-color);
+  }
+}
+
+// Legacy themes (NDBX, Aposin) keep the default value background/color on the
+// inverse slider instead of the A1 brand-inverse recoloring.
+:host(:not(.nx-a1-slider).nx-slider--negative) {
+  .nx-slider__value {
+    background-color: v(slider-value-background-color);
+    color: v(slider-value-color);
   }
 }
 
@@ -268,16 +325,18 @@ $arrow-size: 1.5 * nx-spacer(3xs);
     background-color: highlight;
   }
 
-  .nx-slider__handle {
+  .nx-slider__handle::before {
     background-color: buttonFace;
     border-color: buttonText;
+  }
 
-    &:hover,
-    &:focus {
+  .nx-slider__handle {
+    &:hover::before,
+    &:focus::before {
       background-color: highlight;
     }
 
-    &:active {
+    &:active::before {
       background-color: buttonText;
     }
   }
@@ -297,7 +356,7 @@ $arrow-size: 1.5 * nx-spacer(3xs);
       background-color: GrayText;
     }
 
-    .nx-slider__handle {
+    .nx-slider__handle::before {
       background-color: GrayText;
     }
 

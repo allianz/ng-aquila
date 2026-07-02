@@ -54,11 +54,11 @@ A disabled slider does not react to mouse, touch or keyboard events.
 
 <!-- example(slider-disabled) -->
 
-### Negative Slider
+### Inverse Slider
 
-You can change the styling of the slider to negative via the `negative` property as shown in the example below.
+You can change the styling of the slider to inverse via the `inverse` property as shown in the example below. The legacy `negative` property is still supported as a deprecated alias.
 
-<!-- example(slider-negative) -->
+<!-- example(slider-inverse) -->
 
 ### Inverted Slider
 

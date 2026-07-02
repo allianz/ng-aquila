@@ -74,6 +74,7 @@ describe('NxSliderComponent', () => {
         NgModelSlider,
         ReactiveFormsSlider,
         BasicSliderOnPush,
+        InverseSlider,
         AppendixSlider,
         AriaLabelledBySlider,
       ],
@@ -583,6 +584,22 @@ describe('NxSliderComponent', () => {
       expect(sliderNativeElement).toHaveClass('nx-slider--negative');
     });
 
+    it('should apply the inverse styles via the legacy negative input', () => {
+      createTestComponent(BasicSliderOnPush);
+      testInstance.sliderInstance.negative = true;
+      fixture.detectChanges();
+      expect(sliderNativeElement).toHaveClass('nx-slider--negative');
+      expect(testInstance.sliderInstance.inverse()).toBeTrue();
+    });
+
+    it('should apply the inverse styles via the inverse input', () => {
+      createTestComponent(InverseSlider);
+      (testInstance as InverseSlider).inverse = true;
+      fixture.detectChanges();
+      expect(sliderNativeElement).toHaveClass('nx-slider--negative');
+      expect(testInstance.sliderInstance.inverse()).toBeTrue();
+    });
+
     it('should update after id change', () => {
       createTestComponent(BasicSliderOnPush);
       testInstance.sliderInstance.id = 'slider-with-id';
@@ -710,6 +727,20 @@ class BasicSlider extends SliderTest {}
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSliderOnPush extends SliderTest {}
+
+@Component({
+  template: `
+    <div class="slider-container">
+      <nx-slider id="testSlider" label="testLabel" [inverse]="inverse"> </nx-slider>
+    </div>
+  `,
+  styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
+})
+class InverseSlider extends SliderTest {
+  inverse = false;
+}
 
 @Component({
   template: `

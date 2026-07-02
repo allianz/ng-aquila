@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { clamp, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
@@ -14,6 +15,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChildren,
   ElementRef,
   EventEmitter,
@@ -26,6 +28,7 @@ import {
   Optional,
   Output,
   QueryList,
+  signal,
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -62,7 +65,8 @@ const VALUE_MARGIN = 4;
     '[attr.aria-disabled]': 'disabled ? true : null',
     '(keydown)': '_handleKeypress($event)',
     '[class.nx-slider--disabled]': 'disabled',
-    '[class.nx-slider--negative]': 'negative',
+    '[class.nx-slider--negative]': 'inverse()',
+    '[class.nx-a1-slider]': '_a1Enabled()',
   },
   imports: [NgStyle],
 })
@@ -216,15 +220,33 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
   }
   private _value = 0;
 
-  /** Whether the negative set of styles is applied (Default: 'false').*/
+  /** Whether the inverse set of styles is applied (Default: 'false'). */
+  readonly inverseInput = input(false, {
+    alias: 'inverse',
+    transform: coerceBooleanProperty,
+  });
+
+  /**
+   * Whether the negative set of styles is applied (Default: 'false').
+   * @deprecated Use `inverse` instead. Kept for backwards compatibility.
+   */
   @Input() set negative(value: BooleanInput) {
-    this._negative = coerceBooleanProperty(value);
-    this._cdr.markForCheck();
+    this._negative.set(coerceBooleanProperty(value));
   }
   get negative(): boolean {
-    return this._negative;
+    return this._negative();
   }
-  private _negative = false;
+  private readonly _negative = signal(false);
+
+  /**
+   * Whether the inverse (formerly "negative") set of styles is applied.
+   *
+   * Resolves to `true` when either the `inverse` or the legacy `negative` input is set.
+   */
+  readonly inverse = computed(() => this.inverseInput() || this._negative());
+
+  private readonly _a1 = inject<AllianzOneOptions | null>(ALLIANZ_ONE, { optional: true });
+  protected readonly _a1Enabled = computed(() => this._a1?.enabled?.() ?? false);
 
   /** Hides the min/max labels (Default: 'false'). */
   @Input() set hideLabels(value: BooleanInput) {
@@ -398,6 +420,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     }
     const keyActions = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'End', 'Home', 'Space'];
     if (keyActions.includes(event.code)) {
+      this._focusMonitor.focusVia(this._handleElement, 'keyboard');
       event.preventDefault();
     }
 
