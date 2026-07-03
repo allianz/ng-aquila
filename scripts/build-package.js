@@ -59,6 +59,7 @@ function compileSchematics() {
   rimrafSync('./dist/ng-aquila/schematics');
 
   execSync(`tsc -p ./projects/ng-aquila/tsconfig.schematics.json`, { stdio: 'inherit' });
+
   console.log('============================');
   console.log('  Copying schematic assets');
   globCopy('./projects/ng-aquila/src/schematics', './dist/ng-aquila/schematics', '/**/*.json');
