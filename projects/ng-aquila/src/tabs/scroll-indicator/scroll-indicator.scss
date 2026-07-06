@@ -15,6 +15,12 @@
     background-color: var(--tab-item-border-color);
   }
 
+  :host-context(nx-tab-group.is-expert) {
+    button::after {
+      bottom: calc(-1 * var(--tab-item-border-width));
+    }
+  }
+
   button {
     display: flex;
     align-items: v(tab-scroll-indicator-align);
