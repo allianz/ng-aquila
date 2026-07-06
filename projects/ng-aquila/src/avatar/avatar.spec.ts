@@ -2,7 +2,7 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxAvatarAccent, NxAvatarComponent, NxAvatarSize } from './avatar';
+import { NxAvatarAccentColor, NxAvatarComponent, NxAvatarProminence, NxAvatarSize } from './avatar';
 import { NxAvatarModule } from './avatar.module';
 
 @Directive({ standalone: true })
@@ -97,10 +97,10 @@ describe('NxAvatarComponent', () => {
   });
 
   describe('accent color', () => {
-    it('should return the correct class when attention is true', () => {
+    it('should return the correct class when prominence is attention', () => {
       createTestComponent(AvatarWithAccent);
       (testInstance as any).accentColor = 'blue';
-      (testInstance as any).attention = true;
+      (testInstance as any).prominence = 'attention';
       fixture.detectChanges();
       expect(avatarElement).toHaveClass('nx-avatar--accent-attention-blue');
     });
@@ -112,9 +112,9 @@ describe('NxAvatarComponent', () => {
       expect(avatarElement).toHaveClass('nx-avatar--accent-subtle-blue');
     });
 
-    it('should return the correct class for attention and custom accent color', () => {
+    it('should return the correct class for attention prominence and custom accent color', () => {
       createTestComponent(AvatarWithAccent);
-      (testInstance as any).attention = true;
+      (testInstance as any).prominence = 'attention';
       (testInstance as any).accentColor = 'red';
       fixture.detectChanges();
       expect(avatarElement).toHaveClass('nx-avatar--accent-attention-red');
@@ -140,7 +140,7 @@ describe('NxAvatarComponent', () => {
       expect(avatarElement).toHaveClass('nx-avatar--disabled');
     });
 
-    it('should apply disabled class with attention state', () => {
+    it('should apply disabled class with attention prominence', () => {
       createTestComponent(DisabledAvatarWithAccent);
       expect(avatarElement).toHaveClass('nx-avatar--disabled');
       expect(avatarElement).toHaveClass('is-attention');
@@ -194,13 +194,13 @@ class AvatarButton extends AvatarTest {}
 class ConfigurableAvatar extends AvatarTest {}
 
 @Component({
-  template: `<div nxAvatar [accentColor]="accentColor" [attention]="attention">SM</div>`,
+  template: `<div nxAvatar [accentColor]="accentColor" [prominence]="prominence">SM</div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })
 class AvatarWithAccent extends AvatarTest {
-  accentColor: NxAvatarAccent = 'default';
-  attention = false;
+  accentColor: NxAvatarAccentColor = 'default';
+  prominence: NxAvatarProminence = 'subtle';
 }
 
 @Component({
@@ -213,7 +213,9 @@ class ConfigurableDisabledAvatar extends AvatarTest {
 }
 
 @Component({
-  template: `<div nxAvatar [disabled]="true" [attention]="true" [accentColor]="'blue'">MD</div>`,
+  template: `<div nxAvatar [disabled]="true" prominence="attention" [accentColor]="'blue'">
+    MD
+  </div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
 })

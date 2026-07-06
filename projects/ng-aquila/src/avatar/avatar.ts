@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 /** Size of an avatar. */
 export type NxAvatarSize = 'xsmall' | 'small' | 'small-medium' | 'medium' | 'large' | 'xlarge';
-export type NxAvatarAccent =
+export type NxAvatarAccentColor =
   | 'yellow'
   | 'orange'
   | 'red'
@@ -26,6 +26,8 @@ export type NxAvatarAccent =
   | 'green'
   | 'gray'
   | 'default';
+/** Prominence of an avatar's accent color. */
+export type NxAvatarProminence = 'subtle' | 'attention';
 @Component({
   selector: '[nxAvatar]',
   template: `<div class="nx-avatar__content-wrapper">
@@ -42,7 +44,7 @@ export type NxAvatarAccent =
     '[class.nx-avatar--xlarge]': 'size === "xlarge"',
     '[class.is-button]': '_isButton()',
     '[class.nx-avatar--disabled]': 'disabled()',
-    '[class.is-attention]': 'attention()',
+    '[class.is-attention]': 'prominence() === "attention"',
     '[class]': '_avatarClass()',
   },
   standalone: true,
@@ -61,14 +63,13 @@ export class NxAvatarComponent implements OnDestroy, AfterViewInit {
 
   disabled = input(false, { transform: booleanAttribute });
   protected _isButton = signal(false);
-  readonly accentColor = input<NxAvatarAccent>('default');
-  readonly attention = input<boolean>(false);
+  readonly accentColor = input<NxAvatarAccentColor>('default');
+  readonly prominence = input<NxAvatarProminence>('subtle');
   protected readonly _avatarClass = computed(() => {
     if (this.accentColor() === 'default') {
       return '';
     }
-    const attentionState = this.attention() ? 'attention' : 'subtle';
-    return `nx-avatar--accent-${attentionState}-${this.accentColor()}`;
+    return `nx-avatar--accent-${this.prominence()}-${this.accentColor()}`;
   });
 
   private _size: NxAvatarSize = 'medium';

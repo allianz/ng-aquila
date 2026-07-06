@@ -74,7 +74,7 @@ The avatar component now supports a range of new color variants for both attenti
 - `green`
 - `gray`
 
-To use an accent color variant, apply the `[accentColor]` property; to enable an attention variant, apply the `[attention]` property.
+To use an accent color variant, apply the `[accentColor]` property; to control its emphasis, apply the `[prominence]` property (`subtle` by default, or `attention` for the emphasized variant).
 
 <!-- example(avatar-accent-colors) -->
 

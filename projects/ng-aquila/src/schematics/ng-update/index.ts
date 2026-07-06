@@ -6,6 +6,8 @@ import {
 } from '@angular/cdk/schematics';
 import { Rule, SchematicContext } from '@angular-devkit/schematics';
 
+import { AvatarAccentColorRenameMigration } from './custom-update-tool-migrations/avatar-accent-color-rename-migration';
+import { AvatarProminenceMigration } from './custom-update-tool-migrations/avatar-prominence-migration';
 import { BadgeAccentColorMigration } from './custom-update-tool-migrations/badge-accent-color-migration';
 import { DateRangeValidationMigration } from './custom-update-tool-migrations/date-range-validation-migration';
 import { SelectionIndicatorMigration } from './custom-update-tool-migrations/selection-indicator-migration';
@@ -41,6 +43,8 @@ export const upgradeData: UpgradeData = {
 };
 
 export const customMigrations: NullableDevkitMigration[] = [
+  AvatarAccentColorRenameMigration,
+  AvatarProminenceMigration,
   DateRangeValidationMigration,
   SortHeaderClassRemovalMigration,
   BadgeAccentColorMigration,
