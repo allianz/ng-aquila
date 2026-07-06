@@ -1,21 +1,20 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { NxIndicatorAppearance } from './types';
+import { NxSelectionIndicatorColorScheme } from './types';
 
 @Component({
   selector: 'nx-radio-indicator',
   template: ` <span class="nx-radio__control"></span>`,
   styleUrls: ['./radio-indicator.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.checked]': 'checked()',
     '[class.disabled]': 'disabled()',
     '[class.readonly]': 'readonly()',
     '[class.critical]': 'critical()',
     '[class.no-animation]': '!animations()',
-    '[class.on-selection]': 'appearance() === "on-selection"',
-    '[class.default-appearance]': 'defaultAppearance()',
+    '[class.on-selection]': 'colorScheme() === "on-selection"',
   },
 })
 export class NxRadioIndicatorComponent {
@@ -23,7 +22,6 @@ export class NxRadioIndicatorComponent {
   readonly disabled = input(false);
   readonly readonly = input(false);
   readonly critical = input(false);
-  readonly appearance = input<NxIndicatorAppearance>('full');
+  readonly colorScheme = input<NxSelectionIndicatorColorScheme>('default');
   readonly animations = input(true);
-  readonly defaultAppearance = input(false);
 }

@@ -1,1 +1,1 @@
-export type NxIndicatorAppearance = 'full' | 'on-selection';
+export type NxSelectionIndicatorColorScheme = 'default' | 'on-selection';

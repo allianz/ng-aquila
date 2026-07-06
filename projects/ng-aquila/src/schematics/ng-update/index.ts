@@ -7,6 +7,7 @@ import {
 import { Rule, SchematicContext } from '@angular-devkit/schematics';
 
 import { DateRangeValidationMigration } from './custom-update-tool-migrations/date-range-validation-migration';
+import { SelectionIndicatorMigration } from './custom-update-tool-migrations/selection-indicator-migration';
 import { SortHeaderClassRemovalMigration } from './custom-update-tool-migrations/sort-header-class-removal-migration';
 import {
   attributeSelectors,
@@ -41,6 +42,7 @@ export const upgradeData: UpgradeData = {
 export const customMigrations: NullableDevkitMigration[] = [
   DateRangeValidationMigration,
   SortHeaderClassRemovalMigration,
+  SelectionIndicatorMigration,
 ];
 
 export default function (): Rule {

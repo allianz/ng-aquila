@@ -117,7 +117,7 @@
   }
 }
 
-:host:not(.default-appearance).on-selection {
+:host.on-selection {
   --outer-circle-border-color: var(--radio-button-on-selection-border-color);
 
   &.checked {

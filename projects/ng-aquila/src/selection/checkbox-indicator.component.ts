@@ -1,7 +1,7 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { NxIndicatorAppearance } from './types';
+import { NxSelectionIndicatorColorScheme } from './types';
 
 @Component({
   selector: 'nx-checkbox-indicator',
@@ -18,11 +18,10 @@ import { NxIndicatorAppearance } from './types';
     '[class.disabled]': 'disabled()',
     '[class.readonly]': 'readonly()',
     '[class.critical]': 'critical()',
-    '[class.on-selection]': 'appearance() === "on-selection"',
-    '[class.default-appearance]': 'defaultAppearance()',
+    '[class.on-selection]': 'colorScheme() === "on-selection"',
   },
   styleUrls: ['./checkbox-indicator.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
 export class NxCheckboxIndicatorComponent {
@@ -31,6 +30,5 @@ export class NxCheckboxIndicatorComponent {
   readonly readonly = input(false);
   readonly critical = input(false);
   readonly indeterminate = input(false);
-  readonly appearance = input<NxIndicatorAppearance>('full');
-  readonly defaultAppearance = input(false);
+  readonly colorScheme = input<NxSelectionIndicatorColorScheme>('default');
 }

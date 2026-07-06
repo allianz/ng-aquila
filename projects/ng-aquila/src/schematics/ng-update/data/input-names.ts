@@ -12,6 +12,11 @@ export const dateRangeInputNameChanges: InputNameUpgradeData[] = [
   { replace: 'maxDate', replaceWith: 'maxEndDate', limitedTo: { elements: ['nx-date-range'] } },
 ];
 
+// NOTE: the selection-indicator `appearance` -> `colorScheme` rename is intentionally NOT
+// expressed here. That rename is coupled with a value change (`'full'` -> `'default'`) and the
+// removal of the `defaultAppearance` input, which the declarative input-name tooling cannot
+// express. It is handled by `SelectionIndicatorMigration` instead.
+
 export const inputNames: VersionChanges<InputNameUpgradeData> = {
   [TargetVersion.V22]: [
     {
