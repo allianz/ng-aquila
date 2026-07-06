@@ -12,33 +12,33 @@ group: Data Display
 
 <div class="docs-hide-ndbx">
 
-### Color schemes
+### Accent colors
 
-You can customize the badge appearance using different color schemes. Available color schemes are: 
+You can customize the badge appearance using different accent colors. Available accent colors are:
 
-`yellow | orange | red | purple | aqua | blue | teal | green | gray` which will show the default as `yellow` colorScheme.
+`yellow | orange | red | purple | aqua | blue | teal | green | gray` which will show the default as `yellow` accentColor.
 
-**Usage:** `<nx-badge colorScheme="blue">Badge</nx-badge>`  
+**Usage:** `<nx-badge accentColor="blue">Badge</nx-badge>`
 
-<!-- example(badge-color-scheme) -->
+<!-- example(badge-accent-color) -->
 
-### Brand color scheme
+### Brand accent color
 
-The `brand` color scheme is unlike other color schemes, it is not affected by the `prominence` input.
+The `brand` accent color is unlike other options, as it is not affected by the `prominence` input.
 
-**Usage:** `<nx-badge colorScheme="brand">Brand</nx-badge>`
+**Usage:** `<nx-badge accentColor="brand">Brand</nx-badge>`
 
 <!-- example(badge-brand) -->
 
 ### Prominence
 
-The `prominence` input allows you to control the visual emphasis of the badge. Available options are: 
+The `prominence` input allows you to control the visual emphasis of the badge. Available options are:
 
 `subtle | attention` which default value is `subtle`
 
-**Usage:** `<nx-badge colorScheme="blue" prominence="subtle">Badge</nx-badge>`  
+**Usage:** `<nx-badge accentColor="blue" prominence="subtle">Badge</nx-badge>`
 
-Note: The `prominence` input does not apply to the `brand` color scheme.
+Note: The `prominence` input does not apply to the `brand` accent color.
 
 <!-- example(badge-prominence) -->
 
@@ -51,15 +51,15 @@ If the text contains only one character, the badge will be displayed as a circle
 
 Badges can be disabled using the `disabled` input.
 
-**Usage:** `<nx-badge disabled>Badge</nx-badge>`  
+**Usage:** `<nx-badge disabled>Badge</nx-badge>`
 
 <!-- example(badge-disabled) -->
 
 ### Inverse
 
-For use on dark backgrounds, add `inverse` input to use inverse color schemes.
+For use on dark backgrounds, add `inverse` input to use inverse colors.
 
-**Usage:** `<nx-badge inverse>Badge</nx-badge>`  
+**Usage:** `<nx-badge inverse>Badge</nx-badge>`
 
 <!-- example(badge-inverse) -->
 
@@ -70,7 +70,7 @@ For use on dark backgrounds, add `inverse` input to use inverse color schemes.
 ### NDBX approach
 
 <div class="docs-deprecation-warning">
-  The <code>type</code> and <code>vibrant</code> inputs are the NDBX theme approach and should be used together if needed. They cannot be mixed with the new inputs (<code>colorScheme</code>, <code>prominence</code>, <code>disabled</code>, <code>inverse</code>).
+  The <code>type</code> and <code>vibrant</code> inputs are the NDBX theme approach and should be used together if needed. They cannot be mixed with the new inputs (<code>accentColor</code>, <code>prominence</code>, <code>disabled</code>, <code>inverse</code>).
 </div>
 
 #### Type

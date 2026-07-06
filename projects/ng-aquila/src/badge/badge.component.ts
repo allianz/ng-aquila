@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 /** Possible badge types. */
 export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
-export type NxBadgeColorScheme =
+export type NxBadgeAccentColor =
   | 'brand'
   | 'yellow'
   | 'orange'
@@ -61,7 +61,7 @@ export class NxBadgeComponent {
 
   content = viewChild<ElementRef>('content');
 
-  readonly colorScheme = input<NxBadgeColorScheme>();
+  readonly accentColor = input<NxBadgeAccentColor>();
 
   readonly prominence = input<NxBadgeProminence>('subtle');
 
@@ -76,20 +76,20 @@ export class NxBadgeComponent {
     }
 
     if (this.disabled()) {
-      if (this.prominence() === 'attention' || this.colorScheme() === 'brand') {
+      if (this.prominence() === 'attention' || this.accentColor() === 'brand') {
         return 'nx-badge-attention--disabled';
       }
       return 'nx-badge-subtle--disabled';
     }
 
-    if (!this.colorScheme()) {
+    if (!this.accentColor()) {
       return '';
     }
 
-    if (this.colorScheme() === 'brand') {
-      return `nx-badge-scheme-brand${this.inverse() ? '--inverse' : ''}`;
+    if (this.accentColor() === 'brand') {
+      return `nx-badge-accent-color-brand${this.inverse() ? '--inverse' : ''}`;
     }
 
-    return `nx-badge-scheme-color-${this.prominence()}-${this.colorScheme()}${this.inverse() ? '--inverse' : ''}`;
+    return `nx-badge-accent-color-${this.prominence()}-${this.accentColor()}${this.inverse() ? '--inverse' : ''}`;
   });
 }

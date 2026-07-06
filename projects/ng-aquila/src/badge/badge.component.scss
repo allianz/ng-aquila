@@ -21,28 +21,28 @@
 }
 
 :host {
-  &.nx-badge-scheme-brand {
+  &.nx-badge-accent-color-brand {
     background-color: v(color-brand);
     color: v(color-on-brand);
   }
-  &.nx-badge-scheme-brand--inverse {
+  &.nx-badge-accent-color-brand--inverse {
     background-color: v(color-brand-inverse);
     color: v(color-on-brand-inverse);
   }
   @each $color in (yellow, orange, red, purple, teal, aqua, blue, green, gray) {
-    &.nx-badge-scheme-color-subtle-#{$color} {
+    &.nx-badge-accent-color-subtle-#{$color} {
       background-color: v(color-subtle-#{$color});
       color: v(color-on-subtle-#{$color});
     }
-    &.nx-badge-scheme-color-attention-#{$color} {
+    &.nx-badge-accent-color-attention-#{$color} {
       background-color: v(color-attention-#{$color});
       color: v(color-on-attention-resting);
     }
-    &.nx-badge-scheme-color-subtle-#{$color}--inverse {
+    &.nx-badge-accent-color-subtle-#{$color}--inverse {
       background-color: v(color-subtle-inverse-#{$color});
       color: v(color-on-subtle-inverse-#{$color});
     }
-    &.nx-badge-scheme-color-attention-#{$color}--inverse {
+    &.nx-badge-accent-color-attention-#{$color}--inverse {
       background-color: v(color-attention-inverse-#{$color});
       color: v(color-on-attention-inverse-resting);
     }

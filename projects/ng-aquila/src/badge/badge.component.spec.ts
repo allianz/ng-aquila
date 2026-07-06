@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {
-  NxBadgeColorScheme,
+  NxBadgeAccentColor,
   NxBadgeComponent,
   NxBadgeProminence,
   NxBadgeType,
@@ -13,7 +13,7 @@ import { NxBadgeModule } from './badge.module';
 abstract class BadgeTest {
   @ViewChild(NxBadgeComponent) badgeInstance!: NxBadgeComponent;
   type = 'active';
-  colorScheme: NxBadgeColorScheme = 'yellow';
+  accentColor: NxBadgeAccentColor = 'yellow';
   prominence: NxBadgeProminence = 'subtle';
   disabled = false;
   inverse = false;
@@ -89,38 +89,38 @@ describe('NxBadgeComponent', () => {
     });
   });
 
-  describe('colorScheme', () => {
-    it('should apply default yellow color scheme', () => {
+  describe('accentColor', () => {
+    it('should apply default yellow accent color', () => {
       createTestComponent(ConfigurableBadgeComponent);
-      expect(badgeNativeElement).toHaveClass('nx-badge-scheme-color-subtle-yellow');
+      expect(badgeNativeElement).toHaveClass('nx-badge-accent-color-subtle-yellow');
     });
 
-    it('should apply red color scheme', () => {
+    it('should apply red accent color', () => {
       createTestComponent(ConfigurableBadgeComponent);
-      testInstance.colorScheme = 'red';
+      testInstance.accentColor = 'red';
       fixture.detectChanges();
-      expect(badgeNativeElement).toHaveClass('nx-badge-scheme-color-subtle-red');
+      expect(badgeNativeElement).toHaveClass('nx-badge-accent-color-subtle-red');
     });
 
-    it('should apply brand color scheme', () => {
+    it('should apply brand accent color', () => {
       createTestComponent(ConfigurableBadgeComponent);
-      testInstance.colorScheme = 'brand';
+      testInstance.accentColor = 'brand';
       fixture.detectChanges();
-      expect(badgeNativeElement).toHaveClass('nx-badge-scheme-brand');
+      expect(badgeNativeElement).toHaveClass('nx-badge-accent-color-brand');
     });
   });
 
   describe('prominence', () => {
     it('should apply default subtle prominence', () => {
       createTestComponent(ConfigurableBadgeComponent);
-      expect(badgeNativeElement).toHaveClass('nx-badge-scheme-color-subtle-yellow');
+      expect(badgeNativeElement).toHaveClass('nx-badge-accent-color-subtle-yellow');
     });
 
     it('should apply attention prominence', () => {
       createTestComponent(ConfigurableBadgeComponent);
       testInstance.prominence = 'attention';
       fixture.detectChanges();
-      expect(badgeNativeElement).toHaveClass('nx-badge-scheme-color-attention-yellow');
+      expect(badgeNativeElement).toHaveClass('nx-badge-accent-color-attention-yellow');
     });
   });
 
@@ -140,10 +140,10 @@ describe('NxBadgeComponent', () => {
       expect(badgeNativeElement).toHaveClass('nx-badge-attention--disabled');
     });
 
-    it('should apply disabled class for brand color scheme', () => {
+    it('should apply disabled class for brand accent color', () => {
       createTestComponent(ConfigurableBadgeComponent);
       testInstance.disabled = true;
-      testInstance.colorScheme = 'brand';
+      testInstance.accentColor = 'brand';
       fixture.detectChanges();
       expect(badgeNativeElement).toHaveClass('nx-badge-attention--disabled');
     });
@@ -154,24 +154,24 @@ describe('NxBadgeComponent', () => {
       createTestComponent(ConfigurableBadgeComponent);
       testInstance.inverse = true;
       fixture.detectChanges();
-      expect(badgeNativeElement).toHaveClass('nx-badge-scheme-color-subtle-yellow--inverse');
+      expect(badgeNativeElement).toHaveClass('nx-badge-accent-color-subtle-yellow--inverse');
     });
 
     it('should apply inverse with attention prominence', () => {
       createTestComponent(ConfigurableBadgeComponent);
       testInstance.inverse = true;
       testInstance.prominence = 'attention';
-      testInstance.colorScheme = 'red';
+      testInstance.accentColor = 'red';
       fixture.detectChanges();
-      expect(badgeNativeElement).toHaveClass('nx-badge-scheme-color-attention-red--inverse');
+      expect(badgeNativeElement).toHaveClass('nx-badge-accent-color-attention-red--inverse');
     });
 
-    it('should apply inverse with brand color scheme', () => {
+    it('should apply inverse with brand accent color', () => {
       createTestComponent(ConfigurableBadgeComponent);
       testInstance.inverse = true;
-      testInstance.colorScheme = 'brand';
+      testInstance.accentColor = 'brand';
       fixture.detectChanges();
-      expect(badgeNativeElement).toHaveClass('nx-badge-scheme-brand--inverse');
+      expect(badgeNativeElement).toHaveClass('nx-badge-accent-color-brand--inverse');
     });
   });
 });
@@ -210,7 +210,7 @@ class VibrantBadgeComponent extends BadgeTest {}
 @Component({
   selector: 'test-configurable-badge-component',
   template: `<nx-badge
-    [colorScheme]="colorScheme"
+    [accentColor]="accentColor"
     [prominence]="prominence"
     [disabled]="disabled"
     [inverse]="inverse"

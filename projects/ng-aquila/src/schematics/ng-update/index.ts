@@ -6,6 +6,7 @@ import {
 } from '@angular/cdk/schematics';
 import { Rule, SchematicContext } from '@angular-devkit/schematics';
 
+import { BadgeAccentColorMigration } from './custom-update-tool-migrations/badge-accent-color-migration';
 import { DateRangeValidationMigration } from './custom-update-tool-migrations/date-range-validation-migration';
 import { SelectionIndicatorMigration } from './custom-update-tool-migrations/selection-indicator-migration';
 import { SortHeaderClassRemovalMigration } from './custom-update-tool-migrations/sort-header-class-removal-migration';
@@ -42,6 +43,7 @@ export const upgradeData: UpgradeData = {
 export const customMigrations: NullableDevkitMigration[] = [
   DateRangeValidationMigration,
   SortHeaderClassRemovalMigration,
+  BadgeAccentColorMigration,
   SelectionIndicatorMigration,
 ];
 
