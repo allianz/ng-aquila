@@ -3,4 +3,8 @@
 $nx-themes: (); // all registered themes are added here
 $nx-themes: () !global;
 
+// optional per-theme override mixin references, keyed by theme name
+$nx-theme-extra-styles: ();
+$nx-theme-extra-styles: () !global;
+
 @import 'mixins';

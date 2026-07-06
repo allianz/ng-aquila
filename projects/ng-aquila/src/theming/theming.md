@@ -16,6 +16,8 @@ By default the selector for the themes is `:root, :host`. In case you want to sc
 @include nx-build-theme(ndbx, '.my-custom-scope');
 ```
 
+A theme can also carry **CSS-only overrides** (raw CSS rules that are not token values). When a theme is registered with such overrides (see [Scoped CSS-only overrides](#scoped-css-only-overrides) below), `nx-build-theme` emits them inside the same selector you pass, so they are scoped together with the theme tokens instead of leaking onto the whole page. This is important on pages hosting multiple microfrontends.
+
 <div class="docs-deprecation-warning">
 <p><strong>Important about Overlays:</strong> When a theme gets scoped to a class on the Angular application root element, any other element inside the body of the document or you are using web components with ShadowDOM, the theme will not be applied to any Angular CDK Overlay components (like Dialogs, Tooltips, etc.) because these overlays are appended to the end of the body element by default.</p>
 <p>
@@ -34,8 +36,10 @@ Our themes for A1 are a mapping from the A1 tokens to the library specific token
 @import "@allianz/ngx-brand-kit/scss/themes/allianz-one";
 
 
-@include a1-tokens.apply-design-tokens('light', 'lively', 'spacious', '.my-custom-scope');
-@include nx-build-theme(allianz-one, '.my-custom-scope');
+$a1-scope: '.my-custom-scope';
+
+@include a1-tokens.apply-design-tokens('light', 'lively', 'spacious', $a1-scope);
+@include nx-build-theme(allianz-one, $a1-scope);
 ```
 
 </div>
@@ -143,6 +147,61 @@ And then use them as stated before:
     background: nx-theme(my-new-token);
 }
 ```
+
+### Scoped CSS-only overrides
+
+Sometimes a theme needs more than token values — it needs a few raw CSS rules (for example
+to align legacy component classes with the new design). If you emit those rules directly in
+your theme file they are written globally and **ignore the selector** you pass to
+`nx-build-theme`. On a page with multiple microfrontends, a scoped theme would still leak
+these rules onto the surrounding page.
+
+To keep CSS-only overrides scoped together with your tokens, pass an optional override mixin
+as the **4th argument** of `nx-register-theme`. The mixin takes **no arguments** and contains
+**bare CSS rules** — `nx-build-theme` wraps them under the theme's selector automatically, so
+they are emitted inside the same selector the theme is built for. Use the parent selector `&`
+if you need to target the scope element itself or build compound selectors.
+
+```scss
+@use 'sass:meta';
+@import '@allianz/ng-aquila/styles/theming';
+
+@mixin my-theme-overrides {
+    .my-legacy-class {
+        margin: 0 !important;
+    }
+}
+
+$my-theme: (
+    interactive-primary: green,
+);
+
+$nx-themes: nx-register-theme($my-theme, themeName, null, meta.get-mixin('my-theme-overrides'));
+
+// emitted scoped to '.my-scope' (tokens AND overrides):
+@include nx-build-theme(themeName, '.my-scope');
+```
+
+**`@use 'sass:meta';` is required** in any file that calls `meta.get-mixin(...)`. This is
+needed whether you `@import` or `@use` the library, because `@use` namespaces are file-local
+and are not inherited through imports. The `meta.get-mixin` call must live in your own theme
+file — it can only see mixins visible where it is called.
+
+When you register a theme on top of a base theme (3rd argument) and do not pass your own
+override mixin, the base theme's override mixin (if any) is inherited automatically.
+
+Because every override rule is scoped under the selector you pass, components rendered in CDK
+overlays (dialogs, tooltips, dropdowns) are only covered if `.cdk-overlay-container` is part of
+that selector — the same caveat that applies to theme tokens (see the note above).
+
+<div class="docs-private">
+
+The internal A1 themes use this mechanism for their Teams-compatibility CSS overrides
+(headline font-weights, header actions, sidepanel padding). The `allianz-one` variants
+(`allianz-one-compact`, `allianz-one-dark`, …) are based on `allianz-one` and inherit its
+override mixin.
+
+</div>
 
 ### General Theming Tokens
 

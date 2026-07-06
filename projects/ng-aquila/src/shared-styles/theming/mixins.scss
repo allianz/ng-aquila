@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:meta';
 @import 'tokens';
 
 // Register current theme with a name; overwrite currently used tokens
@@ -6,8 +7,12 @@
 /// @param {String} $theme - the token map of the theme
 /// @param {String} $name - the name of the new theme
 /// @param {String} $base - the theme used as a token base for the new theme
-/// @example - @include($my-tokens, testTheme, aquila);
-@function nx-register-theme($theme, $name, $base: null) {
+/// @param {Mixin} $extra-styles - optional reference to a mixin taking no arguments
+///  that emits CSS-only overrides scoped to the theme's selector when the theme
+///   is built. Capture it with `meta.get-mixin('your-mixin')`. When omitted, the override
+///   mixin of the base theme (if any) is inherited.
+/// @example - nx-register-theme($my-tokens, testTheme, aquila, meta.get-mixin('my-theme-overrides'));
+@function nx-register-theme($theme, $name, $base: null, $extra-styles: null) {
   @if ($base == null) {
     $nx-theme: map.merge($nx-theme, $theme) !global;
   } @else {
@@ -20,6 +25,17 @@
     // global is needed to change a variable value from a local scope
     $nx-theme: map.merge($parent-theme, $theme) !global;
   }
+
+  // inherit the base theme's override mixin when none is supplied
+  @if ($extra-styles == null and $base != null) {
+    $extra-styles: map.get($nx-theme-extra-styles, $base);
+  }
+  $nx-theme-extra-styles: map.merge(
+    $nx-theme-extra-styles,
+    (
+      $name: $extra-styles,
+    )
+  ) !global;
 
   $nx-themes: add-theme($nx-themes, $name, $nx-theme) !global;
   @return $nx-themes;
@@ -34,6 +50,7 @@
 /// @example -  @include nx-build-theme(aquila, '.theme-aquila')
 @mixin nx-build-theme($theme-name: aquila, $selector: ':root, :host') {
   $theme: map.get($nx-themes, $theme-name);
+  $extra-styles: map.get($nx-theme-extra-styles, $theme-name);
 
   #{$selector} {
     @each $name, $value in $theme {
@@ -42,6 +59,11 @@
         $value: var(--#{$value});
       }
       @include _css-var($name, $value);
+    }
+
+    // auto-wrap the optional CSS-only overrides under the same selector
+    @if ($extra-styles != null) {
+      @include meta.apply($extra-styles);
     }
   }
 }
