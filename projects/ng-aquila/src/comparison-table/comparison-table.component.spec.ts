@@ -1,4 +1,3 @@
-import { NxAllianzOneModule } from '@allianz/ng-aquila/config/allianz-one';
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { BidiModule } from '@angular/cdk/bidi';
 import {
@@ -37,7 +36,7 @@ declare let viewport: any;
 const THROTTLE_TIME = 400;
 
 // Carousel/overflow mode is A1-only (`_isOverflowing` gates on `_isA1()`). Provide the token at
-// COMPONENT scope (not via NxAllianzOneModule in `imports`) so it stays on this host's element
+// COMPONENT scope so it stays on this host's element
 // injector — importing the module would hoist ALLIANZ_ONE into the shared TestBed and enable A1
 // for every other host, flipping their mobile views to tablet (the A1 mobile→tablet promotion).
 const A1_PROVIDERS = [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }];
@@ -1547,7 +1546,7 @@ describe('NxComparisonTableComponent Allianz One mode', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxComparisonTableModule, AllianzOneComponent, NxAllianzOneModule],
+      imports: [NxComparisonTableModule, AllianzOneComponent],
     }).compileComponents();
   }));
 
@@ -1954,6 +1953,7 @@ class OverflowComponent extends TableTest {
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
+  providers: A1_PROVIDERS,
 })
 class AllianzOneComponent extends TableTest {
   data = [
@@ -2246,7 +2246,7 @@ describe('NxComparisonTable responsive breakpoints', () => {
     it('should promote mobile to tablet when A1 is enabled', () => {
       TestBed.resetTestingModule();
       TestBed.configureTestingModule({
-        imports: [NxComparisonTableModule, NxAllianzOneModule, ResponsiveA1Component],
+        imports: [NxComparisonTableModule, ResponsiveA1Component],
       });
       TestBed.compileComponents();
       fixture = TestBed.createComponent(ResponsiveA1Component);
@@ -2484,6 +2484,7 @@ class ResponsiveWithViewOverrideComponent extends ResponsiveTableTest {}
     </nx-comparison-table>
   `,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [NxComparisonTableModule, NxAllianzOneModule],
+  imports: [NxComparisonTableModule],
+  providers: A1_PROVIDERS,
 })
 class ResponsiveA1Component extends ResponsiveTableTest {}

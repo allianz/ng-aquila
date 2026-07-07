@@ -1,5 +1,5 @@
 import { NxButtonBase } from '@allianz/ng-aquila/button';
-import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import {
   ChangeDetectionStrategy,

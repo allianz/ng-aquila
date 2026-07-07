@@ -1,5 +1,5 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one';
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { A11yModule, FocusOrigin } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';

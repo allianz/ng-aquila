@@ -10,6 +10,7 @@ import { AvatarAccentColorRenameMigration } from './custom-update-tool-migration
 import { AvatarProminenceMigration } from './custom-update-tool-migrations/avatar-prominence-migration';
 import { BadgeAccentColorMigration } from './custom-update-tool-migrations/badge-accent-color-migration';
 import { DateRangeValidationMigration } from './custom-update-tool-migrations/date-range-validation-migration';
+import { MoveAllianzOneTokenImportMigration } from './custom-update-tool-migrations/move-allianz-one-token-import';
 import { SelectionIndicatorMigration } from './custom-update-tool-migrations/selection-indicator-migration';
 import { SortHeaderClassRemovalMigration } from './custom-update-tool-migrations/sort-header-class-removal-migration';
 import {
@@ -43,6 +44,7 @@ export const upgradeData: UpgradeData = {
 };
 
 export const customMigrations: NullableDevkitMigration[] = [
+  MoveAllianzOneTokenImportMigration,
   AvatarAccentColorRenameMigration,
   AvatarProminenceMigration,
   DateRangeValidationMigration,
