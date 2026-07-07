@@ -13,13 +13,17 @@
 //   2. The `nxDatefieldMin` / `nxDatefieldMax` validation error keys, which
 //      became `nxDateRangeMinStart` / `nxDateRangeMaxEnd` for ranges. These keys
 //      are still emitted by the single-field `NxDateValidators.min`/`.max`, so
-//      the same name can legitimately belong to either a single `nx-datefield`
-//      (must stay) or an `nx-date-range` (must change). When a key appears inside
-//      an `nx-formfield` whose subtree contains an `<nx-date-range>`, the control
-//      is unambiguously a range and the key is auto-rewritten. Anywhere else
-//      (TypeScript identifiers, or templates not following the formfield pattern)
-//      the context cannot be proven, so we only warn and let the consumer update
-//      the range-related usages manually.
+//      the same name can legitimately belong to either a single date control
+//      (must stay) or an `nx-date-range` (must change). We classify each
+//      `nx-formfield` by the date control in its subtree:
+//        - contains an `<nx-date-range>`         -> range, key auto-rewritten
+//        - contains a single-field control       -> single, key left untouched,
+//          (`nx-datemask` / `input[nxDatefield]`)   no warning (unambiguous)
+//        - contains neither                       -> undetermined, key left
+//          untouched and a warning is logged
+//      Occurrences outside a formfield (TypeScript identifiers, or templates not
+//      following the formfield pattern) also cannot be proven, so we only warn
+//      and let the consumer update the range-related usages manually.
 
 import {
   Migration,
@@ -40,6 +44,11 @@ import {
 const RANGE_VALIDATORS_CLASS = 'NxDateRangeValidators';
 const FORMFIELD_TAG = 'nx-formfield';
 const DATE_RANGE_TAG = 'nx-date-range';
+
+/** Element tags of single-field (non-range) date controls. */
+const SINGLE_FIELD_TAGS = ['nx-datemask'];
+/** Attribute selectors of single-field (non-range) date controls. */
+const SINGLE_FIELD_ATTRS = ['nxdatefield'];
 
 /** Renamed static methods on `NxDateRangeValidators` (old name -> new name). */
 const VALIDATOR_METHOD_RENAMES = new Map<string, string>([
@@ -103,21 +112,22 @@ export class DateRangeValidationMigration extends Migration<null> {
   }
 
   /**
-   * Auto-rewrites old error keys that sit inside an `nx-formfield` containing an
-   * `<nx-date-range>`, and warns about any remaining occurrences.
+   * Auto-rewrites old error keys inside an `nx-formfield` containing an
+   * `<nx-date-range>`, stays silent for keys inside a formfield that
+   * unambiguously holds a single-field date control, and warns about the rest.
    */
   private _migrateErrorKeysInTemplate(template: ResolvedResource): void {
-    const rangeFormfieldSpans = this._findRangeFormfieldSpans(template.content);
+    const { rangeSpans, singleFieldSpans } = this._findDateFormfieldSpans(template.content);
 
     for (const [oldKey, newKey] of AMBIGUOUS_ERROR_KEYS) {
       let index = template.content.indexOf(oldKey);
       while (index !== -1) {
-        if (isWithinSpan(index, rangeFormfieldSpans)) {
+        if (isWithinSpan(index, rangeSpans)) {
           this.fileSystem
             .edit(template.filePath)
             .remove(template.start + index, oldKey.length)
             .insertRight(template.start + index, newKey);
-        } else {
+        } else if (!isWithinSpan(index, singleFieldSpans)) {
           const { line, character } = template.getCharacterAndLineOfPosition(index);
           this._logResourceWarning(template.filePath, line, character, oldKey);
         }
@@ -126,23 +136,42 @@ export class DateRangeValidationMigration extends Migration<null> {
     }
   }
 
-  /** Finds the spans of all `nx-formfield` elements whose subtree contains an `nx-date-range`. */
-  private _findRangeFormfieldSpans(content: string): Span[] {
+  /**
+   * Classifies each `nx-formfield` by the date control in its subtree, returning
+   * the spans of range formfields and of unambiguously single-field ones. A
+   * formfield containing both is treated as a range.
+   */
+  private _findDateFormfieldSpans(content: string): {
+    rangeSpans: Span[];
+    singleFieldSpans: Span[];
+  } {
     const fragment = parse5.parseFragment(content, { sourceCodeLocationInfo: true });
-    const spans: Span[] = [];
+    const rangeSpans: Span[] = [];
+    const singleFieldSpans: Span[] = [];
 
-    const subtreeHasDateRange = (node: parse5.DefaultTreeAdapterMap['node']): boolean => {
-      if ('tagName' in node && node.tagName === DATE_RANGE_TAG) {
+    const subtreeHas = (
+      node: parse5.DefaultTreeAdapterMap['node'],
+      predicate: (element: parse5.DefaultTreeAdapterMap['element']) => boolean,
+    ): boolean => {
+      if ('tagName' in node && predicate(node)) {
         return true;
       }
-      return 'childNodes' in node && node.childNodes.some(subtreeHasDateRange);
+      return 'childNodes' in node && node.childNodes.some((child) => subtreeHas(child, predicate));
     };
 
+    const isDateRange = (element: parse5.DefaultTreeAdapterMap['element']): boolean =>
+      element.tagName === DATE_RANGE_TAG;
+    const isSingleField = (element: parse5.DefaultTreeAdapterMap['element']): boolean =>
+      SINGLE_FIELD_TAGS.includes(element.tagName) ||
+      element.attrs.some((attr) => SINGLE_FIELD_ATTRS.includes(attr.name));
+
     const visit = (node: parse5.DefaultTreeAdapterMap['node']): void => {
-      if ('tagName' in node && node.tagName === FORMFIELD_TAG) {
-        const location = node.sourceCodeLocation;
-        if (location && subtreeHasDateRange(node)) {
-          spans.push([location.startOffset, location.endOffset]);
+      if ('tagName' in node && node.tagName === FORMFIELD_TAG && node.sourceCodeLocation) {
+        const span: Span = [node.sourceCodeLocation.startOffset, node.sourceCodeLocation.endOffset];
+        if (subtreeHas(node, isDateRange)) {
+          rangeSpans.push(span);
+        } else if (subtreeHas(node, isSingleField)) {
+          singleFieldSpans.push(span);
         }
       }
       if ('childNodes' in node) {
@@ -151,7 +180,7 @@ export class DateRangeValidationMigration extends Migration<null> {
     };
 
     fragment.childNodes.forEach(visit);
-    return spans;
+    return { rangeSpans, singleFieldSpans };
   }
 
   private _errorKeyMessage(oldKey: string): string {
