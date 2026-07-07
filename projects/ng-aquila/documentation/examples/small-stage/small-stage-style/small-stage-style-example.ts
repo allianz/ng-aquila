@@ -4,7 +4,7 @@ import {
   NxSmallStageComponent,
   NxSmallStageImageDirective,
 } from '@allianz/ng-aquila/small-stage';
-import { NxAttentionColorComponent } from '@allianz/ng-aquila/text';
+import { NxAccentColorComponent } from '@allianz/ng-aquila/text';
 import { Component } from '@angular/core';
 /**
  * @title Small Stage style example
@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
     NxSmallStageComponent,
     NxHeadlineComponent,
     NxEyebrowComponent,
-    NxAttentionColorComponent,
+    NxAccentColorComponent,
     NxSmallStageImageDirective,
   ],
 })

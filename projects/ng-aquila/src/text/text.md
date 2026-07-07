@@ -1,6 +1,6 @@
 ---
 title: Text
-description: Inline text styling utilities including attention colors
+description: Inline text styling utilities including accent colors
 category: components
 b2c: true
 expert: true
@@ -11,30 +11,30 @@ group: Data Display
 
 
 
-### Attention color
+### Accent color
 
-Use the `nx-attention-color` selector to highlight inline text that requires emphasis. This feature is only available in the A1 theme and is not supported in the NDBX theme.
+Use the `nx-accent-color` selector to highlight inline text that requires emphasis. This feature is only available in the A1 theme and is not supported in the NDBX theme.
 
 <div class="docs-hide-ndbx">
 
 #### Available colors
 `yellow | orange | red | purple | teal | aqua | blue | green | gray`
 
-Example Usage: `<span nx-attention-color="purple"> highlight </span>`
+Example Usage: `<span nx-accent-color="purple"> highlight </span>`
 
-<!-- example(attention-color-basic) -->
+<!-- example(accent-color-basic) -->
 
 
 #### Integrate with other components
 
-You can also use `nx-attention-color` with other text based component.
+You can also use `nx-accent-color` with other text based component.
 
-<!-- example(attention-color-integration) -->
+<!-- example(accent-color-integration) -->
 
 
 #### Negative (inverse) usage
 You can use `negative` attribute to set it to inverse color.
 
-<!-- example(attention-color-negative) -->
+<!-- example(accent-color-negative) -->
 
 </div>

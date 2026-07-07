@@ -1,5 +1,5 @@
 import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
-import { NxAttentionColorComponent } from '@allianz/ng-aquila/text';
+import { NxAccentColorComponent } from '@allianz/ng-aquila/text';
 import { Component } from '@angular/core';
 
 /**
@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
   selector: 'headline-attention-text-example',
   templateUrl: './headline-attention-text-example.html',
   styleUrls: ['./headline-attention-text-example.css'],
-  imports: [NxHeadlineComponent, NxAttentionColorComponent],
+  imports: [NxHeadlineComponent, NxAccentColorComponent],
 })
 export class HeadlineAttentionTextExampleComponent {}

@@ -1,7 +1,7 @@
 import { NxBadgeModule } from '@allianz/ng-aquila/badge';
 import { NxGridModule } from '@allianz/ng-aquila/grid';
 import { NxLinkModule } from '@allianz/ng-aquila/link';
-import { NxAttentionColorComponent } from '@allianz/ng-aquila/text';
+import { NxAccentColorComponent } from '@allianz/ng-aquila/text';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { AsyncPipe } from '@angular/common';
 import {
@@ -33,7 +33,7 @@ import { NxvComponentIconComponent } from '../component-icon/component-icon.comp
     AsyncPipe,
     RouterModule,
     NxvComponentIconComponent,
-    NxAttentionColorComponent,
+    NxAccentColorComponent,
   ],
 })
 export class NxvSearchResultsComponent implements OnInit, OnDestroy {

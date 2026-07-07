@@ -41,9 +41,9 @@ You can change the font-weight of any headline by using the font-weight utility 
 
 <div class="docs-hide-ndbx">
 
-### Attention text
+### Accent text
 
-To draw more attention to parts of a headline, use [`[nx-attention-color]`](./documentation/text/overview#attention-color).
+To draw more attention to parts of a headline, use [`[nx-accent-color]`](./documentation/text/overview#accent-color).
 
 <!-- example(headline-attention-text) -->
 

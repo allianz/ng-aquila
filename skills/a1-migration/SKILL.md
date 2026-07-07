@@ -15,7 +15,7 @@ metadata:
 - Replacing `nx-circle-toggle` / `nx-circle-toggle-group` with `nx-tile` / `nx-tile-group`
 - Replacing info buttons with popovers to use the new `NxInfoIconComponent`
 - Updating layout from center-aligned to left-aligned (A1 standard)
-- Adjusting `nx-small-stage` components, eyebrows and attention-color headlines
+- Adjusting `nx-small-stage` components, eyebrows and accent-color headlines
 
 ## How to Apply Changes
 - if css is required, add to the component's CSS file. If the component is standalone, add the CSS to the component's `styles` array in the `@Component` decorator.
@@ -212,17 +212,17 @@ If used in a Standalone Component, add the `NxEyebrowComponent` to the component
 
 ### 5.2 Partial Headline Coloring (required)
 
-**Always** wrap the most meaningful word or short phrase in the `<h1>` with an attention-color span. This is a required A1 design standard for `nx-small-stage` headlines — do not skip it. Choose the word or phrase that carries the most semantic weight (the product, the action, or the subject — not filler words like "your" or "and").
+**Always** wrap the most meaningful word or short phrase in the `<h1>` with an accent-color span. This is a required A1 design standard for `nx-small-stage` headlines — do not skip it. Choose the word or phrase that carries the most semantic weight (the product, the action, or the subject — not filler words like "your" or "and").
 
 ```html
-<h1 nxHeadline size="3xl">Enter your <span [nx-attention-color]="'aqua'">property details</span></h1>
+<h1 nxHeadline size="3xl">Enter your <span [nx-accent-color]="'aqua'">property details</span></h1>
 ```
 
 ```ts
-import { NxAttentionColorComponent } from '@allianz/ng-aquila/text';
+import { NxAccentColorComponent } from '@allianz/ng-aquila/text';
 ```
 
-If used in a Standalone Component, add the `NxAttentionColorComponent` to the components `imports` array.
+If used in a Standalone Component, add the `NxAccentColorComponent` to the components `imports` array.
 
 ### 5.3 Headline Size
 

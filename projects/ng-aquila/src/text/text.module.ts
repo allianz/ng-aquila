@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { NxAttentionColorComponent } from './attention-color/attention-color.component';
+import { NxAccentColorComponent } from './accent-color/accent-color.component';
 
 @NgModule({
-  imports: [NxAttentionColorComponent],
-  exports: [NxAttentionColorComponent],
+  imports: [NxAccentColorComponent],
+  exports: [NxAccentColorComponent],
 })
 export class NxTextModule {}
