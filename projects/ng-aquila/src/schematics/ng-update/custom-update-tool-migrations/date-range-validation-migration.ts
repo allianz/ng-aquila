@@ -42,16 +42,16 @@ const FORMFIELD_TAG = 'nx-formfield';
 const DATE_RANGE_TAG = 'nx-date-range';
 
 /** Renamed static methods on `NxDateRangeValidators` (old name -> new name). */
-const VALIDATOR_METHOD_RENAMES: { [key: string]: string } = {
-  min: 'minStart',
-  max: 'maxEnd',
-};
+const VALIDATOR_METHOD_RENAMES = new Map<string, string>([
+  ['min', 'minStart'],
+  ['max', 'maxEnd'],
+]);
 
 /** Error keys that changed for ranges but are shared with the single datefield. */
-const AMBIGUOUS_ERROR_KEYS: { [key: string]: string } = {
-  nxDatefieldMin: 'nxDateRangeMinStart',
-  nxDatefieldMax: 'nxDateRangeMaxEnd',
-};
+const AMBIGUOUS_ERROR_KEYS = new Map<string, string>([
+  ['nxDatefieldMin', 'nxDateRangeMinStart'],
+  ['nxDatefieldMax', 'nxDateRangeMaxEnd'],
+]);
 
 /** A `[startOffset, endOffset)` span within a template's content. */
 type Span = [number, number];
@@ -78,7 +78,7 @@ export class DateRangeValidationMigration extends Migration<null> {
 
     const propertyAccess = node.expression as PropertyAccessExpression;
     const methodName = propertyAccess.name.text;
-    const newMethodName = VALIDATOR_METHOD_RENAMES[methodName];
+    const newMethodName = VALIDATOR_METHOD_RENAMES.get(methodName);
 
     if (!newMethodName || propertyAccess.expression.getText() !== RANGE_VALIDATORS_CLASS) {
       return;
@@ -97,7 +97,7 @@ export class DateRangeValidationMigration extends Migration<null> {
       return;
     }
     const keyName = (node.name as Identifier).text;
-    if (AMBIGUOUS_ERROR_KEYS[keyName]) {
+    if (AMBIGUOUS_ERROR_KEYS.has(keyName)) {
       this.createFailureAtNode(node, this._errorKeyMessage(keyName));
     }
   }
@@ -109,7 +109,7 @@ export class DateRangeValidationMigration extends Migration<null> {
   private _migrateErrorKeysInTemplate(template: ResolvedResource): void {
     const rangeFormfieldSpans = this._findRangeFormfieldSpans(template.content);
 
-    for (const [oldKey, newKey] of Object.entries(AMBIGUOUS_ERROR_KEYS)) {
+    for (const [oldKey, newKey] of AMBIGUOUS_ERROR_KEYS) {
       let index = template.content.indexOf(oldKey);
       while (index !== -1) {
         if (isWithinSpan(index, rangeFormfieldSpans)) {
@@ -157,7 +157,7 @@ export class DateRangeValidationMigration extends Migration<null> {
   private _errorKeyMessage(oldKey: string): string {
     return (
       `Found usage of the "${oldKey}" validation error key. For "nx-date-range" controls ` +
-      `this key was renamed to "${AMBIGUOUS_ERROR_KEYS[oldKey]}". Single "nx-datefield" ` +
+      `this key was renamed to "${AMBIGUOUS_ERROR_KEYS.get(oldKey)}". Single "nx-datefield" ` +
       `controls still use "${oldKey}", so please update only the range-related usages manually.`
     );
   }
