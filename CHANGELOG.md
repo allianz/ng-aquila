@@ -2,6 +2,98 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.0.0 (2026-07-07)
+
+This version removes some inconsistencies around the `colorScheme`, `prominence` and `accentColor` inputs.
+These changes will be automatically migrated for you when you use `ng update`.
+
+### Automatic migrations
+
+Make sure to run `ng update @allianz/ng-aquila` for automatic migrations of the breaking changes.
+
+### ⚠ BREAKING CHANGES 💥
+
+* **text:** - NX_ATTENTION_COLOR_VALUES has been renamed to NX_ACCENT_COLOR_VALUES
+- NxAttentionColorOption has been renamed to NxAccentColorOption
+- NxAttentionColorComponent has been renamed to NxAccentColorComponent
+- the selector [nx-attention-color] has been renamed to [nx-accent-color]
+* **config:**   - `NxAllianzOneModule` has been removed. To activate A1 mode, use `provideA1Theme()` (or `NxA1ThemeModule`) from `@allianz/ngx-brand-kit` instead of
+  importing `NxAllianzOneModule`.
+  - The `@allianz/ng-aquila/config/allianz-one` entry point no longer exports `ALLIANZ_ONE` or `AllianzOneOptions`. Import them from
+  `@allianz/ng-aquila/config/allianz-one/token` instead. Running `ng update @allianz/ng-aquila` migrates these imports automatically.
+* **avatar:**
+  - the attention input has been removed, use prominence="attention" instead
+  - the type NxAvatarAccent has been renamed to NxAvatarAccentColor
+* **badge:**
+  - `colorScheme` has been renamed to `accentColor`
+  - `NxBadgeColorScheme` has been renamed to `NxBadgeAccentColor`
+  - the CSS class names have been changed from `nx-badge-scheme-*` to `nx-badge-accent-color-*`
+* **selection:** - **radio-indicator, checkbox indicator**: renamed `appearance` to `colorScheme` and changed option `full` to `default`
+- **radio-indicator, checkbox indicator**: renamed type `NxIndicatorAppearance` to `NxSelectionIndicatorColorScheme` and changed values to `default | on-selection`
+- **radio-indicator, checkbox indicator**: removed `defaultAppearance` input, use `colorScheme="default"` now
+* **radio:** `radio-button-dot-size` rename to
+`radio-button-inner-dot-size`
+* **table:** The CSS classes `nx-sort-header__icons-container`, `nx-sort-header__unsorted`, `nx-sort-header__ascend`, and `nx-sort-header__descend` have been removed. If you need to query the sort header element, use the class `nx-sort-header` instead.
+* **status-icon:** the `signal-button-warning-icon-background-color` token has been renamed to `status-icon-warning-background-color`. ownership
+  of the status-icon warning background moved from signal-button to status-icon. update any custom theme overrides that reference
+  the old token name.
+* **context-menu:** `get selectable()` no longer returns a plain `boolean`. It
+  now returns `NxContextMenuItemSelectable` ('single' | 'multi' | boolean), so
+  code that typed or treated the result as a strict boolean must be updated to
+  handle the 'single' and 'multi' string modes.
+- The `selectable` input now accepts the new `NxContextMenuItemSelectableInput`
+  type ('single' | 'multi' | '' | boolean | null). All previously valid values
+  (bare attribute, `''`, `true`/`false`, `null`) still work; `'single'` and
+  `'multi'` are added.
+* **datefield:** The nx-date-range inputs, NxDateRangeValidators methods, and their validation
+error keys have been renamed. The single nx-datefield's `min`/`max` inputs and
+its `nxDatefieldMin`/`nxDatefieldMax` error keys are unaffected.
+
+  Component inputs (nx-date-range):
+  - `[minDate]` -> `[minStartDate]`
+  - `[maxDate]` -> `[maxEndDate]`
+
+  NxDateRangeValidators:
+  - `NxDateRangeValidators.min` -> `NxDateRangeValidators.minStart`
+  - `NxDateRangeValidators.max` -> `NxDateRangeValidators.maxEnd`
+
+  Validation error keys:
+  - `nxDatefieldMin` -> `nxDateRangeMinStart`
+  - `nxDatefieldMax` -> `nxDateRangeMaxEnd`
+
+  The error object payloads changed accordingly: the `min` property is now
+  `minStart`, and `max` is now `maxEnd`.
+
+### Other 🧹
+
+* **table:** remove unused classes ([37615be](https://github.com/allianz/ng-aquila/commit/37615be85b01853d664d542b58b557210ae6dc70))
+
+
+### Features ✨
+
+* **avatar:** replace attention with prominence ([662cf0b](https://github.com/allianz/ng-aquila/commit/662cf0b0e1041d8ad3004330d95f7333b97e2d66))
+* **badge:** rename colorScheme to accentColor ([f525242](https://github.com/allianz/ng-aquila/commit/f525242770094dd8340df9f9e59359cc83a82c7e))
+* **config:** remove NxAllianzOneModule from ng-aquila ([68824c1](https://github.com/allianz/ng-aquila/commit/68824c19621f60103e23cca35773a1cb0acabfc4))
+* **context-menu:** extend selectable and handle indicator rendering ([3d75837](https://github.com/allianz/ng-aquila/commit/3d75837de93df260898d91f5be3e596814282f48))
+* **datefield:** add maxStartDate and minEndDate validators to date range ([a504d9f](https://github.com/allianz/ng-aquila/commit/a504d9f4b0ec44078dda82b065d472ae45143b18))
+* **icon:** support A1 full for status icon ([d19439c](https://github.com/allianz/ng-aquila/commit/d19439ca2301e5b7ab94e108a9b9ad26e5a7c596))
+* **radio:** rename radio-button-dot-size token ([98ce47a](https://github.com/allianz/ng-aquila/commit/98ce47ac0fae0ecea76dddfc465640110910b3ef))
+* **selection:** consolidate inputs to new A1 patterns ([03fec7c](https://github.com/allianz/ng-aquila/commit/03fec7ce86cfaeab2b597c68a019b8fece9705df))
+* **slider:** implement A1 Designs ([6ff00e9](https://github.com/allianz/ng-aquila/commit/6ff00e9ab53d4b696c5882f9320e7c42d7c38c50))
+* **text:** rename nx-attention-color to nx-accent-color ([c623ad2](https://github.com/allianz/ng-aquila/commit/c623ad273df7a8e89b7ee0c2375a9cc2701da399))
+* **theming:** add possibility to use scoped non-token CSS ([510c653](https://github.com/allianz/ng-aquila/commit/510c653a73332b8d93973cbd10f6e7ef8cfb1735))
+* update angular to v22 ([15dae28](https://github.com/allianz/ng-aquila/commit/15dae28c4d69505965344830492776b534c67040))
+
+
+### Bug Fixes 🐛
+
+* **mcp:** convert MCP server to ESM for Angular 22 compatibility ([afa9569](https://github.com/allianz/ng-aquila/commit/afa95695897e22b4d0c8d8507eaf697288c64a8a))
+* **schematic:** avoid to inherit toString of Object.prototype ([77923ff](https://github.com/allianz/ng-aquila/commit/77923ffec27b55f754973100fcfc0ac76b307cd0))
+* **schematics:** don't warn on single date in daterange migration ([073a516](https://github.com/allianz/ng-aquila/commit/073a516f629d04b3ffc5bdcd6b912c2e68dbe516))
+* **schematics:** emit CommonJS package.json marker in dist ([836547a](https://github.com/allianz/ng-aquila/commit/836547aeed394852181a1ec976af5da1b2a3e77a))
+* **status-icon:** rename status-icon token to more semantic name ([16bfd6f](https://github.com/allianz/ng-aquila/commit/16bfd6fe70ea8094026b18813053acc93e0e6e8b))
+* **tabs:** move scroll-indicator border down for expert ([a83dbe4](https://github.com/allianz/ng-aquila/commit/a83dbe497914ab12c985bfc9a61b5fc726f99d5f))
+
 ## 21.10.0 (2026-06-25)
 
 
