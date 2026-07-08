@@ -48,7 +48,7 @@ export class FileUploaderDropZoneExampleComponent implements OnInit, OnDestroy {
     requestUrl: 'file-upload',
     options: {
       params: new HttpParams(),
-      reportProgress: true,
+      reportUploadProgress: true,
     },
   };
 

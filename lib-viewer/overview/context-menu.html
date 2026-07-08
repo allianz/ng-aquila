@@ -56,8 +56,23 @@
 <li class="docs-markdown--li">ESCAPE: Closes the menu</li>
 </ul>
 <h3 id="selection-menu" tabindex="-1" class="docs-markdown--h3">Selection Menu</h3>
-<p class="docs-markdown--p">Selection menu stores its state. It can easily be built on top of Context Menu, simply copy the source code of the examples below and modify as needed. Use the <code>selectable</code> option on the menu items for the correct styling.</p>
+<p class="docs-markdown--p"><code>nxContextMenuItem</code> can manage its own selection presentation while the application keeps ownership of the selected value(s). Set <code>selectable</code> to <code>&quot;single&quot;</code> or <code>&quot;multi&quot;</code> and bind <code>[selected]</code> to your state. The component takes care of:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">setting <code>role=&quot;menuitemradio&quot;</code> (single) or <code>role=&quot;menuitemcheckbox&quot;</code> (multi),</li>
+<li class="docs-markdown--li">toggling <code>aria-checked</code>,</li>
+<li class="docs-markdown--li">rendering the radio / checkbox indicator.</li>
+</ul>
+<p class="docs-markdown--p">Setting <code>selectable</code> to <code>null</code> (or omitting it) restores the default <code>menuitem</code> behavior.</p>
+<div class="docs-a1">
 <h4 id="single-selection" tabindex="-1" class="docs-markdown--h4">Single selection</h4>
-<div nx-docs-example="context-menu-selection" config="{}">exampleID: context-menu-selection</div>
+<div nx-docs-example="context-menu-single-selectable" config="{}">exampleID: context-menu-single-selectable</div>
 <h4 id="multiple-selection" tabindex="-1" class="docs-markdown--h4">Multiple selection</h4>
+<p class="docs-markdown--p">Use <code>disableCloseOnSelect</code> to keep the menu open while the user toggles multiple options. The example below also wraps the items in <code>&lt;nx-context-menu-group&gt;</code> to label the section.</p>
+<div nx-docs-example="context-menu-multi-selectable" config="{}">exampleID: context-menu-multi-selectable</div>
+</div>
+<h3 id="legacy%3A-hand-rolled-selection-(deprecated-pattern)" tabindex="-1" class="docs-markdown--h3">Legacy: hand-rolled selection (deprecated pattern)</h3>
+<p class="docs-markdown--p">The examples below predate the built-in <code>selectable</code> modes and render their own indicator, role and <code>aria-checked</code>. They are kept for reference. <strong>Prefer One Allianz API.</strong> To migrate, drop the manual <code>&lt;nx-icon name=&quot;check&quot;&gt;</code>, <code>role</code> and <code>[attr.aria-checked]</code> and replace them with <code>selectable=&quot;single|multi&quot;</code> plus <code>[selected]</code>.</p>
+<h4 id="single-selection-(legacy)" tabindex="-1" class="docs-markdown--h4">Single selection (legacy)</h4>
+<div nx-docs-example="context-menu-selection" config="{}">exampleID: context-menu-selection</div>
+<h4 id="multiple-selection-(legacy)" tabindex="-1" class="docs-markdown--h4">Multiple selection (legacy)</h4>
 <div nx-docs-example="context-menu-select-multiple" config="{}">exampleID: context-menu-select-multiple</div>

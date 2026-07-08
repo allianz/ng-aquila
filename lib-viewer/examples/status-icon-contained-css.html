@@ -1,0 +1,26 @@
+<span class="hljs-selector-class">.grid</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: auto <span class="hljs-built_in">repeat</span>(<span class="hljs-number">5</span>, <span class="hljs-number">1</span>fr);
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">300</span>);
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">600</span>);
+  <span class="hljs-attribute">padding</span>: <span class="hljs-built_in">var</span>(--semantic-gap-all-linear-<span class="hljs-number">400</span>);
+}
+
+<span class="hljs-selector-class">.grid</span> <span class="hljs-selector-tag">span</span><span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">text-align</span>: left;
+}
+
+<span class="hljs-selector-class">.grid</span> <span class="hljs-selector-class">.header</span> {
+  <span class="hljs-attribute">font-weight</span>: bold;
+}
+
+<span class="hljs-selector-class">.grid--inverse</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--documentation-inverse-container-background);
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">6px</span>;
+}
+
+<span class="hljs-selector-class">.inverse-label</span> {
+  <span class="hljs-attribute">color</span>: white;
+}

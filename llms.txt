@@ -104,7 +104,7 @@ Each component's documentation is at: https://allianz.github.io/ng-aquila/docume
 - table: Data table with sorting and filtering
 - tabs: Tabbed content navigation
 - taglist: Tag/chip list with add/remove
-- text: Inline text styling utilities including attention colors
+- text: Inline text styling utilities including accent colors
 - tile: Selectable tile with icon, label, and hint
 - timefield: Time input field
 - toolbar: Action toolbar

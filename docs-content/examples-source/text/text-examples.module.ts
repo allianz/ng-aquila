@@ -2,14 +2,14 @@ import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
 import { NxTextModule } from '@allianz/ng-aquila/text';
 import { NgModule } from '@angular/core';
 
-import { AttentionColorBasicExampleComponent } from './attention-color-basic/attention-color-basic-example';
-import { AttentionColorIntegrationExampleComponent } from './attention-color-integration/attention-color-integration-example';
-import { AttentionColorNegativeExampleComponent } from './attention-color-negative/attention-color-negative-example';
+import { AccentColorBasicExampleComponent } from './accent-color-basic/accent-color-basic-example';
+import { AccentColorIntegrationExampleComponent } from './accent-color-integration/accent-color-integration-example';
+import { AccentColorNegativeExampleComponent } from './accent-color-negative/accent-color-negative-example';
 
 const EXAMPLES = [
-  AttentionColorBasicExampleComponent,
-  AttentionColorNegativeExampleComponent,
-  AttentionColorIntegrationExampleComponent,
+  AccentColorBasicExampleComponent,
+  AccentColorNegativeExampleComponent,
+  AccentColorIntegrationExampleComponent,
 ];
 
 @NgModule({
@@ -19,9 +19,9 @@ const EXAMPLES = [
 export class TextExamplesModule {
   static components() {
     return {
-      'attention-color-basic': AttentionColorBasicExampleComponent,
-      'attention-color-negative': AttentionColorNegativeExampleComponent,
-      'attention-color-integration': AttentionColorIntegrationExampleComponent,
+      'accent-color-basic': AccentColorBasicExampleComponent,
+      'accent-color-negative': AccentColorNegativeExampleComponent,
+      'accent-color-integration': AccentColorIntegrationExampleComponent,
     };
   }
 }

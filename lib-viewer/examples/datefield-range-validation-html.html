@@ -4,12 +4,11 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;formWithPicker&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Date Range Component&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-date-range</span>
-            #<span class="hljs-attr">dateRange</span>
             <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;range&quot;</span>
             [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;formRangeDatePicker&quot;</span>
             <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;mm/dd/yyyy&quot;</span>
-            [<span class="hljs-attr">minDate</span>]=<span class="hljs-string">&quot;minDate&quot;</span>
-            [<span class="hljs-attr">maxDate</span>]=<span class="hljs-string">&quot;maxDate&quot;</span>
+            [<span class="hljs-attr">minStartDate</span>]=<span class="hljs-string">&quot;minStartDate&quot;</span>
+            [<span class="hljs-attr">maxEndDate</span>]=<span class="hljs-string">&quot;maxEndDate&quot;</span>
             [<span class="hljs-attr">dateFilter</span>]=<span class="hljs-string">&quot;dateFilterWithFirstDay&quot;</span>
           &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-date-range</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
@@ -23,9 +22,9 @@
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
             Errors:
             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-              @if(formWithPicker.controls.range.errors?.nxDatefieldMin){
+              @if(formWithPicker.controls.range.errors?.nxDateRangeMinStart){
               <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The start date has to be after 03/31/2020.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @if(formWithPicker.controls.range.errors?.nxDatefieldMax){
+              } @if(formWithPicker.controls.range.errors?.nxDateRangeMaxEnd){
               <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The end date has to be before 04/30/2020.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
               } @if(formWithPicker.controls.range.errors?.nxDateRangeStartFilter
               || formWithPicker.controls.range.errors?.nxDateRangeEndFilter){

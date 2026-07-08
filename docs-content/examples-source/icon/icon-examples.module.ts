@@ -16,6 +16,8 @@ import { IconRegistryExampleComponent } from './icon-registry/icon-registry-exam
 import { IconSizesExampleComponent } from './icon-sizes/icon-sizes-example';
 import { IconTypeExampleComponent } from './icon-type/icon-type-example';
 import { StatusIconExampleComponent } from './status-icon/status-icon-example';
+import { StatusIconContainedExampleComponent } from './status-icon-contained/status-icon-contained-example';
+import { StatusIconInverseExampleComponent } from './status-icon-inverse/status-icon-inverse-example';
 import { StatusIconSizesExampleComponent } from './status-icon-sizes/status-icon-sizes-example';
 
 const EXAMPLES = [
@@ -33,6 +35,8 @@ const EXAMPLES = [
   IconSizesExampleComponent,
   StatusIconExampleComponent,
   StatusIconSizesExampleComponent,
+  StatusIconContainedExampleComponent,
+  StatusIconInverseExampleComponent,
 ];
 
 @NgModule({
@@ -56,6 +60,8 @@ export class IconExamplesModule {
       'icon-contained-sizes': IconContainedSizesExampleComponent,
       'status-icon': StatusIconExampleComponent,
       'status-icon-sizes': StatusIconSizesExampleComponent,
+      'status-icon-contained': StatusIconContainedExampleComponent,
+      'status-icon-inverse': StatusIconInverseExampleComponent,
     };
   }
 }

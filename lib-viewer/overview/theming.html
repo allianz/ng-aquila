@@ -2,6 +2,7 @@
 <p class="docs-markdown--p">By default the selector for the themes is <code>:root, :host</code>. In case you want to scope the theme a different selector you can use the <code>nx-build-theme</code> mixin with an additional argument for the selector.</p>
 <pre><code class="language-scss"><span class="hljs-keyword">@include</span> nx-build-theme(ndbx, <span class="hljs-string">&#x27;.my-custom-scope&#x27;</span>);
 </code></pre>
+<p class="docs-markdown--p">A theme can also carry <strong>CSS-only overrides</strong> (raw CSS rules that are not token values). When a theme is registered with such overrides (see <a href="#scoped-css-only-overrides">Scoped CSS-only overrides</a> below), <code>nx-build-theme</code> emits them inside the same selector you pass, so they are scoped together with the theme tokens instead of leaking onto the whole page. This is important on pages hosting multiple microfrontends.</p>
 <div class="docs-deprecation-warning">
 <p><strong>Important about Overlays:</strong> When a theme gets scoped to a class on the Angular application root element, any other element inside the body of the document or you are using web components with ShadowDOM, the theme will not be applied to any Angular CDK Overlay components (like Dialogs, Tooltips, etc.) because these overlays are appended to the end of the body element by default.</p>
 <p>
@@ -15,8 +16,10 @@ Please make sure that your custom selector either targets the overlays as well b
 <span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@allianz/ngx-brand-kit/scss/themes/allianz-one&quot;</span>;
 
 
-<span class="hljs-keyword">@include</span> a1-tokens.apply-design-tokens(<span class="hljs-string">&#x27;light&#x27;</span>, <span class="hljs-string">&#x27;lively&#x27;</span>, <span class="hljs-string">&#x27;spacious&#x27;</span>, <span class="hljs-string">&#x27;.my-custom-scope&#x27;</span>);
-<span class="hljs-keyword">@include</span> nx-build-theme(allianz-one, <span class="hljs-string">&#x27;.my-custom-scope&#x27;</span>);
+<span class="hljs-variable">$a1-scope</span>: <span class="hljs-string">&#x27;.my-custom-scope&#x27;</span>;
+
+<span class="hljs-keyword">@include</span> a1-tokens.apply-design-tokens(<span class="hljs-string">&#x27;light&#x27;</span>, <span class="hljs-string">&#x27;lively&#x27;</span>, <span class="hljs-string">&#x27;spacious&#x27;</span>, <span class="hljs-variable">$a1-scope</span>);
+<span class="hljs-keyword">@include</span> nx-build-theme(allianz-one, <span class="hljs-variable">$a1-scope</span>);
 </code></pre>
 </div>
 <h2 id="custom-theming" tabindex="-1" class="docs-markdown--h2">Custom theming</h2>
@@ -89,6 +92,50 @@ Currently the following internal themes are available as a base theme: **aquila*
     <span class="hljs-attribute">background</span>: <span class="hljs-built_in">nx-theme</span>(my-new-token);
 }
 </code></pre>
+<h3 id="scoped-css-only-overrides" tabindex="-1" class="docs-markdown--h3">Scoped CSS-only overrides</h3>
+<p class="docs-markdown--p">Sometimes a theme needs more than token values — it needs a few raw CSS rules (for example
+to align legacy component classes with the new design). If you emit those rules directly in
+your theme file they are written globally and <strong>ignore the selector</strong> you pass to
+<code>nx-build-theme</code>. On a page with multiple microfrontends, a scoped theme would still leak
+these rules onto the surrounding page.</p>
+<p class="docs-markdown--p">To keep CSS-only overrides scoped together with your tokens, pass an optional override mixin
+as the <strong>4th argument</strong> of <code>nx-register-theme</code>. The mixin takes <strong>no arguments</strong> and contains
+<strong>bare CSS rules</strong> — <code>nx-build-theme</code> wraps them under the theme's selector automatically, so
+they are emitted inside the same selector the theme is built for. Use the parent selector <code>&amp;</code>
+if you need to target the scope element itself or build compound selectors.</p>
+<pre><code class="language-scss"><span class="hljs-keyword">@use</span> <span class="hljs-string">&#x27;sass:meta&#x27;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/styles/theming&#x27;</span>;
+
+<span class="hljs-keyword">@mixin</span> my-theme-overrides {
+    <span class="hljs-selector-class">.my-legacy-class</span> {
+        <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-meta">!important</span>;
+    }
+}
+
+<span class="hljs-variable">$my-theme</span>: (
+    interactive-primary: green,
+);
+
+<span class="hljs-variable">$nx-themes</span>: <span class="hljs-built_in">nx-register-theme</span>(<span class="hljs-variable">$my-theme</span>, themeName, null, meta.<span class="hljs-built_in">get-mixin</span>(<span class="hljs-string">&#x27;my-theme-overrides&#x27;</span>));
+
+<span class="hljs-comment">// emitted scoped to &#x27;.my-scope&#x27; (tokens AND overrides):</span>
+<span class="hljs-keyword">@include</span> nx-build-theme(themeName, <span class="hljs-string">&#x27;.my-scope&#x27;</span>);
+</code></pre>
+<p class="docs-markdown--p"><strong><code>@use 'sass:meta';</code> is required</strong> in any file that calls <code>meta.get-mixin(...)</code>. This is
+needed whether you <code>@import</code> or <code>@use</code> the library, because <code>@use</code> namespaces are file-local
+and are not inherited through imports. The <code>meta.get-mixin</code> call must live in your own theme
+file — it can only see mixins visible where it is called.</p>
+<p class="docs-markdown--p">When you register a theme on top of a base theme (3rd argument) and do not pass your own
+override mixin, the base theme's override mixin (if any) is inherited automatically.</p>
+<p class="docs-markdown--p">Because every override rule is scoped under the selector you pass, components rendered in CDK
+overlays (dialogs, tooltips, dropdowns) are only covered if <code>.cdk-overlay-container</code> is part of
+that selector — the same caveat that applies to theme tokens (see the note above).</p>
+<div class="docs-private">
+<p class="docs-markdown--p">The internal A1 themes use this mechanism for their Teams-compatibility CSS overrides
+(headline font-weights, header actions, sidepanel padding). The <code>allianz-one</code> variants
+(<code>allianz-one-compact</code>, <code>allianz-one-dark</code>, …) are based on <code>allianz-one</code> and inherit its
+override mixin.</p>
+</div>
 <h3 id="general-theming-tokens" tabindex="-1" class="docs-markdown--h3">General Theming Tokens</h3>
 <p class="docs-markdown--p">Our components are themed by the following general tokens. You can overwrite their values in your custom theme. A full list of the current style tokens can be found <a href="https://www.github.com/allianz/ng-aquila/blob/main/projects/ng-aquila/src/shared-styles/theming/tokens.scss">here</a>.</p>
 <pre><code class="language-scss">  ui-<span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2A3D</span>,

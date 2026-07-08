@@ -94,12 +94,17 @@ We suggest not showing the Today button when today’s date cannot be displayed 
 </ul>
 <p class="docs-markdown--p">additionally the following validations can be activated by setting the corresponding component inputs, or applied directly as form control validators using <code>NxDateRangeValidators</code>:</p>
 <ul class="docs-markdown--ul">
-<li class="docs-markdown--li"><code>[minDate]</code> / <code>NxDateRangeValidators.min</code> will check if the start date is &gt;= the min date and will return <code>nxDatefieldMin</code> if it does not match</li>
-<li class="docs-markdown--li"><code>[maxDate]</code> / <code>NxDateRangeValidators.max</code> will check if the end date is &lt;= the max date and will return <code>nxDatefieldMax</code> if it does not match</li>
+<li class="docs-markdown--li"><code>[minStartDate]</code> / <code>NxDateRangeValidators.minStart</code> will check if the start date is &gt;= the min start date and will return <code>nxDateRangeMinStart</code> if it does not match</li>
+<li class="docs-markdown--li"><code>[maxStartDate]</code> / <code>NxDateRangeValidators.maxStart</code> will check if the start date is &lt;= the max start date and will return <code>nxDateRangeMaxStart</code> if it does not match</li>
+<li class="docs-markdown--li"><code>[minEndDate]</code> / <code>NxDateRangeValidators.minEnd</code> will check if the end date is &gt;= the min end date and will return <code>nxDateRangeMinEnd</code> if it does not match</li>
+<li class="docs-markdown--li"><code>[maxEndDate]</code> / <code>NxDateRangeValidators.maxEnd</code> will check if the end date is &lt;= the max end date and will return <code>nxDateRangeMaxEnd</code> if it does not match</li>
 <li class="docs-markdown--li"><code>[dateFilter]</code> / <code>NxDateRangeValidators.filter</code> will check if the start and end date match the filter and will return <code>nxDateRangeStartFilter</code> and <code>nxDateRangeEndFilter</code> respectively</li>
 <li class="docs-markdown--li"><code>required</code> will check if a complete value is present and will return a <code>required</code> validation error otherwise. Can be set via the <code>required</code> input on the component, <code>Validators.required</code>, or <code>NxDateRangeValidators.required</code> on the form control.</li>
 </ul>
 <div nx-docs-example="datefield-range-validation" config="{}">exampleID: datefield-range-validation</div>
+<h4 id="pinned-start-and-end-date" tabindex="-1" class="docs-markdown--h4">Pinned Start and End Date</h4>
+<p class="docs-markdown--p">By setting <code>[minStartDate]</code> and <code>[maxStartDate]</code> to the same date, you can pin the start date to a single valid value. Similarly, setting <code>[minEndDate]</code> and <code>[maxEndDate]</code> to the same date pins the end date. When a validation error fires for a pinned field, compare the input values directly in the template to detect this case and show a specific &quot;must be exactly&quot; message.</p>
+<div nx-docs-example="datefield-range-validation-pinned" config="{}">exampleID: datefield-range-validation-pinned</div>
 <h4 id="range-parsing-%26-formatting" tabindex="-1" class="docs-markdown--h4">Range Parsing &amp; Formatting</h4>
 <p class="docs-markdown--p">You can make use of same functionality as with the regular <a href="documentation/datefield/overview#parsing-%2526-formatting">Datefield parsing &amp; formatting</a>.
 This example will except and parse inputs of <code>MM/DD/YYYY | MM--DD--&gt;YYYY | MMDDYYY | 'MMMM DD, YYYY'</code>. So <i>03032020</i> is a valid input.</p>

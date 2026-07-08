@@ -146,22 +146,42 @@ It exists mostly to set the role attribute, disabled state and styling.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span><span class="docs-api-input__keyword">
-                        @Input
-                        (<span class="docs-api-input-alias">{ transform: booleanAttribute }</span>) 
-                    </span>
-                </div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 selectable: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">NxContextMenuItemSelectable</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the context menu item is selectable</p>
+        <ul>
+<li><code>&#39;single&#39;</code> : renders a built-in radio indicator and sets <code>role=&quot;menuitemradio&quot;</code>.</li>
+<li><code>&#39;multi&#39;</code> : renders a built-in checkbox indicator and sets <code>role=&quot;menuitemcheckbox&quot;</code>.</li>
+<li><code>true</code> : legacy passive mode, reserves indicator space for the consumer&#39;s own content. Consumers must bind their own role.</li>
+<li><code>null</code> / <code>false</code> : disables built-in selection.</li>
+</ul>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                selected: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether this item is currently selected. Only meaningful when <code>selectable</code> is set.</p>
 </td>
 </tr>
    
@@ -793,6 +813,15 @@ Solely for resolving circular dependency between the Menu Item and the Context M
         Additional type aliases
     </h3>
      
+
+<h4 id="NxContextMenuItemSelectable" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxContextMenuItemSelectable"></span>
+    <code>NxContextMenuItemSelectable</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'single' | 'multi' | boolean | null</code>
+</p>
+   
 
 <h4 id="NxContextMenuScrollStrategy" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="NxContextMenuScrollStrategy"></span>

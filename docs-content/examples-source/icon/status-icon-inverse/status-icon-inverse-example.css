@@ -1,0 +1,20 @@
+.inverse {
+  display: flex;
+  flex-direction: column;
+  gap: var(--semantic-gap-all-linear-600);
+  padding: var(--semantic-gap-all-linear-800);
+  background-color: var(--documentation-inverse-container-background);
+  border-radius: 6px;
+  color: white;
+  width: fit-content;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--semantic-gap-all-linear-600);
+}
+
+.row-label {
+  width: 100px;
+}

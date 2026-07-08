@@ -1,0 +1,30 @@
+<nx-context-menu #menu="nxContextMenu">
+  <nx-context-menu-header>Language</nx-context-menu-header>
+  @for (o of options; track o.value) {
+  <button
+    nxContextMenuItem
+    selectable="single"
+    [selected]="selectedLanguage() === o.value"
+    type="button"
+    (click)="selectLanguage(o.value)"
+  >
+    {{o.label}}
+  </button>
+  }
+</nx-context-menu>
+
+<button
+  nxButton="primary small"
+  class="uppercase"
+  [nxContextMenuTriggerFor]="menu"
+  aria-label="Open language menu"
+  type="button"
+>
+  <nx-icon
+    aria-hidden="true"
+    size="s"
+    name="globe"
+    class="nx-margin-right-xs"
+  ></nx-icon>
+  {{ selectedLanguage() }}
+</button>

@@ -66,7 +66,7 @@ export class FileUploaderWithRequestExampleComponent {
     const params = new HttpParams();
     const options = {
       params,
-      reportProgress: true,
+      reportUploadProgress: true,
     };
 
     this.http.post(url, formData, options).subscribe(

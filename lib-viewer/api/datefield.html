@@ -142,7 +142,7 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input{ alias:  <strong>startDateAriaLabel</strong> }</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>endDateAriaLabel</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 endDateAriaLabelInput: 
@@ -179,7 +179,7 @@
                 <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                maxDate: 
+                maxEndDate: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignal&lt;D&gt;</span>
@@ -187,7 +187,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>The maximum date that can be selected. The date must be same or before the maximum date.</p>
+        <p>The maximum date that the end date can be. The end date must be same or before this date.</p>
 </td>
 </tr>
    
@@ -197,7 +197,7 @@
                 <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                minDate: 
+                maxStartDate: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignal&lt;D&gt;</span>
@@ -205,7 +205,43 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>The minimum date that can be selected. The date must be same or after the minimum date.</p>
+        <p>The maximum date that the start date can be. The start date must be same or before this date.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                minEndDate: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;D&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The minimum date that the end date can be. The end date must be same or after this date.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                minStartDate: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;D&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The minimum date that the start date can be. The start date must be same or after this date.</p>
 </td>
 </tr>
    
@@ -3718,7 +3754,8 @@ such as the <code>min</code> or <code>max</code> attribute of an <code>&lt;input
 
 <h4 id="NxDateRangeValidators" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxDateRangeValidators"></span>
-    <code>NxDateRangeValidators</code></h4> 
+    <code>NxDateRangeValidators</code></h4><p class="docs-api-class-description"><p>Provides a set of date range validators that can be used by form controls.</p>
+</p> 
 
  
    

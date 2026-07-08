@@ -55,7 +55,7 @@ export class FileUploaderSeparateRequestsExampleComponent
     requestUrl: 'file-upload',
     options: {
       params: new HttpParams(),
-      reportProgress: true,
+      reportUploadProgress: true,
     },
     uploadSeparately: true,
   };

@@ -1,0 +1,29 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxStatusIconComponent</span>,
+  <span class="hljs-title class_">NxStatusIconSize</span>,
+  <span class="hljs-title class_">NxStatusIconType</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSwitcherComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/switcher&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ChangeDetectionStrategy</span>, <span class="hljs-title class_">Component</span>, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Status icon contained Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;status-icon-contained-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./status-icon-contained-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./status-icon-contained-example.css&#x27;</span>],
+  <span class="hljs-attr">changeDetection</span>: <span class="hljs-title class_">ChangeDetectionStrategy</span>.<span class="hljs-property">OnPush</span>,
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxStatusIconComponent</span>, <span class="hljs-title class_">NxSwitcherComponent</span>, <span class="hljs-title class_">FormsModule</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">StatusIconContainedExampleComponent</span> {
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> inverse = <span class="hljs-title function_">signal</span>(<span class="hljs-literal">false</span>);
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">types</span>: <span class="hljs-title class_">NxStatusIconType</span>[] = [
+    <span class="hljs-string">&#x27;success&#x27;</span>,
+    <span class="hljs-string">&#x27;warning&#x27;</span>,
+    <span class="hljs-string">&#x27;info&#x27;</span>,
+    <span class="hljs-string">&#x27;error&#x27;</span>,
+  ];
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">sizes</span>: <span class="hljs-title class_">NxStatusIconSize</span>[] = [<span class="hljs-string">&#x27;s&#x27;</span>, <span class="hljs-string">&#x27;m&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;xl&#x27;</span>, <span class="hljs-string">&#x27;2xl&#x27;</span>];
+}

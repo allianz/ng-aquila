@@ -10,10 +10,10 @@ import { SliderBasicExampleComponent } from './slider-basic/slider-basic-example
 import { SliderDecimalExampleComponent } from './slider-decimal/slider-decimal-example';
 import { SliderDefaultExampleComponent } from './slider-default/slider-default-example';
 import { SliderDisabledExampleComponent } from './slider-disabled/slider-disabled-example';
+import { SliderInverseExampleComponent } from './slider-inverse/slider-inverse-example';
 import { SliderInvertedExampleComponent } from './slider-inverted/slider-inverted-example';
 import { SliderLabelExampleComponent } from './slider-label/slider-label-example';
 import { SliderLabelsExampleComponent } from './slider-labels/slider-labels-example';
-import { SliderNegativeExampleComponent } from './slider-negative/slider-negative-example';
 import { SliderReactiveExampleComponent } from './slider-reactive/slider-reactive-example';
 import { SliderTemplateExampleComponent } from './slider-template/slider-template-example';
 import { SliderTextualExampleComponent } from './slider-textual/slider-textual-example';
@@ -29,7 +29,7 @@ const EXAMPLES = [
   SliderDisabledExampleComponent,
   SliderInvertedExampleComponent,
   SliderLabelExampleComponent,
-  SliderNegativeExampleComponent,
+  SliderInverseExampleComponent,
   SliderReactiveExampleComponent,
   SliderTemplateExampleComponent,
   SliderTextualExampleComponent,
@@ -59,7 +59,7 @@ export class SliderExamplesModule {
       'slider-disabled': SliderDisabledExampleComponent,
       'slider-inverted': SliderInvertedExampleComponent,
       'slider-label': SliderLabelExampleComponent,
-      'slider-negative': SliderNegativeExampleComponent,
+      'slider-inverse': SliderInverseExampleComponent,
       'slider-reactive': SliderReactiveExampleComponent,
       'slider-template': SliderTemplateExampleComponent,
       'slider-textual': SliderTextualExampleComponent,
