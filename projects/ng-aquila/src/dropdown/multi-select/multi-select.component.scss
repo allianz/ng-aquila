@@ -93,7 +93,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-right: 8px;
+  padding-right: v(multi-select-horizontal-margin);
 }
 
 .panel-header {
@@ -170,4 +170,8 @@
 
 .hidden {
   display: none;
+}
+
+.multi-select-badge {
+  margin-right: v(multi-select-horizontal-margin);
 }

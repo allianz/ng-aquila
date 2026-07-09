@@ -1,3 +1,5 @@
+import { NxBadgeComponent } from '@allianz/ng-aquila/badge';
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import {
   AppearanceType,
   NxFormfieldComponent,
@@ -22,6 +24,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   DoCheck,
   ElementRef,
   EventEmitter,
@@ -59,7 +62,6 @@ import { NxMultiSelectAllComponent } from './multi-select-all.component';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 
 const OVERLAY_MIN_WIDTH = 260;
-const A1_OVERLAY_OFFSET = 22;
 
 export type NxMultiSelectFilterFn = (query: string, label: string) => boolean;
 
@@ -92,6 +94,7 @@ const _defaultFilterFn: NxMultiSelectFilterFn = (query, label) =>
     NxInputModule,
     FormsModule,
     NxMultiSelectOptionComponent,
+    NxBadgeComponent,
   ],
 })
 export class NxMultiSelectComponent<S, T>
@@ -384,6 +387,11 @@ export class NxMultiSelectComponent<S, T>
   private _closeAnimationTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   private readonly _destroyed = new Subject<void>();
+
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+  protected readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
 
   constructor(
     readonly _intl: NxDropdownIntl,

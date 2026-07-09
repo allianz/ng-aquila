@@ -1,4 +1,5 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import {
   AppearanceType,
   NxFormfieldComponent,
@@ -25,7 +26,14 @@ import {
 } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  signal,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -65,6 +73,8 @@ class MultiSelectHarness extends ComponentHarness {
   getClearFilterButton = this.documentRootLocator.locatorFor('.filter .clear');
 
   getDivider = this.documentRootLocator.locatorForOptional('.divider');
+
+  getBadge = this.locatorForOptional('.value nx-badge');
 
   getCheckmark = this.documentRootLocator.locatorForOptional('nx-multi-select-all .is-selected');
 
@@ -162,6 +172,7 @@ describe('NxMultiSelectComponent', () => {
         ReactiveFormsModule,
         NxFormfieldModule,
         BasicMultiSelectComponent,
+        A1MultiSelectComponent,
         ComplexMultiSelectComponent,
         ReactiveMultiSelectComponent,
         IntlOverrideMultiSelect,
@@ -1168,6 +1179,42 @@ describe('NxMultiSelectComponent', () => {
       expect(await options[0].getLabelText()).toBe('Audi');
     });
   });
+
+  describe('selected count on A1', () => {
+    beforeEach(async () => {
+      await createTestComponent(A1MultiSelectComponent);
+      await multiSelectHarness.click();
+      await multiSelectHarness.clickOptions([3, 0]);
+    });
+
+    it('renders the count in a badge without parentheses', async () => {
+      const badge = await multiSelectHarness.getBadge();
+      expect(badge).not.toBeNull();
+      expect(await badge!.text()).toBe('2');
+    });
+
+    it('does not render the parenthesised count text', async () => {
+      expect(await multiSelectHarness.getValueText()).toBe('BMW, Mini2');
+    });
+
+    it('removes the badge once the selection is cleared', async () => {
+      await multiSelectHarness.clickOptions([3, 0]);
+      expect(await multiSelectHarness.getBadge()).toBeNull();
+    });
+
+    it('is not disabled while the multi select is enabled', async () => {
+      const badge = await multiSelectHarness.getBadge();
+      expect(await badge!.hasClass('nx-badge-attention--disabled')).toBeFalse();
+    });
+
+    it('reflects the disabled state of the multi select', async () => {
+      (testInstance as A1MultiSelectComponent).disabled = true;
+      fixture.detectChanges();
+
+      const badge = await multiSelectHarness.getBadge();
+      expect(await badge!.hasClass('nx-badge-attention--disabled')).toBeTrue();
+    });
+  });
 });
 
 @Directive({ standalone: true })
@@ -1192,6 +1239,24 @@ abstract class DropdownTest {
 })
 class BasicMultiSelectComponent extends DropdownTest {
   options = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
+}
+
+@Component({
+  template: `<nx-formfield label="Car brand" [appearance]="appearance">
+    <nx-multi-select
+      [(ngModel)]="model"
+      [filter]="filter"
+      [options]="options"
+      [disabled]="disabled"
+    ></nx-multi-select>
+  </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
+  providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }],
+})
+class A1MultiSelectComponent extends DropdownTest {
+  options = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
+  disabled = false;
 }
 
 @Component({
