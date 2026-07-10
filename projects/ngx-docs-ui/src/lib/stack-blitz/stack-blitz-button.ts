@@ -50,7 +50,6 @@ export class StackBlitzButton {
         this.exampleDescriptor.id,
         this.exampleDescriptor.module,
         this.exampleData,
-        this.exampleDescriptor.id.includes('harness'),
       )
       .catch((error) => {
         console.error('Failed to open StackBlitz:', error);

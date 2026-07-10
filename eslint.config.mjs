@@ -58,7 +58,6 @@ export default tseslint.config(
       'projects/ngx-docs-cli/**/*.template.html',
       'projects/ngx-docs-cli/**/macros.html',
       'projects/ng-aquila/documentation/assets/stack-blitz/src/index.html',
-      'projects/ng-aquila/documentation/assets/stack-blitz-tests/src/index.html',
       'projects/opensource-documentation/src/index.html',
       'projects/opensource-documentation/src/404.html',
     ],
