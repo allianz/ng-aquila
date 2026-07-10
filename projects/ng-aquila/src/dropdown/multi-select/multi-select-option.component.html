@@ -4,11 +4,11 @@
   [class.is-selected]="selected"
   [class.is-disabled]="disabled"
 >
-  <span class="nx-checkbox__control">
-    @if (selected) {
-      <nx-icon name="check" aria-hidden="true"></nx-icon>
-    }
-  </span>
+  <nx-checkbox-indicator
+    class="nx-multi-select-option__indicator"
+    [checked]="selected"
+    [disabled]="disabled"
+  ></nx-checkbox-indicator>
 
   <span class="nx-checkbox__label">
     {{ label() }}

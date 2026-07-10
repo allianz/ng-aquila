@@ -172,15 +172,16 @@ describe('NxMultiSelectAllComponent', () => {
   });
 
   describe('accessibility', () => {
-    it('read out select state', async () => {
+    it('read out the resulting select state', async () => {
       createTestComponent(BasicMultiSelectAllComponent);
       multiSelectAllHarness = await loader.getHarness(MultiSelectAllHarness);
+      // Already selected, so clicking toggles it off - it must announce "unselected".
       multiSelectAllInstance.selected = true;
 
       const announceSpy = spyOn(liveAnnouncer, 'announce');
       await multiSelectAllHarness.click();
 
-      expect(announceSpy).toHaveBeenCalledWith('Select All selected');
+      expect(announceSpy).toHaveBeenCalledWith('Select All unselected');
     });
   });
 });

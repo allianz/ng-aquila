@@ -1,5 +1,5 @@
 import { AppearanceType } from '@allianz/ng-aquila/formfield';
-import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxCheckboxIndicatorComponent } from '@allianz/ng-aquila/selection';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { Highlightable, ListKeyManagerOption } from '@angular/cdk/a11y';
 import {
@@ -31,7 +31,7 @@ import {
     '[class.is-outline]': 'appearance() === "outline"',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NxIconModule],
+  imports: [NxCheckboxIndicatorComponent],
 })
 export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyManagerOption {
   private _active = false;

@@ -227,14 +227,27 @@ export class NxMultiSelectComponent<S, T>
     return this._elementRef;
   }
 
+  /**
+   * Whether all *enabled* options are selected. Used to decide whether clicking
+   * "select all" should select or clear the enabled options. Disabled options are
+   * never touched by "select all", so they are excluded from this decision.
+   */
   get _allSelected(): boolean {
+    const enabledOptions = this.options.filter((option) => !this._isDisabled(option));
     return (
-      this.selectedItems.size === this.options.filter((option) => !this._isDisabled(option)).length
+      enabledOptions.length > 0 && enabledOptions.every((option) => this._isOptionSelected(option))
     );
   }
 
   get _someSelected(): boolean {
     return this.selectedItems.size > 0 && !this._allSelected;
+  }
+
+  /** Number of options that are both disabled and pre-selected (locked selections). */
+  get _lockedSelectedCount(): number {
+    return this.options.filter(
+      (option) => this._isDisabled(option) && this._isOptionSelected(option),
+    ).length;
   }
 
   private get _isActiveItemFiltered(): boolean {
@@ -324,6 +337,9 @@ export class NxMultiSelectComponent<S, T>
   id = inject(IdGenerationService).nextId('nx-multi-select');
 
   _comboboxId = `${this.id}-combobox`;
+
+  /** Id of the visually-hidden hint describing locked (disabled & pre-selected) options. */
+  _lockedHintId = `${this.id}-locked-hint`;
 
   readonly stateChanges = new Subject<void>();
 
@@ -497,15 +513,16 @@ export class NxMultiSelectComponent<S, T>
   }
 
   /**
-   * Returns html ids of multi select rendered value and label (if available),
-   * separated by space.
+   * Returns the html id used to label the combobox / panel / filter input.
+   *
+   * We label with the formfield label only. The combobox already exposes its rendered
+   * value through its own text content, so referencing its own id here would make the
+   * selected options be announced twice - once as the combobox value and once as part
+   * of its accessible name. Fall back to the combobox id only when no label exists, so
+   * the control still has an accessible name.
    */
   _getAriaLabelledBy(valueId = this.id): string {
-    const labelId = this._formFieldComponent?.labelId;
-    if (labelId) {
-      return `${valueId} ${labelId}`;
-    }
-    return valueId;
+    return this._formFieldComponent?.labelId ?? valueId;
   }
 
   /** @docs-private */
@@ -764,7 +781,9 @@ export class NxMultiSelectComponent<S, T>
         filterList.forEach((option) => this._addOptionToSelection(option));
       }
     } else if (this._allSelected) {
-      this.selectedItems.clear();
+      this.listItems
+        .filter((option) => !this._isDisabled(option))
+        .forEach((option) => this._removeOptionFromSelection(option));
     } else {
       this.listItems
         .filter((option) => !this._isDisabled(option))
@@ -907,6 +926,9 @@ export class NxMultiSelectComponent<S, T>
 
     this._keyManager.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
       this._scrollActiveOptionIntoView();
+      // Re-render the bound `aria-activedescendant` so screen readers announce the
+      // newly active option as the user arrows through the list (OnPush component).
+      this._cdr.markForCheck();
     });
   }
 

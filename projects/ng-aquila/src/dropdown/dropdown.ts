@@ -132,6 +132,13 @@ export class NxDropdownIntl {
    * @deletion-target 18.0.0
    */
   clearAll = 'Clear all';
+
+  /** Hint announced to screen readers when locked (disabled & pre-selected) options exist. */
+  preselectedLockedHint(count: number): string {
+    return count === 1
+      ? '1 option is pre-selected and cannot be changed.'
+      : `${count} options are pre-selected and cannot be changed.`;
+  }
 }
 
 /** Change event object that is emitted when the select value has changed. */

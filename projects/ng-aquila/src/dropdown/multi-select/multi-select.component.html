@@ -64,8 +64,17 @@
     (focusin)="_onFocusWithinOverlay($event)"
     tabindex="-1"
     [attr.aria-labelledby]="_getAriaLabelledBy()"
+    [attr.role]="filter ? null : 'listbox'"
+    [attr.aria-multiselectable]="filter ? null : true"
+    [attr.aria-activedescendant]="filter ? null : _getAriaActiveDescendant()"
     #panelContent
+    [attr.aria-describedby]="!filter && _lockedSelectedCount > 0 ? _lockedHintId : null"
   >
+    @if (_lockedSelectedCount > 0) {
+      <div class="cdk-visually-hidden" [id]="_lockedHintId">
+        {{ _intl.preselectedLockedHint(_lockedSelectedCount) }}
+      </div>
+    }
     @if (!_isOutline && _overlayLabel) {
       <div class="panel-header" #panelHeader>
         {{ _overlayLabel }}
@@ -73,7 +82,11 @@
     }
 
     @if (_isOutline && !disableSelectAll) {
-      <div class="item actions select-all" role="listbox" [attr.aria-label]="_intl.selectAll">
+      <div
+        class="item actions select-all"
+        [attr.role]="filter ? 'listbox' : 'presentation'"
+        [attr.aria-label]="filter ? _intl.selectAll : null"
+      >
         <nx-multi-select-all
           (selectedAllChange)="_onSelectAll()"
           [label]="_intl.selectAll"
@@ -112,7 +125,13 @@
       </div>
     }
 
-    <div class="items" #itemsList [id]="_comboboxId" role="listbox" aria-multiselectable="true">
+    <div
+      class="items"
+      #itemsList
+      [id]="_comboboxId"
+      [attr.role]="filter ? 'listbox' : 'presentation'"
+      [attr.aria-multiselectable]="filter ? true : null"
+    >
       @for (option of listItems; track option; let i = $index) {
         <nx-multi-select-option
           class="item"

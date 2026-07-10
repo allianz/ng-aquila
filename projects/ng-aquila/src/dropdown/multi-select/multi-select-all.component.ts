@@ -108,7 +108,9 @@ export class NxMultiSelectAllComponent<T> implements Highlightable, ListKeyManag
   _onSelect() {
     if (!this.disabled) {
       this.selectedAllChange.emit(this.selected);
-      this.liveAnnouncer.announce(`${this.label()} ${this.selected ? 'selected' : 'unselected'}`);
+      // `selected` still holds the pre-click state here; clicking toggles it, so announce
+      // the resulting state to avoid an inverted "selected"/"unselected" announcement.
+      this.liveAnnouncer.announce(`${this.label()} ${this.selected ? 'unselected' : 'selected'}`);
     }
   }
 

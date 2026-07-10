@@ -82,6 +82,13 @@ class MultiSelectHarness extends ComponentHarness {
     'nx-multi-select-all .nx-checkbox__indeterminate-indicator',
   );
 
+  getLockedHint = this.documentRootLocator.locatorForOptional('.panel .cdk-visually-hidden');
+
+  async getLockedHintText() {
+    const hint = await this.getLockedHint();
+    return hint ? hint.text() : null;
+  }
+
   async clickOptions(indexes: number[]) {
     const options = await this.getOptions();
     for (const i of indexes) {
@@ -347,7 +354,9 @@ describe('NxMultiSelectComponent', () => {
         ]);
         expect(ariaExpanded).toBe('true');
         expect(role).toBe('combobox');
-        expect(ariaLabelledBy).toBe(`${multiSelectInstance.id} ${testInstance.formField.labelId}`);
+        // Labelled by the formfield label only - referencing the combobox's own id would
+        // make the selected value be announced twice (as value and as name).
+        expect(ariaLabelledBy).toBe(`${testInstance.formField.labelId}`);
       });
 
       it('has the aria attributes on the panel', async () => {
@@ -360,7 +369,7 @@ describe('NxMultiSelectComponent', () => {
         ]);
 
         expect(ariaOwns).toBe(`${multiSelectInstance.id}-combobox`);
-        expect(ariaLabelledBy).toBe(`${multiSelectInstance.id} ${testInstance.formField.labelId}`);
+        expect(ariaLabelledBy).toBe(`${testInstance.formField.labelId}`);
       });
 
       it('has no select all & clear all buttons', async () => {
@@ -1180,6 +1189,62 @@ describe('NxMultiSelectComponent', () => {
     });
   });
 
+  describe('with pre-selected disabled options', () => {
+    beforeEach(async () => {
+      await createTestComponent(DisabledPreselectedMultiSelectComponent);
+      await multiSelectHarness.click();
+    });
+
+    it('should show checkmark when all enabled options are selected', async () => {
+      await multiSelectHarness.clickSelectAll();
+      const checkmark = await multiSelectHarness.getCheckmark();
+      expect(checkmark).toBeTruthy();
+    });
+
+    it('should deselect only enabled options when clicking select-all to clear', async () => {
+      await multiSelectHarness.clickSelectAll(); // select all enabled
+      await multiSelectHarness.clickSelectAll(); // clear enabled
+
+      const comp = fixture.componentInstance as DisabledPreselectedMultiSelectComponent;
+      // disabled pre-selected item (BMW) must remain selected
+      expect(comp.model).toEqual(['BMW']);
+    });
+
+    it('should be indeterminate when only a disabled option is pre-selected', async () => {
+      // Only the disabled item (BMW) is selected initially; no enabled item is selected.
+      // "Select all" must reflect that something is selected, so it is mixed - not unchecked.
+      const indeterminate = await multiSelectHarness.getIndeterminate();
+      expect(indeterminate).toBeTruthy();
+    });
+
+    it('should be fully checked only when every option (incl. disabled) is selected', async () => {
+      await multiSelectHarness.clickSelectAll(); // selects all enabled; disabled already selected
+
+      expect(await multiSelectHarness.getCheckmark()).toBeTruthy();
+      expect(await multiSelectHarness.getIndeterminate()).toBeFalsy();
+    });
+
+    it('should announce locked hint to screen readers', async () => {
+      const hintText = await multiSelectHarness.getLockedHintText();
+      expect(hintText).toBe('1 option is pre-selected and cannot be changed.');
+    });
+
+    it('should skip the disabled pre-selected option when navigating with arrow keys', async () => {
+      // BMW is disabled, pre-selected and (being selected) sorted to the top of the list.
+      const options = await multiSelectHarness.getOptions();
+      expect(await options[0].getLabelText()).toBe('BMW');
+      expect(await options[0].isDisabled()).toBeTrue();
+
+      // Anchor on "select all", then arrow down. The disabled option must be skipped over
+      // and the first enabled option (Audi) becomes active instead.
+      await multiSelectHarness.pressKey('Home', HOME);
+      await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+      expect(await options[0].isActive()).toBeFalse();
+      expect(await options[1].getLabelText()).toBe('Audi');
+      expect(await options[1].isActive()).toBeTrue();
+    });
+  });
+
   describe('selected count on A1', () => {
     beforeEach(async () => {
       await createTestComponent(A1MultiSelectComponent);
@@ -1415,4 +1480,25 @@ class TabIndexMultiSelectComponent extends DropdownTest {
   options = ['BMW', 'Audi', 'Volvo', 'Mini'];
   tabIndex = 0;
   disabled = false;
+}
+
+@Component({
+  template: `<nx-formfield label="Car brand" [appearance]="appearance">
+    <nx-multi-select
+      [(ngModel)]="model"
+      [options]="options"
+      selectLabel="label"
+      selectValue="value"
+      selectDisabled="disabled"
+    ></nx-multi-select>
+  </nx-formfield>`,
+  imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
+})
+class DisabledPreselectedMultiSelectComponent extends DropdownTest {
+  options = [
+    { label: 'BMW', value: 'BMW', disabled: true },
+    { label: 'Audi', value: 'Audi', disabled: false },
+    { label: 'Volvo', value: 'Volvo', disabled: false },
+  ];
+  override model: any[] = ['BMW'];
 }
