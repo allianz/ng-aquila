@@ -67,11 +67,13 @@
   }
 }
 
-// Use to remove the outer spacing, for "edge to edge container" components
-:host(.nx-grid--no-padding.nx-grid--container-query:not(.nx-grid--a1)) ::ng-deep {
+:host(.nx-grid--no-padding.nx-grid--container-query) {
   padding-left: 0;
   padding-right: 0;
+}
 
+// Use to remove the outer spacing, for "edge to edge container" components
+:host(.nx-grid--no-padding.nx-grid--container-query:not(.nx-grid--a1)) ::ng-deep {
   .nx-grid__row {
     margin-left: calc(-1 * var(--grid-gutter-width-base) * 0.5);
     margin-right: calc(-1 * var(--grid-gutter-width-base) * 0.5);
