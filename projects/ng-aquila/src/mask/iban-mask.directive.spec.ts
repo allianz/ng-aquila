@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  signal,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { form, FormField } from '@angular/forms/signals';
 import { dispatchFakeEvent } from 'projects/ng-aquila/src/cdk-test-utils';
 
 import { NxIbanMaskDirective } from './iban-mask.directive';
@@ -60,6 +68,7 @@ describe('NxIbanMaskDirective', () => {
         FormIbanMaskComponent,
         FormWithInitalIbanMaskComponent,
         FormIbanOnBlurMaskComponent,
+        SignalFormIbanMaskComponent,
       ],
     }).compileComponents();
   }));
@@ -135,6 +144,18 @@ describe('NxIbanMaskDirective', () => {
       testInstance.testForm.patchValue({ maskInput: 'NL91ABNA0417164300' });
       fixture.detectChanges();
       expect(nativeElement.value).toBe('NL91 ABNA 0417 1643 00');
+    });
+  });
+
+  describe('signal form', () => {
+    // Signal Forms push the initial value into the value accessor before the
+    // directive's `ngOnInit` runs, so the mask engine has to buffer and flush it.
+    it('should correctly fill in an initial signal form value', () => {
+      const signalFixture = TestBed.createComponent(SignalFormIbanMaskComponent);
+      signalFixture.detectChanges();
+      const input = signalFixture.nativeElement.querySelector('input') as HTMLInputElement;
+
+      expect(input.value).toBe('NL91 ABNA 0417 1643 00');
     });
   });
 
@@ -527,4 +548,14 @@ class FormIbanOnBlurMaskComponent extends IbanMaskTest {
   testForm: FormGroup = new FormGroup({
     maskInput: new FormControl('', { updateOn: 'blur' }),
   });
+}
+
+@Component({
+  template: ` <input nxMask nxIbanMask [formField]="ibanField" /> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxMaskModule, FormField],
+})
+class SignalFormIbanMaskComponent {
+  readonly ibanModel = signal('NL91 ABNA 0417 1643 00');
+  readonly ibanField = form(this.ibanModel);
 }

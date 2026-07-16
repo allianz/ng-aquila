@@ -1,6 +1,7 @@
 import { NX_INPUT_VALUE_ACCESSOR } from '@allianz/ng-aquila/input';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Directive,
   ElementRef,
@@ -40,7 +41,9 @@ export const NX_MASK_VALIDATORS: any = {
   ],
   standalone: true,
 })
-export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit, OnDestroy {
+export class NxMaskDirective
+  implements ControlValueAccessor, Validator, OnInit, AfterViewInit, OnDestroy
+{
   /**
    * Emits the unmasked value before the value changes.
    */
@@ -132,6 +135,16 @@ export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit,
 
   nxMask?: NxMask;
 
+  /**
+   * Holds a value written through `writeValue()` before the mask engine
+   * (`nxMask`) is created in `ngOnInit`. Some form systems (e.g. Signal Forms)
+   * push the initial value into the control value accessor before `ngOnInit`
+   * runs, so we buffer it here and flush it once the mask is ready. A buffered
+   * value is never `undefined` (`writeValue()` normalizes null/undefined to
+   * `''`), so `undefined` unambiguously means "nothing pending".
+   */
+  private _pendingValue?: string;
+
   constructor(
     private readonly _elementRef: ElementRef,
     private readonly _cdr: ChangeDetectorRef,
@@ -139,6 +152,18 @@ export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit,
 
   ngOnInit() {
     this.nxMask = new NxMask(this._elementRef.nativeElement, this.maskConfig);
+  }
+
+  ngAfterViewInit() {
+    // If a value was written before the mask engine existed, apply it now.
+    // Flushing here (instead of in `ngOnInit`) ensures sibling directives
+    // (e.g. NxIbanMaskDirective, which sets up the initial mask in its own
+    // `ngOnInit`) are fully initialized before we mask and render the value.
+    if (this._pendingValue !== undefined) {
+      const pendingValue = this._pendingValue;
+      this._pendingValue = undefined;
+      this.writeValue(pendingValue);
+    }
   }
 
   private updateNxMask({ callOnChange = true, updateValue = true } = {}) {
@@ -273,14 +298,22 @@ export class NxMaskDirective implements ControlValueAccessor, Validator, OnInit,
   writeValue(value: any): void {
     const newValue = value === undefined || value === null ? '' : value;
 
+    // The mask engine is created lazily in `ngOnInit`. If a value is written
+    // before that (e.g. Signal Forms push the initial value before `ngOnInit`),
+    // buffer it and flush it in `ngAfterViewInit` once the engine is ready.
+    if (!this.nxMask) {
+      this._pendingValue = newValue;
+      return;
+    }
+
     // this has to be fired before we set the value next, that the iban mask
     // can be set correctly to the country first
 
     this.cvaModelChange.next(newValue);
     if (this.deactivateMask) {
-      this.nxMask?.setValue(newValue);
+      this.nxMask.setValue(newValue);
     } else {
-      this.nxMask?.setValue(this.getMaskedString(newValue));
+      this.nxMask.setValue(this.getMaskedString(newValue));
     }
   }
 
