@@ -1,8 +1,18 @@
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  signal,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxHeaderComponent } from './header.component';
 import { NxHeaderModule } from './header.module';
+
+const A1_PROVIDERS = [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }];
 
 @Directive({ standalone: true })
 abstract class HeaderTest {
@@ -26,7 +36,15 @@ describe(NxHeaderComponent.name, () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxHeaderModule, BasicHeader, MultiRowHeader, CobrandingHeader],
+      imports: [
+        NxHeaderModule,
+        BasicHeader,
+        MultiRowHeader,
+        CobrandingHeader,
+        AppTitleHeader,
+        AppTitleHeaderA1,
+        ActionsShowDividerHeader,
+      ],
     }).compileComponents();
   }));
 
@@ -103,21 +121,94 @@ describe(NxHeaderComponent.name, () => {
     }));
   });
 
-  describe('Header actions separator', () => {
+  describe('Header actions deprecated showSeparator', () => {
     beforeEach(() => {
       createTestComponent(CobrandingHeader);
     });
 
-    it('Should have separator', waitForAsync(() => {
+    it('Should not have separator', waitForAsync(() => {
       expect(fixture.nativeElement.querySelector('.nx-header__actions')).not.toHaveClass(
         'nx-header__actions--show-separator',
       );
+    }));
+
+    it('showSeparator=true still shows the separator', waitForAsync(() => {
       testInstance.showSeparator = true;
       fixture.detectChanges();
       expect(fixture.nativeElement.querySelector('.nx-header__actions')).toHaveClass(
         'nx-header__actions--show-separator',
       );
     }));
+  });
+
+  describe('nx-header-app-title showDivider', () => {
+    it('shows divider by default in NDBX', () => {
+      createTestComponent(AppTitleHeader);
+      expect(fixture.nativeElement.querySelector('nx-header-app-title')).toHaveClass(
+        'nx-header__app-title--show-divider',
+      );
+    });
+
+    it('hides divider by default in A1', () => {
+      createTestComponent(AppTitleHeaderA1);
+      expect(fixture.nativeElement.querySelector('nx-header-app-title')).not.toHaveClass(
+        'nx-header__app-title--show-divider',
+      );
+    });
+
+    it('explicit [showDivider]="false" hides divider in NDBX', () => {
+      createTestComponent(AppTitleHeader);
+      (testInstance as AppTitleHeader).showDivider = false;
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-header-app-title')).not.toHaveClass(
+        'nx-header__app-title--show-divider',
+      );
+    });
+
+    it('explicit [showDivider]="true" shows divider in A1', () => {
+      createTestComponent(AppTitleHeaderA1);
+      (testInstance as AppTitleHeaderA1).showDivider = true;
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-header-app-title')).toHaveClass(
+        'nx-header__app-title--show-divider',
+      );
+    });
+  });
+
+  describe('nx-header-actions showDivider', () => {
+    it('hides divider by default', () => {
+      createTestComponent(ActionsShowDividerHeader);
+      expect(fixture.nativeElement.querySelector('nx-header-actions')).not.toHaveClass(
+        'nx-header__actions--show-separator',
+      );
+    });
+
+    it('explicit [showDivider]="true" shows divider', () => {
+      createTestComponent(ActionsShowDividerHeader);
+      (testInstance as ActionsShowDividerHeader).showDivider = true;
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-header-actions')).toHaveClass(
+        'nx-header__actions--show-separator',
+      );
+    });
+
+    it('explicit [showDivider]="false" hides divider', () => {
+      createTestComponent(ActionsShowDividerHeader);
+      (testInstance as ActionsShowDividerHeader).showDivider = false;
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-header-actions')).not.toHaveClass(
+        'nx-header__actions--show-separator',
+      );
+    });
+
+    it('deprecated showSeparator still works as fallback', () => {
+      createTestComponent(CobrandingHeader);
+      testInstance.showSeparator = true;
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-header-actions')).toHaveClass(
+        'nx-header__actions--show-separator',
+      );
+    });
   });
 
   describe('a11y', () => {
@@ -183,4 +274,51 @@ class MultiRowHeader extends HeaderTest {}
 })
 class CobrandingHeader extends HeaderTest {
   showSeparator: any;
+}
+
+@Component({
+  selector: 'test-app-title-header',
+  template: `
+    <nx-header>
+      <nx-header-brand>
+        <nx-header-app-title [showDivider]="showDivider">App</nx-header-app-title>
+      </nx-header-brand>
+    </nx-header>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxHeaderModule],
+})
+class AppTitleHeader extends HeaderTest {
+  showDivider: boolean | undefined = undefined;
+}
+
+@Component({
+  selector: 'test-app-title-header-a1',
+  template: `
+    <nx-header>
+      <nx-header-brand>
+        <nx-header-app-title [showDivider]="showDivider">App</nx-header-app-title>
+      </nx-header-brand>
+    </nx-header>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxHeaderModule],
+  providers: A1_PROVIDERS,
+})
+class AppTitleHeaderA1 extends HeaderTest {
+  showDivider: boolean | undefined = undefined;
+}
+
+@Component({
+  selector: 'test-actions-show-divider-header',
+  template: `
+    <nx-header>
+      <nx-header-actions [showDivider]="showDivider">Action</nx-header-actions>
+    </nx-header>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxHeaderModule],
+})
+class ActionsShowDividerHeader extends HeaderTest {
+  showDivider = false;
 }

@@ -138,19 +138,22 @@
 
   @include type-style(header-app-title);
   align-items: center;
-  padding-left: v(header-app-title-padding-left);
   white-space: nowrap;
-  border-left-width: v(header-border-width);
-  border-left-style: solid;
-  border-left-color: v(header-border-color);
 
-  :host-context([dir='rtl']) & {
-    padding-right: v(header-app-title-padding-left);
-    padding-left: initial;
-    margin-left: initial;
-    border-right-width: v(header-border-width);
-    border-right-style: solid;
-    border-right-color: v(header-border-color);
-    border-left: none;
+  &.nx-header__app-title--show-divider {
+    padding-left: v(header-app-title-padding-left);
+    border-left-width: v(header-border-width);
+    border-left-style: solid;
+    border-left-color: v(header-border-color);
+
+    :host-context([dir='rtl']) & {
+      padding-right: v(header-app-title-padding-left);
+      padding-left: initial;
+      margin-left: initial;
+      border-right-width: v(header-border-width);
+      border-right-style: solid;
+      border-right-color: v(header-border-color);
+      border-left: none;
+    }
   }
 }

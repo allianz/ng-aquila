@@ -6,7 +6,7 @@ b2c: false
 expert: true
 stable: done
 alias: toolbar, navbar, app bar, navigation bar
-a1Densities: true
+a1Full: true
 group: Navigation
 ---
 
@@ -45,15 +45,19 @@ In some cases you want to have a header with two rows. In this case simply place
 
 #### Application title and Header Actions
 
-You can show the title of your application in the header by using the `<nx-header-app-title>` directive inside the `<nx-header-brand>` as shown in the example below. The application title is displayed after the logo separated by a vertical line.
+You can show the title of your application in the header by using the `<nx-header-app-title>` directive inside the `<nx-header-brand>` as shown in the example below. The application title is displayed after the logo separated by a vertical line by default in NDBX. In A1 the divider is hidden by default. Use `[showDivider]="true"` to show it explicitly.
 
-`<nx-header-actions>` is a container where additional actions can be placed. Depending on the action, use links if it redirects to a different page, or a button if it is an action happening on the current page.
+`<nx-header-actions>` is a container where additional actions can be placed. Depending on the action, use links if it redirects to a different page, or a button if it is an action happening on the current page. It also supports a left vertical divider via the `[showDivider]` input, which defaults to `false`.
+
+<div class="docs-deprecation-warning">
+  <strong>Note:</strong> The previous `showSeparator` input on <code>&lt;nx-header-actions&gt;</code> is kept for backward compatibility but is deprecated. Please migrate to <code>showDivider</code>.
+</div>
 
 <!-- example(header-icons) -->
 
 #### Co-branding
 
-A co-branding can be used in the header. It is positioned in the rightmost position separated by a vertical line. The `<nx-header-actions>` directive supports showing a left vertical separation line by setting the property `showSeparator=true`.
+A co-branding can be used in the header. It is positioned in the rightmost position separated by a vertical line.
 
 <!-- example(header-cobranding) -->
 </div>

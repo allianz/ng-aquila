@@ -1,15 +1,20 @@
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  computed,
   ContentChildren,
   Directive,
   ElementRef,
+  inject,
   Input,
+  input,
   OnDestroy,
   QueryList,
+  signal,
 } from '@angular/core';
 
 /** This directive defines a header row within the `<nx-header>` component. */
@@ -56,19 +61,32 @@ export class NxHeaderBrandDirective {}
   exportAs: 'NxHeaderActions',
   host: {
     class: 'nx-header__actions',
-    '[class.nx-header__actions--show-separator]': 'showSeparator',
+    '[class.nx-header__actions--show-separator]': '_effectiveShowDivider()',
   },
   standalone: true,
 })
 export class NxHeaderActionsDirective {
-  /* Whenever to show the left separator*/
+  /**
+   * Whether to show the left divider of the actions section.
+   * Defaults to `false`.
+   */
+  readonly showDivider = input(false);
+
+  /**
+   * @deprecated Use `showDivider` instead.
+   * Whether to show the left separator of the actions section.
+   */
   @Input() set showSeparator(value: BooleanInput) {
-    this._showSeparator = coerceBooleanProperty(value);
+    this._showSeparator.set(coerceBooleanProperty(value));
   }
   get showSeparator(): boolean {
-    return this._showSeparator;
+    return this._showSeparator();
   }
-  private _showSeparator = false;
+  private readonly _showSeparator = signal(false);
+
+  protected readonly _effectiveShowDivider = computed(
+    () => this.showDivider() || this._showSeparator(),
+  );
 }
 
 /** This component defines the header navigation section within the `<nx-header>` component. */
@@ -135,7 +153,19 @@ export class NxHeaderLinkComponent implements OnDestroy, AfterViewInit {
   exportAs: 'NxHeaderAppTitle',
   host: {
     class: 'nx-header__app-title',
+    '[class.nx-header__app-title--show-divider]': '_effectiveShowDivider()',
   },
   standalone: true,
 })
-export class NxHeaderAppTitleDirective {}
+export class NxHeaderAppTitleDirective {
+  private readonly _allianzOneOptions = inject(ALLIANZ_ONE, { optional: true });
+  private readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
+
+  /**
+   * Whether to show the left divider between the brand logo and the application title.
+   * Defaults to `true` in NDBX and `false` in A1.
+   */
+  readonly showDivider = input<boolean | undefined>(undefined);
+
+  protected readonly _effectiveShowDivider = computed(() => this.showDivider() ?? !this._isA1());
+}
