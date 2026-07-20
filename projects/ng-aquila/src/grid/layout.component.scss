@@ -49,14 +49,17 @@
   }
 }
 
-:host(.nx-grid--no-padding.nx-grid--media-query) {
+:host(.nx-grid--no-padding.nx-grid--media-query),
+:host(.nx-grid--no-padding.nx-grid--container-query) {
   padding-left: 0;
   padding-right: 0;
 }
 
 // Use to remove the outer spacing, for "edge to edge container" components
-:host(.nx-grid--no-padding.nx-grid--media-query:not(.nx-grid--a1)) ::ng-deep {
-  .nx-grid__row {
+:host(.nx-grid--no-padding.nx-grid--media-query:not(.nx-grid--a1)) {
+  overflow-x: clip;
+
+  ::ng-deep .nx-grid__row {
     margin-left: calc(-1 * var(--grid-gutter-width-base) * 0.5);
     margin-right: calc(-1 * var(--grid-gutter-width-base) * 0.5);
 
@@ -67,14 +70,10 @@
   }
 }
 
-:host(.nx-grid--no-padding.nx-grid--container-query) {
-  padding-left: 0;
-  padding-right: 0;
-}
+:host(.nx-grid--no-padding.nx-grid--container-query:not(.nx-grid--a1)) {
+  overflow-x: clip;
 
-// Use to remove the outer spacing, for "edge to edge container" components
-:host(.nx-grid--no-padding.nx-grid--container-query:not(.nx-grid--a1)) ::ng-deep {
-  .nx-grid__row {
+  ::ng-deep .nx-grid__row {
     margin-left: calc(-1 * var(--grid-gutter-width-base) * 0.5);
     margin-right: calc(-1 * var(--grid-gutter-width-base) * 0.5);
 
