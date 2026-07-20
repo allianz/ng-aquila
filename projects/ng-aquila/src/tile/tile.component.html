@@ -12,7 +12,6 @@
   [attr.aria-invalid]="errorState() || null"
   [attr.aria-disabled]="readonly() || disabled() || null"
   (click)="toggleSelection($event)"
-  (blur)="touch()"
 />
 
 <label [for]="id" class="nx-tile__content-wrapper">

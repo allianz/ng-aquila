@@ -83,6 +83,7 @@ export type NxCheckboxLabelSize = 'small' | 'large';
     '[attr.disabled]': 'disabled || null',
     '[attr.role]': '"group"',
     '[attr.aria-labelledby]': 'getLabelledby()',
+    '(focusout)': '_onFocusOut($event)',
   },
   imports: [],
   providers: [
@@ -113,6 +114,8 @@ export class NxCheckboxGroupComponent
   readonly id = input<string>(inject(IdGenerationService).nextId('nx-checkbox-group'), {
     alias: 'id',
   });
+
+  private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
   /** Sets additional aria-labelledby IDs to be merged with the auto-generated label reference on the group element. */
   readonly ariaLabelledBy = input<string | null>(null);
@@ -273,10 +276,6 @@ export class NxCheckboxGroupComponent
       .map((checkbox) => checkbox.value);
     this._onChange(checkedCheckboxValues);
 
-    if (this._onTouched) {
-      this._onTouched();
-    }
-
     this.selectionChange.emit(new NxCheckboxGroupChangeEvent(checkedCheckboxValues, this));
   }
 
@@ -301,6 +300,11 @@ export class NxCheckboxGroupComponent
   getLabelledby() {
     const ids = [this.ariaLabelledBy(), this._label?.id, this.error?.id].filter(Boolean);
     return ids.length ? ids.join(' ') : null;
+  }
+  _onFocusOut(event: FocusEvent) {
+    if (!this._elementRef.nativeElement.contains(event.relatedTarget as Node)) {
+      this._onTouched();
+    }
   }
 }
 

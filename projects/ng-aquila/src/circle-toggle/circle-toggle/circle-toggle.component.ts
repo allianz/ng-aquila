@@ -517,9 +517,5 @@ export class NxCircleToggleComponent
 
   touch() {
     this.onTouchedCallback();
-
-    if (this.toggleGroup) {
-      this.toggleGroup.touch();
-    }
   }
 }

@@ -8,6 +8,7 @@ import {
   contentChildren,
   DoCheck,
   effect,
+  ElementRef,
   forwardRef,
   inject,
   Injector,
@@ -39,6 +40,7 @@ export type NxTileSelectionMode = 'single' | 'multi';
     role: 'group',
     '[attr.aria-labelledby]': 'label()?.id || null',
     '[attr.aria-describedby]': '_errorState() ? errorIds() : null',
+    '(focusout)': '_onFocusOut($event)',
   },
 })
 export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDestroy {
@@ -47,6 +49,8 @@ export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDe
   readonly tiles = contentChildren<NxTileComponent>(forwardRef(() => NxTileComponent));
 
   readonly id = inject(IdGenerationService).nextId('nx-tile-group');
+
+  private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
   /** Whether to enable automatic grid layout for the tiles. Default is true. */
   readonly autoGrid = input(true);
@@ -163,8 +167,13 @@ export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDe
     }
   }
 
-  // called by the tiles
   touch() {
     this.onTouched();
+  }
+
+  _onFocusOut(event: FocusEvent) {
+    if (!this._elementRef.nativeElement.contains(event.relatedTarget as Node)) {
+      this.touch();
+    }
   }
 }

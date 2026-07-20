@@ -12,6 +12,7 @@ import {
   ContentChildren,
   contentChildren,
   DoCheck,
+  ElementRef,
   EventEmitter,
   forwardRef,
   HostBinding,
@@ -80,6 +81,7 @@ export const CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS =
     '[attr.name]': 'name',
     '[attr.id]': 'id',
     '[class.nx-circle-toggle-group]': 'true',
+    '(focusout)': '_onFocusOut($event)',
     role: 'radiogroup',
   },
   imports: [],
@@ -100,6 +102,7 @@ export class NxCircleToggleGroupComponent
     return this._id;
   }
   private _id = inject(IdGenerationService).nextId('nx-circle-toggle-group');
+  private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
   private readonly errorChildren = contentChildren(NxErrorComponent);
   ariaDescribedBy: Signal<string | null> = computed(() => {
@@ -366,6 +369,12 @@ export class NxCircleToggleGroupComponent
 
     if (newState !== oldState) {
       this.errorState.set(newState);
+    }
+  }
+
+  _onFocusOut(event: FocusEvent) {
+    if (!this._elementRef.nativeElement.contains(event.relatedTarget as Node)) {
+      this.touch();
     }
   }
 }

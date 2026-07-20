@@ -64,6 +64,11 @@ describe('NxCheckboxGroupComponent', () => {
     ) as NodeListOf<HTMLInputElement>;
   }
 
+  function blurGroup() {
+    const group = fixture.nativeElement.querySelector('nx-checkbox-group') as HTMLElement;
+    group.dispatchEvent(new FocusEvent('focusout', { relatedTarget: null }));
+  }
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -153,6 +158,7 @@ describe('NxCheckboxGroupComponent', () => {
 
     // none of the checkboxes should be selected for an error
     [1, 2].forEach((i) => checkboxElements[i].click());
+    blurGroup();
     fixture.detectChanges();
 
     let errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
@@ -171,6 +177,35 @@ describe('NxCheckboxGroupComponent', () => {
     errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
     expect(errors).toHaveSize(0);
     expect(checkboxGroupInstance.errorState).toBeFalsy();
+  }));
+
+  it('should not be touched when toggling checkboxes without leaving the group', fakeAsync(() => {
+    createTestComponent(CheckboxGroupValidation);
+    tick();
+
+    [1, 2].forEach((i) => checkboxElements[i].click());
+    fixture.detectChanges();
+
+    expect(testInstance.myFormGroup.get('terms')!.touched).toBeFalse();
+  }));
+
+  it('should not be touched when moving focus between checkboxes in the group', fakeAsync(() => {
+    createTestComponent(CheckboxGroupValidation);
+    tick();
+
+    const group = fixture.nativeElement.querySelector('nx-checkbox-group') as HTMLElement;
+    group.dispatchEvent(new FocusEvent('focusout', { relatedTarget: checkboxElements[1] }));
+
+    expect(testInstance.myFormGroup.get('terms')!.touched).toBeFalse();
+  }));
+
+  it('should be touched after focus leaves the group', fakeAsync(() => {
+    createTestComponent(CheckboxGroupValidation);
+    tick();
+
+    blurGroup();
+
+    expect(testInstance.myFormGroup.get('terms')!.touched).toBeTrue();
   }));
 
   it('should display error message on submit', fakeAsync(() => {

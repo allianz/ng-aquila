@@ -129,8 +129,4 @@ export class NxTileComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.focusMonitor.stopMonitoring(this.nativeElement);
   }
-
-  touch() {
-    this.tileGroup.touch();
-  }
 }

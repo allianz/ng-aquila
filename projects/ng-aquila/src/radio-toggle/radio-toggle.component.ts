@@ -13,6 +13,7 @@ import {
   ContentChild,
   ContentChildren,
   DoCheck,
+  ElementRef,
   forwardRef,
   inject,
   Input,
@@ -53,6 +54,9 @@ export const RESET_VALUES = [null, undefined, ''];
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['radio-toggle.component.scss'],
   imports: [NgClass],
+  host: {
+    '(focusout)': '_onFocusOut($event)',
+  },
   providers: [
     {
       provide: NxAbstractControl,
@@ -167,6 +171,8 @@ export class NxRadioToggleComponent
 
   private readonly _destroyed = new Subject<void>();
 
+  private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
   private onTouchedCallback = () => {};
 
   private onChangeCallback = (option: any) => {};
@@ -268,7 +274,10 @@ export class NxRadioToggleComponent
   /** @docs-private */
   change(value: any) {
     this.onChangeCallback(value);
-    if (this.onTouchedCallback) {
+  }
+
+  _onFocusOut(event: FocusEvent) {
+    if (!this._elementRef.nativeElement.contains(event.relatedTarget as Node)) {
       this.onTouchedCallback();
     }
   }

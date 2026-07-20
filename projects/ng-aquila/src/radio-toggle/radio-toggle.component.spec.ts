@@ -93,6 +93,12 @@ describe('NxRadioToggleComponent', () => {
     fixture.detectChanges();
   }
 
+  function blurGroup() {
+    const group: HTMLElement = fixture.nativeElement.querySelector('nx-radio-toggle');
+    group.dispatchEvent(new FocusEvent('focusout', { relatedTarget: null }));
+    fixture.detectChanges();
+  }
+
   describe('basic', () => {
     it('should allow creating empty radio toggles', fakeAsync(() => {
       expect(() => createTestComponent(EmptyRadioToggle)).not.toThrow(new Error());
@@ -485,23 +491,57 @@ describe('NxRadioToggleComponent', () => {
       expect(radioBtnElm).not.toHaveClass('has-error');
     });
 
-    it('should be invalid and touched', () => {
+    it('should not be touched when selecting without leaving the group', () => {
       createTestComponent(ValidationToggle);
       const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
       click(0);
+      expect(reactComp.testForm.touched).toBeFalse();
+      expect(reactComp.testForm.status).toBe('INVALID');
+    });
+
+    it('should be invalid and touched after focus leaves the group', () => {
+      createTestComponent(ValidationToggle);
+      const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
+      click(0);
+      blurGroup();
       expect(reactComp.testForm.touched).toBeTrue();
       expect(reactComp.testForm.status).toBe('INVALID');
+      fixture.detectChanges();
       const radioBtnElm: HTMLElement =
         fixture.nativeElement.querySelector('nx-radio-toggle-button');
       expect(radioBtnElm).toHaveClass('has-error');
     });
 
-    it('should be valid and touched', () => {
+    it('should be valid and touched after focus leaves the group', () => {
       createTestComponent(ValidationToggle);
       const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
       click(1);
+      blurGroup();
       expect(reactComp.testForm.touched).toBeTrue();
       expect(reactComp.testForm.status).toBe('VALID');
+    });
+
+    it('should not be touched when moving focus between buttons in the group', () => {
+      createTestComponent(ValidationToggle);
+      const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
+      click(0);
+      const group: HTMLElement = fixture.nativeElement.querySelector('nx-radio-toggle');
+      group.dispatchEvent(new FocusEvent('focusout', { relatedTarget: radioElements.item(1) }));
+      fixture.detectChanges();
+      expect(reactComp.testForm.touched).toBeFalse();
+    });
+
+    it('should keep focus on the radio input when clicking the label container', () => {
+      createTestComponent(ValidationToggle);
+      const labelContainer: HTMLElement = fixture.nativeElement.querySelector(
+        '.nx-radio-toggle__label-container',
+      );
+      radioElements.item(0).focus();
+      labelContainer.dispatchEvent(
+        new MouseEvent('mousedown', { cancelable: true, bubbles: true }),
+      );
+      fixture.detectChanges();
+      expect(document.activeElement).toBe(radioElements.item(0));
     });
   });
 
