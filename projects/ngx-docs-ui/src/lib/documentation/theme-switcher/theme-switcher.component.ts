@@ -1,9 +1,9 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxContextMenuModule } from '@allianz/ng-aquila/context-menu';
 import { NxIconModule, NxIconRegistry } from '@allianz/ng-aquila/icon';
-import { ChangeDetectionStrategy, Component, input, model } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, model } from '@angular/core';
 
-import { Theme } from './theme-switcher.service';
+import { Theme, ThemeSwitcherService } from './theme-switcher.service';
 
 @Component({
   selector: 'nxv-theme-switch',
@@ -19,6 +19,9 @@ export class NxvThemeSwitcherComponent {
 
   readonly selectedTheme = model.required<Theme>();
   readonly selectedGridType = model<'default' | 'functional'>('default');
+
+  private readonly _themeSwitcherService = inject(ThemeSwitcherService);
+  readonly isThemeLoading = this._themeSwitcherService.isThemeLoading;
 
   constructor(private readonly iconRegistry: NxIconRegistry) {
     this.iconRegistry.registerFont('fa', 'fas', 'fa-');

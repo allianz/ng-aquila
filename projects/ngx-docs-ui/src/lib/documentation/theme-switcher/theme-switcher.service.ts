@@ -1,5 +1,5 @@
 import { LAYOUT_DEFAULT_OPTIONS, LayoutDefaultOptions } from '@allianz/ng-aquila/grid';
-import { effect, inject, Injectable, InjectionToken, signal } from '@angular/core';
+import { inject, Injectable, InjectionToken, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { NxvVersionHashService } from '../../core/version-hash';
@@ -27,18 +27,11 @@ export class ThemeSwitcherService {
     this._themes.find((t) => t.name === DEFAULT_THEME_NAME) ?? this._themes[0],
   );
   readonly selectedGridType = signal<GridType>('default');
+  readonly isThemeLoading = signal<boolean>(false);
 
   private readonly layoutOptions = inject<LayoutDefaultOptions>(LAYOUT_DEFAULT_OPTIONS, {
     optional: true,
   });
-
-  constructor() {
-    // Watch for theme changes and load the CSS
-    effect(() => {
-      const theme = this.selectedTheme();
-      this._loadThemeCSS(theme);
-    });
-  }
 
   initializeTheme(
     themeFromQuery: Theme | undefined,
@@ -48,10 +41,14 @@ export class ThemeSwitcherService {
     if (themeFromQuery) {
       this.selectedTheme.set(themeFromQuery);
       this._saveToStorage(themeFromQuery);
+      this._loadThemeCSS(themeFromQuery);
     } else {
       const storedTheme = this._loadFromStorage();
       if (storedTheme) {
         this.selectedTheme.set(storedTheme);
+        this._loadThemeCSS(storedTheme);
+      } else {
+        this._loadThemeCSS(this.selectedTheme());
       }
     }
 
@@ -71,9 +68,11 @@ export class ThemeSwitcherService {
   }
 
   switchTheme(newTheme: Theme) {
+    const previousTheme = this.selectedTheme();
     this.selectedTheme.set(newTheme);
     this._saveToStorage(newTheme);
     this._updateUrlQueryParams(newTheme, this.selectedGridType());
+    this._loadThemeCSS(newTheme, previousTheme);
   }
 
   switchGridType(newGridType: GridType) {
@@ -89,7 +88,7 @@ export class ThemeSwitcherService {
     }
   }
 
-  private _loadThemeCSS(newTheme: Theme) {
+  private _loadThemeCSS(newTheme: Theme, previousTheme?: Theme) {
     // get the theme link element
     const oldEl = document.getElementById('docs-theme');
 
@@ -104,12 +103,36 @@ export class ThemeSwitcherService {
     newEl.setAttribute('id', 'docs-theme');
 
     const head = document.getElementsByTagName('head');
-    head[0].appendChild(newEl);
 
-    if (oldEl) {
-      // el.remove() doesn't work on IE
-      oldEl.parentNode?.removeChild(oldEl);
-    }
+    this.isThemeLoading.set(true);
+    newEl.addEventListener(
+      'load',
+      () => {
+        // Remove the old theme only after the new CSS has loaded to avoid a flash
+        // of unstyled content caused by the gap between removal and new CSS paint.
+        oldEl?.parentNode?.removeChild(oldEl);
+        this.isThemeLoading.set(false);
+      },
+      { once: true },
+    );
+    newEl.addEventListener(
+      'error',
+      () => {
+        // The new stylesheet never loaded, so the old theme's CSS is still what's
+        // rendered on screen. Roll back the selected theme (and its persisted state)
+        // to match what's actually visible, instead of claiming the new theme applied.
+        newEl.parentNode?.removeChild(newEl);
+        if (previousTheme) {
+          this.selectedTheme.set(previousTheme);
+          this._saveToStorage(previousTheme);
+          this._updateUrlQueryParams(previousTheme, this.selectedGridType());
+        }
+        this.isThemeLoading.set(false);
+      },
+      { once: true },
+    );
+
+    head[0].appendChild(newEl);
   }
 
   removeTheming() {

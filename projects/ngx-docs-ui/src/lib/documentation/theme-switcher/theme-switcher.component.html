@@ -5,6 +5,7 @@
   (contextMenuOpened)="_themeSwitchIsOpened = true"
   (contextMenuClosed)="_themeSwitchIsOpened = false"
   aria-label="switch color theme"
+  [loading]="isThemeLoading()"
 >
   <nx-icon name="fill-drip" nxIconPositionStart></nx-icon>
   <span class="label-text">{{ selectedTheme().displayName }}</span>
