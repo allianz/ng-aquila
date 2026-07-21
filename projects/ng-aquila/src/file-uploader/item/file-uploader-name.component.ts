@@ -1,30 +1,30 @@
-import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { ChangeDetectionStrategy, Component, input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, computed } from '@angular/core';
 
 import { getFileExtension } from '../file-uploader.validations';
+import { NxFileIconComponent } from './file-icon.component';
 
 /** Shows the file name. */
 @Component({
   selector: 'nx-file-upload-name',
   styleUrls: ['./file-uploader-name.component.scss'],
   template: `
-    <span class="extension">
-      @if (extension) {
-        <span class="extension-label" [style.background-color]="iconColor[extension] || '#000'">{{
-          extension
-        }}</span>
-      }
-      <nx-icon name="file" class="extension-icon"></nx-icon>
-    </span>
+    <nx-file-icon [fileExtension]="extension()"></nx-file-icon>
     <span class="file-name">{{ name() }}</span>
   `,
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [NxIconModule],
+  imports: [NxFileIconComponent],
 })
-export class NxFileUploaderItemName implements OnInit {
+export class NxFileUploaderItemName {
   /** The filename.*/
   readonly name = input.required<string>();
 
+  /**
+   * Maps a file extension to its label background color.
+   *
+   * @deprecated The extension badge is now rendered by `NxFileIconComponent`
+   * and its colors are driven by design tokens. This property is kept for
+   * backwards compatibility and is no longer used internally.
+   */
   iconColor: { [key: string]: string } = {
     xls: '#1E8927',
     xlsx: '#1E8927',
@@ -32,9 +32,6 @@ export class NxFileUploaderItemName implements OnInit {
     png: '#ba31dc',
   };
 
-  extension!: string;
-
-  ngOnInit() {
-    this.extension = getFileExtension(this.name()).substring(1);
-  }
+  /** The file extension without the leading dot. */
+  readonly extension = computed(() => getFileExtension(this.name()).substring(1));
 }

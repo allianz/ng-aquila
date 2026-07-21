@@ -1,4 +1,4 @@
-import { NxLabelComponent } from '@allianz/ng-aquila/base';
+import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
   NxFileUploadConfig,
@@ -15,40 +15,56 @@ import {
 } from '@allianz/ng-aquila/message';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 export const myCustomConfig: NxMessageToastConfig = {
   duration: 3000,
   context: 'success',
-  announcementMessage: 'File was uploaded successfully!',
+  announcementMessage: 'All files were uploaded successfully!',
 };
 
-/** @title File uploader expert example */
+/** @title File uploader reactive form example */
 @Component({
-  selector: 'file-uploader-expert-example',
-  templateUrl: './file-uploader-expert-example.html',
-  styleUrls: ['./file-uploader-expert-example.css'],
+  selector: 'file-uploader-reactive-ndbx-example',
+  templateUrl: './file-uploader-reactive-ndbx-example.html',
+  styleUrls: ['./file-uploader-reactive-ndbx-example.css'],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     NxFileUploaderComponent,
     NxLabelComponent,
     NxFileUploaderHintDirective,
     NxButtonComponent,
     NxFileUploaderButtonDirective,
     NxIconComponent,
+    NxErrorComponent,
     NxFileUploaderTriggerDirective,
   ],
 })
-export class FileUploaderExpertExampleComponent implements OnInit, OnDestroy {
+export class FileUploaderReactiveNdbxExampleComponent
+  implements OnInit, OnDestroy
+{
   readonly uploadConfig: NxFileUploadConfig = {
     requestUrl: 'file-upload',
     options: {
       params: new HttpParams(),
-      reportUploadProgress: true,
+      reportProgress: true,
     },
   };
 
   readonly uploader = new NxFileUploader(this.uploadConfig, this.http);
+
+  readonly testForm = new FormGroup({
+    documents: new FormControl([], Validators.required),
+  });
 
   private readonly _destroyed = new Subject<void>();
 

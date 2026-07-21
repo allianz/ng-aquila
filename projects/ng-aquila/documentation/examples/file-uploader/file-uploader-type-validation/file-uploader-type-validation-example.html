@@ -16,13 +16,13 @@
     >
 
     <nx-file-uploader-drop-zone class="nx-margin-bottom-m">
-      <button nxButton="primary" type="button" nxFileUploadButton>
+      <button nxButton="secondary" type="button" nxFileUploadButton>
         <nx-icon
-          name="plus"
+          name="arrow-upload"
           class="nx-margin-right-2xs"
           aria-hidden="true"
         ></nx-icon>
-        Add File
+        Choose File
       </button>
     </nx-file-uploader-drop-zone>
 
@@ -47,7 +47,7 @@
   </nx-file-uploader>
 
   <button
-    nxButton="secondary small"
+    nxButton="primary"
     [nxFileUploadTriggerFor]="documentUpload"
     type="button"
     [disabled]="!testForm.valid"

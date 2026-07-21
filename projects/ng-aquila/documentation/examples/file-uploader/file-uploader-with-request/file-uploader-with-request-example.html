@@ -7,28 +7,26 @@
   >
 
   <button
-    nxButton="primary"
+    nxButton="secondary"
     type="button"
     class="nx-margin-bottom-s"
     nxFileUploadButton
   >
     <nx-icon
-      name="plus"
+      name="arrow-upload"
       class="nx-margin-right-2xs"
       aria-hidden="true"
     ></nx-icon>
-    Add File
+    Choose File
   </button>
 </nx-file-uploader>
 
 @if (showUploadError) {
 <nx-error> An error occurred while uploading. </nx-error>
-}
-
+} @if (documentUpload.value?.length) {
 <button
-  nxButton="secondary small"
+  nxButton="primary"
   type="button"
-  [disabled]="!documentUpload.value?.length"
   (click)="upload('file-upload')"
   class="nx-margin-right-2xs"
 >
@@ -38,8 +36,8 @@
 <button
   nxButton="secondary small"
   type="button"
-  [disabled]="!documentUpload.value?.length"
   (click)="upload('file-upload-error')"
 >
   Upload files (and get an error)
 </button>
+}

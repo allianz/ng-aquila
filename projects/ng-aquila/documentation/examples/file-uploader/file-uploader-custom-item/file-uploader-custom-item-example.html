@@ -10,17 +10,17 @@
   >
 
   <button
-    nxButton="primary"
+    nxButton="secondary"
     type="button"
     class="nx-margin-bottom-s"
     nxFileUploadButton
   >
     <nx-icon
-      name="plus"
+      name="arrow-upload"
       class="nx-margin-right-2xs"
       aria-hidden="true"
     ></nx-icon>
-    Add File
+    Choose File
   </button>
 </nx-file-uploader>
 
@@ -34,15 +34,11 @@
     }
   </ul>
 </nx-error>
-}
-<button
-  nxButton="secondary small"
-  type="button"
-  [disabled]="!documentUpload.value?.length"
-  (click)="upload('file-upload')"
->
+} @if (documentUpload.value?.length) {
+<button nxButton="primary" type="button" (click)="upload('file-upload')">
   Upload files
 </button>
+}
 
 <ng-template
   #myItemTemplate

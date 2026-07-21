@@ -6,7 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: file upload, attachment
-a1Densities: true
+a1Full: true
 group: Forms & Inputs
 ---
 
@@ -20,21 +20,61 @@ The component has a built-in http POST uploading functionality. To use this, the
 
 Most of the examples are using the `[nxFileUploadTriggerFor]` directive for triggering the upload. Alternatively, `updateFiles()` of the File Uploader component can be used.
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-basic) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-basic-ndbx) -->
+
+</div>
 
 ### Reactive form
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-reactive) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-reactive-ndbx) -->
+
+</div>
 
 ### Template driven form
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-template-driven) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-template-driven-ndbx) -->
+
+</div>
 
 ### Multiple File Uploader
 
 It's possible to combine multiple file uploader to use different uploader configs or accommodate file categories
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-categories) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-categories-ndbx) -->
+
+</div>
 
 ### Validation
 
@@ -52,7 +92,17 @@ For all kinds of events where a file is blocked from being added to the file lis
 
 The following example shows how you can use both the form control validators (e.g. required or custom validators) and the `errors` property to display a comprehensive list of all errors.
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-error-list) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-error-list-ndbx) -->
+
+</div>
 
 #### Max file size
 
@@ -62,7 +112,17 @@ The returned error is `NxFileUploadMaxFileSize`.
 
 The server's errors can be handled by setting the file state as shown in this example.
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-validation) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-validation-ndbx) -->
+
+</div>
 
 #### Max file number
 
@@ -70,7 +130,17 @@ The max file number is set via the `[maxFileNumber]` property.
 
 The return error is `NxFileUploadMaxFileNumber`.
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-max-file-number) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-max-file-number-ndbx) -->
+
+</div>
 
 #### Accepted file types
 
@@ -90,7 +160,17 @@ Additionally, there is a basic client side validation integrated in the componen
   See the <a href="./documentation/file-uploader/overview#strict-file-type-validation">Strict file type validation</a> section further below for more details.</p>
 </div>
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-type-validation) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-type-validation-ndbx) -->
+
+</div>
 
 #### Strict file type validation
 
@@ -102,7 +182,17 @@ You can harden against these cases with the `strictAcceptValidation` option. Whe
 
 Try to drag and drop a .log file (at least these files worked best for us in testing across windows and mac) in the example below. It should throw an error, then disable the `strictAcceptValidation` option with the button and try again to see the difference.
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-strict-type-validation) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-strict-type-validation-ndbx) -->
+
+</div>
 
 #### Disable blocking validators
 
@@ -112,7 +202,17 @@ To mitigate these problems we introduced the <code>noBlockingValidators</code> o
 
 In the following example you can see how enabling and disabling `noBlockingValidators` and then trying to add an invalid file to the list will influence the form control errors object.
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-disable-common-validators) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-disable-common-validators-ndbx) -->
+
+</div>
 
 ### Upload
 
@@ -120,41 +220,104 @@ All previous examples are implemented with the built-in uploading functionality 
 
 #### Auto upload
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-auto) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-auto-ndbx) -->
+
+</div>
 
 #### Separate upload requests for each file
 
 By default, all files are sent within one single upload request. You can also send separate requests by adding `uploadSeparately: true` to the configuration of the NxFileUploader.
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-separate-requests) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-separate-requests-ndbx) -->
+
+</div>
 
 #### Custom uploading implementation
 
 Besides the build-in uploading functionality you can also send an http request by yourself if you want to do more complex requests. Then you have to set the uploading status of the files manually:
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-with-request) -->
 
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-with-request-ndbx) -->
+
+</div>
+
+<div class="docs-hide-a1">
 <div class="docs-expert-container">
 
 ### Expert
 
 Expert uses a `small-medium` button and provides an additional drop zone component.
 
-<!-- example(file-uploader-expert) -->
+<!-- example(file-uploader-expert-ndbx) -->
 
 ### Drop zone
 
-<!-- example(file-uploader-drop-zone) -->
+<!-- example(file-uploader-drop-zone-ndbx) -->
+
+</div>
 </div>
 
 ### Internationalization
 
 `NxFileUploaderIntl` provides the text strings used inside the file uploader component (e.g. the uploading label). It can be customized by creating a class with the translated string values.
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-intl) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-intl-ndbx) -->
+
+</div>
+
+### File Icon
+
+The `nx-file-icon` component displays a file type icon with a colored extension label badge. 
+
+The badge color is determined by the file extension. Unrecognized extensions fall back to a default color. Files without an extension show the icon without a badge. 
+
+<i>Accessibility: As the extension text size does not meet accessibility requirements, file icons should only be used as decorative elements</i>
+
+<!-- example(file-icon) -->
 
 ### Custom Item Template
 
 You can customize the template that is used to render each entry within the list of files to upload.
 
+<div class="docs-a1">
+
 <!-- example(file-uploader-custom-item) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+<!-- example(file-uploader-custom-item-ndbx) -->
+
+</div>

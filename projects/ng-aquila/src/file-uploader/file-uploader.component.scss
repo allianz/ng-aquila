@@ -54,8 +54,12 @@
     }
   }
 
+  // DOM order of the default template is: name, actions, size.
+  // We use `order` to render them as `name <space> size actions` on large
+  // screens and wrap the size onto its own row on small screens.
   &.nx-file-uploader--default-template {
     nx-file-upload-name {
+      order: 0;
       display: flex;
       gap: v(file-uploader-name-gap);
       align-items: center;
@@ -64,18 +68,38 @@
       line-height: v(file-uploader-file-name-line-height);
 
       @include media-breakpoint-down('small') {
-        flex: 100%;
-        max-width: 100%;
+        // share the first row with the actions and grow to push them right
+        flex: 1;
+        max-width: calc(100% - #{v(file-uploader-file-row-actions-min-width)});
       }
     }
 
+    // large screens: file-icon file-name <space> file-size actions
     nx-file-upload-size {
-      flex: 1;
+      order: 1;
+      // create the space and push the size + actions group to the right
+      margin-inline-start: auto;
       display: flex;
       justify-content: flex-end;
 
       @include media-breakpoint-down('small') {
+        // small screens: indent to align with the file name text (past icon + gap)
+        order: 2;
+        flex: 100%;
+        margin-inline-start: calc(#{v(file-icon-font-size)} + #{v(file-uploader-name-gap)});
         justify-content: flex-start;
+      }
+    }
+
+    ::ng-deep .nx-file-uploader--file-row-actions {
+      order: 2;
+      // the size handles right-aligning the group, so don't add extra margin
+      margin-inline-start: 0;
+
+      @include media-breakpoint-down('small') {
+        // keep the actions on the first row, after the name; push them right
+        order: 1;
+        margin-inline-start: auto;
       }
     }
 
@@ -103,6 +127,12 @@
 
 ::ng-deep .nx-file-upload-button {
   display: block;
+}
+
+// the file-picker button should not stretch to full width on mobile;
+// scope to the button itself so other buttons keep their default width
+::ng-deep .nx-file-upload-button.nx-button {
+  width: unset;
 }
 
 ::ng-deep .nx-file-upload-hint {

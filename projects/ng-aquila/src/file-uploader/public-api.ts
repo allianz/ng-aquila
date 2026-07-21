@@ -8,6 +8,7 @@ export * from './file-uploader-drop-zone.component';
 export * from './file-uploader-hint.directive';
 export * from './file-uploader-intl';
 export * from './file-uploader-trigger.directive';
+export * from './item/file-icon.component';
 export * from './item/file-uploader-delete.component';
 export * from './item/file-uploader-name.component';
 export * from './item/file-uploader-size.component';

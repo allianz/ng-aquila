@@ -19,7 +19,7 @@ metadata:
 
 ## How to Apply Changes
 - if css is required, add to the component's CSS file. If the component is standalone, add the CSS to the component's `styles` array in the `@Component` decorator.
-- write style definitions into components style file. Do not use inline styles in the HTML template. 
+- write style definitions into components style file. Do not use inline styles in the HTML template.
 
 
 ---
@@ -29,7 +29,7 @@ metadata:
 ## Step 1: Apply A1 Theme
 
 **Important:** check if package `@allianz/ngx-brand-kit` is installed.
-- if not installed, do not try to install, do not ask the user to install and skip this step and continue with Step 2. 
+- if not installed, do not try to install, do not ask the user to install and skip this step and continue with Step 2.
 - if installed, continue with the Procedure as described below.
 
 ### Procedure
@@ -159,7 +159,7 @@ A1 uses left-alignment throughout for accessibility and consistency.
    - Must use **sentence case** ("Back", "Next") not ALL CAPS
    - `nxCol` only accepts numbers — **warning** `nxCol="auto"` will break; use `nxCol="12"`, `nxCol="12,12,6"` or similar
    - info on `nxCol`: breakpoints are defined as `nxCol="<tiny>, <small>, <medium>, <large>, <xlarge>, <2xlarge>, <3xlarge>"`
-   - must be vertically centered within the row — if `nxRow` is used, add `rowAlignItems="center"`. 
+   - must be vertically centered within the row — if `nxRow` is used, add `rowAlignItems="center"`.
 4. **Margins / padding**: Remove `margin: auto`, horizontal centering, and ensure content aligns to the left edge.
 
 ### Vertical Spacing Adjustments
@@ -230,7 +230,85 @@ If used in a Standalone Component, add the `NxAccentColorComponent` to the compo
 
 ---
 
-## Step 6: Migrate Context Menu Selection
+## Step 6: Migrate File Uploader
+
+### 6.1 Choose File Button
+
+The button that opens the file picker (`nxFileUploadButton`) changes in A1:
+
+| Property | NDBX (legacy) | A1 |
+| --- | --- | --- |
+| `nxButton` variant | `"primary"` | `"secondary"` |
+| Icon | `plus` | `arrow-upload` |
+| Label | "Add File" | "Choose File" |
+
+**Before (NDBX):**
+
+```html
+<button nxButton="primary" type="button" nxFileUploadButton>
+  <nx-icon name="plus" class="nx-margin-right-2xs" aria-hidden="true"></nx-icon>
+  Add File
+</button>
+```
+
+**After (A1):**
+
+```html
+<button nxButton="secondary" type="button" nxFileUploadButton>
+  <nx-icon name="arrow-upload" class="nx-margin-right-2xs" aria-hidden="true"></nx-icon>
+  Choose File
+</button>
+```
+
+> If the icon uses `nxIconPositionStart` instead of a margin class, keep that positioning attribute and just swap the icon name.
+
+### 6.2 Upload Button — Hide When No Files Are Chosen
+
+For **manual upload flows** (i.e. the uploader has an `[uploader]` binding and the upload button uses `[nxFileUploadTriggerFor]` or triggers upload on click), the upload button must be hidden entirely when no files have been selected yet. A1 removes the disabled state in favour of conditional rendering.
+
+**Before (NDBX) — always visible, disabled when empty:**
+
+```html
+<button
+  nxButton="secondary small"
+  [nxFileUploadTriggerFor]="documentUpload"
+  [disabled]="!documentUpload.value?.length"
+  type="button"
+>
+  Upload
+</button>
+```
+
+**After (A1) — hidden until files are present:**
+
+```html
+@if (documentUpload.value?.length) {
+  <button
+    nxButton="primary"
+    [nxFileUploadTriggerFor]="documentUpload"
+    type="button"
+  >
+    Upload files
+  </button>
+}
+```
+
+> Use `nxButton="primary"` for the upload button (the primary action) and `nxButton="secondary"` for the file-picker button.
+
+### 6.3 Auto-upload flows
+
+For **auto-upload** (files are uploaded immediately on selection — no separate upload button), there is no upload button to show or hide. Apply only the Choose File button changes from **6.1**.
+
+### Decision Checklist
+
+For each `nx-file-uploader` found:
+
+1. Update `nxFileUploadButton`: swap `primary` → `secondary`, icon `plus` → `arrow-upload`, label "Add File" → "Choose File".
+2. Locate the upload trigger button (`[nxFileUploadTriggerFor]` or a button that manually triggers upload).
+   - If it exists and this is **not** an auto-upload flow: wrap in `@if (uploaderRef.value?.length)`, remove `[disabled]`, change variant to `primary`.
+   - If there is no upload button (auto-upload), skip step 2.
+
+## Step 7: Migrate Context Menu Selection
 
 `nxContextMenuItem` now has built-in single/multi selection. Hand-rolled patterns that combine `selectable`, a `<nx-icon name="check">`, an explicit `role="menuitemradio|menuitemcheckbox"` and `[attr.aria-checked]` should be migrated to the new API.
 
@@ -289,7 +367,7 @@ For multi-select menus use `selectable="multi"` and keep `disableCloseOnSelect` 
 
 After completing each step, record the migration so adoption can be tracked across teams via GitHub search.
 
-### Project-level metadata in `package.json` 
+### Project-level metadata in `package.json`
 
 After **Step 1** (theme applied), add an `a1Migration` key to `package.json`. After each subsequent step completes, append the step name to the `steps` array:
 
@@ -302,7 +380,7 @@ After **Step 1** (theme applied), add an `a1Migration` key to `package.json`. Af
 }
 ```
 
-Append step names as they complete: `"theme"`, `"tiles"`, `"info-icons"`, `"layout"`, `"small-stage"`, `"context-menu-selection"`.
+Append step names as they complete: `"theme"`, `"tiles"`, `"info-icons"`, `"layout"`, `"small-stage"`, `"context-menu-selection"`, `"file-uploader"`.
 
 A fully migrated project looks like:
 
@@ -311,10 +389,10 @@ A fully migrated project looks like:
   "skillVersion": "0.1.4",
   "appliedAt": "YYYY-MM-DD",
   "theme": "<spacious|compact|dense>",
-  "steps": ["theme", "tiles", "info-icons", "layout", "small-stage"]
+  "steps": ["theme", "tiles", "info-icons", "layout", "small-stage", "file-uploader"]
 }
 ```
 
 ### tracking of additional migration runs
 
-If `package.json` already has an `a1Migration` key, add the steps to the array for steps that ran in the current session. 
+If `package.json` already has an `a1Migration` key, add the steps to the array for steps that ran in the current session.

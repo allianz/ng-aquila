@@ -1,0 +1,37 @@
+@use '../../shared-styles/index' as *;
+
+:host {
+  position: relative;
+  display: inline-flex;
+}
+.extension-icon {
+  font-size: v(file-icon-font-size);
+}
+.extension-label {
+  position: absolute;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+  user-select: none;
+  line-height: normal;
+  font-weight: bold;
+  min-width: 19px;
+  height: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  white-space: nowrap;
+  right: v(file-icon-label-right);
+  top: v(file-icon-label-top);
+  transform: translateY(-50%);
+  left: auto;
+  border-radius: 2px 0 0 2px;
+  font-size: v(file-icon-label-font-size);
+  color: v(file-icon-label-color);
+}
+
+@each $color in (default, red, green, purple, teal, aqua, yellow, orange) {
+  .badge-#{$color} {
+    background-color: v(file-icon-label-background-#{$color});
+  }
+}

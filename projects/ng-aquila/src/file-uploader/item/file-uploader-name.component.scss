@@ -3,27 +3,6 @@
 :host {
   @include type-style(file-uploader-file-name);
 }
-.extension {
-  position: relative;
-  display: inline-flex;
-}
-.extension-icon {
-  font-size: v(file-uploader-name-extension-icon-font-size);
-}
-.extension-label {
-  position: absolute;
-  text-transform: uppercase;
-  -webkit-user-select: none;
-  user-select: none;
-  line-height: normal;
-  font-weight: bold;
-  padding: 1px 3px;
-  right: v(file-uploader-name-extension-label-right);
-  top: v(file-uploader-name-extension-label-top);
-  border-radius: 2px 0 0 2px;
-  font-size: v(file-uploader-name-extension-label-font-size);
-  color: v(file-uploader-name-extension-label-color);
-}
 .file-name {
   word-break: break-word;
 }

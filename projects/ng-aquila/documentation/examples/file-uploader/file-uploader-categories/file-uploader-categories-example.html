@@ -36,8 +36,12 @@ uploaderComponents()[2].errors.length > 0) {
         nxFileUploadButton
         aria-label="Add Driver Documents"
       >
-        <nx-icon name="plus" nxIconPositionStart aria-hidden="true"></nx-icon>
-        Add File
+        <nx-icon
+          name="arrow-upload"
+          nxIconPositionStart
+          aria-hidden="true"
+        ></nx-icon>
+        Choose File
       </button>
     </span>
   </div>
@@ -58,8 +62,12 @@ uploaderComponents()[2].errors.length > 0) {
         nxFileUploadButton
         aria-label="Add Car Documents"
       >
-        <nx-icon name="plus" nxIconPositionStart aria-hidden="true"></nx-icon>
-        Add File
+        <nx-icon
+          name="arrow-upload"
+          nxIconPositionStart
+          aria-hidden="true"
+        ></nx-icon>
+        Choose File
       </button>
     </span>
   </div>
@@ -80,15 +88,19 @@ uploaderComponents()[2].errors.length > 0) {
         nxFileUploadButton
         aria-label="Add Additional Documents"
       >
-        <nx-icon name="plus" nxIconPositionStart aria-hidden="true"></nx-icon>
-        Add File
+        <nx-icon
+          name="arrow-upload"
+          nxIconPositionStart
+          aria-hidden="true"
+        ></nx-icon>
+        Choose File
       </button>
     </span>
   </div>
 </nx-file-uploader>
 
 <button
-  nxButton="secondary small"
+  nxButton="primary"
   (click)="triggerUpload()"
   type="button"
   class="nx-margin-top-s"

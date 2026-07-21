@@ -10,6 +10,7 @@ import { NxFileUploaderButtonDirective } from './file-uploader-button.directive'
 import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
 import { NxFileUploaderHintDirective } from './file-uploader-hint.directive';
 import { NxFileUploaderTriggerDirective } from './file-uploader-trigger.directive';
+import { NxFileIconComponent } from './item/file-icon.component';
 import { NxFileUploaderItemDelete } from './item/file-uploader-delete.component';
 import { NxFileUploaderItemName } from './item/file-uploader-name.component';
 import { NxFileUploaderItemSize } from './item/file-uploader-size.component';
@@ -27,6 +28,7 @@ import { NxFileUploaderItemStatus } from './item/file-uploader-status.component'
     NxFileUploaderDropZoneComponent,
     NxFileUploaderTriggerDirective,
     NxFileUploaderItemName,
+    NxFileIconComponent,
     NxFileUploaderItemSize,
     NxFileUploaderItemStatus,
     NxFileUploaderItemDelete,
@@ -40,6 +42,7 @@ import { NxFileUploaderItemStatus } from './item/file-uploader-status.component'
     NxLabelModule,
     NxFileUploaderTriggerDirective,
     NxFileUploaderItemName,
+    NxFileIconComponent,
     NxFileUploaderItemSize,
     NxFileUploaderItemStatus,
     NxFileUploaderItemDelete,
