@@ -1,6 +1,16 @@
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  inject,
+  TestBed,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 
+import { NxLabelInfoDirective } from './label-info.directive';
 import {
   LABEL_DEFAULT_OPTIONS,
   LABEL_SIZE_TYPE,
@@ -82,6 +92,77 @@ describe('NxLabelComponent', () => {
       expect(labelElement).toHaveClass('nx-label--large');
     });
   });
+
+  describe('info icon', () => {
+    let overlayContainer: OverlayContainer;
+
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NxLabelModule, BasicLabel, InfoIconLabel, CustomInfoLabel],
+      }).compileComponents();
+    }));
+
+    beforeEach(() => {
+      inject([OverlayContainer], (oc: OverlayContainer) => {
+        overlayContainer = oc;
+      })();
+    });
+
+    afterEach(() => {
+      overlayContainer.ngOnDestroy();
+    });
+
+    /** Opens the info icon popover so its projected content renders into the overlay. */
+    function openPopover() {
+      const button = labelElement.querySelector('nx-info-icon button') as HTMLButtonElement;
+      button.click();
+      fixture.detectChanges();
+      tick();
+    }
+
+    function getOverlayContent(): HTMLElement {
+      return overlayContainer
+        .getContainerElement()
+        .querySelector('.nx-popover__content') as HTMLElement;
+    }
+
+    it('does not render an info icon when none is projected', () => {
+      createTestComponent(BasicLabel);
+      expect(labelElement.querySelector('nx-info-icon')).toBeNull();
+    });
+
+    it('renders a projected info icon and projects its content', fakeAsync(() => {
+      createTestComponent(InfoIconLabel);
+
+      const infoIcon = labelElement.querySelector('nx-info-icon');
+      expect(infoIcon).not.toBeNull();
+
+      openPopover();
+      expect(getOverlayContent().textContent).toContain('Some helpful info');
+    }));
+
+    it('renders the info icon outside of the <label> element for accessibility', () => {
+      createTestComponent(InfoIconLabel);
+
+      const infoIcon = labelElement.querySelector('nx-info-icon')!;
+      const label = labelElement.querySelector('label')!;
+      expect(label.contains(infoIcon)).toBe(false);
+    });
+
+    it('renders structured content projected into the info icon', fakeAsync(() => {
+      createTestComponent(CustomInfoLabel);
+      const infoIcon = labelElement.querySelector('nx-info-icon');
+      expect(infoIcon).not.toBeNull();
+
+      openPopover();
+      expect(getOverlayContent().querySelector('.template-content')).not.toBeNull();
+    }));
+
+    it('renders a custom info-icon implementation in the slot', () => {
+      createTestComponent(CustomInfoLabel);
+      expect(labelElement.querySelector('[data-custom-info]')).not.toBeNull();
+    });
+  });
 });
 
 @Component({
@@ -97,3 +178,40 @@ class BasicLabel extends LabelTest {}
   imports: [NxLabelModule],
 })
 class ConfigurableLabel extends LabelTest {}
+
+@Component({
+  template: `
+    <nx-label>
+      I am a label
+      <nx-info-icon nxLabelInfo>Some helpful info</nx-info-icon>
+    </nx-label>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxLabelModule, NxLabelInfoDirective, NxInfoIconComponent],
+})
+class InfoIconLabel extends LabelTest {}
+
+/** Stands in for an entity-specific info-icon implementation projected into the slot. */
+@Component({
+  selector: 'custom-info-icon',
+  standalone: true,
+  imports: [NxInfoIconComponent],
+  template: `
+    <nx-info-icon data-custom-info>
+      <span class="template-content">Rich info</span>
+    </nx-info-icon>
+  `,
+})
+class CustomInfoIconStub {}
+
+@Component({
+  template: `
+    <nx-label>
+      I am a label
+      <custom-info-icon nxLabelInfo></custom-info-icon>
+    </nx-label>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxLabelModule, NxLabelInfoDirective, CustomInfoIconStub],
+})
+class CustomInfoLabel extends LabelTest {}

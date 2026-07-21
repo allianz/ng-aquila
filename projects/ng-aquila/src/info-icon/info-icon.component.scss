@@ -1,7 +1,10 @@
 @use '../shared-styles/index' as *;
 
 :host {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .nx-info-icon__button {
@@ -9,6 +12,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  // As the button only ever contains the icon, collapse the
+  // line-height so the box tracks the glyph and stays vertically aligned with
+  // adjacent text (e.g. next to a label).
+  line-height: 1;
 }
 
 .nx-plain-button .nx-info-icon__icon {

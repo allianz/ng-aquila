@@ -40,6 +40,10 @@ We are building the following structure.
               }
               <ng-content select="nx-formfield-label"></ng-content>
             </label>
+
+            @if (_isAllianzOne()) {
+              <ng-container [ngTemplateOutlet]="labelInfo"></ng-container>
+            }
           </span>
 
           @if (_isNxInput()) {
@@ -74,13 +78,27 @@ We are building the following structure.
       }
     </div>
 
-    <!-- Appendix is similar to a suffix but visibly outside of the input  -->
-    @if (_appendixChildren.length) {
+    <!--
+      Appendix is similar to a suffix but visibly outside of the input  -->
+    @if (_appendixChildren.length || (!_isAllianzOne() && _labelInfoChild())) {
       <div class="nx-formfield__appendix">
+        @if (!_isAllianzOne()) {
+          <ng-container [ngTemplateOutlet]="labelInfo"></ng-container>
+        }
         <ng-content select="[nxFormfieldAppendix]"></ng-content>
       </div>
     }
   </div>
+
+  <!--
+    The single projection slot for a `nxLabelInfo` info icon. Stamped via
+    `ngTemplateOutlet` into the label row (A1) or the appendix (NDBX). Kept in
+    one place so the same projected content is never claimed by two
+    `<ng-content>` with the same selector.
+  -->
+  <ng-template #labelInfo>
+    <ng-content select="[nxLabelInfo]"></ng-content>
+  </ng-template>
 
   <!-- In case we got some additional information we render them below the given input -->
   @switch (getDisplayedMessage()) {

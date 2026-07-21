@@ -1,4 +1,8 @@
+import { NxLabelInfoDirective } from '@allianz/ng-aquila/base';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 import { NxInputDirective, NxInputModule } from '@allianz/ng-aquila/input';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,7 +11,14 @@ import {
   Type,
   ViewChild,
 } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  inject,
+  TestBed,
+  tick,
+  waitForAsync,
+} from '@angular/core/testing';
 import { FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { NxFormfieldErrorDirective } from './error.directive';
@@ -523,6 +534,124 @@ describe('NxFormfieldComponent', () => {
   });
 });
 
+describe('NxFormfieldComponent info icon', () => {
+  let fixture: ComponentFixture<FormfieldTest>;
+  let formfieldElement: HTMLElement;
+  let overlayContainer: OverlayContainer;
+
+  function createTestComponent<T extends FormfieldTest>(component: Type<T>): ComponentFixture<T> {
+    const _fixture = TestBed.createComponent(component);
+    _fixture.detectChanges();
+    formfieldElement = _fixture.nativeElement.querySelector('nx-formfield');
+    return (fixture = _fixture);
+  }
+
+  /** Opens the info icon popover so its projected content renders into the overlay. */
+  function openPopover() {
+    const button = formfieldElement.querySelector('nx-info-icon button') as HTMLButtonElement;
+    button.click();
+    fixture.detectChanges();
+    tick();
+  }
+
+  function getOverlayContent(): HTMLElement {
+    return overlayContainer
+      .getContainerElement()
+      .querySelector('.nx-popover__content') as HTMLElement;
+  }
+
+  function setup(allianzOneEnabled: boolean) {
+    TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        NxInputModule,
+        InfoIconFormfield,
+        InfoIconCustomLabelFormfield,
+      ],
+      providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(allianzOneEnabled) } }],
+    });
+    inject([OverlayContainer], (oc: OverlayContainer) => {
+      overlayContainer = oc;
+    })();
+  }
+
+  afterEach(() => {
+    overlayContainer.ngOnDestroy();
+  });
+
+  describe('under Allianz One', () => {
+    beforeEach(waitForAsync(() => {
+      setup(true);
+      TestBed.compileComponents();
+    }));
+
+    it('renders a projected info icon next to the label', fakeAsync(() => {
+      createTestComponent(InfoIconFormfield);
+      const infoIcon = formfieldElement.querySelector('nx-info-icon');
+      expect(infoIcon).not.toBeNull();
+      expect(
+        formfieldElement.querySelector('.nx-formfield__label-holder nx-info-icon'),
+      ).not.toBeNull();
+
+      openPopover();
+      expect(getOverlayContent().textContent).toContain('Field help');
+    }));
+
+    it('renders the info icon outside of the <label> element for accessibility', () => {
+      createTestComponent(InfoIconFormfield);
+      const infoIcon = formfieldElement.querySelector('nx-info-icon')!;
+      const label = formfieldElement.querySelector('label.nx-formfield__label')!;
+      expect(label.contains(infoIcon)).toBe(false);
+    });
+
+    it('does not render the info icon in the appendix', () => {
+      createTestComponent(InfoIconFormfield);
+      expect(formfieldElement.querySelector('.nx-formfield__appendix nx-info-icon')).toBeNull();
+    });
+
+    it('renders structured content projected into the info icon', fakeAsync(() => {
+      createTestComponent(InfoIconFormfield);
+      openPopover();
+      expect(getOverlayContent().querySelector('.template-content')).not.toBeNull();
+    }));
+
+    it('renders the info icon alongside a custom nx-formfield-label', () => {
+      createTestComponent(InfoIconCustomLabelFormfield);
+      expect(formfieldElement.querySelector('nx-formfield-label')).not.toBeNull();
+      expect(
+        formfieldElement.querySelector('.nx-formfield__label-holder nx-info-icon'),
+      ).not.toBeNull();
+    });
+  });
+
+  describe('under NDBX', () => {
+    beforeEach(waitForAsync(() => {
+      setup(false);
+      TestBed.compileComponents();
+    }));
+
+    it('routes a projected info icon into the appendix', fakeAsync(() => {
+      createTestComponent(InfoIconFormfield);
+      expect(formfieldElement.querySelector('.nx-formfield__appendix nx-info-icon')).not.toBeNull();
+
+      openPopover();
+      expect(getOverlayContent().textContent).toContain('Field help');
+    }));
+
+    it('does not render the info icon next to the label', () => {
+      createTestComponent(InfoIconFormfield);
+      expect(formfieldElement.querySelector('.nx-formfield__label-holder nx-info-icon')).toBeNull();
+    });
+
+    it('routes the info icon to the appendix alongside a custom nx-formfield-label', () => {
+      createTestComponent(InfoIconCustomLabelFormfield);
+      expect(formfieldElement.querySelector('nx-formfield-label')).not.toBeNull();
+      expect(formfieldElement.querySelector('.nx-formfield__appendix nx-info-icon')).not.toBeNull();
+    });
+  });
+});
+
 @Component({
   template: `
     <nx-formfield label="Given Label">
@@ -691,3 +820,42 @@ class OnPushFormfield extends FormfieldTest {}
   imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class ConditionalInputComponent extends FormfieldTest {}
+
+@Component({
+  template: `
+    <nx-formfield label="Given Label">
+      <input nxInput />
+      <nx-info-icon nxLabelInfo>
+        <span class="template-content">Field help</span>
+      </nx-info-icon>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    NxInputModule,
+    NxLabelInfoDirective,
+    NxInfoIconComponent,
+  ],
+})
+class InfoIconFormfield extends FormfieldTest {}
+
+@Component({
+  template: `
+    <nx-formfield>
+      <nx-formfield-label>Custom label</nx-formfield-label>
+      <input nxInput />
+      <nx-info-icon nxLabelInfo>Field help</nx-info-icon>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    NxInputModule,
+    NxLabelInfoDirective,
+    NxInfoIconComponent,
+  ],
+})
+class InfoIconCustomLabelFormfield extends FormfieldTest {}

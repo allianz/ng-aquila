@@ -12,6 +12,8 @@ group: Data Display
 
 The Info Icon component is a simplified wrapper around the [Popover component](./documentation/popover/overview), designed to display contextual information via an icon button. It requires Angular CDK (incl. CSS). Learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk).
 
+> **Inside a formfield or label?** To add an info icon to a form field or a [label](./documentation/base/overview), project `<nx-info-icon>` and mark it with the `nxLabelInfo` directive rather than placing a raw popover button in the `nxFormfieldAppendix` slot. The component then handles placement for you — next to the label under Allianz One, and in the appendix under NDBX. See the [formfield documentation](./documentation/formfield/overview) for details.
+
 ### Basic Usage
 
 <!-- example(info-icon) -->

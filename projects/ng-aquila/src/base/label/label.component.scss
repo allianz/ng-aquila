@@ -22,3 +22,9 @@
     color: v(negative);
   }
 }
+
+.nx-label__row {
+  display: inline-flex;
+  align-items: center;
+  gap: v(base-label-info-icon-gap);
+}

@@ -1,5 +1,8 @@
+import { NxLabelInfoDirective } from '@allianz/ng-aquila/base';
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterContentChecked,
   AfterContentInit,
@@ -8,6 +11,7 @@ import {
   Component,
   computed,
   ContentChild,
+  contentChild,
   ContentChildren,
   ElementRef,
   Inject,
@@ -86,7 +90,7 @@ export type AppearanceType = 'outline' | 'auto';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  imports: [NxTooltipModule],
+  imports: [NxTooltipModule, NgTemplateOutlet],
 })
 export class NxFormfieldComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
   protected _negative = false;
@@ -95,6 +99,10 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   /** Html id of the formfield label */
   readonly labelId: string = inject(IdGenerationService).nextId('nx-formfield-label');
   @ContentChild(NxFormfieldControl) _control!: NxFormfieldControl<any>;
+
+  private readonly _allianzOne = inject<AllianzOneOptions | null>(ALLIANZ_ONE, { optional: true });
+
+  protected readonly _isAllianzOne = computed(() => this._allianzOne?.enabled?.() ?? false);
 
   /**
    * Sets the label which will act as a floating label.
@@ -116,6 +124,9 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   );
 
   @ContentChild(NxFormfieldLabelDirective) _labelChild!: NxFormfieldLabelDirective;
+
+  protected readonly _labelInfoChild = contentChild(NxLabelInfoDirective);
+
   @ContentChildren(NxFormfieldHintDirective) _hintChildren!: QueryList<NxFormfieldHintDirective>;
   @ContentChildren(NxFormfieldNoteDirective) _noteChildren!: QueryList<NxFormfieldNoteDirective>;
   @ContentChildren(NxFormfieldErrorDirective) _errorChildren!: QueryList<NxFormfieldErrorDirective>;

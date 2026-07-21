@@ -1,5 +1,7 @@
-import { NxErrorComponent } from '@allianz/ng-aquila/base';
-import { NxIconButtonComponent } from '@allianz/ng-aquila/button';
+import {
+  NxErrorComponent,
+  NxLabelInfoDirective,
+} from '@allianz/ng-aquila/base';
 import {
   NxDropdownComponent,
   NxDropdownComponent as NxDropdownComponent_1,
@@ -9,7 +11,6 @@ import {
 } from '@allianz/ng-aquila/dropdown';
 import {
   FORMFIELD_DEFAULT_OPTIONS,
-  NxFormfieldAppendixDirective,
   NxFormfieldComponent,
   NxFormfieldErrorDirective,
 } from '@allianz/ng-aquila/formfield';
@@ -19,11 +20,7 @@ import {
   NxRowComponent,
 } from '@allianz/ng-aquila/grid';
 import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
-import {
-  NxPopoverComponent,
-  NxPopoverTriggerDirective,
-} from '@allianz/ng-aquila/popover';
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 import { AfterContentInit, Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -51,13 +48,10 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     NxErrorComponent,
     NxFormfieldErrorDirective,
-    NxIconComponent,
-    NxFormfieldAppendixDirective,
     NxDropdownGroupComponent,
     NxMultiSelectComponent,
-    NxIconButtonComponent,
-    NxPopoverComponent,
-    NxPopoverTriggerDirective,
+    NxInfoIconComponent,
+    NxLabelInfoDirective,
   ],
 })
 export class DropdownOutlineExampleComponent implements AfterContentInit {

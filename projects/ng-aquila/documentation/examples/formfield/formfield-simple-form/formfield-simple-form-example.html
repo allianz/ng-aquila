@@ -33,17 +33,12 @@
         <nx-formfield label="E-Mail">
           <input nxInput formControlName="email" />
 
-          <button
-            nxFormfieldAppendix
-            nxIconButton="tertiary small"
-            [nxPopoverTriggerFor]="popoverEmail"
-            nxPopoverTrigger="click"
-            type="button"
-            aria-label="More information"
-          >
-            <nx-icon name="info-circle-o" size="s" aria-hidden="true">
-            </nx-icon>
-          </button>
+          <nx-info-icon nxLabelInfo popoverMaxWidth="200px">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni,
+            nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae
+            ipsam perferendis officia accusamus. Enim magnam recusandae velit
+            accusamus ipsa. Nemo, eius exercitationem?
+          </nx-info-icon>
           <nx-error nxFormfieldError> Your email is missing. </nx-error>
         </nx-formfield>
       </div>
@@ -55,12 +50,3 @@
     </div>
   </div>
 </form>
-
-<nx-popover #popoverEmail>
-  <div style="max-width: 200px">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum.
-    Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam
-    perferendis officia accusamus. Enim magnam recusandae velit accusamus ipsa.
-    Nemo, eius exercitationem?
-  </div>
-</nx-popover>

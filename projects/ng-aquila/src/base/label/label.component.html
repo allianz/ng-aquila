@@ -1,3 +1,7 @@
-<label class="nx-label__content" [for]="for" [id]="id">
-  <ng-content></ng-content>
-</label>
+<span class="nx-label__row">
+  <label class="nx-label__content" [for]="for" [id]="id">
+    <ng-content></ng-content>
+  </label>
+
+  <ng-content select="[nxLabelInfo]"></ng-content>
+</span>

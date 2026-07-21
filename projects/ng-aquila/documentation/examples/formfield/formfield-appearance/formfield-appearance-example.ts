@@ -1,5 +1,7 @@
-import { NxErrorComponent } from '@allianz/ng-aquila/base';
-import { NxIconButtonComponent } from '@allianz/ng-aquila/button';
+import {
+  NxErrorComponent,
+  NxLabelInfoDirective,
+} from '@allianz/ng-aquila/base';
 import {
   NxDatefieldDirective,
   NxDatepickerComponent,
@@ -10,7 +12,6 @@ import {
   NxDropdownItemComponent,
 } from '@allianz/ng-aquila/dropdown';
 import {
-  NxFormfieldAppendixDirective,
   NxFormfieldComponent,
   NxFormfieldHintDirective,
   NxFormfieldPrefixDirective,
@@ -21,12 +22,8 @@ import {
   NxLayoutComponent,
   NxRowComponent,
 } from '@allianz/ng-aquila/grid';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 import { NxInputDirective } from '@allianz/ng-aquila/input';
-import {
-  NxPopoverComponent,
-  NxPopoverTriggerDirective,
-} from '@allianz/ng-aquila/popover';
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -44,8 +41,6 @@ import { FormsModule } from '@angular/forms';
     NxFormfieldComponent,
     NxInputDirective,
     NxFormfieldPrefixDirective,
-    NxIconComponent,
-    NxFormfieldAppendixDirective,
     NxDropdownComponent,
     NxDropdownItemComponent,
     NxDatefieldDirective,
@@ -55,9 +50,8 @@ import { FormsModule } from '@angular/forms';
     NxDatepickerComponent,
     NxFormfieldHintDirective,
     NxErrorComponent,
-    NxIconButtonComponent,
-    NxPopoverComponent,
-    NxPopoverTriggerDirective,
+    NxInfoIconComponent,
+    NxLabelInfoDirective,
   ],
 })
 export class FormfieldAppearanceExampleComponent {

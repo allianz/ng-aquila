@@ -141,7 +141,91 @@ import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 ```
 If used in a Standalone Component, add the `NxInfoIconComponent` to the components `imports` array.
 
-4. **Important:** Do not change buttons inside Formfields (`<nx-formfield>`). Only replace standalone info buttons that trigger popovers.
+4. **Important:** For info buttons **inside** a Formfield (`<nx-formfield>`), do NOT use this standalone
+   `<nx-info-icon>` replacement — migrate them with **Step 3.1** below instead. This step (Step 3) only
+   covers standalone info buttons that trigger popovers outside of a formfield.
+
+### Step 3.1: Formfield info icons → `nxLabelInfo` projection slot
+
+Formfields expose a content-projection slot for the label info icon: project an info-icon component
+into the formfield and mark it with the `nxLabelInfo` directive. It renders next to the label (in A1,
+where the label is permanently floated). Migrate the old workaround — an info-icon/popover manually
+placed in the formfield's `nxFormfieldAppendix` slot — to this slot.
+
+1. **Identify:** an `<nx-formfield>` that contains, in its `nxFormfieldAppendix` slot, either
+   - an existing `<nx-info-icon nxFormfieldAppendix>…</nx-info-icon>`, or
+   - a button with `nxPopoverTrigger` (or `[nxPopoverTriggerFor]`) holding an info icon (e.g.
+     `<nx-icon name="info-circle-o">`) whose popover just explains the field.
+2. **Replace:** put an `<nx-info-icon nxLabelInfo>…</nx-info-icon>` inside the formfield with the help
+   content projected directly (plain text or structured markup). Remove the old appendix button/popover
+   markup. Because the info icon is now a projected component, you keep full control over its API
+   (`popoverDirection`, `popoverWidth`, `popoverModal`, `buttonAriaLabel`, …) directly on the element —
+   and you can project a custom/entity-specific info-icon implementation into the same slot.
+3. **Works with a custom label too:** the slot renders the icon regardless of whether the label comes
+   from the `label` string input or a projected `<nx-formfield-label>`. Do not move the info content
+   into `<nx-formfield-label>`.
+
+**Before (appendix workaround — button + popover):**
+
+```html
+<nx-formfield label="Email">
+  <input nxInput [(ngModel)]="email" />
+  <button
+    nxFormfieldAppendix
+    nxIconButton="tertiary small"
+    [nxPopoverTriggerFor]="emailInfo"
+    nxPopoverTrigger="click"
+    type="button"
+    aria-label="More information"
+  >
+    <nx-icon name="info-circle-o" size="s" aria-hidden="true"></nx-icon>
+  </button>
+</nx-formfield>
+
+<nx-popover #emailInfo>
+  <div style="max-width: 300px">We only use your email to send policy documents.</div>
+</nx-popover>
+```
+
+**After (string content):**
+
+```html
+<nx-formfield label="Email">
+  <input nxInput [(ngModel)]="email" />
+  <nx-info-icon nxLabelInfo>We only use your email to send policy documents.</nx-info-icon>
+</nx-formfield>
+```
+
+**After (structured content, projected directly — no `ng-template` needed):**
+
+```html
+<nx-formfield label="Email">
+  <input nxInput [(ngModel)]="email" />
+  <nx-info-icon nxLabelInfo>
+    <p nxCopytext>We only use your email to send policy documents.</p>
+    <a nxLink href="/privacy">Privacy policy</a>
+  </nx-info-icon>
+</nx-formfield>
+```
+
+Add the info-icon import (and, in a standalone component, add it to `imports`). The `nxLabelInfo`
+directive ships with the label/formfield modules:
+
+```ts
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
+```
+
+**Note:** the manual `nxFormfieldAppendix` slot still works and is not removed from the framework — but
+prefer the `nxLabelInfo` slot for field-level help so the icon aligns with the label consistently in A1.
+
+### Convention: content projection over pass-through inputs
+
+When wrapping one component inside another, prefer **content projection** over adding pass-through
+inputs. Do **not** mirror a child component's inputs onto its wrapper (e.g. there is deliberately no
+`infoIconContent` input on the formfield) — project the child (`<nx-info-icon nxLabelInfo>`) and let it
+own its own API. This keeps a single authoring model, avoids the wrapper drifting out of sync with the
+child, and lets consumers swap in their own implementation. Reserve `@Input()` for scalar configuration
+the component itself owns with a closed set of options (`size`, `disabled`, `label`).
 
 ---
 

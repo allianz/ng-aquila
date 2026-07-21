@@ -2,25 +2,17 @@ import {
   ERROR_DEFAULT_OPTIONS,
   ErrorDefaultOptions,
   NxErrorComponent,
+  NxLabelInfoDirective,
 } from '@allianz/ng-aquila/base';
-import { NxIconButtonComponent } from '@allianz/ng-aquila/button';
 import {
   FORMFIELD_DEFAULT_OPTIONS,
   FormfieldDefaultOptions,
-  NxFormfieldAppendixDirective,
   NxFormfieldComponent,
   NxFormfieldErrorDirective,
   NxFormfieldPrefixDirective,
 } from '@allianz/ng-aquila/formfield';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
-import {
-  NxInputDirective,
-  NxInputDirective as NxInputDirective_1,
-} from '@allianz/ng-aquila/input';
-import {
-  NxPopoverComponent,
-  NxPopoverTriggerDirective,
-} from '@allianz/ng-aquila/popover';
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
+import { NxInputDirective } from '@allianz/ng-aquila/input';
 import { AfterContentInit, Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -47,16 +39,13 @@ const myErrorOptions: ErrorDefaultOptions = {
   ],
   imports: [
     NxFormfieldComponent,
-    NxInputDirective_1,
     NxFormfieldPrefixDirective,
-    NxIconComponent,
-    NxFormfieldAppendixDirective,
     FormsModule,
+    NxInputDirective,
     NxErrorComponent,
     NxFormfieldErrorDirective,
-    NxPopoverComponent,
-    NxPopoverTriggerDirective,
-    NxIconButtonComponent,
+    NxInfoIconComponent,
+    NxLabelInfoDirective,
   ],
 })
 export class FormfieldGlobalExampleComponent implements AfterContentInit {

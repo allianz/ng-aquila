@@ -123,6 +123,37 @@
   }
 }
 
+// Info icon projected next to a permanently-floated label (A1 / always-float).
+// The projected element lives outside the `<label>` for accessibility, so it
+// must re-enable pointer events inside the `pointer-events: none` holder.
+.nx-formfield__label-holder [nxLabelInfo] {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+// When an info icon is present the holder becomes a row so the label and the
+// icon sit next to each other and float together. Scoped via `:has()` to the
+// icon case only, so the default auto-floating label layout is untouched.
+.nx-formfield__label-holder:has([nxLabelInfo]) {
+  display: inline-flex;
+  align-items: center;
+  gap: v(base-label-info-icon-gap);
+  width: auto;
+  // Don't inherit the full input-container height from the base holder,
+  // otherwise the label+icon row centers across the whole field height and
+  // the floating transform lands it in the wrong place. Content height sits
+  // at top: 0 like the normal absolute label.
+  height: auto;
+
+  .nx-formfield__label {
+    position: relative;
+    width: auto;
+    max-width: 100%;
+  }
+}
+
 .nx-formfield__appendix,
 .nx-formfield__prefix,
 .nx-formfield__suffix {
@@ -458,6 +489,16 @@
     @include type-style(formfield-label);
   }
 
+  // When an info icon is present, the whole holder row floats together and
+  // the label's own transform is reset so it does not translate twice.
+  .nx-formfield__label-holder:has([nxLabelInfo]) {
+    transform: translateY(v(formfield-floating-distance));
+
+    .nx-formfield__label {
+      transform: none;
+    }
+  }
+
   &.is-filled .nx-formfield__label {
     // Remove the transition when the input is filled
     transition: none;
@@ -471,6 +512,15 @@
       padding-top: 0;
       transform: translateY(v(formfield-outline-floating-distance));
       @include type-style(formfield-outline-label);
+    }
+
+    .nx-formfield__label-holder:has([nxLabelInfo]) {
+      transform: translateY(v(formfield-outline-floating-distance));
+
+      .nx-formfield__label {
+        padding-top: 0;
+        transform: none;
+      }
     }
 
     .nx-formfield__prefix ~ .nx-formfield__input {

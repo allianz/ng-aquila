@@ -6,10 +6,6 @@ import {
 } from '@allianz/ng-aquila/formfield';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxInputDirective } from '@allianz/ng-aquila/input';
-import {
-  NxPopoverComponent,
-  NxPopoverTriggerDirective,
-} from '@allianz/ng-aquila/popover';
 import { Component } from '@angular/core';
 
 /**
@@ -24,9 +20,7 @@ import { Component } from '@angular/core';
     NxInputDirective,
     NxFormfieldSuffixDirective,
     NxFormfieldAppendixDirective,
-    NxPopoverTriggerDirective,
     NxIconComponent,
-    NxPopoverComponent,
     NxIconButtonComponent,
   ],
 })

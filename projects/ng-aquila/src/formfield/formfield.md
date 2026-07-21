@@ -54,6 +54,12 @@ You can pass text label content via the input `label`. If you need a more comple
 
 <!-- example(formfield-custom-label) -->
 
+### Info icon
+
+Show an info icon next to the label by projecting an info-icon component into the formfield and marking it with the `nxLabelInfo` directive. Use the standard `nx-info-icon` (from `@allianz/ng-aquila/info-icon`) or project your own implementation — the projected component keeps full control over its own API (popover direction, width, modal behaviour, etc.). You author it once and the formfield places it per theme: **next to the label under Allianz One**, and in the **appendix position (next to the field) under NDBX** — matching the legacy placement. It works together with both the `label` input and a custom `nx-formfield-label`, and replaces the previous pattern of placing an info icon and popover manually in the `nxFormfieldAppendix` slot.
+
+<!-- example(formfield-info-icon) -->
+
 ### Negative styling
 
 The negative modifier can be used whenever the component is used on a dark background.

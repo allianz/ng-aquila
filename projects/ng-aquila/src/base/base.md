@@ -50,3 +50,9 @@ Import it with
 The module is auto-imported when you use the [formfield](./documentation/formfield), [checkbox](./documentation/checkbox) or [radio-button](./documentation/radio-button) module.
 
 <!-- example(label) -->
+
+#### Info icon
+
+A label can show an info icon next to its text. Project an info-icon component into the label and mark it with the `nxLabelInfo` directive. Use the standard `nx-info-icon` (from `@allianz/ng-aquila/info-icon`) for the common case, or project your own implementation — the projected component keeps full control over its own API (popover direction, width, modal behaviour, etc.). The icon is rendered as a sibling of the `<label>` element (never nested inside it) so it stays accessible.
+
+<!-- example(label-info-icon) -->
