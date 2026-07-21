@@ -14,13 +14,32 @@ We trigger minor or bug fix releases if they provide a meaningful delivery (fix 
 
 | Date          | Angular version | Angular Brand Kit version | LTS end       |
 | ------------- | --------------- | ------------------------- | ------------- |
+| July 2026     | 22              | 22                        | December 2027 |
 | December 2025 | 21              | 21                        | May 2027      |
 | July 2025     | 20              | 20                        | November 2026 |
-| January 2025  | 19              | 19                        | May 2026      |
 
-Versions 18 and older are no longer supported.
+Versions 19 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
+
+## Updating to version 22
+
+For updating Angular to version 22, in most cases the following command should do the update for you:
+
+`ng update @angular/cli @angular/core @angular/cdk --force`
+
+Then update the ng-aquila with the following command:
+
+`ng update @allianz/ng-aquila --force`
+
+Make sure to run `ng update` for automatic migrations. Key changes:
+
+- **Naming consistency:** `attention` → `prominence`, `appearance` → `colorScheme`, `colorScheme` → `accentColor` across badge, avatar, selection indicator, and text components.
+- **Date range:** `minDate`/`maxDate` inputs and `NxDateRangeValidators.min()`/`.max()` renamed to `minStart`/`maxEnd` variants.
+- **Context menu:** `selectable` now returns `NxContextMenuItemSelectable` (`'single' | 'multi' | boolean`) instead of plain `boolean`.
+
+See the [CHANGELOG](guides/CHANGELOG) for full details and manual migration notes.
+
 
 ## Updating to version 21
 
