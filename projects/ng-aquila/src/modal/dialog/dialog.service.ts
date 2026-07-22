@@ -220,13 +220,8 @@ export class NxDialogService implements OnDestroy {
    * @returns The overlay configuration.
    */
   private _getOverlayConfig(modalConfig: NxModalConfig): OverlayConfig {
-    // Default horizontal margin so a modal keeps a gap from the viewport edges.
-    // Skip it when an explicit horizontal position is given, as it would override
-    // the requested left/right offset. Fullscreen is exempt: CDK ignores the offset
-    // there, so the class still provides the gap.
-    const hasHorizontalPosition =
-      !modalConfig.fullscreen && !!(modalConfig.position?.left || modalConfig.position?.right);
-    let panelClasses: string[] = hasHorizontalPosition ? [] : ['nx-modal--x-margin'];
+    // Add horizontal margin class to modal panel by default
+    let panelClasses: string[] = ['nx-modal--x-margin'];
     if (modalConfig.panelClass) {
       panelClasses = Array.isArray(modalConfig.panelClass)
         ? [...panelClasses, ...modalConfig.panelClass]

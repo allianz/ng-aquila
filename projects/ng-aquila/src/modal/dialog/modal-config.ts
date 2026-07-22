@@ -61,7 +61,7 @@ export class NxModalConfig<D = any> {
   /** Whether the user can use escape or clicking on the backdrop to close the modal. */
   disableClose?: boolean = false;
 
-  /** Whether the modal is to be shown in fullscreen. When set to true, the width, height, maxWidth and maxHeight are overwritten and any `position` overrides are ignored. */
+  /** Whether the modal is to be shown in fullscreen. When set to true, the width, height, maxWidth and maxHeight are overwritten */
   fullscreen?: boolean = false;
 
   /** Width of the modal. */
