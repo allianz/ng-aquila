@@ -673,6 +673,58 @@ describe('NxDialog', () => {
     expect(overlayPane.style.marginRight).toBe('125px');
   });
 
+  it('should not add the horizontal margin class when a horizontal position is given', () => {
+    dialog.open(PizzaMsg, {
+      position: {
+        top: '100px',
+        right: '100px',
+      },
+    });
+
+    viewContainerFixture.detectChanges();
+
+    const overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+
+    // The default `nx-modal--x-margin` rule uses `!important` and would otherwise
+    // win over CDK's inline right margin, snapping the modal to the edge.
+    expect(overlayPane.classList).not.toContain('nx-modal--x-margin');
+    expect(overlayPane.style.marginRight).toBe('100px');
+    expect(overlayPane.style.marginTop).toBe('100px');
+  });
+
+  it('should keep the horizontal margin class for a vertical-only position', () => {
+    dialog.open(PizzaMsg, {
+      position: {
+        top: '100px',
+      },
+    });
+
+    viewContainerFixture.detectChanges();
+
+    const overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+
+    // The class only sets `margin-inline`, so the requested top offset survives.
+    expect(overlayPane.classList).toContain('nx-modal--x-margin');
+    expect(overlayPane.style.marginTop).toBe('100px');
+  });
+
+  it('should keep the horizontal margin class for a fullscreen modal with a horizontal position', () => {
+    dialog.open(PizzaMsg, {
+      fullscreen: true,
+      position: {
+        left: '100px',
+      },
+    });
+
+    viewContainerFixture.detectChanges();
+
+    const overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
+
+    // In fullscreen CDK flushes the pane margins to 0 and ignores the offset, so
+    // the class must stay to provide the intended horizontal gap.
+    expect(overlayPane.classList).toContain('nx-modal--x-margin');
+  });
+
   it('should allow for the position to be updated', () => {
     const dialogRef = dialog.open(PizzaMsg, {
       position: {

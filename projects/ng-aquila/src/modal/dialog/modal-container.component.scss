@@ -4,10 +4,12 @@ $max-modal-content-height: 65vh !default;
 
 ::ng-deep .cdk-overlay-pane {
   &.nx-modal--x-margin {
-    margin: 0 v(modal-padding-small) !important;
+    // Only touch the horizontal axis so an explicit top/bottom position
+    // (set by CDK as inline margin-top/bottom) is not overridden.
+    margin-inline: v(modal-padding-small) !important;
 
     @include media-breakpoint-down('small') {
-      margin: 0 nx-spacer(2xs) !important;
+      margin-inline: nx-spacer(2xs) !important;
     }
   }
   &.is-fullscreen {

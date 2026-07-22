@@ -91,7 +91,7 @@ By default the width of the modal dialog is `736px`. You can change this behavio
 
 ### Fullscreen
 
-Set `fullscreen` to `true` to show the modal in fullscreen. When using `fullscreen` the `width`, `height`, `maxWidth` and `maxHeight` are overwritten.
+Set `fullscreen` to `true` to show the modal in fullscreen. When using `fullscreen` the `width`, `height`, `maxWidth` and `maxHeight` are overwritten and any `position` overrides are ignored.
 
 <!-- example(modal-fullscreen) -->
 
