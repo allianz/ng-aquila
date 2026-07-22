@@ -17,6 +17,7 @@
     "Firefox ESR"
   ],
   "dependencies": {
+    "@angular/animations": "^22.0.0",
     "@angular/cdk": "^22.0.0",
     "@angular/common": "^22.0.0",
     "@angular/compiler": "^22.0.0",
@@ -25,6 +26,7 @@
     "@angular/platform-browser": "^22.0.0",
     "@angular/router": "^22.0.0",
     "@allianz/ng-aquila": "^22.0.0",
+    "@standard-schema/spec": "^1.0.0",
     "ag-grid-angular": "^33.1.1",
     "ag-grid-community": "^33.1.1",
     "i18n-iso-countries": "^7.5.0",
@@ -37,7 +39,7 @@
     "zone.js": "^0.16.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^22.0.0",
+    "@angular/build": "^22.0.0",
     "@angular/cli": "^22.0.0",
     "@angular/compiler-cli": "^22.0.0",
     "typescript": "~6.0.3"

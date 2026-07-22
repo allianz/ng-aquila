@@ -208,6 +208,34 @@
 </table> 
 
  
+  <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
+    </h3>
+     
+
+<h4 id="NxLabelInfoDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxLabelInfoDirective"></span>
+    <code>NxLabelInfoDirective</code></h4><p class="docs-api-class-description"><p>Marks projected content as the info icon of a label.</p>
+<p>Place any info-icon implementation (the standard <code>nx-info-icon</code> or an
+entity-specific component) inside an <code>nx-label</code> or <code>nx-formfield</code> and mark it
+with this directive to have it rendered next to the label text. The projected
+component keeps full control over its own API (popover direction, width,
+modal behaviour, etc.).</p>
+<pre><code class="language-html">&lt;nx-label&gt;
+  First name
+  &lt;nx-info-icon nxLabelInfo&gt;Help text&lt;/nx-info-icon&gt;
+&lt;/nx-label&gt;</code></pre>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxLabelInfo]</span>
+        </code>
+    
+</p> 
+
+ 
   <h3 id="additional_classes" class="docs-header-link docs-api-h3">
         <span header-link="additional_classes"></span>
         Additional classes

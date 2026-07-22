@@ -24,6 +24,7 @@ import { FormfieldExpertErrorExampleComponent } from './formfield-expert-error/f
 import { FormfieldFloatingExampleComponent } from './formfield-floating/formfield-floating-example';
 import { FormfieldGlobalExampleComponent } from './formfield-global/formfield-global-example';
 import { FormfieldHintExampleComponent } from './formfield-hint/formfield-hint-example';
+import { FormfieldInfoIconExampleComponent } from './formfield-info-icon/formfield-info-icon-example';
 import { FormfieldMultipleErrorsExampleComponent } from './formfield-multiple-errors/formfield-multiple-errors-example';
 import { FormfieldNegativeExampleComponent } from './formfield-negative/formfield-negative-example';
 import { FormfieldNoteExampleComponent } from './formfield-note/formfield-note-example';
@@ -49,6 +50,7 @@ const EXAMPLES = [
   FormfieldFloatingExampleComponent,
   FormfieldGlobalExampleComponent,
   FormfieldHintExampleComponent,
+  FormfieldInfoIconExampleComponent,
   FormfieldMultipleErrorsExampleComponent,
   FormfieldNegativeExampleComponent,
   FormfieldNoteExampleComponent,
@@ -92,6 +94,7 @@ export class FormfieldExamplesModule {
       'formfield-floating': FormfieldFloatingExampleComponent,
       'formfield-global': FormfieldGlobalExampleComponent,
       'formfield-hint': FormfieldHintExampleComponent,
+      'formfield-info-icon': FormfieldInfoIconExampleComponent,
       'formfield-multiple-errors': FormfieldMultipleErrorsExampleComponent,
       'formfield-negative': FormfieldNegativeExampleComponent,
       'formfield-note': FormfieldNoteExampleComponent,

@@ -1,5 +1,5 @@
 <header nx-header>
-  <nx-header-brand class="nx-margin-right-5xl">
+  <nx-header-brand>
     <nx-link>
       <a href="#">
         <figure nxFigure>
@@ -12,10 +12,12 @@
       </a>
     </nx-link>
 
-    <nx-header-app-title>Application title</nx-header-app-title>
+    <nx-header-app-title [showDivider]="true"
+      >Application title</nx-header-app-title
+    >
   </nx-header-brand>
 
-  <nx-header-actions>
+  <nx-header-actions [showDivider]="true">
     <button nxPlainButton aria-label="Open Search Bar">
       <nx-icon name="search" aria-hidden="true"></nx-icon>
     </button>

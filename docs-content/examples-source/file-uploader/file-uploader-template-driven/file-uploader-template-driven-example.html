@@ -7,25 +7,26 @@
   >
 
   <button
-    nxButton="primary"
+    nxButton="secondary"
     type="button"
     class="nx-margin-bottom-s"
     nxFileUploadButton
   >
     <nx-icon
-      name="plus"
+      name="arrow-upload"
       class="nx-margin-right-2xs"
       aria-hidden="true"
     ></nx-icon>
-    Add File
+    Choose File
   </button>
 </nx-file-uploader>
 
+@if (documentUpload.value?.length) {
 <button
-  nxButton="secondary small"
+  nxButton="primary"
   type="button"
   [nxFileUploadTriggerFor]="documentUpload"
-  [disabled]="documentUpload.value && !documentUpload.value.length"
 >
   Upload files
 </button>
+}

@@ -20,6 +20,9 @@
 <h3 id="custom-formfield-label" tabindex="-1" class="docs-markdown--h3">Custom formfield label</h3>
 <p class="docs-markdown--p">You can pass text label content via the input <code>label</code>. If you need a more complex label you an use the directive <code>nx-formfield-label</code> as shown in the code example below. If both are defined, then <code>nx-formfield-label</code> will take precedence.</p>
 <div nx-docs-example="formfield-custom-label" config="{}">exampleID: formfield-custom-label</div>
+<h3 id="info-icon" tabindex="-1" class="docs-markdown--h3">Info icon</h3>
+<p class="docs-markdown--p">Show an info icon next to the label by projecting an info-icon component into the formfield and marking it with the <code>nxLabelInfo</code> directive. Use the standard <code>nx-info-icon</code> (from <code>@allianz/ng-aquila/info-icon</code>) or project your own implementation — the projected component keeps full control over its own API (popover direction, width, modal behaviour, etc.). You author it once and the formfield places it per theme: <strong>next to the label under Allianz One</strong>, and in the <strong>appendix position (next to the field) under NDBX</strong> — matching the legacy placement. It works together with both the <code>label</code> input and a custom <code>nx-formfield-label</code>, and replaces the previous pattern of placing an info icon and popover manually in the <code>nxFormfieldAppendix</code> slot.</p>
+<div nx-docs-example="formfield-info-icon" config="{}">exampleID: formfield-info-icon</div>
 <h3 id="negative-styling" tabindex="-1" class="docs-markdown--h3">Negative styling</h3>
 <p class="docs-markdown--p">The negative modifier can be used whenever the component is used on a dark background.</p>
 <div nx-docs-example="formfield-negative" config="{}">exampleID: formfield-negative</div>

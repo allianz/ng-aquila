@@ -1,0 +1,27 @@
+<!--
+  Project any info-icon implementation and mark it with `nxLabelInfo`. The
+  formfield places it automatically: next to the label under A1, and in the
+  appendix (next to the field) under NDBX. Switch the theme to see both.
+-->
+
+<!-- Simple string content -->
+<nx-formfield label="Email">
+  <input nxInput />
+  <nx-info-icon nxLabelInfo
+    >We only use your email to send policy documents.</nx-info-icon
+  >
+</nx-formfield>
+
+<br />
+
+<!-- Structured content projected directly into the info icon -->
+<nx-formfield label="Contribution">
+  <input nxInput />
+  <nx-info-icon nxLabelInfo>
+    <p>Your monthly contribution is calculated from:</p>
+    <ul nxList>
+      <li>your selected coverage</li>
+      <li>your age at contract start</li>
+    </ul>
+  </nx-info-icon>
+</nx-formfield>

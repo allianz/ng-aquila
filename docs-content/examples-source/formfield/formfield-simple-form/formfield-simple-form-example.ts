@@ -1,14 +1,13 @@
-import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import {
-  NxButtonComponent,
-  NxIconButtonComponent,
-} from '@allianz/ng-aquila/button';
+  NxErrorComponent,
+  NxLabelInfoDirective,
+} from '@allianz/ng-aquila/base';
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
   NxDropdownComponent,
   NxDropdownItemComponent,
 } from '@allianz/ng-aquila/dropdown';
 import {
-  NxFormfieldAppendixDirective,
   NxFormfieldComponent,
   NxFormfieldErrorDirective,
 } from '@allianz/ng-aquila/formfield';
@@ -17,12 +16,8 @@ import {
   NxLayoutComponent,
   NxRowComponent,
 } from '@allianz/ng-aquila/grid';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 import { NxInputDirective } from '@allianz/ng-aquila/input';
-import {
-  NxPopoverComponent,
-  NxPopoverTriggerDirective,
-} from '@allianz/ng-aquila/popover';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -51,12 +46,9 @@ import {
     NxFormfieldErrorDirective,
     NxDropdownComponent,
     NxDropdownItemComponent,
-    NxIconComponent,
-    NxFormfieldAppendixDirective,
-    NxPopoverTriggerDirective,
     NxButtonComponent,
-    NxPopoverComponent,
-    NxIconButtonComponent,
+    NxInfoIconComponent,
+    NxLabelInfoDirective,
   ],
 })
 export class FormfieldSimpleFormExampleComponent {

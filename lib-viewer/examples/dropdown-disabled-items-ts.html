@@ -1,5 +1,6 @@
 <span class="hljs-keyword">import</span> {
   <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownIntl</span>,
   <span class="hljs-title class_">NxDropdownItemComponent</span>,
   <span class="hljs-title class_">NxMultiSelectComponent</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
@@ -16,6 +17,10 @@
   <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
 }
 
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MyDropdownIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">NxDropdownIntl</span> {
+  selectAll = <span class="hljs-string">&#x27;Select all possible&#x27;</span>;
+}
+
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title</span> Disabled items example
  */</span>
@@ -23,6 +28,7 @@
   <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-disabled-items-example&#x27;</span>,
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-disabled-items-example.html&#x27;</span>,
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-disabled-items-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxDropdownIntl</span>, <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">MyDropdownIntl</span> }],
   <span class="hljs-attr">imports</span>: [
     <span class="hljs-title class_">NxLayoutComponent</span>,
     <span class="hljs-title class_">NxRowComponent</span>,

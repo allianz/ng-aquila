@@ -489,6 +489,48 @@
    
    
 
+<h4 id="NxFileIconComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxFileIconComponent"></span>
+    <code>NxFileIconComponent</code></h4><p class="docs-api-class-description"><p>Shows the file type icon with the file extension label.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-file-icon</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                fileExtension: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The file extension, without the leading dot (e.g. <code>pdf</code>).</p>
+<p>When omitted (or empty), no extension badge is shown. Unknown extensions
+fall back to the default badge color.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
 <h4 id="NxFileUploaderItemDelete" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxFileUploaderItemDelete"></span>
     <code>NxFileUploaderItemDelete</code></h4><p class="docs-api-class-description"><p>Shows a delete button.</p>
@@ -624,17 +666,18 @@
                 extension: 
                 </span>
                  
-                <span class="docs-api-property__type">string</span>
+                <span class="docs-api-property__type">Signal&lt;string&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>The file extension without the leading dot.</p>
+</td>
 </tr>
    
 
 <tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 iconColor: 
@@ -645,7 +688,8 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Maps a file extension to its label background color.</p>
+</td>
 </tr>
   
 </table> 

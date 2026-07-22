@@ -1,5 +1,6 @@
 import {
   NxDropdownComponent,
+  NxDropdownIntl,
   NxDropdownItemComponent,
   NxMultiSelectComponent,
 } from '@allianz/ng-aquila/dropdown';
@@ -16,6 +17,10 @@ interface MyOption {
   id: number;
 }
 
+class MyDropdownIntl extends NxDropdownIntl {
+  selectAll = 'Select all possible';
+}
+
 /**
  * @title Disabled items example
  */
@@ -23,6 +28,7 @@ interface MyOption {
   selector: 'dropdown-disabled-items-example',
   templateUrl: './dropdown-disabled-items-example.html',
   styleUrls: ['./dropdown-disabled-items-example.css'],
+  providers: [{ provide: NxDropdownIntl, useClass: MyDropdownIntl }],
   imports: [
     NxLayoutComponent,
     NxRowComponent,

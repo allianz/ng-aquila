@@ -3,14 +3,34 @@
 <h3 id="basic-usage" tabindex="-1" class="docs-markdown--h3">Basic usage</h3>
 <p class="docs-markdown--p">The component has a built-in http POST uploading functionality. To use this, there has to be a <code>NxFileUploader</code> defined and assigned to the file uploader component. Success and error handling can be done with subscribing to the <code>response</code> stream of the file uploader.</p>
 <p class="docs-markdown--p">Most of the examples are using the <code>[nxFileUploadTriggerFor]</code> directive for triggering the upload. Alternatively, <code>updateFiles()</code> of the File Uploader component can be used.</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-basic" config="{}">exampleID: file-uploader-basic</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-basic-ndbx" config="{}">exampleID: file-uploader-basic-ndbx</div>
+</div>
 <h3 id="reactive-form" tabindex="-1" class="docs-markdown--h3">Reactive form</h3>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-reactive" config="{}">exampleID: file-uploader-reactive</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-reactive-ndbx" config="{}">exampleID: file-uploader-reactive-ndbx</div>
+</div>
 <h3 id="template-driven-form" tabindex="-1" class="docs-markdown--h3">Template driven form</h3>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-template-driven" config="{}">exampleID: file-uploader-template-driven</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-template-driven-ndbx" config="{}">exampleID: file-uploader-template-driven-ndbx</div>
+</div>
 <h3 id="multiple-file-uploader" tabindex="-1" class="docs-markdown--h3">Multiple File Uploader</h3>
 <p class="docs-markdown--p">It's possible to combine multiple file uploader to use different uploader configs or accommodate file categories</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-categories" config="{}">exampleID: file-uploader-categories</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-categories-ndbx" config="{}">exampleID: file-uploader-categories-ndbx</div>
+</div>
 <h3 id="validation" tabindex="-1" class="docs-markdown--h3">Validation</h3>
 <p class="docs-markdown--p">The FileItem class provides a set of methods and properties in order to set the current state of the file.</p>
 <h4 id="error-list" tabindex="-1" class="docs-markdown--h4">Error list</h4>
@@ -22,16 +42,31 @@
     For further details see the <a href="./documentation/file-uploader/overview#disable-blocking-validators">Disable blocking validators</a> section.</p>
 </div>
 <p class="docs-markdown--p">The following example shows how you can use both the form control validators (e.g. required or custom validators) and the <code>errors</code> property to display a comprehensive list of all errors.</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-error-list" config="{}">exampleID: file-uploader-error-list</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-error-list-ndbx" config="{}">exampleID: file-uploader-error-list-ndbx</div>
+</div>
 <h4 id="max-file-size" tabindex="-1" class="docs-markdown--h4">Max file size</h4>
 <p class="docs-markdown--p">The max file size is set via the <code>[maxFileSize]</code> property. Please note that the file size is passed in bytes.</p>
 <p class="docs-markdown--p">The returned error is <code>NxFileUploadMaxFileSize</code>.</p>
 <p class="docs-markdown--p">The server's errors can be handled by setting the file state as shown in this example.</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-validation" config="{}">exampleID: file-uploader-validation</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-validation-ndbx" config="{}">exampleID: file-uploader-validation-ndbx</div>
+</div>
 <h4 id="max-file-number" tabindex="-1" class="docs-markdown--h4">Max file number</h4>
 <p class="docs-markdown--p">The max file number is set via the <code>[maxFileNumber]</code> property.</p>
 <p class="docs-markdown--p">The return error is <code>NxFileUploadMaxFileNumber</code>.</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-max-file-number" config="{}">exampleID: file-uploader-max-file-number</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-max-file-number-ndbx" config="{}">exampleID: file-uploader-max-file-number-ndbx</div>
+</div>
 <h4 id="accepted-file-types" tabindex="-1" class="docs-markdown--h4">Accepted file types</h4>
 <p class="docs-markdown--p">The permitted file types can be set via <code>[accept]</code> and are passed down to the native input[type='file'] element. Allowed is a comma separated list of MIME types or file extensions.</p>
 <ul class="docs-markdown--ul">
@@ -47,38 +82,85 @@
   In the past we skipped validation when the file type was missing to mitigate some problems. This means that the file uploader will accept undesired files, e.g. a .log file.</p><p> To improve this behavior we added a new option <code>strictAcceptValidation</code> which we do not enable by default yet because it would introduce a breaking change. If you want to enable it, please set it to <code>true</code>.<br>
   See the <a href="./documentation/file-uploader/overview#strict-file-type-validation">Strict file type validation</a> section further below for more details.</p>
 </div>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-type-validation" config="{}">exampleID: file-uploader-type-validation</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-type-validation-ndbx" config="{}">exampleID: file-uploader-type-validation-ndbx</div>
+</div>
 <h4 id="strict-file-type-validation" tabindex="-1" class="docs-markdown--h4">Strict file type validation</h4>
 <p class="docs-markdown--p">The File objects that are created by the browsers sometimes do not provide a file mime type. This usually happens if the operating system does not have a file type associated, e.g. for a .log file or for .xslx if microsoft office or excel is not installed.</p>
 <p class="docs-markdown--p">Because this created some challenges by default the file type validation is skipped in this case. This means that undesired files can be accepted.</p>
 <p class="docs-markdown--p">You can harden against these cases with the <code>strictAcceptValidation</code> option. When enabled you might have to add file extensions in addition to mime types for some file types. E.g. for excel files this has been a problem in the past to only rely on the mime type. A good approach in this case could be  <code>accept=&quot;application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xls,.xlsx&quot;</code>.</p>
 <p class="docs-markdown--p">Try to drag and drop a .log file (at least these files worked best for us in testing across windows and mac) in the example below. It should throw an error, then disable the <code>strictAcceptValidation</code> option with the button and try again to see the difference.</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-strict-type-validation" config="{}">exampleID: file-uploader-strict-type-validation</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-strict-type-validation-ndbx" config="{}">exampleID: file-uploader-strict-type-validation-ndbx</div>
+</div>
 <h4 id="disable-blocking-validators" tabindex="-1" class="docs-markdown--h4">Disable blocking validators</h4>
 <p class="docs-markdown--p">Previously we registered all validations as form control validators. We identified some problems with this approach such as that only the last file for each error was added in the form control errors instead of all files that do not validate. Additionally it creates some UX challenges when a file was blocked from being added to the model. The form control is then not valid and the user cannot proceed but leaves the user with the challenge what they should do.<br></p>
 <p class="docs-markdown--p">To mitigate these problems we introduced the <code>noBlockingValidators</code> option which we do not enable by default yet because it would introduce a breaking change. By enabling this option all validators that block files from being added to the list, like max file size, max file number or file type validation, are not added to the form control anymore. Instead you can access these types of errors via the <code>errors</code> property of the component. See the <a href="./documentation/file-uploader/overview#error-list">error list</a> section.</p>
 <p class="docs-markdown--p">In the following example you can see how enabling and disabling <code>noBlockingValidators</code> and then trying to add an invalid file to the list will influence the form control errors object.</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-disable-common-validators" config="{}">exampleID: file-uploader-disable-common-validators</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-disable-common-validators-ndbx" config="{}">exampleID: file-uploader-disable-common-validators-ndbx</div>
+</div>
 <h3 id="upload" tabindex="-1" class="docs-markdown--h3">Upload</h3>
 <p class="docs-markdown--p">All previous examples are implemented with the built-in uploading functionality of the file uploader.</p>
 <h4 id="auto-upload" tabindex="-1" class="docs-markdown--h4">Auto upload</h4>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-auto" config="{}">exampleID: file-uploader-auto</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-auto-ndbx" config="{}">exampleID: file-uploader-auto-ndbx</div>
+</div>
 <h4 id="separate-upload-requests-for-each-file" tabindex="-1" class="docs-markdown--h4">Separate upload requests for each file</h4>
 <p class="docs-markdown--p">By default, all files are sent within one single upload request. You can also send separate requests by adding <code>uploadSeparately: true</code> to the configuration of the NxFileUploader.</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-separate-requests" config="{}">exampleID: file-uploader-separate-requests</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-separate-requests-ndbx" config="{}">exampleID: file-uploader-separate-requests-ndbx</div>
+</div>
 <h4 id="custom-uploading-implementation" tabindex="-1" class="docs-markdown--h4">Custom uploading implementation</h4>
 <p class="docs-markdown--p">Besides the build-in uploading functionality you can also send an http request by yourself if you want to do more complex requests. Then you have to set the uploading status of the files manually:</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-with-request" config="{}">exampleID: file-uploader-with-request</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-with-request-ndbx" config="{}">exampleID: file-uploader-with-request-ndbx</div>
+</div>
+<div class="docs-hide-a1">
 <div class="docs-expert-container">
 <h3 id="expert" tabindex="-1" class="docs-markdown--h3">Expert</h3>
 <p class="docs-markdown--p">Expert uses a <code>small-medium</code> button and provides an additional drop zone component.</p>
-<div nx-docs-example="file-uploader-expert" config="{}">exampleID: file-uploader-expert</div>
+<div nx-docs-example="file-uploader-expert-ndbx" config="{}">exampleID: file-uploader-expert-ndbx</div>
 <h3 id="drop-zone" tabindex="-1" class="docs-markdown--h3">Drop zone</h3>
-<div nx-docs-example="file-uploader-drop-zone" config="{}">exampleID: file-uploader-drop-zone</div>
+<div nx-docs-example="file-uploader-drop-zone-ndbx" config="{}">exampleID: file-uploader-drop-zone-ndbx</div>
+</div>
 </div>
 <h3 id="internationalization" tabindex="-1" class="docs-markdown--h3">Internationalization</h3>
 <p class="docs-markdown--p"><code>NxFileUploaderIntl</code> provides the text strings used inside the file uploader component (e.g. the uploading label). It can be customized by creating a class with the translated string values.</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-intl" config="{}">exampleID: file-uploader-intl</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-intl-ndbx" config="{}">exampleID: file-uploader-intl-ndbx</div>
+</div>
+<h3 id="file-icon" tabindex="-1" class="docs-markdown--h3">File Icon</h3>
+<p class="docs-markdown--p">The <code>nx-file-icon</code> component displays a file type icon with a colored extension label badge.</p>
+<p class="docs-markdown--p">The badge color is determined by the file extension. Unrecognized extensions fall back to a default color. Files without an extension show the icon without a badge.</p>
+<p class="docs-markdown--p"><i>Accessibility: As the extension text size does not meet accessibility requirements, file icons should only be used as decorative elements</i></p>
+<div nx-docs-example="file-icon" config="{}">exampleID: file-icon</div>
 <h3 id="custom-item-template" tabindex="-1" class="docs-markdown--h3">Custom Item Template</h3>
 <p class="docs-markdown--p">You can customize the template that is used to render each entry within the list of files to upload.</p>
+<div class="docs-a1">
 <div nx-docs-example="file-uploader-custom-item" config="{}">exampleID: file-uploader-custom-item</div>
+</div>
+<div class="docs-hide-a1">
+<div nx-docs-example="file-uploader-custom-item-ndbx" config="{}">exampleID: file-uploader-custom-item-ndbx</div>
+</div>

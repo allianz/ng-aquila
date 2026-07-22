@@ -16,17 +16,17 @@
     >
 
     <button
-      nxButton="primary"
+      nxButton="secondary"
       type="button"
       class="nx-margin-bottom-s"
       nxFileUploadButton
     >
       <nx-icon
-        name="plus"
+        name="arrow-upload"
         class="nx-margin-right-2xs"
         aria-hidden="true"
       ></nx-icon>
-      Add File
+      Choose File
     </button>
 
     @if (testForm.controls['documents'].errors) {
@@ -66,7 +66,7 @@
 <br />
 
 <button
-  nxButton="secondary small"
+  nxButton="primary"
   type="button"
   [disabled]="!testForm.valid"
   [nxFileUploadTriggerFor]="documentUpload"
