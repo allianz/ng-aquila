@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.1.0 (2026-07-21)
+
+### v22 schematics fixed
+There was an issue that ng-packagr blocked nested package.jsons which declares the schematics as commonjs which meant that the schematics on 22.0.0 would fail. This is fixed now and you can run `ng update @allianz/ng-aquila` now. If you already have v22 installed you can run `ng update @allianz/ng-aquila --migrate-only --from=21 --to=22` to just run the schematics.
+
+### Bug Fixes 🐛
+
+* **forms:** mark form as touched when move out of group ([4a528af](https://github.com/allianz/ng-aquila/commit/4a528af844bad424b0e73d6481c6d7e197fdc893))
+* **grid:** prevent nopadding grid from overflowing padded parent ([30fe379](https://github.com/allianz/ng-aquila/commit/30fe3790ed7b4a375117fc57bc4f2e79722aa9ed))
+* **grid:** respect nopadding on container query grids ([953a35f](https://github.com/allianz/ng-aquila/commit/953a35fc1764030d259219b120cf8bcba6c293d9))
+* **mask:** render initial value written before mask init ([276924c](https://github.com/allianz/ng-aquila/commit/276924c5edced8db2e79cb13b5db5630350233eb))
+* **multi-select:** correct select-all state & a11y with pre-selected disabled options ([e4a0747](https://github.com/allianz/ng-aquila/commit/e4a07478b44836896321c68f7774748c7f0ae4c6))
+* update stackblitz dependencies after major release ([dc4ad5e](https://github.com/allianz/ng-aquila/commit/dc4ad5e28c14f734d5a8a452d90bd9c94552486c))
+
+
+### Documentation 📚
+
+* add version 22 to release plan ([5734283](https://github.com/allianz/ng-aquila/commit/5734283a5f6de90347da787bb07dbd74b3819831))
+
+
+### Features ✨
+
+* **file-uploader:** implement A1 design ([438a150](https://github.com/allianz/ng-aquila/commit/438a150bbe65ec224333378395fec0c821e7340c))
+* **header:** add showDivider input to app title and actions ([d5605c6](https://github.com/allianz/ng-aquila/commit/d5605c604260fa05d355e748c380ca738320eb1f))
+* **label, formfield:** add info icon into label ([c26c41d](https://github.com/allianz/ng-aquila/commit/c26c41db7a4f8903b77ba75d29ae64cd22f77c6c))
+* **multi-select:** shows badge count on A1 ([7f40064](https://github.com/allianz/ng-aquila/commit/7f400641c67343e22524d447503bc9de30a7df2b))
+
 ## 22.0.0 (2026-07-07)
 
 This version removes some inconsistencies around the `colorScheme`, `prominence` and `accentColor` inputs.
