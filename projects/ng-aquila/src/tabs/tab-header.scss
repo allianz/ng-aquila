@@ -24,43 +24,22 @@
 
   &.at-start {
     .nx-tab-header {
-      margin-left: -8px;
-      padding-left: 8px;
-
-      [dir='rtl'] & {
-        margin-left: 0;
-        padding-left: 0;
-        margin-right: -8px;
-        padding-right: 8px;
-      }
+      margin-inline-start: calc(0px - v(tab-header-edge-inset));
+      padding-inline-start: v(tab-header-edge-inset);
     }
   }
 
   &.at-end {
     .nx-tab-header {
-      margin-right: -8px;
-      padding-right: 8px;
-
-      [dir='rtl'] & {
-        margin-right: 0;
-        padding-right: 0;
-        margin-left: -8px;
-        padding-left: 8px;
-      }
+      margin-inline-end: calc(0px - v(tab-header-edge-inset));
+      padding-inline-end: v(tab-header-edge-inset);
     }
   }
 
   &:not(.scrollable) {
     .nx-tab-header {
-      margin-right: -8px;
-      padding-right: 8px;
-
-      [dir='rtl'] & {
-        margin-right: 0;
-        padding-right: 0;
-        margin-left: -8px;
-        padding-left: 8px;
-      }
+      margin-inline-end: calc(0px - v(tab-header-edge-inset));
+      padding-inline-end: v(tab-header-edge-inset);
     }
   }
 }

@@ -224,6 +224,39 @@
   }
 }
 
+// $active-modifier/$disabled-modifier are the active/disabled selectors of the tab item,
+// e.g. '.nx-tab-header__item--active' for nx-tab-group, '.is-active' for nx-tab-nav-bar.
+@mixin tab__item--negative($active-modifier, $disabled-modifier) {
+  color: v(negative);
+  border-bottom-color: v(negative);
+
+  &:hover,
+  &:active {
+    color: v(negative);
+  }
+
+  &:not(#{$active-modifier}):not(#{$disabled-modifier}) {
+    &:hover {
+      color: v(tab-item-inverse-hover-color);
+    }
+
+    &:active {
+      color: v(tab-item-inverse-active-color);
+    }
+  }
+
+  &#{$disabled-modifier} {
+    @include tab__item--disabled;
+    color: v(tab-item-disabled-negative-color);
+    border-color: v(tab-item-disabled-negative-color);
+
+    &:hover,
+    &:active {
+      color: v(tab-item-disabled-negative-color);
+    }
+  }
+}
+
 @mixin message-layout {
   /* used for:
    * message

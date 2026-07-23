@@ -4,7 +4,7 @@
   flex: 0 0 auto;
   height: 100%;
   z-index: 1;
-  background-color: v(ui-01);
+  background-color: v(tab-scroll-indicator-background-color);
 
   button::after {
     content: '';
@@ -41,7 +41,7 @@
     position: absolute;
     display: flex;
     top: 0;
-    left: 0;
+    inset-inline-start: 0;
 
     &::after {
       content: '';
@@ -49,9 +49,21 @@
       width: v(tab-scroll-indicator-fade-width);
       position: absolute;
       top: 0;
-      right: calc(0px - v(tab-scroll-indicator-fade-width));
+      inset-inline-end: calc(0px - v(tab-scroll-indicator-fade-width));
       height: calc(100% - var(--tab-item-border-width));
-      background: linear-gradient(to left, transparent 0%, v(ui-01) 100%);
+      background: linear-gradient(
+        to left,
+        transparent 0%,
+        v(tab-scroll-indicator-background-color) 100%
+      );
+
+      [dir='rtl'] & {
+        background: linear-gradient(
+          to right,
+          transparent 0%,
+          v(tab-scroll-indicator-background-color) 100%
+        );
+      }
     }
   }
 
@@ -59,7 +71,7 @@
     position: absolute;
     display: flex;
     top: 0;
-    right: 0;
+    inset-inline-end: 0;
 
     &::before {
       content: '';
@@ -67,9 +79,21 @@
       width: v(tab-scroll-indicator-fade-width);
       position: absolute;
       top: 0;
-      left: calc(0px - v(tab-scroll-indicator-fade-width));
+      inset-inline-start: calc(0px - v(tab-scroll-indicator-fade-width));
       height: calc(100% - var(--tab-item-border-width));
-      background: linear-gradient(to right, transparent 0%, v(ui-01) 100%);
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        v(tab-scroll-indicator-background-color) 100%
+      );
+
+      [dir='rtl'] & {
+        background: linear-gradient(
+          to left,
+          transparent 0%,
+          v(tab-scroll-indicator-background-color) 100%
+        );
+      }
     }
   }
 
@@ -92,6 +116,8 @@
 
 :host-context(nx-tab-group.is-negative),
 :host-context(nx-tab-nav-bar.is-negative) {
+  --tab-scroll-indicator-background-color: var(--negative-background);
+
   button {
     color: v(negative);
   }
