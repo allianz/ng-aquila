@@ -39,9 +39,9 @@ const tags: { [key: string]: string[] } = JSON.parse(
 );
 
 function handleSearchNdbxComponents(args: { componentName: string; usage?: string }) {
-  const { componentName, usage } = args;
+  const { componentName } = args;
   const query = normalizeNxName(componentName?.trim()?.toLowerCase() || '');
-  const action = usage?.trim() || '';
+  const usage = args.usage?.trim() || '';
   if (!query) {
     return { content: [{ type: 'text', text: 'Error: No component name provided' }] };
   }
@@ -56,7 +56,7 @@ function handleSearchNdbxComponents(args: { componentName: string; usage?: strin
       content: [
         {
           type: 'text',
-          text: `Component documentation for '${query} ${action}' not found.${tagRecommendText}`,
+          text: `Component documentation for '${query} ${usage}' not found.${tagRecommendText}`,
         },
       ],
     };
@@ -75,16 +75,16 @@ function handleSearchNdbxComponents(args: { componentName: string; usage?: strin
     };
   }
 
-  // If action is provided, check if it exists in the component's sections
-  if (action) {
+  // If usage is provided, check if it exists in the component's sections
+  if (usage) {
     const usageHeadings = exactComponent.sections.map((s) => s.heading.toLowerCase());
-    // If action not found, return a message with available usages
-    if (!usageHeadings.some((h) => h.includes(action.toLowerCase()))) {
+    // If usage not found, return a message with available usages
+    if (!usageHeadings.some((h) => h.includes(usage.toLowerCase()))) {
       return {
         content: [
           {
             type: 'text',
-            text: `Usage '${action}' not found for component '${query}'.\nAvailable usages:\n${usageHeadings.map((h) => '- ' + h).join('\n')} \n\n Note: you can leave usage blank to get basic usage.`,
+            text: `Usage '${usage}' not found for component '${query}'.\nAvailable usages:\n${usageHeadings.map((h) => '- ' + h).join('\n')} \n\n Note: you can leave usage blank to get basic usage.`,
           },
         ],
       };
@@ -94,8 +94,8 @@ function handleSearchNdbxComponents(args: { componentName: string; usage?: strin
   // Build response content
   let content = '';
 
-  // For discovery calls (no specific action), include full context
-  if (!action) {
+  // For discovery calls (no specific usage), include full context
+  if (!usage) {
     const instruct = getInstructionContext();
     const metaPath = path.resolve(__dirname, '../../../generated/components', exactComponent.name);
     const meta = fs.readFileSync(metaPath, 'utf-8');
@@ -104,10 +104,10 @@ function handleSearchNdbxComponents(args: { componentName: string; usage?: strin
 
   // Add example
   content += '# Example';
-  content += getComponentExampleSection(exactComponent, action);
+  content += getComponentExampleSection(exactComponent, usage);
 
   // Add usage list only for discovery calls
-  if (!action) {
+  if (!usage) {
     content += '\n# Additional ' + query + ' usages\n' + getComponentUsageList(exactComponent);
   }
 
@@ -146,15 +146,15 @@ function getInstructionContext(): string {
   return fs.readFileSync(instructionPath, 'utf-8');
 }
 
-function getComponentExampleSection(exactComponent: any, action: string): string {
+function getComponentExampleSection(exactComponent: any, usage: string): string {
   const foundSections = new Fuse(exactComponent.sections, {
     includeScore: true,
     keys: ['heading'],
     shouldSort: true,
-  }).search(action);
+  }).search(usage);
 
-  // If action is provided and found in sections, return the first section content of that action
-  if (action && foundSections.length) {
+  // If usage is provided and found in sections, return the first section content of that usage
+  if (usage && foundSections.length) {
     const first = foundSections[0];
     if (first && first.item && typeof first.item === 'object' && 'content' in first.item) {
       return '\n#' + (first.item as any).content;
@@ -162,7 +162,7 @@ function getComponentExampleSection(exactComponent: any, action: string): string
     return '';
   }
 
-  // If no action is provided, find a section with 'basic', 'standard', 'example', or 'default' in the heading
+  // If no usage is provided, find a section with 'basic', 'standard', 'example', or 'default' in the heading
   if (exactComponent.sections.length) {
     const lowerSections = exactComponent.sections.map((s: any) => s.heading.toLowerCase());
     let idx = lowerSections.findIndex(
