@@ -217,7 +217,10 @@ export class NxPhoneInputComponent
    */
   @Input() set inputFormatter(formatFn) {
     this._inputFormatter = formatFn;
-    this._inputValue = this._inputFormatter(this._inputValue, this._countryCallingCode);
+    this._inputValue = this._inputFormatter(
+      this._trimInputValue(this._inputValue),
+      this._countryCallingCode,
+    );
   }
   get inputFormatter() {
     return this._inputFormatter;
@@ -334,7 +337,10 @@ export class NxPhoneInputComponent
 
   _onInputBlur() {
     this._onTouched();
-    this._inputValue = this.inputFormatter(this._inputValue, this._countryCallingCode);
+    this._inputValue = this.inputFormatter(
+      this._trimInputValue(this._inputValue),
+      this._countryCallingCode,
+    );
 
     if (!this.disabled) {
       this.focused = false;
@@ -356,7 +362,10 @@ export class NxPhoneInputComponent
   _onCountryChange(countryCode: string) {
     this._countryCode = countryCode;
     this._countryCallingCode = getDialCodeByCountryCode(this.countryCode);
-    this._inputValue = this.inputFormatter(this._inputValue, this._countryCallingCode);
+    this._inputValue = this.inputFormatter(
+      this._trimInputValue(this._inputValue),
+      this._countryCallingCode,
+    );
 
     this._onInput();
   }
@@ -374,7 +383,7 @@ export class NxPhoneInputComponent
   }
 
   private _trimInputValue(value: string) {
-    return value.replace(/[\s()\-/]/g, '');
+    return (value ?? '').replace(/[\s()\-/]/g, '');
   }
 
   private _removeLeadingZero(value: string) {

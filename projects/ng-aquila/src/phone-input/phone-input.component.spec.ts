@@ -335,6 +335,23 @@ describe('PhoneInputComponent', () => {
     expect(input.nativeElement.value).toBe('44 44');
   }));
 
+  it('should not reformat again on repeated blur with a custom formatter', fakeAsync(() => {
+    createTestComponent(CustomFormatter);
+    flush();
+    const input = getInput();
+    expect(input.nativeElement.value).toBe('12 34 56');
+
+    dispatchFakeEvent(input.nativeElement, 'blur');
+    fixture.detectChanges();
+    flush();
+    expect(input.nativeElement.value).toBe('12 34 56');
+
+    dispatchFakeEvent(input.nativeElement, 'blur');
+    fixture.detectChanges();
+    flush();
+    expect(input.nativeElement.value).toBe('12 34 56');
+  }));
+
   it('should set input placeholder', fakeAsync(() => {
     createTestComponent(ConfigurablePhoneInput);
     const input = getInput().nativeElement;
