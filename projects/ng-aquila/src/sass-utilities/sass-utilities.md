@@ -84,6 +84,9 @@ their container instead of the viewport. Remember to set `container-type` on the
 | `2xlarge` | 1472px |
 | `3xlarge` | 1760px |
 
+Breakpoint keys beginning with a digit, such as `2xlarge`, `3xlarge`, `2xl` and `3xl`, are Sass
+numbers with custom units. Use them unquoted when calling helpers or accessing the maps.
+
 The main entry point also exposes `$grid-breakpoints-short` (the same map keyed `xs` … `3xl`),
 `$grid-columns` and `$grid-gutter-widths`.
 

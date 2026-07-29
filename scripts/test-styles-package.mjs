@@ -15,6 +15,7 @@ import chalk from 'chalk';
 const DIST = 'dist/ng-aquila';
 const UTILS_DIR = `${DIST}/styles/utils`;
 const EXPECTED_FILES = ['_index.scss', 'breakpoints.scss', 'grid.scss'];
+const SASS_CLI = path.resolve('node_modules/sass/sass.js');
 
 const failures = [];
 
@@ -41,8 +42,13 @@ function compileFixture(consumerRoot, source) {
   fs.writeFileSync(entry, source);
   try {
     const css = execFileSync(
-      'npx',
-      ['sass', '--no-source-map', `--load-path=${path.join(consumerRoot, 'node_modules')}`, entry],
+      process.execPath,
+      [
+        SASS_CLI,
+        '--no-source-map',
+        `--load-path=${path.join(consumerRoot, 'node_modules')}`,
+        entry,
+      ],
       { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] },
     );
     return { css };
@@ -131,6 +137,10 @@ try {
       `@use '@allianz/ng-aquila/styles/utils' as aquila;
 @use '@allianz/ng-aquila/styles/utils/grid' as grid;
 @use 'sass:map';
+
+@if aquila.breakpoint-next(unknown) != null {
+  @error 'Expected an unknown breakpoint to have no successor.';
+}
 
 .a {
   min-width: aquila.breakpoint-min(medium);

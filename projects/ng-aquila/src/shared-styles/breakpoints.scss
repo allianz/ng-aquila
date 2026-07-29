@@ -15,7 +15,10 @@
   $breakpoint-names: map.keys($breakpoints)
 ) {
   $n: list.index($breakpoint-names, $name);
-  @return if($n < list.length($breakpoint-names), list.nth($breakpoint-names, $n + 1), null);
+  @if $n == null or $n >= list.length($breakpoint-names) {
+    @return null;
+  }
+  @return list.nth($breakpoint-names, $n + 1);
 }
 
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
