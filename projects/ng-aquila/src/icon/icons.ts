@@ -79,7 +79,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
     if (!_httpClient) {
       throw Error(
         'Could not find HttpClient provider for using a SVG url in the nx-icon registry. ' +
-          'Please include the HttpClientModule from @angular/common/http in your app imports.',
+          'Please add provideHttpClient() from @angular/common/http to your app providers.',
       );
     }
     this._httpClient = _httpClient;
