@@ -1,93 +1,16 @@
-@use 'sass:list';
-@use 'sass:map';
-@use './grid' as *;
-
-// Breakpoint viewport sizes and media queries.
-
-@function breakpoint-next(
-  $name,
-  $breakpoints: $grid-breakpoints,
-  $breakpoint-names: map.keys($breakpoints)
-) {
-  $n: list.index($breakpoint-names, $name);
-  @return if($n < list.length($breakpoint-names), list.nth($breakpoint-names, $n + 1), null);
-}
-
-// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+// Internal compatibility wrapper.
 //
-//    >> breakpoint-min(sm, (xs: 0, sm: 376px, md: 768px))
-//    376px
-@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
-  $min: map.get($breakpoints, $name);
-  @return if($min != 0, $min, null);
-}
-
-// Maximum breakpoint width. Null for the largest (last) breakpoint.
-// The maximum value is calculated as the minimum of the next one less 0.1.
+// The supported breakpoint and container query helpers live in `./breakpoints`, which is shipped as
+// `@allianz/ng-aquila/styles/utils/breakpoints`. Only the legacy members below stay internal - they
+// are not part of the published package and are scheduled for removal.
 //
-//    767px
-@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
-  $next: breakpoint-next($name, $breakpoints);
-  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
-}
+// `@forward` re-exports `./breakpoints` to everything that uses this file (mainly `./index`), while
+// `@use` additionally brings those members into this file's own scope, which the legacy mixins below
+// need.
+@forward './breakpoints';
+@use './breakpoints' as *;
 
-// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash infront.
-// Useful for making responsive utilities.
-//
-//    >> breakpoint-infix(xs, (xs: 0, sm: 376px, md: 768px))
-//    ""  (Returns a blank string)
-//    >> breakpoint-infix(sm, (xs: 0, sm: 376px, md: 768px))
-//    "-sm"
-@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
-  @return if(breakpoint-min($name, $breakpoints) == null, '', '-#{$name}');
-}
-
-// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
-// Makes the @content apply to the given breakpoint and wider.
-@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
-  $min: breakpoint-min($name, $breakpoints);
-  @if $min {
-    @media (min-width: $min) {
-      @content;
-    }
-  } @else {
-    @content;
-  }
-}
-
-// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
-// Makes the @content apply to the given breakpoint and narrower.
-@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
-  $max: breakpoint-max($name, $breakpoints);
-  @if $max {
-    @media (max-width: $max) {
-      @content;
-    }
-  } @else {
-    @content;
-  }
-}
-
-// Media that spans multiple breakpoint widths.
-// Makes the @content apply between the min and max breakpoints
-@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
-  @include media-breakpoint-up($lower, $breakpoints) {
-    @include media-breakpoint-down($upper, $breakpoints) {
-      @content;
-    }
-  }
-}
-
-// Media between the breakpoint's minimum and maximum widths.
-// No minimum for the smallest breakpoint, and no maximum for the largest one.
-// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
-@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
-  @include media-breakpoint-between($name, $name, $breakpoints) {
-    @content;
-  }
-}
-
-// TODO This is for backwards compaitibility, Remove respond-to calls with corresponding media-breakpoint-up.
+// TODO: This is for backwards compatibility. Replace respond-to calls with media-breakpoint-up.
 $screen-small-1: 685px;
 
 @mixin respond-to($size) {
@@ -127,31 +50,5 @@ $screen-small-1: 685px;
     @include media-breakpoint-up(large) {
       @content;
     }
-  }
-}
-
-// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
-// Makes the @content apply to the given breakpoint and narrower.
-@mixin container-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
-  $max: breakpoint-max($name, $breakpoints);
-  @if $max {
-    @container (max-width: #{$max}) {
-      @content;
-    }
-  } @else {
-    @content;
-  }
-}
-
-// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
-// Makes the @content apply to the given breakpoint and wider.
-@mixin container-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
-  $min: breakpoint-min($name, $breakpoints);
-  @if $min {
-    @container (min-width: #{$min} ) {
-      @content;
-    }
-  } @else {
-    @content;
   }
 }

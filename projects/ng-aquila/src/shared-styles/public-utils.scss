@@ -1,0 +1,12 @@
+// Public entry point for the Sass utilities shipped with the package.
+//
+// Copied to `dist/ng-aquila/styles/utils/_index.scss` by `scripts/build-package.js`, so consumers
+// reach it as:
+//
+//     @use '@allianz/ng-aquila/styles/utils' as aquila;
+//
+// These forwards define the preferred entry point. Files copied alongside it are also reachable by
+// consumers, so the build copies only files whose complete surface is suitable as public API.
+@forward './breakpoints';
+@forward './grid' show $grid-breakpoints, $grid-breakpoints-short, $grid-columns,
+  $grid-gutter-widths;
