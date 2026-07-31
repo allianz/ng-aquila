@@ -84,8 +84,10 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
 
   ngOnInit(): void {
     // set only first two letters as I don't know a country yet
-    this.maskDirective.mask = 'SS';
-    this.maskDirective.convertTo = 'upper';
+    // this establishes the default mask/case before any value has been written, so it
+    // must not report a change to the form model (see setMask()/setConvertTo())
+    this.maskDirective.setMask('SS');
+    this.maskDirective.setConvertTo('upper');
   }
 
   ngOnDestroy(): void {

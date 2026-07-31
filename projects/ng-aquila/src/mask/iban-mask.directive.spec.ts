@@ -6,7 +6,7 @@ import {
   Type,
   ViewChild,
 } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { form, FormField } from '@angular/forms/signals';
 import { dispatchFakeEvent } from 'projects/ng-aquila/src/cdk-test-utils';
@@ -69,6 +69,7 @@ describe('NxIbanMaskDirective', () => {
         FormWithInitalIbanMaskComponent,
         FormIbanOnBlurMaskComponent,
         SignalFormIbanMaskComponent,
+        NgModelIbanMaskComponent,
       ],
     }).compileComponents();
   }));
@@ -157,6 +158,24 @@ describe('NxIbanMaskDirective', () => {
 
       expect(input.value).toBe('NL91 ABNA 0417 1643 00');
     });
+  });
+
+  describe('template-driven form', () => {
+    // `NxIbanMaskDirective.ngOnInit` establishes the default mask/case before any
+    // value has been written. It must not report a change to the form model, since
+    // template-driven forms only write their initial value in a microtask after
+    // `ngAfterViewInit` — reporting a change at that point would clobber the model
+    // with an empty string once the real value lands (see setMask()/setConvertTo()).
+    it('should mask the input and keep the initial ngModel value untouched', fakeAsync(() => {
+      const ngModelFixture = TestBed.createComponent(NgModelIbanMaskComponent);
+      ngModelFixture.detectChanges();
+      tick();
+      ngModelFixture.detectChanges();
+      const input = ngModelFixture.nativeElement.querySelector('input') as HTMLInputElement;
+
+      expect(input.value).toBe('NL91 ABNA 0417 1643 00');
+      expect(ngModelFixture.componentInstance.ibanModel).toBe('NL91ABNA0417164300');
+    }));
   });
 
   describe('browser autofill', () => {
@@ -558,4 +577,13 @@ class FormIbanOnBlurMaskComponent extends IbanMaskTest {
 class SignalFormIbanMaskComponent {
   readonly ibanModel = signal('NL91 ABNA 0417 1643 00');
   readonly ibanField = form(this.ibanModel);
+}
+
+@Component({
+  template: ` <input nxMask nxIbanMask [(ngModel)]="ibanModel" /> `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [FormsModule, NxMaskModule],
+})
+class NgModelIbanMaskComponent {
+  ibanModel = 'NL91ABNA0417164300';
 }

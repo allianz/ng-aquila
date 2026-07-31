@@ -274,6 +274,16 @@ export class NxMaskDirective
     }
   }
 
+  /**
+   * Sets the case sensitivity of the mask (for programmatical use).
+   *
+   * No `_onChangeCallback()` will be called!
+   */
+  setConvertTo(value: MaskConversionTypes | null | undefined) {
+    this._convertTo = value!; // TODO properly coerce input value
+    this.updateNxMask({ callOnChange: false });
+  }
+
   private _isStringAllowed(value: string, maskedValue: MASK_TYPE) {
     if (
       (maskedValue === '0' && /^\d$/.test(value)) ||
