@@ -9,6 +9,7 @@ abstract class CardTest {
   @ViewChild(NxCardComponent) cardInstance!: NxCardComponent;
   isDisabled = false;
   isClickable = false;
+  isElevated = false;
 }
 
 describe('NxCardComponent', () => {
@@ -27,7 +28,7 @@ describe('NxCardComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxCardModule, BasicCard, ClickableCardTest],
+      imports: [NxCardModule, BasicCard, ClickableCardTest, ElevatedCardTest],
     }).compileComponents();
   }));
 
@@ -71,6 +72,23 @@ describe('NxCardComponent', () => {
     });
   });
 
+  describe('elevated card', () => {
+    beforeEach(() => {
+      createTestComponent(ElevatedCardTest);
+    });
+
+    it('has no is-elevated class by default', () => {
+      expect(cardNativeElement).not.toHaveClass('is-elevated');
+    });
+
+    it('has is-elevated class when elevated is true', () => {
+      testInstance.isElevated = true;
+      fixture.detectChanges();
+
+      expect(cardNativeElement).toHaveClass('is-elevated');
+    });
+  });
+
   describe('a11y', () => {
     it('expert card has no accessibility violations', async () => {
       createTestComponent(BasicCard);
@@ -95,3 +113,10 @@ class BasicCard extends CardTest {}
   imports: [NxCardModule],
 })
 class ClickableCardTest extends CardTest {}
+
+@Component({
+  template: `<nx-card [elevated]="isElevated">Hello Text</nx-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxCardModule],
+})
+class ElevatedCardTest extends CardTest {}

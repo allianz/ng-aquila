@@ -18,6 +18,16 @@ Use this component to present a card with different options.
 
 <!-- example(card) -->
 
+<div class="docs-hide-ndbx">
+
+### Elevated card
+
+With `elevated` the card is displayed with a drop shadow instead of a border.
+
+<!-- example(elevated-card) -->
+
+</div>
+
 ### Highlight card
 
 With `highlight` you can allow a highlight header to be shown on the card.
@@ -44,6 +54,16 @@ you can use `nx-selectable-card-group` to group the cards, and they will automat
 #### Selectable Card States
 
 <!-- example(selectable-card-states) -->
+
+<div class="docs-hide-ndbx">
+
+#### Elevated selectable card
+
+With `elevated` the selectable card is displayed with a drop shadow instead of a border.
+
+<!-- example(elevated-selectable-card) -->
+
+</div>
 
 #### Highlight selectable card
 
@@ -95,6 +115,3 @@ Works for both checkbox and radio style cards.
 
 <!-- example(selectable-card-expert) -->
 </div>
-
-
-

@@ -235,6 +235,20 @@ label {
   }
 }
 
+:host(.is-elevated) {
+  label {
+    box-shadow: v(card-elevated-box-shadow);
+  }
+
+  &:not(.has-error) input:not(:checked) + label {
+    &,
+    &:hover,
+    &:active {
+      border-color: v(card-elevated-border-color);
+    }
+  }
+}
+
 .nx-card-highlight {
   padding: v(selectable-card-highlight-padding);
   border-radius: v(selectable-card-border-radius) v(selectable-card-border-radius) 0 0;

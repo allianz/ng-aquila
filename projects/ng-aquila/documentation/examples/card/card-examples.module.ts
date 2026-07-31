@@ -10,6 +10,8 @@ import { CardExampleComponent } from './card/card-example';
 import { ClickableCardExampleComponent } from './clickable-card/clickable-card-example';
 import { ClickableCardDisabledExampleComponent } from './clickable-card-disabled/clickable-card-disabled-example';
 import { ClickableCardRaisedContentExampleComponent } from './clickable-card-raised-content/clickable-card-raised-content-example';
+import { ElevatedCardExampleComponent } from './elevated-card/elevated-card-example';
+import { ElevatedSelectableCardExampleComponent } from './elevated-selectable-card/elevated-selectable-card-example';
 import { HighlightCardExampleComponent } from './highlight-card/highlight-card-example';
 import { HighlightSelectableCardExampleComponent } from './highlight-selectable-card/highlight-selectable-card-example';
 import { SelectableCardBasicExampleComponent } from './selectable-card-basic/selectable-card-basic-example';
@@ -24,6 +26,8 @@ const EXAMPLES = [
   ClickableCardExampleComponent,
   SelectableCardRadioExampleComponent,
   CardExampleComponent,
+  ElevatedCardExampleComponent,
+  ElevatedSelectableCardExampleComponent,
   HighlightCardExampleComponent,
   HighlightSelectableCardExampleComponent,
   SelectableCardBasicExampleComponent,
@@ -57,6 +61,8 @@ export class CardExamplesModule {
       'clickable-card-disabled': ClickableCardDisabledExampleComponent,
       'selectable-card-radio': SelectableCardRadioExampleComponent,
       card: CardExampleComponent,
+      'elevated-card': ElevatedCardExampleComponent,
+      'elevated-selectable-card': ElevatedSelectableCardExampleComponent,
       'highlight-card': HighlightCardExampleComponent,
       'selectable-card-basic': SelectableCardBasicExampleComponent,
       'selectable-card-dynamic': SelectableCardDynamicExampleComponent,

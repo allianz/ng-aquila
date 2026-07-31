@@ -22,6 +22,7 @@ import {
     '[class.is-highlight]': 'highlight',
     '[class.is-clickable]': 'clickable()',
     '[class.is-disabled]': 'disabled()',
+    '[class.is-elevated]': 'elevated()',
   },
   imports: [],
 })
@@ -60,4 +61,7 @@ export class NxCardComponent implements OnDestroy, AfterViewInit {
   readonly clickable = input(false, { transform: booleanAttribute });
 
   readonly disabled = input(false, { transform: booleanAttribute });
+
+  /** Whether the card uses the elevated style with a drop shadow instead of a border. */
+  readonly elevated = input(false, { transform: booleanAttribute });
 }

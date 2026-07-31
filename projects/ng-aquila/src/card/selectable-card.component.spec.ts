@@ -77,6 +77,7 @@ describe('NxSelectableCardComponent', () => {
         DynamicErrorSelectableCard,
         ExpertSelectableCard,
         HighlightSelectableCard,
+        ElevatedSelectableCard,
       ],
     }).compileComponents();
   }));
@@ -155,6 +156,20 @@ describe('NxSelectableCardComponent', () => {
       const hightlightHeader = selectableCardNativeElement.querySelector('.nx-card-highlight');
       expect(hightlightHeader).toBeTruthy();
       expect(hightlightHeader?.textContent?.trim()).toContain('Highlight');
+    });
+  });
+
+  describe('elevated', () => {
+    it('is not elevated by default', () => {
+      createTestComponent(BasicSelectableCard);
+      expect(selectableCardInstance.elevated()).toBe(false);
+      expect(selectableCardNativeElement).not.toHaveClass('is-elevated');
+    });
+
+    it('has the is-elevated class when elevated', () => {
+      createTestComponent(ElevatedSelectableCard);
+      expect(selectableCardInstance.elevated()).toBe(true);
+      expect(selectableCardNativeElement).toHaveClass('is-elevated');
     });
   });
 
@@ -262,6 +277,13 @@ class ExpertSelectableCard extends SelectableCardTest {}
   imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
 })
 class HighlightSelectableCard extends SelectableCardTest {}
+
+@Component({
+  template: `<nx-selectable-card elevated></nx-selectable-card>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
+})
+class ElevatedSelectableCard extends SelectableCardTest {}
 
 @Component({
   template: `

@@ -11,6 +11,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterContentInit,
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -24,6 +25,7 @@ import {
   inject,
   InjectionToken,
   Input,
+  input,
   OnDestroy,
   Optional,
   Output,
@@ -184,6 +186,7 @@ export class NxSelectableCardGroupComponent
     '[class.is-disabled]': 'disabled',
     '[class.has-error]': '_errorState',
     '[class.is-highlight]': 'highlight',
+    '[class.is-elevated]': 'elevated()',
   },
   imports: [
     NgTemplateOutlet,
@@ -341,6 +344,9 @@ export class NxSelectableCardComponent
     return this._highlight;
   }
   private _highlight = false;
+
+  /** Whether the selectable card uses the elevated style with a drop shadow instead of a border. */
+  readonly elevated = input(false, { transform: booleanAttribute });
 
   @HostBinding('class.is-expert') get _isExpert() {
     return this.appearance === 'expert';

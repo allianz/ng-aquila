@@ -21,6 +21,18 @@
     outline: none;
   }
 
+  &.is-elevated {
+    border-color: v(card-elevated-border-color);
+    box-shadow: v(card-elevated-box-shadow);
+
+    &.is-clickable:not(.is-disabled) {
+      &:hover,
+      &:active {
+        border-color: v(card-elevated-border-color);
+      }
+    }
+  }
+
   &.is-clickable {
     position: relative;
   }
