@@ -1336,6 +1336,54 @@ describe('NxDropdownComponent', () => {
     }));
   });
 
+  describe('with duplicate items', () => {
+    beforeEach(fakeAsync(() => {
+      configureNxDropdownTestingModule([DuplicateItemsDropdownComponent]);
+    }));
+
+    it('should select all matching items when duplicate values exist', fakeAsync(() => {
+      createTestComponent(DuplicateItemsDropdownComponent);
+      flush();
+      fixture.detectChanges();
+      tick();
+      expect(testInstance.dropdownItems.toArray()[0].selected).toBeTrue();
+      expect(testInstance.dropdownItems.toArray()[1].selected).toBeTrue();
+    }));
+
+    it('should deselect all duplicates when selecting a different item', fakeAsync(() => {
+      createTestComponent(DuplicateItemsDropdownComponent);
+      flush();
+      fixture.detectChanges();
+      tick();
+
+      openDropdownByClick();
+      clickOnItem(2); // select Audi
+      fixture.detectChanges();
+      tick();
+
+      expect(testInstance.dropdownItems.toArray()[0].selected).toBeFalse();
+      expect(testInstance.dropdownItems.toArray()[1].selected).toBeFalse();
+      expect(testInstance.dropdownItems.toArray()[2].selected).toBeTrue();
+      expect(renderedResult.textContent!.trim()).toBe('Audi');
+    }));
+
+    it('should select the duplicate item and show correct trigger value', fakeAsync(() => {
+      createTestComponent(DuplicateItemsDropdownComponent);
+      flush();
+      fixture.detectChanges();
+      tick();
+
+      openDropdownByClick();
+      clickOnItem(1); // select BMW (duplicate)
+      fixture.detectChanges();
+      tick();
+
+      expect(testInstance.dropdownItems.toArray()[0].selected).toBeTrue();
+      expect(testInstance.dropdownItems.toArray()[1].selected).toBeTrue();
+      expect(renderedResult.textContent!.trim()).toBe('BMW (duplicate)');
+    }));
+  });
+
   describe('with reactive forms', () => {
     beforeEach(fakeAsync(() => {
       configureNxDropdownTestingModule([ReactiveBindingDropdownComponent]);
@@ -2216,6 +2264,7 @@ describe('NxDropdownComponent', () => {
         VirtualScrollMultiSelectDropdown,
         VirtualScrollLargeDatasetDropdown,
         VirtualScrollPreselectedDropdown,
+        VirtualScrollDuplicateItemsDropdown,
       ]);
     });
 
@@ -2637,6 +2686,30 @@ describe('NxDropdownComponent', () => {
         fixture.detectChanges();
 
         expect(renderedResult.textContent?.trim()).toBe('Volvo');
+      }));
+    });
+
+    describe('duplicate items', () => {
+      it('should not throw when duplicate values exist with preselected value', fakeAsync(() => {
+        createTestComponent(VirtualScrollDuplicateItemsDropdown);
+        tick();
+        fixture.detectChanges();
+
+        expect(renderedResult.textContent?.trim()).toBe('BMW');
+      }));
+
+      it('should allow selecting a non-duplicate item', fakeAsync(() => {
+        createTestComponent(VirtualScrollDuplicateItemsDropdown);
+        tick();
+        fixture.detectChanges();
+
+        openDropdownByClickVirtual();
+        const items = getVirtualItems();
+        (items.item(2) as HTMLElement).click();
+        fixture.detectChanges();
+        tick();
+
+        expect(renderedResult.textContent?.trim()).toBe('Audi');
       }));
     });
 
@@ -3582,6 +3655,33 @@ class PlainTabIndexTestComponent extends DropdownTest {}
 })
 class PreselectedTestComponent extends DropdownTest {
   preselectedValue = 'dictator';
+}
+
+@Component({
+  template: `<nx-dropdown [(ngModel)]="preselectedValue" [placeholder]="placeholder">
+    <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
+    <nx-dropdown-item value="BMW">BMW (duplicate)</nx-dropdown-item>
+    <nx-dropdown-item value="Audi">Audi</nx-dropdown-item>
+  </nx-dropdown>`,
+  imports: [NxDropdownModule, FormsModule],
+})
+class DuplicateItemsDropdownComponent extends DropdownTest {
+  preselectedValue = 'BMW';
+}
+
+@Component({
+  template: `<nx-formfield>
+    <nx-dropdown [options]="options" [(ngModel)]="model" [virtualScroll]="true"></nx-dropdown>
+  </nx-formfield>`,
+  imports: [NxFormfieldModule, NxDropdownModule, FormsModule],
+})
+class VirtualScrollDuplicateItemsDropdown extends DropdownTest {
+  model: string | null = 'bmw';
+  options = [
+    { value: 'bmw', label: 'BMW' },
+    { value: 'bmw', label: 'BMW (duplicate)' },
+    { value: 'audi', label: 'Audi' },
+  ];
 }
 
 const mutationCallbacks: (() => void)[] = [];

@@ -871,16 +871,16 @@ export class NxDropdownComponent
       this._customClosedDropdownLabel?.templateRef || this._defaultClosedDropdownLabel;
 
     this._selectionModel.changed.pipe(takeUntil(this._destroyed)).subscribe((event) => {
-      event.added.forEach(({ value }) => {
-        this.dropdownItems
-          .filter((option) => option.value === value)
-          .forEach((option) => option.select());
-      });
-
       event.removed.forEach(({ value }) => {
         this.dropdownItems
           .filter((option) => option.value === value)
-          .forEach((option) => option.deselect());
+          .forEach((option) => option._initSelected(false));
+      });
+
+      event.added.forEach(({ value }) => {
+        this.dropdownItems
+          .filter((option) => option.value === value)
+          .forEach((option) => option._initSelected(true));
       });
     });
 
@@ -1245,10 +1245,9 @@ export class NxDropdownComponent
       } else {
         // Standard mode initialization
         this._selectionModel.selected.forEach((selectedOption) => {
-          const option = this.dropdownItems.find((o) => o.value === selectedOption.value);
-          if (option) {
-            option._initSelected(true);
-          }
+          this.dropdownItems
+            .filter((option) => option.value === selectedOption.value)
+            .forEach((option) => option._initSelected(true));
         });
         this._initActiveItem();
       }
