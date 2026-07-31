@@ -6,7 +6,6 @@ import {
 } from '@angular/cdk/coercion';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
@@ -14,6 +13,7 @@ import {
   Input,
   Output,
   QueryList,
+  signal,
   ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -59,12 +59,12 @@ export class NxTaglistComponent implements NxTaglist, ControlValueAccessor {
 
   /** Sets the list of tags. */
   @Input('tags') set tags(value: any[]) {
-    this._tags = value;
+    this._tags.set(value);
   }
   get tags(): any[] {
-    return this._tags;
+    return this._tags();
   }
-  private _tags: any[] = [];
+  private readonly _tags = signal<any[]>([]);
 
   /** Sets the tabindex of the contained tags. Default value: -1. */
   @Input() set tabindex(value: NumberInput) {
@@ -127,8 +127,6 @@ export class NxTaglistComponent implements NxTaglist, ControlValueAccessor {
   private _onChange: (value: any) => void = () => {};
   private _onTouched: () => any = () => {};
 
-  constructor(private readonly _cdr: ChangeDetectorRef) {}
-
   /** Allows to delete a tag given index. Takes index of the tag to be deleted as a parameter */
   delete(index: number, value: any) {
     if (this.allowTagDeletion) {
@@ -171,7 +169,6 @@ export class NxTaglistComponent implements NxTaglist, ControlValueAccessor {
     this.tags = [];
     this._onChange(this.tags);
     this.tagsChange.emit(this.tags);
-    this._cdr.markForCheck();
   }
 
   /** @docs-private */

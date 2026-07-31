@@ -48,6 +48,7 @@ describe('NxTaglistComponent', () => {
         AriaLabelledByTaglist,
         KeywordTaglist,
         LabelPropertyTaglist,
+        OnPushTagList,
       ],
     }).compileComponents();
   }));
@@ -70,13 +71,15 @@ describe('NxTaglistComponent', () => {
 
   it('deletes tags on delete button click', () => {
     createTestComponent(BasicTaglist);
-    expect(taglistInstance.tags).toHaveSize(2);
+    expect(getTagElements()).toHaveSize(2);
 
     const closeIcons = fixture.debugElement.queryAll(By.css('.nx-tag__close'));
     closeIcons[0].nativeElement.click();
-    expect(taglistInstance.tags).toHaveSize(1);
-    expect(taglistInstance.tags).not.toContain('foo');
-    expect(taglistInstance.tags).toContain('bar');
+    fixture.detectChanges();
+    const renderedTags = getTagElements();
+    expect(renderedTags).toHaveSize(1);
+    expect(renderedTags[0].textContent).not.toContain('foo');
+    expect(renderedTags[0].textContent).toContain('bar');
   });
 
   it('deletes tags on delete button click and focuses the next one', () => {
@@ -126,7 +129,7 @@ describe('NxTaglistComponent', () => {
 
   it('no delete icon in list mode', () => {
     createTestComponent(TaglistNoDelete);
-    expect(taglistInstance.tags).toHaveSize(2);
+    expect(getTagElements()).toHaveSize(2);
 
     const closeIcon = fixture.debugElement.query(By.css('.nx-tag__close'));
     expect(closeIcon).toBeNull();
@@ -134,26 +137,49 @@ describe('NxTaglistComponent', () => {
 
   it('can add tags', () => {
     createTestComponent(BasicTaglist);
-    expect(taglistInstance.tags).toHaveSize(2);
+    expect(getTagElements()).toHaveSize(2);
 
     taglistInstance.addTag('baz');
-    expect(taglistInstance.tags).toHaveSize(3);
+    fixture.detectChanges();
+    expect(getTagElements()).toHaveSize(3);
+  });
+
+  it('can add tags when parent is OnPush', () => {
+    createTestComponent(OnPushTagList);
+    expect(getTagElements()).toHaveSize(2);
+
+    taglistInstance.addTag('baz');
+    fixture.detectChanges();
+    expect(getTagElements()).toHaveSize(3);
   });
 
   it('cannot add duplicate tags', () => {
     createTestComponent(BasicTaglist);
-    expect(taglistInstance.tags).toHaveSize(2);
+    expect(getTagElements()).toHaveSize(2);
 
     taglistInstance.addTag('foo');
-    expect(taglistInstance.tags).toHaveSize(2);
+    fixture.detectChanges();
+    expect(getTagElements()).toHaveSize(2);
   });
 
   it('can clear tags', () => {
     createTestComponent(BasicTaglist);
     expect(taglistInstance.tags).toHaveSize(2);
+    expect(getTagElements()).toHaveSize(2);
 
     taglistInstance.clearTags();
+    fixture.detectChanges();
     expect(taglistInstance.tags).toHaveSize(0);
+    expect(getTagElements()).toHaveSize(0);
+  });
+
+  it('can clear tags when parent is OnPush', () => {
+    createTestComponent(OnPushTagList);
+    expect(getTagElements()).toHaveSize(2);
+
+    taglistInstance.clearTags();
+    fixture.detectChanges();
+    expect(getTagElements()).toHaveSize(0);
   });
 
   it('shows content as empty state', () => {
@@ -190,7 +216,9 @@ describe('NxTaglistComponent', () => {
     expect(taglistInstance.tags).toHaveSize(2);
 
     taglistInstance.addTag({ testLabelProp: 'baz' });
+    fixture.detectChanges();
     expect(taglistInstance.tags).toHaveSize(3);
+    expect(getTagElements()).toHaveSize(3);
     expect(taglistInstance.tags[2].testLabelProp).toBe('baz');
   });
 
@@ -282,6 +310,17 @@ describe('NxTaglistComponent', () => {
   imports: [NxTaglistModule],
 })
 class BasicTaglist extends TaglistTest {}
+
+@Component({
+  template: `<nx-taglist [tags]="tags">empty</nx-taglist
+    ><button id="testButton" (click)="addTag()">Click</button>`,
+  imports: [NxTaglistModule],
+})
+class OnPushTagList extends TaglistTest {
+  addTag() {
+    this.taglistInstance.addTag('added-from-button');
+  }
+}
 
 @Component({
   template: `<nx-taglist [tags]="tags" [labelProperty]="labelProperty">empty</nx-taglist>`,
