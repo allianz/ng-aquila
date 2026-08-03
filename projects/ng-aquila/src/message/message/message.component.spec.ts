@@ -3,6 +3,7 @@ import {
   Component,
   Directive,
   ElementRef,
+  signal,
   Type,
   ViewChild,
 } from '@angular/core';
@@ -15,7 +16,8 @@ import { CONTEXT, NxMessageComponent } from './message.component';
 
 @Directive({ standalone: true })
 abstract class MessageTest {
-  context: CONTEXT = 'regular';
+  context = signal<CONTEXT>('regular');
+  contained = signal(true);
 
   @ViewChild(NxMessageComponent) componentInstance!: NxMessageComponent;
   @ViewChild(NxMessageComponent, { read: ElementRef }) formInscomponentInstanceRef!: ElementRef;
@@ -34,7 +36,7 @@ describe('NxMessageComponent', () => {
   }
 
   function setContextAndAssertClass(context: CONTEXT, className: string) {
-    testInstance.context = context;
+    testInstance.context.set(context);
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('nx-message').getAttribute('class')).toBe(className);
   }
@@ -47,7 +49,7 @@ describe('NxMessageComponent', () => {
   }
 
   function setContextAndAssertIcon(context: CONTEXT, iconName: string) {
-    testInstance.context = context;
+    testInstance.context.set(context);
     fixture.detectChanges();
     const icon = fixture.nativeElement.querySelector('.nx-message__icon') as HTMLButtonElement;
     expect(icon).toBeTruthy();
@@ -63,6 +65,7 @@ describe('NxMessageComponent', () => {
         MessageOnPushComponent,
         ClosableMessageComponent,
         ClosableFormMessageComponent,
+        PlainMessageTestComponent,
       ],
     }).compileComponents();
   }));
@@ -103,6 +106,24 @@ describe('NxMessageComponent', () => {
     });
   });
 
+  describe('contained', () => {
+    it('should be contained by default', () => {
+      createTestComponent(MessageBasicComponent);
+      expect(componentInstance.contained()).toBeTrue();
+      expect(fixture.nativeElement.querySelector('nx-message')).not.toHaveClass(
+        'nx-message--plain',
+      );
+    });
+
+    it('should add the text class when contained is set to false', () => {
+      createTestComponent(PlainMessageTestComponent);
+      testInstance.contained.set(false);
+      fixture.detectChanges();
+      expect(componentInstance.contained()).toBeFalse();
+      expect(fixture.nativeElement.querySelector('nx-message')).toHaveClass('nx-message--plain');
+    });
+  });
+
   describe('closable', () => {
     it('should emit a `close` event on click', () => {
       createTestComponent(ClosableMessageComponent);
@@ -125,7 +146,7 @@ describe('NxMessageComponent', () => {
         '.nx-message__close-icon',
       ) as HTMLButtonElement;
       closeButton.click();
-      expect((testInstance as ClosableFormMessageComponent).submitted).toBeFalse();
+      expect((testInstance as ClosableFormMessageComponent).submitted()).toBeFalse();
     });
   });
 
@@ -170,38 +191,47 @@ describe('NxMessageComponent', () => {
 });
 
 @Component({
-  template: `<nx-message [context]="context"> lorem ipsum </nx-message>`,
+  template: `<nx-message [context]="context()"> lorem ipsum </nx-message>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
 })
 class MessageBasicComponent extends MessageTest {}
 
 @Component({
-  template: `<nx-message [context]="context"> lorem ipsum </nx-message>`,
+  template: `<nx-message [context]="context()"> lorem ipsum </nx-message>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxMessageModule, FormsModule],
 })
 class MessageOnPushComponent extends MessageTest {}
 
 @Component({
-  template: `<nx-message [closable]="closable"> lorem ipsum </nx-message>`,
+  template: `<nx-message [contained]="contained()"> lorem ipsum </nx-message>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxMessageModule, FormsModule],
+})
+class PlainMessageTestComponent extends MessageTest {
+  contained = signal(false);
+}
+
+@Component({
+  template: `<nx-message [closable]="closable()"> lorem ipsum </nx-message>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
 })
 class ClosableMessageComponent extends MessageTest {
-  closable = true;
+  closable = signal(true);
 }
 
 @Component({
   template: `
-    <form (ngSubmit)="submitted = true">
-      <nx-message [closable]="closable"> lorem ipsum </nx-message>
+    <form (ngSubmit)="submitted.set(true)">
+      <nx-message [closable]="closable()"> lorem ipsum </nx-message>
     </form>
   `,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
 })
 class ClosableFormMessageComponent extends MessageTest {
-  closable = true;
-  submitted = false;
+  closable = signal(true);
+  submitted = signal(false);
 }

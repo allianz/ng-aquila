@@ -5,34 +5,28 @@ category: components
 b2c: true
 expert: true
 stable: done
-alias: message banner, toast, snackbar, alert, info, error, warning, success, notification
+alias: message banner, toast, snackbar, alert, info, error, warning, success, notification, message
 a1Light: true
 a1Densities: true
 group: Data Display
 ---
 
 
-### Inline Notification
+### Message
 
 Use this component to present a contextual message with different color coding. You can pass in any content you consider appropriate.
 
-#### Info
+By default, the message is rendered inside a filled, bordered surface. Set the `contained` input to `false` to render it as plain icon and text instead, without a background or border.
 
-<!-- example(message-info) -->
+<!-- example(message-plain) -->
 
-#### Error
+### Contained message
 
-Besides the message component you can also use `<nx-error>`. The NxErrorComponent has a different look in expert applications (for a global configuration please have a look at the [expert module](./documentation/config/overview)). We recommend using _nx-error_, especially for use cases where you need to support both styles.
+Per default (or by explicitly setting `contained` to `true`), the message is rendered inside a filled, bordered surface, colored according to its context (info, success, warning or error).
 
-<!-- example(message-error) -->
+Besides the message component you can also use `<nx-error>` for error messages. The NxErrorComponent has a different look in expert applications (for a global configuration please have a look at the [expert module](./documentation/config/overview)). We recommend using _nx-error_, especially for use cases where you need to support both styles.
 
-#### Success
-
-<!-- example(message-success) -->
-
-#### Warning
-
-<!-- example(message-warning) -->
+<!-- example(message-contained) -->
 
 #### Closable
 
@@ -44,15 +38,7 @@ When displaying notifications we recommend that you use `aria-live` combined wit
 
 <!-- example(message-closable) -->
 
-### Message Banner
-
-The notification banner is a static element that shifts the content of the page down in order to communicate information, a warning or an error to the user. Respectively it can have an **info, success or warning context**. Per default, message banners have a close icon button in the top right, which can be disabled by the `closable` input.
-
-Analogously to the Inline Notification, a message banner emits a `close` event when being closed by the close icon button. The example below shows how the `close` event can be used for hiding a message banner.
-
-<!-- example(message-banner) -->
-
-### Message Toast
+### Toast message
 
 Message Toast is a small popup **which should only contain success or informative messages**. It has a title, that should be short and descriptive. A Message Toast appears center-aligned from the bottom of the application. Per default it disappears after 3 seconds, but please keep in mind that the show duration should be set dependent on the length of the message.
 
@@ -150,3 +136,11 @@ If there is no `announcementMessage` specified the screen reader will read the c
 ```
 
 You can find more information on aria-live regions and the available politeness values [here](https://www.w3.org/WAI/PF/aria-1.1/states_and_properties#aria-live).
+
+### Banner message
+
+The notification banner is a static element that shifts the content of the page down in order to communicate information, a warning or an error to the user. Respectively it can have an **info, success or warning context**. Per default, message banners have a close icon button in the top right, which can be disabled by the `closable` input.
+
+Analogously to the Inline Notification, a message banner emits a `close` event when being closed by the close icon button. The example below shows how the `close` event can be used for hiding a message banner.
+
+<!-- example(message-banner) -->

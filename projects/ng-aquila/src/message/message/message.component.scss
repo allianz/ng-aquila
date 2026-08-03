@@ -51,6 +51,28 @@
   }
 }
 
+:host(.nx-message--plain) {
+  --message-icon-gap: var(--message-plain-icon-gap);
+  --message-icon-gap-mobile: var(--message-plain-icon-gap);
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  @include type-style(message-plain);
+
+  &.context-info {
+    color: v(message-info-icon-color);
+  }
+  &.context-warning {
+    color: v(message-warning-icon-color);
+  }
+  &.context-error {
+    color: v(message-error-icon-color);
+  }
+  &.context-success {
+    color: v(message-success-icon-color);
+  }
+}
+
 @media screen and (forced-colors: active) {
   .nx-message__icon {
     color: CanvasText;
@@ -58,33 +80,17 @@
 }
 
 .nx-message__icon {
-  margin-right: v(message-icon-gap);
+  margin-inline-end: v(message-icon-gap);
 
   @include media-breakpoint-response(mobile) {
-    float: left;
-    margin-right: v(message-icon-gap-mobile);
-  }
-
-  :host-context([dir='rtl']) & {
-    float: right;
-    margin-right: initial;
-    margin-left: v(message-icon-gap);
-
-    @include media-breakpoint-response(mobile) {
-      margin-left: v(message-icon-gap-mobile);
-    }
+    margin-inline-end: v(message-icon-gap-mobile);
   }
 }
 :host(.nx-message--closable) {
   --content-offset-right: calc(
     var(--message-icon-gap) + var(--plain-button-icon-size) + var(--message-padding)
   );
-  padding-right: var(--content-offset-right);
-
-  [dir='rtl'] & {
-    padding-right: v(message-padding);
-    padding-left: var(--content-offset-right);
-  }
+  padding-inline-end: var(--content-offset-right);
 }
 .nx-message__close-icon {
   @include message__close-icon;

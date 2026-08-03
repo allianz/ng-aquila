@@ -6,6 +6,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -55,6 +56,7 @@ const A1ICONS: { [k: string]: string } = {
     '[class.context-warning]': '_effectiveContext() === "warning"',
     '[class.context-error]': '_effectiveContext() === "error"',
     '[class.nx-message--closable]': '_closable',
+    '[class.nx-message--plain]': '!contained()',
   },
 })
 export class NxMessageComponent implements AfterViewInit, OnDestroy {
@@ -63,6 +65,9 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
   protected readonly _isAllianzOne = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
 
   readonly id = input<string>(this._idGenerator.nextId('nx-message'));
+
+  /** Whether the message is rendered inside a filled, bordered surface (`true`, default) or as plain icon and text (`false`). */
+  readonly contained = input(true, { transform: booleanAttribute });
 
   protected readonly _effectiveContext = computed<CONTEXT>(() => {
     if (this._context() === 'regular' && this._isAllianzOne()) {

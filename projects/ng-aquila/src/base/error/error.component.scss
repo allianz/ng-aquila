@@ -10,7 +10,7 @@
   .nx-error__icon {
     font-size: v(base-error-simple-icon-size);
     line-height: v(base-error-simple-line-height);
-    margin-right: nx-spacer(2xs);
+    margin-right: v(base-error-icon-text-gap);
 
     @media screen and (forced-colors: active) {
       color: CanvasText;

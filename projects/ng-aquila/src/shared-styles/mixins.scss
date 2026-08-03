@@ -271,30 +271,16 @@
   width: 100%;
   display: flex;
   align-items: flex-start;
-  text-align: left;
+  text-align: start;
   position: relative;
   border: v(message-border-size) solid;
   padding: v(message-padding);
-
-  @include media-breakpoint-response(mobile) {
-    display: block;
-  }
-
-  // HINT: this will work only if mixin is included directly inside :host
-  [dir='rtl'] & {
-    text-align: right;
-  }
 }
 
 @mixin message__close-icon {
   position: absolute;
-  right: v(message-close-icon-offset);
-  top: v(message-close-icon-offset);
-
-  :host-context([dir='rtl']) & {
-    right: auto;
-    left: v(message-close-icon-offset);
-  }
+  inset-inline-end: v(message-close-icon-offset);
+  inset-block-start: v(message-close-icon-offset);
 }
 
 @mixin input-placeholder {

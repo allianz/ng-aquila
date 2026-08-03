@@ -4,12 +4,12 @@ import { NxMessageComponent } from '@allianz/ng-aquila/message';
 import { Component } from '@angular/core';
 
 /**
- * @title Error context example
+ * @title Contained message example
  */
 @Component({
-  selector: 'message-error-example',
-  templateUrl: './message-error-example.html',
-  styleUrls: ['./message-error-example.css'],
+  selector: 'message-contained-example',
+  templateUrl: './message-contained-example.html',
+  styleUrls: ['./message-contained-example.css'],
   imports: [NxHeadlineComponent, NxMessageComponent, NxErrorComponent],
 })
-export class MessageErrorExampleComponent {}
+export class MessageContainedExampleComponent {}
