@@ -13,57 +13,121 @@
     </thead>
     <tbody>
       @for (control of formArray.controls; track control; let i = $index) {
-      <tr nxTableRow [formGroup]="getFormGroup(i)">
-        <td nxTableCell>
-          <nx-formfield>
-            <input
-              nxInput
-              formControlName="id"
-              [attr.aria-labelledby]="'assign'"
-            />
-          </nx-formfield>
-        </td>
-        <td nxTableCell>
-          <nx-formfield>
-            <input
-              nxInput
-              formControlName="amount"
-              [attr.aria-labelledby]="'amount'"
-            />
-          </nx-formfield>
-        </td>
-        <td nxTableCell class="date-cell">
-          <nx-formfield>
-            <input
-              nxDatefield
-              nxInput
-              [datepicker]="myDatepicker"
-              formControlName="endingAt"
-              [attr.aria-labelledby]="'ending'"
-            />
-            <nx-datepicker-toggle
-              [for]="myDatepicker"
-              nxFormfieldSuffix
-            ></nx-datepicker-toggle>
-            <nx-datepicker #myDatepicker></nx-datepicker>
-          </nx-formfield>
-        </td>
-        <td nxTableCell class="status-cell">
-          <nx-formfield>
-            <nx-dropdown formControlName="status" ariaLabelledBy="status">
-              <nx-dropdown-item value="open"></nx-dropdown-item>
-              <nx-dropdown-item value="processing"></nx-dropdown-item>
-              <nx-dropdown-item value="accepted"></nx-dropdown-item>
-              <nx-dropdown-item value="rejected"></nx-dropdown-item>
-            </nx-dropdown>
-          </nx-formfield>
-        </td>
-        <td nxTableCell>
-          <button nxPlainButton (click)="removeRow(i)" aria-label="Remove row">
-            <nx-icon name="trash-o" aria-hidden="true"></nx-icon>
-          </button>
-        </td>
-      </tr>
+        <tr nxTableRow [formGroup]="getFormGroup(i)">
+          <td nxTableCell>
+            <nx-formfield inline>
+              @if (getControl(i, 'id').invalid && getControl(i, 'id').touched) {
+                <nx-signal-button
+                  nxFormfieldSuffix
+                  context="error"
+                  popoverDirection="bottom"
+                  aria-label="Show validation errors for Assignment/Case ID"
+                >
+                  <div nxPopoverTitle>
+                    <h3
+                      nxHeadline="subsection-xsmall"
+                      class="nx-margin-bottom-2xs"
+                    >
+                      Please review this field
+                    </h3>
+                  </div>
+                  <ul nxPopoverMainContent class="error-list">
+                    @if (getControl(i, 'id').hasError('required')) {
+                      <li>An assignment/case ID is required.</li>
+                    }
+                  </ul>
+                </nx-signal-button>
+              }
+              <input
+                nxInput
+                formControlName="id"
+                [attr.aria-labelledby]="'assign'"
+              />
+              <nx-error nxFormfieldError>
+                An assignment/case ID is required.
+              </nx-error>
+            </nx-formfield>
+          </td>
+          <td nxTableCell>
+            <nx-formfield inline>
+              @if (
+                getControl(i, 'amount').invalid &&
+                getControl(i, 'amount').touched
+              ) {
+                <nx-signal-button
+                  nxFormfieldSuffix
+                  context="error"
+                  popoverDirection="bottom"
+                  aria-label="Show validation errors for Gross Amount"
+                >
+                  <div nxPopoverTitle>
+                    <h3
+                      nxHeadline="subsection-xsmall"
+                      class="nx-margin-bottom-2xs"
+                    >
+                      Please review this field
+                    </h3>
+                  </div>
+                  <ul nxPopoverMainContent class="error-list">
+                    @if (getControl(i, 'amount').hasError('required')) {
+                      <li>A gross amount is required.</li>
+                    }
+                    @if (getControl(i, 'amount').hasError('min')) {
+                      <li>The gross amount must be greater than 0.</li>
+                    }
+                  </ul>
+                </nx-signal-button>
+              }
+              <input
+                nxInput
+                formControlName="amount"
+                [attr.aria-labelledby]="'amount'"
+              />
+              <nx-error nxFormfieldError>
+                @if (getControl(i, 'amount').hasError('required')) {
+                  A gross amount is required.
+                } @else if (getControl(i, 'amount').hasError('min')) {
+                  The gross amount must be greater than 0.
+                }
+              </nx-error>
+            </nx-formfield>
+          </td>
+          <td nxTableCell class="date-cell">
+            <nx-formfield inline>
+              <input
+                nxDatefield
+                nxInput
+                [datepicker]="myDatepicker"
+                formControlName="endingAt"
+                [attr.aria-labelledby]="'ending'"
+              />
+              <nx-datepicker-toggle
+                [for]="myDatepicker"
+                nxFormfieldSuffix
+              ></nx-datepicker-toggle>
+              <nx-datepicker #myDatepicker></nx-datepicker>
+            </nx-formfield>
+          </td>
+          <td nxTableCell class="status-cell">
+            <nx-formfield inline>
+              <nx-dropdown formControlName="status" ariaLabelledBy="status">
+                <nx-dropdown-item value="open"></nx-dropdown-item>
+                <nx-dropdown-item value="processing"></nx-dropdown-item>
+                <nx-dropdown-item value="accepted"></nx-dropdown-item>
+                <nx-dropdown-item value="rejected"></nx-dropdown-item>
+              </nx-dropdown>
+            </nx-formfield>
+          </td>
+          <td nxTableCell>
+            <button
+              nxPlainButton
+              (click)="removeRow(i)"
+              aria-label="Remove row"
+            >
+              <nx-icon name="trash-o" aria-hidden="true"></nx-icon>
+            </button>
+          </td>
+        </tr>
       }
     </tbody>
   </table>

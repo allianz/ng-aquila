@@ -1,17 +1,17 @@
 <div
   #container
   class="nx-dropdown-results__option"
-  [ngClass]="{'nx-dropdown-results__option--selected': selected}"
+  [ngClass]="{ 'nx-dropdown-results__option--selected': selected }"
 >
   @if (multiselect) {
-  <nx-checkbox [checked]="selected" [disabled]="disabled">
-    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
-  </nx-checkbox>
+    <nx-checkbox [checked]="selected" [disabled]="disabled">
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </nx-checkbox>
   } @else {
-  <span class="nx-dropdown-results__option-checkicon" aria-hidden="true">
-    <nx-icon name="check" aria-hidden="true"></nx-icon>
-  </span>
-  <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    <span class="nx-dropdown-results__option-checkicon" aria-hidden="true">
+      <nx-icon name="check" aria-hidden="true"></nx-icon>
+    </span>
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
   }
 </div>
 
@@ -21,12 +21,16 @@
       <ng-content></ng-content>
     </div>
 
-    <div class="value-content">@if (_contentEmpty()) { {{_formattedValue }} }</div>
+    <div class="value-content">
+      @if (_contentEmpty()) {
+        {{ _formattedValue }}
+      }
+    </div>
 
     @if (showRadioIndicator() && !multiselect) {
-    <span class="nx-dropdown-results__option-radioicon" aria-hidden="true">
-      <nx-radio-indicator [checked]="selected" [disabled]="disabled"></nx-radio-indicator>
-    </span>
+      <span class="nx-dropdown-results__option-radioicon" aria-hidden="true">
+        <nx-radio-indicator [checked]="selected" [disabled]="disabled"></nx-radio-indicator>
+      </span>
     }
   </div>
 </ng-template>

@@ -8,10 +8,12 @@
           <input nxInput nxMask="00:00:00" formControlName="maskInput" />
           <span nxFormfieldHint> Mask: 00:00:00 </span>
           @if (validatedMaskForm.get('maskInput')?.hasError('required')) {
-          <nx-error nxFormfieldError> This field is required. </nx-error>
-          } @if
-          (validatedMaskForm.get('maskInput')?.hasError('nxMaskLengthError')) {
-          <nx-error nxFormfieldError> Please enter a valid length. </nx-error>
+            <nx-error nxFormfieldError> This field is required. </nx-error>
+          }
+          @if (
+            validatedMaskForm.get('maskInput')?.hasError('nxMaskLengthError')
+          ) {
+            <nx-error nxFormfieldError> Please enter a valid length. </nx-error>
           }
         </nx-formfield>
         <button

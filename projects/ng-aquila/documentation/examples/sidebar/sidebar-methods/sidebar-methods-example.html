@@ -1,15 +1,15 @@
 <nx-sidebar resizeHandleAriaLabel="Toggle sidebar width" #sidebar resizeable>
   @for (action of actions; track action) {
-  <button
-    nxAction
-    routerLink="./"
-    [queryParams]="action.query"
-    routerLinkActive="is-selected"
-    type="button"
-  >
-    <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
-    {{action.label}}
-  </button>
+    <button
+      nxAction
+      routerLink="./"
+      [queryParams]="action.query"
+      routerLinkActive="is-selected"
+      type="button"
+    >
+      <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
+      {{ action.label }}
+    </button>
   }
 </nx-sidebar>
 <main>

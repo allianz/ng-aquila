@@ -7,9 +7,9 @@
             <span>{{ customLabelDropdownValue?.prefix }}</span>
           </ng-template>
           @for (item of telPrefixDemoData; track item) {
-          <nx-dropdown-item [value]="item">
-            {{ item.prefix }} ({{ item.countryId }})
-          </nx-dropdown-item>
+            <nx-dropdown-item [value]="item">
+              {{ item.prefix }} ({{ item.countryId }})
+            </nx-dropdown-item>
           }
         </nx-dropdown>
       </nx-formfield>

@@ -5,6 +5,7 @@
     [appearance]="appearance()"
     floatLabel="always"
     [negative]="negative ? 'negative' : ''"
+    [inline]="inline()"
   >
     <div role="group" [attr.aria-labelledby]="getLabelledBy()" class="time-group">
       <div class="time-input">
@@ -64,25 +65,7 @@
           [attr.inputmode]="inputMode()"
         />
       </div>
-      @if (withTimepicker) {
-        <button
-          nxFormfieldSuffix
-          #toggleButton
-          [ngClass]="{ 'nx-timepicker-toggle--disabled': disabled || readonly() }"
-          (click)="toggleButtonClick()"
-          (focus)="_onFocus()"
-          class="nx-timepicker-toggle-button"
-          type="button"
-          [disabled]="disabled || readonly()"
-          [attr.aria-label]="intl.buttonOpenTimepickerAriaLabel"
-          [attr.aria-expanded]="isOpen.toString()"
-          [attr.aria-controls]="isOpen ? idOptionList : null"
-          [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
-          (keydown)="handleKeyDown($event)"
-        >
-          <nx-icon name="clock-o" aria-hidden="true" size="s"></nx-icon>
-        </button>
-      }
+
       <nx-timefield-control
         [errorState]="errorState()"
         [disabled]="disabled"
@@ -94,6 +77,45 @@
     </div>
     @if (hint) {
       <span nxFormfieldHint> {{ hint }} </span>
+    }
+
+    @if (withTimepicker) {
+      <button
+        nxFormfieldSuffix
+        #toggleButton
+        [ngClass]="{ 'nx-timepicker-toggle--disabled': disabled || readonly() }"
+        (click)="toggleButtonClick()"
+        (focus)="_onFocus()"
+        class="nx-timepicker-toggle-button"
+        type="button"
+        [disabled]="disabled || readonly()"
+        [attr.aria-label]="intl.buttonOpenTimepickerAriaLabel"
+        [attr.aria-expanded]="isOpen.toString()"
+        [attr.aria-controls]="isOpen ? idOptionList : null"
+        [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
+        (keydown)="handleKeyDown($event)"
+      >
+        <nx-icon name="clock-o" aria-hidden="true"></nx-icon>
+      </button>
+    }
+    <ng-container nxFormfieldSuffix>
+      <ng-content select="[nxFormfieldSuffix]"></ng-content>
+    </ng-container>
+
+    @if (_labelInfoChildren().length) {
+      <ng-container nxLabelInfo>
+        <ng-content select="[nxLabelInfo]"></ng-content>
+      </ng-container>
+    }
+
+    <ng-container nxFormfieldPrefix>
+      <ng-content select="[nxFormfieldPrefix]"></ng-content>
+    </ng-container>
+
+    @if (_appendixChildren().length) {
+      <span nxFormfieldAppendix>
+        <ng-content select="[nxFormfieldAppendix]"></ng-content>
+      </span>
     }
   </nx-formfield>
 
@@ -115,7 +137,7 @@
   }
 </div>
 @if (errorState()) {
-  <div class="nx-margin-top-xs">
+  <div class="nx-timefield__error">
     <ng-content select="nx-error"></ng-content>
   </div>
 }

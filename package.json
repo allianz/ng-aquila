@@ -20,7 +20,7 @@
     "mcp:copy-resources": "node scripts/mcp-copy-resources.js",
     "mcp:test-search": "node scripts/mcp-test-search.mjs",
     "postinstall": "node projects/ng-aquila/src/phone-input/extract-calling-codes.js",
-    "prepare": "husky install &",
+    "prepare": "husky",
     "release": "standard-version -n",
     "test": "npm run test:schematics && npm run test:docs-ui:coverage && npm run test:lib:coverage",
     "test:lib": "npm run build:package && ng test ng-aquila",

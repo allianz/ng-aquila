@@ -24,56 +24,78 @@
             Errors:
             <ul>
               <!-- start date -->
-              @if (minStartDate.isSame(maxStartDate, 'day') &&
-              (formWithPicker.controls.range.errors?.nxDateRangeMinStart ||
-              formWithPicker.controls.range.errors?.nxDateRangeMaxStart)) {
-              <li>
-                The start date must be exactly {{ minStartDate.toDate() | date
-                }}.
-              </li>
-              } @else if
-              (formWithPicker.controls.range.errors?.nxDateRangeMinStart) {
-              <li>
-                The start date must be on or after {{
-                formWithPicker.controls.range.errors?.nxDateRangeMinStart.minStart
-                | date }}.
-              </li>
-              } @else if
-              (formWithPicker.controls.range.errors?.nxDateRangeMaxStart) {
-              <li>
-                The start date must be on or before {{
-                formWithPicker.controls.range.errors?.nxDateRangeMaxStart.maxStart
-                | date }}.
-              </li>
+              @if (
+                minStartDate.isSame(maxStartDate, 'day') &&
+                (formWithPicker.controls.range.errors?.nxDateRangeMinStart ||
+                  formWithPicker.controls.range.errors?.nxDateRangeMaxStart)
+              ) {
+                <li>
+                  The start date must be exactly
+                  {{ minStartDate.toDate() | date }}.
+                </li>
+              } @else if (
+                formWithPicker.controls.range.errors?.nxDateRangeMinStart
+              ) {
+                <li>
+                  The start date must be on or after
+                  {{
+                    formWithPicker.controls.range.errors?.nxDateRangeMinStart
+                      .minStart | date
+                  }}.
+                </li>
+              } @else if (
+                formWithPicker.controls.range.errors?.nxDateRangeMaxStart
+              ) {
+                <li>
+                  The start date must be on or before
+                  {{
+                    formWithPicker.controls.range.errors?.nxDateRangeMaxStart
+                      .maxStart | date
+                  }}.
+                </li>
               }
 
               <!-- end date -->
-              @if (minEndDate.isSame(maxEndDate, 'day') &&
-              (formWithPicker.controls.range.errors?.nxDateRangeMinEnd ||
-              formWithPicker.controls.range.errors?.nxDateRangeMaxEnd)) {
-              <li>
-                The end date must be exactly {{ minEndDate.toDate() | date }}.
-              </li>
-              } @else if
-              (formWithPicker.controls.range.errors?.nxDateRangeMinEnd) {
-              <li>
-                The end date has to be on or after {{
-                formWithPicker.controls.range.errors?.nxDateRangeMinEnd.minEnd |
-                date }}.
-              </li>
-              } @else if
-              (formWithPicker.controls.range.errors?.nxDateRangeMaxEnd) {
-              <li>
-                The end date has to be on or before {{
-                formWithPicker.controls.range.errors?.nxDateRangeMaxEnd.maxEnd |
-                date }}.
-              </li>
-              } @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
-              && formWithPicker.value.range!.start){
-              <li>Please enter a end date.</li>
-              } @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
-              && formWithPicker.value.range!.end){
-              <li>Please enter a start date.</li>
+              @if (
+                minEndDate.isSame(maxEndDate, 'day') &&
+                (formWithPicker.controls.range.errors?.nxDateRangeMinEnd ||
+                  formWithPicker.controls.range.errors?.nxDateRangeMaxEnd)
+              ) {
+                <li>
+                  The end date must be exactly {{ minEndDate.toDate() | date }}.
+                </li>
+              } @else if (
+                formWithPicker.controls.range.errors?.nxDateRangeMinEnd
+              ) {
+                <li>
+                  The end date has to be on or after
+                  {{
+                    formWithPicker.controls.range.errors?.nxDateRangeMinEnd
+                      .minEnd | date
+                  }}.
+                </li>
+              } @else if (
+                formWithPicker.controls.range.errors?.nxDateRangeMaxEnd
+              ) {
+                <li>
+                  The end date has to be on or before
+                  {{
+                    formWithPicker.controls.range.errors?.nxDateRangeMaxEnd
+                      .maxEnd | date
+                  }}.
+                </li>
+              }
+              @if (
+                formWithPicker.controls.range.errors?.nxDateRangeIncomplete &&
+                formWithPicker.value.range!.start
+              ) {
+                <li>Please enter a end date.</li>
+              }
+              @if (
+                formWithPicker.controls.range.errors?.nxDateRangeIncomplete &&
+                formWithPicker.value.range!.end
+              ) {
+                <li>Please enter a start date.</li>
               }
             </ul>
           </nx-error>

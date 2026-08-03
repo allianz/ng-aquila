@@ -15,9 +15,13 @@
             type="search"
           />
           @if (searchTerm) {
-          <span nxFormfieldSuffix aria-hidden="true" (click)="searchTerm=''">
-            <nx-icon name="close" size="s"></nx-icon>
-          </span>
+            <span
+              nxFormfieldSuffix
+              aria-hidden="true"
+              (click)="searchTerm = ''"
+            >
+              <nx-icon name="close" size="s"></nx-icon>
+            </span>
           }
         </nx-formfield>
       </div>

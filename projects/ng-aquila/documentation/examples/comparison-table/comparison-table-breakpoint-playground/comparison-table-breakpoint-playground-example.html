@@ -2,14 +2,14 @@
   <nx-formfield label="Columns">
     <nx-dropdown [value]="columns()" (valueChange)="columns.set($event)">
       @for (option of columnsOptions; track option) {
-      <nx-dropdown-item [value]="option">{{ option }}</nx-dropdown-item>
+        <nx-dropdown-item [value]="option">{{ option }}</nx-dropdown-item>
       }
     </nx-dropdown>
   </nx-formfield>
   <nx-formfield label="View type">
     <nx-dropdown [value]="viewType()" (valueChange)="viewType.set($event)">
       @for (option of viewTypeOptions; track option) {
-      <nx-dropdown-item [value]="option">{{ option }}</nx-dropdown-item>
+        <nx-dropdown-item [value]="option">{{ option }}</nx-dropdown-item>
       }
     </nx-dropdown>
   </nx-formfield>

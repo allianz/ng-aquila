@@ -2,16 +2,16 @@
   <nx-context-menu-header>Car damage</nx-context-menu-header>
   <nx-context-menu-group>
     @for (o of options; track o.value) {
-    <button
-      nxContextMenuItem
-      selectable="multi"
-      disableCloseOnSelect
-      [selected]="isSelected(o.value)"
-      type="button"
-      (click)="toggle(o.value)"
-    >
-      {{ o.label }}
-    </button>
+      <button
+        nxContextMenuItem
+        selectable="multi"
+        disableCloseOnSelect
+        [selected]="isSelected(o.value)"
+        type="button"
+        (click)="toggle(o.value)"
+      >
+        {{ o.label }}
+      </button>
     }
   </nx-context-menu-group>
 </nx-context-menu>

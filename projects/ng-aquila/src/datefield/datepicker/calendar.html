@@ -11,7 +11,7 @@
       <nx-icon [name]="this._isRtl ? 'chevron-right' : 'chevron-left'" aria-hidden="true"></nx-icon>
     </button>
 
-    <span class="nx-calendar-period-label"> {{_periodButtonText}} </span>
+    <span class="nx-calendar-period-label"> {{ _periodButtonText }} </span>
 
     <button
       #nextButton
@@ -33,77 +33,81 @@
       (click)="_changeViewClicked()"
       [attr.aria-label]="_periodButtonLabel"
     >
-      {{_periodButtonLabel}}
+      {{ _periodButtonLabel }}
     </button>
   </div>
 </div>
 
 <div class="nx-calendar-content" cdkMonitorSubtreeFocus tabindex="-1">
-  @switch (_currentView) { @case ('month') {
-  <nx-month-view
-    [isRange]="isRange()"
-    [(activeDate)]="_activeDate"
-    [selected]="_selected()"
-    [dateFilter]="dateFilter()"
-    [maxDate]="maxDate"
-    [minDate]="minDate"
-    (hoverDateChange)="_hoverDateChange($event)"
-    (selectedChange)="_dateSelected($event!)"
-    (_userSelection)="_userSelected()"
-  >
-  </nx-month-view>
-  } @case ('year') {
-  <nx-year-view
-    [isRange]="isRange()"
-    [(activeDate)]="_activeDate"
-    [selected]="selected"
-    [dateFilter]="dateFilter()"
-    [maxDate]="maxDate"
-    [minDate]="minDate"
-    (monthSelected)="_monthSelectedInYearView($event)"
-    (selectedChange)="_goToDateInView($event, 'month')"
-  >
-  </nx-year-view>
-  } @case ('multi-year') {
-  <nx-multi-year-view
-    [(activeDate)]="_activeDate"
-    [selected]="selected"
-    [dateFilter]="dateFilter()"
-    [maxDate]="maxDate"
-    [minDate]="minDate"
-    (yearSelected)="_yearSelectedInMultiYearView($event)"
-    (selectedChange)="_goToDateInView($event, 'year')"
-  >
-  </nx-multi-year-view>
-  } }
-</div>
-@if (showTodayButton()) {
-<div class="nx-calendar-footer">
-  @if (_isAllianzOne()) {
-  <button
-    #todayButton
-    nxButton="secondary"
-    size="small"
-    type="button"
-    (click)="todayButtonHandler()"
-    (keydown)="todayButtonKeydownHandler($event)"
-    [disabled]="_disableTodayButton"
-    [attr.aria-label]="_intl.todayButtonAriaLabel"
-  >
-    {{_intl.todayButtonLabel}}
-  </button>
-  } @else {
-  <button
-    #todayButton
-    nxPlainButton
-    type="button"
-    (click)="todayButtonHandler()"
-    (keydown)="todayButtonKeydownHandler($event)"
-    [disabled]="_disableTodayButton"
-    [attr.aria-label]="_intl.todayButtonAriaLabel"
-  >
-    {{_intl.todayButtonLabel}}
-  </button>
+  @switch (_currentView) {
+    @case ('month') {
+      <nx-month-view
+        [isRange]="isRange()"
+        [(activeDate)]="_activeDate"
+        [selected]="_selected()"
+        [dateFilter]="dateFilter()"
+        [maxDate]="maxDate"
+        [minDate]="minDate"
+        (hoverDateChange)="_hoverDateChange($event)"
+        (selectedChange)="_dateSelected($event!)"
+        (_userSelection)="_userSelected()"
+      >
+      </nx-month-view>
+    }
+    @case ('year') {
+      <nx-year-view
+        [isRange]="isRange()"
+        [(activeDate)]="_activeDate"
+        [selected]="selected"
+        [dateFilter]="dateFilter()"
+        [maxDate]="maxDate"
+        [minDate]="minDate"
+        (monthSelected)="_monthSelectedInYearView($event)"
+        (selectedChange)="_goToDateInView($event, 'month')"
+      >
+      </nx-year-view>
+    }
+    @case ('multi-year') {
+      <nx-multi-year-view
+        [(activeDate)]="_activeDate"
+        [selected]="selected"
+        [dateFilter]="dateFilter()"
+        [maxDate]="maxDate"
+        [minDate]="minDate"
+        (yearSelected)="_yearSelectedInMultiYearView($event)"
+        (selectedChange)="_goToDateInView($event, 'year')"
+      >
+      </nx-multi-year-view>
+    }
   }
 </div>
+@if (showTodayButton()) {
+  <div class="nx-calendar-footer">
+    @if (_isAllianzOne()) {
+      <button
+        #todayButton
+        nxButton="secondary"
+        size="small"
+        type="button"
+        (click)="todayButtonHandler()"
+        (keydown)="todayButtonKeydownHandler($event)"
+        [disabled]="_disableTodayButton"
+        [attr.aria-label]="_intl.todayButtonAriaLabel"
+      >
+        {{ _intl.todayButtonLabel }}
+      </button>
+    } @else {
+      <button
+        #todayButton
+        nxPlainButton
+        type="button"
+        (click)="todayButtonHandler()"
+        (keydown)="todayButtonKeydownHandler($event)"
+        [disabled]="_disableTodayButton"
+        [attr.aria-label]="_intl.todayButtonAriaLabel"
+      >
+        {{ _intl.todayButtonLabel }}
+      </button>
+    }
+  </div>
 }

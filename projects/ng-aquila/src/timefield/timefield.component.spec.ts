@@ -1,4 +1,6 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 import { DOWN_ARROW, ENTER, UP_ARROW } from '@angular/cdk/keycodes';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
@@ -7,6 +9,7 @@ import {
   Component,
   Directive,
   Injectable,
+  signal,
   Type,
   ViewChild,
 } from '@angular/core';
@@ -131,6 +134,8 @@ describe('NxTimefieldComponent', () => {
         TemplateDrivenOnPushTimefield,
         OverrideDefaultLabelsTimefield,
         CustomValidationTimefield,
+        InlineTimefield,
+        ProjectedContentTimefield,
       ],
     }).compileComponents();
 
@@ -142,6 +147,64 @@ describe('NxTimefieldComponent', () => {
   it('should create a simple timefield component', () => {
     createTestComponent(SimpleTimefield);
     expect(timefieldInstance).toBeTruthy();
+  });
+
+  describe('inline', () => {
+    it('should forward inline to the inner formfield and keep an accessible name', () => {
+      createTestComponent(InlineTimefield);
+      const formfieldElement = timefieldElement.querySelector('nx-formfield')!;
+      expect(formfieldElement).not.toHaveClass('nx-formfield--inline');
+
+      (testInstance as InlineTimefield).inline = true;
+      fixture.detectChanges();
+
+      expect(formfieldElement).toHaveClass('nx-formfield--inline');
+      expect(timefieldInstance.getLabelledBy()).toBeTruthy();
+    });
+  });
+
+  describe('projected content forwarding', () => {
+    it('forwards a projected nxFormfieldPrefix into the inner formfield', () => {
+      createTestComponent(ProjectedContentTimefield);
+      expect(timefieldElement.querySelector('.nx-formfield__prefix')!.textContent).toContain(
+        'content-prefix',
+      );
+    });
+
+    it('forwards a projected nxFormfieldSuffix into the inner formfield', () => {
+      createTestComponent(ProjectedContentTimefield);
+      expect(timefieldElement.querySelector('.nx-formfield__suffix')!.textContent).toContain(
+        'content-suffix',
+      );
+    });
+
+    it('forwards a projected nxFormfieldAppendix into the inner formfield', () => {
+      createTestComponent(ProjectedContentTimefield);
+      expect(timefieldElement.querySelector('.nx-formfield__appendix')!.textContent).toContain(
+        'content-appendix',
+      );
+    });
+
+    it('does not render an appendix container when no appendix or label-info content is projected', () => {
+      createTestComponent(SimpleTimefield);
+      expect(timefieldElement.querySelector('.nx-formfield__appendix')).toBeNull();
+    });
+
+    it('routes a projected nxLabelInfo icon into the appendix under NDBX (default)', () => {
+      createTestComponent(ProjectedContentTimefield);
+      expect(timefieldElement.querySelector('.nx-formfield__appendix nx-info-icon')).not.toBeNull();
+      expect(timefieldElement.querySelector('.nx-formfield__label-holder nx-info-icon')).toBeNull();
+    });
+
+    it('renders the internal timepicker toggle button alongside a projected suffix, as distinct content', () => {
+      createTestComponent(ProjectedContentTimefield);
+      (testInstance as ProjectedContentTimefield).withTimepicker = true;
+      fixture.detectChanges();
+
+      const suffix = timefieldElement.querySelector('.nx-formfield__suffix')!;
+      expect(suffix.querySelector('.nx-timepicker-toggle-button')).toBeTruthy();
+      expect(suffix.textContent).toContain('content-suffix');
+    });
   });
 
   it('should set minimum minutes to 0 by default', () => {
@@ -880,12 +943,60 @@ describe('NxTimefieldComponent', () => {
     });
   });
 });
+
+describe('NxTimefieldComponent projected content under Allianz One', () => {
+  let fixture: ComponentFixture<ProjectedContentTimefield>;
+  let timefieldElement: HTMLElement;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule, ProjectedContentTimefield],
+      providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }],
+    }).compileComponents();
+  }));
+
+  it('routes a projected nxLabelInfo icon next to the label under Allianz One', () => {
+    fixture = TestBed.createComponent(ProjectedContentTimefield);
+    fixture.detectChanges();
+    timefieldElement = fixture.nativeElement.querySelector('nx-timefield');
+
+    expect(
+      timefieldElement.querySelector('.nx-formfield__label-holder nx-info-icon'),
+    ).not.toBeNull();
+  });
+});
+
 @Component({
   template: `<nx-timefield label="Time"></nx-timefield>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleTimefield extends TimefieldTest {}
+
+@Component({
+  template: `<nx-timefield label="Time" [inline]="inline"></nx-timefield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
+})
+class InlineTimefield extends TimefieldTest {
+  inline = false;
+}
+
+@Component({
+  template: `
+    <nx-timefield [label]="label" [withTimepicker]="withTimepicker" [inline]="inline">
+      <span nxFormfieldPrefix>content-prefix</span>
+      <span nxFormfieldSuffix>content-suffix</span>
+      <span nxFormfieldAppendix>content-appendix</span>
+      <nx-info-icon nxLabelInfo>Field help</nx-info-icon>
+    </nx-timefield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule, NxInfoIconComponent],
+})
+class ProjectedContentTimefield extends TimefieldTest {
+  inline = false;
+}
 
 @Component({
   template: `

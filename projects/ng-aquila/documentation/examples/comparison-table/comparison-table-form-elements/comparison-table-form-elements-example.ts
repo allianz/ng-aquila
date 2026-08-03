@@ -1,3 +1,4 @@
+import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
@@ -9,9 +10,20 @@ import {
   NxDropdownComponent,
   NxDropdownItemComponent,
 } from '@allianz/ng-aquila/dropdown';
-import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
+import {
+  NxFormfieldComponent,
+  NxFormfieldErrorDirective,
+  NxFormfieldSuffixDirective,
+} from '@allianz/ng-aquila/formfield';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
+import {
+  NxPopoverMainContentDirective,
+  NxPopoverTitleDirective,
+} from '@allianz/ng-aquila/popover';
+import { NxSignalButtonComponent } from '@allianz/ng-aquila/signal-button';
 import { Component } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 /** @title Add custom form elements to the table */
 @Component({
@@ -26,8 +38,26 @@ import { Component } from '@angular/core';
     NxComparisonTableDescriptionCell,
     NxIconComponent,
     NxFormfieldComponent,
+    NxFormfieldSuffixDirective,
+    NxFormfieldErrorDirective,
+    NxErrorComponent,
+    NxSignalButtonComponent,
+    NxPopoverTitleDirective,
+    NxPopoverMainContentDirective,
+    NxHeadlineComponent,
     NxDropdownComponent,
     NxDropdownItemComponent,
+    ReactiveFormsModule,
   ],
 })
-export class ComparisonTableFormElementsExampleComponent {}
+export class ComparisonTableFormElementsExampleComponent {
+  coverageAmountControl = new FormControl<string | null>(
+    null,
+    Validators.required,
+  );
+
+  constructor() {
+    // Mark as touched so the inline error state is visible on load.
+    this.coverageAmountControl.markAsTouched();
+  }
+}

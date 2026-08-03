@@ -1,35 +1,42 @@
 <div class="component-overview__header-container" [class.a1-themed]="!aquilaThemeActive()">
-  <h1 nxHeadline class="component-overview__header" size="2xl">{{componentDescriptor?.title}}</h1>
-  @if (!aquilaThemeActive()) { @let isNdbxOnly = $safeNavigationMigration(componentDescriptor?.a1)
-  !== undefined && !componentDescriptor?.a1; @let hasAnyA1 = componentDescriptor?.a1Light ||
-  componentDescriptor?.a1Densities || componentDescriptor?.a1Full; @if (isNdbxOnly) {
-  <nx-badge type="critical" class="icon-badge-baseline-offset">
-    <div class="badge-content-centered">
-      <nx-icon name="exclamation-circle-warning" size="auto"></nx-icon>
-      NDBX Only
-    </div>
-  </nx-badge>
-  } @if (isNdbxOnly && hasAnyA1) {
-  <nx-badge accentColor="gray" prominence="subtle">A1 Light</nx-badge>
-  } @else if (componentDescriptor?.a1Full) {
-  <nx-badge type="positive">A1 Full</nx-badge>
-  } @else if (componentDescriptor?.a1Densities) {
-  <nx-badge type="active">A1 Ready</nx-badge>
-  } @else if (componentDescriptor?.a1Light) {
-  <nx-badge accentColor="gray" prominence="subtle">A1 Light</nx-badge>
-  } }
+  <h1 nxHeadline class="component-overview__header" size="2xl">{{ componentDescriptor?.title }}</h1>
+  @if (!aquilaThemeActive()) {
+    @let isNdbxOnly =
+      $safeNavigationMigration(componentDescriptor?.a1) !== undefined && !componentDescriptor?.a1;
+    @let hasAnyA1 =
+      componentDescriptor?.a1Light ||
+      componentDescriptor?.a1Densities ||
+      componentDescriptor?.a1Full;
+    @if (isNdbxOnly) {
+      <nx-badge type="critical" class="icon-badge-baseline-offset">
+        <div class="badge-content-centered">
+          <nx-icon name="exclamation-circle-warning" size="auto"></nx-icon>
+          NDBX Only
+        </div>
+      </nx-badge>
+    }
+    @if (isNdbxOnly && hasAnyA1) {
+      <nx-badge accentColor="gray" prominence="subtle">A1 Light</nx-badge>
+    } @else if (componentDescriptor?.a1Full) {
+      <nx-badge type="positive">A1 Full</nx-badge>
+    } @else if (componentDescriptor?.a1Densities) {
+      <nx-badge type="active">A1 Ready</nx-badge>
+    } @else if (componentDescriptor?.a1Light) {
+      <nx-badge accentColor="gray" prominence="subtle">A1 Light</nx-badge>
+    }
+  }
 </div>
 <nx-tab-nav-bar class="component-overview__navigation" appearance="expert">
   @for (tab of activeTabs; track tab) {
-  <a
-    nxTabLink
-    [routerLink]="tab.path"
-    routerLinkActive
-    #rla="routerLinkActive"
-    [active]="rla.isActive"
-  >
-    {{tab.label}}
-  </a>
+    <a
+      nxTabLink
+      [routerLink]="tab.path"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
+    >
+      {{ tab.label }}
+    </a>
   }
 </nx-tab-nav-bar>
 <router-outlet></router-outlet>

@@ -10,7 +10,6 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 
-import { NxLabelInfoDirective } from './label-info.directive';
 import {
   LABEL_DEFAULT_OPTIONS,
   LABEL_SIZE_TYPE,
@@ -18,6 +17,7 @@ import {
   NxLabelComponent,
 } from './label.component';
 import { NxLabelModule } from './label.module';
+import { NxLabelInfoDirective } from './label-info.directive';
 
 const customDefaultOptions: LabelDefaultOptions = { size: 'small' };
 

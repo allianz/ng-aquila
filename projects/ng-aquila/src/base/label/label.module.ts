@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { NxLabelInfoDirective } from './label-info.directive';
 import { NxLabelComponent } from './label.component';
+import { NxLabelInfoDirective } from './label-info.directive';
 
 @NgModule({
   imports: [CommonModule, NxLabelComponent, NxLabelInfoDirective],

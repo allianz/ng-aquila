@@ -1,18 +1,19 @@
 <nx-context-menu #menu2="nxContextMenu">
   <nx-context-menu-header> Language </nx-context-menu-header>
   @for (o of options; track o) {
-  <button
-    nxContextMenuItem
-    selectable
-    type="button"
-    (click)="selectedLanguage = o.value"
-    role="menuitemradio"
-    [attr.aria-checked]="selectedLanguage === o.value ? 'true' : 'false'"
-  >
-    @if (selectedLanguage === o.value) {
-    <nx-icon aria-hidden="true" name="check" nxIconPositionStart></nx-icon>
-    } {{o.label}}
-  </button>
+    <button
+      nxContextMenuItem
+      selectable
+      type="button"
+      (click)="selectedLanguage = o.value"
+      role="menuitemradio"
+      [attr.aria-checked]="selectedLanguage === o.value ? 'true' : 'false'"
+    >
+      @if (selectedLanguage === o.value) {
+        <nx-icon aria-hidden="true" name="check" nxIconPositionStart></nx-icon>
+      }
+      {{ o.label }}
+    </button>
   }
 </nx-context-menu>
 

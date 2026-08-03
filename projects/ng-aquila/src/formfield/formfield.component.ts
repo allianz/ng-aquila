@@ -6,6 +6,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterContentChecked,
   AfterContentInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -86,6 +87,7 @@ export type AppearanceType = 'outline' | 'auto';
     '[class.has-outline]': 'this.appearance === "outline"',
     '[class.has-hint]': 'this._hintChildren?.length && this._hintChildren?.length! > 0',
     '[class.nx-formfield--negative]': 'this._negative',
+    '[class.nx-formfield--inline]': 'inline()',
     '(focusout)': '_onBlur()',
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -109,6 +111,15 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
    * In addition, the component uses input and label to properly support accessibility.
    */
   readonly label = input<string | null>();
+
+  /**
+   * Whether the form field is rendered inline. When enabled the label is
+   * visually hidden (kept for accessibility) and the reserved space around
+   * the field (top floating-label space and bottom hint/error/note space)
+   * is removed. Providing hints/errors/notes together with `inline` is not
+   * supported in this version — they will not be shown.
+   */
+  readonly inline = input(false, { transform: booleanAttribute });
 
   /**
    * Set optional text, which will additionally show in label if a field is not mandatory.

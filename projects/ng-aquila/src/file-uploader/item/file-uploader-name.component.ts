@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 import { getFileExtension } from '../file-uploader.validations';
 import { NxFileIconComponent } from './file-icon.component';
@@ -20,7 +20,6 @@ export class NxFileUploaderItemName {
 
   /**
    * Maps a file extension to its label background color.
-   *
    * @deprecated The extension badge is now rendered by `NxFileIconComponent`
    * and its colors are driven by design tokens. This property is kept for
    * backwards compatibility and is no longer used internally.

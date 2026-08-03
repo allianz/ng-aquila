@@ -1,0 +1,43 @@
+<div class="example-row">
+  <nx-timefield label="Time" inline>
+    <input nxInput aria-labelledby="amount-label" />
+  </nx-timefield>
+</div>
+
+<!--
+  Inline mode hides the projected error message, so the validation state is
+  surfaced with a signal button in the suffix slot instead. The projected
+  `nx-error` is kept (only visually hidden) so the formfield still wires it up
+  as `aria-describedby` / `aria-invalid` on the control for assistive tech.
+-->
+<div class="example-row nx-margin-top-s">
+  <nx-timefield label="Time" inline [formControl]="timeControl" withTimepicker>
+    @if (timeControl.invalid && timeControl.touched) {
+      <nx-signal-button
+        nxFormfieldSuffix
+        context="error"
+        popoverDirection="bottom"
+        aria-label="Show validation errors for Time field"
+      >
+        <div nxPopoverTitle>
+          <h3 nxHeadline="subsection-xsmall" class="nx-margin-bottom-2xs">
+            Please review this field
+          </h3>
+        </div>
+        <ul nxPopoverMainContent nxList class="error-list">
+          @if (timeControl.hasError('required')) {
+            <li>A time is required.</li>
+          }
+        </ul>
+      </nx-signal-button>
+    }
+
+    <nx-error>
+      @if (timeControl.hasError('required')) {
+        A time is required.
+      }
+    </nx-error>
+
+    <nx-info-icon nxLabelInfo>Hello</nx-info-icon>
+  </nx-timefield>
+</div>

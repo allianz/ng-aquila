@@ -3,9 +3,9 @@
   <nx-checkbox-group [(ngModel)]="selected">
     <nx-context-menu-item-wrap>
       @for (o of options; track o) {
-      <div nxContextMenuItem nxContextMenuItemCheckbox disableCloseOnSelect>
-        <nx-checkbox [value]="o.value">{{o.label}}</nx-checkbox>
-      </div>
+        <div nxContextMenuItem nxContextMenuItemCheckbox disableCloseOnSelect>
+          <nx-checkbox [value]="o.value">{{ o.label }}</nx-checkbox>
+        </div>
       }
     </nx-context-menu-item-wrap>
   </nx-checkbox-group>
@@ -21,4 +21,4 @@
   Car damage
   <nx-icon aria-hidden="true" name="chevron-up" nxIconPositionEnd></nx-icon>
 </button>
-<div class="nx-margin-top-s">Model: {{selected}}</div>
+<div class="nx-margin-top-s">Model: {{ selected }}</div>

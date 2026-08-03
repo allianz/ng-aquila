@@ -23,9 +23,13 @@
           [(nxPopoverShow)]="popoverManualOpenFlag"
           nxPopoverDirection="bottom"
         >
-          @if(!aiFilled){
-          <nx-icon name="ai-suggestion-o" size="s" aria-hidden="true"></nx-icon>
-          <!-- <svg
+          @if (!aiFilled) {
+            <nx-icon
+              name="ai-suggestion-o"
+              size="s"
+              aria-hidden="true"
+            ></nx-icon>
+            <!-- <svg
             width="20"
             height="20"
             viewBox="0 0 20 20"
@@ -39,10 +43,10 @@
             fill="#5A3982"
             />
           </svg> -->
-          }@else {
-          <nx-icon name="ai-suggestion" size="s" aria-hidden="true"></nx-icon>
+          } @else {
+            <nx-icon name="ai-suggestion" size="s" aria-hidden="true"></nx-icon>
 
-          <!-- <svg
+            <!-- <svg
             width="20"
             height="20"
             viewBox="0 0 20 20"
@@ -98,20 +102,19 @@
           </p>
         </div>
 
-        @if(!aiFilled){
-
-        <div nxPopoverActions alignment="right">
-          <button
-            nxButton="small secondary"
-            type="button"
-            (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
-          >
-            Dismiss
-          </button>
-          <button nxButton="small" type="button" (click)="fillWithAi()">
-            Accept
-          </button>
-        </div>
+        @if (!aiFilled) {
+          <div nxPopoverActions alignment="right">
+            <button
+              nxButton="small secondary"
+              type="button"
+              (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
+            >
+              Dismiss
+            </button>
+            <button nxButton="small" type="button" (click)="fillWithAi()">
+              Accept
+            </button>
+          </div>
         }
       </nx-popover>
 

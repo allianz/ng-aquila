@@ -9,9 +9,10 @@
 >
   <div class="nx-dropdown__rendered" [id]="renderedValueId">
     @if (empty && placeholder) {
-    <span>{{ placeholder }}</span>
-    } @if (!empty) {
-    <ng-container *ngTemplateOutlet="closedDropdownLabel"></ng-container>
+      <span>{{ placeholder }}</span>
+    }
+    @if (!empty) {
+      <ng-container *ngTemplateOutlet="closedDropdownLabel"></ng-container>
     }
   </div>
   <div class="nx-dropdown__icon">
@@ -21,7 +22,7 @@
 
 <ng-template #defaultClosedDropdownLabel>
   @if (triggerValue) {
-  <span>{{ triggerValue }}</span>
+    <span>{{ triggerValue }}</span>
   }
 </ng-template>
 
@@ -49,38 +50,39 @@
     [class.nx-dropdown__panel--opening]="panelOpen && !isClosing"
     [class.nx-dropdown__panel--closing]="isClosing"
     [class.nx-dropdown__panel--in-outline-field]="_isInOutlineField"
-    [class.centered-checkmark]='verticalAlignCheckmark() === "center"'
+    [class.centered-checkmark]="verticalAlignCheckmark() === 'center'"
     (keydown)="_handleKeydown($event)"
     [dir]="dir"
     #panel
   >
     @if (label) {
-    <div class="nx-dropdown__panel-header">{{ label }}</div>
-    } @if (showFilter()) {
-    <div class="nx-dropdown__filter-wrap">
-      <div class="nx-dropdown__filter">
-        <input
-          class="nx-dropdown__filter-input"
-          [attr.aria-controls]="modalId"
-          [attr.aria-label]="label"
-          [attr.aria-activedescendant]="activeDescendantId()"
-          [class.is-filled]="!isFilterEmpty"
-          #filterInput
-          [type]="filterInputType"
-          (input)="$event.preventDefault()"
-          [(ngModel)]="filterValue"
-          (ngModelChange)="_onFilter($event)"
-          role="combobox"
-          aria-expanded="true"
-          [placeholder]="filterPlaceholder()"
-        />
-        @if (!isFilterEmpty) {
-        <span class="nx-dropdown__filter-icon" (click)="_clearFilter()">
-          <nx-icon name="close"></nx-icon>
-        </span>
-        }
+      <div class="nx-dropdown__panel-header">{{ label }}</div>
+    }
+    @if (showFilter()) {
+      <div class="nx-dropdown__filter-wrap">
+        <div class="nx-dropdown__filter">
+          <input
+            class="nx-dropdown__filter-input"
+            [attr.aria-controls]="modalId"
+            [attr.aria-label]="label"
+            [attr.aria-activedescendant]="activeDescendantId()"
+            [class.is-filled]="!isFilterEmpty"
+            #filterInput
+            [type]="filterInputType"
+            (input)="$event.preventDefault()"
+            [(ngModel)]="filterValue"
+            (ngModelChange)="_onFilter($event)"
+            role="combobox"
+            aria-expanded="true"
+            [placeholder]="filterPlaceholder()"
+          />
+          @if (!isFilterEmpty) {
+            <span class="nx-dropdown__filter-icon" (click)="_clearFilter()">
+              <nx-icon name="close"></nx-icon>
+            </span>
+          }
+        </div>
       </div>
-    </div>
     }
 
     <div
@@ -95,40 +97,53 @@
       [attr.aria-multiselectable]="isMultiSelect()"
     >
       @if (!virtualScroll()) {
-      <ng-content></ng-content>
-      @for (option of options; track option; let idx = $index) {
-      <nx-dropdown-item
-        (onSelectionChange)="_onSelect($event.item, $event.isUserInput, option)"
-        [value]="option.value"
-      >
-        @if (_itemTemplate()) {
-        <ng-container
-          *ngTemplateOutlet="_itemTemplate(); context: _createItemTemplateContext(option, idx)"
-        />
-        } @else {{{ _getLabel(option) }}}
-      </nx-dropdown-item>
-      } } @else {
-      <nx-virtual-viewport
-        #virtualViewport
-        class="nx-dropdown__virtual-viewport"
-        [itemHeight]="44"
-        [overscan]="20"
-      >
-        <nx-dropdown-item
-          *nxVirtualFor="let item of _filteredOptions(); let index = index; trackBy: 'value'"
-          [id]="modalId + '-option-' + index"
-          [value]="item.value"
-          [attr.aria-setsize]="_filteredOptions().length"
-          [attr.aria-posinset]="index + 1"
-          [active]="_virtualActiveIndex() === index"
-          [selected]="_isValueSelected(item.value)"
-          (onSelectionChange)="_onVirtualSelect($event, item, index)"
-          >@if (_itemTemplate()) {<ng-container
-            *ngTemplateOutlet="_itemTemplate(); context: _createItemTemplateContext(item, index)"
-          />
-          } @else {{{ _getOptionLabel(item) }}}
-        </nx-dropdown-item>
-      </nx-virtual-viewport>
+        <ng-content></ng-content>
+        @for (option of options; track option; let idx = $index) {
+          <nx-dropdown-item
+            (onSelectionChange)="_onSelect($event.item, $event.isUserInput, option)"
+            [value]="option.value"
+          >
+            @if (_itemTemplate()) {
+              <ng-container
+                *ngTemplateOutlet="
+                  _itemTemplate();
+                  context: _createItemTemplateContext(option, idx)
+                "
+              />
+            } @else {
+              {{ _getLabel(option) }}
+            }
+          </nx-dropdown-item>
+        }
+      } @else {
+        <nx-virtual-viewport
+          #virtualViewport
+          class="nx-dropdown__virtual-viewport"
+          [itemHeight]="44"
+          [overscan]="20"
+        >
+          <nx-dropdown-item
+            *nxVirtualFor="let item of _filteredOptions(); let index = index; trackBy: 'value'"
+            [id]="modalId + '-option-' + index"
+            [value]="item.value"
+            [attr.aria-setsize]="_filteredOptions().length"
+            [attr.aria-posinset]="index + 1"
+            [active]="_virtualActiveIndex() === index"
+            [selected]="_isValueSelected(item.value)"
+            (onSelectionChange)="_onVirtualSelect($event, item, index)"
+          >
+            @if (_itemTemplate()) {
+              <ng-container
+                *ngTemplateOutlet="
+                  _itemTemplate();
+                  context: _createItemTemplateContext(item, index)
+                "
+              />
+            } @else {
+              {{ _getOptionLabel(item) }}
+            }
+          </nx-dropdown-item>
+        </nx-virtual-viewport>
       }
     </div>
   </div>

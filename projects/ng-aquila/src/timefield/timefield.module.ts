@@ -1,5 +1,6 @@
+import { NxLabelInfoDirective } from '@allianz/ng-aquila/base';
 import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
+import { NxFormfieldAppendixDirective, NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxRadioModule } from '@allianz/ng-aquila/radio-button';
@@ -29,8 +30,10 @@ import { NxTimefieldOption } from './timefield-option';
     NxTimefieldOption,
     NxTimefieldControl,
     NxTimefieldComponent,
+    NxFormfieldAppendixDirective,
+    NxLabelInfoDirective,
   ],
-  exports: [NxTimefieldComponent],
+  exports: [NxTimefieldComponent, NxFormfieldAppendixDirective, NxLabelInfoDirective],
   providers: [],
 })
 export class NxTimefieldModule {}

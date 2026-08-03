@@ -7,16 +7,18 @@
           filterPlaceholder="Type to search car"
           #filterDropdown
         >
-          @if(fetchingOptions()){
-          <div>
-            <nx-spinner
-              size="large"
-              style="display: block; margin-left: auto; margin-right: auto"
-            />
-          </div>
-          } @else { @for (brand of options(); track $index) {
-          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
-          } }
+          @if (fetchingOptions()) {
+            <div>
+              <nx-spinner
+                size="large"
+                style="display: block; margin-left: auto; margin-right: auto"
+              />
+            </div>
+          } @else {
+            @for (brand of options(); track $index) {
+              <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+            }
+          }
         </nx-dropdown>
       </nx-formfield>
     </div>

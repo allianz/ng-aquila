@@ -170,6 +170,12 @@
   nx-icon {
     display: block;
   }
+
+  // Hide the slots if they are empty
+  // Enables double content projection when wrapping the form-field
+  &:empty {
+    display: none;
+  }
 }
 
 .nx-formfield__prefix,
@@ -335,6 +341,12 @@
   .nx-formfield__flexfield {
     @include type-style(formfield-outline-control);
     padding: 0;
+  }
+
+  .nx-formfield__appendix,
+  .nx-formfield__prefix,
+  .nx-formfield__suffix {
+    gap: v(formfield-outline-gap);
   }
 
   .nx-formfield__input-container {
@@ -683,6 +695,36 @@
 
   .nx-formfield__label {
     color: v(negative);
+  }
+}
+
+// Inline modifier: hide the label and remove the reserved space around the field.
+// Note: hints/errors/notes are not supported together with inline (v1) and are hidden.
+.nx-formfield--inline {
+  --formfield-label-height: 0;
+  --formfield-bottom-padding: 0;
+  --formfield-mobile-bottom-padding: 0;
+  --formfield-outline-label-height: 0;
+  --formfield-outline-bottom-padding: 0;
+
+  .nx-formfield__label-holder {
+    // visually hide the label while preserving the accessible name,
+    // the label id and the `for` association with the control
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .nx-formfield__hints,
+  .nx-formfield__message {
+    display: none;
   }
 }
 

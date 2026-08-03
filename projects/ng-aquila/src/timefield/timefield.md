@@ -15,6 +15,12 @@ The timefield component makes it easier for users to enter time inputs. Maximum 
 
 In 24h format you can enter hours between 0-23 and minutes between 0-59. Using the `twelveHourFormat` input of the timefield component, the AM/PM toggler can be activated. In 12h format you can enter hours between 1-12 and minutes between 0-59. Note that the model will always accept and return time in 24h format.
 
+### Formfield features
+
+`nx-timefield` wraps an `nx-formfield` internally and supports the same label, styling and content slots: `label`, `optionalLabel`, `appearance`, `negative`, `inline`, as well as the `nxFormfieldPrefix`, `nxFormfieldSuffix`, `nxFormfieldAppendix` and `nxLabelInfo` content projection slots. See the [formfield documentation](./documentation/formfield) for details on each. The example below shows them combined.
+
+<!-- example(timefield-full-features) -->
+
 ### Timefield
 
 <!-- example(timefield-default) -->
@@ -76,6 +82,12 @@ With `[readonly]` the timefield inputs and radio group can be set to readonly.
 You can apply the negative styling to the timefield by using the `[negative]` input.
 
 <!-- example(timefield-negative) -->
+
+### Inline
+
+With the `[inline]` input the timefield is rendered in a compact way: the label is visually hidden and the reserved space around the field is removed. The input is forwarded to the underlying formfield. Always provide a meaningful `label` as it is kept for assistive technology.
+
+<!-- example(timefield-inline) -->
 
 ### Expert
 

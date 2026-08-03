@@ -20,14 +20,17 @@
     <nx-error>
       <span id="error-headline"><b>Invalid or missing input:</b></span>
       <ul class="nx-margin-left-m">
-        @if(largeForm.controls.job.hasError('required') &&
-        largeForm.controls.job.touched){
-        <li id="error-profession-required">Profession is required.</li>
-
-        } @if(largeForm.controls.what.hasError('required') &&
-        largeForm.controls.what.touched){
-        <li id="error-object-to-insure">The object to insure is required</li>
-
+        @if (
+          largeForm.controls.job.hasError('required') &&
+          largeForm.controls.job.touched
+        ) {
+          <li id="error-profession-required">Profession is required.</li>
+        }
+        @if (
+          largeForm.controls.what.hasError('required') &&
+          largeForm.controls.what.touched
+        ) {
+          <li id="error-object-to-insure">The object to insure is required</li>
         }
       </ul>
     </nx-error>
@@ -58,16 +61,15 @@
   <nx-error>
     <span id="error-headline"><b>Invalid or missing input:</b></span>
     <ul class="nx-margin-left-m">
-      @if(professionInput.hasError('required') && professionInput.touched){
-      <li id="error-profession-required-small-nlf" #error>
-        Profession is required.
-      </li>
-
-      } @if(objectToInsure.hasError('required') && objectToInsure.touched){
-      <li id="error-object-to-insure-small-nlf">
-        The object to insure is required
-      </li>
-
+      @if (professionInput.hasError('required') && professionInput.touched) {
+        <li id="error-profession-required-small-nlf" #error>
+          Profession is required.
+        </li>
+      }
+      @if (objectToInsure.hasError('required') && objectToInsure.touched) {
+        <li id="error-object-to-insure-small-nlf">
+          The object to insure is required
+        </li>
       }
     </ul>
   </nx-error>

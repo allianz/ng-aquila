@@ -13,57 +13,58 @@
       </a>
     </nx-header-brand>
 
-    @if (viewType === 'desktop'){
-    <nx-header-actions>
-      <button nxButton="secondary small" type="button">Login</button>
-    </nx-header-actions>
-    } @if (viewType === 'tablet' || viewType === 'mobile'){
-    <nx-header-actions>
-      <button nxPlainButton aria-label="open search bar" type="button">
-        <nx-icon name="search" aria-hidden="true"></nx-icon>
-      </button>
-      <button
-        nxPlainButton
-        aria-label="login"
-        class="nx-margin-left-s"
-        type="button"
-      >
-        <nx-icon name="user" aria-hidden="true"></nx-icon>
-      </button>
-      <button
-        nxPlainButton
-        (click)="menu.toggle()"
-        aria-label="open menu"
-        class="nx-margin-left-s"
-        type="button"
-      >
-        <nx-icon name="bars" aria-hidden="true"></nx-icon>
-      </button>
-    </nx-header-actions>
+    @if (viewType === 'desktop') {
+      <nx-header-actions>
+        <button nxButton="secondary small" type="button">Login</button>
+      </nx-header-actions>
+    }
+    @if (viewType === 'tablet' || viewType === 'mobile') {
+      <nx-header-actions>
+        <button nxPlainButton aria-label="open search bar" type="button">
+          <nx-icon name="search" aria-hidden="true"></nx-icon>
+        </button>
+        <button
+          nxPlainButton
+          aria-label="login"
+          class="nx-margin-left-s"
+          type="button"
+        >
+          <nx-icon name="user" aria-hidden="true"></nx-icon>
+        </button>
+        <button
+          nxPlainButton
+          (click)="menu.toggle()"
+          aria-label="open menu"
+          class="nx-margin-left-s"
+          type="button"
+        >
+          <nx-icon name="bars" aria-hidden="true"></nx-icon>
+        </button>
+      </nx-header-actions>
     }
   </nx-header-row>
-  @if (viewType === 'desktop'){
-  <nx-header-row>
-    <nx-header-navigation>
-      @for (item of menuData; track item; let i = $index) {
-      <nx-header-navigation-item>
-        <a
-          routerLink="./"
-          [routerLinkActiveOptions]="{exact: true}"
-          [queryParams]="i === 0 ? null : item.query"
-          routerLinkActive="is-active"
-          nxHeaderLink
-          >{{item.label}}</a
-        >
-      </nx-header-navigation-item>
-      }
-    </nx-header-navigation>
-    <nx-header-actions>
-      <button nxPlainButton aria-label="open search bar" type="button">
-        <nx-icon name="search" aria-hidden="true"></nx-icon>
-      </button>
-    </nx-header-actions>
-  </nx-header-row>
+  @if (viewType === 'desktop') {
+    <nx-header-row>
+      <nx-header-navigation>
+        @for (item of menuData; track item; let i = $index) {
+          <nx-header-navigation-item>
+            <a
+              routerLink="./"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [queryParams]="i === 0 ? null : item.query"
+              routerLinkActive="is-active"
+              nxHeaderLink
+              >{{ item.label }}</a
+            >
+          </nx-header-navigation-item>
+        }
+      </nx-header-navigation>
+      <nx-header-actions>
+        <button nxPlainButton aria-label="open search bar" type="button">
+          <nx-icon name="search" aria-hidden="true"></nx-icon>
+        </button>
+      </nx-header-actions>
+    </nx-header-row>
   }
 </header>
 
@@ -92,14 +93,14 @@
     </button>
   </div>
   @for (item of menuData; track item) {
-  <button
-    nxMenuButton
-    menuButtonType="root"
-    nxMenuItem
-    type="button"
-    routerLink="./"
-  >
-    {{item.label}}
-  </button>
+    <button
+      nxMenuButton
+      menuButtonType="root"
+      nxMenuItem
+      type="button"
+      routerLink="./"
+    >
+      {{ item.label }}
+    </button>
   }
 </nx-menu>

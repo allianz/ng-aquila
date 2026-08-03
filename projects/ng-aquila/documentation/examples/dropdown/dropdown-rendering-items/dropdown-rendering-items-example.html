@@ -11,18 +11,18 @@
             <span>{{ value?.brand }}</span>
           </ng-template>
           @for (car of demoData; track car.id) {
-          <nx-dropdown-item [value]="car">
-            <div style="display: flex; align-items: center">
-              <div nxAvatar size="small" class="nx-margin-right-m">
-                {{ car.avatar }}
-              </div>
+            <nx-dropdown-item [value]="car">
+              <div style="display: flex; align-items: center">
+                <div nxAvatar size="small" class="nx-margin-right-m">
+                  {{ car.avatar }}
+                </div>
 
-              <div style="display: flex; flex-direction: column">
-                <span class="nx-font-weight-semibold"> {{ car.brand }} </span>
-                <span class="nx-font-weight-light"> {{ car.year }} </span>
+                <div style="display: flex; flex-direction: column">
+                  <span class="nx-font-weight-semibold"> {{ car.brand }} </span>
+                  <span class="nx-font-weight-light"> {{ car.year }} </span>
+                </div>
               </div>
-            </div>
-          </nx-dropdown-item>
+            </nx-dropdown-item>
           }
         </nx-dropdown>
       </nx-formfield>

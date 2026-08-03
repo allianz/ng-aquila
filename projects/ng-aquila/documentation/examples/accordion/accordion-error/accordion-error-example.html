@@ -7,11 +7,11 @@
       <nx-expansion-panel-title>
         <div class="expansion-title-with-icon">
           @if (infoHasError) {
-          <nx-icon
-            class="nx-error__icon"
-            [name]="'exclamation-triangle'"
-            aria-hidden="true"
-          ></nx-icon>
+            <nx-icon
+              class="nx-error__icon"
+              [name]="'exclamation-triangle'"
+              aria-hidden="true"
+            ></nx-icon>
           }
           <span>General Information</span>
         </div>
@@ -46,11 +46,11 @@
       <nx-expansion-panel-title>
         <div class="expansion-title-with-icon">
           @if (paymentHasError) {
-          <nx-icon
-            aria-hidden="true"
-            class="nx-error__icon"
-            [name]="'exclamation-triangle'"
-          ></nx-icon>
+            <nx-icon
+              aria-hidden="true"
+              class="nx-error__icon"
+              [name]="'exclamation-triangle'"
+            ></nx-icon>
           }
           <span>Payment details</span>
         </div>
@@ -74,8 +74,8 @@
   </nx-expansion-panel>
 </nx-accordion>
 @if (infoHasError || paymentHasError) {
-<nx-message id="error_example" context="error" class="nx-margin-top-xs">
-  <strong> Error: </strong> Please check the section containing an error marked
-  with a red triangle with an exclamation mark.
-</nx-message>
+  <nx-message id="error_example" context="error" class="nx-margin-top-xs">
+    <strong> Error: </strong> Please check the section containing an error
+    marked with a red triangle with an exclamation mark.
+  </nx-message>
 }

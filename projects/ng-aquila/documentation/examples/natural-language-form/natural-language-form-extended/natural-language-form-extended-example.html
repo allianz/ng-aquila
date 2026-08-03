@@ -34,24 +34,33 @@
     <nx-error>
       <span id="error-headline"><b>Invalid or missing input:</b></span>
       <ul class="nx-margin-left-m">
-        @if(naturalForm.controls.who.hasError('required') &&
-        naturalForm.controls.who.touched){
-        <li id="profession-error-required">Profession is required.</li>
-
-        } @if(naturalForm.controls.city.hasError('required') &&
-        naturalForm.controls.city.touched){
-        <li id="city-error-required">The city is required.</li>
-
-        } @if(naturalForm.controls.spots.hasError('required') &&
-        naturalForm.controls.spots.touched){
-        <li id="spots-error-required">Number of Spots to visit is required.</li>
-
-        } @if(naturalForm.controls.spots.hasError('pattern') &&
-        naturalForm.controls.spots.touched){
-        <li id="spots-error-pattern">
-          Number of Spots to visit has to be a number.
-        </li>
-
+        @if (
+          naturalForm.controls.who.hasError('required') &&
+          naturalForm.controls.who.touched
+        ) {
+          <li id="profession-error-required">Profession is required.</li>
+        }
+        @if (
+          naturalForm.controls.city.hasError('required') &&
+          naturalForm.controls.city.touched
+        ) {
+          <li id="city-error-required">The city is required.</li>
+        }
+        @if (
+          naturalForm.controls.spots.hasError('required') &&
+          naturalForm.controls.spots.touched
+        ) {
+          <li id="spots-error-required">
+            Number of Spots to visit is required.
+          </li>
+        }
+        @if (
+          naturalForm.controls.spots.hasError('pattern') &&
+          naturalForm.controls.spots.touched
+        ) {
+          <li id="spots-error-pattern">
+            Number of Spots to visit has to be a number.
+          </li>
         }
       </ul>
     </nx-error>

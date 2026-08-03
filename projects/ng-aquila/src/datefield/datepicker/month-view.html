@@ -2,7 +2,7 @@
   <thead class="nx-calendar-table-head">
     <tr>
       @for (day of _weekdays; track day) {
-      <th class="nx-calendar-table-header" [attr.aria-label]="day.long">{{day.narrow}}</th>
+        <th class="nx-calendar-table-header" [attr.aria-label]="day.long">{{ day.narrow }}</th>
       }
     </tr>
   </thead>

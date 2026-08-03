@@ -43,3 +43,8 @@
 .header-container button {
   margin: 0 auto;
 }
+
+.error-list {
+  margin: 0;
+  padding-left: 20px;
+}

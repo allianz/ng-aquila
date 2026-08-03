@@ -15,127 +15,145 @@
 <main nxLayout="grid maxwidth">
   <div nxRow>
     <div nxCol="12">
-      @switch (stepper.selectedIndex) { @case (0) {
-      <form [formGroup]="animalTypeForm.form">
-        <nx-formfield
-          [label]="animalTypeForm.label"
-          floatLabel="always"
-          appearance="outline"
-        >
-          <nx-dropdown formControlName="animalType">
-            @for (animalType of animalTypes; track animalType) {
-            <nx-dropdown-item [value]="animalType"></nx-dropdown-item>
-            }
-          </nx-dropdown>
-          <nx-error appearance="text" nxFormfieldError>
-            Please choose an animal species!
-          </nx-error>
-        </nx-formfield>
-        <button nxButton="primary small" (click)="stepper.next()" type="button">
-          Next
-        </button>
-      </form>
-      } @case (1) {
-      <form [formGroup]="nameForm.form">
-        <nx-formfield
-          [label]="nameForm.label"
-          floatLabel="always"
-          appearance="outline"
-        >
-          <input nxInput formControlName="name" type="text" />
-          <nx-error appearance="text" nxFormfieldError>
-            Please enter a name!
-          </nx-error>
-        </nx-formfield>
-        <button
-          nxButton="secondary small"
-          (click)="stepper.previous()"
-          type="button"
-        >
-          Previous
-        </button>
-        <button nxButton="primary small" (click)="stepper.next()" type="button">
-          Next
-        </button>
-      </form>
-      } @case (2) {
-      <form [formGroup]="breedForm.form">
-        @if (breedForm.form.get('dogBreed')) {
-        <nx-formfield
-          [label]="breedForm.label"
-          floatLabel="always"
-          appearance="outline"
-        >
-          <nx-dropdown formControlName="dogBreed">
-            @for (breed of dogBreeds; track breed) {
-            <nx-dropdown-item [value]="breed"></nx-dropdown-item>
-            }
-          </nx-dropdown>
-          <nx-error appearance="text" nxFormfieldError>
-            Please select a breed!
-          </nx-error>
-        </nx-formfield>
-        } @if (breedForm.form.get('catBreed')) {
-        <nx-formfield
-          [label]="breedForm.label"
-          floatLabel="always"
-          appearance="outline"
-        >
-          <nx-dropdown formControlName="catBreed">
-            @for (breed of catBreeds; track breed) {
-            <nx-dropdown-item [value]="breed"></nx-dropdown-item>
-            }
-          </nx-dropdown>
-          <nx-error appearance="text" nxFormfieldError>
-            Please select a breed!
-          </nx-error>
-        </nx-formfield>
+      @switch (stepper.selectedIndex) {
+        @case (0) {
+          <form [formGroup]="animalTypeForm.form">
+            <nx-formfield
+              [label]="animalTypeForm.label"
+              floatLabel="always"
+              appearance="outline"
+            >
+              <nx-dropdown formControlName="animalType">
+                @for (animalType of animalTypes; track animalType) {
+                  <nx-dropdown-item [value]="animalType"></nx-dropdown-item>
+                }
+              </nx-dropdown>
+              <nx-error appearance="text" nxFormfieldError>
+                Please choose an animal species!
+              </nx-error>
+            </nx-formfield>
+            <button
+              nxButton="primary small"
+              (click)="stepper.next()"
+              type="button"
+            >
+              Next
+            </button>
+          </form>
         }
-        <button
-          nxButton="secondary small"
-          (click)="stepper.previous()"
-          type="button"
-        >
-          Previous
-        </button>
-        <button nxButton="primary small" (click)="stepper.next()" type="button">
-          Next
-        </button>
-      </form>
-      } @case (3) {
-      <form [formGroup]="ageForm.form" (submit)="onSubmit()">
-        <nx-formfield
-          [label]="ageForm.label"
-          floatLabel="always"
-          appearance="outline"
-        >
-          <input nxInput formControlName="age" type="number" />
-          <nx-error appearance="text" nxFormfieldError>
-            Please enter an age!
-          </nx-error>
-        </nx-formfield>
-        <button
-          nxButton="secondary small"
-          (click)="stepper.previous()"
-          type="button"
-        >
-          Previous
-        </button>
-        <button
-          nxButton="primary small"
-          type="submit"
-          [disabled]="ageForm.form.invalid"
-        >
-          Submit
-        </button>
-      </form>
-      } }
+        @case (1) {
+          <form [formGroup]="nameForm.form">
+            <nx-formfield
+              [label]="nameForm.label"
+              floatLabel="always"
+              appearance="outline"
+            >
+              <input nxInput formControlName="name" type="text" />
+              <nx-error appearance="text" nxFormfieldError>
+                Please enter a name!
+              </nx-error>
+            </nx-formfield>
+            <button
+              nxButton="secondary small"
+              (click)="stepper.previous()"
+              type="button"
+            >
+              Previous
+            </button>
+            <button
+              nxButton="primary small"
+              (click)="stepper.next()"
+              type="button"
+            >
+              Next
+            </button>
+          </form>
+        }
+        @case (2) {
+          <form [formGroup]="breedForm.form">
+            @if (breedForm.form.get('dogBreed')) {
+              <nx-formfield
+                [label]="breedForm.label"
+                floatLabel="always"
+                appearance="outline"
+              >
+                <nx-dropdown formControlName="dogBreed">
+                  @for (breed of dogBreeds; track breed) {
+                    <nx-dropdown-item [value]="breed"></nx-dropdown-item>
+                  }
+                </nx-dropdown>
+                <nx-error appearance="text" nxFormfieldError>
+                  Please select a breed!
+                </nx-error>
+              </nx-formfield>
+            }
+            @if (breedForm.form.get('catBreed')) {
+              <nx-formfield
+                [label]="breedForm.label"
+                floatLabel="always"
+                appearance="outline"
+              >
+                <nx-dropdown formControlName="catBreed">
+                  @for (breed of catBreeds; track breed) {
+                    <nx-dropdown-item [value]="breed"></nx-dropdown-item>
+                  }
+                </nx-dropdown>
+                <nx-error appearance="text" nxFormfieldError>
+                  Please select a breed!
+                </nx-error>
+              </nx-formfield>
+            }
+            <button
+              nxButton="secondary small"
+              (click)="stepper.previous()"
+              type="button"
+            >
+              Previous
+            </button>
+            <button
+              nxButton="primary small"
+              (click)="stepper.next()"
+              type="button"
+            >
+              Next
+            </button>
+          </form>
+        }
+        @case (3) {
+          <form [formGroup]="ageForm.form" (submit)="onSubmit()">
+            <nx-formfield
+              [label]="ageForm.label"
+              floatLabel="always"
+              appearance="outline"
+            >
+              <input nxInput formControlName="age" type="number" />
+              <nx-error appearance="text" nxFormfieldError>
+                Please enter an age!
+              </nx-error>
+            </nx-formfield>
+            <button
+              nxButton="secondary small"
+              (click)="stepper.previous()"
+              type="button"
+            >
+              Previous
+            </button>
+            <button
+              nxButton="primary small"
+              type="submit"
+              [disabled]="ageForm.form.invalid"
+            >
+              Submit
+            </button>
+          </form>
+        }
+      }
     </div>
   </div>
 
   <div nxRow>
     <div nxCol="12">
-      <code> {{ value| json }} </code>
+      <code> {{ value | json }} </code>
     </div>
   </div>
 

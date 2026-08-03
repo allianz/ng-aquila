@@ -4,18 +4,18 @@
       <nx-formfield label="Start date">
         <nx-dropdown [(value)]="startMonth">
           @for (date of monthsOfYearList; track date) {
-          <nx-dropdown-item [value]="date.month">
-            {{date.monthName}}
-          </nx-dropdown-item>
+            <nx-dropdown-item [value]="date.month">
+              {{ date.monthName }}
+            </nx-dropdown-item>
           }
         </nx-dropdown>
       </nx-formfield>
       <nx-formfield label="End date">
         <nx-dropdown [(value)]="endMonth">
           @for (date of monthsOfYearList; track date) {
-          <nx-dropdown-item [value]="date.month">
-            {{date.monthName}}
-          </nx-dropdown-item>
+            <nx-dropdown-item [value]="date.month">
+              {{ date.monthName }}
+            </nx-dropdown-item>
           }
         </nx-dropdown>
       </nx-formfield>

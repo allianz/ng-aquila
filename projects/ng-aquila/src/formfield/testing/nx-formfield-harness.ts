@@ -21,6 +21,7 @@ export interface NxFormfieldFilters extends BaseHarnessFilters {
   label?: string | RegExp;
   hasErrors?: boolean;
   readonly?: boolean;
+  inline?: boolean;
 }
 
 export type FormfieldControlHarness = NxInputHarness | NxDropdownHarness;
@@ -42,6 +43,11 @@ export class NxFormfieldHarness extends ContentContainerComponentHarness {
         'readonly',
         options.readonly,
         async (harness, readonly) => (await harness.isReadonly()) === readonly,
+      )
+      .addOption(
+        'inline',
+        options.inline,
+        async (harness, inline) => (await harness.isInline()) === inline,
       );
   }
 
@@ -137,5 +143,9 @@ export class NxFormfieldHarness extends ContentContainerComponentHarness {
 
   async isReadonly(): Promise<boolean> {
     return (await this.host()).hasClass('is-readonly');
+  }
+
+  async isInline(): Promise<boolean> {
+    return (await this.host()).hasClass('nx-formfield--inline');
   }
 }

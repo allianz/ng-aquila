@@ -127,6 +127,17 @@ describe('NxFormfieldHarness', () => {
     expect(await formfield.isReadonly()).toBe(true);
   });
 
+  it('should get is inline', async () => {
+    const fixture = TestBed.createComponent(MainFormfieldTest);
+    fixture.detectChanges();
+    const loader = TestbedHarnessEnvironment.loader(fixture);
+
+    const formfields = await loader.getAllHarnesses(NxFormfieldHarness);
+
+    expect(await formfields[6].isInline()).toBe(true); // Inline formfield
+    expect(await formfields[5].isInline()).toBe(false); // Readonly (non-inline) formfield
+  });
+
   describe('filters', () => {
     let loader: HarnessLoader;
 
@@ -160,7 +171,14 @@ describe('NxFormfieldHarness', () => {
         1,
       );
       expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ readonly: false }))).toHaveSize(
-        4,
+        5,
+      );
+    });
+
+    it('should find by inline', async () => {
+      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ inline: true }))).toHaveSize(1);
+      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ inline: false }))).toHaveSize(
+        5,
       );
     });
   });
@@ -200,6 +218,11 @@ describe('NxFormfieldHarness', () => {
     <!-- Index 5: Readonly test -->
     <nx-formfield>
       <input nxInput readonly />
+    </nx-formfield>
+
+    <!-- Index 6: Inline test -->
+    <nx-formfield label="Inline" [inline]="true">
+      <input nxInput />
     </nx-formfield>
   `,
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -273,6 +296,7 @@ class ValidationErrorTest {
     <nx-formfield label="Baz"><input nxInput /></nx-formfield>
     <nx-formfield><input nxInput [readonly]="true" /></nx-formfield>
     <nx-formfield><input nxInput /></nx-formfield>
+    <nx-formfield [inline]="true"><input nxInput /></nx-formfield>
   `,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],

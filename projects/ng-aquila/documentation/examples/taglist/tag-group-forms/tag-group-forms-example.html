@@ -8,7 +8,7 @@
   aria-label="Filter fruits"
 >
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
   }
 </nx-tag-group>
 
@@ -18,7 +18,7 @@
 
 <nx-tag-group [formControl]="control" aria-label="Filter fruits">
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
   }
 </nx-tag-group>
 

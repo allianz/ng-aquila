@@ -1,10 +1,11 @@
-import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { NxErrorComponent, NxLabelInfoDirective } from '@allianz/ng-aquila/base';
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { getOverlayOffsetYForOutlineAppearance } from '@allianz/ng-aquila/dropdown';
 import {
   AppearanceType,
   FORMFIELD_DEFAULT_OPTIONS,
   FormfieldDefaultOptions,
+  NxFormfieldAppendixDirective,
   NxFormfieldComponent,
   NxFormfieldControl,
   NxFormfieldModule,
@@ -23,7 +24,7 @@ import {
 import { ActiveDescendantKeyManager, FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkConnectedOverlay, ConnectionPositionPair, OverlayModule } from '@angular/cdk/overlay';
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   booleanAttribute,
@@ -32,6 +33,7 @@ import {
   Component,
   computed,
   ContentChild,
+  contentChildren,
   DestroyRef,
   DoCheck,
   ElementRef,
@@ -149,6 +151,7 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
     '[class.is-negative]': 'negative',
     '[class.is-disabled]': 'disabled',
     '[class.has-timepicker]': 'withTimepicker',
+    '[class.is-inline]': 'inline()',
     '(focusout)': '_onBlur($event)',
   },
   providers: [
@@ -174,6 +177,7 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
     NxIconModule,
     NxRadioToggleModule,
     OverlayModule,
+    NgTemplateOutlet,
   ],
 })
 export class NxTimefieldComponent
@@ -201,6 +205,9 @@ export class NxTimefieldComponent
 
   @ViewChild(NxFormfieldComponent) formfield!: NxFormfieldComponent;
   @ContentChild(NxErrorComponent) error: NxErrorComponent | undefined;
+  // Used to only render the relay markers below when content is actually projected.
+  protected readonly _appendixChildren = contentChildren(NxFormfieldAppendixDirective);
+  protected readonly _labelInfoChildren = contentChildren(NxLabelInfoDirective);
   _toggleAMPM!: string | null;
   protected isOpen = false;
 
@@ -219,6 +226,8 @@ export class NxTimefieldComponent
   @Input() hint = '';
   /* The optional label for the formfield. */
   readonly optionalLabel = input<string>('');
+  /** Whether the timefield is rendered inline (hides the label and removes the reserved space around the field). */
+  readonly inline = input(false, { transform: booleanAttribute });
   /** The inputmode for the formfield. */
   readonly inputMode = input<InputModeType>('decimal');
 

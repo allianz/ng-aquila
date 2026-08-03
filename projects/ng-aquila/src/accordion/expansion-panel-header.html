@@ -1,10 +1,10 @@
 <div
-  [ngClass]="{'nx-expansion-panel__header-content': true, 'flush-aligned': panel.flushAlignment}"
+  [ngClass]="{ 'nx-expansion-panel__header-content': true, 'flush-aligned': panel.flushAlignment }"
 >
   <ng-content select="nx-expansion-panel-title"></ng-content>
   <ng-content select="nx-expansion-panel-description"></ng-content>
   <nx-icon
-    [ngClass]="{'chevron-rotate-open': isExpanded(), 'chevron-rotate-closed': !isExpanded()}"
+    [ngClass]="{ 'chevron-rotate-open': isExpanded(), 'chevron-rotate-closed': !isExpanded() }"
     class="nx-expansion-panel__chevron"
     name="chevron-down"
     aria-hidden="true"

@@ -1,0 +1,26 @@
+<nx-timefield
+  label="Departure time"
+  optionalLabel="optional"
+  hint="Enter the time in 24h format"
+  withTimepicker
+  [formControl]="timeControl"
+>
+  <span nxFormfieldPrefix>From</span>
+  <span nxFormfieldSuffix>h</span>
+  <button
+    nxFormfieldAppendix
+    nxIconButton="tertiary small"
+    type="button"
+    aria-label="Open settings"
+  >
+    <nx-icon name="setting" size="s" aria-hidden="true"></nx-icon>
+  </button>
+  <nx-info-icon nxLabelInfo>
+    The departure time is shown in your local timezone.
+  </nx-info-icon>
+  <nx-error>
+    @if (timeControl.hasError('required')) {
+      A departure time is required.
+    }
+  </nx-error>
+</nx-timefield>

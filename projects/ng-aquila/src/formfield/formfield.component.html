@@ -28,7 +28,7 @@ We are building the following structure.
 
         <div class="nx-formfield__input">
           <!-- This handles the floating whole behavior -->
-          <span class="nx-formfield__label-holder">
+          <span class="nx-formfield__label-holder" [inert]="inline()">
             <label class="nx-formfield__label" [id]="labelId" [attr.for]="_control.id">
               @if (!_labelChild) {
                 @if (!_isRequired() && _optionalLabel(); as optionalLabel) {

@@ -5,14 +5,14 @@
 </p>
 <nx-circle-toggle-group>
   @for (item of sampleValues; track item) {
-  <nx-circle-toggle
-    [value]="item.value"
-    [circleText]="item.circleText"
-    [hint]="item.hint"
-    [label]="item.label"
-    [checked]="item.selected"
-  >
-  </nx-circle-toggle>
+    <nx-circle-toggle
+      [value]="item.value"
+      [circleText]="item.circleText"
+      [hint]="item.hint"
+      [label]="item.label"
+      [checked]="item.selected"
+    >
+    </nx-circle-toggle>
   }
 </nx-circle-toggle-group>
 <br />
@@ -25,16 +25,16 @@
   <div nxLayout="maxwidth">
     <div nxRow>
       @for (item of sampleValues; track item) {
-      <div nxCol="12,6,4,4" class="toggle-item">
-        <nx-circle-toggle
-          [value]="item.value"
-          [circleText]="item.circleText"
-          [hint]="item.hint"
-          [label]="item.label"
-          [checked]="item.selected"
-        >
-        </nx-circle-toggle>
-      </div>
+        <div nxCol="12,6,4,4" class="toggle-item">
+          <nx-circle-toggle
+            [value]="item.value"
+            [circleText]="item.circleText"
+            [hint]="item.hint"
+            [label]="item.label"
+            [checked]="item.selected"
+          >
+          </nx-circle-toggle>
+        </div>
       }
     </div>
   </div>
@@ -47,14 +47,14 @@
 <nx-circle-toggle-group responsive="false">
   <div class="grid-wrapper">
     @for (item of sampleValues; track item) {
-    <nx-circle-toggle
-      [value]="item.value"
-      [circleText]="item.circleText"
-      [hint]="item.hint"
-      [label]="item.label"
-      [checked]="item.selected"
-    >
-    </nx-circle-toggle>
+      <nx-circle-toggle
+        [value]="item.value"
+        [circleText]="item.circleText"
+        [hint]="item.hint"
+        [label]="item.label"
+        [checked]="item.selected"
+      >
+      </nx-circle-toggle>
     }
   </div>
 </nx-circle-toggle-group>

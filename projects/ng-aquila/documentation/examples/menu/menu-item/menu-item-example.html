@@ -1,19 +1,20 @@
 @for (item of menuData; track item) {
-<button
-  nxMenuButton
-  (click)="onClick(item)"
-  menuButtonType="root"
-  [expandable]="!!item.children"
-  nxMenuItem
-  [expanded]="item.expanded"
-  type="button"
->
-  {{item.label}}
-</button>
-@if (item.children && item.expanded) {
-<div nxMenuItem>
-  @for (child of item.children; track child) {
-  <a nxMenuLink href="javascript:void(0)">{{child.label}}</a>
+  <button
+    nxMenuButton
+    (click)="onClick(item)"
+    menuButtonType="root"
+    [expandable]="!!item.children"
+    nxMenuItem
+    [expanded]="item.expanded"
+    type="button"
+  >
+    {{ item.label }}
+  </button>
+  @if (item.children && item.expanded) {
+    <div nxMenuItem>
+      @for (child of item.children; track child) {
+        <a nxMenuLink href="javascript:void(0)">{{ child.label }}</a>
+      }
+    </div>
   }
-</div>
-} }
+}

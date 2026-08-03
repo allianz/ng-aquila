@@ -106,6 +106,8 @@ describe('NxFormfieldComponent', () => {
           NativeSelectFormfield,
           ConditionalInputComponent,
           NoChangeDetectionFormfield,
+          InlineFormfield,
+          DoubleProjectionFormfield,
         ],
       }).compileComponents();
     }));
@@ -316,6 +318,66 @@ describe('NxFormfieldComponent', () => {
       testInstance.readonly = true;
       fixture.detectChanges();
       expect(formfieldElement).toHaveClass('is-readonly');
+    });
+
+    describe('inline', () => {
+      it('adds the nx-formfield--inline class when inline is set', () => {
+        createTestComponent(InlineFormfield);
+        expect(formfieldElement).not.toHaveClass('nx-formfield--inline');
+
+        (testInstance as InlineFormfield).inline = true;
+        fixture.detectChanges();
+        expect(formfieldElement).toHaveClass('nx-formfield--inline');
+      });
+
+      it('keeps the label in the DOM with its id and for association when inline', () => {
+        createTestComponent(InlineFormfield);
+        (testInstance as InlineFormfield).inline = true;
+        fixture.detectChanges();
+
+        expect(labelElement).toBeTruthy();
+        expect(labelElement.id).toBe(formfieldInstance.labelId);
+        expect(labelElement.getAttribute('for')).toBe(formfieldInstance._control.id);
+      });
+
+      it('sets inert on the label holder when inline, and removes it when not inline', () => {
+        createTestComponent(InlineFormfield);
+        const holder = formfieldElement.querySelector('.nx-formfield__label-holder')!;
+        expect(holder.hasAttribute('inert')).toBe(false);
+
+        (testInstance as InlineFormfield).inline = true;
+        fixture.detectChanges();
+        expect(holder.hasAttribute('inert')).toBe(true);
+      });
+    });
+
+    describe('double content projection', () => {
+      it('collapses empty suffix/prefix wrappers produced via ng-container double projection', () => {
+        createTestComponent(DoubleProjectionFormfield);
+        (testInstance as DoubleProjectionFormfield).showContent = false;
+        fixture.detectChanges();
+
+        expect(
+          getComputedStyle(formfieldElement.querySelector('.nx-formfield__suffix')!).display,
+        ).toBe('none');
+        expect(
+          getComputedStyle(formfieldElement.querySelector('.nx-formfield__prefix')!).display,
+        ).toBe('none');
+      });
+
+      it('keeps suffix/prefix/appendix wrappers visible when the double-projected content is non-empty', () => {
+        createTestComponent(DoubleProjectionFormfield);
+
+        expect(
+          getComputedStyle(formfieldElement.querySelector('.nx-formfield__suffix')!).display,
+        ).not.toBe('none');
+        expect(
+          getComputedStyle(formfieldElement.querySelector('.nx-formfield__prefix')!).display,
+        ).not.toBe('none');
+        expect(
+          getComputedStyle(formfieldElement.querySelector('.nx-formfield__appendix')!).display,
+        ).not.toBe('none');
+      });
     });
 
     describe('programmatic tests', () => {
@@ -598,6 +660,19 @@ describe('NxFormfieldComponent info icon', () => {
       expect(getOverlayContent().textContent).toContain('Field help');
     }));
 
+    it('makes the label-holder inert and its info-icon trigger unfocusable when inline', () => {
+      const _fixture = createTestComponent(InfoIconFormfield);
+      _fixture.componentInstance.inline = true;
+      _fixture.detectChanges();
+
+      const holder = formfieldElement.querySelector('.nx-formfield__label-holder')!;
+      expect(holder.hasAttribute('inert')).toBe(true);
+
+      const infoButton = holder.querySelector('nx-info-icon button') as HTMLButtonElement;
+      infoButton.focus();
+      expect(document.activeElement).not.toBe(infoButton);
+    });
+
     it('renders the info icon outside of the <label> element for accessibility', () => {
       createTestComponent(InfoIconFormfield);
       const infoIcon = formfieldElement.querySelector('nx-info-icon')!;
@@ -823,7 +898,49 @@ class ConditionalInputComponent extends FormfieldTest {}
 
 @Component({
   template: `
-    <nx-formfield label="Given Label">
+    <nx-formfield label="IBAN" [inline]="inline" [appearance]="appearance">
+      <input nxInput [(ngModel)]="currentValue" />
+      <span nxFormfieldHint>my hint</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+})
+class InlineFormfield extends FormfieldTest {
+  inline = false;
+}
+
+@Component({
+  template: `
+    <nx-formfield label="Label">
+      <input nxInput />
+      <ng-container nxFormfieldSuffix>
+        @if (showContent) {
+          <span>content-suffix</span>
+        }
+      </ng-container>
+      <ng-container nxFormfieldPrefix>
+        @if (showContent) {
+          <span>content-prefix</span>
+        }
+      </ng-container>
+      <span nxFormfieldAppendix>
+        @if (showContent) {
+          <span>content-appendix</span>
+        }
+      </span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+})
+class DoubleProjectionFormfield extends FormfieldTest {
+  showContent = true;
+}
+
+@Component({
+  template: `
+    <nx-formfield label="Given Label" [inline]="inline">
       <input nxInput />
       <nx-info-icon nxLabelInfo>
         <span class="template-content">Field help</span>
@@ -839,7 +956,9 @@ class ConditionalInputComponent extends FormfieldTest {}
     NxInfoIconComponent,
   ],
 })
-class InfoIconFormfield extends FormfieldTest {}
+class InfoIconFormfield extends FormfieldTest {
+  inline = false;
+}
 
 @Component({
   template: `

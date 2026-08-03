@@ -1243,12 +1243,14 @@ describe('NxDropdownComponent', () => {
 
       let groupLabel = dropdownGroups
         .item(0)
-        .querySelector('.nx-dropdown-results__group-label')!.textContent;
+        .querySelector('.nx-dropdown-results__group-label')!
+        .textContent?.trim();
       expect(groupLabel).toBe('German');
 
       groupLabel = dropdownGroups
         .item(1)
-        .querySelector('.nx-dropdown-results__group-label')!.textContent;
+        .querySelector('.nx-dropdown-results__group-label')!
+        .textContent?.trim();
       expect(groupLabel).toBe('Swedish');
     }));
   });
@@ -1818,9 +1820,9 @@ describe('NxDropdownComponent', () => {
     it('renders labels', fakeAsync(() => {
       openDropdownByClick();
       const options = getDropdownItems();
-      expect(options[0].textContent).toBe('one');
-      expect(options[1].textContent).toBe('two');
-      expect(options[2].textContent).toBe('three');
+      expect(options[0].textContent?.trim()).toBe('one');
+      expect(options[1].textContent?.trim()).toBe('two');
+      expect(options[2].textContent?.trim()).toBe('three');
     }));
 
     it('selects option', fakeAsync(() => {

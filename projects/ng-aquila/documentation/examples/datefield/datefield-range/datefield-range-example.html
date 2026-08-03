@@ -12,12 +12,15 @@
           ></nx-date-range>
 
           <nx-error nxFormfieldError appearance="text">
-            @if(dateRangeForm.controls.range.errors?.required){ Required: Please
-            enter a date range. }
-            @if(dateRangeForm.controls.range.errors?.nxDateRangeInvalid){
-            Invalid: The end date can't be before the start date. }
-            @if(dateRangeForm.controls.range.errors?.nxDateRangeIncomplete ){
-            Please enter a start and an end date. }
+            @if (dateRangeForm.controls.range.errors?.required) {
+              Required: Please enter a date range.
+            }
+            @if (dateRangeForm.controls.range.errors?.nxDateRangeInvalid) {
+              Invalid: The end date can't be before the start date.
+            }
+            @if (dateRangeForm.controls.range.errors?.nxDateRangeIncomplete) {
+              Please enter a start and an end date.
+            }
           </nx-error>
           <span
             aria-label="Please provide date in the US format"

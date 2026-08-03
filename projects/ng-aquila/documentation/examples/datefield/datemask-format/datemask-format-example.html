@@ -31,17 +31,21 @@
           [format]="format"
           #dateMinMaxModel="ngModel"
         ></nx-datemask>
-        <span nxFormfieldHint>{{format}}</span>
+        <span nxFormfieldHint>{{ format }}</span>
         @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMax) {
-        <nx-error nxFormfieldError>
-          The date is too far in the future
-        </nx-error>
-        } @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMin)
-        {
-        <nx-error nxFormfieldError> The date is too far in the past </nx-error>
-        } @if (dateMinMaxModel.errors &&
-        dateMinMaxModel.errors.nxDatefieldParse) {
-        <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+          <nx-error nxFormfieldError>
+            The date is too far in the future
+          </nx-error>
+        }
+        @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMin) {
+          <nx-error nxFormfieldError>
+            The date is too far in the past
+          </nx-error>
+        }
+        @if (
+          dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldParse
+        ) {
+          <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
         }
 
         <nx-message context="info" nxFormfieldNote>
@@ -54,7 +58,7 @@
         ></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker></nx-datepicker>
       </nx-formfield>
-      Date: {{date}}
+      Date: {{ date }}
     </div>
   </div>
 </div>

@@ -8,17 +8,17 @@
   </thead>
   <tbody>
     @for (margin of marginSizes | keyvalue: returnZero; track margin) {
-    <tr nxTableRow>
-      <td nxTableCell>{{margin.key}}</td>
-      <td nxTableCell>{{margin.value}}</td>
-      <td nxTableCell>
-        <div
-          class="margin-box"
-          [style.width]="margin.value + 'px'"
-          [style.height]="margin.value + 'px'"
-        ></div>
-      </td>
-    </tr>
+      <tr nxTableRow>
+        <td nxTableCell>{{ margin.key }}</td>
+        <td nxTableCell>{{ margin.value }}</td>
+        <td nxTableCell>
+          <div
+            class="margin-box"
+            [style.width]="margin.value + 'px'"
+            [style.height]="margin.value + 'px'"
+          ></div>
+        </td>
+      </tr>
     }
   </tbody>
 </table>

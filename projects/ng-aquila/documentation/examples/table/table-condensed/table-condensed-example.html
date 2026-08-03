@@ -12,18 +12,20 @@
     </thead>
     <tbody>
       @for (item of tableElements; track item) {
-      <tr nxTableRow>
-        <td nxTableCell>{{item.product}}</td>
-        <td nxTableCell>{{item.contractNumber}}</td>
-        <td nxTableCell>{{item.desc}}</td>
-        <td nxTableCell>
-          <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
-        </td>
-        <td nxTableCell>{{item.endingAt}}</td>
-        <td nxTableCell>
-          <nx-badge [type]="item.status">{{item.statusText}}</nx-badge>
-        </td>
-      </tr>
+        <tr nxTableRow>
+          <td nxTableCell>{{ item.product }}</td>
+          <td nxTableCell>{{ item.contractNumber }}</td>
+          <td nxTableCell>{{ item.desc }}</td>
+          <td nxTableCell>
+            <nx-link
+              ><a routerLink="#">{{ item.website }}</a></nx-link
+            >
+          </td>
+          <td nxTableCell>{{ item.endingAt }}</td>
+          <td nxTableCell>
+            <nx-badge [type]="item.status">{{ item.statusText }}</nx-badge>
+          </td>
+        </tr>
       }
     </tbody>
   </table>

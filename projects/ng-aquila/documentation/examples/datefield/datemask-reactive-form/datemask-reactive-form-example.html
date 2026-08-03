@@ -16,14 +16,29 @@
           ></nx-datemask>
           <span nxFormfieldHint>DD.MM.YYYY</span>
           <nx-error nxFormfieldError>
-            @if (datemaskForm.controls.date.errors &&
-            datemaskForm.controls.date.errors.nxDatefieldMax) { The date is too
-            far in the future } @if (datemaskForm.controls.date.errors &&
-            datemaskForm.controls.date.errors.nxDatefieldMin) { The date is too
-            far in the past } @if (datemaskForm.controls.date.errors &&
-            datemaskForm.controls.date.errors.nxDatefieldParse) { Please enter a
-            valid date. }@if (datemaskForm.controls.date.errors &&
-            datemaskForm.controls.date.errors.required) { Birthday is required.
+            @if (
+              datemaskForm.controls.date.errors &&
+              datemaskForm.controls.date.errors.nxDatefieldMax
+            ) {
+              The date is too far in the future
+            }
+            @if (
+              datemaskForm.controls.date.errors &&
+              datemaskForm.controls.date.errors.nxDatefieldMin
+            ) {
+              The date is too far in the past
+            }
+            @if (
+              datemaskForm.controls.date.errors &&
+              datemaskForm.controls.date.errors.nxDatefieldParse
+            ) {
+              Please enter a valid date.
+            }
+            @if (
+              datemaskForm.controls.date.errors &&
+              datemaskForm.controls.date.errors.required
+            ) {
+              Birthday is required.
             }
           </nx-error>
 
@@ -34,9 +49,9 @@
           <nx-datepicker #myDatepicker></nx-datepicker>
         </nx-formfield>
       </form>
-      Date: {{datemaskForm.controls.date.value | json }}<br />
+      Date: {{ datemaskForm.controls.date.value | json }}<br />
       <br />
-      Date Errors: {{datemaskForm.controls.date.errors | json }}
+      Date Errors: {{ datemaskForm.controls.date.errors | json }}
     </div>
   </div>
 </div>

@@ -16,58 +16,61 @@
   </nx-header-brand>
 
   @if (viewType === 'tablet' || viewType === 'desktop') {
-  <nx-header-actions>
-    <button nxPlainButton aria-label="Open Search Bar">
-      <nx-icon name="search" aria-hidden="true"></nx-icon>
-    </button>
-    <nx-link class="action-item" nxStyle="icon-only">
-      <a routerLink="#" aria-label="Settings"
-        ><nx-icon name="setting" aria-hidden="true"></nx-icon
-      ></a>
-    </nx-link>
-    <nx-link class="action-item" nxStyle="icon-only">
-      <a routerLink="#" aria-label="More information"
-        ><nx-icon name="info-circle-o" aria-hidden="true"></nx-icon
-      ></a>
-    </nx-link>
-    <button nxPlainButton class="action-item" aria-label="Show notifications">
-      <nx-icon name="bell-o" aria-hidden="true"></nx-icon>
-    </button>
-  </nx-header-actions>
-  }@if (viewType === 'mobile'){ @if (!menu.open) {
-  <nx-header-actions>
-    <button
-      nxPlainButton
-      (click)="menu.toggle()"
-      aria-label="open menu"
-      type="button"
-    >
-      <nx-icon name="bars" aria-hidden="true"></nx-icon>
-    </button>
-  </nx-header-actions>
-  } @else {
-  <button
-    nxPlainButton
-    class="close-menu"
-    (click)="menu.toggle()"
-    type="button"
-    aria-label="close menu"
-  >
-    <nx-icon name="close"></nx-icon>
-  </button>
-  } }
+    <nx-header-actions>
+      <button nxPlainButton aria-label="Open Search Bar">
+        <nx-icon name="search" aria-hidden="true"></nx-icon>
+      </button>
+      <nx-link class="action-item" nxStyle="icon-only">
+        <a routerLink="#" aria-label="Settings"
+          ><nx-icon name="setting" aria-hidden="true"></nx-icon
+        ></a>
+      </nx-link>
+      <nx-link class="action-item" nxStyle="icon-only">
+        <a routerLink="#" aria-label="More information"
+          ><nx-icon name="info-circle-o" aria-hidden="true"></nx-icon
+        ></a>
+      </nx-link>
+      <button nxPlainButton class="action-item" aria-label="Show notifications">
+        <nx-icon name="bell-o" aria-hidden="true"></nx-icon>
+      </button>
+    </nx-header-actions>
+  }
+  @if (viewType === 'mobile') {
+    @if (!menu.open) {
+      <nx-header-actions>
+        <button
+          nxPlainButton
+          (click)="menu.toggle()"
+          aria-label="open menu"
+          type="button"
+        >
+          <nx-icon name="bars" aria-hidden="true"></nx-icon>
+        </button>
+      </nx-header-actions>
+    } @else {
+      <button
+        nxPlainButton
+        class="close-menu"
+        (click)="menu.toggle()"
+        type="button"
+        aria-label="close menu"
+      >
+        <nx-icon name="close"></nx-icon>
+      </button>
+    }
+  }
 </header>
 
 <nx-menu #menu>
   @for (item of menuData; track item) {
-  <button
-    nxMenuButton
-    menuButtonType="root"
-    nxMenuItem
-    type="button"
-    routerLink="{{item.menuLink}}"
-  >
-    {{item.label}}
-  </button>
+    <button
+      nxMenuButton
+      menuButtonType="root"
+      nxMenuItem
+      type="button"
+      routerLink="{{ item.menuLink }}"
+    >
+      {{ item.label }}
+    </button>
   }
 </nx-menu>

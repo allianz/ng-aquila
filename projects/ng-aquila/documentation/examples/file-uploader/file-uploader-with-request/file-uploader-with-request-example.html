@@ -22,22 +22,23 @@
 </nx-file-uploader>
 
 @if (showUploadError) {
-<nx-error> An error occurred while uploading. </nx-error>
-} @if (documentUpload.value?.length) {
-<button
-  nxButton="primary"
-  type="button"
-  (click)="upload('file-upload')"
-  class="nx-margin-right-2xs"
->
-  Upload files
-</button>
+  <nx-error> An error occurred while uploading. </nx-error>
+}
+@if (documentUpload.value?.length) {
+  <button
+    nxButton="primary"
+    type="button"
+    (click)="upload('file-upload')"
+    class="nx-margin-right-2xs"
+  >
+    Upload files
+  </button>
 
-<button
-  nxButton="secondary small"
-  type="button"
-  (click)="upload('file-upload-error')"
->
-  Upload files (and get an error)
-</button>
+  <button
+    nxButton="secondary small"
+    type="button"
+    (click)="upload('file-upload-error')"
+  >
+    Upload files (and get an error)
+  </button>
 }

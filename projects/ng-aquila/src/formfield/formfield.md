@@ -72,6 +72,18 @@ You can add a hint to a formfield which is then displayed on the bottom right co
 
 <!-- example(formfield-hint) -->
 
+### Inline
+
+Set the `inline` input to render the formfield in a compact way: the label is visually hidden and the space normally reserved above (for the floating label) and below the field (for hints, errors and notes) is removed. This is useful for dense layouts, for example a field inside a table cell where the column header already labels the control.
+
+For accessibility the label is kept in the DOM (only visually hidden), so you should always provide a meaningful `label`. Alternatively you can connect the control to an existing element via `aria-labelledby` (for example a table header).
+
+**Note:** hints, errors and notes are not supported together with `inline` and will not be shown.
+
+Because the projected error message is hidden in inline mode, you can surface the validation state with a small [signal button](/documentation/signal-button/overview) placed in the `nxFormfieldSuffix` slot, opening a popover that lists the current errors. Keep the projected `nx-error` in the DOM (it stays only visually hidden): the formfield still connects it to the control via `aria-describedby` and sets `aria-invalid`, so assistive technology continues to announce the error. The example below and the [table with form elements](/documentation/table/overview) example show this pattern.
+
+<!-- example(formfield-inline) -->
+
 ### Character count
 
 To show the user both the character restrictions and the characters remaining, you can simply use the slot of the `nxFormfieldHint`.

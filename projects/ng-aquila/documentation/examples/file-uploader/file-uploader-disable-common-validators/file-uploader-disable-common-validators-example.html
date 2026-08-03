@@ -3,7 +3,7 @@
     #documentUpload
     multiple
     formControlName="documents"
-    maxFileSize="{{2 * 1024 * 1024}}"
+    maxFileSize="{{ 2 * 1024 * 1024 }}"
     (fileDeleted)="onDelete($event)"
     (valueChange)="onChange($event)"
     [uploader]="uploader"
@@ -37,27 +37,34 @@
       <div class="nx-font-weight-bold">Error</div>
       <ul>
         @if (testForm.controls['documents'].hasError('required')) {
-        <li>File is Required!</li>
-        } @if (testForm.controls['documents'].hasError('serverError')) {
-        <li>An error occurred while uploading.</li>
-        } @if (documentUpload?.errors?.length) { @for (error of
-        documentUpload?.errors; track error) {
-        <li>
-          @if (error.type === 'fileType') {
-          <div>
-            "{{error.filename}}" could not be uploaded. The supported extensions
-            us PNG.
-          </div>
-          } @if (error.type === 'fileSize') {
-          <div>
-            "{{error.filename}}" could not be uploaded. max file size is {{
-            error.max }}.
-          </div>
-          } @if (error.type === 'fileNumber') {
-          <div>You cannot upload more than {{ error.max }} documents.</div>
+          <li>File is Required!</li>
+        }
+        @if (testForm.controls['documents'].hasError('serverError')) {
+          <li>An error occurred while uploading.</li>
+        }
+        @if (documentUpload?.errors?.length) {
+          @for (error of documentUpload?.errors; track error) {
+            <li>
+              @if (error.type === 'fileType') {
+                <div>
+                  "{{ error.filename }}" could not be uploaded. The supported
+                  extensions us PNG.
+                </div>
+              }
+              @if (error.type === 'fileSize') {
+                <div>
+                  "{{ error.filename }}" could not be uploaded. max file size is
+                  {{ error.max }}.
+                </div>
+              }
+              @if (error.type === 'fileNumber') {
+                <div>
+                  You cannot upload more than {{ error.max }} documents.
+                </div>
+              }
+            </li>
           }
-        </li>
-        } }
+        }
       </ul>
     </nx-error>
   </nx-file-uploader>
@@ -68,7 +75,7 @@
   type="button"
   [disabled]="!testForm.valid"
   [nxFileUploadTriggerFor]="documentUpload"
-  (click)="testForm.controls['documents'].setErrors({ 'serverError': false });"
+  (click)="testForm.controls['documents'].setErrors({ serverError: false })"
 >
   Upload files
 </button>
@@ -80,7 +87,7 @@
   (click)="toggleValidation()"
   class="nx-margin-top-s"
 >
-  Toggle Disable validator ({{ disableValidator}})
+  Toggle Disable validator ({{ disableValidator }})
 </button>
 
 <pre>

@@ -67,8 +67,8 @@
   </ng-container>
 
   <ng-container nxComparisonTableRow>
-    <nx-comparison-table-description-cell
-      >Service headline
+    <nx-comparison-table-description-cell id="coverage-amount"
+      >Coverage amount
     </nx-comparison-table-description-cell>
     <nx-comparison-table-cell>
       <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
@@ -77,12 +77,35 @@
       <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
     </nx-comparison-table-cell>
     <nx-comparison-table-cell>
-      <nx-formfield appearance="outline" floatLabel="always">
-        <nx-dropdown value="200 Mio Euro">
+      <nx-formfield appearance="outline" floatLabel="always" inline>
+        @if (coverageAmountControl.invalid && coverageAmountControl.touched) {
+          <nx-signal-button
+            nxFormfieldSuffix
+            context="error"
+            popoverDirection="bottom"
+            aria-label="Show validation errors for Coverage amount"
+          >
+            <div nxPopoverTitle>
+              <h3 nxHeadline="subsection-xsmall" class="nx-margin-bottom-2xs">
+                Please review this field
+              </h3>
+            </div>
+            <ul nxPopoverMainContent class="error-list">
+              @if (coverageAmountControl.hasError('required')) {
+                <li>Please select a coverage amount.</li>
+              }
+            </ul>
+          </nx-signal-button>
+        }
+        <nx-dropdown
+          [formControl]="coverageAmountControl"
+          ariaLabelledBy="coverage-amount"
+        >
           <nx-dropdown-item value="200 Mio Euro"></nx-dropdown-item>
           <nx-dropdown-item value="300 Mio Euro"></nx-dropdown-item>
           <nx-dropdown-item value="500 Mio Euro"></nx-dropdown-item>
         </nx-dropdown>
+        <nx-error nxFormfieldError> Please select a coverage amount. </nx-error>
       </nx-formfield>
     </nx-comparison-table-cell>
   </ng-container>

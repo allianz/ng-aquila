@@ -22,11 +22,11 @@
 </nx-file-uploader>
 
 @if (documentUpload.value?.length) {
-<button
-  nxButton="primary"
-  type="button"
-  [nxFileUploadTriggerFor]="documentUpload"
->
-  Upload files
-</button>
+  <button
+    nxButton="primary"
+    type="button"
+    [nxFileUploadTriggerFor]="documentUpload"
+  >
+    Upload files
+  </button>
 }

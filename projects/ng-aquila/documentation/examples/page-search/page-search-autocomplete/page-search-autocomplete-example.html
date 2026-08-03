@@ -20,9 +20,13 @@
             <nx-icon name="search" size="s"></nx-icon>
           </span>
           @if (searchTerm1) {
-          <span nxFormfieldSuffix aria-hidden="true" (click)="searchTerm1=''">
-            <nx-icon name="close" size="s"></nx-icon>
-          </span>
+            <span
+              nxFormfieldSuffix
+              aria-hidden="true"
+              (click)="searchTerm1 = ''"
+            >
+              <nx-icon name="close" size="s"></nx-icon>
+            </span>
           }
         </nx-formfield>
       </div>
@@ -40,9 +44,13 @@
             <nx-icon name="search" size="s"></nx-icon>
           </span>
           @if (searchTerm2) {
-          <span nxFormfieldSuffix aria-hidden="true" (click)="searchTerm2=''">
-            <nx-icon name="close" size="s"></nx-icon>
-          </span>
+            <span
+              nxFormfieldSuffix
+              aria-hidden="true"
+              (click)="searchTerm2 = ''"
+            >
+              <nx-icon name="close" size="s"></nx-icon>
+            </span>
           }
         </nx-formfield>
       </div>

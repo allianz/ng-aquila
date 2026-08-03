@@ -7,13 +7,13 @@
   aria-label="Filter fruits"
 >
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
   }
 </nx-tag-group>
 
 <nx-tag-group removable [disabled]="true" aria-label="Active filters">
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
   }
 </nx-tag-group>
 
@@ -25,17 +25,17 @@
   aria-label="Filter fruits"
 >
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()" [disabled]="tag === 'Bananas'"
-    >{{ tag }}</nx-tag
-  >
+    <nx-tag [value]="tag.toLowerCase()" [disabled]="tag === 'Bananas'">{{
+      tag
+    }}</nx-tag>
   }
 </nx-tag-group>
 
 <nx-tag-group removable aria-label="Active filters">
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()" [disabled]="tag === 'Bananas'"
-    >{{ tag }}</nx-tag
-  >
+    <nx-tag [value]="tag.toLowerCase()" [disabled]="tag === 'Bananas'">{{
+      tag
+    }}</nx-tag>
   }
 </nx-tag-group>
 
@@ -50,6 +50,6 @@
   [formControl]="tagsControl"
 >
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
   }
 </nx-tag-group>

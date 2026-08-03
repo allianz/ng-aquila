@@ -23,7 +23,9 @@
   <div nxRow class="example-controls nx-margin-top-s">
     <div nxCol="12,12,10,6" colOffset="0,0,1,3">
       <pre>
-        Licence plate value: {{ licencePlateForm.get('licencePlateInput')?.value | json }}
+        Licence plate value: {{
+          licencePlateForm.get('licencePlateInput')?.value | json
+        }}
       </pre>
     </div>
   </div>
