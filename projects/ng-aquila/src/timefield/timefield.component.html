@@ -65,7 +65,6 @@
           [attr.inputmode]="inputMode()"
         />
       </div>
-
       <nx-timefield-control
         [errorState]="errorState()"
         [disabled]="disabled"
@@ -78,7 +77,11 @@
     @if (hint) {
       <span nxFormfieldHint> {{ hint }} </span>
     }
-
+    @if (errorState()) {
+      <div nxFormfieldError class="error-container">
+        <ng-content select="nx-error"></ng-content>
+      </div>
+    }
     @if (withTimepicker) {
       <button
         nxFormfieldSuffix
@@ -95,7 +98,7 @@
         [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
         (keydown)="handleKeyDown($event)"
       >
-        <nx-icon name="clock-o" aria-hidden="true"></nx-icon>
+        <nx-icon name="clock-o" aria-hidden="true" size="s"></nx-icon>
       </button>
     }
     <ng-container nxFormfieldSuffix>
@@ -136,11 +139,6 @@
     </nx-radio-toggle>
   }
 </div>
-@if (errorState()) {
-  <div class="nx-timefield__error">
-    <ng-content select="nx-error"></ng-content>
-  </div>
-}
 
 <ng-template
   cdkConnectedOverlay

@@ -295,3 +295,7 @@ section {
 .option-list > li:last-child {
   border-bottom: none;
 }
+.error-container {
+  margin-top: v(timefield-error-text-margin-top);
+  padding: v(timefield-error-text-vertical-padding) 0px;
+}
