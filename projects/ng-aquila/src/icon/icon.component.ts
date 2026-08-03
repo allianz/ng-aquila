@@ -20,15 +20,7 @@ import { NxSvgIcon } from './icons';
 export type IconSize = 'auto' | 's' | 'm' | 'l' | 'xl' | '2xl';
 
 export type IconAccentColor =
-  | 'yellow'
-  | 'orange'
-  | 'red'
-  | 'purple'
-  | 'aqua'
-  | 'blue'
-  | 'teal'
-  | 'green'
-  | 'gray';
+  'yellow' | 'orange' | 'red' | 'purple' | 'aqua' | 'blue' | 'teal' | 'green' | 'gray';
 export type NxIconType = 'auto' | 'primary' | 'secondary' | 'accent-attention' | 'accent-subtle';
 
 @Component({

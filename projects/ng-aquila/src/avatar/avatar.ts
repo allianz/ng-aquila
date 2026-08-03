@@ -16,16 +16,7 @@ import {
 /** Size of an avatar. */
 export type NxAvatarSize = 'xsmall' | 'small' | 'small-medium' | 'medium' | 'large' | 'xlarge';
 export type NxAvatarAccentColor =
-  | 'yellow'
-  | 'orange'
-  | 'red'
-  | 'purple'
-  | 'teal'
-  | 'aqua'
-  | 'blue'
-  | 'green'
-  | 'gray'
-  | 'default';
+  'yellow' | 'orange' | 'red' | 'purple' | 'teal' | 'aqua' | 'blue' | 'green' | 'gray' | 'default';
 /** Prominence of an avatar's accent color. */
 export type NxAvatarProminence = 'subtle' | 'attention';
 @Component({

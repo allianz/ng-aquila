@@ -87,10 +87,7 @@ export interface BaseFileUploadError {
   filename: string;
 }
 export type FileUploadError =
-  | NxFileTypeError
-  | NxFileSizeError
-  | NxFileNumberError
-  | NxFileUploadTypeError;
+  NxFileTypeError | NxFileSizeError | NxFileNumberError | NxFileUploadTypeError;
 
 export interface NxFileTypeError extends BaseFileUploadError {
   type: 'fileType';

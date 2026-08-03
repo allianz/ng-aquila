@@ -13,16 +13,7 @@ export type HeadlineType =
 export type NxHeadlineType = 'primary' | 'secondary';
 /** The headline sizes */
 export type NxHeadlineSize =
-  | 's'
-  | 'm'
-  | 'l'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl'
-  | '6xl'
-  | undefined;
+  's' | 'm' | 'l' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | undefined;
 const DEFAULT_TYPE = 'section';
 
 @Component({

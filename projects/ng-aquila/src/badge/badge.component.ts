@@ -12,16 +12,7 @@ import {
 /** Possible badge types. */
 export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
 export type NxBadgeAccentColor =
-  | 'brand'
-  | 'yellow'
-  | 'orange'
-  | 'red'
-  | 'purple'
-  | 'aqua'
-  | 'blue'
-  | 'teal'
-  | 'green'
-  | 'gray';
+  'brand' | 'yellow' | 'orange' | 'red' | 'purple' | 'aqua' | 'blue' | 'teal' | 'green' | 'gray';
 export type NxBadgeProminence = 'subtle' | 'attention';
 
 @Component({

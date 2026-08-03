@@ -2,13 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 /** Types of figures. */
 export type FigureType =
-  | 'auto'
-  | '1by1'
-  | '1dot8by1'
-  | '1dot2by1'
-  | '1by1dot1'
-  | '2dot6by1'
-  | 'rounded';
+  'auto' | '1by1' | '1dot8by1' | '1dot2by1' | '1by1dot1' | '2dot6by1' | 'rounded';
 /** @docs-private */
 export type figureSizes = 'auto' | '1by1' | '1dot8by1' | '1dot2by1' | '1by1dot1' | '2dot6by1';
 

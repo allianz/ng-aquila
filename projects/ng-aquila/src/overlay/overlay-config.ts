@@ -8,12 +8,7 @@ export type NxOverlayRole = string;
 
 export type NxOverlayDirection = NxOverlayVerticalDirection | NxOverlayHorizontalDirection;
 export declare type NxOverlayVerticalDirection =
-  | 'top'
-  | 'top-start'
-  | 'top-end'
-  | 'bottom'
-  | 'bottom-start'
-  | 'bottom-end';
+  'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end';
 export declare type NxOverlayHorizontalDirection = 'left' | 'right';
 
 export type NxOverlayFallbackOrientation = 'vertical' | 'horizontal' | 'clockwise';

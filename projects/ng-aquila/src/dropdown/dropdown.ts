@@ -197,14 +197,7 @@ export const DROPDOWN_DEFAULT_OPTIONS = new InjectionToken<NxDropdownDefaultOpti
 );
 
 export type FilterInputType =
-  | 'text'
-  | 'number'
-  | 'tel'
-  | 'search'
-  | 'date'
-  | 'datetime'
-  | 'month'
-  | 'email';
+  'text' | 'number' | 'tel' | 'search' | 'date' | 'datetime' | 'month' | 'email';
 
 export type NxDropdownFilterFn = (query: string, label: string) => boolean;
 
