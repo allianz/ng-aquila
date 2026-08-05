@@ -17,5 +17,5 @@ jobs:
       actions: read
     uses: ilt/shared-actions-ilt-frontend/.github/workflows/reusable-claude-pr-review.yml@feat/shared-actions-library
     with:
-      model: eu.anthropic.claude-sonnet-5
+      model: eu.anthropic.claude-opus-4-8
     secrets: inherit
