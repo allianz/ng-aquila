@@ -50,6 +50,7 @@ describe('NxRatingComponent', () => {
         ReactiveBindingRatingComponent,
         RatingOnPushComponent,
         TemplateDrivenOnPushComponent,
+        NonInteractiveRatingComponent,
       ],
     }).compileComponents();
   }));
@@ -137,6 +138,109 @@ describe('NxRatingComponent', () => {
 
       checkVisualSelection(false, false, false, false, false);
     });
+  });
+
+  describe('non-interactive', () => {
+    it('should not accept clicking in non-interactive mode', fakeAsync(() => {
+      createTestComponent(NonInteractiveRatingComponent);
+      (testInstance as NonInteractiveRatingComponent).value = 3;
+      fixture.detectChanges();
+      click(1);
+      expect(testComponent.value).toBe(3);
+      checkVisualSelection(true, true, true, false, false);
+    }));
+
+    it('should not change fill on hover in non-interactive mode', () => {
+      createTestComponent(NonInteractiveRatingComponent);
+      (testInstance as NonInteractiveRatingComponent).value = 2;
+      fixture.detectChanges();
+
+      dispatchMouseEvent(icons[3], 'mouseenter');
+      fixture.detectChanges();
+
+      checkVisualSelection(true, true, false, false, false);
+    });
+
+    it('does not render any radio inputs in non-interactive mode', () => {
+      createTestComponent(NonInteractiveRatingComponent);
+      expect(fixture.nativeElement.querySelectorAll('input')).toHaveSize(0);
+    });
+
+    it('adds the non-interactive class', () => {
+      createTestComponent(NonInteractiveRatingComponent);
+      expect(fixture.nativeElement.querySelector('.nx-rating--non-interactive')).toBeTruthy();
+    });
+
+    it('uses img role and falls back to the display value as aria-label when no group label is set', () => {
+      createTestComponent(NonInteractiveRatingComponent);
+      (testInstance as NonInteractiveRatingComponent).value = 3.25;
+      fixture.detectChanges();
+
+      const container = fixture.nativeElement.querySelector('.nx-rating__container');
+      expect(container.getAttribute('role')).toBe('img');
+      expect(container.getAttribute('aria-label')).toBe('3.5');
+    });
+
+    it('clamps the aria-label fallback to 0 for negative values', () => {
+      createTestComponent(NonInteractiveRatingComponent);
+      (testInstance as NonInteractiveRatingComponent).value = -5;
+      fixture.detectChanges();
+
+      const container = fixture.nativeElement.querySelector('.nx-rating__container');
+      expect(container.getAttribute('aria-label')).toBe('0');
+      checkVisualSelection(false, false, false, false, false);
+    });
+
+    it('clamps the aria-label fallback to 5 for values above 5', () => {
+      createTestComponent(NonInteractiveRatingComponent);
+      (testInstance as NonInteractiveRatingComponent).value = 10;
+      fixture.detectChanges();
+
+      const container = fixture.nativeElement.querySelector('.nx-rating__container');
+      expect(container.getAttribute('aria-label')).toBe('5');
+      checkVisualSelection(true, true, true, true, true);
+    });
+  });
+
+  describe('half star', () => {
+    const FULL = 'star' as const;
+    const HALF = 'star-half-full' as const;
+    const EMPTY = 'star-o' as const;
+
+    function iconNames() {
+      return [1, 2, 3, 4, 5].map((rating) => testComponent.getIconName(rating));
+    }
+
+    const cases: ReadonlyArray<[number, Array<typeof FULL | typeof HALF | typeof EMPTY>]> = [
+      [0.0, [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]],
+      [0.24, [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]],
+      [0.25, [HALF, EMPTY, EMPTY, EMPTY, EMPTY]],
+      [0.74, [HALF, EMPTY, EMPTY, EMPTY, EMPTY]],
+      [0.75, [FULL, EMPTY, EMPTY, EMPTY, EMPTY]],
+      [1.24, [FULL, EMPTY, EMPTY, EMPTY, EMPTY]],
+      [2.25, [FULL, FULL, HALF, EMPTY, EMPTY]],
+      [3.5, [FULL, FULL, FULL, HALF, EMPTY]],
+      [4.25, [FULL, FULL, FULL, FULL, HALF]],
+      [4.74, [FULL, FULL, FULL, FULL, HALF]],
+      [4.75, [FULL, FULL, FULL, FULL, FULL]],
+      [5.0, [FULL, FULL, FULL, FULL, FULL]],
+    ];
+
+    cases.forEach(([value, expected]) => {
+      it(`renders ${expected.join(',')} for non-interactive value ${value}`, fakeAsync(() => {
+        createTestComponent(NonInteractiveRatingComponent);
+        (testInstance as NonInteractiveRatingComponent).value = value;
+        fixture.detectChanges();
+        expect(iconNames()).toEqual(expected);
+      }));
+    });
+
+    it('does not render half stars in interactive mode', fakeAsync(() => {
+      createTestComponent(SimpleRatingComponent);
+      testComponent.value = 3.5;
+      fixture.detectChanges();
+      expect(iconNames()).toEqual([FULL, FULL, FULL, EMPTY, EMPTY]);
+    }));
   });
 
   describe('with nxValue binding', () => {
@@ -382,4 +486,13 @@ class TemplateDrivenOnPushComponent extends RatingTest {
 })
 class SizeRatingComponent extends RatingTest {
   size: RatingSize = 'm';
+}
+
+@Component({
+  template: `<nx-rating [value]="value" [interactive]="false"></nx-rating>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
+})
+class NonInteractiveRatingComponent extends RatingTest {
+  value = 0;
 }

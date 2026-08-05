@@ -18,11 +18,23 @@ group:
 
 <!-- example(rating-basic) -->
 
+<div class="docs-hide-ndbx">
+
+#### Non Interactive Rating
+
+When `interactive` is set to `false`, the rating cannot be changed by click, hover, or keyboard, and a fractional `value` is rounded to the nearest half star for display (e.g. `3.2` renders as 3 full stars, `3.6` renders as 3 full stars and a half star). Half-star rendering is display-only — it is not selectable and only applies when not interactive; an interactive rating always shows and accepts whole stars.
+
+<!-- example(rating-non-interactive) -->
+
+</div>
+
 #### Disabled Rating
 
 <!-- example(rating-disabled) -->
 
-#### Negative Styling
+#### Inverse Styling
+
+You can change the styling of the rating to inverse via the `inverse` property. The legacy negative property is still supported as a deprecated alias.
 
 <!-- example(rating-negative) -->
 

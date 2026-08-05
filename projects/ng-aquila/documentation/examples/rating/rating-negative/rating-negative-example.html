@@ -2,7 +2,7 @@
   <nx-rating
     startLabel="poor"
     endLabel="great"
-    [negative]="true"
+    [inverse]="true"
     ariaRatingGroupLabel="How do you like our service?"
     [ariaRatingLabels]="[
       '1 of 5 Poor',
@@ -11,6 +11,23 @@
       '4 of 5',
       '5 of 5 Great',
     ]"
+  >
+  </nx-rating>
+  <br />
+  <nx-rating
+    [value]="3"
+    startLabel="poor"
+    endLabel="great"
+    [inverse]="true"
+    ariaRatingGroupLabel="How do you like our service?"
+    [ariaRatingLabels]="[
+      '1 of 5 Poor',
+      '2 of 5',
+      '3 of 5',
+      '4 of 5',
+      '5 of 5 Great',
+    ]"
+    disabled
   >
   </nx-rating>
 </div>

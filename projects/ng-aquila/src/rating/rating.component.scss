@@ -7,7 +7,7 @@
 :host(.nx-rating--negative) {
   .nx-rating__label,
   .nx-rating__icon {
-    color: v(negative);
+    color: v(rating-inverse-color);
   }
 }
 
@@ -22,6 +22,36 @@
   .nx-rating__icon {
     color: v(rating-disabled-icon-color);
     cursor: not-allowed;
+  }
+}
+
+:host(.nx-rating--negative.nx-rating--disabled) {
+  .nx-rating__label,
+  .nx-rating__icon {
+    color: v(rating-inverse-disabled-color);
+  }
+}
+:host(.nx-rating--non-interactive) {
+  cursor: default;
+  outline: none;
+
+  .nx-rating__label {
+    color: v(rating-non-interactive-label-color);
+  }
+
+  .nx-rating__icon {
+    color: v(rating-non-interactive-icon-color);
+    cursor: default;
+    // only apply the size for non-interactive ratings, it is only for One Allianz theme.
+    &.nx-icon--s {
+      font-size: v(rating-non-interactive-icon-size-s);
+    }
+    &.nx-icon--m {
+      font-size: v(rating-non-interactive-icon-size-m);
+    }
+    &.nx-icon--l {
+      font-size: v(rating-non-interactive-icon-size-l);
+    }
   }
 }
 
@@ -95,13 +125,23 @@
   }
 }
 
-:host(:not(.nx-rating--negative)) {
+:host(:not(.nx-rating--negative):not(.nx-rating--non-interactive):not(.nx-rating--disabled)) {
   .nx-rating__icon.nx-rating__icon--selected {
     &:hover {
       color: v(hover-primary);
     }
     &:active {
       color: v(active-primary);
+    }
+  }
+}
+:host(.nx-rating--negative:not(.nx-rating--non-interactive):not(.nx-rating--disabled)) {
+  .nx-rating__icon.nx-rating__icon--selected {
+    &:hover {
+      color: v(rating-inverse-hover-color);
+    }
+    &:active {
+      color: v(rating-inverse-active-color);
     }
   }
 }

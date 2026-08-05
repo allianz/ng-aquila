@@ -10,6 +10,7 @@ import {
 import { ENTER } from '@angular/cdk/keycodes';
 import {
   AfterViewInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -18,6 +19,7 @@ import {
   forwardRef,
   inject,
   Input,
+  input,
   OnDestroy,
   Output,
   QueryList,
@@ -41,8 +43,9 @@ export type RatingSize = 's' | 'm' | 'l';
     },
   ],
   host: {
-    '[class.nx-rating--negative]': 'negative',
+    '[class.nx-rating--negative]': 'negative || inverse()',
     '[class.nx-rating--disabled]': 'disabled',
+    '[class.nx-rating--non-interactive]': '!interactive()',
     '[style.--iconColor]': 'iconColor',
   },
   imports: [NxIconModule],
@@ -95,7 +98,12 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
   }
   private _disabled = false;
 
-  /** Whether the negative colors be used. */
+  readonly interactive = input(true, { transform: booleanAttribute });
+
+  /**
+   * Whether the negative colors be used.
+   * @deprecated Use `inverse` instead.
+   */
   @Input() set negative(newValue: BooleanInput) {
     if (this._negative === newValue) {
       return;
@@ -107,6 +115,8 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     return this._negative;
   }
   private _negative = false;
+
+  readonly inverse = input(false, { transform: booleanAttribute });
 
   /** Sets the label painted at the start of the rating component. */
   @Input() set startLabel(newValue: string) {
@@ -197,8 +207,27 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     return index === this.value;
   }
 
+  /**
+   * The active value used for rendering. In non-interactive mode the value is snapped
+   * to the nearest half to allow half-star display; interactive mode uses whole stars.
+   */
+  private _displayValue() {
+    if (!this.interactive()) {
+      return Math.min(Math.max(Math.round(this.value * 2) / 2, 0), 5);
+    }
+    return Math.max(this.value, this._hover);
+  }
+
   isVisuallyChecked(rating: number) {
-    return rating <= this.value || rating <= this._hover;
+    return rating - 0.5 <= this._displayValue();
+  }
+
+  /** @docs-private */
+  getGroupAriaLabel(): string | null {
+    if (this.interactive()) {
+      return this.ariaRatingGroupLabel;
+    }
+    return this.ariaRatingGroupLabel ?? `${this._displayValue()}`;
   }
 
   /** Allows to set the rating. */
@@ -245,7 +274,14 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
 
   /** @docs-private */
   getIconName(rating: number) {
-    return 'star' + (this.isVisuallyChecked(rating) ? '' : '-o');
+    const current = this._displayValue();
+    if (rating <= current) {
+      return 'star';
+    }
+    if (!this.interactive() && current % 1 === 0.5 && rating === Math.ceil(current)) {
+      return 'star-half-full';
+    }
+    return 'star-o';
   }
 
   /** @docs-private */
@@ -257,6 +293,9 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
   }
 
   handleChange(ratingValue: number) {
+    if (this.disabled) {
+      return;
+    }
     this.valueChange.emit(ratingValue);
   }
 }
