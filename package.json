@@ -16,7 +16,7 @@
     "lint:fix": "eslint --fix projects/ng-aquila/src/schematics/**/*.ts && eslint --fix projects/ngx-docs-cli/**/*.ts && ng lint --fix",
     "mcp:init": "npm run mcp:generate-resources && npm run mcp:build && npm run mcp:copy-resources",
     "mcp:generate-resources": "node scripts/mcp-generate-resources.js",
-    "mcp:build": "rm -rf dist/ng-aquila/mcp/src && tsc --project projects/ng-aquila/mcp/tsconfig.json --outDir dist/ng-aquila/mcp/src && node -e \"require('fs').chmodSync('dist/ng-aquila/mcp/src/index.js', 0o755)\"",
+    "mcp:build": "rimraf dist/ng-aquila/mcp/src && tsc --project projects/ng-aquila/mcp/tsconfig.json --outDir dist/ng-aquila/mcp/src && node -e \"require('fs').chmodSync('dist/ng-aquila/mcp/src/index.js', 0o755)\"",
     "mcp:copy-resources": "node scripts/mcp-copy-resources.js",
     "mcp:test-search": "node scripts/mcp-test-search.mjs",
     "postinstall": "node projects/ng-aquila/src/phone-input/extract-calling-codes.js",

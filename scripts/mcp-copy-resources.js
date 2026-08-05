@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 const sourceBase = 'projects/ng-aquila/mcp';
 const destBase = 'dist/ng-aquila/mcp';
@@ -33,11 +32,14 @@ const itemsToCopy = [
     source: path.join(sourceBaseGenerated, 'sections.json'),
     destination: path.join(destBaseGenerated, 'sections.json'),
   },
-  { source: sourceBaseStatic, destination: destBase },
+  { source: sourceBaseStatic, destination: destBaseStatic },
 ];
 
 itemsToCopy.forEach(({ source, destination }) => {
-  execSync(`cp -R ${source} ${destination}`);
+  fs.cpSync(source, destination, {
+    recursive: true,
+    force: true,
+  });
 });
 
 console.log('✅ Resources copied successfully.');
