@@ -135,7 +135,6 @@ export class StackBlitzWriter {
       const exampleImportPath = `./app/${importFileName}`;
 
       fileContent = `
-                import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
                 import { provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
                 import { importProvidersFrom } from '@angular/core';
                 import { RouterModule } from '@angular/router';
@@ -148,7 +147,6 @@ export class StackBlitzWriter {
 
                 bootstrapApplication(${exampleComponentName}, {
                 providers: [
-                  provideAnimationsAsync(),
                   provideHttpClient(withInterceptorsFromDi(), withJsonpSupport()),
                   importProvidersFrom(RouterModule.forRoot([])),
                   importProvidersFrom(NxDocumentationIconModule),
