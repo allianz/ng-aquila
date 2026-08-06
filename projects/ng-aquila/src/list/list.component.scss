@@ -6,7 +6,10 @@ $dot-border-radius: 50%;
 :host {
   list-style: none;
   padding: 0;
-  counter-reset: list;
+}
+
+:host(ol) {
+  counter-reset: nx-list-counter;
 }
 
 :host(.nx-list--normal) {
@@ -154,8 +157,8 @@ $dot-border-radius: 50%;
 // ordered lists (ol) have no dot but the counter, always exclude items with icons
 :host(ol) ::ng-deep > li:not(.nx-list__icon-wrapper) {
   &:before {
-    counter-increment: list;
-    content: counter(list);
+    counter-increment: nx-list-counter;
+    content: counter(nx-list-counter) '.';
     position: absolute;
     font-size: inherit;
     font-weight: v(list-counter-font-weight);
@@ -164,6 +167,15 @@ $dot-border-radius: 50%;
     text-align: center;
     inset-inline-start: 0;
   }
+}
+
+// nested ordered lists use the dot purely as a level separator ("1.1", not "1.1.")
+:host(ol)
+  ::ng-deep
+  li
+  ol.nx-list:not(.nx-list--ordered-circle)
+  > li:not(.nx-list__icon-wrapper):before {
+  content: counters(nx-list-counter, '.');
 }
 
 :host ::ng-deep li > ::ng-deep ol,
@@ -205,6 +217,7 @@ $dot-border-radius: 50%;
 // ordered lists (ol) with option `ordered-circle` have a counter with a circle around
 :host(ol.nx-list--ordered-circle) ::ng-deep > li:not(.nx-list__icon-wrapper) {
   &:before {
+    content: counter(nx-list-counter);
     width: v(list-circle-size);
     @include type-style(list-small);
     font-weight: v(list-circle-font-weight);

@@ -73,4 +73,6 @@ You can change the color of the list item circles by overwriting the default col
 
 Lists can be nested within each other. You can combine simple ordered, circle ordered, unordered, and icon lists, including mixed types where different list styles are nested inside one another.
 
+Nested ordered lists are numbered by level, using the dot as a level separator: a top level item reads `1.`, its children `1.1` and `1.2`. The trailing dot only appears on the top level, so nested items read `1.1` rather than `1.1.`. The `ordered-circle` variant always shows a plain number without a dot, as the number is displayed inside a circle.
+
 <!-- example(list-nesting) -->
