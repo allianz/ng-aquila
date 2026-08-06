@@ -7,6 +7,7 @@ import {
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
+  computed,
   DestroyRef,
   effect,
   ElementRef,
@@ -19,10 +20,36 @@ import {
   signal,
 } from '@angular/core';
 
-/** Please note: small is only for meant for the One Allianz Design */
-export type NxPlainButtonSize = 'medium' | 'small';
-/** Please note: secondary is only for meant for the One Allianz Design */
+/**
+ * Please note: small is only meant for the A1 Design.
+ *
+ * `s` and `m` are the A1 shirt sizes and are treated as aliases of
+ * `small` and `medium` respectively.
+ */
+export type NxPlainButtonSize = 'medium' | 'small' | 's' | 'm';
+/** Please note: secondary is only for meant for the A1 Design */
 export type NxPlainButtonVariant = 'primary' | 'secondary';
+/**
+ * Color scheme of a plain button. Only relevant for the A1 Design.
+ *
+ * The plain button has no accent colors.
+ *
+ * - `default` – the regular action-colored plain button
+ * - `on-accent-attention` – for use on an accent-attention surface
+ * - `on-brand` – for use on a brand-colored surface
+ */
+export type NxPlainButtonColorScheme = 'default' | 'on-accent-attention' | 'on-brand';
+
+/** Maps the A1 shirt-size aliases onto the existing size steps. */
+function normalizePlainSize(size: NxPlainButtonSize): NxPlainButtonSize {
+  if (size === 'm') {
+    return 'medium';
+  }
+  if (size === 's') {
+    return 'small';
+  }
+  return size;
+}
 
 @Component({
   selector: 'button[nxPlainButton], a[nxPlainButton]',
@@ -33,7 +60,9 @@ export type NxPlainButtonVariant = 'primary' | 'secondary';
     class: 'nx-plain-button',
     '[class.nx-plain-button--danger]': 'critical()',
     '[class.nx-plain-button--secondary]': 'variant() === "secondary"',
-    '[class.nx-plain-button--small]': 'size() === "small"',
+    '[class.nx-plain-button--small]': '_size() === "small"',
+    '[class.nx-plain-button--on-accent-attention]': 'colorScheme() === "on-accent-attention"',
+    '[class.nx-plain-button--on-brand]': 'colorScheme() === "on-brand"',
     '[class.nx-plain-button--inverse]': 'inverse()',
     '[class.nx-button--loading]': 'loading()',
     '[class.nx-button--active]': '_active()',
@@ -63,11 +92,16 @@ export class NxPlainButtonComponent implements NxTriggerButton, AfterViewInit {
     return this.tabIndex() ?? this._tabindexAttribute() ?? undefined;
   }
 
-  /** The plain button size. Please only use it for the One Allianz Design. */
+  /** The plain button size. Please only use it for the A1 Design. */
   readonly size = input<NxPlainButtonSize>('medium');
+  /** The size with the A1 shirt-size aliases resolved to the existing steps. */
+  protected readonly _size = computed(() => normalizePlainSize(this.size()));
 
-  /** The plain button variant. Please only use it for the One Allianz Design. */
+  /** The plain button variant. Please only use it for the A1 Design. */
   readonly variant = input<NxPlainButtonVariant>('primary');
+
+  /** The plain button color scheme. Please only use it for the A1 Design. */
+  readonly colorScheme = input<NxPlainButtonColorScheme>('default');
 
   /** Whether to show the critical/danger appearance */
   readonly critical = input<boolean, BooleanInput>(false, {

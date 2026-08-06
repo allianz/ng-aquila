@@ -613,4 +613,87 @@ describe('NxButton Implementations', () => {
       expect(fixture.nativeElement).not.toHaveClass('nx-button--danger');
     });
   });
+
+  describe('A1 shirt sizes', () => {
+    it('maps size "m" onto the medium size', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [inputBinding('size', () => 'm')],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--medium');
+    });
+
+    it('maps size "s" onto the small size', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [inputBinding('size', () => 's')],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--small');
+    });
+  });
+
+  describe('A1 color schemes', () => {
+    it('applies the accent-attention color scheme with the default accent color', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [inputBinding('colorScheme', () => 'accent-attention')],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--accent-attention');
+      expect(fixture.nativeElement.getAttribute('data-accent-color')).toBe('blue');
+    });
+
+    it('applies the on-accent-attention color scheme with a chosen accent color', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [
+          inputBinding('colorScheme', () => 'on-accent-attention'),
+          inputBinding('accentColor', () => 'green'),
+        ],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--on-accent-attention');
+      expect(fixture.nativeElement.getAttribute('data-accent-color')).toBe('green');
+    });
+
+    it('omits the accent color attribute for the default color scheme', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [inputBinding('accentColor', () => 'red')],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).not.toHaveClass('nx-button--accent-attention');
+      expect(fixture.nativeElement).not.toHaveClass('nx-button--on-accent-attention');
+      expect(fixture.nativeElement.getAttribute('data-accent-color')).toBeNull();
+    });
+  });
+
+  describe('inverse input', () => {
+    it('applies the negative class when inverse is set', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [inputBinding('inverse', () => true)],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--negative');
+    });
+
+    it('is interchangeable with the negative input', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [inputBinding('negative', () => true)],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--negative');
+    });
+  });
 });

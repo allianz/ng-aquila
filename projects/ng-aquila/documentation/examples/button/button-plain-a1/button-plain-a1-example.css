@@ -1,0 +1,19 @@
+.docs-plain-on-brand,
+.docs-plain-on-accent {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32px 24px;
+  border-radius: 8px;
+}
+
+.docs-plain-on-brand {
+  background-color: var(--color-brand, #003781);
+}
+
+.docs-plain-on-accent {
+  background-color: var(
+    --semantic-color-accent-attention-blue-resting,
+    #0870d8
+  );
+}

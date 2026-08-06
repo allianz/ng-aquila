@@ -154,6 +154,67 @@
   }
 }
 
+// A1 color schemes. The plain button has no accent colors, so these only remap
+
+@mixin a1-plain-button-color($resting, $hover, $active, $disabled) {
+  color: v($resting);
+
+  &:hover {
+    color: v($hover);
+  }
+
+  @media (hover: none) {
+    &:hover {
+      color: v($resting);
+    }
+  }
+
+  &:active,
+  &.nx-button--active {
+    color: v($active);
+  }
+
+  &[disabled] {
+    color: v($disabled);
+  }
+}
+
+:host.nx-plain-button--on-accent-attention {
+  @include a1-plain-button-color(
+    color-on-attention-resting,
+    color-on-attention-hover,
+    color-on-attention-active,
+    color-on-attention-disabled
+  );
+}
+
+:host.nx-plain-button--on-accent-attention.nx-plain-button--inverse {
+  @include a1-plain-button-color(
+    color-on-attention-inverse-resting,
+    color-on-attention-inverse-hover,
+    color-on-attention-inverse-active,
+    color-on-attention-inverse-disabled
+  );
+}
+
+:host.nx-plain-button--on-brand {
+  @include a1-plain-button-color(
+    color-on-brand,
+    color-on-brand-hover,
+    color-on-brand-active,
+    color-on-brand-disabled
+  );
+}
+
+:host.nx-plain-button--on-brand.nx-plain-button--inverse {
+  @include a1-plain-button-color(
+    color-on-brand-inverse,
+    color-on-brand-inverse-hover,
+    color-on-brand-inverse-active,
+    color-on-brand-inverse-disabled
+  );
+}
+
 :host.nx-plain-button--danger {
   color: v(plain-button-danger-color);
 

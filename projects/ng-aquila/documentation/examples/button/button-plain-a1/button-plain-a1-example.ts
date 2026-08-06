@@ -4,7 +4,7 @@ import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { Component } from '@angular/core';
 
 /**
- * @title Plain Button One Allianz additions
+ * @title Plain Button A1 additions
  */
 @Component({
   selector: 'button-plain-a1-example',

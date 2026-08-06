@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxButtonModule } from './button.module';
 import {
+  NxPlainButtonColorScheme,
   NxPlainButtonComponent,
   NxPlainButtonSize,
   NxPlainButtonVariant,
@@ -72,6 +73,44 @@ describe('NxPlainButtonComponent', () => {
     testInstance.tabIndex = 3;
     fixture.detectChanges();
     expect(buttonElement.getAttribute('tabindex')).toBe('3');
+  });
+
+  describe('A1 shirt sizes', () => {
+    it('maps size "s" onto the small class', () => {
+      createTestComponent(ButtonTest);
+      fixture.componentInstance.size = 's';
+      fixture.detectChanges();
+      expect(buttonElement).toHaveClass('nx-plain-button--small');
+    });
+
+    it('does not add the small class for size "m"', () => {
+      createTestComponent(ButtonTest);
+      fixture.componentInstance.size = 'm';
+      fixture.detectChanges();
+      expect(buttonElement).not.toHaveClass('nx-plain-button--small');
+    });
+  });
+
+  describe('A1 color schemes', () => {
+    it('adds the on-accent-attention class', () => {
+      createTestComponent(ButtonTest);
+      fixture.componentInstance.colorScheme = 'on-accent-attention';
+      fixture.detectChanges();
+      expect(buttonElement).toHaveClass('nx-plain-button--on-accent-attention');
+    });
+
+    it('adds the on-brand class', () => {
+      createTestComponent(ButtonTest);
+      fixture.componentInstance.colorScheme = 'on-brand';
+      fixture.detectChanges();
+      expect(buttonElement).toHaveClass('nx-plain-button--on-brand');
+    });
+
+    it('has no color scheme class by default', () => {
+      createTestComponent(ButtonTest);
+      expect(buttonElement).not.toHaveClass('nx-plain-button--on-accent-attention');
+      expect(buttonElement).not.toHaveClass('nx-plain-button--on-brand');
+    });
   });
 
   describe('danger', () => {
@@ -188,6 +227,7 @@ describe('NxPlainButtonComponent', () => {
     [nxPlainButton]="classNames"
     [size]="size"
     [variant]="variant"
+    [colorScheme]="colorScheme"
     [critical]="critical"
     [loading]="loading"
     [tabindex]="tabindexAttribute"
@@ -206,6 +246,7 @@ class ButtonTest {
   classNames = '';
   size: NxPlainButtonSize = 'medium';
   variant: NxPlainButtonVariant = 'primary';
+  colorScheme: NxPlainButtonColorScheme = 'default';
   critical = false;
   loading = false;
   tabindexAttribute: number | null = null;

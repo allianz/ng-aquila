@@ -18,11 +18,34 @@ import {
 /** Type of a button. */
 export type NxButtonType = 'primary' | 'secondary' | 'tertiary' | 'cta' | 'emphasis' | 'attention';
 
-/** Size of a button. */
-export type NxButtonSize = 'small' | 'small-medium' | 'medium' | 'large';
+/* Size of a button. */
+export type NxButtonSize = 'small' | 'small-medium' | 'medium' | 'large' | 's' | 'm';
+
+/*  Color scheme of a button. */
+export type NxButtonColorScheme = 'default' | 'accent-attention' | 'on-accent-attention';
+
+/**
+ * Accent color of a button. Only takes effect when `colorScheme` is
+ * `accent-attention` or `on-accent-attention`. Only relevant for the A1 Design.
+ */
+export type NxButtonAccentColor =
+  'yellow' | 'orange' | 'red' | 'purple' | 'aqua' | 'blue' | 'teal' | 'green' | 'gray';
 
 const DEFAULT_SIZE: NxButtonSize = 'medium';
 const DEFAULT_TYPE: NxButtonType = 'primary';
+const DEFAULT_COLOR_SCHEME: NxButtonColorScheme = 'default';
+const DEFAULT_ACCENT_COLOR: NxButtonAccentColor = 'blue';
+
+/** Maps the A1 shirt-size aliases onto the existing size steps. */
+function normalizeSize(size: NxButtonSize): NxButtonSize {
+  if (size === 'm') {
+    return 'medium';
+  }
+  if (size === 's') {
+    return 'small';
+  }
+  return size;
+}
 
 /** @docs-private */
 @Directive({
@@ -38,6 +61,10 @@ const DEFAULT_TYPE: NxButtonType = 'primary';
     '[class.nx-button--small-medium]': 'size === "small-medium"',
     '[class.nx-button--medium]': 'size === "medium"',
     '[class.nx-button--large]': 'size === "large"',
+
+    '[class.nx-button--accent-attention]': 'colorScheme() === "accent-attention"',
+    '[class.nx-button--on-accent-attention]': 'colorScheme() === "on-accent-attention"',
+    '[attr.data-accent-color]': 'accentColor',
 
     '[class.nx-button--danger]': 'danger',
     '[class.nx-button--negative]': 'negative',
@@ -78,7 +105,28 @@ export class NxButtonBase implements AfterViewInit {
 
   sizeInput = input<NxButtonSize | undefined>(undefined, { alias: 'size' });
   get size() {
-    return this.sizeInput() ?? this.properties().size;
+    return normalizeSize(this.sizeInput() ?? this.properties().size);
+  }
+
+  /**
+   * The color scheme of the button. Only relevant for the A1 Design.
+   */
+  readonly colorScheme = input<NxButtonColorScheme>(DEFAULT_COLOR_SCHEME);
+
+  /**
+   * The accent color of the button. Only takes effect together with an
+   * `accent-attention` or `on-accent-attention` color scheme. Only relevant for
+   * the A1 Design.
+   */
+  readonly accentColorInput = input<NxButtonAccentColor | undefined>(undefined, {
+    alias: 'accentColor',
+  });
+
+  get accentColor(): NxButtonAccentColor | null {
+    if (this.colorScheme() === 'default') {
+      return null;
+    }
+    return this.accentColorInput() ?? DEFAULT_ACCENT_COLOR;
   }
 
   /**
@@ -102,8 +150,17 @@ export class NxButtonBase implements AfterViewInit {
     transform: booleanAttribute,
     alias: 'negative',
   });
+  /**
+   * Whether the button uses the inverse colors, for use on dark or colored
+   * backgrounds. This is the A1 Design name for `negative`; the two are
+   * interchangeable.
+   */
+  inverseInput = input<boolean, BooleanInput>(undefined, {
+    transform: booleanAttribute,
+    alias: 'inverse',
+  });
   get negative() {
-    return this.negativeInput() ?? this.properties().negative;
+    return this.negativeInput() ?? this.inverseInput() ?? this.properties().negative;
   }
 
   blockInput = input<boolean, BooleanInput>(undefined, {
