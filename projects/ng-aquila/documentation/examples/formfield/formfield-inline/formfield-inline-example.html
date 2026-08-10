@@ -51,3 +51,50 @@
     </nx-error>
   </nx-formfield>
 </div>
+
+<!--
+  `inline` together with `size="s"` for an even more compact field. The signal
+  button in the suffix uses `size="s"` as well, so its icon matches the reduced
+  control height.
+-->
+<div class="example-row nx-margin-top-s">
+  <span id="fee-label">Fee</span>
+  <nx-formfield label="Fee" inline size="s">
+    @if (feeControl.invalid && feeControl.touched) {
+      <nx-signal-button
+        nxFormfieldSuffix
+        size="s"
+        context="error"
+        popoverDirection="bottom"
+        aria-label="Show validation errors for Fee"
+      >
+        <div nxPopoverTitle>
+          <h3 nxHeadline="subsection-xsmall" class="nx-margin-bottom-2xs">
+            Please review this field
+          </h3>
+        </div>
+        <ul nxPopoverMainContent class="error-list">
+          @if (feeControl.hasError('required')) {
+            <li>A fee is required.</li>
+          }
+          @if (feeControl.hasError('min')) {
+            <li>The fee must be at least 10.</li>
+          }
+        </ul>
+      </nx-signal-button>
+    }
+    <input
+      nxInput
+      type="number"
+      [formControl]="feeControl"
+      aria-labelledby="fee-label"
+    />
+    <nx-error nxFormfieldError>
+      @if (feeControl.hasError('required')) {
+        A fee is required.
+      } @else if (feeControl.hasError('min')) {
+        The fee must be at least 10.
+      }
+    </nx-error>
+  </nx-formfield>
+</div>

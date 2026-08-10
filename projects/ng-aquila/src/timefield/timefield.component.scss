@@ -122,7 +122,7 @@ nx-radio-toggle {
     }
 
     .nx-formfield__input {
-      padding: v(timefield-padding);
+      padding: 0 v(formfield-outline-spacing);
     }
   }
 }
@@ -198,6 +198,7 @@ nx-radio-toggle {
   margin: 0;
   display: flex;
   align-items: center;
+  font-size: v(formfield-icon-size);
 
   &:hover {
     color: v(hover-primary);

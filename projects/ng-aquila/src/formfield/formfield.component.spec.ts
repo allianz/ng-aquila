@@ -28,6 +28,7 @@ import {
   FORMFIELD_DEFAULT_OPTIONS,
   FormfieldDefaultOptions,
   NxFormfieldComponent,
+  NxFormfieldSize,
 } from './formfield.component';
 import { NxFormfieldHintDirective } from './hint.directive';
 import { NxFormfieldNoteDirective } from './note.directive';
@@ -107,6 +108,7 @@ describe('NxFormfieldComponent', () => {
           ConditionalInputComponent,
           NoChangeDetectionFormfield,
           InlineFormfield,
+          SizeFormfield,
           DoubleProjectionFormfield,
         ],
       }).compileComponents();
@@ -348,6 +350,26 @@ describe('NxFormfieldComponent', () => {
         (testInstance as InlineFormfield).inline = true;
         fixture.detectChanges();
         expect(holder.hasAttribute('inert')).toBe(true);
+      });
+    });
+
+    describe('size', () => {
+      it('should not set the small size class by default', () => {
+        createTestComponent(BasicFormfield);
+        expect(formfieldElement).not.toHaveClass('size-s');
+      });
+
+      it('should set the small size class when size is s', () => {
+        createTestComponent(SizeFormfield);
+        expect(formfieldElement).not.toHaveClass('size-s');
+
+        (testInstance as SizeFormfield).size.set('s');
+        fixture.detectChanges();
+        expect(formfieldElement).toHaveClass('size-s');
+
+        (testInstance as SizeFormfield).size.set('m');
+        fixture.detectChanges();
+        expect(formfieldElement).not.toHaveClass('size-s');
       });
     });
 
@@ -908,6 +930,19 @@ class ConditionalInputComponent extends FormfieldTest {}
 })
 class InlineFormfield extends FormfieldTest {
   inline = false;
+}
+
+@Component({
+  template: `
+    <nx-formfield label="Given Label" [size]="size()">
+      <input nxInput />
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+})
+class SizeFormfield extends FormfieldTest {
+  size = signal<NxFormfieldSize>('m');
 }
 
 @Component({

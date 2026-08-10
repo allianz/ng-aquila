@@ -17,7 +17,7 @@
 }
 
 :host(.has-outline) {
-  margin-left: v(licence-plate-prefix-spacing);
+  margin-inline-start: calc(-1 * var(--formfield-outline-spacing));
   border-radius: v(licence-plate-prefix-outline-border-radius) 0 0
     v(licence-plate-prefix-outline-border-radius);
 }

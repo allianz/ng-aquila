@@ -32,6 +32,16 @@ You can't use the formfield without a matching input. A matching input fulfills 
 
 <!-- example(formfield-basic) -->
 
+<div class="docs-a1">
+
+### Small size
+
+Set `size="s"` on the formfield to render a more compact variant. Below is every supported form control (input, autocomplete, dropdown, multi-select, phone input, license plate, timefield, datefield, datemask, date range) using the small size.
+
+<!-- example(formfield-small) -->
+
+</div>
+
 ### Simple Form
 
 This form will show a validation error as both fields are required and one fields uses the appendix slot to display an info [`<nx-icon>`](./documentation/icon/overview) together with a popover.
@@ -56,7 +66,7 @@ You can pass text label content via the input `label`. If you need a more comple
 
 ### Info icon
 
-Show an info icon next to the label by projecting an info-icon component into the formfield and marking it with the `nxLabelInfo` directive. Use the standard `nx-info-icon` (from `@allianz/ng-aquila/info-icon`) or project your own implementation — the projected component keeps full control over its own API (popover direction, width, modal behaviour, etc.). You author it once and the formfield places it per theme: **next to the label under Allianz One**, and in the **appendix position (next to the field) under NDBX** — matching the legacy placement. It works together with both the `label` input and a custom `nx-formfield-label`, and replaces the previous pattern of placing an info icon and popover manually in the `nxFormfieldAppendix` slot.
+Show an info icon next to the label by projecting an info-icon component into the formfield and marking it with the `nxLabelInfo` directive. Use the standard `nx-info-icon` (from `@allianz/ng-aquila/info-icon`) or project your own implementation — the projected component keeps full control over its own API (popover direction, width, modal behaviour, etc.). You author it once and the formfield places it per theme: **next to the label under A1**, and in the **appendix position (next to the field) under NDBX** — matching the legacy placement. It works together with both the `label` input and a custom `nx-formfield-label`, and replaces the previous pattern of placing an info icon and popover manually in the `nxFormfieldAppendix` slot.
 
 <!-- example(formfield-info-icon) -->
 
@@ -80,7 +90,9 @@ For accessibility the label is kept in the DOM (only visually hidden), so you sh
 
 **Note:** hints, errors and notes are not supported together with `inline` and will not be shown.
 
-Because the projected error message is hidden in inline mode, you can surface the validation state with a small [signal button](/documentation/signal-button/overview) placed in the `nxFormfieldSuffix` slot, opening a popover that lists the current errors. Keep the projected `nx-error` in the DOM (it stays only visually hidden): the formfield still connects it to the control via `aria-describedby` and sets `aria-invalid`, so assistive technology continues to announce the error. The example below and the [table with form elements](/documentation/table/overview) example show this pattern.
+Because the projected error message is hidden in inline mode, you can surface the validation state with a [signal button](/documentation/signal-button/overview) placed in the `nxFormfieldSuffix` slot, opening a popover that lists the current errors. Keep the projected `nx-error` in the DOM (it stays only visually hidden): the formfield still connects it to the control via `aria-describedby` and sets `aria-invalid`, so assistive technology continues to announce the error. The example below and the [table with form elements](/documentation/table/overview) example show this pattern.
+
+`inline` combines well with the [small size](#small-size) for especially dense layouts. **Note:** when the formfield uses `size="s"`, the signal button in the suffix needs `size="s"` as well, so that its icon matches the reduced control height. The last row of the example below shows this combination.
 
 <!-- example(formfield-inline) -->
 

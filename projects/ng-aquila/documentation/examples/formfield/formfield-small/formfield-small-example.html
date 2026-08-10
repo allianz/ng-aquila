@@ -1,0 +1,134 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield size="s" label="Input">
+        <input nxInput />
+      </nx-formfield>
+    </div>
+
+    <div nxCol="12,12,6">
+      <nx-formfield size="s" label="Autocomplete">
+        <input type="text" nxInput [nxAutocomplete]="auto1" />
+        <nx-autocomplete #auto1="nxAutocomplete">
+          @for (option of autocompleteOptions; track option) {
+            <nx-autocomplete-option [value]="option">
+              {{ option }}
+            </nx-autocomplete-option>
+          }
+        </nx-autocomplete>
+      </nx-formfield>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield size="s" label="Dropdown">
+        <nx-dropdown>
+          @for (option of dropdownOptions; track option) {
+            <nx-dropdown-item [value]="option"></nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+
+    <div nxCol="12,12,6">
+      <nx-formfield size="s" label="Multi select">
+        <nx-multi-select
+          placeholder="Choose options"
+          [options]="multiSelectOptions"
+          selectValue="id"
+          selectLabel="label"
+        ></nx-multi-select>
+      </nx-formfield>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield size="s">
+        <nx-formfield-label>Phone number</nx-formfield-label>
+        <nx-phone-input countryCode="FR"></nx-phone-input>
+      </nx-formfield>
+    </div>
+
+    <div nxCol="12,12,6">
+      <nx-formfield size="s" label="License Plate">
+        <nx-licence-plate-euro-prefix nxFormfieldPrefix
+          >D</nx-licence-plate-euro-prefix
+        >
+        <input
+          nxInput
+          nxLicensePlate="de_standard"
+          [(ngModel)]="licenceValue"
+        />
+      </nx-formfield>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-timefield
+        withTimepicker
+        size="s"
+        label="Time"
+        [(ngModel)]="timeValue"
+      ></nx-timefield>
+    </div>
+
+    <div nxCol="12,12,6">
+      <nx-formfield size="s" label="Datefield">
+        <input
+          nxDatefield
+          nxInput
+          [datepicker]="myDatepicker"
+          [(ngModel)]="currentDate"
+        />
+        <span nxFormfieldHint>MM/DD/YYYY</span>
+        <nx-datepicker-toggle
+          [for]="myDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #myDatepicker></nx-datepicker>
+      </nx-formfield>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield size="s" label="Datemask">
+        <nx-datemask
+          visualSeperator="/"
+          format="DD.MM.YYYY"
+          [(ngModel)]="customDate"
+          [datepicker]="maskDatepicker"
+        ></nx-datemask>
+        <span nxFormfieldHint>DD.MM.YYYY</span>
+        <nx-datepicker-toggle
+          [for]="maskDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker #maskDatepicker></nx-datepicker>
+      </nx-formfield>
+    </div>
+
+    <div nxCol="12,12,6">
+      <nx-formfield size="s" label="Date Range">
+        <nx-date-range
+          [datepicker]="rangeDatepicker"
+          placeholder="mm/dd/yyyy"
+          [(ngModel)]="dateRange"
+        ></nx-date-range>
+        <span nxFormfieldHint>MM/DD/YYYY - MM/DD/YYYY</span>
+        <nx-datepicker-toggle
+          [for]="rangeDatepicker"
+          nxFormfieldSuffix
+        ></nx-datepicker-toggle>
+        <nx-datepicker
+          #rangeDatepicker
+          [rangeMode]="true"
+          [showTodayButton]="true"
+        ></nx-datepicker>
+      </nx-formfield>
+    </div>
+  </div>
+</div>

@@ -15,10 +15,11 @@
       @for (control of formArray.controls; track control; let i = $index) {
         <tr nxTableRow [formGroup]="getFormGroup(i)">
           <td nxTableCell>
-            <nx-formfield inline>
+            <nx-formfield inline size="s">
               @if (getControl(i, 'id').invalid && getControl(i, 'id').touched) {
                 <nx-signal-button
                   nxFormfieldSuffix
+                  size="s"
                   context="error"
                   popoverDirection="bottom"
                   aria-label="Show validation errors for Assignment/Case ID"
@@ -49,13 +50,14 @@
             </nx-formfield>
           </td>
           <td nxTableCell>
-            <nx-formfield inline>
+            <nx-formfield inline size="s">
               @if (
                 getControl(i, 'amount').invalid &&
                 getControl(i, 'amount').touched
               ) {
                 <nx-signal-button
                   nxFormfieldSuffix
+                  size="s"
                   context="error"
                   popoverDirection="bottom"
                   aria-label="Show validation errors for Gross Amount"
@@ -93,7 +95,7 @@
             </nx-formfield>
           </td>
           <td nxTableCell class="date-cell">
-            <nx-formfield inline>
+            <nx-formfield inline size="s">
               <input
                 nxDatefield
                 nxInput
@@ -109,7 +111,7 @@
             </nx-formfield>
           </td>
           <td nxTableCell class="status-cell">
-            <nx-formfield inline>
+            <nx-formfield inline size="s">
               <nx-dropdown formControlName="status" ariaLabelledBy="status">
                 <nx-dropdown-item value="open"></nx-dropdown-item>
                 <nx-dropdown-item value="processing"></nx-dropdown-item>

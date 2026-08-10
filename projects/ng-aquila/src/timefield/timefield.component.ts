@@ -9,6 +9,7 @@ import {
   NxFormfieldComponent,
   NxFormfieldControl,
   NxFormfieldModule,
+  NxFormfieldSize,
   NxFormfieldUpdateEventType,
 } from '@allianz/ng-aquila/formfield';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
@@ -222,6 +223,8 @@ export class NxTimefieldComponent
 
   /* The appearance of the formfield. Should be mostly handled via dependency injection and not over this input. */
   readonly appearance = input<AppearanceType>(this._formfieldDefaultOptions?.appearance ?? 'auto');
+  /* The size of the formfield. Only supported under A1. */
+  readonly size = input<NxFormfieldSize>('m');
   /* The hint to be shown below the field. */
   @Input() hint = '';
   /* The optional label for the formfield. */

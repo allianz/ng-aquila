@@ -40,8 +40,14 @@ export class FormfieldInlineExampleComponent {
     Validators.min(100),
   ]);
 
+  feeControl = new FormControl<number | null>(null, [
+    Validators.required,
+    Validators.min(10),
+  ]);
+
   constructor() {
     // Mark as touched so the inline error state is visible on load.
     this.budgetControl.markAsTouched();
+    this.feeControl.markAsTouched();
   }
 }

@@ -15,7 +15,11 @@ import {
 import { By } from '@angular/platform-browser';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxSignalButtonComponent, NxSignalButtonContext } from './signal-button.component';
+import {
+  NxSignalButtonComponent,
+  NxSignalButtonContext,
+  NxSignalButtonSize,
+} from './signal-button.component';
 import { NxSignalButtonModule } from './signal-button.module';
 
 @Directive({ standalone: true })
@@ -282,10 +286,24 @@ describe('NxSignalButtonComponent', () => {
       expect(getContextClass('info')).toBeTruthy();
     }));
   });
+
+  describe('Size', () => {
+    it('should not set the small size class by default', () => {
+      createTestComponent(SignalButtonComponent);
+      expect(fixture.debugElement.query(By.css('.size-s'))).toBeFalsy();
+    });
+
+    it('should set the small size class', () => {
+      createTestComponent(SignalButtonComponent);
+      (testInstance as SignalButtonComponent).size = 's';
+      fixture.detectChanges();
+      expect(fixture.debugElement.query(By.css('.size-s'))).toBeTruthy();
+    });
+  });
 });
 
 @Component({
-  template: `<nx-signal-button [context]="context"
+  template: `<nx-signal-button [context]="context" [size]="size"
     >This is the content of the success popover</nx-signal-button
   >`,
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -293,4 +311,5 @@ describe('NxSignalButtonComponent', () => {
 })
 class SignalButtonComponent extends SignalButtonTestDirective {
   context: NxSignalButtonContext = 'success';
+  size: NxSignalButtonSize = 'm';
 }

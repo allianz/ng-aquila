@@ -5,10 +5,20 @@ import {
   PopoverTriggerScrollStrategy,
 } from '@allianz/ng-aquila/popover';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  input,
+  Output,
+} from '@angular/core';
 
 /** The contextual type of a signal button. */
 export type NxSignalButtonContext = 'success' | 'warning' | 'error' | 'info';
+
+/** Type for the size of a signal button. */
+export type NxSignalButtonSize = 's' | 'm';
 
 @Component({
   selector: 'nx-signal-button',
@@ -19,6 +29,7 @@ export type NxSignalButtonContext = 'success' | 'warning' | 'error' | 'info';
     '[class.context-warning]': 'this._context === "warning"',
     '[class.context-error]': 'this._context === "error"',
     '[class.context-info]': 'this._context === "info"',
+    '[class.size-s]': 'this.size() === "s"',
   },
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPopoverModule, NxStatusIconComponent],
@@ -58,6 +69,13 @@ export class NxSignalButtonComponent {
     return this._context;
   }
   _context: NxSignalButtonContext = 'success';
+
+  /**
+   * Sets the size of the signal button.
+   *
+   * Only supported under A1.
+   */
+  readonly size = input<NxSignalButtonSize>('m');
 
   /** Which aria-label will be reading from screen reader.  */
   @Input('aria-label')

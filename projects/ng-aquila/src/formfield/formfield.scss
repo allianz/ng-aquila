@@ -669,6 +669,11 @@
   }
 }
 
+.nx-formfield.size-s {
+  --formfield-outline-spacing: #{v(formfield-outline-s-spacing)};
+  --formfield-outline-control-height: #{v(formfield-outline-s-control-height)};
+}
+
 // Modifiers
 .nx-formfield--negative {
   color: v(negative);

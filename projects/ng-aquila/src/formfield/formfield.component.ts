@@ -71,6 +71,9 @@ export type FloatLabelType = 'always' | 'auto';
 /** Type for the appearance of the formfield. */
 export type AppearanceType = 'outline' | 'auto';
 
+/** Type for the size of the formfield. */
+export type NxFormfieldSize = 's' | 'm';
+
 @Component({
   selector: 'nx-formfield',
   templateUrl: 'formfield.component.html',
@@ -83,6 +86,7 @@ export type AppearanceType = 'outline' | 'auto';
     '[class.is-focused]': 'this._control.focused',
     '[class.is-floating]': 'this.shouldLabelFloat',
     '[class.is-auto-floating]': 'this.floatLabel === "auto"',
+    '[class.size-s]': 'this.size() === "s"',
     '[class.has-error]': 'this._control.errorState',
     '[class.has-outline]': 'this.appearance === "outline"',
     '[class.has-hint]': 'this._hintChildren?.length && this._hintChildren?.length! > 0',
@@ -192,6 +196,13 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     return this._appearance || this._defaultOptions?.appearance || 'auto';
   }
   private _appearance!: AppearanceType;
+
+  /**
+   * Sets the size of the formfield.
+   *
+   * Only supported under A1.
+   */
+  readonly size = input<NxFormfieldSize>('m');
 
   /**
    *

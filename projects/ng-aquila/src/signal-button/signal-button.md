@@ -15,33 +15,20 @@ The signal button can be used to open a popover with a message. With use of `pop
 
 The `context` is set to `success` per default, but the signal button can also be used with context `error`, `warning` or `info`.
 
-<div class="docs-hide-a1">
-
 <!-- example(signal-button-context) -->
 
-</div>
+### Size
 
-<div class="docs-a1">
+With `size` the signal button can be rendered as `m` (default) or `s`. Use `s` for dense contexts, for example inside a [formfield](/documentation/formfield/overview) that uses `size="s"`.
 
-<!-- example(signal-button-context-a1) -->
-
-</div>
+<!-- example(signal-button-size) -->
 
 ### Disabled
 
 With `disabled` the signal button can be disabled.
 
-<div class="docs-hide-a1">
-
 <!-- example(signal-button-disabled) -->
 
-</div>
-
-<div class="docs-a1">
-
-<!-- example(signal-button-disabled-a1) -->
-
-</div>
 
 ### Accessibility
 

@@ -3,6 +3,7 @@
     [label]="label"
     [optionalLabel]="optionalLabel()"
     [appearance]="appearance()"
+    [size]="size()"
     floatLabel="always"
     [negative]="negative ? 'negative' : ''"
     [inline]="inline()"
@@ -98,7 +99,7 @@
         [attr.aria-activedescendant]="_keyManager?.activeItem?.id"
         (keydown)="handleKeyDown($event)"
       >
-        <nx-icon name="clock-o" aria-hidden="true" size="s"></nx-icon>
+        <nx-icon name="clock-o" aria-hidden="true"></nx-icon>
       </button>
     }
     <ng-container nxFormfieldSuffix>

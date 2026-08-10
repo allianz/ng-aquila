@@ -35,6 +35,7 @@ import { FormfieldPasswordVisibilityExampleComponent } from './formfield-passwor
 import { FormfieldPlaceholderExampleComponent } from './formfield-placeholder/formfield-placeholder-example';
 import { FormfieldPrefixSuffixAppendixExampleComponent } from './formfield-prefix-suffix-appendix/formfield-prefix-suffix-appendix-example';
 import { FormfieldSimpleFormExampleComponent } from './formfield-simple-form/formfield-simple-form-example';
+import { FormfieldSmallExampleComponent } from './formfield-small/formfield-small-example';
 import { FormfieldSpacingAdjusterExampleComponent } from './formfield-spacing-adjuster/formfield-spacing-adjuster-example';
 
 const EXAMPLES = [
@@ -62,6 +63,7 @@ const EXAMPLES = [
   FormfieldSimpleFormExampleComponent,
   FormfieldChangedetectionExampleComponent,
   FormfieldOptionalLabelExampleComponent,
+  FormfieldSmallExampleComponent,
 ];
 
 @NgModule({
@@ -109,6 +111,7 @@ export class FormfieldExamplesModule {
       'formfield-simple-form': FormfieldSimpleFormExampleComponent,
       'formfield-changedetection': FormfieldChangedetectionExampleComponent,
       'formfield-optional-label': FormfieldOptionalLabelExampleComponent,
+      'formfield-small': FormfieldSmallExampleComponent,
     };
   }
 }

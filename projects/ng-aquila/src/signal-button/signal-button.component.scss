@@ -28,6 +28,13 @@
     }
   }
 }
+
+:host(.size-s) .nx-signal-button__button {
+  width: v(signal-button-s-width);
+  height: v(signal-button-s-height);
+  font-size: v(signal-button-s-font-size);
+}
+
 :host(.context-error) {
   &:hover:not(:active):not([disabled]) {
     ::ng-deep .nx-signal-button__icon nx-icon {
