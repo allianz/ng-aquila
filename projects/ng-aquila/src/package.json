@@ -14,6 +14,8 @@
     "@angular/cdk": "^22.0.0",
     "@angular/common": "^22.0.0",
     "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0",
+    "@angular/router": "^22.0.0",
     "i18n-iso-countries": "^6.8.0||^7.5.0",
     "ibantools": "^4.5.1",
     "moment": "^2.29.1",
