@@ -24,6 +24,13 @@
     transform-origin: top right;
   }
 }
+:host(.positive) .nx-progress__indicator::after {
+  background-color: v(progressbar-positive-indicator-color);
+}
+
+:host(.transparent-background) .nx-progress__track {
+  background-color: transparent;
+}
 
 // A pseudo element is created for each progress bar bar that fills with the indicator color.
 .nx-progress__indicator::after {

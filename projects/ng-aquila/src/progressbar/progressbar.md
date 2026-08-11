@@ -8,6 +8,7 @@ stable: done
 alias: progress, loading bar
 a1Light: true
 a1Densities: true
+a1Full: true
 group: Data Display
 ---
 
@@ -24,6 +25,22 @@ Bind a variable to `value` input to set the progress bar value.
 Use custom ranges with `min` and `max`. When using those, `value` has to be `min <= value <= max` to have a meaningful progress bar.
 
 <!-- example(progressbar-custom-range) -->
+
+<div class="docs-hide-ndbx">
+
+### Color Scheme
+
+Use `colorScheme` input to set positive color.
+
+<!-- example(progressbar-positive) -->
+
+### Transparent
+
+Set transparent background using `transparentBackground` input.
+
+<!-- example(progressbar-transparent) -->
+
+</div>
 
 ### Accessibility
 

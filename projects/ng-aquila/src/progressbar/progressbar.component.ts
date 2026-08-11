@@ -1,5 +1,13 @@
 import { NgStyle } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, numberAttribute } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  numberAttribute,
+} from '@angular/core';
+
+export type NxProgressbarColorScheme = 'default' | 'positive';
 
 @Component({
   selector: 'nx-progressbar',
@@ -13,6 +21,8 @@ import { ChangeDetectionStrategy, Component, input, numberAttribute } from '@ang
     '[attr.aria-valuemin]': 'this.min()',
     '[attr.aria-label]': 'this.ariaLabel()',
     '[attr.aria-labelledby]': 'this.ariaLabelledBy()',
+    '[class.positive]': 'this.colorScheme() === "positive"',
+    '[class.transparent-background]': 'this.transparentBackground()',
   },
   imports: [NgStyle],
 })
@@ -31,6 +41,12 @@ export class NxProgressbarComponent {
 
   /** The maximum value of the progress bar. Used for percentage calculation and mirrored to `aria-valuemax`. Defaults to 1 */
   readonly max = input(1, { transform: numberAttribute });
+
+  /** Sets the color scheme of the progress bar indicator. Defaults to "default" */
+  readonly colorScheme = input<NxProgressbarColorScheme>('default');
+
+  /** Makes the background transparent. Defaults to false */
+  readonly transparentBackground = input(false, { transform: booleanAttribute });
 
   _primaryTransform() {
     const scale = (this.value() - this.min()) / (this.max() - this.min());

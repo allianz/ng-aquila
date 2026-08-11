@@ -81,6 +81,30 @@ describe('NxProgressbarComponent', () => {
     createTestComponent(ProgressBarBasicComponent);
     await expectAsync(fixture.nativeElement).toBeAccessible();
   });
+
+  it('colorScheme should default to "default" and not set the positive class', fakeAsync(() => {
+    createTestComponent(ProgressBarBasicComponent);
+    expect(componentInstance.colorScheme()).toBe('default');
+    expect(barElement.nativeElement.classList.contains('positive')).toBe(false);
+  }));
+
+  it('colorScheme "positive" should set the positive class', fakeAsync(() => {
+    createTestComponent(ProgressBarPositiveComponent);
+    expect(componentInstance.colorScheme()).toBe('positive');
+    expect(barElement.nativeElement.classList.contains('positive')).toBe(true);
+  }));
+
+  it('transparentBackground should default to false and not set the transparent-background class', fakeAsync(() => {
+    createTestComponent(ProgressBarBasicComponent);
+    expect(componentInstance.transparentBackground()).toBe(false);
+    expect(barElement.nativeElement.classList.contains('transparent-background')).toBe(false);
+  }));
+
+  it('transparentBackground should coerce the string attribute to true and set the transparent-background class', fakeAsync(() => {
+    createTestComponent(ProgressBarTransparentComponent);
+    expect(componentInstance.transparentBackground()).toBe(true);
+    expect(barElement.nativeElement.classList.contains('transparent-background')).toBe(true);
+  }));
 });
 
 @Component({
@@ -102,3 +126,17 @@ class ProgressBarValueComponent extends ProgressBarTest {}
   imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarCustomRangeComponent extends ProgressBarTest {}
+
+@Component({
+  template: `<nx-progressbar value="0.5" colorScheme="positive"></nx-progressbar>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxProgressbarModule, FormsModule],
+})
+class ProgressBarPositiveComponent extends ProgressBarTest {}
+
+@Component({
+  template: `<nx-progressbar value="0.5" transparentBackground="true"></nx-progressbar>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxProgressbarModule, FormsModule],
+})
+class ProgressBarTransparentComponent extends ProgressBarTest {}
