@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import {
   ChangeDetectionStrategy,
@@ -143,6 +144,53 @@ describe('NxLinkComponent', () => {
       createTestComponent(BasicLink);
       await expectAsync(fixture.nativeElement).toBeAccessible();
     });
+  });
+});
+
+describe('NxLinkComponent with A1', () => {
+  const a1Enabled = signal(true);
+
+  beforeEach(waitForAsync(() => {
+    a1Enabled.set(true);
+    TestBed.configureTestingModule({
+      imports: [BasicLink, DynamicLink],
+      providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: a1Enabled } }],
+    }).compileComponents();
+  }));
+
+  it('should have large size on default', () => {
+    const fixture = TestBed.createComponent(BasicLink);
+    fixture.detectChanges();
+    const linkDebugElement = fixture.debugElement.query(By.directive(NxLinkComponent));
+
+    expect(fixture.componentInstance.linkInstance.size()).toBe('large');
+    expect(linkDebugElement.nativeElement).toHaveClass('nx-link--large');
+    expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--small');
+  });
+
+  it('should update the default size when A1 gets disabled', () => {
+    const fixture = TestBed.createComponent(BasicLink);
+    fixture.detectChanges();
+    const linkDebugElement = fixture.debugElement.query(By.directive(NxLinkComponent));
+
+    a1Enabled.set(false);
+    fixture.detectChanges();
+
+    expect(linkDebugElement.nativeElement).toHaveClass('nx-link--small');
+    expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--large');
+  });
+
+  it('should keep an explicit size when A1 gets disabled', () => {
+    const fixture = TestBed.createComponent(DynamicLink);
+    fixture.detectChanges();
+    const linkDebugElement = fixture.debugElement.query(By.directive(NxLinkComponent));
+    fixture.componentInstance.size.set('xsmall');
+    fixture.detectChanges();
+
+    a1Enabled.set(false);
+    fixture.detectChanges();
+
+    expect(linkDebugElement.nativeElement).toHaveClass('nx-link--xsmall');
   });
 });
 

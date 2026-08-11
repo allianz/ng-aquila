@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { MappedStyles } from '@allianz/ng-aquila/core';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -7,8 +8,10 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChild,
   ElementRef,
+  inject,
   input,
   OnDestroy,
   Renderer2,
@@ -60,8 +63,18 @@ export class NxLinkComponent
   /** @docs-private */
   @ContentChild(NxIconComponent) icon!: NxIconComponent;
 
-  /** Sets the size of the link. Default: 'small'. */
-  readonly size = input<NxLinkSize>('small');
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+  private readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
+
+  /** Sets the size of the link. Default: 'large' under A1, otherwise 'small'. To read the value use the `size` property. */
+  readonly sizeInput = input<NxLinkSize | undefined>(undefined, { alias: 'size' });
+
+  /** The computed size taking the A1 provider into account. */
+  readonly size = computed<NxLinkSize>(
+    () => this.sizeInput() ?? (this._isA1() ? 'large' : 'small'),
+  );
 
   /** Sets the type of the link. Default: 'primary'. */
   readonly type = input<NxLinkType>('primary');
