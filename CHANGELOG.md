@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.2.0 (2026-08-12)
+
+
+### Features ✨
+
+* **button:** add colorScheme and accentColor ([9d8d992](https://github.com/allianz/ng-aquila/commit/9d8d992bf24ae9a1bb57c43a5673b561ac22b4f0))
+* **card:** add elevated card variant ([cdc8955](https://github.com/allianz/ng-aquila/commit/cdc895552658f7c2d63302cbb14f6d02379fb216))
+* **formfield:** add inline option ([5f9715e](https://github.com/allianz/ng-aquila/commit/5f9715e1a77e00275190ec4cab300f233160b222))
+* **formfield:** add size small variant ([f238914](https://github.com/allianz/ng-aquila/commit/f2389145222b2a8e559cd637e4742395d0595bc4))
+* **notifications:** add new non-contained message variant ([affa25d](https://github.com/allianz/ng-aquila/commit/affa25d51805d385525f42cf651cc5fcd4f45e9b))
+* **progressbar:** add colorScheme and transparent input ([d9b1c57](https://github.com/allianz/ng-aquila/commit/d9b1c57e3982402c9cb76e2fcb272c29547dfa5c))
+* **rating:** implement golden star rating ([9ac0908](https://github.com/allianz/ng-aquila/commit/9ac090898f20e2e4a154ba07e19003088a2728f5))
+* **tabs:** enhance tab styling and layout for A1 ([347561c](https://github.com/allianz/ng-aquila/commit/347561cf563ea954679108d3ba3b43632d6f8a48))
+
+
+### Bug Fixes 🐛
+
+* **dropdown:** prevent stack overflow with duplicate item values ([a012ea9](https://github.com/allianz/ng-aquila/commit/a012ea9b47f393b88707d058daa992f57f82c7ec))
+* **iban-mask:** keep initial model value in template-driven forms ([4e29660](https://github.com/allianz/ng-aquila/commit/4e296603eb2598a44e34d51a380ceaa5cd3bdd6c))
+* **link:** update A1 default size ([821059a](https://github.com/allianz/ng-aquila/commit/821059aafb14338939da0a93756b3f30c1d40c5c))
+* **list:** add dot after the index in ordered lists ([fc08de3](https://github.com/allianz/ng-aquila/commit/fc08de3fa7cd4bed4e78b8ad4755460a12e462e6))
+* **modal:** apply position overrides when not fullscreen ([b31ca3b](https://github.com/allianz/ng-aquila/commit/b31ca3bd4454a6d94524ed4c83a72f920f76f797))
+* **package:** declare @angular/forms and @angular/router peers ([69a1f11](https://github.com/allianz/ng-aquila/commit/69a1f112d004f846a258a4cd4c78a4f18fe62caa))
+* **phone-input:** prevent redundant re-formating on blur ([d1667e9](https://github.com/allianz/ng-aquila/commit/d1667e9ee3e46adac217a0a7be25b15750429dfa))
+* **taglist:** template not updated when parent is onPush ([806ea74](https://github.com/allianz/ng-aquila/commit/806ea74a0f862a06438673d9deb2cc5cf75ca336))
+* **timefield:** fix spacing between error container ([1cbf8cc](https://github.com/allianz/ng-aquila/commit/1cbf8cc08dee20fc7ca6b3a99d778d4582db172c))
+
 ## 22.1.0 (2026-07-21)
 
 ### v22 schematics fixed
