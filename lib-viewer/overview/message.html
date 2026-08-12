@@ -1,24 +1,17 @@
-<h3 id="inline-notification" tabindex="-1" class="docs-markdown--h3">Inline Notification</h3>
+<h3 id="message" tabindex="-1" class="docs-markdown--h3">Message</h3>
 <p class="docs-markdown--p">Use this component to present a contextual message with different color coding. You can pass in any content you consider appropriate.</p>
-<h4 id="info" tabindex="-1" class="docs-markdown--h4">Info</h4>
-<div nx-docs-example="message-info" config="{}">exampleID: message-info</div>
-<h4 id="error" tabindex="-1" class="docs-markdown--h4">Error</h4>
-<p class="docs-markdown--p">Besides the message component you can also use <code>&lt;nx-error&gt;</code>. The NxErrorComponent has a different look in expert applications (for a global configuration please have a look at the <a href="./documentation/config/overview">expert module</a>). We recommend using <em>nx-error</em>, especially for use cases where you need to support both styles.</p>
-<div nx-docs-example="message-error" config="{}">exampleID: message-error</div>
-<h4 id="success" tabindex="-1" class="docs-markdown--h4">Success</h4>
-<div nx-docs-example="message-success" config="{}">exampleID: message-success</div>
-<h4 id="warning" tabindex="-1" class="docs-markdown--h4">Warning</h4>
-<div nx-docs-example="message-warning" config="{}">exampleID: message-warning</div>
+<p class="docs-markdown--p">By default, the message is rendered inside a filled, bordered surface. Set the <code>contained</code> input to <code>false</code> to render it as plain icon and text instead, without a background or border.</p>
+<div nx-docs-example="message-plain" config="{}">exampleID: message-plain</div>
+<h3 id="contained-message" tabindex="-1" class="docs-markdown--h3">Contained message</h3>
+<p class="docs-markdown--p">Per default (or by explicitly setting <code>contained</code> to <code>true</code>), the message is rendered inside a filled, bordered surface, colored according to its context (info, success, warning or error).</p>
+<p class="docs-markdown--p">Besides the message component you can also use <code>&lt;nx-error&gt;</code> for error messages. The NxErrorComponent has a different look in expert applications (for a global configuration please have a look at the <a href="./documentation/config/overview">expert module</a>). We recommend using <em>nx-error</em>, especially for use cases where you need to support both styles.</p>
+<div nx-docs-example="message-contained" config="{}">exampleID: message-contained</div>
 <h4 id="closable" tabindex="-1" class="docs-markdown--h4">Closable</h4>
 <p class="docs-markdown--p">You can add a close icon to the message component by using the <code>closable</code> input. A <code>(close)</code> event is emitted when the user clicks on the close icon.</p>
 <p class="docs-markdown--p">When using a closable message please set an <code>aria-label</code> on the close button via the <code>closeButtonLabel</code> property. If you don't set the <code>aria-label</code> explicitly it will have <strong>'Close dialog'</strong> as default value. As the default is in English, in almost all cases you should explicitly set the label.</p>
 <p class="docs-markdown--p">When displaying notifications we recommend that you use <code>aria-live</code> combined with the <a href="https://material.angular.io/cdk/a11y/api">LiveAnnouncer</a> in order to be accessibility compliant.</p>
 <div nx-docs-example="message-closable" config="{}">exampleID: message-closable</div>
-<h3 id="message-banner" tabindex="-1" class="docs-markdown--h3">Message Banner</h3>
-<p class="docs-markdown--p">The notification banner is a static element that shifts the content of the page down in order to communicate information, a warning or an error to the user. Respectively it can have an <strong>info, success or warning context</strong>. Per default, message banners have a close icon button in the top right, which can be disabled by the <code>closable</code> input.</p>
-<p class="docs-markdown--p">Analogously to the Inline Notification, a message banner emits a <code>close</code> event when being closed by the close icon button. The example below shows how the <code>close</code> event can be used for hiding a message banner.</p>
-<div nx-docs-example="message-banner" config="{}">exampleID: message-banner</div>
-<h3 id="message-toast" tabindex="-1" class="docs-markdown--h3">Message Toast</h3>
+<h3 id="toast-message" tabindex="-1" class="docs-markdown--h3">Toast message</h3>
 <p class="docs-markdown--p">Message Toast is a small popup <strong>which should only contain success or informative messages</strong>. It has a title, that should be short and descriptive. A Message Toast appears center-aligned from the bottom of the application. Per default it disappears after 3 seconds, but please keep in mind that the show duration should be set dependent on the length of the message.</p>
 <p class="docs-markdown--p">The <code>NxMessageToastModule</code> provides a service for displaying these Message Toasts: <code>NxMessageToastService</code>.</p>
 <p class="docs-markdown--p"><strong>Please make sure you have imported the cdk-a11y and cdk-overlay stylesheets</strong> as shown below, so that the message toasts get displayed correctly:</p>
@@ -83,3 +76,7 @@
 <pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@angular/cdk/a11y-prebuilt.css&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">You can find more information on aria-live regions and the available politeness values <a href="https://www.w3.org/WAI/PF/aria-1.1/states_and_properties#aria-live">here</a>.</p>
+<h3 id="banner-message" tabindex="-1" class="docs-markdown--h3">Banner message</h3>
+<p class="docs-markdown--p">The notification banner is a static element that shifts the content of the page down in order to communicate information, a warning or an error to the user. Respectively it can have an <strong>info, success or warning context</strong>. Per default, message banners have a close icon button in the top right, which can be disabled by the <code>closable</code> input.</p>
+<p class="docs-markdown--p">Analogously to the Inline Notification, a message banner emits a <code>close</code> event when being closed by the close icon button. The example below shows how the <code>close</code> event can be used for hiding a message banner.</p>
+<div nx-docs-example="message-banner" config="{}">exampleID: message-banner</div>

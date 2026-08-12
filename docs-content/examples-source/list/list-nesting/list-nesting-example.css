@@ -17,11 +17,3 @@
 .list-nesting-grid__item h3 {
   margin-bottom: 16px;
 }
-
-/* Render nested numbering as "1.1", "1.2" instead of resetting to "1" */
-:is(.my-custom-normal-list, .my-custom-circle-mixed-list)
-  > li
-  > ol.nx-list
-  > li:not(.nx-list__icon-wrapper)::before {
-  content: counters(list, '.') !important;
-}

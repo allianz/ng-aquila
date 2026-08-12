@@ -25,19 +25,20 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-uploader</span>&gt;</span>
 
 @if (showUploadError) {
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Error<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>An error occurred while uploading.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-    @if (ngModel.control.hasError(&#x27;required&#x27;)) {
-    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Required!<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-    }
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-} @if (documentUpload.value?.length) {
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;upload(&#x27;file-upload&#x27;)&quot;</span>&gt;</span>
-  Upload files
-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Error<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>An error occurred while uploading.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      @if (ngModel.control.hasError(&#x27;required&#x27;)) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Required!<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+}
+@if (documentUpload.value?.length) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;upload(&#x27;file-upload&#x27;)&quot;</span>&gt;</span>
+    Upload files
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 }
 
 <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span>

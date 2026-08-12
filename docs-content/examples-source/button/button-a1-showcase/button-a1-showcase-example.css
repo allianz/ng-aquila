@@ -1,0 +1,27 @@
+.docs-matrix {
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  border-radius: 8px;
+}
+.docs-matrix th,
+.docs-matrix td {
+  padding: 6px 4px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+  white-space: nowrap;
+}
+
+.docs-matrix th {
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.docs-matrix__state {
+  font-weight: 400;
+  font-style: italic;
+}
+
+.docs-matrix.docs-inverse-container th {
+  color: var(--negative);
+}

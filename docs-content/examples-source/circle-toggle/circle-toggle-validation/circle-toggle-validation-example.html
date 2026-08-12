@@ -3,14 +3,14 @@
   <form novalidate [formGroup]="testForm">
     <nx-circle-toggle-group formControlName="reactiveToggle" responsive="false">
       @for (item of sampleValues; track item) {
-      <div>
-        <nx-circle-toggle
-          [value]="item.value"
-          [icon]="item.icon"
-          [hint]="item.hint"
-          [label]="item.label"
-        ></nx-circle-toggle>
-      </div>
+        <div>
+          <nx-circle-toggle
+            [value]="item.value"
+            [icon]="item.icon"
+            [hint]="item.hint"
+            [label]="item.label"
+          ></nx-circle-toggle>
+        </div>
       }
       <nx-error appearance="message" class="nx-margin-top-xs">
         Please make a choice.
@@ -60,11 +60,11 @@
   >
   </nx-circle-toggle>
   @if (testForm3.invalid) {
-  <div>
-    <nx-error class="nx-margin-y-xs" id="customError">
-      Need to select 2 options
-    </nx-error>
-  </div>
+    <div>
+      <nx-error class="nx-margin-y-xs" id="customError">
+        Need to select 2 options
+      </nx-error>
+    </div>
   }
 </form>
 <p>Form value: {{ testForm3.value | json }}</p>

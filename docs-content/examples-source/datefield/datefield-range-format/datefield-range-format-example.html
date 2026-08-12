@@ -7,7 +7,12 @@
             formControlName="range"
             [datepicker]="formRangeDatePicker"
             placeholder="mm/dd/yyyy"
-            [parseFormat]="['MM/DD/YYYY', 'MM--DD-->YYYY', 'MMDDYYYY', 'MMMM DD, YYYY']"
+            [parseFormat]="[
+              'MM/DD/YYYY',
+              'MM--DD-->YYYY',
+              'MMDDYYYY',
+              'MMMM DD, YYYY',
+            ]"
             displayFormat="MMMM DD, YYYY"
           ></nx-date-range>
           <nx-datepicker-toggle
@@ -19,9 +24,11 @@
             [rangeMode]="true"
           ></nx-datepicker>
           <nx-error nxFormfieldError>
-            @if(formWithPicker.controls.range.errors?.nxDateRangeInvalid){
-            Invalid: The end date can't be before the start date. } @else {
-            Please enter a date range with a start and an end date. }
+            @if (formWithPicker.controls.range.errors?.nxDateRangeInvalid) {
+              Invalid: The end date can't be before the start date.
+            } @else {
+              Please enter a date range with a start and an end date.
+            }
           </nx-error>
           <span
             aria-label="Please provide date in the US format"

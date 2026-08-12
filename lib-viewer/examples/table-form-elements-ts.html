@@ -1,3 +1,4 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPlainButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
 <span class="hljs-keyword">import</span> {
   <span class="hljs-variable constant_">DATEPICKER_DEFAULT_OPTIONS</span>,
@@ -12,10 +13,17 @@
 <span class="hljs-keyword">import</span> {
   <span class="hljs-variable constant_">FORMFIELD_DEFAULT_OPTIONS</span>,
   <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
   <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxPopoverMainContentDirective</span>,
+  <span class="hljs-title class_">NxPopoverTitleDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/popover&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSignalButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/signal-button&#x27;</span>;
 <span class="hljs-keyword">import</span> {
   <span class="hljs-title class_">NxHeaderCellDirective</span>,
   <span class="hljs-title class_">NxTableCellComponent</span>,
@@ -29,6 +37,7 @@
   <span class="hljs-title class_">FormGroup</span>,
   <span class="hljs-title class_">FormsModule</span>,
   <span class="hljs-title class_">ReactiveFormsModule</span>,
+  <span class="hljs-title class_">Validators</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
 
@@ -62,6 +71,12 @@
     <span class="hljs-title class_">NxDatefieldDirective</span>,
     <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
     <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+    <span class="hljs-title class_">NxFormfieldErrorDirective</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxSignalButtonComponent</span>,
+    <span class="hljs-title class_">NxPopoverTitleDirective</span>,
+    <span class="hljs-title class_">NxPopoverMainContentDirective</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
     <span class="hljs-title class_">NxDatepickerComponent</span>,
     <span class="hljs-title class_">NxDropdownComponent</span>,
     <span class="hljs-title class_">NxDropdownItemComponent</span>,
@@ -72,36 +87,43 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TableFormElementsExampleComponent</span> {
   formArray = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormArray</span>([
     <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
-      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;123456789&#x27;</span>),
-      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">250.0</span>),
+      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;123456789&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
+      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">250.0</span>, [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">1</span>)]),
       <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2021</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>])),
       <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;open&#x27;</span>),
     }),
     <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
-      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;987654321&#x27;</span>),
-      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">1000.4</span>),
+      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;987654321&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
+      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">1000.4</span>, [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">1</span>)]),
       <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2023</span>, <span class="hljs-number">2</span>, <span class="hljs-number">23</span>])),
       <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;processing&#x27;</span>),
     }),
+    <span class="hljs-comment">// This row starts in an invalid state to demonstrate the inline error</span>
+    <span class="hljs-comment">// signal button: the id is missing and the amount is below the minimum.</span>
     <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
-      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;123456700&#x27;</span>),
-      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">40</span>),
+      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
+      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">0</span>, [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">1</span>)]),
       <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>])),
       <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;accepted&#x27;</span>),
     }),
     <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
-      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;123456780&#x27;</span>),
-      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">501</span>),
+      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;123456780&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
+      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">501</span>, [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">1</span>)]),
       <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>([<span class="hljs-number">2018</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>])),
       <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;rejected&#x27;</span>),
     }),
   ]);
 
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// Mark existing controls as touched so the seeded errors are visible.</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">formArray</span>.<span class="hljs-title function_">markAllAsTouched</span>();
+  }
+
   <span class="hljs-title function_">addRow</span>(<span class="hljs-params"></span>) {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">formArray</span>.<span class="hljs-title function_">push</span>(
       <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormGroup</span>({
-        <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),
-        <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">0</span>),
+        <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>),
+        <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-number">0</span>, [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, <span class="hljs-title class_">Validators</span>.<span class="hljs-title function_">min</span>(<span class="hljs-number">1</span>)]),
         <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-title function_">moment</span>(<span class="hljs-string">&#x27;&#x27;</span>)),
         <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;&#x27;</span>),
       }),
@@ -114,5 +136,9 @@
 
   <span class="hljs-title function_">getFormGroup</span>(<span class="hljs-attr">i</span>: <span class="hljs-built_in">number</span>): <span class="hljs-title class_">FormGroup</span> {
     <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">formArray</span>.<span class="hljs-property">controls</span>[i] <span class="hljs-keyword">as</span> <span class="hljs-title class_">FormGroup</span>;
+  }
+
+  <span class="hljs-title function_">getControl</span>(<span class="hljs-attr">i</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">FormControl</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getFormGroup</span>(i).<span class="hljs-title function_">get</span>(name) <span class="hljs-keyword">as</span> <span class="hljs-title class_">FormControl</span>;
   }
 }

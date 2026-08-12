@@ -1,0 +1,43 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-timefield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Time&quot;</span> <span class="hljs-attr">inline</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;amount-label&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-timefield</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--
+  Inline mode hides the projected error message, so the validation state is
+  surfaced with a signal button in the suffix slot instead. The projected
+  `nx-error` is kept (only visually hidden) so the formfield still wires it up
+  as `aria-describedby` / `aria-invalid` on the control for assistive tech.
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-row nx-margin-top-s&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-timefield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Time&quot;</span> <span class="hljs-attr">inline</span> [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;timeControl&quot;</span> <span class="hljs-attr">withTimepicker</span>&gt;</span>
+    @if (timeControl.invalid &amp;&amp; timeControl.touched) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-signal-button</span>
+        <span class="hljs-attr">nxFormfieldSuffix</span>
+        <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
+        <span class="hljs-attr">popoverDirection</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Show validation errors for Time field&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>&gt;</span>
+            Please review this field
+          <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">nxPopoverMainContent</span> <span class="hljs-attr">nxList</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list&quot;</span>&gt;</span>
+          @if (timeControl.hasError(&#x27;required&#x27;)) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A time is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-signal-button</span>&gt;</span>
+    }
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
+      @if (timeControl.hasError(&#x27;required&#x27;)) {
+        A time is required.
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-info-icon</span> <span class="hljs-attr">nxLabelInfo</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">nx-info-icon</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-timefield</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

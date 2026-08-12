@@ -7,20 +7,24 @@
     [<span class="hljs-attr">min</span>]=<span class="hljs-string">&quot;-3&quot;</span>
     [<span class="hljs-attr">max</span>]=<span class="hljs-string">&quot;20&quot;</span>
   &gt;</span>
-    @if (testForm.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
-    testForm.controls[&#x27;stepperTestReactive&#x27;].errors.nxNumberStepperStepError) {
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Value is not a valid step <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    } @if (testForm.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
-    testForm.controls[&#x27;stepperTestReactive&#x27;].errors.nxNumberStepperFormatError)
-    {
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Not a valid number <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    @if (
+      testForm.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
+      testForm.controls[&#x27;stepperTestReactive&#x27;].errors.nxNumberStepperStepError
+    ) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Value is not a valid step <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    }
+    @if (
+      testForm.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
+      testForm.controls[&#x27;stepperTestReactive&#x27;].errors.nxNumberStepperFormatError
+    ) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Not a valid number <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
     }
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-number-stepper</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form value: {{ testForm.value | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form status: {{ testForm.status }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-    Form errors: {{ testForm.controls[&#x27;stepperTestReactive&#x27;].errors | json}}
+    Form errors: {{ testForm.controls[&#x27;stepperTestReactive&#x27;].errors | json }}
   <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
@@ -33,24 +37,32 @@
     [<span class="hljs-attr">min</span>]=<span class="hljs-string">&quot;-3&quot;</span>
     [<span class="hljs-attr">max</span>]=<span class="hljs-string">&quot;20&quot;</span>
   &gt;</span>
-    @if (testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
-    testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors.nxNumberStepperStepError)
-    {
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Value is not a valid step <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    } @if (testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
-    testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors.nxNumberStepperFormatError)
-    {
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Not a valid number <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    } @if (testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
-    testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors.required) {
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Number of travellers is required. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    @if (
+      testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
+      testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors
+        .nxNumberStepperStepError
+    ) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Value is not a valid step <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    }
+    @if (
+      testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
+      testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors
+        .nxNumberStepperFormatError
+    ) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Not a valid number <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    }
+    @if (
+      testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors &amp;&amp;
+      testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors.required
+    ) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Number of travellers is required. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
     }
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-number-stepper</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form value: {{ testFormRequired.value | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form status: {{ testFormRequired.status }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-    Form errors: {{ testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors |
-    json}}
+    Form errors:
+    {{ testFormRequired.controls[&#x27;stepperTestReactive&#x27;].errors | json }}
   <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

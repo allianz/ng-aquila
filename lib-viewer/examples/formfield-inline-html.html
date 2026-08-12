@@ -1,0 +1,100 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-row&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;amount-label&quot;</span>&gt;</span>Amount<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Amount&quot;</span> <span class="hljs-attr">inline</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;amount-label&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--
+  Inline mode hides the projected error message, so the validation state is
+  surfaced with a signal button in the suffix slot instead. The projected
+  `nx-error` is kept (only visually hidden) so the formfield still wires it up
+  as `aria-describedby` / `aria-invalid` on the control for assistive tech.
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-row nx-margin-top-s&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;budget-label&quot;</span>&gt;</span>Budget<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Budget&quot;</span> <span class="hljs-attr">inline</span>&gt;</span>
+    @if (budgetControl.invalid &amp;&amp; budgetControl.touched) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-signal-button</span>
+        <span class="hljs-attr">nxFormfieldSuffix</span>
+        <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
+        <span class="hljs-attr">popoverDirection</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Show validation errors for Budget&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>&gt;</span>
+            Please review this field
+          <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">nxPopoverMainContent</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list&quot;</span>&gt;</span>
+          @if (budgetControl.hasError(&#x27;required&#x27;)) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A budget is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          }
+          @if (budgetControl.hasError(&#x27;min&#x27;)) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The budget must be at least 100.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-signal-button</span>&gt;</span>
+    }
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+      <span class="hljs-attr">nxInput</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span>
+      [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;budgetControl&quot;</span>
+      <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;budget-label&quot;</span>
+    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+      @if (budgetControl.hasError(&#x27;required&#x27;)) {
+        A budget is required.
+      } @else if (budgetControl.hasError(&#x27;min&#x27;)) {
+        The budget must be at least 100.
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--
+  `inline` together with `size=&quot;s&quot;` for an even more compact field. The signal
+  button in the suffix uses `size=&quot;s&quot;` as well, so its icon matches the reduced
+  control height.
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-row nx-margin-top-s&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fee-label&quot;</span>&gt;</span>Fee<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Fee&quot;</span> <span class="hljs-attr">inline</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span>
+    @if (feeControl.invalid &amp;&amp; feeControl.touched) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-signal-button</span>
+        <span class="hljs-attr">nxFormfieldSuffix</span>
+        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+        <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
+        <span class="hljs-attr">popoverDirection</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Show validation errors for Fee&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>&gt;</span>
+            Please review this field
+          <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">nxPopoverMainContent</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list&quot;</span>&gt;</span>
+          @if (feeControl.hasError(&#x27;required&#x27;)) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A fee is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          }
+          @if (feeControl.hasError(&#x27;min&#x27;)) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The fee must be at least 10.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-signal-button</span>&gt;</span>
+    }
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+      <span class="hljs-attr">nxInput</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span>
+      [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;feeControl&quot;</span>
+      <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;fee-label&quot;</span>
+    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+      @if (feeControl.hasError(&#x27;required&#x27;)) {
+        A fee is required.
+      } @else if (feeControl.hasError(&#x27;min&#x27;)) {
+        The fee must be at least 10.
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

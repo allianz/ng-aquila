@@ -17,10 +17,12 @@
   <nx-datepicker #picker2></nx-datepicker>
 
   @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMax) {
-  <nx-error nxFormfieldError> The date is too far in the future </nx-error>
-  } @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMin) {
-  <nx-error nxFormfieldError> The date is too far in the past </nx-error>
-  } @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldParse) {
-  <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
+    <nx-error nxFormfieldError> The date is too far in the future </nx-error>
+  }
+  @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldMin) {
+    <nx-error nxFormfieldError> The date is too far in the past </nx-error>
+  }
+  @if (dateMinMaxModel.errors && dateMinMaxModel.errors.nxDatefieldParse) {
+    <nx-error nxFormfieldError> Please enter a valid date. </nx-error>
   }
 </nx-formfield>

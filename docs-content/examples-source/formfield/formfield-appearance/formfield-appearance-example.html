@@ -94,9 +94,10 @@
         <input nxInput #inputToCount maxlength="15" (input)="onInput()" />
         <span nxFormfieldHint>
           @if (count === 0) {
-          <span> max. 15 characters </span>
-          } @if (count > 0) {
-          <span> {{15 - count }} characters remaining </span>
+            <span> max. 15 characters </span>
+          }
+          @if (count > 0) {
+            <span> {{ 15 - count }} characters remaining </span>
           }
         </span>
       </nx-formfield>

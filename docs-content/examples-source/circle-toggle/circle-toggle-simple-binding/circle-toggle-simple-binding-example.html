@@ -1,11 +1,11 @@
 <nx-circle-toggle-group [(value)]="simpleBinding">
   @for (item of sampleValues; track item) {
-  <nx-circle-toggle
-    [value]="item.value"
-    [icon]="item.icon"
-    [hint]="item.hint"
-    [label]="item.label"
-  ></nx-circle-toggle>
+    <nx-circle-toggle
+      [value]="item.value"
+      [icon]="item.icon"
+      [hint]="item.hint"
+      [label]="item.label"
+    ></nx-circle-toggle>
   }
 </nx-circle-toggle-group>
 
@@ -26,4 +26,4 @@
   </button>
 </div>
 
-<p>Selected value: {{simpleBinding}}</p>
+<p>Selected value: {{ simpleBinding }}</p>

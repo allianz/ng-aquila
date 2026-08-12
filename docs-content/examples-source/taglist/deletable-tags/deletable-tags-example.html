@@ -3,7 +3,7 @@
 </button>
 
 <nx-tag-group removable aria-label="Active filters">
-  @for (tag of tags(); track tag;) {
-  <nx-tag (removed)="tagDeleted(tag)">{{ tag }}</nx-tag>
+  @for (tag of tags(); track tag) {
+    <nx-tag (removed)="tagDeleted(tag)">{{ tag }}</nx-tag>
   }
 </nx-tag-group>

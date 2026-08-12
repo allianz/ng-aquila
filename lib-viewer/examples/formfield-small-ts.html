@@ -1,0 +1,124 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxAutocompleteComponent</span>,
+  <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
+  <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/autocomplete&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-variable constant_">NX_DATE_FORMATS</span>,
+  <span class="hljs-variable constant_">NX_DATE_LOCALE</span>,
+  <span class="hljs-variable constant_">NX_DATE_LOCALE_PROVIDER</span>,
+  <span class="hljs-title class_">NxDateAdapter</span>,
+  <span class="hljs-title class_">NxDatefieldDirective</span>,
+  <span class="hljs-title class_">NxDatemaskComponent</span>,
+  <span class="hljs-title class_">NxDatepickerComponent</span>,
+  <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+  <span class="hljs-title class_">NxDateRangeComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+  <span class="hljs-title class_">NxMultiSelectComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+  <span class="hljs-title class_">NxFormfieldLabelDirective</span>,
+  <span class="hljs-title class_">NxFormfieldPrefixDirective</span>,
+  <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-variable constant_">NX_ISO_DATE_FORMATS</span>,
+  <span class="hljs-title class_">NxIsoDateAdapter</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/iso-date-adapter&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxLicencePlateEuroPrefixComponent</span>,
+  <span class="hljs-title class_">NxLicencePlateValidatorDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/licence-plate&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPhoneInputComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/phone-input&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTimefieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/timefield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">FruitOption</span> {
+  <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Small formfield example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;formfield-small-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./formfield-small-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./formfield-small-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [
+    <span class="hljs-variable constant_">NX_DATE_LOCALE_PROVIDER</span>,
+    {
+      <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxDateAdapter</span>,
+      <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">NxIsoDateAdapter</span>,
+      <span class="hljs-attr">deps</span>: [<span class="hljs-variable constant_">NX_DATE_LOCALE</span>],
+    },
+    { <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_DATE_FORMATS</span>, <span class="hljs-attr">useValue</span>: <span class="hljs-variable constant_">NX_ISO_DATE_FORMATS</span> },
+  ],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldLabelDirective</span>,
+    <span class="hljs-title class_">NxFormfieldPrefixDirective</span>,
+    <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+    <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">NxAutocompleteTriggerDirective</span>,
+    <span class="hljs-title class_">NxAutocompleteComponent</span>,
+    <span class="hljs-title class_">NxAutocompleteOptionComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+    <span class="hljs-title class_">NxMultiSelectComponent</span>,
+    <span class="hljs-title class_">NxPhoneInputComponent</span>,
+    <span class="hljs-title class_">NxLicencePlateEuroPrefixComponent</span>,
+    <span class="hljs-title class_">NxLicencePlateValidatorDirective</span>,
+    <span class="hljs-title class_">NxTimefieldComponent</span>,
+    <span class="hljs-title class_">NxDatefieldDirective</span>,
+    <span class="hljs-title class_">NxDatepickerComponent</span>,
+    <span class="hljs-title class_">NxDatepickerToggleComponent</span>,
+    <span class="hljs-title class_">NxDatemaskComponent</span>,
+    <span class="hljs-title class_">NxDateRangeComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormfieldSmallExampleComponent</span> {
+  autocompleteOptions = [
+    <span class="hljs-string">&#x27;Chimpanzee&#x27;</span>,
+    <span class="hljs-string">&#x27;Chinchilla&#x27;</span>,
+    <span class="hljs-string">&#x27;Chipmunk&#x27;</span>,
+    <span class="hljs-string">&#x27;Coati&#x27;</span>,
+    <span class="hljs-string">&#x27;Cicada&#x27;</span>,
+  ];
+
+  dropdownOptions = [<span class="hljs-string">&#x27;BMW&#x27;</span>, <span class="hljs-string">&#x27;Audi&#x27;</span>, <span class="hljs-string">&#x27;VW&#x27;</span>, <span class="hljs-string">&#x27;Mercedes&#x27;</span>, <span class="hljs-string">&#x27;Porsche&#x27;</span>];
+
+  <span class="hljs-attr">multiSelectOptions</span>: <span class="hljs-title class_">FruitOption</span>[] = [
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Apple&#x27;</span>, <span class="hljs-attr">id</span>: <span class="hljs-number">1</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Banana&#x27;</span>, <span class="hljs-attr">id</span>: <span class="hljs-number">2</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Strawberry&#x27;</span>, <span class="hljs-attr">id</span>: <span class="hljs-number">3</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Orange&#x27;</span>, <span class="hljs-attr">id</span>: <span class="hljs-number">4</span> },
+  ];
+
+  licenceValue = <span class="hljs-string">&#x27;&#x27;</span>;
+
+  timeValue = <span class="hljs-string">&#x27;12:30&#x27;</span>;
+
+  currentDate = <span class="hljs-string">&#x27;2020-01-01&#x27;</span>;
+
+  customDate = <span class="hljs-string">&#x27;2020-01-01&#x27;</span>;
+
+  <span class="hljs-attr">dateRange</span>: { <span class="hljs-attr">start</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>; <span class="hljs-attr">end</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> } | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+}

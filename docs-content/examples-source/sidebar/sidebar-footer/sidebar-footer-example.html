@@ -5,15 +5,15 @@
   #sidebar
 >
   @for (action of actions; track action) {
-  <a
-    nxAction
-    routerLink="./"
-    [queryParams]="action.query"
-    routerLinkActive="is-selected"
-  >
-    <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
-    {{action.label}}
-  </a>
+    <a
+      nxAction
+      routerLink="./"
+      [queryParams]="action.query"
+      routerLinkActive="is-selected"
+    >
+      <nx-icon nxActionIcon [name]="action.icon" aria-hidden="true"></nx-icon>
+      {{ action.label }}
+    </a>
   }
 
   <nx-sidebar-footer>

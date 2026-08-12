@@ -1,7 +1,9 @@
 <form novalidate [formGroup]="testForm">
   <nx-radio-toggle formControlName="testToggle">
     @for (item of data; track item) {
-    <nx-radio-toggle-button [value]="item">{{item}} </nx-radio-toggle-button>
+      <nx-radio-toggle-button [value]="item"
+        >{{ item }}
+      </nx-radio-toggle-button>
     }
   </nx-radio-toggle>
 

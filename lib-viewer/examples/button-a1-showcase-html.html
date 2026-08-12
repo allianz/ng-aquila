@@ -1,0 +1,240 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Full showcase<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span>&gt;</span>
+    Contained Button
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s nx-margin-top-s&quot;</span>&gt;</span>
+    Contained – accent color matrix
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">rowspan</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__corner&quot;</span>&gt;</span>accent color<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        @for (scheme of accentSchemes; track scheme) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> [<span class="hljs-attr">attr.colspan</span>]=<span class="hljs-string">&quot;prominences.length&quot;</span>&gt;</span>{{ scheme }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        @for (scheme of accentSchemes; track scheme) {
+          @for (prominence of prominences; track prominence) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__state&quot;</span>&gt;</span>{{ prominence }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          }
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+      @for (color of accentColors; track color) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__rowhead&quot;</span>&gt;</span>{{ color }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          @for (scheme of accentSchemes; track scheme) {
+            @for (prominence of prominences; track prominence) {
+              <span class="hljs-tag">&lt;<span class="hljs-name">td</span> [<span class="hljs-attr">style.background</span>]=<span class="hljs-string">&quot;cellSurface(scheme, color)&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                  [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;prominence&quot;</span>
+                  [<span class="hljs-attr">colorScheme</span>]=<span class="hljs-string">&quot;scheme&quot;</span>
+                  [<span class="hljs-attr">accentColor</span>]=<span class="hljs-string">&quot;color&quot;</span>
+                  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                &gt;</span>
+                  Button
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            }
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      }
+      @for (row of modifierRows; track row.label) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__rowhead&quot;</span>&gt;</span>{{ row.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          @for (scheme of accentSchemes; track scheme) {
+            @for (prominence of prominences; track prominence) {
+              <span class="hljs-tag">&lt;<span class="hljs-name">td</span> [<span class="hljs-attr">style.background</span>]=<span class="hljs-string">&quot;null&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                  [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;prominence&quot;</span>
+                  [<span class="hljs-attr">colorScheme</span>]=<span class="hljs-string">&quot;scheme&quot;</span>
+                  [<span class="hljs-attr">accentColor</span>]=<span class="hljs-string">&quot;sampleAccentColor&quot;</span>
+                  [<span class="hljs-attr">critical</span>]=<span class="hljs-string">&quot;row.critical&quot;</span>
+                  [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;row.disabled&quot;</span>
+                  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                &gt;</span>
+                  Button
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            }
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s nx-margin-top-s&quot;</span>&gt;</span>
+    Contained – accent color matrix + inverse
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix docs-inverse-container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">rowspan</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__corner&quot;</span>&gt;</span>accent color<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        @for (scheme of accentSchemes; track scheme) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> [<span class="hljs-attr">attr.colspan</span>]=<span class="hljs-string">&quot;prominences.length&quot;</span>&gt;</span>{{ scheme }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        @for (scheme of accentSchemes; track scheme) {
+          @for (prominence of prominences; track prominence) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__state&quot;</span>&gt;</span>{{ prominence }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          }
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+      @for (color of accentColors; track color) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__rowhead&quot;</span>&gt;</span>{{ color }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          @for (scheme of accentSchemes; track scheme) {
+            @for (prominence of prominences; track prominence) {
+              <span class="hljs-tag">&lt;<span class="hljs-name">td</span> [<span class="hljs-attr">style.background</span>]=<span class="hljs-string">&quot;cellSurface(scheme, color, true)&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                  [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;prominence&quot;</span>
+                  [<span class="hljs-attr">colorScheme</span>]=<span class="hljs-string">&quot;scheme&quot;</span>
+                  [<span class="hljs-attr">accentColor</span>]=<span class="hljs-string">&quot;color&quot;</span>
+                  <span class="hljs-attr">inverse</span>
+                  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                &gt;</span>
+                  Button
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            }
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      }
+      @for (row of modifierRows; track row.label) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__rowhead&quot;</span>&gt;</span>{{ row.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          @for (scheme of accentSchemes; track scheme) {
+            @for (prominence of prominences; track prominence) {
+              <span class="hljs-tag">&lt;<span class="hljs-name">td</span> [<span class="hljs-attr">style.background</span>]=<span class="hljs-string">&quot;null&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                  [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;prominence&quot;</span>
+                  [<span class="hljs-attr">colorScheme</span>]=<span class="hljs-string">&quot;scheme&quot;</span>
+                  [<span class="hljs-attr">accentColor</span>]=<span class="hljs-string">&quot;sampleAccentColor&quot;</span>
+                  [<span class="hljs-attr">critical</span>]=<span class="hljs-string">&quot;row.critical&quot;</span>
+                  [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;row.disabled&quot;</span>
+                  <span class="hljs-attr">inverse</span>
+                  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                &gt;</span>
+                  Button
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            }
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span>&gt;</span>Plain Button<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s nx-margin-top-s&quot;</span>&gt;</span>
+    Plain – color scheme matrix
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__corner&quot;</span>&gt;</span>color scheme<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        @for (variant of plainVariants; track variant) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__state&quot;</span>&gt;</span>{{ variant }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+      @for (scheme of plainSchemes; track scheme) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__rowhead&quot;</span>&gt;</span>{{ scheme }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          @for (variant of plainVariants; track variant) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> [<span class="hljs-attr">style.background</span>]=<span class="hljs-string">&quot;plainCellSurface(scheme)&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                <span class="hljs-attr">nxPlainButton</span>
+                [<span class="hljs-attr">variant</span>]=<span class="hljs-string">&quot;variant&quot;</span>
+                [<span class="hljs-attr">colorScheme</span>]=<span class="hljs-string">&quot;scheme&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+              &gt;</span>
+                Button
+              <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      }
+      @for (row of modifierRows; track row.label) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__rowhead&quot;</span>&gt;</span>{{ row.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          @for (variant of plainVariants; track variant) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                <span class="hljs-attr">nxPlainButton</span>
+                [<span class="hljs-attr">variant</span>]=<span class="hljs-string">&quot;variant&quot;</span>
+                [<span class="hljs-attr">critical</span>]=<span class="hljs-string">&quot;row.critical&quot;</span>
+                [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;row.disabled&quot;</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+              &gt;</span>
+                Button
+              <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s nx-margin-top-s&quot;</span>&gt;</span>
+    Plain – color scheme matrix + inverse
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix docs-inverse-container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__corner&quot;</span>&gt;</span>color scheme<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        @for (variant of plainVariants; track variant) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__state&quot;</span>&gt;</span>{{ variant }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+      @for (scheme of plainSchemes; track scheme) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__rowhead&quot;</span>&gt;</span>{{ scheme }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          @for (variant of plainVariants; track variant) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> [<span class="hljs-attr">style.background</span>]=<span class="hljs-string">&quot;plainCellSurface(scheme, true)&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                <span class="hljs-attr">nxPlainButton</span>
+                [<span class="hljs-attr">variant</span>]=<span class="hljs-string">&quot;variant&quot;</span>
+                [<span class="hljs-attr">colorScheme</span>]=<span class="hljs-string">&quot;scheme&quot;</span>
+                <span class="hljs-attr">inverse</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+              &gt;</span>
+                Button
+              <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      }
+      @for (row of modifierRows; track row.label) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-matrix__rowhead&quot;</span>&gt;</span>{{ row.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          @for (variant of plainVariants; track variant) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                <span class="hljs-attr">nxPlainButton</span>
+                [<span class="hljs-attr">variant</span>]=<span class="hljs-string">&quot;variant&quot;</span>
+                [<span class="hljs-attr">critical</span>]=<span class="hljs-string">&quot;row.critical&quot;</span>
+                [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;row.disabled&quot;</span>
+                <span class="hljs-attr">inverse</span>
+                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+              &gt;</span>
+                Button
+              <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span>

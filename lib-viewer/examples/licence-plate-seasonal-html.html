@@ -4,18 +4,18 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Start date&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;startMonth&quot;</span>&gt;</span>
           @for (date of monthsOfYearList; track date) {
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;date.month&quot;</span>&gt;</span>
-            {{date.monthName}}
-          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;date.month&quot;</span>&gt;</span>
+              {{ date.monthName }}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
           }
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;End date&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;endMonth&quot;</span>&gt;</span>
           @for (date of monthsOfYearList; track date) {
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;date.month&quot;</span>&gt;</span>
-            {{date.monthName}}
-          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;date.month&quot;</span>&gt;</span>
+              {{ date.monthName }}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
           }
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

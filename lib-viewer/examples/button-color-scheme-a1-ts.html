@@ -1,0 +1,84 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxButtonComponent</span>,
+  <span class="hljs-title class_">NxButtonAccentColor</span>,
+  <span class="hljs-title class_">NxButtonColorScheme</span>,
+  <span class="hljs-title class_">NxButtonType</span>,
+  <span class="hljs-title class_">NxIconButtonComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, computed, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Contained Button color schemes
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;button-color-scheme-a1-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./button-color-scheme-a1-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./button-color-scheme-a1-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">NxIconButtonComponent</span>,
+    <span class="hljs-title class_">NxIconComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldHintDirective</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ButtonColorSchemeA1ExampleComponent</span> {
+  <span class="hljs-comment">/** The prominences shown in the preview. */</span>
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">prominences</span>: <span class="hljs-title class_">NxButtonType</span>[] = [<span class="hljs-string">&#x27;primary&#x27;</span>, <span class="hljs-string">&#x27;secondary&#x27;</span>, <span class="hljs-string">&#x27;tertiary&#x27;</span>];
+
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">colorSchemes</span>: <span class="hljs-title class_">NxButtonColorScheme</span>[] = [
+    <span class="hljs-string">&#x27;default&#x27;</span>,
+    <span class="hljs-string">&#x27;accent-attention&#x27;</span>,
+    <span class="hljs-string">&#x27;on-accent-attention&#x27;</span>,
+  ];
+
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">accentColors</span>: <span class="hljs-title class_">NxButtonAccentColor</span>[] = [
+    <span class="hljs-string">&#x27;yellow&#x27;</span>,
+    <span class="hljs-string">&#x27;orange&#x27;</span>,
+    <span class="hljs-string">&#x27;red&#x27;</span>,
+    <span class="hljs-string">&#x27;purple&#x27;</span>,
+    <span class="hljs-string">&#x27;aqua&#x27;</span>,
+    <span class="hljs-string">&#x27;blue&#x27;</span>,
+    <span class="hljs-string">&#x27;teal&#x27;</span>,
+    <span class="hljs-string">&#x27;green&#x27;</span>,
+    <span class="hljs-string">&#x27;gray&#x27;</span>,
+  ];
+
+  <span class="hljs-keyword">readonly</span> colorScheme = signal&lt;<span class="hljs-title class_">NxButtonColorScheme</span>&gt;(<span class="hljs-string">&#x27;accent-attention&#x27;</span>);
+  <span class="hljs-keyword">readonly</span> accentColor = signal&lt;<span class="hljs-title class_">NxButtonAccentColor</span>&gt;(<span class="hljs-string">&#x27;green&#x27;</span>);
+
+  <span class="hljs-comment">/** The accent color only applies to the accent color schemes. */</span>
+  <span class="hljs-keyword">readonly</span> accentColorDisabled = <span class="hljs-title function_">computed</span>(
+    <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">colorScheme</span>() === <span class="hljs-string">&#x27;default&#x27;</span>,
+  );
+
+  <span class="hljs-comment">/** on-accent-attention buttons are meant to sit on an accent surface. */</span>
+  <span class="hljs-keyword">readonly</span> onAccentSurface = <span class="hljs-title function_">computed</span>(
+    <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">colorScheme</span>() === <span class="hljs-string">&#x27;on-accent-attention&#x27;</span>,
+  );
+
+  <span class="hljs-comment">/** The matching accent surface color for the on-accent-attention preview. */</span>
+  <span class="hljs-keyword">readonly</span> accentSurface = <span class="hljs-title function_">computed</span>(
+    <span class="hljs-function">() =&gt;</span>
+      <span class="hljs-string">`var(--semantic-color-accent-attention-<span class="hljs-subst">${<span class="hljs-variable language_">this</span>.accentColor()}</span>-resting)`</span>,
+  );
+}

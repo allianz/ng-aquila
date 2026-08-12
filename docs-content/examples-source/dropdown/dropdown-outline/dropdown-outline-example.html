@@ -5,7 +5,7 @@
       <nx-formfield label="Car brand">
         <nx-dropdown>
           @for (brand of options; track brand) {
-          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+            <nx-dropdown-item [value]="brand"></nx-dropdown-item>
           }
         </nx-dropdown>
       </nx-formfield>
@@ -24,7 +24,7 @@
       <nx-formfield label="Error dropdown">
         <nx-dropdown #exampleErrorNgModel [(ngModel)]="modelBlank" required>
           @for (brand of options; track brand) {
-          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+            <nx-dropdown-item [value]="brand"></nx-dropdown-item>
           }
         </nx-dropdown>
         <nx-error nxFormfieldError appearance="text"> Error message </nx-error>
@@ -32,7 +32,7 @@
       <nx-formfield label="With icon dropdown">
         <nx-dropdown>
           @for (brand of options; track brand) {
-          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+            <nx-dropdown-item [value]="brand"></nx-dropdown-item>
           }
         </nx-dropdown>
         <nx-info-icon nxLabelInfo popoverMaxWidth="300px">
@@ -50,7 +50,7 @@
       <nx-formfield label="Car brand">
         <nx-dropdown [showFilter]="true" filterPlaceholder="Type to search car">
           @for (brand of options; track brand) {
-          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+            <nx-dropdown-item [value]="brand"></nx-dropdown-item>
           }
         </nx-dropdown>
       </nx-formfield>
@@ -60,11 +60,11 @@
       <nx-formfield label="Animals">
         <nx-dropdown [(value)]="model">
           @for (group of groups; track group) {
-          <nx-dropdown-group [label]="group.label">
-            @for (item of group.items; track item) {
-            <nx-dropdown-item [value]="item"></nx-dropdown-item>
-            }
-          </nx-dropdown-group>
+            <nx-dropdown-group [label]="group.label">
+              @for (item of group.items; track item) {
+                <nx-dropdown-item [value]="item"></nx-dropdown-item>
+              }
+            </nx-dropdown-group>
           }
         </nx-dropdown>
       </nx-formfield>

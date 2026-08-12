@@ -1,6 +1,5 @@
 <p class="docs-markdown--p">The <code>NxDialogService</code> can be used to open modals from components or predefined templates.</p>
 <p class="docs-markdown--p">The class <code>nx-modal-margin-bottom</code> can be used to get the correct vertical spacing for the elements withing the modal.</p>
-<p class="docs-markdown--p"><strong>Important:</strong> Please note that the module for this component depends on the Angular animations module, so in case you do not already have it, you need to explicitly import the <code>BrowserModule</code>  in your app.module.</p>
 <p class="docs-markdown--p">The visual representation of modal overlay depends on Angular CDK styles. Make sure you <a href="./documentation/overlay/overview#angular-cdk">enable Angular CDK styles</a> in your application.</p>
 <h3 id="modal-opening" tabindex="-1" class="docs-markdown--h3">Modal Opening</h3>
 <p class="docs-markdown--p">A modal can be opened by using the <code>open</code> method of the service and passing an optional configuration object as a second parameter as shown below. The return object of the open function is a reference to the opened modal, which can be used for closing the modal or subscribing to its closing events.</p>
@@ -44,7 +43,7 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
 <p class="docs-markdown--p">Below is an example of how to create a modal with status by using the <code>nxModalTitle</code></p>
  <div nx-docs-example="modal-status" config="{}">exampleID: modal-status</div>
 <h3 id="fullscreen" tabindex="-1" class="docs-markdown--h3">Fullscreen</h3>
-<p class="docs-markdown--p">Set <code>fullscreen</code> to <code>true</code> to show the modal in fullscreen. When using <code>fullscreen</code> the <code>width</code>, <code>height</code>, <code>maxWidth</code> and <code>maxHeight</code> are overwritten.</p>
+<p class="docs-markdown--p">Set <code>fullscreen</code> to <code>true</code> to show the modal in fullscreen. When using <code>fullscreen</code> the <code>width</code>, <code>height</code>, <code>maxWidth</code> and <code>maxHeight</code> are overwritten and any <code>position</code> overrides are ignored.</p>
 <div nx-docs-example="modal-fullscreen" config="{}">exampleID: modal-fullscreen</div>
 <h3 id="configuration" tabindex="-1" class="docs-markdown--h3">Configuration</h3>
 <p class="docs-markdown--p">Every dialog is opened with a default configuration. By passing a second parameter (<code>NxModalConfig</code> object) when opening a modal you can overwrite this configuration. Configurable are settings such as the dialog width and height, closing on backdrop click, adding additional classses to the dialog container etc. For more details on all configurable properties check out the <code>NxModalConfig</code> documentation <a href="./documentation/modal/api#NxModalConfig">here</a>.</p>

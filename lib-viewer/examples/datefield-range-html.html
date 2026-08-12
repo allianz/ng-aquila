@@ -12,12 +12,15 @@
           &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-date-range</span>&gt;</span>
 
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
-            @if(dateRangeForm.controls.range.errors?.required){ Required: Please
-            enter a date range. }
-            @if(dateRangeForm.controls.range.errors?.nxDateRangeInvalid){
-            Invalid: The end date can&#x27;t be before the start date. }
-            @if(dateRangeForm.controls.range.errors?.nxDateRangeIncomplete ){
-            Please enter a start and an end date. }
+            @if (dateRangeForm.controls.range.errors?.required) {
+              Required: Please enter a date range.
+            }
+            @if (dateRangeForm.controls.range.errors?.nxDateRangeInvalid) {
+              Invalid: The end date can&#x27;t be before the start date.
+            }
+            @if (dateRangeForm.controls.range.errors?.nxDateRangeIncomplete) {
+              Please enter a start and an end date.
+            }
           <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
             <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Please provide date in the US format&quot;</span>

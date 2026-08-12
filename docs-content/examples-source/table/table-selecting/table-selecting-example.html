@@ -19,19 +19,20 @@
 
 <div class="scroll-container">
   @if (selection.selected.length) {
-  <div>
-    No. of selected product:
-    <strong>{{ selection.selected.length }}</strong>
-    @if (!isAllSelected()) {
-    <nx-link (click)="selectAll()" class="nx-margin-left-s"
-      >Select all {{ tableElements.length }} products.</nx-link
-    >
-    } @if (isAllSelected()) {
-    <nx-link (click)="selection.clear()" class="nx-margin-left-s">
-      Clear selection</nx-link
-    >
-    }
-  </div>
+    <div>
+      No. of selected product:
+      <strong>{{ selection.selected.length }}</strong>
+      @if (!isAllSelected()) {
+        <nx-link (click)="selectAll()" class="nx-margin-left-s"
+          >Select all {{ tableElements.length }} products.</nx-link
+        >
+      }
+      @if (isAllSelected()) {
+        <nx-link (click)="selection.clear()" class="nx-margin-left-s">
+          Clear selection</nx-link
+        >
+      }
+    </div>
   }
   <table nxTable>
     <thead>
@@ -58,29 +59,35 @@
     </thead>
     <tbody>
       @for (item of currentlyShownPageElements; track item) {
-      <tr
-        nxTableRow
-        [selected]="activateSelected ? selection.isSelected(item) : item === activeRow"
-        selectable
-        (select)="activateSelected ? selection.toggle(item) : activateRow(item)"
-      >
-        <td nxTableCell class="nx-table-cell--checkbox">
-          <nx-checkbox
-            (checkedChange)="selection.toggle(item)"
-            [ariaLabel]="'Toggle row ' + item.product + ' selection'"
-            [checked]="selection.isSelected(item)"
-          ></nx-checkbox>
-        </td>
-        <td nxTableCell>{{item.product}}</td>
-        <td nxTableCell>{{item.contractNumber}}</td>
-        <td nxTableCell>
-          <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
-        </td>
-        <td nxTableCell>{{item.endingAt | date: 'dd/MM/yyyy'}}</td>
-        <td nxTableCell>
-          <nx-badge [type]="item.status">{{item.statusText}}</nx-badge>
-        </td>
-      </tr>
+        <tr
+          nxTableRow
+          [selected]="
+            activateSelected ? selection.isSelected(item) : item === activeRow
+          "
+          selectable
+          (select)="
+            activateSelected ? selection.toggle(item) : activateRow(item)
+          "
+        >
+          <td nxTableCell class="nx-table-cell--checkbox">
+            <nx-checkbox
+              (checkedChange)="selection.toggle(item)"
+              [ariaLabel]="'Toggle row ' + item.product + ' selection'"
+              [checked]="selection.isSelected(item)"
+            ></nx-checkbox>
+          </td>
+          <td nxTableCell>{{ item.product }}</td>
+          <td nxTableCell>{{ item.contractNumber }}</td>
+          <td nxTableCell>
+            <nx-link
+              ><a routerLink="#">{{ item.website }}</a></nx-link
+            >
+          </td>
+          <td nxTableCell>{{ item.endingAt | date: 'dd/MM/yyyy' }}</td>
+          <td nxTableCell>
+            <nx-badge [type]="item.status">{{ item.statusText }}</nx-badge>
+          </td>
+        </tr>
       }
     </tbody>
   </table>
@@ -102,7 +109,7 @@
   <nx-switcher [(checked)]="showSelected">Debug selected value</nx-switcher>
 
   @if (showSelected) {
-  <p>Selected value:</p>
-  <code>{{ selection.selected | json }}</code>
+    <p>Selected value:</p>
+    <code>{{ selection.selected | json }}</code>
   }
 </div>

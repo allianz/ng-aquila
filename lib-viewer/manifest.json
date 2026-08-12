@@ -333,15 +333,27 @@
         },
         {
           "name": "NxButtonSize",
-          "title": "Size of a button."
+          "title": ""
+        },
+        {
+          "name": "NxButtonColorScheme",
+          "title": ""
+        },
+        {
+          "name": "NxButtonAccentColor",
+          "title": "Accent color of a button. Only takes effect when `colorScheme` is\n`accent-attention` or `on-accent-attention`. Only relevant for the A1 Design."
         },
         {
           "name": "NxPlainButtonSize",
-          "title": "Please note: small is only for meant for the One Allianz Design"
+          "title": "Please note: small is only meant for the A1 Design.\n\n`s` and `m` are the A1 shirt sizes and are treated as aliases of\n`small` and `medium` respectively."
         },
         {
           "name": "NxPlainButtonVariant",
-          "title": "Please note: secondary is only for meant for the One Allianz Design"
+          "title": "Please note: secondary is only for meant for the A1 Design"
+        },
+        {
+          "name": "NxPlainButtonColorScheme",
+          "title": "Color scheme of a plain button. Only relevant for the A1 Design.\n\nThe plain button has no accent colors.\n\n- `default` – the regular action-colored plain button\n- `on-accent-attention` – for use on an accent-attention surface\n- `on-brand` – for use on a brand-colored surface"
         }
       ]
     },
@@ -1484,6 +1496,10 @@
         {
           "name": "AppearanceType",
           "title": "Type for the appearance of the formfield."
+        },
+        {
+          "name": "NxFormfieldSize",
+          "title": "Type for the size of the formfield."
         },
         {
           "name": "FormfieldControlHarness",
@@ -2678,7 +2694,12 @@
       "services": [],
       "classes": [],
       "interface": [],
-      "typeAlias": []
+      "typeAlias": [
+        {
+          "name": "NxProgressbarColorScheme",
+          "title": ""
+        }
+      ]
     },
     {
       "id": "public-api.ts",
@@ -3006,6 +3027,10 @@
         {
           "name": "NxSignalButtonContext",
           "title": "The contextual type of a signal button."
+        },
+        {
+          "name": "NxSignalButtonSize",
+          "title": "Type for the size of a signal button."
         }
       ]
     },
@@ -3781,6 +3806,25 @@
   ],
   "components": [
     {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "examples": [
+        {
+          "name": "accessibility-high-contrast-svg",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/accessibility.html",
+      "overviewFile": "lib-viewer/overview/accessibility.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1Light": true,
+      "a1Densities": true
+    },
+    {
       "id": "action",
       "title": "Action",
       "examples": [
@@ -3807,69 +3851,6 @@
       "alias": "menu",
       "a1Densities": true,
       "group": "Actions"
-    },
-    {
-      "id": "accessibility",
-      "title": "Accessibility",
-      "examples": [
-        {
-          "name": "accessibility-high-contrast-svg",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/accessibility.html",
-      "overviewFile": "lib-viewer/overview/accessibility.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1Light": true,
-      "a1Densities": true
-    },
-    {
-      "id": "autocomplete",
-      "title": "Autocomplete",
-      "examples": [
-        {
-          "name": "autocomplete-basic",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-filtering",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-default-rendering",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-data-binding",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-panel-grow",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-outline",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-scroll-strategy-provider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/autocomplete.html",
-      "overviewFile": "lib-viewer/overview/autocomplete.html",
-      "description": "Input with typeahead suggestions",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Forms & Inputs"
     },
     {
       "id": "avatar",
@@ -3913,6 +3894,33 @@
       "stable": "done",
       "a1Densities": true,
       "group": "Data Display"
+    },
+    {
+      "id": "ag-grid",
+      "title": "Ag-grid",
+      "examples": [
+        {
+          "name": "ag-grid-opensource-theming-api",
+          "config": {}
+        },
+        {
+          "name": "ag-grid-theming-api",
+          "config": {}
+        }
+      ],
+      "category": "Third-party",
+      "apiFile": "lib-viewer/api/ag-grid.html",
+      "overviewFile": "lib-viewer/overview/ag-grid.html",
+      "description": "Allianz-themed AG Grid integration",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress",
+      "noApi": true,
+      "a1Light": true,
+      "group": [
+        "Utilities",
+        "Data Display"
+      ]
     },
     {
       "id": "accordion",
@@ -3979,6 +3987,50 @@
       "group": "Layout"
     },
     {
+      "id": "autocomplete",
+      "title": "Autocomplete",
+      "examples": [
+        {
+          "name": "autocomplete-basic",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-filtering",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-default-rendering",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-data-binding",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-panel-grow",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-outline",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-scroll-strategy-provider",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/autocomplete.html",
+      "overviewFile": "lib-viewer/overview/autocomplete.html",
+      "description": "Input with typeahead suggestions",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
       "id": "base",
       "title": "Base Components",
       "examples": [
@@ -4006,39 +4058,6 @@
       "a1Light": true,
       "a1Densities": true,
       "group": "Layout"
-    },
-    {
-      "id": "breadcrumb",
-      "title": "Breadcrumb",
-      "examples": [
-        {
-          "name": "breadcrumb",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-link",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-context-menu",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-negative",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/breadcrumb.html",
-      "overviewFile": "lib-viewer/overview/breadcrumb.html",
-      "description": "Navigation breadcrumb trail",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "location",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Navigation"
     },
     {
       "id": "badge",
@@ -4093,9 +4112,48 @@
       "group": "Data Display"
     },
     {
+      "id": "breadcrumb",
+      "title": "Breadcrumb",
+      "examples": [
+        {
+          "name": "breadcrumb",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-link",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-context-menu",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-negative",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/breadcrumb.html",
+      "overviewFile": "lib-viewer/overview/breadcrumb.html",
+      "description": "Navigation breadcrumb trail",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "location",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Navigation"
+    },
+    {
       "id": "button",
       "title": "Button",
       "examples": [
+        {
+          "name": "button-a1-showcase",
+          "config": {
+            "hideHeader": true
+          }
+        },
         {
           "name": "button",
           "config": {}
@@ -4130,6 +4188,10 @@
         },
         {
           "name": "button-negative-a1",
+          "config": {}
+        },
+        {
+          "name": "button-color-scheme-a1",
           "config": {}
         },
         {
@@ -4174,77 +4236,6 @@
       "stable": "done",
       "a1Densities": true,
       "group": "Actions"
-    },
-    {
-      "id": "card",
-      "title": "Cards",
-      "examples": [
-        {
-          "name": "card",
-          "config": {}
-        },
-        {
-          "name": "highlight-card",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-basic",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-radio",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-product",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-states",
-          "config": {}
-        },
-        {
-          "name": "highlight-selectable-card",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-reactive",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-dynamic",
-          "config": {}
-        },
-        {
-          "name": "clickable-card",
-          "config": {}
-        },
-        {
-          "name": "clickable-card-disabled",
-          "config": {}
-        },
-        {
-          "name": "clickable-card-raised-content",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-expert",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/card.html",
-      "overviewFile": "lib-viewer/overview/card.html",
-      "description": "Content card containers",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "card, selectable card",
-      "a1Densities": true,
-      "group": [
-        "Data Display",
-        "Forms & Inputs"
-      ]
     },
     {
       "id": "checkbox",
@@ -4395,6 +4386,113 @@
       "group": "Forms & Inputs"
     },
     {
+      "id": "card",
+      "title": "Cards",
+      "examples": [
+        {
+          "name": "card",
+          "config": {}
+        },
+        {
+          "name": "elevated-card",
+          "config": {}
+        },
+        {
+          "name": "highlight-card",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-basic",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-radio",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-product",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-states",
+          "config": {}
+        },
+        {
+          "name": "elevated-selectable-card",
+          "config": {}
+        },
+        {
+          "name": "highlight-selectable-card",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-reactive",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-dynamic",
+          "config": {}
+        },
+        {
+          "name": "clickable-card",
+          "config": {}
+        },
+        {
+          "name": "clickable-card-disabled",
+          "config": {}
+        },
+        {
+          "name": "clickable-card-raised-content",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-expert",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/card.html",
+      "overviewFile": "lib-viewer/overview/card.html",
+      "description": "Content card containers",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "card, selectable card",
+      "a1Densities": true,
+      "group": [
+        "Data Display",
+        "Forms & Inputs"
+      ]
+    },
+    {
+      "id": "copytext",
+      "title": "Copytext",
+      "examples": [
+        {
+          "name": "copytext-sizes",
+          "config": {}
+        },
+        {
+          "name": "copytext-a1",
+          "config": {}
+        },
+        {
+          "name": "copytext-negative",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/copytext.html",
+      "overviewFile": "lib-viewer/overview/copytext.html",
+      "description": "Body text with consistent typography",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Data Display"
+    },
+    {
       "id": "code-input",
       "title": "Code Input",
       "examples": [
@@ -4446,87 +4544,6 @@
       "alias": "otp, pin input",
       "a1Densities": true,
       "group": "Forms & Inputs"
-    },
-    {
-      "id": "context-menu",
-      "title": "Context Menu",
-      "examples": [
-        {
-          "name": "context-menu-basic",
-          "config": {}
-        },
-        {
-          "name": "context-menu-programmatic",
-          "config": {}
-        },
-        {
-          "name": "context-menu-icons",
-          "config": {}
-        },
-        {
-          "name": "context-menu-indicator",
-          "config": {}
-        },
-        {
-          "name": "context-menu-group",
-          "config": {}
-        },
-        {
-          "name": "context-menu-nested",
-          "config": {}
-        },
-        {
-          "name": "context-menu-disabled",
-          "config": {}
-        },
-        {
-          "name": "context-menu-lazy",
-          "config": {}
-        },
-        {
-          "name": "context-menu-data",
-          "config": {}
-        },
-        {
-          "name": "context-menu-scroll-strategy",
-          "config": {}
-        },
-        {
-          "name": "context-menu-cursor-mode",
-          "config": {}
-        },
-        {
-          "name": "context-menu-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "context-menu-single-selectable",
-          "config": {}
-        },
-        {
-          "name": "context-menu-multi-selectable",
-          "config": {}
-        },
-        {
-          "name": "context-menu-selection",
-          "config": {}
-        },
-        {
-          "name": "context-menu-select-multiple",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/context-menu.html",
-      "overviewFile": "lib-viewer/overview/context-menu.html",
-      "description": "Right-click or trigger-based context menus",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "alias": "menu",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Overlays"
     },
     {
       "id": "comparison-table",
@@ -4616,6 +4633,63 @@
       "group": "Data Display"
     },
     {
+      "id": "dynamic-table",
+      "title": "Dynamic Tables",
+      "examples": [
+        {
+          "name": "dynamic-table",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-data",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-without-data",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-event",
+          "config": {}
+        },
+        {
+          "name": "dynamic-table-column-options",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/dynamic-table.html",
+      "overviewFile": "lib-viewer/overview/dynamic-table.html",
+      "description": "Configurable data tables",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Full": true,
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "divider",
+      "title": "Divider",
+      "examples": [
+        {
+          "name": "divider",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/divider.html",
+      "overviewFile": "lib-viewer/overview/divider.html",
+      "description": "Horizontal divider line",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "separator",
+      "a1Full": true,
+      "group": "Layout"
+    },
+    {
       "id": "config",
       "title": "Expert",
       "examples": [],
@@ -4627,145 +4701,6 @@
       "stable": "done",
       "noApi": true,
       "a1": false
-    },
-    {
-      "id": "ag-grid",
-      "title": "Ag-grid",
-      "examples": [
-        {
-          "name": "ag-grid-opensource-theming-api",
-          "config": {}
-        },
-        {
-          "name": "ag-grid-theming-api",
-          "config": {}
-        }
-      ],
-      "category": "Third-party",
-      "apiFile": "lib-viewer/api/ag-grid.html",
-      "overviewFile": "lib-viewer/overview/ag-grid.html",
-      "description": "Allianz-themed AG Grid integration",
-      "b2c": false,
-      "expert": true,
-      "stable": "progress",
-      "noApi": true,
-      "a1Light": true,
-      "group": [
-        "Utilities",
-        "Data Display"
-      ]
-    },
-    {
-      "id": "dropdown",
-      "title": "Dropdown",
-      "examples": [
-        {
-          "name": "dropdown-standard",
-          "config": {}
-        },
-        {
-          "name": "dropdown-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "dropdown-template-driven",
-          "config": {}
-        },
-        {
-          "name": "dropdown-reactive",
-          "config": {}
-        },
-        {
-          "name": "dropdown-virtual-viewport",
-          "config": {}
-        },
-        {
-          "name": "dropdown-item-template",
-          "config": {}
-        },
-        {
-          "name": "dropdown-lazy",
-          "config": {}
-        },
-        {
-          "name": "dropdown-placeholder",
-          "config": {}
-        },
-        {
-          "name": "dropdown-panelgrow",
-          "config": {}
-        },
-        {
-          "name": "dropdown-rendering-items",
-          "config": {}
-        },
-        {
-          "name": "dropdown-custom-label",
-          "config": {}
-        },
-        {
-          "name": "dropdown-negative",
-          "config": {}
-        },
-        {
-          "name": "dropdown-filter",
-          "config": {}
-        },
-        {
-          "name": "dropdown-filter-custom",
-          "config": {}
-        },
-        {
-          "name": "dropdown-group",
-          "config": {}
-        },
-        {
-          "name": "dropdown-multi-select",
-          "config": {}
-        },
-        {
-          "name": "dropdown-disabled-items",
-          "config": {}
-        },
-        {
-          "name": "dropdown-outline",
-          "config": {}
-        },
-        {
-          "name": "multi-select",
-          "config": {}
-        },
-        {
-          "name": "dropdown-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "dropdown-default-options",
-          "config": {}
-        },
-        {
-          "name": "multi-select-intl",
-          "config": {}
-        },
-        {
-          "name": "dropdown-focus-out",
-          "config": {}
-        },
-        {
-          "name": "dropdown-select-on-focus",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/dropdown.html",
-      "overviewFile": "lib-viewer/overview/dropdown.html",
-      "description": "Select dropdown for single or multi-selection",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "select, multi select, combobox, picker",
-      "a1Densities": true,
-      "group": "Forms & Inputs"
     },
     {
       "id": "datefield",
@@ -4890,6 +4825,145 @@
       "group": "Forms & Inputs"
     },
     {
+      "id": "dropdown",
+      "title": "Dropdown",
+      "examples": [
+        {
+          "name": "dropdown-standard",
+          "config": {}
+        },
+        {
+          "name": "dropdown-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "dropdown-template-driven",
+          "config": {}
+        },
+        {
+          "name": "dropdown-reactive",
+          "config": {}
+        },
+        {
+          "name": "dropdown-virtual-viewport",
+          "config": {}
+        },
+        {
+          "name": "dropdown-item-template",
+          "config": {}
+        },
+        {
+          "name": "dropdown-lazy",
+          "config": {}
+        },
+        {
+          "name": "dropdown-placeholder",
+          "config": {}
+        },
+        {
+          "name": "dropdown-panelgrow",
+          "config": {}
+        },
+        {
+          "name": "dropdown-rendering-items",
+          "config": {}
+        },
+        {
+          "name": "dropdown-custom-label",
+          "config": {}
+        },
+        {
+          "name": "dropdown-negative",
+          "config": {}
+        },
+        {
+          "name": "dropdown-filter",
+          "config": {}
+        },
+        {
+          "name": "dropdown-filter-custom",
+          "config": {}
+        },
+        {
+          "name": "dropdown-group",
+          "config": {}
+        },
+        {
+          "name": "dropdown-multi-select",
+          "config": {}
+        },
+        {
+          "name": "dropdown-disabled-items",
+          "config": {}
+        },
+        {
+          "name": "dropdown-outline",
+          "config": {}
+        },
+        {
+          "name": "multi-select",
+          "config": {}
+        },
+        {
+          "name": "dropdown-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "dropdown-default-options",
+          "config": {}
+        },
+        {
+          "name": "multi-select-intl",
+          "config": {}
+        },
+        {
+          "name": "dropdown-focus-out",
+          "config": {}
+        },
+        {
+          "name": "dropdown-select-on-focus",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/dropdown.html",
+      "overviewFile": "lib-viewer/overview/dropdown.html",
+      "description": "Select dropdown for single or multi-selection",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "select, multi select, combobox, picker",
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "error-handling",
+      "title": "Error handling",
+      "examples": [
+        {
+          "name": "error",
+          "config": {}
+        },
+        {
+          "name": "error-custom-matcher-formfield",
+          "config": {}
+        },
+        {
+          "name": "error-reset",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/error-handling.html",
+      "overviewFile": "lib-viewer/overview/error-handling.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1Light": true,
+      "a1Densities": true
+    },
+    {
       "id": "data-display",
       "title": "Data Display",
       "examples": [
@@ -4934,73 +5008,6 @@
       "group": "Data Display"
     },
     {
-      "id": "divider",
-      "title": "Divider",
-      "examples": [
-        {
-          "name": "divider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/divider.html",
-      "overviewFile": "lib-viewer/overview/divider.html",
-      "description": "Horizontal divider line",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "separator",
-      "a1Full": true,
-      "group": "Layout"
-    },
-    {
-      "id": "eyebrow",
-      "title": "Eyebrow",
-      "examples": [
-        {
-          "name": "eyebrow-headline",
-          "config": {}
-        },
-        {
-          "name": "eyebrow",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/eyebrow.html",
-      "overviewFile": "lib-viewer/overview/eyebrow.html",
-      "description": "Small text above headlines for additional context",
-      "a1Full": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "error-handling",
-      "title": "Error handling",
-      "examples": [
-        {
-          "name": "error",
-          "config": {}
-        },
-        {
-          "name": "error-custom-matcher-formfield",
-          "config": {}
-        },
-        {
-          "name": "error-reset",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/error-handling.html",
-      "overviewFile": "lib-viewer/overview/error-handling.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1Light": true,
-      "a1Densities": true
-    },
-    {
       "id": "footer",
       "title": "Footer",
       "examples": [
@@ -5024,197 +5031,24 @@
       "group": "Navigation"
     },
     {
-      "id": "dynamic-table",
-      "title": "Dynamic Tables",
+      "id": "eyebrow",
+      "title": "Eyebrow",
       "examples": [
         {
-          "name": "dynamic-table",
+          "name": "eyebrow-headline",
           "config": {}
         },
         {
-          "name": "dynamic-table-data",
-          "config": {}
-        },
-        {
-          "name": "dynamic-table-without-data",
-          "config": {}
-        },
-        {
-          "name": "dynamic-table-event",
-          "config": {}
-        },
-        {
-          "name": "dynamic-table-column-options",
+          "name": "eyebrow",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/dynamic-table.html",
-      "overviewFile": "lib-viewer/overview/dynamic-table.html",
-      "description": "Configurable data tables",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
+      "apiFile": "lib-viewer/api/eyebrow.html",
+      "overviewFile": "lib-viewer/overview/eyebrow.html",
+      "description": "Small text above headlines for additional context",
       "a1Full": true,
-      "a1Light": true,
-      "a1Densities": true,
       "group": "Data Display"
-    },
-    {
-      "id": "formfield",
-      "title": "Formfield",
-      "examples": [
-        {
-          "name": "formfield-basic",
-          "config": {}
-        },
-        {
-          "name": "formfield-simple-form",
-          "config": {}
-        },
-        {
-          "name": "formfield-floating",
-          "config": {}
-        },
-        {
-          "name": "formfield-custom-label",
-          "config": {}
-        },
-        {
-          "name": "formfield-info-icon",
-          "config": {}
-        },
-        {
-          "name": "formfield-negative",
-          "config": {}
-        },
-        {
-          "name": "formfield-hint",
-          "config": {}
-        },
-        {
-          "name": "formfield-character-count",
-          "config": {}
-        },
-        {
-          "name": "formfield-note",
-          "config": {}
-        },
-        {
-          "name": "formfield-error",
-          "config": {}
-        },
-        {
-          "name": "formfield-error-two-column",
-          "config": {}
-        },
-        {
-          "name": "formfield-multiple-errors",
-          "config": {}
-        },
-        {
-          "name": "formfield-note-and-error",
-          "config": {}
-        },
-        {
-          "name": "formfield-prefix-suffix-appendix",
-          "config": {}
-        },
-        {
-          "name": "formfield-placeholder",
-          "config": {}
-        },
-        {
-          "name": "formfield-password-visibility",
-          "config": {}
-        },
-        {
-          "name": "formfield-appearance",
-          "config": {}
-        },
-        {
-          "name": "formfield-expert-error",
-          "config": {}
-        },
-        {
-          "name": "formfield-global",
-          "config": {}
-        },
-        {
-          "name": "formfield-custom",
-          "config": {}
-        },
-        {
-          "name": "formfield-changedetection",
-          "config": {}
-        },
-        {
-          "name": "formfield-custom-tel-input",
-          "config": {}
-        },
-        {
-          "name": "formfield-optional-label",
-          "config": {}
-        },
-        {
-          "name": "formfield-spacing-adjuster",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/formfield.html",
-      "overviewFile": "lib-viewer/overview/formfield.html",
-      "description": "Form field wrapper with label, hints, and error messages",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "control",
-      "a1Densities": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "header",
-      "title": "Header",
-      "examples": [
-        {
-          "name": "header",
-          "config": {}
-        },
-        {
-          "name": "header-two-rows",
-          "config": {}
-        },
-        {
-          "name": "header-icons",
-          "config": {}
-        },
-        {
-          "name": "header-cobranding",
-          "config": {}
-        },
-        {
-          "name": "header-icons-responsive",
-          "config": {}
-        },
-        {
-          "name": "header-two-rows-responsive",
-          "config": {}
-        },
-        {
-          "name": "header-with-side-navigation",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/header.html",
-      "overviewFile": "lib-viewer/overview/header.html",
-      "description": "Application header/navigation bar",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "alias": "toolbar, navbar, app bar, navigation bar",
-      "a1Full": true,
-      "group": "Navigation"
     },
     {
       "id": "file-uploader",
@@ -5438,6 +5272,87 @@
       "group": "Layout"
     },
     {
+      "id": "context-menu",
+      "title": "Context Menu",
+      "examples": [
+        {
+          "name": "context-menu-basic",
+          "config": {}
+        },
+        {
+          "name": "context-menu-programmatic",
+          "config": {}
+        },
+        {
+          "name": "context-menu-icons",
+          "config": {}
+        },
+        {
+          "name": "context-menu-indicator",
+          "config": {}
+        },
+        {
+          "name": "context-menu-group",
+          "config": {}
+        },
+        {
+          "name": "context-menu-nested",
+          "config": {}
+        },
+        {
+          "name": "context-menu-disabled",
+          "config": {}
+        },
+        {
+          "name": "context-menu-lazy",
+          "config": {}
+        },
+        {
+          "name": "context-menu-data",
+          "config": {}
+        },
+        {
+          "name": "context-menu-scroll-strategy",
+          "config": {}
+        },
+        {
+          "name": "context-menu-cursor-mode",
+          "config": {}
+        },
+        {
+          "name": "context-menu-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "context-menu-single-selectable",
+          "config": {}
+        },
+        {
+          "name": "context-menu-multi-selectable",
+          "config": {}
+        },
+        {
+          "name": "context-menu-selection",
+          "config": {}
+        },
+        {
+          "name": "context-menu-select-multiple",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/context-menu.html",
+      "overviewFile": "lib-viewer/overview/context-menu.html",
+      "description": "Right-click or trigger-based context menus",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "menu",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Overlays"
+    },
+    {
       "id": "headline",
       "title": "Headline",
       "examples": [
@@ -5490,6 +5405,50 @@
       "group": "Data Display"
     },
     {
+      "id": "header",
+      "title": "Header",
+      "examples": [
+        {
+          "name": "header",
+          "config": {}
+        },
+        {
+          "name": "header-two-rows",
+          "config": {}
+        },
+        {
+          "name": "header-icons",
+          "config": {}
+        },
+        {
+          "name": "header-cobranding",
+          "config": {}
+        },
+        {
+          "name": "header-icons-responsive",
+          "config": {}
+        },
+        {
+          "name": "header-two-rows-responsive",
+          "config": {}
+        },
+        {
+          "name": "header-with-side-navigation",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/header.html",
+      "overviewFile": "lib-viewer/overview/header.html",
+      "description": "Application header/navigation bar",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "toolbar, navbar, app bar, navigation bar",
+      "a1Full": true,
+      "group": "Navigation"
+    },
+    {
       "id": "image",
       "title": "Images",
       "examples": [
@@ -5523,32 +5482,124 @@
       "group": "Data Display"
     },
     {
-      "id": "copytext",
-      "title": "Copytext",
+      "id": "formfield",
+      "title": "Formfield",
       "examples": [
         {
-          "name": "copytext-sizes",
+          "name": "formfield-basic",
           "config": {}
         },
         {
-          "name": "copytext-a1",
+          "name": "formfield-small",
           "config": {}
         },
         {
-          "name": "copytext-negative",
+          "name": "formfield-simple-form",
+          "config": {}
+        },
+        {
+          "name": "formfield-floating",
+          "config": {}
+        },
+        {
+          "name": "formfield-custom-label",
+          "config": {}
+        },
+        {
+          "name": "formfield-info-icon",
+          "config": {}
+        },
+        {
+          "name": "formfield-negative",
+          "config": {}
+        },
+        {
+          "name": "formfield-hint",
+          "config": {}
+        },
+        {
+          "name": "formfield-inline",
+          "config": {}
+        },
+        {
+          "name": "formfield-character-count",
+          "config": {}
+        },
+        {
+          "name": "formfield-note",
+          "config": {}
+        },
+        {
+          "name": "formfield-error",
+          "config": {}
+        },
+        {
+          "name": "formfield-error-two-column",
+          "config": {}
+        },
+        {
+          "name": "formfield-multiple-errors",
+          "config": {}
+        },
+        {
+          "name": "formfield-note-and-error",
+          "config": {}
+        },
+        {
+          "name": "formfield-prefix-suffix-appendix",
+          "config": {}
+        },
+        {
+          "name": "formfield-placeholder",
+          "config": {}
+        },
+        {
+          "name": "formfield-password-visibility",
+          "config": {}
+        },
+        {
+          "name": "formfield-appearance",
+          "config": {}
+        },
+        {
+          "name": "formfield-expert-error",
+          "config": {}
+        },
+        {
+          "name": "formfield-global",
+          "config": {}
+        },
+        {
+          "name": "formfield-custom",
+          "config": {}
+        },
+        {
+          "name": "formfield-changedetection",
+          "config": {}
+        },
+        {
+          "name": "formfield-custom-tel-input",
+          "config": {}
+        },
+        {
+          "name": "formfield-optional-label",
+          "config": {}
+        },
+        {
+          "name": "formfield-spacing-adjuster",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/copytext.html",
-      "overviewFile": "lib-viewer/overview/copytext.html",
-      "description": "Body text with consistent typography",
+      "apiFile": "lib-viewer/api/formfield.html",
+      "overviewFile": "lib-viewer/overview/formfield.html",
+      "description": "Form field wrapper with label, hints, and error messages",
       "b2c": true,
       "expert": true,
       "stable": "done",
-      "a1Light": true,
+      "alias": "control",
       "a1Densities": true,
-      "group": "Data Display"
+      "group": "Forms & Inputs"
     },
     {
       "id": "indicator",
@@ -5618,96 +5669,6 @@
       "a1": true,
       "a1Densities": true,
       "group": "Data Display"
-    },
-    {
-      "id": "licence-plate",
-      "title": "Licence Plate",
-      "examples": [
-        {
-          "name": "licence-plate-standard",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-seasonal",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-special",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-euro",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-other",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-ngmodel",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-reactive",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-disabled",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-expert",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-expert-states",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/licence-plate.html",
-      "overviewFile": "lib-viewer/overview/licence-plate.html",
-      "description": "Vehicle licence plate input",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Densities": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "layout",
-      "title": "Layout",
-      "examples": [
-        {
-          "name": "margin-sizes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "margin-usage",
-          "config": {}
-        },
-        {
-          "name": "hidden-classes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "viewport-change",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/layout.html",
-      "overviewFile": "lib-viewer/overview/layout.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1Light": true,
-      "a1Densities": true
     },
     {
       "id": "icon",
@@ -5785,6 +5746,148 @@
       "group": "Data Display"
     },
     {
+      "id": "input",
+      "title": "Input Field",
+      "examples": [
+        {
+          "name": "input-without-formfield",
+          "config": {}
+        },
+        {
+          "name": "input",
+          "config": {}
+        },
+        {
+          "name": "formfield-appearance",
+          "config": {}
+        },
+        {
+          "name": "input-mode",
+          "config": {}
+        },
+        {
+          "name": "input-autoresize",
+          "config": {}
+        },
+        {
+          "name": "input-standalone",
+          "config": {}
+        },
+        {
+          "name": "input-template-driven",
+          "config": {}
+        },
+        {
+          "name": "input-reactive",
+          "config": {}
+        },
+        {
+          "name": "formfield-password-visibility",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/input.html",
+      "overviewFile": "lib-viewer/overview/input.html",
+      "description": "Text input directive (used inside formfield)",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "layout",
+      "title": "Layout",
+      "examples": [
+        {
+          "name": "margin-sizes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "margin-usage",
+          "config": {}
+        },
+        {
+          "name": "hidden-classes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "viewport-change",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/layout.html",
+      "overviewFile": "lib-viewer/overview/layout.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1Light": true,
+      "a1Densities": true
+    },
+    {
+      "id": "licence-plate",
+      "title": "Licence Plate",
+      "examples": [
+        {
+          "name": "licence-plate-standard",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-seasonal",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-special",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-euro",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-other",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-ngmodel",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-reactive",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-disabled",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-expert",
+          "config": {}
+        },
+        {
+          "name": "licence-plate-expert-states",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/licence-plate.html",
+      "overviewFile": "lib-viewer/overview/licence-plate.html",
+      "description": "Vehicle licence plate input",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
       "id": "link",
       "title": "Link",
       "examples": [
@@ -5839,6 +5942,84 @@
       ]
     },
     {
+      "id": "mask",
+      "title": "Input Mask",
+      "examples": [
+        {
+          "name": "mask",
+          "config": {}
+        },
+        {
+          "name": "iban-mask",
+          "config": {}
+        },
+        {
+          "name": "mask-separators",
+          "config": {}
+        },
+        {
+          "name": "mask-drop-characters",
+          "config": {}
+        },
+        {
+          "name": "mask-validation",
+          "config": {}
+        },
+        {
+          "name": "mask-case",
+          "config": {}
+        },
+        {
+          "name": "mask-deactivate",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/mask.html",
+      "overviewFile": "lib-viewer/overview/mask.html",
+      "description": "Input mask for formatted text entry",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "input mask, masked input",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "natural-language-form",
+      "title": "Natural Language Form",
+      "examples": [
+        {
+          "name": "natural-language-form-basic",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-extended",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-negative",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-sizes",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/natural-language-form.html",
+      "overviewFile": "lib-viewer/overview/natural-language-form.html",
+      "description": "Sentence-style form layout",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "text form, inline field",
+      "a1": false,
+      "a1Light": true,
+      "group": "Forms & Inputs"
+    },
+    {
       "id": "menu",
       "title": "Menu",
       "examples": [
@@ -5873,6 +6054,47 @@
       "a1Full": true,
       "a1Densities": true,
       "group": "Navigation"
+    },
+    {
+      "id": "message",
+      "title": "Notifications",
+      "examples": [
+        {
+          "name": "message-plain",
+          "config": {}
+        },
+        {
+          "name": "message-contained",
+          "config": {}
+        },
+        {
+          "name": "message-closable",
+          "config": {}
+        },
+        {
+          "name": "message-toast-opening",
+          "config": {}
+        },
+        {
+          "name": "message-toast-custom-settings",
+          "config": {}
+        },
+        {
+          "name": "message-banner",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/message.html",
+      "overviewFile": "lib-viewer/overview/message.html",
+      "description": "Inline message banners (info, success, warning, error)",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "message banner, toast, snackbar, alert, info, error, warning, success, notification, message",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Data Display"
     },
     {
       "id": "list",
@@ -5928,333 +6150,6 @@
       "stable": "done",
       "a1Full": true,
       "group": "Data Display"
-    },
-    {
-      "id": "message",
-      "title": "Notifications",
-      "examples": [
-        {
-          "name": "message-info",
-          "config": {}
-        },
-        {
-          "name": "message-error",
-          "config": {}
-        },
-        {
-          "name": "message-success",
-          "config": {}
-        },
-        {
-          "name": "message-warning",
-          "config": {}
-        },
-        {
-          "name": "message-closable",
-          "config": {}
-        },
-        {
-          "name": "message-banner",
-          "config": {}
-        },
-        {
-          "name": "message-toast-opening",
-          "config": {}
-        },
-        {
-          "name": "message-toast-custom-settings",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/message.html",
-      "overviewFile": "lib-viewer/overview/message.html",
-      "description": "Inline message banners (info, success, warning, error)",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "message banner, toast, snackbar, alert, info, error, warning, success, notification",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "natural-language-form",
-      "title": "Natural Language Form",
-      "examples": [
-        {
-          "name": "natural-language-form-basic",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-extended",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-negative",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-sizes",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/natural-language-form.html",
-      "overviewFile": "lib-viewer/overview/natural-language-form.html",
-      "description": "Sentence-style form layout",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "text form, inline field",
-      "a1": false,
-      "a1Light": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "input",
-      "title": "Input Field",
-      "examples": [
-        {
-          "name": "input-without-formfield",
-          "config": {}
-        },
-        {
-          "name": "input",
-          "config": {}
-        },
-        {
-          "name": "formfield-appearance",
-          "config": {}
-        },
-        {
-          "name": "input-mode",
-          "config": {}
-        },
-        {
-          "name": "input-autoresize",
-          "config": {}
-        },
-        {
-          "name": "input-standalone",
-          "config": {}
-        },
-        {
-          "name": "input-template-driven",
-          "config": {}
-        },
-        {
-          "name": "input-reactive",
-          "config": {}
-        },
-        {
-          "name": "formfield-password-visibility",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/input.html",
-      "overviewFile": "lib-viewer/overview/input.html",
-      "description": "Text input directive (used inside formfield)",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "mask",
-      "title": "Input Mask",
-      "examples": [
-        {
-          "name": "mask",
-          "config": {}
-        },
-        {
-          "name": "iban-mask",
-          "config": {}
-        },
-        {
-          "name": "mask-separators",
-          "config": {}
-        },
-        {
-          "name": "mask-drop-characters",
-          "config": {}
-        },
-        {
-          "name": "mask-validation",
-          "config": {}
-        },
-        {
-          "name": "mask-case",
-          "config": {}
-        },
-        {
-          "name": "mask-deactivate",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/mask.html",
-      "overviewFile": "lib-viewer/overview/mask.html",
-      "description": "Input mask for formatted text entry",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "input mask, masked input",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "page-search",
-      "title": "Page Search",
-      "examples": [
-        {
-          "name": "page-search-autocomplete",
-          "config": {}
-        },
-        {
-          "name": "page-search-input",
-          "config": {}
-        },
-        {
-          "name": "page-search-click",
-          "config": {}
-        },
-        {
-          "name": "page-search-hidden",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/page-search.html",
-      "overviewFile": "lib-viewer/overview/page-search.html",
-      "description": "In-page search functionality",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "search field, search, search bar",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Layout"
-    },
-    {
-      "id": "overlay",
-      "title": "Overlay",
-      "examples": [
-        {
-          "name": "overlay-positioning",
-          "config": {}
-        },
-        {
-          "name": "overlay-limiting-fallbacks",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/overlay.html",
-      "overviewFile": "lib-viewer/overview/overlay.html",
-      "description": "Programmatic overlay positioning service",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Full": true,
-      "a1Light": true,
-      "a1Densities": true,
-      "group": [
-        "Utilities",
-        "Overlays"
-      ]
-    },
-    {
-      "id": "patterns",
-      "title": "Patterns",
-      "examples": [
-        {
-          "name": "text-area-character-limit",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "ai-autofill",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "a11y-skip-to-data-description",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "dropdown-fetch-on-filter",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "contained-list",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/patterns.html",
-      "overviewFile": "lib-viewer/overview/patterns.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "patterns",
-      "a1Light": true,
-      "a1Densities": true,
-      "private": true,
-      "noApi": true
-    },
-    {
-      "id": "pagination",
-      "title": "Pagination",
-      "examples": [
-        {
-          "name": "pagination-advanced",
-          "config": {}
-        },
-        {
-          "name": "pagination-simple",
-          "config": {}
-        },
-        {
-          "name": "pagination-slider",
-          "config": {}
-        },
-        {
-          "name": "pagination-localize",
-          "config": {}
-        },
-        {
-          "name": "pagination-localize-advanced",
-          "config": {}
-        },
-        {
-          "name": "pagination-a11y",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/pagination.html",
-      "overviewFile": "lib-viewer/overview/pagination.html",
-      "description": "Page navigation for paged content",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "pager, paginator",
-      "a1Densities": true,
-      "group": "Navigation"
     },
     {
       "id": "modal",
@@ -6325,6 +6220,635 @@
       "a1Densities": true,
       "desc": "this require adding cdk style to angular.json\n\n\"styles\": [\n...,\n\"node_modules/@angular/cdk/overlay-prebuilt.css\"\n]\n",
       "group": "Overlays"
+    },
+    {
+      "id": "overlay",
+      "title": "Overlay",
+      "examples": [
+        {
+          "name": "overlay-positioning",
+          "config": {}
+        },
+        {
+          "name": "overlay-limiting-fallbacks",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/overlay.html",
+      "overviewFile": "lib-viewer/overview/overlay.html",
+      "description": "Programmatic overlay positioning service",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Full": true,
+      "a1Light": true,
+      "a1Densities": true,
+      "group": [
+        "Utilities",
+        "Overlays"
+      ]
+    },
+    {
+      "id": "page-search",
+      "title": "Page Search",
+      "examples": [
+        {
+          "name": "page-search-autocomplete",
+          "config": {}
+        },
+        {
+          "name": "page-search-input",
+          "config": {}
+        },
+        {
+          "name": "page-search-click",
+          "config": {}
+        },
+        {
+          "name": "page-search-hidden",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/page-search.html",
+      "overviewFile": "lib-viewer/overview/page-search.html",
+      "description": "In-page search functionality",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "search field, search, search bar",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Layout"
+    },
+    {
+      "id": "pagination",
+      "title": "Pagination",
+      "examples": [
+        {
+          "name": "pagination-advanced",
+          "config": {}
+        },
+        {
+          "name": "pagination-simple",
+          "config": {}
+        },
+        {
+          "name": "pagination-slider",
+          "config": {}
+        },
+        {
+          "name": "pagination-localize",
+          "config": {}
+        },
+        {
+          "name": "pagination-localize-advanced",
+          "config": {}
+        },
+        {
+          "name": "pagination-a11y",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/pagination.html",
+      "overviewFile": "lib-viewer/overview/pagination.html",
+      "description": "Page navigation for paged content",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "pager, paginator",
+      "a1Densities": true,
+      "group": "Navigation"
+    },
+    {
+      "id": "phone-input",
+      "title": "Phone Input",
+      "examples": [
+        {
+          "name": "phone-input-retail",
+          "config": {}
+        },
+        {
+          "name": "phone-input-country-code",
+          "config": {}
+        },
+        {
+          "name": "phone-input-forms",
+          "config": {}
+        },
+        {
+          "name": "phone-input-disabled",
+          "config": {}
+        },
+        {
+          "name": "phone-input-validation",
+          "config": {}
+        },
+        {
+          "name": "phone-input-formatting",
+          "config": {}
+        },
+        {
+          "name": "phone-input-i18n",
+          "config": {}
+        },
+        {
+          "name": "phone-input-focus-out",
+          "config": {}
+        },
+        {
+          "name": "phone-input-expert",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/phone-input.html",
+      "overviewFile": "lib-viewer/overview/phone-input.html",
+      "description": "International phone number input",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "patterns",
+      "title": "Patterns",
+      "examples": [
+        {
+          "name": "text-area-character-limit",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "ai-autofill",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "a11y-skip-to-data-description",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "dropdown-fetch-on-filter",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "contained-list",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/patterns.html",
+      "overviewFile": "lib-viewer/overview/patterns.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "patterns",
+      "a1Light": true,
+      "a1Densities": true,
+      "private": true,
+      "noApi": true
+    },
+    {
+      "id": "popover",
+      "title": "Popover",
+      "examples": [
+        {
+          "name": "popover-slot",
+          "config": {}
+        },
+        {
+          "name": "popover-trigger",
+          "config": {}
+        },
+        {
+          "name": "popover-click-outside",
+          "config": {}
+        },
+        {
+          "name": "popover-positioning",
+          "config": {}
+        },
+        {
+          "name": "popover-table",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "popover-custom",
+          "config": {}
+        },
+        {
+          "name": "popover-guided-tour",
+          "config": {}
+        },
+        {
+          "name": "popover-without-arrow",
+          "config": {}
+        },
+        {
+          "name": "popover-width",
+          "config": {}
+        },
+        {
+          "name": "popover-lazyload",
+          "config": {}
+        },
+        {
+          "name": "popover-modal",
+          "config": {}
+        },
+        {
+          "name": "popover-scroll",
+          "config": {}
+        },
+        {
+          "name": "popover-scrollable",
+          "config": {}
+        },
+        {
+          "name": "popover-hover",
+          "config": {}
+        },
+        {
+          "name": "popover-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "popover-i18n",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/popover.html",
+      "overviewFile": "lib-viewer/overview/popover.html",
+      "description": "Popover tooltip with rich content",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Densities": true,
+      "group": "Overlays"
+    },
+    {
+      "id": "progress-stepper",
+      "title": "Progress Indicator",
+      "examples": [
+        {
+          "name": "progress-stepper",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-custom",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-title",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-multi",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-form",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-nonlinear",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-multi-vertical",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-multi-groups",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-step",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-reactivesingle",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-reactivemulti",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-progress",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/progress-stepper.html",
+      "overviewFile": "lib-viewer/overview/progress-stepper.html",
+      "description": "Multi-step wizard/progress indicator",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "stepper, wizard, multi step",
+      "a1Densities": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "price",
+      "title": "Price",
+      "examples": [
+        {
+          "name": "price-basic",
+          "config": {}
+        },
+        {
+          "name": "price-locale",
+          "config": {}
+        },
+        {
+          "name": "price-sizes",
+          "config": {}
+        },
+        {
+          "name": "price-prefix-suffix",
+          "config": {}
+        },
+        {
+          "name": "price-superscript",
+          "config": {}
+        },
+        {
+          "name": "price-inverse",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/price.html",
+      "overviewFile": "lib-viewer/overview/price.html",
+      "description": "Formatted price display with locale-aware currency formatting",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": true,
+      "a1Densities": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "progressbar",
+      "title": "Progress Bar",
+      "examples": [
+        {
+          "name": "progressbar",
+          "config": {}
+        },
+        {
+          "name": "progressbar-basic",
+          "config": {}
+        },
+        {
+          "name": "progressbar-custom-range",
+          "config": {}
+        },
+        {
+          "name": "progressbar-positive",
+          "config": {}
+        },
+        {
+          "name": "progressbar-transparent",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/progressbar.html",
+      "overviewFile": "lib-viewer/overview/progressbar.html",
+      "description": "Progress bar indicator",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "progress, loading bar",
+      "a1Light": true,
+      "a1Densities": true,
+      "a1Full": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "radio-toggle",
+      "title": "Toggle Button",
+      "examples": [
+        {
+          "name": "radio-toggle",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-negative",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-custom",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-form",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-reactive",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-validation",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-readonly",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/radio-toggle.html",
+      "overviewFile": "lib-viewer/overview/radio-toggle.html",
+      "description": "Toggle-style radio button group",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "radio toggle, segmented control, button group, toggle group",
+      "a1Full": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "rating",
+      "title": "Rating",
+      "examples": [
+        {
+          "name": "rating-basic",
+          "config": {}
+        },
+        {
+          "name": "rating-non-interactive",
+          "config": {}
+        },
+        {
+          "name": "rating-disabled",
+          "config": {}
+        },
+        {
+          "name": "rating-negative",
+          "config": {}
+        },
+        {
+          "name": "rating-simple",
+          "config": {}
+        },
+        {
+          "name": "rating-template",
+          "config": {}
+        },
+        {
+          "name": "rating-reactive",
+          "config": {}
+        },
+        {
+          "name": "rating-sizes",
+          "config": {}
+        },
+        {
+          "name": "rating-accessibility",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/rating.html",
+      "overviewFile": "lib-viewer/overview/rating.html",
+      "description": "Star rating input",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": [
+        "Forms & Inputs",
+        "Actions"
+      ]
+    },
+    {
+      "id": "radio-button",
+      "title": "Radio Button",
+      "examples": [
+        {
+          "name": "radio-button",
+          "config": {}
+        },
+        {
+          "name": "radio-button-sample",
+          "config": {}
+        },
+        {
+          "name": "radio-button-group",
+          "config": {}
+        },
+        {
+          "name": "radio-button-form",
+          "config": {}
+        },
+        {
+          "name": "radio-button-reactive",
+          "config": {}
+        },
+        {
+          "name": "radio-button-group-horizontal",
+          "config": {}
+        },
+        {
+          "name": "radio-button-sizes",
+          "config": {}
+        },
+        {
+          "name": "radio-button-negative",
+          "config": {}
+        },
+        {
+          "name": "radio-button-disabled",
+          "config": {}
+        },
+        {
+          "name": "radio-button-event",
+          "config": {}
+        },
+        {
+          "name": "radio-button-error-retail",
+          "config": {}
+        },
+        {
+          "name": "radio-button-group-label-size",
+          "config": {}
+        },
+        {
+          "name": "radio-button-group-validation",
+          "config": {}
+        },
+        {
+          "name": "radio-button-readonly",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/radio-button.html",
+      "overviewFile": "lib-viewer/overview/radio-button.html",
+      "description": "Radio button form control",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "notification-panel",
+      "title": "Notification panel",
+      "examples": [
+        {
+          "name": "notification-panel-clickable",
+          "config": {}
+        },
+        {
+          "name": "notification-panel-mixed",
+          "config": {}
+        },
+        {
+          "name": "notification-panel-actions",
+          "config": {}
+        },
+        {
+          "name": "notification-panel-scroll-strategy-provider",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/notification-panel.html",
+      "overviewFile": "lib-viewer/overview/notification-panel.html",
+      "description": "Notification dropdown panel",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "popover",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": [
+        "Data Display",
+        "Overlays"
+      ]
     },
     {
       "id": "number-stepper",
@@ -6411,375 +6935,6 @@
       "group": "Forms & Inputs"
     },
     {
-      "id": "notification-panel",
-      "title": "Notification panel",
-      "examples": [
-        {
-          "name": "notification-panel-clickable",
-          "config": {}
-        },
-        {
-          "name": "notification-panel-mixed",
-          "config": {}
-        },
-        {
-          "name": "notification-panel-actions",
-          "config": {}
-        },
-        {
-          "name": "notification-panel-scroll-strategy-provider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/notification-panel.html",
-      "overviewFile": "lib-viewer/overview/notification-panel.html",
-      "description": "Notification dropdown panel",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "alias": "popover",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": [
-        "Data Display",
-        "Overlays"
-      ]
-    },
-    {
-      "id": "progressbar",
-      "title": "Progress Bar",
-      "examples": [
-        {
-          "name": "progressbar",
-          "config": {}
-        },
-        {
-          "name": "progressbar-basic",
-          "config": {}
-        },
-        {
-          "name": "progressbar-custom-range",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/progressbar.html",
-      "overviewFile": "lib-viewer/overview/progressbar.html",
-      "description": "Progress bar indicator",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "progress, loading bar",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "price",
-      "title": "Price",
-      "examples": [
-        {
-          "name": "price-basic",
-          "config": {}
-        },
-        {
-          "name": "price-locale",
-          "config": {}
-        },
-        {
-          "name": "price-sizes",
-          "config": {}
-        },
-        {
-          "name": "price-prefix-suffix",
-          "config": {}
-        },
-        {
-          "name": "price-superscript",
-          "config": {}
-        },
-        {
-          "name": "price-inverse",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/price.html",
-      "overviewFile": "lib-viewer/overview/price.html",
-      "description": "Formatted price display with locale-aware currency formatting",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": true,
-      "a1Densities": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "radio-button",
-      "title": "Radio Button",
-      "examples": [
-        {
-          "name": "radio-button",
-          "config": {}
-        },
-        {
-          "name": "radio-button-sample",
-          "config": {}
-        },
-        {
-          "name": "radio-button-group",
-          "config": {}
-        },
-        {
-          "name": "radio-button-form",
-          "config": {}
-        },
-        {
-          "name": "radio-button-reactive",
-          "config": {}
-        },
-        {
-          "name": "radio-button-group-horizontal",
-          "config": {}
-        },
-        {
-          "name": "radio-button-sizes",
-          "config": {}
-        },
-        {
-          "name": "radio-button-negative",
-          "config": {}
-        },
-        {
-          "name": "radio-button-disabled",
-          "config": {}
-        },
-        {
-          "name": "radio-button-event",
-          "config": {}
-        },
-        {
-          "name": "radio-button-error-retail",
-          "config": {}
-        },
-        {
-          "name": "radio-button-group-label-size",
-          "config": {}
-        },
-        {
-          "name": "radio-button-group-validation",
-          "config": {}
-        },
-        {
-          "name": "radio-button-readonly",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/radio-button.html",
-      "overviewFile": "lib-viewer/overview/radio-button.html",
-      "description": "Radio button form control",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Densities": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "phone-input",
-      "title": "Phone Input",
-      "examples": [
-        {
-          "name": "phone-input-retail",
-          "config": {}
-        },
-        {
-          "name": "phone-input-country-code",
-          "config": {}
-        },
-        {
-          "name": "phone-input-forms",
-          "config": {}
-        },
-        {
-          "name": "phone-input-disabled",
-          "config": {}
-        },
-        {
-          "name": "phone-input-validation",
-          "config": {}
-        },
-        {
-          "name": "phone-input-formatting",
-          "config": {}
-        },
-        {
-          "name": "phone-input-i18n",
-          "config": {}
-        },
-        {
-          "name": "phone-input-focus-out",
-          "config": {}
-        },
-        {
-          "name": "phone-input-expert",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/phone-input.html",
-      "overviewFile": "lib-viewer/overview/phone-input.html",
-      "description": "International phone number input",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "radio-toggle",
-      "title": "Toggle Button",
-      "examples": [
-        {
-          "name": "radio-toggle",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-negative",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-custom",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-form",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-reactive",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-validation",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-readonly",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/radio-toggle.html",
-      "overviewFile": "lib-viewer/overview/radio-toggle.html",
-      "description": "Toggle-style radio button group",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "radio toggle, segmented control, button group, toggle group",
-      "a1Full": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "selection",
-      "title": "Selection Indicators",
-      "examples": [
-        {
-          "name": "selection-indicator-default",
-          "config": {}
-        },
-        {
-          "name": "selection-indicator-on-selection",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/selection.html",
-      "overviewFile": "lib-viewer/overview/selection.html",
-      "description": "Purely presentational selection indicators (checkbox and radio) for use in custom UI",
-      "b2c": true,
-      "expert": true,
-      "stable": true,
-      "a1Densities": true,
-      "group": "Utilities"
-    },
-    {
-      "id": "rtl",
-      "title": "Right-to-left support",
-      "examples": [
-        {
-          "name": "rtl-basic",
-          "config": {}
-        },
-        {
-          "name": "rtl-dynamic",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/rtl.html",
-      "overviewFile": "lib-viewer/overview/rtl.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1Light": true,
-      "a1Densities": true
-    },
-    {
-      "id": "rating",
-      "title": "Rating",
-      "examples": [
-        {
-          "name": "rating-basic",
-          "config": {}
-        },
-        {
-          "name": "rating-disabled",
-          "config": {}
-        },
-        {
-          "name": "rating-negative",
-          "config": {}
-        },
-        {
-          "name": "rating-simple",
-          "config": {}
-        },
-        {
-          "name": "rating-template",
-          "config": {}
-        },
-        {
-          "name": "rating-reactive",
-          "config": {}
-        },
-        {
-          "name": "rating-sizes",
-          "config": {}
-        },
-        {
-          "name": "rating-accessibility",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/rating.html",
-      "overviewFile": "lib-viewer/overview/rating.html",
-      "description": "Star rating input",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": [
-        "Forms & Inputs",
-        "Actions"
-      ]
-    },
-    {
       "id": "sidebar",
       "title": "Side Navigation",
       "examples": [
@@ -6830,6 +6985,29 @@
       "group": "Navigation"
     },
     {
+      "id": "selection",
+      "title": "Selection Indicators",
+      "examples": [
+        {
+          "name": "selection-indicator-default",
+          "config": {}
+        },
+        {
+          "name": "selection-indicator-on-selection",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/selection.html",
+      "overviewFile": "lib-viewer/overview/selection.html",
+      "description": "Purely presentational selection indicators (checkbox and radio) for use in custom UI",
+      "b2c": true,
+      "expert": true,
+      "stable": true,
+      "a1Densities": true,
+      "group": "Utilities"
+    },
+    {
       "id": "signal-button",
       "title": "Signal Button",
       "examples": [
@@ -6838,15 +7016,11 @@
           "config": {}
         },
         {
-          "name": "signal-button-context-a1",
+          "name": "signal-button-size",
           "config": {}
         },
         {
           "name": "signal-button-disabled",
-          "config": {}
-        },
-        {
-          "name": "signal-button-disabled-a1",
           "config": {}
         }
       ],
@@ -6859,80 +7033,6 @@
       "stable": "done",
       "a1Full": true,
       "group": "Data Display"
-    },
-    {
-      "id": "spinner",
-      "title": "Spinner",
-      "examples": [
-        {
-          "name": "spinner-sizes",
-          "config": {}
-        },
-        {
-          "name": "spinner-inverse",
-          "config": {}
-        },
-        {
-          "name": "spinner-aria-announcement",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/spinner.html",
-      "overviewFile": "lib-viewer/overview/spinner.html",
-      "description": "Loading spinner",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Full": true,
-      "alias": "progress spinner, loading, loader",
-      "a1Densities": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "sidepanel",
-      "title": "Sidepanel",
-      "examples": [
-        {
-          "name": "sidepanel-dark",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-light",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-floating",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-static",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-with-tabs",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-focus",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-with-color-scheme",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/sidepanel.html",
-      "overviewFile": "lib-viewer/overview/sidepanel.html",
-      "description": "Slide-in side panel",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "a1Full": true,
-      "alias": "sidebar, drawer, sheet, side sheet",
-      "a1Densities": true,
-      "group": "Overlays"
     },
     {
       "id": "slider",
@@ -7005,6 +7105,148 @@
       "alias": "number input, range",
       "a1Densities": true,
       "group": "Forms & Inputs"
+    },
+    {
+      "id": "spinner",
+      "title": "Spinner",
+      "examples": [
+        {
+          "name": "spinner-sizes",
+          "config": {}
+        },
+        {
+          "name": "spinner-inverse",
+          "config": {}
+        },
+        {
+          "name": "spinner-aria-announcement",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/spinner.html",
+      "overviewFile": "lib-viewer/overview/spinner.html",
+      "description": "Loading spinner",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Full": true,
+      "alias": "progress spinner, loading, loader",
+      "a1Densities": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "switcher",
+      "title": "Switcher",
+      "examples": [
+        {
+          "name": "switcher-default",
+          "config": {}
+        },
+        {
+          "name": "switcher-large",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-small",
+          "config": {}
+        },
+        {
+          "name": "switcher-negative",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-left",
+          "config": {}
+        },
+        {
+          "name": "switcher-template-driven",
+          "config": {}
+        },
+        {
+          "name": "switcher-reactive-form",
+          "config": {}
+        },
+        {
+          "name": "switcher-disabled",
+          "config": {}
+        },
+        {
+          "name": "switcher-readonly",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/switcher.html",
+      "overviewFile": "lib-viewer/overview/switcher.html",
+      "description": "Toggle switch control",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "slide toggle, checkbox, switch, toggle",
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "small-stage",
+      "title": "Small stage",
+      "examples": [
+        {
+          "name": "small-stage",
+          "config": {}
+        },
+        {
+          "name": "small-stage-header",
+          "config": {}
+        },
+        {
+          "name": "small-stage-image",
+          "config": {}
+        },
+        {
+          "name": "small-stage-max-width",
+          "config": {}
+        },
+        {
+          "name": "small-stage-style",
+          "config": {}
+        },
+        {
+          "name": "small-stage-color-scheme",
+          "config": {}
+        },
+        {
+          "name": "small-stage-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-content-variation",
+          "config": {}
+        },
+        {
+          "name": "small-stage-w-bg",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-content-narrow",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/small-stage.html",
+      "overviewFile": "lib-viewer/overview/small-stage.html",
+      "description": "Hero/stage banner area",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1Full": true,
+      "alias": "page banner, hero, banner",
+      "a1Densities": true,
+      "group": "Data Display"
     },
     {
       "id": "table",
@@ -7081,264 +7323,6 @@
       "a1Full": true,
       "a1Densities": true,
       "group": "Data Display"
-    },
-    {
-      "id": "small-stage",
-      "title": "Small stage",
-      "examples": [
-        {
-          "name": "small-stage",
-          "config": {}
-        },
-        {
-          "name": "small-stage-header",
-          "config": {}
-        },
-        {
-          "name": "small-stage-image",
-          "config": {}
-        },
-        {
-          "name": "small-stage-max-width",
-          "config": {}
-        },
-        {
-          "name": "small-stage-style",
-          "config": {}
-        },
-        {
-          "name": "small-stage-color-scheme",
-          "config": {}
-        },
-        {
-          "name": "small-stage-default",
-          "config": {}
-        },
-        {
-          "name": "small-stage-content-variation",
-          "config": {}
-        },
-        {
-          "name": "small-stage-w-bg",
-          "config": {}
-        },
-        {
-          "name": "small-stage-expert-default",
-          "config": {}
-        },
-        {
-          "name": "small-stage-expert-content-narrow",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/small-stage.html",
-      "overviewFile": "lib-viewer/overview/small-stage.html",
-      "description": "Hero/stage banner area",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Full": true,
-      "alias": "page banner, hero, banner",
-      "a1Densities": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "progress-stepper",
-      "title": "Progress Indicator",
-      "examples": [
-        {
-          "name": "progress-stepper",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-custom",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-title",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-multi",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-form",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-nonlinear",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-multi-vertical",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-multi-groups",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-step",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-reactivesingle",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-reactivemulti",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-progress",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/progress-stepper.html",
-      "overviewFile": "lib-viewer/overview/progress-stepper.html",
-      "description": "Multi-step wizard/progress indicator",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "stepper, wizard, multi step",
-      "a1Densities": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "switcher",
-      "title": "Switcher",
-      "examples": [
-        {
-          "name": "switcher-default",
-          "config": {}
-        },
-        {
-          "name": "switcher-large",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-small",
-          "config": {}
-        },
-        {
-          "name": "switcher-negative",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-left",
-          "config": {}
-        },
-        {
-          "name": "switcher-template-driven",
-          "config": {}
-        },
-        {
-          "name": "switcher-reactive-form",
-          "config": {}
-        },
-        {
-          "name": "switcher-disabled",
-          "config": {}
-        },
-        {
-          "name": "switcher-readonly",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/switcher.html",
-      "overviewFile": "lib-viewer/overview/switcher.html",
-      "description": "Toggle switch control",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "slide toggle, checkbox, switch, toggle",
-      "a1Densities": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "popover",
-      "title": "Popover",
-      "examples": [
-        {
-          "name": "popover-slot",
-          "config": {}
-        },
-        {
-          "name": "popover-trigger",
-          "config": {}
-        },
-        {
-          "name": "popover-click-outside",
-          "config": {}
-        },
-        {
-          "name": "popover-positioning",
-          "config": {}
-        },
-        {
-          "name": "popover-table",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "popover-custom",
-          "config": {}
-        },
-        {
-          "name": "popover-guided-tour",
-          "config": {}
-        },
-        {
-          "name": "popover-without-arrow",
-          "config": {}
-        },
-        {
-          "name": "popover-width",
-          "config": {}
-        },
-        {
-          "name": "popover-lazyload",
-          "config": {}
-        },
-        {
-          "name": "popover-modal",
-          "config": {}
-        },
-        {
-          "name": "popover-scroll",
-          "config": {}
-        },
-        {
-          "name": "popover-scrollable",
-          "config": {}
-        },
-        {
-          "name": "popover-hover",
-          "config": {}
-        },
-        {
-          "name": "popover-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "popover-i18n",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/popover.html",
-      "overviewFile": "lib-viewer/overview/popover.html",
-      "description": "Popover tooltip with rich content",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1Densities": true,
-      "group": "Overlays"
     },
     {
       "id": "taglist",
@@ -7438,137 +7422,31 @@
       "group": "Data Display"
     },
     {
-      "id": "tile",
-      "title": "Tile",
+      "id": "text",
+      "title": "Text",
       "examples": [
         {
-          "name": "tile-group-auto-grid",
+          "name": "accent-color-basic",
           "config": {}
         },
         {
-          "name": "tile-group-custom-grid",
+          "name": "accent-color-integration",
           "config": {}
         },
         {
-          "name": "tile-layouts",
-          "config": {}
-        },
-        {
-          "name": "tile-group-single-select",
-          "config": {}
-        },
-        {
-          "name": "tile-group-multi-select",
-          "config": {}
-        },
-        {
-          "name": "tile-readonly-disabled",
-          "config": {}
-        },
-        {
-          "name": "tile-content-projection",
-          "config": {}
-        },
-        {
-          "name": "tile-template-driven",
-          "config": {}
-        },
-        {
-          "name": "tile-reactive-forms",
-          "config": {}
-        },
-        {
-          "name": "tile-validation-error-state",
+          "name": "accent-color-negative",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/tile.html",
-      "overviewFile": "lib-viewer/overview/tile.html",
-      "description": "Selectable tile with icon, label, and hint",
+      "apiFile": "lib-viewer/api/text.html",
+      "overviewFile": "lib-viewer/overview/text.html",
+      "description": "Inline text styling utilities including accent colors",
       "b2c": true,
       "expert": true,
       "stable": "done",
       "a1Full": true,
-      "alias": "Tiles",
-      "components": null,
-      "group": [
-        "Forms & Inputs",
-        "Data Display"
-      ]
-    },
-    {
-      "id": "timefield",
-      "title": "Timefield",
-      "examples": [
-        {
-          "name": "timefield-default",
-          "config": {}
-        },
-        {
-          "name": "timefield-with-timepicker",
-          "config": {}
-        },
-        {
-          "name": "timefield-options-interval",
-          "config": {}
-        },
-        {
-          "name": "timefield-with-timepicker-global",
-          "config": {}
-        },
-        {
-          "name": "timefield-with-inputmode",
-          "config": {}
-        },
-        {
-          "name": "timefield-custom-validation",
-          "config": {}
-        },
-        {
-          "name": "timefield-reactive",
-          "config": {}
-        },
-        {
-          "name": "timefield-template-driven",
-          "config": {}
-        },
-        {
-          "name": "timefield-format-toggler",
-          "config": {}
-        },
-        {
-          "name": "timefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "timefield-readonly",
-          "config": {}
-        },
-        {
-          "name": "timefield-negative",
-          "config": {}
-        },
-        {
-          "name": "timefield-expert",
-          "config": {}
-        },
-        {
-          "name": "timefield-localize",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/timefield.html",
-      "overviewFile": "lib-viewer/overview/timefield.html",
-      "description": "Time input field",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "alias": "timepicker, time input",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Forms & Inputs"
+      "group": "Data Display"
     },
     {
       "id": "tabs",
@@ -7655,31 +7533,261 @@
       "group": "Navigation"
     },
     {
-      "id": "text",
-      "title": "Text",
+      "id": "tile",
+      "title": "Tile",
       "examples": [
         {
-          "name": "accent-color-basic",
+          "name": "tile-group-auto-grid",
           "config": {}
         },
         {
-          "name": "accent-color-integration",
+          "name": "tile-group-custom-grid",
           "config": {}
         },
         {
-          "name": "accent-color-negative",
+          "name": "tile-layouts",
+          "config": {}
+        },
+        {
+          "name": "tile-group-single-select",
+          "config": {}
+        },
+        {
+          "name": "tile-group-multi-select",
+          "config": {}
+        },
+        {
+          "name": "tile-readonly-disabled",
+          "config": {}
+        },
+        {
+          "name": "tile-content-projection",
+          "config": {}
+        },
+        {
+          "name": "tile-template-driven",
+          "config": {}
+        },
+        {
+          "name": "tile-reactive-forms",
+          "config": {}
+        },
+        {
+          "name": "tile-validation-error-state",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/text.html",
-      "overviewFile": "lib-viewer/overview/text.html",
-      "description": "Inline text styling utilities including accent colors",
+      "apiFile": "lib-viewer/api/tile.html",
+      "overviewFile": "lib-viewer/overview/tile.html",
+      "description": "Selectable tile with icon, label, and hint",
       "b2c": true,
       "expert": true,
       "stable": "done",
       "a1Full": true,
-      "group": "Data Display"
+      "alias": "Tiles",
+      "components": null,
+      "group": [
+        "Forms & Inputs",
+        "Data Display"
+      ]
+    },
+    {
+      "id": "timefield",
+      "title": "Timefield",
+      "examples": [
+        {
+          "name": "timefield-full-features",
+          "config": {}
+        },
+        {
+          "name": "timefield-default",
+          "config": {}
+        },
+        {
+          "name": "timefield-with-timepicker",
+          "config": {}
+        },
+        {
+          "name": "timefield-options-interval",
+          "config": {}
+        },
+        {
+          "name": "timefield-with-timepicker-global",
+          "config": {}
+        },
+        {
+          "name": "timefield-with-inputmode",
+          "config": {}
+        },
+        {
+          "name": "timefield-custom-validation",
+          "config": {}
+        },
+        {
+          "name": "timefield-reactive",
+          "config": {}
+        },
+        {
+          "name": "timefield-template-driven",
+          "config": {}
+        },
+        {
+          "name": "timefield-format-toggler",
+          "config": {}
+        },
+        {
+          "name": "timefield-disabled",
+          "config": {}
+        },
+        {
+          "name": "timefield-readonly",
+          "config": {}
+        },
+        {
+          "name": "timefield-negative",
+          "config": {}
+        },
+        {
+          "name": "timefield-inline",
+          "config": {}
+        },
+        {
+          "name": "timefield-expert",
+          "config": {}
+        },
+        {
+          "name": "timefield-localize",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/timefield.html",
+      "overviewFile": "lib-viewer/overview/timefield.html",
+      "description": "Time input field",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "alias": "timepicker, time input",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "theming",
+      "title": "Theming",
+      "examples": [],
+      "category": "general",
+      "apiFile": "lib-viewer/api/theming.html",
+      "overviewFile": "lib-viewer/overview/theming.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1Light": true
+    },
+    {
+      "id": "sidepanel",
+      "title": "Sidepanel",
+      "examples": [
+        {
+          "name": "sidepanel-dark",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-light",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-floating",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-static",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-with-tabs",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-focus",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-with-color-scheme",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidepanel.html",
+      "overviewFile": "lib-viewer/overview/sidepanel.html",
+      "description": "Slide-in side panel",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "a1Full": true,
+      "alias": "sidebar, drawer, sheet, side sheet",
+      "a1Densities": true,
+      "group": "Overlays"
+    },
+    {
+      "id": "rtl",
+      "title": "Right-to-left support",
+      "examples": [
+        {
+          "name": "rtl-basic",
+          "config": {}
+        },
+        {
+          "name": "rtl-dynamic",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/rtl.html",
+      "overviewFile": "lib-viewer/overview/rtl.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true,
+      "a1Light": true,
+      "a1Densities": true
+    },
+    {
+      "id": "toolbar",
+      "title": "Toolbar",
+      "examples": [
+        {
+          "name": "toolbar",
+          "config": {}
+        },
+        {
+          "name": "toolbar-divider-a1",
+          "config": {}
+        },
+        {
+          "name": "toolbar-positioning-content-a1",
+          "config": {}
+        },
+        {
+          "name": "toolbar-divider",
+          "config": {}
+        },
+        {
+          "name": "toolbar-positioning-content",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/toolbar.html",
+      "overviewFile": "lib-viewer/overview/toolbar.html",
+      "description": "Action toolbar",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "a1Densities": true,
+      "group": "Navigation"
     },
     {
       "id": "tooltip",
@@ -7735,35 +7843,97 @@
       "group": "Overlays"
     },
     {
-      "id": "theming",
-      "title": "Theming",
-      "examples": [],
-      "category": "general",
-      "apiFile": "lib-viewer/api/theming.html",
-      "overviewFile": "lib-viewer/overview/theming.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true,
-      "a1Light": true
-    },
-    {
-      "id": "typography",
-      "title": "Typography",
+      "id": "tree",
+      "title": "Tree",
       "examples": [
         {
-          "name": "headline-font-weights",
+          "name": "tree",
+          "config": {}
+        },
+        {
+          "name": "tree-a1",
+          "config": {}
+        },
+        {
+          "name": "tree-with-checkboxes",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tree.html",
+      "overviewFile": "lib-viewer/overview/tree.html",
+      "description": "Hierarchical tree view",
+      "b2c": false,
+      "expert": true,
+      "stable": "done",
+      "alias": "treeview",
+      "a1Densities": true,
+      "group": "Navigation"
+    },
+    {
+      "id": "web-components",
+      "title": "Web Components & ShadowDOM",
+      "examples": [
+        {
+          "name": "web-components-modal-shadow-dom",
           "config": {}
         }
       ],
       "category": "general",
-      "apiFile": "lib-viewer/api/typography.html",
-      "overviewFile": "lib-viewer/overview/typography.html",
+      "apiFile": "lib-viewer/api/web-components.html",
+      "overviewFile": "lib-viewer/overview/web-components.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
       "noApi": true,
-      "a1Light": true
+      "a1": true,
+      "a1Densities": true
+    },
+    {
+      "id": "video",
+      "title": "Video",
+      "examples": [
+        {
+          "name": "video",
+          "config": {}
+        },
+        {
+          "name": "video-custom",
+          "config": {}
+        },
+        {
+          "name": "video-advanced",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/video.html",
+      "overviewFile": "lib-viewer/overview/video.html",
+      "description": "Video player component",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "a1": false,
+      "group": "Data Display"
+    },
+    {
+      "id": "utils",
+      "title": "Utilities",
+      "examples": [
+        {
+          "name": "utils-type-guards",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/utils.html",
+      "overviewFile": "lib-viewer/overview/utils.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress",
+      "noApi": true,
+      "a1Light": true,
+      "a1Densities": true
     },
     {
       "id": "virtual-scroll",
@@ -7798,132 +7968,22 @@
       "group": "Utilities"
     },
     {
-      "id": "utils",
-      "title": "Utilities",
+      "id": "typography",
+      "title": "Typography",
       "examples": [
         {
-          "name": "utils-type-guards",
+          "name": "headline-font-weights",
           "config": {}
         }
       ],
       "category": "general",
-      "apiFile": "lib-viewer/api/utils.html",
-      "overviewFile": "lib-viewer/overview/utils.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "progress",
-      "noApi": true,
-      "a1Light": true,
-      "a1Densities": true
-    },
-    {
-      "id": "web-components",
-      "title": "Web Components & ShadowDOM",
-      "examples": [
-        {
-          "name": "web-components-modal-shadow-dom",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/web-components.html",
-      "overviewFile": "lib-viewer/overview/web-components.html",
+      "apiFile": "lib-viewer/api/typography.html",
+      "overviewFile": "lib-viewer/overview/typography.html",
       "b2c": true,
       "expert": true,
       "stable": "done",
       "noApi": true,
-      "a1": true,
-      "a1Densities": true
-    },
-    {
-      "id": "toolbar",
-      "title": "Toolbar",
-      "examples": [
-        {
-          "name": "toolbar",
-          "config": {}
-        },
-        {
-          "name": "toolbar-divider-a1",
-          "config": {}
-        },
-        {
-          "name": "toolbar-positioning-content-a1",
-          "config": {}
-        },
-        {
-          "name": "toolbar-divider",
-          "config": {}
-        },
-        {
-          "name": "toolbar-positioning-content",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/toolbar.html",
-      "overviewFile": "lib-viewer/overview/toolbar.html",
-      "description": "Action toolbar",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "a1Densities": true,
-      "group": "Navigation"
-    },
-    {
-      "id": "video",
-      "title": "Video",
-      "examples": [
-        {
-          "name": "video",
-          "config": {}
-        },
-        {
-          "name": "video-custom",
-          "config": {}
-        },
-        {
-          "name": "video-advanced",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/video.html",
-      "overviewFile": "lib-viewer/overview/video.html",
-      "description": "Video player component",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "a1": false,
-      "group": "Data Display"
-    },
-    {
-      "id": "tree",
-      "title": "Tree",
-      "examples": [
-        {
-          "name": "tree",
-          "config": {}
-        },
-        {
-          "name": "tree-a1",
-          "config": {}
-        },
-        {
-          "name": "tree-with-checkboxes",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tree.html",
-      "overviewFile": "lib-viewer/overview/tree.html",
-      "description": "Hierarchical tree view",
-      "b2c": false,
-      "expert": true,
-      "stable": "done",
-      "alias": "treeview",
-      "a1Densities": true,
-      "group": "Navigation"
+      "a1Light": true
     }
   ],
   "examples": [
@@ -8467,6 +8527,17 @@
       "url": "lib-viewer/examples/button-###TYPE###.html"
     },
     {
+      "id": "button-a1-showcase",
+      "title": "Button A1 full showcase",
+      "module": "button",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/button-a1-showcase-###TYPE###.html"
+    },
+    {
       "id": "button-block",
       "title": "Block Example",
       "module": "button",
@@ -8476,6 +8547,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/button-block-###TYPE###.html"
+    },
+    {
+      "id": "button-color-scheme-a1",
+      "title": "Contained Button color schemes",
+      "module": "button",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/button-color-scheme-a1-###TYPE###.html"
     },
     {
       "id": "button-critical",
@@ -8578,7 +8660,7 @@
     },
     {
       "id": "button-plain-a1",
-      "title": "Plain Button One Allianz additions",
+      "title": "Plain Button A1 additions",
       "module": "button",
       "types": [
         "ts",
@@ -8674,6 +8756,28 @@
         "css"
       ],
       "url": "lib-viewer/examples/clickable-card-raised-content-###TYPE###.html"
+    },
+    {
+      "id": "elevated-card",
+      "title": "Elevated Card Example",
+      "module": "card",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/elevated-card-###TYPE###.html"
+    },
+    {
+      "id": "elevated-selectable-card",
+      "title": "Elevated selectable card example",
+      "module": "card",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/elevated-selectable-card-###TYPE###.html"
     },
     {
       "id": "highlight-card",
@@ -10854,6 +10958,17 @@
       "url": "lib-viewer/examples/formfield-info-icon-###TYPE###.html"
     },
     {
+      "id": "formfield-inline",
+      "title": "Inline example",
+      "module": "formfield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/formfield-inline-###TYPE###.html"
+    },
+    {
       "id": "formfield-multiple-errors",
       "title": "Multiple errors example",
       "module": "formfield",
@@ -10951,6 +11066,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/formfield-simple-form-###TYPE###.html"
+    },
+    {
+      "id": "formfield-small",
+      "title": "Small formfield example",
+      "module": "formfield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/formfield-small-###TYPE###.html"
     },
     {
       "id": "formfield-spacing-adjuster",
@@ -12152,37 +12278,26 @@
       "url": "lib-viewer/examples/message-closable-###TYPE###.html"
     },
     {
-      "id": "message-error",
-      "title": "Error context example",
+      "id": "message-contained",
+      "title": "Contained message example",
       "module": "message",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/message-error-###TYPE###.html"
+      "url": "lib-viewer/examples/message-contained-###TYPE###.html"
     },
     {
-      "id": "message-info",
-      "title": "Info context example",
+      "id": "message-plain",
+      "title": "Plain message example",
       "module": "message",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/message-info-###TYPE###.html"
-    },
-    {
-      "id": "message-success",
-      "title": "Success context example",
-      "module": "message",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/message-success-###TYPE###.html"
+      "url": "lib-viewer/examples/message-plain-###TYPE###.html"
     },
     {
       "id": "message-toast-custom-settings",
@@ -12205,17 +12320,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/message-toast-opening-###TYPE###.html"
-    },
-    {
-      "id": "message-warning",
-      "title": "Warning context example",
-      "module": "message",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/message-warning-###TYPE###.html"
     },
     {
       "id": "modal-autofocus",
@@ -13329,6 +13433,28 @@
       "url": "lib-viewer/examples/progressbar-custom-range-###TYPE###.html"
     },
     {
+      "id": "progressbar-positive",
+      "title": "Progress Bar Positive Example",
+      "module": "progressbar",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/progressbar-positive-###TYPE###.html"
+    },
+    {
+      "id": "progressbar-transparent",
+      "title": "Progress Bar Transparent Example",
+      "module": "progressbar",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/progressbar-transparent-###TYPE###.html"
+    },
+    {
       "id": "radio-button",
       "title": "Radio Button Example",
       "module": "radio-button",
@@ -13604,6 +13730,17 @@
       "url": "lib-viewer/examples/rating-negative-###TYPE###.html"
     },
     {
+      "id": "rating-non-interactive",
+      "title": "Rating Non-Interactive Example",
+      "module": "rating",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/rating-non-interactive-###TYPE###.html"
+    },
+    {
       "id": "rating-reactive",
       "title": "Rating Reactive Example",
       "module": "rating",
@@ -13868,17 +14005,6 @@
       "url": "lib-viewer/examples/signal-button-context-###TYPE###.html"
     },
     {
-      "id": "signal-button-context-a1",
-      "title": "Signal Button example",
-      "module": "signal-button",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/signal-button-context-a1-###TYPE###.html"
-    },
-    {
       "id": "signal-button-disabled",
       "title": "Signal Button Disabled example",
       "module": "signal-button",
@@ -13890,15 +14016,15 @@
       "url": "lib-viewer/examples/signal-button-disabled-###TYPE###.html"
     },
     {
-      "id": "signal-button-disabled-a1",
-      "title": "Signal Button Disabled example",
+      "id": "signal-button-size",
+      "title": "Signal Button Size example",
       "module": "signal-button",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/signal-button-disabled-a1-###TYPE###.html"
+      "url": "lib-viewer/examples/signal-button-size-###TYPE###.html"
     },
     {
       "id": "slider-appendix",
@@ -15100,6 +15226,28 @@
       "url": "lib-viewer/examples/timefield-format-toggler-###TYPE###.html"
     },
     {
+      "id": "timefield-full-features",
+      "title": "Timefield full features example",
+      "module": "timefield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/timefield-full-features-###TYPE###.html"
+    },
+    {
+      "id": "timefield-inline",
+      "title": "Timefield inline example",
+      "module": "timefield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/timefield-inline-###TYPE###.html"
+    },
+    {
       "id": "timefield-localize",
       "title": "Localization example",
       "module": "timefield",
@@ -15498,11 +15646,6 @@
   ],
   "guides": [
     {
-      "id": "develop-with-ai",
-      "title": "Develop with AI",
-      "file": "lib-viewer/guides/develop-with-ai.html"
-    },
-    {
       "id": "getting-started",
       "title": "Getting started",
       "file": "lib-viewer/guides/getting-started.html"
@@ -15511,6 +15654,11 @@
       "id": "releases",
       "title": "Releases and updating",
       "file": "lib-viewer/guides/releases.html"
+    },
+    {
+      "id": "develop-with-ai",
+      "title": "Develop with AI",
+      "file": "lib-viewer/guides/develop-with-ai.html"
     },
     {
       "id": "CHANGELOG",

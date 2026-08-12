@@ -2,11 +2,11 @@
   <nx-tile-group #group [formControl]="tileControl">
     <nx-label>Choose an option</nx-label>
     @for (tile of tiles; track tile.value) {
-    <nx-tile
-      [value]="tile.value"
-      [label]="tile.label"
-      [icon]="tile.icon"
-    ></nx-tile>
+      <nx-tile
+        [value]="tile.value"
+        [label]="tile.label"
+        [icon]="tile.icon"
+      ></nx-tile>
     }
     <nx-error>This field is required</nx-error>
   </nx-tile-group>

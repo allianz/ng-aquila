@@ -24,56 +24,78 @@
             Errors:
             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
               <span class="hljs-comment">&lt;!-- start date --&gt;</span>
-              @if (minStartDate.isSame(maxStartDate, &#x27;day&#x27;) &amp;&amp;
-              (formWithPicker.controls.range.errors?.nxDateRangeMinStart ||
-              formWithPicker.controls.range.errors?.nxDateRangeMaxStart)) {
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                The start date must be exactly {{ minStartDate.toDate() | date
-                }}.
-              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @else if
-              (formWithPicker.controls.range.errors?.nxDateRangeMinStart) {
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                The start date must be on or after {{
-                formWithPicker.controls.range.errors?.nxDateRangeMinStart.minStart
-                | date }}.
-              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @else if
-              (formWithPicker.controls.range.errors?.nxDateRangeMaxStart) {
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                The start date must be on or before {{
-                formWithPicker.controls.range.errors?.nxDateRangeMaxStart.maxStart
-                | date }}.
-              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              @if (
+                minStartDate.isSame(maxStartDate, &#x27;day&#x27;) &amp;&amp;
+                (formWithPicker.controls.range.errors?.nxDateRangeMinStart ||
+                  formWithPicker.controls.range.errors?.nxDateRangeMaxStart)
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                  The start date must be exactly
+                  {{ minStartDate.toDate() | date }}.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              } @else if (
+                formWithPicker.controls.range.errors?.nxDateRangeMinStart
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                  The start date must be on or after
+                  {{
+                    formWithPicker.controls.range.errors?.nxDateRangeMinStart
+                      .minStart | date
+                  }}.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              } @else if (
+                formWithPicker.controls.range.errors?.nxDateRangeMaxStart
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                  The start date must be on or before
+                  {{
+                    formWithPicker.controls.range.errors?.nxDateRangeMaxStart
+                      .maxStart | date
+                  }}.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
               }
 
               <span class="hljs-comment">&lt;!-- end date --&gt;</span>
-              @if (minEndDate.isSame(maxEndDate, &#x27;day&#x27;) &amp;&amp;
-              (formWithPicker.controls.range.errors?.nxDateRangeMinEnd ||
-              formWithPicker.controls.range.errors?.nxDateRangeMaxEnd)) {
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                The end date must be exactly {{ minEndDate.toDate() | date }}.
-              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @else if
-              (formWithPicker.controls.range.errors?.nxDateRangeMinEnd) {
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                The end date has to be on or after {{
-                formWithPicker.controls.range.errors?.nxDateRangeMinEnd.minEnd |
-                date }}.
-              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @else if
-              (formWithPicker.controls.range.errors?.nxDateRangeMaxEnd) {
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
-                The end date has to be on or before {{
-                formWithPicker.controls.range.errors?.nxDateRangeMaxEnd.maxEnd |
-                date }}.
-              <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
-              &amp;&amp; formWithPicker.value.range!.start){
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a end date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
-              &amp;&amp; formWithPicker.value.range!.end){
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a start date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              @if (
+                minEndDate.isSame(maxEndDate, &#x27;day&#x27;) &amp;&amp;
+                (formWithPicker.controls.range.errors?.nxDateRangeMinEnd ||
+                  formWithPicker.controls.range.errors?.nxDateRangeMaxEnd)
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                  The end date must be exactly {{ minEndDate.toDate() | date }}.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              } @else if (
+                formWithPicker.controls.range.errors?.nxDateRangeMinEnd
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                  The end date has to be on or after
+                  {{
+                    formWithPicker.controls.range.errors?.nxDateRangeMinEnd
+                      .minEnd | date
+                  }}.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              } @else if (
+                formWithPicker.controls.range.errors?.nxDateRangeMaxEnd
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                  The end date has to be on or before
+                  {{
+                    formWithPicker.controls.range.errors?.nxDateRangeMaxEnd
+                      .maxEnd | date
+                  }}.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              }
+              @if (
+                formWithPicker.controls.range.errors?.nxDateRangeIncomplete &amp;&amp;
+                formWithPicker.value.range!.start
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a end date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              }
+              @if (
+                formWithPicker.controls.range.errors?.nxDateRangeIncomplete &amp;&amp;
+                formWithPicker.value.range!.end
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a start date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
               }
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>

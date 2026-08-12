@@ -34,24 +34,33 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-headline&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Invalid or missing input:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-m&quot;</span>&gt;</span>
-        @if(naturalForm.controls.who.hasError(&#x27;required&#x27;) &amp;&amp;
-        naturalForm.controls.who.touched){
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;profession-error-required&quot;</span>&gt;</span>Profession is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-        } @if(naturalForm.controls.city.hasError(&#x27;required&#x27;) &amp;&amp;
-        naturalForm.controls.city.touched){
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;city-error-required&quot;</span>&gt;</span>The city is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-        } @if(naturalForm.controls.spots.hasError(&#x27;required&#x27;) &amp;&amp;
-        naturalForm.controls.spots.touched){
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;spots-error-required&quot;</span>&gt;</span>Number of Spots to visit is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-        } @if(naturalForm.controls.spots.hasError(&#x27;pattern&#x27;) &amp;&amp;
-        naturalForm.controls.spots.touched){
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;spots-error-pattern&quot;</span>&gt;</span>
-          Number of Spots to visit has to be a number.
-        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
+        @if (
+          naturalForm.controls.who.hasError(&#x27;required&#x27;) &amp;&amp;
+          naturalForm.controls.who.touched
+        ) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;profession-error-required&quot;</span>&gt;</span>Profession is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        }
+        @if (
+          naturalForm.controls.city.hasError(&#x27;required&#x27;) &amp;&amp;
+          naturalForm.controls.city.touched
+        ) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;city-error-required&quot;</span>&gt;</span>The city is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        }
+        @if (
+          naturalForm.controls.spots.hasError(&#x27;required&#x27;) &amp;&amp;
+          naturalForm.controls.spots.touched
+        ) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;spots-error-required&quot;</span>&gt;</span>
+            Number of Spots to visit is required.
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        }
+        @if (
+          naturalForm.controls.spots.hasError(&#x27;pattern&#x27;) &amp;&amp;
+          naturalForm.controls.spots.touched
+        ) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;spots-error-pattern&quot;</span>&gt;</span>
+            Number of Spots to visit has to be a number.
+          <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         }
       <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>

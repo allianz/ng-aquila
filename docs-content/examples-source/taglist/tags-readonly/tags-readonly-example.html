@@ -7,13 +7,13 @@
   aria-label="Filter fruits"
 >
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
   }
 </nx-tag-group>
 
 <nx-tag-group removable [readonly]="true" aria-label="Active filters">
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
   }
 </nx-tag-group>
 
@@ -24,16 +24,16 @@
   aria-label="Filter fruits"
 >
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()" [readonly]="tag === 'Bananas'"
-    >{{ tag }}</nx-tag
-  >
+    <nx-tag [value]="tag.toLowerCase()" [readonly]="tag === 'Bananas'">{{
+      tag
+    }}</nx-tag>
   }
 </nx-tag-group>
 
 <nx-tag-group removable aria-label="Active filters">
   @for (tag of tags; track tag) {
-  <nx-tag [value]="tag.toLowerCase()" [readonly]="tag === 'Bananas'"
-    >{{ tag }}</nx-tag
-  >
+    <nx-tag [value]="tag.toLowerCase()" [readonly]="tag === 'Bananas'">{{
+      tag
+    }}</nx-tag>
   }
 </nx-tag-group>

@@ -5,7 +5,7 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Car brand&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>&gt;</span>
           @for (brand of options; track brand) {
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
           }
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
@@ -24,7 +24,7 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Error dropdown&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> #<span class="hljs-attr">exampleErrorNgModel</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;modelBlank&quot;</span> <span class="hljs-attr">required</span>&gt;</span>
           @for (brand of options; track brand) {
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
           }
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span> Error message <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
@@ -32,7 +32,7 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;With icon dropdown&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>&gt;</span>
           @for (brand of options; track brand) {
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
           }
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-info-icon</span> <span class="hljs-attr">nxLabelInfo</span> <span class="hljs-attr">popoverMaxWidth</span>=<span class="hljs-string">&quot;300px&quot;</span>&gt;</span>
@@ -50,7 +50,7 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Car brand&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">showFilter</span>]=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">filterPlaceholder</span>=<span class="hljs-string">&quot;Type to search car&quot;</span>&gt;</span>
           @for (brand of options; track brand) {
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
           }
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
@@ -60,11 +60,11 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Animals&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;model&quot;</span>&gt;</span>
           @for (group of groups; track group) {
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-group</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;group.label&quot;</span>&gt;</span>
-            @for (item of group.items; track item) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-            }
-          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-group</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-group</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;group.label&quot;</span>&gt;</span>
+              @for (item of group.items; track item) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+              }
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-group</span>&gt;</span>
           }
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

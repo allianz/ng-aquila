@@ -1,23 +1,23 @@
 <nx-radio-group
   name="singleRadioOutputTest"
-  (groupValueChange)="log('groupValueChange occurred: '+$event.value)"
+  (groupValueChange)="log('groupValueChange occurred: ' + $event.value)"
 >
   <nx-label class="nx-margin-bottom-m">This is a nx-radio-group label</nx-label>
   <nx-radio
     value="option1"
     class="nx-margin-bottom-m"
-    (valueChange)="log('nxValueChange occurred: '+$event.value)"
+    (valueChange)="log('nxValueChange occurred: ' + $event.value)"
   >
     Option 1
   </nx-radio>
   <nx-radio
     value="option2"
-    (valueChange)="log('nxValueChange occurred: '+$event.value)"
+    (valueChange)="log('nxValueChange occurred: ' + $event.value)"
   >
     Option 2
   </nx-radio>
 </nx-radio-group>
 <br />
 @if (logMessage) {
-<pre>{{logMessage}}</pre>
+  <pre>{{ logMessage }}</pre>
 }

@@ -1,13 +1,13 @@
 <div class="container">
   @if (showOverviewSeparately) {
-  <nx-expansion-panel variant="extra-light" class="nx-margin-bottom-2m">
-    <nx-expansion-panel-header>
-      <nx-expansion-panel-title
-        >Overview of product benefits
-      </nx-expansion-panel-title>
-    </nx-expansion-panel-header>
-    <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
-  </nx-expansion-panel>
+    <nx-expansion-panel variant="extra-light" class="nx-margin-bottom-2m">
+      <nx-expansion-panel-header>
+        <nx-expansion-panel-title
+          >Overview of product benefits
+        </nx-expansion-panel-title>
+      </nx-expansion-panel-header>
+      <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
+    </nx-expansion-panel>
   }
 
   <nx-comparison-table selectedIndex="1">
@@ -96,30 +96,30 @@
     </ng-container>
 
     @if (!showOverviewSeparately) {
-    <ng-container nxComparisonTableRow>
-      <nx-comparison-table-description-cell>
-        <div class="has-popover">
-          <span>Overview of product benefits</span>
-          <button
-            nxPlainButton
-            class="info-icon"
-            aria-label="more-information"
-            [nxPopoverTriggerFor]="popoverContent1"
-            nxPopoverTrigger="click"
-            tabindex="0"
-            type="button"
-          >
-            <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
-          </button>
-          <nx-popover #popoverContent1>
-            <span>Summary of what all services include</span>
-          </nx-popover>
-        </div>
-      </nx-comparison-table-description-cell>
-      <nx-comparison-table-intersection-cell>
-        <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
-      </nx-comparison-table-intersection-cell>
-    </ng-container>
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell>
+          <div class="has-popover">
+            <span>Overview of product benefits</span>
+            <button
+              nxPlainButton
+              class="info-icon"
+              aria-label="more-information"
+              [nxPopoverTriggerFor]="popoverContent1"
+              nxPopoverTrigger="click"
+              tabindex="0"
+              type="button"
+            >
+              <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
+            </button>
+            <nx-popover #popoverContent1>
+              <span>Summary of what all services include</span>
+            </nx-popover>
+          </div>
+        </nx-comparison-table-description-cell>
+        <nx-comparison-table-intersection-cell>
+          <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
+        </nx-comparison-table-intersection-cell>
+      </ng-container>
     }
 
     <ng-container nxComparisonTableRow>

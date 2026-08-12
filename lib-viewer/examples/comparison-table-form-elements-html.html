@@ -67,8 +67,8 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
-      &gt;</span>Service headline
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;coverage-amount&quot;</span>
+      &gt;</span>Coverage amount
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Not included&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
@@ -77,12 +77,35 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Not included&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;200 Mio Euro&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span> <span class="hljs-attr">inline</span>&gt;</span>
+        @if (coverageAmountControl.invalid &amp;&amp; coverageAmountControl.touched) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-signal-button</span>
+            <span class="hljs-attr">nxFormfieldSuffix</span>
+            <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
+            <span class="hljs-attr">popoverDirection</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Show validation errors for Coverage amount&quot;</span>
+          &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>&gt;</span>
+                Please review this field
+              <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">nxPopoverMainContent</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list&quot;</span>&gt;</span>
+              @if (coverageAmountControl.hasError(&#x27;required&#x27;)) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please select a coverage amount.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              }
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-signal-button</span>&gt;</span>
+        }
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>
+          [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;coverageAmountControl&quot;</span>
+          <span class="hljs-attr">ariaLabelledBy</span>=<span class="hljs-string">&quot;coverage-amount&quot;</span>
+        &gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;200 Mio Euro&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;300 Mio Euro&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;500 Mio Euro&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> Please select a coverage amount. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>

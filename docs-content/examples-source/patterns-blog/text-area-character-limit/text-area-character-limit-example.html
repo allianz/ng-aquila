@@ -16,10 +16,10 @@
         ></textarea>
         <span nxFormfieldHint aria-live="polite"> {{ hintText() }} </span>
 
-        @if(limittingForm.controls.overflowTextArea.errors?.maxlength) {
-        <nx-error nxFormfieldError #textAreaTextLimitErrorMessage>
-          Your note is too long.
-        </nx-error>
+        @if (limittingForm.controls.overflowTextArea.errors?.maxlength) {
+          <nx-error nxFormfieldError #textAreaTextLimitErrorMessage>
+            Your note is too long.
+          </nx-error>
         }
       </nx-formfield>
     </div>

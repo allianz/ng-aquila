@@ -7,17 +7,17 @@
       cdkDropListOrientation="horizontal"
     >
       @for (h of header; track h; let i = $index) {
-      <th nxHeaderCell cdkDrag cdkDragLockAxis="x">{{h.title}}</th>
+        <th nxHeaderCell cdkDrag cdkDragLockAxis="x">{{ h.title }}</th>
       }
     </tr>
   </thead>
   <tbody>
     @for (item of content; track item) {
-    <tr nxTableRow>
-      @for (h of header; track h) {
-      <td nxTableCell class="col">{{item[h.field]}}</td>
-      }
-    </tr>
+      <tr nxTableRow>
+        @for (h of header; track h) {
+          <td nxTableCell class="col">{{ item[h.field] }}</td>
+        }
+      </tr>
     }
   </tbody>
 </table>

@@ -13,11 +13,11 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;selected&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu-item-wrap</span>&gt;</span>
       @for (column of columns; track column) {
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxContextMenuItem</span> <span class="hljs-attr">nxContextMenuItemCheckbox</span> <span class="hljs-attr">disableCloseOnSelect</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;column.key&quot;</span>&gt;</span> {{column.title}} <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- TODO keyboard selection not working --&gt;</span>
-        <span class="hljs-comment">&lt;!-- TODO item span not full length, icon cannot be at the end --&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxContextMenuItem</span> <span class="hljs-attr">nxContextMenuItemCheckbox</span> <span class="hljs-attr">disableCloseOnSelect</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;column.key&quot;</span>&gt;</span> {{ column.title }} <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+          <span class="hljs-comment">&lt;!-- TODO keyboard selection not working --&gt;</span>
+          <span class="hljs-comment">&lt;!-- TODO item span not full length, icon cannot be at the end --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       }
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu-item-wrap</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox-group</span>&gt;</span>

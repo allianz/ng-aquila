@@ -5,11 +5,13 @@ import { TimefieldDefaultExampleComponent } from './timefield-default/timefield-
 import { TimefieldDisabledExampleComponent } from './timefield-disabled/timefield-disabled-example';
 import { TimefieldExpertExampleComponent } from './timefield-expert/timefield-expert-example';
 import { TimefieldFormatTogglerExampleComponent } from './timefield-format-toggler/timefield-format-toggler-example';
+import { TimefieldFullFeaturesExampleComponent } from './timefield-full-features/timefield-full-features-example';
+import { TimefieldInlineExampleComponent } from './timefield-inline/timefield-inline-example';
 import { TimefieldLocalizeExampleComponent } from './timefield-localize/timefield-localize-example';
 import { TimefieldNegativeExampleComponent } from './timefield-negative/timefield-negative-example';
 import { TimefieldOptionsIntervalExampleComponent } from './timefield-options-interval/timefield-options-interval-example';
-import { TimefieldReadonlyExampleComponent } from './timefield-readonly/timefield-readonly-example';
 import { TimefieldReactiveExampleComponent } from './timefield-reactive/timefield-reactive-example';
+import { TimefieldReadonlyExampleComponent } from './timefield-readonly/timefield-readonly-example';
 import { TimefieldTemplateDrivenExampleComponent } from './timefield-template-driven/timefield-template-driven-example';
 import { TimefieldWithInputmode } from './timefield-with-inputmode/timefield-with-inputmode-example';
 import { TimefieldWithTimepickerExampleComponent } from './timefield-with-timepicker/timefield-with-timepicker-example';
@@ -26,6 +28,8 @@ const EXAMPLES = [
   TimefieldTemplateDrivenExampleComponent,
   TimefieldOptionsIntervalExampleComponent,
   TimefieldCustomValidationExampleComponent,
+  TimefieldInlineExampleComponent,
+  TimefieldFullFeaturesExampleComponent,
 ];
 
 @NgModule({
@@ -50,6 +54,8 @@ export class TimefieldExamplesModule {
         TimefieldWithTimepickerGlobalExampleComponent,
       'timefield-custom-validation': TimefieldCustomValidationExampleComponent,
       'timefield-with-inputmode': TimefieldWithInputmode,
+      'timefield-inline': TimefieldInlineExampleComponent,
+      'timefield-full-features': TimefieldFullFeaturesExampleComponent,
     };
   }
 }

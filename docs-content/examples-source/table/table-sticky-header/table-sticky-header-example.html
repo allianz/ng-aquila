@@ -10,12 +10,12 @@
     </thead>
     <tbody>
       @for (item of tableElements; track item) {
-      <tr nxTableRow>
-        <td nxTableCell>{{item.product}}</td>
-        <td nxTableCell>{{item.contractNumber}}</td>
-        <td nxTableCell>{{item.desc}}</td>
-        <td nxTableCell>{{item.endingAt}}</td>
-      </tr>
+        <tr nxTableRow>
+          <td nxTableCell>{{ item.product }}</td>
+          <td nxTableCell>{{ item.contractNumber }}</td>
+          <td nxTableCell>{{ item.desc }}</td>
+          <td nxTableCell>{{ item.endingAt }}</td>
+        </tr>
       }
     </tbody>
   </table>

@@ -13,57 +13,123 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
       @for (control of formArray.controls; track control; let i = $index) {
-      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;getFormGroup(i)&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-              <span class="hljs-attr">nxInput</span>
-              <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;id&quot;</span>
-              [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;assign&#x27;&quot;</span>
-            /&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-              <span class="hljs-attr">nxInput</span>
-              <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;amount&quot;</span>
-              [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;amount&#x27;&quot;</span>
-            /&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;date-cell&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-              <span class="hljs-attr">nxDatefield</span>
-              <span class="hljs-attr">nxInput</span>
-              [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
-              <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;endingAt&quot;</span>
-              [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;ending&#x27;&quot;</span>
-            /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
-              [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
-              <span class="hljs-attr">nxFormfieldSuffix</span>
-            &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;status-cell&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;status&quot;</span> <span class="hljs-attr">ariaLabelledBy</span>=<span class="hljs-string">&quot;status&quot;</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;open&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;processing&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;accepted&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;rejected&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;removeRow(i)&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Remove row&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trash-o&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;getFormGroup(i)&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">inline</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span>
+              @if (getControl(i, &#x27;id&#x27;).invalid &amp;&amp; getControl(i, &#x27;id&#x27;).touched) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-signal-button</span>
+                  <span class="hljs-attr">nxFormfieldSuffix</span>
+                  <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                  <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
+                  <span class="hljs-attr">popoverDirection</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+                  <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Show validation errors for Assignment/Case ID&quot;</span>
+                &gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>
+                      <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>
+                      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>
+                    &gt;</span>
+                      Please review this field
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">nxPopoverMainContent</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list&quot;</span>&gt;</span>
+                    @if (getControl(i, &#x27;id&#x27;).hasError(&#x27;required&#x27;)) {
+                      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>An assignment/case ID is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    }
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-signal-button</span>&gt;</span>
+              }
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                <span class="hljs-attr">nxInput</span>
+                <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;id&quot;</span>
+                [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;assign&#x27;&quot;</span>
+              /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                An assignment/case ID is required.
+              <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">inline</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span>
+              @if (
+                getControl(i, &#x27;amount&#x27;).invalid &amp;&amp;
+                getControl(i, &#x27;amount&#x27;).touched
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-signal-button</span>
+                  <span class="hljs-attr">nxFormfieldSuffix</span>
+                  <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                  <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;error&quot;</span>
+                  <span class="hljs-attr">popoverDirection</span>=<span class="hljs-string">&quot;bottom&quot;</span>
+                  <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Show validation errors for Gross Amount&quot;</span>
+                &gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>
+                      <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>
+                      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>
+                    &gt;</span>
+                      Please review this field
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">nxPopoverMainContent</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;error-list&quot;</span>&gt;</span>
+                    @if (getControl(i, &#x27;amount&#x27;).hasError(&#x27;required&#x27;)) {
+                      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A gross amount is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    }
+                    @if (getControl(i, &#x27;amount&#x27;).hasError(&#x27;min&#x27;)) {
+                      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The gross amount must be greater than 0.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                    }
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-signal-button</span>&gt;</span>
+              }
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                <span class="hljs-attr">nxInput</span>
+                <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;amount&quot;</span>
+                [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;amount&#x27;&quot;</span>
+              /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                @if (getControl(i, &#x27;amount&#x27;).hasError(&#x27;required&#x27;)) {
+                  A gross amount is required.
+                } @else if (getControl(i, &#x27;amount&#x27;).hasError(&#x27;min&#x27;)) {
+                  The gross amount must be greater than 0.
+                }
+              <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;date-cell&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">inline</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                <span class="hljs-attr">nxDatefield</span>
+                <span class="hljs-attr">nxInput</span>
+                [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
+                <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;endingAt&quot;</span>
+                [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;&#x27;ending&#x27;&quot;</span>
+              /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
+                [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;myDatepicker&quot;</span>
+                <span class="hljs-attr">nxFormfieldSuffix</span>
+              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;status-cell&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">inline</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;status&quot;</span> <span class="hljs-attr">ariaLabelledBy</span>=<span class="hljs-string">&quot;status&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;open&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;processing&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;accepted&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;rejected&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+              <span class="hljs-attr">nxPlainButton</span>
+              (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;removeRow(i)&quot;</span>
+              <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Remove row&quot;</span>
+            &gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trash-o&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
       }
     <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>

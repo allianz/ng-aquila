@@ -7,20 +7,24 @@
     [min]="-3"
     [max]="20"
   >
-    @if (testForm.controls['stepperTestReactive'].errors &&
-    testForm.controls['stepperTestReactive'].errors.nxNumberStepperStepError) {
-    <nx-error> Value is not a valid step </nx-error>
-    } @if (testForm.controls['stepperTestReactive'].errors &&
-    testForm.controls['stepperTestReactive'].errors.nxNumberStepperFormatError)
-    {
-    <nx-error> Not a valid number </nx-error>
+    @if (
+      testForm.controls['stepperTestReactive'].errors &&
+      testForm.controls['stepperTestReactive'].errors.nxNumberStepperStepError
+    ) {
+      <nx-error> Value is not a valid step </nx-error>
+    }
+    @if (
+      testForm.controls['stepperTestReactive'].errors &&
+      testForm.controls['stepperTestReactive'].errors.nxNumberStepperFormatError
+    ) {
+      <nx-error> Not a valid number </nx-error>
     }
   </nx-number-stepper>
 
   <p>Form value: {{ testForm.value | json }}</p>
   <p>Form status: {{ testForm.status }}</p>
   <p>
-    Form errors: {{ testForm.controls['stepperTestReactive'].errors | json}}
+    Form errors: {{ testForm.controls['stepperTestReactive'].errors | json }}
   </p>
 </form>
 
@@ -33,24 +37,32 @@
     [min]="-3"
     [max]="20"
   >
-    @if (testFormRequired.controls['stepperTestReactive'].errors &&
-    testFormRequired.controls['stepperTestReactive'].errors.nxNumberStepperStepError)
-    {
-    <nx-error> Value is not a valid step </nx-error>
-    } @if (testFormRequired.controls['stepperTestReactive'].errors &&
-    testFormRequired.controls['stepperTestReactive'].errors.nxNumberStepperFormatError)
-    {
-    <nx-error> Not a valid number </nx-error>
-    } @if (testFormRequired.controls['stepperTestReactive'].errors &&
-    testFormRequired.controls['stepperTestReactive'].errors.required) {
-    <nx-error> Number of travellers is required. </nx-error>
+    @if (
+      testFormRequired.controls['stepperTestReactive'].errors &&
+      testFormRequired.controls['stepperTestReactive'].errors
+        .nxNumberStepperStepError
+    ) {
+      <nx-error> Value is not a valid step </nx-error>
+    }
+    @if (
+      testFormRequired.controls['stepperTestReactive'].errors &&
+      testFormRequired.controls['stepperTestReactive'].errors
+        .nxNumberStepperFormatError
+    ) {
+      <nx-error> Not a valid number </nx-error>
+    }
+    @if (
+      testFormRequired.controls['stepperTestReactive'].errors &&
+      testFormRequired.controls['stepperTestReactive'].errors.required
+    ) {
+      <nx-error> Number of travellers is required. </nx-error>
     }
   </nx-number-stepper>
 
   <p>Form value: {{ testFormRequired.value | json }}</p>
   <p>Form status: {{ testFormRequired.status }}</p>
   <p>
-    Form errors: {{ testFormRequired.controls['stepperTestReactive'].errors |
-    json}}
+    Form errors:
+    {{ testFormRequired.controls['stepperTestReactive'].errors | json }}
   </p>
 </form>

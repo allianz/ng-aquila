@@ -25,6 +25,7 @@ import { FormfieldFloatingExampleComponent } from './formfield-floating/formfiel
 import { FormfieldGlobalExampleComponent } from './formfield-global/formfield-global-example';
 import { FormfieldHintExampleComponent } from './formfield-hint/formfield-hint-example';
 import { FormfieldInfoIconExampleComponent } from './formfield-info-icon/formfield-info-icon-example';
+import { FormfieldInlineExampleComponent } from './formfield-inline/formfield-inline-example';
 import { FormfieldMultipleErrorsExampleComponent } from './formfield-multiple-errors/formfield-multiple-errors-example';
 import { FormfieldNegativeExampleComponent } from './formfield-negative/formfield-negative-example';
 import { FormfieldNoteExampleComponent } from './formfield-note/formfield-note-example';
@@ -34,6 +35,7 @@ import { FormfieldPasswordVisibilityExampleComponent } from './formfield-passwor
 import { FormfieldPlaceholderExampleComponent } from './formfield-placeholder/formfield-placeholder-example';
 import { FormfieldPrefixSuffixAppendixExampleComponent } from './formfield-prefix-suffix-appendix/formfield-prefix-suffix-appendix-example';
 import { FormfieldSimpleFormExampleComponent } from './formfield-simple-form/formfield-simple-form-example';
+import { FormfieldSmallExampleComponent } from './formfield-small/formfield-small-example';
 import { FormfieldSpacingAdjusterExampleComponent } from './formfield-spacing-adjuster/formfield-spacing-adjuster-example';
 
 const EXAMPLES = [
@@ -51,9 +53,9 @@ const EXAMPLES = [
   FormfieldGlobalExampleComponent,
   FormfieldHintExampleComponent,
   FormfieldInfoIconExampleComponent,
+  FormfieldInlineExampleComponent,
   FormfieldMultipleErrorsExampleComponent,
   FormfieldNegativeExampleComponent,
-  FormfieldNoteExampleComponent,
   FormfieldNoteAndErrorExampleComponent,
   FormfieldPasswordVisibilityExampleComponent,
   FormfieldPlaceholderExampleComponent,
@@ -61,6 +63,7 @@ const EXAMPLES = [
   FormfieldSimpleFormExampleComponent,
   FormfieldChangedetectionExampleComponent,
   FormfieldOptionalLabelExampleComponent,
+  FormfieldSmallExampleComponent,
 ];
 
 @NgModule({
@@ -94,6 +97,7 @@ export class FormfieldExamplesModule {
       'formfield-floating': FormfieldFloatingExampleComponent,
       'formfield-global': FormfieldGlobalExampleComponent,
       'formfield-hint': FormfieldHintExampleComponent,
+      'formfield-inline': FormfieldInlineExampleComponent,
       'formfield-info-icon': FormfieldInfoIconExampleComponent,
       'formfield-multiple-errors': FormfieldMultipleErrorsExampleComponent,
       'formfield-negative': FormfieldNegativeExampleComponent,
@@ -107,6 +111,7 @@ export class FormfieldExamplesModule {
       'formfield-simple-form': FormfieldSimpleFormExampleComponent,
       'formfield-changedetection': FormfieldChangedetectionExampleComponent,
       'formfield-optional-label': FormfieldOptionalLabelExampleComponent,
+      'formfield-small': FormfieldSmallExampleComponent,
     };
   }
 }

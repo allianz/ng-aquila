@@ -1,0 +1,26 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-timefield</span>
+  <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Departure time&quot;</span>
+  <span class="hljs-attr">optionalLabel</span>=<span class="hljs-string">&quot;optional&quot;</span>
+  <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Enter the time in 24h format&quot;</span>
+  <span class="hljs-attr">withTimepicker</span>
+  [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;timeControl&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>From<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldSuffix</span>&gt;</span>h<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxFormfieldAppendix</span>
+    <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;tertiary small&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Open settings&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;setting&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-info-icon</span> <span class="hljs-attr">nxLabelInfo</span>&gt;</span>
+    The departure time is shown in your local timezone.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-info-icon</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
+    @if (timeControl.hasError(&#x27;required&#x27;)) {
+      A departure time is required.
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-timefield</span>&gt;</span>

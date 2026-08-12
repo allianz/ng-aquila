@@ -4,7 +4,7 @@
       <nx-formfield label="Car brand">
         <nx-dropdown [showFilter]="true" filterPlaceholder="Type to search car">
           @for (brand of options; track brand) {
-          <nx-dropdown-item [value]="brand"></nx-dropdown-item>
+            <nx-dropdown-item [value]="brand"></nx-dropdown-item>
           }
         </nx-dropdown>
       </nx-formfield>

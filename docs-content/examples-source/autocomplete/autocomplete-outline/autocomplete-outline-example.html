@@ -14,9 +14,9 @@
         />
         <nx-autocomplete #animal1="nxAutocomplete">
           @for (option of filteredOptions; track option) {
-          <nx-autocomplete-option [value]="option">
-            {{ option }}
-          </nx-autocomplete-option>
+            <nx-autocomplete-option [value]="option">
+              {{ option }}
+            </nx-autocomplete-option>
           }
         </nx-autocomplete>
       </nx-formfield>

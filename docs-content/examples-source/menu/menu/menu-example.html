@@ -11,7 +11,7 @@
         routerLink="./"
         [queryParams]="node.query"
       >
-        {{node.label}}
+        {{ node.label }}
       </a>
     </nx-tree-node>
     <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
@@ -26,8 +26,9 @@
         type="button"
       >
         @if (node.icon) {
-        <nx-icon nxMenuButtonIcon [name]="node.icon" size="s"></nx-icon>
-        } {{node.label}}
+          <nx-icon nxMenuButtonIcon [name]="node.icon" size="s"></nx-icon>
+        }
+        {{ node.label }}
       </button>
     </nx-tree-node>
   </nx-tree>

@@ -1,0 +1,50 @@
+<div nxLayout="grid nopadding">
+  <div nxRow>
+    <div nxCol="12,6">
+      <nx-formfield label="Color scheme">
+        <nx-dropdown [(value)]="colorScheme">
+          @for (item of colorSchemes; track item) {
+            <nx-dropdown-item [value]="item">{{ item }}</nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+    <div nxCol="12,6">
+      <nx-formfield label="Accent color">
+        <nx-dropdown [(value)]="accentColor" [disabled]="accentColorDisabled()">
+          @for (item of accentColors; track item) {
+            <nx-dropdown-item [value]="item">{{ item }}</nx-dropdown-item>
+          }
+        </nx-dropdown>
+        @if (accentColorDisabled()) {
+          <span nxFormfieldHint>Not used by the default color scheme</span>
+        }
+      </nx-formfield>
+    </div>
+  </div>
+</div>
+
+<div
+  class="docs-preview"
+  [style.background-color]="onAccentSurface() ? accentSurface() : null"
+>
+  <button
+    nxIconButton="primary"
+    [colorScheme]="colorScheme()"
+    [accentColor]="accentColor()"
+    type="button"
+    aria-label="email"
+  >
+    <nx-icon name="mail-o" aria-hidden="true"></nx-icon>
+  </button>
+  @for (prominence of prominences; track prominence) {
+    <button
+      [nxButton]="prominence"
+      [colorScheme]="colorScheme()"
+      [accentColor]="accentColor()"
+      type="button"
+    >
+      {{ prominence }}
+    </button>
+  }
+</div>

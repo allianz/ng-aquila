@@ -1,0 +1,100 @@
+<div class="example-row">
+  <span id="amount-label">Amount</span>
+  <nx-formfield label="Amount" inline>
+    <input nxInput aria-labelledby="amount-label" />
+  </nx-formfield>
+</div>
+
+<!--
+  Inline mode hides the projected error message, so the validation state is
+  surfaced with a signal button in the suffix slot instead. The projected
+  `nx-error` is kept (only visually hidden) so the formfield still wires it up
+  as `aria-describedby` / `aria-invalid` on the control for assistive tech.
+-->
+<div class="example-row nx-margin-top-s">
+  <span id="budget-label">Budget</span>
+  <nx-formfield label="Budget" inline>
+    @if (budgetControl.invalid && budgetControl.touched) {
+      <nx-signal-button
+        nxFormfieldSuffix
+        context="error"
+        popoverDirection="bottom"
+        aria-label="Show validation errors for Budget"
+      >
+        <div nxPopoverTitle>
+          <h3 nxHeadline="subsection-xsmall" class="nx-margin-bottom-2xs">
+            Please review this field
+          </h3>
+        </div>
+        <ul nxPopoverMainContent class="error-list">
+          @if (budgetControl.hasError('required')) {
+            <li>A budget is required.</li>
+          }
+          @if (budgetControl.hasError('min')) {
+            <li>The budget must be at least 100.</li>
+          }
+        </ul>
+      </nx-signal-button>
+    }
+    <input
+      nxInput
+      type="number"
+      [formControl]="budgetControl"
+      aria-labelledby="budget-label"
+    />
+    <nx-error nxFormfieldError>
+      @if (budgetControl.hasError('required')) {
+        A budget is required.
+      } @else if (budgetControl.hasError('min')) {
+        The budget must be at least 100.
+      }
+    </nx-error>
+  </nx-formfield>
+</div>
+
+<!--
+  `inline` together with `size="s"` for an even more compact field. The signal
+  button in the suffix uses `size="s"` as well, so its icon matches the reduced
+  control height.
+-->
+<div class="example-row nx-margin-top-s">
+  <span id="fee-label">Fee</span>
+  <nx-formfield label="Fee" inline size="s">
+    @if (feeControl.invalid && feeControl.touched) {
+      <nx-signal-button
+        nxFormfieldSuffix
+        size="s"
+        context="error"
+        popoverDirection="bottom"
+        aria-label="Show validation errors for Fee"
+      >
+        <div nxPopoverTitle>
+          <h3 nxHeadline="subsection-xsmall" class="nx-margin-bottom-2xs">
+            Please review this field
+          </h3>
+        </div>
+        <ul nxPopoverMainContent class="error-list">
+          @if (feeControl.hasError('required')) {
+            <li>A fee is required.</li>
+          }
+          @if (feeControl.hasError('min')) {
+            <li>The fee must be at least 10.</li>
+          }
+        </ul>
+      </nx-signal-button>
+    }
+    <input
+      nxInput
+      type="number"
+      [formControl]="feeControl"
+      aria-labelledby="fee-label"
+    />
+    <nx-error nxFormfieldError>
+      @if (feeControl.hasError('required')) {
+        A fee is required.
+      } @else if (feeControl.hasError('min')) {
+        The fee must be at least 10.
+      }
+    </nx-error>
+  </nx-formfield>
+</div>

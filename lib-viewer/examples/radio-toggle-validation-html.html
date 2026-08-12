@@ -2,7 +2,7 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;toggle-label&quot;</span>&gt;</span>Favorite Letter<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle</span> <span class="hljs-attr">ariaLabelledBy</span>=<span class="hljs-string">&quot;toggle-label&quot;</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;testToggle&quot;</span>&gt;</span>
     @for (item of data; track item) {
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{item}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle-button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{ item }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle-button</span>&gt;</span>
     }
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span> Please select &quot;B&quot; <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle</span>&gt;</span>

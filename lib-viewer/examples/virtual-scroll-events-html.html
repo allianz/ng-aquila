@@ -1,13 +1,19 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;event-info&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Last clicked:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
-    @if (lastClicked(); as clicked) { Index {{ clicked.index }} (value: {{
-    clicked.value }}) } @else { None }
+    @if (lastClicked(); as clicked) {
+      Index {{ clicked.index }} (value: {{ clicked.value }})
+    } @else {
+      None
+    }
   <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Visible range:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
-    @if (visibleRange(); as range) { {{ range.start }} - {{ range.end }} } @else
-    { Unknown }
+    @if (visibleRange(); as range) {
+      {{ range.start }} - {{ range.end }}
+    } @else {
+      Unknown
+    }
   <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 

@@ -6,13 +6,13 @@
 
 <nx-tag-group aria-label="Filter by product" class="nx-margin-bottom-m">
   @for (tag of tags(); track tag) {
-  <nx-tag [value]="tag"></nx-tag>
+    <nx-tag [value]="tag"></nx-tag>
   }
 </nx-tag-group>
 
 <nx-tag-group removable aria-label="Filter by product">
   @for (tag of tags(); track tag) {
-  <nx-tag [value]="tag" (removed)="removeTag(tag)"></nx-tag>
+    <nx-tag [value]="tag" (removed)="removeTag(tag)"></nx-tag>
   }
 </nx-tag-group>
 
@@ -20,22 +20,22 @@
 
 <nx-tag-group aria-label="Filter by product" class="nx-margin-bottom-m">
   @for (tag of tagsWithCount(); track tag.label) {
-  <nx-tag [value]="tag.label">
-    {{ tag.label | titlecase }}
-    <span nxTagCount
-      >{{ tag.count }}<span class="cdk-visually-hidden"> items</span></span
-    >
-  </nx-tag>
+    <nx-tag [value]="tag.label">
+      {{ tag.label | titlecase }}
+      <span nxTagCount
+        >{{ tag.count }}<span class="cdk-visually-hidden"> items</span></span
+      >
+    </nx-tag>
   }
 </nx-tag-group>
 
 <nx-tag-group removable aria-label="Filter by product">
   @for (tag of tagsWithCount(); track tag.label) {
-  <nx-tag [value]="tag.label" (removed)="removeTagWithCount(tag.label)">
-    {{ tag.label | titlecase }}
-    <span nxTagCount
-      >{{ tag.count }}<span class="cdk-visually-hidden"> items</span></span
-    >
-  </nx-tag>
+    <nx-tag [value]="tag.label" (removed)="removeTagWithCount(tag.label)">
+      {{ tag.label | titlecase }}
+      <span nxTagCount
+        >{{ tag.count }}<span class="cdk-visually-hidden"> items</span></span
+      >
+    </nx-tag>
   }
 </nx-tag-group>

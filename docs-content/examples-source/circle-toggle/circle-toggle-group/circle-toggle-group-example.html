@@ -1,13 +1,13 @@
 <nx-circle-toggle-group>
   @for (item of sampleValues; track item) {
-  <nx-circle-toggle
-    [value]="item.value"
-    [icon]="item.icon"
-    [hint]="item.hint"
-    [label]="item.label"
-    [checked]="item.selected"
-  >
-  </nx-circle-toggle>
+    <nx-circle-toggle
+      [value]="item.value"
+      [icon]="item.icon"
+      [hint]="item.hint"
+      [label]="item.label"
+      [checked]="item.selected"
+    >
+    </nx-circle-toggle>
   }
 </nx-circle-toggle-group>
 
@@ -15,14 +15,14 @@
 
 <nx-circle-toggle-group disabled>
   @for (item of sampleValues; track item) {
-  <nx-circle-toggle
-    [value]="item.value"
-    [icon]="item.icon"
-    [hint]="item.hint"
-    [label]="item.label"
-    [checked]="item.selected"
-  >
-  </nx-circle-toggle>
+    <nx-circle-toggle
+      [value]="item.value"
+      [icon]="item.icon"
+      [hint]="item.hint"
+      [label]="item.label"
+      [checked]="item.selected"
+    >
+    </nx-circle-toggle>
   }
 </nx-circle-toggle-group>
 
@@ -32,14 +32,14 @@
 
 <nx-circle-toggle-group>
   @for (item of sampleValues; track item) {
-  <nx-circle-toggle
-    [value]="item.value"
-    [icon]="item.icon"
-    [hint]="item.hint"
-    [label]="item.label"
-    [checked]="item.selected"
-    [disabled]="item.value === 'A'"
-  >
-  </nx-circle-toggle>
+    <nx-circle-toggle
+      [value]="item.value"
+      [icon]="item.icon"
+      [hint]="item.hint"
+      [label]="item.label"
+      [checked]="item.selected"
+      [disabled]="item.value === 'A'"
+    >
+    </nx-circle-toggle>
   }
 </nx-circle-toggle-group>

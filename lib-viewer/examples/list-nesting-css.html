@@ -17,11 +17,3 @@
 <span class="hljs-selector-class">.list-nesting-grid__item</span> <span class="hljs-selector-tag">h3</span> {
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
 }
-
-<span class="hljs-comment">/* Render nested numbering as &quot;1.1&quot;, &quot;1.2&quot; instead of resetting to &quot;1&quot; */</span>
-<span class="hljs-selector-pseudo">:is</span>(<span class="hljs-selector-class">.my-custom-normal-list</span>, <span class="hljs-selector-class">.my-custom-circle-mixed-list</span>)
-  &gt; <span class="hljs-selector-tag">li</span>
-  &gt; <span class="hljs-selector-tag">ol</span><span class="hljs-selector-class">.nx-list</span>
-  &gt; <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.nx-list__icon-wrapper</span>)<span class="hljs-selector-pseudo">::before</span> {
-  <span class="hljs-attribute">content</span>: <span class="hljs-built_in">counters</span>(list, <span class="hljs-string">&#x27;.&#x27;</span>) <span class="hljs-meta">!important</span>;
-}

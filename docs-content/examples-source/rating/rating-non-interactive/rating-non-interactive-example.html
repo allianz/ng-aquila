@@ -1,0 +1,26 @@
+<nx-slider
+  class="nx-margin-bottom-s contained-rating"
+  [min]="0"
+  [max]="5"
+  [step]="0.1"
+  [(value)]="ratingValue"
+>
+</nx-slider>
+<nx-rating
+  class="nx-margin-bottom-s"
+  [(value)]="ratingValue"
+  size="s"
+  startLabel="poor"
+  endLabel="great"
+  [interactive]="false"
+>
+</nx-rating>
+<br />
+<nx-rating
+  [(value)]="ratingValue"
+  size="m"
+  startLabel="poor"
+  endLabel="great"
+  [interactive]="false"
+>
+</nx-rating>

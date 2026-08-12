@@ -6,25 +6,28 @@
   JPG, PNG or PDF • less than 1MB
 </span>
 
-@if (uploaderComponents()[0].errors.length > 0 ||
-uploaderComponents()[1].errors.length > 0 ||
-uploaderComponents()[2].errors.length > 0) {
-<nx-error id="file-upload-error">
-  <div class="nx-font-weight-bold">Error</div>
-  <ul>
-    @for (item of getFileErrors(); track $index) { @if(item.type === 'fileSize')
-    {
-    <li>File size of {{ item.filename }} exceeds limit of 1 MB</li>
-    } }
-  </ul>
-</nx-error>
+@if (
+  uploaderComponents()[0].errors.length > 0 ||
+  uploaderComponents()[1].errors.length > 0 ||
+  uploaderComponents()[2].errors.length > 0
+) {
+  <nx-error id="file-upload-error">
+    <div class="nx-font-weight-bold">Error</div>
+    <ul>
+      @for (item of getFileErrors(); track $index) {
+        @if (item.type === 'fileSize') {
+          <li>File size of {{ item.filename }} exceeds limit of 1 MB</li>
+        }
+      }
+    </ul>
+  </nx-error>
 }
 
 <nx-file-uploader
   #driverDocumentUpload
   multiple
   [uploader]="carDocumentsUploader"
-  maxFileSize="{{1 * 1024 * 1024}}"
+  maxFileSize="{{ 1 * 1024 * 1024 }}"
   ariaDescribedBy="file-upload-label file-upload-hint file-upload-error"
 >
   <div class="uploader-row">
@@ -46,7 +49,7 @@ uploaderComponents()[2].errors.length > 0) {
   #carDocumentUpload
   multiple
   [uploader]="driverDocumentsUploader"
-  maxFileSize="{{1 * 1024 * 1024}}"
+  maxFileSize="{{ 1 * 1024 * 1024 }}"
   ariaDescribedBy="file-upload-label file-upload-hint file-upload-error"
 >
   <div class="uploader-row">
@@ -68,7 +71,7 @@ uploaderComponents()[2].errors.length > 0) {
   #additionalDocumentUpload
   multiple
   [uploader]="additionalDocumentsUploader"
-  maxFileSize="{{1 * 1024 * 1024}}"
+  maxFileSize="{{ 1 * 1024 * 1024 }}"
   ariaDescribedBy="file-upload-label file-upload-hint file-upload-error"
 >
   <div class="uploader-row">

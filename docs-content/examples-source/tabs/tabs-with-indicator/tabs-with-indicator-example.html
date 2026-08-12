@@ -1,18 +1,19 @@
 <nx-tab-group appearance="expert">
   @for (tab of tabs; track tab) {
-  <nx-tab>
-    <ng-template nxTabLabel>
-      <span class="tab-header-content">
-        {{ tab.label }} @if (tab.notification) {
-        <nx-indicator
-          position="over-text"
-          [attr.aria-label]="getAriaLabel(tab.notificationCount!)"
-          >{{ getIndicatorText(tab.notificationCount!) }}</nx-indicator
-        >
-        }
-      </span>
-    </ng-template>
-    <p class="nx-margin-top-s">Content of {{ tab.label }}</p>
-  </nx-tab>
+    <nx-tab>
+      <ng-template nxTabLabel>
+        <span class="tab-header-content">
+          {{ tab.label }}
+          @if (tab.notification) {
+            <nx-indicator
+              position="over-text"
+              [attr.aria-label]="getAriaLabel(tab.notificationCount!)"
+              >{{ getIndicatorText(tab.notificationCount!) }}</nx-indicator
+            >
+          }
+        </span>
+      </ng-template>
+      <p class="nx-margin-top-s">Content of {{ tab.label }}</p>
+    </nx-tab>
   }
 </nx-tab-group>

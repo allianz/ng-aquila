@@ -55,10 +55,10 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>size</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                size: 
+                sizeInput: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignal&lt;NxLinkSize&gt;</span>
@@ -66,7 +66,7 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the size of the link. Default: &#39;small&#39;.</p>
+        <p>Sets the size of the link. Default: &#39;large&#39; under A1, otherwise &#39;small&#39;. To read the value use the <code>size</code> property.</p>
 </td>
 </tr>
    
@@ -85,6 +85,23 @@ You can use any combination of &#39;black&#39;, &#39;icon-right&#39;, &#39;icon-
     </td>
     <td class="docs-api-property-description">
         <p>Sets the type of the link. Default: &#39;primary&#39;.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxLinkSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The computed size taking the A1 provider into account.</p>
 </td>
 </tr>
   

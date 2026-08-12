@@ -9,6 +9,11 @@
 <p class="docs-markdown--p"><strong>Changes to formfield paddings:</strong> Starting v16, bottom padding is now applied to both Error and Hint messages. The new bottom padding for Expert is 16px, Retail (Desktop) 32px and Retail (Mobile) 24px. If you would like to keep the old padding values, include <code>@allianz/ng-aquila/css/compatibility/formfield-padding.css</code> in your <code>angular.json</code>.</p>
 <h3 id="basic-example" tabindex="-1" class="docs-markdown--h3">Basic Example</h3>
 <div nx-docs-example="formfield-basic" config="{}">exampleID: formfield-basic</div>
+<div class="docs-a1">
+<h3 id="small-size" tabindex="-1" class="docs-markdown--h3">Small size</h3>
+<p class="docs-markdown--p">Set <code>size=&quot;s&quot;</code> on the formfield to render a more compact variant. Below is every supported form control (input, autocomplete, dropdown, multi-select, phone input, license plate, timefield, datefield, datemask, date range) using the small size.</p>
+<div nx-docs-example="formfield-small" config="{}">exampleID: formfield-small</div>
+</div>
 <h3 id="simple-form" tabindex="-1" class="docs-markdown--h3">Simple Form</h3>
 <p class="docs-markdown--p">This form will show a validation error as both fields are required and one fields uses the appendix slot to display an info <a href="./documentation/icon/overview"><code>&lt;nx-icon&gt;</code></a> together with a popover.</p>
 <p class="docs-markdown--p">The formfield width depends only on the grid column it is placed in and expands until it has taken 100% of the width.</p>
@@ -21,7 +26,7 @@
 <p class="docs-markdown--p">You can pass text label content via the input <code>label</code>. If you need a more complex label you an use the directive <code>nx-formfield-label</code> as shown in the code example below. If both are defined, then <code>nx-formfield-label</code> will take precedence.</p>
 <div nx-docs-example="formfield-custom-label" config="{}">exampleID: formfield-custom-label</div>
 <h3 id="info-icon" tabindex="-1" class="docs-markdown--h3">Info icon</h3>
-<p class="docs-markdown--p">Show an info icon next to the label by projecting an info-icon component into the formfield and marking it with the <code>nxLabelInfo</code> directive. Use the standard <code>nx-info-icon</code> (from <code>@allianz/ng-aquila/info-icon</code>) or project your own implementation — the projected component keeps full control over its own API (popover direction, width, modal behaviour, etc.). You author it once and the formfield places it per theme: <strong>next to the label under Allianz One</strong>, and in the <strong>appendix position (next to the field) under NDBX</strong> — matching the legacy placement. It works together with both the <code>label</code> input and a custom <code>nx-formfield-label</code>, and replaces the previous pattern of placing an info icon and popover manually in the <code>nxFormfieldAppendix</code> slot.</p>
+<p class="docs-markdown--p">Show an info icon next to the label by projecting an info-icon component into the formfield and marking it with the <code>nxLabelInfo</code> directive. Use the standard <code>nx-info-icon</code> (from <code>@allianz/ng-aquila/info-icon</code>) or project your own implementation — the projected component keeps full control over its own API (popover direction, width, modal behaviour, etc.). You author it once and the formfield places it per theme: <strong>next to the label under A1</strong>, and in the <strong>appendix position (next to the field) under NDBX</strong> — matching the legacy placement. It works together with both the <code>label</code> input and a custom <code>nx-formfield-label</code>, and replaces the previous pattern of placing an info icon and popover manually in the <code>nxFormfieldAppendix</code> slot.</p>
 <div nx-docs-example="formfield-info-icon" config="{}">exampleID: formfield-info-icon</div>
 <h3 id="negative-styling" tabindex="-1" class="docs-markdown--h3">Negative styling</h3>
 <p class="docs-markdown--p">The negative modifier can be used whenever the component is used on a dark background.</p>
@@ -29,6 +34,13 @@
 <h3 id="hint" tabindex="-1" class="docs-markdown--h3">Hint</h3>
 <p class="docs-markdown--p">You can add a hint to a formfield which is then displayed on the bottom right corner.</p>
 <div nx-docs-example="formfield-hint" config="{}">exampleID: formfield-hint</div>
+<h3 id="inline" tabindex="-1" class="docs-markdown--h3">Inline</h3>
+<p class="docs-markdown--p">Set the <code>inline</code> input to render the formfield in a compact way: the label is visually hidden and the space normally reserved above (for the floating label) and below the field (for hints, errors and notes) is removed. This is useful for dense layouts, for example a field inside a table cell where the column header already labels the control.</p>
+<p class="docs-markdown--p">For accessibility the label is kept in the DOM (only visually hidden), so you should always provide a meaningful <code>label</code>. Alternatively you can connect the control to an existing element via <code>aria-labelledby</code> (for example a table header).</p>
+<p class="docs-markdown--p"><strong>Note:</strong> hints, errors and notes are not supported together with <code>inline</code> and will not be shown.</p>
+<p class="docs-markdown--p">Because the projected error message is hidden in inline mode, you can surface the validation state with a <a href="/documentation/signal-button/overview">signal button</a> placed in the <code>nxFormfieldSuffix</code> slot, opening a popover that lists the current errors. Keep the projected <code>nx-error</code> in the DOM (it stays only visually hidden): the formfield still connects it to the control via <code>aria-describedby</code> and sets <code>aria-invalid</code>, so assistive technology continues to announce the error. The example below and the <a href="/documentation/table/overview">table with form elements</a> example show this pattern.</p>
+<p class="docs-markdown--p"><code>inline</code> combines well with the <a href="#small-size">small size</a> for especially dense layouts. <strong>Note:</strong> when the formfield uses <code>size=&quot;s&quot;</code>, the signal button in the suffix needs <code>size=&quot;s&quot;</code> as well, so that its icon matches the reduced control height. The last row of the example below shows this combination.</p>
+<div nx-docs-example="formfield-inline" config="{}">exampleID: formfield-inline</div>
 <h3 id="character-count" tabindex="-1" class="docs-markdown--h3">Character count</h3>
 <p class="docs-markdown--p">To show the user both the character restrictions and the characters remaining, you can simply use the slot of the <code>nxFormfieldHint</code>.</p>
 <div nx-docs-example="formfield-character-count" config="{}">exampleID: formfield-character-count</div>

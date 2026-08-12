@@ -23,9 +23,13 @@
           [(<span class="hljs-attr">nxPopoverShow</span>)]=<span class="hljs-string">&quot;popoverManualOpenFlag&quot;</span>
           <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;bottom&quot;</span>
         &gt;</span>
-          @if(!aiFilled){
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ai-suggestion-o&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-          <span class="hljs-comment">&lt;!-- &lt;svg
+          @if (!aiFilled) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+              <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ai-suggestion-o&quot;</span>
+              <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+              <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+            &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- &lt;svg
             width=&quot;20&quot;
             height=&quot;20&quot;
             viewBox=&quot;0 0 20 20&quot;
@@ -39,10 +43,10 @@
             fill=&quot;#5A3982&quot;
             /&gt;
           &lt;/svg&gt; --&gt;</span>
-          }@else {
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ai-suggestion&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+          } @else {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ai-suggestion&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
 
-          <span class="hljs-comment">&lt;!-- &lt;svg
+            <span class="hljs-comment">&lt;!-- &lt;svg
             width=&quot;20&quot;
             height=&quot;20&quot;
             viewBox=&quot;0 0 20 20&quot;
@@ -98,20 +102,19 @@
           <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-        @if(!aiFilled){
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverActions</span> <span class="hljs-attr">alignment</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-            <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small secondary&quot;</span>
-            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-            (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;popoverManualOpenFlag = !popoverManualOpenFlag&quot;</span>
-          &gt;</span>
-            Dismiss
-          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;fillWithAi()&quot;</span>&gt;</span>
-            Accept
-          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        @if (!aiFilled) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverActions</span> <span class="hljs-attr">alignment</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+              <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small secondary&quot;</span>
+              <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+              (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;popoverManualOpenFlag = !popoverManualOpenFlag&quot;</span>
+            &gt;</span>
+              Dismiss
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;fillWithAi()&quot;</span>&gt;</span>
+              Accept
+            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         }
       <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
 

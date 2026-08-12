@@ -25,19 +25,20 @@
 </nx-file-uploader>
 
 @if (showUploadError) {
-<nx-error>
-  <div class="nx-font-weight-bold">Error</div>
-  <ul>
-    <li>An error occurred while uploading.</li>
-    @if (ngModel.control.hasError('required')) {
-    <li>Required!</li>
-    }
-  </ul>
-</nx-error>
-} @if (documentUpload.value?.length) {
-<button nxButton="primary" type="button" (click)="upload('file-upload')">
-  Upload files
-</button>
+  <nx-error>
+    <div class="nx-font-weight-bold">Error</div>
+    <ul>
+      <li>An error occurred while uploading.</li>
+      @if (ngModel.control.hasError('required')) {
+        <li>Required!</li>
+      }
+    </ul>
+  </nx-error>
+}
+@if (documentUpload.value?.length) {
+  <button nxButton="primary" type="button" (click)="upload('file-upload')">
+    Upload files
+  </button>
 }
 
 <ng-template

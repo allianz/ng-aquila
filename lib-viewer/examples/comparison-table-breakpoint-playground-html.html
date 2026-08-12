@@ -2,14 +2,14 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Columns&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;columns()&quot;</span> (<span class="hljs-attr">valueChange</span>)=<span class="hljs-string">&quot;columns.set($event)&quot;</span>&gt;</span>
       @for (option of columnsOptions; track option) {
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>{{ option }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>{{ option }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
       }
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;View type&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;viewType()&quot;</span> (<span class="hljs-attr">valueChange</span>)=<span class="hljs-string">&quot;viewType.set($event)&quot;</span>&gt;</span>
       @for (option of viewTypeOptions; track option) {
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>{{ option }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>{{ option }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
       }
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

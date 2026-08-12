@@ -1,15 +1,15 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu</span> #<span class="hljs-attr">menu</span>=<span class="hljs-string">&quot;nxContextMenu&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu-header</span>&gt;</span>Language<span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu-header</span>&gt;</span>
   @for (o of options; track o.value) {
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-    <span class="hljs-attr">nxContextMenuItem</span>
-    <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;single&quot;</span>
-    [<span class="hljs-attr">selected</span>]=<span class="hljs-string">&quot;selectedLanguage() === o.value&quot;</span>
-    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;selectLanguage(o.value)&quot;</span>
-  &gt;</span>
-    {{o.label}}
-  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+      <span class="hljs-attr">nxContextMenuItem</span>
+      <span class="hljs-attr">selectable</span>=<span class="hljs-string">&quot;single&quot;</span>
+      [<span class="hljs-attr">selected</span>]=<span class="hljs-string">&quot;selectedLanguage() === o.value&quot;</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+      (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;selectLanguage(o.value)&quot;</span>
+    &gt;</span>
+      {{ o.label }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu</span>&gt;</span>
 

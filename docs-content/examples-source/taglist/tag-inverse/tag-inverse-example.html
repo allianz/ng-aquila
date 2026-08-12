@@ -2,7 +2,7 @@
   <h3>Selectable</h3>
   <nx-tag-group inverse aria-label="Filter fruits" [value]="['apples']">
     @for (tag of tags(); track tag) {
-    <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
+      <nx-tag [value]="tag.toLowerCase()">{{ tag }}</nx-tag>
     }
   </nx-tag-group>
   <nx-tag-group>
@@ -12,7 +12,7 @@
   <h3>Removable</h3>
   <nx-tag-group inverse removable aria-label="Active filters">
     @for (tag of removableTags(); track tag) {
-    <nx-tag (removed)="removeTag(tag)">{{ tag }}</nx-tag>
+      <nx-tag (removed)="removeTag(tag)">{{ tag }}</nx-tag>
     }
   </nx-tag-group>
 

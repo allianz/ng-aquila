@@ -22,23 +22,37 @@
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
             Errors:
             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
-              @if(formWithPicker.controls.range.errors?.nxDateRangeMinStart){
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The start date has to be after 03/31/2020.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @if(formWithPicker.controls.range.errors?.nxDateRangeMaxEnd){
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The end date has to be before 04/30/2020.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @if(formWithPicker.controls.range.errors?.nxDateRangeStartFilter
-              || formWithPicker.controls.range.errors?.nxDateRangeEndFilter){
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The start and end date have to be on a first of a month.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
-              &amp;&amp; formWithPicker.value.range!.start){
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a end date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-              } @if(formWithPicker.controls.range.errors?.nxDateRangeIncomplete
-              &amp;&amp; formWithPicker.value.range!.end){
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a start date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              @if (formWithPicker.controls.range.errors?.nxDateRangeMinStart) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The start date has to be after 03/31/2020.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
               }
-              @if(formWithPicker.controls.range.errors?.customSameMonthValidationError
-              ){
-              <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Start and end date can&#x27;t be in the same month.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              @if (formWithPicker.controls.range.errors?.nxDateRangeMaxEnd) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>The end date has to be before 04/30/2020.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              }
+              @if (
+                formWithPicker.controls.range.errors?.nxDateRangeStartFilter ||
+                formWithPicker.controls.range.errors?.nxDateRangeEndFilter
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+                  The start and end date have to be on a first of a month.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              }
+              @if (
+                formWithPicker.controls.range.errors?.nxDateRangeIncomplete &amp;&amp;
+                formWithPicker.value.range!.start
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a end date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              }
+              @if (
+                formWithPicker.controls.range.errors?.nxDateRangeIncomplete &amp;&amp;
+                formWithPicker.value.range!.end
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Please enter a start date.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+              }
+              @if (
+                formWithPicker.controls.range.errors
+                  ?.customSameMonthValidationError
+              ) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Start and end date can&#x27;t be in the same month.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
               }
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
           <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>

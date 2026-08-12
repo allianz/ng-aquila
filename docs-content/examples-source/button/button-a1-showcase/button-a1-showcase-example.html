@@ -1,0 +1,240 @@
+<details>
+  <summary>Full showcase</summary>
+
+  <h3 nxHeadline="subsection-medium" class="nx-margin-top-s">
+    Contained Button
+  </h3>
+
+  <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-s nx-margin-top-s">
+    Contained – accent color matrix
+  </h4>
+  <table class="docs-matrix">
+    <thead>
+      <tr>
+        <th rowspan="2" class="docs-matrix__corner">accent color</th>
+        @for (scheme of accentSchemes; track scheme) {
+          <th [attr.colspan]="prominences.length">{{ scheme }}</th>
+        }
+      </tr>
+      <tr>
+        @for (scheme of accentSchemes; track scheme) {
+          @for (prominence of prominences; track prominence) {
+            <th class="docs-matrix__state">{{ prominence }}</th>
+          }
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (color of accentColors; track color) {
+        <tr>
+          <th class="docs-matrix__rowhead">{{ color }}</th>
+          @for (scheme of accentSchemes; track scheme) {
+            @for (prominence of prominences; track prominence) {
+              <td [style.background]="cellSurface(scheme, color)">
+                <button
+                  [nxButton]="prominence"
+                  [colorScheme]="scheme"
+                  [accentColor]="color"
+                  type="button"
+                >
+                  Button
+                </button>
+              </td>
+            }
+          }
+        </tr>
+      }
+      @for (row of modifierRows; track row.label) {
+        <tr>
+          <th class="docs-matrix__rowhead">{{ row.label }}</th>
+          @for (scheme of accentSchemes; track scheme) {
+            @for (prominence of prominences; track prominence) {
+              <td [style.background]="null">
+                <button
+                  [nxButton]="prominence"
+                  [colorScheme]="scheme"
+                  [accentColor]="sampleAccentColor"
+                  [critical]="row.critical"
+                  [disabled]="row.disabled"
+                  type="button"
+                >
+                  Button
+                </button>
+              </td>
+            }
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-s nx-margin-top-s">
+    Contained – accent color matrix + inverse
+  </h4>
+  <table class="docs-matrix docs-inverse-container">
+    <thead>
+      <tr>
+        <th rowspan="2" class="docs-matrix__corner">accent color</th>
+        @for (scheme of accentSchemes; track scheme) {
+          <th [attr.colspan]="prominences.length">{{ scheme }}</th>
+        }
+      </tr>
+      <tr>
+        @for (scheme of accentSchemes; track scheme) {
+          @for (prominence of prominences; track prominence) {
+            <th class="docs-matrix__state">{{ prominence }}</th>
+          }
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (color of accentColors; track color) {
+        <tr>
+          <th class="docs-matrix__rowhead">{{ color }}</th>
+          @for (scheme of accentSchemes; track scheme) {
+            @for (prominence of prominences; track prominence) {
+              <td [style.background]="cellSurface(scheme, color, true)">
+                <button
+                  [nxButton]="prominence"
+                  [colorScheme]="scheme"
+                  [accentColor]="color"
+                  inverse
+                  type="button"
+                >
+                  Button
+                </button>
+              </td>
+            }
+          }
+        </tr>
+      }
+      @for (row of modifierRows; track row.label) {
+        <tr>
+          <th class="docs-matrix__rowhead">{{ row.label }}</th>
+          @for (scheme of accentSchemes; track scheme) {
+            @for (prominence of prominences; track prominence) {
+              <td [style.background]="null">
+                <button
+                  [nxButton]="prominence"
+                  [colorScheme]="scheme"
+                  [accentColor]="sampleAccentColor"
+                  [critical]="row.critical"
+                  [disabled]="row.disabled"
+                  inverse
+                  type="button"
+                >
+                  Button
+                </button>
+              </td>
+            }
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+  <h3 nxHeadline="subsection-medium" class="nx-margin-top-s">Plain Button</h3>
+
+  <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-s nx-margin-top-s">
+    Plain – color scheme matrix
+  </h4>
+  <table class="docs-matrix">
+    <thead>
+      <tr>
+        <th class="docs-matrix__corner">color scheme</th>
+        @for (variant of plainVariants; track variant) {
+          <th class="docs-matrix__state">{{ variant }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (scheme of plainSchemes; track scheme) {
+        <tr>
+          <th class="docs-matrix__rowhead">{{ scheme }}</th>
+          @for (variant of plainVariants; track variant) {
+            <td [style.background]="plainCellSurface(scheme)">
+              <button
+                nxPlainButton
+                [variant]="variant"
+                [colorScheme]="scheme"
+                type="button"
+              >
+                Button
+              </button>
+            </td>
+          }
+        </tr>
+      }
+      @for (row of modifierRows; track row.label) {
+        <tr>
+          <th class="docs-matrix__rowhead">{{ row.label }}</th>
+          @for (variant of plainVariants; track variant) {
+            <td>
+              <button
+                nxPlainButton
+                [variant]="variant"
+                [critical]="row.critical"
+                [disabled]="row.disabled"
+                type="button"
+              >
+                Button
+              </button>
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-s nx-margin-top-s">
+    Plain – color scheme matrix + inverse
+  </h4>
+  <table class="docs-matrix docs-inverse-container">
+    <thead>
+      <tr>
+        <th class="docs-matrix__corner">color scheme</th>
+        @for (variant of plainVariants; track variant) {
+          <th class="docs-matrix__state">{{ variant }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (scheme of plainSchemes; track scheme) {
+        <tr>
+          <th class="docs-matrix__rowhead">{{ scheme }}</th>
+          @for (variant of plainVariants; track variant) {
+            <td [style.background]="plainCellSurface(scheme, true)">
+              <button
+                nxPlainButton
+                [variant]="variant"
+                [colorScheme]="scheme"
+                inverse
+                type="button"
+              >
+                Button
+              </button>
+            </td>
+          }
+        </tr>
+      }
+      @for (row of modifierRows; track row.label) {
+        <tr>
+          <th class="docs-matrix__rowhead">{{ row.label }}</th>
+          @for (variant of plainVariants; track variant) {
+            <td>
+              <button
+                nxPlainButton
+                [variant]="variant"
+                [critical]="row.critical"
+                [disabled]="row.disabled"
+                inverse
+                type="button"
+              >
+                Button
+              </button>
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</details>

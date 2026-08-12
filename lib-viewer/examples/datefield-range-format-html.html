@@ -7,7 +7,12 @@
             <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;range&quot;</span>
             [<span class="hljs-attr">datepicker</span>]=<span class="hljs-string">&quot;formRangeDatePicker&quot;</span>
             <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;mm/dd/yyyy&quot;</span>
-            [<span class="hljs-attr">parseFormat</span>]=<span class="hljs-string">&quot;[&#x27;MM/DD/YYYY&#x27;, &#x27;MM--DD--&gt;YYYY&#x27;, &#x27;MMDDYYYY&#x27;, &#x27;MMMM DD, YYYY&#x27;]&quot;</span>
+            [<span class="hljs-attr">parseFormat</span>]=<span class="hljs-string">&quot;[
+              &#x27;MM/DD/YYYY&#x27;,
+              &#x27;MM--DD--&gt;YYYY&#x27;,
+              &#x27;MMDDYYYY&#x27;,
+              &#x27;MMMM DD, YYYY&#x27;,
+            ]&quot;</span>
             <span class="hljs-attr">displayFormat</span>=<span class="hljs-string">&quot;MMMM DD, YYYY&quot;</span>
           &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-date-range</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
@@ -19,9 +24,11 @@
             [<span class="hljs-attr">rangeMode</span>]=<span class="hljs-string">&quot;true&quot;</span>
           &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-            @if(formWithPicker.controls.range.errors?.nxDateRangeInvalid){
-            Invalid: The end date can&#x27;t be before the start date. } @else {
-            Please enter a date range with a start and an end date. }
+            @if (formWithPicker.controls.range.errors?.nxDateRangeInvalid) {
+              Invalid: The end date can&#x27;t be before the start date.
+            } @else {
+              Please enter a date range with a start and an end date.
+            }
           <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
             <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Please provide date in the US format&quot;</span>

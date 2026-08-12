@@ -3,7 +3,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag-group</span> <span class="hljs-attr">removable</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Active filters&quot;</span>&gt;</span>
-  @for (tag of tags(); track tag;) {
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> (<span class="hljs-attr">removed</span>)=<span class="hljs-string">&quot;tagDeleted(tag)&quot;</span>&gt;</span>{{ tag }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
+  @for (tag of tags(); track tag) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tag</span> (<span class="hljs-attr">removed</span>)=<span class="hljs-string">&quot;tagDeleted(tag)&quot;</span>&gt;</span>{{ tag }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag</span>&gt;</span>
   }
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tag-group</span>&gt;</span>

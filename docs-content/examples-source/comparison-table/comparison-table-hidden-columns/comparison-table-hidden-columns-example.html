@@ -8,21 +8,22 @@
 </button>
 
 <nx-context-menu #menu="nxContextMenu">
-  @for (item of [].constructor(3); track $index; let i = $index) { @if (i !==
-  selectedColumnIndex) {
-  <button
-    [disabled]="selectedColumnIndex === i"
-    nxContextMenuItem
-    type="button"
-    (click)="toggleHiddenIndexes(i)"
-  >
-    <nx-icon
-      aria-hidden="true"
-      [name]="isHiddenIndex(i) ? 'password-hide-o': 'password-show-o'"
-    ></nx-icon>
-    Produkt {{i + 1}}
-  </button>
-  } }
+  @for (item of [].constructor(3); track $index; let i = $index) {
+    @if (i !== selectedColumnIndex) {
+      <button
+        [disabled]="selectedColumnIndex === i"
+        nxContextMenuItem
+        type="button"
+        (click)="toggleHiddenIndexes(i)"
+      >
+        <nx-icon
+          aria-hidden="true"
+          [name]="isHiddenIndex(i) ? 'password-hide-o' : 'password-show-o'"
+        ></nx-icon>
+        Produkt {{ i + 1 }}
+      </button>
+    }
+  }
 </nx-context-menu>
 
 <div class="container">

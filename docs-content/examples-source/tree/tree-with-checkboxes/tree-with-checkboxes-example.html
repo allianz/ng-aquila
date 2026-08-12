@@ -21,7 +21,7 @@
       [treeCheckboxParentNode]="getParentNode(node)"
       [checked]="checklistSelection.isSelected(node)"
       (checkedChange)="toggleNode(node)"
-      >{{node.name}}</nx-checkbox
+      >{{ node.name }}</nx-checkbox
     >
   </cdk-tree-node>
   <!-- This is the tree node template for expandable nodes -->
@@ -34,7 +34,13 @@
     [isExpandable]="node.expandable"
     class="example-tree-node"
     (activation)="toggleNode(node)"
-    [attr.aria-checked]="descendantsAllSelected(node) ? true : descendantsPartiallySelected(node) ? 'mixed' : false"
+    [attr.aria-checked]="
+      descendantsAllSelected(node)
+        ? true
+        : descendantsPartiallySelected(node)
+          ? 'mixed'
+          : false
+    "
   >
     <button
       nxPlainButton="small"
@@ -44,7 +50,7 @@
       [style.visibility]="node.expandable ? 'visible' : 'hidden'"
     >
       <nx-icon
-        name="{{tree.isExpanded(node) ? 'chevron-down' : 'chevron-right'}}"
+        name="{{ tree.isExpanded(node) ? 'chevron-down' : 'chevron-right' }}"
       >
       </nx-icon>
     </button>
@@ -54,7 +60,7 @@
       [treeCheckboxParentNode]="getParentNode(node)"
       [checked]="descendantsAllSelected(node)"
       [indeterminate]="descendantsPartiallySelected(node)"
-      >{{node.name}}</nx-checkbox
+      >{{ node.name }}</nx-checkbox
     >
   </cdk-tree-node>
 </cdk-tree>

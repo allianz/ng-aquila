@@ -16,14 +16,29 @@
           &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datemask</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>DD.MM.YYYY<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-            @if (datemaskForm.controls.date.errors &amp;&amp;
-            datemaskForm.controls.date.errors.nxDatefieldMax) { The date is too
-            far in the future } @if (datemaskForm.controls.date.errors &amp;&amp;
-            datemaskForm.controls.date.errors.nxDatefieldMin) { The date is too
-            far in the past } @if (datemaskForm.controls.date.errors &amp;&amp;
-            datemaskForm.controls.date.errors.nxDatefieldParse) { Please enter a
-            valid date. }@if (datemaskForm.controls.date.errors &amp;&amp;
-            datemaskForm.controls.date.errors.required) { Birthday is required.
+            @if (
+              datemaskForm.controls.date.errors &amp;&amp;
+              datemaskForm.controls.date.errors.nxDatefieldMax
+            ) {
+              The date is too far in the future
+            }
+            @if (
+              datemaskForm.controls.date.errors &amp;&amp;
+              datemaskForm.controls.date.errors.nxDatefieldMin
+            ) {
+              The date is too far in the past
+            }
+            @if (
+              datemaskForm.controls.date.errors &amp;&amp;
+              datemaskForm.controls.date.errors.nxDatefieldParse
+            ) {
+              Please enter a valid date.
+            }
+            @if (
+              datemaskForm.controls.date.errors &amp;&amp;
+              datemaskForm.controls.date.errors.required
+            ) {
+              Birthday is required.
             }
           <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
 
@@ -34,9 +49,9 @@
           <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-      Date: {{datemaskForm.controls.date.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+      Date: {{ datemaskForm.controls.date.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-      Date Errors: {{datemaskForm.controls.date.errors | json }}
+      Date Errors: {{ datemaskForm.controls.date.errors | json }}
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

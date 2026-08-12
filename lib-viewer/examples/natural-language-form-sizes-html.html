@@ -20,14 +20,17 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-headline&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Invalid or missing input:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-m&quot;</span>&gt;</span>
-        @if(largeForm.controls.job.hasError(&#x27;required&#x27;) &amp;&amp;
-        largeForm.controls.job.touched){
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-profession-required&quot;</span>&gt;</span>Profession is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-        } @if(largeForm.controls.what.hasError(&#x27;required&#x27;) &amp;&amp;
-        largeForm.controls.what.touched){
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-object-to-insure&quot;</span>&gt;</span>The object to insure is required<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
+        @if (
+          largeForm.controls.job.hasError(&#x27;required&#x27;) &amp;&amp;
+          largeForm.controls.job.touched
+        ) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-profession-required&quot;</span>&gt;</span>Profession is required.<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        }
+        @if (
+          largeForm.controls.what.hasError(&#x27;required&#x27;) &amp;&amp;
+          largeForm.controls.what.touched
+        ) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-object-to-insure&quot;</span>&gt;</span>The object to insure is required<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         }
       <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
@@ -58,16 +61,15 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-headline&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Invalid or missing input:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-m&quot;</span>&gt;</span>
-      @if(professionInput.hasError(&#x27;required&#x27;) &amp;&amp; professionInput.touched){
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-profession-required-small-nlf&quot;</span> #<span class="hljs-attr">error</span>&gt;</span>
-        Profession is required.
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
-      } @if(objectToInsure.hasError(&#x27;required&#x27;) &amp;&amp; objectToInsure.touched){
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-object-to-insure-small-nlf&quot;</span>&gt;</span>
-        The object to insure is required
-      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-
+      @if (professionInput.hasError(&#x27;required&#x27;) &amp;&amp; professionInput.touched) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-profession-required-small-nlf&quot;</span> #<span class="hljs-attr">error</span>&gt;</span>
+          Profession is required.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      }
+      @if (objectToInsure.hasError(&#x27;required&#x27;) &amp;&amp; objectToInsure.touched) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;error-object-to-insure-small-nlf&quot;</span>&gt;</span>
+          The object to insure is required
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
       }
     <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>

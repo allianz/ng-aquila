@@ -2,11 +2,11 @@
   <nav aria-label="Breadcrumb" nxSmallStageHeader>
     <ol nxBreadcrumb>
       @for (item of dynamicItems; track item; let i = $index) {
-      <li>
-        <a nxBreadcrumbItem (click)="goToItem(i)" href="javascript:void(0)">
-          {{ item }}
-        </a>
-      </li>
+        <li>
+          <a nxBreadcrumbItem (click)="goToItem(i)" href="javascript:void(0)">
+            {{ item }}
+          </a>
+        </li>
       }
     </ol>
   </nav>

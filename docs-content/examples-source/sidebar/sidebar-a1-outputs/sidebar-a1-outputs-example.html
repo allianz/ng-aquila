@@ -16,12 +16,13 @@
           routerLink="./"
           [queryParams]="node.query"
           routerLinkActive="is-selected"
-          title="{{node.label}}"
+          title="{{ node.label }}"
           type="button"
         >
           @if (node.icon) {
-          <nx-icon nxActionIcon [name]="node.icon"></nx-icon>
-          } {{node.label}}
+            <nx-icon nxActionIcon [name]="node.icon"></nx-icon>
+          }
+          {{ node.label }}
         </button>
       </nx-tree-node>
       <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
@@ -32,12 +33,13 @@
           nxTreeNodePadding
           expandable
           [expanded]="_treeControl.isExpanded(node)"
-          title="{{node.label}}"
+          title="{{ node.label }}"
           type="button"
         >
           @if (node.icon) {
-          <nx-icon nxActionIcon [name]="node.icon"></nx-icon>
-          } {{node.label}}
+            <nx-icon nxActionIcon [name]="node.icon"></nx-icon>
+          }
+          {{ node.label }}
         </button>
       </nx-tree-node>
     </nx-tree>
@@ -47,5 +49,5 @@
   </button>
 </div>
 @if (logMessage) {
-<pre>{{logMessage}}</pre>
+  <pre>{{ logMessage }}</pre>
 }

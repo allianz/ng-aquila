@@ -1,0 +1,50 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid nopadding&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Color scheme&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;colorScheme&quot;</span>&gt;</span>
+          @for (item of colorSchemes; track item) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{ item }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Accent color&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;accentColor&quot;</span> [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;accentColorDisabled()&quot;</span>&gt;</span>
+          @for (item of accentColors; track item) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{ item }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+        @if (accentColorDisabled()) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>Not used by the default color scheme<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-preview&quot;</span>
+  [<span class="hljs-attr">style.background-color</span>]=<span class="hljs-string">&quot;onAccentSurface() ? accentSurface() : null&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;primary&quot;</span>
+    [<span class="hljs-attr">colorScheme</span>]=<span class="hljs-string">&quot;colorScheme()&quot;</span>
+    [<span class="hljs-attr">accentColor</span>]=<span class="hljs-string">&quot;accentColor()&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;email&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;mail-o&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  @for (prominence of prominences; track prominence) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+      [<span class="hljs-attr">nxButton</span>]=<span class="hljs-string">&quot;prominence&quot;</span>
+      [<span class="hljs-attr">colorScheme</span>]=<span class="hljs-string">&quot;colorScheme()&quot;</span>
+      [<span class="hljs-attr">accentColor</span>]=<span class="hljs-string">&quot;accentColor()&quot;</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    &gt;</span>
+      {{ prominence }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  }
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

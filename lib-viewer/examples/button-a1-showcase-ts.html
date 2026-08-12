@@ -1,0 +1,82 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxButtonComponent</span>,
+  <span class="hljs-title class_">NxButtonAccentColor</span>,
+  <span class="hljs-title class_">NxButtonColorScheme</span>,
+  <span class="hljs-title class_">NxPlainButtonColorScheme</span>,
+  <span class="hljs-title class_">NxPlainButtonComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Button A1 full showcase
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;button-a1-showcase-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./button-a1-showcase-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./button-a1-showcase-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxHeadlineComponent</span>, <span class="hljs-title class_">NxButtonComponent</span>, <span class="hljs-title class_">NxPlainButtonComponent</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ButtonA1ShowcaseExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">accentColors</span>: <span class="hljs-title class_">NxButtonAccentColor</span>[] = [
+    <span class="hljs-string">&#x27;yellow&#x27;</span>,
+    <span class="hljs-string">&#x27;orange&#x27;</span>,
+    <span class="hljs-string">&#x27;red&#x27;</span>,
+    <span class="hljs-string">&#x27;purple&#x27;</span>,
+    <span class="hljs-string">&#x27;aqua&#x27;</span>,
+    <span class="hljs-string">&#x27;blue&#x27;</span>,
+    <span class="hljs-string">&#x27;teal&#x27;</span>,
+    <span class="hljs-string">&#x27;green&#x27;</span>,
+    <span class="hljs-string">&#x27;gray&#x27;</span>,
+  ];
+
+  <span class="hljs-keyword">readonly</span> prominences = [<span class="hljs-string">&#x27;primary&#x27;</span>, <span class="hljs-string">&#x27;secondary&#x27;</span>, <span class="hljs-string">&#x27;tertiary&#x27;</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">const</span>;
+
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">accentSchemes</span>: <span class="hljs-title class_">NxButtonColorScheme</span>[] = [
+    <span class="hljs-string">&#x27;accent-attention&#x27;</span>,
+    <span class="hljs-string">&#x27;on-accent-attention&#x27;</span>,
+  ];
+
+  <span class="hljs-keyword">readonly</span> modifierRows = [
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;critical&#x27;</span>, <span class="hljs-attr">critical</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;disabled&#x27;</span>, <span class="hljs-attr">critical</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span> },
+  ] <span class="hljs-keyword">as</span> <span class="hljs-keyword">const</span>;
+
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">sampleAccentColor</span>: <span class="hljs-title class_">NxButtonAccentColor</span> = <span class="hljs-string">&#x27;blue&#x27;</span>;
+
+  <span class="hljs-keyword">readonly</span> plainVariants = [<span class="hljs-string">&#x27;primary&#x27;</span>, <span class="hljs-string">&#x27;secondary&#x27;</span>] <span class="hljs-keyword">as</span> <span class="hljs-keyword">const</span>;
+
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">plainSchemes</span>: <span class="hljs-title class_">NxPlainButtonColorScheme</span>[] = [
+    <span class="hljs-string">&#x27;default&#x27;</span>,
+    <span class="hljs-string">&#x27;on-accent-attention&#x27;</span>,
+    <span class="hljs-string">&#x27;on-brand&#x27;</span>,
+  ];
+
+  <span class="hljs-title function_">cellSurface</span>(
+    <span class="hljs-attr">scheme</span>: <span class="hljs-title class_">NxButtonColorScheme</span>,
+    <span class="hljs-attr">color</span>: <span class="hljs-title class_">NxButtonAccentColor</span>,
+    inverse = <span class="hljs-literal">false</span>,
+  ): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> {
+    <span class="hljs-keyword">if</span> (scheme !== <span class="hljs-string">&#x27;on-accent-attention&#x27;</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+    <span class="hljs-keyword">return</span> inverse
+      ? <span class="hljs-string">`var(--color-attention-inverse-<span class="hljs-subst">${color}</span>)`</span>
+      : <span class="hljs-string">`var(--color-attention-<span class="hljs-subst">${color}</span>)`</span>;
+  }
+  <span class="hljs-comment">// color-attention-inverse-yellow);</span>
+  <span class="hljs-title function_">plainCellSurface</span>(
+    <span class="hljs-attr">scheme</span>: <span class="hljs-title class_">NxPlainButtonColorScheme</span>,
+    inverse = <span class="hljs-literal">false</span>,
+  ): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> {
+    <span class="hljs-keyword">if</span> (scheme === <span class="hljs-string">&#x27;on-accent-attention&#x27;</span>) {
+      <span class="hljs-keyword">return</span> inverse
+        ? <span class="hljs-string">`var(--color-attention-inverse-yellow)`</span>
+        : <span class="hljs-string">`var(--color-attention-yellow)`</span>;
+    }
+    <span class="hljs-keyword">if</span> (scheme === <span class="hljs-string">&#x27;on-brand&#x27;</span>) {
+      <span class="hljs-keyword">return</span> inverse ? <span class="hljs-string">&#x27;var(--color-brand-inverse)&#x27;</span> : <span class="hljs-string">&#x27;var(--color-brand)&#x27;</span>;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  }
+}

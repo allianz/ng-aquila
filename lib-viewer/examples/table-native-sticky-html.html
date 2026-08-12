@@ -4,18 +4,18 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Product<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
         @for (month of months; track month) {
-        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>{{ month }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>{{ month }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
         }
       <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
       @for (row of rows; track row.product) {
-      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>{{ row.product }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-        @for (value of row.values; track $index) {
-        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{ value }}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-        }
-      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>{{ row.product }}<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+          @for (value of row.values; track $index) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>{{ value }}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
       }
     <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>

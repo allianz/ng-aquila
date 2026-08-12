@@ -1,9 +1,15 @@
 <h3 id="examples" tabindex="-1" class="docs-markdown--h3">Examples</h3>
 <h4 id="basic-example" tabindex="-1" class="docs-markdown--h4">Basic Example</h4>
 <div nx-docs-example="rating-basic" config="{}">exampleID: rating-basic</div>
+<div class="docs-hide-ndbx">
+<h4 id="non-interactive-rating" tabindex="-1" class="docs-markdown--h4">Non Interactive Rating</h4>
+<p class="docs-markdown--p">When <code>interactive</code> is set to <code>false</code>, the rating cannot be changed by click, hover, or keyboard, and a fractional <code>value</code> is rounded to the nearest half star for display (e.g. <code>3.2</code> renders as 3 full stars, <code>3.6</code> renders as 3 full stars and a half star). Half-star rendering is display-only — it is not selectable and only applies when not interactive; an interactive rating always shows and accepts whole stars.</p>
+<div nx-docs-example="rating-non-interactive" config="{}">exampleID: rating-non-interactive</div>
+</div>
 <h4 id="disabled-rating" tabindex="-1" class="docs-markdown--h4">Disabled Rating</h4>
 <div nx-docs-example="rating-disabled" config="{}">exampleID: rating-disabled</div>
-<h4 id="negative-styling" tabindex="-1" class="docs-markdown--h4">Negative Styling</h4>
+<h4 id="inverse-styling" tabindex="-1" class="docs-markdown--h4">Inverse Styling</h4>
+<p class="docs-markdown--p">You can change the styling of the rating to inverse via the <code>inverse</code> property. The legacy negative property is still supported as a deprecated alias.</p>
 <div nx-docs-example="rating-negative" config="{}">exampleID: rating-negative</div>
 <h4 id="simple-binding" tabindex="-1" class="docs-markdown--h4">Simple Binding</h4>
 <div nx-docs-example="rating-simple" config="{}">exampleID: rating-simple</div>

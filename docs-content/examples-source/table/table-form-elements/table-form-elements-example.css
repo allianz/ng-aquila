@@ -7,3 +7,8 @@
   overflow-x: auto;
   display: block;
 }
+
+.error-list {
+  margin: 0;
+  padding-left: 20px;
+}

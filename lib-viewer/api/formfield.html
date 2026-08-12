@@ -75,6 +75,28 @@ or force it to always float with a value of always to simulate a more static for
                 <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
+                inline: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the form field is rendered inline. When enabled the label is
+visually hidden (kept for accessibility) and the reserved space around
+the field (top floating-label space and bottom hint/error/note space)
+is removed. Providing hints/errors/notes together with <code>inline</code> is not
+supported in this version — they will not be shown.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
                 label: 
                 </span>
                  
@@ -103,6 +125,25 @@ In addition, the component uses input and label to properly support accessibilit
     </td>
     <td class="docs-api-property-description">
         <p>Set optional text, which will additionally show in label if a field is not mandatory.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxFormfieldSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the size of the formfield.</p>
+<p>Only supported under A1.</p>
 </td>
 </tr>
    
@@ -532,6 +573,16 @@ using the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token.</p>
 </p>
    
 
+<h4 id="NxFormfieldSize" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxFormfieldSize"></span>
+    <code>NxFormfieldSize</code>
+</h4><p class="docs-api-type-alias-description"><p>Type for the size of the formfield.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'s' | 'm'</code>
+</p>
+   
+
 <h4 id="FormfieldControlHarness" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="FormfieldControlHarness"></span>
     <code>FormfieldControlHarness</code>
@@ -885,6 +936,15 @@ with generic result typing.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
+            <span class="docs-api-method-name">isInline(): <span class="docs-api-method-returns-type">Promise&lt;boolean&gt;</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
             <span class="docs-api-method-name">isReadonly(): <span class="docs-api-method-returns-type">Promise&lt;boolean&gt;</span></span>
         </code>
     </div>
@@ -975,6 +1035,22 @@ with generic result typing.</p>
             <code>
                 <span class="docs-api-property__name">
                 hasErrors?: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inline?: 
                 </span>
                  
                 <span class="docs-api-property__type">boolean</span>

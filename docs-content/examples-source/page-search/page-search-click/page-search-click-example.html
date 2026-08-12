@@ -17,9 +17,13 @@
             type="search"
           />
           @if (searchTerm) {
-          <span nxFormfieldSuffix aria-hidden="true" (click)="searchTerm=''">
-            <nx-icon name="close" size="s"></nx-icon>
-          </span>
+            <span
+              nxFormfieldSuffix
+              aria-hidden="true"
+              (click)="searchTerm = ''"
+            >
+              <nx-icon name="close" size="s"></nx-icon>
+            </span>
           }
         </nx-formfield>
       </div>
@@ -28,5 +32,5 @@
 </nx-page-search>
 <br />
 @for (value of valuesByClick; track value) {
-<div>Value at click: {{value}}</div>
+  <div>Value at click: {{ value }}</div>
 }

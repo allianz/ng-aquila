@@ -6,8 +6,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { AnchorButtonExampleComponent } from './anchor-button/anchor-button-example';
+import { ButtonA1ShowcaseExampleComponent } from './button-a1-showcase/button-a1-showcase-example';
 import { ButtonExampleComponent } from './button/button-example';
 import { ButtonBlockExampleComponent } from './button-block/button-block-example';
+import { ButtonColorSchemeA1ExampleComponent } from './button-color-scheme-a1/button-color-scheme-a1-example';
 import { ButtonCriticalExampleComponent } from './button-critical/button-critical-example';
 import { ButtonIconExampleComponent } from './button-icon/button-icon-example';
 import { ButtonIconIndicatorExampleComponent } from './button-icon-indicator/button-icon-indicator-example';
@@ -24,8 +26,10 @@ import { ButtonSmallMediumExampleComponent } from './button-small-medium/button-
 import { ButtonWithIconExampleComponent } from './button-with-icon/button-with-icon-example';
 
 const EXAMPLES = [
+  ButtonA1ShowcaseExampleComponent,
   ButtonExampleComponent,
   ButtonBlockExampleComponent,
+  ButtonColorSchemeA1ExampleComponent,
   ButtonCriticalExampleComponent,
   ButtonIconExampleComponent,
   ButtonLargeExampleComponent,
@@ -57,8 +61,10 @@ const EXAMPLES = [
 export class ButtonExamplesModule {
   static components() {
     return {
+      'button-a1-showcase': ButtonA1ShowcaseExampleComponent,
       button: ButtonExampleComponent,
       'button-block': ButtonBlockExampleComponent,
+      'button-color-scheme-a1': ButtonColorSchemeA1ExampleComponent,
       'button-critical': ButtonCriticalExampleComponent,
       'button-icon': ButtonIconExampleComponent,
       'button-large': ButtonLargeExampleComponent,

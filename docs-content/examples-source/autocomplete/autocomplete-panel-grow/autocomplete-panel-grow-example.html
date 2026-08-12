@@ -11,9 +11,9 @@
       </nx-formfield>
       <nx-autocomplete #auto0="nxAutocomplete">
         @for (item of simpleFilteredOptions(modelBoundData); track item) {
-        <nx-autocomplete-option [value]="item">
-          {{item | lowercase}}
-        </nx-autocomplete-option>
+          <nx-autocomplete-option [value]="item">
+            {{ item | lowercase }}
+          </nx-autocomplete-option>
         }
       </nx-autocomplete>
     </div>
@@ -33,9 +33,9 @@
       </nx-formfield>
       <nx-autocomplete #auto1="nxAutocomplete">
         @for (item of simpleFilteredOptions(modelBoundData); track item) {
-        <nx-autocomplete-option [value]="item">
-          {{item | lowercase}}
-        </nx-autocomplete-option>
+          <nx-autocomplete-option [value]="item">
+            {{ item | lowercase }}
+          </nx-autocomplete-option>
         }
       </nx-autocomplete>
     </div>
@@ -56,9 +56,9 @@
       </nx-formfield>
       <nx-autocomplete #auto2="nxAutocomplete">
         @for (item of simpleFilteredOptions(modelBoundData2); track item) {
-        <nx-autocomplete-option [value]="item">
-          {{item | lowercase}}
-        </nx-autocomplete-option>
+          <nx-autocomplete-option [value]="item">
+            {{ item | lowercase }}
+          </nx-autocomplete-option>
         }
       </nx-autocomplete>
     </div>

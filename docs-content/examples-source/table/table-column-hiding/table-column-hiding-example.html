@@ -13,9 +13,9 @@
   <nx-checkbox-group [(ngModel)]="selected">
     <nx-context-menu-item-wrap>
       @for (option of options; track option) {
-      <div nxContextMenuItem nxContextMenuItemCheckbox disableCloseOnSelect>
-        <nx-checkbox [value]="option.value">{{option.label}}</nx-checkbox>
-      </div>
+        <div nxContextMenuItem nxContextMenuItemCheckbox disableCloseOnSelect>
+          <nx-checkbox [value]="option.value">{{ option.label }}</nx-checkbox>
+        </div>
       }
     </nx-context-menu-item-wrap>
   </nx-checkbox-group>
@@ -25,10 +25,11 @@
   <table nxTable class="nx-table--scrollable">
     <thead>
       <tr nxTableRow>
-        @for (option of options; track option) { @if
-        (selected.includes(option.value)) {
-        <th nxHeaderCell>{{option.label}}</th>
-        } }
+        @for (option of options; track option) {
+          @if (selected.includes(option.value)) {
+            <th nxHeaderCell>{{ option.label }}</th>
+          }
+        }
         <!-- <th
           nxHeaderCell
           *ngIf="!selected?.length"
@@ -40,31 +41,39 @@
     </thead>
     <tbody>
       @for (item of tableElements; track item) {
-      <tr nxTableRow>
-        @if (selected.includes('product')) {
-        <td nxTableCell>{{item.product}}</td>
-        } @if (selected.includes('contractNumber')) {
-        <td nxTableCell>{{item.contractNumber}}</td>
-        } @if (selected.includes('desc')) {
-        <td nxTableCell>{{item.desc}}</td>
-        } @if (selected.includes('website')) {
-        <td nxTableCell>
-          <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
-        </td>
-        } @if (selected.includes('endingAt')) {
-        <td nxTableCell>{{item.endingAt}}</td>
-        } @if (selected.includes('statusText')) {
-        <td nxTableCell>
-          <nx-badge [type]="item.status"> {{item.statusText}} </nx-badge>
-        </td>
-        }
-      </tr>
-      } @if (!selected.length) {
-      <tr nxTableRow>
-        <td nxTableCell style="text-align: center">
-          All table columns are currently hidden.
-        </td>
-      </tr>
+        <tr nxTableRow>
+          @if (selected.includes('product')) {
+            <td nxTableCell>{{ item.product }}</td>
+          }
+          @if (selected.includes('contractNumber')) {
+            <td nxTableCell>{{ item.contractNumber }}</td>
+          }
+          @if (selected.includes('desc')) {
+            <td nxTableCell>{{ item.desc }}</td>
+          }
+          @if (selected.includes('website')) {
+            <td nxTableCell>
+              <nx-link
+                ><a routerLink="#">{{ item.website }}</a></nx-link
+              >
+            </td>
+          }
+          @if (selected.includes('endingAt')) {
+            <td nxTableCell>{{ item.endingAt }}</td>
+          }
+          @if (selected.includes('statusText')) {
+            <td nxTableCell>
+              <nx-badge [type]="item.status"> {{ item.statusText }} </nx-badge>
+            </td>
+          }
+        </tr>
+      }
+      @if (!selected.length) {
+        <tr nxTableRow>
+          <td nxTableCell style="text-align: center">
+            All table columns are currently hidden.
+          </td>
+        </tr>
       }
     </tbody>
   </table>

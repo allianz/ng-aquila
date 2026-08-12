@@ -25,14 +25,14 @@
 <hr />
 <h4>Result</h4>
 <form [formGroup]="myFormGroup">
-  <div [ngClass]="{'docs-inverse-container': optionsForm.value.isNegative}">
+  <div [ngClass]="{ 'docs-inverse-container': optionsForm.value.isNegative }">
     <nx-checkbox-group
       name="terms"
       formControlName="terms"
       [negative]="optionsForm.value.isNegative"
       [labelSize]="optionsForm.value.isLarge ? 'large' : 'small'"
     >
-      <nx-label [size]="optionsForm.value.isLabelExpert ? 'small' : 'large' "
+      <nx-label [size]="optionsForm.value.isLabelExpert ? 'small' : 'large'"
         >Select your choices</nx-label
       >
       <nx-error appearance="text">
