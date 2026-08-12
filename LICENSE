@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2022 Allianz, unless specified otherwise in the respective file(s)
+Copyright (c) 2020 The ng-aquila Authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-END OF MIT LICENSE
-
-APPENDIX
-
-The MIT license applies for all files contained in subdirectories,
-unless specified otherwise. In case deviating licenses are indicated in subdirectories,
-such licenses do apply for the subdirectory and all further subdirectories below it,
-unless again specified otherwise.
