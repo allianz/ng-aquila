@@ -1,0 +1,31 @@
+@use '../../shared-styles/index' as *;
+
+:host {
+  margin: 0;
+  font-family: v(body-text-font-family);
+  color: v(body-text-color);
+
+  &.nx-body-text--s {
+    @include type-style(body-text-s);
+  }
+
+  &.nx-body-text--m {
+    @include type-style(body-text-m);
+  }
+
+  &.nx-body-text--l {
+    @include type-style(body-text-l);
+  }
+
+  &.nx-body-text--secondary {
+    color: v(body-text-secondary-color);
+  }
+
+  &.nx-body-text--inverse {
+    color: v(body-text-inverse-color);
+
+    &.nx-body-text--secondary {
+      color: v(body-text-inverse-secondary-color);
+    }
+  }
+}

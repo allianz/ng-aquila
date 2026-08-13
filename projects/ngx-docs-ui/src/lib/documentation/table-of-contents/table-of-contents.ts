@@ -14,7 +14,12 @@ import { takeUntil } from 'rxjs/operators';
 
 const DOCS_PRIVATE_CLASS_SELECTOR = '.docs-private';
 const DOCS_PUBLIC_CLASS_SELECTOR = '.docs-public';
-const DOCS_SECTION_VISIBILITY_CLASSES = ['docs-a1', 'docs-hide-a1', 'docs-hide-ndbx'] as const;
+const DOCS_SECTION_VISIBILITY_CLASSES = [
+  'docs-a1',
+  'docs-ndbx',
+  'docs-hide-a1',
+  'docs-hide-ndbx',
+] as const;
 
 export interface Link {
   /* id of the section*/

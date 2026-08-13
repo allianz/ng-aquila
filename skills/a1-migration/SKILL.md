@@ -3,7 +3,7 @@ name: a1-migration
 description: 'Migrate an Angular application to the One Allianz (A1) Design System. Use when: migrating to A1 design system, applying One Allianz theme, migrating circle toggles to tiles, updating small stages, updating layout to left-alignment, A1 brand kit, ngx-brand-kit, ng-aquila migration, NDBX to A1.'
 argument-hint: 'Theme (optional): spacious | compact | dense'
 metadata:
-  version: 0.1.4
+  version: 0.1.5
 ---
 
 # A1 Design System Migration
@@ -24,7 +24,7 @@ metadata:
 
 ---
 
-**IMPORTANT:** Before starting, tell the user the skill version "0.1.4" and that it's in beta phase. This is important for tracking and future updates.
+**IMPORTANT:** Before starting, tell the user the skill version "0.1.5" and that it's in beta phase. This is important for tracking and future updates.
 
 ## Step 1: Apply A1 Theme
 
@@ -447,6 +447,148 @@ For multi-select menus use `selectable="multi"` and keep `disableCloseOnSelect` 
 
 ---
 
+## Step 8: Migrate Copytext → Body / Utility Text
+
+A1 splits text into **body text** (prose the user reads as content) and **utility text** (functional
+text that labels or annotates the UI, aligned to the baseline grid). NDBX copytext has no such
+distinction, so every `nxCopytext` has to be classified before it can be replaced. Body text is the
+default; utility text is the exception you have to justify.
+
+```ts
+import { NxBodyTextComponent, NxUtilityTextComponent } from '@allianz/ng-aquila/text';
+```
+If used in a Standalone Component, add the used component to the components `imports` array.
+
+### Detection
+
+Look for `nxCopytext` in templates — both the bare attribute (`<p nxCopytext>`) and the string form
+(`<p nxCopytext="small">`, `<p nxCopytext="medium negative">`). Also look for the legacy CSS classes
+`nx-copy`, `nx-copy--small`, `nx-copy--medium`, `nx-copy--large` and `nx-copy--negative`.
+
+### Which component
+
+**Default to `nxBodyText`.** Under A1 every `nxCopytext` size already resolves to the `body` tokens,
+so `nxBodyText` reproduces the current typography exactly — font size, family, weight, letter-spacing
+and line-height. Colour is the one property that can move; see "Colour" below. Size is irrelevant to
+this choice — a `nxCopytext="small"` paragraph becomes `nxBodyText size="s"`, not utility text.
+
+Switch to `nxUtilityText` only when the occurrence meets one of these:
+
+| Reason to pick utility text | Example |
+| --- | --- |
+| Single-line text that must align with an adjacent control or icon | label next to a checkbox, switch, radio button or badge |
+| Text inside a dense, grid-aligned layout | table cell, list row, key–value pair, toolbar |
+| Form or field label, caption, hint, helper text | `<label>`, field description |
+| Needs a heavier weight (`attention`) | emphasized metadata, status text |
+
+Line-height is the only property that can differ — font size, family and default weight are always
+identical. Utility line-heights are locked to the 4pt baseline grid so text lines up with component
+boxes; body line-heights leave the grid at some sizes for readability across multiple lines. How the
+leading compares (body → utility):
+
+| size | spacious | compact / dense |
+| --- | --- | --- |
+| `s` | 22px → 20px | 20px → 16px |
+| `m` | identical (24px) | 22px → 20px |
+| `l` | identical (28px) | identical (24px) |
+
+Two consequences worth stating explicitly:
+
+- Where the leading is tighter, multi-line prose in utility text looks cramped. If the text wraps, it
+  wants body text regardless of size.
+- Where the table above shows a change, choosing utility text changes the rendering — a deliberate
+  design correction, not a no-op refactor. Call it out in the decision log so a reviewer expects the
+  diff. Where the table shows "identical", the swap is pixel-identical and needs no flag.
+
+When an occurrence is genuinely ambiguous, ask: would this text still make sense read on its own,
+away from the UI around it? Yes → body text. No → utility text. If still unsure, keep body text.
+
+### Colour
+
+`nxCopytext` sets no colour of its own — it inherits from its ancestor. Both new components set their
+own colour on the host, so the migration is only colour-neutral where the text was already inheriting
+the default text colour.
+
+Check what colour the occurrence currently renders in:
+
+| Situation | What to do |
+| --- | --- |
+| No ancestor or local rule sets `color` | Nothing — the token colour matches what was inherited |
+| Ancestor sets a dark/inverted background and its own light `color` | Add `inverse` |
+| A local or ancestor rule sets a deliberate custom `color` | Keep that rule, or pick `type="secondary"` if it was a muted grey; flag as a visual change |
+
+Only the first row is pixel-identical. The other two change the rendering, so log them.
+
+### Size mapping
+
+| old assignment | `size` |
+| --- | --- |
+| `nxCopytext="small"` / `.nx-copy--small` | `size="s"` |
+| `nxCopytext="medium"` / `nxCopytext` (default) / `.nx-copy--medium` | `size="m"` |
+| `nxCopytext="large"` / `.nx-copy--large` | `size="l"` |
+
+`nxCopytext="normal"` is the old default and also maps to `size="m"`.
+
+### Other attributes
+
+| old | new |
+| --- | --- |
+| `negative` (e.g. `nxCopytext="small negative"`) | `inverse` |
+| hand-set `font-weight: 600` / `700` in CSS on the element | `attention` (utility text only) |
+| `.nx-copy` legacy classes | remove; the component sets its own classes |
+
+### Examples
+
+**Before**:
+
+```html
+<p nxCopytext="medium">
+  On the insurance side, Allianz is the market leader in the German market.
+</p>
+<p nxCopytext="small">
+  Your policy covers damage caused by fire, storm and tap water, including any
+  follow-up costs incurred while the damage is being repaired.
+</p>
+<p nxCopytext="small negative">All prices include VAT.</p>
+<td nxCopytext="small">12.05.2026</td>
+<label nxCopytext="small" for="iban">IBAN</label>
+```
+
+**After**:
+
+```html
+<!-- prose → body text, size maps straight across -->
+<p nxBodyText size="m">
+  On the insurance side, Allianz is the market leader in the German market.
+</p>
+<!-- still prose even though it was "small" → body text, NOT utility -->
+<p nxBodyText size="s">
+  Your policy covers damage caused by fire, storm and tap water, including any
+  follow-up costs incurred while the damage is being repaired.
+</p>
+<p nxBodyText size="s" inverse>All prices include VAT.</p>
+<!-- grid-aligned table cell → utility text (leading tightens; see the table above) -->
+<td nxUtilityText size="s">12.05.2026</td>
+<!-- field label → utility text -->
+<label nxUtilityText size="s" for="iban">IBAN</label>
+```
+
+### Notes
+
+- Both components are attribute selectors, so keep the semantic element (`<p>`, `<span>`, `<dd>`, …).
+- `nxCopytext` still works and is not removed; migrate incrementally and drop the
+  `NxCopytextModule` / `NxCopytextComponent` import once the last occurrence in a file is gone.
+- Both components are A1-only. Do not apply this step to an app that has not completed Step 1.
+- For each occurrence, output a short decision log: what the text was, body vs utility and why.
+  Mark a utility-text choice as a visual change when the leading actually changes — `size="s"` in any
+  density, or `size="m"` under compact/dense — so it gets reviewed. Mark it as a visual change too when
+  the occurrence needed a colour decision (see "Colour"). Read the density from
+  `a1Migration.theme` in `package.json`, or from the `allianz-one*.css` entry in the build `styles`
+  array in `angular.json` (`allianz-one.css` = spacious). If neither is present, ask the user.
+- After applying this step, append `"text"` to the `a1Migration.steps` array in `package.json`.
+
+---
+
 ## Migration Tracking
 
 After completing each step, record the migration so adoption can be tracked across teams via GitHub search.
@@ -457,7 +599,7 @@ After **Step 1** (theme applied), add an `a1Migration` key to `package.json`. Af
 
 ```json
 "a1Migration": {
-  "skillVersion": "0.1.4",
+  "skillVersion": "0.1.5",
   "appliedAt": "YYYY-MM-DD",
   "theme": "<spacious|compact|dense>",
   "steps": ["theme"]
@@ -470,7 +612,7 @@ A fully migrated project looks like:
 
 ```json
 "a1Migration": {
-  "skillVersion": "0.1.4",
+  "skillVersion": "0.1.5",
   "appliedAt": "YYYY-MM-DD",
   "theme": "<spacious|compact|dense>",
   "steps": ["theme", "tiles", "info-icons", "layout", "small-stage", "file-uploader"]

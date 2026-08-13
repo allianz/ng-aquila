@@ -1,0 +1,36 @@
+@use '../../shared-styles/index' as *;
+
+:host {
+  margin: 0;
+  font-family: v(utility-text-font-family);
+  color: v(utility-text-color);
+
+  &.nx-utility-text--s {
+    @include type-style(utility-text-s);
+  }
+
+  &.nx-utility-text--m {
+    @include type-style(utility-text-m);
+  }
+
+  &.nx-utility-text--l {
+    @include type-style(utility-text-l);
+  }
+
+  // attention only overrides the weight, the remaining metrics stay size-specific
+  &.nx-utility-text--attention {
+    font-weight: v(utility-text-attention-font-weight);
+  }
+
+  &.nx-utility-text--secondary {
+    color: v(utility-text-secondary-color);
+  }
+
+  &.nx-utility-text--inverse {
+    color: v(utility-text-inverse-color);
+
+    &.nx-utility-text--secondary {
+      color: v(utility-text-inverse-secondary-color);
+    }
+  }
+}

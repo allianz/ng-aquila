@@ -21,7 +21,8 @@ main {
 }
 
 :host ::ng-deep {
-  .docs-a1 {
+  .docs-a1,
+  .docs-ndbx {
     display: none;
   }
 
@@ -35,7 +36,13 @@ main {
     }
   }
 
-  .theme-ndbx .docs-hide-ndbx {
-    display: none;
+  .theme-ndbx {
+    .docs-ndbx {
+      display: block;
+    }
+
+    .docs-hide-ndbx {
+      display: none;
+    }
   }
 }
