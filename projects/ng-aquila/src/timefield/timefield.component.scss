@@ -127,6 +127,10 @@ nx-radio-toggle {
   }
 }
 
+.nx-timefield__wrapper.has-outline ::ng-deep .nx-formfield__input-container {
+  --formfield-outline-prefix-suffix-padding-horizontal: 0;
+}
+
 :host:focus {
   // This will ensure there is no second focus style shown in high contrast mode
   outline: none;

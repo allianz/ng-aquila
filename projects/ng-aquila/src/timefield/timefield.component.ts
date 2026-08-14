@@ -27,6 +27,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkConnectedOverlay, ConnectionPositionPair, OverlayModule } from '@angular/cdk/overlay';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
+  afterNextRender,
   AfterViewInit,
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -493,17 +494,22 @@ export class NxTimefieldComponent
   protected _overlayWidth: string | number = '';
   protected _overlayPositions: ConnectionPositionPair[] = [];
 
+  private readonly _viewRendered = signal(false);
+  private readonly _measureAfterRender = afterNextRender(() => this._viewRendered.set(true));
+
   /**
    * @docs-private
    * Computed width for hour input
    */
   protected readonly _hourInputWidth = computed(() =>
-    this._textMeasurementService.computeInputWidth(
-      this._hours(),
-      this.placeholderHours(),
-      2,
-      this.inputHours()?.nativeElement,
-    ),
+    this._viewRendered()
+      ? this._textMeasurementService.computeInputWidth(
+          this._hours(),
+          this.placeholderHours(),
+          2,
+          this.inputHours()?.nativeElement,
+        )
+      : null,
   );
 
   /**
@@ -511,12 +517,14 @@ export class NxTimefieldComponent
    * Computed width for minute input
    */
   protected readonly _minuteInputWidth = computed(() =>
-    this._textMeasurementService.computeInputWidth(
-      this._minutes(),
-      this.placeholderMinutes(),
-      2,
-      this.inputMinutes()?.nativeElement,
-    ),
+    this._viewRendered()
+      ? this._textMeasurementService.computeInputWidth(
+          this._minutes(),
+          this.placeholderMinutes(),
+          2,
+          this.inputMinutes()?.nativeElement,
+        )
+      : null,
   );
 
   constructor(
