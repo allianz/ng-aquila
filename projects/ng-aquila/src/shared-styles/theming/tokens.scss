@@ -2919,12 +2919,13 @@ $nx-theme: (
   layout-inset-container-base-functional: 32px,
   layout-inset-container-large-functional: 32px,
 
+  // gutter between grid columns, applied as half of it as padding on each side of a column
   grid-gutter-width-mobile: layout-inset-container-mobile,
   grid-gutter-width-base: layout-inset-container-base,
   grid-gutter-width-large: layout-inset-container-large,
-
-  grid-column-gap: 0px,
-  grid-column-gap-functional: 0px,
+  grid-gutter-width-mobile-functional: layout-inset-container-mobile,
+  grid-gutter-width-base-functional: layout-inset-container-base,
+  grid-gutter-width-large-functional: layout-inset-container-large,
 
   // ----- Deprecated tokens, remove in next major version ----- //
    // - indicator-single-letter-padding: unused since the indicator component switched from the `.single-letter` class to `.nx-indicator--padded`.
