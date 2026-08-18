@@ -1,5 +1,6 @@
 import { NxLabelInfoDirective } from '@allianz/ng-aquila/base';
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
+import { CONTEXT, NxMessageComponent } from '@allianz/ng-aquila/message';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { NgTemplateOutlet } from '@angular/common';
@@ -14,6 +15,7 @@ import {
   ContentChild,
   contentChild,
   ContentChildren,
+  effect,
   ElementRef,
   Inject,
   inject,
@@ -25,6 +27,7 @@ import {
   QueryList,
   Renderer2,
   type Signal,
+  signal,
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -74,6 +77,16 @@ export type AppearanceType = 'outline' | 'auto';
 /** Type for the size of the formfield. */
 export type NxFormfieldSize = 's' | 'm';
 
+/** Type for the signal status of the formfield. No `critical` value: an invalid control drives the error look instead. */
+export type NxFormfieldStatus = 'positive' | 'warning' | 'info';
+
+/** Maps a formfield status onto the vocabulary of `nx-message` (`positive` -> `success`). */
+const STATUS_MESSAGE_CONTEXT: Record<NxFormfieldStatus, CONTEXT> = {
+  positive: 'success',
+  warning: 'warning',
+  info: 'info',
+};
+
 @Component({
   selector: 'nx-formfield',
   templateUrl: 'formfield.component.html',
@@ -89,6 +102,12 @@ export type NxFormfieldSize = 's' | 'm';
     '[class.size-s]': 'this.size() === "s"',
     '[class.has-error]': 'this._control.errorState',
     '[class.has-outline]': 'this.appearance === "outline"',
+    '[class.nx-formfield--status-positive]':
+      'this._isStatusVisible() && this._effectiveStatus() === "positive"',
+    '[class.nx-formfield--status-warning]':
+      'this._isStatusVisible() && this._effectiveStatus() === "warning"',
+    '[class.nx-formfield--status-info]':
+      'this._isStatusVisible() && this._effectiveStatus() === "info"',
     '[class.has-hint]': 'this._hintChildren?.length && this._hintChildren?.length! > 0',
     '[class.nx-formfield--negative]': 'this._negative',
     '[class.nx-formfield--inline]': 'inline()',
@@ -96,7 +115,7 @@ export type NxFormfieldSize = 's' | 'm';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  imports: [NxTooltipModule, NgTemplateOutlet],
+  imports: [NxTooltipModule, NgTemplateOutlet, NxMessageComponent],
 })
 export class NxFormfieldComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
   protected _negative = false;
@@ -104,6 +123,11 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
 
   /** Html id of the formfield label */
   readonly labelId: string = inject(IdGenerationService).nextId('nx-formfield-label');
+
+  /** Html id of the status message, owned by the formfield since it renders that element. */
+  protected readonly _statusMessageId: string = inject(IdGenerationService).nextId(
+    'nx-formfield-status-message',
+  );
   @ContentChild(NxFormfieldControl) _control!: NxFormfieldControl<any>;
 
   private readonly _allianzOne = inject<AllianzOneOptions | null>(ALLIANZ_ONE, { optional: true });
@@ -117,13 +141,27 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   readonly label = input<string | null>();
 
   /**
-   * Whether the form field is rendered inline. When enabled the label is
-   * visually hidden (kept for accessibility) and the reserved space around
-   * the field (top floating-label space and bottom hint/error/note space)
-   * is removed. Providing hints/errors/notes together with `inline` is not
-   * supported in this version — they will not be shown.
+   * Whether the form field is rendered inline. When enabled the reserved space
+   * around the field (top floating-label space and bottom hint/error/note
+   * space) is removed and the label as well as the hints, errors, notes and
+   * status message are visually hidden. They are kept in the accessibility
+   * tree, so the control still references them via `aria-describedby` and a
+   * screen reader still announces them. Surface anything a sighted user needs
+   * to see some other way, for example with a `nx-signal-button` in the
+   * `nxFormfieldSuffix` slot.
    */
   readonly inline = input(false, { transform: booleanAttribute });
+
+  /**
+   * Colors the border of the formfield in the given signal color and renders a plain
+   * message below the field. Mark the message content with the
+   * `nxFormfieldStatusMessage` attribute — always provide it, as a status without a
+   * message leaves a colored border with no explanation of why.
+   *
+   * Only supported for `appearance="outline"`. An error (an invalid, touched form
+   * control together with a `nxFormfieldError`) takes precedence over the status.
+   */
+  readonly status = input<NxFormfieldStatus | null>(null);
 
   /**
    * Set optional text, which will additionally show in label if a field is not mandatory.
@@ -187,15 +225,12 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
    * Sets the appearance of the formfield.
    */
   @Input() set appearance(value: AppearanceType) {
-    if (this._appearance !== value) {
-      this._appearance = value;
-      this._cdr.markForCheck();
-    }
+    this._appearanceSignal.set(value);
   }
   get appearance(): AppearanceType {
-    return this._appearance || this._defaultOptions?.appearance || 'auto';
+    return this._appearanceSignal() || this._defaultOptions?.appearance || 'auto';
   }
-  private _appearance!: AppearanceType;
+  private readonly _appearanceSignal = signal<AppearanceType | undefined>(undefined);
 
   /**
    * Sets the size of the formfield.
@@ -231,6 +266,18 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   }
 
   private readonly _destroyed = new Subject<void>();
+
+  // Neither the `stateChanges` nor `focusout` subscriptions fire for a programmatic status change, so re-sync explicitly here.
+  private readonly _syncDescribedByOnStatusChange = effect(() => {
+    this._effectiveStatus();
+
+    if (!this._control || !this._hintChildren) {
+      return;
+    }
+
+    this._syncDescribedByIds();
+    this._cdr.markForCheck();
+  });
 
   constructor(
     /** @docs-private */ readonly elementRef: ElementRef,
@@ -299,10 +346,43 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     this._destroyed.complete();
   }
 
+  /** The status that is actually applied; null outside `appearance="outline"`, where the styling isn't defined. @docs-private */
+  readonly _effectiveStatus = computed<NxFormfieldStatus | null>(() => {
+    const status = this.status();
+
+    if (!status) {
+      return null;
+    }
+
+    if (!this._isOutline()) {
+      return null;
+    }
+
+    return status;
+  });
+
+  /**
+   * Whether the status border/message is currently shown. Kept out of `_effectiveStatus`
+   * so `disabled` — a plain property on the control, not a signal — is re-read on every
+   * check instead of being baked into the memoized computed. @docs-private
+   */
+  _isStatusVisible(): boolean {
+    return !!this._effectiveStatus() && !this._control.disabled;
+  }
+
   /** @docs-private */
-  getDisplayedMessage(): 'note' | 'error' | '' {
+  readonly _statusMessageContext = computed<CONTEXT | null>(() => {
+    const status = this._effectiveStatus();
+    return status ? STATUS_MESSAGE_CONTEXT[status] : null;
+  });
+
+  /** @docs-private */
+  getDisplayedMessage(): 'note' | 'error' | 'status' | '' {
     if (this._control.errorState && this._errorChildren && this._errorChildren.length > 0) {
       return 'error';
+    }
+    if (this._isStatusVisible()) {
+      return 'status';
     }
     if (this._noteChildren && this._noteChildren.length > 0) {
       return 'note';
@@ -316,7 +396,11 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
       let ids: string[] = [];
       ids = this._hintChildren.map((hint) => hint.id());
 
-      if (this.getDisplayedMessage() === 'note') {
+      const displayedMessage = this.getDisplayedMessage();
+
+      if (displayedMessage === 'status') {
+        ids = [this._statusMessageId, ...ids];
+      } else if (displayedMessage === 'note') {
         ids = [...this._noteChildren.map((hint) => hint.id()), ...ids];
       } else if (this._errorChildren) {
         ids = [...this._errorChildren.map((error) => error.id()), ...ids];

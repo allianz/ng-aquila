@@ -1550,6 +1550,10 @@ $nx-theme: (
   formfield-outline-border-color: ui-05,
   formfield-outline-background-color: ui-03,
   formfield-outline-active-border-color: interactive-text,
+  // signal status border colors, see the `status` input of nx-formfield
+  formfield-outline-positive-border-color: success,
+  formfield-outline-warning-border-color: warning,
+  formfield-outline-info-border-color: info,
   formfield-outline-focus-box-shadow: 0 0 0 2px #27abd6,
   formfield-outline-focus-background-color: ui-01,
   formfield-outline-control-font-size: paragraph-03-font-size,

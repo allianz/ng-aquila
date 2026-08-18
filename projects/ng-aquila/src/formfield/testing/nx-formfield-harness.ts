@@ -1,4 +1,5 @@
 import { NxDropdownHarness } from '@allianz/ng-aquila/dropdown/testing';
+import { type NxFormfieldStatus } from '@allianz/ng-aquila/formfield';
 import { type NxFormfieldControlHarness } from '@allianz/ng-aquila/formfield/testing/control';
 import { NxInputHarness } from '@allianz/ng-aquila/input/testing';
 import {
@@ -22,7 +23,10 @@ export interface NxFormfieldFilters extends BaseHarnessFilters {
   hasErrors?: boolean;
   readonly?: boolean;
   inline?: boolean;
+  status?: NxFormfieldStatus | null;
 }
+
+const STATUSES: NxFormfieldStatus[] = ['positive', 'warning', 'info'];
 
 export type FormfieldControlHarness = NxInputHarness | NxDropdownHarness;
 
@@ -48,6 +52,11 @@ export class NxFormfieldHarness extends ContentContainerComponentHarness {
         'inline',
         options.inline,
         async (harness, inline) => (await harness.isInline()) === inline,
+      )
+      .addOption(
+        'status',
+        options.status,
+        async (harness, status) => (await harness.getStatus()) === status,
       );
   }
 
@@ -56,6 +65,7 @@ export class NxFormfieldHarness extends ContentContainerComponentHarness {
   private readonly _suffix = this.locatorForOptional('.nx-formfield__suffix');
   private readonly _appendix = this.locatorForOptional('.nx-formfield__appendix');
   private readonly _hint = this.locatorForOptional('.nx-formfield__hints');
+  private readonly _statusMessage = this.locatorForOptional('.nx-formfield__status-message');
   private readonly _inputControl = this.locatorForOptional(NxInputHarness);
   private readonly _dropdownControl = this.locatorForOptional(NxDropdownHarness);
 
@@ -134,6 +144,25 @@ export class NxFormfieldHarness extends ContentContainerComponentHarness {
 
   async hasNotes(filter: NxFormfieldNoteHarnessFilters = {}): Promise<boolean> {
     return (await this.getNotes(filter)).length > 0;
+  }
+
+  /** Gets the signal status of the form field, or null if none is applied. */
+  async getStatus(): Promise<NxFormfieldStatus | null> {
+    const host = await this.host();
+    const matches = await parallel(() =>
+      STATUSES.map((status) => host.hasClass(`nx-formfield--status-${status}`)),
+    );
+
+    return STATUSES[matches.indexOf(true)] ?? null;
+  }
+
+  /** Gets the status message of the form field, or null if none is shown. */
+  async getStatusMessage(): Promise<TestElement | null> {
+    return this._statusMessage();
+  }
+
+  async getStatusMessageText(): Promise<string | null> {
+    return (await this.getStatusMessage())?.text() ?? null;
   }
 
   async isValid(): Promise<boolean> {

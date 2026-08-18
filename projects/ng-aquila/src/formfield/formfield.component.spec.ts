@@ -19,7 +19,13 @@ import {
   tick,
   waitForAsync,
 } from '@angular/core/testing';
-import { FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 import { NxFormfieldErrorDirective } from './error.directive';
 import {
@@ -29,6 +35,7 @@ import {
   FormfieldDefaultOptions,
   NxFormfieldComponent,
   NxFormfieldSize,
+  NxFormfieldStatus,
 } from './formfield.component';
 import { NxFormfieldHintDirective } from './hint.directive';
 import { NxFormfieldNoteDirective } from './note.directive';
@@ -351,6 +358,21 @@ describe('NxFormfieldComponent', () => {
         fixture.detectChanges();
         expect(holder.hasAttribute('inert')).toBe(true);
       });
+
+      it('visually hides the hints instead of removing them from the a11y tree', fakeAsync(() => {
+        createTestComponent(InlineFormfield);
+        (testInstance as InlineFormfield).inline = true;
+        tick();
+        fixture.detectChanges();
+
+        const hints = formfieldElement.querySelector('.nx-formfield__hints')!;
+        // `display: none` would drop the hint from the a11y tree, orphaning the aria-describedby reference
+        expect(getComputedStyle(hints).display).not.toBe('none');
+        expect(getComputedStyle(hints).position).toBe('absolute');
+        expect(inputElement.getAttribute('aria-describedby')).toContain(
+          hints.querySelector('[nxFormfieldHint]')!.id,
+        );
+      }));
     });
 
     describe('size', () => {
@@ -615,6 +637,268 @@ describe('NxFormfieldComponent', () => {
       _fixture.detectChanges();
       expect(labelElement.textContent).toContain('!!!OPTIONAL!!!');
     });
+  });
+});
+
+describe('NxFormfieldComponent status', () => {
+  let fixture: ComponentFixture<StatusFormfieldTest>;
+  let testInstance: StatusFormfieldTest;
+  let formfieldElement: HTMLElement;
+  let inputElement: HTMLElement;
+
+  function createTestComponent<T extends StatusFormfieldTest>(
+    component: Type<T>,
+  ): ComponentFixture<T> {
+    const _fixture = TestBed.createComponent(component);
+    _fixture.detectChanges();
+
+    testInstance = _fixture.componentInstance;
+    formfieldElement = _fixture.nativeElement.querySelector('nx-formfield');
+    inputElement = _fixture.nativeElement.querySelector('.c-input');
+
+    return (fixture = _fixture);
+  }
+
+  /** Two rounds, as the describedBy sync is scheduled on the asap scheduler. */
+  function settle() {
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+    tick();
+  }
+
+  function getStatusMessage(): HTMLElement | null {
+    return formfieldElement.querySelector('.nx-formfield__status-message');
+  }
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        NxInputModule,
+        StatusFormfield,
+        StatusDisabledFormfield,
+        StatusDisabledSignalFormfield,
+        StatusDisabledReactiveFormfield,
+        StatusAndNoteFormfield,
+        StatusAndErrorFormfield,
+        StatusBlurFormfield,
+        StatusWithoutMessageFormfield,
+        StatusStandaloneImportsFormfield,
+        StatusInlineFormfield,
+      ],
+    }).compileComponents();
+  }));
+
+  it('sets a host class for every status', () => {
+    createTestComponent(StatusFormfield);
+
+    for (const status of ['positive', 'warning', 'info'] as const) {
+      testInstance.status = status;
+      fixture.detectChanges();
+
+      expect(formfieldElement.classList).toContain(`nx-formfield--status-${status}`);
+    }
+  });
+
+  it('removes the host class when the status is cleared', () => {
+    createTestComponent(StatusFormfield);
+    testInstance.status = 'positive';
+    fixture.detectChanges();
+
+    testInstance.status = null;
+    fixture.detectChanges();
+
+    expect(formfieldElement.classList).not.toContain('nx-formfield--status-positive');
+    expect(getStatusMessage()).toBeNull();
+  });
+
+  it('renders the status message as a plain nx-message with the mapped context', () => {
+    createTestComponent(StatusFormfield);
+    testInstance.status = 'positive';
+    fixture.detectChanges();
+
+    const message = getStatusMessage()!;
+    expect(message).not.toBeNull();
+    // `positive` is `success` in the vocabulary of nx-message
+    expect(message.classList).toContain('context-success');
+    expect(message.classList).toContain('nx-message--plain');
+    expect(message.textContent).toContain('content-status');
+  });
+
+  it('renders the status message with role status for polite announcements', () => {
+    createTestComponent(StatusFormfield);
+    testInstance.status = 'info';
+    fixture.detectChanges();
+
+    const message = getStatusMessage()!;
+    expect(message.getAttribute('role')).toBe('status');
+    expect(message.getAttribute('aria-atomic')).toBe('true');
+  });
+
+  it('ignores the status when the appearance is not outline', () => {
+    createTestComponent(StatusFormfield);
+    testInstance.appearance = 'auto';
+    testInstance.status = 'warning';
+    fixture.detectChanges();
+
+    expect(formfieldElement.classList).not.toContain('nx-formfield--status-warning');
+    expect(getStatusMessage()).toBeNull();
+  });
+
+  it('hides the border and status message while the control is disabled', fakeAsync(() => {
+    createTestComponent(StatusDisabledFormfield);
+    testInstance.status = 'positive';
+    settle();
+
+    testInstance.disabled = true;
+    settle();
+
+    expect(formfieldElement.classList).not.toContain('nx-formfield--status-positive');
+    expect(getStatusMessage()).toBeNull();
+  }));
+
+  it('hides the border and status message while disabled, under an OnPush consumer with a signal input', fakeAsync(() => {
+    createTestComponent(StatusDisabledSignalFormfield);
+    testInstance.status = 'positive';
+    settle();
+
+    (testInstance as StatusDisabledSignalFormfield).disabledSignal.set(true);
+    settle();
+
+    expect(formfieldElement.classList).not.toContain('nx-formfield--status-positive');
+    expect(getStatusMessage()).toBeNull();
+  }));
+
+  it('hides the border and status message when a reactive FormControl is disabled, under an OnPush consumer', fakeAsync(() => {
+    createTestComponent(StatusDisabledReactiveFormfield);
+    const { control } = testInstance as StatusDisabledReactiveFormfield;
+    testInstance.status = 'positive';
+    settle();
+
+    control.disable();
+    settle();
+
+    expect(formfieldElement.classList).not.toContain('nx-formfield--status-positive');
+    expect(getStatusMessage()).toBeNull();
+
+    control.enable();
+    settle();
+
+    expect(formfieldElement.classList).toContain('nx-formfield--status-positive');
+    expect(getStatusMessage()).not.toBeNull();
+  }));
+
+  it('restores the border and status message once the control is enabled again', fakeAsync(() => {
+    createTestComponent(StatusDisabledFormfield);
+    testInstance.status = 'positive';
+    testInstance.disabled = true;
+    settle();
+
+    testInstance.disabled = false;
+    settle();
+
+    expect(formfieldElement.classList).toContain('nx-formfield--status-positive');
+    expect(getStatusMessage()).not.toBeNull();
+  }));
+
+  it('shows the status message instead of a note', () => {
+    createTestComponent(StatusAndNoteFormfield);
+    testInstance.status = 'info';
+    fixture.detectChanges();
+
+    expect(getStatusMessage()!.textContent).toContain('content-status');
+    expect(formfieldElement.textContent).not.toContain('content-note');
+  });
+
+  it('shows the error instead of the status message', fakeAsync(() => {
+    createTestComponent(StatusAndErrorFormfield);
+    testInstance.status = 'positive';
+    settle();
+    expect(getStatusMessage()).not.toBeNull();
+
+    testInstance.inputInstance.ngControl!.control!.markAsTouched();
+    settle();
+
+    expect(getStatusMessage()).toBeNull();
+    expect(formfieldElement.textContent).toContain('content-error');
+  }));
+
+  it('adds the status message to aria-describedby', fakeAsync(() => {
+    createTestComponent(StatusFormfield);
+    testInstance.status = 'positive';
+    settle();
+
+    // guards the assertion below against passing vacuously on an empty id
+    expect(getStatusMessage()!.id).toContain('nx-formfield-status-message');
+    expect(inputElement.getAttribute('aria-describedby')).toContain(getStatusMessage()!.id);
+  }));
+
+  it('removes the status message from aria-describedby when the status is cleared', fakeAsync(() => {
+    createTestComponent(StatusFormfield);
+    testInstance.status = 'positive';
+    settle();
+    // the element is gone once the status is cleared, so read the id upfront
+    const statusMessageId = getStatusMessage()!.id;
+
+    testInstance.status = null;
+    settle();
+
+    expect(inputElement.getAttribute('aria-describedby')).not.toContain(statusMessageId);
+  }));
+
+  it('updates aria-describedby without a blur when updateOn is blur', fakeAsync(() => {
+    createTestComponent(StatusBlurFormfield);
+    testInstance.status = 'warning';
+    settle();
+
+    expect(inputElement.getAttribute('aria-describedby')).toContain(getStatusMessage()!.id);
+  }));
+
+  it('renders and describes the status message without importing the formfield module', fakeAsync(() => {
+    createTestComponent(StatusStandaloneImportsFormfield);
+    testInstance.status = 'positive';
+    settle();
+
+    const message = getStatusMessage()!;
+    expect(message).not.toBeNull();
+    expect(message.textContent).toContain('content-status');
+    expect(inputElement.getAttribute('aria-describedby')).toContain(message.id);
+  }));
+
+  it('shows the status message when no content is projected', () => {
+    createTestComponent(StatusWithoutMessageFormfield);
+    testInstance.status = 'warning';
+    fixture.detectChanges();
+
+    // the status is driven by the input, so the message row is shown even when the
+    // consumer projected nothing into it, and it still takes precedence over a note
+    expect(getStatusMessage()).not.toBeNull();
+    expect(formfieldElement.textContent).not.toContain('content-note');
+  });
+
+  it('colors the border and keeps the status message accessible when inline', fakeAsync(() => {
+    createTestComponent(StatusInlineFormfield);
+    testInstance.status = 'positive';
+    settle();
+
+    expect(formfieldElement.classList).toContain('nx-formfield--status-positive');
+
+    const message = getStatusMessage()!;
+    expect(message).not.toBeNull();
+    // only visually hidden, so it stays a valid `aria-describedby` target
+    const messageRow = formfieldElement.querySelector('.nx-formfield__message')!;
+    expect(getComputedStyle(messageRow).display).not.toBe('none');
+    expect(inputElement.getAttribute('aria-describedby')).toContain(message.id);
+  }));
+
+  it('has no accessibility violations', async () => {
+    createTestComponent(StatusFormfield);
+    testInstance.status = 'positive';
+    fixture.detectChanges();
+
+    await expectAsync(fixture.nativeElement).toBeAccessible();
   });
 });
 
@@ -1013,3 +1297,136 @@ class InfoIconFormfield extends FormfieldTest {
   ],
 })
 class InfoIconCustomLabelFormfield extends FormfieldTest {}
+
+@Directive({ standalone: true })
+abstract class StatusFormfieldTest extends FormfieldTest {
+  override appearance: AppearanceType = 'outline';
+  status: NxFormfieldStatus | null = null;
+}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" [appearance]="appearance" [status]="status">
+      <input nxInput [(ngModel)]="currentValue" />
+      <span nxFormfieldStatusMessage>content-status</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+})
+class StatusFormfield extends StatusFormfieldTest {}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" [appearance]="appearance" [status]="status">
+      <input nxInput [disabled]="disabled" />
+      <span nxFormfieldStatusMessage>content-status</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxInputModule],
+})
+class StatusDisabledFormfield extends StatusFormfieldTest {}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" [appearance]="appearance" [status]="status">
+      <input nxInput [disabled]="disabledSignal()" />
+      <span nxFormfieldStatusMessage>content-status</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxInputModule],
+})
+class StatusDisabledSignalFormfield extends StatusFormfieldTest {
+  readonly disabledSignal = signal(false);
+}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" [appearance]="appearance" [status]="status">
+      <input nxInput [formControl]="control" />
+      <span nxFormfieldStatusMessage>content-status</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ReactiveFormsModule, NxInputModule],
+})
+class StatusDisabledReactiveFormfield extends StatusFormfieldTest {
+  readonly control = new FormControl('');
+}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" inline [appearance]="appearance" [status]="status">
+      <input nxInput [(ngModel)]="currentValue" />
+      <span nxFormfieldStatusMessage>content-status</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+})
+class StatusInlineFormfield extends StatusFormfieldTest {}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" [appearance]="appearance" [status]="status">
+      <input nxInput [(ngModel)]="currentValue" />
+      <span nxFormfieldStatusMessage>content-status</span>
+      <span nxFormfieldNote>content-note</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+})
+class StatusAndNoteFormfield extends StatusFormfieldTest {}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" [appearance]="appearance" [status]="status">
+      <input nxInput required [(ngModel)]="currentValue" />
+      <span nxFormfieldStatusMessage>content-status</span>
+      <span nxFormfieldError>content-error</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+})
+class StatusAndErrorFormfield extends StatusFormfieldTest {}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" updateOn="blur" [appearance]="appearance" [status]="status">
+      <input nxInput [(ngModel)]="currentValue" />
+      <span nxFormfieldStatusMessage>content-status</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+})
+class StatusBlurFormfield extends StatusFormfieldTest {}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" [appearance]="appearance" [status]="status">
+      <input nxInput [(ngModel)]="currentValue" />
+      <span nxFormfieldNote>content-note</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+})
+class StatusWithoutMessageFormfield extends StatusFormfieldTest {}
+
+@Component({
+  template: `
+    <nx-formfield label="Label" [appearance]="appearance" [status]="status">
+      <input nxInput [(ngModel)]="currentValue" />
+      <span nxFormfieldStatusMessage>content-status</span>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  // no NxFormfieldModule: nxFormfieldStatusMessage is a plain marker, not a directive consumers must import
+  imports: [FormsModule, NxFormfieldComponent, NxInputDirective],
+})
+class StatusStandaloneImportsFormfield extends StatusFormfieldTest {}

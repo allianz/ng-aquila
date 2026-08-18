@@ -88,9 +88,9 @@ Set the `inline` input to render the formfield in a compact way: the label is vi
 
 For accessibility the label is kept in the DOM (only visually hidden), so you should always provide a meaningful `label`. Alternatively you can connect the control to an existing element via `aria-labelledby` (for example a table header).
 
-**Note:** hints, errors and notes are not supported together with `inline` and will not be shown.
+**Note:** with `inline`, hints, errors, notes and the status message are visually hidden, not removed — the formfield still connects them via `aria-describedby`, so assistive technology still announces them. Keep projecting them.
 
-Because the projected error message is hidden in inline mode, you can surface the validation state with a [signal button](/documentation/signal-button/overview) placed in the `nxFormfieldSuffix` slot, opening a popover that lists the current errors. Keep the projected `nx-error` in the DOM (it stays only visually hidden): the formfield still connects it to the control via `aria-describedby` and sets `aria-invalid`, so assistive technology continues to announce the error. The example below and the [table with form elements](/documentation/table/overview) example show this pattern.
+Since sighted users can't see the nots, it is important to show the information in some other way, for example with a [signal button](/documentation/signal-button/overview) in the `nxFormfieldSuffix` slot, opening a popover with the details. The example below and the [table with form elements](/documentation/table/overview) example show this for errors; the [status example](#status) shows it for `status`.
 
 `inline` combines well with the [small size](#small-size) for especially dense layouts. **Note:** when the formfield uses `size="s"`, the signal button in the suffix needs `size="s"` as well, so that its icon matches the reduced control height. The last row of the example below shows this combination.
 
@@ -133,6 +133,28 @@ You can also show different errors on one input field according to the particula
 Initially, the info is shown here. But once you touch the textfield (try focus and blur), it displays the error instead.
 
 <!-- example(formfield-note-and-error) -->
+
+### Status
+
+Set `status` to show the outcome of a check on the field — `positive`, `warning` or `info`. It colors the border and shows a message below the field via `nxFormfieldStatusMessage`.
+
+<div class="docs-hide-a1">
+
+Only works with `appearance="outline"`; ignored otherwise.
+
+</div>
+
+Always add a message — color alone doesn't convey meaning to colorblind or screen-reader users.
+
+The border and message are suppressed while the control is disabled — a disabled field cannot be acted on, so there is nothing left to signal.
+
+<!-- example(formfield-status) -->
+
+There is deliberately no `critical` status — the error look stays driven by the validity of the form control (see [Errors](#errors)), so what is shown always matches `aria-invalid`. Only one message is displayed at a time, in the order **error > status > note**.
+
+On an [`inline`](#inline) formfield the message is only visually hidden, so pair it with a [signal button](/documentation/signal-button/overview) in the `nxFormfieldSuffix` slot to keep the status visible.
+
+The message is added to the `aria-describedby` of the input and carries `role="status"`, so it is announced politely rather than interrupting the screen reader. A live region filled in the same tick is not reliably announced by all screen readers (as with `nxFormfieldError`) — if you need a guaranteed announcement, use the CDK [`LiveAnnouncer`](https://material.angular.dev/cdk/a11y/api#LiveAnnouncer).
 
 ### Prefix, Suffix, Appendix
 

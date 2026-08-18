@@ -1,7 +1,7 @@
 import {
-  NxButtonComponent,
   NxButtonAccentColor,
   NxButtonColorScheme,
+  NxButtonComponent,
   NxPlainButtonColorScheme,
   NxPlainButtonComponent,
 } from '@allianz/ng-aquila/button';

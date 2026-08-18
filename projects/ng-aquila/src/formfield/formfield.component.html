@@ -9,7 +9,7 @@ We are building the following structure.
 |                 Hints                     |
 +-------------------------------------------+
 |                                           |
-|                Messages                   |
+|        Messages (error/status/note)       |
 |                                           |
 +-------------------------------------------+
 
@@ -100,11 +100,29 @@ We are building the following structure.
     <ng-content select="[nxLabelInfo]"></ng-content>
   </ng-template>
 
-  <!-- In case we got some additional information we render them below the given input -->
+  <!--
+    In case we got some additional information we render them below the given
+    input. Only one of them is shown, in the order error > status > note.
+  -->
   @switch (getDisplayedMessage()) {
     @case ('error') {
       <div class="nx-formfield__message">
         <ng-content select="[nxFormfieldError]"></ng-content>
+      </div>
+    }
+    @case ('status') {
+      <div class="nx-formfield__message">
+        <!-- role="status" (polite) rather than assertive like nxFormfieldError: a status must not interrupt -->
+        <nx-message
+          class="nx-formfield__status-message"
+          role="status"
+          aria-atomic="true"
+          [id]="_statusMessageId"
+          [contained]="false"
+          [context]="_statusMessageContext()!"
+        >
+          <ng-content select="[nxFormfieldStatusMessage]"></ng-content>
+        </nx-message>
       </div>
     }
     @case ('note') {

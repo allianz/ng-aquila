@@ -37,6 +37,7 @@ import { FormfieldPrefixSuffixAppendixExampleComponent } from './formfield-prefi
 import { FormfieldSimpleFormExampleComponent } from './formfield-simple-form/formfield-simple-form-example';
 import { FormfieldSmallExampleComponent } from './formfield-small/formfield-small-example';
 import { FormfieldSpacingAdjusterExampleComponent } from './formfield-spacing-adjuster/formfield-spacing-adjuster-example';
+import { FormfieldStatusExampleComponent } from './formfield-status/formfield-status-example';
 
 const EXAMPLES = [
   FormfieldSpacingAdjusterExampleComponent,
@@ -64,6 +65,7 @@ const EXAMPLES = [
   FormfieldChangedetectionExampleComponent,
   FormfieldOptionalLabelExampleComponent,
   FormfieldSmallExampleComponent,
+  FormfieldStatusExampleComponent,
 ];
 
 @NgModule({
@@ -112,6 +114,7 @@ export class FormfieldExamplesModule {
       'formfield-changedetection': FormfieldChangedetectionExampleComponent,
       'formfield-optional-label': FormfieldOptionalLabelExampleComponent,
       'formfield-small': FormfieldSmallExampleComponent,
+      'formfield-status': FormfieldStatusExampleComponent,
     };
   }
 }

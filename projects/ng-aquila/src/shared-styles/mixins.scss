@@ -6,6 +6,20 @@
 @use './typography' as *;
 @use './functions' as *;
 
+// Use instead of `display: none` for elements referenced by an aria attribute - keeps them in the a11y tree.
+@mixin visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
 @mixin focus-style {
   box-shadow: v(focus-box-shadow);
 

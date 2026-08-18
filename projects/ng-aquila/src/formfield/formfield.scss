@@ -238,6 +238,11 @@
 // Messages
 .nx-formfield__message {
   margin-top: v(formfield-message-gap);
+
+  // cancel the generic `.nx-formfield nx-message` margin so it doesn't stack with formfield-message-gap
+  nx-message.nx-formfield__status-message {
+    margin-top: 0;
+  }
 }
 
 // States
@@ -475,6 +480,15 @@
   }
 }
 
+// Order matters: must win over resting/focus below, but lose to readonly/disabled/error/forced-colors further down.
+@each $status in (positive, warning, info) {
+  .nx-formfield.has-outline.nx-formfield--status-#{$status}:not(.nx-formfield--negative) {
+    .nx-formfield__input-container {
+      border-color: v(formfield-outline-#{$status}-border-color);
+    }
+  }
+}
+
 .nx-formfield.has-outline.is-readonly:not(.is-disabled) {
   .nx-formfield__input-container {
     border-color: v(formfield-readonly-border-color);
@@ -704,7 +718,6 @@
 }
 
 // Inline modifier: hide the label and remove the reserved space around the field.
-// Note: hints/errors/notes are not supported together with inline (v1) and are hidden.
 .nx-formfield--inline {
   --formfield-label-height: 0;
   --formfield-bottom-padding: 0;
@@ -713,23 +726,12 @@
   --formfield-outline-bottom-padding: 0;
 
   .nx-formfield__label-holder {
-    // visually hide the label while preserving the accessible name,
-    // the label id and the `for` association with the control
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    pointer-events: none;
+    @include visually-hidden;
   }
 
   .nx-formfield__hints,
   .nx-formfield__message {
-    display: none;
+    @include visually-hidden;
   }
 }
 

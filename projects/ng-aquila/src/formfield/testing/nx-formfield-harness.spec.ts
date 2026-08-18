@@ -138,6 +138,20 @@ describe('NxFormfieldHarness', () => {
     expect(await formfields[5].isInline()).toBe(false); // Readonly (non-inline) formfield
   });
 
+  it('should get status and status message', async () => {
+    const fixture = TestBed.createComponent(StatusTest);
+    fixture.detectChanges();
+    const loader = TestbedHarnessEnvironment.loader(fixture);
+
+    const [positive, plain] = await loader.getAllHarnesses(NxFormfieldHarness);
+
+    expect(await positive.getStatus()).toBe('positive');
+    expect(await positive.getStatusMessageText()).toBe('Account verified');
+
+    expect(await plain.getStatus()).toBeNull();
+    expect(await plain.getStatusMessageText()).toBeNull();
+  });
+
   describe('filters', () => {
     let loader: HarnessLoader;
 
@@ -180,6 +194,19 @@ describe('NxFormfieldHarness', () => {
       expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ inline: false }))).toHaveSize(
         5,
       );
+    });
+
+    it('should find by status', async () => {
+      const fixture = TestBed.createComponent(StatusTest);
+      fixture.detectChanges();
+      const statusLoader = TestbedHarnessEnvironment.loader(fixture);
+
+      expect(
+        await statusLoader.getAllHarnesses(NxFormfieldHarness.with({ status: 'positive' })),
+      ).toHaveSize(1);
+      expect(
+        await statusLoader.getAllHarnesses(NxFormfieldHarness.with({ status: null })),
+      ).toHaveSize(1);
     });
   });
 });
@@ -302,6 +329,19 @@ class ValidationErrorTest {
   imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],
 })
 class FilterTest {}
+
+@Component({
+  template: `
+    <nx-formfield label="Foo" appearance="outline" status="positive">
+      <input nxInput />
+      <span nxFormfieldStatusMessage>Account verified</span>
+    </nx-formfield>
+    <nx-formfield label="Bar" appearance="outline"><input nxInput /></nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxFormfieldModule, NxInputModule, ReactiveFormsModule],
+})
+class StatusTest {}
 
 @Component({
   template: `
