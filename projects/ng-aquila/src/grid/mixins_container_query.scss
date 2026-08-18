@@ -1,24 +1,24 @@
+@use 'sass:math';
+
 @use '../shared-styles/index' as *;
 
-// The outer inset of the container is independent from the column gutter, so it uses its own
-// `layout-inset-container-*` tokens rather than the `--grid-gutter-width-*` column gutter.
-@mixin make-container-by-container-query {
+@mixin make-container-by-container-query($gutters: $grid-gutter-widths) {
   position: relative;
   margin-left: auto;
   margin-right: auto;
 
   @include container-breakpoint-up(xsmall) {
-    padding-left: v(layout-inset-container-mobile);
-    padding-right: v(layout-inset-container-mobile);
+    padding-right: $grid-gutter-width-mobile;
+    padding-left: $grid-gutter-width-mobile;
   }
 
   @include container-breakpoint-up(medium) {
-    padding-left: v(layout-inset-container-base);
-    padding-right: v(layout-inset-container-base);
+    padding-right: $grid-gutter-width-base;
+    padding-left: $grid-gutter-width-base;
   }
 
   @include container-breakpoint-up(large) {
-    padding-left: v(layout-inset-container-large);
-    padding-right: v(layout-inset-container-large);
+    padding-right: $grid-gutter-width-large;
+    padding-left: $grid-gutter-width-large;
   }
 }

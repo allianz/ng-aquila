@@ -1,4 +1,13 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  Input,
+  input,
+} from '@angular/core';
 
 @Component({
   selector: '[nxLayout]',
@@ -12,6 +21,7 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, Input, input } fr
     '[class.nx-grid--no-padding]': 'noPadding',
     '[class.nx-grid--container-query]': 'containerQuery()',
     '[class.nx-grid--media-query]': '!containerQuery()',
+    '[class.nx-grid--a1]': 'a1Enabled()',
   },
   standalone: true,
 })
@@ -33,6 +43,14 @@ export class NxLayoutComponent {
    * See [mdn docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_container_queries) for more info
    */
   readonly containerQuery = input(false, { transform: booleanAttribute });
+
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+
+  protected readonly a1Enabled = computed<boolean>(
+    () => this._allianzOneOptions?.enabled?.() || false,
+  );
 
   /**
    * Type of layout.

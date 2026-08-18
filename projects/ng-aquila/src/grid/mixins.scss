@@ -97,9 +97,7 @@
   }
 }
 
-// The outer inset of the container is independent from the column gutter, so it uses its own
-// `layout-inset-*` tokens rather than the `--grid-gutter-width-*` column gutter.
-@mixin make-container-by-media-query {
+@mixin make-container-by-media-query($gutters: $grid-gutter-widths) {
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -179,11 +177,18 @@
 
 @mixin make-col($size, $columns: $grid-columns) {
   container-name: size-#{$size}-columns-#{$columns};
-  flex: 0 0 math.percentage(math.div($size, $columns));
+  flex: 0 0
+    calc(
+      #{math.percentage(math.div($size, $columns))} -
+        (var(--grid-column-gap) * #{math.div($columns - $size, $columns)})
+    );
   // Add a `max-width` to ensure content within each column does not blow out
   // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
   // do not appear to require this.
-  max-width: math.percentage(math.div($size, $columns));
+  max-width: calc(
+    #{math.percentage(math.div($size, $columns))} -
+      (var(--grid-column-gap) * #{math.div($columns - $size, $columns)})
+  );
 }
 
 @mixin make-col-modifier($type, $size, $columns) {

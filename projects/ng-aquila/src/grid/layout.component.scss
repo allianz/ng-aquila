@@ -2,13 +2,34 @@
 @use './mixins' as *;
 @use './mixins_container_query' as *;
 
+:host(.nx-grid--a1) {
+  ::ng-deep [class*='nx-grid__row--'] {
+    margin-left: 0;
+    margin-right: 0;
+    column-gap: var(--grid-column-gap);
+  }
+
+  ::ng-deep .nx-grid__column {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+:host(.nx-grid--a1.nx-grid--no-gutters) {
+  --grid-column-gap: 0px;
+}
+
+:host(.nx-grid--a1.nx-grid--no-padding) {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 :host(.nx-grid.nx-grid--media-query) {
-  @include make-container-by-media-query;
+  @include make-container-by-media-query($gutters: $grid-gutter-widths);
 }
 
 :host(.nx-grid.nx-grid--container-query) {
   container-type: inline-size;
-  @include make-container-by-container-query;
+  @include make-container-by-container-query($gutters: $grid-gutter-widths);
 }
 
 // Use to remove all spacing between cells
@@ -35,7 +56,7 @@
 }
 
 // Use to remove the outer spacing, for "edge to edge container" components
-:host(.nx-grid--no-padding.nx-grid--media-query) {
+:host(.nx-grid--no-padding.nx-grid--media-query:not(.nx-grid--a1)) {
   overflow-x: clip;
 
   ::ng-deep .nx-grid__row {
@@ -49,7 +70,7 @@
   }
 }
 
-:host(.nx-grid--no-padding.nx-grid--container-query) {
+:host(.nx-grid--no-padding.nx-grid--container-query:not(.nx-grid--a1)) {
   overflow-x: clip;
 
   ::ng-deep .nx-grid__row {
