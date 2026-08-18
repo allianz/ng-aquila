@@ -1,12 +1,23 @@
 @use '../shared-styles/index' as *;
 
+@each $size in (s, m, 800, 1000, 1200, 1400, 1600, 1800, 2000) {
+  :host(.nx-indicator--#{$size}) {
+    --indicator-height: #{v(indicator-#{$size}-size)};
+    --indicator-width: #{v(indicator-#{$size}-size)};
+    --indicator-font-size: #{v(indicator-#{$size}-font-size)};
+    --indicator-line-height: #{v(indicator-#{$size}-line-height)};
+    --indicator-padding: #{v(indicator-#{$size}-padding)};
+    --indicator-empty-size: #{v(indicator-#{$size}-empty-size)};
+  }
+}
+
 :host {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   border-radius: v(indicator-border-radius);
-  padding: v(indicator-padding);
+  padding: 0;
   height: v(indicator-height);
   @include type-style(indicator);
   color: v(indicator-color);
@@ -19,18 +30,45 @@
     width: v(indicator-empty-size);
   }
 
-  &.single-letter {
-    padding: v(indicator-single-letter-padding);
+  &.nx-indicator--padded {
+    padding: v(indicator-padding);
   }
 
   &:not(:empty) {
     min-width: v(indicator-width);
   }
 
+  &.nx-indicator--icon {
+    width: v(indicator-height);
+    padding: 0;
+    overflow: hidden;
+
+    ::ng-deep nx-icon {
+      font-size: v(indicator-font-size);
+    }
+
+    // In case an image is used, it fills the indicator instead of using its size. Scoped to
+    // direct children so the `svg` inside an `nx-icon` keeps its own sizing.
+    > ::ng-deep :is(img, svg, picture, figure) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @each $type in (critical, warning, positive, info) {
+    &.nx-indicator--#{$type} {
+      color: v(indicator-#{$type}-color);
+      background-color: v(indicator-#{$type}-background-color);
+      border-color: v(indicator-#{$type}-border-color);
+    }
+  }
+
   @media screen and (forced-colors: active) {
-    border: nx-border-size(xs) solid CanvasText;
-    color: CanvasText;
-    background-color: Canvas;
+    forced-color-adjust: none;
+    border: nx-border-size(xs) solid CanvasText !important;
+    color: CanvasText !important;
+    background-color: Canvas !important;
   }
 
   &.nx-indicator--over-text {

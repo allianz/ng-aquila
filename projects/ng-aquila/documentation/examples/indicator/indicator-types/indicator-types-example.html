@@ -1,0 +1,11 @@
+@for (type of types; track type) {
+  <div class="docs-indicator-type">
+    <span class="docs-indicator-type__label">{{ type }}</span>
+    <nx-indicator [type]="type"></nx-indicator>
+    <nx-indicator [type]="type">1</nx-indicator>
+    <nx-indicator [type]="type">99+</nx-indicator>
+    <nx-indicator [type]="type">
+      <nx-icon name="chevron-left" aria-hidden="true"></nx-icon>
+    </nx-indicator>
+  </div>
+}

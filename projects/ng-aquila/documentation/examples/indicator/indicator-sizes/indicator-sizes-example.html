@@ -1,0 +1,11 @@
+@for (size of sizes; track size) {
+  <div class="docs-indicator-size">
+    <span class="docs-indicator-size__label">{{ size }}</span>
+    <nx-indicator [size]="size"></nx-indicator>
+    <nx-indicator [size]="size">1</nx-indicator>
+    <nx-indicator [size]="size">99+</nx-indicator>
+    <nx-indicator [size]="size">
+      <nx-icon name="chevron-left" aria-hidden="true"></nx-icon>
+    </nx-indicator>
+  </div>
+}

@@ -1,0 +1,11 @@
+.docs-indicator-size {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 32px;
+}
+
+.docs-indicator-size__label {
+  width: 48px;
+  font-family: monospace;
+}
