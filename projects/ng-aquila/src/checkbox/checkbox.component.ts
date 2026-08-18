@@ -44,6 +44,7 @@ import {
   ValidationErrors,
   Validator,
 } from '@angular/forms';
+import { FORM_FIELD } from '@angular/forms/signals';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -187,6 +188,8 @@ export class NxCheckboxGroupComponent
 
   private readonly _destroyed = new Subject<void>();
 
+  private readonly _formField = inject(FORM_FIELD, { optional: true, self: true });
+
   constructor(
     private readonly _cdr: ChangeDetectorRef,
     private readonly _errorStateMatcher: ErrorStateMatcher,
@@ -214,7 +217,9 @@ export class NxCheckboxGroupComponent
     this._checkboxes.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
       this._value = this._checkboxes.filter((checkbox) => checkbox.checked).map((cb) => cb.value);
 
-      if (this.ngControl) {
+      if (this._formField) {
+        this._formField.state().value.set(this._value);
+      } else if (this.ngControl) {
         this.ngControl.control!.setValue(this._value);
       }
       this._updateSelectedCheckboxFromValue();

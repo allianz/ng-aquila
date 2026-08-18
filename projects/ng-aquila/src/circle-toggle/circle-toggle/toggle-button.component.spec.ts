@@ -200,6 +200,32 @@ describe('NxCircleToggle', () => {
     expect(reactComp.testGroup.value.reactiveToggle).toBeFalsy();
   }));
 
+  describe('touched', () => {
+    // A standalone circle toggle (no wrapping group) is a field of its own, so it marks the
+    // control touched as soon as its own input is blurred. Inside a group the touched state is
+    // owned by the group, which only reports it once the focus leaves the whole group.
+    it('should be touched when the toggle is blurred', fakeAsync(() => {
+      createTestComponent(ReactiveToggleButtonComponent);
+      const reactComp = fixture.componentInstance as ReactiveToggleButtonComponent;
+
+      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBeFalse();
+
+      dispatchFakeEvent(input, 'blur');
+      fixture.detectChanges();
+      tick();
+
+      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBeTrue();
+    }));
+
+    it('should not be touched before any interaction', fakeAsync(() => {
+      createTestComponent(ReactiveToggleButtonComponent);
+      const reactComp = fixture.componentInstance as ReactiveToggleButtonComponent;
+      tick();
+
+      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBeFalse();
+    }));
+  });
+
   it('focuses the toggle button when calling focus()', () => {
     createTestComponent(SimpleCircleToggleButtonComponent);
     toggleComponent.focus();

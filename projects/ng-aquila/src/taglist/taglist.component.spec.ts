@@ -1,8 +1,10 @@
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormControl, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
+import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxTaglistComponent } from './taglist.component';
 import { NxTaglistModule } from './taglist.module';
 
@@ -49,6 +51,8 @@ describe('NxTaglistComponent', () => {
         KeywordTaglist,
         LabelPropertyTaglist,
         OnPushTagList,
+        ReactiveFormTaglist,
+        NgModelTaglist,
       ],
     }).compileComponents();
   }));
@@ -256,6 +260,63 @@ describe('NxTaglistComponent', () => {
     expect(tagElements.item(0).textContent?.trim()).toBe('a');
   });
 
+  describe('forms', () => {
+    it('marks the control as touched on blur with reactive forms', () => {
+      createTestComponent(ReactiveFormTaglist);
+      const control = (testInstance as ReactiveFormTaglist).control;
+
+      expect(control.touched).toBeFalse();
+
+      const taglistElement = fixture.nativeElement.querySelector('nx-taglist') as HTMLElement;
+      dispatchFakeEvent(taglistElement, 'focusout');
+      fixture.detectChanges();
+
+      expect(control.touched).toBeTrue();
+    });
+
+    it('marks the control as touched on blur with template driven forms', fakeAsync(() => {
+      createTestComponent(NgModelTaglist);
+      flush();
+      const ngModel = (testInstance as NgModelTaglist).ngModel;
+
+      expect(ngModel.touched).toBeFalse();
+
+      const taglistElement = fixture.nativeElement.querySelector('nx-taglist') as HTMLElement;
+      dispatchFakeEvent(taglistElement, 'focusout');
+      fixture.detectChanges();
+      flush();
+
+      expect(ngModel.touched).toBeTrue();
+    }));
+
+    it('does not mark the control as touched while the focus stays inside the taglist', () => {
+      createTestComponent(ReactiveFormTaglist);
+      const control = (testInstance as ReactiveFormTaglist).control;
+
+      const taglistElement = fixture.nativeElement.querySelector('nx-taglist') as HTMLElement;
+      const tagElement = fixture.nativeElement.querySelector('nx-tag') as HTMLElement;
+      taglistElement.dispatchEvent(
+        new FocusEvent('focusout', { bubbles: true, relatedTarget: tagElement }),
+      );
+      fixture.detectChanges();
+
+      expect(control.touched).toBeFalse();
+    });
+
+    it('renders the empty state when the form writes a null value', () => {
+      createTestComponent(ReactiveFormTaglist);
+      expect(getTagElements()).toHaveSize(2);
+
+      // Angular forms pass null for a reset control; writeValue maps it to an empty array so the
+      // template does not throw on `tags.length`.
+      (testInstance as ReactiveFormTaglist).control.reset();
+      fixture.detectChanges();
+
+      expect(taglistInstance.tags).toEqual([]);
+      expect(getTagElements()).toHaveSize(0);
+    });
+  });
+
   describe('a11y', () => {
     it('emits (removed) event on delete', () => {
       createTestComponent(BasicTaglist);
@@ -373,3 +434,21 @@ class AriaLabelledByTaglist extends TaglistTest {
   imports: [NxTaglistModule],
 })
 class KeywordTaglist extends TaglistTest {}
+
+@Component({
+  template: `<nx-taglist [formControl]="control">empty</nx-taglist>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTaglistModule, ReactiveFormsModule],
+})
+class ReactiveFormTaglist extends TaglistTest {
+  control = new FormControl<(string | object)[]>(this.tags);
+}
+
+@Component({
+  template: `<nx-taglist [(ngModel)]="tags">empty</nx-taglist>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTaglistModule, FormsModule],
+})
+class NgModelTaglist extends TaglistTest {
+  @ViewChild(NgModel) ngModel!: NgModel;
+}

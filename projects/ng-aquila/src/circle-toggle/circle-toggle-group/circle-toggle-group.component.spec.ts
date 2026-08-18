@@ -62,6 +62,11 @@ describe('NxToggleButtonGroup', () => {
     return Array.from(toggleButtons).map((toggle) => toggle.querySelector('nx-icon-toggle-button'));
   }
 
+  function blurGroup(relatedTarget: HTMLElement | null = null) {
+    toggleNativeElement.dispatchEvent(new FocusEvent('focusout', { relatedTarget }));
+    fixture.detectChanges();
+  }
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -154,6 +159,40 @@ describe('NxToggleButtonGroup', () => {
     click(1);
     expect(reactComp.testGroup.value.reactiveToggle).toBe('B');
   }));
+
+  describe('touched', () => {
+    // A toggle inside a group only marks the control touched once the focus leaves the whole
+    // group; moving between the toggles of the group is not "leaving the field".
+    it('should not be touched when a toggle is selected without leaving the group', fakeAsync(() => {
+      createTestComponent(ReactiveCircleToggleGroupComponent);
+      const reactComp = fixture.componentInstance as ReactiveCircleToggleGroupComponent;
+
+      click(0);
+      tick();
+
+      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBeFalse();
+    }));
+
+    it('should not be touched when moving focus between toggles in the group', fakeAsync(() => {
+      createTestComponent(ReactiveCircleToggleGroupComponent);
+      const reactComp = fixture.componentInstance as ReactiveCircleToggleGroupComponent;
+
+      blurGroup(toggleInputs.item(1));
+      tick();
+
+      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBeFalse();
+    }));
+
+    it('should be touched after focus leaves the group', fakeAsync(() => {
+      createTestComponent(ReactiveCircleToggleGroupComponent);
+      const reactComp = fixture.componentInstance as ReactiveCircleToggleGroupComponent;
+
+      blurGroup();
+      tick();
+
+      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBeTrue();
+    }));
+  });
 
   it('should work with ngFor', () => {
     createTestComponent(NgForCircleToggleGroupComponent);

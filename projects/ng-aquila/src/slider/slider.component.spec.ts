@@ -9,9 +9,16 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormsModule,
+  NgModel,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
+import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxSliderComponent } from './slider.component';
 import { NxSliderModule } from './slider.module';
 
@@ -107,6 +114,11 @@ describe('NxSliderComponent', () => {
   function getFillerWidth() {
     const filler = fixture.nativeElement.querySelector('.nx-slider__filler');
     return filler.style.width;
+  }
+
+  function blurHandle() {
+    dispatchFakeEvent(fixture.nativeElement.querySelector('.nx-slider__handle'), 'blur');
+    fixture.detectChanges();
   }
 
   describe('basic', () => {
@@ -479,6 +491,20 @@ describe('NxSliderComponent', () => {
     it('should update the model value after sliding', () => {
       createTestComponent(NgModelSlider);
     });
+
+    it('should be touched when the handle is blurred', fakeAsync(() => {
+      createTestComponent(NgModelSlider);
+      tick();
+      fixture.detectChanges();
+      const ngModel = (testInstance as NgModelSlider).ngModel;
+
+      expect(ngModel.touched).toBeFalse();
+
+      blurHandle();
+      tick();
+
+      expect(ngModel.touched).toBeTrue();
+    }));
   });
 
   describe('with reactive forms', () => {
@@ -490,6 +516,25 @@ describe('NxSliderComponent', () => {
 
     it('should update form value after sliding', () => {
       createTestComponent(ReactiveFormsSlider);
+    });
+
+    // The handle is the only focusable part of the slider, so the slider is a standalone
+    // control that marks itself touched on the handle's own blur.
+    it('should be touched when the handle is blurred', () => {
+      createTestComponent(ReactiveFormsSlider);
+      const control = (testInstance as ReactiveFormsSlider).testForm.controls.slide;
+
+      expect(control.touched).toBeFalse();
+
+      blurHandle();
+
+      expect(control.touched).toBeTrue();
+    });
+
+    it('should not be touched before any interaction', () => {
+      createTestComponent(ReactiveFormsSlider);
+
+      expect((testInstance as ReactiveFormsSlider).testForm.controls.slide.touched).toBeFalse();
     });
 
     it('should toggle disabled', () => {
@@ -849,6 +894,7 @@ class SimpleBindingSlider extends SliderTest {
   imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
 })
 class NgModelSlider extends SliderTest {
+  @ViewChild(NgModel) ngModel!: NgModel;
   value = 10;
 }
 

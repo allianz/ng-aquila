@@ -23,6 +23,7 @@
           (mousedown)="_dragStart()"
           (touchstart)="_dragStart()"
           (selectstart)="_selectStart()"
+          (blur)="_onHandleBlur()"
           #handle
         >
           @if (thumbLabel) {

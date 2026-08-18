@@ -323,6 +323,11 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     this._onTouched = fn;
   }
 
+  /** The handle is the only focusable part of the slider, so its blur touches the control. */
+  _onHandleBlur(): void {
+    this._onTouched();
+  }
+
   setDisabledState(disabled: boolean) {
     this.disabled = disabled;
   }

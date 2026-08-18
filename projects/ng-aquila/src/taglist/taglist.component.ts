@@ -10,6 +10,7 @@ import {
   ElementRef,
   EventEmitter,
   forwardRef,
+  inject,
   Input,
   Output,
   QueryList,
@@ -44,10 +45,13 @@ import { NxTaglist, TAGLIST } from './taglist-interface';
     '[class.nx-taglist--keyword]': 'isKeywordList',
     '[attr.aria-labelledby]': 'labelledby || null',
     '[attr.tabindex]': '-1',
+    '(focusout)': '_onFocusOut($event)',
   },
   imports: [NxTagComponent],
 })
 export class NxTaglistComponent implements NxTaglist, ControlValueAccessor {
+  private readonly _elementRef = inject(ElementRef);
+
   /** An event is dispatched each time when the list of tags changed. */
   @Output('tagsChange') readonly tagsChange = new EventEmitter<any[]>();
 
@@ -173,7 +177,9 @@ export class NxTaglistComponent implements NxTaglist, ControlValueAccessor {
 
   /** @docs-private */
   writeValue(tags: any): void {
-    this.tags = tags;
+    // Angular forms always pass null first, so we have to set this as an empty array
+    // or the template would fail on `tags.length`.
+    this.tags = tags ?? [];
   }
 
   registerOnChange(fn: any): void {
@@ -182,6 +188,15 @@ export class NxTaglistComponent implements NxTaglist, ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this._onTouched = fn;
+  }
+
+  // The focus lives on the contained tags (and on the host itself, which is tabbable), so we
+  // listen for the bubbling focusout instead of blur and only report touched once the focus
+  // actually left the taglist.
+  protected _onFocusOut(event: FocusEvent): void {
+    if (!this._elementRef.nativeElement.contains(event.relatedTarget as Node)) {
+      this._onTouched();
+    }
   }
 
   /** @docs-private */

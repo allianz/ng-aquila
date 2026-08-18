@@ -272,6 +272,37 @@ describe('NxCheckboxGroupComponent', () => {
     expect(checkboxInstances).toHaveSize(4);
   }));
 
+  it('should update the form control value when a checkbox is added', fakeAsync(() => {
+    createTestComponent(CheckboxGroupDynamic);
+    fixture.detectChanges();
+    tick();
+
+    const dynamicTest = fixture.componentInstance as CheckboxGroupDynamic;
+    dynamicTest.addNewCb();
+    fixture.detectChanges();
+    tick();
+
+    expect(testInstance.myFormGroup.get('terms')!.value).toEqual([
+      'one',
+      'two',
+      'three',
+      'New Value 1',
+    ]);
+  }));
+
+  it('should keep the form control pristine when a checkbox is added programmatically', fakeAsync(() => {
+    createTestComponent(CheckboxGroupDynamic);
+    fixture.detectChanges();
+    tick();
+
+    const dynamicTest = fixture.componentInstance as CheckboxGroupDynamic;
+    dynamicTest.addNewCb();
+    fixture.detectChanges();
+    tick();
+
+    expect(testInstance.myFormGroup.get('terms')!.pristine).toBeTrue();
+  }));
+
   it('should remove one checkbox', fakeAsync(() => {
     createTestComponent(CheckboxGroupDynamic);
     const dynamicTest = fixture.componentInstance as CheckboxGroupDynamic;
@@ -279,6 +310,19 @@ describe('NxCheckboxGroupComponent', () => {
     fixture.detectChanges();
     tick();
     expect(checkboxInstances).toHaveSize(2);
+  }));
+
+  it('should update the form control value when a checkbox is removed', fakeAsync(() => {
+    createTestComponent(CheckboxGroupDynamic);
+    fixture.detectChanges();
+    tick();
+
+    const dynamicTest = fixture.componentInstance as CheckboxGroupDynamic;
+    dynamicTest.removeCB();
+    fixture.detectChanges();
+    tick();
+
+    expect(testInstance.myFormGroup.get('terms')!.value).toEqual(['two', 'three']);
   }));
 
   it('should emit an event on checked changed', fakeAsync(() => {
