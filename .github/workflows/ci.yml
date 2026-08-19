@@ -48,5 +48,8 @@ jobs:
       - name: Build ng-aquila
         run: npm run build:lib
 
+      - name: Test styles package
+        run: npm run test:styles-package
+
       - name: Build documentation
         run: npm run build:docs -- --progress=false

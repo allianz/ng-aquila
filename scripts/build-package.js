@@ -55,6 +55,34 @@ function globCopy(sourcePath, destinationPath, globPath) {
   });
 }
 
+/**
+ * Sass files required by the public `@allianz/ng-aquila/styles/utils` entry point.
+ *
+ * Sass does not provide a privacy boundary for copied files: consumers can import every file in
+ * this list directly. Keep the list explicit and copy only files whose complete surface is suitable
+ * as supported public API. The forwards in `public-utils.scss` provide the preferred entry point.
+ *
+ * Names are preserved because the copy does not rewrite `@use` specifiers, so any file that another
+ * copied file imports must keep its source name. `public-utils.scss` is the only exception: nothing
+ * imports it, and the rename is what lets `@use '.../styles/utils'` resolve to the directory.
+ */
+const PUBLIC_STYLE_UTILS = [
+  ['public-utils.scss', '_index.scss'],
+  ['breakpoints.scss', 'breakpoints.scss'],
+  ['grid.scss', 'grid.scss'],
+];
+
+function copyPublicStyleUtils() {
+  rimrafSync('dist/ng-aquila/styles/utils');
+
+  PUBLIC_STYLE_UTILS.forEach(([source, destination]) => {
+    fs.copySync(
+      `projects/ng-aquila/src/shared-styles/${source}`,
+      `dist/ng-aquila/styles/utils/${destination}`,
+    );
+  });
+}
+
 function compileSchematics() {
   rimrafSync('./dist/ng-aquila/schematics');
 
@@ -106,7 +134,8 @@ compileSchematics();
 
 console.log('============================');
 console.log('  Copying scss sources');
-fs.copy(`projects/ng-aquila/src/shared-styles/theming`, `dist/ng-aquila/styles`);
+fs.copySync(`projects/ng-aquila/src/shared-styles/theming`, `dist/ng-aquila/styles`);
+copyPublicStyleUtils();
 
 console.log('============================');
 console.log('  Copying other assets');
