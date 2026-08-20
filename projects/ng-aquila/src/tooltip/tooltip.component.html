@@ -6,6 +6,9 @@
     [style.opacity]="visibility === 'initial' ? 0 : null"
     (animate.enter)="onEnter()"
     (animate.leave)="onLeave()"
+    (mouseenter)="_handleMouseenter()"
+    (mouseleave)="_handleMouseleave()"
+    (click)="$event.stopPropagation()"
   >
     <svg
       class="nx-tooltip__arrow"

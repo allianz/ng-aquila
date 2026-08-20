@@ -32,6 +32,7 @@ type TooltipVisibility = 'initial' | 'visible' | 'hidden';
     '[style.zoom]': 'visibility === "visible" ? 1 : null',
     '(body:click)': 'this._handleBodyInteraction()',
     'aria-hidden': 'true',
+    role: 'tooltip',
   },
   imports: [NgClass, NgStyle],
 })
@@ -107,6 +108,12 @@ export class NxTooltipComponent implements OnDestroy {
   /** Whether interactions on the page should close the tooltip */
   private _closeOnInteraction = false;
 
+  /** Matches the trigger's hide delay, so crossing the arrow gap back to it can still cancel the hide. */
+  _mouseLeaveHideDelay = 0;
+
+  /** Whether to announce on show. False when focus already triggers `aria-describedby`, to avoid a duplicate announcement. */
+  _announceOnShow = true;
+
   /** Subject for notifying that the tooltip has been hidden from the view */
   private readonly _onHide = new Subject<void>();
 
@@ -134,7 +141,9 @@ export class NxTooltipComponent implements OnDestroy {
     this._showTimeoutId = window.setTimeout(() => {
       this._visibility = 'visible';
       this._showTimeoutId = null;
-      this._liveAnnouncer.announce(this.message);
+      if (this._announceOnShow) {
+        this._liveAnnouncer.announce(this.message);
+      }
       // Mark for check so if any parent component has set the
       // ChangeDetectionStrategy to OnPush it will be checked anyways
       this._cdr.markForCheck();
@@ -146,8 +155,10 @@ export class NxTooltipComponent implements OnDestroy {
    * @param delay Amount of milliseconds to delay showing the tooltip.
    */
   hide(delay: number): void {
+    // Cancel any pending hide so a shorter one (e.g. from ESCAPE) can override it.
     if (this._hideTimeoutId) {
-      return;
+      clearTimeout(this._hideTimeoutId);
+      this._hideTimeoutId = null;
     }
     // Cancel the delayed show if it is scheduled
     if (this._showTimeoutId) {
@@ -184,6 +195,10 @@ export class NxTooltipComponent implements OnDestroy {
     return this._showTimeoutId !== null || this._hideTimeoutId !== null;
   }
 
+  isPendingShow(): boolean {
+    return this._showTimeoutId !== null;
+  }
+
   ngOnDestroy(): void {
     this._onHide.complete();
   }
@@ -195,6 +210,24 @@ export class NxTooltipComponent implements OnDestroy {
     if (this._closeOnInteraction) {
       this.hide(0);
     }
+  }
+
+  /** Cancels a pending hide without replaying the show delay or re-announcing. */
+  _cancelPendingHide(): void {
+    if (this._hideTimeoutId) {
+      clearTimeout(this._hideTimeoutId);
+      this._hideTimeoutId = null;
+    }
+  }
+
+  /** Keeps the tooltip open while the pointer is over it, e.g. to read or select its content. */
+  protected _handleMouseenter(): void {
+    this._cancelPendingHide();
+  }
+
+  /** Hides with the trigger's delay, so moving back onto it can still cancel the hide. */
+  protected _handleMouseleave(): void {
+    this.hide(this._mouseLeaveHideDelay);
   }
 
   protected onEnter(): void {

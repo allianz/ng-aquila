@@ -1,7 +1,7 @@
 import { AriaDescriber, FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ESCAPE } from '@angular/cdk/keycodes';
+import { hasModifierKey } from '@angular/cdk/keycodes';
 import {
   ConnectionPositionPair,
   FlexibleConnectedPositionStrategy,
@@ -136,7 +136,6 @@ export function NX_TOOLTIP_DEFAULT_OPTIONS_FACTORY(): NxTooltipDefaultOptions {
   selector: '[nxTooltip]',
   exportAs: 'nxTooltip',
   host: {
-    '(keydown)': '_handleKeydown($event)',
     '(touchend)': '_handleTouchend()',
   },
   standalone: true,
@@ -303,7 +302,8 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
         if (!origin) {
           this._ngZone.run(() => this.hide(0));
         } else if (origin === 'keyboard') {
-          this._ngZone.run(() => this.show());
+          // Don't announce: the trigger's `aria-describedby` already reads it out on focus.
+          this._ngZone.run(() => this.show(undefined, false));
         }
       });
   }
@@ -330,13 +330,34 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
     this._focusMonitor.stopMonitoring(this._elementRef);
   }
 
-  /** Shows the tooltip after the delay in ms, defaults to tooltip-delay-show or 0ms if no input */
-  show(delay: number = this.showDelay()): void {
-    if (
-      this.disabled ||
-      !this.message ||
-      (this._isTooltipVisible() && !this._tooltipInstance?.isDelayed())
-    ) {
+  /**
+   * Shows the tooltip after the delay in ms, defaults to tooltip-delay-show or 0ms if no input
+   * @param delay Amount of milliseconds to delay showing the tooltip.
+   * @param announce Whether to announce the message to screen readers. Pass `false` when the
+   * trigger's `aria-describedby` already reads it out, e.g. on keyboard focus.
+   */
+  show(delay: number = this.showDelay(), announce = true): void {
+    if (this.disabled || !this.message) {
+      return;
+    }
+
+    if (this._isTooltipVisible() && !this._tooltipInstance?.isDelayed()) {
+      // e.g. calling `show` twice in a row.
+      return;
+    }
+
+    if (this._tooltipInstance) {
+      if (this._isTooltipVisible() || this._tooltipInstance.isPendingShow()) {
+        // Nothing about visibility is changing, so just cancel the pending hide instead of
+        // replaying the show delay and re-announcing.
+        this._tooltipInstance._cancelPendingHide();
+        return;
+      }
+
+      // Reuse the instance instead of recreating the overlay, which would flash the tooltip
+      // closed and replay the full show delay.
+      this._tooltipInstance._announceOnShow = announce;
+      this._tooltipInstance.show(delay);
       return;
     }
 
@@ -346,6 +367,8 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
     this._portal = this._portal || new ComponentPortal(NxTooltipComponent, this._viewContainerRef);
     this._embeddedViewRef = overlayRef.attach(this._portal);
     this._tooltipInstance = this._embeddedViewRef.instance;
+    this._tooltipInstance._mouseLeaveHideDelay = this.hideDelay();
+    this._tooltipInstance._announceOnShow = announce;
     this._tooltipInstance
       .afterHidden()
       .pipe(takeUntil(this._destroyed))
@@ -374,14 +397,6 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
   /** Returns true if the tooltip is currently visible to the user */
   _isTooltipVisible(): boolean {
     return !!this._tooltipInstance && this._tooltipInstance.isVisible();
-  }
-
-  /** Handles the keydown events on the host element. */
-  _handleKeydown(e: KeyboardEvent) {
-    if (this._isTooltipVisible() && e.keyCode === ESCAPE) {
-      e.stopPropagation();
-      this.hide(0);
-    }
   }
 
   /** Handles the touchend events on the host element. */
@@ -444,6 +459,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
       panelClass: NX_TOOLTIP_PANEL_CLASS,
       scrollStrategy: this._scrollStrategyFactory(),
       disposeOnNavigation: true,
+      eventPredicate: this._overlayEventPredicate,
     });
 
     this._updatePosition();
@@ -453,8 +469,39 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
       .pipe(takeUntil(this._destroyed))
       .subscribe(() => this._detach());
 
+    this._overlayRef
+      .keydownEvents()
+      .pipe(takeUntil(this._destroyed))
+      .subscribe((event) => {
+        // Key already checked by `eventPredicate` above. `preventDefault` stops the browser's
+        // own ESCAPE handling, e.g. exiting native fullscreen.
+        event.preventDefault();
+        event.stopPropagation();
+        this._ngZone.run(() => this.hide(0));
+      });
+
     return this._overlayRef;
   }
+
+  /**
+   * Routes ESCAPE through the CDK's shared overlay dispatcher instead of a standalone `document`
+   * listener, so only the topmost overlay reacts to a single ESCAPE press.
+   */
+  private readonly _overlayEventPredicate = (event: Event): boolean => {
+    if (event.type !== 'keydown') {
+      return true;
+    }
+
+    // Pending show must be dismissable too, so the tooltip can't pop up right after ESCAPE.
+    const isShownOrPending = this._isTooltipVisible() || !!this._tooltipInstance?.isPendingShow();
+
+    // Leave modifier combos like `Cmd + ESCAPE` to the browser/OS.
+    return (
+      isShownOrPending &&
+      (event as KeyboardEvent).key === 'Escape' &&
+      !hasModifierKey(event as KeyboardEvent)
+    );
+  };
 
   /** Detaches the currently-attached tooltip. */
   private _detach() {

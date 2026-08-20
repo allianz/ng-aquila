@@ -1,7 +1,6 @@
 import { fakeScrollStrategyFunction } from '@allianz/ng-aquila/utils';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { FocusMonitor, LiveAnnouncer } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
-import { ESCAPE } from '@angular/cdk/keycodes';
 import { CdkScrollable, OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { Platform } from '@angular/cdk/platform';
 import { Location } from '@angular/common';
@@ -45,10 +44,10 @@ function createFakeEvent(type: string, bubbles = false, cancelable = true) {
 export function dispatchKeyboardEvent(
   node: Node,
   type: string,
-  keyCode: number,
+  key: string,
   target?: Element,
 ): KeyboardEvent {
-  return dispatchEvent(node, createKeyboardEvent(type, keyCode)) as KeyboardEvent;
+  return dispatchEvent(node, createKeyboardEvent(type, 0, key)) as KeyboardEvent;
 }
 
 function dispatchEvent(node: Node | Window, event: Event): Event {
@@ -567,6 +566,23 @@ describe('NxTooltipDirective', () => {
       expect(overlayContainerElement.textContent).toBe('');
     }));
 
+    it('should not hide when clicking on the tooltip itself, e.g. to copy its text', fakeAsync(() => {
+      tooltipDirective.show();
+      tick(200);
+      fixture.detectChanges();
+      tick(100); // Wait for CSS animation
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+
+      const tooltipElement = overlayContainerElement.querySelector('.nx-tooltip') as HTMLElement;
+      tooltipElement.dispatchEvent(createFakeEvent('click', true));
+      tick(200);
+      fixture.detectChanges();
+      tick(100);
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+    }));
+
     it('should not hide immediately if a click fires while animating', fakeAsync(() => {
       tooltipDirective.show();
       tick(200);
@@ -581,12 +597,276 @@ describe('NxTooltipDirective', () => {
 
     it('should not throw when pressing ESCAPE', fakeAsync(() => {
       expect(() => {
-        dispatchKeyboardEvent(buttonElement, 'keydown', ESCAPE);
+        dispatchKeyboardEvent(buttonElement, 'keydown', 'Escape');
         fixture.detectChanges();
       }).not.toThrow();
 
       // Flush due to the additional tick that is necessary for the FocusMonitor.
       flush();
+    }));
+
+    it('should hide the tooltip when pressing ESCAPE while it is visible', fakeAsync(() => {
+      tooltipDirective.show();
+      tick(200);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+
+      dispatchKeyboardEvent(buttonElement, 'keydown', 'Escape');
+      tick(0);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
+
+      flush();
+    }));
+
+    it('should call preventDefault on ESCAPE so the browser does not run its own default action for the key (e.g. exiting native fullscreen)', fakeAsync(() => {
+      tooltipDirective.show();
+      tick(200);
+      fixture.detectChanges();
+
+      const event = createKeyboardEvent('keydown', 0, 'Escape');
+      vi.spyOn(event, 'preventDefault');
+      buttonElement.dispatchEvent(event);
+      tick(0);
+      fixture.detectChanges();
+
+      expect(event.preventDefault).toHaveBeenCalled();
+
+      flush();
+    }));
+
+    it('should hide a hover-triggered tooltip when pressing ESCAPE without focusing the trigger', fakeAsync(() => {
+      // Hover-triggered tooltips don't move focus onto the trigger, so ESCAPE must still
+      // be picked up even though `document.activeElement` isn't the trigger element.
+      buttonElement.dispatchEvent(createFakeEvent('mouseenter'));
+      tick(200);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+      expect(document.activeElement).not.toBe(buttonElement);
+
+      dispatchKeyboardEvent(document.body, 'keydown', 'Escape');
+      tick(0);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
+
+      flush();
+    }));
+
+    it('should hide immediately on ESCAPE even if a longer hide delay is already counting down', fakeAsync(() => {
+      // Leaving the trigger schedules a hide after `hideDelay`, which must not block ESCAPE
+      // from hiding the tooltip right away instead of waiting out the rest of that delay.
+      fixture.componentInstance.hideDelay = 10000;
+      fixture.detectChanges();
+
+      buttonElement.dispatchEvent(createFakeEvent('mouseenter'));
+      tick(200);
+      fixture.detectChanges();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+
+      buttonElement.dispatchEvent(createFakeEvent('mouseleave'));
+      fixture.detectChanges();
+      expect(
+        tooltipDirective._isTooltipVisible(),
+        'still visible while the hide delay counts down',
+      ).toBe(true);
+
+      dispatchKeyboardEvent(document.body, 'keydown', 'Escape');
+      tick(0);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
+
+      flush();
+    }));
+
+    it('should not announce the message when the focused trigger already describes it', fakeAsync(() => {
+      // The trigger carries an `aria-describedby` pointing at a hidden copy of the message, so a
+      // screen reader reads it out on focus already. Announcing it again would duplicate it.
+      const liveAnnouncer = TestBed.inject(LiveAnnouncer);
+      const announceSpy = vi
+        .spyOn(liveAnnouncer, 'announce')
+        .mockImplementation(() => Promise.resolve());
+
+      patchElementFocus(buttonElement);
+      focusMonitor.focusVia(buttonElement, 'keyboard');
+      tick(200);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+      expect(buttonElement.hasAttribute('aria-describedby')).toBe(true);
+      expect(announceSpy).not.toHaveBeenCalled();
+
+      flush();
+    }));
+
+    it('should announce the message when the tooltip is shown without focusing the trigger', fakeAsync(() => {
+      // A hover- or programmatically-triggered tooltip doesn't move focus, so the trigger's
+      // `aria-describedby` is never read out and the announcement is the only way the message
+      // reaches a screen reader.
+      const liveAnnouncer = TestBed.inject(LiveAnnouncer);
+      const announceSpy = vi
+        .spyOn(liveAnnouncer, 'announce')
+        .mockImplementation(() => Promise.resolve());
+
+      buttonElement.dispatchEvent(createFakeEvent('mouseenter'));
+      tick(200);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+      expect(announceSpy).toHaveBeenCalledWith(initialTooltipMessage);
+
+      flush();
+    }));
+
+    it('should not re-announce the message when re-entering the trigger before a pending hide elapses', fakeAsync(() => {
+      // Leaving and quickly re-entering the trigger doesn't change the tooltip's visible state
+      // at all (it was showing before, it's still showing now), so nothing should be announced
+      // a second time.
+      const liveAnnouncer = TestBed.inject(LiveAnnouncer);
+      const announceSpy = vi
+        .spyOn(liveAnnouncer, 'announce')
+        .mockImplementation(() => Promise.resolve());
+
+      buttonElement.dispatchEvent(createFakeEvent('mouseenter'));
+      tick(200);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+      expect(announceSpy).toHaveBeenCalledTimes(1);
+
+      // Leaving schedules a hide after the default hide delay (200ms).
+      buttonElement.dispatchEvent(createFakeEvent('mouseleave'));
+
+      // Re-entering before that delay elapses calls `show()` again while the tooltip is still
+      // visible with a hide pending.
+      tick(100);
+      buttonElement.dispatchEvent(createFakeEvent('mouseenter'));
+      tick(200); // Wait well past the show delay to make sure nothing gets rescheduled.
+      fixture.detectChanges();
+
+      expect(
+        tooltipDirective._isTooltipVisible(),
+        'Expected the tooltip to still be visible throughout.',
+      ).toBe(true);
+      expect(
+        announceSpy,
+        'Expected the message not to be announced a second time.',
+      ).toHaveBeenCalledTimes(1);
+
+      flush();
+    }));
+
+    it('should cancel a tooltip that is still waiting out its show delay when pressing ESCAPE', fakeAsync(() => {
+      // Otherwise the tooltip would still pop up after the user already pressed ESCAPE
+      // to get rid of it.
+      buttonElement.dispatchEvent(createFakeEvent('mouseenter'));
+      tick(100);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
+
+      dispatchKeyboardEvent(document.body, 'keydown', 'Escape');
+      tick(0);
+      fixture.detectChanges();
+
+      // Wait well past the show delay to make sure it doesn't appear anymore.
+      tick(500);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
+
+      flush();
+    }));
+
+    it('should ignore ESCAPE when it is pressed with a modifier key', fakeAsync(() => {
+      // Combinations like `Cmd + ESCAPE` are reserved for the browser and the OS.
+      tooltipDirective.show();
+      tick(200);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+
+      const event = createKeyboardEvent('keydown', 0, 'Escape', { meta: true });
+      vi.spyOn(event, 'preventDefault');
+      document.body.dispatchEvent(event);
+      tick(0);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+      expect(event.preventDefault).not.toHaveBeenCalled();
+
+      flush();
+    }));
+
+    it('should stay open when the mouse moves from the trigger onto the tooltip', fakeAsync(() => {
+      tooltipDirective.show();
+      tick(200);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+
+      const tooltipElement = overlayContainerElement.querySelector('.nx-tooltip') as HTMLElement;
+
+      // Leaving the trigger schedules a hide after the default hide delay (200ms).
+      buttonElement.dispatchEvent(createFakeEvent('mouseleave'));
+
+      // Moving onto the tooltip itself before the delay elapses should cancel the hide.
+      tick(100);
+      tooltipElement.dispatchEvent(createFakeEvent('mouseenter'));
+      tick(100);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
+
+      // Leaving the tooltip should hide it again.
+      tooltipElement.dispatchEvent(createFakeEvent('mouseleave'));
+      tick(200);
+      fixture.detectChanges();
+
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
+    }));
+
+    it('should not flicker closed when the pointer moves from the tooltip back to the trigger through an element in between', fakeAsync(() => {
+      // The pointer's path from the tooltip back to the trigger can cross other elements
+      // (e.g. the small gap left for the tooltip's arrow), so `mouseleave`'s `relatedTarget`
+      // can't be relied on to detect "moving back onto the trigger" -- the fix instead relies
+      // on the tooltip's mouseleave using the same hide delay as the trigger's mouseleave, so
+      // that the trigger's mouseenter has a chance to cancel the pending hide either way.
+      tooltipDirective.show();
+      tick(200);
+      fixture.detectChanges();
+
+      const tooltipElement = overlayContainerElement.querySelector('.nx-tooltip') as HTMLElement;
+
+      buttonElement.dispatchEvent(createFakeEvent('mouseleave'));
+      tick(100);
+      tooltipElement.dispatchEvent(createFakeEvent('mouseenter'));
+      tick(100);
+      fixture.detectChanges();
+
+      expect(
+        tooltipDirective._isTooltipVisible(),
+        'Expected tooltip to stay visible while moving from the trigger to itself.',
+      ).toBe(true);
+
+      // Leaving the tooltip towards some in-between element schedules a hide after the
+      // tooltip's hide delay, same as leaving the trigger would.
+      tooltipElement.dispatchEvent(createFakeEvent('mouseleave'));
+
+      // Re-entering the trigger before that delay elapses should cancel the pending hide.
+      tick(100);
+      buttonElement.dispatchEvent(createFakeEvent('mouseenter'));
+      tick(100);
+      fixture.detectChanges();
+
+      expect(
+        tooltipDirective._isTooltipVisible(),
+        'Expected tooltip to stay visible while moving back onto the trigger.',
+      ).toBe(true);
     }));
 
     it('should not show the tooltip on progammatic focus', fakeAsync(() => {
@@ -663,6 +943,54 @@ describe('NxTooltipDirective', () => {
       fixture.detectChanges();
       expect(fixture.componentInstance.scrollStrategy).toBe(fakeScrollStrategyFunction);
     });
+  });
+
+  describe('ESCAPE with multiple tooltips open', () => {
+    let fixture: ComponentFixture<TooltipOnTextFields>;
+    let firstTooltip: NxTooltipDirective;
+    let secondTooltip: NxTooltipDirective;
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(TooltipOnTextFields);
+      fixture.detectChanges();
+
+      const directives = fixture.debugElement
+        .queryAll(By.directive(NxTooltipDirective))
+        .map((debugElement) => debugElement.injector.get<NxTooltipDirective>(NxTooltipDirective));
+      [firstTooltip, secondTooltip] = directives;
+    });
+
+    it('should only close the most recently opened tooltip, matching the CDK overlay stack', fakeAsync(() => {
+      // ESCAPE is routed through the shared CDK `OverlayKeyboardDispatcher`, which only
+      // forwards the event to the topmost overlay whose predicate matches, instead of every
+      // tooltip's own listener reacting independently. This also means that if some other,
+      // unrelated overlay (e.g. a datepicker popup) is opened on top of a tooltip, pressing
+      // ESCAPE closes only that topmost overlay and leaves the tooltip untouched.
+      firstTooltip.show();
+      tick(200);
+      fixture.detectChanges();
+      secondTooltip.show();
+      tick(200);
+      fixture.detectChanges();
+
+      expect(firstTooltip._isTooltipVisible()).toBe(true);
+      expect(secondTooltip._isTooltipVisible()).toBe(true);
+
+      dispatchKeyboardEvent(document.body, 'keydown', 'Escape');
+      tick(0);
+      fixture.detectChanges();
+
+      expect(
+        secondTooltip._isTooltipVisible(),
+        'Expected the most recently opened tooltip to close.',
+      ).toBe(false);
+      expect(
+        firstTooltip._isTooltipVisible(),
+        'Expected the other, still-open tooltip to be unaffected.',
+      ).toBe(true);
+
+      flush();
+    }));
   });
 
   describe('fallback positions', () => {

@@ -2,9 +2,16 @@
 
 ::ng-deep .nx-tooltip-panel {
   // The overlay reference updates the pointer-events style property directly on the HTMLElement
-  // depending on the state of the overlay. For tooltips the overlay panel should never enable
-  // pointer events. To overwrite the inline CSS from the overlay reference `!important` is needed.
+  // depending on the state of the overlay. The panel itself should never enable pointer events,
+  // so that its (possibly larger) bounding box never blocks interaction with elements underneath.
+  // To overwrite the inline CSS from the overlay reference `!important` is needed.
   pointer-events: none !important;
+}
+
+// Once the tooltip bubble is fully visible, allow it to receive pointer events so that a user
+// can move the mouse from the trigger onto the tooltip content without it being dismissed.
+::ng-deep .nx-tooltip-panel .nx-tooltip.fade-in {
+  pointer-events: auto !important;
 }
 
 .nx-tooltip {
