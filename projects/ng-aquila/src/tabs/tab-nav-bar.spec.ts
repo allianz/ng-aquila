@@ -25,8 +25,10 @@ const tabsDefaultOptions: TabNavBarDefaultOptions = {
 
 @Directive({ standalone: true })
 abstract class TabNavBarTest {
-  @ViewChildren(NxTabLinkDirective) tabLinks!: QueryList<NxTabLinkDirective>;
-  @ViewChild(NxTabNavBarComponent) tabNavBar!: NxTabNavBarComponent;
+  @ViewChildren(NxTabLinkDirective)
+  tabLinks!: QueryList<NxTabLinkDirective>;
+  @ViewChild(NxTabNavBarComponent)
+  tabNavBar!: NxTabNavBarComponent;
 
   appearance: NxTabsAppearance = 'expert';
 }
@@ -183,6 +185,7 @@ describe('NxTabBarNavComponent', () => {
 });
 
 @Component({
+  selector: 'test-simple-tab-nav-bar',
   template: `
     <nx-tab-nav-bar>
       @for (link of links; track link) {
@@ -203,6 +206,7 @@ class SimpleTabNavBar extends TabNavBarTest {
 }
 
 @Component({
+  selector: 'test-configurable-tab-nav-bar',
   template: `
     <nx-tab-nav-bar [appearance]="appearance">
       @for (link of links; track link) {
@@ -223,6 +227,7 @@ class ConfigurableTabNavBar extends TabNavBarTest {
 }
 
 @Component({
+  selector: 'test-tab-nav-bar-on-push',
   template: `
     <nx-tab-nav-bar [disabled]="disabled">
       @for (link of links; track link) {

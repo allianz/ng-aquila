@@ -68,7 +68,7 @@ describe(NxTreeComponent.name, () => {
       it('with rendered dataNodes', () => {
         const nodes = getNodes(treeElement);
 
-        expect(nodes).withContext('Expect nodes to be defined').toBeDefined();
+        expect(nodes, 'Expect nodes to be defined').toBeDefined();
         expect(nodes[0]).toHaveClass('customNodeClass');
       });
 
@@ -80,7 +80,7 @@ describe(NxTreeComponent.name, () => {
       });
 
       it('with the right data', () => {
-        expect(underlyingDataSource.data).toHaveSize(3);
+        expect(underlyingDataSource.data).toHaveLength(3);
 
         const data = underlyingDataSource.data;
         expectFlatTreeToNxch(
@@ -147,11 +147,12 @@ describe(NxTreeComponent.name, () => {
       });
 
       it('should expand/collapse the node', () => {
-        expect(underlyingDataSource.data).toHaveSize(3);
+        expect(underlyingDataSource.data).toHaveLength(3);
 
-        expect(component.treeControl.expansionModel.selected)
-          .withContext('Expect no expanded node')
-          .toHaveSize(0);
+        expect(
+          component.treeControl.expansionModel.selected,
+          'Expect no expanded node',
+        ).toHaveLength(0);
 
         component.toggleRecursively = false;
         const data = underlyingDataSource.data;
@@ -171,9 +172,10 @@ describe(NxTreeComponent.name, () => {
         (getNodes(treeElement)[2] as HTMLElement).click();
         fixture.detectChanges();
 
-        expect(component.treeControl.expansionModel.selected)
-          .withContext('Expect node expanded one level')
-          .toHaveSize(1);
+        expect(
+          component.treeControl.expansionModel.selected,
+          'Expect node expanded one level',
+        ).toHaveLength(1);
         expectFlatTreeToNxch(
           treeElement,
           24,
@@ -187,9 +189,9 @@ describe(NxTreeComponent.name, () => {
         (getNodes(treeElement)[3] as HTMLElement).click();
         fixture.detectChanges();
 
-        expect(component.treeControl.expansionModel.selected)
-          .withContext('Expect node expanded')
-          .toHaveSize(2);
+        expect(component.treeControl.expansionModel.selected, 'Expect node expanded').toHaveLength(
+          2,
+        );
         expectFlatTreeToNxch(
           treeElement,
           24,
@@ -215,11 +217,12 @@ describe(NxTreeComponent.name, () => {
       });
 
       it('should expand/collapse the node recursively', () => {
-        expect(underlyingDataSource.data).toHaveSize(3);
+        expect(underlyingDataSource.data).toHaveLength(3);
 
-        expect(component.treeControl.expansionModel.selected)
-          .withContext('Expect no expanded node')
-          .toHaveSize(0);
+        expect(
+          component.treeControl.expansionModel.selected,
+          'Expect no expanded node',
+        ).toHaveLength(0);
 
         const data = underlyingDataSource.data;
         const child = underlyingDataSource.addChild(data[2]);
@@ -238,9 +241,9 @@ describe(NxTreeComponent.name, () => {
         (getNodes(treeElement)[2] as HTMLElement).click();
         fixture.detectChanges();
 
-        expect(component.treeControl.expansionModel.selected)
-          .withContext('Expect nodes expanded')
-          .toHaveSize(3);
+        expect(component.treeControl.expansionModel.selected, 'Expect nodes expanded').toHaveLength(
+          3,
+        );
         expectFlatTreeToNxch(
           treeElement,
           24,
@@ -255,9 +258,9 @@ describe(NxTreeComponent.name, () => {
         (getNodes(treeElement)[2] as HTMLElement).click();
         fixture.detectChanges();
 
-        expect(component.treeControl.expansionModel.selected)
-          .withContext('Expect node collapsed')
-          .toHaveSize(0);
+        expect(component.treeControl.expansionModel.selected, 'Expect node collapsed').toHaveLength(
+          0,
+        );
 
         expectFlatTreeToNxch(
           treeElement,
@@ -373,18 +376,14 @@ describe(NxTreeComponent.name, () => {
         // Focus parent
         dispatchKeyboardEvent(treeElement, 'keydown', LEFT_ARROW);
         expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
-        expect(component.treeControl.expansionModel.selected)
-          .withContext('1 node expanded')
-          .toHaveSize(1);
+        expect(component.treeControl.expansionModel.selected, '1 node expanded').toHaveLength(1);
 
         // Collapse parent
         dispatchKeyboardEvent(treeElement, 'keydown', LEFT_ARROW);
         fixture.detectChanges();
         expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
 
-        expect(component.treeControl.expansionModel.selected)
-          .withContext('no node expanded')
-          .toHaveSize(0);
+        expect(component.treeControl.expansionModel.selected, 'no node expanded').toHaveLength(0);
 
         // Focus next parent
         dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
@@ -633,7 +632,7 @@ function expectFlatTreeToNxch(
   });
 
   if (missedExpectations.length) {
-    fail(missedExpectations.join('\n'));
+    throw new Error(missedExpectations.join('\n'));
   }
 }
 
@@ -676,11 +675,12 @@ function expectNestedTreeToNxch(treeElement: Element, ...expectedTree: any[]) {
   });
 
   if (missedExpectations.length) {
-    fail(missedExpectations.join('\n'));
+    throw new Error(missedExpectations.join('\n'));
   }
 }
 
 @Component({
+  selector: 'test-simple-nx-tree-app',
   template: `
     <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
       <nx-tree-node
@@ -704,7 +704,8 @@ class SimpleNxTreeApp {
 
   underlyingDataSource = new FakeDataSource();
 
-  @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
+  @ViewChild(NxTreeComponent)
+  tree!: NxTreeComponent<TestData>;
 
   constructor() {
     this.underlyingDataSource.connect().subscribe((data) => {
@@ -714,6 +715,7 @@ class SimpleNxTreeApp {
 }
 
 @Component({
+  selector: 'test-nx-tree-app-with-toggle',
   template: `
     <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
       <nx-tree-node
@@ -739,7 +741,8 @@ class NxTreeAppWithToggle {
   dataSource = new NxTreeFlatDataSource(this.treeControl);
   underlyingDataSource = new FakeDataSource();
 
-  @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
+  @ViewChild(NxTreeComponent)
+  tree!: NxTreeComponent<TestData>;
 
   constructor() {
     this.underlyingDataSource.connect().subscribe((data) => {
@@ -749,6 +752,7 @@ class NxTreeAppWithToggle {
 }
 
 @Component({
+  selector: 'test-when-node-nx-tree-app',
   template: `
     <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
       <nx-tree-node
@@ -779,7 +783,8 @@ class WhenNodeNxTreeApp {
   dataSource = new NxTreeFlatDataSource(this.treeControl);
   underlyingDataSource = new FakeDataSource();
 
-  @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
+  @ViewChild(NxTreeComponent)
+  tree!: NxTreeComponent<TestData>;
 
   isSpecial = (_: number, node: TestData) => node.isSpecial;
 
@@ -791,6 +796,7 @@ class WhenNodeNxTreeApp {
 }
 
 @Component({
+  selector: 'test-nx-tree-app-with-button',
   template: `
     <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
       <nx-tree-node
@@ -818,7 +824,8 @@ class NxTreeAppWithButton {
   dataSource = new NxTreeFlatDataSource(this.treeControl);
   underlyingDataSource = new FakeDataSource();
 
-  @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
+  @ViewChild(NxTreeComponent)
+  tree!: NxTreeComponent<TestData>;
 
   constructor() {
     this.underlyingDataSource.connect().subscribe((data) => {

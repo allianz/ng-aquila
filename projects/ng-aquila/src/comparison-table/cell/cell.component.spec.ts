@@ -19,8 +19,8 @@ import {
 import { By } from '@angular/platform-browser';
 import axe from 'axe-core';
 
-import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
 import { NxComparisonTableModule } from '../comparison-table.module';
+import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.test-utils';
 import { NxComparisonTableDescriptionCell } from '../description-cell/description-cell.component';
 import { NxToggleSectionDirective } from '../toggle-section/toggle-section.directive';
 import { NxComparisonTableCell } from './cell.component';
@@ -30,10 +30,12 @@ const THROTTLE_TIME = 200;
 
 @Directive({ standalone: true })
 abstract class CellTest {
-  @ViewChildren(NxComparisonTableCell) cellInstances!: QueryList<NxComparisonTableCell>;
+  @ViewChildren(NxComparisonTableCell)
+  cellInstances!: QueryList<NxComparisonTableCell>;
   @ViewChild(NxComparisonTableDescriptionCell)
   descriptionCellInstance!: NxComparisonTableDescriptionCell;
-  @ViewChild(NxToggleSectionDirective) toggleSectionInstance!: NxToggleSectionDirective;
+  @ViewChild(NxToggleSectionDirective)
+  toggleSectionInstance!: NxToggleSectionDirective;
 
   selected = 0;
   headerTestId = 'header-cell-0';
@@ -74,7 +76,7 @@ describe('NxComparisonTableCell', () => {
   describe('basic', () => {
     it('renders the content', () => {
       createTestComponent(BasicCellComponent);
-      expect(cellElements).toHaveSize(3);
+      expect(cellElements).toHaveLength(3);
       expect(cellElements[0].nativeElement.textContent).toBe('This is a header cell');
       expect(cellElements[1].nativeElement.textContent).toBe('This is a cell');
       expect(cellElements[2].nativeElement.textContent).toBe('This is a footer cell');
@@ -138,7 +140,7 @@ describe('NxComparisonTableCell', () => {
       expect(cellElements[0].nativeElement.textContent).toBe('This is a cell');
 
       // there should not be a footer cell on mobile
-      expect(cellElements).toHaveSize(1);
+      expect(cellElements).toHaveLength(1);
     }));
 
     it('should set id correctly (mobile)', fakeAsync(() => {
@@ -205,7 +207,7 @@ describe('NxComparisonTableCell', () => {
       tick(THROTTLE_TIME);
 
       let headers = cellInstances.toArray()[1]._headerIds();
-      expect(headers.split(' ')).toHaveSize(2);
+      expect(headers.split(' ')).toHaveLength(2);
       expect(headers).toContain('header-cell-0');
       expect(headers).toContain(descriptionCellInstance.id);
 
@@ -220,7 +222,7 @@ describe('NxComparisonTableCell', () => {
       createTestComponent(ToggleSectionCellComponent);
 
       const headers = cellElements[1].attributes.headers;
-      expect(headers?.split(' ')).toHaveSize(3);
+      expect(headers?.split(' ')).toHaveLength(3);
       expect(headers).toContain(cellInstances.toArray()[0].id);
       expect(headers).toContain(descriptionCellInstance.id);
       expect(headers).toContain(toggleSectionInstance.toggleSectionHeader().id);
@@ -236,32 +238,26 @@ describe('NxComparisonTableCell', () => {
 
       cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
       const headers = cellElements[0].attributes.headers;
-      expect(headers?.split(' ')).toHaveSize(3);
+      expect(headers?.split(' ')).toHaveLength(3);
       expect(headers).toContain(cellInstances.toArray()[0].id);
       expect(headers).toContain(descriptionCellInstance.id);
       expect(headers).toContain(toggleSectionInstance.toggleSectionHeader().id);
     }));
 
-    it('has no accessibility violations', (done) => {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicCellComponent);
 
-      axe.run(
-        fixture.nativeElement,
-        {
-          rules: {
-            'empty-table-header': { enabled: false },
-          },
+      const results = await axe.run(fixture.nativeElement, {
+        rules: {
+          'empty-table-header': { enabled: false },
         },
-        (error: Error, results: axe.AxeResults) => {
-          expect(results.violations.length).toBe(0);
-          const violationMessages = results.violations.map((item) => item.description);
-          if (violationMessages.length) {
-            console.error(violationMessages);
-            expect(violationMessages).toBeFalsy();
-          }
-          done();
-        },
-      );
+      });
+      expect(results.violations.length).toBe(0);
+      const violationMessages = results.violations.map((item) => item.description);
+      if (violationMessages.length) {
+        console.error(violationMessages);
+        expect(violationMessages).toBeFalsy();
+      }
     });
   });
 
@@ -292,6 +288,7 @@ describe('NxComparisonTableCell', () => {
 });
 
 @Component({
+  selector: 'test-basic-cell-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -314,6 +311,7 @@ describe('NxComparisonTableCell', () => {
 class BasicCellComponent extends CellTest {}
 
 @Component({
+  selector: 'test-configurable-cell-component',
   template: `
     <nx-comparison-table [selectedIndex]="selected" [isError]="isError">
       <ng-container nxComparisonTableRow type="header">
@@ -338,6 +336,7 @@ class BasicCellComponent extends CellTest {}
 class ConfigurableCellComponent extends CellTest {}
 
 @Component({
+  selector: 'test-toggle-section-cell-component',
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
@@ -361,6 +360,7 @@ class ToggleSectionCellComponent extends CellTest {
 }
 
 @Component({
+  selector: 'test-multi-column-cell-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">

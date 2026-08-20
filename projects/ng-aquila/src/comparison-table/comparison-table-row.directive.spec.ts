@@ -9,16 +9,17 @@ import {
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxComparisonTableCell } from './cell/cell.component';
-import { BASIC_COMPARISON_TABLE_TEMPLATE } from './comparison-table.component.spec';
 import { NxComparisonTableRowType } from './comparison-table.models';
 import { NxComparisonTableModule } from './comparison-table.module';
+import { BASIC_COMPARISON_TABLE_TEMPLATE } from './comparison-table.test-utils';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 
 @Directive({ standalone: true })
 abstract class RowTest {
   @ViewChildren(NxComparisonTableRowDirective)
   rowInstances!: QueryList<NxComparisonTableRowDirective>;
-  @ViewChildren(NxComparisonTableCell) cellInstances!: QueryList<NxComparisonTableCell>;
+  @ViewChildren(NxComparisonTableCell)
+  cellInstances!: QueryList<NxComparisonTableCell>;
 
   typeForFooter: NxComparisonTableRowType = 'footer';
 }
@@ -81,25 +82,26 @@ describe('NxComparisonTableRowDirective', () => {
     it('should not be allowed to be sticky for non-header rows', () => {
       createTestComponent(DynamicTypeComponent);
 
-      expect(rowInstances.toArray()[1].mayStick).toBeFalse();
-      expect(rowInstances.toArray()[3].mayStick).toBeFalse();
+      expect(rowInstances.toArray()[1].mayStick).toBe(false);
+      expect(rowInstances.toArray()[3].mayStick).toBe(false);
     });
 
     it('should be sticky for header rows by default', () => {
       createTestComponent(DynamicTypeComponent);
 
-      expect(rowInstances.toArray()[0].mayStick).toBeTrue();
+      expect(rowInstances.toArray()[0].mayStick).toBe(true);
     });
 
     it('should allow to prevent header from being sticky', () => {
       createTestComponent(NonStickyHeaderComponent);
 
-      expect(rowInstances.toArray()[0].mayStick).toBeFalse();
+      expect(rowInstances.toArray()[0].mayStick).toBe(false);
     });
   });
 });
 
 @Component({
+  selector: 'test-comparison-table-row-basic-component',
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
@@ -118,6 +120,7 @@ class BasicComponent extends RowTest {
 }
 
 @Component({
+  selector: 'test-dynamic-type-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -151,6 +154,7 @@ class BasicComponent extends RowTest {
 class DynamicTypeComponent extends RowTest {}
 
 @Component({
+  selector: 'test-non-sticky-header-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header" [mayStick]="mayStick">

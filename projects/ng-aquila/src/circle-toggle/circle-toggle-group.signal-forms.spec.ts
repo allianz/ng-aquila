@@ -22,6 +22,7 @@ import { NxCircleToggleModule } from './circle-toggle.module';
  */
 
 @Component({
+  selector: 'test-circle-toggle-group.signal-forms-basic-circle-toggle-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxCircleToggleModule],
@@ -44,6 +45,7 @@ class BasicCircleToggleSignalFormHost {
 }
 
 @Component({
+  selector: 'test-circle-toggle-group.signal-forms-required-circle-toggle-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxCircleToggleModule],
@@ -67,6 +69,7 @@ class RequiredCircleToggleSignalFormHost {
 }
 
 @Component({
+  selector: 'test-circle-toggle-group.signal-forms-disabled-circle-toggle-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxCircleToggleModule],
@@ -176,13 +179,13 @@ describe('NxCircleToggleGroupComponent signal forms', () => {
       const host = fixture.componentInstance;
       settle(fixture);
 
-      expect(host.myForm.choice().touched()).toBeFalse();
+      expect(host.myForm.choice().touched()).toBe(false);
 
       const group = fixture.nativeElement.querySelector('nx-circle-toggle-group') as HTMLElement;
       dispatchFakeEvent(group, 'focusout');
       settle(fixture);
 
-      expect(host.myForm.choice().touched()).toBeTrue();
+      expect(host.myForm.choice().touched()).toBe(true);
       flush();
     }));
 
@@ -194,7 +197,7 @@ describe('NxCircleToggleGroupComponent signal forms', () => {
       dispatchFakeEvent(inputs(fixture).item(0), 'blur');
       settle(fixture);
 
-      expect(host.myForm.choice().touched()).toBeFalse();
+      expect(host.myForm.choice().touched()).toBe(false);
       flush();
     }));
 
@@ -209,7 +212,7 @@ describe('NxCircleToggleGroupComponent signal forms', () => {
       );
       settle(fixture);
 
-      expect(host.myForm.choice().touched()).toBeFalse();
+      expect(host.myForm.choice().touched()).toBe(false);
       flush();
     }));
   });
@@ -220,18 +223,18 @@ describe('NxCircleToggleGroupComponent signal forms', () => {
       const host = fixture.componentInstance;
       settle(fixture);
 
-      expect(host.myForm().invalid()).toBeTrue();
+      expect(host.myForm().invalid()).toBe(true);
       expect(
         host.myForm
           .choice()
           .errors()
           .some((e) => e.kind === 'required'),
-      ).toBeTrue();
+      ).toBe(true);
 
       inputs(fixture).item(0).click();
       settle(fixture);
 
-      expect(host.myForm().valid()).toBeTrue();
+      expect(host.myForm().valid()).toBe(true);
       expect(host.myForm.choice().errors()).toEqual([]);
       flush();
     }));
@@ -252,9 +255,9 @@ describe('NxCircleToggleGroupComponent signal forms', () => {
       const host = fixture.componentInstance;
       settle(fixture);
 
-      expect(host.myForm.choice().disabled()).toBeTrue();
+      expect(host.myForm.choice().disabled()).toBe(true);
       inputs(fixture).forEach((input) => {
-        expect(input.disabled).toBeTrue();
+        expect(input.disabled).toBe(true);
       });
       flush();
     }));

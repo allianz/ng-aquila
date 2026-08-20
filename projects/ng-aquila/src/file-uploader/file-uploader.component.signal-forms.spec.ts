@@ -22,6 +22,7 @@ import { NxFileUploaderModule } from './file-uploader.module';
 // skipped until it is. Each one names the specific gap it covers.
 
 @Component({
+  selector: 'test-file-uploader.component.signal-forms-basic-signal-form-host',
   standalone: true,
   imports: [FormField, NxFileUploaderModule],
   template: `<nx-file-uploader
@@ -37,6 +38,7 @@ class BasicSignalFormHost {
 }
 
 @Component({
+  selector: 'test-file-uploader.component.signal-forms-required-signal-form-host',
   standalone: true,
   imports: [FormField, NxFileUploaderModule],
   template: `<nx-file-uploader
@@ -54,6 +56,7 @@ class RequiredSignalFormHost {
 }
 
 @Component({
+  selector: 'test-file-uploader.component.signal-forms-disabled-signal-form-host',
   standalone: true,
   imports: [FormField, NxFileUploaderModule],
   template: `<nx-file-uploader
@@ -71,6 +74,7 @@ class DisabledSignalFormHost {
 }
 
 @Component({
+  selector: 'test-default-validator-host',
   standalone: true,
   imports: [FormField, NxFileUploaderModule],
   template: `<nx-file-uploader [formField]="uploadForm.value" multiple></nx-file-uploader>`,
@@ -106,23 +110,21 @@ describe('NxFileUploaderComponent signal forms', () => {
     }).compileComponents();
   });
 
-  describe('model -> view', () => {
-    // TODO: make the file uploader signal-forms compatible, then re-enable.
-    // `writeValue()` assigns `this._value` but never calls `markForCheck()`, so a
-    // programmatic model update does not re-render the OnPush view and 0 rows appear.
-    xit('renders a file row for each item in the model array', () => {
-      const fixture = TestBed.createComponent(BasicSignalFormHost);
-      const host = fixture.componentInstance;
-      fixture.detectChanges();
+  // TODO: make the file uploader signal-forms compatible, then re-enable.
+  // `writeValue()` assigns `this._value` but never calls `markForCheck()`, so a
+  // programmatic model update does not re-render the OnPush view and 0 rows appear.
+  it.skip('renders a file row for each item in the model array', () => {
+    const fixture = TestBed.createComponent(BasicSignalFormHost);
+    const host = fixture.componentInstance;
+    fixture.detectChanges();
 
-      const file = new File(['1'], 'preset.txt', { type: 'text/plain' });
-      host.model.update((m) => ({ ...m, value: [new FileItem(file)] }));
-      fixture.detectChanges();
+    const file = new File(['1'], 'preset.txt', { type: 'text/plain' });
+    host.model.update((m) => ({ ...m, value: [new FileItem(file)] }));
+    fixture.detectChanges();
 
-      const rows = fixture.nativeElement.querySelectorAll('.nx-file-uploader--file-row');
-      expect(rows.length).toBe(1);
-      expect(host.uploader.value?.length).toBe(1);
-    });
+    const rows = fixture.nativeElement.querySelectorAll('.nx-file-uploader--file-row');
+    expect(rows.length).toBe(1);
+    expect(host.uploader.value?.length).toBe(1);
   });
 
   describe('view -> model', () => {
@@ -146,7 +148,7 @@ describe('NxFileUploaderComponent signal forms', () => {
     // deep-walk each `FileItem` (which carries an `EventEmitter`, a `File` and getter-only
     // properties), which overflows the stack inside `@angular/forms`. The component needs
     // to expose a plain value shape.
-    xit('removes a file from the form model array when the delete action is clicked', fakeAsync(() => {
+    it.skip('removes a file from the form model array when the delete action is clicked', fakeAsync(() => {
       const fixture = TestBed.createComponent(BasicSignalFormHost);
       const host = fixture.componentInstance;
       fixture.detectChanges();
@@ -186,29 +188,27 @@ describe('NxFileUploaderComponent signal forms', () => {
     }));
   });
 
-  describe('required validator', () => {
-    // TODO: make the file uploader signal-forms compatible, then re-enable.
-    // Signal forms' `isEmpty` only treats '', false, null and NaN as empty, so `required`
-    // does not flag an empty file array the way reactive `Validators.required` does.
-    xit('is invalid while the file list is empty and valid once a file is added', fakeAsync(() => {
-      const fixture = TestBed.createComponent(RequiredSignalFormHost);
-      const host = fixture.componentInstance;
-      fixture.detectChanges();
+  // TODO: make the file uploader signal-forms compatible, then re-enable.
+  // Signal forms' `isEmpty` only treats '', false, null and NaN as empty, so `required`
+  // does not flag an empty file array the way reactive `Validators.required` does.
+  it.skip('is invalid while the file list is empty and valid once a file is added', fakeAsync(() => {
+    const fixture = TestBed.createComponent(RequiredSignalFormHost);
+    const host = fixture.componentInstance;
+    fixture.detectChanges();
 
-      expect(host.uploadForm().invalid()).toBe(true);
-      expect(
-        host.uploadForm
-          .value()
-          .errors()
-          .some((e) => e.kind === 'required'),
-      ).toBe(true);
+    expect(host.uploadForm().invalid()).toBe(true);
+    expect(
+      host.uploadForm
+        .value()
+        .errors()
+        .some((e) => e.kind === 'required'),
+    ).toBe(true);
 
-      addFile(host.uploader, fixture, 'added.txt');
-      flush();
+    addFile(host.uploader, fixture, 'added.txt');
+    flush();
 
-      expect(host.uploadForm().valid()).toBe(true);
-    }));
-  });
+    expect(host.uploadForm().valid()).toBe(true);
+  }));
 
   describe('disabled() rule', () => {
     it('disables the uploader and its native file input', () => {
@@ -226,19 +226,17 @@ describe('NxFileUploaderComponent signal forms', () => {
     });
   });
 
-  describe('default validator config', () => {
-    // TODO: make the file uploader signal-forms compatible, then re-enable.
-    // With the default blocking validators, `ngOnInit` -> `_resetValidators()` calls
-    // `this.ngControl.control.setValidators(...)`, which the signal-forms `InteropNgControl`
-    // does not implement, so the component throws while initializing. Until then the other
-    // hosts here opt out via `noBlockingValidators`.
-    xit('initializes without throwing when bound with [formField]', fakeAsync(() => {
-      const fixture = TestBed.createComponent(DefaultValidatorHost);
-      expect(() => {
-        fixture.detectChanges();
-        flush();
-      }).not.toThrow();
-      expect(fixture.componentInstance.uploader).toBeTruthy();
-    }));
-  });
+  // TODO: make the file uploader signal-forms compatible, then re-enable.
+  // With the default blocking validators, `ngOnInit` -> `_resetValidators()` calls
+  // `this.ngControl.control.setValidators(...)`, which the signal-forms `InteropNgControl`
+  // does not implement, so the component throws while initializing. Until then the other
+  // hosts here opt out via `noBlockingValidators`.
+  it.skip('initializes without throwing when bound with [formField]', fakeAsync(() => {
+    const fixture = TestBed.createComponent(DefaultValidatorHost);
+    expect(() => {
+      fixture.detectChanges();
+      flush();
+    }).not.toThrow();
+    expect(fixture.componentInstance.uploader).toBeTruthy();
+  }));
 });

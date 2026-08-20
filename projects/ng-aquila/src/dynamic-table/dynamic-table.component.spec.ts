@@ -8,7 +8,8 @@ import { NxDynamicTableModule } from './dynamic-table.module';
 
 @Directive({ standalone: true })
 abstract class DynamicTableTest {
-  @ViewChild(NxDynamicTableComponent) dynamicTableInstance!: NxDynamicTableComponent;
+  @ViewChild(NxDynamicTableComponent)
+  dynamicTableInstance!: NxDynamicTableComponent;
   data: any[] = [
     { name: 'Mateo', email: 'mateo@email.com', phone: '678543129' },
     { name: 'Samuel', email: 'samuel@email.com', phone: '123456789' },
@@ -25,7 +26,7 @@ abstract class DynamicTableTest {
       cellClass: 'column-class',
     },
   ];
-  handleRowClick = jasmine.createSpy('handleRowClickSpy');
+  handleRowClick = vi.fn().mockName('handleRowClickSpy');
   style = '';
 }
 
@@ -82,30 +83,30 @@ describe('NxDynamicTableComponent', () => {
     it('should render two columns', () => {
       createTestComponent(BasicDynamicTable);
       fixture.detectChanges();
-      expect(headerCellElements).toHaveSize(2);
+      expect(headerCellElements).toHaveLength(2);
     });
 
     it('should render three rows', () => {
       createTestComponent(BasicDynamicTable);
       fixture.detectChanges();
-      expect(rowElements).toHaveSize(3);
+      expect(rowElements).toHaveLength(3);
     });
 
     it('should render 2 rows empty', () => {
       createTestComponent(TableEmptyRows);
       fixture.detectChanges();
-      expect(rowElements).toHaveSize(2);
+      expect(rowElements).toHaveLength(2);
     });
 
     it('should render 0 rows due to rows are null or undefined', () => {
       createTestComponent(TableWrongRows);
       fixture.detectChanges();
-      expect(rowElements).toHaveSize(0);
+      expect(rowElements).toHaveLength(0);
     });
 
     it('sets column styles', () => {
       createTestComponent(BasicDynamicTable);
-      expect(headerCellElements[1].classList.contains('column-header-class')).toBeTrue();
+      expect(headerCellElements[1].classList.contains('column-header-class')).toBe(true);
       expect(headerCellElements[1].style.width).toBe('100px');
       expect(fixture.nativeElement.querySelector('.column-class')).toBeTruthy();
     });
@@ -138,7 +139,7 @@ describe('NxDynamicTableComponent', () => {
       rowElements = getRows();
       ngContent = fixture.nativeElement.querySelector('.nx-table__appendix');
       expect(ngContent).toBeFalsy();
-      expect(rowElements).toHaveSize(2);
+      expect(rowElements).toHaveLength(2);
     });
   });
 
@@ -151,7 +152,7 @@ describe('NxDynamicTableComponent', () => {
       fixture.detectChanges();
       const rows = getRows();
       const headerRow = getHeaderRow();
-      expect(rows).toHaveSize(1);
+      expect(rows).toHaveLength(1);
       expect(headerRow.querySelectorAll('cdk-header-cell')[0].textContent.trim()).toBe('car');
       expect(rows[0].querySelectorAll('cdk-cell')[0].textContent).toBe('Tesla');
     });
@@ -173,12 +174,13 @@ describe('NxDynamicTableComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicDynamicTable);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-table-empty-rows',
   template: `<nx-dynamic-table [data]="data"> </nx-dynamic-table>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],
@@ -188,6 +190,7 @@ class TableEmptyRows extends DynamicTableTest {
 }
 
 @Component({
+  selector: 'test-table-wrong-rows',
   template: `<nx-dynamic-table [data]="data"> </nx-dynamic-table>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],
@@ -197,6 +200,7 @@ class TableWrongRows extends DynamicTableTest {
 }
 
 @Component({
+  selector: 'test-basic-dynamic-table',
   template: `<nx-dynamic-table
     [data]="data"
     [displayedColumns]="displayedColumns"
@@ -209,6 +213,7 @@ class BasicDynamicTable extends DynamicTableTest {
 }
 
 @Component({
+  selector: 'test-dynamic-table-event',
   template: `<nx-dynamic-table
     [data]="data"
     [displayedColumns]="displayedColumns"
@@ -220,6 +225,7 @@ class BasicDynamicTable extends DynamicTableTest {
 class DynamicTableEvent extends DynamicTableTest {}
 
 @Component({
+  selector: 'test-empty-dynamic-table',
   template: `<nx-dynamic-table [data]="data">Information: No data to display</nx-dynamic-table>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],
@@ -229,6 +235,7 @@ class EmptyDynamicTable extends DynamicTableTest {
 }
 
 @Component({
+  selector: 'test-programmatic-table',
   template: `<nx-dynamic-table></nx-dynamic-table>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDynamicTableModule, CdkTableModule],

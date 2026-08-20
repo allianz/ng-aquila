@@ -22,7 +22,7 @@ import {
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { firstValueFrom, Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 import { NxFileUploadConfig, NxFileUploader } from './file-uploader';
@@ -122,7 +122,7 @@ describe('NxFileUploaderComponent', () => {
     describe('trigger directive', () => {
       it('should call uploadFiles when triggerButton was clicked', () => {
         createTestComponent(BasicFileUpload);
-        const spy = spyOn(testInstance.uploader, 'uploadFiles');
+        const spy = vi.spyOn(testInstance.uploader, 'uploadFiles').mockReturnValue(undefined);
         triggerButton.click();
 
         fixture.detectChanges();
@@ -142,37 +142,33 @@ describe('NxFileUploaderComponent', () => {
         const file = fileUploaderInstance.value?.[0] as FileItem;
 
         // status: should not be uploaded or uploading
-        expect(file.isUploaded).toBeFalse();
-        expect(file.isUploading).toBeFalse();
-        expect(file.isError).toBeFalse();
+        expect(file.isUploaded).toBe(false);
+        expect(file.isUploading).toBe(false);
+        expect(file.isError).toBe(false);
 
         fileUploaderInstance.uploadFiles();
         tick(5);
 
         // status: should not be uploaded, should be uploading
-        expect(file.isUploaded).toBeFalse();
-        expect(file.isUploading).toBeTrue();
-        expect(file.isError).toBeFalse();
+        expect(file.isUploaded).toBe(false);
+        expect(file.isUploading).toBe(true);
+        expect(file.isError).toBe(false);
 
         tick(5);
 
         // status: should not be uploading, should be uploaded
-        expect(file.isUploaded).toBeTrue();
-        expect(file.isUploading).toBeFalse();
-        expect(file.isError).toBeFalse();
+        expect(file.isUploaded).toBe(true);
+        expect(file.isUploading).toBe(false);
+        expect(file.isError).toBe(false);
       }));
 
-      it('should return a response when a request was successful', (done) => {
+      it('should return a response when a request was successful', async () => {
         createTestComponent(BasicFileUpload);
 
-        testInstance.uploader.response.subscribe((response) => {
-          expect(response).toBeDefined();
-          expect(response.error).toBeUndefined();
-          expect(response.success).toBeDefined();
-          expect(response.success?.files).toHaveSize(3);
-          expect(response.success?.requests).toHaveSize(1);
-          done();
-        });
+        // Await the response instead of asserting inside a bare `subscribe`: the request
+        // resolves after this test would otherwise have returned, so the assertions used to
+        // run against whichever fixture the next test had already created.
+        const responsePromise = firstValueFrom(testInstance.uploader.response);
 
         // add files
         let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
@@ -182,9 +178,16 @@ describe('NxFileUploaderComponent', () => {
         });
 
         fileUploaderInstance.uploadFiles();
+
+        const response = await responsePromise;
+        expect(response).toBeDefined();
+        expect(response.error).toBeUndefined();
+        expect(response.success).toBeDefined();
+        expect(response.success?.files).toHaveLength(3);
+        expect(response.success?.requests).toHaveLength(1);
       });
 
-      it('should not upload files that are already uploaded', (done) => {
+      it('should not upload files that are already uploaded', async () => {
         createTestComponent(BasicFileUpload);
 
         // add files
@@ -192,50 +195,35 @@ describe('NxFileUploaderComponent', () => {
         fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024, writable: false });
         testInstance.form.patchValue({ documents: [new FileItem(fakeFile)] });
 
-        // send a first request
+        // send a first request and wait for it to finish
+        const firstResponse = firstValueFrom(testInstance.uploader.response);
+        fileUploaderInstance.uploadFiles();
+        await firstResponse;
+
+        // add two more files and upload them; only the two new ones should go out
+        const secondResponse = firstValueFrom(testInstance.uploader.response);
+        testInstance.form.patchValue({
+          documents: [
+            ...testInstance.form.controls.documents.value,
+            new FileItem(fakeFile),
+            new FileItem(fakeFile),
+          ],
+        });
         fileUploaderInstance.uploadFiles();
 
-        // add two more files and upload them
-        setTimeout(() => {
-          testInstance.uploader.response.subscribe((response) => {
-            expect(response).toBeDefined();
-            expect(response.error).toBeUndefined();
-            expect(response.success).toBeDefined();
-            expect(response.success?.files).toHaveSize(2);
-            expect(response.success?.requests).toHaveSize(1);
-            done();
-          });
-
-          testInstance.form.patchValue({
-            documents: [
-              ...testInstance.form.controls.documents.value,
-              new FileItem(fakeFile),
-              new FileItem(fakeFile),
-            ],
-          });
-          fileUploaderInstance.uploadFiles();
-        }, 10);
+        const response = await secondResponse;
+        expect(response).toBeDefined();
+        expect(response.error).toBeUndefined();
+        expect(response.success).toBeDefined();
+        expect(response.success?.files).toHaveLength(2);
+        expect(response.success?.requests).toHaveLength(1);
       });
 
-      it('should return an error if the request was not successful', (done) => {
+      it('should return an error if the request was not successful', async () => {
         createTestComponent(BasicFileUpload);
         testInstance.uploadConfig.requestUrl = 'error-url';
 
-        testInstance.uploader.response.subscribe((response) => {
-          expect(response).toBeDefined();
-          expect(response.success).toBeUndefined();
-          expect(response.error).toBeDefined();
-          expect(response.error?.files).toHaveSize(3);
-          expect(response.error?.requests).toHaveSize(1);
-
-          // should have set the status of the files to error
-          fileUploaderInstance.value?.forEach((file) => {
-            expect(file.isUploaded).toBeFalse();
-            expect(file.isUploading).toBeFalse();
-            expect(file.isError).toBeTrue();
-          });
-          done();
-        });
+        const responsePromise = firstValueFrom(testInstance.uploader.response);
 
         // add files
         let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
@@ -245,6 +233,20 @@ describe('NxFileUploaderComponent', () => {
         });
 
         fileUploaderInstance.uploadFiles();
+
+        const response = await responsePromise;
+        expect(response).toBeDefined();
+        expect(response.success).toBeUndefined();
+        expect(response.error).toBeDefined();
+        expect(response.error?.files).toHaveLength(3);
+        expect(response.error?.requests).toHaveLength(1);
+
+        // should have set the status of the files to error
+        fileUploaderInstance.value?.forEach((file) => {
+          expect(file.isUploaded).toBe(false);
+          expect(file.isUploading).toBe(false);
+          expect(file.isError).toBe(true);
+        });
       });
     });
 
@@ -262,9 +264,9 @@ describe('NxFileUploaderComponent', () => {
 
         // status: should not be uploaded or uploading
         fileUploaderInstance.value?.forEach((file) => {
-          expect(file.isUploaded).toBeFalse();
-          expect(file.isUploading).toBeFalse();
-          expect(file.isError).toBeFalse();
+          expect(file.isUploaded).toBe(false);
+          expect(file.isUploading).toBe(false);
+          expect(file.isError).toBe(false);
         });
 
         fileUploaderInstance.uploadFiles();
@@ -272,33 +274,26 @@ describe('NxFileUploaderComponent', () => {
 
         // status: should not be uploaded, should be uploading
         fileUploaderInstance.value?.forEach((file) => {
-          expect(file.isUploaded).toBeFalse();
-          expect(file.isUploading).toBeTrue();
-          expect(file.isError).toBeFalse();
+          expect(file.isUploaded).toBe(false);
+          expect(file.isUploading).toBe(true);
+          expect(file.isError).toBe(false);
         });
 
         tick(5);
 
         // status: should not be uploading, should be uploaded
         fileUploaderInstance.value?.forEach((file) => {
-          expect(file.isUploaded).toBeTrue();
-          expect(file.isUploading).toBeFalse();
-          expect(file.isError).toBeFalse();
+          expect(file.isUploaded).toBe(true);
+          expect(file.isUploading).toBe(false);
+          expect(file.isError).toBe(false);
         });
       }));
 
-      it('should upload all files correctly', (done) => {
+      it('should upload all files correctly', async () => {
         createTestComponent(BasicFileUpload);
         testInstance.uploadConfig.uploadSeparately = true;
 
-        testInstance.uploader.response.subscribe((response) => {
-          expect(response).toBeDefined();
-          expect(response.error).toBeUndefined();
-          expect(response.success).toBeDefined();
-          expect(response.success?.files).toHaveSize(3);
-          expect(response.success?.requests).toHaveSize(3);
-          done();
-        });
+        const responsePromise = firstValueFrom(testInstance.uploader.response);
 
         // add files
         let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
@@ -308,9 +303,16 @@ describe('NxFileUploaderComponent', () => {
         });
 
         fileUploaderInstance.uploadFiles();
+
+        const response = await responsePromise;
+        expect(response).toBeDefined();
+        expect(response.error).toBeUndefined();
+        expect(response.success).toBeDefined();
+        expect(response.success?.files).toHaveLength(3);
+        expect(response.success?.requests).toHaveLength(3);
       });
 
-      it('should not upload files that are already uploaded', (done) => {
+      it('should not upload files that are already uploaded', async () => {
         createTestComponent(BasicFileUpload);
         testInstance.uploadConfig.uploadSeparately = true;
 
@@ -319,51 +321,36 @@ describe('NxFileUploaderComponent', () => {
         fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024, writable: false });
         testInstance.form.patchValue({ documents: [new FileItem(fakeFile)] });
 
-        // send a first request
+        // send a first request and wait for it to finish
+        const firstResponse = firstValueFrom(testInstance.uploader.response);
+        fileUploaderInstance.uploadFiles();
+        await firstResponse;
+
+        // add two more files and upload them; only the two new ones should go out
+        const secondResponse = firstValueFrom(testInstance.uploader.response);
+        testInstance.form.patchValue({
+          documents: [
+            ...testInstance.form.controls.documents.value,
+            new FileItem(fakeFile),
+            new FileItem(fakeFile),
+          ],
+        });
         fileUploaderInstance.uploadFiles();
 
-        // add two more files and upload them
-        setTimeout(() => {
-          testInstance.uploader.response.subscribe((response) => {
-            expect(response).toBeDefined();
-            expect(response.error).toBeUndefined();
-            expect(response.success).toBeDefined();
-            expect(response.success?.files).toHaveSize(2);
-            expect(response.success?.requests).toHaveSize(2);
-            done();
-          });
-
-          testInstance.form.patchValue({
-            documents: [
-              ...testInstance.form.controls.documents.value,
-              new FileItem(fakeFile),
-              new FileItem(fakeFile),
-            ],
-          });
-          fileUploaderInstance.uploadFiles();
-        }, 10);
+        const response = await secondResponse;
+        expect(response).toBeDefined();
+        expect(response.error).toBeUndefined();
+        expect(response.success).toBeDefined();
+        expect(response.success?.files).toHaveLength(2);
+        expect(response.success?.requests).toHaveLength(2);
       });
 
-      it('should return an error if one of the files was not uploaded successful', (done) => {
+      it('should return an error if one of the files was not uploaded successful', async () => {
         createTestComponent(BasicFileUpload);
         testInstance.uploadConfig.requestUrl = 'error-url';
         testInstance.uploadConfig.uploadSeparately = true;
 
-        testInstance.uploader.response.subscribe((response) => {
-          expect(response).toBeDefined();
-          expect(response.success).toBeUndefined();
-          expect(response.error).toBeDefined();
-          expect(response.error?.files).toHaveSize(3);
-          expect(response.error?.requests).toHaveSize(3);
-
-          // should have set the status of the files to error
-          fileUploaderInstance.value?.forEach((file) => {
-            expect(file.isUploaded).toBeFalse();
-            expect(file.isUploading).toBeFalse();
-            expect(file.isError).toBeTrue();
-          });
-          done();
-        });
+        const responsePromise = firstValueFrom(testInstance.uploader.response);
 
         // add files
         let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
@@ -373,25 +360,37 @@ describe('NxFileUploaderComponent', () => {
         });
 
         fileUploaderInstance.uploadFiles();
+
+        const response = await responsePromise;
+        expect(response).toBeDefined();
+        expect(response.success).toBeUndefined();
+        expect(response.error).toBeDefined();
+        expect(response.error?.files).toHaveLength(3);
+        expect(response.error?.requests).toHaveLength(3);
+
+        // should have set the status of the files to error
+        fileUploaderInstance.value?.forEach((file) => {
+          expect(file.isUploaded).toBe(false);
+          expect(file.isUploading).toBe(false);
+          expect(file.isError).toBe(true);
+        });
       });
 
-      it('should emit opened event when open file-picker dialog', (done) => {
+      it('should emit opened event when open file-picker dialog', async () => {
         createTestComponent(BasicFileUpload);
-        const opened = jasmine.createSpy('spy');
+        const opened = vi.fn().mockName('spy');
         fileUploaderInstance._openedStream.subscribe(() => {
           opened();
-          done();
         });
         addFileButton.click();
         expect(opened).toHaveBeenCalled();
       });
 
-      it('should emit closed event when closed file-picker dialog', (done) => {
+      it('should emit closed event when closed file-picker dialog', async () => {
         createTestComponent(BasicFileUpload);
-        const closed = jasmine.createSpy('spy');
+        const closed = vi.fn().mockName('spy');
         fileUploaderInstance._closedStream.subscribe(() => {
           closed();
-          done();
         });
         addFileButton.click();
         addFileButton.focus();
@@ -403,6 +402,7 @@ describe('NxFileUploaderComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-file-upload',
   template: `
     <form [formGroup]="form">
       <nx-file-uploader #documentUpload formControlName="documents" [uploader]="uploader" multiple>
@@ -434,6 +434,7 @@ class BasicFileUpload extends FileUploaderTest {
   }
 }
 @Component({
+  selector: 'test-basic-file-upload-success-on-empty-list',
   template: `
     <form [formGroup]="form">
       <nx-file-uploader #documentUpload formControlName="documents" [uploader]="uploader" multiple>

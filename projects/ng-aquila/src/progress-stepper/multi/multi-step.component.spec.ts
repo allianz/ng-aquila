@@ -28,8 +28,10 @@ import { NxMultiStepperComponent } from './multi-step.component';
 
 @Directive({ standalone: true })
 abstract class MultiStepTest {
-  @ViewChild(NxMultiStepperComponent) componentInstance!: NxMultiStepperComponent;
-  @ViewChild(NxMultiStepperComponent, { read: ElementRef }) componentInstanceRef!: ElementRef;
+  @ViewChild(NxMultiStepperComponent)
+  componentInstance!: NxMultiStepperComponent;
+  @ViewChild(NxMultiStepperComponent, { read: ElementRef })
+  componentInstanceRef!: ElementRef;
 }
 
 describe('NxMultiStepperComponent', () => {
@@ -82,13 +84,13 @@ describe('NxMultiStepperComponent', () => {
     createTestComponent(MultiStepBasicTest);
 
     let checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
-    expect(checkIcon).toHaveSize(0);
+    expect(checkIcon).toHaveLength(0);
 
     multiStepInstance.next();
     fixture.detectChanges();
 
     checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
-    expect(checkIcon).toHaveSize(1);
+    expect(checkIcon).toHaveLength(1);
   });
 
   it('sets correctly selected class on the currently selected step', () => {
@@ -114,13 +116,13 @@ describe('NxMultiStepperComponent', () => {
       fixture.componentInstance as MultiStepCompletionTest;
 
     let checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
-    expect(checkIcon).toHaveSize(0);
+    expect(checkIcon).toHaveLength(0);
 
     completionStepper.completedTwo = true;
     fixture.detectChanges();
 
     checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
-    expect(checkIcon).toHaveSize(1);
+    expect(checkIcon).toHaveLength(1);
   });
 
   it('should move focus with arrow keys', () => {
@@ -263,7 +265,7 @@ describe('NxMultiStepperComponent', () => {
         multiStepElementRef.nativeElement.querySelectorAll('.nx-multi-stepper__group'),
       );
 
-      expect(groups).toHaveSize(2);
+      expect(groups).toHaveLength(2);
 
       groups.forEach((group: HTMLElement, i) => {
         const label = group.querySelector('.nx-multi-stepper__group-label');
@@ -396,7 +398,7 @@ describe('NxMultiStepperComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(MultiStepBasicTest);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should set tabindexes and aria-selected on step headers', () => {
@@ -419,6 +421,7 @@ describe('NxMultiStepperComponent', () => {
 });
 
 @Component({
+  selector: 'test-multi-step-direction-test',
   template: `
     <nx-multi-stepper [direction]="direction">
       <nx-step label="Step 1"> step 1 content </nx-step>
@@ -440,6 +443,7 @@ class MultiStepDirectionTest extends MultiStepTest {
 }
 
 @Component({
+  selector: 'test-linear-step-basic-test',
   template: `
     <nx-multi-stepper [linear]="true" currentStepLabel="Step">
       <nx-step label="Step1" [stepControl]="manualCompletionForm">
@@ -468,6 +472,7 @@ class LinearStepBasicTest extends MultiStepTest {
 }
 
 @Component({
+  selector: 'test-multi-step-completion-test',
   template: `
     <nx-multi-stepper>
       <nx-step label="Step 1" [completed]="completedOne"> step 1 content </nx-step>
@@ -490,6 +495,7 @@ class MultiStepCompletionTest extends MultiStepTest {
 }
 
 @Component({
+  selector: 'test-multi-step-validation-test',
   template: `
     <nx-multi-stepper [linear]="true">
       <nx-step label="Your name" [stepControl]="manualCompletionForm">
@@ -526,6 +532,7 @@ class MultiStepValidationTest extends MultiStepTest {
 }
 
 @Component({
+  selector: 'test-multi-step-basic-test',
   template: `
     <nx-multi-stepper>
       <nx-step label="Step 1"> step 1 content </nx-step>
@@ -545,6 +552,7 @@ class MultiStepValidationTest extends MultiStepTest {
 class MultiStepBasicTest extends MultiStepTest {}
 
 @Component({
+  selector: 'test-multi-step-group-test',
   template: `
     <nx-multi-stepper direction="vertical">
       <nx-step-group label="Group 1">

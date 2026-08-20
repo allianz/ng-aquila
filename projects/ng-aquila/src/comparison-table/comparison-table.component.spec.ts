@@ -21,6 +21,7 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import axe from 'axe-core';
+import type { Mock } from 'vitest';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxComparisonTableCell } from './cell/cell.component';
@@ -30,6 +31,10 @@ import {
   NxComparisonTableBreakpoint,
 } from './comparison-table.models';
 import { NxComparisonTableModule } from './comparison-table.module';
+import {
+  BASIC_COMPARISON_TABLE_TEMPLATE,
+  HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE,
+} from './comparison-table.test-utils';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 
 declare let viewport: any;
@@ -41,127 +46,12 @@ const THROTTLE_TIME = 400;
 // for every other host, flipping their mobile views to tablet (the A1 mobile→tablet promotion).
 const A1_PROVIDERS = [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }];
 
-export const BASIC_COMPARISON_TABLE_TEMPLATE = `
-  <nx-comparison-table>
-          @for (el of data; track $index) {
-            @let element = $any(el);
-            @if ($any(element)['type'] === 'toggleSection') {
-              <ng-container nxComparisonTableToggleSection>
-                <nx-comparison-table-toggle-section-header>{{ element['header'] }}</nx-comparison-table-toggle-section-header>
-                @for (row of $any(element)['content']; track $index) {
-                  <ng-container nxComparisonTableRow>
-                    @if (row['description']) {
-                      <nx-comparison-table-description-cell>{{ row['description'] }}</nx-comparison-table-description-cell
-                        >
-                        }>
-                        @for (cell of row['cells']; track $index) {
-                          <nx-comparison-table-cell>{{ cell }}</nx-comparison-table-cell>
-                        }
-                        @if (row['intersection']) {
-                          <nx-comparison-table-intersection-cell>{{ row['intersection'] }}</nx-comparison-table-intersection-cell>
-                        }
-                      </ng-container>
-                    }
-                  </ng-container>
-                }
-                @if (element['type'] !== 'toggleSection') {
-                  <ng-container nxComparisonTableRow [type]="element['type']">
-                    @if (element['description']) {
-                      <nx-comparison-table-description-cell>{{ element['description'] }}</nx-comparison-table-description-cell
-                        >
-                        }>
-                        @for (cell of element['cells']; track $index) {
-                          <nx-comparison-table-cell [type]="element['type']">{{ cell }}</nx-comparison-table-cell>
-                        }
-                        @if (element['intersection']) {
-                          <nx-comparison-table-intersection-cell>{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
-                        }
-                      </ng-container>
-                    }
-                  }
-                </nx-comparison-table>
-`;
-export const HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE = `
-  <nx-comparison-table [(selectedIndex)]="selected" [hiddenIndexes]="hiddenIndexes">
-          @for (el of data; track $index) {
-            @let element = $any(el);
-            @if (element['type'] === 'header') {
-              <ng-container nxComparisonTableRow [type]="element['type']">
-                @if (element['description']) {
-                  <nx-comparison-table-description-cell>{{ element['description'] }}</nx-comparison-table-description-cell
-                    >
-                    }>
-                    @for (cell of element['cells']; track $index) {
-                      <nx-comparison-table-cell [type]="element['type']">
-                        @if (popular) {
-                          <nx-comparison-table-popular-cell [forColumn]="popular">popular cell</nx-comparison-table-popular-cell>
-                        }
-                        {{ cell }}
-                      </nx-comparison-table-cell>
-                    }
-                    @if (element['intersection']) {
-                      <nx-comparison-table-intersection-cell>{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
-                    }
-                  </ng-container>
-                }
-                @if (element['type'] === 'toggleSection') {
-                  <ng-container nxComparisonTableToggleSection>
-                    <nx-comparison-table-toggle-section-header>{{ element['header'] }}</nx-comparison-table-toggle-section-header>
-                    @for (row of element['content']; track $index) {
-                      <ng-container nxComparisonTableRow>
-                        @if (row['description']) {
-                          <nx-comparison-table-description-cell>{{ row['description'] }}</nx-comparison-table-description-cell
-                            >
-                            }>
-                            @for (cell of row['cells']; track $index) {
-                              <nx-comparison-table-cell>{{ cell }}</nx-comparison-table-cell>
-                            }
-                            @if (row['intersection']) {
-                              <nx-comparison-table-intersection-cell>{{ row['intersection'] }}</nx-comparison-table-intersection-cell>
-                            }
-                          </ng-container>
-                        }
-                      </ng-container>
-                    }
-                    @if (element['type'] === 'content') {
-                      <ng-container nxComparisonTableRow [type]="element['type']">
-                        @if (element['description']) {
-                          <nx-comparison-table-description-cell>{{ element['description'] }}</nx-comparison-table-description-cell
-                            >
-                            }>
-                            @for (cell of element['cells']; track $index) {
-                              <nx-comparison-table-cell [type]="element['type']">
-                                {{ cell }}
-                              </nx-comparison-table-cell>
-                            }
-                            @if (element['intersection']) {
-                              <nx-comparison-table-intersection-cell>{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
-                            }
-                          </ng-container>
-                        }
-                        @if (element['type'] === 'footer') {
-                          <ng-container nxComparisonTableRow [type]="element['type']">
-                            @if (element['description']) {
-                              <nx-comparison-table-description-cell>{{ element['description'] }}</nx-comparison-table-description-cell
-                                >
-                                }>
-                                @for (cell of element['cells']; track $index) {
-                                  <nx-comparison-table-cell [type]="element['type']">
-                                    {{ cell }}
-                                  </nx-comparison-table-cell>
-                                }
-                                @if (element['intersection']) {
-                                  <nx-comparison-table-intersection-cell>{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
-                                }
-                              </ng-container>
-                            }
-                          }
-                        </nx-comparison-table>
-`;
 @Directive({ standalone: true })
 abstract class TableTest {
-  @ViewChild(NxComparisonTableComponent) tableInstance!: NxComparisonTableComponent;
-  @ViewChildren(NxComparisonTableCell) cellInstances!: QueryList<NxComparisonTableCell>;
+  @ViewChild(NxComparisonTableComponent)
+  tableInstance!: NxComparisonTableComponent;
+  @ViewChildren(NxComparisonTableCell)
+  cellInstances!: QueryList<NxComparisonTableCell>;
   @ViewChildren(NxComparisonTableRowDirective)
   rowInstances!: QueryList<NxComparisonTableRowDirective>;
 
@@ -228,7 +118,7 @@ describe('NxComparisonTableComponent', () => {
     it('should return correct number of header cells in _headerCells', () => {
       createTestComponent(BasicComponent);
       const headerCells = tableInstance._headerCells();
-      expect(headerCells).toHaveSize(2);
+      expect(headerCells).toHaveLength(2);
     });
   });
 
@@ -268,12 +158,12 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
 
       const rows = fixture.debugElement.queryAll(By.css('tr'));
-      expect(rows).toHaveSize(4);
+      expect(rows).toHaveLength(4);
 
       expect(
         rows[0].queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header')),
-      ).toHaveSize(1);
-      expect(rows[1].queryAll(By.css('.nx-comparison-table__description-cell'))).toHaveSize(3);
+      ).toHaveLength(1);
+      expect(rows[1].queryAll(By.css('.nx-comparison-table__description-cell'))).toHaveLength(3);
       flush();
     }));
 
@@ -287,19 +177,19 @@ describe('NxComparisonTableComponent', () => {
       const rows = fixture.debugElement.queryAll(By.css('tr'));
 
       // toggle-section-header row: 5 placeholders + 1 content column
-      expect(rows[0].queryAll(By.css('th'))).toHaveSize(5);
-      expect(rows[0].queryAll(By.css('th.nx-comparison-table__placeholder-cell'))).toHaveSize(4);
+      expect(rows[0].queryAll(By.css('th'))).toHaveLength(5);
+      expect(rows[0].queryAll(By.css('th.nx-comparison-table__placeholder-cell'))).toHaveLength(4);
 
       // description-header row: 3 placeholders + 3 content columns
-      expect(rows[1].queryAll(By.css('th'))).toHaveSize(6);
-      expect(rows[1].queryAll(By.css('th.nx-comparison-table__placeholder-cell'))).toHaveSize(3);
+      expect(rows[1].queryAll(By.css('th'))).toHaveLength(6);
+      expect(rows[1].queryAll(By.css('th.nx-comparison-table__placeholder-cell'))).toHaveLength(3);
 
       // content rows: 2 placeholders + 1 mobile-header-column + 3 content cells
-      expect(rows[2].queryAll(By.css('td'))).toHaveSize(6);
-      expect(rows[2].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(2);
+      expect(rows[2].queryAll(By.css('td'))).toHaveLength(6);
+      expect(rows[2].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveLength(2);
 
-      expect(rows[3].queryAll(By.css('td'))).toHaveSize(6);
-      expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(2);
+      expect(rows[3].queryAll(By.css('td'))).toHaveLength(6);
+      expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveLength(2);
       flush();
     }));
 
@@ -325,15 +215,15 @@ describe('NxComparisonTableComponent', () => {
       const rows = fixture.debugElement.queryAll(By.css('tr'));
 
       // toggle-section-header row: 2 placeholders + 1 content column
-      expect(rows[0].queryAll(By.css('th'))).toHaveSize(3);
-      expect(rows[0].queryAll(By.css('th.nx-comparison-table__placeholder-cell'))).toHaveSize(2);
+      expect(rows[0].queryAll(By.css('th'))).toHaveLength(3);
+      expect(rows[0].queryAll(By.css('th.nx-comparison-table__placeholder-cell'))).toHaveLength(2);
 
       // content rows: 1 placeholder + 1 mobile-header-column + 1 content cell
-      expect(rows[2].queryAll(By.css('td'))).toHaveSize(3);
-      expect(rows[2].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(1);
+      expect(rows[2].queryAll(By.css('td'))).toHaveLength(3);
+      expect(rows[2].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveLength(1);
 
-      expect(rows[3].queryAll(By.css('td'))).toHaveSize(3);
-      expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(1);
+      expect(rows[3].queryAll(By.css('td'))).toHaveLength(3);
+      expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveLength(1);
       flush();
     }));
 
@@ -356,7 +246,7 @@ describe('NxComparisonTableComponent', () => {
     it('should not be selected by default', () => {
       createTestComponent(BasicComponent);
       cellInstances.forEach((cell) => {
-        expect(cell._isSelected()).toBeFalse();
+        expect(cell._isSelected()).toBe(false);
       });
       cellElements.forEach((cell) => {
         expect(cell.nativeElement).not.toHaveClass('is-selected');
@@ -368,9 +258,9 @@ describe('NxComparisonTableComponent', () => {
 
       expect(tableInstance.selectedIndex).toBe(0);
       rowInstances.forEach((row) => {
-        expect(row.cells()[0]._isSelected()).toBeTrue();
-        expect(row.cells()[1]._isSelected()).toBeFalse();
-        expect(row.cells()[2]._isSelected()).toBeFalse();
+        expect(row.cells()[0]._isSelected()).toBe(true);
+        expect(row.cells()[1]._isSelected()).toBe(false);
+        expect(row.cells()[2]._isSelected()).toBe(false);
       });
       rowElements.forEach((row) => {
         const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
@@ -384,9 +274,9 @@ describe('NxComparisonTableComponent', () => {
 
       expect(tableInstance.selectedIndex).toBe(2);
       rowInstances.forEach((row) => {
-        expect(row.cells()[0]._isSelected()).toBeFalse();
-        expect(row.cells()[1]._isSelected()).toBeFalse();
-        expect(row.cells()[2]._isSelected()).toBeTrue();
+        expect(row.cells()[0]._isSelected()).toBe(false);
+        expect(row.cells()[1]._isSelected()).toBe(false);
+        expect(row.cells()[2]._isSelected()).toBe(true);
       });
       rowElements.forEach((row) => {
         const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
@@ -400,7 +290,7 @@ describe('NxComparisonTableComponent', () => {
       createTestComponent(SelectableIndexComponent);
       tick(THROTTLE_TIME);
       expect(tableInstance.selectedIndex).toBe(0);
-      const spy = spyOn(tableInstance.selectedIndexChange, 'emit').and.callThrough();
+      const spy = vi.spyOn(tableInstance.selectedIndexChange, 'emit');
 
       testInstance.selected = 1;
       fixture.detectChanges();
@@ -416,7 +306,7 @@ describe('NxComparisonTableComponent', () => {
     it('should not be disabled by default', () => {
       createTestComponent(DisabledColumnsComponent);
       cellInstances.forEach((cell) => {
-        expect(cell._isCellDisabled()).toBeFalse();
+        expect(cell._isCellDisabled()).toBe(false);
       });
       cellElements.forEach((cell) => {
         expect(cell.nativeElement).not.toHaveClass('is-disabled');
@@ -460,9 +350,9 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
 
       rowInstances.forEach((row) => {
-        expect(row.cells()[0]._isCellDisabled()).toBeFalse();
-        expect(row.cells()[1]._isCellDisabled()).toBeTrue();
-        expect(row.cells()[2]._isCellDisabled()).toBeFalse();
+        expect(row.cells()[0]._isCellDisabled()).toBe(false);
+        expect(row.cells()[1]._isCellDisabled()).toBe(true);
+        expect(row.cells()[2]._isCellDisabled()).toBe(false);
       });
 
       rowElements.forEach((row) => {
@@ -477,9 +367,9 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
 
       rowInstances.forEach((row) => {
-        expect(row.cells()[0]._isCellDisabled()).toBeFalse();
-        expect(row.cells()[1]._isCellDisabled()).toBeFalse();
-        expect(row.cells()[2]._isCellDisabled()).toBeTrue();
+        expect(row.cells()[0]._isCellDisabled()).toBe(false);
+        expect(row.cells()[1]._isCellDisabled()).toBe(false);
+        expect(row.cells()[2]._isCellDisabled()).toBe(true);
       });
 
       rowElements.forEach((row) => {
@@ -497,9 +387,9 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
 
       rowInstances.forEach((row) => {
-        expect(row.cells()[0]._isCellDisabled()).toBeFalse();
-        expect(row.cells()[1]._isCellDisabled()).toBeFalse();
-        expect(row.cells()[2]._isCellDisabled()).toBeFalse();
+        expect(row.cells()[0]._isCellDisabled()).toBe(false);
+        expect(row.cells()[1]._isCellDisabled()).toBe(false);
+        expect(row.cells()[2]._isCellDisabled()).toBe(false);
       });
 
       rowElements.forEach((row) => {
@@ -588,7 +478,7 @@ describe('NxComparisonTableComponent', () => {
 
     it('emits a viewType change', fakeAsync(() => {
       createTestComponent(BasicComponent);
-      spyOn(tableInstance.viewTypeChange, 'emit');
+      vi.spyOn(tableInstance.viewTypeChange, 'emit').mockReturnValue(undefined);
       viewport.set('mobile');
       window.dispatchEvent(new Event('resize'));
       tick(THROTTLE_TIME);
@@ -704,7 +594,9 @@ describe('NxComparisonTableComponent', () => {
       tick(THROTTLE_TIME);
       fixture.detectChanges();
 
-      const updateClipSpy = spyOn(tableInstance as any, '_updateClip');
+      const updateClipSpy = vi
+        .spyOn(tableInstance as any, '_updateClip')
+        .mockReturnValue(undefined);
       // The page-wide listener is registered on window with capture, so a document scroll reaches it.
       dispatchFakeEvent(document, 'scroll');
       // No tick(): proves the page-scroll handler (comparison-table.component.ts:548) is synchronous.
@@ -719,7 +611,9 @@ describe('NxComparisonTableComponent', () => {
       tick(THROTTLE_TIME);
       fixture.detectChanges();
 
-      const updateClipSpy = spyOn(tableInstance as any, '_updateClip');
+      const updateClipSpy = vi
+        .spyOn(tableInstance as any, '_updateClip')
+        .mockReturnValue(undefined);
 
       // The IntersectionObserver gate lets the page-wide scroll handler cost nothing while the
       // table is off-screen (comparison-table.component.ts:549). Drive the flag directly.
@@ -752,7 +646,7 @@ describe('NxComparisonTableComponent', () => {
       // once the header overlaps real content. (Headless uses the default theme, reserve = 0, so the
       // at-rest value here is 0 — the negative branch is exercised in A1 with a non-zero shadow.)
       const clipTop = parseFloat(native.style.getPropertyValue('--ct-clip-top') || '0');
-      expect(Number.isFinite(clipTop)).toBeTrue();
+      expect(Number.isFinite(clipTop)).toBe(true);
       flush();
     }));
   });
@@ -768,7 +662,7 @@ describe('NxComparisonTableComponent', () => {
       const headers = fixture.debugElement.queryAll(
         By.css('.nx-comparison-table__toggle-section-header'),
       );
-      expect(headers).toHaveSize(1);
+      expect(headers).toHaveLength(1);
       flush();
     }));
 
@@ -782,7 +676,7 @@ describe('NxComparisonTableComponent', () => {
       const headers = fixture.debugElement.queryAll(
         By.css('.nx-comparison-table__toggle-section-header'),
       );
-      expect(headers).toHaveSize(1);
+      expect(headers).toHaveLength(1);
       flush();
     }));
 
@@ -881,7 +775,7 @@ describe('NxComparisonTableComponent', () => {
       const headers = fixture.debugElement.queryAll(
         By.css('.nx-comparison-table__toggle-section-header'),
       );
-      expect(headers).toHaveSize(2);
+      expect(headers).toHaveLength(2);
       flush();
     }));
 
@@ -1017,7 +911,7 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
       expect(instance._pageIndex()).toBe(instance._maxPageIndex());
 
-      const measureSpy = spyOn(instance, '_measureClipGeometry').and.callThrough();
+      const measureSpy = vi.spyOn(instance, '_measureClipGeometry');
 
       // desktop → tablet → desktop.
       viewport.set('tablet');
@@ -1062,8 +956,8 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
       expect(instance._pageIndex()).toBeGreaterThan(0);
 
-      const addSpy = spyOn(host.classList, 'add').and.callThrough();
-      const removeSpy = spyOn(host.classList, 'remove').and.callThrough();
+      const addSpy = vi.spyOn(host.classList, 'add');
+      const removeSpy = vi.spyOn(host.classList, 'remove');
 
       instance._measureClipGeometry();
 
@@ -1279,7 +1173,7 @@ describe('NxComparisonTableComponent', () => {
       const cell = tableElement.nativeElement.querySelector(
         `tbody [data-ct-col="${lastCol}"]`,
       ) as HTMLElement;
-      expect(cell).withContext('a product cell with the last visible index exists').toBeTruthy();
+      expect(cell, 'a product cell with the last visible index exists').toBeTruthy();
       cell.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
       fixture.detectChanges();
 
@@ -1313,7 +1207,7 @@ describe('NxComparisonTableComponent', () => {
       expect(productCells.length).toBeGreaterThan(0);
       productCells.forEach((cell: HTMLElement) => {
         expect(cell.getAttribute('aria-hidden')).toBeNull();
-        expect(cell.hasAttribute('inert')).toBeFalse();
+        expect(cell.hasAttribute('inert')).toBe(false);
       });
       flush();
     }));
@@ -1426,10 +1320,10 @@ describe('NxComparisonTableComponent', () => {
       const gridRows = tableElement.queryAll(By.css('.nx-comparison-table__grid-row'));
       expect(gridRows.length).toBeGreaterThan(0);
       gridRows.forEach((row) => {
-        expect(row.nativeElement.tagName).toBe(
-          'TR',
+        expect(
+          row.nativeElement.tagName,
           `Expected a <tr> for ${row.nativeElement.className}`,
-        );
+        ).toBe('TR');
       });
     });
 
@@ -1442,26 +1336,20 @@ describe('NxComparisonTableComponent', () => {
       expect(toggleSectionHeaderRow.attributes.role).toBe('row');
     });
 
-    it('has no accessibility violations', (done) => {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicComponent);
 
-      axe.run(
-        fixture.nativeElement,
-        {
-          rules: {
-            'empty-table-header': { enabled: false },
-          },
+      const results = await axe.run(fixture.nativeElement, {
+        rules: {
+          'empty-table-header': { enabled: false },
         },
-        (error: Error, results: axe.AxeResults) => {
-          expect(results.violations.length).toBe(0);
-          const violationMessages = results.violations.map((item) => item.description);
-          if (violationMessages.length) {
-            console.error(violationMessages);
-            expect(violationMessages).toBeFalsy();
-          }
-          done();
-        },
-      );
+      });
+      expect(results.violations.length).toBe(0);
+      const violationMessages = results.violations.map((item) => item.description);
+      if (violationMessages.length) {
+        console.error(violationMessages);
+        expect(violationMessages).toBeFalsy();
+      }
     });
   });
 
@@ -1469,7 +1357,7 @@ describe('NxComparisonTableComponent', () => {
     it('should not be hidden by default', () => {
       createTestComponent(HiddenColumnsComponent);
       cellInstances.forEach((cell) => {
-        expect(cell._isCellHidden()).toBeFalse();
+        expect(cell._isCellHidden()).toBe(false);
       });
       cellElements.forEach((cell) => {
         expect(cell.nativeElement).not.toHaveClass('is-hidden');
@@ -1483,9 +1371,9 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
 
       rowInstances.forEach((row) => {
-        expect(row.cells()[0]._isCellHidden()).toBeFalse();
-        expect(row.cells()[1]._isCellHidden()).toBeFalse();
-        expect(row.cells()[2]._isCellHidden()).toBeTrue();
+        expect(row.cells()[0]._isCellHidden()).toBe(false);
+        expect(row.cells()[1]._isCellHidden()).toBe(false);
+        expect(row.cells()[2]._isCellHidden()).toBe(true);
       });
 
       rowElements.forEach((row) => {
@@ -1499,9 +1387,9 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
 
       rowInstances.forEach((row) => {
-        expect(row.cells()[0]._isCellHidden()).toBeFalse();
-        expect(row.cells()[1]._isCellHidden()).toBeTrue();
-        expect(row.cells()[2]._isCellHidden()).toBeFalse();
+        expect(row.cells()[0]._isCellHidden()).toBe(false);
+        expect(row.cells()[1]._isCellHidden()).toBe(true);
+        expect(row.cells()[2]._isCellHidden()).toBe(false);
       });
 
       rowElements.forEach((row) => {
@@ -1522,14 +1410,14 @@ describe('NxComparisonTableComponent', () => {
 
       // 3 columns, popular above column 0 → 2 placeholders (for columns 1 and 2).
       const before = fixture.debugElement.queryAll(By.css(placeholderSelector));
-      expect(before).toHaveSize(2);
+      expect(before).toHaveLength(2);
 
       // Hiding a column removes it (and its placeholder) from the popular row entirely.
       (testInstance as HiddenColumnsComponent).hiddenIndexes = [2];
       fixture.detectChanges();
 
       const after = fixture.debugElement.queryAll(By.css(placeholderSelector));
-      expect(after).toHaveSize(1);
+      expect(after).toHaveLength(1);
     });
   });
 });
@@ -1589,6 +1477,7 @@ describe('NxComparisonTableComponent Allianz One mode', () => {
 });
 
 @Component({
+  selector: 'test-comparison-table-basic-component',
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
@@ -1622,6 +1511,7 @@ class BasicComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-basic-on-push-component',
   template:
     '<div style="height: 200px; width: 200px; overflow: scroll;">' +
     BASIC_COMPARISON_TABLE_TEMPLATE +
@@ -1658,6 +1548,7 @@ class BasicOnPushComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-selectable-index-component',
   template: `
     <nx-comparison-table [(selectedIndex)]="selected">
       @for (el of data; track $index) {
@@ -1732,6 +1623,7 @@ class SelectableIndexComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-disabled-columns-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -1810,6 +1702,7 @@ class DisabledColumnsComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-long-page-with-table-component',
   template:
     '<div style="height: 200px; width: 200px; overflow: scroll;">' +
     BASIC_COMPARISON_TABLE_TEMPLATE +
@@ -1846,6 +1739,7 @@ class LongPageWithTableComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-hidden-columns-component',
   template: HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
@@ -1886,6 +1780,7 @@ class HiddenColumnsComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-toggle-section-overlay-component',
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
@@ -1907,6 +1802,7 @@ class ToggleSectionOverlayComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-overflow-component',
   template: `
     <nx-comparison-table [responsiveBreakpoints]="breakpoints" style="width: 600px;">
       <ng-container nxComparisonTableRow type="header">
@@ -1950,6 +1846,7 @@ class OverflowComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-allianz-one-component',
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
@@ -1968,6 +1865,7 @@ class AllianzOneComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-row-group-with-toggle-section-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -2013,6 +1911,7 @@ class AllianzOneComponent extends TableTest {
 class RowGroupWithToggleSectionComponent extends TableTest {}
 
 @Component({
+  selector: 'test-overflow-row-group-component',
   template: `
     <nx-comparison-table [responsiveBreakpoints]="breakpoints" style="width: 400px;">
       <ng-container nxComparisonTableRow type="header">
@@ -2059,6 +1958,7 @@ class OverflowRowGroupComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-intersection-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -2084,6 +1984,7 @@ class OverflowRowGroupComponent extends TableTest {
 class IntersectionComponent extends TableTest {}
 
 @Component({
+  selector: 'test-rtl-component',
   template: `
     <div dir="rtl">
       <nx-comparison-table>
@@ -2108,7 +2009,8 @@ describe('NxComparisonTable responsive breakpoints', () => {
   let fixture: ComponentFixture<ResponsiveTableTest>;
   let tableInstance: NxComparisonTableComponent;
   let resizeCallback: ResizeObserverCallback;
-  let disconnectSpy: jasmine.Spy;
+  let disconnectSpy: Mock;
+  let realResizeObserver: typeof ResizeObserver;
 
   function simulateResize(width: number) {
     resizeCallback(
@@ -2119,7 +2021,8 @@ describe('NxComparisonTable responsive breakpoints', () => {
   }
 
   beforeEach(waitForAsync(() => {
-    disconnectSpy = jasmine.createSpy('disconnect');
+    disconnectSpy = vi.fn().mockName('disconnect');
+    realResizeObserver = window.ResizeObserver;
     (window as any).ResizeObserver = class {
       constructor(cb: ResizeObserverCallback) {
         resizeCallback = cb;
@@ -2140,6 +2043,12 @@ describe('NxComparisonTable responsive breakpoints', () => {
     });
     TestBed.compileComponents();
   }));
+
+  // Spec files share one browser realm, so leaving the stub in place would hand it to every
+  // later spec file as well — and `virtual-scroll` and the table itself need the real one.
+  afterEach(() => {
+    window.ResizeObserver = realResizeObserver;
+  });
 
   function createComponent<T extends ResponsiveTableTest>(component: Type<T>) {
     fixture = TestBed.createComponent(component);
@@ -2314,10 +2223,12 @@ describe('NxComparisonTable responsive breakpoints', () => {
 
 @Directive({ standalone: true })
 abstract class ResponsiveTableTest {
-  @ViewChild(NxComparisonTableComponent) tableInstance!: NxComparisonTableComponent;
+  @ViewChild(NxComparisonTableComponent)
+  tableInstance!: NxComparisonTableComponent;
 }
 
 @Component({
+  selector: 'test-responsive-default-component',
   template: `
     <nx-comparison-table style="width: 1000px;">
       <ng-container nxComparisonTableRow type="header">
@@ -2350,6 +2261,7 @@ abstract class ResponsiveTableTest {
 class ResponsiveDefaultComponent extends ResponsiveTableTest {}
 
 @Component({
+  selector: 'test-responsive-custom-breakpoints-component',
   template: `
     <nx-comparison-table
       [responsiveMode]="'container'"
@@ -2393,6 +2305,7 @@ class ResponsiveCustomBreakpointsComponent extends ResponsiveTableTest {
 }
 
 @Component({
+  selector: 'test-responsive-container-mode-component',
   template: `
     <nx-comparison-table [responsiveMode]="'container'" style="width: 1000px;">
       <ng-container nxComparisonTableRow type="header">
@@ -2425,6 +2338,7 @@ class ResponsiveCustomBreakpointsComponent extends ResponsiveTableTest {
 class ResponsiveContainerModeComponent extends ResponsiveTableTest {}
 
 @Component({
+  selector: 'test-responsive-with-view-override-component',
   template: `
     <nx-comparison-table [responsiveMode]="'container'" [view]="'desktop'" style="width: 1000px;">
       <ng-container nxComparisonTableRow type="header">
@@ -2457,6 +2371,7 @@ class ResponsiveContainerModeComponent extends ResponsiveTableTest {}
 class ResponsiveWithViewOverrideComponent extends ResponsiveTableTest {}
 
 @Component({
+  selector: 'test-responsive-a1-component',
   template: `
     <nx-comparison-table [responsiveMode]="'container'" style="width: 1000px;">
       <ng-container nxComparisonTableRow type="header">

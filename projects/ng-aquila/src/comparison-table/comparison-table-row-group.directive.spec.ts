@@ -73,7 +73,7 @@ describe('NxComparisonTableRowGroupDirective', () => {
 
       // All 10 group rows are rendered as content rows (the expansion button is a separate
       // .is-group-expansion-row, not a content row).
-      expect(getContentRows()).toHaveSize(10);
+      expect(getContentRows()).toHaveLength(10);
       flush();
     }));
 
@@ -132,20 +132,20 @@ describe('NxComparisonTableRowGroupDirective', () => {
 
     it('sets useFullRowForExpandableArea to false by default', () => {
       createTestComponent(BasicComponent);
-      expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBeFalse();
+      expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(false);
     });
 
     describe('with binding to isExpanded property', () => {
       it('isExpanded defaults to false', () => {
         createTestComponent(ConfigurableComponent);
-        expect(testInstance.rowGroupDirective.isExpanded).toBeFalse();
+        expect(testInstance.rowGroupDirective.isExpanded).toBe(false);
       });
 
       it('isExpanded can be set to true via input', () => {
         createTestComponent(ConfigurableComponent);
         testInstance.isExpanded = true;
         fixture.detectChanges();
-        expect(testInstance.rowGroupDirective.isExpanded).toBeTrue();
+        expect(testInstance.rowGroupDirective.isExpanded).toBe(true);
       });
 
       it('isExpanded can be toggled to false', () => {
@@ -155,7 +155,7 @@ describe('NxComparisonTableRowGroupDirective', () => {
 
         testInstance.isExpanded = false;
         fixture.detectChanges();
-        expect(testInstance.rowGroupDirective.isExpanded).toBeFalse();
+        expect(testInstance.rowGroupDirective.isExpanded).toBe(false);
       });
     });
 
@@ -240,12 +240,12 @@ describe('NxComparisonTableRowGroupDirective', () => {
         fixture.detectChanges();
 
         const rowElements = fixture.debugElement.queryAll(By.css('tr'));
-        expect(rowElements).toHaveSize(3);
+        expect(rowElements).toHaveLength(3);
 
         // 11 mobile columns + 1 placeholder
-        expect(rowElements[0].queryAll(By.css('th'))).toHaveSize(12);
-        expect(rowElements[1].queryAll(By.css('td'))).toHaveSize(12);
-        expect(rowElements[2].queryAll(By.css('td'))).toHaveSize(12);
+        expect(rowElements[0].queryAll(By.css('th'))).toHaveLength(12);
+        expect(rowElements[1].queryAll(By.css('td'))).toHaveLength(12);
+        expect(rowElements[2].queryAll(By.css('td'))).toHaveLength(12);
         flush();
       }));
     });
@@ -277,11 +277,11 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
     [COMPARISON_TABLE_DEFAULT_OPTIONS],
     (defaultOptions: ComparisonTableDefaultOptions) => {
       createTestComponent(BasicComponent);
-      expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBeTrue();
+      expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(true);
 
       defaultOptions.useFullRowForExpandableArea = false;
       fixture.detectChanges();
-      expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBeFalse();
+      expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(false);
     },
   ));
 
@@ -289,7 +289,7 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
     createTestComponent(ConfigurableComponent);
     testInstance.useFullRowForExpandableArea = true;
     fixture.detectChanges();
-    expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBeTrue();
+    expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(true);
   });
 });
 
@@ -298,6 +298,7 @@ function flush() {
 }
 
 @Component({
+  selector: 'test-comparison-table-row-group-basic-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -327,6 +328,7 @@ function flush() {
 class BasicComponent extends RowGroupTest {}
 
 @Component({
+  selector: 'test-comparison-table-row-group-configurable-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -370,6 +372,7 @@ class BasicComponent extends RowGroupTest {}
 class ConfigurableComponent extends RowGroupTest {}
 
 @Component({
+  selector: 'test-comparison-table-row-group-toggle-section-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">

@@ -90,7 +90,7 @@ describe('NxLinkComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(TestComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });

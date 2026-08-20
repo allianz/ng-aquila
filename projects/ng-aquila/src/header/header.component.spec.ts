@@ -16,7 +16,8 @@ const A1_PROVIDERS = [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) 
 
 @Directive({ standalone: true })
 abstract class HeaderTest {
-  @ViewChild(NxHeaderComponent) headerInstance!: NxHeaderComponent;
+  @ViewChild(NxHeaderComponent)
+  headerInstance!: NxHeaderComponent;
   showSeparator = false;
 }
 
@@ -214,7 +215,7 @@ describe(NxHeaderComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicHeader);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });

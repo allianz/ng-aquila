@@ -17,6 +17,7 @@ function generateItems(count: number): TestItem[] {
 }
 
 @Component({
+  selector: 'test-virtual-scroll-viewport-basic-test-component',
   template: `
     <nx-virtual-viewport [itemHeight]="40" [overscan]="2" style="height: 200px; display: block;">
       <div *nxVirtualFor="let item of items(); trackBy: 'id'" class="test-item">
@@ -34,6 +35,7 @@ class BasicTestComponent {
 }
 
 @Component({
+  selector: 'test-function-accessor-test-component',
   template: `
     <nx-virtual-viewport [itemHeight]="40" style="height: 200px; display: block;">
       <div *nxVirtualFor="let item of items(); trackBy: trackByFn" class="test-item">
@@ -51,6 +53,7 @@ class FunctionAccessorTestComponent {
 }
 
 @Component({
+  selector: 'test-custom-template-test-component',
   template: `
     <nx-virtual-viewport [itemHeight]="40" style="height: 200px; display: block;">
       <div
@@ -71,6 +74,7 @@ class CustomTemplateTestComponent {
 }
 
 @Component({
+  selector: 'test-visible-range-test-component',
   template: `
     <nx-virtual-viewport
       [itemHeight]="40"
@@ -89,7 +93,10 @@ class CustomTemplateTestComponent {
 class VisibleRangeTestComponent {
   items = signal<TestItem[]>([]);
   viewport = viewChild.required(NxVirtualViewportComponent);
-  rangeChanges: { start: number; end: number }[] = [];
+  rangeChanges: {
+    start: number;
+    end: number;
+  }[] = [];
 
   onVisibleRangeChange(event: { start: number; end: number }): void {
     this.rangeChanges.push(event);
@@ -402,7 +409,7 @@ describe('NxVirtualViewportComponent', () => {
 
       const lastRange = component.rangeChanges[component.rangeChanges.length - 1];
       expect(lastRange).toEqual(
-        jasmine.objectContaining({ start: jasmine.any(Number), end: jasmine.any(Number) }),
+        expect.objectContaining({ start: expect.any(Number), end: expect.any(Number) }),
       );
       expect(lastRange.end).toBeGreaterThan(lastRange.start);
     }));
@@ -523,11 +530,11 @@ describe('NxVirtualViewportComponent', () => {
       const viewportEl = fixture.nativeElement.querySelector('.nx-virtual-viewport__viewport');
 
       // Initially at top
-      expect(viewport.isAtBottom()).toBeFalse();
+      expect(viewport.isAtBottom()).toBe(false);
 
       // Scroll to bottom (4000px total - 200px viewport = 3800px max scroll)
       viewportEl.scrollTop = 3800;
-      expect(viewport.isAtBottom()).toBeTrue();
+      expect(viewport.isAtBottom()).toBe(true);
     }));
 
     it('updateSpacerHeight should update sizer element directly', fakeAsync(() => {

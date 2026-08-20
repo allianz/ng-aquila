@@ -53,8 +53,12 @@ Thumbs.db
 
 # ==== CUSTOM ====
 
-# karma test results
+# test results
 /reports
+
+# screenshots and attachments Vitest browser mode writes for failing specs
+**/__screenshots__
+/.vitest-attachments
 
 # ngx-docs-cli generated files
 /projects/ng-aquila/documentation/generated

@@ -1,57 +1,12 @@
 import { AppearanceType } from '@allianz/ng-aquila/formfield';
-import { ComponentHarness, HarnessLoader, parallel } from '@angular/cdk/testing';
+import { HarnessLoader, parallel } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NxDropdownModule } from '../dropdown.module';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
-
-/** @docs-private */
-export class MultiSelectOptionHarness extends ComponentHarness {
-  static hostSelector = 'nx-multi-select-option';
-
-  getLabel = this.locatorFor('.nx-checkbox__label');
-
-  getCheckbox = this.locatorFor('.nx-checkbox');
-
-  getCheckIcon = this.locatorForOptional('nx-icon');
-
-  async getLabelText() {
-    const label = await this.getLabel();
-    return label.text();
-  }
-
-  async isSelected() {
-    const checkbox = await this.getCheckbox();
-    return checkbox.hasClass('is-selected');
-  }
-
-  async isActive() {
-    const checkbox = await this.getCheckbox();
-    return checkbox.hasClass('is-active');
-  }
-
-  async isDisabled() {
-    const checkbox = await this.getCheckbox();
-    return checkbox.hasClass('is-disabled');
-  }
-
-  async isOutline() {
-    const host = await this.host();
-    return host.hasClass('is-outline');
-  }
-
-  async click() {
-    const option = await this.host();
-    await option.click();
-  }
-
-  async getId() {
-    const host = await this.host();
-    return host.getAttribute('id');
-  }
-}
+import { MultiSelectOptionHarness } from './multi-select-option.test-utils';
 
 describe('NxMultiSelectOptionComponent', () => {
   let fixture: ComponentFixture<MultiSelectOptionTest>;
@@ -88,7 +43,7 @@ describe('NxMultiSelectOptionComponent', () => {
     });
 
     it('is not active', async () => {
-      expect(await multiSelectOptionHarness.isActive()).toBeFalse();
+      expect(await multiSelectOptionHarness.isActive()).toBe(false);
     });
 
     it('shows no check icon', async () => {
@@ -97,11 +52,11 @@ describe('NxMultiSelectOptionComponent', () => {
     });
 
     it('is not selected', async () => {
-      expect(await multiSelectOptionHarness.isSelected()).toBeFalse();
+      expect(await multiSelectOptionHarness.isSelected()).toBe(false);
     });
 
     it('is not disabled', async () => {
-      expect(await multiSelectOptionHarness.isDisabled()).toBeFalse();
+      expect(await multiSelectOptionHarness.isDisabled()).toBe(false);
     });
 
     it('has the aria attributes', async () => {
@@ -126,7 +81,7 @@ describe('NxMultiSelectOptionComponent', () => {
       });
 
       it('is selected', async () => {
-        expect(await multiSelectOptionHarness.isSelected()).toBeTrue();
+        expect(await multiSelectOptionHarness.isSelected()).toBe(true);
       });
 
       it('shows check icon', async () => {
@@ -153,7 +108,7 @@ describe('NxMultiSelectOptionComponent', () => {
       });
 
       it('is disabled', async () => {
-        expect(await multiSelectOptionHarness.isDisabled()).toBeTrue();
+        expect(await multiSelectOptionHarness.isDisabled()).toBe(true);
       });
 
       it('has the aria attributes', async () => {
@@ -165,7 +120,7 @@ describe('NxMultiSelectOptionComponent', () => {
 
       it('can not be selected', async () => {
         await multiSelectOptionHarness.click();
-        expect(await multiSelectOptionHarness.isSelected()).toBeFalse();
+        expect(await multiSelectOptionHarness.isSelected()).toBe(false);
         expect(testInstance.onSelect).not.toHaveBeenCalled();
       });
     });
@@ -177,7 +132,7 @@ describe('NxMultiSelectOptionComponent', () => {
       });
 
       it('is active', async () => {
-        expect(await multiSelectOptionHarness.isActive()).toBeTrue();
+        expect(await multiSelectOptionHarness.isActive()).toBe(true);
       });
 
       describe('and set inactive', () => {
@@ -187,7 +142,7 @@ describe('NxMultiSelectOptionComponent', () => {
         });
 
         it('is active', async () => {
-          expect(await multiSelectOptionHarness.isActive()).toBeFalse();
+          expect(await multiSelectOptionHarness.isActive()).toBe(false);
         });
       });
     });
@@ -199,7 +154,7 @@ describe('NxMultiSelectOptionComponent', () => {
       });
 
       it('has appearance outline', async () => {
-        expect(await multiSelectOptionHarness.isOutline()).toBeTrue();
+        expect(await multiSelectOptionHarness.isOutline()).toBe(true);
       });
     });
   });
@@ -207,24 +162,26 @@ describe('NxMultiSelectOptionComponent', () => {
   describe('accessibility', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicMultiSelectOptionComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Directive({ standalone: true })
 abstract class MultiSelectOptionTest {
-  @ViewChild(NxMultiSelectOptionComponent) multiSelectOption!: NxMultiSelectOptionComponent<any>;
+  @ViewChild(NxMultiSelectOptionComponent)
+  multiSelectOption!: NxMultiSelectOptionComponent<any>;
 
   selected = false;
   disabled = false;
   label = 'example label';
   value = 'example value';
-  onSelect = jasmine.createSpy('onSelect');
+  onSelect = vi.fn().mockName('onSelect');
   appearance: AppearanceType = 'auto';
 }
 
 @Component({
+  selector: 'test-basic-multi-select-option-component',
   template: `
     <div role="listbox" aria-label="exampleLabel">
       <nx-multi-select-option

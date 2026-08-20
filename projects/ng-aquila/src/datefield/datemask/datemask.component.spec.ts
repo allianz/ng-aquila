@@ -426,14 +426,14 @@ describe('DatemaskComponent', () => {
 
       const updatedInputs = fixture.nativeElement.querySelectorAll('input');
       updatedInputs.forEach((input: HTMLInputElement) => {
-        expect(input.disabled).toBeTrue();
+        expect(input.disabled).toBe(true);
       });
-      expect(test.datepickerComponent.disabled()).toBeTrue();
-      expect(test.datepickerToggleComponent.disabled()).toBeTrue();
+      expect(test.datepickerComponent.disabled()).toBe(true);
+      expect(test.datepickerToggleComponent.disabled()).toBe(true);
 
       const toggle = fixture.nativeElement.querySelector('.nx-datepicker-toggle');
-      expect(toggle).withContext('nx-datepicker-toggle').not.toBeNull();
-      expect(toggle.classList.contains('nx-datepicker-toggle--disabled')).toBeTrue();
+      expect(toggle, 'nx-datepicker-toggle').not.toBeNull();
+      expect(toggle.classList.contains('nx-datepicker-toggle--disabled')).toBe(true);
     }));
   });
 });
@@ -449,6 +449,7 @@ abstract class DateRangeTestBase {
 }
 
 @Component({
+  selector: 'test-datemask-test-basic',
   template: `
     <nx-formfield>
       <nx-datemask [(ngModel)]="datemaskModel"></nx-datemask>
@@ -468,6 +469,7 @@ export class DatemaskTestBasic extends DateRangeTestBase {
   datemaskModel = moment([2022, 5, 20]);
 }
 @Component({
+  selector: 'test-datemask-test-form',
   template: `
     <form [formGroup]="datemaskForm">
       <nx-formfield>
@@ -512,6 +514,7 @@ export class DatemaskTestForm extends DateRangeTestBase {
   });
 }
 @Component({
+  selector: 'test-datemask-incomplete-test-form',
   template: `
     <form [formGroup]="datemaskForm">
       <nx-formfield>
@@ -536,6 +539,7 @@ export class DatemaskIncompleteTestForm extends DateRangeTestBase {
   });
 }
 @Component({
+  selector: 'test-datemask-test-format',
   template: `
     <nx-formfield>
       <nx-datemask [(ngModel)]="datemaskModel" [format]="format"></nx-datemask>
@@ -557,6 +561,7 @@ export class DatemaskTestFormat extends DateRangeTestBase {
 }
 
 @Component({
+  selector: 'test-datemask-with-date-picker',
   template: `
     <nx-formfield>
       <nx-datemask

@@ -76,11 +76,11 @@ describe('NxOverlayService', () => {
     overlayService.open(PlainComponent, fixture.componentInstance.trigger);
     fixture.detectChanges();
     flush();
-    expect(overlayContainerElement.querySelectorAll('.nx-overlay-container')).toHaveSize(2);
+    expect(overlayContainerElement.querySelectorAll('.nx-overlay-container')).toHaveLength(2);
     overlayService.ngOnDestroy();
     fixture.detectChanges();
     flush();
-    expect(overlayContainerElement.querySelectorAll('.nx-overlay-container')).toHaveSize(0);
+    expect(overlayContainerElement.querySelectorAll('.nx-overlay-container')).toHaveLength(0);
   }));
 
   it('should show backdrop', fakeAsync(() => {
@@ -145,7 +145,7 @@ describe('NxOverlayService', () => {
     expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeFalsy();
   }));
 
-  it('should not close on backdrop click when closeOnClickOutside is false ', fakeAsync(() => {
+  it('should not close on backdrop click when closeOnClickOutside is false', fakeAsync(() => {
     overlayService.open(PlainComponent, fixture.componentInstance.trigger, {
       hasBackdrop: true,
       closeOnClickOutside: false,
@@ -167,15 +167,16 @@ describe('NxOverlayService', () => {
     });
     fixture.detectChanges();
     flush();
-    expect(fixture.componentInstance.button.active).toBeTrue();
+    expect(fixture.componentInstance.button.active).toBe(true);
     overlayRef.close();
     fixture.detectChanges();
     flush();
-    expect(fixture.componentInstance.button.active).toBeFalse();
+    expect(fixture.componentInstance.button.active).toBe(false);
   }));
 });
 
 @Component({
+  selector: 'test-overlay-component-with-template-ref',
   template: `<button #button nxButton="tertiary small">Trigger</button>
 
     <ng-template let-data let-overlayRef="overlayRef">
@@ -188,9 +189,12 @@ class ComponentWithTemplateRef {
   localValue!: string;
   overlayRef!: NxOverlayRef<any>;
 
-  @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
-  @ViewChild('button') trigger!: ElementRef;
-  @ViewChild(NxButtonComponent) button!: NxButtonComponent;
+  @ViewChild(TemplateRef)
+  templateRef!: TemplateRef<any>;
+  @ViewChild('button')
+  trigger!: ElementRef;
+  @ViewChild(NxButtonComponent)
+  button!: NxButtonComponent;
 
   setDialogRef(overlayRef: NxOverlayRef<any>): string {
     this.overlayRef = overlayRef;
@@ -199,6 +203,7 @@ class ComponentWithTemplateRef {
 }
 
 @Component({
+  selector: 'test-plain-component',
   template: `<div class="hello">Hello World</div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
@@ -212,10 +217,12 @@ class PlainComponent {}
 class OverlayTestModule {}
 
 @Component({
+  selector: 'test-test-root-component',
   template: `<button #button>Trigger</button> <router-outlet></router-outlet>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxOverlayModule, NxButtonModule, RouterTestingModule],
 })
 export class TestRootComponent {
-  @ViewChild('button') trigger!: ElementRef;
+  @ViewChild('button')
+  trigger!: ElementRef;
 }

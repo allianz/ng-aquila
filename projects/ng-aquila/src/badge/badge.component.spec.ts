@@ -11,7 +11,8 @@ import { NxBadgeModule } from './badge.module';
 
 @Directive({ standalone: true })
 abstract class BadgeTest {
-  @ViewChild(NxBadgeComponent) badgeInstance!: NxBadgeComponent;
+  @ViewChild(NxBadgeComponent)
+  badgeInstance!: NxBadgeComponent;
   type = 'active';
   accentColor: NxBadgeAccentColor = 'yellow';
   prominence: NxBadgeProminence = 'subtle';
@@ -85,7 +86,7 @@ describe('NxBadgeComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(DefaultBadgeComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 

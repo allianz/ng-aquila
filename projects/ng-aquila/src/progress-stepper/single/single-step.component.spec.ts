@@ -24,8 +24,10 @@ import { NxSingleStepperComponent } from './single-step.component';
 
 @Directive({ standalone: true })
 abstract class SingleStepTest {
-  @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;
-  @ViewChild(NxProgressStepperDirective, { read: ElementRef }) componentInstanceRef!: ElementRef;
+  @ViewChild(NxProgressStepperDirective)
+  componentInstance!: NxProgressStepperDirective;
+  @ViewChild(NxProgressStepperDirective, { read: ElementRef })
+  componentInstanceRef!: ElementRef;
 
   selectedIndex = 0;
 }
@@ -101,13 +103,13 @@ describe('NxSingleStepperComponent', () => {
     createTestComponent(DirectivesTest);
     flush();
     const previousButton = getPreviousButton(1);
-    expect(previousButton.disabled).toBeTrue();
+    expect(previousButton.disabled).toBe(true);
     testInstance.selectedIndex = 1;
     fixture.detectChanges();
-    expect(previousButton.disabled).toBeFalse();
+    expect(previousButton.disabled).toBe(false);
     testInstance.selectedIndex = 0;
     fixture.detectChanges();
-    expect(previousButton.disabled).toBeTrue();
+    expect(previousButton.disabled).toBe(true);
   }));
 
   it('should disable next button', fakeAsync(() => {
@@ -115,25 +117,26 @@ describe('NxSingleStepperComponent', () => {
     flush();
     const nextButton = getNextButton(2);
     const secondNextButton = getNextButton(3);
-    expect(nextButton.disabled).toBeFalse();
+    expect(nextButton.disabled).toBe(false);
     testInstance.selectedIndex = 3;
     fixture.detectChanges();
-    expect(nextButton.disabled).toBeTrue();
-    expect(secondNextButton.disabled).toBeTrue();
+    expect(nextButton.disabled).toBe(true);
+    expect(secondNextButton.disabled).toBe(true);
     testInstance.selectedIndex = 2;
     fixture.detectChanges();
-    expect(nextButton.disabled).toBeFalse();
+    expect(nextButton.disabled).toBe(false);
   }));
 
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(SingleStepBasicTest);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-single-step-basic-test',
   template: `
     <nx-single-stepper>
       <nx-step label="Step 1"> step 1 content </nx-step>
@@ -146,6 +149,7 @@ describe('NxSingleStepperComponent', () => {
 class SingleStepBasicTest extends SingleStepTest {}
 
 @Component({
+  selector: 'test-single-step-custom-label-test',
   template: `
     <nx-single-stepper nextLabel="right">
       <nx-step label="Step 1"> step 1 content </nx-step>
@@ -158,6 +162,7 @@ class SingleStepBasicTest extends SingleStepTest {}
 class SingleStepCustomLabelTest extends SingleStepTest {}
 
 @Component({
+  selector: 'test-single-step-title-test',
   template: `
     <nx-single-stepper>
       <nx-label>MyTitle</nx-label>
@@ -171,6 +176,7 @@ class SingleStepCustomLabelTest extends SingleStepTest {}
 class SingleStepTitleTest extends SingleStepTest {}
 
 @Component({
+  selector: 'test-directives-test',
   template: `
     <nx-single-stepper [selectedIndex]="selectedIndex">
       <nx-step label="Step 1">

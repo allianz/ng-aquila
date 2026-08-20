@@ -15,8 +15,10 @@ import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
 
 @Directive({ standalone: true })
 abstract class BreadcrumbTest {
-  @ViewChild(NxBreadcrumbComponent) breadcrumbInstance!: NxBreadcrumbComponent;
-  @ViewChildren(NxBreadcrumbItemComponent) breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;
+  @ViewChild(NxBreadcrumbComponent)
+  breadcrumbInstance!: NxBreadcrumbComponent;
+  @ViewChildren(NxBreadcrumbItemComponent)
+  breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;
 }
 
 describe('NxBreadcrumbComponent', () => {
@@ -63,7 +65,7 @@ describe('NxBreadcrumbComponent', () => {
     (testInstance as BasicBreadcrumbComponent).negative = true;
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.is-negative')).toBeTruthy();
-    expect(testInstance.breadcrumbInstance.negative).toBeTrue();
+    expect(testInstance.breadcrumbInstance.negative).toBe(true);
   });
 
   it('should have appearence "link"', () => {
@@ -87,6 +89,7 @@ describe('NxBreadcrumbComponent', () => {
 });
 
 @Component({
+  selector: 'test-breadcrumb-on-push-component',
   template: `
     <ol nxBreadcrumb [negative]="negative">
       <li>
@@ -103,6 +106,7 @@ class BreadcrumbOnPushComponent extends BreadcrumbTest {
 }
 
 @Component({
+  selector: 'test-basic-breadcrumb-component',
   template: `
     <ol nxBreadcrumb [negative]="negative">
       <li>
@@ -121,6 +125,7 @@ class BasicBreadcrumbComponent extends BreadcrumbTest {
 }
 
 @Component({
+  selector: 'test-dynamic-breadcrumb-component',
   template: `
     <ol nxBreadcrumb>
       @for (item of items; track item) {
@@ -140,6 +145,7 @@ class DynamicBreadcrumbComponent extends BreadcrumbTest {
 }
 
 @Component({
+  selector: 'test-link-breadcrumb-component',
   template: `
     <ol nxBreadcrumb [appearance]="appearance">
       <li>

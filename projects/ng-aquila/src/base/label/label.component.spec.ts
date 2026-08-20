@@ -23,7 +23,8 @@ const customDefaultOptions: LabelDefaultOptions = { size: 'small' };
 
 @Directive({ standalone: true })
 abstract class LabelTest {
-  @ViewChild(NxLabelComponent) labelInstance!: NxLabelComponent;
+  @ViewChild(NxLabelComponent)
+  labelInstance!: NxLabelComponent;
   size!: LABEL_SIZE_TYPE;
 }
 
@@ -166,6 +167,7 @@ describe('NxLabelComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-label',
   template: `<nx-label>I am a label</nx-label>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLabelModule],
@@ -173,6 +175,7 @@ describe('NxLabelComponent', () => {
 class BasicLabel extends LabelTest {}
 
 @Component({
+  selector: 'test-configurable-label',
   template: `<nx-label [size]="size">I am a label</nx-label>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLabelModule],
@@ -180,6 +183,7 @@ class BasicLabel extends LabelTest {}
 class ConfigurableLabel extends LabelTest {}
 
 @Component({
+  selector: 'test-info-icon-label',
   template: `
     <nx-label>
       I am a label
@@ -205,6 +209,7 @@ class InfoIconLabel extends LabelTest {}
 class CustomInfoIconStub {}
 
 @Component({
+  selector: 'test-custom-info-label',
   template: `
     <nx-label>
       I am a label

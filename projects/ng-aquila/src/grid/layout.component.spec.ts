@@ -6,7 +6,8 @@ import { NxLayoutComponent } from './layout.component';
 
 @Directive({ standalone: true })
 abstract class DirectiveTest {
-  @ViewChild(NxLayoutComponent) layoutInstance!: NxLayoutComponent;
+  @ViewChild(NxLayoutComponent)
+  layoutInstance!: NxLayoutComponent;
 }
 
 describe('NxLayoutDirective', () => {
@@ -55,7 +56,7 @@ describe('NxLayoutDirective', () => {
     expect(getClassesCreated(BasicGridLayout)).toBe('nx-grid nx-grid--media-query');
   });
 
-  it('should include container-query css class for Container Query Grid ', () => {
+  it('should include container-query css class for Container Query Grid', () => {
     expect(getClassesCreated(BasicContainerQueryGridLayout)).toBe(
       'nx-grid nx-grid--container-query',
     );
@@ -112,6 +113,7 @@ describe('NxLayoutDirective', () => {
 });
 
 @Component({
+  selector: 'test-basic-layout',
   template: `<div nxLayout=""></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
@@ -119,12 +121,14 @@ describe('NxLayoutDirective', () => {
 class BasicLayout extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-grid-layout',
   template: `<div nxLayout="grid"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
 })
 class BasicGridLayout extends DirectiveTest {}
 @Component({
+  selector: 'test-basic-container-query-grid-layout',
   template: `<div nxLayout="grid" [containerQuery]="true"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
@@ -132,6 +136,7 @@ class BasicGridLayout extends DirectiveTest {}
 class BasicContainerQueryGridLayout extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-grid-layout-class-test',
   template: `<div nxLayout="grid" class="test"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
@@ -139,6 +144,7 @@ class BasicContainerQueryGridLayout extends DirectiveTest {}
 class BasicGridLayoutClassTest extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-no-gutters',
   template: `<div nxLayout="grid nogutters"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
@@ -146,6 +152,7 @@ class BasicGridLayoutClassTest extends DirectiveTest {}
 class BasicNoGutters extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-max-width',
   template: `<div nxLayout="grid maxwidth"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
@@ -153,6 +160,7 @@ class BasicNoGutters extends DirectiveTest {}
 class BasicMaxWidth extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-combinate',
   template: `<div nxLayout="grid maxwidth nogutters"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
@@ -160,6 +168,7 @@ class BasicMaxWidth extends DirectiveTest {}
 class BasicCombinate extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic2-combinate',
   template: `<div nxLayout="grid nogutters maxwidth"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
@@ -167,6 +176,7 @@ class BasicCombinate extends DirectiveTest {}
 class Basic2Combinate extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-complete-reverse',
   template: `<div nxLayout="maxwidth grid nogutters"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
@@ -174,6 +184,7 @@ class Basic2Combinate extends DirectiveTest {}
 class BasicCompleteReverse extends DirectiveTest {}
 
 @Component({
+  selector: 'test-basic-no-padding',
   template: `<div nxLayout="grid nopadding"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],
@@ -181,6 +192,7 @@ class BasicCompleteReverse extends DirectiveTest {}
 class BasicNoPadding extends DirectiveTest {}
 
 @Component({
+  selector: 'test-dynamic-layout',
   template: `<div [nxLayout]="layout"></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxGridModule],

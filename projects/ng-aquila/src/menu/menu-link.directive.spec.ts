@@ -6,7 +6,8 @@ import { NxMenuLinkDirective } from './menu-link.directive';
 
 @Directive({ standalone: true })
 abstract class MenuLinkTest {
-  @ViewChild(NxMenuLinkDirective) menuLinkInstance!: NxMenuLinkDirective;
+  @ViewChild(NxMenuLinkDirective)
+  menuLinkInstance!: NxMenuLinkDirective;
 }
 
 describe(NxMenuLinkDirective.name, () => {
@@ -46,12 +47,13 @@ describe(NxMenuLinkDirective.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicMenuLink);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-menu-link',
   template: `<a nxMenuLink>Link</a>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMenuModule],

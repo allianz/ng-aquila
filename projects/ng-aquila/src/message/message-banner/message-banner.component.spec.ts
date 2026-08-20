@@ -17,7 +17,8 @@ import { BANNER_CONTEXT, NxMessageBannerComponent } from './message-banner.compo
 abstract class MessageBannerTest {
   context: BANNER_CONTEXT = 'info';
 
-  @ViewChild(NxMessageBannerComponent) componentInstance!: NxMessageBannerComponent;
+  @ViewChild(NxMessageBannerComponent)
+  componentInstance!: NxMessageBannerComponent;
   @ViewChild(NxMessageBannerComponent, { read: ElementRef })
   formInscomponentInstanceRef!: ElementRef;
 }
@@ -107,7 +108,7 @@ describe('NxMessageBannerComponent', () => {
   describe('closable', () => {
     it('should emit a `close` event on click', () => {
       createTestComponent(ClosableMessageBannerComponent);
-      spyOn(componentInstance.closeEvent, 'emit');
+      vi.spyOn(componentInstance.closeEvent, 'emit').mockReturnValue(undefined);
       const closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
       dispatchMouseEvent(closeButton, 'click');
       fixture.detectChanges();
@@ -125,7 +126,7 @@ describe('NxMessageBannerComponent', () => {
       createTestComponent(ClosableMessageBannerWithFormComponent);
       const closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
       closeButton.click();
-      expect((testInstance as ClosableMessageBannerWithFormComponent).submitted).toBeFalse();
+      expect((testInstance as ClosableMessageBannerWithFormComponent).submitted).toBe(false);
     });
   });
 
@@ -162,6 +163,7 @@ describe('NxMessageBannerComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-message-banner-component',
   template: `<nx-message-banner [context]="context"> lorem ipsum </nx-message-banner>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
@@ -169,6 +171,7 @@ describe('NxMessageBannerComponent', () => {
 class BasicMessageBannerComponent extends MessageBannerTest {}
 
 @Component({
+  selector: 'test-message-banner-on-push-component',
   template: `<nx-message-banner [context]="context"> lorem ipsum </nx-message-banner>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxMessageModule, FormsModule],
@@ -176,6 +179,7 @@ class BasicMessageBannerComponent extends MessageBannerTest {}
 class MessageBannerOnPushComponent extends MessageBannerTest {}
 
 @Component({
+  selector: 'test-closable-message-banner-component',
   template: `<nx-message-banner [closable]="closable"> lorem ipsum </nx-message-banner>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMessageModule, FormsModule],
@@ -185,6 +189,7 @@ class ClosableMessageBannerComponent extends MessageBannerTest {
 }
 
 @Component({
+  selector: 'test-closable-message-banner-with-form-component',
   template: `
     <form (ngSubmit)="submitted = true">
       <nx-message-banner [closable]="closable"> lorem ipsum </nx-message-banner>

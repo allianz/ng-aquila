@@ -38,21 +38,44 @@
           },
           "defaultConfiguration": "production"
         },
-        "test": {
-          "builder": "@angular/build:karma",
+        "test-build": {
+          "builder": "@angular/build:application",
           "options": {
-            "main": "projects/ng-aquila/test.ts",
-            "polyfills": ["zone.js", "zone.js/testing"],
-            "include": ["projects/ng-aquila/src/!(schematics)/**/*.spec.ts"],
             "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-aquila/karma.conf.js",
+            "polyfills": ["zone.js"],
             "aot": true,
-            "styles": ["projects/opensource-documentation/src/styles.scss"],
+            "styles": [
+              "node_modules/@angular/cdk/a11y-prebuilt.css",
+              "node_modules/@angular/cdk/overlay-prebuilt.css",
+              "projects/opensource-documentation/src/styles.scss"
+            ],
             "stylePreprocessorOptions": {
               "sass": {
-                "silenceDeprecations": ["color-functions", "global-builtin", "import"]
+                "silenceDeprecations": [
+                  "color-functions",
+                  "global-builtin",
+                  "if-function",
+                  "import"
+                ]
               }
             }
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "ng-aquila:test-build",
+            "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
+            "include": ["!(schematics)/**/*.spec.ts"],
+            "browsers": ["ChromiumHeadless"],
+            "browserViewport": "1184x900",
+            "setupFiles": [
+              "projects/ng-aquila/src/test-setup/zone-vitest-patch.ts",
+              "projects/ng-aquila/src/test-setup/axe-matcher.ts",
+              "projects/ng-aquila/src/test-setup/viewport-shim.ts",
+              "projects/ng-aquila/src/test-setup/restore-mocks.ts"
+            ],
+            "coverageReporters": ["text-summary", "html"]
           }
         },
         "lint": {
@@ -84,17 +107,39 @@
           },
           "defaultConfiguration": "production"
         },
-        "test": {
-          "builder": "@angular/build:karma",
+        "test-build": {
+          "builder": "@angular/build:application",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-docs-ui/karma.conf.js",
+            "polyfills": ["zone.js"],
             "stylePreprocessorOptions": {
               "sass": {
-                "silenceDeprecations": ["color-functions", "global-builtin", "import"]
+                "silenceDeprecations": [
+                  "color-functions",
+                  "global-builtin",
+                  "if-function",
+                  "import"
+                ]
               }
-            }
+            },
+            "styles": [
+              "node_modules/@angular/cdk/a11y-prebuilt.css",
+              "node_modules/@angular/cdk/overlay-prebuilt.css"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "ngx-docs-ui:test-build",
+            "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.json",
+            "browsers": ["ChromiumHeadless"],
+            "browserViewport": "1184x900",
+            "setupFiles": [
+              "projects/ngx-docs-ui/src/test-setup/zone-vitest-patch.ts",
+              "projects/ngx-docs-ui/src/test-setup/restore-mocks.ts"
+            ],
+            "coverageReporters": ["text-summary", "html"]
           }
         },
         "lint": {
@@ -127,7 +172,12 @@
             "tsConfig": "projects/opensource-documentation/tsconfig.app.json",
             "stylePreprocessorOptions": {
               "sass": {
-                "silenceDeprecations": ["color-functions", "global-builtin", "import"]
+                "silenceDeprecations": [
+                  "color-functions",
+                  "global-builtin",
+                  "if-function",
+                  "import"
+                ]
               }
             },
             "assets": [

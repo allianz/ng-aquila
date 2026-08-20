@@ -33,7 +33,8 @@ const createKeyboardEvent = (keyCode: number) => {
 
 @Directive({ standalone: true })
 abstract class SliderTest {
-  @ViewChild(NxSliderComponent) sliderInstance!: NxSliderComponent;
+  @ViewChild(NxSliderComponent)
+  sliderInstance!: NxSliderComponent;
   stepSize = 1;
   min = 0;
   max = 10;
@@ -125,7 +126,7 @@ describe('NxSliderComponent', () => {
     it('creates the Slider', () => {
       createTestComponent(BasicSlider);
       expect(sliderInstance).toBeTruthy();
-      expect(sliderNativeElement.hasAttribute('aria-disabled')).toBeFalse();
+      expect(sliderNativeElement.hasAttribute('aria-disabled')).toBe(false);
     });
 
     it('renders the Slider with a label', () => {
@@ -175,14 +176,14 @@ describe('NxSliderComponent', () => {
     it('renders the Slider with a thumb label', () => {
       createTestComponent(BasicSlider);
       const thumbLabel = fixture.nativeElement.querySelector('.nx-slider__value');
-      expect(testInstance.sliderInstance.thumbLabel).toBeTrue();
+      expect(testInstance.sliderInstance.thumbLabel).toBe(true);
       expect(thumbLabel).not.toBeNull();
     });
 
     it('renders the Slider with Min and Max labels', () => {
       createTestComponent(BasicSlider);
       const thumbLabel = fixture.nativeElement.querySelector('.nx-slider__value-label');
-      expect(testInstance.sliderInstance.thumbLabel).toBeTrue();
+      expect(testInstance.sliderInstance.thumbLabel).toBe(true);
       expect(thumbLabel).not.toBeNull();
     });
 
@@ -249,24 +250,24 @@ describe('NxSliderComponent', () => {
       // minimum is valid step
       testInstance.value = 1;
       fixture.detectChanges();
-      expect(sliderInstance._isValidStep()).toBeTrue();
+      expect(sliderInstance._isValidStep()).toBe(true);
       // all multitudes are valid
       testInstance.value = 3;
       fixture.detectChanges();
-      expect(sliderInstance._isValidStep()).toBeTrue();
+      expect(sliderInstance._isValidStep()).toBe(true);
       testInstance.value = 2.5;
       fixture.detectChanges();
-      expect(sliderInstance._isValidStep()).toBeFalse();
+      expect(sliderInstance._isValidStep()).toBe(false);
       testInstance.stepSize = 0.28;
       testInstance.value = 1.28;
       fixture.detectChanges();
-      expect(sliderInstance._isValidStep()).toBeTrue();
+      expect(sliderInstance._isValidStep()).toBe(true);
       testInstance.value = 2.12;
       fixture.detectChanges();
-      expect(sliderInstance._isValidStep()).toBeTrue();
+      expect(sliderInstance._isValidStep()).toBe(true);
       testInstance.value = 1.5;
       fixture.detectChanges();
-      expect(sliderInstance._isValidStep()).toBeFalse();
+      expect(sliderInstance._isValidStep()).toBe(false);
     });
 
     it('should snap to the nearest valid step on click', () => {
@@ -332,10 +333,10 @@ describe('NxSliderComponent', () => {
       testInstance.min = 2;
       testInstance.value = 2;
       fixture.detectChanges();
-      expect(sliderInstance._isMinimum()).toBeTrue();
+      expect(sliderInstance._isMinimum()).toBe(true);
       testInstance.value = 3;
       fixture.detectChanges();
-      expect(sliderInstance._isMinimum()).toBeFalse();
+      expect(sliderInstance._isMinimum()).toBe(false);
     });
 
     it('should set value to maximun when press end button', () => {
@@ -388,7 +389,7 @@ describe('NxSliderComponent', () => {
       sliderInstance._handleKeypress(rightArrowEvent);
       // value of disabled slider should not have changed
       expect(sliderInstance.value).toBe(42);
-      expect(sliderNativeElement.hasAttribute('aria-disabled')).toBeTrue();
+      expect(sliderNativeElement.hasAttribute('aria-disabled')).toBe(true);
       expect(sliderNativeElement.tabIndex).toBe(-1);
       expect(sliderNativeElement).toHaveClass('nx-slider--disabled');
     });
@@ -398,14 +399,14 @@ describe('NxSliderComponent', () => {
     it('does not show thumb label', () => {
       createTestComponent(ConfigurableSlider);
       const thumbLabel = fixture.nativeElement.querySelector('.nx-slider__value');
-      expect(testInstance.sliderInstance.thumbLabel).toBeFalse();
+      expect(testInstance.sliderInstance.thumbLabel).toBe(false);
       expect(thumbLabel).toBeNull();
     });
 
     it('hides Min and Max labels', () => {
       createTestComponent(ConfigurableSlider);
       const thumbLabels = fixture.nativeElement.querySelector('.nx-slider__value-label');
-      expect(testInstance.sliderInstance.hideLabels).toBeTrue();
+      expect(testInstance.sliderInstance.hideLabels).toBe(true);
       expect(thumbLabels).toBeNull();
     });
   });
@@ -476,6 +477,12 @@ describe('NxSliderComponent', () => {
 
     it('should have working two way binding', () => {
       createTestComponent(SimpleBindingSlider);
+
+      dispatchSlideEvent({ x: 30, y: 10 });
+      fixture.detectChanges();
+
+      expect(sliderInstance.value).toBe(30);
+      expect(testInstance.value).toBe(30);
     });
   });
 
@@ -488,9 +495,18 @@ describe('NxSliderComponent', () => {
       expect(getFillerWidth()).toBe('10%');
     }));
 
-    it('should update the model value after sliding', () => {
+    it('should update the model value after sliding', fakeAsync(() => {
       createTestComponent(NgModelSlider);
-    });
+      tick();
+      fixture.detectChanges();
+
+      dispatchSlideEvent({ x: 30, y: 10 });
+      tick();
+      fixture.detectChanges();
+
+      expect(sliderInstance.value).toBe(30);
+      expect(testInstance.value).toBe(30);
+    }));
 
     it('should be touched when the handle is blurred', fakeAsync(() => {
       createTestComponent(NgModelSlider);
@@ -498,12 +514,12 @@ describe('NxSliderComponent', () => {
       fixture.detectChanges();
       const ngModel = (testInstance as NgModelSlider).ngModel;
 
-      expect(ngModel.touched).toBeFalse();
+      expect(ngModel.touched).toBe(false);
 
       blurHandle();
       tick();
 
-      expect(ngModel.touched).toBeTrue();
+      expect(ngModel.touched).toBe(true);
     }));
   });
 
@@ -516,6 +532,13 @@ describe('NxSliderComponent', () => {
 
     it('should update form value after sliding', () => {
       createTestComponent(ReactiveFormsSlider);
+      const instance = testInstance as ReactiveFormsSlider;
+
+      dispatchSlideEvent({ x: 30, y: 10 });
+      fixture.detectChanges();
+
+      expect(sliderInstance.value).toBe(30);
+      expect(instance.testForm.controls.slide.value).toBe(30);
     });
 
     // The handle is the only focusable part of the slider, so the slider is a standalone
@@ -524,17 +547,17 @@ describe('NxSliderComponent', () => {
       createTestComponent(ReactiveFormsSlider);
       const control = (testInstance as ReactiveFormsSlider).testForm.controls.slide;
 
-      expect(control.touched).toBeFalse();
+      expect(control.touched).toBe(false);
 
       blurHandle();
 
-      expect(control.touched).toBeTrue();
+      expect(control.touched).toBe(true);
     });
 
     it('should not be touched before any interaction', () => {
       createTestComponent(ReactiveFormsSlider);
 
-      expect((testInstance as ReactiveFormsSlider).testForm.controls.slide.touched).toBeFalse();
+      expect((testInstance as ReactiveFormsSlider).testForm.controls.slide.touched).toBe(false);
     });
 
     it('should toggle disabled', () => {
@@ -543,14 +566,14 @@ describe('NxSliderComponent', () => {
       instance.testForm.controls.slide.disable();
       fixture.detectChanges();
       expect(sliderNativeElement).toHaveClass('nx-slider--disabled');
-      expect(testInstance.sliderInstance.disabled).toBeTrue();
-      expect(sliderNativeElement.hasAttribute('aria-disabled')).toBeTrue();
+      expect(testInstance.sliderInstance.disabled).toBe(true);
+      expect(sliderNativeElement.hasAttribute('aria-disabled')).toBe(true);
 
       instance.testForm.controls.slide.enable();
       fixture.detectChanges();
       expect(sliderNativeElement).not.toHaveClass('nx-slider--disabled');
-      expect(testInstance.sliderInstance.disabled).toBeFalse();
-      expect(sliderNativeElement.hasAttribute('aria-disabled')).toBeFalse();
+      expect(testInstance.sliderInstance.disabled).toBe(false);
+      expect(sliderNativeElement.hasAttribute('aria-disabled')).toBe(false);
     });
   });
 
@@ -622,7 +645,7 @@ describe('NxSliderComponent', () => {
       expect(getFillerWidth()).toBe('50%');
     });
 
-    it('should update after disabled change', () => {
+    it('should update after negative change', () => {
       createTestComponent(BasicSliderOnPush);
       testInstance.sliderInstance.negative = true;
       fixture.detectChanges();
@@ -634,7 +657,7 @@ describe('NxSliderComponent', () => {
       testInstance.sliderInstance.negative = true;
       fixture.detectChanges();
       expect(sliderNativeElement).toHaveClass('nx-slider--negative');
-      expect(testInstance.sliderInstance.inverse()).toBeTrue();
+      expect(testInstance.sliderInstance.inverse()).toBe(true);
     });
 
     it('should apply the inverse styles via the inverse input', () => {
@@ -642,7 +665,7 @@ describe('NxSliderComponent', () => {
       (testInstance as InverseSlider).inverse = true;
       fixture.detectChanges();
       expect(sliderNativeElement).toHaveClass('nx-slider--negative');
-      expect(testInstance.sliderInstance.inverse()).toBeTrue();
+      expect(testInstance.sliderInstance.inverse()).toBe(true);
     });
 
     it('should update after id change', () => {
@@ -664,19 +687,19 @@ describe('NxSliderComponent', () => {
       testInstance.sliderInstance.thumbLabel = false;
       fixture.detectChanges();
       let thumbLabel = fixture.nativeElement.querySelector('.nx-slider__value');
-      expect(testInstance.sliderInstance.thumbLabel).toBeFalse();
+      expect(testInstance.sliderInstance.thumbLabel).toBe(false);
       expect(thumbLabel).toBeNull();
 
       testInstance.sliderInstance.thumbLabel = true;
       fixture.detectChanges();
       thumbLabel = fixture.nativeElement.querySelector('.nx-slider__value');
-      expect(testInstance.sliderInstance.thumbLabel).toBeTrue();
+      expect(testInstance.sliderInstance.thumbLabel).toBe(true);
       expect(thumbLabel).not.toBeNull();
     });
 
     it('Should emit change event only once on drag', () => {
       createTestComponent(BasicSlider);
-      const onChangeSpy = jasmine.createSpy('slider onChange');
+      const onChangeSpy = vi.fn().mockName('slider onChange');
       sliderInstance.valueChange.subscribe(onChangeSpy);
       dispatchSlideEvent({ x: 260, y: 10 });
       fixture.detectChanges();
@@ -739,7 +762,7 @@ describe('NxSliderComponent', () => {
 
     it('has no accessibility violations', async () => {
       createTestComponent(BasicSlider);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
@@ -750,6 +773,7 @@ const styles = `
 `;
 
 @Component({
+  selector: 'test-basic-slider',
   template: `
     <div class="slider-container">
       <nx-slider id="testSlider" label="testLabel"> </nx-slider>
@@ -762,6 +786,7 @@ const styles = `
 class BasicSlider extends SliderTest {}
 
 @Component({
+  selector: 'test-basic-slider-on-push',
   template: `
     <div class="slider-container">
       <nx-slider id="testSlider" label="testLabel"> </nx-slider>
@@ -774,6 +799,7 @@ class BasicSlider extends SliderTest {}
 class BasicSliderOnPush extends SliderTest {}
 
 @Component({
+  selector: 'test-inverse-slider',
   template: `
     <div class="slider-container">
       <nx-slider id="testSlider" label="testLabel" [inverse]="inverse"> </nx-slider>
@@ -788,6 +814,7 @@ class InverseSlider extends SliderTest {
 }
 
 @Component({
+  selector: 'test-configurable-slider',
   template: `
     <div class="slider-container" [style.width.px]="width">
       <nx-slider
@@ -810,6 +837,7 @@ class InverseSlider extends SliderTest {
 class ConfigurableSlider extends SliderTest {}
 
 @Component({
+  selector: 'test-negative-slider',
   template: `
     <div class="slider-container">
       <nx-slider [min]="-50" [max]="50" [step]="1"> </nx-slider>
@@ -822,6 +850,7 @@ class ConfigurableSlider extends SliderTest {}
 class NegativeSlider extends SliderTest {}
 
 @Component({
+  selector: 'test-truncate-test-slider',
   template: `
     <div class="slider-container">
       <nx-slider [min]="0" [max]="2" [step]="0.1"> </nx-slider>
@@ -834,6 +863,7 @@ class NegativeSlider extends SliderTest {}
 class TruncateTestSlider extends SliderTest {}
 
 @Component({
+  selector: 'test-float-slider',
   template: `
     <div class="slider-container">
       <nx-slider [min]="0" [max]="1" [step]="0.1"> </nx-slider>
@@ -846,6 +876,7 @@ class TruncateTestSlider extends SliderTest {}
 class FloatSlider extends SliderTest {}
 
 @Component({
+  selector: 'test-disabled-slider',
   template: `
     <div class="slider-container">
       <nx-slider [value]="42" [disabled]="true"> </nx-slider>
@@ -858,6 +889,7 @@ class FloatSlider extends SliderTest {}
 class DisabledSlider extends SliderTest {}
 
 @Component({
+  selector: 'test-inverted-slider',
   template: `
     <div class="slider-container">
       <nx-slider [inverted]="true"> </nx-slider>
@@ -870,6 +902,7 @@ class DisabledSlider extends SliderTest {}
 class InvertedSlider extends SliderTest {}
 
 @Component({
+  selector: 'test-simple-binding-slider',
   template: `
     <div class="slider-container">
       <nx-slider [(value)]="value"> </nx-slider>
@@ -884,6 +917,7 @@ class SimpleBindingSlider extends SliderTest {
 }
 
 @Component({
+  selector: 'test-ng-model-slider',
   template: `
     <div class="slider-container">
       <nx-slider [(ngModel)]="value"> </nx-slider>
@@ -899,6 +933,7 @@ class NgModelSlider extends SliderTest {
 }
 
 @Component({
+  selector: 'test-reactive-forms-slider',
   template: `
     <div class="slider-container">
       <nx-slider [formControl]="testForm.controls.slide"> </nx-slider>
@@ -915,6 +950,7 @@ class ReactiveFormsSlider extends SliderTest {
 }
 
 @Component({
+  selector: 'test-appendix-slider',
   template: `
     <div class="slider-container">
       <nx-slider [min]="-50" [max]="50" [step]="1">
@@ -929,6 +965,7 @@ class ReactiveFormsSlider extends SliderTest {
 class AppendixSlider extends SliderTest {}
 
 @Component({
+  selector: 'test-aria-labelled-by-slider',
   template: `
     <div class="slider-container">
       <label id="custom-external-label">External Label</label>

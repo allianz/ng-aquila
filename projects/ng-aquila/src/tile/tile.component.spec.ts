@@ -11,6 +11,7 @@ import { NxTileHintDirective, NxTileLabelDirective } from './tile-content.direct
 import { NxTileSelectionMode } from './tile-group.component';
 
 @Component({
+  selector: 'test-tile-test-component',
   template: `<nx-tile-group
     [disabled]="groupDisabled()"
     [readonly]="groupReadonly()"
@@ -47,6 +48,7 @@ class TileTestComponent {
 }
 
 @Component({
+  selector: 'test-tile-reactive-forms-test-component',
   template: `<nx-tile-group [formControl]="tileControl" [selectionMode]="selectionMode()">
     @for (tile of tiles(); track tile.value) {
       <nx-tile
@@ -79,6 +81,7 @@ class TileReactiveFormsTestComponent {
 }
 
 @Component({
+  selector: 'test-tile-content-projection-test-component',
   template: `
     <nx-tile-group>
       <nx-tile icon="product-car" value="tile1">
@@ -139,8 +142,8 @@ describe('NxTileComponent', () => {
     inputElements[1].click();
     fixture.detectChanges();
     expect(testInstance.groupValue()).toBe('tile2');
-    expect(tileInstances[1].selected()).toBeTrue();
-    expect(tileInstances[0].selected()).toBeFalse();
+    expect(tileInstances[1].selected()).toBe(true);
+    expect(tileInstances[0].selected()).toBe(false);
   });
 
   it('should select tile and update group value for multi select', () => {
@@ -152,7 +155,7 @@ describe('NxTileComponent', () => {
     fixture.detectChanges();
     inputElements[2].click();
     fixture.detectChanges();
-    expect(Array.isArray(testInstance.groupValue())).toBeTrue();
+    expect(Array.isArray(testInstance.groupValue())).toBe(true);
     expect(testInstance.groupValue()).toContain('tile1');
     expect(testInstance.groupValue()).toContain('tile3');
     inputElements[2].click();
@@ -167,9 +170,9 @@ describe('NxTileComponent', () => {
     const inputElements = getInputElements();
     inputElements[0].click();
     fixture.detectChanges();
-    expect(testInstance.groupValue()).toBe(null);
-    expect(tileInstances[0].selected()).toBeFalse();
-    expect(inputElements[0].checked).toBeFalse();
+    expect(testInstance.groupValue()).toBeNull();
+    expect(tileInstances[0].selected()).toBe(false);
+    expect(inputElements[0].checked).toBe(false);
   });
 
   it('should not select tile or update value when disabled', () => {
@@ -179,8 +182,8 @@ describe('NxTileComponent', () => {
     const inputElements = getInputElements();
     inputElements[0].click();
     fixture.detectChanges();
-    expect(testInstance.groupValue()).toBe(null);
-    expect(tileInstances[0].selected()).toBeFalse();
+    expect(testInstance.groupValue()).toBeNull();
+    expect(tileInstances[0].selected()).toBe(false);
   });
 
   it('should update selected state when group value changes', () => {
@@ -188,12 +191,12 @@ describe('NxTileComponent', () => {
     testInstance.groupValue.set('tile3');
     fixture.detectChanges();
     const inputElements = getInputElements();
-    expect(inputElements[2].checked).toBeTrue();
-    expect(tileInstances[2].selected()).toBeTrue();
+    expect(inputElements[2].checked).toBe(true);
+    expect(tileInstances[2].selected()).toBe(true);
     testInstance.groupValue.set('tile1');
     fixture.detectChanges();
-    expect(inputElements[0].checked).toBeTrue();
-    expect(tileInstances[0].selected()).toBeTrue();
+    expect(inputElements[0].checked).toBe(true);
+    expect(tileInstances[0].selected()).toBe(true);
   });
 
   describe('Angular forms integration', () => {
@@ -206,9 +209,9 @@ describe('NxTileComponent', () => {
       testInstance.tileControl.setValue('tile2');
       fixture.detectChanges();
 
-      expect(tileInstances[1].selected()).toBeTrue();
-      expect(tileInstances[0].selected()).toBeFalse();
-      expect(tileInstances[2].selected()).toBeFalse();
+      expect(tileInstances[1].selected()).toBe(true);
+      expect(tileInstances[0].selected()).toBe(false);
+      expect(tileInstances[2].selected()).toBe(false);
     });
 
     it('should sync form control value with tile selection in multi mode', () => {
@@ -216,9 +219,9 @@ describe('NxTileComponent', () => {
       testInstance.tileControl.setValue(['tile1', 'tile3']);
       fixture.detectChanges();
 
-      expect(tileInstances[0].selected()).toBeTrue();
-      expect(tileInstances[1].selected()).toBeFalse();
-      expect(tileInstances[2].selected()).toBeTrue();
+      expect(tileInstances[0].selected()).toBe(true);
+      expect(tileInstances[1].selected()).toBe(false);
+      expect(tileInstances[2].selected()).toBe(true);
     });
 
     it('should update form control when tiles are clicked in single mode', () => {
@@ -251,12 +254,12 @@ describe('NxTileComponent', () => {
       fixture.detectChanges();
 
       tileInstances.forEach((tile) => {
-        expect(tile.disabled()).toBeTrue();
+        expect(tile.disabled()).toBe(true);
       });
 
       const inputElements = getInputElements();
       inputElements.forEach((input) => {
-        expect(input.disabled).toBeTrue();
+        expect(input.disabled).toBe(true);
       });
     });
 
@@ -267,12 +270,12 @@ describe('NxTileComponent', () => {
       fixture.detectChanges();
 
       tileInstances.forEach((tile) => {
-        expect(tile.disabled()).toBeFalse();
+        expect(tile.disabled()).toBe(false);
       });
 
       const inputElements = getInputElements();
       inputElements.forEach((input) => {
-        expect(input.disabled).toBeFalse();
+        expect(input.disabled).toBe(false);
       });
     });
 
@@ -284,46 +287,46 @@ describe('NxTileComponent', () => {
       inputElements[0].click();
       fixture.detectChanges();
 
-      expect(testInstance.tileControl.value).toBe(null);
+      expect(testInstance.tileControl.value).toBeNull();
     });
 
     it('should mark form control as touched when tile is clicked', () => {
       const inputElements = getInputElements();
-      expect(testInstance.tileControl.touched).toBeFalse();
+      expect(testInstance.tileControl.touched).toBe(false);
 
       inputElements[0].click();
       inputElements[0].focus();
       inputElements[0].blur();
       fixture.detectChanges();
 
-      expect(testInstance.tileControl.touched).toBeTrue();
+      expect(testInstance.tileControl.touched).toBe(true);
     });
 
     it('should work with form validation', () => {
       testInstance.tileControl.setValidators([Validators.required]);
       testInstance.tileControl.updateValueAndValidity();
 
-      expect(testInstance.tileControl.invalid).toBeTrue();
-      expect(testInstance.tileControl.errors?.['required']).toBeTrue();
+      expect(testInstance.tileControl.invalid).toBe(true);
+      expect(testInstance.tileControl.errors?.['required']).toBe(true);
 
       const inputElements = getInputElements();
       inputElements[0].click();
       fixture.detectChanges();
 
-      expect(testInstance.tileControl.valid).toBeTrue();
+      expect(testInstance.tileControl.valid).toBe(true);
       expect(testInstance.tileControl.errors).toBeNull();
     });
 
     it('should reset selection when form control value is set to null', () => {
       testInstance.tileControl.setValue('tile2');
       fixture.detectChanges();
-      expect(tileInstances[1].selected()).toBeTrue();
+      expect(tileInstances[1].selected()).toBe(true);
 
       testInstance.tileControl.setValue(null);
       fixture.detectChanges();
 
       tileInstances.forEach((tile) => {
-        expect(tile.selected()).toBeFalse();
+        expect(tile.selected()).toBe(false);
       });
     });
 
@@ -332,47 +335,47 @@ describe('NxTileComponent', () => {
       testInstance.tileControl.setValue(['tile1']);
       fixture.detectChanges();
 
-      expect(tileInstances[0].selected()).toBeTrue();
-      expect(tileInstances[1].selected()).toBeFalse();
+      expect(tileInstances[0].selected()).toBe(true);
+      expect(tileInstances[1].selected()).toBe(false);
 
       testInstance.tileControl.setValue(['tile1', 'tile2']);
       fixture.detectChanges();
 
-      expect(tileInstances[0].selected()).toBeTrue();
-      expect(tileInstances[1].selected()).toBeTrue();
-      expect(tileInstances[2].selected()).toBeFalse();
+      expect(tileInstances[0].selected()).toBe(true);
+      expect(tileInstances[1].selected()).toBe(true);
+      expect(tileInstances[2].selected()).toBe(false);
     });
   });
 
   describe('a11y', () => {
     describe('it should have no violations', () => {
       it('with single select', async () => {
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
 
       it('with multi select', async () => {
         testInstance.groupSelectionMode.set('multi');
         fixture.detectChanges();
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
 
       it('preselected tile', async () => {
         testInstance.groupSelectionMode.set('single');
         testInstance.groupValue.set('tile2');
         fixture.detectChanges();
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
 
       it('disabled', async () => {
         testInstance.disabled.set(true);
         fixture.detectChanges();
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
 
       it('readonly', async () => {
         testInstance.readonly.set(true);
         fixture.detectChanges();
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
     });
 

@@ -26,7 +26,8 @@ function isCurrencyBeforeValue(formatted: string, currencySymbol: string): boole
 
 @Directive({ standalone: true })
 abstract class PriceTest {
-  @ViewChild(NxPriceComponent) priceInstance!: NxPriceComponent;
+  @ViewChild(NxPriceComponent)
+  priceInstance!: NxPriceComponent;
   value = 99.99;
   currency = 'USD';
   locale?: string;
@@ -315,7 +316,7 @@ describe('NxPriceComponent', () => {
       expect(currencyElement?.textContent).toBe('€');
       // Normalize decimal text to digits only to be locale-agnostic (e.g. ",99" or ".99").
       expect(decimalElement?.textContent?.replace(/\D/g, '')).toBe('99');
-      expect(valueElement?.textContent?.trim().endsWith('€')).toBeTrue();
+      expect(valueElement?.textContent?.trim().endsWith('€')).toBe(true);
     });
 
     it('should always show 2 decimal places when superscript is enabled', () => {
@@ -435,7 +436,7 @@ describe('NxPriceComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicPriceComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations with prefix and suffix', async () => {
@@ -443,7 +444,7 @@ describe('NxPriceComponent', () => {
       fixture.componentInstance.prefix = 'from';
       fixture.componentInstance.suffix = 'monthly';
       fixture.detectChanges();
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });

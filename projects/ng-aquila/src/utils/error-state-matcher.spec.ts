@@ -19,86 +19,86 @@ describe('ErrorStateMatcher', () => {
 
   it('should return false on null control and null form', () => {
     const result = matcher.isErrorState(null, null);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return false on null control and unsubmitted form', () => {
     const result = matcher.isErrorState(null, form);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return false on null control and submitted form', () => {
     form.onSubmit(null!); // set submitted
     const result = matcher.isErrorState(null, form);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return false on valid untouched control and null form', () => {
     const result = matcher.isErrorState(control, null);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return false on valid untouched control and unsubmitted form', () => {
     const result = matcher.isErrorState(control, form);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return false on valid untouched control and submitted form', () => {
     form.onSubmit(null!); // set submitted
     const result = matcher.isErrorState(control, form);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return false on invalid untouched control and null form', () => {
     control.setValue('too short'); // set error
     const result = matcher.isErrorState(control, null);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return false on invalid untouched control and unsubmitted form', () => {
     control.setValue('too short'); // set error
     const result = matcher.isErrorState(control, form);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return true on invalid untouched control and submitted form', () => {
     control.setValue('too short'); // set error
     form.onSubmit(null!); // set submitted
     const result = matcher.isErrorState(control, form);
-    expect(result).toBeTrue();
+    expect(result).toBe(true);
   });
 
   it('should return false on valid touched control and null form', () => {
     control.markAsTouched(); // set touched
     const result = matcher.isErrorState(control, null);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return false on valid touched control and unsubmitted form', () => {
     control.markAsTouched(); // set touched
     const result = matcher.isErrorState(control, form);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return false on valid touched control and submitted form', () => {
     control.markAsTouched(); // set touched
     form.onSubmit(null!); // set submitted
     const result = matcher.isErrorState(control, form);
-    expect(result).toBeFalse();
+    expect(result).toBe(false);
   });
 
   it('should return true on invalid touched control and null form', () => {
     control.setValue('too short'); // set error
     control.markAsTouched(); // set touched
     const result = matcher.isErrorState(control, null);
-    expect(result).toBeTrue();
+    expect(result).toBe(true);
   });
 
   it('should return true on invalid touched control and unsubmitted form', () => {
     control.setValue('too short'); // set error
     control.markAsTouched(); // set touched
     const result = matcher.isErrorState(control, form);
-    expect(result).toBeTrue();
+    expect(result).toBe(true);
   });
 
   it('should return true on invalid touched control and submitted form', () => {
@@ -106,6 +106,6 @@ describe('ErrorStateMatcher', () => {
     control.markAsTouched(); // set touched
     form.onSubmit(null!); // set submitted
     const result = matcher.isErrorState(control, form);
-    expect(result).toBeTrue();
+    expect(result).toBe(true);
   });
 });

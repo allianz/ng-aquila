@@ -6,7 +6,8 @@ import { NxHeadlineModule } from './headline.module';
 
 @Directive({ standalone: true })
 abstract class HeadlineTest {
-  @ViewChild(NxHeadlineComponent) headlineInstance!: NxHeadlineComponent;
+  @ViewChild(NxHeadlineComponent)
+  headlineInstance!: NxHeadlineComponent;
   size = '';
   typedSize: NxHeadlineSize = undefined;
   negative = false;
@@ -129,12 +130,13 @@ describe('NxHeadlineDirective', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicHeadline);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-headline',
   template: `<h1 [nxHeadline]="size">Hello Headline</h1>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeadlineModule],
@@ -142,6 +144,7 @@ describe('NxHeadlineDirective', () => {
 class BasicHeadline extends HeadlineTest {}
 
 @Component({
+  selector: 'test-headline-with-arbitrary-class',
   template: `<h1 nxHeadline="page" class="some-arbitray-class-name">With arbitrary class</h1>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeadlineModule],
@@ -149,6 +152,7 @@ class BasicHeadline extends HeadlineTest {}
 class HeadlineWithArbitraryClass extends HeadlineTest {}
 
 @Component({
+  selector: 'test-dynamic-headline',
   template: `<h1 nxHeadline [size]="typedSize" [negative]="negative">Hello Headline</h1>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeadlineModule],

@@ -13,7 +13,7 @@ describe('NxRadioGroupHarness', () => {
 
     const radioGroup = await loader.getHarness(NxRadioGroupHarness);
     const radioButtons = await radioGroup.getRadioButtons();
-    expect(radioButtons.length).toEqual(2);
+    expect(radioButtons.length).toBe(2);
   });
 
   it('should get selected radio button inside group', async () => {
@@ -34,7 +34,7 @@ describe('NxRadioGroupHarness', () => {
 
     const radioGroup = await loader.getHarness(NxRadioGroupHarness);
     const selectedRadio = await radioGroup.getSelectedRadio();
-    expect(selectedRadio).toBe(null);
+    expect(selectedRadio).toBeNull();
   });
 
   it('should get label from nx-label', async () => {
@@ -106,6 +106,7 @@ describe('NxRadioGroupHarness', () => {
 });
 
 @Component({
+  selector: 'test-all-radio-buttons-test',
   template: `
     <nx-radio-group>
       <nx-radio value="FIRST">First</nx-radio>
@@ -120,6 +121,7 @@ describe('NxRadioGroupHarness', () => {
 class AllRadioButtonsTest {}
 
 @Component({
+  selector: 'test-selected-radio-test',
   template: `
     <nx-radio-group value="SECOND">
       <nx-radio value="FIRST">First</nx-radio>
@@ -132,6 +134,7 @@ class AllRadioButtonsTest {}
 class SelectedRadioTest {}
 
 @Component({
+  selector: 'test-no-selection-test',
   template: `
     <nx-radio-group>
       <nx-radio value="FIRST">First</nx-radio>
@@ -143,6 +146,7 @@ class SelectedRadioTest {}
 class NoSelectionTest {}
 
 @Component({
+  selector: 'test-nx-label-test',
   template: `
     <nx-radio-group>
       <nx-radio>Radio Label</nx-radio>
@@ -155,6 +159,7 @@ class NoSelectionTest {}
 class NxLabelTest {}
 
 @Component({
+  selector: 'test-aria-label-test',
   template: `<nx-radio-group aria-label="Some Name"></nx-radio-group>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
@@ -162,6 +167,7 @@ class NxLabelTest {}
 class AriaLabelTest {}
 
 @Component({
+  selector: 'test-radio-group-harness-disabled-test',
   template: `<nx-radio-group aria-label="Some Name" [disabled]="true"></nx-radio-group>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule],
@@ -169,6 +175,7 @@ class AriaLabelTest {}
 class DisabledTest {}
 
 @Component({
+  selector: 'test-click-item-test',
   template: `
     <nx-radio-group value="SECOND">
       <nx-radio value="FIRST">First</nx-radio>
@@ -181,6 +188,7 @@ class DisabledTest {}
 class ClickItemTest {}
 
 @Component({
+  selector: 'test-filter-label-test',
   template: `
     <nx-radio-group><nx-label>First</nx-label></nx-radio-group>
     <nx-radio-group><nx-label>Second</nx-label></nx-radio-group>
@@ -191,6 +199,7 @@ class ClickItemTest {}
 class FilterLabelTest {}
 
 @Component({
+  selector: 'test-filter-disabled-test',
   template: `
     <nx-radio-group [disabled]="false"><nx-label>First</nx-label></nx-radio-group>
     <nx-radio-group [disabled]="true"><nx-label>Second</nx-label></nx-radio-group>

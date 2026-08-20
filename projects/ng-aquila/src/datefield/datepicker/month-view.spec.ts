@@ -33,7 +33,9 @@ import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 import { NxMonthViewComponent } from './month-view';
 
 describe('NxMonthView', () => {
-  let dir: { value: Direction };
+  let dir: {
+    value: Direction;
+  };
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -52,13 +54,13 @@ describe('NxMonthView', () => {
   }));
 
   function assertAdjacentCells(cells: NxCalendarCell[], assertValues: number[]) {
-    expect(cells).toHaveSize(assertValues.length);
+    expect(cells).toHaveLength(assertValues.length);
 
     for (let i = 0; i < cells.length; i++) {
       expect(cells[i].value).toBe(assertValues[i]);
       expect(cells[i].displayValue).toBe(String(assertValues[i]));
       expect(cells[i].ariaLabel).toBeDefined();
-      expect(cells[i].enabled).toBeTrue();
+      expect(cells[i].enabled).toBe(true);
     }
   }
 
@@ -80,7 +82,7 @@ describe('NxMonthView', () => {
 
     it('has 31 days', () => {
       const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell-content');
-      expect(cellEls).toHaveSize(31);
+      expect(cellEls).toHaveLength(31);
     });
 
     it('shows selected date if in same month', () => {
@@ -164,15 +166,15 @@ describe('NxMonthView', () => {
     });
 
     it('should use current system date for today', () => {
-      jasmine.clock().install();
+      vi.useFakeTimers();
       // Mock system time to August 5, 2025 (using local date constructor)
-      jasmine.clock().mockDate(new Date('2025-08-05T01:15:00Z'));
+      vi.setSystemTime(new Date('2025-08-05T01:15:00Z'));
       monthViewInstance.activeDate = new Date(2025, 7, 1);
       fixture.detectChanges();
       // Native adapter uses new Date() directly, so it should match the mocked date
       expect(monthViewInstance._todayDate).toBe(5);
 
-      jasmine.clock().uninstall();
+      vi.useRealTimers();
     });
 
     describe('a11y', () => {
@@ -365,17 +367,20 @@ describe('NxMonthView', () => {
 });
 
 @Component({
+  selector: 'test-standard-month-view',
   template: `<nx-month-view [(activeDate)]="activeDate" [(selected)]="selected"></nx-month-view>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxMonthViewComponent],
 })
 class StandardMonthView {
-  @ViewChild(NxMonthViewComponent) monthView!: NxMonthViewComponent<Date>;
+  @ViewChild(NxMonthViewComponent)
+  monthView!: NxMonthViewComponent<Date>;
   activeDate = new Date(2017, JAN, 5);
   selected = new Date(2017, JAN, 10);
 }
 
 @Component({
+  selector: 'test-month-view-with-date-filter',
   template: `<nx-month-view [activeDate]="activeDate" [dateFilter]="dateFilter"></nx-month-view>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxMonthViewComponent],

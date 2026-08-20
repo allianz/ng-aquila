@@ -6,7 +6,8 @@ import { NxToolbarModule } from './toolbar.module';
 
 @Directive({ standalone: true })
 abstract class ToolbarTest {
-  @ViewChild(NxToolbarComponent) toolbarInstance!: NxToolbarComponent;
+  @ViewChild(NxToolbarComponent)
+  toolbarInstance!: NxToolbarComponent;
 }
 
 describe('NxToolbarComponent', () => {
@@ -35,12 +36,13 @@ describe('NxToolbarComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicToolbar);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-toolbar',
   template: `<nx-toolbar></nx-toolbar>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxToolbarModule],

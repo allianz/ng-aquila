@@ -22,7 +22,7 @@ describe('NxvTableOfContentsComponent', () => {
     fixture.detectChanges();
     tick();
     const links = getLinks();
-    expect(links).toHaveSize(8);
+    expect(links).toHaveLength(8);
     expect(links[0].textContent.trim()).toBe('Markdown parent');
     expect(links[1].textContent.trim()).toBe('Markdown child');
     expect(links[2].textContent.trim()).toBe('Api parent');

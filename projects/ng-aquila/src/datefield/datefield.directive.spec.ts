@@ -19,6 +19,7 @@ import {
   ComponentFixture,
   fakeAsync,
   flush,
+  flushMicrotasks,
   TestBed,
   tick,
   waitForAsync,
@@ -46,7 +47,8 @@ abstract class DatefieldTest {
 
   form!: FormGroup;
 
-  @ViewChild(NxDatefieldDirective) textInstance!: NxDatefieldDirective<Date>;
+  @ViewChild(NxDatefieldDirective)
+  textInstance!: NxDatefieldDirective<Date>;
 }
 
 describe('NxDatefieldDirective with Moment', () => {
@@ -120,8 +122,12 @@ describe('NxDatefieldDirective with Moment', () => {
     expect(nativeElement.value).toBe('03--05--2008');
   }));
 
-  it('should apply displayFormat on blur', () => {
+  // `fakeAsync` + `flushMicrotasks`: creating the component queues an `ngModel` write-back of
+  // the still-empty model, which reformats the input to ''. Draining it up front stops it from
+  // landing while the `input` event is being handled and wiping what was typed.
+  it('should apply displayFormat on blur', fakeAsync(() => {
     createTestComponent(AdvancedDatefield);
+    flushMicrotasks();
 
     testInstance.displayFormat = 'MM--DD--YYYY';
     testInstance.parseFormat = ['MM/DD/YYYY', 'MM--DD--YYYY'];
@@ -135,7 +141,7 @@ describe('NxDatefieldDirective with Moment', () => {
     fixture.detectChanges();
 
     expect(nativeElement.value).toBe('03--05--2008');
-  });
+  }));
 
   it('should parse strictly', fakeAsync(() => {
     createTestComponent(AdvancedDatefield);
@@ -188,11 +194,14 @@ describe('NxDatefieldDirective with Moment', () => {
     createTestComponent(ReactiveDatefield);
     fixture.detectChanges();
     tick();
-    expect(testInstance.form.get('datefield')!.dirty).toBeFalse();
+    expect(testInstance.form.get('datefield')!.dirty).toBe(false);
   }));
 
-  it('should not remove the value of the input on blur', () => {
+  // See the `flushMicrotasks` note above.
+  it('should not remove the value of the input on blur', fakeAsync(() => {
     createTestComponent(AdvancedDatefield);
+    flushMicrotasks();
+
     testInstance.parseFormat = 'MM/DD/YYYY';
     testInstance.strict = true;
 
@@ -205,7 +214,7 @@ describe('NxDatefieldDirective with Moment', () => {
     fixture.detectChanges();
 
     expect(nativeElement.value).toBe('xyz');
-  });
+  }));
 
   it('should mark invalid when value is after max', fakeAsync(() => {
     createTestComponent(MinMaxDatefield);
@@ -238,7 +247,7 @@ describe('NxDatefieldDirective with Moment', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicDatefield);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 
@@ -286,7 +295,7 @@ describe('NxDatefieldDirective with Moment', () => {
       nativeElement.value = '';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(testInstance.form.get('datefield')!.valid).toBeTrue();
+      expect(testInstance.form.get('datefield')!.valid).toBe(true);
     });
 
     it('should have no error on custom date format', () => {
@@ -303,7 +312,7 @@ describe('NxDatefieldDirective with Moment', () => {
       fixture.detectChanges();
 
       expect(nativeElement.value).toBe('10--31--2019');
-      expect(testInstance.form.get('datefield')!.valid).toBeTrue();
+      expect(testInstance.form.get('datefield')!.valid).toBe(true);
     });
 
     it('should reflect the value in the native input element', () => {
@@ -317,7 +326,7 @@ describe('NxDatefieldDirective with Moment', () => {
     });
   });
 
-  describe('readonly state ', () => {
+  describe('readonly state', () => {
     it('should set state on all directives and components', fakeAsync(() => {
       createTestComponent(ReadonlyDatefield);
       fixture.detectChanges();
@@ -336,7 +345,7 @@ describe('NxDatefieldDirective with Moment', () => {
 
       const test = fixture.componentRef.instance as ReadonlyDatefield;
 
-      expect(test.abstractControlList.length).toEqual(1);
+      expect(test.abstractControlList.length).toBe(1);
     }));
 
     it('should set state on binding attribute change', fakeAsync(() => {
@@ -398,17 +407,18 @@ describe('NxDatefieldDirective with Moment', () => {
       fixture.detectChanges();
       tick();
       const input = fixture.nativeElement.querySelector('input');
-      expect(input.disabled).toBeTrue();
-      expect(test.datepickerComponent.disabled()).toBeTrue();
-      expect(test.datepickerToggleComponent.disabled()).toBeTrue();
+      expect(input.disabled).toBe(true);
+      expect(test.datepickerComponent.disabled()).toBe(true);
+      expect(test.datepickerToggleComponent.disabled()).toBe(true);
 
       const toggle = fixture.nativeElement.querySelector('nx-datepicker-toggle');
-      expect(toggle.classList.contains('nx-datepicker-toggle--disabled')).toBeTrue();
+      expect(toggle.classList.contains('nx-datepicker-toggle--disabled')).toBe(true);
     }));
   });
 });
 
 @Component({
+  selector: 'test-basic-datefield',
   template: `
     <nx-formfield label="Given Label">
       <input nxInput nxDatefield [disabled]="disabled" />
@@ -420,6 +430,7 @@ describe('NxDatefieldDirective with Moment', () => {
 class BasicDatefield extends DatefieldTest {}
 
 @Component({
+  selector: 'test-datefield-readonly-datefield',
   imports: [
     NxDatefieldModule,
     NxMomentDateModule,
@@ -471,6 +482,7 @@ class ReadonlyDatefield extends DatefieldTest {
 }
 
 @Component({
+  selector: 'test-advanced-datefield',
   template: `<input
     nxInput
     nxDatefield
@@ -485,6 +497,7 @@ class ReadonlyDatefield extends DatefieldTest {
 class AdvancedDatefield extends DatefieldTest {}
 
 @Component({
+  selector: 'test-min-max-datefield',
   template: `<input nxInput nxDatefield [(ngModel)]="value" [min]="min" [max]="max" />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
@@ -492,6 +505,7 @@ class AdvancedDatefield extends DatefieldTest {}
 class MinMaxDatefield extends DatefieldTest {}
 
 @Component({
+  selector: 'test-reactive-datefield',
   template: `
     <form [formGroup]="form">
       <nx-formfield label="Given Label">
@@ -526,7 +540,8 @@ class ReactiveDatefield extends DatefieldTest {
 @Directive({ standalone: true })
 abstract class DatefieldIsoTest {
   form!: FormGroup;
-  @ViewChild(NxDatefieldDirective) datefieldInstance!: NxDatefieldDirective<Date>;
+  @ViewChild(NxDatefieldDirective)
+  datefieldInstance!: NxDatefieldDirective<Date>;
 }
 
 describe('NxDatefieldDirective with IsoAdapter', () => {
@@ -559,7 +574,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
 
   it('has no error for a correct date', () => {
     createTestComponent(ReactiveIsoDatefield);
-    expect(testInstance.form.get('datefield')!.valid).toBeTrue();
+    expect(testInstance.form.get('datefield')!.valid).toBe(true);
   });
 
   it('has an parsing error for an incorrect date', () => {
@@ -568,7 +583,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
     nativeElement.value = 'this is no date';
     nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
-    expect(datefield!.valid).toBeFalse();
+    expect(datefield!.valid).toBe(false);
     expect(datefield!.errors!.nxDatefieldParse).toEqual({ text: 'this is no date' });
   });
 
@@ -577,7 +592,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
     nativeElement.value = '';
     nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
-    expect(testInstance.form.get('datefield')!.valid).toBeTrue();
+    expect(testInstance.form.get('datefield')!.valid).toBe(true);
   });
 
   it('should reflect readonly state when setReadonly changed', () => {
@@ -591,11 +606,12 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
 
     datefieldInstance.readonlyState.set(false);
     fixture.detectChanges();
-    expect(nativeElement.readOnly).toBeFalse();
+    expect(nativeElement.readOnly).toBe(false);
   });
 });
 
 @Component({
+  selector: 'test-reactive-iso-datefield',
   template: `
     <form [formGroup]="form">
       <nx-formfield label="Given Label">

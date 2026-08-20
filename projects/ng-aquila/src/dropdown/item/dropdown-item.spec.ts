@@ -6,7 +6,8 @@ import { NxDropdownItemComponent } from './dropdown-item';
 
 @Directive({ standalone: true })
 abstract class DropdownItemTest {
-  @ViewChild(NxDropdownItemComponent) item: any;
+  @ViewChild(NxDropdownItemComponent)
+  item: any;
 }
 
 describe('NxDropdownItem component', () => {
@@ -31,7 +32,7 @@ describe('NxDropdownItem component', () => {
     createTestComponent(BasicItem);
     fixture.detectChanges();
 
-    const completeSpy = jasmine.createSpy('complete spy');
+    const completeSpy = vi.fn().mockName('complete spy');
     const subscription = itemInstance._stateChanges.subscribe({ complete: completeSpy });
 
     fixture.destroy();
@@ -44,15 +45,15 @@ describe('NxDropdownItem component', () => {
     fixture.detectChanges();
 
     itemInstance.select();
-    expect(itemInstance.selected).toBeTrue();
+    expect(itemInstance.selected).toBe(true);
 
-    const spy = jasmine.createSpy('selection change spy');
+    const spy = vi.fn().mockName('selection change spy');
     const subscription = itemInstance.onSelectionChange.subscribe(spy);
 
     itemInstance.select();
     fixture.detectChanges();
 
-    expect(itemInstance.selected).toBeTrue();
+    expect(itemInstance.selected).toBe(true);
     expect(spy).not.toHaveBeenCalled();
 
     subscription.unsubscribe();
@@ -63,15 +64,15 @@ describe('NxDropdownItem component', () => {
     fixture.detectChanges();
 
     itemInstance.deselect();
-    expect(itemInstance.selected).toBeFalse();
+    expect(itemInstance.selected).toBe(false);
 
-    const spy = jasmine.createSpy('selection change spy');
+    const spy = vi.fn().mockName('selection change spy');
     const subscription = itemInstance.onSelectionChange.subscribe(spy);
 
     itemInstance.deselect();
     fixture.detectChanges();
 
-    expect(itemInstance.selected).toBeFalse();
+    expect(itemInstance.selected).toBe(false);
     expect(spy).not.toHaveBeenCalled();
 
     subscription.unsubscribe();
@@ -104,6 +105,7 @@ describe('NxDropdownItem component', () => {
 });
 
 @Component({
+  selector: 'test-basic-item',
   template: `<nx-dropdown><nx-dropdown-item value="option"></nx-dropdown-item></nx-dropdown>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
@@ -111,6 +113,7 @@ describe('NxDropdownItem component', () => {
 class BasicItem extends DropdownItemTest {}
 
 @Component({
+  selector: 'test-empty-item',
   template: `<nx-dropdown><nx-dropdown-item></nx-dropdown-item></nx-dropdown>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDropdownModule],
@@ -118,6 +121,7 @@ class BasicItem extends DropdownItemTest {}
 class EmptyItem extends DropdownItemTest {}
 
 @Component({
+  selector: 'test-projected-item',
   template: `<nx-dropdown
     ><nx-dropdown-item value="option"><span>label</span></nx-dropdown-item></nx-dropdown
   >`,
@@ -127,6 +131,7 @@ class EmptyItem extends DropdownItemTest {}
 class ProjectedItem extends DropdownItemTest {}
 
 @Component({
+  selector: 'test-custom-id-item',
   template: `<nx-dropdown
     ><nx-dropdown-item id="custom-id" value="option"></nx-dropdown-item
   ></nx-dropdown>`,

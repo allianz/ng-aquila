@@ -17,7 +17,8 @@ import { NxLinkModule } from './link.module';
 
 @Directive({ standalone: true })
 abstract class LinkTest {
-  @ViewChild(NxLinkComponent) linkInstance!: NxLinkComponent;
+  @ViewChild(NxLinkComponent)
+  linkInstance!: NxLinkComponent;
 
   size = signal<NxLinkSize>('large');
   type = signal<NxLinkType>('primary');
@@ -128,7 +129,7 @@ describe('NxLinkComponent', () => {
     expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--subtle');
   });
 
-  it('should change the link type to secondary', () => {
+  it('should change the prominence to subtle', () => {
     createTestComponent(DynamicLink);
     expect(linkInstance.prominence()).toBe('default');
     expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--subtle');
@@ -142,7 +143,7 @@ describe('NxLinkComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicLink);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
@@ -195,6 +196,7 @@ describe('NxLinkComponent with A1', () => {
 });
 
 @Component({
+  selector: 'test-basic-link',
   template: `
     <nx-link>
       <a>link</a>
@@ -206,6 +208,7 @@ describe('NxLinkComponent with A1', () => {
 class BasicLink extends LinkTest {}
 
 @Component({
+  selector: 'test-dynamic-link',
   template: `
     <nx-link [nxStyle]="style" [size]="size()" [type]="type()" [prominence]="prominence()">
       <a>link</a>
@@ -219,6 +222,7 @@ class DynamicLink extends LinkTest {
 }
 
 @Component({
+  selector: 'test-icon-link',
   template: `
     <nx-link [nxStyle]="style">
       <a><nx-icon name="user-o"></nx-icon>link</a>
@@ -232,6 +236,7 @@ class IconLink extends LinkTest {
 }
 
 @Component({
+  selector: 'test-on-push-link',
   template: `
     <nx-link [nxStyle]="style" [size]="size()">
       <a>link</a>

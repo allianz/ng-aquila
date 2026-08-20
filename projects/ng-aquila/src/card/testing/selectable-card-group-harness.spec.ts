@@ -52,6 +52,7 @@ describe('NxSelectableCardGroupHarness', () => {
 });
 
 @Component({
+  selector: 'test-group-count-test',
   template: `
     <nx-selectable-card-group />
     <nx-selectable-card-group />
@@ -62,6 +63,7 @@ describe('NxSelectableCardGroupHarness', () => {
 class GroupCountTest {}
 
 @Component({
+  selector: 'test-cards-in-group-test',
   template: `
     <nx-selectable-card-group>
       <nx-selectable-card />
@@ -74,6 +76,7 @@ class GroupCountTest {}
 class CardsInGroupTest {}
 
 @Component({
+  selector: 'test-filtered-cards-test',
   template: `
     <nx-selectable-card-group value="BAR">
       <nx-selectable-card value="FOO"><h3>Foo</h3></nx-selectable-card>
@@ -86,6 +89,7 @@ class CardsInGroupTest {}
 class FilteredCardsTest {}
 
 @Component({
+  selector: 'test-selectable-card-group-harness-error-test',
   template: `<nx-selectable-card-group [formControl]="control">
     <nx-selectable-card><h3>Foo</h3></nx-selectable-card>
     <nx-selectable-card><h3>Bar</h3></nx-selectable-card>

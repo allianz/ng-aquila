@@ -19,7 +19,9 @@ import { NxCalendarBodyComponent } from './calendar-body';
 import { NxMultiYearViewComponent, yearsPerPage, yearsPerRow } from './multi-year-view';
 
 describe('NxMultiYearView', () => {
-  let dir: { value: Direction };
+  let dir: {
+    value: Direction;
+  };
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -55,7 +57,7 @@ describe('NxMultiYearView', () => {
 
     it('has correct number of years', () => {
       const cellEls = multiYearViewNativeElement.querySelectorAll('.nx-calendar-body-cell-content');
-      expect(cellEls).toHaveSize(yearsPerPage);
+      expect(cellEls).toHaveLength(yearsPerPage);
     });
 
     it('does not show selected year if in different range', () => {
@@ -236,6 +238,7 @@ describe('NxMultiYearView', () => {
 });
 
 @Component({
+  selector: 'test-standard-multi-year-view',
   template: `<nx-multi-year-view
     [(activeDate)]="date"
     [(selected)]="selected"
@@ -249,10 +252,12 @@ class StandardMultiYearView {
   selected = new Date(2020, JAN, 1);
   selectedYear!: Date;
 
-  @ViewChild(NxMultiYearViewComponent) multiYearView!: NxMultiYearViewComponent<Date>;
+  @ViewChild(NxMultiYearViewComponent)
+  multiYearView!: NxMultiYearViewComponent<Date>;
 }
 
 @Component({
+  selector: 'test-multi-year-view-with-date-filter',
   template: `<nx-multi-year-view
     [(activeDate)]="activeDate"
     [dateFilter]="dateFilter"

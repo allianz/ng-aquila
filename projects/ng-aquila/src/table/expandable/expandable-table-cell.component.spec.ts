@@ -115,7 +115,7 @@ describe(NxExpandableTableCellComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicExpandableTableCellComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 
@@ -141,6 +141,7 @@ describe(NxExpandableTableCellComponent.name, () => {
 });
 
 @Component({
+  selector: 'test-basic-expandable-table-cell-component',
   template: `
     <tr nxExpandableTableRow>
       <td nxExpandableTableCell [indented]="isIndented">example content</td>

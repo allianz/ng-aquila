@@ -42,7 +42,8 @@ import { NxTimefieldIntl } from './timefield-intl';
 
 @Directive({ standalone: true })
 abstract class TimefieldTest {
-  @ViewChild(NxTimefieldComponent) timefieldInstance!: NxTimefieldComponent;
+  @ViewChild(NxTimefieldComponent)
+  timefieldInstance!: NxTimefieldComponent;
 
   label = '';
   negative = false;
@@ -388,7 +389,7 @@ describe('NxTimefieldComponent', () => {
     createTestComponent(TemplateDrivenTimefield);
     const templateInstance = testInstance as TemplateDrivenTimefield;
     flushAndAssertTime('00:00');
-    const spy = spyOn(timefieldInstance.valueChange, 'emit').and.callThrough();
+    const spy = vi.spyOn(timefieldInstance.valueChange, 'emit');
     templateInstance.today = '12:00';
     flushAndAssertTime('12:00');
     expect(timefieldInstance.valueChange.emit).toHaveBeenCalledWith('12:00');
@@ -679,7 +680,7 @@ describe('NxTimefieldComponent', () => {
     it('should not show the error initially', () => {
       createTestComponent(ReactiveTimefield);
       const reactInstance = testInstance as ReactiveTimefield;
-      expect(reactInstance.testForm.touched).toBeFalse();
+      expect(reactInstance.testForm.touched).toBe(false);
       expect(reactInstance.testForm.status).toBe('INVALID');
       expect(timefieldElement).not.toHaveClass('has-error');
       expect(timefieldElement).toHaveClass('ng-untouched');
@@ -700,16 +701,16 @@ describe('NxTimefieldComponent', () => {
     it('should mark as touched on blur only', () => {
       createTestComponent(ReactiveTimefield);
       const form = (testInstance as ReactiveTimefield).testForm;
-      expect(form.touched).toBeFalse();
+      expect(form.touched).toBe(false);
       // test input event to avoid a regression
       inputElementHours.value = '0';
       inputElementHours.dispatchEvent(new Event('input'));
       inputElementHours.focus();
       fixture.detectChanges();
-      expect(form.touched).toBeFalse();
+      expect(form.touched).toBe(false);
       inputElementHours.blur();
       fixture.detectChanges();
-      expect(form.touched).toBeTrue();
+      expect(form.touched).toBe(true);
     });
 
     it('should mark as touched when option is selected', () => {
@@ -724,7 +725,7 @@ describe('NxTimefieldComponent', () => {
       options[0].click();
       fixture.detectChanges();
 
-      expect(form.touched).toBeTrue();
+      expect(form.touched).toBe(true);
     });
 
     it('should mark as touched when the panel closes without selecting', () => {
@@ -740,7 +741,7 @@ describe('NxTimefieldComponent', () => {
         .querySelector('.cdk-overlay-backdrop') as HTMLDivElement;
       backdrop.click();
       fixture.detectChanges();
-      expect(form.touched).toBeTrue();
+      expect(form.touched).toBe(true);
     });
 
     it('should show error only when all inputs have lost focus', () => {
@@ -922,7 +923,7 @@ describe('NxTimefieldComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(SimpleTimefield);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations when overlay is opened', async () => {
@@ -933,7 +934,7 @@ describe('NxTimefieldComponent', () => {
       toggleButton.click();
       fixture.detectChanges();
 
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should overwrite the default aria labels', () => {
@@ -967,6 +968,7 @@ describe('NxTimefieldComponent projected content under Allianz One', () => {
 });
 
 @Component({
+  selector: 'test-simple-timefield',
   template: `<nx-timefield label="Time"></nx-timefield>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
@@ -974,6 +976,7 @@ describe('NxTimefieldComponent projected content under Allianz One', () => {
 class SimpleTimefield extends TimefieldTest {}
 
 @Component({
+  selector: 'test-inline-timefield',
   template: `<nx-timefield label="Time" [inline]="inline"></nx-timefield>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
@@ -983,6 +986,7 @@ class InlineTimefield extends TimefieldTest {
 }
 
 @Component({
+  selector: 'test-projected-content-timefield',
   template: `
     <nx-timefield [label]="label" [withTimepicker]="withTimepicker" [inline]="inline">
       <span nxFormfieldPrefix>content-prefix</span>
@@ -999,6 +1003,7 @@ class ProjectedContentTimefield extends TimefieldTest {
 }
 
 @Component({
+  selector: 'test-configurable-timefield',
   template: `
     <nx-timefield
       [label]="label"
@@ -1016,6 +1021,7 @@ class ProjectedContentTimefield extends TimefieldTest {
 class ConfigurableTimefield extends TimefieldTest {}
 
 @Component({
+  selector: 'test-reactive-timefield',
   template: `
     <form [formGroup]="testForm">
       <nx-timefield
@@ -1045,6 +1051,7 @@ class ReactiveTimefield extends TimefieldTest {
   }
 }
 @Component({
+  selector: 'test-template-driven-timefield',
   template: `<nx-timefield
     [twelveHourFormat]="twelveHourFormat"
     [(ngModel)]="today"
@@ -1057,6 +1064,7 @@ class TemplateDrivenTimefield extends TimefieldTest {
 }
 
 @Component({
+  selector: 'test-template-driven-on-push-timefield',
   template: `<nx-timefield
     [twelveHourFormat]="twelveHourFormat"
     [(ngModel)]="today"
@@ -1069,6 +1077,7 @@ class TemplateDrivenOnPushTimefield extends TimefieldTest {
 }
 
 @Component({
+  selector: 'test-override-default-labels-timefield',
   template: `<nx-timefield twelveHourFormat></nx-timefield>`,
   providers: [{ provide: NxTimefieldIntl, useClass: MyIntl }],
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -1077,6 +1086,7 @@ class TemplateDrivenOnPushTimefield extends TimefieldTest {
 class OverrideDefaultLabelsTimefield extends TimefieldTest {}
 
 @Component({
+  selector: 'test-default-options-provder-timefield',
   template: `<nx-timefield twelveHourFormat></nx-timefield>`,
   providers: [{ provide: TIMEFIELD_DEFAULT_OPTIONS, useValue: { withTimepicker: true } }],
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -1085,6 +1095,7 @@ class OverrideDefaultLabelsTimefield extends TimefieldTest {}
 class DefaultOptionsProvderTimefield extends TimefieldTest {}
 
 @Component({
+  selector: 'test-custom-validation-timefield',
   template: `
     <form [formGroup]="testForm">
       <nx-timefield
@@ -1114,6 +1125,7 @@ class CustomValidationTimefield extends TimefieldTest {
   }
 }
 @Component({
+  selector: 'test-input-mode-timefield',
   template: `<nx-timefield label="Time" [inputMode]="inputMode"></nx-timefield>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],

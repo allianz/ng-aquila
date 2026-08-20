@@ -2,9 +2,12 @@ import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/com
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import sdk from '@stackblitz/sdk';
+import type { Mock } from 'vitest';
 
 import { ExampleData } from './example-data';
 import { StackBlitzWriter } from './stack-blitz-writer';
+
+type FetchFile = (filename: string, path: string) => Promise<string>;
 
 describe('StackBlitzWriter', () => {
   let stackBlitzWriter: StackBlitzWriter;
@@ -49,30 +52,34 @@ describe('StackBlitzWriter', () => {
     // that we call `sdk.openProject` once with a correctly-assembled `files` map and options. File
     // loading is stubbed so the test is deterministic and network-free, and so we can assert that
     // template files (in particular package.json) are passed through verbatim.
-    let openProjectSpy: jasmine.Spy;
+    let openProjectSpy: Mock<typeof sdk.openProject>;
+    let fetchFileSpy: Mock<FetchFile>;
 
     beforeEach(() => {
-      openProjectSpy = spyOn(sdk, 'openProject');
-      spyOn<any>(stackBlitzWriter, '_fetchFile').and.callFake((filename: string, path: string) =>
-        Promise.resolve(
-          filename === 'src/index.html'
-            ? '<aquila-docs-example></aquila-docs-example>'
-            : `content:${path}${filename}`,
-        ),
-      );
+      openProjectSpy = vi.spyOn(sdk, 'openProject').mockReturnValue(undefined);
+      // `_fetchFile` is private, so cast to the shape that exposes it.
+      fetchFileSpy = vi
+        .spyOn(stackBlitzWriter as unknown as { _fetchFile: FetchFile }, '_fetchFile')
+        .mockImplementation((filename, path) =>
+          Promise.resolve(
+            filename === 'src/index.html'
+              ? '<aquila-docs-example></aquila-docs-example>'
+              : `content:${path}${filename}`,
+          ),
+        );
     });
 
     it('opens a StackBlitz project via the SDK with the assembled files', async () => {
       await stackBlitzWriter.openStackBlitzProject('my-id', 'cdk/my-comp', data);
 
       expect(openProjectSpy).toHaveBeenCalledTimes(1);
-      const [project, options] = openProjectSpy.calls.mostRecent().args;
+      const [project, options] = openProjectSpy.mock.lastCall!;
 
       expect(project.template).toBe('node');
       expect(project.title).toBe('My Example');
       expect(project.description).toBe('My Example');
-      expect(options.newWindow).toBeTrue();
-      expect(options.openFile).toBe(`src/app/${data.indexFilename}`);
+      expect(options!.newWindow).toBe(true);
+      expect(options!.openFile).toBe(`src/app/${data.indexFilename}`);
 
       // Template files keep their own path, the committed lockfile is included, and example files
       // are nested under src/app/.
@@ -90,7 +97,7 @@ describe('StackBlitzWriter', () => {
     it('generates src/main.ts that bootstraps the example component', async () => {
       await stackBlitzWriter.openStackBlitzProject('my-id', 'cdk/my-comp', data);
 
-      const [project] = openProjectSpy.calls.mostRecent().args;
+      const [project] = openProjectSpy.mock.lastCall!;
       const mainTs = project.files['src/main.ts'];
 
       // The example component is bootstrapped and imported from its index file with the
@@ -107,7 +114,7 @@ describe('StackBlitzWriter', () => {
         null,
         2,
       );
-      (stackBlitzWriter as any)._fetchFile.and.callFake((filename: string, path: string) =>
+      fetchFileSpy.mockImplementation((filename, path) =>
         Promise.resolve(
           filename === 'package.json' ? templatePackageJson : `content:${path}${filename}`,
         ),
@@ -115,7 +122,7 @@ describe('StackBlitzWriter', () => {
 
       await stackBlitzWriter.openStackBlitzProject('my-id', 'cdk/my-comp', data);
 
-      const [project] = openProjectSpy.calls.mostRecent().args;
+      const [project] = openProjectSpy.mock.lastCall!;
       // package.json is a .json file, so _appendCopyright leaves it untouched: it must match the
       // template byte-for-byte.
       expect(project.files['package.json']).toBe(templatePackageJson);
@@ -126,20 +133,20 @@ describe('StackBlitzWriter', () => {
 
       await stackBlitzWriter.openStackBlitzProject('my-id', 'cdk/my-comp', data);
 
-      const [project] = openProjectSpy.calls.mostRecent().args;
+      const [project] = openProjectSpy.mock.lastCall!;
       expect(Object.keys(project.files)).toContain('src/assets/icons/settings.svg');
     });
 
     it('does not open a project when a file fails to load', async () => {
-      (stackBlitzWriter as any)._fetchFile.and.callFake((filename: string) =>
+      fetchFileSpy.mockImplementation((filename) =>
         filename === 'src/index.html'
           ? Promise.reject(new Error('boom'))
           : Promise.resolve('content'),
       );
 
-      await expectAsync(
+      await expect(
         stackBlitzWriter.openStackBlitzProject('my-id', 'cdk/my-comp', data),
-      ).toBeRejected();
+      ).rejects.toThrow();
       expect(openProjectSpy).not.toHaveBeenCalled();
     });
   });

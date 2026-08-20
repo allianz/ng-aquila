@@ -30,9 +30,12 @@ class MyIntl extends NxSortHeaderIntl {
 
 @Directive({ standalone: true })
 abstract class SortHeaderTest {
-  @ViewChild('nameHeader') nameHeader!: NxSortHeaderComponent;
-  @ViewChild('countHeader') countHeader!: NxSortHeaderComponent;
-  @ViewChild(NxSortDirective) tableSort!: NxSortDirective;
+  @ViewChild('nameHeader')
+  nameHeader!: NxSortHeaderComponent;
+  @ViewChild('countHeader')
+  countHeader!: NxSortHeaderComponent;
+  @ViewChild(NxSortDirective)
+  tableSort!: NxSortDirective;
 
   active = 'name';
   direction: SortDirection = 'desc';
@@ -208,7 +211,9 @@ describe('NxSort', () => {
 
     it('should not emit sortChange when set active, direction', () => {
       createTestComponent(ConfigurableSortTableComponent);
-      const sortChange = spyOn(testInstance.tableSort.sortChange, 'emit');
+      const sortChange = vi
+        .spyOn(testInstance.tableSort.sortChange, 'emit')
+        .mockReturnValue(undefined);
 
       testInstance.active = 'count';
       testInstance.direction = 'desc';
@@ -219,7 +224,9 @@ describe('NxSort', () => {
 
     it('should not emit sortChange on initialization', () => {
       createTestComponent(ConfigurableSortTableComponent);
-      const sortChange = spyOn(testInstance.tableSort.sortChange, 'emit');
+      const sortChange = vi
+        .spyOn(testInstance.tableSort.sortChange, 'emit')
+        .mockReturnValue(undefined);
 
       expect(sortChange).not.toHaveBeenCalled();
       fixture.detectChanges();
@@ -227,7 +234,9 @@ describe('NxSort', () => {
 
     it('should emit sortChange when interact with header', () => {
       createTestComponent(ConfigurableSortTableComponent);
-      const sortChange = spyOn(testInstance.tableSort.sortChange, 'emit');
+      const sortChange = vi
+        .spyOn(testInstance.tableSort.sortChange, 'emit')
+        .mockReturnValue(undefined);
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
       nameHeaderElement.click();
       fixture.detectChanges();
@@ -255,7 +264,7 @@ describe('NxSort', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicSortTableComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations when sorted', async () => {
@@ -263,7 +272,7 @@ describe('NxSort', () => {
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
       nameHeaderElement.click();
       fixture.detectChanges();
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has the correct aria label for an unsorted column', () => {
@@ -344,6 +353,7 @@ describe('NxSort', () => {
 });
 
 @Component({
+  selector: 'test-basic-sort-table-component',
   template: `
     <table nxTable nxSort (sortChange)="sortTable($event)">
       <thead>
@@ -360,6 +370,7 @@ describe('NxSort', () => {
 class BasicSortTableComponent extends SortHeaderTest {}
 
 @Component({
+  selector: 'test-configurable-sort-table-component',
   template: `
     <table
       nxTable

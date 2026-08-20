@@ -74,16 +74,14 @@ describe('NxExpansionPanelComponent', () => {
     ).nativeElement;
     fixture.detectChanges();
 
-    expect(content.textContent.trim())
-      .withContext('Expected content element to be empty.')
-      .toBe('');
+    expect(content.textContent.trim(), 'Expected content element to be empty.').toBe('');
 
     fixture.componentInstance.expanded = true;
     fixture.detectChanges();
 
-    expect(content.textContent.trim())
-      .withContext('Expected content to be rendered.')
-      .toContain('Some content');
+    expect(content.textContent.trim(), 'Expected content to be rendered.').toContain(
+      'Some content',
+    );
   }));
 
   it('should render the content for a lazy-loaded panel that is opened on init', fakeAsync(() => {
@@ -93,9 +91,9 @@ describe('NxExpansionPanelComponent', () => {
     ).nativeElement;
     fixture.detectChanges();
 
-    expect(content.textContent.trim())
-      .withContext('Expected content to be rendered.')
-      .toContain('Some content');
+    expect(content.textContent.trim(), 'Expected content to be rendered.').toContain(
+      'Some content',
+    );
   }));
 
   it('emit correct events for change in panel expanded state', () => {
@@ -149,28 +147,30 @@ describe('NxExpansionPanelComponent', () => {
     createTestComponent(PanelWithContent);
     const headerEl = fixture.nativeElement.querySelector('nx-expansion-panel-header');
 
-    spyOn(fixture.componentInstance.panel, 'toggle');
+    vi.spyOn(fixture.componentInstance.panel, 'toggle').mockReturnValue(undefined);
 
     const event = dispatchKeyboardEvent(headerEl, 'keydown', SPACE);
 
     fixture.detectChanges();
 
     expect(fixture.componentInstance.panel.toggle).toHaveBeenCalled();
-    expect(event.defaultPrevented).toBeTrue();
+    expect(event.defaultPrevented).toBe(true);
   });
 
   it('should toggle the panel when pressing ENTER on the header', () => {
     createTestComponent(PanelWithContent);
     const headerEl = fixture.nativeElement.querySelector('nx-expansion-panel-header');
 
-    spyOn((fixture.componentInstance as PanelWithContent).panel, 'toggle');
+    vi.spyOn((fixture.componentInstance as PanelWithContent).panel, 'toggle').mockReturnValue(
+      undefined,
+    );
 
     const event = dispatchKeyboardEvent(headerEl, 'keydown', ENTER);
 
     fixture.detectChanges();
 
     expect((fixture.componentInstance as PanelWithContent).panel.toggle).toHaveBeenCalled();
-    expect(event.defaultPrevented).toBeTrue();
+    expect(event.defaultPrevented).toBe(true);
   });
 
   it('should not be able to focus content while closed', fakeAsync(() => {
@@ -182,9 +182,9 @@ describe('NxExpansionPanelComponent', () => {
     const button = fixture.debugElement.query(By.css('#test-button')).nativeElement;
 
     button.focus();
-    expect(_getFocusedElementPierceShadowDom())
-      .withContext('Expected button to start off focusable.')
-      .toBe(button);
+    expect(_getFocusedElementPierceShadowDom(), 'Expected button to start off focusable.').toBe(
+      button,
+    );
 
     button.blur();
 
@@ -196,9 +196,10 @@ describe('NxExpansionPanelComponent', () => {
     button.focus();
     fixture.detectChanges();
 
-    expect(_getFocusedElementPierceShadowDom())
-      .withContext('Expected button to no longer be focusable.')
-      .not.toBe(button);
+    expect(
+      _getFocusedElementPierceShadowDom(),
+      'Expected button to no longer be focusable.',
+    ).not.toBe(button);
   }));
 
   it('should update the indicator rotation when the expanded state is toggled programmatically', fakeAsync(() => {
@@ -225,7 +226,7 @@ describe('NxExpansionPanelComponent', () => {
     fixture.componentInstance.panel.destroyed.subscribe(() => (destroyedOk = true));
     (fixture.componentInstance as PanelWithContentInNgIf).expansionShown = false;
     fixture.detectChanges();
-    expect(destroyedOk).toBeTrue();
+    expect(destroyedOk).toBe(true);
   });
 
   it('should support two-way binding of the `expanded` property', () => {
@@ -234,15 +235,15 @@ describe('NxExpansionPanelComponent', () => {
       By.css('.nx-expansion-panel__header-content'),
     ).nativeElement;
 
-    expect(fixture.componentInstance.expanded).toBeFalse();
+    expect(fixture.componentInstance.expanded).toBe(false);
 
     header.click();
     fixture.detectChanges();
-    expect(fixture.componentInstance.expanded).toBeTrue();
+    expect(fixture.componentInstance.expanded).toBe(true);
 
     header.click();
     fixture.detectChanges();
-    expect(fixture.componentInstance.expanded).toBeFalse();
+    expect(fixture.componentInstance.expanded).toBe(false);
   });
 
   describe('appearance', () => {
@@ -364,7 +365,7 @@ describe('NxExpansionPanelComponent', () => {
     });
 
     it('should not be able to toggle the panel via a user action if disabled', () => {
-      expect(fixture.componentInstance.panel.expanded).toBeFalse();
+      expect(fixture.componentInstance.panel.expanded).toBe(false);
       expect(headerNativeElement).not.toHaveClass('nx-expanded');
 
       fixture.componentInstance.disabled = true;
@@ -373,12 +374,12 @@ describe('NxExpansionPanelComponent', () => {
       headerNativeElement.click();
       fixture.detectChanges();
 
-      expect(fixture.componentInstance.panel.expanded).toBeFalse();
+      expect(fixture.componentInstance.panel.expanded).toBe(false);
       expect(headerNativeElement).not.toHaveClass('nx-expanded');
     });
 
     it('should be able to toggle a disabled expansion panel programmatically', () => {
-      expect(fixture.componentInstance.panel.expanded).toBeFalse();
+      expect(fixture.componentInstance.panel.expanded).toBe(false);
       expect(headerNativeElement).not.toHaveClass('nx-expanded');
 
       fixture.componentInstance.disabled = true;
@@ -387,7 +388,7 @@ describe('NxExpansionPanelComponent', () => {
       fixture.componentInstance.expanded = true;
       fixture.detectChanges();
 
-      expect(fixture.componentInstance.panel.expanded).toBeTrue();
+      expect(fixture.componentInstance.panel.expanded).toBe(true);
       expect(headerNativeElement).toHaveClass('nx-expanded');
     });
   });
@@ -398,7 +399,8 @@ abstract class PanelTest {
   expanded = false;
   disabled = false;
 
-  @ViewChild(NxExpansionPanelComponent) panel!: NxExpansionPanelComponent;
+  @ViewChild(NxExpansionPanelComponent)
+  panel!: NxExpansionPanelComponent;
 }
 
 @Component({
@@ -417,8 +419,8 @@ abstract class PanelTest {
   imports: [NxAccordionModule],
 })
 class PanelWithContent extends PanelTest {
-  openCallback = jasmine.createSpy('openCallback');
-  closeCallback = jasmine.createSpy('closeCallback');
+  openCallback = vi.fn().mockName('openCallback');
+  closeCallback = vi.fn().mockName('closeCallback');
 }
 
 @Component({
@@ -542,5 +544,6 @@ class PanelWithAccordion extends PanelTest {}
   imports: [NxAccordionModule],
 })
 class FlushPanelWithAccordion extends PanelTest {
-  @ViewChild('firstPanel', { static: true }) panel!: NxExpansionPanelComponent;
+  @ViewChild('firstPanel', { static: true })
+  panel!: NxExpansionPanelComponent;
 }

@@ -22,14 +22,11 @@ describe('NxMomentDateAdapter', () => {
   let adapter: NxMomentDateAdapter;
 
   function assertValidDate(date: moment.Moment | null, valid: boolean): void {
-    expect(adapter.isDateInstance(date))
-      .withContext(`Expected ${date} to be a date instance`)
-      .not.toBeNull();
-    expect(adapter.isValid(date as moment.Moment))
-      .withContext(
-        `Expected ${date} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`,
-      )
-      .toBe(valid);
+    expect(adapter.isDateInstance(date), `Expected ${date} to be a date instance`).not.toBeNull();
+    expect(
+      adapter.isValid(date as moment.Moment),
+      `Expected ${date} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`,
+    ).toBe(valid);
   }
 
   beforeEach(waitForAsync(() => {
@@ -46,11 +43,11 @@ describe('NxMomentDateAdapter', () => {
 
   beforeEach(() => {
     adapter = new NxMomentDateAdapter('en');
-    jasmine.clock().install();
+    vi.useFakeTimers();
   });
 
   afterEach(() => {
-    jasmine.clock().uninstall();
+    vi.useRealTimers();
   });
 
   it('should get year', () => {
@@ -92,12 +89,12 @@ describe('NxMomentDateAdapter', () => {
   it('should parse invalid value as invalid', () => {
     const d = adapter.parse('hello', 'MM/DD/YYYY', false);
     expect(d).not.toBeNull();
-    expect(adapter.isDateInstance(d))
-      .withContext('Expected string to have been fed through Date.parse')
-      .toBeTrue();
-    expect(adapter.isValid(d as moment.Moment))
-      .withContext('Expected to parse as "invalid date" object')
-      .toBeFalse();
+    expect(adapter.isDateInstance(d), 'Expected string to have been fed through Date.parse').toBe(
+      true,
+    );
+    expect(adapter.isValid(d as moment.Moment), 'Expected to parse as "invalid date" object').toBe(
+      false,
+    );
   });
 
   it('should allow strict parsing', () => {
@@ -134,9 +131,9 @@ describe('NxMomentDateAdapter', () => {
   });
 
   it('should return correct local date in today() when local and UTC dates differ', () => {
-    jasmine.clock().mockDate(new Date('2024-08-22T01:00:00Z'));
+    vi.setSystemTime(new Date('2024-08-22T01:00:00Z'));
     // Overide timezone offset actual UTC date is still 2024-08-21
-    spyOn(Date.prototype, 'getTimezoneOffset').and.returnValue(+420);
+    vi.spyOn(Date.prototype, 'getTimezoneOffset').mockReturnValue(+420);
     const today = adapter.today();
     expect(today.date()).toBe(21);
     expect(today.month()).toBe(7);
@@ -146,9 +143,9 @@ describe('NxMomentDateAdapter', () => {
   });
 
   it('should handle month boundary correctly in today()', () => {
-    jasmine.clock().mockDate(new Date('2024-09-01T01:00:00Z'));
+    vi.setSystemTime(new Date('2024-09-01T01:00:00Z'));
     // Overide timezone offset actual UTC date is still on 2024-08-31
-    spyOn(Date.prototype, 'getTimezoneOffset').and.returnValue(+420);
+    vi.spyOn(Date.prototype, 'getTimezoneOffset').mockReturnValue(+420);
     const today = adapter.today();
     expect(today.date()).toBe(31);
     expect(today.month()).toBe(7);
@@ -156,8 +153,8 @@ describe('NxMomentDateAdapter', () => {
   });
 
   it('should handle year boundary correctly in today()', () => {
-    jasmine.clock().mockDate(new Date('2025-01-01T01:00:00Z'));
-    spyOn(Date.prototype, 'getTimezoneOffset').and.returnValue(+420);
+    vi.setSystemTime(new Date('2025-01-01T01:00:00Z'));
+    vi.spyOn(Date.prototype, 'getTimezoneOffset').mockReturnValue(+420);
     const today = adapter.today();
     expect(today.date()).toBe(31);
     expect(today.month()).toBe(11);
@@ -166,9 +163,9 @@ describe('NxMomentDateAdapter', () => {
 
   it('should return local date for negative timezone offset', () => {
     // Mock 11 PM on Dec 31st in UTC-5 (which is Jan 1st 04:00 UTC)
-    jasmine.clock().mockDate(new Date('2024-12-31T22:00:00Z'));
+    vi.setSystemTime(new Date('2024-12-31T22:00:00Z'));
     // Shift timezone UTC-5
-    spyOn(Date.prototype, 'getTimezoneOffset').and.returnValue(-300);
+    vi.spyOn(Date.prototype, 'getTimezoneOffset').mockReturnValue(-300);
     const today = adapter.today();
     expect(today.date()).toBe(1);
     expect(today.month()).toBe(0);

@@ -16,8 +16,10 @@ import { NxProgressbarModule } from './progressbar.module';
 
 @Directive({ standalone: true })
 abstract class ProgressBarTest {
-  @ViewChild(NxProgressbarComponent) componentInstance!: NxProgressbarComponent;
-  @ViewChild(NxProgressbarComponent, { read: ElementRef }) componentInstanceRef!: ElementRef;
+  @ViewChild(NxProgressbarComponent)
+  componentInstance!: NxProgressbarComponent;
+  @ViewChild(NxProgressbarComponent, { read: ElementRef })
+  componentInstanceRef!: ElementRef;
 }
 
 describe('NxProgressbarComponent', () => {
@@ -79,7 +81,7 @@ describe('NxProgressbarComponent', () => {
 
   it('has no accessibility violations', async () => {
     createTestComponent(ProgressBarBasicComponent);
-    await expectAsync(fixture.nativeElement).toBeAccessible();
+    await expect(fixture.nativeElement).toBeAccessible();
   });
 
   it('colorScheme should default to "default" and not set the positive class', fakeAsync(() => {
@@ -108,6 +110,7 @@ describe('NxProgressbarComponent', () => {
 });
 
 @Component({
+  selector: 'test-progress-bar-basic-component',
   template: `<nx-progressbar></nx-progressbar>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressbarModule, FormsModule],
@@ -115,12 +118,14 @@ describe('NxProgressbarComponent', () => {
 class ProgressBarBasicComponent extends ProgressBarTest {}
 
 @Component({
+  selector: 'test-progress-bar-value-component',
   template: `<nx-progressbar value="0.5"></nx-progressbar>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressbarModule, FormsModule],
 })
 class ProgressBarValueComponent extends ProgressBarTest {}
 @Component({
+  selector: 'test-progress-bar-custom-range-component',
   template: `<nx-progressbar value="15" min="12" max="33"></nx-progressbar>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressbarModule, FormsModule],
@@ -128,6 +133,7 @@ class ProgressBarValueComponent extends ProgressBarTest {}
 class ProgressBarCustomRangeComponent extends ProgressBarTest {}
 
 @Component({
+  selector: 'test-progress-bar-positive-component',
   template: `<nx-progressbar value="0.5" colorScheme="positive"></nx-progressbar>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressbarModule, FormsModule],
@@ -135,6 +141,7 @@ class ProgressBarCustomRangeComponent extends ProgressBarTest {}
 class ProgressBarPositiveComponent extends ProgressBarTest {}
 
 @Component({
+  selector: 'test-progress-bar-transparent-component',
   template: `<nx-progressbar value="0.5" transparentBackground="true"></nx-progressbar>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxProgressbarModule, FormsModule],

@@ -15,6 +15,7 @@ import { NxRatingModule } from './rating.module';
  */
 
 @Component({
+  selector: 'test-basic-signal-form-rating',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxRatingModule],
@@ -26,6 +27,7 @@ class BasicSignalFormRating {
 }
 
 @Component({
+  selector: 'test-validated-signal-form-rating',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxRatingModule],
@@ -41,6 +43,7 @@ class ValidatedSignalFormRating {
 }
 
 @Component({
+  selector: 'test-disabled-signal-form-rating',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxRatingModule],

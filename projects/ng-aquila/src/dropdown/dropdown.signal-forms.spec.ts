@@ -23,6 +23,7 @@ import { NxDropdownModule } from './dropdown.module';
  */
 
 @Component({
+  selector: 'test-basic-signal-form-dropdown',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, OverlayModule, NxDropdownModule, NxFormfieldModule, FormField],
@@ -44,6 +45,7 @@ class BasicSignalFormDropdown {
 }
 
 @Component({
+  selector: 'test-required-signal-form-dropdown',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, OverlayModule, NxDropdownModule, NxFormfieldModule, FormField],
@@ -65,6 +67,7 @@ class RequiredSignalFormDropdown {
 }
 
 @Component({
+  selector: 'test-disabled-signal-form-dropdown',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, OverlayModule, NxDropdownModule, NxFormfieldModule, FormField],
@@ -173,14 +176,14 @@ describe('NxDropdownComponent signal forms', () => {
     const host = fixture.componentInstance;
 
     open(fixture);
-    expect(host.myForm.brand().touched()).toBeFalse();
+    expect(host.myForm.brand().touched()).toBe(false);
 
     getBackdrop().click();
     fixture.detectChanges();
     flush();
     fixture.detectChanges();
 
-    expect(host.myForm.brand().touched()).toBeTrue();
+    expect(host.myForm.brand().touched()).toBe(true);
   }));
 
   it('wires up the required validator', fakeAsync(() => {
@@ -188,14 +191,14 @@ describe('NxDropdownComponent signal forms', () => {
     const host = fixture.componentInstance;
     tick();
 
-    expect(host.myForm().invalid()).toBeTrue();
+    expect(host.myForm().invalid()).toBe(true);
     expect(host.myForm.brand().errors().length).toBeGreaterThan(0);
 
     open(fixture);
     clickItem(fixture, 0); // BMW
 
     expect(host.myForm.brand().value()).toBe('BMW');
-    expect(host.myForm().valid()).toBeTrue();
+    expect(host.myForm().valid()).toBe(true);
     expect(host.myForm.brand().errors().length).toBe(0);
   }));
 
@@ -206,8 +209,8 @@ describe('NxDropdownComponent signal forms', () => {
     tick();
     fixture.detectChanges();
 
-    expect(host.myForm.brand().disabled()).toBeTrue();
-    expect(host.dropdown.disabled).toBeTrue();
+    expect(host.myForm.brand().disabled()).toBe(true);
+    expect(host.dropdown.disabled).toBe(true);
 
     const dropdownEl = fixture.nativeElement.querySelector('nx-dropdown') as HTMLElement;
     expect(dropdownEl).toHaveClass('nx-dropdown--disabled');

@@ -18,6 +18,7 @@ import { NxSliderModule } from './slider.module';
 const styles = `.slider-container { width: 100px; position: absolute; top: 0; left: 0; }`;
 
 @Component({
+  selector: 'test-basic-signal-form-slider',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxSliderModule],
@@ -36,6 +37,7 @@ class BasicSignalFormSlider {
 }
 
 @Component({
+  selector: 'test-validated-signal-form-slider',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxSliderModule],
@@ -55,6 +57,7 @@ class ValidatedSignalFormSlider {
 }
 
 @Component({
+  selector: 'test-disabled-signal-form-slider',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxSliderModule],

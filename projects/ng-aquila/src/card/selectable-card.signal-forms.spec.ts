@@ -15,6 +15,7 @@ import { NxSelectableCardComponent } from './selectable-card.component';
  * `[formField]` interop `NgControl` supports.
  */
 @Component({
+  selector: 'test-boolean-card-host',
   standalone: true,
   imports: [FormField, NxCardModule],
   template: `
@@ -31,6 +32,7 @@ class BooleanCardHost {
 }
 
 @Component({
+  selector: 'test-required-card-host',
   standalone: true,
   imports: [FormField, NxCardModule],
   template: `
@@ -49,6 +51,7 @@ class RequiredCardHost {
 }
 
 @Component({
+  selector: 'test-disabled-card-host',
   standalone: true,
   imports: [FormField, NxCardModule],
   template: `
@@ -90,67 +93,67 @@ describe('NxSelectableCardComponent signal forms', () => {
   it('reflects the model boolean into the checked state (model -> view)', () => {
     const { fixture, host, input } = setup(BooleanCardHost);
 
-    expect(input.checked).toBeFalse();
-    expect(host.cardInstance().checked).toBeFalse();
+    expect(input.checked).toBe(false);
+    expect(host.cardInstance().checked).toBe(false);
 
     host.model.update((m) => ({ ...m, accepted: true }));
     fixture.detectChanges();
 
-    expect(input.checked).toBeTrue();
-    expect(host.cardInstance().checked).toBeTrue();
-    expect(host.cardForm.accepted().value()).toBeTrue();
+    expect(input.checked).toBe(true);
+    expect(host.cardInstance().checked).toBe(true);
+    expect(host.cardForm.accepted().value()).toBe(true);
   });
 
   it('writes a click back into the form model (view -> model)', () => {
     const { fixture, host, input } = setup(BooleanCardHost);
 
-    expect(host.cardForm.accepted().value()).toBeFalse();
+    expect(host.cardForm.accepted().value()).toBe(false);
 
     input.click();
     fixture.detectChanges();
 
-    expect(host.cardInstance().checked).toBeTrue();
-    expect(host.cardForm.accepted().value()).toBeTrue();
+    expect(host.cardInstance().checked).toBe(true);
+    expect(host.cardForm.accepted().value()).toBe(true);
 
     // clicking again toggles back off (checkbox behaviour)
     input.click();
     fixture.detectChanges();
 
-    expect(host.cardInstance().checked).toBeFalse();
-    expect(host.cardForm.accepted().value()).toBeFalse();
+    expect(host.cardInstance().checked).toBe(false);
+    expect(host.cardForm.accepted().value()).toBe(false);
   });
 
   it('marks the field as touched on blur', () => {
     const { fixture, host, input } = setup(BooleanCardHost);
 
-    expect(host.cardForm.accepted().touched()).toBeFalse();
+    expect(host.cardForm.accepted().touched()).toBe(false);
 
     dispatchFakeEvent(input, 'blur');
     fixture.detectChanges();
 
-    expect(host.cardForm.accepted().touched()).toBeTrue();
+    expect(host.cardForm.accepted().touched()).toBe(true);
   });
 
   it('honours a required() validator on the boolean field', () => {
     const { fixture, host, input } = setup(RequiredCardHost);
 
     // an unchecked (false) boolean is treated as empty by required()
-    expect(host.cardForm.accepted().valid()).toBeFalse();
-    expect(host.cardForm().invalid()).toBeTrue();
+    expect(host.cardForm.accepted().valid()).toBe(false);
+    expect(host.cardForm().invalid()).toBe(true);
 
     input.click();
     fixture.detectChanges();
 
-    expect(host.cardForm.accepted().value()).toBeTrue();
-    expect(host.cardForm.accepted().valid()).toBeTrue();
-    expect(host.cardForm().invalid()).toBeFalse();
+    expect(host.cardForm.accepted().value()).toBe(true);
+    expect(host.cardForm.accepted().valid()).toBe(true);
+    expect(host.cardForm().invalid()).toBe(false);
   });
 
   it('disables the control through a disabled() schema rule', () => {
     const { host, input } = setup(DisabledCardHost);
 
-    expect(host.cardForm.accepted().disabled()).toBeTrue();
-    expect(host.cardInstance().disabled).toBeTrue();
-    expect(input.disabled).toBeTrue();
+    expect(host.cardForm.accepted().disabled()).toBe(true);
+    expect(host.cardInstance().disabled).toBe(true);
+    expect(input.disabled).toBe(true);
   });
 });

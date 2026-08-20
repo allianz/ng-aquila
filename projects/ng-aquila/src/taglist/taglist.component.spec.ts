@@ -10,7 +10,8 @@ import { NxTaglistModule } from './taglist.module';
 
 @Directive({ standalone: true })
 abstract class TaglistTest {
-  @ViewChild(NxTaglistComponent) taglistInstance!: NxTaglistComponent;
+  @ViewChild(NxTaglistComponent)
+  taglistInstance!: NxTaglistComponent;
   tags: (string | object)[] = ['foo', 'bar'];
   labelProperty = 'nxTaglistLabel';
 }
@@ -65,7 +66,7 @@ describe('NxTaglistComponent', () => {
   it('renders given tags', () => {
     createTestComponent(BasicTaglist);
 
-    expect(tagElements).toHaveSize(2);
+    expect(tagElements).toHaveLength(2);
 
     const item0 = tagElements.item(0);
     expect(item0.textContent?.trim()).toBe('foo');
@@ -75,13 +76,13 @@ describe('NxTaglistComponent', () => {
 
   it('deletes tags on delete button click', () => {
     createTestComponent(BasicTaglist);
-    expect(getTagElements()).toHaveSize(2);
+    expect(getTagElements()).toHaveLength(2);
 
     const closeIcons = fixture.debugElement.queryAll(By.css('.nx-tag__close'));
     closeIcons[0].nativeElement.click();
     fixture.detectChanges();
     const renderedTags = getTagElements();
-    expect(renderedTags).toHaveSize(1);
+    expect(renderedTags).toHaveLength(1);
     expect(renderedTags[0].textContent).not.toContain('foo');
     expect(renderedTags[0].textContent).toContain('bar');
   });
@@ -94,7 +95,7 @@ describe('NxTaglistComponent', () => {
     firstTagDeleteButton.click();
     fixture.detectChanges();
 
-    expect(taglistInstance.tags).toHaveSize(1);
+    expect(taglistInstance.tags).toHaveLength(1);
     expect(_getFocusedElementPierceShadowDom()).toEqual(tagElements.item(1));
   });
 
@@ -105,13 +106,13 @@ describe('NxTaglistComponent', () => {
     lastTagDeleteButton.click();
     fixture.detectChanges();
 
-    expect(taglistInstance.tags).toHaveSize(1);
+    expect(taglistInstance.tags).toHaveLength(1);
     expect(_getFocusedElementPierceShadowDom()).toEqual(tagElements.item(tagElements.length - 2));
   });
 
   it('emits event on click', () => {
     createTestComponent(BasicTaglist);
-    spyOn(taglistInstance.tagClickEvent, 'emit');
+    vi.spyOn(taglistInstance.tagClickEvent, 'emit').mockReturnValue(undefined);
     const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
     const button: HTMLButtonElement = listItems
       .item(0)
@@ -122,7 +123,7 @@ describe('NxTaglistComponent', () => {
 
   it('emits event on delete', () => {
     createTestComponent(BasicTaglist);
-    spyOn(taglistInstance.tagsChange, 'emit');
+    vi.spyOn(taglistInstance.tagsChange, 'emit').mockReturnValue(undefined);
     const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
     const button: HTMLButtonElement = listItems
       .item(0)
@@ -133,7 +134,7 @@ describe('NxTaglistComponent', () => {
 
   it('no delete icon in list mode', () => {
     createTestComponent(TaglistNoDelete);
-    expect(getTagElements()).toHaveSize(2);
+    expect(getTagElements()).toHaveLength(2);
 
     const closeIcon = fixture.debugElement.query(By.css('.nx-tag__close'));
     expect(closeIcon).toBeNull();
@@ -141,49 +142,49 @@ describe('NxTaglistComponent', () => {
 
   it('can add tags', () => {
     createTestComponent(BasicTaglist);
-    expect(getTagElements()).toHaveSize(2);
+    expect(getTagElements()).toHaveLength(2);
 
     taglistInstance.addTag('baz');
     fixture.detectChanges();
-    expect(getTagElements()).toHaveSize(3);
+    expect(getTagElements()).toHaveLength(3);
   });
 
   it('can add tags when parent is OnPush', () => {
     createTestComponent(OnPushTagList);
-    expect(getTagElements()).toHaveSize(2);
+    expect(getTagElements()).toHaveLength(2);
 
     taglistInstance.addTag('baz');
     fixture.detectChanges();
-    expect(getTagElements()).toHaveSize(3);
+    expect(getTagElements()).toHaveLength(3);
   });
 
   it('cannot add duplicate tags', () => {
     createTestComponent(BasicTaglist);
-    expect(getTagElements()).toHaveSize(2);
+    expect(getTagElements()).toHaveLength(2);
 
     taglistInstance.addTag('foo');
     fixture.detectChanges();
-    expect(getTagElements()).toHaveSize(2);
+    expect(getTagElements()).toHaveLength(2);
   });
 
   it('can clear tags', () => {
     createTestComponent(BasicTaglist);
-    expect(taglistInstance.tags).toHaveSize(2);
-    expect(getTagElements()).toHaveSize(2);
+    expect(taglistInstance.tags).toHaveLength(2);
+    expect(getTagElements()).toHaveLength(2);
 
     taglistInstance.clearTags();
     fixture.detectChanges();
-    expect(taglistInstance.tags).toHaveSize(0);
-    expect(getTagElements()).toHaveSize(0);
+    expect(taglistInstance.tags).toHaveLength(0);
+    expect(getTagElements()).toHaveLength(0);
   });
 
   it('can clear tags when parent is OnPush', () => {
     createTestComponent(OnPushTagList);
-    expect(getTagElements()).toHaveSize(2);
+    expect(getTagElements()).toHaveLength(2);
 
     taglistInstance.clearTags();
     fixture.detectChanges();
-    expect(getTagElements()).toHaveSize(0);
+    expect(getTagElements()).toHaveLength(0);
   });
 
   it('shows content as empty state', () => {
@@ -204,10 +205,10 @@ describe('NxTaglistComponent', () => {
 
   it('displays label property in case input is an array of objects', () => {
     createTestComponent(TaglistObjects);
-    expect(taglistInstance.tags).toHaveSize(2);
+    expect(taglistInstance.tags).toHaveLength(2);
 
     const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
-    expect(listItems).toHaveSize(2);
+    expect(listItems).toHaveLength(2);
 
     const item0 = listItems.item(0).querySelector('nx-tag');
     expect(item0?.textContent?.trim()).toBe('foo');
@@ -217,12 +218,12 @@ describe('NxTaglistComponent', () => {
 
   it('can add objects as tags', () => {
     createTestComponent(TaglistObjects);
-    expect(taglistInstance.tags).toHaveSize(2);
+    expect(taglistInstance.tags).toHaveLength(2);
 
     taglistInstance.addTag({ testLabelProp: 'baz' });
     fixture.detectChanges();
-    expect(taglistInstance.tags).toHaveSize(3);
-    expect(getTagElements()).toHaveSize(3);
+    expect(taglistInstance.tags).toHaveLength(3);
+    expect(getTagElements()).toHaveLength(3);
     expect(taglistInstance.tags[2].testLabelProp).toBe('baz');
   });
 
@@ -265,13 +266,13 @@ describe('NxTaglistComponent', () => {
       createTestComponent(ReactiveFormTaglist);
       const control = (testInstance as ReactiveFormTaglist).control;
 
-      expect(control.touched).toBeFalse();
+      expect(control.touched).toBe(false);
 
       const taglistElement = fixture.nativeElement.querySelector('nx-taglist') as HTMLElement;
       dispatchFakeEvent(taglistElement, 'focusout');
       fixture.detectChanges();
 
-      expect(control.touched).toBeTrue();
+      expect(control.touched).toBe(true);
     });
 
     it('marks the control as touched on blur with template driven forms', fakeAsync(() => {
@@ -279,14 +280,14 @@ describe('NxTaglistComponent', () => {
       flush();
       const ngModel = (testInstance as NgModelTaglist).ngModel;
 
-      expect(ngModel.touched).toBeFalse();
+      expect(ngModel.touched).toBe(false);
 
       const taglistElement = fixture.nativeElement.querySelector('nx-taglist') as HTMLElement;
       dispatchFakeEvent(taglistElement, 'focusout');
       fixture.detectChanges();
       flush();
 
-      expect(ngModel.touched).toBeTrue();
+      expect(ngModel.touched).toBe(true);
     }));
 
     it('does not mark the control as touched while the focus stays inside the taglist', () => {
@@ -300,12 +301,12 @@ describe('NxTaglistComponent', () => {
       );
       fixture.detectChanges();
 
-      expect(control.touched).toBeFalse();
+      expect(control.touched).toBe(false);
     });
 
     it('renders the empty state when the form writes a null value', () => {
       createTestComponent(ReactiveFormTaglist);
-      expect(getTagElements()).toHaveSize(2);
+      expect(getTagElements()).toHaveLength(2);
 
       // Angular forms pass null for a reset control; writeValue maps it to an empty array so the
       // template does not throw on `tags.length`.
@@ -313,14 +314,14 @@ describe('NxTaglistComponent', () => {
       fixture.detectChanges();
 
       expect(taglistInstance.tags).toEqual([]);
-      expect(getTagElements()).toHaveSize(0);
+      expect(getTagElements()).toHaveLength(0);
     });
   });
 
   describe('a11y', () => {
     it('emits (removed) event on delete', () => {
       createTestComponent(BasicTaglist);
-      spyOn(taglistInstance.tagsChange, 'emit');
+      vi.spyOn(taglistInstance.tagsChange, 'emit').mockReturnValue(undefined);
       const tag = listNativeElement
         .querySelectorAll('li')
         .item(0)
@@ -343,12 +344,12 @@ describe('NxTaglistComponent', () => {
 
     it('has no accessibility violations', async () => {
       createTestComponent(BasicTaglist);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations when aria-labelledby is set', async () => {
       createTestComponent(AriaLabelledByTaglist);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has role button in taglist when not removable', () => {
@@ -366,6 +367,7 @@ describe('NxTaglistComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-taglist',
   template: `<nx-taglist [tags]="tags">empty</nx-taglist>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
@@ -373,6 +375,7 @@ describe('NxTaglistComponent', () => {
 class BasicTaglist extends TaglistTest {}
 
 @Component({
+  selector: 'test-on-push-tag-list',
   template: `<nx-taglist [tags]="tags">empty</nx-taglist
     ><button id="testButton" (click)="addTag()">Click</button>`,
   imports: [NxTaglistModule],
@@ -384,6 +387,7 @@ class OnPushTagList extends TaglistTest {
 }
 
 @Component({
+  selector: 'test-label-property-taglist',
   template: `<nx-taglist [tags]="tags" [labelProperty]="labelProperty">empty</nx-taglist>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
@@ -391,6 +395,7 @@ class OnPushTagList extends TaglistTest {
 class LabelPropertyTaglist extends TaglistTest {}
 
 @Component({
+  selector: 'test-taglist-no-delete',
   template: `<nx-taglist [tags]="tags" [allowTagDeletion]="false"></nx-taglist>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
@@ -398,6 +403,7 @@ class LabelPropertyTaglist extends TaglistTest {}
 class TaglistNoDelete extends TaglistTest {}
 
 @Component({
+  selector: 'test-taglist-objects',
   template: `<nx-taglist [tags]="tags" labelProperty="testLabelProp"></nx-taglist>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
@@ -407,6 +413,7 @@ class TaglistObjects extends TaglistTest {
 }
 
 @Component({
+  selector: 'test-taglist-with-formatter',
   template: `<nx-taglist [tags]="tags" [valueFormatter]="myFormatter">empty</nx-taglist>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
@@ -416,6 +423,7 @@ class TaglistWithFormatter extends TaglistTest {
 }
 
 @Component({
+  selector: 'test-aria-labelled-by-taglist',
   template: `
     <h5 id="taglist-headline">Aria label</h5>
     <h5 id="taglist-headline2">Other label</h5>
@@ -429,6 +437,7 @@ class AriaLabelledByTaglist extends TaglistTest {
 }
 
 @Component({
+  selector: 'test-keyword-taglist',
   template: ` <nx-taglist [tags]="tags" isKeywordList></nx-taglist> `,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
@@ -436,6 +445,7 @@ class AriaLabelledByTaglist extends TaglistTest {
 class KeywordTaglist extends TaglistTest {}
 
 @Component({
+  selector: 'test-reactive-form-taglist',
   template: `<nx-taglist [formControl]="control">empty</nx-taglist>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule, ReactiveFormsModule],
@@ -445,6 +455,7 @@ class ReactiveFormTaglist extends TaglistTest {
 }
 
 @Component({
+  selector: 'test-ng-model-taglist',
   template: `<nx-taglist [(ngModel)]="tags">empty</nx-taglist>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule, FormsModule],

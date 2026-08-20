@@ -14,7 +14,8 @@ import { NxTableCellComponent } from './table-cell.component';
 
 @Directive({ standalone: true })
 abstract class TableCellTest {
-  @ViewChild(NxTableCellComponent) tableCellInstance!: NxTableCellComponent;
+  @ViewChild(NxTableCellComponent)
+  tableCellInstance!: NxTableCellComponent;
 }
 
 describe(NxTableCellComponent.name, () => {
@@ -58,12 +59,13 @@ describe(NxTableCellComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicTableCellComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-table-cell-component',
   template: `<td nxTableCell>example content</td>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxTableModule],

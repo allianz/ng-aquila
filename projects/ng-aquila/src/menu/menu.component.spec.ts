@@ -7,7 +7,8 @@ import { NxMenuModule } from './menu.module';
 @Directive({ standalone: true })
 abstract class MenuTest {
   open = false;
-  @ViewChild(NxMenuComponent) menuInstance!: NxMenuComponent;
+  @ViewChild(NxMenuComponent)
+  menuInstance!: NxMenuComponent;
 }
 
 describe(NxMenuComponent.name, () => {
@@ -99,12 +100,13 @@ describe(NxMenuComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicMenu);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-menu',
   template: `
     <nx-menu [open]="open">
       <div nxMenuItem>example</div>

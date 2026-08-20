@@ -21,6 +21,7 @@ type Range = { start: Moment | null; end: Moment | null };
 // object group to the control. Signal form models must never start as null,
 // so the range object is always present and seeded with valid dates.
 @Component({
+  selector: 'test-date-range-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -44,6 +45,7 @@ class DateRangeSignalFormHost {
 }
 
 @Component({
+  selector: 'test-date-range-required-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -70,6 +72,7 @@ class DateRangeRequiredSignalFormHost {
 }
 
 @Component({
+  selector: 'test-date-range-disabled-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -150,7 +153,7 @@ describe('NxDateRangeComponent signal forms', () => {
     }));
 
     it('marks the field as touched on blur', fakeAsync(() => {
-      expect(host.myForm.range().touched()).toBeFalse();
+      expect(host.myForm.range().touched()).toBe(false);
 
       const inputs = getInputs(fixture);
       inputs[0].focus();
@@ -162,7 +165,7 @@ describe('NxDateRangeComponent signal forms', () => {
       flush();
       fixture.detectChanges();
 
-      expect(host.myForm.range().touched()).toBeTrue();
+      expect(host.myForm.range().touched()).toBe(true);
     }));
   });
 
@@ -185,7 +188,7 @@ describe('NxDateRangeComponent signal forms', () => {
     it('is valid while both start and end are provided', fakeAsync(() => {
       tick();
       fixture.detectChanges();
-      expect(host.myForm().valid()).toBeTrue();
+      expect(host.myForm().valid()).toBe(true);
     }));
 
     it('becomes invalid with a required error once start is cleared', fakeAsync(() => {
@@ -194,13 +197,13 @@ describe('NxDateRangeComponent signal forms', () => {
       tick();
       fixture.detectChanges();
 
-      expect(host.myForm().invalid()).toBeTrue();
+      expect(host.myForm().invalid()).toBe(true);
       expect(
         host.myForm.range
           .start()
           .errors()
           .some((e) => e.kind === 'required'),
-      ).toBeTrue();
+      ).toBe(true);
     }));
   });
 
@@ -223,7 +226,7 @@ describe('NxDateRangeComponent signal forms', () => {
       fixture.detectChanges();
       const inputs = getInputs(fixture);
       expect(inputs.length).toBe(2);
-      inputs.forEach((input) => expect(input.disabled).toBeTrue());
+      inputs.forEach((input) => expect(input.disabled).toBe(true));
     });
   });
 });

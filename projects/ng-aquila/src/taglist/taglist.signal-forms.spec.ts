@@ -16,6 +16,7 @@ import { NxTaglistModule } from './taglist.module';
  * consuming app uses; the CVA propagates the new array to the form model.
  */
 @Component({
+  selector: 'test-basic-taglist-host',
   standalone: true,
   imports: [FormField, NxTaglistModule],
   template: `
@@ -36,6 +37,7 @@ class BasicTaglistHost {
 }
 
 @Component({
+  selector: 'test-prefilled-taglist-host',
   standalone: true,
   imports: [FormField, NxTaglistModule],
   template: `<nx-taglist [formField]="tagForm.tags">empty</nx-taglist>`,
@@ -51,6 +53,7 @@ class PrefilledTaglistHost {
 }
 
 @Component({
+  selector: 'test-validated-taglist-host',
   standalone: true,
   imports: [FormField, NxTaglistModule],
   template: `<nx-taglist [formField]="tagForm.tags">empty</nx-taglist>`,
@@ -90,7 +93,7 @@ describe('NxTaglistComponent signal forms', () => {
     fixture.detectChanges();
 
     const tags = getTagElements(fixture);
-    expect(tags).toHaveSize(2);
+    expect(tags).toHaveLength(2);
     expect(tags[0].textContent?.trim()).toBe('foo');
     expect(tags[1].textContent?.trim()).toBe('bar');
     expect(host.tagForm.tags().value()).toEqual(['foo', 'bar']);
@@ -124,7 +127,7 @@ describe('NxTaglistComponent signal forms', () => {
     // broken test setup, not a component bug in the removal path itself.
     const { fixture, host } = setup(PrefilledTaglistHost);
 
-    expect(getTagElements(fixture)).toHaveSize(2);
+    expect(getTagElements(fixture)).toHaveLength(2);
 
     const closeButtons = fixture.debugElement.queryAll(By.css('.nx-tag__close'));
     closeButtons[0].nativeElement.click();
@@ -142,13 +145,13 @@ describe('NxTaglistComponent signal forms', () => {
     host.model.update((m) => ({ ...m, tags: ['foo'] }));
     fixture.detectChanges();
 
-    expect(host.tagForm.tags().touched()).toBeFalse();
+    expect(host.tagForm.tags().touched()).toBe(false);
 
     const taglistEl = fixture.nativeElement.querySelector('nx-taglist') as HTMLElement;
     dispatchFakeEvent(taglistEl, 'focusout');
     fixture.detectChanges();
 
-    expect(host.tagForm.tags().touched()).toBeTrue();
+    expect(host.tagForm.tags().touched()).toBe(true);
   });
 
   it('does not mark the field as touched while the focus stays inside the taglist', () => {
@@ -159,21 +162,21 @@ describe('NxTaglistComponent signal forms', () => {
     taglistEl.dispatchEvent(new FocusEvent('focusout', { bubbles: true, relatedTarget: tagEl }));
     fixture.detectChanges();
 
-    expect(host.tagForm.tags().touched()).toBeFalse();
+    expect(host.tagForm.tags().touched()).toBe(false);
   });
 
   it('honours a minLength(1) validator on the array field', () => {
     const { fixture, host } = setup(ValidatedTaglistHost);
 
     // an empty array has fewer than 1 item
-    expect(host.tagForm.tags().valid()).toBeFalse();
-    expect(host.tagForm().invalid()).toBeTrue();
+    expect(host.tagForm.tags().valid()).toBe(false);
+    expect(host.tagForm().invalid()).toBe(true);
 
     host.taglist().addTag('foo');
     fixture.detectChanges();
 
     expect(host.tagForm.tags().value()).toEqual(['foo']);
-    expect(host.tagForm.tags().valid()).toBeTrue();
-    expect(host.tagForm().invalid()).toBeFalse();
+    expect(host.tagForm.tags().valid()).toBe(true);
+    expect(host.tagForm().invalid()).toBe(false);
   });
 });

@@ -27,7 +27,8 @@ abstract class VersionSelectTest {
     currentVersion: '7.4.0-beta.0',
   };
 
-  @ViewChild(NxVersionSelectComponent) versionSelect!: NxVersionSelectComponent;
+  @ViewChild(NxVersionSelectComponent)
+  versionSelect!: NxVersionSelectComponent;
 }
 
 describe('NxvVersionSelectComponent', () => {
@@ -71,7 +72,7 @@ describe('NxvVersionSelectComponent', () => {
     fixture.detectChanges();
     const channels = getContextMenuItems();
     flush();
-    expect(channels).toHaveSize(3);
+    expect(channels).toHaveLength(3);
     expect(channels[0].textContent).toContain('lts');
   }));
 
@@ -81,7 +82,7 @@ describe('NxvVersionSelectComponent', () => {
     fixture.detectChanges();
     const channels = getContextMenuItems();
     flush();
-    expect(channels).toHaveSize(3);
+    expect(channels).toHaveLength(3);
     expect(channels[0].textContent).toContain('old');
   }));
 

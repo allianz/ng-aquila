@@ -149,7 +149,7 @@ describe('NxAutocompleteComponent:', () => {
     const event = new MouseEvent('mousedown', { bubbles: true });
 
     const item = getAutocompleteItems().item(1) as any;
-    spyOn(item, 'focus');
+    vi.spyOn(item, 'focus').mockReturnValue(undefined);
 
     item.dispatchEvent(event);
     flush();
@@ -191,7 +191,7 @@ describe('NxAutocompleteComponent:', () => {
     typeInput('A');
     flush();
     expect(getAutocompletePanel()).toBeTruthy();
-    expect(getAutocompleteItems()).toHaveSize(2);
+    expect(getAutocompleteItems()).toHaveLength(2);
     expect(getAutocompleteItems().item(0).textContent!.trim()).toBe('A');
   }));
 
@@ -200,7 +200,7 @@ describe('NxAutocompleteComponent:', () => {
     typeInput('A');
     flush();
     expect(getAutocompletePanel()).toBeTruthy();
-    expect(getAutocompleteItems()).toHaveSize(2);
+    expect(getAutocompleteItems()).toHaveLength(2);
     expect(getAutocompleteItems().item(0).textContent!.trim()).toBe('a descr');
     expect(getAutocompleteItems().item(1).textContent!.trim()).toBe('aa descr');
     getAutocompleteItems().item(0).click();
@@ -214,41 +214,27 @@ describe('NxAutocompleteComponent:', () => {
     typeInput('A');
     flush();
     expect(getAutocompletePanel()).toBeTruthy();
-    expect(getAutocompleteItems()).toHaveSize(2);
+    expect(getAutocompleteItems()).toHaveLength(2);
     expect(getAutocompleteItems().item(0).textContent!.trim()).toBe('a');
   }));
 
-  it('should support binding by ngModel', (done) => {
+  it('should support binding by ngModel', async () => {
     createTestComponent(NgModelBindingAutocompleteComponent);
-    fixture
-      .whenStable()
-      .then(() => {
-        typeInput('A');
-        fixture
-          .whenStable()
-          .then(() => {
-            getAutocompleteItems().item(1).click();
-            const component = testInstance as NgModelBindingAutocompleteComponent;
-            expect(component.aValue).toBe('AA');
-            done();
-          })
-          .catch(done.fail);
-      })
-      .catch(done.fail);
+    await fixture.whenStable();
+    typeInput('A');
+    await fixture.whenStable();
+    getAutocompleteItems().item(1).click();
+    const component = testInstance as NgModelBindingAutocompleteComponent;
+    expect(component.aValue).toBe('AA');
   });
 
-  it('should support reactive forms', (done) => {
+  it('should support reactive forms', async () => {
     createTestComponent(ReactiveAutocompleteComponent);
     typeInput('A');
-    fixture
-      .whenStable()
-      .then(() => {
-        getAutocompleteItems().item(1).click();
-        const component = testInstance as ReactiveAutocompleteComponent;
-        expect(component.testForm.get('autocomplete')!.value).toBe('AA');
-        done();
-      })
-      .catch(done.fail);
+    await fixture.whenStable();
+    getAutocompleteItems().item(1).click();
+    const component = testInstance as ReactiveAutocompleteComponent;
+    expect(component.testForm.get('autocomplete')!.value).toBe('AA');
   });
 
   it('Should fit to content width', fakeAsync(() => {
@@ -292,7 +278,7 @@ describe('NxAutocompleteComponent:', () => {
     flush();
 
     expect(getAutocompletePanel()).toBeTruthy();
-    expect(getAutocompleteItems()).toHaveSize(2);
+    expect(getAutocompleteItems()).toHaveLength(2);
 
     document.dispatchEvent(new Event('mouseup'));
     flush();
@@ -327,7 +313,7 @@ describe('NxAutocompleteComponent:', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicAutocompleteComponent);
       typeInput('A');
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 
@@ -365,7 +351,9 @@ describe('NxAutocompleteComponent:', () => {
       createTestComponent(AutocompleteComponentWithDirection);
       typeInput('A');
       flush();
-      spyOn((triggerInstance as any)._overlayRef, 'updatePositionStrategy');
+      vi.spyOn((triggerInstance as any)._overlayRef, 'updatePositionStrategy').mockReturnValue(
+        undefined,
+      );
       (testInstance as AutocompleteComponentWithDirection).direction = 'ltr';
       typeInput('A');
       flush();
@@ -425,7 +413,7 @@ describe('NxAutocompleteComponent:', () => {
       typeInput('A');
       flush();
 
-      expect((input as any).ariaActiveDescendantElement == null).toBeTrue();
+      expect((input as any).ariaActiveDescendantElement == null).toBe(true);
 
       dispatchKeyboardEvent(input, 'keydown', DOWN_ARROW, 'ArrowDown');
       flush();
@@ -447,9 +435,12 @@ const COMPLEX_DATA = [
 
 @Directive({ standalone: true })
 class AutocompleteComponent {
-  @ViewChild(NxAutocompleteComponent, { read: ElementRef }) autocompleteInstanceRef!: ElementRef;
-  @ViewChild(NxAutocompleteComponent) autocompleteInstance!: NxAutocompleteComponent;
-  @ViewChild(NxAutocompleteTriggerDirective) autocompleteTrigger!: NxAutocompleteTriggerDirective;
+  @ViewChild(NxAutocompleteComponent, { read: ElementRef })
+  autocompleteInstanceRef!: ElementRef;
+  @ViewChild(NxAutocompleteComponent)
+  autocompleteInstance!: NxAutocompleteComponent;
+  @ViewChild(NxAutocompleteTriggerDirective)
+  autocompleteTrigger!: NxAutocompleteTriggerDirective;
 
   inputVal: any;
 
@@ -531,7 +522,8 @@ class LongContentComponent extends AutocompleteComponent {
 })
 class ScrollStrategyOverrideComponent extends AutocompleteComponent {
   constructor(
-    @Inject(NX_AUTOCOMPLETE_SCROLL_STRATEGY) readonly scrollStrategy: () => ScrollStrategy,
+    @Inject(NX_AUTOCOMPLETE_SCROLL_STRATEGY)
+    readonly scrollStrategy: () => ScrollStrategy,
   ) {
     super();
   }

@@ -5,7 +5,8 @@ import { NxAccentColorComponent, NxAccentColorOption } from './accent-color.comp
 
 @Directive({ standalone: true })
 abstract class AccentColorTest {
-  @ViewChild(NxAccentColorComponent) accentColorInstance!: NxAccentColorComponent;
+  @ViewChild(NxAccentColorComponent)
+  accentColorInstance!: NxAccentColorComponent;
   color: NxAccentColorOption = 'purple';
   neg: boolean = false;
 }
@@ -38,11 +39,12 @@ describe('NxAccentColorComponent', () => {
     fixture.componentInstance.neg = true;
     fixture.detectChanges();
     const span: HTMLElement = fixture.nativeElement.querySelector('span');
-    expect(span.classList.contains('nx-accent-color--negative')).toBeTrue();
+    expect(span.classList.contains('nx-accent-color--negative')).toBe(true);
   });
 });
 
 @Component({
+  selector: 'test-text-accent-color-test-component',
   template: `<span [nx-accent-color]="color" [negative]="neg">highlight</span>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAccentColorComponent],

@@ -8,7 +8,8 @@ const currentYear = new Date().getFullYear();
 
 @Directive({ standalone: true })
 abstract class FooterTest {
-  @ViewChild(NxFooterComponent) footerInstance!: NxFooterComponent;
+  @ViewChild(NxFooterComponent)
+  footerInstance!: NxFooterComponent;
 }
 
 describe(NxFooterComponent.name, () => {
@@ -62,7 +63,7 @@ describe(NxFooterComponent.name, () => {
 
     it('should display copyright text', () => {
       expect(footerNativeElement.querySelectorAll('nx-footer-copyright').length).toBe(1);
-      expect(footerNativeElement.querySelector('nx-footer-copyright')?.textContent).toEqual(
+      expect(footerNativeElement.querySelector('nx-footer-copyright')?.textContent).toBe(
         'Some company',
       );
     });
@@ -75,7 +76,7 @@ describe(NxFooterComponent.name, () => {
 
     it('should display default copyright text with custom input', () => {
       expect(footerNativeElement.querySelectorAll('nx-footer-copyright').length).toBe(1);
-      expect(footerNativeElement.querySelector('nx-footer-copyright')?.textContent).toEqual(
+      expect(footerNativeElement.querySelector('nx-footer-copyright')?.textContent).toBe(
         `© ${currentYear} Other company`,
       );
     });
@@ -84,12 +85,13 @@ describe(NxFooterComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicFooter);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-footer',
   template: `
     <nx-footer>
       <nx-footer-copyright>Some company</nx-footer-copyright>
@@ -106,6 +108,7 @@ describe(NxFooterComponent.name, () => {
 class BasicFooter extends FooterTest {}
 
 @Component({
+  selector: 'test-default-copyright-footer',
   template: `<nx-footer copyright="Other company"></nx-footer>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFooterModule],

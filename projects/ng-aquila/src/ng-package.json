@@ -6,7 +6,7 @@
     "entryFile": "public-api.ts",
     "cssUrl": "inline",
     "sass": {
-      "silenceDeprecations": ["import"]
+      "silenceDeprecations": ["if-function", "import"]
     }
   },
   "allowedNonPeerDependencies": [

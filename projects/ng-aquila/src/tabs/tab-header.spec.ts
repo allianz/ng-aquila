@@ -22,7 +22,8 @@ abstract class TabHeaderTest {
   autoselect = true;
   tabs: any;
 
-  @ViewChild(NxTabHeaderComponent) tabHeaderInstance!: NxTabHeaderComponent;
+  @ViewChild(NxTabHeaderComponent)
+  tabHeaderInstance!: NxTabHeaderComponent;
 }
 
 describe('NxTabHeaderComponent', () => {
@@ -58,7 +59,7 @@ describe('NxTabHeaderComponent', () => {
     describe('auto select mode', () => {
       it('should be turned on by default', () => {
         createTestComponent(BasicHeader);
-        expect(tabHeaderInstance.autoselect).toBeTrue();
+        expect(tabHeaderInstance.autoselect).toBe(true);
       });
 
       it('should emit selectFocusedIndex event', () => {
@@ -129,7 +130,7 @@ describe('NxTabHeaderComponent', () => {
       });
 
       it('autoselect should be turned off', () => {
-        expect(tabHeaderInstance.autoselect).toBeFalse();
+        expect(tabHeaderInstance.autoselect).toBe(false);
       });
 
       it('should move focus on LEFT and RIGHT arrow', () => {
@@ -180,7 +181,7 @@ describe('NxTabHeaderComponent', () => {
       });
 
       it('should emit indexFocused event', () => {
-        spyOn(testInstance as BasicHeader, 'onFocus').and.callThrough();
+        vi.spyOn(testInstance as BasicHeader, 'onFocus');
         dispatchKeyboardEvent(tabListContainer, 'keydown', RIGHT_ARROW);
         fixture.detectChanges();
         expect((testInstance as BasicHeader).onFocus).toHaveBeenCalledTimes(1);
@@ -191,6 +192,7 @@ describe('NxTabHeaderComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-header',
   template: `
     <nx-tab-header
       [selectedIndex]="selectedIndex"
@@ -223,6 +225,7 @@ class BasicHeader extends TabHeaderTest {
 }
 
 @Component({
+  selector: 'test-simple-header',
   template: `
     <nx-tab-header (selectFocusedIndex)="selectedIndex = $event" [selectedIndex]="selectedIndex">
       @for (tab of tabs; track tab; let i = $index) {

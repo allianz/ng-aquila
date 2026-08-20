@@ -15,7 +15,8 @@ import { NxSidebarModule } from './sidebar.module';
 
 @Directive({ standalone: true })
 abstract class SidebarTest {
-  @ViewChild(NxSidebarComponent) sidebarInstance!: NxSidebarComponent;
+  @ViewChild(NxSidebarComponent)
+  sidebarInstance!: NxSidebarComponent;
 }
 
 describe('NxSidebarComponent', () => {
@@ -86,7 +87,7 @@ describe('NxSidebarComponent', () => {
     });
 
     it('is open by default', () => {
-      expect(sidebarInstance.open).toBeTrue();
+      expect(sidebarInstance.open).toBe(true);
     });
 
     it('should not render the resize handle', () => {
@@ -117,7 +118,7 @@ describe('NxSidebarComponent', () => {
 
     describe('when clicking resize handle in open state', () => {
       beforeEach(() => {
-        spyOn(sidebarInstance.widthChange, 'emit');
+        vi.spyOn(sidebarInstance.widthChange, 'emit').mockReturnValue(undefined);
         sidebarHandleElement.triggerEventHandler('click', false);
         fixture.detectChanges();
       });
@@ -126,7 +127,7 @@ describe('NxSidebarComponent', () => {
         expect(sidebarElement.nativeElement.style.width).toBe(`${MIN_WIDTH}px`);
       });
 
-      it('it emits the new width (min width)', () => {
+      it('emits the new width (min width)', () => {
         expect(sidebarInstance.widthChange.emit).toHaveBeenCalledWith(MIN_WIDTH);
       });
     });
@@ -134,7 +135,7 @@ describe('NxSidebarComponent', () => {
     describe('when clicking resize handle in closed state', () => {
       beforeEach(() => {
         sidebarInstance.close();
-        spyOn(sidebarInstance.widthChange, 'emit');
+        vi.spyOn(sidebarInstance.widthChange, 'emit').mockReturnValue(undefined);
         sidebarHandleElement.triggerEventHandler('click', false);
         fixture.detectChanges();
       });
@@ -143,7 +144,7 @@ describe('NxSidebarComponent', () => {
         expect(sidebarElement.nativeElement.style.width).toBe(`${DEFAULT_WIDTH}px`);
       });
 
-      it('it emits the new width (default width)', () => {
+      it('emits the new width (default width)', () => {
         expect(sidebarInstance.widthChange.emit).toHaveBeenCalledWith(DEFAULT_WIDTH);
       });
     });
@@ -163,7 +164,7 @@ describe('NxSidebarComponent', () => {
       beforeEach(() => {
         sidebarInstance.close();
         fixture.detectChanges();
-        spyOn(sidebarInstance.widthChange, 'emit');
+        vi.spyOn(sidebarInstance.widthChange, 'emit').mockReturnValue(undefined);
         mouseDrag(sidebarHandleElement, 0, sidebarInstance.maxWidth + 100);
         fixture.detectChanges();
       });
@@ -172,14 +173,16 @@ describe('NxSidebarComponent', () => {
         expect(sidebarElement.nativeElement.style.width).toBe(`${sidebarInstance.maxWidth}px`);
       });
 
-      it('it emits the new width (max width)', () => {
+      it('emits the new width (max width)', () => {
         expect(sidebarInstance.widthChange.emit).toHaveBeenCalledWith(sidebarInstance.maxWidth);
       });
     });
 
     describe('when dragging handle', () => {
       it('markForCheck is called twice', () => {
-        const markForCheckSpy = spyOn(sidebarInstance['_cdr'], 'markForCheck'); // workaround: accessing private class member
+        const markForCheckSpy = vi
+          .spyOn(sidebarInstance['_cdr'], 'markForCheck')
+          .mockReturnValue(undefined); // workaround: accessing private class member
         mouseDrag(sidebarHandleElement, 0, 100);
         // HINT: called once on resize, and once when setting new width.
         expect(markForCheckSpy).toHaveBeenCalledTimes(2);
@@ -201,7 +204,7 @@ describe('NxSidebarComponent', () => {
         });
 
         it('is closed', () => {
-          expect(sidebarInstance.open).toBeFalse();
+          expect(sidebarInstance.open).toBe(false);
         });
       });
 
@@ -216,7 +219,7 @@ describe('NxSidebarComponent', () => {
         });
 
         it('is open', () => {
-          expect(sidebarInstance.open).toBeTrue();
+          expect(sidebarInstance.open).toBe(true);
         });
 
         it('is has reduced width', () => {
@@ -238,7 +241,7 @@ describe('NxSidebarComponent', () => {
         });
 
         it('is open', () => {
-          expect(sidebarInstance.open).toBeTrue();
+          expect(sidebarInstance.open).toBe(true);
         });
 
         it('is restores the previous width', () => {
@@ -272,7 +275,7 @@ describe('NxSidebarComponent', () => {
       });
 
       it('is not open', () => {
-        expect(sidebarInstance.open).toBeFalse();
+        expect(sidebarInstance.open).toBe(false);
       });
 
       it('has the minimal width', () => {
@@ -280,7 +283,7 @@ describe('NxSidebarComponent', () => {
       });
 
       it('should hide the labels', () => {
-        expect(sidebarElement.nativeElement.classList.contains('hide-label')).toBeTrue();
+        expect(sidebarElement.nativeElement.classList.contains('hide-label')).toBe(true);
       });
     });
 
@@ -292,7 +295,7 @@ describe('NxSidebarComponent', () => {
       });
 
       it('is open', () => {
-        expect(sidebarInstance.open).toBeTrue();
+        expect(sidebarInstance.open).toBe(true);
       });
 
       it('has the the default width', () => {
@@ -300,7 +303,7 @@ describe('NxSidebarComponent', () => {
       });
 
       it('should show the labels', () => {
-        expect(sidebarElement.nativeElement.classList.contains('hide-label')).toBeFalse();
+        expect(sidebarElement.nativeElement.classList.contains('hide-label')).toBe(false);
       });
     });
 
@@ -311,7 +314,7 @@ describe('NxSidebarComponent', () => {
       });
 
       it('is not open', () => {
-        expect(sidebarInstance.open).toBeFalse();
+        expect(sidebarInstance.open).toBe(false);
       });
 
       it('has the minimal width', () => {
@@ -325,7 +328,7 @@ describe('NxSidebarComponent', () => {
         });
 
         it('is open', () => {
-          expect(sidebarInstance.open).toBeTrue();
+          expect(sidebarInstance.open).toBe(true);
         });
 
         it('has the default width', () => {
@@ -358,7 +361,7 @@ describe('NxSidebarComponent', () => {
       });
 
       it('should not hide the labels', () => {
-        expect(sidebarElement.nativeElement.classList.contains('hide-label')).toBeFalse();
+        expect(sidebarElement.nativeElement.classList.contains('hide-label')).toBe(false);
       });
     });
 
@@ -418,12 +421,13 @@ describe('NxSidebarComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(ResizeableSidebar);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-sidebar',
   template: `<nx-sidebar>Hello sidebar</nx-sidebar>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxSidebarModule],
@@ -431,6 +435,7 @@ describe('NxSidebarComponent', () => {
 class BasicSidebar extends SidebarTest {}
 
 @Component({
+  selector: 'test-resizeable-sidebar',
   template: `<nx-sidebar resizeable resizeHandleAriaLabel="example label"
     >Hello sidebar</nx-sidebar
   >`,
@@ -440,6 +445,7 @@ class BasicSidebar extends SidebarTest {}
 class ResizeableSidebar extends SidebarTest {}
 
 @Component({
+  selector: 'test-wide-sidebar',
   template: `
     <nx-sidebar minWidth="140" resizeable
       >Hello sidebar

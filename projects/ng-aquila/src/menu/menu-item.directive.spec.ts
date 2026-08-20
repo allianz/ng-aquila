@@ -6,7 +6,8 @@ import { NxMenuItemDirective } from './menu-item.directive';
 
 @Directive({ standalone: true })
 abstract class MenuItemTest {
-  @ViewChild(NxMenuItemDirective) menuGroupInstance!: NxMenuItemDirective;
+  @ViewChild(NxMenuItemDirective)
+  menuGroupInstance!: NxMenuItemDirective;
 }
 
 describe(NxMenuItemDirective.name, () => {
@@ -46,12 +47,13 @@ describe(NxMenuItemDirective.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicMenuItem);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-menu-item',
   template: `<div nxMenuItem></div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMenuModule],

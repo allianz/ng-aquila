@@ -2,9 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/spec",
-    "types": ["jasmine", "node", "karma-viewport"]
+    "types": ["node", "vitest/globals", "@vitest/browser-playwright", "zone.js"]
   },
-  "files": ["test.ts"],
-  "include": ["**/*.spec.ts", "**/*.d.ts"],
+  "include": ["**/*.spec.ts", "**/*.test-utils.ts", "**/*.d.ts", "src/test-setup/**/*.ts"],
   "exclude": ["src/schematics/**/*", "documentation/**/*"]
 }

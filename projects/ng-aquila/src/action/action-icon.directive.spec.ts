@@ -6,7 +6,8 @@ import { NxActionIconDirective } from './action-icon.directive';
 
 @Directive({ standalone: true })
 abstract class ActionIconTest {
-  @ViewChild(NxActionIconDirective) actionIconInstance!: NxActionIconDirective;
+  @ViewChild(NxActionIconDirective)
+  actionIconInstance!: NxActionIconDirective;
 }
 
 describe(NxActionIconDirective.name, () => {
@@ -42,7 +43,7 @@ describe(NxActionIconDirective.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicActionIcon);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });

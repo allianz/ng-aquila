@@ -72,7 +72,7 @@ describe(NxExpandableTableRowComponent.name, () => {
     });
 
     it('is not expanded', () => {
-      expect(expandableTableRowInstance.expanded.value).toBeFalse();
+      expect(expandableTableRowInstance.expanded.value).toBe(false);
     });
 
     describe('when toggled', () => {
@@ -81,7 +81,7 @@ describe(NxExpandableTableRowComponent.name, () => {
       });
 
       it('is expanded', () => {
-        expect(expandableTableRowInstance.expanded.value).toBeTrue();
+        expect(expandableTableRowInstance.expanded.value).toBe(true);
       });
     });
 
@@ -91,7 +91,7 @@ describe(NxExpandableTableRowComponent.name, () => {
       });
 
       it('is expanded', () => {
-        expect(expandableTableRowInstance.expanded.value).toBeTrue();
+        expect(expandableTableRowInstance.expanded.value).toBe(true);
       });
     });
 
@@ -102,7 +102,7 @@ describe(NxExpandableTableRowComponent.name, () => {
       });
 
       it('is not expanded', () => {
-        expect(expandableTableRowInstance.expanded.value).toBeFalse();
+        expect(expandableTableRowInstance.expanded.value).toBe(false);
       });
     });
   });
@@ -113,25 +113,26 @@ describe(NxExpandableTableRowComponent.name, () => {
     });
 
     it('sets expanded', () => {
-      expect(expandableTableRowInstance.expanded.value).toBeTrue();
+      expect(expandableTableRowInstance.expanded.value).toBe(true);
     });
 
     it('updates expanded on isExpanded change', () => {
       testInstance.isExpanded = false;
       testInstance.cdr.detectChanges();
-      expect(expandableTableRowInstance.expanded.value).toBeFalse();
+      expect(expandableTableRowInstance.expanded.value).toBe(false);
     });
   });
 
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicExpandableTableRowComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-expandable-table-row-component',
   template: `<tr nxExpandableTableRow>
     example content
   </tr>`,
@@ -141,6 +142,7 @@ describe(NxExpandableTableRowComponent.name, () => {
 class BasicExpandableTableRowComponent extends ExpandableTableRowTest {}
 
 @Component({
+  selector: 'test-configurable-expandable-table-row-component',
   template: `<tr nxExpandableTableRow [isExpanded]="isExpanded">
     example content
   </tr>`,

@@ -7,7 +7,8 @@ import { NxPasswordToggleComponent } from './password-toggle.component';
 
 @Directive({ standalone: true })
 abstract class PasswordToggleTest {
-  @ViewChild(NxPasswordToggleComponent) passwordToggle!: NxPasswordToggleComponent;
+  @ViewChild(NxPasswordToggleComponent)
+  passwordToggle!: NxPasswordToggleComponent;
 }
 
 describe('NxPasswordToggleComponent', () => {
@@ -42,7 +43,7 @@ describe('NxPasswordToggleComponent', () => {
   });
 
   it('should warn if a control is missing', () => {
-    spyOn(console, 'warn').and.callFake(() => {});
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
     createTestComponent(NoControlToggle);
     expect(console.warn).toHaveBeenCalledWith(
       'You need to pass an input as a control to the password toggle.',
@@ -91,12 +92,13 @@ describe('NxPasswordToggleComponent', () => {
 
     it('has no accessibility violations', async () => {
       createTestComponent(BasicPasswordToggle);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-password-toggle',
   template: `
     <nx-formfield label="Password">
       <input required nxInput #testInput type="password" [(ngModel)]="inputValue" />
@@ -113,6 +115,7 @@ class BasicPasswordToggle extends PasswordToggleTest {
 }
 
 @Component({
+  selector: 'test-basic-password-toggle-on-push',
   template: `
     <nx-formfield label="Password">
       <input required nxInput #testInput type="password" [(ngModel)]="inputValue" />
@@ -129,6 +132,7 @@ class BasicPasswordToggleOnPush extends PasswordToggleTest {
 }
 
 @Component({
+  selector: 'test-no-control-toggle',
   template: `<nx-password-toggle></nx-password-toggle>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule, FormsModule],

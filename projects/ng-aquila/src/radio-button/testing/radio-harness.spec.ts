@@ -69,6 +69,7 @@ describe('NxRadioHarness', () => {
 });
 
 @Component({
+  selector: 'test-radio-harness-test',
   template: `
     <nx-radio> Label Test </nx-radio>
     <nx-radio>My Foo</nx-radio>

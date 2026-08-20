@@ -104,6 +104,7 @@ describe('shared utils', () => {
 });
 
 @Component({
+  selector: 'test-test-component',
   template: '',
   host: {
     '[class.testClass]': 'true',

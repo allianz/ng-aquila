@@ -37,31 +37,31 @@ describe('NxViewportService', () => {
       // viewport default = 1184
       withSubscription(
         viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE).pipe(take(1)),
-        (value: any) => expect(value).toBeFalse(),
+        (value: any) => expect(value).toBe(false),
       );
       withSubscription(
         viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE).pipe(take(1)),
-        (value: any) => expect(value).toBeFalse(),
+        (value: any) => expect(value).toBe(false),
       );
       withSubscription(
         viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE).pipe(take(1)),
-        (value: any) => expect(value).toBeFalse(),
+        (value: any) => expect(value).toBe(false),
       );
       withSubscription(
         viewportService.min(NxBreakpoints.BREAKPOINT_LARGE).pipe(take(1)),
-        (value: any) => expect(value).toBeTrue(),
+        (value: any) => expect(value).toBe(true),
       );
       withSubscription(
         viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM).pipe(take(1)),
-        (value: any) => expect(value).toBeTrue(),
+        (value: any) => expect(value).toBe(true),
       );
       withSubscription(
         viewportService.min(NxBreakpoints.BREAKPOINT_SMALL).pipe(take(1)),
-        (value: any) => expect(value).toBeTrue(),
+        (value: any) => expect(value).toBe(true),
       );
       withSubscription(
         viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL).pipe(take(1)),
-        (value: any) => expect(value).toBeTrue(),
+        (value: any) => expect(value).toBe(true),
       );
       tick(200);
       flush();
@@ -109,13 +109,13 @@ describe('NxViewportService', () => {
       changeViewport('mobile'); // 320px
       tick(200);
 
-      expect(isMinXSmall).toBeTrue();
-      expect(isMinSmall).toBeTrue();
-      expect(isMinMedium).toBeFalse();
-      expect(isMinLarge).toBeFalse();
-      expect(isMinXLarge).toBeFalse();
-      expect(isMin2XLarge).toBeFalse();
-      expect(isMin3XLarge).toBeFalse();
+      expect(isMinXSmall).toBe(true);
+      expect(isMinSmall).toBe(true);
+      expect(isMinMedium).toBe(false);
+      expect(isMinLarge).toBe(false);
+      expect(isMinXLarge).toBe(false);
+      expect(isMin2XLarge).toBe(false);
+      expect(isMin3XLarge).toBe(false);
       flush();
     }));
 
@@ -160,13 +160,13 @@ describe('NxViewportService', () => {
       changeViewport('tablet'); // 704px
       tick(200);
 
-      expect(isMinXSmall).toBeTrue();
-      expect(isMinSmall).toBeTrue();
-      expect(isMinMedium).toBeTrue();
-      expect(isMinLarge).toBeFalse();
-      expect(isMinXLarge).toBeFalse();
-      expect(isMin2XLarge).toBeFalse();
-      expect(isMin3XLarge).toBeFalse();
+      expect(isMinXSmall).toBe(true);
+      expect(isMinSmall).toBe(true);
+      expect(isMinMedium).toBe(true);
+      expect(isMinLarge).toBe(false);
+      expect(isMinXLarge).toBe(false);
+      expect(isMin2XLarge).toBe(false);
+      expect(isMin3XLarge).toBe(false);
       flush();
     }));
 
@@ -211,13 +211,13 @@ describe('NxViewportService', () => {
       changeViewport('desktop'); // 704px
       tick(200);
 
-      expect(isMinXSmall).toBeTrue();
-      expect(isMinSmall).toBeTrue();
-      expect(isMinMedium).toBeTrue();
-      expect(isMinLarge).toBeTrue();
-      expect(isMinXLarge).toBeFalse();
-      expect(isMin2XLarge).toBeFalse();
-      expect(isMin3XLarge).toBeFalse();
+      expect(isMinXSmall).toBe(true);
+      expect(isMinSmall).toBe(true);
+      expect(isMinMedium).toBe(true);
+      expect(isMinLarge).toBe(true);
+      expect(isMinXLarge).toBe(false);
+      expect(isMin2XLarge).toBe(false);
+      expect(isMin3XLarge).toBe(false);
       flush();
       unsubscribeAll();
     }));
@@ -264,13 +264,13 @@ describe('NxViewportService', () => {
 
       tick(200);
 
-      expect(isMinXSmall).toBeTrue();
-      expect(isMinSmall).toBeTrue();
-      expect(isMinMedium).toBeFalse();
-      expect(isMinLarge).toBeFalse();
-      expect(isMinXLarge).toBeFalse();
-      expect(isMin2XLarge).toBeFalse();
-      expect(isMin3XLarge).toBeFalse();
+      expect(isMinXSmall).toBe(true);
+      expect(isMinSmall).toBe(true);
+      expect(isMinMedium).toBe(false);
+      expect(isMinLarge).toBe(false);
+      expect(isMinXLarge).toBe(false);
+      expect(isMin2XLarge).toBe(false);
+      expect(isMin3XLarge).toBe(false);
       flush();
     }));
   });
@@ -280,31 +280,31 @@ describe('NxViewportService', () => {
       // viewport default = 1184
       withSubscription(
         viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE).pipe(take(1)),
-        (value: any) => expect(value).toBeTrue(),
+        (value: any) => expect(value).toBe(true),
       );
       withSubscription(
         viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE).pipe(take(1)),
-        (value: any) => expect(value).toBeTrue(),
+        (value: any) => expect(value).toBe(true),
       );
       withSubscription(
         viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE).pipe(take(1)),
-        (value: any) => expect(value).toBeTrue(),
+        (value: any) => expect(value).toBe(true),
       );
       withSubscription(
         viewportService.max(NxBreakpoints.BREAKPOINT_LARGE).pipe(take(1)),
-        (value: any) => expect(value).toBeFalse(),
+        (value: any) => expect(value).toBe(false),
       );
       withSubscription(
         viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM).pipe(take(1)),
-        (value: any) => expect(value).toBeFalse(),
+        (value: any) => expect(value).toBe(false),
       );
       withSubscription(
         viewportService.max(NxBreakpoints.BREAKPOINT_SMALL).pipe(take(1)),
-        (value: any) => expect(value).toBeFalse(),
+        (value: any) => expect(value).toBe(false),
       );
       withSubscription(
         viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL).pipe(take(1)),
-        (value: any) => expect(value).toBeFalse(),
+        (value: any) => expect(value).toBe(false),
       );
       // needed to clean timer queue
       tick(200);
@@ -352,13 +352,13 @@ describe('NxViewportService', () => {
       changeViewport('mobile'); // 320px
       tick(200);
 
-      expect(isMaxXSmall).toBeFalse();
-      expect(isMaxSmall).toBeFalse();
-      expect(isMaxMedium).toBeTrue();
-      expect(isMaxLarge).toBeTrue();
-      expect(isMaxXLarge).toBeTrue();
-      expect(isMax2XLarge).toBeTrue();
-      expect(isMax3XLarge).toBeTrue();
+      expect(isMaxXSmall).toBe(false);
+      expect(isMaxSmall).toBe(false);
+      expect(isMaxMedium).toBe(true);
+      expect(isMaxLarge).toBe(true);
+      expect(isMaxXLarge).toBe(true);
+      expect(isMax2XLarge).toBe(true);
+      expect(isMax3XLarge).toBe(true);
     }));
 
     it('Correctly returns a viewport match on TABLET viewport change', fakeAsync(() => {
@@ -402,13 +402,13 @@ describe('NxViewportService', () => {
       changeViewport('tablet');
       tick(200);
 
-      expect(isMaxXSmall).toBeFalse();
-      expect(isMaxSmall).toBeFalse();
-      expect(isMaxMedium).toBeFalse();
-      expect(isMaxLarge).toBeTrue();
-      expect(isMaxXLarge).toBeTrue();
-      expect(isMax2XLarge).toBeTrue();
-      expect(isMax3XLarge).toBeTrue();
+      expect(isMaxXSmall).toBe(false);
+      expect(isMaxSmall).toBe(false);
+      expect(isMaxMedium).toBe(false);
+      expect(isMaxLarge).toBe(true);
+      expect(isMaxXLarge).toBe(true);
+      expect(isMax2XLarge).toBe(true);
+      expect(isMax3XLarge).toBe(true);
       flush();
       unsubscribeAll();
     }));
@@ -454,13 +454,13 @@ describe('NxViewportService', () => {
       changeViewport('desktop');
       tick(200);
 
-      expect(isMaxXSmall).toBeFalse();
-      expect(isMaxSmall).toBeFalse();
-      expect(isMaxMedium).toBeFalse();
-      expect(isMaxLarge).toBeFalse();
-      expect(isMaxXLarge).toBeTrue();
-      expect(isMax2XLarge).toBeTrue();
-      expect(isMax3XLarge).toBeTrue();
+      expect(isMaxXSmall).toBe(false);
+      expect(isMaxSmall).toBe(false);
+      expect(isMaxMedium).toBe(false);
+      expect(isMaxLarge).toBe(false);
+      expect(isMaxXLarge).toBe(true);
+      expect(isMax2XLarge).toBe(true);
+      expect(isMax3XLarge).toBe(true);
       flush();
       unsubscribeAll();
     }));
@@ -507,13 +507,13 @@ describe('NxViewportService', () => {
 
       tick(200);
 
-      expect(isMaxXSmall).toBeFalse();
-      expect(isMaxSmall).toBeFalse();
-      expect(isMaxMedium).toBeFalse();
-      expect(isMaxLarge).toBeTrue();
-      expect(isMaxXLarge).toBeTrue();
-      expect(isMax2XLarge).toBeTrue();
-      expect(isMax3XLarge).toBeTrue();
+      expect(isMaxXSmall).toBe(false);
+      expect(isMaxSmall).toBe(false);
+      expect(isMaxMedium).toBe(false);
+      expect(isMaxLarge).toBe(true);
+      expect(isMaxXLarge).toBe(true);
+      expect(isMax2XLarge).toBe(true);
+      expect(isMax3XLarge).toBe(true);
       flush();
       unsubscribeAll();
     }));
@@ -535,8 +535,8 @@ describe('NxViewportService', () => {
       changeViewport('mobile'); // 320px
       tick(200);
 
-      expect(isMobile).toBeTrue();
-      expect(isMobilePlus).toBeFalse();
+      expect(isMobile).toBe(true);
+      expect(isMobilePlus).toBe(false);
       flush();
       unsubscribeAll();
     }));
@@ -561,9 +561,9 @@ describe('NxViewportService', () => {
       changeViewport('tablet'); // 704px
       tick(200);
 
-      expect(isTablet).toBeTrue();
-      expect(isLargerThanTablet).toBeFalse();
-      expect(isSmallerThanTablet).toBeFalse();
+      expect(isTablet).toBe(true);
+      expect(isLargerThanTablet).toBe(false);
+      expect(isSmallerThanTablet).toBe(false);
       flush();
       unsubscribeAll();
     }));
@@ -589,9 +589,9 @@ describe('NxViewportService', () => {
       changeViewport('desktop'); // 1184px
       tick(200);
 
-      expect(isDesktop).toBeTrue();
-      expect(isLargerThanDesktop).toBeFalse();
-      expect(isSmallerThanDesktop).toBeFalse();
+      expect(isDesktop).toBe(true);
+      expect(isLargerThanDesktop).toBe(false);
+      expect(isSmallerThanDesktop).toBe(false);
       flush();
       unsubscribeAll();
     }));
@@ -612,8 +612,8 @@ describe('NxViewportService', () => {
 
       tick(200);
 
-      expect(isMobile).toBeTrue();
-      expect(isMobilePlus).toBeFalse();
+      expect(isMobile).toBe(true);
+      expect(isMobilePlus).toBe(false);
       flush();
       unsubscribeAll();
     }));
@@ -632,7 +632,7 @@ describe('NxViewportService', () => {
       tick(200);
       expect(isMaxLarge).toBeFalsy();
       tick(300);
-      expect(isMaxLarge).toBeTrue();
+      expect(isMaxLarge).toBe(true);
       flush();
     }));
 
@@ -644,7 +644,7 @@ describe('NxViewportService', () => {
       });
       changeViewport('tablet');
       tick(700);
-      expect(isMinMedium).toBeTrue();
+      expect(isMinMedium).toBe(true);
       flush();
     }));
 
@@ -667,7 +667,7 @@ describe('NxViewportService', () => {
       tick(25);
       expect(isTablet).toBeFalsy();
       tick(26);
-      expect(isTablet).toBeTrue();
+      expect(isTablet).toBe(true);
       flush();
     }));
   });

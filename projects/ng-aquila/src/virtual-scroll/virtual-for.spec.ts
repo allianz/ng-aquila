@@ -17,6 +17,7 @@ function generateItems(count: number): TestItem[] {
 }
 
 @Component({
+  selector: 'test-virtual-for-basic-test-component',
   template: `
     <nx-virtual-viewport [itemHeight]="40" [overscan]="2" style="height: 200px; display: block;">
       <div *nxVirtualFor="let item of items(); trackBy: 'id'" class="test-item">
@@ -34,6 +35,7 @@ class BasicTestComponent {
 }
 
 @Component({
+  selector: 'test-function-track-by-test-component',
   template: `
     <nx-virtual-viewport [itemHeight]="40" style="height: 200px; display: block;">
       <div *nxVirtualFor="let item of items(); trackBy: trackByFn" class="test-item">
@@ -52,6 +54,7 @@ class FunctionTrackByTestComponent {
 }
 
 @Component({
+  selector: 'test-context-test-component',
   template: `
     <nx-virtual-viewport [itemHeight]="40" style="height: 200px; display: block;">
       <div
@@ -146,7 +149,7 @@ describe('NxVirtualFor', () => {
       fixture.detectChanges();
 
       const firstItem = fixture.nativeElement.querySelector('.test-item');
-      expect(firstItem.hasAttribute('data-virtual-index')).toBeTrue();
+      expect(firstItem.hasAttribute('data-virtual-index')).toBe(true);
       expect(firstItem.getAttribute('data-virtual-index')).toBe('0');
     }));
 
@@ -729,7 +732,7 @@ describe('NxVirtualFor', () => {
       const viewportEl = fixture.nativeElement.querySelector('.nx-virtual-viewport__viewport');
 
       // Spy on updateForScroll
-      spyOn(virtualFor, 'updateForScroll').and.callThrough();
+      vi.spyOn(virtualFor, 'updateForScroll');
 
       // Trigger scroll event
       viewportEl.scrollTop = 400;

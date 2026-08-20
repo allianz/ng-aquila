@@ -14,6 +14,7 @@ import { NxTileGroupComponent } from './tile-group.component';
  * (a `string` here); in multi-select mode it is an array of values (`string[]`).
  */
 @Component({
+  selector: 'test-single-tile-host',
   standalone: true,
   imports: [FormField, NxTileGroupComponent, NxTileComponent],
   template: `
@@ -37,6 +38,7 @@ class SingleTileHost {
 }
 
 @Component({
+  selector: 'test-multi-tile-host',
   standalone: true,
   imports: [FormField, NxTileGroupComponent, NxTileComponent],
   template: `
@@ -60,6 +62,7 @@ class MultiTileHost {
 }
 
 @Component({
+  selector: 'test-required-tile-host',
   standalone: true,
   imports: [FormField, NxTileGroupComponent, NxTileComponent],
   template: `
@@ -84,6 +87,7 @@ class RequiredTileHost {
 }
 
 @Component({
+  selector: 'test-disabled-tile-host',
   standalone: true,
   imports: [FormField, NxTileGroupComponent, NxTileComponent],
   template: `
@@ -141,8 +145,8 @@ describe('NxTileGroupComponent signal forms', () => {
       host.model.update((m) => ({ ...m, choice: 'tile2' }));
       fixture.detectChanges();
 
-      expect(inputs[1].checked).toBeTrue();
-      expect(inputs[0].checked).toBeFalse();
+      expect(inputs[1].checked).toBe(true);
+      expect(inputs[0].checked).toBe(false);
       expect(host.tileForm.choice().value()).toBe('tile2');
     });
 
@@ -155,7 +159,7 @@ describe('NxTileGroupComponent signal forms', () => {
       fixture.detectChanges();
 
       expect(host.tileForm.choice().value()).toBe('tile2');
-      expect(inputs[1].checked).toBeTrue();
+      expect(inputs[1].checked).toBe(true);
     });
 
     // The group owns the touched state of the field: it only reports touched once the focus
@@ -164,12 +168,12 @@ describe('NxTileGroupComponent signal forms', () => {
     it('marks the field as touched when the focus leaves the group', () => {
       const { fixture, host } = setup(SingleTileHost);
 
-      expect(host.tileForm.choice().touched()).toBeFalse();
+      expect(host.tileForm.choice().touched()).toBe(false);
 
       dispatchFakeEvent(getGroupElement(fixture), 'focusout');
       fixture.detectChanges();
 
-      expect(host.tileForm.choice().touched()).toBeTrue();
+      expect(host.tileForm.choice().touched()).toBe(true);
     });
 
     it('does not mark the field as touched when a tile inside the group is blurred', () => {
@@ -178,7 +182,7 @@ describe('NxTileGroupComponent signal forms', () => {
       dispatchFakeEvent(inputs[0], 'blur');
       fixture.detectChanges();
 
-      expect(host.tileForm.choice().touched()).toBeFalse();
+      expect(host.tileForm.choice().touched()).toBe(false);
     });
 
     it('does not mark the field as touched while the focus stays inside the group', () => {
@@ -189,30 +193,30 @@ describe('NxTileGroupComponent signal forms', () => {
       );
       fixture.detectChanges();
 
-      expect(host.tileForm.choice().touched()).toBeFalse();
+      expect(host.tileForm.choice().touched()).toBe(false);
     });
 
     it('honours a required() validator on the single-select field', () => {
       const { fixture, host, inputs } = setup(RequiredTileHost);
 
       // empty string is treated as empty by required()
-      expect(host.tileForm.choice().valid()).toBeFalse();
-      expect(host.tileForm().invalid()).toBeTrue();
+      expect(host.tileForm.choice().valid()).toBe(false);
+      expect(host.tileForm().invalid()).toBe(true);
 
       inputs[0].click();
       fixture.detectChanges();
 
       expect(host.tileForm.choice().value()).toBe('tile1');
-      expect(host.tileForm.choice().valid()).toBeTrue();
-      expect(host.tileForm().invalid()).toBeFalse();
+      expect(host.tileForm.choice().valid()).toBe(true);
+      expect(host.tileForm().invalid()).toBe(false);
     });
 
     it('disables the group through a disabled() schema rule', () => {
       const { host, inputs } = setup(DisabledTileHost);
 
-      expect(host.tileForm.choice().disabled()).toBeTrue();
-      expect(host.group().disabled()).toBeTrue();
-      inputs.forEach((input) => expect(input.disabled).toBeTrue());
+      expect(host.tileForm.choice().disabled()).toBe(true);
+      expect(host.group().disabled()).toBe(true);
+      inputs.forEach((input) => expect(input.disabled).toBe(true));
     });
 
     it('does not update the model when a disabled tile is clicked', () => {
@@ -232,9 +236,9 @@ describe('NxTileGroupComponent signal forms', () => {
       host.model.update((m) => ({ ...m, choices: ['tile1', 'tile3'] }));
       fixture.detectChanges();
 
-      expect(inputs[0].checked).toBeTrue();
-      expect(inputs[1].checked).toBeFalse();
-      expect(inputs[2].checked).toBeTrue();
+      expect(inputs[0].checked).toBe(true);
+      expect(inputs[1].checked).toBe(false);
+      expect(inputs[2].checked).toBe(true);
       expect(host.tileForm.choices().value()).toEqual(['tile1', 'tile3']);
     });
 

@@ -43,7 +43,7 @@ describe('NxPageSearchComponent', () => {
   it('should dispatch the click event', fakeAsync(() => {
     createTestComponent(PageSearchSimpleComponent);
     const button = fixture.nativeElement.querySelector('button');
-    spyOn(testInstance.pageSearch.buttonClick, 'emit');
+    vi.spyOn(testInstance.pageSearch.buttonClick, 'emit').mockReturnValue(undefined);
     button.click();
     expect(testInstance.pageSearch.buttonClick.emit).toHaveBeenCalled();
   }));
@@ -97,10 +97,12 @@ describe('NxPageSearchComponent', () => {
 
 @Directive({ standalone: true })
 class PageSearchTestComponent {
-  @ViewChild(NxPageSearchComponent) pageSearch!: NxPageSearchComponent;
+  @ViewChild(NxPageSearchComponent)
+  pageSearch!: NxPageSearchComponent;
 }
 
 @Component({
+  selector: 'test-page-search-simple-component',
   template: `
     <nx-page-search buttonLabel="Search">
       <input />
@@ -112,6 +114,7 @@ class PageSearchTestComponent {
 class PageSearchSimpleComponent extends PageSearchTestComponent {}
 
 @Component({
+  selector: 'test-page-search-hide-button-component',
   template: `
     <nx-page-search buttonLabel="Search" [hideSearchButton]="true">
       <input />

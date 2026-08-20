@@ -38,11 +38,16 @@ abstract class NaturalLanguageFormTest {
   size: SIZES = 'regular';
   value!: string;
 
-  @ViewChild(NxNaturalLanguageFormComponent) formInstance!: NxNaturalLanguageFormComponent;
-  @ViewChild(NxNaturalLanguageFormComponent, { read: ElementRef }) formInstanceNative!: ElementRef;
-  @ViewChild(NgControl) control!: NgControl;
-  @ViewChildren(NxInputDirective) inputs!: QueryList<NxInputDirective>;
-  @ViewChildren(NxWordComponent, { read: ElementRef }) words!: QueryList<ElementRef>;
+  @ViewChild(NxNaturalLanguageFormComponent)
+  formInstance!: NxNaturalLanguageFormComponent;
+  @ViewChild(NxNaturalLanguageFormComponent, { read: ElementRef })
+  formInstanceNative!: ElementRef;
+  @ViewChild(NgControl)
+  control!: NgControl;
+  @ViewChildren(NxInputDirective)
+  inputs!: QueryList<NxInputDirective>;
+  @ViewChildren(NxWordComponent, { read: ElementRef })
+  words!: QueryList<ElementRef>;
 }
 describe('NxNaturalLanguageFormComponent', () => {
   let fixture: ComponentFixture<NaturalLanguageFormTest>;
@@ -243,7 +248,7 @@ describe('NxNaturalLanguageFormComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(NaturalLanguageFormBasicComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('assigns given nxLabel to the control via aria-label', fakeAsync(() => {
@@ -271,7 +276,7 @@ describe('NxNaturalLanguageFormComponent', () => {
       );
     }));
 
-    it('uses nx-error as fallback for described by ', fakeAsync(() => {
+    it('uses nx-error as fallback for described by', fakeAsync(() => {
       createTestComponent(NaturalLanguageFormNoDescribedByComponent);
       const formControl = testInstance.inputs.first.ngControl?.control as FormControl;
       formControl.markAsTouched();
@@ -337,6 +342,7 @@ describe('NxNaturalLanguageFormComponent', () => {
 });
 
 @Component({
+  selector: 'test-natural-language-form-basic-component',
   template: `
     <nx-natural-language-form>
       A Word
@@ -353,6 +359,7 @@ describe('NxNaturalLanguageFormComponent', () => {
 class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
 
 @Component({
+  selector: 'test-natural-language-form-error-component',
   template: `
     <nx-natural-language-form>
       <nx-word></nx-word>
@@ -364,6 +371,7 @@ class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
 class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
 
 @Component({
+  selector: 'test-natural-language-form-no-described-by-component',
   template: `
     <nx-natural-language-form>
       <nx-word>
@@ -377,6 +385,7 @@ class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
 })
 class NaturalLanguageFormNoDescribedByComponent extends NaturalLanguageFormTest {}
 @Component({
+  selector: 'test-natural-language-form-error-in-nlf-component',
   template: `
     <nx-natural-language-form>
       <nx-word describedBy="some-id">
@@ -391,6 +400,7 @@ class NaturalLanguageFormNoDescribedByComponent extends NaturalLanguageFormTest 
 class NaturalLanguageFormErrorInNlfComponent extends NaturalLanguageFormTest {}
 
 @Component({
+  selector: 'test-natural-language-form-sizes-component',
   template: `
     <nx-natural-language-form [style]="{ width: '500px' }">
       <nx-word [size]="size">
@@ -404,6 +414,7 @@ class NaturalLanguageFormErrorInNlfComponent extends NaturalLanguageFormTest {}
 class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
 
 @Component({
+  selector: 'test-natural-language-form-with-error-id',
   template: `
     <nx-natural-language-form>
       <nx-word describedBy="some-other-id">
@@ -418,6 +429,7 @@ class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
 class NaturalLanguageFormWithErrorId extends NaturalLanguageFormTest {}
 
 @Component({
+  selector: 'test-natural-language-form-small-component',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nx-natural-language-form size="small">
@@ -431,6 +443,7 @@ class NaturalLanguageFormWithErrorId extends NaturalLanguageFormTest {}
 class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
 
 @Component({
+  selector: 'test-form-with-previous-formfield-component',
   template: `
     <form [formGroup]="form">
       <nx-formfield [label]="'some label'">

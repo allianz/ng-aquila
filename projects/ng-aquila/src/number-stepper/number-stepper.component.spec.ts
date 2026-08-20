@@ -52,7 +52,8 @@ abstract class NumberStepperTest {
   readonly = false;
   inputFieldReadonly = false;
   testForm: FormGroup = new FormBuilder().group({ stepper: 3 });
-  @ViewChild(NxNumberStepperComponent) stepperInstance!: NxNumberStepperComponent;
+  @ViewChild(NxNumberStepperComponent)
+  stepperInstance!: NxNumberStepperComponent;
 
   onSubmit() {}
 }
@@ -162,7 +163,7 @@ describe('NxNumberStepperComponent', () => {
     it('should have min = 0 by default and not decrement', fakeAsync(() => {
       createTestComponent(BasicStepper);
       clickDown();
-      expect(downButton.disabled).toBeTrue();
+      expect(downButton.disabled).toBe(true);
       expect(stepperInstance.value).toBe(0);
       assertInputValue('00');
     }));
@@ -186,7 +187,7 @@ describe('NxNumberStepperComponent', () => {
       testInstance.step = 2;
       fixture.detectChanges();
       clickDown();
-      expect(downButton.disabled).toBeTrue();
+      expect(downButton.disabled).toBe(true);
     }));
 
     it('should not disable the down button for correct values', fakeAsync(() => {
@@ -194,7 +195,7 @@ describe('NxNumberStepperComponent', () => {
       testInstance.min = -10;
       fixture.detectChanges();
       clickDown();
-      expect(downButton.disabled).toBeFalse();
+      expect(downButton.disabled).toBe(false);
     }));
 
     it('should disable the up button on max', fakeAsync(() => {
@@ -204,13 +205,13 @@ describe('NxNumberStepperComponent', () => {
       testInstance.step = 2;
       fixture.detectChanges();
       clickUp();
-      expect(upButton.disabled).toBeTrue();
+      expect(upButton.disabled).toBe(true);
     }));
 
     it('should not disable the up button for correct values', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       clickUp();
-      expect(upButton.disabled).toBeFalse();
+      expect(upButton.disabled).toBe(false);
     }));
 
     it('should not disable the down button on init for correct values', fakeAsync(() => {
@@ -222,7 +223,7 @@ describe('NxNumberStepperComponent', () => {
       flush();
       fixture.detectChanges();
       flush();
-      expect(downButton.disabled).toBeFalse();
+      expect(downButton.disabled).toBe(false);
     }));
 
     it('should disable the down button if user input is below the minimum', fakeAsync(() => {
@@ -234,7 +235,7 @@ describe('NxNumberStepperComponent', () => {
       inputElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       tick();
-      expect(downButton.disabled).toBeTrue();
+      expect(downButton.disabled).toBe(true);
     }));
 
     it('should disable the up button if user input is over the maximum', fakeAsync(() => {
@@ -246,7 +247,7 @@ describe('NxNumberStepperComponent', () => {
       inputElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       tick();
-      expect(upButton.disabled).toBeTrue();
+      expect(upButton.disabled).toBe(true);
     }));
   });
 
@@ -291,7 +292,7 @@ describe('NxNumberStepperComponent', () => {
       testInstance.step = 2;
       fixture.detectChanges();
       tick();
-      expect(stepperInstance.isValidStep(20)).toBeFalse();
+      expect(stepperInstance.isValidStep(20)).toBe(false);
     }));
 
     it('should be invalid for numbers below min', fakeAsync(() => {
@@ -300,7 +301,7 @@ describe('NxNumberStepperComponent', () => {
       testInstance.step = 2;
       fixture.detectChanges();
       tick();
-      expect(stepperInstance.isValidStep(-20)).toBeFalse();
+      expect(stepperInstance.isValidStep(-20)).toBe(false);
     }));
   });
 
@@ -413,12 +414,12 @@ describe('NxNumberStepperComponent', () => {
 
       fixture.componentInstance.negative = true;
       fixture.detectChanges();
-      expect(stepperInstance.negative).toBeTrue();
+      expect(stepperInstance.negative).toBe(true);
       expect(stepperNativeElement).toHaveClass('is-negative');
 
       fixture.componentInstance.negative = false;
       fixture.detectChanges();
-      expect(stepperInstance.negative).toBeFalse();
+      expect(stepperInstance.negative).toBe(false);
       expect(stepperNativeElement).not.toHaveClass('is-negative');
     });
   });
@@ -564,7 +565,7 @@ describe('NxNumberStepperComponent', () => {
       const submitButton = fixture.nativeElement.querySelector(
         '#submit-button',
       ) as HTMLButtonElement;
-      spyOn(testInstance, 'onSubmit');
+      vi.spyOn(testInstance, 'onSubmit').mockReturnValue(undefined);
 
       clickUp();
       expect(testInstance.onSubmit).not.toHaveBeenCalled();
@@ -580,16 +581,18 @@ describe('NxNumberStepperComponent', () => {
       createTestComponent(ReactiveFormOnBlurStepper);
       inputElement.value = '2';
       inputElement.dispatchEvent(new Event('input'));
-      expect(testInstance.testForm.get('count')!.value)
-        .withContext('Expected value to remain unchanged until blur.')
-        .toBe(0);
+      expect(
+        testInstance.testForm.get('count')!.value,
+        'Expected value to remain unchanged until blur.',
+      ).toBe(0);
 
       inputElement.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
 
-      expect(testInstance.testForm.get('count')!.value)
-        .withContext('Expected value to change once control is blurred.')
-        .toBe(2);
+      expect(
+        testInstance.testForm.get('count')!.value,
+        'Expected value to change once control is blurred.',
+      ).toBe(2);
     });
 
     it('should set correct errors on the form control for all validation cases', fakeAsync(() => {
@@ -712,15 +715,15 @@ describe('NxNumberStepperComponent', () => {
       });
 
       it('disables up button', () => {
-        expect(upButton.disabled).toBeTrue();
+        expect(upButton.disabled).toBe(true);
       });
 
       it('disables down button', () => {
-        expect(downButton.disabled).toBeTrue();
+        expect(downButton.disabled).toBe(true);
       });
 
       it('disables input', () => {
-        expect(inputElement.disabled).toBeTrue();
+        expect(inputElement.disabled).toBe(true);
       });
 
       it('sets host class to .is-disabled', () => {
@@ -748,8 +751,8 @@ describe('NxNumberStepperComponent', () => {
       testInstance.readonly = true;
       fixture.detectChanges();
 
-      expect(upButton.disabled).toBeTrue();
-      expect(downButton.disabled).toBeTrue();
+      expect(upButton.disabled).toBe(true);
+      expect(downButton.disabled).toBe(true);
     });
   });
 
@@ -779,8 +782,8 @@ describe('NxNumberStepperComponent', () => {
 
       fixture.detectChanges();
 
-      expect(upButton.disabled).toBeFalse();
-      expect(downButton.disabled).toBeFalse();
+      expect(upButton.disabled).toBe(false);
+      expect(downButton.disabled).toBe(false);
     });
   });
 
@@ -844,12 +847,13 @@ describe('NxNumberStepperComponent', () => {
 
     it('has no accessibility violations', async () => {
       createTestComponent(BasicStepper);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-stepper',
   template: `<nx-number-stepper [label]="label"></nx-number-stepper>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
@@ -859,6 +863,7 @@ class BasicStepper extends NumberStepperTest {
 }
 
 @Component({
+  selector: 'test-simple-binding-stepper',
   template: `<nx-number-stepper [(value)]="value"></nx-number-stepper>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
@@ -866,6 +871,7 @@ class BasicStepper extends NumberStepperTest {
 class SimpleBindingStepper extends NumberStepperTest {}
 
 @Component({
+  selector: 'test-resize-on-init-test',
   template: `<nx-number-stepper
     max="10000000"
     step="1000000"
@@ -880,6 +886,7 @@ class ResizeOnInitTest extends NumberStepperTest {
 }
 
 @Component({
+  selector: 'test-resize-on-init-test-on-push',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<nx-number-stepper [(value)]="value" [resize]="true"></nx-number-stepper>`,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
@@ -889,6 +896,7 @@ class ResizeOnInitTestOnPush extends NumberStepperTest {
 }
 
 @Component({
+  selector: 'test-ng-model-stepper',
   template: `<nx-number-stepper [(ngModel)]="value"></nx-number-stepper>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
@@ -896,6 +904,7 @@ class ResizeOnInitTestOnPush extends NumberStepperTest {
 class NgModelStepper extends NumberStepperTest {}
 
 @Component({
+  selector: 'test-configurable-stepper',
   template: `
     <nx-number-stepper
       [min]="min"
@@ -916,6 +925,7 @@ class NgModelStepper extends NumberStepperTest {}
 class ConfigurableStepper extends NumberStepperTest {}
 
 @Component({
+  selector: 'test-disableable-stepper',
   template: `<nx-number-stepper [disabled]="disabled" [min]="-10"></nx-number-stepper>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
@@ -923,6 +933,7 @@ class ConfigurableStepper extends NumberStepperTest {}
 class DisableableStepper extends NumberStepperTest {}
 
 @Component({
+  selector: 'test-stepper-on-push',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<nx-number-stepper [negative]="negative"></nx-number-stepper>`,
   imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
@@ -930,6 +941,7 @@ class DisableableStepper extends NumberStepperTest {}
 class StepperOnPush extends NumberStepperTest {}
 
 @Component({
+  selector: 'test-directives-stepper',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nx-number-stepper>
@@ -942,6 +954,7 @@ class StepperOnPush extends NumberStepperTest {}
 class DirectivesStepper extends NumberStepperTest {}
 
 @Component({
+  selector: 'test-reactive-form-stepper',
   template: `
     <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
       <nx-number-stepper formControlName="stepper"></nx-number-stepper>
@@ -954,6 +967,7 @@ class DirectivesStepper extends NumberStepperTest {}
 class ReactiveFormStepper extends NumberStepperTest {}
 
 @Component({
+  selector: 'test-locale-stepper',
   template: `
     <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
       <nx-number-stepper></nx-number-stepper>
@@ -967,6 +981,7 @@ class ReactiveFormStepper extends NumberStepperTest {}
 class LocaleStepper extends NumberStepperTest {}
 
 @Component({
+  selector: 'test-locale-us-stepper',
   template: `
     <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
       <nx-number-stepper></nx-number-stepper>
@@ -980,6 +995,7 @@ class LocaleStepper extends NumberStepperTest {}
 class LocaleUsStepper extends NumberStepperTest {}
 
 @Component({
+  selector: 'test-reactive-form-on-blur-stepper',
   template: `
     <form [formGroup]="testForm">
       <nx-number-stepper formControlName="count"></nx-number-stepper>
@@ -1001,6 +1017,7 @@ class ReactiveFormOnBlurStepper extends NumberStepperTest {
 }
 
 @Component({
+  selector: 'test-error-stepper',
   template: `
     <nx-number-stepper>
       <nx-error>error</nx-error>
@@ -1010,10 +1027,12 @@ class ReactiveFormOnBlurStepper extends NumberStepperTest {
   imports: [NxNumberStepperModule, NxErrorComponent],
 })
 class ErrorStepper extends NumberStepperTest {
-  @ViewChild(NxErrorComponent) error!: NxErrorComponent;
+  @ViewChild(NxErrorComponent)
+  error!: NxErrorComponent;
 }
 
 @Component({
+  selector: 'test-reactive-invalid-step-on-init',
   template: `
     <form [formGroup]="testForm">
       <nx-number-stepper formControlName="count" [step]="2" [min]="0" [max]="10">

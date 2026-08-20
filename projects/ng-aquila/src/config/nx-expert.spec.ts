@@ -29,15 +29,24 @@ import { NxExpertModule } from './nx-expert.module';
 abstract class PresetTest {
   @ViewChild(NxDatepickerToggleComponent)
   datepickerToggleInstance!: NxDatepickerToggleComponent<Date>;
-  @ViewChild(NxErrorComponent) errorInstance!: NxErrorComponent;
-  @ViewChild(NxFormfieldComponent) formfieldInstance!: NxFormfieldComponent;
-  @ViewChild(NxLabelComponent) labelInstance!: NxLabelComponent;
-  @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
-  @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
-  @ViewChild(NxSelectableCardComponent) selectableCardInstance!: NxSelectableCardComponent;
-  @ViewChild(NxSmallStageComponent) smallStageInstance!: NxSmallStageComponent;
-  @ViewChild(NxCircleToggleGroupComponent) circleToggleGroupInstance!: NxCircleToggleGroupComponent;
-  @ViewChild(NxDataDisplayComponent) dataDisplayInstance!: NxDataDisplayComponent;
+  @ViewChild(NxErrorComponent)
+  errorInstance!: NxErrorComponent;
+  @ViewChild(NxFormfieldComponent)
+  formfieldInstance!: NxFormfieldComponent;
+  @ViewChild(NxLabelComponent)
+  labelInstance!: NxLabelComponent;
+  @ViewChild(NxTabGroupComponent)
+  tabGroupInstance!: NxTabGroupComponent;
+  @ViewChild(NxTabNavBarComponent)
+  tabNavBarInstance!: NxTabNavBarComponent;
+  @ViewChild(NxSelectableCardComponent)
+  selectableCardInstance!: NxSelectableCardComponent;
+  @ViewChild(NxSmallStageComponent)
+  smallStageInstance!: NxSmallStageComponent;
+  @ViewChild(NxCircleToggleGroupComponent)
+  circleToggleGroupInstance!: NxCircleToggleGroupComponent;
+  @ViewChild(NxDataDisplayComponent)
+  dataDisplayInstance!: NxDataDisplayComponent;
 }
 
 describe('NxExpertPreset', () => {
@@ -153,7 +162,7 @@ describe('NxExpertPreset', () => {
       expect(
         (testInstance as ComparisonTablePresetComponent).rowGroupInstance
           .useFullRowForExpandableArea,
-      ).toBeTrue();
+      ).toBe(true);
     });
   });
 
@@ -187,6 +196,7 @@ describe('NxExpertPreset', () => {
 });
 
 @Component({
+  selector: 'test-datepicker-preset-component',
   template: `
     <input nxDatefield nxInput [datepicker]="myDatepicker1" />
     <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
@@ -211,6 +221,7 @@ describe('NxExpertPreset', () => {
 class DatepickerPresetComponent extends PresetTest {}
 
 @Component({
+  selector: 'test-error-preset-component',
   template: `<nx-error>This is a preset error</nx-error>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
@@ -231,6 +242,7 @@ class DatepickerPresetComponent extends PresetTest {}
 class ErrorPresetComponent extends PresetTest {}
 
 @Component({
+  selector: 'test-nx-expert-formfield-preset-component',
   template: `
     <nx-formfield>
       <input nxInput />
@@ -255,6 +267,7 @@ class ErrorPresetComponent extends PresetTest {}
 class FormfieldPresetComponent extends PresetTest {}
 
 @Component({
+  selector: 'test-label-preset-component',
   template: `<nx-label>I am a preset label</nx-label>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
@@ -275,6 +288,7 @@ class FormfieldPresetComponent extends PresetTest {}
 class LabelPresetComponent extends PresetTest {}
 
 @Component({
+  selector: 'test-tab-group-preset-component',
   template: `
     <nx-tab-group>
       <nx-tab label="First tab"> Fill in your first content! </nx-tab>
@@ -300,6 +314,7 @@ class LabelPresetComponent extends PresetTest {}
 class TabGroupPresetComponent extends PresetTest {}
 
 @Component({
+  selector: 'test-tab-nav-bar-preset-component',
   template: `
     <nx-tab-nav-bar>
       @for (link of links; track link) {
@@ -343,6 +358,7 @@ class TabNavBarPresetComponent extends PresetTest {
 }
 
 @Component({
+  selector: 'test-comparison-table-preset-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -388,6 +404,7 @@ class ComparisonTablePresetComponent extends PresetTest {
 }
 
 @Component({
+  selector: 'test-selectable-card-preset-component',
   template: `<nx-selectable-card></nx-selectable-card>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
@@ -408,6 +425,7 @@ class ComparisonTablePresetComponent extends PresetTest {
 class SelectableCardPresetComponent extends PresetTest {}
 
 @Component({
+  selector: 'test-small-stage-preset-component',
   template: `<nx-small-stage></nx-small-stage>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
@@ -428,6 +446,7 @@ class SelectableCardPresetComponent extends PresetTest {}
 class SmallStagePresetComponent extends PresetTest {}
 
 @Component({
+  selector: 'test-circle-toggle-group-preset-component',
   template: `<nx-circle-toggle-group></nx-circle-toggle-group>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
@@ -448,6 +467,7 @@ class SmallStagePresetComponent extends PresetTest {}
 class CircleToggleGroupPresetComponent extends PresetTest {}
 
 @Component({
+  selector: 'test-data-display-preset-component',
   template: `<nx-data-display></nx-data-display>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [

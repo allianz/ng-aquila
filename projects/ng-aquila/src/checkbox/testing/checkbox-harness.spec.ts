@@ -24,22 +24,22 @@ describe('NxCheckboxHarness', () => {
     const checkboxes = await loader.getAllHarnesses(NxCheckboxHarness);
     const checkbox = checkboxes[1]; // "Clickable"
     await checkbox.click();
-    expect(await checkbox.isChecked()).toBeTrue();
+    expect(await checkbox.isChecked()).toBe(true);
   });
 
   it('should update from checked to unchecked', async () => {
     const checkboxes = await loader.getAllHarnesses(NxCheckboxHarness);
     const checkbox = checkboxes[2]; // "ClickableChecked"
 
-    expect(await checkbox.isChecked()).toBeTrue();
+    expect(await checkbox.isChecked()).toBe(true);
     await checkbox.click();
-    expect(await checkbox.isChecked()).toBeFalse();
+    expect(await checkbox.isChecked()).toBe(false);
   });
 
   it('should be disabled', async () => {
     const checkboxes = await loader.getAllHarnesses(NxCheckboxHarness);
     const checkbox = checkboxes[3]; // "Disabled"
-    expect(await checkbox.isDisabled()).toBeTrue();
+    expect(await checkbox.isDisabled()).toBe(true);
   });
 
   it('should find checkbox by enabled state', async () => {
@@ -47,9 +47,9 @@ describe('NxCheckboxHarness', () => {
     const checkboxBar = await loader.getHarness(NxCheckboxHarness.with({ enabled: true }));
 
     expect(await checkboxFoo.getLabel()).toBe('Disabled');
-    expect(await checkboxFoo.isDisabled()).toBeTrue();
+    expect(await checkboxFoo.isDisabled()).toBe(true);
     expect(await checkboxBar.getLabel()).toBe('Inner Text');
-    expect(await checkboxBar.isDisabled()).toBeFalse();
+    expect(await checkboxBar.isDisabled()).toBe(false);
   });
 
   describe('filters', () => {
@@ -74,6 +74,7 @@ describe('NxCheckboxHarness', () => {
 });
 
 @Component({
+  selector: 'test-checkbox-harness-test',
   template: `
     <nx-checkbox>Inner Text</nx-checkbox>
     <nx-checkbox>Clickable</nx-checkbox>

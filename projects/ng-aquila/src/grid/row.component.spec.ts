@@ -14,7 +14,8 @@ import { NxLayoutComponent } from './layout.component';
 
 @Directive({ standalone: true })
 abstract class DirectiveTest {
-  @ViewChild(NxLayoutComponent) layoutInstance!: NxLayoutComponent;
+  @ViewChild(NxLayoutComponent)
+  layoutInstance!: NxLayoutComponent;
 }
 
 describe('NxRowDirective', () => {

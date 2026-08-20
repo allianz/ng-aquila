@@ -52,7 +52,7 @@ Thumbs.db
 
 # ==== CUSTOM ====
 
-# karma test results
+# JUnit test results
 /reports
 
 # ngx-docs-cli generated files

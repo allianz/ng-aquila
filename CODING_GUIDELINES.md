@@ -62,7 +62,7 @@ We generate the API documentation out of the source code so you must follow thes
 
 We are testing components and services. We do not have E2E tests yet.
 
-Try to work in a TDD cycle. Do so by running Karma and let it run your Jasmine Tests during development. Your tests will keep running whenever your test files are changed.
+Try to work in a TDD cycle. Do so by running Vitest and let it run your tests in a headless Chromium during development. Your tests will keep running whenever your test files are changed.
 
 Run your tests with
 

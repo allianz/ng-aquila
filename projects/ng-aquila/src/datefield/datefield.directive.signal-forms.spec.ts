@@ -20,6 +20,7 @@ import { NxDatefieldModule } from './datefield.module';
 // this setup must be revisited (e.g. wrap the date in a plain object or store an ISO
 // string). Do NOT restructure the model without re-verifying this assumption.
 @Component({
+  selector: 'test-datefield-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxDatefieldModule, NxMomentDateModule, NxInputModule, NxFormfieldModule],
@@ -35,6 +36,7 @@ class DatefieldSignalFormHost {
 }
 
 @Component({
+  selector: 'test-datefield-required-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxDatefieldModule, NxMomentDateModule, NxInputModule, NxFormfieldModule],
@@ -52,6 +54,7 @@ class DatefieldRequiredSignalFormHost {
 }
 
 @Component({
+  selector: 'test-datefield-disabled-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxDatefieldModule, NxMomentDateModule, NxInputModule, NxFormfieldModule],
@@ -111,10 +114,10 @@ describe('NxDatefieldDirective signal forms', () => {
     });
 
     it('marks the field as touched on blur', () => {
-      expect(host.myForm.date().touched()).toBeFalse();
+      expect(host.myForm.date().touched()).toBe(false);
       getInput(fixture).dispatchEvent(new Event('blur'));
       fixture.detectChanges();
-      expect(host.myForm.date().touched()).toBeTrue();
+      expect(host.myForm.date().touched()).toBe(true);
     });
   });
 
@@ -135,7 +138,7 @@ describe('NxDatefieldDirective signal forms', () => {
     });
 
     it('is valid while a date is provided', () => {
-      expect(host.myForm().valid()).toBeTrue();
+      expect(host.myForm().valid()).toBe(true);
       expect(host.myForm.date().errors().length).toBe(0);
     });
 
@@ -143,13 +146,13 @@ describe('NxDatefieldDirective signal forms', () => {
       host.model.update((m) => ({ ...m, date: null }));
       fixture.detectChanges();
 
-      expect(host.myForm().invalid()).toBeTrue();
+      expect(host.myForm().invalid()).toBe(true);
       expect(
         host.myForm
           .date()
           .errors()
           .some((e) => e.kind === 'required'),
-      ).toBeTrue();
+      ).toBe(true);
     });
   });
 
@@ -168,7 +171,7 @@ describe('NxDatefieldDirective signal forms', () => {
     });
 
     it('disables the input in the DOM', () => {
-      expect(getInput(fixture).disabled).toBeTrue();
+      expect(getInput(fixture).disabled).toBe(true);
     });
   });
 });

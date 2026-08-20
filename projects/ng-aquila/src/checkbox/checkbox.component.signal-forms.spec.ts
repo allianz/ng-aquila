@@ -7,6 +7,7 @@ import { NxCheckboxComponent } from './checkbox.component';
 import { NxCheckboxModule } from './checkbox.module';
 
 @Component({
+  selector: 'test-basic-signal-form-checkbox',
   template: `<nx-checkbox [formField]="checkboxForm.enabled" [indeterminate]="indeterminate()"
     >Accept terms</nx-checkbox
   >`,
@@ -22,6 +23,7 @@ class BasicSignalFormCheckbox {
 }
 
 @Component({
+  selector: 'test-required-signal-form-checkbox',
   template: `<nx-checkbox [formField]="checkboxForm.enabled">Accept terms</nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -36,6 +38,7 @@ class RequiredSignalFormCheckbox {
 }
 
 @Component({
+  selector: 'test-disabled-signal-form-checkbox',
   template: `<nx-checkbox [formField]="checkboxForm.enabled">Accept terms</nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -50,6 +53,7 @@ class DisabledSignalFormCheckbox {
 }
 
 @Component({
+  selector: 'test-dynamic-signal-form-checkbox-group',
   template: `
     <nx-checkbox-group [formField]="groupForm.picked">
       @for (option of options(); track option) {
@@ -95,14 +99,14 @@ describe('NxCheckboxComponent signal forms', () => {
       fixture = create(BasicSignalFormCheckbox);
       const host = fixture.componentInstance as BasicSignalFormCheckbox;
 
-      expect(host.checkboxInstance.checked).toBeFalse();
-      expect(inputElement.checked).toBeFalse();
+      expect(host.checkboxInstance.checked).toBe(false);
+      expect(inputElement.checked).toBe(false);
 
       host.model.update((m) => ({ ...m, enabled: true }));
       fixture.detectChanges();
 
-      expect(host.checkboxInstance.checked).toBeTrue();
-      expect(inputElement.checked).toBeTrue();
+      expect(host.checkboxInstance.checked).toBe(true);
+      expect(inputElement.checked).toBe(true);
     });
 
     it('reflects a falsy model value as an unchecked control', () => {
@@ -111,13 +115,13 @@ describe('NxCheckboxComponent signal forms', () => {
 
       host.model.update((m) => ({ ...m, enabled: true }));
       fixture.detectChanges();
-      expect(inputElement.checked).toBeTrue();
+      expect(inputElement.checked).toBe(true);
 
       host.model.update((m) => ({ ...m, enabled: false }));
       fixture.detectChanges();
 
-      expect(host.checkboxInstance.checked).toBeFalse();
-      expect(inputElement.checked).toBeFalse();
+      expect(host.checkboxInstance.checked).toBe(false);
+      expect(inputElement.checked).toBe(false);
     });
   });
 
@@ -126,20 +130,20 @@ describe('NxCheckboxComponent signal forms', () => {
       fixture = create(BasicSignalFormCheckbox);
       const host = fixture.componentInstance as BasicSignalFormCheckbox;
 
-      expect(host.checkboxForm.enabled().value()).toBeFalse();
+      expect(host.checkboxForm.enabled().value()).toBe(false);
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.checkboxForm.enabled().value()).toBeTrue();
-      expect(host.model().enabled).toBeTrue();
-      expect(inputElement.checked).toBeTrue();
+      expect(host.checkboxForm.enabled().value()).toBe(true);
+      expect(host.model().enabled).toBe(true);
+      expect(inputElement.checked).toBe(true);
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.checkboxForm.enabled().value()).toBeFalse();
-      expect(host.model().enabled).toBeFalse();
+      expect(host.checkboxForm.enabled().value()).toBe(false);
+      expect(host.model().enabled).toBe(false);
     });
 
     it('flips the boolean form value when the label is clicked', () => {
@@ -149,19 +153,19 @@ describe('NxCheckboxComponent signal forms', () => {
       labelElement.click();
       fixture.detectChanges();
 
-      expect(host.checkboxForm.enabled().value()).toBeTrue();
+      expect(host.checkboxForm.enabled().value()).toBe(true);
     });
 
     it('marks the field dirty after user interaction', () => {
       fixture = create(BasicSignalFormCheckbox);
       const host = fixture.componentInstance as BasicSignalFormCheckbox;
 
-      expect(host.checkboxForm.enabled().dirty()).toBeFalse();
+      expect(host.checkboxForm.enabled().dirty()).toBe(false);
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.checkboxForm.enabled().dirty()).toBeTrue();
+      expect(host.checkboxForm.enabled().dirty()).toBe(true);
     });
   });
 
@@ -170,12 +174,12 @@ describe('NxCheckboxComponent signal forms', () => {
       fixture = create(BasicSignalFormCheckbox);
       const host = fixture.componentInstance as BasicSignalFormCheckbox;
 
-      expect(host.checkboxForm.enabled().touched()).toBeFalse();
+      expect(host.checkboxForm.enabled().touched()).toBe(false);
 
       dispatchFakeEvent(inputElement, 'blur');
       fixture.detectChanges();
 
-      expect(host.checkboxForm.enabled().touched()).toBeTrue();
+      expect(host.checkboxForm.enabled().touched()).toBe(true);
     });
   });
 
@@ -184,14 +188,14 @@ describe('NxCheckboxComponent signal forms', () => {
       fixture = create(RequiredSignalFormCheckbox);
       const host = fixture.componentInstance as RequiredSignalFormCheckbox;
 
-      expect(host.checkboxForm().invalid()).toBeTrue();
+      expect(host.checkboxForm().invalid()).toBe(true);
       expect(host.checkboxForm.enabled().errors().length).toBeGreaterThan(0);
       expect(host.checkboxForm.enabled().errors()[0].kind).toBe('required');
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.checkboxForm().valid()).toBeTrue();
+      expect(host.checkboxForm().valid()).toBe(true);
       expect(host.checkboxForm.enabled().errors().length).toBe(0);
     });
   });
@@ -201,9 +205,9 @@ describe('NxCheckboxComponent signal forms', () => {
       fixture = create(DisabledSignalFormCheckbox);
       const host = fixture.componentInstance as DisabledSignalFormCheckbox;
 
-      expect(host.checkboxForm.enabled().disabled()).toBeTrue();
-      expect(host.checkboxInstance.disabled).toBeTrue();
-      expect(inputElement.disabled).toBeTrue();
+      expect(host.checkboxForm.enabled().disabled()).toBe(true);
+      expect(host.checkboxInstance.disabled).toBe(true);
+      expect(inputElement.disabled).toBe(true);
     });
 
     it('does not update the form value when a disabled control is clicked', () => {
@@ -213,7 +217,7 @@ describe('NxCheckboxComponent signal forms', () => {
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.checkboxForm.enabled().value()).toBeFalse();
+      expect(host.checkboxForm.enabled().value()).toBe(false);
     });
   });
 
@@ -224,14 +228,14 @@ describe('NxCheckboxComponent signal forms', () => {
 
       host.indeterminate.set(true);
       fixture.detectChanges();
-      expect(host.checkboxInstance.indeterminate).toBeTrue();
-      expect(inputElement.indeterminate).toBeTrue();
+      expect(host.checkboxInstance.indeterminate).toBe(true);
+      expect(inputElement.indeterminate).toBe(true);
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.checkboxInstance.indeterminate).toBeFalse();
-      expect(host.checkboxForm.enabled().value()).toBeTrue();
+      expect(host.checkboxInstance.indeterminate).toBe(false);
+      expect(host.checkboxForm.enabled().value()).toBe(true);
     });
   });
 
@@ -285,7 +289,7 @@ describe('NxCheckboxComponent signal forms', () => {
       created.detectChanges();
       flush();
 
-      expect(host.groupForm.picked().dirty()).toBeFalse();
+      expect(host.groupForm.picked().dirty()).toBe(false);
     }));
   });
 });

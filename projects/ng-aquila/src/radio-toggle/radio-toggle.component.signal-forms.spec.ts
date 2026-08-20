@@ -13,6 +13,7 @@ import { NxRadioToggleModule } from './radio-toggle.module';
  */
 
 @Component({
+  selector: 'test-basic-toggle-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxRadioToggleModule],
@@ -30,6 +31,7 @@ class BasicToggleSignalFormHost {
 }
 
 @Component({
+  selector: 'test-required-toggle-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxRadioToggleModule],
@@ -48,6 +50,7 @@ class RequiredToggleSignalFormHost {
 }
 
 @Component({
+  selector: 'test-disabled-toggle-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxRadioToggleModule],
@@ -154,13 +157,13 @@ describe('NxRadioToggleComponent signal forms', () => {
       fixture.detectChanges();
       tick();
 
-      expect(host.myForm.choice().touched()).toBeFalse();
+      expect(host.myForm.choice().touched()).toBe(false);
 
       dispatchFakeEvent(group(fixture), 'focusout');
       fixture.detectChanges();
       tick();
 
-      expect(host.myForm.choice().touched()).toBeTrue();
+      expect(host.myForm.choice().touched()).toBe(true);
     }));
 
     it('does not mark the field touched when a selection is made without leaving the group', fakeAsync(() => {
@@ -174,7 +177,7 @@ describe('NxRadioToggleComponent signal forms', () => {
       tick();
 
       expect(host.myForm.choice().value()).toBe('A');
-      expect(host.myForm.choice().touched()).toBeFalse();
+      expect(host.myForm.choice().touched()).toBe(false);
     }));
 
     it('does not mark the field touched while the focus stays inside the group', fakeAsync(() => {
@@ -189,7 +192,7 @@ describe('NxRadioToggleComponent signal forms', () => {
       fixture.detectChanges();
       tick();
 
-      expect(host.myForm.choice().touched()).toBeFalse();
+      expect(host.myForm.choice().touched()).toBe(false);
     }));
   });
 
@@ -200,19 +203,19 @@ describe('NxRadioToggleComponent signal forms', () => {
       fixture.detectChanges();
       tick();
 
-      expect(host.myForm().invalid()).toBeTrue();
+      expect(host.myForm().invalid()).toBe(true);
       expect(
         host.myForm
           .choice()
           .errors()
           .some((e) => e.kind === 'required'),
-      ).toBeTrue();
+      ).toBe(true);
 
       inputs(fixture).item(0).click();
       fixture.detectChanges();
       tick();
 
-      expect(host.myForm().valid()).toBeTrue();
+      expect(host.myForm().valid()).toBe(true);
       expect(host.myForm.choice().errors()).toEqual([]);
     }));
   });
@@ -225,9 +228,9 @@ describe('NxRadioToggleComponent signal forms', () => {
       tick();
       fixture.detectChanges();
 
-      expect(host.myForm.choice().disabled()).toBeTrue();
+      expect(host.myForm.choice().disabled()).toBe(true);
       inputs(fixture).forEach((input) => {
-        expect(input.disabled).toBeTrue();
+        expect(input.disabled).toBe(true);
       });
     }));
 

@@ -7,7 +7,8 @@ import { NxDirectModule } from './nx-direct.module';
 
 @Directive({ standalone: true })
 abstract class PresetTest {
-  @ViewChild(NxFormfieldComponent) formfieldInstance!: NxFormfieldComponent;
+  @ViewChild(NxFormfieldComponent)
+  formfieldInstance!: NxFormfieldComponent;
 }
 
 describe('NxDirectPreset', () => {
@@ -42,6 +43,7 @@ describe('NxDirectPreset', () => {
 });
 
 @Component({
+  selector: 'test-nx-direct-formfield-preset-component',
   template: `
     <nx-formfield>
       <input nxInput />

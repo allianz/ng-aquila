@@ -12,8 +12,8 @@ import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angul
 import { By } from '@angular/platform-browser';
 import axe from 'axe-core';
 
-import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
 import { NxComparisonTableModule } from '../comparison-table.module';
+import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.test-utils';
 import { NxComparisonTableDescriptionCell } from '../description-cell/description-cell.component';
 import { NxToggleSectionDirective } from '../toggle-section/toggle-section.directive';
 import { NxComparisonTableIntersectionCell } from './intersection-cell.component';
@@ -27,7 +27,8 @@ abstract class IntersectionCellTest {
   intersectionCellInstances!: QueryList<NxComparisonTableIntersectionCell>;
   @ViewChild(NxComparisonTableDescriptionCell)
   descriptionCellInstance!: NxComparisonTableDescriptionCell;
-  @ViewChild(NxToggleSectionDirective) toggleSectionInstance!: NxToggleSectionDirective;
+  @ViewChild(NxToggleSectionDirective)
+  toggleSectionInstance!: NxToggleSectionDirective;
 
   intersectionId = 'intersection-cell';
 }
@@ -62,7 +63,7 @@ describe('NxComparisonTableIntersectionCell', () => {
   describe('basic', () => {
     it('renders the content', () => {
       createTestComponent(IntersectionCellComponent);
-      expect(intersectionCellInstances).toHaveSize(2);
+      expect(intersectionCellInstances).toHaveLength(2);
       expect(intersectionCellElements[0].nativeElement.textContent.trim()).toBe(
         'This is an intersection cell',
       );
@@ -113,7 +114,7 @@ describe('NxComparisonTableIntersectionCell', () => {
       tick(THROTTLE_TIME);
 
       const headers = intersectionCellElements[0].attributes.headers;
-      expect(headers?.split(' ')).toHaveSize(2);
+      expect(headers?.split(' ')).toHaveLength(2);
       expect(headers).toContain(descriptionCellInstance.id);
       expect(headers).toContain(toggleSectionInstance.toggleSectionHeader().id);
     }));
@@ -122,7 +123,7 @@ describe('NxComparisonTableIntersectionCell', () => {
       createTestComponent(ToggleSectionComponent);
 
       const headers = intersectionCellElements[0].attributes.headers;
-      expect(headers?.split(' ')).toHaveSize(2);
+      expect(headers?.split(' ')).toHaveLength(2);
       expect(headers).toContain(descriptionCellInstance.id);
       expect(headers).toContain(toggleSectionInstance.toggleSectionHeader().id);
     });
@@ -154,31 +155,26 @@ describe('NxComparisonTableIntersectionCell', () => {
       expect(intersectionCellElements[0].nativeElement.getAttribute('rowspan')).toBe('3');
     }));
 
-    it('has no accessibility violations', (done) => {
+    it('has no accessibility violations', async () => {
       createTestComponent(IntersectionCellComponent);
 
-      axe.run(
-        fixture.nativeElement,
-        {
-          rules: {
-            'empty-table-header': { enabled: false },
-          },
+      const results = await axe.run(fixture.nativeElement, {
+        rules: {
+          'empty-table-header': { enabled: false },
         },
-        (error: Error, results: axe.AxeResults) => {
-          expect(results.violations.length).toBe(0);
-          const violationMessages = results.violations.map((item) => item.description);
-          if (violationMessages.length) {
-            console.error(violationMessages);
-            expect(violationMessages).toBeFalsy();
-          }
-          done();
-        },
-      );
+      });
+      expect(results.violations.length).toBe(0);
+      const violationMessages = results.violations.map((item) => item.description);
+      if (violationMessages.length) {
+        console.error(violationMessages);
+        expect(violationMessages).toBeFalsy();
+      }
     });
   });
 });
 
 @Component({
+  selector: 'test-intersection-cell-component',
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
@@ -204,6 +200,7 @@ class IntersectionCellComponent extends IntersectionCellTest {
 }
 
 @Component({
+  selector: 'test-intersection-cell-toggle-section-component',
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],

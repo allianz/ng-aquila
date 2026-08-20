@@ -5,7 +5,6 @@ import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core
 import { disabled, form, FormField, required } from '@angular/forms/signals';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxCodeInputComponent } from './code-input.component';
 import { NxCodeInputModule } from './code-input.module';
 
 // The code input is a `ControlValueAccessor` whose model value is the concatenated
@@ -13,6 +12,7 @@ import { NxCodeInputModule } from './code-input.module';
 // `[formField]` backwards-compat path, so the model field is a `string`.
 
 @Component({
+  selector: 'test-code-input.component.signal-forms-basic-signal-form-host',
   standalone: true,
   imports: [FormField, NxCodeInputModule],
   template: `<nx-code-input [length]="4" [formField]="codeForm.value"></nx-code-input>`,
@@ -23,6 +23,7 @@ class BasicSignalFormHost {
 }
 
 @Component({
+  selector: 'test-code-input.component.signal-forms-required-signal-form-host',
   standalone: true,
   imports: [FormField, NxCodeInputModule],
   template: `<nx-code-input [length]="4" [formField]="codeForm.value"></nx-code-input>`,
@@ -35,6 +36,7 @@ class RequiredSignalFormHost {
 }
 
 @Component({
+  selector: 'test-code-input.component.signal-forms-disabled-signal-form-host',
   standalone: true,
   imports: [FormField, NxCodeInputModule],
   template: `<nx-code-input [length]="4" [formField]="codeForm.value"></nx-code-input>`,

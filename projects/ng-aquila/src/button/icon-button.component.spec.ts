@@ -8,6 +8,7 @@ import { NxAnchorIconButtonComponent, NxIconButtonComponent } from '.';
 abstract class AnchorButtonTest {}
 
 @Component({
+  selector: 'test-test-instance',
   template: ` <button
       nxIconButton
       #button
@@ -53,7 +54,7 @@ describe('NxAnchorIconButtonComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(TestInstance);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });

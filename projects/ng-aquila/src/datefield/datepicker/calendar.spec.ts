@@ -24,7 +24,9 @@ import { NxMultiYearViewComponent, yearsPerPage } from './multi-year-view';
 import { NxYearViewComponent } from './year-view';
 
 describe('NxCalendarComponent', () => {
-  let dir: { value: Direction };
+  let dir: {
+    value: Direction;
+  };
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -174,7 +176,7 @@ describe('NxCalendarComponent', () => {
 
       expect(calendarInstance._currentView).toBe('month');
       expect(calendarInstance._activeDate).toEqual(new Date(2000, DEC, 31));
-      expect(testComponent.selected).withContext('no date should be selected yet').toBeFalsy();
+      expect(testComponent.selected, 'no date should be selected yet').toBeFalsy();
     });
 
     it('should select date in month view', () => {
@@ -362,13 +364,13 @@ describe('NxCalendarComponent', () => {
         '.nx-calendar-previous-button',
       ) as HTMLButtonElement;
 
-      expect(prevButton.disabled).withContext('previous button should not be disabled').toBeFalse();
+      expect(prevButton.disabled, 'previous button should not be disabled').toBe(false);
       expect(calendarInstance._activeDate).toEqual(new Date(2016, FEB, 1));
 
       prevButton.click();
       fixture.detectChanges();
 
-      expect(prevButton.disabled).withContext('previous button should be disabled').toBeTrue();
+      expect(prevButton.disabled, 'previous button should be disabled').toBe(true);
       expect(calendarInstance._activeDate).toEqual(new Date(2016, JAN, 1));
 
       prevButton.click();
@@ -385,13 +387,13 @@ describe('NxCalendarComponent', () => {
         '.nx-calendar-next-button',
       ) as HTMLButtonElement;
 
-      expect(nextButton.disabled).withContext('next button should not be disabled').toBeFalse();
+      expect(nextButton.disabled, 'next button should not be disabled').toBe(false);
       expect(calendarInstance._activeDate).toEqual(new Date(2017, DEC, 1));
 
       nextButton.click();
       fixture.detectChanges();
 
-      expect(nextButton.disabled).withContext('next button should be disabled').toBeTrue();
+      expect(nextButton.disabled, 'next button should be disabled').toBe(true);
       expect(calendarInstance._activeDate).toEqual(new Date(2018, JAN, 1));
 
       nextButton.click();
@@ -402,7 +404,7 @@ describe('NxCalendarComponent', () => {
 
     it('should re-render the month view when the minDate changes', () => {
       fixture.detectChanges();
-      spyOn(calendarInstance.monthView, '_init').and.callThrough();
+      vi.spyOn(calendarInstance.monthView, '_init');
 
       testComponent.minDate = new Date(2017, NOV, 1);
       fixture.detectChanges();
@@ -412,7 +414,7 @@ describe('NxCalendarComponent', () => {
 
     it('should re-render the month view when the maxDate changes', () => {
       fixture.detectChanges();
-      spyOn(calendarInstance.monthView, '_init').and.callThrough();
+      vi.spyOn(calendarInstance.monthView, '_init');
 
       testComponent.maxDate = new Date(2017, DEC, 1);
       fixture.detectChanges();
@@ -420,7 +422,7 @@ describe('NxCalendarComponent', () => {
       expect(calendarInstance.monthView._init).toHaveBeenCalled();
     });
 
-    it('should re-render the year view when the minDate changes', () => {
+    it('should re-render the year view when the minDate changes', async () => {
       fixture.detectChanges();
       const periodButton = calendarElement.querySelector(
         '.nx-calendar-change-view-button',
@@ -428,19 +430,24 @@ describe('NxCalendarComponent', () => {
       periodButton.click();
       fixture.detectChanges();
 
-      (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
+      (
+        calendarElement.querySelector(
+          '.nx-calendar-body-active .nx-calendar-body-cell-content',
+        ) as HTMLElement
+      ).click();
       fixture.detectChanges();
-      fixture.whenStable().then(() => {
-        spyOn(calendarInstance.yearView, '_init').and.callThrough();
+      await fixture.whenStable();
 
-        testComponent.minDate = new Date(2017, NOV, 1);
-        fixture.detectChanges();
+      expect(calendarInstance._currentView).toBe('year');
+      vi.spyOn(calendarInstance.yearView, '_init');
 
-        expect(calendarInstance.yearView._init).toHaveBeenCalled();
-      });
+      testComponent.minDate = new Date(2017, NOV, 1);
+      fixture.detectChanges();
+
+      expect(calendarInstance.yearView._init).toHaveBeenCalled();
     });
 
-    it('should re-render the year view when the maxDate changes', () => {
+    it('should re-render the year view when the maxDate changes', async () => {
       fixture.detectChanges();
       const periodButton = calendarElement.querySelector(
         '.nx-calendar-change-view-button',
@@ -448,15 +455,21 @@ describe('NxCalendarComponent', () => {
       periodButton.click();
       fixture.detectChanges();
 
-      (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
+      (
+        calendarElement.querySelector(
+          '.nx-calendar-body-active .nx-calendar-body-cell-content',
+        ) as HTMLElement
+      ).click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(calendarInstance._currentView).toBe('year');
+      vi.spyOn(calendarInstance.yearView, '_init');
+
+      testComponent.maxDate = new Date(2017, DEC, 1);
       fixture.detectChanges();
 
-      fixture.whenStable().then(() => {
-        spyOn(calendarInstance.yearView, '_init').and.callThrough();
-        testComponent.maxDate = new Date(2017, DEC, 1);
-        fixture.detectChanges();
-        expect(calendarInstance.yearView._init).toHaveBeenCalled();
-      });
+      expect(calendarInstance.yearView._init).toHaveBeenCalled();
     });
 
     it('should re-render the multi-year view when the minDate changes', () => {
@@ -467,7 +480,7 @@ describe('NxCalendarComponent', () => {
       periodButton.click();
       fixture.detectChanges();
 
-      spyOn(calendarInstance.multiYearView, '_init').and.callThrough();
+      vi.spyOn(calendarInstance.multiYearView, '_init');
 
       testComponent.minDate = new Date(2017, NOV, 1);
       fixture.detectChanges();
@@ -483,7 +496,7 @@ describe('NxCalendarComponent', () => {
       periodButton.click();
       fixture.detectChanges();
 
-      spyOn(calendarInstance.multiYearView, '_init').and.callThrough();
+      vi.spyOn(calendarInstance.multiYearView, '_init');
 
       testComponent.maxDate = new Date(2017, DEC, 1);
       fixture.detectChanges();
@@ -606,7 +619,7 @@ describe('NxCalendarComponent', () => {
 
       const today = new Date(2025, JAN, 9);
 
-      spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+      vi.spyOn(calendarInstance['_dateAdapter'], 'today').mockReturnValue(today);
 
       todayButton.click();
       fixture.detectChanges();
@@ -617,31 +630,31 @@ describe('NxCalendarComponent', () => {
 
     it('should disable today button if already in current month and view is "month"', () => {
       const today = new Date(2025, JAN, 9);
-      spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+      vi.spyOn(calendarInstance['_dateAdapter'], 'today').mockReturnValue(today);
 
       calendarInstance._currentView = 'month';
       calendarInstance._activeDate = new Date(2025, JAN, 1);
 
-      expect(calendarInstance._disableTodayButton).toBeTrue();
+      expect(calendarInstance._disableTodayButton).toBe(true);
     });
 
     it('should not disable today button if in a different month', () => {
       const today = new Date(2025, JAN, 9);
-      spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+      vi.spyOn(calendarInstance['_dateAdapter'], 'today').mockReturnValue(today);
 
       calendarInstance._currentView = 'month';
       calendarInstance._activeDate = new Date(2025, FEB, 28);
 
-      expect(calendarInstance._disableTodayButton).toBeFalse();
+      expect(calendarInstance._disableTodayButton).toBe(false);
     });
 
     it('should not disable today button if not in "month" view', () => {
       const today = new Date(2025, JAN, 9);
-      spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+      vi.spyOn(calendarInstance['_dateAdapter'], 'today').mockReturnValue(today);
 
       calendarInstance._currentView = 'year';
 
-      expect(calendarInstance._disableTodayButton).toBeFalse();
+      expect(calendarInstance._disableTodayButton).toBe(false);
     });
 
     describe('a11y', () => {
@@ -663,7 +676,7 @@ describe('NxCalendarComponent', () => {
         expect(calendarInstance._activeDate).toEqual(new Date(2025, FEB, 28));
 
         const today = new Date(2025, JAN, 9);
-        spyOn(calendarInstance['_dateAdapter'], 'today').and.returnValue(today);
+        vi.spyOn(calendarInstance['_dateAdapter'], 'today').mockReturnValue(today);
         dispatchKeyboardEvent(todayButton, 'keydown', ENTER, 'Enter');
         fixture.detectChanges();
         expect(calendarInstance._activeDate).toEqual(new Date(2025, JAN, 9));
@@ -678,6 +691,7 @@ describe('NxCalendarComponent', () => {
 });
 
 @Component({
+  selector: 'test-standard-calendar',
   template: `<nx-calendar
     [startAt]="startDate"
     [(selected)]="selected"
@@ -696,6 +710,7 @@ class StandardCalendar {
 }
 
 @Component({
+  selector: 'test-calendar-with-today-button',
   template: `
     <nx-calendar [startAt]="startDate" [showTodayButton]="true" [(selected)]="selected">
     </nx-calendar>
@@ -709,6 +724,7 @@ class CalendarWithTodayButton {
 }
 
 @Component({
+  selector: 'test-calendar-with-min-max',
   template: `<nx-calendar
     [startAt]="startAt"
     [minDate]="minDate"
@@ -724,6 +740,7 @@ class CalendarWithMinMax {
 }
 
 @Component({
+  selector: 'test-calendar-with-date-filter',
   template: `<nx-calendar [startAt]="startDate" [(selected)]="selected" [dateFilter]="dateFilter">
   </nx-calendar>`,
   changeDetection: ChangeDetectionStrategy.Eager,

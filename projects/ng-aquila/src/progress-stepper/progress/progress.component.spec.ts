@@ -15,8 +15,10 @@ import { NxProgressStepperComponent } from './progress.component';
 
 @Directive({ standalone: true })
 abstract class ProgressTest {
-  @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;
-  @ViewChild(NxProgressStepperDirective, { read: ElementRef }) componentInstanceRef!: ElementRef;
+  @ViewChild(NxProgressStepperDirective)
+  componentInstance!: NxProgressStepperDirective;
+  @ViewChild(NxProgressStepperDirective, { read: ElementRef })
+  componentInstanceRef!: ElementRef;
   progress = 1;
 }
 
@@ -68,12 +70,13 @@ describe('NxProgressStepperComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(ProgressBasicTest);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-progress-basic-test',
   template: `
     <nx-progress-stepper>
       <nx-step label="Step 1"> step 1 content </nx-step>
@@ -86,6 +89,7 @@ describe('NxProgressStepperComponent', () => {
 class ProgressBasicTest extends ProgressTest {}
 
 @Component({
+  selector: 'test-progress-binding-test',
   template: `
     <nx-progress-stepper progress="0.33">
       <nx-step label="Step 1"> step 1 content </nx-step>
@@ -97,6 +101,7 @@ class ProgressBasicTest extends ProgressTest {}
 })
 class ProgressBindingTest extends ProgressTest {}
 @Component({
+  selector: 'test-progress-clamp-test',
   template: `
     <nx-progress-stepper [progress]="progress">
       <nx-step label="Step 1"> step 1 content </nx-step>

@@ -154,7 +154,7 @@ describe('NxPlainButtonComponent', () => {
     class AnchorTestInstance {
       anchorInstance = viewChild.required(NxPlainButtonComponent);
 
-      clickBindingSpy = jasmine.createSpy('clickSpy');
+      clickBindingSpy = vi.fn().mockName('clickSpy');
       disabled = false;
       loading = false;
       tabindexAttribute: number | null = null;
@@ -188,7 +188,7 @@ describe('NxPlainButtonComponent', () => {
     describe('a11y', () => {
       it('has no accessibility violations', async () => {
         createAnchorTestComponent(AnchorTestInstance);
-        await expectAsync(anchorFixture.nativeElement).toBeAccessible();
+        await expect(anchorFixture.nativeElement).toBeAccessible();
       });
 
       it('has correct a11y attributes when disabled', () => {
@@ -223,6 +223,7 @@ describe('NxPlainButtonComponent', () => {
 });
 
 @Component({
+  selector: 'test-button-test',
   template: `<button
     [nxPlainButton]="classNames"
     [size]="size"
@@ -251,5 +252,5 @@ class ButtonTest {
   loading = false;
   tabindexAttribute: number | null = null;
   tabIndex: number | null = null;
-  readonly clickSpy = jasmine.createSpy('clickSpy');
+  readonly clickSpy = vi.fn().mockName('clickSpy');
 }

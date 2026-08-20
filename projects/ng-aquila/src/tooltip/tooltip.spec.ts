@@ -70,8 +70,15 @@ const initialTooltipMessage = 'initial tooltip message';
 describe('NxTooltipDirective', () => {
   let overlayContainer: OverlayContainer;
   let overlayContainerElement: HTMLElement;
-  let dir: { value: Direction; change: EventEmitter<Direction> };
-  let platform: { IOS: boolean; isBrowser: boolean; ANDROID: boolean };
+  let dir: {
+    value: Direction;
+    change: EventEmitter<Direction>;
+  };
+  let platform: {
+    IOS: boolean;
+    isBrowser: boolean;
+    ANDROID: boolean;
+  };
   let focusMonitor: FocusMonitor;
 
   beforeEach(() => {
@@ -137,7 +144,7 @@ describe('NxTooltipDirective', () => {
       tooltipDirective.show();
       tick(200); // Tick for the show delay (default is 200)
 
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       fixture.detectChanges();
 
@@ -146,20 +153,20 @@ describe('NxTooltipDirective', () => {
 
       // Make sure tooltip is shown to the user and animation has finished
       const tooltipElement = overlayContainerElement.querySelector('.nx-tooltip') as HTMLElement;
-      expect(tooltipElement instanceof HTMLElement).toBeTrue();
-      expect(tooltipElement.classList.contains('fade-in')).toBeTrue();
+      expect(tooltipElement instanceof HTMLElement).toBe(true);
+      expect(tooltipElement.classList.contains('fade-in')).toBe(true);
 
       expect(overlayContainerElement.textContent).toContain(initialTooltipMessage);
 
       // After hide called, a timeout delay is created that will to hide the tooltip.
       const tooltipDelay = 1000;
       tooltipDirective.hide(tooltipDelay);
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       // After the tooltip delay elapses, expect that the tooltip is not visible.
       tick(tooltipDelay);
       fixture.detectChanges();
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
 
       // On animation complete, should expect that the tooltip has been detached.
       tick(100); // Wait for CSS animation to complete
@@ -170,14 +177,14 @@ describe('NxTooltipDirective', () => {
     it('should be able to re-open a tooltip if it was closed by detaching the overlay', fakeAsync(() => {
       tooltipDirective.show();
       tick(200);
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
       fixture.detectChanges();
       tick(500);
 
       tooltipDirective._overlayRef?.detach();
       tick(200);
       fixture.detectChanges();
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
       flushMicrotasks();
       assertTooltipInstance(tooltipDirective, false);
 
@@ -185,7 +192,7 @@ describe('NxTooltipDirective', () => {
       tick(200);
       flush();
 
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
     }));
 
     it('should show with delay', fakeAsync(() => {
@@ -193,11 +200,11 @@ describe('NxTooltipDirective', () => {
 
       const tooltipDelay = 1000;
       tooltipDirective.show(tooltipDelay);
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
 
       tick(tooltipDelay);
       fixture.detectChanges();
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       tick(100); // Wait for animation
       fixture.detectChanges();
@@ -213,9 +220,10 @@ describe('NxTooltipDirective', () => {
       const overlayRef = tooltipDirective._overlayRef;
 
       expect(!!overlayRef).toBeTruthy();
-      expect(overlayRef?.overlayElement)
-        .withContext('Expected the overlay panel element to have the tooltip panel class set.')
-        .toHaveClass(NX_TOOLTIP_PANEL_CLASS);
+      expect(
+        overlayRef?.overlayElement,
+        'Expected the overlay panel element to have the tooltip panel class set.',
+      ).toHaveClass(NX_TOOLTIP_PANEL_CLASS);
     }));
 
     it('should not show if disabled', fakeAsync(() => {
@@ -224,7 +232,7 @@ describe('NxTooltipDirective', () => {
       tooltipDirective.show();
       fixture.detectChanges();
       tick(200);
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
 
       // Test to make sure setting disabled to false will show the tooltip
       // Sanity check to make sure everything was correct before (detectChanges, tick)
@@ -234,7 +242,7 @@ describe('NxTooltipDirective', () => {
       tick(200);
       flush();
 
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
     }));
 
     it('should hide if disabled while visible', fakeAsync(() => {
@@ -244,24 +252,24 @@ describe('NxTooltipDirective', () => {
       tooltipDirective.show();
       fixture.detectChanges();
       tick(200);
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       // Set tooltip to be disabled and verify that the tooltip hides.
       tooltipDirective.disabled = true;
       tick(200);
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
     }));
 
     it('should hide if the message is cleared while the tooltip is open', fakeAsync(() => {
       tooltipDirective.show();
       fixture.detectChanges();
       tick(200);
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       fixture.componentInstance.message = '';
       fixture.detectChanges();
       tick(200);
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
     }));
 
     it('should not show if hide is called before delay finishes', fakeAsync(() => {
@@ -270,17 +278,17 @@ describe('NxTooltipDirective', () => {
       const tooltipDelay = 1000;
 
       tooltipDirective.show(tooltipDelay);
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
 
       tick(tooltipDelay / 2); // Wait for half the delay
       fixture.detectChanges();
 
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
       tooltipDirective.hide();
 
       tick(tooltipDelay); // Wait for remaining time
       fixture.detectChanges();
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
     }));
 
     it('should not show tooltip if message is not present or empty', () => {
@@ -300,17 +308,17 @@ describe('NxTooltipDirective', () => {
     it('should not follow through with hide if show is called after', fakeAsync(() => {
       tooltipDirective.show();
       tick(200); // Tick for the show delay (default is 200)
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       // After hide called, a timeout delay is created that will to hide the tooltip.
       const tooltipDelay = 1000;
       tooltipDirective.hide(tooltipDelay);
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       // Before delay time has passed, call show which should cancel intent to hide tooltip.
       tooltipDirective.show();
       tick(tooltipDelay);
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
     }));
 
     it('should be able to update the tooltip position while open', fakeAsync(() => {
@@ -321,7 +329,7 @@ describe('NxTooltipDirective', () => {
       assertTooltipInstance(tooltipDirective, true);
 
       // @ts-expect-error fix nullability
-      spyOn(tooltipDirective._overlayRef, 'updatePosition').and.callThrough();
+      vi.spyOn(tooltipDirective._overlayRef, 'updatePosition');
 
       tooltipDirective.position = 'top';
       fixture.detectChanges();
@@ -373,11 +381,11 @@ describe('NxTooltipDirective', () => {
     it('should be removed after parent destroyed', fakeAsync(() => {
       tooltipDirective.show();
       tick(200); // Tick for the show delay (default is 200)
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       flush();
       fixture.destroy();
-      expect(overlayContainerElement.childNodes).toHaveSize(0);
+      expect(overlayContainerElement.childNodes).toHaveLength(0);
       expect(overlayContainerElement.textContent).toBe('');
     }));
 
@@ -407,8 +415,17 @@ describe('NxTooltipDirective', () => {
 
       // Store the tooltip instance, which will be set to null after the button is hidden.
       const tooltipInstance = tooltipDirective._tooltipInstance;
-      fixture.componentInstance.showButton = false;
-      fixture.detectChanges();
+      expect(tooltipInstance).not.toBeNull();
+
+      // Hiding has already finished, so the overlay was detached. Destroying the host must
+      // still dispose cleanly rather than throwing on the already-detached overlay.
+      expect(() => {
+        fixture.componentInstance.showButton = false;
+        fixture.detectChanges();
+        tick(500);
+      }).not.toThrow();
+
+      expect(tooltipDirective._tooltipInstance).toBeNull();
     }));
 
     it('should complete the afterHidden stream when tooltip is destroyed', fakeAsync(() => {
@@ -416,7 +433,7 @@ describe('NxTooltipDirective', () => {
       fixture.detectChanges();
       tick(150);
 
-      const spy = jasmine.createSpy('complete spy');
+      const spy = vi.fn().mockName('complete spy');
       const subscription = tooltipDirective._tooltipInstance
         ?.afterHidden()
         .subscribe({ complete: spy });
@@ -487,10 +504,10 @@ describe('NxTooltipDirective', () => {
         '.cdk-overlay-connected-position-bounding-box',
       );
 
-      expect(tooltipWrapper).withContext('Expected tooltip to be shown.').toBeTruthy();
-      expect(tooltipWrapper?.getAttribute('dir'))
-        .withContext('Expected tooltip to be in RTL mode.')
-        .toBe('rtl');
+      expect(tooltipWrapper, 'Expected tooltip to be shown.').toBeTruthy();
+      expect(tooltipWrapper?.getAttribute('dir'), 'Expected tooltip to be in RTL mode.').toBe(
+        'rtl',
+      );
     }));
 
     it('should keep the overlay direction in sync with the trigger direction', fakeAsync(() => {
@@ -504,9 +521,7 @@ describe('NxTooltipDirective', () => {
       let tooltipWrapper = overlayContainerElement.querySelector(
         '.cdk-overlay-connected-position-bounding-box',
       );
-      expect(tooltipWrapper?.getAttribute('dir'))
-        .withContext('Expected tooltip to be in RTL.')
-        .toBe('rtl');
+      expect(tooltipWrapper?.getAttribute('dir'), 'Expected tooltip to be in RTL.').toBe('rtl');
 
       tooltipDirective.hide(0);
       tick(200);
@@ -523,9 +538,7 @@ describe('NxTooltipDirective', () => {
       tooltipWrapper = overlayContainerElement.querySelector(
         '.cdk-overlay-connected-position-bounding-box',
       );
-      expect(tooltipWrapper?.getAttribute('dir'))
-        .withContext('Expected tooltip to be in LTR.')
-        .toBe('ltr');
+      expect(tooltipWrapper?.getAttribute('dir'), 'Expected tooltip to be in LTR.').toBe('ltr');
     }));
 
     it('should be able to set the tooltip message as a number', fakeAsync(() => {
@@ -541,7 +554,7 @@ describe('NxTooltipDirective', () => {
       fixture.detectChanges();
       tick(100); // Wait for CSS animation
 
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
       expect(overlayContainerElement.textContent).toContain(initialTooltipMessage);
 
       document.body.click();
@@ -550,7 +563,7 @@ describe('NxTooltipDirective', () => {
       tick(100); // Wait for CSS animation
       fixture.detectChanges();
 
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
       expect(overlayContainerElement.textContent).toBe('');
     }));
 
@@ -615,18 +628,18 @@ describe('NxTooltipDirective', () => {
     it('should not hide the tooltip when calling `show` twice in a row', fakeAsync(() => {
       tooltipDirective.show();
       tick(200);
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
       fixture.detectChanges();
       tick(500);
 
       const overlayRef = tooltipDirective._overlayRef;
 
       // @ts-expect-error
-      spyOn(overlayRef, 'detach').and.callThrough();
+      vi.spyOn(overlayRef, 'detach');
 
       tooltipDirective.show();
       tick(200);
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
       fixture.detectChanges();
       tick(500);
 
@@ -714,28 +727,29 @@ describe('NxTooltipDirective', () => {
       fixture.detectChanges();
 
       // Expect that the tooltip is displayed
-      expect(tooltipDirective._isTooltipVisible())
-        .withContext('Expected tooltip to be initially visible')
-        .toBeTrue();
+      expect(tooltipDirective._isTooltipVisible(), 'Expected tooltip to be initially visible').toBe(
+        true,
+      );
 
       // Scroll the page
       fixture.componentInstance.scrollDown();
       tick(200); // Wait for scroll handling
       fixture.detectChanges();
-      expect(tooltipDirective._isTooltipVisible())
-        .withContext('Expected tooltip hidden when scrolled out of view, after throttle limit')
-        .toBeFalse();
+      expect(
+        tooltipDirective._isTooltipVisible(),
+        'Expected tooltip hidden when scrolled out of view, after throttle limit',
+      ).toBe(false);
     }));
 
     it('should execute the `hide` call, after scrolling away, inside the NgZone', fakeAsync(() => {
-      const inZoneSpy = jasmine.createSpy('in zone spy');
+      const inZoneSpy = vi.fn().mockName('in zone spy');
 
       tooltipDirective.show();
       tick(200); // Wait for show delay
       fixture.detectChanges();
 
       if (tooltipDirective._tooltipInstance !== null) {
-        spyOn(tooltipDirective._tooltipInstance, 'hide').and.callFake(() => {
+        vi.spyOn(tooltipDirective._tooltipInstance, 'hide').mockImplementation(() => {
           inZoneSpy(NgZone.isInAngularZone());
         });
       }
@@ -767,7 +781,7 @@ describe('NxTooltipDirective', () => {
 
       tooltipDirective.show();
       tick(200); // Tick for the show delay (default is 200)
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       fixture.detectChanges();
 
@@ -776,18 +790,18 @@ describe('NxTooltipDirective', () => {
 
       // Make sure tooltip is shown to the user and animation has finished
       const tooltipElement = overlayContainerElement.querySelector('.nx-tooltip') as HTMLElement;
-      expect(tooltipElement instanceof HTMLElement).toBeTrue();
-      expect(tooltipElement.classList.contains('fade-in')).toBeTrue();
+      expect(tooltipElement instanceof HTMLElement).toBe(true);
+      expect(tooltipElement.classList.contains('fade-in')).toBe(true);
 
       // After hide called, a timeout delay is created that will to hide the tooltip.
       const tooltipDelay = 1000;
       tooltipDirective.hide(tooltipDelay);
-      expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+      expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
       // After the tooltip delay elapses, expect that the tooltip is not visible.
       tick(tooltipDelay);
       fixture.detectChanges();
-      expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+      expect(tooltipDirective._isTooltipVisible()).toBe(false);
 
       // On animation complete, should expect that the tooltip has been detached.
       tick(100); // Wait for CSS animation
@@ -915,7 +929,7 @@ describe('navigation', () => {
     mockLocation.simulateUrlPop('');
     flush();
     // should dispose
-    expect(overlayContainerElement.childNodes).toHaveSize(0);
+    expect(overlayContainerElement.childNodes).toHaveLength(0);
     mockLocation.back();
     flush();
     // should not throw portal already disposed error
@@ -958,19 +972,19 @@ describe('NxTooltipComponent', () => {
     fixture.detectChanges();
     tick();
 
-    expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+    expect(tooltipDirective._isTooltipVisible()).toBe(false);
     tick(1337);
     fixture.detectChanges();
-    expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+    expect(tooltipDirective._isTooltipVisible()).toBe(true);
 
     tooltipDirective.hide();
     fixture.detectChanges();
     tick();
 
-    expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+    expect(tooltipDirective._isTooltipVisible()).toBe(true);
     tick(7331);
     fixture.detectChanges();
-    expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+    expect(tooltipDirective._isTooltipVisible()).toBe(false);
   }));
 
   it('should be able to override the default position', fakeAsync(() => {
@@ -1025,10 +1039,15 @@ class BasicTooltipDemo {
   showButton = true;
   showTooltipClass = false;
   hideDelay = 200;
-  @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
-  @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
+  @ViewChild(NxTooltipDirective)
+  tooltip!: NxTooltipDirective;
+  @ViewChild('button')
+  button!: ElementRef<HTMLButtonElement>;
 
-  constructor(@Inject(NX_TOOLTIP_SCROLL_STRATEGY) public scrollStrategy: any) {}
+  constructor(
+    @Inject(NX_TOOLTIP_SCROLL_STRATEGY)
+    public scrollStrategy: any,
+  ) {}
 }
 
 @Component({
@@ -1052,7 +1071,8 @@ class ScrollableTooltipDemo {
   message: string = initialTooltipMessage;
   showButton = true;
 
-  @ViewChild(CdkScrollable) scrollingContainer!: CdkScrollable;
+  @ViewChild(CdkScrollable)
+  scrollingContainer!: CdkScrollable;
 
   scrollDown() {
     const scrollingContainerEl = this.scrollingContainer.getElementRef().nativeElement;
@@ -1095,6 +1115,7 @@ class DynamicTooltipsDemo {
 }
 
 @Component({
+  selector: 'test-tooltip-on-text-fields',
   template: `
     <input #input nxTooltip="Something" />
 
@@ -1104,8 +1125,10 @@ class DynamicTooltipsDemo {
   imports: [NxTooltipModule, OverlayModule],
 })
 class TooltipOnTextFields {
-  @ViewChild('input') input!: ElementRef<HTMLInputElement>;
-  @ViewChild('textarea') textarea!: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('input')
+  input!: ElementRef<HTMLInputElement>;
+  @ViewChild('textarea')
+  textarea!: ElementRef<HTMLTextAreaElement>;
 }
 
 @Component({
@@ -1116,8 +1139,10 @@ class TooltipOnTextFields {
 })
 class TooltipDemoWithoutPositionBinding {
   message: any = initialTooltipMessage;
-  @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
-  @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
+  @ViewChild(NxTooltipDirective)
+  tooltip!: NxTooltipDirective;
+  @ViewChild('button')
+  button!: ElementRef<HTMLButtonElement>;
 }
 
 @Component({
@@ -1136,8 +1161,10 @@ class TooltipDemoWithoutPositionBinding {
   imports: [NxTooltipModule, OverlayModule],
 })
 class TooltipDispose {
-  @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
-  @ViewChild('hover') buttonHover!: ElementRef<HTMLButtonElement>;
+  @ViewChild(NxTooltipDirective)
+  tooltip!: NxTooltipDirective;
+  @ViewChild('hover')
+  buttonHover!: ElementRef<HTMLButtonElement>;
 }
 
 @Component({
@@ -1154,12 +1181,16 @@ class TooltipDispose {
 class SelectableTooltip {
   message: any = initialTooltipMessage;
   selectable = true;
-  @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
-  @ViewChild('input') input!: ElementRef<HTMLInputElement>;
-  @ViewChild('textarea') textarea!: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('button')
+  button!: ElementRef<HTMLButtonElement>;
+  @ViewChild('input')
+  input!: ElementRef<HTMLInputElement>;
+  @ViewChild('textarea')
+  textarea!: ElementRef<HTMLTextAreaElement>;
 }
 
 @Component({
+  selector: 'test-manual-trigger-tooltip-test-component',
   template: `<button #button [nxTooltip]="'Tooltip'" [manualTrigger]="manualTrigger">
     Button
   </button>`,
@@ -1168,8 +1199,10 @@ class SelectableTooltip {
 })
 class ManualTriggerTooltipTestComponent {
   manualTrigger = false;
-  @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
-  @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
+  @ViewChild('button')
+  button!: ElementRef<HTMLButtonElement>;
+  @ViewChild(NxTooltipDirective)
+  tooltip!: NxTooltipDirective;
 }
 
 /** Asserts whether a tooltip directive has a tooltip instance. */
@@ -1206,18 +1239,18 @@ describe('manualTrigger input', () => {
     buttonElement.dispatchEvent(new Event('mouseenter'));
     fixture.detectChanges();
     tick(200);
-    expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+    expect(tooltipDirective._isTooltipVisible()).toBe(false);
 
     buttonElement.dispatchEvent(new Event('mouseleave'));
     fixture.detectChanges();
     tick(200);
-    expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+    expect(tooltipDirective._isTooltipVisible()).toBe(false);
 
     component.manualTrigger = false;
     fixture.detectChanges();
     buttonElement.dispatchEvent(new Event('mouseenter'));
     fixture.detectChanges();
     tick(200);
-    expect(tooltipDirective._isTooltipVisible()).toBeTrue();
+    expect(tooltipDirective._isTooltipVisible()).toBe(true);
   }));
 });

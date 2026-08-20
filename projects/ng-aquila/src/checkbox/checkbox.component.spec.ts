@@ -36,7 +36,8 @@ import { NxCheckboxModule } from './checkbox.module';
 
 @Directive({ standalone: true })
 abstract class CheckboxTest {
-  @ViewChild(NxCheckboxComponent) checkboxInstance!: NxCheckboxComponent;
+  @ViewChild(NxCheckboxComponent)
+  checkboxInstance!: NxCheckboxComponent;
   checked = false;
   indeterminate = false;
   testForm!: FormGroup;
@@ -131,7 +132,7 @@ describe('NxCheckboxComponent', () => {
   it('can be disabled', () => {
     createTestComponent(CheckboxDisabled);
 
-    expect(inputElement.disabled).toBeTrue();
+    expect(inputElement.disabled).toBe(true);
   });
 
   it('can be set to readonly', () => {
@@ -150,8 +151,8 @@ describe('NxCheckboxComponent', () => {
     fixture.detectChanges();
     labelElement.click();
     fixture.detectChanges();
-    expect(testInstance.checkboxInstance.checked).toBeFalse();
-    expect(inputElement.checked).toBeFalse();
+    expect(testInstance.checkboxInstance.checked).toBe(false);
+    expect(inputElement.checked).toBe(false);
   });
 
   it('should prevent default on click when readonly', () => {
@@ -161,8 +162,8 @@ describe('NxCheckboxComponent', () => {
     const event = new MouseEvent('click', { bubbles: true, cancelable: true });
     inputElement.dispatchEvent(event);
     fixture.detectChanges();
-    expect(inputElement.checked).toBeFalse();
-    expect(event.defaultPrevented).toBeTrue();
+    expect(inputElement.checked).toBe(false);
+    expect(event.defaultPrevented).toBe(true);
   });
 
   it('can be set to readonly programmatically via NxAbstractControl', () => {
@@ -184,12 +185,12 @@ describe('NxCheckboxComponent', () => {
 
     fixture.componentInstance.negative = true;
     fixture.detectChanges();
-    expect(checkboxInstance.negative).toBeTrue();
+    expect(checkboxInstance.negative).toBe(true);
     expect(checkboxNativeElement).toHaveClass('nx-checkbox--negative');
 
     fixture.componentInstance.negative = false;
     fixture.detectChanges();
-    expect(checkboxInstance.negative).toBeFalse();
+    expect(checkboxInstance.negative).toBe(false);
     expect(checkboxNativeElement).not.toHaveClass('nx-checkbox--negative');
   });
 
@@ -228,13 +229,13 @@ describe('NxCheckboxComponent', () => {
   it('emits proper change event objects on checkbox checked change', fakeAsync(() => {
     createTestComponent(BasicCheckbox);
 
-    spyOn(checkboxInstance.checkedChange, 'emit');
-    const spy = jasmine.createSpy('checkbox selection spy');
+    vi.spyOn(checkboxInstance.checkedChange, 'emit').mockReturnValue(undefined);
+    const spy = vi.fn().mockName('checkbox selection spy');
     const subscription = fixture.componentInstance.checkboxInstance.checkboxChange.subscribe(spy);
     labelElement.click();
     fixture.detectChanges();
     flush();
-    expect(spy).toHaveBeenCalledWith(jasmine.any(NxCheckboxChangeEvent));
+    expect(spy).toHaveBeenCalledWith(expect.any(NxCheckboxChangeEvent));
     expect(checkboxInstance.checkedChange.emit).toHaveBeenCalledWith(true);
 
     subscription.unsubscribe();
@@ -246,8 +247,8 @@ describe('NxCheckboxComponent', () => {
     const event = new MouseEvent('click', { bubbles: true, cancelable: true });
     inputElement.dispatchEvent(event);
     fixture.detectChanges();
-    expect(inputElement.checked).toBeTrue();
-    expect(event.defaultPrevented).toBeFalse();
+    expect(inputElement.checked).toBe(true);
+    expect(event.defaultPrevented).toBe(false);
   });
 
   it('toggles the checked state based on user actions', () => {
@@ -344,7 +345,7 @@ describe('NxCheckboxComponent', () => {
       fixture.detectChanges();
       tick();
 
-      expect(inputElement.disabled).toBeTrue();
+      expect(inputElement.disabled).toBe(true);
     }));
 
     it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
@@ -367,18 +368,19 @@ describe('NxCheckboxComponent', () => {
       fixture.detectChanges();
       flush();
 
-      expect(testInstance.testForm.get('checkbox')!.dirty)
-        .withContext('Expected control to start out pristine.')
-        .toBeFalse();
+      expect(
+        testInstance.testForm.get('checkbox')!.dirty,
+        'Expected control to start out pristine.',
+      ).toBe(false);
 
       labelElement.click();
       tick();
       fixture.detectChanges();
       flush();
 
-      expect(testInstance.testForm.get('checkbox')!.dirty)
-        .withContext('Expected control to be dirty.')
-        .toBeTrue();
+      expect(testInstance.testForm.get('checkbox')!.dirty, 'Expected control to be dirty.').toBe(
+        true,
+      );
     }));
 
     it('should show error messages on submit', fakeAsync(() => {
@@ -402,14 +404,14 @@ describe('NxCheckboxComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicCheckbox);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations with readonly', async () => {
       createTestComponent(CheckboxConfigurable);
       testInstance.readonly = true;
       fixture.detectChanges();
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should set aria-label, aria-labelledBy', async () => {
@@ -462,6 +464,7 @@ describe('NxCheckboxComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-checkbox',
   template: `<nx-checkbox [(checked)]="checked" [(indeterminate)]="indeterminate"
     >Hello NX</nx-checkbox
   >`,
@@ -471,6 +474,7 @@ describe('NxCheckboxComponent', () => {
 class BasicCheckbox extends CheckboxTest {}
 
 @Component({
+  selector: 'test-labelless-checkbox',
   template: `<nx-checkbox></nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
@@ -478,12 +482,14 @@ class BasicCheckbox extends CheckboxTest {}
 class LabellessCheckbox extends CheckboxTest {}
 
 @Component({
+  selector: 'test-checkbox-disabled',
   template: `<nx-checkbox disabled="true">Label</nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class CheckboxDisabled extends CheckboxTest {}
 @Component({
+  selector: 'test-checkbox-label-size',
   template: `<nx-checkbox [labelSize]="labelSize">Label</nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
@@ -491,6 +497,7 @@ class CheckboxDisabled extends CheckboxTest {}
 class CheckboxLabelSize extends CheckboxTest {}
 
 @Component({
+  selector: 'test-checkbox-on-push',
   template: `<nx-checkbox
     [disabled]="disabled"
     [readonly]="readonly"
@@ -504,15 +511,18 @@ class CheckboxLabelSize extends CheckboxTest {}
 class CheckboxOnPush extends CheckboxTest {}
 
 @Component({
+  selector: 'test-abstract-control-checkbox',
   template: `<nx-checkbox>Label</nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
 })
 class AbstractControlCheckbox extends CheckboxTest {
-  @ViewChild(NxAbstractControl) checkboxControl!: NxAbstractControl;
+  @ViewChild(NxAbstractControl)
+  checkboxControl!: NxAbstractControl;
 }
 
 @Component({
+  selector: 'test-checkbox-configurable',
   template: `<nx-checkbox
     [disabled]="disabled"
     [readonly]="readonly"
@@ -526,6 +536,7 @@ class AbstractControlCheckbox extends CheckboxTest {
 class CheckboxConfigurable extends CheckboxTest {}
 
 @Component({
+  selector: 'test-checkbox-template-driven',
   template: `<nx-checkbox [(ngModel)]="checked" [required]="required"></nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
@@ -535,6 +546,7 @@ class CheckboxTemplateDriven extends CheckboxTest {
 }
 
 @Component({
+  selector: 'test-checkbox-a11y',
   template: `<nx-checkbox [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy"></nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule],
@@ -545,6 +557,7 @@ class CheckboxA11y extends CheckboxTest {
 }
 
 @Component({
+  selector: 'test-checkbox-negative',
   template: `<nx-checkbox [negative]="negative"></nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
@@ -552,6 +565,7 @@ class CheckboxA11y extends CheckboxTest {
 class CheckboxNegative extends CheckboxTest {}
 
 @Component({
+  selector: 'test-reactive-checkbox',
   template: `
     <form [formGroup]="testForm">
       <nx-checkbox formControlName="checkbox">
@@ -565,7 +579,8 @@ class CheckboxNegative extends CheckboxTest {}
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class ReactiveCheckbox extends CheckboxTest {
-  @ViewChild(NxErrorComponent) error!: NxErrorComponent;
+  @ViewChild(NxErrorComponent)
+  error!: NxErrorComponent;
 
   fb;
   constructor() {
@@ -583,6 +598,7 @@ class ReactiveCheckbox extends CheckboxTest {
 }
 
 @Component({
+  selector: 'test-checkbox-aria-described-by',
   template: `<nx-checkbox [ariaDescribedBy]="ariaDescribedBy"></nx-checkbox>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCheckboxModule],
@@ -592,6 +608,7 @@ class CheckboxAriaDescribedBy extends CheckboxTest {
 }
 
 @Component({
+  selector: 'test-reactive-checkbox-with-described-by',
   template: `
     <form [formGroup]="testForm">
       <nx-checkbox formControlName="checkbox" [ariaDescribedBy]="ariaDescribedBy">
@@ -605,7 +622,8 @@ class CheckboxAriaDescribedBy extends CheckboxTest {
   imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule, NxErrorComponent],
 })
 class ReactiveCheckboxWithDescribedBy extends CheckboxTest {
-  @ViewChild(NxErrorComponent) error!: NxErrorComponent;
+  @ViewChild(NxErrorComponent)
+  error!: NxErrorComponent;
   ariaDescribedBy: string | null = null;
 
   fb;

@@ -7,7 +7,8 @@ import { NxIndicatorModule } from './indicator.module';
 
 @Directive({ standalone: true })
 abstract class IndicatorTest {
-  @ViewChild(NxIndicatorComponent) indicatorInstance!: NxIndicatorComponent;
+  @ViewChild(NxIndicatorComponent)
+  indicatorInstance!: NxIndicatorComponent;
 }
 
 describe('NxIndicatorComponent', () => {
@@ -166,6 +167,7 @@ describe('NxIndicatorComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-indicator',
   template: `<nx-indicator [position]="position">99</nx-indicator>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIndicatorModule],
@@ -175,6 +177,7 @@ class BasicIndicator extends IndicatorTest {
 }
 
 @Component({
+  selector: 'test-single-letter-indicator',
   template: `<nx-indicator [position]="position">A</nx-indicator>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIndicatorModule],
@@ -184,6 +187,7 @@ class SingleLetterIndicator extends IndicatorTest {
 }
 
 @Component({
+  selector: 'test-sized-indicator',
   template: `<nx-indicator [size]="size">99</nx-indicator>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIndicatorModule],
@@ -193,6 +197,7 @@ class SizedIndicator extends IndicatorTest {
 }
 
 @Component({
+  selector: 'test-typed-indicator',
   template: `<nx-indicator [type]="type" [size]="size">99</nx-indicator>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIndicatorModule],
@@ -203,6 +208,7 @@ class TypedIndicator extends IndicatorTest {
 }
 
 @Component({
+  selector: 'test-empty-indicator',
   template: `<nx-indicator></nx-indicator>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIndicatorModule],
@@ -210,6 +216,7 @@ class TypedIndicator extends IndicatorTest {
 class EmptyIndicator extends IndicatorTest {}
 
 @Component({
+  selector: 'test-icon-indicator',
   template: `<nx-indicator><nx-icon name="chevron-left"></nx-icon></nx-indicator>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIndicatorModule, NxIconModule],
@@ -217,6 +224,7 @@ class EmptyIndicator extends IndicatorTest {}
 class IconIndicator extends IndicatorTest {}
 
 @Component({
+  selector: 'test-nested-icon-indicator',
   template: `<nx-indicator
     ><span><nx-icon name="chevron-left"></nx-icon></span
   ></nx-indicator>`,
@@ -226,6 +234,7 @@ class IconIndicator extends IndicatorTest {}
 class NestedIconIndicator extends IndicatorTest {}
 
 @Component({
+  selector: 'test-wrapped-text-indicator',
   template: `<nx-indicator><span>99</span></nx-indicator>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIndicatorModule],

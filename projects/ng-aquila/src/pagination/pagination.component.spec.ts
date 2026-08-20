@@ -28,11 +28,12 @@ const customTexts: IPaginationTexts = {
 
 @Directive({ standalone: true })
 abstract class PaginationTest {
-  @ViewChild(NxPaginationComponent) paginationInstance!: NxPaginationComponent;
+  @ViewChild(NxPaginationComponent)
+  paginationInstance!: NxPaginationComponent;
   page = 1;
-  prevPage = jasmine.createSpy('prevPageSpy');
-  nextPage = jasmine.createSpy('nextPageSpy');
-  goToPage = jasmine.createSpy('goToPageSpy');
+  prevPage = vi.fn().mockName('prevPageSpy');
+  nextPage = vi.fn().mockName('nextPageSpy');
+  goToPage = vi.fn().mockName('goToPageSpy');
   ariaLabel = '';
 }
 
@@ -153,13 +154,6 @@ describe('NxPaginationComponent', () => {
       expect(testInstance.nextPage).toHaveBeenCalled();
     });
 
-    it('should emit an event when click next arrow', () => {
-      createTestComponent(SimplePagination);
-      fixture.detectChanges();
-      nextArrowSimple.click();
-      expect(testInstance.nextPage).toHaveBeenCalled();
-    });
-
     it('should emit an event when click prev arrow', () => {
       createTestComponent(SimplePaginationBeginat10);
       fixture.detectChanges();
@@ -180,7 +174,7 @@ describe('NxPaginationComponent', () => {
     it('should keep focus after interaction', () => {
       createTestComponent(SimplePagination);
       const simpleInstance = testInstance as SimplePagination;
-      const spy = spyOn(simpleInstance.paginationInstance, 'onNext');
+      const spy = vi.spyOn(simpleInstance.paginationInstance, 'onNext').mockReturnValue(undefined);
       fixture.detectChanges();
       nextArrowSimple.focus();
       nextArrowSimple.click();
@@ -195,14 +189,7 @@ describe('NxPaginationComponent', () => {
     it('displays an advanced pagination', () => {
       createTestComponent(AdvancedPagination);
       expect(pageElements && nextArrow).not.toBeNull();
-      expect(listElements).not.toHaveSize(0);
-    });
-
-    it('should emit an event when click next arrow', () => {
-      createTestComponent(AdvancedPagination);
-      fixture.detectChanges();
-      nextArrow.click();
-      expect(testInstance.nextPage).toHaveBeenCalled();
+      expect(listElements).not.toHaveLength(0);
     });
 
     it('should emit an event when click next arrow', () => {
@@ -215,14 +202,14 @@ describe('NxPaginationComponent', () => {
     it('displays an advanced pagination with less than 10 pages', () => {
       createTestComponent(AdvancedPaginationLess10);
       expect(pageElements && nextArrow).not.toBeNull();
-      expect(listElements).toHaveSize(7);
+      expect(listElements).toHaveLength(7);
     });
 
     it('displays an advanced pagination with more than 10 pages', () => {
       createTestComponent(AdvancedPaginationMore10);
       expect(pageElements && nextArrow).not.toBeNull();
-      expect(listElements).toHaveSize(10);
-      expect(pageElements).toHaveSize(5);
+      expect(listElements).toHaveLength(10);
+      expect(pageElements).toHaveLength(5);
     });
 
     it('should emit an event when click prev arrow', () => {
@@ -237,13 +224,6 @@ describe('NxPaginationComponent', () => {
     it('should emit an event when click a page', () => {
       createTestComponent(AdvancedPagination);
       fixture.detectChanges();
-      const pages = fixture.debugElement.nativeElement.querySelector('.nx-pagination--number');
-      pages.click();
-      expect(testInstance.goToPage).toHaveBeenCalled();
-    });
-
-    it('should emit an event when click a page', () => {
-      createTestComponent(AdvancedPagination);
       const pages = fixture.debugElement.nativeElement.querySelector('.nx-pagination--number');
       pages.click();
       expect(testInstance.goToPage).toHaveBeenCalled();
@@ -273,7 +253,7 @@ describe('NxPaginationComponent', () => {
     it('should keep focus after interaction', () => {
       createTestComponent(AdvancedPagination);
       const simpleInstance = testInstance as AdvancedPagination;
-      const spy = spyOn(simpleInstance.paginationInstance, 'onPage');
+      const spy = vi.spyOn(simpleInstance.paginationInstance, 'onPage').mockReturnValue(undefined);
       fixture.detectChanges();
 
       const pageLinkNodes = pageElements as unknown as NodeList;
@@ -291,14 +271,7 @@ describe('NxPaginationComponent', () => {
     it('displays a slider pagination', () => {
       createTestComponent(SliderPagination);
       expect(sliderElements).not.toBeNull();
-      expect(listElements).not.toHaveSize(0);
-    });
-
-    it('should emit an event when click next arrow', () => {
-      createTestComponent(SliderPagination);
-      fixture.detectChanges();
-      nextArrow.click();
-      expect(testInstance.nextPage).toHaveBeenCalled();
+      expect(listElements).not.toHaveLength(0);
     });
 
     it('should emit an event when click next arrow', () => {
@@ -315,7 +288,7 @@ describe('NxPaginationComponent', () => {
       const paginationButtons = fixture.debugElement.queryAll(By.css('button.nx-pagination--icon'));
 
       expect(paginationButtons.length).toBe(6);
-      expect(paginationButtons[0].nativeElement.getAttribute('aria-label')).toEqual('1');
+      expect(paginationButtons[0].nativeElement.getAttribute('aria-label')).toBe('1');
     });
 
     it('should emit an event when click prev arrow', () => {
@@ -333,17 +306,10 @@ describe('NxPaginationComponent', () => {
       expect(testInstance.goToPage).toHaveBeenCalled();
     });
 
-    it('should emit an event when click a page', () => {
-      createTestComponent(SliderPagination);
-      const pages = fixture.debugElement.nativeElement.querySelector('.nx-pagination--icon');
-      pages.click();
-      expect(testInstance.goToPage).toHaveBeenCalled();
-    });
-
     it('should keep focus after interaction', () => {
       createTestComponent(SliderPagination);
       const simpleInstance = testInstance as SliderPagination;
-      const spy = spyOn(simpleInstance.paginationInstance, 'onPage');
+      const spy = vi.spyOn(simpleInstance.paginationInstance, 'onPage').mockReturnValue(undefined);
       fixture.detectChanges();
 
       const pageLinkNodes = listElements as unknown as NodeList;
@@ -362,8 +328,8 @@ describe('NxPaginationComponent', () => {
     it('should display advanced mobile pagination correctly', waitForAsync(() => {
       createTestComponent(AdvancedPagination);
       fixture.detectChanges();
-      expect(mobileListElements).toHaveSize(3);
-      expect(mobilePageElements).toHaveSize(3);
+      expect(mobileListElements).toHaveLength(3);
+      expect(mobilePageElements).toHaveLength(3);
     }));
   });
 
@@ -427,7 +393,7 @@ describe('NxPaginationComponent', () => {
     it('triggers change detection', () => {
       createTestComponent(SimplePaginationWithDirection);
       fixture.detectChanges();
-      spyOn((paginationInstance as any)._cdr, 'detectChanges');
+      vi.spyOn((paginationInstance as any)._cdr, 'detectChanges').mockReturnValue(undefined);
       (testInstance as SimplePaginationWithDirection).direction = 'rtl';
       fixture.detectChanges();
       expect((paginationInstance as any)._cdr.detectChanges).toHaveBeenCalledTimes(1);
@@ -473,7 +439,7 @@ describe('NxPaginationComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(SimplePagination);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should only render one nav element', () => {
@@ -516,13 +482,16 @@ describe('NxPaginationComponent', () => {
       testInstance.page = 3;
       (testInstance as FocusCurrentPageButtonPagination).lastInteractedButtonIsPage = true;
 
-      const mockButtonElement = jasmine.createSpyObj('ElementRef', ['focus']);
-      mockButtonElement.nativeElement = { innerText: '3', focus: jasmine.createSpy('focus') };
+      const mockButtonElement = {
+        nativeElement: { innerText: '3', focus: vi.fn().mockName('focus') },
+      };
 
       (testInstance as FocusCurrentPageButtonPagination)._linkElements = new QueryList<
         ElementRef<any>
       >();
-      (testInstance as FocusCurrentPageButtonPagination)._linkElements.reset([mockButtonElement]);
+      (testInstance as FocusCurrentPageButtonPagination)._linkElements.reset([
+        mockButtonElement as ElementRef<any>,
+      ]);
 
       fixture.detectChanges();
 
@@ -533,6 +502,7 @@ describe('NxPaginationComponent', () => {
 });
 
 @Component({
+  selector: 'test-advanced-pagination',
   template: `
     <nx-pagination
       [count]="count"
@@ -556,6 +526,7 @@ class AdvancedPagination extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-simple-pagination',
   template: `
     <nx-pagination
       [count]="count"
@@ -575,6 +546,7 @@ class SimplePagination extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-advanced-pagination-less10',
   template: `
     <nx-pagination
       [count]="count"
@@ -597,6 +569,7 @@ class AdvancedPaginationLess10 extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-advanced-pagination-more10',
   template: `
     <nx-pagination
       [count]="count"
@@ -619,6 +592,7 @@ class AdvancedPaginationMore10 extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-advanced-pagination-beginat10',
   template: `
     <nx-pagination
       [count]="count"
@@ -642,6 +616,7 @@ class AdvancedPaginationBeginat10 extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-simple-pagination-beginat10',
   template: `
     <nx-pagination
       [count]="count"
@@ -662,6 +637,7 @@ class SimplePaginationBeginat10 extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-localization-token',
   template: `
     <nx-pagination
       [count]="count"
@@ -682,6 +658,7 @@ class LocalizationToken extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-simple-pagination-with-direction',
   template: `
     <div [dir]="direction">
       <nx-pagination
@@ -704,6 +681,7 @@ class SimplePaginationWithDirection extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-advanced-pagination-with-direction',
   template: `
     <div [dir]="direction">
       <nx-pagination
@@ -729,6 +707,7 @@ class AdvancedPaginationWithDirection extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-slider-pagination',
   template: `
     <nx-pagination
       [count]="slides"
@@ -748,6 +727,7 @@ class SliderPagination extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-slider-pagination-beginat6',
   template: `
     <nx-pagination
       [count]="slides"
@@ -768,6 +748,7 @@ class SliderPaginationBeginat6 extends PaginationTest {
 }
 
 @Component({
+  selector: 'test-focus-current-page-button-pagination',
   template: `
     <nx-pagination
       [count]="count"
@@ -782,7 +763,8 @@ class SliderPaginationBeginat6 extends PaginationTest {
   imports: [NxPaginationModule, BidiModule],
 })
 class FocusCurrentPageButtonPagination extends PaginationTest {
-  @ViewChildren('focusable') _linkElements!: QueryList<ElementRef>;
+  @ViewChildren('focusable')
+  _linkElements!: QueryList<ElementRef>;
   lastInteractedButtonIsPage: boolean = true;
   count = 210;
   perPage = 10;

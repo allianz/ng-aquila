@@ -14,8 +14,10 @@ import { NxProgressStepperModule } from './progress-stepper.module';
 
 @Directive({ standalone: true })
 abstract class ProgressStepperTest {
-  @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;
-  @ViewChild(NxProgressStepperDirective, { read: ElementRef }) componentInstanceRef!: ElementRef;
+  @ViewChild(NxProgressStepperDirective)
+  componentInstance!: NxProgressStepperDirective;
+  @ViewChild(NxProgressStepperDirective, { read: ElementRef })
+  componentInstanceRef!: ElementRef;
 }
 
 describe('NxProgressStepperDirective', () => {
@@ -45,7 +47,7 @@ describe('NxProgressStepperDirective', () => {
 
   it('should hold the correct number of steps', fakeAsync(() => {
     createTestComponent(ProgressStepperBasicComponent);
-    expect(componentInstance._steps).toHaveSize(2);
+    expect(componentInstance._steps).toHaveLength(2);
   }));
 
   it('should use the custom current step label', () => {
@@ -59,6 +61,7 @@ describe('NxProgressStepperDirective', () => {
  * when there is a level between `nxProgressStepper` and the `nx-step` children.
  */
 @Component({
+  selector: 'test-progress-stepper-basic-component',
   template: `
     <div nxProgressStepper currentStepLabel="myLabel">
       @for (step of steps; track step) {

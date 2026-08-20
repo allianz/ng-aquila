@@ -6,7 +6,7 @@ import _import from 'eslint-plugin-import';
 import rxjs from '@smarttools/eslint-plugin-rxjs';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
-import jasmine from 'eslint-plugin-jasmine';
+import vitest from '@vitest/eslint-plugin';
 import jsdoc from 'eslint-plugin-jsdoc';
 import regexp from 'eslint-plugin-regexp';
 import eslintConfigPrettier from 'eslint-config-prettier';
@@ -336,19 +336,43 @@ export default tseslint.config(
 
   // Spec files configuration
   {
-    files: ['**/*.spec.ts'],
+    files: ['**/*.spec.ts', '**/*.test-utils.ts'],
     plugins: {
-      jasmine,
+      vitest,
     },
-    extends: [jasmine.configs.recommended],
+    extends: [vitest.configs.recommended],
     rules: {
-      'jasmine/new-line-before-expect': 'off',
-      'jasmine/no-unsafe-spy': 'off',
-      'jasmine/prefer-toBeUndefined': 'warn',
-      'jasmine/prefer-toHaveBeenCalledWith': 'off',
+      'vitest/prefer-to-be': 'warn',
+      // Many specs assert through local helpers (`assertChecked`, `changeAndCheckButtonSize`,
+      // `activeDateEquals`, `expectDropdownOpen`, …) rather than calling `expect` in the test
+      // body itself. The `*` wildcards match alphanumerics only, so these stay reasonably tight.
+      'vitest/expect-expect': [
+        'error',
+        {
+          assertFunctionNames: ['expect*', '*assert*', '*check*', '*equals', 'testIban'],
+        },
+      ],
+      // Some specs branch their expectations on the host platform (the date adapters assert
+      // different month-name formats per browser) or guard on a rendered item count.
+      'vitest/no-conditional-expect': 'off',
+      // Several suites are titled `describe(NxFooComponent.name, …)` so the title tracks
+      // renames of the component under test.
+      'vitest/valid-title': ['error', { ignoreTypeOfDescribeName: true }],
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/non-nullable-type-assertion-style': 'off',
       '@angular-eslint/no-empty-lifecycle-method': 'off',
+    },
+  },
+
+  // The schematics specs run under standalone Jasmine (see `npm run
+  // test:schematics`), so the Vitest rules do not apply to them.
+  {
+    files: ['projects/ng-aquila/src/schematics/**/*.spec.ts'],
+    rules: {
+      ...Object.fromEntries(
+        Object.keys(vitest.configs.recommended.rules ?? {}).map((rule) => [rule, 'off']),
+      ),
+      'vitest/prefer-to-be': 'off',
     },
   },
 

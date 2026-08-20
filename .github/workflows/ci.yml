@@ -24,6 +24,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # CHROME_BIN is forwarded to Playwright as launchOptions.executablePath, so it launches
+      # the runner's Chrome directly instead of downloading its own (no root for apt-get here).
+      - name: Locate browser
+        run: |
+          CHROME_BIN=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium)
+          echo "Using browser: $CHROME_BIN"
+          echo "CHROME_BIN=$CHROME_BIN" >> "$GITHUB_ENV"
+
       - name: Generate documentation
         run: npm run library:generate:docs
 
@@ -33,14 +41,12 @@ jobs:
       - name: Format check
         run: npm run format
 
+      # Appended here rather than in package.json so a local `npm test` doesn't print raw ::error lines.
       - name: Test ngx-docs-ui
-        run: COMPACT_TEST_RESULTS=true npm run test:docs-ui:coverage
+        run: npm run test:docs-ui:coverage -- --reporters=github-actions
 
       - name: Test ng-aquila
-        run: |
-          export CHROME_BIN=$(command -v google-chrome || command -v chromium)
-          echo "Using browser: $CHROME_BIN"
-          COMPACT_TEST_RESULTS=true npm run test:lib:coverage
+        run: npm run test:lib:coverage -- --reporters=github-actions
 
       - name: Test ng-aquila/schematics
         run: npm run test:schematics
@@ -50,3 +56,24 @@ jobs:
 
       - name: Build documentation
         run: npm run build:docs -- --progress=false
+
+      # Coverage is only written on a green run, hence if-no-files-found: ignore.
+      # Pinned to v3 (GHES doesn't support the v4+ artifact API); -node20 avoids needing node24 on the runner.
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3.2.2-node20
+        if: ${{ !cancelled() }}
+        with:
+          name: coverage-report
+          path: coverage/**
+          if-no-files-found: ignore
+          retention-days: 7
+
+      # Vitest screenshots failing specs in browser mode; useful for browser-only failures that don't reproduce locally.
+      - name: Upload failure screenshots
+        uses: actions/upload-artifact@v3.2.2-node20
+        if: failure()
+        with:
+          name: failure-screenshots
+          path: '**/__screenshots__/**'
+          if-no-files-found: ignore
+          retention-days: 7

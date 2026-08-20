@@ -145,13 +145,13 @@ describe('PhoneInputComponent', () => {
     fixture.detectChanges();
     flush();
     const input = getInput()?.nativeElement;
-    expect(dropdown.componentInstance.disabled).toBeTrue();
-    expect(input.disabled).toBeTrue();
+    expect(dropdown.componentInstance.disabled).toBe(true);
+    expect(input.disabled).toBe(true);
     testInstance.disabled = false;
     fixture.detectChanges();
     flush();
-    expect(dropdown.componentInstance.disabled).toBeFalse();
-    expect(input.disabled).toBeFalse();
+    expect(dropdown.componentInstance.disabled).toBe(false);
+    expect(input.disabled).toBe(false);
   }));
 
   it('should update template after patchValue', fakeAsync(() => {
@@ -195,13 +195,13 @@ describe('PhoneInputComponent', () => {
     fixture.detectChanges();
     flush();
     const input = getInput()?.nativeElement;
-    expect(dropdown.componentInstance.disabled).toBeTrue();
-    expect(input.disabled).toBeTrue();
+    expect(dropdown.componentInstance.disabled).toBe(true);
+    expect(input.disabled).toBe(true);
     (testInstance as ReactiveFormsPhoneInput).formControl.enable();
     fixture.detectChanges();
     flush();
-    expect(dropdown.componentInstance.disabled).toBeFalse();
-    expect(input.disabled).toBeFalse();
+    expect(dropdown.componentInstance.disabled).toBe(false);
+    expect(input.disabled).toBe(false);
   }));
 
   it('should remove leading zeros by default on blur', fakeAsync(() => {
@@ -218,7 +218,7 @@ describe('PhoneInputComponent', () => {
     expect(input.value).toBe('1234');
   }));
 
-  it('should not remove leading zeros on blur if country is italy ', fakeAsync(() => {
+  it('should not remove leading zeros on blur if country is italy', fakeAsync(() => {
     createTestComponent(ReactiveFormsPhoneInput);
     flush();
     const input = getInput().nativeElement;
@@ -315,7 +315,7 @@ describe('PhoneInputComponent', () => {
 
   it('should have countries', () => {
     createTestComponent(DefaultPhoneInput);
-    expect(Object.keys(phoneInputInstance.countryNames)).not.toHaveSize(0);
+    expect(Object.keys(phoneInputInstance.countryNames)).not.toHaveLength(0);
     dispatchFakeEvent(dropdown.nativeElement, 'click');
     fixture.detectChanges();
     expect(getPanel().innerText).toContain('Germany');
@@ -386,7 +386,11 @@ describe('PhoneInputComponent', () => {
   it('should call inputFormatter and update countryCode when country change', fakeAsync(() => {
     createTestComponent(ConfigurablePhoneInput);
     flush();
-    spyOn(testInstance.phoneInput, 'inputFormatter');
+    // `inputFormatter` is a getter/setter pair, and `vi.spyOn` mistakes the getter for Vite's
+    // SSR wrapper and invokes it unbound. Assign the mock through the setter instead.
+    const inputFormatter = vi.fn().mockName('inputFormatter').mockReturnValue('');
+    testInstance.phoneInput.inputFormatter = inputFormatter;
+    inputFormatter.mockClear();
 
     const select = dropdown.nativeElement;
     select.click();
@@ -399,7 +403,7 @@ describe('PhoneInputComponent', () => {
     flush();
 
     expect(testInstance.phoneInput.countryCode).toBe('UA');
-    expect(testInstance.phoneInput.inputFormatter).toHaveBeenCalled();
+    expect(inputFormatter).toHaveBeenCalled();
   }));
 
   it('should set aria-label', () => {
@@ -409,10 +413,10 @@ describe('PhoneInputComponent', () => {
     const areaCodeElement = dropdown.nativeElement;
     const phoneInput = getInput().nativeElement;
     expect(areaCodeElement.getAttribute('aria-label')).toBe('custom area code');
-    expect(areaCodeElement.getAttribute('aria-labelledby')).toBe(null);
+    expect(areaCodeElement.getAttribute('aria-labelledby')).toBeNull();
 
     expect(phoneInput.getAttribute('aria-label')).toBe('custom line number');
-    expect(phoneInput.getAttribute('aria-labelledby')).toBe(null);
+    expect(phoneInput.getAttribute('aria-labelledby')).toBeNull();
 
     const formfield = fixture.debugElement.query(
       By.directive(NxFormfieldComponent),
@@ -428,8 +432,8 @@ describe('PhoneInputComponent', () => {
       testInstance.required = true;
       fixture.detectChanges();
       const input = getInput().nativeElement;
-      expect(input.required).toBeTrue();
-      expect(dropdown.componentInstance.required).toBeTrue();
+      expect(input.required).toBe(true);
+      expect(dropdown.componentInstance.required).toBe(true);
     });
 
     it('should set required on input and dropdown when formControl has required validator', fakeAsync(() => {
@@ -437,15 +441,15 @@ describe('PhoneInputComponent', () => {
       flush();
       fixture.detectChanges();
       const input = getInput().nativeElement;
-      expect(input.required).toBeTrue();
-      expect(dropdown.componentInstance.required).toBeTrue();
+      expect(input.required).toBe(true);
+      expect(dropdown.componentInstance.required).toBe(true);
     }));
 
     it('should not be required by default', () => {
       createTestComponent(DefaultPhoneInput);
       const input = getInput().nativeElement;
-      expect(input.required).toBeFalse();
-      expect(dropdown.componentInstance.required).toBeFalse();
+      expect(input.required).toBe(false);
+      expect(dropdown.componentInstance.required).toBe(false);
     });
   });
 
@@ -475,7 +479,8 @@ describe('PhoneInputComponent', () => {
 
 @Directive({ standalone: true })
 abstract class PhoneInputTest {
-  @ViewChild(NxPhoneInputComponent) phoneInput!: NxPhoneInputComponent;
+  @ViewChild(NxPhoneInputComponent)
+  phoneInput!: NxPhoneInputComponent;
   disabled = false;
   readonly = false;
   required = false;
@@ -486,6 +491,7 @@ abstract class PhoneInputTest {
 }
 
 @Component({
+  selector: 'test-default-phone-input',
   template: `<nx-formfield label="Telephone number">
     <nx-phone-input [countryCode]="countryCode"></nx-phone-input>
   </nx-formfield>`,
@@ -495,6 +501,7 @@ abstract class PhoneInputTest {
 class DefaultPhoneInput extends PhoneInputTest {}
 
 @Component({
+  selector: 'test-configurable-phone-input',
   template: `<nx-formfield label="Telephone number">
     <nx-phone-input
       [(ngModel)]="value"
@@ -515,6 +522,7 @@ class ConfigurablePhoneInput extends PhoneInputTest {
 }
 
 @Component({
+  selector: 'test-reactive-forms-phone-input',
   template: `<nx-formfield label="Telephone number">
     <nx-phone-input
       [formControl]="formControl"
@@ -537,6 +545,7 @@ class MyIntl extends NxPhoneInputIntl {
 }
 
 @Component({
+  selector: 'test-i18n-provider-test',
   template: `<nx-formfield label="Telephone number">
     <nx-phone-input></nx-phone-input>
   </nx-formfield>`,
@@ -547,6 +556,7 @@ class MyIntl extends NxPhoneInputIntl {
 class I18nProviderTest extends PhoneInputTest {}
 
 @Component({
+  selector: 'test-custom-formatter',
   template: `<nx-formfield label="Telephone number">
     <nx-phone-input [inputFormatter]="formatter" [formControl]="formControl"></nx-phone-input>
     <nx-error nxFormfieldError>Error message</nx-error>
@@ -562,6 +572,7 @@ class CustomFormatter extends PhoneInputTest {
 }
 
 @Component({
+  selector: 'test-phone-input-a11y',
   template: `<nx-formfield label="Telephone number">
     <nx-phone-input
       [countryCode]="countryCode"

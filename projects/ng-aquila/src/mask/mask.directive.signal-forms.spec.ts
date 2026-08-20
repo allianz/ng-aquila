@@ -10,13 +10,14 @@ import {
 import { disabled, form, FormField, required } from '@angular/forms/signals';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
-import { assertInputValue } from './mask.directive.spec';
 import { NxMaskDirective } from './mask.directive';
 import { NxMaskModule } from './mask.module';
+import { assertInputValue } from './mask.test-utils';
 
 // Host that drives an nxMask input through an Angular 22 signal form (interop option 3:
 // the mask provides NG_VALUE_ACCESSOR, so `[formField]` binds to it via the CVA path).
 @Component({
+  selector: 'test-mask-signal-form-host-component',
   template: `
     <input [nxMask]="mask()" [deactivateMask]="deactivate()" [formField]="maskForm.value" />
   `,
@@ -36,6 +37,7 @@ class MaskSignalFormHostComponent {
 
 // Host with a `required` validator in the schema.
 @Component({
+  selector: 'test-required-mask-signal-form-host-component',
   template: `<input [nxMask]="mask()" [formField]="maskForm.value" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxMaskModule],
@@ -54,6 +56,7 @@ class RequiredMaskSignalFormHostComponent {
 
 // Host with a `disabled` rule in the schema.
 @Component({
+  selector: 'test-disabled-mask-signal-form-host-component',
   template: `<input [nxMask]="mask()" [formField]="maskForm.value" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxMaskModule],

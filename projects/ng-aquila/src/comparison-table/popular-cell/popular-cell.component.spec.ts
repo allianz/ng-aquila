@@ -26,7 +26,8 @@ const THROTTLE_TIME = 200;
 
 @Directive({ standalone: true })
 abstract class PopularCellTest {
-  @ViewChild(NxComparisonTablePopularCell) popularCellInstance!: NxComparisonTablePopularCell;
+  @ViewChild(NxComparisonTablePopularCell)
+  popularCellInstance!: NxComparisonTablePopularCell;
   @ViewChildren(NxComparisonTableRowDirective)
   rowInstances!: QueryList<NxComparisonTableRowDirective>;
 
@@ -94,7 +95,7 @@ describe('NxComparisonTablePopularCell', () => {
     // forColumn=2, headerCells=3 → 1 before + 1 after = 2 placeholders in the popular row
     const popularRow = fixture.nativeElement.querySelector('thead .is-popular-row');
     const placeholderCells = popularRow.querySelectorAll('.nx-comparison-table__placeholder-cell');
-    expect(placeholderCells).toHaveSize(2);
+    expect(placeholderCells).toHaveLength(2);
     flush();
   }));
 
@@ -109,7 +110,7 @@ describe('NxComparisonTablePopularCell', () => {
     // tablet: same header-track structure, same 2 placeholders
     const popularRow = fixture.nativeElement.querySelector('thead .is-popular-row');
     const placeholderCells = popularRow.querySelectorAll('.nx-comparison-table__placeholder-cell');
-    expect(placeholderCells).toHaveSize(2);
+    expect(placeholderCells).toHaveLength(2);
     flush();
   }));
 
@@ -141,15 +142,16 @@ describe('NxComparisonTablePopularCell', () => {
     const placeholderCells = popularRow.nativeElement.querySelectorAll(
       '.nx-comparison-table__placeholder-cell',
     );
-    expect(placeholderCells).toHaveSize(1);
+    expect(placeholderCells).toHaveLength(1);
     const emptyCells = popularRow.nativeElement.querySelectorAll(
       '.nx-comparison-table__placeholder-with-border-cell',
     );
-    expect(emptyCells).toHaveSize(1);
+    expect(emptyCells).toHaveLength(1);
   }));
 });
 
 @Component({
+  selector: 'test-popular-cell-component',
   template: `
     <nx-comparison-table selectedIndex="1">
       <ng-container nxComparisonTableRow type="header">

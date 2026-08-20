@@ -29,7 +29,7 @@ describe('NxFormfieldHarness', () => {
 
     const formfield = await loader.getHarness(NxFormfieldHarness);
     const errors = await formfield.getErrors();
-    expect(errors).toHaveSize(0);
+    expect(errors).toHaveLength(0);
   });
 
   it('should get errors when control is invalid', async () => {
@@ -67,6 +67,8 @@ describe('NxFormfieldHarness', () => {
     const formfield = await loader.getHarness(NxFormfieldHarness);
     const input = await formfield.getHarness(NxInputHarness);
     await input.setValue('123');
+
+    expect(await formfield.isValid()).toBe(false);
   });
 
   it('should get prefix', async () => {
@@ -162,8 +164,10 @@ describe('NxFormfieldHarness', () => {
     });
 
     it('should find by label', async () => {
-      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ label: 'Foo' }))).toHaveSize(1);
-      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ label: /B/ }))).toHaveSize(2);
+      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ label: 'Foo' }))).toHaveLength(
+        1,
+      );
+      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ label: /B/ }))).toHaveLength(2);
     });
 
     it('should find by hasErrors', async () => {
@@ -174,24 +178,26 @@ describe('NxFormfieldHarness', () => {
       fixture.componentInstance.control.markAllAsTouched();
       expect(
         await errorLoader.getAllHarnesses(NxFormfieldHarness.with({ hasErrors: true })),
-      ).toHaveSize(1);
+      ).toHaveLength(1);
       expect(
         await errorLoader.getAllHarnesses(NxFormfieldHarness.with({ hasErrors: false })),
-      ).toHaveSize(1);
+      ).toHaveLength(1);
     });
 
     it('should find by readonly', async () => {
-      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ readonly: true }))).toHaveSize(
-        1,
-      );
-      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ readonly: false }))).toHaveSize(
-        5,
-      );
+      expect(
+        await loader.getAllHarnesses(NxFormfieldHarness.with({ readonly: true })),
+      ).toHaveLength(1);
+      expect(
+        await loader.getAllHarnesses(NxFormfieldHarness.with({ readonly: false })),
+      ).toHaveLength(5);
     });
 
     it('should find by inline', async () => {
-      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ inline: true }))).toHaveSize(1);
-      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ inline: false }))).toHaveSize(
+      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ inline: true }))).toHaveLength(
+        1,
+      );
+      expect(await loader.getAllHarnesses(NxFormfieldHarness.with({ inline: false }))).toHaveLength(
         5,
       );
     });
@@ -203,15 +209,16 @@ describe('NxFormfieldHarness', () => {
 
       expect(
         await statusLoader.getAllHarnesses(NxFormfieldHarness.with({ status: 'positive' })),
-      ).toHaveSize(1);
+      ).toHaveLength(1);
       expect(
         await statusLoader.getAllHarnesses(NxFormfieldHarness.with({ status: null })),
-      ).toHaveSize(1);
+      ).toHaveLength(1);
     });
   });
 });
 
 @Component({
+  selector: 'test-main-formfield-test',
   template: `
     <!-- Index 0: Label test -->
     <nx-formfield label="Foo">
@@ -258,6 +265,7 @@ describe('NxFormfieldHarness', () => {
 class MainFormfieldTest {}
 
 @Component({
+  selector: 'test-valid-control-test',
   template: `
     <nx-formfield>
       <input nxInput minlength="5" [formControl]="control" />
@@ -273,6 +281,7 @@ class ValidControlTest {
 }
 
 @Component({
+  selector: 'test-invalid-control-test',
   template: `
     <nx-formfield>
       <input nxInput [formControl]="control" />
@@ -288,6 +297,7 @@ class InvalidControlTest {
 }
 
 @Component({
+  selector: 'test-notes-test',
   template: `
     <nx-formfield>
       <input nxInput [formControl]="control" />
@@ -303,6 +313,7 @@ class NotesTest {
 }
 
 @Component({
+  selector: 'test-validation-error-test',
   template: `
     <nx-formfield>
       <input nxInput minlength="5" [formControl]="control" />
@@ -317,6 +328,7 @@ class ValidationErrorTest {
 }
 
 @Component({
+  selector: 'test-nx-formfield-harness-filter-test',
   template: `
     <nx-formfield label="Foo"><input nxInput /></nx-formfield>
     <nx-formfield label="Bar"><input nxInput /></nx-formfield>
@@ -331,6 +343,7 @@ class ValidationErrorTest {
 class FilterTest {}
 
 @Component({
+  selector: 'test-status-test',
   template: `
     <nx-formfield label="Foo" appearance="outline" status="positive">
       <input nxInput />
@@ -344,6 +357,7 @@ class FilterTest {}
 class StatusTest {}
 
 @Component({
+  selector: 'test-error-filter-test',
   template: `
     <nx-formfield>
       <input nxInput [formControl]="control" />

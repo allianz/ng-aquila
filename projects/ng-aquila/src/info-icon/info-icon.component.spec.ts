@@ -15,7 +15,8 @@ import { NxInfoIconModule } from './info-icon.module';
 
 @Directive({ standalone: true })
 abstract class InfoIconTest {
-  @ViewChild(NxInfoIconComponent) infoIconInstance!: NxInfoIconComponent;
+  @ViewChild(NxInfoIconComponent)
+  infoIconInstance!: NxInfoIconComponent;
   buttonAriaLabel = 'Information';
   direction: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
   popoverWidth: string | undefined;
@@ -196,7 +197,7 @@ describe('NxInfoIconComponent', () => {
   describe('disabled state', () => {
     it('should disable button when disabled is true', () => {
       createTestComponent(DisabledInfoIconComponent);
-      expect(getButton().disabled).toBeTrue();
+      expect(getButton().disabled).toBe(true);
     });
 
     it('should not open popover when disabled', fakeAsync(() => {
@@ -210,19 +211,20 @@ describe('NxInfoIconComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicInfoIconComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations when popover is open', async () => {
       createTestComponent(BasicInfoIconComponent);
       getButton().click();
       fixture.detectChanges();
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-info-icon-component',
   template: `<nx-info-icon>Test content</nx-info-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInfoIconModule],
@@ -230,6 +232,7 @@ describe('NxInfoIconComponent', () => {
 class BasicInfoIconComponent extends InfoIconTest {}
 
 @Component({
+  selector: 'test-configurable-info-icon-component',
   template: `
     <nx-info-icon
       [buttonAriaLabel]="buttonAriaLabel"
@@ -247,6 +250,7 @@ class BasicInfoIconComponent extends InfoIconTest {}
 class ConfigurableInfoIconComponent extends InfoIconTest {}
 
 @Component({
+  selector: 'test-modal-info-icon-component',
   template: `<nx-info-icon [popoverModal]="true">Modal content</nx-info-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInfoIconModule],
@@ -254,6 +258,7 @@ class ConfigurableInfoIconComponent extends InfoIconTest {}
 class ModalInfoIconComponent extends InfoIconTest {}
 
 @Component({
+  selector: 'test-disabled-info-icon-component',
   template: `<nx-info-icon [disabled]="true">Disabled content</nx-info-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInfoIconModule],

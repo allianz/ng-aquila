@@ -24,7 +24,8 @@ import { NxSwitcherModule } from './switcher.module';
 
 @Directive({ standalone: true })
 abstract class SwitcherTest {
-  @ViewChild(NxSwitcherComponent) switcherInstance!: NxSwitcherComponent;
+  @ViewChild(NxSwitcherComponent)
+  switcherInstance!: NxSwitcherComponent;
   checked = false;
   labelSize: LABEL_SIZE = 'large';
 }
@@ -123,28 +124,28 @@ describe('NxSwitcherComponent', () => {
 
   it('toggles the checked state based on the reactive form value', fakeAsync(() => {
     createTestComponent(SwitcherReactiveForm);
-    expect(switcherInstance.checked).toBeFalse();
+    expect(switcherInstance.checked).toBe(false);
 
     const reactInstance = testInstance as SwitcherReactiveForm;
     reactInstance.testForm.patchValue({ reactiveSwitcher: true });
     fixture.detectChanges();
     tick();
-    expect(switcherInstance.checked).toBeTrue();
+    expect(switcherInstance.checked).toBe(true);
   }));
 
   it('disables the switcher when its reactive form is disabled', fakeAsync(() => {
     createTestComponent(SwitcherReactiveForm);
     const reactInstance = testInstance as SwitcherReactiveForm;
 
-    expect(inputElement.disabled).toBeFalse();
-    expect(switcherInstance.disabled).toBeFalse();
+    expect(inputElement.disabled).toBe(false);
+    expect(switcherInstance.disabled).toBe(false);
 
     reactInstance.testForm.disable();
     fixture.detectChanges();
     tick();
 
-    expect(inputElement.disabled).toBeTrue();
-    expect(switcherInstance.disabled).toBeTrue();
+    expect(inputElement.disabled).toBe(true);
+    expect(switcherInstance.disabled).toBe(true);
   }));
 
   it('does not handle clicks when the switcher is disabled', fakeAsync(() => {
@@ -157,8 +158,8 @@ describe('NxSwitcherComponent', () => {
     inputElement.click();
     fixture.detectChanges();
     tick();
-    expect(switcherInstance.checked).toBeFalse();
-    expect(inputElement.checked).toBeFalse();
+    expect(switcherInstance.checked).toBe(false);
+    expect(inputElement.checked).toBe(false);
   }));
 
   it('toggles on click', () => {
@@ -187,8 +188,8 @@ describe('NxSwitcherComponent', () => {
     inputElement.click();
     fixture.detectChanges();
 
-    expect(switcherInstance.checked).toBeFalse();
-    expect(inputElement.checked).toBeFalse();
+    expect(switcherInstance.checked).toBe(false);
+    expect(inputElement.checked).toBe(false);
   });
 
   it('should set readonly using NxAbstractControl', () => {
@@ -268,7 +269,7 @@ describe('NxSwitcherComponent', () => {
     it('Should not show the error initially', () => {
       createTestComponent(ValidationSwitcherForm);
       const reactInstance = testInstance as ValidationSwitcherForm;
-      expect(reactInstance.testForm.touched).toBeFalse();
+      expect(reactInstance.testForm.touched).toBe(false);
       expect(reactInstance.testForm.status).toBe('INVALID');
       expect(switcherNativeElement).not.toHaveClass('has-error');
       expect(switcherNativeElement).toHaveClass('ng-untouched');
@@ -283,7 +284,7 @@ describe('NxSwitcherComponent', () => {
       fixture.detectChanges();
       tick();
       assertChecked(true);
-      expect(reactInstance.testForm.touched).toBeTrue();
+      expect(reactInstance.testForm.touched).toBe(true);
       expect(reactInstance.testForm.status).toBe('VALID');
       expect(switcherNativeElement).not.toHaveClass('has-error');
       expect(switcherNativeElement).toHaveClass('ng-touched');
@@ -309,7 +310,7 @@ describe('NxSwitcherComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicSwitcher);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should set aria-label, aria-labelledBy', () => {
@@ -336,7 +337,7 @@ describe('NxSwitcherComponent', () => {
       fixture.detectChanges();
       tick();
       assertChecked(true);
-      expect(reactInstance.testForm.touched).toBeTrue();
+      expect(reactInstance.testForm.touched).toBe(true);
       expect(reactInstance.testForm.status).toBe('VALID');
       expect(switcherNativeElement).not.toHaveClass('has-error');
       expect(switcherNativeElement).toHaveClass('ng-touched');
@@ -346,27 +347,27 @@ describe('NxSwitcherComponent', () => {
       assertChecked(false);
       expect(switcherNativeElement).toHaveClass('has-error');
       expect(reactInstance.switcherInstance.errorState).toBeTruthy();
-      expect(reactInstance.switcherInstance._errorChildren.length).toEqual(1);
+      expect(reactInstance.switcherInstance._errorChildren.length).toBe(1);
 
-      expect(inputElement.getAttribute('aria-describedby')).toEqual(
+      expect(inputElement.getAttribute('aria-describedby')).toBe(
         `${reactInstance.switcherInstance._errorChildren.first.id} `,
       );
     }));
 
-    it('should set aria-required for template driven ', () => {
+    it('should set aria-required for template driven', () => {
       createTestComponent(SwitcherTemplateDriven);
 
       expect(inputElement.getAttribute('aria-required')).toBeTruthy();
       expect(inputElement.getAttribute('required')).toBeTruthy();
     });
 
-    it('should set aria-required for reactive form ', () => {
+    it('should set aria-required for reactive form', () => {
       createTestComponent(SwitcherReactiveForm);
       expect(inputElement.getAttribute('aria-required')).toBeTruthy();
       expect(inputElement.getAttribute('required')).toBeTruthy();
     });
 
-    it('should set input aria-disabled when switcher is readonly ', () => {
+    it('should set input aria-disabled when switcher is readonly', () => {
       createTestComponent(SwitcherReactiveForm);
       const reactInstance = testInstance as SwitcherReactiveForm;
       reactInstance.readonly = true;
@@ -378,6 +379,7 @@ describe('NxSwitcherComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-switcher',
   template: `<nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
@@ -385,6 +387,7 @@ describe('NxSwitcherComponent', () => {
 class BasicSwitcher extends SwitcherTest {}
 
 @Component({
+  selector: 'test-basic-switcher-on-push',
   template: `<nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
@@ -392,6 +395,7 @@ class BasicSwitcher extends SwitcherTest {}
 class BasicSwitcherOnPush extends SwitcherTest {}
 
 @Component({
+  selector: 'test-switcher-template-driven',
   template: `<nx-switcher [(ngModel)]="checked" [required]="required">templateLabel</nx-switcher>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
@@ -401,6 +405,7 @@ class SwitcherTemplateDriven extends SwitcherTest {
 }
 
 @Component({
+  selector: 'test-switcher-reactive-form',
   template: `
     <form [formGroup]="testForm">
       <nx-switcher #switcher formControlName="reactiveSwitcher" [readonly]="readonly">
@@ -412,7 +417,8 @@ class SwitcherTemplateDriven extends SwitcherTest {
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class SwitcherReactiveForm extends SwitcherTest {
-  @ViewChild('switcher', { read: NxAbstractControl }) abstractControl!: NxAbstractControl;
+  @ViewChild('switcher', { read: NxAbstractControl })
+  abstractControl!: NxAbstractControl;
 
   readonly = false;
   testForm = new FormBuilder().group({
@@ -424,6 +430,7 @@ class SwitcherReactiveForm extends SwitcherTest {
 }
 
 @Component({
+  selector: 'test-label-size-switcher',
   template: `<nx-switcher [labelSize]="labelSize" id="testSwitcher">basicLabel</nx-switcher>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
@@ -431,6 +438,7 @@ class SwitcherReactiveForm extends SwitcherTest {
 class LabelSizeSwitcher extends SwitcherTest {}
 
 @Component({
+  selector: 'test-switcher-a11y',
   template: `<nx-switcher [ariaLabel]="ariaLabel" [ariaLabelledBy]="ariaLabelledBy"
     >basicLabel</nx-switcher
   >`,
@@ -443,6 +451,7 @@ class SwitcherA11y extends SwitcherTest {
 }
 
 @Component({
+  selector: 'test-validation-switcher-form',
   template: `
     <form [formGroup]="testForm">
       <nx-switcher formControlName="switcherValidationTestReactive">
@@ -469,6 +478,7 @@ class ValidationSwitcherForm extends SwitcherTest {
 }
 
 @Component({
+  selector: 'test-labelless-switcher',
   template: `<nx-switcher [(checked)]="checked" id="testSwitcher"></nx-switcher>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],

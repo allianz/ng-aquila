@@ -88,7 +88,7 @@ describe('NxMultiSelectAllComponent', () => {
     });
 
     it('is not active', async () => {
-      expect(await multiSelectAllHarness.isActive()).toBeFalse();
+      expect(await multiSelectAllHarness.isActive()).toBe(false);
     });
 
     it('shows no check icon', async () => {
@@ -97,7 +97,7 @@ describe('NxMultiSelectAllComponent', () => {
     });
 
     it('is not selected', async () => {
-      expect(await multiSelectAllHarness.isSelected()).toBeFalse();
+      expect(await multiSelectAllHarness.isSelected()).toBe(false);
     });
 
     it('has the aria attributes', async () => {
@@ -128,7 +128,7 @@ describe('NxMultiSelectAllComponent', () => {
       });
 
       it('is selected', async () => {
-        expect(await multiSelectAllHarness.isSelected()).toBeTrue();
+        expect(await multiSelectAllHarness.isSelected()).toBe(true);
       });
 
       it('shows check icon', async () => {
@@ -155,7 +155,7 @@ describe('NxMultiSelectAllComponent', () => {
       });
 
       it('is active', async () => {
-        expect(await multiSelectAllHarness.isActive()).toBeTrue();
+        expect(await multiSelectAllHarness.isActive()).toBe(true);
       });
 
       describe('and set inactive', () => {
@@ -165,7 +165,7 @@ describe('NxMultiSelectAllComponent', () => {
         });
 
         it('is active', async () => {
-          expect(await multiSelectAllHarness.isActive()).toBeFalse();
+          expect(await multiSelectAllHarness.isActive()).toBe(false);
         });
       });
     });
@@ -178,7 +178,7 @@ describe('NxMultiSelectAllComponent', () => {
       // Already selected, so clicking toggles it off - it must announce "unselected".
       multiSelectAllInstance.selected = true;
 
-      const announceSpy = spyOn(liveAnnouncer, 'announce');
+      const announceSpy = vi.spyOn(liveAnnouncer, 'announce').mockResolvedValue(undefined);
       await multiSelectAllHarness.click();
 
       expect(announceSpy).toHaveBeenCalledWith('Select All unselected');
@@ -188,14 +188,16 @@ describe('NxMultiSelectAllComponent', () => {
 
 @Directive({ standalone: true })
 abstract class MultiSelectAllTest {
-  @ViewChild(NxMultiSelectAllComponent) multiSelectOption!: NxMultiSelectAllComponent<any>;
+  @ViewChild(NxMultiSelectAllComponent)
+  multiSelectOption!: NxMultiSelectAllComponent<any>;
   selected = false;
   label = 'Select All';
-  onSelectAll = jasmine.createSpy('onSelectAll');
+  onSelectAll = vi.fn().mockName('onSelectAll');
   indeterminate = false;
 }
 
 @Component({
+  selector: 'test-basic-multi-select-all-component',
   template: `
     <nx-multi-select-all
       [selected]="selected"

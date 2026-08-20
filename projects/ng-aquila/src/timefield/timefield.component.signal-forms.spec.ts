@@ -9,13 +9,13 @@ import {
 } from '@angular/core/testing';
 import { disabled, form, FormField, required } from '@angular/forms/signals';
 
-import { NxTimefieldComponent } from './timefield.component';
 import { NxTimefieldModule } from './timefield.module';
 
 // The timefield CVA value is a 24h ISO time string ("HH:mm"). Signal form
 // models must never start as null, so we seed a valid string (or '' where we
 // explicitly test the required validator).
 @Component({
+  selector: 'test-timefield-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxTimefieldModule],
@@ -27,6 +27,7 @@ class TimefieldSignalFormHost {
 }
 
 @Component({
+  selector: 'test-timefield-required-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxTimefieldModule],
@@ -40,6 +41,7 @@ class TimefieldRequiredSignalFormHost {
 }
 
 @Component({
+  selector: 'test-timefield-disabled-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxTimefieldModule],
@@ -110,7 +112,7 @@ describe('NxTimefieldComponent signal forms', () => {
     }));
 
     it('marks the field as touched on blur', fakeAsync(() => {
-      expect(host.myForm.time().touched()).toBeFalse();
+      expect(host.myForm.time().touched()).toBe(false);
 
       const timefieldElement: HTMLElement = fixture.nativeElement.querySelector('nx-timefield');
       // focusout leaving the timefield (relatedTarget outside the component)
@@ -122,7 +124,7 @@ describe('NxTimefieldComponent signal forms', () => {
       flush();
       fixture.detectChanges();
 
-      expect(host.myForm.time().touched()).toBeTrue();
+      expect(host.myForm.time().touched()).toBe(true);
     }));
   });
 
@@ -145,7 +147,7 @@ describe('NxTimefieldComponent signal forms', () => {
     it('is valid while a time is provided', fakeAsync(() => {
       tick();
       fixture.detectChanges();
-      expect(host.myForm().valid()).toBeTrue();
+      expect(host.myForm().valid()).toBe(true);
       expect(host.myForm.time().errors().length).toBe(0);
     }));
 
@@ -155,13 +157,13 @@ describe('NxTimefieldComponent signal forms', () => {
       tick();
       fixture.detectChanges();
 
-      expect(host.myForm().invalid()).toBeTrue();
+      expect(host.myForm().invalid()).toBe(true);
       expect(
         host.myForm
           .time()
           .errors()
           .some((e) => e.kind === 'required'),
-      ).toBeTrue();
+      ).toBe(true);
     }));
   });
 
@@ -182,8 +184,8 @@ describe('NxTimefieldComponent signal forms', () => {
     it('disables the hours and minutes inputs in the DOM', fakeAsync(() => {
       tick();
       fixture.detectChanges();
-      expect(getHours(fixture).disabled).toBeTrue();
-      expect(getMinutes(fixture).disabled).toBeTrue();
+      expect(getHours(fixture).disabled).toBe(true);
+      expect(getMinutes(fixture).disabled).toBe(true);
     }));
   });
 });

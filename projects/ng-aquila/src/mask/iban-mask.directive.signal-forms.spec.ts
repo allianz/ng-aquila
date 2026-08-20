@@ -17,6 +17,7 @@ import { NxMaskModule } from './mask.module';
 // Host that drives an nxIbanMask input through an Angular 22 signal form.
 // The mask directive supplies NG_VALUE_ACCESSOR, so `[formField]` binds through the CVA path.
 @Component({
+  selector: 'test-iban-signal-form-host-component',
   template: `<input nxMask nxIbanMask [formField]="ibanForm.iban" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxMaskModule],
@@ -32,6 +33,7 @@ class IbanSignalFormHostComponent {
 
 // Host with a `required` validator in the schema.
 @Component({
+  selector: 'test-required-iban-signal-form-host-component',
   template: `<input nxMask nxIbanMask [formField]="ibanForm.iban" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxMaskModule],
@@ -49,6 +51,7 @@ class RequiredIbanSignalFormHostComponent {
 
 // Host with a `disabled` rule in the schema.
 @Component({
+  selector: 'test-disabled-iban-signal-form-host-component',
   template: `<input nxMask nxIbanMask [formField]="ibanForm.iban" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxMaskModule],

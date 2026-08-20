@@ -89,7 +89,10 @@ $icon-outline-size-xl: 160px;
   }
 }
 
-$accent-colors: yellow, orange, red, purple, aqua, blue, teal, green, gray;
+// Quoted so Sass treats these as strings rather than colour values. Unquoted, the ones
+// that are also CSS colour keywords warn on every interpolation below; the generated CSS
+// is identical either way.
+$accent-colors: 'yellow', 'orange', 'red', 'purple', 'aqua', 'blue', 'teal', 'green', 'gray';
 
 // A1 color variants
 :host(:not(.nx-icon--inverse):not(.surface)) {

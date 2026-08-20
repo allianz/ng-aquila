@@ -19,6 +19,7 @@ import { NxCircleToggleComponent } from './circle-toggle/circle-toggle.component
  * `[formField]` binds to it via the Angular 22 backwards-compat interop path.
  */
 @Component({
+  selector: 'test-circle-toggle.signal-forms-basic-circle-toggle-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxCircleToggleModule],
@@ -38,6 +39,7 @@ class BasicCircleToggleSignalFormHost {
 }
 
 @Component({
+  selector: 'test-circle-toggle.signal-forms-required-circle-toggle-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxCircleToggleModule],
@@ -59,6 +61,7 @@ class RequiredCircleToggleSignalFormHost {
 }
 
 @Component({
+  selector: 'test-circle-toggle.signal-forms-disabled-circle-toggle-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxCircleToggleModule],
@@ -106,7 +109,7 @@ describe('NxCircleToggleComponent signal forms', () => {
     fixture = create(BasicCircleToggleSignalFormHost);
     const host = fixture.componentInstance as BasicCircleToggleSignalFormHost;
 
-    expect(host.toggleInstance.inGroup).toBeFalse();
+    expect(host.toggleInstance.inGroup).toBe(false);
     expect(host.toggleInstance.toggleGroup).toBeNull();
     expect(input.type).toBe('checkbox');
   });
@@ -116,14 +119,14 @@ describe('NxCircleToggleComponent signal forms', () => {
       fixture = create(BasicCircleToggleSignalFormHost);
       const host = fixture.componentInstance as BasicCircleToggleSignalFormHost;
 
-      expect(host.toggleInstance.checked).toBeFalse();
-      expect(input.checked).toBeFalse();
+      expect(host.toggleInstance.checked).toBe(false);
+      expect(input.checked).toBe(false);
 
       host.model.update((m) => ({ ...m, enabled: true }));
       fixture.detectChanges();
 
-      expect(host.toggleInstance.checked).toBeTrue();
-      expect(input.checked).toBeTrue();
+      expect(host.toggleInstance.checked).toBe(true);
+      expect(input.checked).toBe(true);
       expect(input.getAttribute('aria-checked')).toBe('true');
     });
 
@@ -133,13 +136,13 @@ describe('NxCircleToggleComponent signal forms', () => {
 
       host.model.update((m) => ({ ...m, enabled: true }));
       fixture.detectChanges();
-      expect(input.checked).toBeTrue();
+      expect(input.checked).toBe(true);
 
       host.model.update((m) => ({ ...m, enabled: false }));
       fixture.detectChanges();
 
-      expect(host.toggleInstance.checked).toBeFalse();
-      expect(input.checked).toBeFalse();
+      expect(host.toggleInstance.checked).toBe(false);
+      expect(input.checked).toBe(false);
       expect(input.getAttribute('aria-checked')).toBe('false');
     });
   });
@@ -149,22 +152,22 @@ describe('NxCircleToggleComponent signal forms', () => {
       fixture = create(BasicCircleToggleSignalFormHost);
       const host = fixture.componentInstance as BasicCircleToggleSignalFormHost;
 
-      expect(host.myForm.enabled().value()).toBeFalse();
+      expect(host.myForm.enabled().value()).toBe(false);
 
       input.click();
       fixture.detectChanges();
 
-      expect(host.myForm.enabled().value()).toBeTrue();
-      expect(host.model().enabled).toBeTrue();
-      expect(input.checked).toBeTrue();
+      expect(host.myForm.enabled().value()).toBe(true);
+      expect(host.model().enabled).toBe(true);
+      expect(input.checked).toBe(true);
 
       // A standalone toggle can be unchecked again; inside a group the selected toggle stays
       // selected because the group is a radio group.
       input.click();
       fixture.detectChanges();
 
-      expect(host.myForm.enabled().value()).toBeFalse();
-      expect(host.model().enabled).toBeFalse();
+      expect(host.myForm.enabled().value()).toBe(false);
+      expect(host.model().enabled).toBe(false);
     });
 
     it('flips the boolean form value when the label is clicked', () => {
@@ -174,19 +177,19 @@ describe('NxCircleToggleComponent signal forms', () => {
       label.click();
       fixture.detectChanges();
 
-      expect(host.myForm.enabled().value()).toBeTrue();
+      expect(host.myForm.enabled().value()).toBe(true);
     });
 
     it('marks the field dirty after user interaction', () => {
       fixture = create(BasicCircleToggleSignalFormHost);
       const host = fixture.componentInstance as BasicCircleToggleSignalFormHost;
 
-      expect(host.myForm.enabled().dirty()).toBeFalse();
+      expect(host.myForm.enabled().dirty()).toBe(false);
 
       input.click();
       fixture.detectChanges();
 
-      expect(host.myForm.enabled().dirty()).toBeTrue();
+      expect(host.myForm.enabled().dirty()).toBe(true);
     });
   });
 
@@ -195,19 +198,19 @@ describe('NxCircleToggleComponent signal forms', () => {
       fixture = create(BasicCircleToggleSignalFormHost);
       const host = fixture.componentInstance as BasicCircleToggleSignalFormHost;
 
-      expect(host.myForm.enabled().touched()).toBeFalse();
+      expect(host.myForm.enabled().touched()).toBe(false);
 
       dispatchFakeEvent(input, 'blur');
       fixture.detectChanges();
 
-      expect(host.myForm.enabled().touched()).toBeTrue();
+      expect(host.myForm.enabled().touched()).toBe(true);
     });
 
     it('does not mark the field touched before any interaction', () => {
       fixture = create(BasicCircleToggleSignalFormHost);
       const host = fixture.componentInstance as BasicCircleToggleSignalFormHost;
 
-      expect(host.myForm.enabled().touched()).toBeFalse();
+      expect(host.myForm.enabled().touched()).toBe(false);
     });
   });
 
@@ -216,18 +219,18 @@ describe('NxCircleToggleComponent signal forms', () => {
       fixture = create(RequiredCircleToggleSignalFormHost);
       const host = fixture.componentInstance as RequiredCircleToggleSignalFormHost;
 
-      expect(host.myForm().invalid()).toBeTrue();
+      expect(host.myForm().invalid()).toBe(true);
       expect(
         host.myForm
           .enabled()
           .errors()
           .some((error) => error.kind === 'required'),
-      ).toBeTrue();
+      ).toBe(true);
 
       input.click();
       fixture.detectChanges();
 
-      expect(host.myForm().valid()).toBeTrue();
+      expect(host.myForm().valid()).toBe(true);
       expect(host.myForm.enabled().errors()).toEqual([]);
     });
 
@@ -247,9 +250,9 @@ describe('NxCircleToggleComponent signal forms', () => {
       flush();
       fixture.detectChanges();
 
-      expect(host.myForm.enabled().disabled()).toBeTrue();
-      expect(host.toggleInstance.disabled).toBeTrue();
-      expect(input.disabled).toBeTrue();
+      expect(host.myForm.enabled().disabled()).toBe(true);
+      expect(host.toggleInstance.disabled).toBe(true);
+      expect(input.disabled).toBe(true);
     }));
 
     it('does not update the form value when a disabled toggle is clicked', fakeAsync(() => {
@@ -261,7 +264,7 @@ describe('NxCircleToggleComponent signal forms', () => {
       input.click();
       fixture.detectChanges();
 
-      expect(host.myForm.enabled().value()).toBeFalse();
+      expect(host.myForm.enabled().value()).toBe(false);
     }));
   });
 });

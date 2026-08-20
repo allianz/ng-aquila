@@ -36,7 +36,9 @@ const NOV = 10;
 const DEC = 11;
 
 describe('NxYearView', () => {
-  let dir: { value: Direction };
+  let dir: {
+    value: Direction;
+  };
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -70,7 +72,7 @@ describe('NxYearView', () => {
 
     it('has 12 months', () => {
       const cellEls = yearViewNativeElement.querySelectorAll('.nx-calendar-body-cell-content');
-      expect(cellEls).toHaveSize(12);
+      expect(cellEls).toHaveLength(12);
     });
 
     it('shows selected month if in same year', () => {
@@ -338,6 +340,7 @@ describe('NxYearView', () => {
 });
 
 @Component({
+  selector: 'test-standard-year-view',
   template: `<nx-year-view
     [(activeDate)]="date"
     [(selected)]="selected"
@@ -351,10 +354,12 @@ class StandardYearView {
   selected = new Date(2017, MAR, 10);
   selectedMonth!: Date;
 
-  @ViewChild(NxYearViewComponent) yearView!: NxYearViewComponent<Date>;
+  @ViewChild(NxYearViewComponent)
+  yearView!: NxYearViewComponent<Date>;
 }
 
 @Component({
+  selector: 'test-year-view-with-date-filter',
   template: `<nx-year-view [(activeDate)]="activeDate" [dateFilter]="dateFilter"></nx-year-view>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxNativeDateModule, NxYearViewComponent],

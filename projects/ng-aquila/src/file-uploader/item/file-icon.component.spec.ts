@@ -5,7 +5,8 @@ import { NxFileIconComponent } from './file-icon.component';
 
 @Directive({ standalone: true })
 abstract class FileIconTest {
-  @ViewChild(NxFileIconComponent) iconInstance!: NxFileIconComponent;
+  @ViewChild(NxFileIconComponent)
+  iconInstance!: NxFileIconComponent;
   extension = signal('pdf');
 }
 
@@ -91,7 +92,10 @@ describe('NxFileIconComponent', () => {
   });
 
   describe('badge color mapping', () => {
-    const cases: { ext: string; expected: string }[] = [
+    const cases: {
+      ext: string;
+      expected: string;
+    }[] = [
       { ext: 'pdf', expected: 'badge-red' },
       { ext: 'docx', expected: 'badge-aqua' },
       { ext: 'xlsx', expected: 'badge-green' },
@@ -135,7 +139,7 @@ describe('NxFileIconComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(ConfigurableFileIconComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });

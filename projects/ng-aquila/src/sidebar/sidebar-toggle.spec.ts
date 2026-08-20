@@ -7,7 +7,8 @@ import { NxSidebarToggleComponent } from './sidebar-toggle';
 
 @Directive({ standalone: true })
 abstract class ToggleTest {
-  @ViewChild(NxSidebarToggleComponent) buttonInstance!: NxSidebarToggleComponent;
+  @ViewChild(NxSidebarToggleComponent)
+  buttonInstance!: NxSidebarToggleComponent;
 }
 
 describe('NxSidebarToggleButton', () => {
@@ -38,6 +39,7 @@ describe('NxSidebarToggleButton', () => {
 });
 
 @Component({
+  selector: 'test-basic-sidebar-toggle-component',
   template: `
     <nx-sidebar>
       <nx-sidebar-footer>

@@ -23,7 +23,7 @@ describe('IdGenerationService', () => {
     const service = TestBed.inject(IdGenerationService);
     const id = service.nextId('comp');
 
-    expect(id.startsWith('customAppId-comp-')).toBeTrue();
+    expect(id.startsWith('customAppId-comp-')).toBe(true);
   });
 
   it('should use random namespace if APP_ID is default or missing', () => {
@@ -34,7 +34,7 @@ describe('IdGenerationService', () => {
     const service = TestBed.inject(IdGenerationService);
     const id = service.nextId('foo');
 
-    expect(id.startsWith('ng-')).toBeTrue();
+    expect(id.startsWith('ng-')).toBe(true);
     expect(id).toContain('-foo-');
   });
 
@@ -43,7 +43,7 @@ describe('IdGenerationService', () => {
     const service = TestBed.inject(IdGenerationService);
     const id = service.nextId('bar');
 
-    expect(id.startsWith('a-')).toBeTrue(); // seem like default APP_ID is a in test environment 🤔
+    expect(id.startsWith('a-')).toBe(true); // seem like default APP_ID is a in test environment 🤔
     expect(id).toContain('-bar-');
   });
 });

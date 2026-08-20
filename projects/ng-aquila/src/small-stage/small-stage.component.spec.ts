@@ -14,7 +14,8 @@ import { NxSmallStageModule } from './small-stage.module';
 
 @Directive({ standalone: true })
 abstract class SmallStageTest {
-  @ViewChild(NxSmallStageComponent) smallStageInstance!: NxSmallStageComponent;
+  @ViewChild(NxSmallStageComponent)
+  smallStageInstance!: NxSmallStageComponent;
 }
 
 describe('NxSmallStageComponent', () => {
@@ -96,12 +97,12 @@ describe('NxSmallStageComponent', () => {
   describe('narrow', () => {
     it('has no small text by default', () => {
       createTestComponent(BasicSmallStage);
-      expect(smallStageInstance.narrow).toBeFalse();
+      expect(smallStageInstance.narrow).toBe(false);
     });
 
     it('has narrow content', () => {
       createTestComponent(SmallTextSmallStage);
-      expect(smallStageInstance.narrow).toBeTrue();
+      expect(smallStageInstance.narrow).toBe(true);
       expect(smallStageDebugElement.nativeElement).toHaveClass('is-narrow');
     });
   });
@@ -121,12 +122,13 @@ describe('NxSmallStageComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicSmallStage);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-small-stage',
   template: `
     <nx-small-stage>
       <span nxSmallStageHeader>Header</span>
@@ -142,6 +144,7 @@ describe('NxSmallStageComponent', () => {
 class BasicSmallStage extends SmallStageTest {}
 
 @Component({
+  selector: 'test-expert-small-stage',
   template: `
     <nx-small-stage appearance="expert">
       <span nxSmallStageHeader>Header</span>
@@ -156,6 +159,7 @@ class BasicSmallStage extends SmallStageTest {}
 class ExpertSmallStage extends SmallStageTest {}
 
 @Component({
+  selector: 'test-small-text-small-stage',
   template: `
     <nx-small-stage narrow>
       <span nxSmallStageHeader>Header</span>
@@ -170,6 +174,7 @@ class ExpertSmallStage extends SmallStageTest {}
 class SmallTextSmallStage extends SmallStageTest {}
 
 @Component({
+  selector: 'test-color-scheme-small-stage',
   template: ` <nx-small-stage colorScheme="emphasis"> text </nx-small-stage> `,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSmallStageModule],

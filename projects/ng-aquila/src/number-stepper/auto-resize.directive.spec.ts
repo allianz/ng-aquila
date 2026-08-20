@@ -8,7 +8,8 @@ import { NxNumberStepperModule } from './number-stepper.module';
 @Directive({ standalone: true })
 abstract class ResizeTest {
   value = '10000';
-  @ViewChild(NxAutoResizeDirective) inputInstance!: NxAutoResizeDirective;
+  @ViewChild(NxAutoResizeDirective)
+  inputInstance!: NxAutoResizeDirective;
 }
 
 describe('NxAutoResizeDirective', () => {
@@ -109,7 +110,7 @@ describe('NxAutoResizeDirective', () => {
 
   it('should remove event listeners on destroy', () => {
     createTestComponent(DefaultResize);
-    spyOn(nativeElement, 'removeEventListener');
+    vi.spyOn(nativeElement, 'removeEventListener').mockReturnValue(undefined);
 
     fixture.destroy();
     expect(nativeElement.removeEventListener).toHaveBeenCalledWith(
@@ -163,6 +164,7 @@ describe('NxAutoResizeDirective', () => {
 });
 
 @Component({
+  selector: 'test-default-resize',
   template: `<input [nxAutoResize] class="testinput" />`,
   styles: ['.testinput { width: 22px; }'],
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -171,6 +173,7 @@ describe('NxAutoResizeDirective', () => {
 class DefaultResize extends ResizeTest {}
 
 @Component({
+  selector: 'test-init-test',
   template: `<input [nxAutoResize] class="testinput" [(value)]="value" />`,
   styles: ['.testinput { width: 22px; }'],
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -179,6 +182,7 @@ class DefaultResize extends ResizeTest {}
 class InitTest extends ResizeTest {}
 
 @Component({
+  selector: 'test-init-on-push-test',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<input [nxAutoResize] class="testinput" [(value)]="value" />`,
   styles: ['.testinput { width: 22px; }'],
@@ -187,6 +191,7 @@ class InitTest extends ResizeTest {}
 class InitOnPushTest extends ResizeTest {}
 
 @Component({
+  selector: 'test-disabled-resize',
   template: `<input [nxAutoResize]="false" class="testinput" />`,
   styles: ['.testinput { width: 22px; }'],
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -195,6 +200,7 @@ class InitOnPushTest extends ResizeTest {}
 class DisabledResize extends ResizeTest {}
 
 @Component({
+  selector: 'test-min-width-resize',
   template: `<input [nxAutoResize] class="testinput" />`,
   styles: ['.testinput { width: 22px; min-width: 22px; }'],
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -203,6 +209,7 @@ class DisabledResize extends ResizeTest {}
 class MinWidthResize extends ResizeTest {}
 
 @Component({
+  selector: 'test-border-padding-resize',
   template: `<input [nxAutoResize] class="testinput" />`,
   styles: ['.testinput { width: 22px; padding: 1px; border: 1px solid black}'],
   changeDetection: ChangeDetectionStrategy.Eager,

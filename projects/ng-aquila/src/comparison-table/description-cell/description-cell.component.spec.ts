@@ -11,8 +11,8 @@ import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angul
 import { By } from '@angular/platform-browser';
 import axe from 'axe-core';
 
-import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
 import { NxComparisonTableModule } from '../comparison-table.module';
+import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.test-utils';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { NxComparisonTableDescriptionCell } from './description-cell.component';
 
@@ -61,7 +61,7 @@ describe('NxComparisonTableDescriptionCell', () => {
   describe('basic', () => {
     it('renders the content', () => {
       createTestComponent(DescriptionCellComponent);
-      expect(descriptionCellElements).toHaveSize(2);
+      expect(descriptionCellElements).toHaveLength(2);
       expect(descriptionCellElements[0].nativeElement.textContent).toBe(
         'This is a description cell',
       );
@@ -93,9 +93,9 @@ describe('NxComparisonTableDescriptionCell', () => {
 
     it('should have set the correct class if intersectionRow', () => {
       createTestComponent(DescriptionCellComponent);
-      expect(descriptionCellInstances).toHaveSize(2);
-      expect(rowInstances.toArray()[1]._isIntersectionRow()).toBeFalse();
-      expect(rowInstances.toArray()[2]._isIntersectionRow()).toBeTrue();
+      expect(descriptionCellInstances).toHaveLength(2);
+      expect(rowInstances.toArray()[1]._isIntersectionRow()).toBe(false);
+      expect(rowInstances.toArray()[2]._isIntersectionRow()).toBe(true);
 
       // should not contain the is-intersection-column class on desktop
       expect(descriptionCellElements[0].nativeElement).not.toHaveClass('is-intersection-column');
@@ -216,31 +216,26 @@ describe('NxComparisonTableDescriptionCell', () => {
       expect(descriptionCellElements[0].nativeElement.getAttribute('colspan')).toBe('2');
     }));
 
-    it('has no accessibility violations', (done) => {
+    it('has no accessibility violations', async () => {
       createTestComponent(DescriptionCellComponent);
 
-      axe.run(
-        fixture.nativeElement,
-        {
-          rules: {
-            'empty-table-header': { enabled: false },
-          },
+      const results = await axe.run(fixture.nativeElement, {
+        rules: {
+          'empty-table-header': { enabled: false },
         },
-        (error: Error, results: axe.AxeResults) => {
-          expect(results.violations.length).toBe(0);
-          const violationMessages = results.violations.map((item) => item.description);
-          if (violationMessages.length) {
-            console.error(violationMessages);
-            expect(violationMessages).toBeFalsy();
-          }
-          done();
-        },
-      );
+      });
+      expect(results.violations.length).toBe(0);
+      const violationMessages = results.violations.map((item) => item.description);
+      if (violationMessages.length) {
+        console.error(violationMessages);
+        expect(violationMessages).toBeFalsy();
+      }
     });
   });
 });
 
 @Component({
+  selector: 'test-description-cell-component',
   template: BASIC_COMPARISON_TABLE_TEMPLATE,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxComparisonTableModule],
@@ -263,6 +258,7 @@ class DescriptionCellComponent extends DescriptionCellTest {
 }
 
 @Component({
+  selector: 'test-configurable-description-cell-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">

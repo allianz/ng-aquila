@@ -30,7 +30,9 @@
   color: v(file-icon-label-color);
 }
 
-@each $color in (default, red, green, purple, teal, aqua, yellow, orange) {
+// Quoted so Sass treats these as strings rather than colour values -- see the note in
+// `icon/icon.component.scss`. The generated CSS is identical either way.
+@each $color in ('default', 'red', 'green', 'purple', 'teal', 'aqua', 'yellow', 'orange') {
   .badge-#{$color} {
     background-color: v(file-icon-label-background-#{$color});
   }

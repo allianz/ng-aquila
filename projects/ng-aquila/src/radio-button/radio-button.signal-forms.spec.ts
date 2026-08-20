@@ -13,6 +13,7 @@ import { NxRadioModule } from './radio-button.module';
  */
 
 @Component({
+  selector: 'test-basic-radio-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxRadioModule],
@@ -30,6 +31,7 @@ class BasicRadioSignalFormHost {
 }
 
 @Component({
+  selector: 'test-required-radio-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxRadioModule],
@@ -48,6 +50,7 @@ class RequiredRadioSignalFormHost {
 }
 
 @Component({
+  selector: 'test-disabled-radio-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxRadioModule],
@@ -87,16 +90,16 @@ describe('NxRadioGroupComponent signal forms', () => {
       fixture.detectChanges();
       tick();
 
-      expect(inputs(fixture).item(1).checked).toBeFalse();
+      expect(inputs(fixture).item(1).checked).toBe(false);
 
       host.model.update((m) => ({ ...m, choice: '1' }));
       fixture.detectChanges();
       tick();
       fixture.detectChanges();
 
-      expect(inputs(fixture).item(0).checked).toBeFalse();
-      expect(inputs(fixture).item(1).checked).toBeTrue();
-      expect(inputs(fixture).item(2).checked).toBeFalse();
+      expect(inputs(fixture).item(0).checked).toBe(false);
+      expect(inputs(fixture).item(1).checked).toBe(true);
+      expect(inputs(fixture).item(2).checked).toBe(false);
     }));
 
     it('moves the selection when the model changes to a different option', fakeAsync(() => {
@@ -109,14 +112,14 @@ describe('NxRadioGroupComponent signal forms', () => {
       fixture.detectChanges();
       tick();
       fixture.detectChanges();
-      expect(inputs(fixture).item(0).checked).toBeTrue();
+      expect(inputs(fixture).item(0).checked).toBe(true);
 
       host.model.update((m) => ({ ...m, choice: '2' }));
       fixture.detectChanges();
       tick();
       fixture.detectChanges();
-      expect(inputs(fixture).item(0).checked).toBeFalse();
-      expect(inputs(fixture).item(2).checked).toBeTrue();
+      expect(inputs(fixture).item(0).checked).toBe(false);
+      expect(inputs(fixture).item(2).checked).toBe(true);
     }));
   });
 
@@ -149,13 +152,13 @@ describe('NxRadioGroupComponent signal forms', () => {
       fixture.detectChanges();
       tick();
 
-      expect(host.myForm.choice().touched()).toBeFalse();
+      expect(host.myForm.choice().touched()).toBe(false);
 
       dispatchFakeEvent(inputs(fixture).item(0), 'blur');
       fixture.detectChanges();
       tick();
 
-      expect(host.myForm.choice().touched()).toBeTrue();
+      expect(host.myForm.choice().touched()).toBe(true);
     }));
   });
 
@@ -166,19 +169,19 @@ describe('NxRadioGroupComponent signal forms', () => {
       fixture.detectChanges();
       tick();
 
-      expect(host.myForm().invalid()).toBeTrue();
+      expect(host.myForm().invalid()).toBe(true);
       expect(
         host.myForm
           .choice()
           .errors()
           .some((e) => e.kind === 'required'),
-      ).toBeTrue();
+      ).toBe(true);
 
       labels(fixture).item(0).click();
       fixture.detectChanges();
       tick();
 
-      expect(host.myForm().valid()).toBeTrue();
+      expect(host.myForm().valid()).toBe(true);
       expect(host.myForm.choice().errors()).toEqual([]);
     }));
 
@@ -202,9 +205,9 @@ describe('NxRadioGroupComponent signal forms', () => {
       tick();
       fixture.detectChanges();
 
-      expect(host.myForm.choice().disabled()).toBeTrue();
+      expect(host.myForm.choice().disabled()).toBe(true);
       inputs(fixture).forEach((input) => {
-        expect(input.disabled).toBeTrue();
+        expect(input.disabled).toBe(true);
       });
     }));
 

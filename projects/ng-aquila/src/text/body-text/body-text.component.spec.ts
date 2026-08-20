@@ -18,37 +18,38 @@ describe('NxBodyTextComponent', () => {
   });
 
   it('should default to size m and primary type', () => {
-    expect(element.classList.contains('nx-body-text--m')).toBeTrue();
-    expect(element.classList.contains('nx-body-text--secondary')).toBeFalse();
-    expect(element.classList.contains('nx-body-text--inverse')).toBeFalse();
+    expect(element.classList.contains('nx-body-text--m')).toBe(true);
+    expect(element.classList.contains('nx-body-text--secondary')).toBe(false);
+    expect(element.classList.contains('nx-body-text--inverse')).toBe(false);
   });
 
   it('should apply the size class', () => {
     for (const size of ['s', 'm', 'l'] as NxBodyTextSize[]) {
       fixture.componentInstance.size = size;
       fixture.detectChanges();
-      expect(element.classList.contains(`nx-body-text--${size}`)).toBeTrue();
+      expect(element.classList.contains(`nx-body-text--${size}`)).toBe(true);
     }
   });
 
   it('should apply the secondary class only for the secondary type', () => {
     fixture.componentInstance.type = 'secondary';
     fixture.detectChanges();
-    expect(element.classList.contains('nx-body-text--secondary')).toBeTrue();
+    expect(element.classList.contains('nx-body-text--secondary')).toBe(true);
 
     fixture.componentInstance.type = 'primary';
     fixture.detectChanges();
-    expect(element.classList.contains('nx-body-text--secondary')).toBeFalse();
+    expect(element.classList.contains('nx-body-text--secondary')).toBe(false);
   });
 
   it('should apply the inverse class when inverse is set', () => {
     fixture.componentInstance.inverse = true;
     fixture.detectChanges();
-    expect(element.classList.contains('nx-body-text--inverse')).toBeTrue();
+    expect(element.classList.contains('nx-body-text--inverse')).toBe(true);
   });
 });
 
 @Component({
+  selector: 'test-body-text-test-component',
   template: `<p nxBodyText [size]="size" [type]="type" [inverse]="inverse">Body text</p>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxBodyTextComponent],

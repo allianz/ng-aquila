@@ -35,7 +35,8 @@ const tabsDefaultOptions: TabGroupDefaultOptions = {
 
 @Directive({ standalone: true })
 abstract class TabsTest {
-  @ViewChildren(NxAccordionDirective) accordion!: QueryList<NxAccordionDirective>;
+  @ViewChildren(NxAccordionDirective)
+  accordion!: QueryList<NxAccordionDirective>;
 
   selectedIndex: any;
   autoselect: any;
@@ -44,7 +45,8 @@ abstract class TabsTest {
   showAccordion = true;
   appearance: NxTabsAppearance = 'expert';
 
-  @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
+  @ViewChild(NxTabGroupComponent)
+  tabGroupInstance!: NxTabGroupComponent;
 }
 
 describe('NxTabGroupComponent', () => {
@@ -155,7 +157,7 @@ describe('NxTabGroupComponent', () => {
         createTestComponent(EventTabsTest);
         tick(THROTTLE_TIME);
         const eventTestInstance = testInstance as EventTabsTest;
-        spyOn(eventTestInstance, 'tabChanged').and.callThrough();
+        vi.spyOn(eventTestInstance, 'tabChanged');
         const tabLabel = fixture.debugElement.queryAll(By.css('.nx-tab-header__item'))[1];
         tabLabel.nativeElement.click();
         fixture.detectChanges();
@@ -168,14 +170,14 @@ describe('NxTabGroupComponent', () => {
       describe('autoselect', () => {
         it('should be turned on by default', () => {
           createTestComponent(BasicTabs);
-          expect(tabGroupInstance.autoselect).toBeTrue();
+          expect(tabGroupInstance.autoselect).toBe(true);
         });
       });
 
       describe('negative', () => {
         it('should update negative on programmatic change', () => {
           createTestComponent(OnPushTabs);
-          expect(tabGroupInstance.negative).toBeFalse();
+          expect(tabGroupInstance.negative).toBe(false);
           expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-negative');
 
           tabGroupInstance.negative = true;
@@ -225,7 +227,7 @@ describe('NxTabGroupComponent', () => {
 
       it('should update disabled on programmatic change', () => {
         createTestComponent(OnPushTabs);
-        expect(tabGroupInstance.disabled).toBeFalse();
+        expect(tabGroupInstance.disabled).toBe(false);
         expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-disabled');
 
         tabGroupInstance.disabled = true;
@@ -264,7 +266,7 @@ describe('NxTabGroupComponent', () => {
         dynamicTest.selectedIndex = 3;
         fixture.detectChanges();
         tick();
-        expect(tabGroupInstance.tabBodyChildren.toArray()[3].active).toBeTrue();
+        expect(tabGroupInstance.tabBodyChildren.toArray()[3].active).toBe(true);
         flush();
       }));
 
@@ -321,7 +323,7 @@ describe('NxTabGroupComponent', () => {
         tick();
 
         expect(tabGroupInstance.selectedIndex).toBe(2);
-        expect(tabGroupInstance.tabBodyChildren.toArray()[2].active).toBeTrue();
+        expect(tabGroupInstance.tabBodyChildren.toArray()[2].active).toBe(true);
         flush();
       }));
 
@@ -339,7 +341,7 @@ describe('NxTabGroupComponent', () => {
         tick(THROTTLE_TIME);
 
         expect(tabGroupInstance.selectedIndex).toBe(0);
-        expect(tabGroupInstance.tabBodyChildren.toArray()[0].active).toBeTrue();
+        expect(tabGroupInstance.tabBodyChildren.toArray()[0].active).toBe(true);
         flush();
       }));
 
@@ -352,7 +354,7 @@ describe('NxTabGroupComponent', () => {
         fixture.detectChanges();
 
         // Add a new tab at the beginning.
-        spyOn(dynamicTest, 'handleSelection');
+        vi.spyOn(dynamicTest, 'handleSelection').mockReturnValue(undefined);
         dynamicTest.tabs.unshift({ label: 'New tab', content: 'at the start' });
         fixture.detectChanges();
         tick();
@@ -431,7 +433,9 @@ describe('NxTabGroupComponent', () => {
 
       it('should not destroy components in body on switch', fakeAsync(() => {
         createTestComponent(CustomElementTest);
-        spyOn((testInstance as CustomElementTest).customElement, 'ngOnDestroy');
+        vi.spyOn((testInstance as CustomElementTest).customElement, 'ngOnDestroy').mockReturnValue(
+          undefined,
+        );
         viewport.set('mobile');
         window.dispatchEvent(new Event('resize'));
         fixture.detectChanges();
@@ -449,9 +453,9 @@ describe('NxTabGroupComponent', () => {
         instance.selectedIndex = 1;
         fixture.detectChanges();
         tick();
-        expect(instance.testComponents).toHaveSize(1);
+        expect(instance.testComponents).toHaveLength(1);
         const element = instance.testComponents.toArray()[0];
-        spyOn(element, 'ngOnDestroy');
+        vi.spyOn(element, 'ngOnDestroy').mockReturnValue(undefined);
         viewport.set('mobile');
         window.dispatchEvent(new Event('resize'));
         fixture.detectChanges();
@@ -464,9 +468,9 @@ describe('NxTabGroupComponent', () => {
         createTestComponent(CustomElementTest);
         tick();
         const instance = testInstance as CustomElementTest;
-        expect(instance.customElementInHeader).toHaveSize(2);
+        expect(instance.customElementInHeader).toHaveLength(2);
         const elementInHeader = instance.customElementInHeader.toArray()[0];
-        spyOn(elementInHeader, 'ngOnDestroy');
+        vi.spyOn(elementInHeader, 'ngOnDestroy').mockReturnValue(undefined);
         viewport.set('mobile');
         window.dispatchEvent(new Event('resize'));
         fixture.detectChanges();
@@ -494,8 +498,8 @@ describe('NxTabGroupComponent', () => {
         window.dispatchEvent(new Event('resize'));
         tick(THROTTLE_TIME);
         fixture.detectChanges();
-        spyOn(testInstance as DynamicTabTest, 'handleSelection');
-        spyOn(testInstance as DynamicTabTest, 'onIndexChange');
+        vi.spyOn(testInstance as DynamicTabTest, 'handleSelection').mockReturnValue(undefined);
+        vi.spyOn(testInstance as DynamicTabTest, 'onIndexChange').mockReturnValue(undefined);
         // click on 2nd tab
         fixture.nativeElement.querySelectorAll('nx-expansion-panel-header')[1].click();
         fixture.detectChanges();
@@ -528,28 +532,28 @@ describe('NxTabGroupComponent', () => {
 
       it('should only emit `_appearanceChange` when the change happens', fakeAsync(() => {
         createTestComponent(BasicTabs);
-        const spy = jasmine.createSpy('appearence changed');
+        const spy = vi.fn().mockName('appearence changed');
         const subscription: Subscription = tabGroupInstance._appearanceChange.subscribe(spy);
         // it shouldn't emit _appearenceChange on every single resize
         window.dispatchEvent(new Event('resize'));
         fixture.detectChanges();
         tick();
         expect(spy).not.toHaveBeenCalled();
-        spy.calls.reset();
+        spy.mockClear();
         // it should emit _appearenceChange on resize to mobile
         viewport.set('mobile');
         window.dispatchEvent(new Event('resize'));
         fixture.detectChanges();
         tick(THROTTLE_TIME);
         expect(spy).toHaveBeenCalled();
-        spy.calls.reset();
+        spy.mockClear();
         // it should emit _appearenceChange on resize to desktop
         viewport.set('desktop');
         window.dispatchEvent(new Event('resize'));
         fixture.detectChanges();
         tick(THROTTLE_TIME);
         expect(spy).toHaveBeenCalled();
-        spy.calls.reset();
+        spy.mockClear();
         subscription.unsubscribe();
         flush();
       }));
@@ -558,7 +562,7 @@ describe('NxTabGroupComponent', () => {
     describe('a11y', () => {
       it('has no accessibility violations', async () => {
         createTestComponent(BasicTabs);
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
     });
 
@@ -635,6 +639,7 @@ describe('NxTabGroupComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-tabs',
   template: `
     <nx-tab-group>
       <nx-tab label="First label">First</nx-tab>
@@ -647,6 +652,7 @@ describe('NxTabGroupComponent', () => {
 class BasicTabs extends TabsTest {}
 
 @Component({
+  selector: 'test-on-push-tabs',
   template: `
     <nx-tab-group>
       <nx-tab label="First label">First</nx-tab>
@@ -659,6 +665,7 @@ class BasicTabs extends TabsTest {}
 class OnPushTabs extends TabsTest {}
 
 @Component({
+  selector: 'test-configurable-tabs',
   template: `
     <nx-tab-group [negative]="negative" [mobileAccordion]="showAccordion" [appearance]="appearance">
       <nx-tab [label]="customLabel">First</nx-tab>
@@ -671,6 +678,7 @@ class OnPushTabs extends TabsTest {}
 class ConfigurableTabs extends TabsTest {}
 
 @Component({
+  selector: 'test-binding-tabs',
   template: `
     <nx-tab-group [(selectedIndex)]="selectedIndex">
       <nx-tab label="First label">First</nx-tab>
@@ -685,6 +693,7 @@ class BindingTabs extends TabsTest {
 }
 
 @Component({
+  selector: 'test-event-tabs-test',
   template: `
     <nx-tab-group [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)">
       <nx-tab label="First label">First</nx-tab>
@@ -704,6 +713,7 @@ class EventTabsTest extends TabsTest {
 }
 
 @Component({
+  selector: 'test-dynamic-tab-test',
   template: `
     <nx-tab-group
       [autoselect]="autoselect"
@@ -754,6 +764,7 @@ class TestComponent implements OnDestroy {
 }
 
 @Component({
+  selector: 'test-custom-element-test',
   template: `
     <nx-tab-group [negative]="negative">
       <nx-tab>
@@ -769,11 +780,14 @@ class TestComponent implements OnDestroy {
   imports: [NxTabsModule, TestComponent],
 })
 class CustomElementTest extends TabsTest {
-  @ViewChild('customElement', { read: TestComponent }) customElement!: TestComponent;
-  @ViewChildren(TestComponent) customElementInHeader!: QueryList<TestComponent>;
+  @ViewChild('customElement', { read: TestComponent })
+  customElement!: TestComponent;
+  @ViewChildren(TestComponent)
+  customElementInHeader!: QueryList<TestComponent>;
 }
 
 @Component({
+  selector: 'test-disabled-tabs',
   template: `
     <nx-tab-group [disabled]="disabled" [mobileAccordion]="showAccordion">
       <nx-tab disabled="singleDisabled" [label]="customLabel">First</nx-tab>
@@ -789,6 +803,7 @@ class DisabledTabs extends TabsTest {
 }
 
 @Component({
+  selector: 'test-template-tabs',
   template: `
     <nx-tab-group [(selectedIndex)]="selectedIndex">
       <nx-tab>
@@ -809,10 +824,12 @@ class DisabledTabs extends TabsTest {
 })
 class TemplateTabs extends TabsTest {
   selectedIndex = 0;
-  @ViewChildren(TestComponent) testComponents!: QueryList<TestComponent>;
+  @ViewChildren(TestComponent)
+  testComponents!: QueryList<TestComponent>;
 }
 
 @Component({
+  selector: 'test-nested-tab-groups',
   template: `
     <nx-tab-group>
       <nx-tab label="First tab">

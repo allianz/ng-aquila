@@ -9,7 +9,8 @@ import { createFakeEvent } from '../cdk-test-utils';
 
 @Directive({ standalone: true })
 abstract class InputTest {
-  @ViewChild(NxInputDirective) inputInstance!: NxInputDirective;
+  @ViewChild(NxInputDirective)
+  inputInstance!: NxInputDirective;
   type = 'text';
   required = false;
   disabled = false;
@@ -172,38 +173,38 @@ describe('NxInputDirective', () => {
     it('should forward the disabled state to the native element', () => {
       createTestComponent(ConfigurableInput);
       fixture.detectChanges();
-      expect(nativeElement.disabled).toBeFalse();
+      expect(nativeElement.disabled).toBe(false);
 
       testInstance.disabled = true;
       fixture.detectChanges();
-      expect(nativeElement.disabled).toBeTrue();
+      expect(nativeElement.disabled).toBe(true);
     });
 
     it('should forward the required state to the native element', () => {
       createTestComponent(ConfigurableInput);
       fixture.detectChanges();
-      expect(nativeElement.required).toBeFalse();
+      expect(nativeElement.required).toBe(false);
 
       testInstance.required = true;
       fixture.detectChanges();
-      expect(nativeElement.required).toBeTrue();
+      expect(nativeElement.required).toBe(true);
     });
 
     it('should forward the readonly state to the native element', () => {
       createTestComponent(ConfigurableInput);
       fixture.detectChanges();
-      expect(nativeElement.readOnly).toBeFalse();
+      expect(nativeElement.readOnly).toBe(false);
 
       testInstance.readonly = true;
       fixture.detectChanges();
-      expect(nativeElement.readOnly).toBeTrue();
+      expect(nativeElement.readOnly).toBe(true);
     });
   });
 
   describe('readonly', () => {
     it('notifies formfield about state changes', () => {
       createTestComponent(BasicInput);
-      const spy = jasmine.createSpy('stateChangesSpy');
+      const spy = vi.fn().mockName('stateChangesSpy');
       const subscription = inputInstance.stateChanges.subscribe(spy);
       inputInstance.readonly = true;
       expect(spy).toHaveBeenCalled();
@@ -227,7 +228,9 @@ describe('NxInputDirective', () => {
   describe('formControl', () => {
     it('should update when the form field value is patched without emitting', fakeAsync(() => {
       createTestComponent(BasicInputWithFormControl);
-      spyOn(fixture.componentInstance.inputInstance.stateChanges, 'next');
+      vi.spyOn(fixture.componentInstance.inputInstance.stateChanges, 'next').mockReturnValue(
+        undefined,
+      );
       fixture.componentInstance.formControl.patchValue('value', { emitEvent: false });
       fixture.detectChanges();
       tick();
@@ -301,7 +304,7 @@ describe('NxInputDirective', () => {
       fixture.detectChanges();
       const input = fixture.debugElement.query(By.css('input'))!.nativeElement;
 
-      expect(input.hasAttribute('placeholder')).toBeFalse();
+      expect(input.hasAttribute('placeholder')).toBe(false);
     });
   });
 
@@ -348,6 +351,7 @@ describe('NxInputDirective', () => {
 });
 
 @Component({
+  selector: 'test-basic-input',
   template: `
     <nx-formfield label="Input">
       <input nxInput />
@@ -359,6 +363,7 @@ describe('NxInputDirective', () => {
 class BasicInput extends InputTest {}
 
 @Component({
+  selector: 'test-typed-and-required-input',
   template: `<input nxInput [type]="type" />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
@@ -366,6 +371,7 @@ class BasicInput extends InputTest {}
 class TypedAndRequiredInput extends InputTest {}
 
 @Component({
+  selector: 'test-required-input',
   template: `<input nxInput required />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
@@ -373,6 +379,7 @@ class TypedAndRequiredInput extends InputTest {}
 class RequiredInput extends InputTest {}
 
 @Component({
+  selector: 'test-ng-model-input',
   template: `<input nxInput [(ngModel)]="currentValue" required />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
@@ -380,6 +387,7 @@ class RequiredInput extends InputTest {}
 class NgModelInput extends InputTest {}
 
 @Component({
+  selector: 'test-no-change-detection-input',
   template: `<input nxInput [(ngModel)]="currentValue" required [updateOn]="'blur'" />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
@@ -387,6 +395,7 @@ class NgModelInput extends InputTest {}
 class NoChangeDetectionInput extends InputTest {}
 
 @Component({
+  selector: 'test-basic-textarea',
   template: `
     <nx-formfield label="Textarea">
       <textarea nxInput></textarea>
@@ -398,6 +407,7 @@ class NoChangeDetectionInput extends InputTest {}
 class BasicTextarea extends InputTest {}
 
 @Component({
+  selector: 'test-basic-input-with-form-control',
   template: `
     <nx-formfield label="Label">
       <input nxInput [formControl]="formControl" />
@@ -411,6 +421,7 @@ class BasicInputWithFormControl extends InputTest {
 }
 
 @Component({
+  selector: 'test-basic-input-with-required-form-control',
   template: `
     <nx-formfield label="Label">
       <input nxInput [formControl]="formControl" />
@@ -424,6 +435,7 @@ class BasicInputWithRequiredFormControl extends InputTest {
 }
 
 @Component({
+  selector: 'test-configurable-input',
   template: `<input nxInput [required]="required" [disabled]="disabled" [readonly]="readonly" />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxInputModule, ReactiveFormsModule],
@@ -431,6 +443,7 @@ class BasicInputWithRequiredFormControl extends InputTest {
 class ConfigurableInput extends InputTest {}
 
 @Component({
+  selector: 'test-input-with-label-and-placeholder',
   template: `
     <nx-formfield label="Label" [floatLabel]="floatLabel" [appearance]="appearance">
       <input nxInput [placeholder]="placeholderText" />
@@ -446,6 +459,7 @@ class InputWithLabelAndPlaceholder extends InputTest {
 }
 
 @Component({
+  selector: 'test-input-with-aria-label-input',
   template: `<input nxInput nxAriaLabel="template label" />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],

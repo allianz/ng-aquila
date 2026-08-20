@@ -40,6 +40,7 @@ describe('NxIconHarness', () => {
 });
 
 @Component({
+  selector: 'test-icon-harness-test',
   template: `
     <nx-icon name="info"></nx-icon>
     <nx-icon [name]="'warning'"></nx-icon>

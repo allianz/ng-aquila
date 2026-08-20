@@ -104,7 +104,7 @@ describe('NxToggleButtonGroup', () => {
 
   it('should fire group change events with the correct value', () => {
     createTestComponent(SimpleCircleToggleGroupComponent);
-    spyOn(toggleComponent.valueChange, 'emit');
+    vi.spyOn(toggleComponent.valueChange, 'emit').mockReturnValue(undefined);
     click(0);
 
     expect(toggleComponent.valueChange.emit).toHaveBeenCalledWith('A');
@@ -141,7 +141,7 @@ describe('NxToggleButtonGroup', () => {
     children.forEach((child: any) => {
       expect(child).toHaveClass('has-error');
     });
-    expect(toggleComponent.errorState()).toBeTrue();
+    expect(toggleComponent.errorState()).toBe(true);
   }));
 
   it('should work with rective forms', fakeAsync(() => {
@@ -170,7 +170,7 @@ describe('NxToggleButtonGroup', () => {
       click(0);
       tick();
 
-      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBeFalse();
+      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBe(false);
     }));
 
     it('should not be touched when moving focus between toggles in the group', fakeAsync(() => {
@@ -180,7 +180,7 @@ describe('NxToggleButtonGroup', () => {
       blurGroup(toggleInputs.item(1));
       tick();
 
-      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBeFalse();
+      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBe(false);
     }));
 
     it('should be touched after focus leaves the group', fakeAsync(() => {
@@ -190,7 +190,7 @@ describe('NxToggleButtonGroup', () => {
       blurGroup();
       tick();
 
-      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBeTrue();
+      expect(reactComp.testGroup.controls.reactiveToggle.touched).toBe(true);
     }));
   });
 
@@ -233,9 +233,9 @@ describe('NxToggleButtonGroup', () => {
 
     fixture.detectChanges();
     tick();
-    expect(toggleComponent.buttons.toArray()[0].disabled).toBeTrue();
-    expect(toggleComponent.buttons.toArray()[1].disabled).toBeTrue();
-    expect(toggleComponent.buttons.toArray()[2].disabled).toBeTrue();
+    expect(toggleComponent.buttons.toArray()[0].disabled).toBe(true);
+    expect(toggleComponent.buttons.toArray()[1].disabled).toBe(true);
+    expect(toggleComponent.buttons.toArray()[2].disabled).toBe(true);
   }));
 
   it('can be set to readonly and child toggles inherit the state', () => {
@@ -344,7 +344,7 @@ describe('NxToggleButtonGroup', () => {
 
   it('recognizes descendants', () => {
     createTestComponent(CircleToggleGroupWithDivComponent);
-    expect(toggleComponent.buttons).toHaveSize(3);
+    expect(toggleComponent.buttons).toHaveLength(3);
   });
 
   describe('programmatic change', () => {
@@ -440,17 +440,17 @@ describe('NxToggleButtonGroup', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(SimpleCircleToggleGroupComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations when readonly', async () => {
       createTestComponent(ReadonlyCircleToggleGroupComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations when disabled', async () => {
       createTestComponent(DisabledCircleToggleGroupComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should set aria-required', () => {
@@ -468,7 +468,8 @@ describe('NxToggleButtonGroup', () => {
 
 @Directive({ standalone: true })
 abstract class ButtonToggleGroupTest {
-  @ViewChild(NxCircleToggleGroupComponent) buttonToggleGroup!: NxCircleToggleGroupComponent;
+  @ViewChild(NxCircleToggleGroupComponent)
+  buttonToggleGroup!: NxCircleToggleGroupComponent;
 
   modelValue!: string | null;
   valueBinding = 'B';
@@ -476,6 +477,7 @@ abstract class ButtonToggleGroupTest {
 }
 
 @Component({
+  selector: 'test-simple-circle-toggle-group-component',
   template: `
     <nx-circle-toggle-group>
       <nx-circle-toggle
@@ -494,6 +496,7 @@ abstract class ButtonToggleGroupTest {
 class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 
 @Component({
+  selector: 'test-boolean-circle-toggle-group-component',
   template: `
     <nx-circle-toggle-group>
       <nx-circle-toggle
@@ -516,6 +519,7 @@ class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 class BooleanCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 
 @Component({
+  selector: 'test-circle-toggle-on-push-component',
   template: `
     <nx-circle-toggle-group [value]="valueBinding">
       <nx-circle-toggle
@@ -534,6 +538,7 @@ class BooleanCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 class CircleToggleOnPushComponent extends ButtonToggleGroupTest {}
 
 @Component({
+  selector: 'test-empty-toggle-on-push-component',
   template: `<nx-circle-toggle-group> </nx-circle-toggle-group>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
@@ -541,6 +546,7 @@ class CircleToggleOnPushComponent extends ButtonToggleGroupTest {}
 class EmptyToggleOnPushComponent extends ButtonToggleGroupTest {}
 
 @Component({
+  selector: 'test-ng-model-circle-toggle-group-component',
   template: `
     <nx-circle-toggle-group [(ngModel)]="modelValue" name="test">
       <nx-circle-toggle
@@ -559,6 +565,7 @@ class EmptyToggleOnPushComponent extends ButtonToggleGroupTest {}
 class NgModelCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 
 @Component({
+  selector: 'test-reactive-circle-toggle-group-component',
   template: `
     <form [formGroup]="testGroup">
       <nx-circle-toggle-group formControlName="reactiveToggle">
@@ -602,6 +609,7 @@ class ReactiveCircleToggleGroupComponent extends ButtonToggleGroupTest {
   });
 }
 @Component({
+  selector: 'test-ng-for-circle-toggle-group-component',
   template: `
     <nx-circle-toggle-group>
       @for (item of testButtons; track item) {
@@ -626,6 +634,7 @@ class NgForCircleToggleGroupComponent extends ButtonToggleGroupTest {
 }
 
 @Component({
+  selector: 'test-disabled-circle-toggle-group-component',
   template: `
     <nx-circle-toggle-group disabled="true">
       <nx-circle-toggle
@@ -644,6 +653,7 @@ class NgForCircleToggleGroupComponent extends ButtonToggleGroupTest {
 class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 
 @Component({
+  selector: 'test-readonly-circle-toggle-group-component',
   template: `
     <nx-circle-toggle-group #group [readonly]="readonly()">
       <nx-circle-toggle
@@ -665,6 +675,7 @@ class ReadonlyCircleToggleGroupComponent extends ButtonToggleGroupTest {
 }
 
 @Component({
+  selector: 'test-circle-toggle-group-with-div-component',
   template: `
     <nx-circle-toggle-group>
       <div>
@@ -695,6 +706,7 @@ class ReadonlyCircleToggleGroupComponent extends ButtonToggleGroupTest {
 class CircleToggleGroupWithDivComponent extends ButtonToggleGroupTest {}
 
 @Component({
+  selector: 'test-expert-circle-toggle-group-component',
   template: `
     <nx-circle-toggle-group appearance="expert">
       <nx-circle-toggle

@@ -198,6 +198,7 @@ describe('NxComparisonTableSelectButton', () => {
 });
 
 @Component({
+  selector: 'test-select-button-basic-component',
   template: `
     <nx-comparison-table [(selectedIndex)]="selectedIndex">
       <ng-container nxComparisonTableRow type="header">
@@ -235,6 +236,7 @@ describe('NxComparisonTableSelectButton', () => {
 class BasicComponent extends ToggleTest {}
 
 @Component({
+  selector: 'test-select-button-configurable-component',
   template: `
     <nx-comparison-table [(selectedIndex)]="selectedIndex">
       <ng-container nxComparisonTableRow type="header">
@@ -299,6 +301,7 @@ class BasicComponent extends ToggleTest {}
 class ConfigurableComponent extends ToggleTest {}
 
 @Component({
+  selector: 'test-dynamic-component',
   template: `
     <nx-comparison-table [(selectedIndex)]="selectedIndex">
       @for (el of data; track el) {

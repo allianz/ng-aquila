@@ -52,41 +52,42 @@ describe('ToggleSectionHeaderComponent', () => {
 
     it('sets _isPartOfToggleSection correctly', () => {
       createTestComponent(BasicComponent);
-      expect(rowInstances.toArray()[0]._isPartOfToggleSection()).toBeFalse(); // header row
+      expect(rowInstances.toArray()[0]._isPartOfToggleSection()).toBe(false); // header row
 
-      expect(rowInstances.toArray()[1]._isPartOfToggleSection()).toBeTrue(); // first toggle section
+      expect(rowInstances.toArray()[1]._isPartOfToggleSection()).toBe(true); // first toggle section
 
-      expect(rowInstances.toArray()[2]._isPartOfToggleSection()).toBeTrue(); // second toggle section
-      expect(rowInstances.toArray()[3]._isPartOfToggleSection()).toBeTrue(); // second toggle section
+      expect(rowInstances.toArray()[2]._isPartOfToggleSection()).toBe(true); // second toggle section
+      expect(rowInstances.toArray()[3]._isPartOfToggleSection()).toBe(true); // second toggle section
 
-      expect(rowInstances.toArray()[4]._isPartOfToggleSection()).toBeFalse(); // content row without toggle section
-      expect(rowInstances.toArray()[5]._isPartOfToggleSection()).toBeFalse(); // footer row
+      expect(rowInstances.toArray()[4]._isPartOfToggleSection()).toBe(false); // content row without toggle section
+      expect(rowInstances.toArray()[5]._isPartOfToggleSection()).toBe(false); // footer row
     });
   });
 
   describe('expand / collapse', () => {
     it('expands toggle sections by default', () => {
       createTestComponent(BasicComponent);
-      expect(toggleSectionInstances.toArray()[0].isExpanded).toBeTrue();
+      expect(toggleSectionInstances.toArray()[0].isExpanded).toBe(true);
       expect(toggleSectionInstances.toArray()[0].getOpenState()).toBe('open');
     });
 
     it('toggles toggle section on input change', () => {
       createTestComponent(BasicComponent);
       const secondToggleSection = toggleSectionInstances.toArray()[1];
-      expect(secondToggleSection.isExpanded).toBeFalse();
+      expect(secondToggleSection.isExpanded).toBe(false);
       expect(secondToggleSection.getOpenState()).toBe('closed');
 
       testInstance.expandSecondSection = true;
       fixture.detectChanges();
 
-      expect(secondToggleSection.isExpanded).toBeTrue();
+      expect(secondToggleSection.isExpanded).toBe(true);
       expect(secondToggleSection.getOpenState()).toBe('open');
     });
   });
 });
 
 @Component({
+  selector: 'test-toggle-section-basic-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">

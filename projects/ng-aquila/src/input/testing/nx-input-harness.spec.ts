@@ -93,7 +93,7 @@ describe('NxInputHarness', () => {
 
       const harnesses = await loader.getAllHarnesses(NxInputHarness.with({ placeholder: 'age' }));
 
-      expect(harnesses).toHaveSize(1);
+      expect(harnesses).toHaveLength(1);
       expect(await harnesses[0].getPlaceholder()).toBe('age');
     });
 
@@ -104,13 +104,14 @@ describe('NxInputHarness', () => {
 
       const harnesses = await loader.getAllHarnesses(NxInputHarness.with({ value: 'bar' }));
 
-      expect(harnesses).toHaveSize(1);
+      expect(harnesses).toHaveLength(1);
       expect(await harnesses[0].getValue()).toBe('bar');
     });
   });
 });
 
 @Component({
+  selector: 'test-id-test',
   template: `<input id="my-id" nxInput />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
@@ -118,6 +119,7 @@ describe('NxInputHarness', () => {
 class IdTest {}
 
 @Component({
+  selector: 'test-type-test',
   template: `<input type="color" nxInput />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
@@ -125,6 +127,7 @@ class IdTest {}
 class TypeTest {}
 
 @Component({
+  selector: 'test-textarea-type-test',
   template: `<textarea type="color" nxInput></textarea>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
@@ -132,6 +135,7 @@ class TypeTest {}
 class TextareaTypeTest {}
 
 @Component({
+  selector: 'test-placeholder-test',
   template: `<input nxInput placeholder="my-placeholder" />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
@@ -139,6 +143,7 @@ class TextareaTypeTest {}
 class PlaceholderTest {}
 
 @Component({
+  selector: 'test-nx-input-harness-disabled-test',
   template: `<input nxInput disabled /><input nxInput />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
@@ -146,6 +151,7 @@ class PlaceholderTest {}
 class DisabledTest {}
 
 @Component({
+  selector: 'test-focus-test',
   template: `<input nxInput />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxInputModule],
@@ -153,6 +159,7 @@ class DisabledTest {}
 class FocusTest {}
 
 @Component({
+  selector: 'test-formfield-test',
   template: `<nx-formfield><input nxInput /></nx-formfield>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxFormfieldModule, NxInputModule],
@@ -160,6 +167,7 @@ class FocusTest {}
 class FormfieldTest {}
 
 @Component({
+  selector: 'test-filter-placeholder-test',
   template: `
     <input nxInput placeholder="age" />
     <input nxInput placeholder="name" />
@@ -170,6 +178,7 @@ class FormfieldTest {}
 class FilterPlaceholderTest {}
 
 @Component({
+  selector: 'test-filter-value-test',
   template: `
     <input nxInput value="foo" />
     <input nxInput value="bar" />

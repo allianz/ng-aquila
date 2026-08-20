@@ -6,7 +6,8 @@ import { NxSpinnerModule } from './spinner.module';
 
 @Directive({ standalone: true })
 abstract class SpinnerTest {
-  @ViewChild(NxSpinnerComponent) spinnerInstance!: NxSpinnerComponent;
+  @ViewChild(NxSpinnerComponent)
+  spinnerInstance!: NxSpinnerComponent;
 
   size: SpinnerSize = 'small';
   negative!: boolean;
@@ -62,23 +63,23 @@ describe('nxSpinnerComponent', () => {
 
   it('should update on negative change', () => {
     createTestComponent(ConfigurableSpinner);
-    expect(componentInstance.negative).toBeFalse();
+    expect(componentInstance.negative).toBe(false);
     expect(spinnerNativeElement).not.toHaveClass('nx-spinner--negative');
 
     testInstance.negative = true;
     fixture.detectChanges();
-    expect(componentInstance.negative).toBeTrue();
+    expect(componentInstance.negative).toBe(true);
     expect(spinnerNativeElement).toHaveClass('nx-spinner--negative');
   });
 
   it('should update on inverse change', () => {
     createTestComponent(ConfigurableSpinner);
-    expect(componentInstance.inverse()).toBeFalse();
+    expect(componentInstance.inverse()).toBe(false);
     expect(spinnerNativeElement).not.toHaveClass('nx-spinner--negative');
 
     testInstance.inverse = true;
     fixture.detectChanges();
-    expect(componentInstance.inverse()).toBeTrue();
+    expect(componentInstance.inverse()).toBe(true);
     expect(spinnerNativeElement).toHaveClass('nx-spinner--negative');
   });
 
@@ -121,7 +122,7 @@ describe('nxSpinnerComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicTestSpinner);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 
@@ -162,7 +163,7 @@ describe('nxSpinnerComponent', () => {
       expect(spinnerNativeElement.getAttribute('aria-live')).toBe('off');
     });
 
-    it('should set aria-live to off', () => {
+    it('should set aria-live to off by default', () => {
       createTestComponent(TestAriaLiveSpinnerComponent);
       expect(spinnerNativeElement.getAttribute('aria-live')).toBe('off');
     });
@@ -170,6 +171,7 @@ describe('nxSpinnerComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-test-spinner',
   template: `<nx-spinner [ariaPoliteness]="ariaPoliteness"></nx-spinner>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSpinnerModule],
@@ -179,6 +181,7 @@ class BasicTestSpinner extends SpinnerTest {
 }
 
 @Component({
+  selector: 'test-configurable-spinner',
   template: `<nx-spinner [size]="size" [negative]="negative" [inverse]="inverse"></nx-spinner>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSpinnerModule],
@@ -186,6 +189,7 @@ class BasicTestSpinner extends SpinnerTest {
 class ConfigurableSpinner extends SpinnerTest {}
 
 @Component({
+  selector: 'test-on-push-spinner',
   template: `<nx-spinner [size]="size" [negative]="negative"></nx-spinner>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxSpinnerModule],
@@ -193,6 +197,7 @@ class ConfigurableSpinner extends SpinnerTest {}
 class OnPushSpinner extends SpinnerTest {}
 
 @Component({
+  selector: 'test-test-aria-live-spinner-component',
   template: ` <nx-spinner [ariaPoliteness]="'off'"></nx-spinner> `,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxSpinnerModule],

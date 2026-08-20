@@ -12,6 +12,7 @@ import { NxNumberStepperModule } from './number-stepper.module';
  */
 
 @Component({
+  selector: 'test-basic-signal-form-stepper',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxNumberStepperModule],
@@ -31,6 +32,7 @@ class BasicSignalFormStepper {
 }
 
 @Component({
+  selector: 'test-clamping-signal-form-stepper',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxNumberStepperModule],
@@ -51,6 +53,7 @@ class ClampingSignalFormStepper {
 }
 
 @Component({
+  selector: 'test-validated-signal-form-stepper',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxNumberStepperModule],
@@ -71,6 +74,7 @@ class ValidatedSignalFormStepper {
 }
 
 @Component({
+  selector: 'test-disabled-signal-form-stepper',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxNumberStepperModule],

@@ -118,7 +118,7 @@ describe('NxRatingComponent', () => {
     it('should emit rating value on keyboard event ENTER', () => {
       createTestComponent(SimpleRatingComponent);
 
-      spyOn(testComponent.valueChange, 'emit');
+      vi.spyOn(testComponent.valueChange, 'emit').mockReturnValue(undefined);
 
       dispatchKeyboardEvent(inputs[0], 'keyup', ENTER);
       fixture.detectChanges();
@@ -163,7 +163,7 @@ describe('NxRatingComponent', () => {
 
     it('does not render any radio inputs in non-interactive mode', () => {
       createTestComponent(NonInteractiveRatingComponent);
-      expect(fixture.nativeElement.querySelectorAll('input')).toHaveSize(0);
+      expect(fixture.nativeElement.querySelectorAll('input')).toHaveLength(0);
     });
 
     it('adds the non-interactive class', () => {
@@ -275,13 +275,13 @@ describe('NxRatingComponent', () => {
       instance.testForm.controls.rating.disable();
       fixture.detectChanges();
       let outerSpanDisabled = fixture.nativeElement.querySelector('.nx-rating--disabled');
-      expect(testInstance.rating.disabled).toBeTrue();
+      expect(testInstance.rating.disabled).toBe(true);
       expect(outerSpanDisabled).toBeTruthy();
 
       instance.testForm.controls.rating.enable();
       fixture.detectChanges();
       outerSpanDisabled = fixture.nativeElement.querySelector('.nx-rating--disabled');
-      expect(testInstance.rating.disabled).toBeFalse();
+      expect(testInstance.rating.disabled).toBe(false);
       expect(outerSpanDisabled).toBeFalsy();
     });
   });
@@ -290,7 +290,7 @@ describe('NxRatingComponent', () => {
     it('updates view on change of "disabled"', () => {
       createTestComponent(RatingOnPushComponent);
       let hasDisabledClass = fixture.nativeElement.querySelector('.nx-rating--disabled');
-      expect(testInstance.rating.disabled).toBeFalse();
+      expect(testInstance.rating.disabled).toBe(false);
       expect(hasDisabledClass).toBeFalsy();
 
       testInstance.rating.disabled = true;
@@ -302,7 +302,7 @@ describe('NxRatingComponent', () => {
     it('updates view on change of "negative"', () => {
       createTestComponent(RatingOnPushComponent);
       let hasNegativeClass = fixture.nativeElement.querySelector('.nx-rating--negative');
-      expect(testInstance.rating.negative).toBeFalse();
+      expect(testInstance.rating.negative).toBe(false);
       expect(hasNegativeClass).toBeFalsy();
 
       testInstance.rating.negative = true;
@@ -316,12 +316,12 @@ describe('NxRatingComponent', () => {
       // check how many stars are filled (=checked)
       let starsSelected = getSelectedStars();
       expect(testInstance.rating.value).toBe(2);
-      expect(starsSelected).toHaveSize(2);
+      expect(starsSelected).toHaveLength(2);
 
       testInstance.rating.value = 4;
       fixture.detectChanges();
       starsSelected = getSelectedStars();
-      expect(starsSelected).toHaveSize(4);
+      expect(starsSelected).toHaveLength(4);
     });
 
     it('updates view on template driven value set initially', fakeAsync(() => {
@@ -333,7 +333,7 @@ describe('NxRatingComponent', () => {
       const selectedStars = getSelectedStars();
       const rating = fixture.debugElement.query(By.css('nx-rating'));
       expect(testInstance.rating.value).toBe(2);
-      expect(selectedStars).toHaveSize(2);
+      expect(selectedStars).toHaveLength(2);
     }));
 
     it('updates view on change of "startLabel"', fakeAsync(() => {
@@ -388,7 +388,7 @@ describe('NxRatingComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(SimpleBindingRatingComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 
@@ -409,10 +409,12 @@ describe('NxRatingComponent', () => {
 
 @Directive({ standalone: true })
 class RatingTest {
-  @ViewChild(NxRatingComponent) rating: any;
+  @ViewChild(NxRatingComponent)
+  rating: any;
 }
 
 @Component({
+  selector: 'test-simple-rating-component',
   template: `<nx-rating startLabel="poor" endLabel="great"></nx-rating>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
@@ -420,6 +422,7 @@ class RatingTest {
 class SimpleRatingComponent extends RatingTest {}
 
 @Component({
+  selector: 'test-simple-binding-rating-component',
   template: `<nx-rating [(value)]="theValue"></nx-rating>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
@@ -429,6 +432,7 @@ class SimpleBindingRatingComponent extends RatingTest {
 }
 
 @Component({
+  selector: 'test-ng-model-binding-rating-component',
   template: `<nx-rating [(ngModel)]="theValue"></nx-rating>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
@@ -438,6 +442,7 @@ class NgModelBindingRatingComponent extends RatingTest {
 }
 
 @Component({
+  selector: 'test-reactive-binding-rating-component',
   template: `
     <form [formGroup]="testForm">
       <nx-rating formControlName="rating"></nx-rating>
@@ -453,6 +458,7 @@ class ReactiveBindingRatingComponent extends RatingTest {
 }
 
 @Component({
+  selector: 'test-rating-on-push-component',
   template: `<nx-rating
     [value]="currentValue"
     [startLabel]="startLabel"
@@ -471,6 +477,7 @@ class RatingOnPushComponent extends RatingTest {
 }
 
 @Component({
+  selector: 'test-template-driven-on-push-component',
   template: `<nx-rating [(ngModel)]="ngModelValue"></nx-rating>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
@@ -480,6 +487,7 @@ class TemplateDrivenOnPushComponent extends RatingTest {
 }
 
 @Component({
+  selector: 'test-size-rating-component',
   template: `<nx-rating [size]="size"></nx-rating>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
@@ -489,6 +497,7 @@ class SizeRatingComponent extends RatingTest {
 }
 
 @Component({
+  selector: 'test-non-interactive-rating-component',
   template: `<nx-rating [value]="value" [interactive]="false"></nx-rating>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxRatingModule],

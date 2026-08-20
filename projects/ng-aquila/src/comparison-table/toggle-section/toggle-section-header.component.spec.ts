@@ -101,7 +101,7 @@ describe('ToggleSectionHeaderComponent', () => {
     it('should toggle the section when the header cell is clicked (desktop)', fakeAsync(() => {
       createTestComponent(BasicComponent);
       tick(THROTTLE_TIME);
-      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
+      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
 
       // The interactive element is the host <th> in the table template.
       const headerCell = headerElements[0].query(
@@ -112,7 +112,7 @@ describe('ToggleSectionHeaderComponent', () => {
       fixture.detectChanges();
       tick();
 
-      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeFalse();
+      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(false);
     }));
   });
 
@@ -158,8 +158,8 @@ describe('ToggleSectionHeaderComponent', () => {
       tick(THROTTLE_TIME);
       fixture.detectChanges();
 
-      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
-      const spy = spyOn(headerInstances.toArray()[0], 'toggle').and.callThrough();
+      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
+      const spy = vi.spyOn(headerInstances.toArray()[0], 'toggle');
       mobileHeaderElements = fixture.debugElement.queryAll(
         By.css('.nx-comparison-table__mobile-toggle-section-header'),
       );
@@ -169,7 +169,7 @@ describe('ToggleSectionHeaderComponent', () => {
       tick();
 
       expect(spy).not.toHaveBeenCalled();
-      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
+      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
     }));
   });
 
@@ -231,18 +231,18 @@ describe('ToggleSectionHeaderComponent', () => {
 
     it('should toggle the section on ENTER and SPACE', () => {
       createTestComponent(BasicComponent);
-      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
+      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
 
       const cell = headerElements[0].query(
         By.css('.nx-comparison-table__toggle-section-header-cell'),
       ).nativeElement as HTMLElement;
       dispatchKeyboardEvent(cell, 'keydown', 0, 'Enter');
       fixture.detectChanges();
-      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeFalse();
+      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(false);
 
       dispatchKeyboardEvent(cell, 'keydown', 0, ' ');
       fixture.detectChanges();
-      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
+      expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
     });
   });
 
@@ -268,6 +268,7 @@ describe('ToggleSectionHeaderComponent', () => {
 });
 
 @Component({
+  selector: 'test-toggle-section-header-basic-component',
   template: `
     <nx-comparison-table>
       @for (el of data; track el) {
@@ -347,6 +348,7 @@ class BasicComponent extends ToggleSectionTest {
 }
 
 @Component({
+  selector: 'test-id-testing-component',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -385,6 +387,7 @@ class BasicComponent extends ToggleSectionTest {
 class IdTestingComponent extends ToggleSectionTest {}
 
 @Component({
+  selector: 'test-overflow-toggle-component',
   template: `
     <nx-comparison-table [responsiveBreakpoints]="breakpoints" style="width: 600px;">
       <ng-container nxComparisonTableRow type="header">

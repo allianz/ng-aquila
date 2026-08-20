@@ -6,7 +6,6 @@ import countries from 'i18n-iso-countries';
 import de from 'i18n-iso-countries/langs/de.json';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
-import { NxPhoneInputComponent } from './phone-input.component';
 import { NxPhoneInputModule } from './phone-input.module';
 import { NxPhoneInputIntl } from './phone-input-intl';
 
@@ -17,6 +16,7 @@ countries.registerLocale(de);
 // string ('+' + calling code + line number), so the model field is a `string`.
 
 @Component({
+  selector: 'test-phone-input.component.signal-forms-basic-signal-form-host',
   standalone: true,
   imports: [FormField, NxPhoneInputModule],
   template: `<nx-formfield label="Telephone number">
@@ -29,6 +29,7 @@ class BasicSignalFormHost {
 }
 
 @Component({
+  selector: 'test-phone-input.component.signal-forms-required-signal-form-host',
   standalone: true,
   imports: [FormField, NxPhoneInputModule],
   template: `<nx-formfield label="Telephone number">
@@ -43,6 +44,7 @@ class RequiredSignalFormHost {
 }
 
 @Component({
+  selector: 'test-phone-input.component.signal-forms-disabled-signal-form-host',
   standalone: true,
   imports: [FormField, NxPhoneInputModule],
   template: `<nx-formfield label="Telephone number">

@@ -26,8 +26,10 @@ import { NxRadioModule } from './radio-button.module';
 
 @Directive({ standalone: true })
 abstract class RadioTest {
-  @ViewChildren(NxRadioComponent) radioInstances!: QueryList<NxRadioComponent>;
-  @ViewChild(NxRadioGroupComponent) radioGroup!: NxRadioGroupComponent;
+  @ViewChildren(NxRadioComponent)
+  radioInstances!: QueryList<NxRadioComponent>;
+  @ViewChild(NxRadioGroupComponent)
+  radioGroup!: NxRadioGroupComponent;
 
   templateModel = '1';
   testForm: any;
@@ -128,22 +130,21 @@ describe('NxRadioComponent', () => {
 
     it('displays the dot when checked', () => {
       createTestComponent(BasicRadio);
-      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveSize(0);
+      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveLength(0);
       testInstance.radioInstances.toArray()[0].checked = true;
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveSize(1);
+      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveLength(1);
     });
 
     it('radio component emits change event', () => {
       createTestComponent(BasicRadio);
       const instance = radioInstances.toArray()[0];
-      const changeHandler = jasmine.createSpy('changeHandler');
+      const changeHandler = vi.fn().mockName('changeHandler');
 
       const subscription = instance.valueChange.subscribe(changeHandler);
       labelElements.item(0).click();
 
-      const latestCall = changeHandler.calls.mostRecent();
-      const returnValue = latestCall.args[0];
+      const returnValue = changeHandler.mock.lastCall![0];
 
       expect(changeHandler).toHaveBeenCalledWith(returnValue);
       expect(returnValue.source).toEqual(instance);
@@ -154,7 +155,7 @@ describe('NxRadioComponent', () => {
     it('renders a non-negative radio button on default', () => {
       createTestComponent(BasicRadio);
       const radioElement = fixture.nativeElement.querySelector('nx-radio');
-      expect(radioInstances.toArray()[0].negative).toBeFalse();
+      expect(radioInstances.toArray()[0].negative).toBe(false);
       expect(radioElement).not.toHaveClass('nx-radio--negative');
     });
 
@@ -162,12 +163,12 @@ describe('NxRadioComponent', () => {
       createTestComponent(ConfigurableRadio);
       const radioElement = fixture.nativeElement.querySelector('nx-radio');
       expect(radioElement).toHaveClass('nx-radio--negative');
-      expect(radioInstances.toArray()[0].negative).toBeTrue();
+      expect(radioInstances.toArray()[0].negative).toBe(true);
 
       testInstance.negative = false;
       fixture.detectChanges();
       expect(radioElement).not.toHaveClass('nx-radio--negative');
-      expect(radioInstances.toArray()[0].negative).toBeFalse();
+      expect(radioInstances.toArray()[0].negative).toBe(false);
     });
 
     it('only one radio button with the same name can be selected at a time', () => {
@@ -175,11 +176,11 @@ describe('NxRadioComponent', () => {
 
       labelElements.item(0).click();
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveSize(1);
+      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveLength(1);
 
       labelElements.item(1).click();
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveSize(1);
+      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveLength(1);
     });
   });
 
@@ -192,12 +193,12 @@ describe('NxRadioComponent', () => {
 
     it('should emit stateChanges on name and disabled changes', () => {
       createTestComponent(MultipleRadio);
-      let spy = jasmine.createSpy('changeSpy');
+      let spy = vi.fn().mockName('changeSpy');
       let subscription = testInstance.radioGroup._stateChanges.subscribe(spy);
       testInstance.radioGroup.name = 'newName';
       expect(spy).toHaveBeenCalled();
       subscription.unsubscribe();
-      spy = jasmine.createSpy('changeSpy');
+      spy = vi.fn().mockName('changeSpy');
       subscription = testInstance.radioGroup._stateChanges.subscribe(spy);
       testInstance.radioGroup.disabled = true;
       expect(spy).toHaveBeenCalled();
@@ -226,15 +227,14 @@ describe('NxRadioComponent', () => {
     it('changing a child radio causes the parent group to emit a change event', () => {
       createTestComponent(MultipleRadio);
       const instance = radioInstances.toArray()[0];
-      const changeHandler = jasmine.createSpy('changeHandler');
+      const changeHandler = vi.fn().mockName('changeHandler');
 
       const subscription = testInstance.radioGroup.groupValueChange.subscribe(changeHandler);
       labelElements.item(0).click();
 
       expect(changeHandler).toHaveBeenCalled();
 
-      const latestCall = changeHandler.calls.mostRecent();
-      const returnValue = latestCall.args[0];
+      const returnValue = changeHandler.mock.lastCall![0];
 
       expect(returnValue.source).toEqual(instance);
       expect(returnValue.value).toBe('0');
@@ -259,20 +259,20 @@ describe('NxRadioComponent', () => {
 
     it('child radio components inherit disabled state from radio group', () => {
       createTestComponent(MultipleRadioDisabled);
-      expect(radioElements.item(0).disabled).toBeTrue();
-      expect(radioElements.item(1).disabled).toBeTrue();
+      expect(radioElements.item(0).disabled).toBe(true);
+      expect(radioElements.item(1).disabled).toBe(true);
     });
 
     it('should toggle disabled state', () => {
       createTestComponent(MultipleRadioDisabled);
       testInstance.disabled = false;
       fixture.detectChanges();
-      expect(radioElements.item(0).disabled).toBeFalse();
-      expect(radioElements.item(1).disabled).toBeFalse();
+      expect(radioElements.item(0).disabled).toBe(false);
+      expect(radioElements.item(1).disabled).toBe(false);
       testInstance.disabled = true;
       fixture.detectChanges();
-      expect(radioElements.item(0).disabled).toBeTrue();
-      expect(radioElements.item(1).disabled).toBeTrue();
+      expect(radioElements.item(0).disabled).toBe(true);
+      expect(radioElements.item(1).disabled).toBe(true);
     });
 
     it('should create a basic radio-group with non-negative styling', () => {
@@ -283,9 +283,9 @@ describe('NxRadioComponent', () => {
       radioElementsNative.forEach((radio: any) => {
         expect(radio).not.toHaveClass('nx-radio--negative');
       });
-      expect(testInstance.radioGroup.negative).toBeFalse();
+      expect(testInstance.radioGroup.negative).toBe(false);
       testInstance.radioInstances.toArray().forEach((radio) => {
-        expect(radio.negative).toBeFalse();
+        expect(radio.negative).toBe(false);
       });
     });
 
@@ -297,9 +297,9 @@ describe('NxRadioComponent', () => {
       radioElementsNative.forEach((radio: any) => {
         expect(radio).toHaveClass('nx-radio--negative');
       });
-      expect(testInstance.radioGroup.negative).toBeTrue();
+      expect(testInstance.radioGroup.negative).toBe(true);
       testInstance.radioInstances.toArray().forEach((radio) => {
-        expect(radio.negative).toBeTrue();
+        expect(radio.negative).toBe(true);
       });
 
       testInstance.groupNegative = false;
@@ -309,9 +309,9 @@ describe('NxRadioComponent', () => {
       radioElementsNative.forEach((radio: any) => {
         expect(radio).not.toHaveClass('nx-radio--negative');
       });
-      expect(testInstance.radioGroup.negative).toBeFalse();
+      expect(testInstance.radioGroup.negative).toBe(false);
       testInstance.radioInstances.toArray().forEach((radio) => {
-        expect(radio.negative).toBeFalse();
+        expect(radio.negative).toBe(false);
       });
     });
 
@@ -327,9 +327,9 @@ describe('NxRadioComponent', () => {
       radioElementsNative.forEach((radio: any) => {
         expect(radio).not.toHaveClass('nx-radio--negative');
       });
-      expect(testInstance.radioGroup.negative).toBeFalse();
+      expect(testInstance.radioGroup.negative).toBe(false);
       testInstance.radioInstances.toArray().forEach((radio) => {
-        expect(radio.negative).toBeFalse();
+        expect(radio.negative).toBe(false);
       });
     });
 
@@ -349,15 +349,15 @@ describe('NxRadioComponent', () => {
 
       firstRadio.focus();
       fixture.detectChanges();
-      expect(testInstance.testForm.touched).toBeFalse();
+      expect(testInstance.testForm.touched).toBe(false);
 
       secondRadio.focus();
       fixture.detectChanges();
-      expect(testInstance.testForm.touched).toBeFalse();
+      expect(testInstance.testForm.touched).toBe(false);
 
       secondRadio._nativeInput.nativeElement.blur();
       fixture.detectChanges();
-      expect(testInstance.testForm.touched).toBeTrue();
+      expect(testInstance.testForm.touched).toBe(true);
     });
   });
 
@@ -391,13 +391,13 @@ describe('NxRadioComponent', () => {
       testInstance.testForm.controls.radioTestReactive.disable();
       fixture.detectChanges();
       Array.from(radioElements).map((radio) => {
-        expect(radio.disabled).toBeTrue();
+        expect(radio.disabled).toBe(true);
       });
 
       testInstance.testForm.controls.radioTestReactive.enable();
       fixture.detectChanges();
       Array.from(radioElements).map((radio) => {
-        expect(radio.disabled).toBeFalse();
+        expect(radio.disabled).toBe(false);
       });
     });
   });
@@ -446,7 +446,7 @@ describe('NxRadioComponent', () => {
       radioInstance.disabled = true;
       fixture.detectChanges();
       const radioElement = fixture.nativeElement.querySelector('nx-radio');
-      expect(getRadioInputElement(radioElement).disabled).toBeTrue();
+      expect(getRadioInputElement(radioElement).disabled).toBe(true);
     });
 
     it('should update on name change', () => {
@@ -460,7 +460,7 @@ describe('NxRadioComponent', () => {
       radioInstance.checked = true;
       fixture.detectChanges();
       const radioElement = fixture.nativeElement.querySelector('nx-radio');
-      expect(getRadioInputElement(radioElement).checked).toBeTrue();
+      expect(getRadioInputElement(radioElement).checked).toBe(true);
     });
 
     it('should update on required change', () => {
@@ -488,7 +488,7 @@ describe('NxRadioComponent', () => {
       createTestComponent(MultipleRadio);
       testInstance.radioGroup.disabled = true;
       fixture.detectChanges();
-      expect(radioElements.item(0).disabled).toBeTrue();
+      expect(radioElements.item(0).disabled).toBe(true);
     });
 
     it('should update on negative input change', () => {
@@ -511,11 +511,11 @@ describe('NxRadioComponent', () => {
       createTestComponent(MultipleRadioOnPush);
       testInstance.radioGroup.required = true;
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('nx-radio-group').getAttribute('required')).toBe(
-        null,
-      );
+      expect(
+        fixture.nativeElement.querySelector('nx-radio-group').getAttribute('required'),
+      ).toBeNull();
       const radioInputs = fixture.nativeElement.querySelectorAll('input[type="radio"]');
-      expect(radioInputs).toHaveSize(2);
+      expect(radioInputs).toHaveLength(2);
       radioInputs.forEach((input: any) => {
         expect(input.getAttribute('required')).toBe('true');
       });
@@ -574,12 +574,12 @@ describe('NxRadioComponent', () => {
     it('Should display nx-errors when invalid', () => {
       createTestComponent(RadioGroupValidation);
       let errors = fixture.nativeElement.querySelectorAll('nx-error');
-      expect(errors).toHaveSize(0);
+      expect(errors).toHaveLength(0);
 
       fixture.nativeElement.querySelector('button').click();
       fixture.detectChanges();
       errors = fixture.nativeElement.querySelectorAll('nx-error');
-      expect(errors).toHaveSize(1);
+      expect(errors).toHaveLength(1);
     });
 
     it('should be invalid when error state matcher is true', () => {
@@ -625,7 +625,7 @@ describe('NxRadioComponent', () => {
       });
     });
 
-    it('should not clickable ', () => {
+    it('should not clickable', () => {
       createTestComponent(RadioGroupTest);
       (testInstance as RadioGroupTest).readonly = true;
       fixture.detectChanges();
@@ -654,12 +654,12 @@ describe('NxRadioComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicRadio);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
-    it('has no accessibility violations', async () => {
+    it('has no accessibility violations in a radio group', async () => {
       createTestComponent(RadioGroupTest);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should set aria-label, aria-labelledBy', async () => {
@@ -673,6 +673,7 @@ describe('NxRadioComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-radio',
   template: `<nx-radio>Label</nx-radio>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
@@ -680,6 +681,7 @@ describe('NxRadioComponent', () => {
 class BasicRadio extends RadioTest {}
 
 @Component({
+  selector: 'test-basic-radio-on-push',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<nx-radio>Label</nx-radio>`,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
@@ -687,6 +689,7 @@ class BasicRadio extends RadioTest {}
 class BasicRadioOnPush extends RadioTest {}
 
 @Component({
+  selector: 'test-configurable-radio',
   template: `<nx-radio [negative]="negative">Label</nx-radio>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
@@ -696,6 +699,7 @@ class ConfigurableRadio extends RadioTest {
 }
 
 @Component({
+  selector: 'test-labelless-radio',
   template: `<nx-radio></nx-radio>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
@@ -703,6 +707,7 @@ class ConfigurableRadio extends RadioTest {
 class LabellessRadio extends RadioTest {}
 
 @Component({
+  selector: 'test-basic-radio-with-same-name',
   template: `
     <nx-radio name="standaloneTest">1</nx-radio>
     <nx-radio name="standaloneTest">2</nx-radio>
@@ -713,6 +718,7 @@ class LabellessRadio extends RadioTest {}
 class BasicRadioWithSameName extends RadioTest {}
 
 @Component({
+  selector: 'test-dynamic-radio',
   template: `
     <nx-radio-group [name]="name" [(ngModel)]="templateModel">
       @for (fruit of data; track fruit) {
@@ -730,6 +736,7 @@ class DynamicRadio extends RadioTest {
 }
 
 @Component({
+  selector: 'test-basic-radio-group',
   template: `
     <nx-radio-group name="groupTest">
       <nx-radio value="0">0</nx-radio>
@@ -742,6 +749,7 @@ class DynamicRadio extends RadioTest {
 class BasicRadioGroup extends RadioTest {}
 
 @Component({
+  selector: 'test-multiple-radio',
   template: `
     <nx-radio-group name="groupTest" [value]="templateModel" [negative]="groupNegative">
       <nx-radio value="0" [negative]="radioNegative">0</nx-radio>
@@ -757,6 +765,7 @@ class MultipleRadio extends RadioTest {
 }
 
 @Component({
+  selector: 'test-multiple-radio-on-push',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nx-radio-group name="groupTest" #radioGroup>
@@ -767,10 +776,12 @@ class MultipleRadio extends RadioTest {
   imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
 })
 class MultipleRadioOnPush extends RadioTest {
-  @ViewChild('radioGroup', { read: NxAbstractControl }) group!: NxAbstractControl;
+  @ViewChild('radioGroup', { read: NxAbstractControl })
+  group!: NxAbstractControl;
 }
 
 @Component({
+  selector: 'test-multiple-radio-disabled',
   template: `
     <nx-radio-group name="groupTest" [disabled]="disabled">
       <nx-radio value="0">0</nx-radio>
@@ -785,6 +796,7 @@ class MultipleRadioDisabled extends RadioTest {
 }
 
 @Component({
+  selector: 'test-reactive-radio',
   template: `
     <form [formGroup]="testForm">
       <nx-radio-group name="reactiveTest" formControlName="radioTestReactive">
@@ -819,6 +831,7 @@ class ReactiveRadio extends RadioTest {
   }
 }
 @Component({
+  selector: 'test-group-with-ng-model',
   template: `
     <nx-radio-group name="groupTest" [(ngModel)]="templateModel">
       <nx-radio value="0">0</nx-radio>
@@ -831,6 +844,7 @@ class ReactiveRadio extends RadioTest {
 class GroupWithNgModel extends RadioTest {}
 
 @Component({
+  selector: 'test-radio-group-validation',
   template: `
     <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
       <nx-radio-group name="reactiveTest" formControlName="radioTestReactive" [required]="true">
@@ -850,7 +864,8 @@ class GroupWithNgModel extends RadioTest {}
 class RadioGroupValidation extends RadioTest {
   testForm!: FormGroup;
   submitted = false;
-  @ViewChild(NxErrorComponent) radioGroupError!: NxErrorComponent;
+  @ViewChild(NxErrorComponent)
+  radioGroupError!: NxErrorComponent;
 
   constructor(private readonly formBuilder: FormBuilder) {
     super();
@@ -870,6 +885,7 @@ class RadioGroupValidation extends RadioTest {
 }
 
 @Component({
+  selector: 'test-radio-group-validation-touched',
   template: `
     <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
       <nx-radio-group name="reactiveTest" formControlName="radioTestReactive" [required]="true">
@@ -912,6 +928,7 @@ class RadioGroupValidationTouched extends RadioTest {
 }
 
 @Component({
+  selector: 'test-radio-group-test',
   template: `
     <nx-radio-group name="radioGroupTest" [readonly]="readonly">
       <nx-label>What do you prefer?</nx-label>
@@ -927,6 +944,7 @@ class RadioGroupTest extends RadioTest {
 }
 
 @Component({
+  selector: 'test-radio-a11y',
   template: `
     <nx-radio-group name="radioGroupTest">
       <nx-label>What do you prefer?</nx-label>

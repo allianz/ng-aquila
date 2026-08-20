@@ -15,8 +15,10 @@ import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
 
 @Directive({ standalone: true })
 abstract class SidepanelCloseButtonTest {
-  @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;
-  @ViewChild(NxSidepanelCloseButtonComponent) buttonInstance!: NxSidepanelCloseButtonComponent;
+  @ViewChild(NxSidepanelComponent)
+  sidebarInstance!: NxSidepanelComponent;
+  @ViewChild(NxSidepanelCloseButtonComponent)
+  buttonInstance!: NxSidepanelCloseButtonComponent;
 }
 
 describe('NxSidepanelCloseButtonComponent', () => {
@@ -53,7 +55,7 @@ describe('NxSidepanelCloseButtonComponent', () => {
     it('closes the panel on button click', () => {
       buttonElement.click();
       fixture.detectChanges();
-      expect(sidepanelInstance.opened).toBeFalse();
+      expect(sidepanelInstance.opened).toBe(false);
       expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
     });
   });
@@ -61,12 +63,13 @@ describe('NxSidepanelCloseButtonComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicSidepanel);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-sidepanel-close-button-basic-sidepanel',
   template: `
     <nx-sidepanel>
       Hello Sidepanel

@@ -18,7 +18,8 @@ import { NxTableRowComponent } from './table-row.component';
 
 @Directive({ standalone: true })
 abstract class TableTest {
-  @ViewChild(NxTableComponent) tableInstance!: NxTableComponent;
+  @ViewChild(NxTableComponent)
+  tableInstance!: NxTableComponent;
 }
 
 describe(NxTableComponent.name, () => {
@@ -150,22 +151,23 @@ describe(NxTableComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations in simple table', async () => {
       createTestComponent(SimpleTableComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations in zebra table', async () => {
       createTestComponent(ZebraTableComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has no accessibility violations in condensed table', async () => {
       createTestComponent(CondensedTableComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-simple-table-component',
   template: `<table nxTable>
     <thead>
       <tr nxTableRow>
@@ -184,6 +186,7 @@ describe(NxTableComponent.name, () => {
 class SimpleTableComponent extends TableTest {}
 
 @Component({
+  selector: 'test-zebra-table-component',
   template: `<table nxTable zebra>
     <thead>
       <tr nxTableRow>
@@ -202,6 +205,7 @@ class SimpleTableComponent extends TableTest {}
 class ZebraTableComponent extends TableTest {}
 
 @Component({
+  selector: 'test-expandable-non-zebra-table-component',
   standalone: true,
   template: `<table nxTable nxExpandableTable zebra>
     <thead>
@@ -220,6 +224,7 @@ class ZebraTableComponent extends TableTest {}
 class ExpandableNonZebraTableComponent extends TableTest {}
 
 @Component({
+  selector: 'test-condensed-table-component',
   template: `<table nxTable condensed>
     <thead>
       <tr nxTableRow>

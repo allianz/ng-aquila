@@ -21,7 +21,8 @@ import { NxSelectableCardComponent } from './selectable-card.component';
 
 @Directive({ standalone: true })
 abstract class SelectableCardTest {
-  @ViewChildren(NxSelectableCardComponent) cardList!: QueryList<NxSelectableCardComponent>;
+  @ViewChildren(NxSelectableCardComponent)
+  cardList!: QueryList<NxSelectableCardComponent>;
 
   formGroup!: FormGroup;
 }
@@ -62,7 +63,7 @@ describe('NxSelectableCardGroupComponent', () => {
     fixture.detectChanges();
 
     expect(testInstance.cardList.filter((c) => c.checked).length).toBe(1);
-    expect(testInstance.cardList.get(1)?.checked).toBeTrue();
+    expect(testInstance.cardList.get(1)?.checked).toBe(true);
   });
 
   it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
@@ -77,6 +78,7 @@ describe('NxSelectableCardGroupComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-selectable-card-group',
   template: `
     <form [formGroup]="formGroup">
       <nx-selectable-card-group formControlName="radio" name="radio-group">

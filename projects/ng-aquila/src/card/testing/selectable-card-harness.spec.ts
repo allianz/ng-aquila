@@ -45,7 +45,7 @@ describe('NxSelectableCardHarness', () => {
 
     const card = await loader.getHarness(NxSelectableCardHarness);
     await card.click();
-    expect(await card.isChecked()).toBeTrue();
+    expect(await card.isChecked()).toBe(true);
   });
 
   it('should get error state', async () => {
@@ -54,13 +54,13 @@ describe('NxSelectableCardHarness', () => {
     const loader = TestbedHarnessEnvironment.loader(fixture);
     const group = await loader.getHarness(NxSelectableCardHarness);
 
-    expect(await group.hasError()).toBeFalse();
+    expect(await group.hasError()).toBe(false);
 
     fixture.componentInstance.control.setErrors({ invalid: true });
     fixture.componentInstance.control.markAllAsTouched();
     fixture.detectChanges();
 
-    expect(await group.hasError()).toBeTrue();
+    expect(await group.hasError()).toBe(true);
   });
 
   describe('filters', () => {
@@ -109,6 +109,7 @@ describe('NxSelectableCardHarness', () => {
 });
 
 @Component({
+  selector: 'test-basic-test',
   template: `
     <nx-selectable-card />
     <nx-selectable-card />
@@ -120,6 +121,7 @@ describe('NxSelectableCardHarness', () => {
 class BasicTest {}
 
 @Component({
+  selector: 'test-heading-elements-test',
   template: `
     <nx-selectable-card><h3>Foo</h3></nx-selectable-card>
     <nx-selectable-card><h6>Bar</h6></nx-selectable-card>
@@ -131,6 +133,7 @@ class BasicTest {}
 class HeadingElementsTest {}
 
 @Component({
+  selector: 'test-checked-state-test',
   template: `
     <nx-selectable-card><h2>Foo</h2></nx-selectable-card>
     <nx-selectable-card checked><h2>Bar</h2></nx-selectable-card>
@@ -141,6 +144,7 @@ class HeadingElementsTest {}
 class CheckedStateTest {}
 
 @Component({
+  selector: 'test-click-test',
   template: `<nx-selectable-card>123</nx-selectable-card>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],
@@ -148,6 +152,7 @@ class CheckedStateTest {}
 class ClickTest {}
 
 @Component({
+  selector: 'test-selectable-card-harness-filter-test',
   template: `
     <nx-selectable-card><h2>Foo</h2></nx-selectable-card>
     <nx-selectable-card><h2>Bar</h2></nx-selectable-card>
@@ -170,6 +175,7 @@ class ClickTest {}
 class FilterTest {}
 
 @Component({
+  selector: 'test-selectable-card-harness-error-test',
   template: `<nx-selectable-card [formControl]="control"></nx-selectable-card>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, FormsModule, ReactiveFormsModule],

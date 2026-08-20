@@ -117,7 +117,7 @@ describe('NxDatepicker', () => {
           const [fakeDirectionality, changeEmitter] = fakeDirectionalityFactory('ltr', true);
           compileTestComponent([{ provide: Directionality, useValue: fakeDirectionality }]);
           testComponent.datepicker.open();
-          spyOn(testComponent.datepicker, 'close');
+          vi.spyOn(testComponent.datepicker, 'close').mockReturnValue(undefined);
           fixture.detectChanges();
           flush();
           changeEmitter.emit('rtl');
@@ -155,6 +155,7 @@ describe('NxDatepicker with ShadowDom encapsulation', () => {
 });
 
 @Component({
+  selector: 'test-standard-datepicker',
   template: `
     <input nxDatefield [datepicker]="d" [value]="date" />
     <nx-datepicker #d [disabled]="disabled" [opened]="opened"></nx-datepicker>
@@ -167,11 +168,14 @@ class StandardDatepicker {
   touch = false;
   disabled = false;
   date: Date | null = new Date(2020, JAN, 1);
-  @ViewChild('d') datepicker!: NxDatepickerComponent<Date>;
-  @ViewChild(NxDatefieldDirective) datepickerInput!: NxDatefieldDirective<Date>;
+  @ViewChild('d')
+  datepicker!: NxDatepickerComponent<Date>;
+  @ViewChild(NxDatefieldDirective)
+  datepickerInput!: NxDatefieldDirective<Date>;
 }
 
 @Component({
+  selector: 'test-shadow-dom-datefield',
   imports: [
     NxDatefieldModule,
     NxMomentDateModule,

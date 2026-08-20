@@ -7,7 +7,8 @@ import { NxAvatarModule } from './avatar.module';
 
 @Directive({ standalone: true })
 abstract class AvatarTest {
-  @ViewChild(NxAvatarComponent) avatarInstance!: NxAvatarComponent;
+  @ViewChild(NxAvatarComponent)
+  avatarInstance!: NxAvatarComponent;
   size: NxAvatarSize = 'small';
 }
 
@@ -149,6 +150,7 @@ describe('NxAvatarComponent', () => {
 });
 
 @Component({
+  selector: 'test-avatar-with-text',
   template: `<div nxAvatar>SM</div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
@@ -156,6 +158,7 @@ describe('NxAvatarComponent', () => {
 class AvatarWithText extends AvatarTest {}
 
 @Component({
+  selector: 'test-avatar-with-icon',
   template: `
     <div nxAvatar>
       <nx-icon name="user-o"></nx-icon>
@@ -167,6 +170,7 @@ class AvatarWithText extends AvatarTest {}
 class AvatarWithIcon extends AvatarTest {}
 
 @Component({
+  selector: 'test-avatar-with-image',
   template: `
     <div nxAvatar>
       <figure nxFigure>
@@ -180,6 +184,7 @@ class AvatarWithIcon extends AvatarTest {}
 class AvatarWithImage extends AvatarTest {}
 
 @Component({
+  selector: 'test-avatar-button',
   template: `<button nxAvatar>SM</button>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
@@ -187,6 +192,7 @@ class AvatarWithImage extends AvatarTest {}
 class AvatarButton extends AvatarTest {}
 
 @Component({
+  selector: 'test-configurable-avatar',
   template: `<div nxAvatar [size]="size">SM</div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
@@ -194,6 +200,7 @@ class AvatarButton extends AvatarTest {}
 class ConfigurableAvatar extends AvatarTest {}
 
 @Component({
+  selector: 'test-avatar-with-accent',
   template: `<div nxAvatar [accentColor]="accentColor" [prominence]="prominence">SM</div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
@@ -204,6 +211,7 @@ class AvatarWithAccent extends AvatarTest {
 }
 
 @Component({
+  selector: 'test-configurable-disabled-avatar',
   template: `<div nxAvatar [disabled]="disabled">MD</div>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxAvatarModule, NxIconModule],
@@ -213,6 +221,7 @@ class ConfigurableDisabledAvatar extends AvatarTest {
 }
 
 @Component({
+  selector: 'test-disabled-avatar-with-accent',
   template: `<div nxAvatar [disabled]="true" prominence="attention" [accentColor]="'blue'">
     MD
   </div>`,

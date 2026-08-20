@@ -19,8 +19,10 @@ import { NxModalModule } from './modal.module';
 @Directive({ standalone: true })
 abstract class ModalTest {
   open = false;
-  @ViewChildren(NxModalComponent) modalInstances!: QueryList<NxModalComponent>;
-  @ViewChild(NxModalComponent) modalInstance!: NxModalComponent;
+  @ViewChildren(NxModalComponent)
+  modalInstances!: QueryList<NxModalComponent>;
+  @ViewChild(NxModalComponent)
+  modalInstance!: NxModalComponent;
 }
 
 describe('NxModalComponent', () => {
@@ -136,7 +138,7 @@ describe('NxModalComponent', () => {
       tick();
 
       modalInstance = testInstance.modalInstances.first;
-      spyOn(modalInstance.closeEvent, 'emit');
+      vi.spyOn(modalInstance.closeEvent, 'emit').mockReturnValue(undefined);
     }));
 
     it('should dispatch a close event when backdrop is clicked', () => {
@@ -177,12 +179,13 @@ describe('NxModalComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicModal);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-modal',
   template: `
     <button #basicModalButton nxButton="primary">Show Modal Basic</button>
 
@@ -207,6 +210,7 @@ class BasicModal extends ModalTest {
 }
 
 @Component({
+  selector: 'test-manual-modal',
   template: `
     <ng-template #basicModalBody>
       basic modal content
@@ -223,6 +227,7 @@ class BasicModal extends ModalTest {
 class ManualModal extends ModalTest {}
 
 @Component({
+  selector: 'test-fixed-width-modal',
   template: `
     <ng-template #basicModalBody>
       basic modal content
@@ -240,6 +245,7 @@ class ManualModal extends ModalTest {}
 class FixedWidthModal extends ModalTest {}
 
 @Component({
+  selector: 'test-on-push-test',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <button #basicModalButton nxButton="primary">Show Modal Basic</button>

@@ -73,7 +73,7 @@ describe('NxMessageToast', () => {
       fixture.detectChanges();
       flush();
 
-      expect(overlayContainerElement.childNodes).toHaveSize(1);
+      expect(overlayContainerElement.childNodes).toHaveLength(1);
     }));
 
     it('should remove past message toasts when opening new message toasts', fakeAsync(() => {
@@ -158,7 +158,7 @@ describe('NxMessageToast', () => {
       fixture.detectChanges();
       flush();
 
-      expect(overlayContainerElement.childNodes).toHaveSize(1);
+      expect(overlayContainerElement.childNodes).toHaveLength(1);
     }));
   });
 
@@ -192,7 +192,7 @@ describe('NxMessageToast', () => {
       fixture.detectChanges();
       flush();
 
-      expect(overlayContainerElement.childNodes).toHaveSize(1);
+      expect(overlayContainerElement.childNodes).toHaveLength(1);
     }));
   });
 
@@ -200,7 +200,7 @@ describe('NxMessageToast', () => {
     const toastRef = messageToastService.open('content', { duration: 300 });
     tick(300); // open
 
-    const afterDismissSpy = jasmine.createSpy('after dismiss spy');
+    const afterDismissSpy = vi.fn().mockName('after dismiss spy');
     toastRef.afterDismissed().subscribe(afterDismissSpy);
 
     expect(afterDismissSpy).not.toHaveBeenCalled();
@@ -217,7 +217,7 @@ describe('NxMessageToast', () => {
     tick(300);
     fixture.detectChanges();
 
-    const afterDismissSpy = jasmine.createSpy('after dismiss spy');
+    const afterDismissSpy = vi.fn().mockName('after dismiss spy');
     toastRef.afterDismissed().subscribe(afterDismissSpy);
 
     toastRef.dismiss();
@@ -320,12 +320,14 @@ describe('NxMessageToast', () => {
       expect(containerElement.getAttribute('role')).toBeFalsy();
     }));
 
-    it('has no accessibility violations', fakeAsync(() => {
+    // Not `fakeAsync`: `toBeAccessible()` is asynchronous and has to be awaited,
+    // which is impossible inside a fake async zone.
+    it('has no accessibility violations', async () => {
       messageToastService.open('test');
       fixture.detectChanges();
-      tick(100);
-      expectAsync(fixture.nativeElement).toBeAccessible();
-    }));
+      await fixture.whenStable();
+      await expect(fixture.nativeElement).toBeAccessible();
+    });
   });
 });
 
@@ -423,6 +425,7 @@ describe('NxMessageToast with parent and child service', () => {
 });
 
 @Component({
+  selector: 'test-basic-message-toast-test',
   template: ``,
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
@@ -430,15 +433,18 @@ describe('NxMessageToast with parent and child service', () => {
 class BasicMessageToastTest {}
 
 @Component({
+  selector: 'test-message-toast-component-with-template-ref',
   template: `<ng-template> Testing template </ng-template>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
 })
 class ComponentWithTemplateRef {
-  @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
+  @ViewChild(TemplateRef)
+  templateRef!: TemplateRef<any>;
 }
 
 @Component({
+  selector: 'test-component-providing-service',
   template: '',
   providers: [NxMessageToastService],
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -455,6 +461,7 @@ class ComponentProvidingService {
 class NxMessageToastTestModule {}
 
 @Component({
+  selector: 'test-simple-message-toast-component',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.Eager,
   template: `<div class="u-text-center">

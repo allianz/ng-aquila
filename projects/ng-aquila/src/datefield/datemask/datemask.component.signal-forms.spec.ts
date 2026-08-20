@@ -27,6 +27,7 @@ import { NxDatemaskComponent } from './datemask.component';
 // this setup must be revisited (e.g. wrap the date in a plain object or store an ISO
 // string). Do NOT restructure the model without re-verifying this assumption.
 @Component({
+  selector: 'test-datemask-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxDatemaskComponent, NxMomentDateModule, NxFormfieldComponent],
@@ -42,6 +43,7 @@ class DatemaskSignalFormHost {
 }
 
 @Component({
+  selector: 'test-datemask-required-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxDatemaskComponent, NxMomentDateModule, NxFormfieldComponent],
@@ -59,6 +61,7 @@ class DatemaskRequiredSignalFormHost {
 }
 
 @Component({
+  selector: 'test-datemask-disabled-signal-form-host',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormField, NxDatemaskComponent, NxMomentDateModule, NxFormfieldComponent],
@@ -141,7 +144,7 @@ describe('NxDatemaskComponent signal forms', () => {
     });
 
     it('marks the field as touched on blur', fakeAsync(() => {
-      expect(host.myForm.date().touched()).toBeFalse();
+      expect(host.myForm.date().touched()).toBe(false);
 
       const inputs = getInputs(fixture);
       inputs[0].focus();
@@ -154,7 +157,7 @@ describe('NxDatemaskComponent signal forms', () => {
       flush();
       fixture.detectChanges();
 
-      expect(host.myForm.date().touched()).toBeTrue();
+      expect(host.myForm.date().touched()).toBe(true);
     }));
   });
 
@@ -177,7 +180,7 @@ describe('NxDatemaskComponent signal forms', () => {
     it('is valid while a date is provided', fakeAsync(() => {
       tick();
       fixture.detectChanges();
-      expect(host.myForm().valid()).toBeTrue();
+      expect(host.myForm().valid()).toBe(true);
       expect(host.myForm.date().errors().length).toBe(0);
     }));
 
@@ -187,13 +190,13 @@ describe('NxDatemaskComponent signal forms', () => {
       tick();
       fixture.detectChanges();
 
-      expect(host.myForm().invalid()).toBeTrue();
+      expect(host.myForm().invalid()).toBe(true);
       expect(
         host.myForm
           .date()
           .errors()
           .some((e) => e.kind === 'required'),
-      ).toBeTrue();
+      ).toBe(true);
     }));
   });
 
@@ -216,7 +219,7 @@ describe('NxDatemaskComponent signal forms', () => {
       fixture.detectChanges();
       const inputs = getInputs(fixture);
       expect(inputs.length).toBeGreaterThan(0);
-      inputs.forEach((input) => expect(input.disabled).toBeTrue());
+      inputs.forEach((input) => expect(input.disabled).toBe(true));
     });
   });
 });

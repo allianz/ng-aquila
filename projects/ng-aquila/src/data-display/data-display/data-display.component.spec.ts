@@ -80,7 +80,7 @@ describe('DataDisplayComponent', () => {
     });
 
     it('is large', async () => {
-      expect(await dataDisplayHarness.hasSize('large')).toBeTrue();
+      expect(await dataDisplayHarness.hasSize('large')).toBe(true);
     });
   });
 
@@ -106,7 +106,7 @@ describe('DataDisplayComponent', () => {
     });
 
     it('is horizontal', async () => {
-      expect(await dataDisplayHarness.isHorizontal()).toBeTrue();
+      expect(await dataDisplayHarness.isHorizontal()).toBe(true);
     });
   });
 
@@ -119,7 +119,7 @@ describe('DataDisplayComponent', () => {
       it(`is ${size}`, async () => {
         testInstance.size = size;
         fixture.detectChanges();
-        expect(await dataDisplayHarness.hasSize(size)).toBeTrue();
+        expect(await dataDisplayHarness.hasSize(size)).toBe(true);
       });
     });
   });
@@ -127,12 +127,14 @@ describe('DataDisplayComponent', () => {
 
 @Directive({ standalone: true })
 abstract class DataDisplayTestComponent {
-  @ViewChild(NxDataDisplayComponent) dataDisplay!: NxDataDisplayComponent;
+  @ViewChild(NxDataDisplayComponent)
+  dataDisplay!: NxDataDisplayComponent;
   orientation: NxDataDisplayOrientation = 'vertical';
   size: NxDataDisplaySize = 'small';
 }
 
 @Component({
+  selector: 'test-basic-data-display-test-component',
   template: `<nx-data-display label="Example label"> Example value </nx-data-display>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxDataDisplayModule],
@@ -140,6 +142,7 @@ abstract class DataDisplayTestComponent {
 class BasicDataDisplayTestComponent extends DataDisplayTestComponent {}
 
 @Component({
+  selector: 'test-custom-label-data-display-test-component',
   template: `
     <nx-data-display>
       <nx-data-display-label>Example label</nx-data-display-label>
@@ -152,6 +155,7 @@ class BasicDataDisplayTestComponent extends DataDisplayTestComponent {}
 class CustomLabelDataDisplayTestComponent extends DataDisplayTestComponent {}
 
 @Component({
+  selector: 'test-configurable-data-display-test-component',
   template: `<nx-data-display label="Example label" [orientation]="orientation" [size]="size">
     Example value
   </nx-data-display>`,

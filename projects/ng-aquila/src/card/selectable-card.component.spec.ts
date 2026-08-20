@@ -25,8 +25,10 @@ import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 
 @Directive({ standalone: true })
 abstract class SelectableCardTest {
-  @ViewChild(NxSelectableCardComponent) selectableCardInstance!: NxSelectableCardComponent;
-  @ViewChildren(NxErrorComponent) errors!: QueryList<NxErrorComponent>;
+  @ViewChild(NxSelectableCardComponent)
+  selectableCardInstance!: NxSelectableCardComponent;
+  @ViewChildren(NxErrorComponent)
+  errors!: QueryList<NxErrorComponent>;
 
   checked = false;
   disabled = false;
@@ -98,7 +100,7 @@ describe('NxSelectableCardComponent', () => {
     createTestComponent(BasicSelectableCard);
     testInstance.disabled = true;
     fixture.detectChanges();
-    expect(inputElement.disabled).toBeTrue();
+    expect(inputElement.disabled).toBe(true);
   });
 
   it('toggles the checked state based on [checked] input', () => {
@@ -111,14 +113,14 @@ describe('NxSelectableCardComponent', () => {
   it('emits proper change event objects on card checked change', fakeAsync(() => {
     createTestComponent(BasicSelectableCard);
 
-    spyOn(selectableCardInstance.checkedChange, 'emit');
-    const spy = jasmine.createSpy('Card selection spy');
+    vi.spyOn(selectableCardInstance.checkedChange, 'emit').mockReturnValue(undefined);
+    const spy = vi.fn().mockName('Card selection spy');
     const subscription =
       fixture.componentInstance.selectableCardInstance.selectionChange.subscribe(spy);
     labelElement.click();
     fixture.detectChanges();
     tick();
-    expect(spy).toHaveBeenCalledWith(jasmine.any(NxSelectableCardChangeEvent));
+    expect(spy).toHaveBeenCalledWith(expect.any(NxSelectableCardChangeEvent));
     expect(selectableCardInstance.checkedChange.emit).toHaveBeenCalledWith(true);
 
     subscription.unsubscribe();
@@ -182,14 +184,14 @@ describe('NxSelectableCardComponent', () => {
       fixture.detectChanges();
       tick();
 
-      expect(inputElement.disabled).toBeTrue();
+      expect(inputElement.disabled).toBe(true);
 
       testInstance.testForm.controls.card.enable();
 
       fixture.detectChanges();
       tick();
 
-      expect(inputElement.disabled).toBeFalse();
+      expect(inputElement.disabled).toBe(false);
     }));
 
     it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
@@ -204,12 +206,12 @@ describe('NxSelectableCardComponent', () => {
   describe('a11y', () => {
     it('default card has no accessibility violations', async () => {
       createTestComponent(BasicSelectableCard);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('expert card has no accessibility violations', async () => {
       createTestComponent(ExpertSelectableCard);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should use nx-error IDs for aria-describedby', fakeAsync(() => {
@@ -217,7 +219,7 @@ describe('NxSelectableCardComponent', () => {
       selectableCardInstance.ngControl!.control!.markAsTouched();
       fixture.detectChanges();
 
-      expect(errors).toHaveSize(
+      expect(errors).toHaveLength(
         inputElement.attributes.getNamedItem('aria-describedby')!.value.split(' ').length,
       );
 
@@ -229,7 +231,7 @@ describe('NxSelectableCardComponent', () => {
 
       const errorIds = inputElement.attributes.getNamedItem('aria-describedby')!.value.split(' ');
 
-      expect(errorIds).toHaveSize(errors.length);
+      expect(errorIds).toHaveLength(errors.length);
 
       errors.toArray().forEach((errorId) => {
         expect(errorIds).toContain(errorId.id);
@@ -239,6 +241,7 @@ describe('NxSelectableCardComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-selectable-card',
   template: `
     <nx-selectable-card [disabled]="disabled" [checked]="checked">
       <p>
@@ -252,6 +255,7 @@ describe('NxSelectableCardComponent', () => {
 class BasicSelectableCard extends SelectableCardTest {}
 
 @Component({
+  selector: 'test-expert-selectable-card',
   template: `
     <nx-selectable-card appearance="expert">
       <p>
@@ -265,6 +269,7 @@ class BasicSelectableCard extends SelectableCardTest {}
 class ExpertSelectableCard extends SelectableCardTest {}
 
 @Component({
+  selector: 'test-highlight-selectable-card',
   template: `
     <nx-selectable-card highlight>
       <div nxHighlightHeader>Highlight</div>
@@ -279,6 +284,7 @@ class ExpertSelectableCard extends SelectableCardTest {}
 class HighlightSelectableCard extends SelectableCardTest {}
 
 @Component({
+  selector: 'test-elevated-selectable-card',
   template: `<nx-selectable-card elevated></nx-selectable-card>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
@@ -286,6 +292,7 @@ class HighlightSelectableCard extends SelectableCardTest {}
 class ElevatedSelectableCard extends SelectableCardTest {}
 
 @Component({
+  selector: 'test-reactive-selectable-card',
   template: `
     <form [formGroup]="testForm">
       <nx-selectable-card formControlName="card">
@@ -312,6 +319,7 @@ class ReactiveSelectableCard extends SelectableCardTest {
 }
 
 @Component({
+  selector: 'test-dynamic-error-selectable-card',
   template: `
     <form [formGroup]="testForm">
       <nx-selectable-card formControlName="card">

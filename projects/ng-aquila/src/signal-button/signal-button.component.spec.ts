@@ -24,7 +24,8 @@ import { NxSignalButtonModule } from './signal-button.module';
 
 @Directive({ standalone: true })
 abstract class SignalButtonTestDirective {
-  @ViewChild(NxSignalButtonComponent) signalButtonInstance!: NxSignalButtonComponent;
+  @ViewChild(NxSignalButtonComponent)
+  signalButtonInstance!: NxSignalButtonComponent;
 }
 
 describe('NxSignalButtonComponent', () => {
@@ -222,7 +223,7 @@ describe('NxSignalButtonComponent', () => {
       fixture.detectChanges();
 
       const keydownEvent = new KeyboardEvent('keydown', { keyCode: SPACE, which: SPACE });
-      const spy = spyOn(keydownEvent, 'preventDefault');
+      const spy = vi.spyOn(keydownEvent, 'preventDefault').mockReturnValue(undefined);
       buttonNativeElement.dispatchEvent(keydownEvent);
 
       fixture.detectChanges();
@@ -239,7 +240,7 @@ describe('NxSignalButtonComponent', () => {
       buttonNativeElement.focus();
       click();
       fixture.detectChanges();
-      spyOn(buttonNativeElement, 'focus').and.callThrough();
+      vi.spyOn(buttonNativeElement, 'focus');
       getCloseIcon().click();
       tick();
 
@@ -253,7 +254,7 @@ describe('NxSignalButtonComponent', () => {
       createTestComponent(SignalButtonComponent);
       buttonNativeElement.dispatchEvent(new Event('click'));
       fixture.detectChanges();
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 
@@ -303,6 +304,7 @@ describe('NxSignalButtonComponent', () => {
 });
 
 @Component({
+  selector: 'test-signal-button-component',
   template: `<nx-signal-button [context]="context" [size]="size"
     >This is the content of the success popover</nx-signal-button
   >`,

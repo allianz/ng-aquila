@@ -6,7 +6,8 @@ import { NxImageModule } from './image.module';
 
 @Directive({ standalone: true })
 abstract class ImageTest {
-  @ViewChild(NxFigureComponent) imageInstance!: NxFigureComponent;
+  @ViewChild(NxFigureComponent)
+  imageInstance!: NxFigureComponent;
   keyword!: string;
 }
 
@@ -66,12 +67,13 @@ describe('NxImageDirective', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicImage);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-image',
   template: `
     <figure nxFigure>
       <img alt="foo" />
@@ -83,6 +85,7 @@ describe('NxImageDirective', () => {
 class BasicImage extends ImageTest {}
 
 @Component({
+  selector: 'test-figure-with-modifier',
   template: `
     <figure [nxFigure]="keyword">
       <img alt="foo" />

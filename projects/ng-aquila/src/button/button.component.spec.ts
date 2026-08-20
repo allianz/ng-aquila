@@ -18,7 +18,8 @@ import { NxIconButtonComponent } from './icon-button.component';
 
 @Directive({ standalone: true })
 abstract class ButtonTest {
-  @ViewChild('button') buttonInstance!: NxButtonBase;
+  @ViewChild('button')
+  buttonInstance!: NxButtonBase;
 
   buttonType: NxButtonType = 'primary';
   buttonSize: NxButtonSize = 'medium';
@@ -29,7 +30,7 @@ abstract class ButtonTest {
   tabIndex: null | number = null;
   tabindexAttribute: null | number = null;
 
-  readonly clickSpy = jasmine.createSpy('clickSpy');
+  readonly clickSpy = vi.fn().mockName('clickSpy');
 
   get classNames(): string {
     return `${this.buttonType} ${this.buttonSize} ${this.danger} ${this.negative} ${this.block}`;
@@ -37,6 +38,7 @@ abstract class ButtonTest {
 }
 
 @Component({
+  selector: 'test-basic-button',
   template: `<button nxButton #button class="some-arbitray-class-name">Hello Button</button>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule, NxButtonModule],
@@ -44,6 +46,7 @@ abstract class ButtonTest {
 class BasicButton extends ButtonTest {}
 
 @Component({
+  selector: 'test-basic-icon-button',
   template: `
     <button nxIconButton #button class="some-arbitray-class-name" aria-label="settings">
       <nx-icon name="settings"></nx-icon>
@@ -55,6 +58,7 @@ class BasicButton extends ButtonTest {}
 class BasicIconButton extends ButtonTest {}
 
 @Component({
+  selector: 'test-configurable-button',
   template: `<button
     [nxButton]="classNames"
     [loading]="loading"
@@ -71,6 +75,7 @@ class BasicIconButton extends ButtonTest {}
 class ConfigurableButton extends ButtonTest {}
 
 @Component({
+  selector: 'test-configurable-icon-button',
   template: `
     <button
       [nxIconButton]="classNames"
@@ -90,6 +95,7 @@ class ConfigurableButton extends ButtonTest {}
 class ConfigurableIconButton extends ButtonTest {}
 
 @Component({
+  selector: 'test-configurable-on-push-button',
   template: `<button [nxButton]="classNames" #button>Configurable button</button>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxIconModule, NxButtonModule],
@@ -97,6 +103,7 @@ class ConfigurableIconButton extends ButtonTest {}
 class ConfigurableOnPushButton extends ButtonTest {}
 
 @Component({
+  selector: 'test-configurable-on-push-icon-button',
   template: `
     <button [nxIconButton]="classNames" #button aria-label="settings">
       <nx-icon name="settings"></nx-icon>
@@ -247,12 +254,12 @@ describe('NxButton Implementations', () => {
           createTestComponent(testTarget.configurable);
           fixture.componentInstance.danger = 'danger';
           fixture.detectChanges();
-          expect(buttonInstance.danger).toBeTrue();
+          expect(buttonInstance.danger).toBe(true);
           expect(buttonNativeElement).toHaveClass('nx-button--danger');
 
           fixture.componentInstance.danger = '';
           fixture.detectChanges();
-          expect(buttonInstance.danger).toBeFalse();
+          expect(buttonInstance.danger).toBe(false);
           expect(buttonNativeElement).not.toHaveClass('nx-button--danger');
         });
       });
@@ -262,12 +269,12 @@ describe('NxButton Implementations', () => {
           createTestComponent(testTarget.configurable);
           fixture.componentInstance.negative = 'negative';
           fixture.detectChanges();
-          expect(buttonInstance.negative).toBeTrue();
+          expect(buttonInstance.negative).toBe(true);
           expect(buttonNativeElement).toHaveClass('nx-button--negative');
 
           fixture.componentInstance.negative = '';
           fixture.detectChanges();
-          expect(buttonInstance.negative).toBeFalse();
+          expect(buttonInstance.negative).toBe(false);
           expect(buttonNativeElement).not.toHaveClass('nx-button--negative');
         });
       });
@@ -277,12 +284,12 @@ describe('NxButton Implementations', () => {
           createTestComponent(testTarget.configurable);
           fixture.componentInstance.block = 'block';
           fixture.detectChanges();
-          expect(buttonInstance.block).toBeTrue();
+          expect(buttonInstance.block).toBe(true);
           expect(buttonNativeElement).toHaveClass('nx-button--block');
 
           fixture.componentInstance.block = '';
           fixture.detectChanges();
-          expect(buttonInstance.block).toBeFalse();
+          expect(buttonInstance.block).toBe(false);
           expect(buttonNativeElement).not.toHaveClass('nx-button--block');
         });
       });
@@ -321,7 +328,9 @@ describe('NxButton Implementations', () => {
           cta: true,
           attention: true,
           emphasis: true,
-        } satisfies { [key in NxButtonType]: boolean }).forEach(([type, negativeTrue]) => {
+        } satisfies {
+          [key in NxButtonType]: boolean;
+        }).forEach(([type, negativeTrue]) => {
           it(`sets spinner negative=${negativeTrue} for type=${type}`, () => {
             createTestComponent(testTarget.configurable);
             fixture.componentInstance.buttonType = type as NxButtonType;
@@ -361,12 +370,12 @@ describe('NxButton Implementations', () => {
           createTestComponent(testTarget.onPush);
           buttonInstance.classNames = 'danger';
           fixture.detectChanges();
-          expect(buttonInstance.danger).toBeTrue();
+          expect(buttonInstance.danger).toBe(true);
           expect(buttonNativeElement).toHaveClass('nx-button--danger');
 
           buttonInstance.classNames = '';
           fixture.detectChanges();
-          expect(buttonInstance.danger).toBeFalse();
+          expect(buttonInstance.danger).toBe(false);
           expect(buttonNativeElement).not.toHaveClass('nx-button--danger');
         });
 
@@ -374,12 +383,12 @@ describe('NxButton Implementations', () => {
           createTestComponent(testTarget.onPush);
           buttonInstance.classNames = 'negative';
           fixture.detectChanges();
-          expect(buttonInstance.negative).toBeTrue();
+          expect(buttonInstance.negative).toBe(true);
           expect(buttonNativeElement).toHaveClass('nx-button--negative');
 
           buttonInstance.classNames = '';
           fixture.detectChanges();
-          expect(buttonInstance.negative).toBeFalse();
+          expect(buttonInstance.negative).toBe(false);
           expect(buttonNativeElement).not.toHaveClass('nx-button--negative');
         });
 
@@ -387,12 +396,12 @@ describe('NxButton Implementations', () => {
           createTestComponent(testTarget.onPush);
           buttonInstance.classNames = 'block';
           fixture.detectChanges();
-          expect(buttonInstance.block).toBeTrue();
+          expect(buttonInstance.block).toBe(true);
           expect(buttonNativeElement).toHaveClass('nx-button--block');
 
           buttonInstance.classNames = '';
           fixture.detectChanges();
-          expect(buttonInstance.block).toBeFalse();
+          expect(buttonInstance.block).toBe(false);
           expect(buttonNativeElement).not.toHaveClass('nx-button--block');
         });
       });
@@ -400,7 +409,7 @@ describe('NxButton Implementations', () => {
       describe('a11y', () => {
         it('has no accessibility violations', async () => {
           createTestComponent(testTarget.basic);
-          return expectAsync(fixture.nativeElement).toBeAccessible();
+          return expect(fixture.nativeElement).toBeAccessible();
         });
 
         it('has aria-disabled when loading', () => {
@@ -453,7 +462,7 @@ describe('NxButton Implementations', () => {
     class AnchorTestInstance {
       anchorInstance = viewChild.required(NxAnchorButtonComponent);
 
-      clickBindingSpy = jasmine.createSpy('clickSpy');
+      clickBindingSpy = vi.fn().mockName('clickSpy');
       disabled = false;
       loading = false;
       tabindexAttribute: number | null = null;
@@ -484,12 +493,10 @@ describe('NxButton Implementations', () => {
       expect(testInstance.clickBindingSpy).not.toHaveBeenCalled();
     });
 
-    // eslint-disable-next-line jasmine/no-suite-dupes
     describe('a11y', () => {
-      // eslint-disable-next-line jasmine/no-spec-dupes
       it('has no accessibility violations', async () => {
         createTestComponent(AnchorTestInstance);
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
 
       it('has correct a11y attributes when disabled', () => {

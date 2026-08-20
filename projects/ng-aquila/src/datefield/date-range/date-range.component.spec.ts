@@ -54,8 +54,8 @@ describe('DateRangeComponent', () => {
 
       const startDateInput = nativeInputs[0];
       const endDateInput = nativeInputs[1];
-      expect(startDateInput.value).toEqual('03/05/2020');
-      expect(endDateInput.value).toEqual('03/05/2021');
+      expect(startDateInput.value).toBe('03/05/2020');
+      expect(endDateInput.value).toBe('03/05/2021');
     });
 
     it('should reflect user input in the model', async () => {
@@ -69,7 +69,7 @@ describe('DateRangeComponent', () => {
       fixture.detectChanges();
       await fixture.whenStable();
 
-      expect(component.dateRangeModel.start.format('MM/DD/YYYY')).toEqual('11/11/2011');
+      expect(component.dateRangeModel.start.format('MM/DD/YYYY')).toBe('11/11/2011');
     });
 
     it('should result in null value on invalid input', async () => {
@@ -119,8 +119,8 @@ describe('DateRangeComponent', () => {
     it('should create', async () => {
       expect(component).toBeTruthy();
       expect(component.dateRangeModel).toBeUndefined();
-      expect(nativeInputs[0].value).toEqual('');
-      expect(nativeInputs[1].value).toEqual('');
+      expect(nativeInputs[0].value).toBe('');
+      expect(nativeInputs[1].value).toBe('');
       expect(component.dateRangeComponent().value!.start).toBeNull();
       expect(component.dateRangeComponent().value!.end).toBeNull();
     });
@@ -138,14 +138,12 @@ describe('DateRangeComponent', () => {
 
       expect(component.dateRangeComponent().value).not.toBeNull();
       expect(component.dateRangeComponent().value!.start).not.toBeNull();
-      expect(component.dateRangeComponent().value!.start!.format('MM/DD/YYYY')).toEqual(
-        '11/11/2011',
-      );
+      expect(component.dateRangeComponent().value!.start!.format('MM/DD/YYYY')).toBe('11/11/2011');
       expect(component.dateRangeComponent().value!.end).toBeNull();
     });
   });
 
-  describe('describe with reactive forms', async () => {
+  describe('with reactive forms', async () => {
     let component: DateRangeReactiveForm;
     beforeEach(async () => {
       await TestBed.configureTestingModule({
@@ -162,11 +160,11 @@ describe('DateRangeComponent', () => {
 
     it('should create', async () => {
       expect(component).toBeTruthy();
-      expect(component).not.toBeUndefined();
+      expect(component).toBeDefined();
       expect(component.dateRangeComponent().value!.start).not.toBeNull();
       expect(component.dateRangeComponent().value!.end).not.toBeNull();
-      expect(nativeInputs[0].value).toEqual('03/05/2020');
-      expect(nativeInputs[1].value).toEqual('03/05/2021');
+      expect(nativeInputs[0].value).toBe('03/05/2020');
+      expect(nativeInputs[1].value).toBe('03/05/2021');
     });
 
     it('should update model on user input', async () => {
@@ -182,9 +180,7 @@ describe('DateRangeComponent', () => {
 
       expect(component.dateRangeComponent().value).not.toBeNull();
       expect(component.dateRangeComponent().value!.start).not.toBeNull();
-      expect(component.dateRangeComponent().value!.start!.format('MM/DD/YYYY')).toEqual(
-        '11/11/2011',
-      );
+      expect(component.dateRangeComponent().value!.start!.format('MM/DD/YYYY')).toBe('11/11/2011');
     });
 
     it('should show validation errors', async () => {
@@ -314,7 +310,7 @@ describe('DateRangeComponent', () => {
       await fixture.whenStable();
 
       expect(component).toBeTruthy();
-      expect(component).not.toBeUndefined();
+      expect(component).toBeDefined();
       expect(component.dateRangeComponent().disabled).toBeFalsy();
       expect(nativeInputs[0].disabled).toBeFalsy();
       expect(nativeInputs[1].disabled).toBeFalsy();
@@ -329,10 +325,10 @@ describe('DateRangeComponent', () => {
       await fixture.whenStable();
 
       expect(component).toBeTruthy();
-      expect(component).not.toBeUndefined();
-      expect(component.dateRangeComponent().disabled).toBeTrue();
-      expect(nativeInputs[0].disabled).toBeTrue();
-      expect(nativeInputs[1].disabled).toBeTrue();
+      expect(component).toBeDefined();
+      expect(component.dateRangeComponent().disabled).toBe(true);
+      expect(nativeInputs[0].disabled).toBe(true);
+      expect(nativeInputs[1].disabled).toBe(true);
     });
 
     it('should make the datepicker toggle disabled', async () => {
@@ -344,7 +340,7 @@ describe('DateRangeComponent', () => {
       const datepickerToggleButton = fixture.nativeElement.querySelector(
         '.nx-datepicker-toggle-button',
       ) as HTMLButtonElement;
-      expect(datepickerToggleButton.disabled).toBeTrue();
+      expect(datepickerToggleButton.disabled).toBe(true);
     });
   });
 
@@ -368,7 +364,7 @@ describe('DateRangeComponent', () => {
       await fixture.whenStable();
 
       expect(component).toBeTruthy();
-      expect(component).not.toBeUndefined();
+      expect(component).toBeDefined();
       expect(component.dateRangeComponent().disabled).toBeFalsy();
       expect(nativeInputs[0].disabled).toBeFalsy();
       expect(nativeInputs[1].disabled).toBeFalsy();
@@ -381,10 +377,10 @@ describe('DateRangeComponent', () => {
       await fixture.whenStable();
 
       expect(component).toBeTruthy();
-      expect(component).not.toBeUndefined();
-      expect(component.dateRangeComponent().readonly).toBeTrue();
-      expect(nativeInputs[0].readOnly).toBeTrue();
-      expect(nativeInputs[1].readOnly).toBeTrue();
+      expect(component).toBeDefined();
+      expect(component.dateRangeComponent().readonly).toBe(true);
+      expect(nativeInputs[0].readOnly).toBe(true);
+      expect(nativeInputs[1].readOnly).toBe(true);
     });
 
     it('should make the datepicker toggle disabled', async () => {
@@ -396,7 +392,7 @@ describe('DateRangeComponent', () => {
       const datepickerToggleButton = fixture.nativeElement.querySelector(
         '.nx-datepicker-toggle-button',
       ) as HTMLButtonElement;
-      expect(datepickerToggleButton.disabled).toBeTrue();
+      expect(datepickerToggleButton.disabled).toBe(true);
     });
   });
 
@@ -530,7 +526,7 @@ describe('DateRangeComponent', () => {
 
       if (datepicker?._datepickerInputEndDate) {
         // Spy on the _focus method of the end date input
-        spyOn(datepicker._datepickerInputEndDate, '_focus');
+        vi.spyOn(datepicker._datepickerInputEndDate, '_focus').mockReturnValue(undefined);
 
         // Open the datepicker
         datepicker.open();
@@ -555,6 +551,7 @@ abstract class DateRangeTestBase {
 }
 
 @Component({
+  selector: 'test-basic-date-range-field',
   template: `
     <nx-formfield>
       <nx-date-range
@@ -585,6 +582,7 @@ class BasicDateRangeField implements DateRangeTestBase {
   };
 }
 @Component({
+  selector: 'test-date-range-with-null',
   template: `
     <nx-formfield>
       <nx-date-range [(ngModel)]="dateRangeModel"></nx-date-range>
@@ -606,6 +604,7 @@ class DateRangeWithNull implements DateRangeTestBase {
 }
 
 @Component({
+  selector: 'test-date-range-reactive-form',
   template: `
     <form [formGroup]="dateRangeForm">
       <nx-formfield label="Date Range Component">
@@ -649,6 +648,7 @@ class DateRangeReactiveForm implements DateRangeTestBase {
 }
 
 @Component({
+  selector: 'test-date-range-disabled-test-component',
   template: `
     <nx-formfield>
       <nx-date-range
@@ -689,6 +689,7 @@ class DateRangeDisabledTestComponent implements DateRangeTestBase {
 }
 
 @Component({
+  selector: 'test-date-range-readonly-test-component',
   template: `
     <nx-formfield>
       <nx-date-range
@@ -730,6 +731,7 @@ class DateRangeReadonlyTestComponent implements DateRangeTestBase {
 }
 
 @Component({
+  selector: 'test-date-range-with-expert',
   template: `
     <nx-formfield>
       <nx-date-range [(ngModel)]="dateRangeModel" [datepicker]="myDatePicker"></nx-date-range>
@@ -765,6 +767,7 @@ class DateRangeWithExpert implements DateRangeTestBase {
 }
 
 @Component({
+  selector: 'test-date-range-max-start-date-test-component',
   template: `
     <nx-formfield>
       <nx-date-range [(ngModel)]="dateRangeModel" [maxStartDate]="maxStartDate"></nx-date-range>
@@ -789,6 +792,7 @@ class DateRangeMaxStartDateTestComponent implements DateRangeTestBase {
 }
 
 @Component({
+  selector: 'test-date-range-min-end-date-test-component',
   template: `
     <nx-formfield>
       <nx-date-range [(ngModel)]="dateRangeModel" [minEndDate]="minEndDate"></nx-date-range>

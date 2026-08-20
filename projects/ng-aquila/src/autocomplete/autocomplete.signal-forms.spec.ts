@@ -30,6 +30,7 @@ import { NxAutocompleteTriggerDirective } from './autocomplete-trigger.directive
 const DATA = ['Apple', 'Apricot', 'Banana', 'Cherry'];
 
 @Component({
+  selector: 'test-basic-signal-form-autocomplete',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, OverlayModule, NxAutocompleteModule, NxInputModule, FormField],
@@ -53,6 +54,7 @@ class BasicSignalFormAutocomplete {
 }
 
 @Component({
+  selector: 'test-required-signal-form-autocomplete',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, OverlayModule, NxAutocompleteModule, NxInputModule, FormField],
@@ -78,6 +80,7 @@ class RequiredSignalFormAutocomplete {
 }
 
 @Component({
+  selector: 'test-disabled-signal-form-autocomplete',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, OverlayModule, NxAutocompleteModule, NxInputModule, FormField],
@@ -187,13 +190,13 @@ describe('NxAutocompleteTriggerDirective signal forms', () => {
     const fixture = setup(BasicSignalFormAutocomplete);
     const host = fixture.componentInstance;
 
-    expect(host.myForm.fruit().touched()).toBeFalse();
+    expect(host.myForm.fruit().touched()).toBe(false);
 
     input(fixture).dispatchEvent(new Event('blur'));
     fixture.detectChanges();
     tick();
 
-    expect(host.myForm.fruit().touched()).toBeTrue();
+    expect(host.myForm.fruit().touched()).toBe(true);
   }));
 
   it('wires up the required validator', fakeAsync(() => {
@@ -201,7 +204,7 @@ describe('NxAutocompleteTriggerDirective signal forms', () => {
     const host = fixture.componentInstance;
     tick();
 
-    expect(host.myForm().invalid()).toBeTrue();
+    expect(host.myForm().invalid()).toBe(true);
     expect(host.myForm.fruit().errors().length).toBeGreaterThan(0);
 
     typeInto(fixture, 'Ba');
@@ -211,7 +214,7 @@ describe('NxAutocompleteTriggerDirective signal forms', () => {
     fixture.detectChanges();
 
     expect(host.myForm.fruit().value()).toBe('Banana');
-    expect(host.myForm().valid()).toBeTrue();
+    expect(host.myForm().valid()).toBe(true);
     expect(host.myForm.fruit().errors().length).toBe(0);
   }));
 
@@ -222,8 +225,8 @@ describe('NxAutocompleteTriggerDirective signal forms', () => {
     tick();
     fixture.detectChanges();
 
-    expect(host.myForm.fruit().disabled()).toBeTrue();
-    expect(input(fixture).disabled).toBeTrue();
+    expect(host.myForm.fruit().disabled()).toBe(true);
+    expect(input(fixture).disabled).toBe(true);
 
     // A disabled input must not open the autocomplete panel.
     input(fixture).focus();

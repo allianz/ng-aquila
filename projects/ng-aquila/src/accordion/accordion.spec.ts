@@ -113,7 +113,8 @@ describe('NxAccordion', () => {
   imports: [NxAccordionModule],
 })
 class SetOfItems {
-  @ViewChild(NxAccordionDirective) accordion!: NxAccordionDirective;
+  @ViewChild(NxAccordionDirective)
+  accordion!: NxAccordionDirective;
 
   multi = false;
   firstPanelExpanded = false;
@@ -136,8 +137,10 @@ class SetOfItems {
   imports: [NxAccordionModule],
 })
 class NestedPanel {
-  @ViewChild('outerPanel', { static: true }) outerPanel!: NxExpansionPanelComponent;
-  @ViewChild('innerPanel', { static: true }) innerPanel!: NxExpansionPanelComponent;
+  @ViewChild('outerPanel', { static: true })
+  outerPanel!: NxExpansionPanelComponent;
+  @ViewChild('innerPanel', { static: true })
+  innerPanel!: NxExpansionPanelComponent;
 }
 @Component({
   selector: 'test-flush-accordion',
@@ -151,5 +154,6 @@ class NestedPanel {
   imports: [NxAccordionModule],
 })
 class FlushAccordion {
-  @ViewChild('panel', { static: true }) panel!: NxExpansionPanelComponent;
+  @ViewChild('panel', { static: true })
+  panel!: NxExpansionPanelComponent;
 }

@@ -40,6 +40,7 @@ describe('StatusIconComponent', () => {
 });
 
 @Component({
+  selector: 'test-status-icon-test-component',
   template: `<nx-status-icon
     [type]="status"
     [contained]="contained"

@@ -15,8 +15,10 @@ abstract class TabHeaderScrollableTest {
   direction: any;
   tabs: any;
 
-  @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
-  @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
+  @ViewChild(NxTabGroupComponent)
+  tabGroupInstance!: NxTabGroupComponent;
+  @ViewChild(NxTabNavBarComponent)
+  tabNavBarInstance!: NxTabNavBarComponent;
 }
 
 describe('Scrollable TabHeader', () => {
@@ -121,10 +123,7 @@ describe('Scrollable TabHeader', () => {
     }));
 
     it('should update scroll button when viewport size change', fakeAsync(() => {
-      const spy = spyOn(
-        testInstance.tabGroupInstance.tabHeader,
-        '_updateScrollButtons',
-      ).and.callThrough();
+      const spy = vi.spyOn(testInstance.tabGroupInstance.tabHeader, '_updateScrollButtons');
       viewport.set('desktop');
       window.dispatchEvent(new Event('resize'));
       tick(THROTTLE_TIME);
@@ -154,7 +153,8 @@ abstract class TabNavBarScrollableTest {
   direction: any;
   links: any;
 
-  @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
+  @ViewChild(NxTabNavBarComponent)
+  tabNavBarInstance!: NxTabNavBarComponent;
 }
 
 describe('Scrollable TabNavBar', () => {
@@ -252,6 +252,7 @@ describe('Scrollable TabNavBar', () => {
 });
 
 @Component({
+  selector: 'test-not-scrollable-tab-group-test',
   template: `
     <nx-tab-group mobileAccordion="false">
       @for (tab of tabs; track tab) {
@@ -273,6 +274,7 @@ class NotScrollableTabGroupTest extends TabHeaderScrollableTest {
 }
 
 @Component({
+  selector: 'test-scrollable-tab-group-test',
   template: `
     <div style="max-width: 400px" [dir]="direction">
       <nx-tab-group mobileAccordion="false">
@@ -298,6 +300,7 @@ class ScrollableTabGroupTest extends TabHeaderScrollableTest {
 }
 
 @Component({
+  selector: 'test-not-scrollable-tab-nav-bar-test',
   template: `
     <nx-tab-nav-bar>
       @for (link of links; track link) {
@@ -319,6 +322,7 @@ class NotScrollableTabNavBarTest extends TabNavBarScrollableTest {
 }
 
 @Component({
+  selector: 'test-scrollable-tab-nav-bar-test',
   template: `
     <div style="max-width: 400px" [dir]="direction">
       <nx-tab-nav-bar>

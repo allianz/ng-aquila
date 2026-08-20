@@ -6,7 +6,8 @@ import { NxTabsModule } from './tabs.module';
 
 @Directive({ standalone: true })
 abstract class TabTest {
-  @ViewChild(NxTabComponent) tab!: NxTabComponent;
+  @ViewChild(NxTabComponent)
+  tab!: NxTabComponent;
 }
 
 describe('NxTabComponent', () => {
@@ -37,12 +38,13 @@ describe('NxTabComponent', () => {
     const contentRef = testInstance.tab.contentViewRef;
     testInstance.tab.ngOnDestroy();
     fixture.detectChanges();
-    expect(headerRef.destroyed).toBeTrue();
-    expect(contentRef.destroyed).toBeTrue();
+    expect(headerRef.destroyed).toBe(true);
+    expect(contentRef.destroyed).toBe(true);
   });
 });
 
 @Component({
+  selector: 'test-no-group-test',
   template: `<nx-tab>Some content</nx-tab>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTabsModule],
@@ -50,6 +52,7 @@ describe('NxTabComponent', () => {
 class NoGroupTest extends TabTest {}
 
 @Component({
+  selector: 'test-with-group',
   template: `
     <nx-tab-group>
       <nx-tab><ng-template nxTabLabel>Label</ng-template>Some content</nx-tab>

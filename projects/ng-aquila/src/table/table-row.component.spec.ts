@@ -17,7 +17,8 @@ import { NxTableRowComponent } from './table-row.component';
 
 @Directive({ standalone: true })
 class TableRowTest {
-  @ViewChild(NxTableRowComponent) tableRowInstance!: NxTableRowComponent;
+  @ViewChild(NxTableRowComponent)
+  tableRowInstance!: NxTableRowComponent;
 }
 
 function hasClass(element: ElementRef, className: string): boolean {
@@ -103,7 +104,7 @@ describe(NxTableRowComponent.name, () => {
 
     describe('when selecting the row by click', () => {
       beforeEach(() => {
-        spyOn(testInstance as SelectableTableRowComponent, 'onSelect').and.callThrough();
+        vi.spyOn(testInstance as SelectableTableRowComponent, 'onSelect');
         dispatchMouseEvent(tableRowElement.nativeElement, 'click');
         fixture.detectChanges();
       });
@@ -173,7 +174,7 @@ describe(NxTableRowComponent.name, () => {
               element.dispatchEvent(event);
               fixture.detectChanges();
 
-              expect(event.defaultPrevented).toBeFalse();
+              expect(event.defaultPrevented).toBe(false);
             });
 
             it('is not selected', () => {
@@ -218,12 +219,13 @@ describe(NxTableRowComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicTableRowComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-table-row-component',
   template: `<tr nxTableRow>
     example content
   </tr>`,
@@ -233,6 +235,7 @@ describe(NxTableRowComponent.name, () => {
 class BasicTableRowComponent extends TableRowTest {}
 
 @Component({
+  selector: 'test-selectable-table-row-component',
   template: `
     <tr nxTableRow [selectable]="selectable" [selected]="selected" (select)="onSelect()">
       <td>

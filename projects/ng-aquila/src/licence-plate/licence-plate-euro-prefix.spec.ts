@@ -8,7 +8,8 @@ import { NxLicencePlateEuroPrefixComponent } from './licence-plate-euro-prefix.c
 
 @Directive({ standalone: true })
 abstract class LicencePlateEuroPrefixTest {
-  @ViewChild(NxLicencePlateEuroPrefixComponent) instance!: NxLicencePlateEuroPrefixComponent;
+  @ViewChild(NxLicencePlateEuroPrefixComponent)
+  instance!: NxLicencePlateEuroPrefixComponent;
 
   appearance: AppearanceType = 'auto';
   disabled = false;
@@ -49,40 +50,41 @@ describe('NxLicencePlateEuroPrefixComponent', () => {
 
   describe('disabled', () => {
     it('is not disabled', () => {
-      expect(instance._disabled).toBeFalse();
+      expect(instance._disabled).toBe(false);
       expect(element).not.toHaveClass('is-disabled');
     });
 
     it('is disabled', () => {
       testInstance.disabled = true;
       fixture.detectChanges();
-      expect(instance._disabled).toBeTrue();
+      expect(instance._disabled).toBe(true);
       expect(element).toHaveClass('is-disabled');
     });
   });
 
   describe('outline style', () => {
     it('has no outline style', () => {
-      expect(instance._hasOutline).toBeFalse();
+      expect(instance._hasOutline).toBe(false);
       expect(element).not.toHaveClass('has-outline');
     });
 
-    it('has no outline style', () => {
+    it('has an outline style when the appearance is outline', () => {
       testInstance.appearance = 'outline';
       fixture.detectChanges();
-      expect(instance._hasOutline).toBeTrue();
+      expect(instance._hasOutline).toBe(true);
       expect(element).toHaveClass('has-outline');
     });
   });
 
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-licence-plate-euro-prefix',
   template: `
     <nx-formfield [appearance]="appearance">
       <nx-licence-plate-euro-prefix>D</nx-licence-plate-euro-prefix>

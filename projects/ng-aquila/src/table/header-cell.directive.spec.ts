@@ -14,7 +14,8 @@ import { NxTableModule } from './table.module';
 
 @Directive({ standalone: true })
 abstract class HeaderCellTest {
-  @ViewChild(NxHeaderCellDirective) headerCellInstance!: NxHeaderCellDirective;
+  @ViewChild(NxHeaderCellDirective)
+  headerCellInstance!: NxHeaderCellDirective;
 }
 
 describe(NxHeaderCellDirective.name, () => {
@@ -58,12 +59,13 @@ describe(NxHeaderCellDirective.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicHeaderCellComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-header-cell-component',
   template: `<td nxHeaderCell>example content</td>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxTableModule],

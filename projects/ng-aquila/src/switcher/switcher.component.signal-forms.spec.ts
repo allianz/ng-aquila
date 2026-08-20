@@ -7,6 +7,7 @@ import { NxSwitcherComponent } from './switcher.component';
 import { NxSwitcherModule } from './switcher.module';
 
 @Component({
+  selector: 'test-basic-signal-form-switcher',
   template: `<nx-switcher [formField]="switcherForm.enabled">Enable feature</nx-switcher>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -19,6 +20,7 @@ class BasicSignalFormSwitcher {
 }
 
 @Component({
+  selector: 'test-required-signal-form-switcher',
   template: `<nx-switcher [formField]="switcherForm.enabled">Enable feature</nx-switcher>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -33,6 +35,7 @@ class RequiredSignalFormSwitcher {
 }
 
 @Component({
+  selector: 'test-disabled-signal-form-switcher',
   template: `<nx-switcher [formField]="switcherForm.enabled">Enable feature</nx-switcher>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -75,14 +78,14 @@ describe('NxSwitcherComponent signal forms', () => {
       fixture = create(BasicSignalFormSwitcher);
       const host = fixture.componentInstance as BasicSignalFormSwitcher;
 
-      expect(host.switcherInstance.checked).toBeFalse();
-      expect(inputElement.checked).toBeFalse();
+      expect(host.switcherInstance.checked).toBe(false);
+      expect(inputElement.checked).toBe(false);
 
       host.model.update((m) => ({ ...m, enabled: true }));
       fixture.detectChanges();
 
-      expect(host.switcherInstance.checked).toBeTrue();
-      expect(inputElement.checked).toBeTrue();
+      expect(host.switcherInstance.checked).toBe(true);
+      expect(inputElement.checked).toBe(true);
       expect(inputElement.getAttribute('aria-checked')).toBe('true');
     });
 
@@ -92,13 +95,13 @@ describe('NxSwitcherComponent signal forms', () => {
 
       host.model.update((m) => ({ ...m, enabled: true }));
       fixture.detectChanges();
-      expect(inputElement.checked).toBeTrue();
+      expect(inputElement.checked).toBe(true);
 
       host.model.update((m) => ({ ...m, enabled: false }));
       fixture.detectChanges();
 
-      expect(host.switcherInstance.checked).toBeFalse();
-      expect(inputElement.checked).toBeFalse();
+      expect(host.switcherInstance.checked).toBe(false);
+      expect(inputElement.checked).toBe(false);
       expect(inputElement.getAttribute('aria-checked')).toBe('false');
     });
   });
@@ -108,20 +111,20 @@ describe('NxSwitcherComponent signal forms', () => {
       fixture = create(BasicSignalFormSwitcher);
       const host = fixture.componentInstance as BasicSignalFormSwitcher;
 
-      expect(host.switcherForm.enabled().value()).toBeFalse();
+      expect(host.switcherForm.enabled().value()).toBe(false);
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.switcherForm.enabled().value()).toBeTrue();
-      expect(host.model().enabled).toBeTrue();
-      expect(inputElement.checked).toBeTrue();
+      expect(host.switcherForm.enabled().value()).toBe(true);
+      expect(host.model().enabled).toBe(true);
+      expect(inputElement.checked).toBe(true);
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.switcherForm.enabled().value()).toBeFalse();
-      expect(host.model().enabled).toBeFalse();
+      expect(host.switcherForm.enabled().value()).toBe(false);
+      expect(host.model().enabled).toBe(false);
     });
 
     it('flips the boolean form value when the label is clicked', () => {
@@ -131,19 +134,19 @@ describe('NxSwitcherComponent signal forms', () => {
       labelElement.click();
       fixture.detectChanges();
 
-      expect(host.switcherForm.enabled().value()).toBeTrue();
+      expect(host.switcherForm.enabled().value()).toBe(true);
     });
 
     it('marks the field dirty after user interaction', () => {
       fixture = create(BasicSignalFormSwitcher);
       const host = fixture.componentInstance as BasicSignalFormSwitcher;
 
-      expect(host.switcherForm.enabled().dirty()).toBeFalse();
+      expect(host.switcherForm.enabled().dirty()).toBe(false);
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.switcherForm.enabled().dirty()).toBeTrue();
+      expect(host.switcherForm.enabled().dirty()).toBe(true);
     });
   });
 
@@ -152,12 +155,12 @@ describe('NxSwitcherComponent signal forms', () => {
       fixture = create(BasicSignalFormSwitcher);
       const host = fixture.componentInstance as BasicSignalFormSwitcher;
 
-      expect(host.switcherForm.enabled().touched()).toBeFalse();
+      expect(host.switcherForm.enabled().touched()).toBe(false);
 
       dispatchFakeEvent(inputElement, 'blur');
       fixture.detectChanges();
 
-      expect(host.switcherForm.enabled().touched()).toBeTrue();
+      expect(host.switcherForm.enabled().touched()).toBe(true);
     });
   });
 
@@ -166,14 +169,14 @@ describe('NxSwitcherComponent signal forms', () => {
       fixture = create(RequiredSignalFormSwitcher);
       const host = fixture.componentInstance as RequiredSignalFormSwitcher;
 
-      expect(host.switcherForm().invalid()).toBeTrue();
+      expect(host.switcherForm().invalid()).toBe(true);
       expect(host.switcherForm.enabled().errors().length).toBeGreaterThan(0);
       expect(host.switcherForm.enabled().errors()[0].kind).toBe('required');
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.switcherForm().valid()).toBeTrue();
+      expect(host.switcherForm().valid()).toBe(true);
       expect(host.switcherForm.enabled().errors().length).toBe(0);
     });
   });
@@ -183,9 +186,9 @@ describe('NxSwitcherComponent signal forms', () => {
       fixture = create(DisabledSignalFormSwitcher);
       const host = fixture.componentInstance as DisabledSignalFormSwitcher;
 
-      expect(host.switcherForm.enabled().disabled()).toBeTrue();
-      expect(host.switcherInstance.disabled).toBeTrue();
-      expect(inputElement.disabled).toBeTrue();
+      expect(host.switcherForm.enabled().disabled()).toBe(true);
+      expect(host.switcherInstance.disabled).toBe(true);
+      expect(inputElement.disabled).toBe(true);
     });
 
     it('does not update the form value when a disabled control is clicked', () => {
@@ -195,7 +198,7 @@ describe('NxSwitcherComponent signal forms', () => {
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.switcherForm.enabled().value()).toBeFalse();
+      expect(host.switcherForm.enabled().value()).toBe(false);
     });
   });
 
@@ -204,12 +207,12 @@ describe('NxSwitcherComponent signal forms', () => {
       fixture = create(BasicSignalFormSwitcher);
       const host = fixture.componentInstance as BasicSignalFormSwitcher;
 
-      expect(host.switcherForm.enabled().touched()).toBeFalse();
+      expect(host.switcherForm.enabled().touched()).toBe(false);
 
       inputElement.click();
       fixture.detectChanges();
 
-      expect(host.switcherForm.enabled().touched()).toBeTrue();
+      expect(host.switcherForm.enabled().touched()).toBe(true);
     });
   });
 });

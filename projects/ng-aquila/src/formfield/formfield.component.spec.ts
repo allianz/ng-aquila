@@ -43,11 +43,16 @@ import { NxFormfieldNoteDirective } from './note.directive';
 // NxInputModule also imports NxFormfieldModule
 @Directive({ standalone: true })
 abstract class FormfieldTest {
-  @ViewChild(NxFormfieldComponent) textfieldInstance!: NxFormfieldComponent;
-  @ViewChild(NxInputDirective) inputInstance!: NxInputDirective;
-  @ViewChild(NxFormfieldErrorDirective) formfieldError!: NxFormfieldErrorDirective;
-  @ViewChild(NxFormfieldNoteDirective) formfieldNote!: NxFormfieldNoteDirective;
-  @ViewChild(NxFormfieldHintDirective) formfieldHint!: NxFormfieldHintDirective;
+  @ViewChild(NxFormfieldComponent)
+  textfieldInstance!: NxFormfieldComponent;
+  @ViewChild(NxInputDirective)
+  inputInstance!: NxInputDirective;
+  @ViewChild(NxFormfieldErrorDirective)
+  formfieldError!: NxFormfieldErrorDirective;
+  @ViewChild(NxFormfieldNoteDirective)
+  formfieldNote!: NxFormfieldNoteDirective;
+  @ViewChild(NxFormfieldHintDirective)
+  formfieldHint!: NxFormfieldHintDirective;
 
   testForm!: FormGroup;
   currentValue: any;
@@ -442,7 +447,7 @@ describe('NxFormfieldComponent', () => {
     describe('a11y', () => {
       it('has no accessibility violations', async () => {
         createTestComponent(BasicFormfield);
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
 
       it('adds hints to aria described by', fakeAsync(() => {
@@ -845,7 +850,7 @@ describe('NxFormfieldComponent status', () => {
     testInstance.status = null;
     settle();
 
-    expect(inputElement.getAttribute('aria-describedby')).not.toContain(statusMessageId);
+    expect(inputElement.getAttribute('aria-describedby') ?? '').not.toContain(statusMessageId);
   }));
 
   it('updates aria-describedby without a blur when updateOn is blur', fakeAsync(() => {
@@ -898,7 +903,7 @@ describe('NxFormfieldComponent status', () => {
     testInstance.status = 'positive';
     fixture.detectChanges();
 
-    await expectAsync(fixture.nativeElement).toBeAccessible();
+    await expect(fixture.nativeElement).toBeAccessible();
   });
 });
 
@@ -1034,6 +1039,7 @@ describe('NxFormfieldComponent info icon', () => {
 });
 
 @Component({
+  selector: 'test-basic-formfield',
   template: `
     <nx-formfield label="Given Label">
       <input nxInput [disabled]="disabled" [readonly]="readonly" />
@@ -1044,6 +1050,7 @@ describe('NxFormfieldComponent info icon', () => {
 })
 class BasicFormfield extends FormfieldTest {}
 @Component({
+  selector: 'test-no-input-formfield',
   template: `<nx-formfield></nx-formfield>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ReactiveFormsModule, FormsModule, NxInputModule],
@@ -1051,6 +1058,7 @@ class BasicFormfield extends FormfieldTest {}
 class NoInputFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-custom-label-formfield',
   template: `
     <nx-formfield>
       <nx-formfield-label>Label</nx-formfield-label>
@@ -1063,6 +1071,7 @@ class NoInputFormfield extends FormfieldTest {}
 class CustomLabelFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-directives-formfield',
   template: `
     <nx-formfield>
       <input nxInput [disabled]="disabled" />
@@ -1081,6 +1090,7 @@ class CustomLabelFormfield extends FormfieldTest {}
 class DirectivesFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-error-formfield',
   template: `
     <nx-formfield>
       <input nxInput required [(ngModel)]="currentValue" />
@@ -1094,6 +1104,7 @@ class DirectivesFormfield extends FormfieldTest {}
 class ErrorFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-no-change-detection-formfield',
   template: `
     <nx-formfield updateOn="blur">
       <input nxInput required [(ngModel)]="currentValue" />
@@ -1107,6 +1118,7 @@ class ErrorFormfield extends FormfieldTest {}
 class NoChangeDetectionFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-note-formfield',
   template: `
     <nx-formfield>
       <input nxInput required [(ngModel)]="currentValue" />
@@ -1118,6 +1130,7 @@ class NoChangeDetectionFormfield extends FormfieldTest {}
 })
 class NoteFormfield extends FormfieldTest {}
 @Component({
+  selector: 'test-ng-model-formfield',
   template: `
     <nx-formfield label="Given Label" [optionalLabel]="optionalLabel()">
       <input nxInput [(ngModel)]="currentValue" [required]="inputRequired()" />
@@ -1132,6 +1145,7 @@ class NgModelFormfield extends FormfieldTest {
 }
 
 @Component({
+  selector: 'test-floating-formfield',
   template: `
     <nx-formfield [floatLabel]="floatLabel">
       <input nxInput [(ngModel)]="currentValue" />
@@ -1143,6 +1157,7 @@ class NgModelFormfield extends FormfieldTest {
 class FloatingFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-native-select-formfield',
   template: `
     <nx-formfield>
       <select nxInput>
@@ -1159,6 +1174,7 @@ class FloatingFormfield extends FormfieldTest {}
 class NativeSelectFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-custom-label-and-input-formfield',
   template: `
     <nx-formfield label="inputLabel">
       <nx-formfield-label>directiveLabel</nx-formfield-label>
@@ -1171,6 +1187,7 @@ class NativeSelectFormfield extends FormfieldTest {}
 class CustomLabelAndInputFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-outline-formfield',
   template: `
     <nx-formfield [appearance]="appearance">
       <input nxInput />
@@ -1182,6 +1199,7 @@ class CustomLabelAndInputFormfield extends FormfieldTest {}
 class OutlineFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-on-push-formfield',
   template: `<nx-formfield [appearance]="appearance">
     <input nxInput />
   </nx-formfield>`,
@@ -1191,6 +1209,7 @@ class OutlineFormfield extends FormfieldTest {}
 class OnPushFormfield extends FormfieldTest {}
 
 @Component({
+  selector: 'test-conditional-input-component',
   template: `<nx-formfield label="IBAN">
     @if (true) {
       <input nxInput />
@@ -1203,6 +1222,7 @@ class OnPushFormfield extends FormfieldTest {}
 class ConditionalInputComponent extends FormfieldTest {}
 
 @Component({
+  selector: 'test-inline-formfield',
   template: `
     <nx-formfield label="IBAN" [inline]="inline" [appearance]="appearance">
       <input nxInput [(ngModel)]="currentValue" />
@@ -1217,6 +1237,7 @@ class InlineFormfield extends FormfieldTest {
 }
 
 @Component({
+  selector: 'test-size-formfield',
   template: `
     <nx-formfield label="Given Label" [size]="size()">
       <input nxInput />
@@ -1230,6 +1251,7 @@ class SizeFormfield extends FormfieldTest {
 }
 
 @Component({
+  selector: 'test-double-projection-formfield',
   template: `
     <nx-formfield label="Label">
       <input nxInput />
@@ -1258,6 +1280,7 @@ class DoubleProjectionFormfield extends FormfieldTest {
 }
 
 @Component({
+  selector: 'test-info-icon-formfield',
   template: `
     <nx-formfield label="Given Label" [inline]="inline">
       <input nxInput />
@@ -1280,6 +1303,7 @@ class InfoIconFormfield extends FormfieldTest {
 }
 
 @Component({
+  selector: 'test-info-icon-custom-label-formfield',
   template: `
     <nx-formfield>
       <nx-formfield-label>Custom label</nx-formfield-label>
@@ -1305,6 +1329,7 @@ abstract class StatusFormfieldTest extends FormfieldTest {
 }
 
 @Component({
+  selector: 'test-status-formfield',
   template: `
     <nx-formfield label="Label" [appearance]="appearance" [status]="status">
       <input nxInput [(ngModel)]="currentValue" />
@@ -1317,6 +1342,7 @@ abstract class StatusFormfieldTest extends FormfieldTest {
 class StatusFormfield extends StatusFormfieldTest {}
 
 @Component({
+  selector: 'test-status-disabled-formfield',
   template: `
     <nx-formfield label="Label" [appearance]="appearance" [status]="status">
       <input nxInput [disabled]="disabled" />
@@ -1329,6 +1355,7 @@ class StatusFormfield extends StatusFormfieldTest {}
 class StatusDisabledFormfield extends StatusFormfieldTest {}
 
 @Component({
+  selector: 'test-status-disabled-signal-formfield',
   template: `
     <nx-formfield label="Label" [appearance]="appearance" [status]="status">
       <input nxInput [disabled]="disabledSignal()" />
@@ -1343,6 +1370,7 @@ class StatusDisabledSignalFormfield extends StatusFormfieldTest {
 }
 
 @Component({
+  selector: 'test-status-disabled-reactive-formfield',
   template: `
     <nx-formfield label="Label" [appearance]="appearance" [status]="status">
       <input nxInput [formControl]="control" />
@@ -1357,6 +1385,7 @@ class StatusDisabledReactiveFormfield extends StatusFormfieldTest {
 }
 
 @Component({
+  selector: 'test-status-inline-formfield',
   template: `
     <nx-formfield label="Label" inline [appearance]="appearance" [status]="status">
       <input nxInput [(ngModel)]="currentValue" />
@@ -1369,6 +1398,7 @@ class StatusDisabledReactiveFormfield extends StatusFormfieldTest {
 class StatusInlineFormfield extends StatusFormfieldTest {}
 
 @Component({
+  selector: 'test-status-and-note-formfield',
   template: `
     <nx-formfield label="Label" [appearance]="appearance" [status]="status">
       <input nxInput [(ngModel)]="currentValue" />
@@ -1382,6 +1412,7 @@ class StatusInlineFormfield extends StatusFormfieldTest {}
 class StatusAndNoteFormfield extends StatusFormfieldTest {}
 
 @Component({
+  selector: 'test-status-and-error-formfield',
   template: `
     <nx-formfield label="Label" [appearance]="appearance" [status]="status">
       <input nxInput required [(ngModel)]="currentValue" />
@@ -1395,6 +1426,7 @@ class StatusAndNoteFormfield extends StatusFormfieldTest {}
 class StatusAndErrorFormfield extends StatusFormfieldTest {}
 
 @Component({
+  selector: 'test-status-blur-formfield',
   template: `
     <nx-formfield label="Label" updateOn="blur" [appearance]="appearance" [status]="status">
       <input nxInput [(ngModel)]="currentValue" />
@@ -1407,6 +1439,7 @@ class StatusAndErrorFormfield extends StatusFormfieldTest {}
 class StatusBlurFormfield extends StatusFormfieldTest {}
 
 @Component({
+  selector: 'test-status-without-message-formfield',
   template: `
     <nx-formfield label="Label" [appearance]="appearance" [status]="status">
       <input nxInput [(ngModel)]="currentValue" />
@@ -1419,6 +1452,7 @@ class StatusBlurFormfield extends StatusFormfieldTest {}
 class StatusWithoutMessageFormfield extends StatusFormfieldTest {}
 
 @Component({
+  selector: 'test-status-standalone-imports-formfield',
   template: `
     <nx-formfield label="Label" [appearance]="appearance" [status]="status">
       <input nxInput [(ngModel)]="currentValue" />

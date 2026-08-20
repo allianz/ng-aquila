@@ -23,6 +23,7 @@ import { NxMultiSelectComponent } from './multi-select.component';
  */
 
 @Component({
+  selector: 'test-basic-signal-form-multi-select',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, OverlayModule, NxDropdownModule, NxFormfieldModule, FormField],
@@ -44,6 +45,7 @@ class BasicSignalFormMultiSelect {
 }
 
 @Component({
+  selector: 'test-disabled-signal-form-multi-select',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, OverlayModule, NxDropdownModule, NxFormfieldModule, FormField],
@@ -67,6 +69,7 @@ class DisabledSignalFormMultiSelect {
 }
 
 @Component({
+  selector: 'test-required-signal-form-multi-select',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, OverlayModule, NxDropdownModule, NxFormfieldModule, FormField],
@@ -200,7 +203,7 @@ describe('NxMultiSelectComponent signal forms', () => {
     const host = fixture.componentInstance;
 
     open(fixture);
-    expect(host.myForm.brands().touched()).toBeFalse();
+    expect(host.myForm.brands().touched()).toBe(false);
 
     // Close the overlay, then blur the trigger.
     getBackdrop().click();
@@ -212,7 +215,7 @@ describe('NxMultiSelectComponent signal forms', () => {
     fixture.detectChanges();
     flush();
 
-    expect(host.myForm.brands().touched()).toBeTrue();
+    expect(host.myForm.brands().touched()).toBe(true);
   }));
 
   it('wires up the required validator (empty array is invalid)', fakeAsync(() => {
@@ -220,14 +223,14 @@ describe('NxMultiSelectComponent signal forms', () => {
     const host = fixture.componentInstance;
     tick();
 
-    expect(host.myForm().invalid()).toBeTrue();
+    expect(host.myForm().invalid()).toBe(true);
     expect(host.myForm.brands().errors().length).toBeGreaterThan(0);
 
     open(fixture);
     clickOption(fixture, 0); // BMW
 
     expect(host.myForm.brands().value()).toEqual(['BMW']);
-    expect(host.myForm().valid()).toBeTrue();
+    expect(host.myForm().valid()).toBe(true);
     expect(host.myForm.brands().errors().length).toBe(0);
   }));
 
@@ -238,8 +241,8 @@ describe('NxMultiSelectComponent signal forms', () => {
     tick();
     fixture.detectChanges();
 
-    expect(host.myForm.brands().disabled()).toBeTrue();
-    expect(host.multiSelect.disabled).toBeTrue();
+    expect(host.myForm.brands().disabled()).toBe(true);
+    expect(host.multiSelect.disabled).toBe(true);
 
     // A disabled multi-select must not open on click.
     trigger(fixture).click();

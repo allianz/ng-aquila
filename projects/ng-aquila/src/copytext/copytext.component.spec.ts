@@ -6,7 +6,8 @@ import { NxCopytextModule } from './copytext.module';
 
 @Directive({ standalone: true })
 abstract class CopytextTest {
-  @ViewChild(NxCopytextComponent) textInstance!: NxCopytextComponent;
+  @ViewChild(NxCopytextComponent)
+  textInstance!: NxCopytextComponent;
   size = '';
 }
 
@@ -65,12 +66,13 @@ describe('NxCopytextDirective', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicCopytext);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-copytext',
   template: `<p [nxCopytext]="size">Hello Text</p>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCopytextModule],

@@ -13,13 +13,15 @@ import { dispatchFakeEvent } from 'projects/ng-aquila/src/cdk-test-utils';
 
 import { NxIbanMaskDirective } from './iban-mask.directive';
 import { NxMaskDirective } from './mask.directive';
-import { assertInputValue } from './mask.directive.spec';
 import { NxMaskModule } from './mask.module';
+import { assertInputValue } from './mask.test-utils';
 
 @Directive({ standalone: true })
 abstract class IbanMaskTest {
-  @ViewChild(NxMaskDirective) maskInstance!: NxMaskDirective;
-  @ViewChild(NxIbanMaskDirective) ibanInstance!: NxIbanMaskDirective;
+  @ViewChild(NxMaskDirective)
+  maskInstance!: NxMaskDirective;
+  @ViewChild(NxIbanMaskDirective)
+  ibanInstance!: NxIbanMaskDirective;
 
   testForm: FormGroup = new FormGroup({
     maskInput: new FormControl('', {}),
@@ -49,13 +51,13 @@ describe('NxIbanMaskDirective', () => {
     nativeElement.value = countryCode;
     nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
-    expect(testInstance.testForm.valid).toBeFalse();
+    expect(testInstance.testForm.valid).toBe(false);
 
     nativeElement.value = inputValue;
     nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     expect(nativeElement.value).toBe(asserted);
-    expect(testInstance.testForm.valid).toBeTrue();
+    expect(testInstance.testForm.valid).toBe(true);
   }
 
   beforeEach(waitForAsync(() => {
@@ -355,7 +357,7 @@ describe('NxIbanMaskDirective', () => {
       expect(
         testInstance.testForm.controls.maskInput.getError('nxIbanInvalidCountryError'),
       ).toBeTruthy();
-      expect(nativeElement.classList.contains('ng-invalid')).toBeTrue();
+      expect(nativeElement.classList.contains('ng-invalid')).toBe(true);
       expect(testInstance.testForm.get('maskInput')!.value).toBe('GD');
     });
 
@@ -374,7 +376,7 @@ describe('NxIbanMaskDirective', () => {
 
       dispatchFakeEvent(nativeElement, 'blur');
       fixture.detectChanges();
-      expect(nativeElement.classList.contains('ng-invalid')).toBeTrue();
+      expect(nativeElement.classList.contains('ng-invalid')).toBe(true);
       expect(maskInput.getError(invalidIbanErrorKey)).toBeTruthy();
     });
 
@@ -397,28 +399,28 @@ describe('NxIbanMaskDirective', () => {
 
     it('should not do iban valdation on mask validation turned off', () => {
       createTestComponent(FormIbanMaskComponent);
-      expect(maskInstance.validateMask).toBeTrue();
+      expect(maskInstance.validateMask).toBe(true);
 
       testInstance.validateMask = false;
       fixture.detectChanges();
 
       assertInputValue(nativeElement, 'GD', 'GD');
 
-      expect(testInstance.testForm.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
       expect(testInstance.testForm.get('maskInput')!.value).toBe('GD');
 
       // quick solution for getting the mask updated after entering the first to letters
       assertInputValue(nativeElement, 'DE', 'DE');
       assertInputValue(nativeElement, 'DE89370400440532013001', 'DE89 3704 0044 0532 0130 01');
-      expect(testInstance.testForm.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
       expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 01');
 
       assertInputValue(nativeElement, 'DE89370400440532013000', 'DE89 3704 0044 0532 0130 00');
-      expect(testInstance.testForm.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
       expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 00');
 
       assertInputValue(nativeElement, 'DE89370400440532013002', 'DE89 3704 0044 0532 0130 02');
-      expect(testInstance.testForm.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
       expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 02');
     });
   });
@@ -522,6 +524,7 @@ describe('NxIbanMaskDirective', () => {
 });
 
 @Component({
+  selector: 'test-basic-iban-mask-component',
   template: `<input nxMask nxIbanMask />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
@@ -529,6 +532,7 @@ describe('NxIbanMaskDirective', () => {
 class BasicIbanMaskComponent extends IbanMaskTest {}
 
 @Component({
+  selector: 'test-form-iban-mask-component',
   template: `
     <form [formGroup]="testForm">
       <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
@@ -540,6 +544,7 @@ class BasicIbanMaskComponent extends IbanMaskTest {}
 class FormIbanMaskComponent extends IbanMaskTest {}
 
 @Component({
+  selector: 'test-form-with-inital-iban-mask-component',
   template: `
     <form [formGroup]="testForm">
       <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
@@ -555,6 +560,7 @@ class FormWithInitalIbanMaskComponent extends IbanMaskTest {
 }
 
 @Component({
+  selector: 'test-form-iban-on-blur-mask-component',
   template: `
     <form [formGroup]="testForm">
       <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
@@ -570,6 +576,7 @@ class FormIbanOnBlurMaskComponent extends IbanMaskTest {
 }
 
 @Component({
+  selector: 'test-signal-form-iban-mask-component',
   template: ` <input nxMask nxIbanMask [formField]="ibanField" /> `,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxMaskModule, FormField],
@@ -580,6 +587,7 @@ class SignalFormIbanMaskComponent {
 }
 
 @Component({
+  selector: 'test-ng-model-iban-mask-component',
   template: ` <input nxMask nxIbanMask [(ngModel)]="ibanModel" /> `,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, NxMaskModule],

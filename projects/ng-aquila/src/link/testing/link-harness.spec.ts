@@ -49,6 +49,7 @@ describe('NxLinkHarness', () => {
 });
 
 @Component({
+  selector: 'test-link-harness-test',
   template: `
     <nx-link><a (click)="onClick()" href="https://localhost">Foo</a></nx-link>
     <nx-link><a href="https://localhost/path">Bar</a></nx-link>

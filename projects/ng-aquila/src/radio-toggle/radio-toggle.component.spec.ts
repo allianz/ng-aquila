@@ -102,7 +102,7 @@ describe('NxRadioToggleComponent', () => {
   describe('basic', () => {
     it('should allow creating empty radio toggles', fakeAsync(() => {
       expect(() => createTestComponent(EmptyRadioToggle)).not.toThrow(new Error());
-      expect(radioElements).toHaveSize(0);
+      expect(radioElements).toHaveLength(0);
     }));
 
     it('should project the radio buttons correctly into the view', () => {
@@ -186,13 +186,13 @@ describe('NxRadioToggleComponent', () => {
       const toggleButtons = fixture.debugElement.queryAll(
         By.directive(NxRadioToggleButtonComponent),
       );
-      expect(toggleButtons[0].componentInstance.selected).toBeFalse();
-      expect(toggleButtons[1].componentInstance.selected).toBeTrue();
+      expect(toggleButtons[0].componentInstance.selected).toBe(false);
+      expect(toggleButtons[1].componentInstance.selected).toBe(true);
       testInstance.value = true;
       fixture.detectChanges();
       tick();
-      expect(toggleButtons[0].componentInstance.selected).toBeTrue();
-      expect(toggleButtons[1].componentInstance.selected).toBeFalse();
+      expect(toggleButtons[0].componentInstance.selected).toBe(true);
+      expect(toggleButtons[1].componentInstance.selected).toBe(false);
     }));
   });
 
@@ -207,15 +207,15 @@ describe('NxRadioToggleComponent', () => {
         const toggleButtons = fixture.debugElement.queryAll(
           By.directive(NxRadioToggleButtonComponent),
         );
-        expect(toggleButtons[0].componentInstance.selected).toBeTrue();
-        expect(toggleButtons[1].componentInstance.selected).toBeFalse();
-        expect(toggleButtons[2].componentInstance.selected).toBeFalse();
+        expect(toggleButtons[0].componentInstance.selected).toBe(true);
+        expect(toggleButtons[1].componentInstance.selected).toBe(false);
+        expect(toggleButtons[2].componentInstance.selected).toBe(false);
         testInstance.value = resetValue;
         fixture.detectChanges();
         tick();
-        expect(toggleButtons[0].componentInstance.selected).toBeFalse();
-        expect(toggleButtons[1].componentInstance.selected).toBeFalse();
-        expect(toggleButtons[2].componentInstance.selected).toBeFalse();
+        expect(toggleButtons[0].componentInstance.selected).toBe(false);
+        expect(toggleButtons[1].componentInstance.selected).toBe(false);
+        expect(toggleButtons[2].componentInstance.selected).toBe(false);
       }));
 
       it(`should select respective button for value "${resetValue}" if present`, fakeAsync(() => {
@@ -253,20 +253,20 @@ describe('NxRadioToggleComponent', () => {
   describe('dynamic', () => {
     it('should allow creating radio toggles with ngFor', fakeAsync(() => {
       expect(() => createTestComponent(LoopedRadioToggle)).not.toThrow(new Error());
-      expect(radioElements).toHaveSize(3);
+      expect(radioElements).toHaveLength(3);
     }));
 
     it('should allow adding button toggles at runtime', fakeAsync(() => {
       createTestComponent(LoopedRadioToggle);
 
       const loopedToggle: LoopedRadioToggle = fixture.componentInstance as LoopedRadioToggle;
-      expect(radioElements).toHaveSize(loopedToggle.data.length);
+      expect(radioElements).toHaveLength(loopedToggle.data.length);
 
       loopedToggle.data.push('D');
       fixture.detectChanges();
 
       const toggleButtons = fixture.nativeElement.querySelectorAll('nx-radio-toggle-button');
-      expect(toggleButtons).toHaveSize(loopedToggle.data.length);
+      expect(toggleButtons).toHaveLength(loopedToggle.data.length);
     }));
 
     it('should set the correct classes when toggle buttons are added/removed', fakeAsync(() => {
@@ -484,7 +484,7 @@ describe('NxRadioToggleComponent', () => {
     it('should be invalid and untouched', () => {
       createTestComponent(ValidationToggle);
       const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
-      expect(reactComp.testForm.touched).toBeFalse();
+      expect(reactComp.testForm.touched).toBe(false);
       expect(reactComp.testForm.status).toBe('INVALID');
       const radioBtnElm: HTMLElement =
         fixture.nativeElement.querySelector('nx-radio-toggle-button');
@@ -495,7 +495,7 @@ describe('NxRadioToggleComponent', () => {
       createTestComponent(ValidationToggle);
       const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
       click(0);
-      expect(reactComp.testForm.touched).toBeFalse();
+      expect(reactComp.testForm.touched).toBe(false);
       expect(reactComp.testForm.status).toBe('INVALID');
     });
 
@@ -504,7 +504,7 @@ describe('NxRadioToggleComponent', () => {
       const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
       click(0);
       blurGroup();
-      expect(reactComp.testForm.touched).toBeTrue();
+      expect(reactComp.testForm.touched).toBe(true);
       expect(reactComp.testForm.status).toBe('INVALID');
       fixture.detectChanges();
       const radioBtnElm: HTMLElement =
@@ -517,7 +517,7 @@ describe('NxRadioToggleComponent', () => {
       const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
       click(1);
       blurGroup();
-      expect(reactComp.testForm.touched).toBeTrue();
+      expect(reactComp.testForm.touched).toBe(true);
       expect(reactComp.testForm.status).toBe('VALID');
     });
 
@@ -528,7 +528,7 @@ describe('NxRadioToggleComponent', () => {
       const group: HTMLElement = fixture.nativeElement.querySelector('nx-radio-toggle');
       group.dispatchEvent(new FocusEvent('focusout', { relatedTarget: radioElements.item(1) }));
       fixture.detectChanges();
-      expect(reactComp.testForm.touched).toBeFalse();
+      expect(reactComp.testForm.touched).toBe(false);
     });
 
     it('should keep focus on the radio input when clicking the label container', () => {
@@ -548,7 +548,7 @@ describe('NxRadioToggleComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(NoSelectionRadioToggle);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should set aria-labels', () => {
@@ -644,11 +644,11 @@ describe('NxRadioToggleComponent', () => {
 
       click(0);
       fixture.detectChanges();
-      expect(toggleButtons[0].componentInstance.selected).toBeFalse();
+      expect(toggleButtons[0].componentInstance.selected).toBe(false);
 
       click(1);
       fixture.detectChanges();
-      expect(toggleButtons[1].componentInstance.selected).toBeFalse();
+      expect(toggleButtons[1].componentInstance.selected).toBe(false);
     });
 
     it('should not deselect a selected button on space keyup', () => {
@@ -659,14 +659,14 @@ describe('NxRadioToggleComponent', () => {
 
       click(0);
       fixture.detectChanges();
-      expect(toggleButtons[0].componentInstance.selected).toBeTrue();
+      expect(toggleButtons[0].componentInstance.selected).toBe(true);
 
       toggleButtons[0].nativeElement.dispatchEvent(
         new KeyboardEvent('keyup', { key: ' ', code: 'Space' }),
       );
       fixture.detectChanges();
 
-      expect(toggleButtons[0].componentInstance.selected).toBeTrue();
+      expect(toggleButtons[0].componentInstance.selected).toBe(true);
     });
 
     it('should set readonly programmatically with NxAbstractControl', () => {
@@ -689,10 +689,12 @@ describe('NxRadioToggleComponent', () => {
 abstract class RadioToggleTest {
   value: any;
 
-  @ViewChildren(NxRadioToggleComponent) radioToggles!: QueryList<NxRadioToggleComponent>;
+  @ViewChildren(NxRadioToggleComponent)
+  radioToggles!: QueryList<NxRadioToggleComponent>;
 }
 
 @Component({
+  selector: 'test-no-selection-radio-toggle',
   template: `<nx-radio-toggle [name]="'tst'">
     <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
     <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
@@ -704,6 +706,7 @@ abstract class RadioToggleTest {
 class NoSelectionRadioToggle extends RadioToggleTest {}
 
 @Component({
+  selector: 'test-selection-radio-toggle',
   template: `<nx-radio-toggle>
     <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
     <nx-radio-toggle-button [selected]="true" value="B">B</nx-radio-toggle-button>
@@ -715,6 +718,7 @@ class NoSelectionRadioToggle extends RadioToggleTest {}
 class SelectionRadioToggle extends RadioToggleTest {}
 
 @Component({
+  selector: 'test-modified-radio-toggle',
   template: `<nx-radio-toggle [variant]="'small negative'">
     <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
   </nx-radio-toggle>`,
@@ -724,6 +728,7 @@ class SelectionRadioToggle extends RadioToggleTest {}
 class ModifiedRadioToggle extends RadioToggleTest {}
 
 @Component({
+  selector: 'test-single-disable-radio-toggle',
   template: `<nx-radio-toggle>
     <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
     <nx-radio-toggle-button value="B" [disabled]="true">B</nx-radio-toggle-button>
@@ -735,6 +740,7 @@ class ModifiedRadioToggle extends RadioToggleTest {}
 class SingleDisableRadioToggle extends RadioToggleTest {}
 
 @Component({
+  selector: 'test-all-disable-radio-toggle',
   template: `<nx-radio-toggle [disabled]="true">
     <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
     <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
@@ -745,6 +751,7 @@ class SingleDisableRadioToggle extends RadioToggleTest {}
 })
 class AllDisableRadioToggle extends RadioToggleTest {}
 @Component({
+  selector: 'test-model-radio-toggle',
   template: `<nx-radio-toggle [(ngModel)]="value" (ngModelChange)="changeSpy($event)">
     <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
     <nx-radio-toggle-button value="B">B</nx-radio-toggle-button>
@@ -754,10 +761,11 @@ class AllDisableRadioToggle extends RadioToggleTest {}
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ModelRadioToggle extends RadioToggleTest {
-  changeSpy = jasmine.createSpy('change spy');
+  changeSpy = vi.fn().mockName('change spy');
 }
 
 @Component({
+  selector: 'test-looped-radio-toggle',
   template: `<nx-radio-toggle [(ngModel)]="value">
     @for (value of data; track value) {
       <nx-radio-toggle-button [value]="value"> {{ value }} </nx-radio-toggle-button>
@@ -771,6 +779,7 @@ class LoopedRadioToggle extends RadioToggleTest {
 }
 
 @Component({
+  selector: 'test-empty-radio-toggle',
   template: `<nx-radio-toggle> </nx-radio-toggle>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
@@ -778,6 +787,7 @@ class LoopedRadioToggle extends RadioToggleTest {
 class EmptyRadioToggle extends RadioToggleTest {}
 
 @Component({
+  selector: 'test-multi-radio-toggle',
   template: `
     <nx-radio-toggle>
       <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
@@ -793,6 +803,7 @@ class EmptyRadioToggle extends RadioToggleTest {}
 })
 class MultiRadioToggle extends RadioToggleTest {}
 @Component({
+  selector: 'test-aria-radio-toggle',
   template: `
     <nx-radio-toggle>
       <nx-radio-toggle-button value="A" ariaLabel="cat">A</nx-radio-toggle-button>
@@ -805,6 +816,7 @@ class MultiRadioToggle extends RadioToggleTest {}
 class AriaRadioToggle extends RadioToggleTest {}
 
 @Component({
+  selector: 'test-reactive-form-toggle',
   template: `<form novalidate [formGroup]="testForm">
     <nx-radio-toggle formControlName="reactiveToggle">
       <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
@@ -835,6 +847,7 @@ class ReactiveFormToggle extends RadioToggleTest {
 }
 
 @Component({
+  selector: 'test-validation-toggle',
   template: `<form [formGroup]="testForm">
     <nx-radio-toggle formControlName="testToggle">
       <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
@@ -866,6 +879,7 @@ class ValidationToggle extends RadioToggleTest {
 }
 
 @Component({
+  selector: 'test-focus-radio-toggle',
   template: `<nx-radio-toggle>
     <nx-radio-toggle-button value="A" [selected]="true" tabindex="0"
       >Label A</nx-radio-toggle-button
@@ -878,6 +892,7 @@ class ValidationToggle extends RadioToggleTest {
 class FocusRadioToggle extends RadioToggleTest {}
 
 @Component({
+  selector: 'test-radio-toggle-group-test',
   template: `<nx-radio-toggle name="radioToggleGroupTest" [readonly]="readonly" #radioToggleGroup>
     <nx-radio-toggle-button value="0">0</nx-radio-toggle-button>
     <nx-radio-toggle-button value="1">1</nx-radio-toggle-button>
@@ -887,9 +902,11 @@ class FocusRadioToggle extends RadioToggleTest {}
 })
 class RadioToggleGroupTest extends RadioToggleTest {
   readonly = false;
-  @ViewChild('radioToggleGroup', { read: NxAbstractControl }) toggleGroup!: NxAbstractControl;
+  @ViewChild('radioToggleGroup', { read: NxAbstractControl })
+  toggleGroup!: NxAbstractControl;
 }
 @Component({
+  selector: 'test-radio-toggle-group-error-test',
   template: `<form [formGroup]="testForm">
     <nx-radio-toggle formControlName="reactiveToggle">
       <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>

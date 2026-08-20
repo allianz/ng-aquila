@@ -15,6 +15,7 @@ import {
   ComponentFixture,
   fakeAsync,
   flush,
+  flushMicrotasks,
   TestBed,
   tick,
   waitForAsync,
@@ -25,37 +26,12 @@ import { createKeyboardEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxMaskDirective } from './mask.directive';
 import { MaskConversionTypes } from './mask.model';
 import { NxMaskModule } from './mask.module';
-
-export function assertInputValue(
-  nativeElement: HTMLInputElement,
-  inputValue: string,
-  asserted: string,
-) {
-  let selectionPosition: number;
-  nativeElement.value = '';
-
-  for (let i = 0; i < inputValue.length; i++) {
-    selectionPosition = nativeElement.value.length;
-
-    nativeElement.selectionStart = selectionPosition;
-    nativeElement.selectionEnd = selectionPosition;
-
-    // keydown event
-    // I trigger this with key 'A' because the key currently is irrelevant in the keydown handler
-    // (besides DELETE and BACKSPACE, which are not entered here because it's only strings).
-    dispatchKeyboardEvent(nativeElement, 'keydown', A);
-
-    // input event
-    nativeElement.value += inputValue[i];
-    nativeElement.dispatchEvent(new Event('input'));
-  }
-
-  expect(nativeElement.value).toBe(asserted);
-}
+import { assertInputValue } from './mask.test-utils';
 
 @Directive({ standalone: true })
 abstract class MaskTest {
-  @ViewChild(NxMaskDirective) maskInstance!: NxMaskDirective;
+  @ViewChild(NxMaskDirective)
+  maskInstance!: NxMaskDirective;
 
   mask!: string;
   separators: string[] = ['(', ')', ':', '-'];
@@ -259,26 +235,26 @@ describe('NxMaskDirective', () => {
 
   it('sets dropSpecialCharacters to false on default', () => {
     createTestComponent(BasicMaskComponent);
-    expect(maskInstance.dropSpecialCharacters).toBeFalse();
+    expect(maskInstance.dropSpecialCharacters).toBe(false);
   });
 
   it('updates dropSpecialCharacters value on change', () => {
     createTestComponent(ConfigurableMaskComponent);
     setMask('00:00-00');
 
-    expect(maskInstance.dropSpecialCharacters).toBeFalse();
+    expect(maskInstance.dropSpecialCharacters).toBe(false);
     assertInputValue(nativeElement, '123456', '12:34-56');
     expect(testInstance.modelVal).toBe('12:34-56');
 
     testInstance.dropSpecialCharacters = true;
     fixture.detectChanges();
-    expect(maskInstance.dropSpecialCharacters).toBeTrue();
+    expect(maskInstance.dropSpecialCharacters).toBe(true);
     expect(nativeElement.value).toBe('12:34-56');
     expect(testInstance.modelVal).toBe('123456');
 
     testInstance.dropSpecialCharacters = false;
     fixture.detectChanges();
-    expect(maskInstance.dropSpecialCharacters).toBeFalse();
+    expect(maskInstance.dropSpecialCharacters).toBe(false);
     expect(nativeElement.value).toBe('12:34-56');
     expect(testInstance.modelVal).toBe('12:34-56');
   });
@@ -290,20 +266,20 @@ describe('NxMaskDirective', () => {
     testInstance.dropSpecialCharacters = true;
     fixture.detectChanges();
     assertInputValue(nativeElement, '123456', '12:34-56');
-    expect(maskInstance.dropSpecialCharacters).toBeTrue();
+    expect(maskInstance.dropSpecialCharacters).toBe(true);
     expect(nativeElement.value).toBe('12:34-56');
     expect(testInstance.modelVal).toBe('123456');
   });
 
   it('sets deactivateMask to false on default', () => {
     createTestComponent(BasicMaskComponent);
-    expect(maskInstance.deactivateMask).toBeFalse();
+    expect(maskInstance.deactivateMask).toBe(false);
   });
 
   describe('validation', () => {
     it('sets validateMask to true on default', () => {
       createTestComponent(BasicMaskComponent);
-      expect(maskInstance.validateMask).toBeTrue();
+      expect(maskInstance.validateMask).toBe(true);
     });
 
     it('should mark valid if value empty', () => {
@@ -311,15 +287,15 @@ describe('NxMaskDirective', () => {
       testInstance.mask = '00:00-00';
       fixture.detectChanges();
 
-      expect(testInstance.testForm.valid).toBeTrue();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
 
       nativeElement.value = '';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
 
-      expect(testInstance.testForm.valid).toBeTrue();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
     });
 
     it('should mark invalid if value is too short', () => {
@@ -330,21 +306,21 @@ describe('NxMaskDirective', () => {
       nativeElement.value = '1234';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeFalse();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeFalse();
+      expect(testInstance.testForm.valid).toBe(false);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
 
       nativeElement.value = '123456';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeTrue();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
     });
 
     it('updates validateMask value on change', () => {
       createTestComponent(ConfigurableMaskComponent);
-      expect(fixture.componentInstance.validateMask).toBeTrue();
+      expect(fixture.componentInstance.validateMask).toBe(true);
       testInstance.validateMask = false;
-      expect(fixture.componentInstance.validateMask).toBeFalse();
+      expect(fixture.componentInstance.validateMask).toBe(false);
     });
 
     it('should not validate with validateMask turned off', () => {
@@ -352,14 +328,14 @@ describe('NxMaskDirective', () => {
       testInstance.mask = '00:00-00';
       testInstance.validateMask = false;
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeTrue();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
 
       nativeElement.value = '1234';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeTrue();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
     });
 
     it('updates the validated value after validateMask change', () => {
@@ -370,18 +346,18 @@ describe('NxMaskDirective', () => {
       nativeElement.value = '1234';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeFalse();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeFalse();
+      expect(testInstance.testForm.valid).toBe(false);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
 
       testInstance.validateMask = false;
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeTrue();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
 
       testInstance.validateMask = true;
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeFalse();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeFalse();
+      expect(testInstance.testForm.valid).toBe(false);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
     });
 
     it('should validate when switching from deactive mask to active', () => {
@@ -390,32 +366,37 @@ describe('NxMaskDirective', () => {
       testInstance.validateMask = true;
       testInstance.deactivateMask = true;
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeTrue();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
 
       // mask deactive, the input should be valid even the value is incorrect.
       nativeElement.value = '1234';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeTrue();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeTrue();
+      expect(testInstance.testForm.valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
 
       // mask activate, the input should be invalid if the value is incorrect.
       testInstance.deactivateMask = false;
       nativeElement.value = '1234';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(testInstance.testForm.valid).toBeFalse();
-      expect(testInstance.testForm.get('maskInput')!.valid).toBeFalse();
+      expect(testInstance.testForm.valid).toBe(false);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
     });
   });
 
   describe('test ngModel', () => {
-    it('calls onChange after init without any updateConfig calls', () => {
+    // `fakeAsync` + `flushMicrotasks`: this component starts with a non-empty `modelVal`,
+    // and creating it queues an `ngModel` write-back of that initial value. Draining it up
+    // front stops it from landing mid-test and prepending 'AAAA' to what was typed.
+    it('calls onChange after init without any updateConfig calls', fakeAsync(() => {
       createTestComponent(NgModelMask);
+      flushMicrotasks();
+
       assertInputValue(nativeElement, 'ABCD', 'ABCD');
       expect(testInstance.modelVal).toBe('ABCD');
-    });
+    }));
 
     it('updates ngModel on backspace', () => {
       createTestComponent(ConfigurableMaskComponent);
@@ -425,7 +406,7 @@ describe('NxMaskDirective', () => {
 
       nativeElement.setSelectionRange(8, 8);
       const keydownEvent = createKeyboardEvent('keydown', BACKSPACE);
-      const spy = spyOn(keydownEvent, 'preventDefault');
+      const spy = vi.spyOn(keydownEvent, 'preventDefault').mockReturnValue(undefined);
       nativeElement.dispatchEvent(keydownEvent);
 
       fixture.detectChanges();
@@ -449,7 +430,7 @@ describe('NxMaskDirective', () => {
 
       nativeElement.setSelectionRange(7, 7);
       const keydownEvent = createKeyboardEvent('keydown', DELETE);
-      const spy = spyOn(keydownEvent, 'preventDefault');
+      const spy = vi.spyOn(keydownEvent, 'preventDefault').mockReturnValue(undefined);
       nativeElement.dispatchEvent(keydownEvent);
       fixture.detectChanges();
 
@@ -458,15 +439,19 @@ describe('NxMaskDirective', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it('updates ngModel on delete of space character for deactivated mask', () => {
+    // See the `flushMicrotasks` note above: this component also starts with a non-empty
+    // `modelVal` whose write-back has to be drained before typing into the input.
+    it('updates ngModel on delete of space character for deactivated mask', fakeAsync(() => {
       createTestComponent(PresetDeactiveMaskComponent);
+      flushMicrotasks();
+
       setMask('');
       assertInputValue(nativeElement, '123 a', '123 a');
       expect(testInstance.modelVal).toBe('123 a');
 
       nativeElement.setSelectionRange(4, 4);
       const keydownEvent = createKeyboardEvent('keydown', BACKSPACE);
-      const preventDefaultSpy = spyOn(keydownEvent, 'preventDefault');
+      const preventDefaultSpy = vi.spyOn(keydownEvent, 'preventDefault').mockReturnValue(undefined);
       nativeElement.dispatchEvent(keydownEvent);
       fixture.detectChanges();
 
@@ -480,7 +465,7 @@ describe('NxMaskDirective', () => {
 
       expect(nativeElement.value).toBe('123a');
       expect(testInstance.modelVal).toBe('123a');
-    });
+    }));
 
     it('updates a ngModel value with mask value', fakeAsync(() => {
       createTestComponent(ConfigurableMaskComponent);
@@ -786,7 +771,7 @@ describe('NxMaskDirective', () => {
       // try to delete separator
       nativeElement.setSelectionRange(3, 3);
       const keydownEvent = createKeyboardEvent('keydown', BACKSPACE);
-      const spy = spyOn(keydownEvent, 'preventDefault');
+      const spy = vi.spyOn(keydownEvent, 'preventDefault').mockReturnValue(undefined);
       nativeElement.dispatchEvent(keydownEvent);
       fixture.detectChanges();
 
@@ -816,7 +801,7 @@ describe('NxMaskDirective', () => {
       // try to delete separator
       nativeElement.setSelectionRange(2, 2);
       const keyEvent = createKeyboardEvent('keydown', DELETE);
-      const spy = spyOn(keyEvent, 'preventDefault');
+      const spy = vi.spyOn(keyEvent, 'preventDefault').mockReturnValue(undefined);
       nativeElement.dispatchEvent(keyEvent);
       fixture.detectChanges();
 
@@ -968,7 +953,7 @@ describe('NxMaskDirective', () => {
 
       nativeElement.setSelectionRange(6, 6);
       const keydownEvent = createKeyboardEvent('keydown', BACKSPACE);
-      const spy = spyOn(keydownEvent, 'preventDefault');
+      const spy = vi.spyOn(keydownEvent, 'preventDefault').mockReturnValue(undefined);
       nativeElement.dispatchEvent(keydownEvent);
       fixture.detectChanges();
 
@@ -985,7 +970,7 @@ describe('NxMaskDirective', () => {
 
       nativeElement.setSelectionRange(5, 5);
       const keydownEvent = createKeyboardEvent('keydown', DELETE);
-      const spy = spyOn(keydownEvent, 'preventDefault');
+      const spy = vi.spyOn(keydownEvent, 'preventDefault').mockReturnValue(undefined);
       nativeElement.dispatchEvent(keydownEvent);
       fixture.detectChanges();
 
@@ -1052,7 +1037,7 @@ describe('NxMaskDirective', () => {
       const data = new DataTransfer();
       data.items.add('123', 'text/plain');
       const pasteEvent = new ClipboardEvent('paste', { clipboardData: data } as ClipboardEventInit);
-      const spy = spyOn(pasteEvent, 'preventDefault');
+      const spy = vi.spyOn(pasteEvent, 'preventDefault').mockReturnValue(undefined);
       nativeElement.setSelectionRange(3, 3);
       nativeElement.dispatchEvent(pasteEvent);
       fixture.detectChanges();
@@ -1130,7 +1115,7 @@ describe('NxMaskDirective', () => {
       fixture.detectChanges();
       expect(testInstance.maskInstance.mask).toBe('A');
 
-      const spy = spyOn(component, 'customOnChange');
+      const spy = vi.spyOn(component, 'customOnChange').mockReturnValue(undefined);
       maskInstance.registerOnChange(component.customOnChange);
 
       testInstance.maskInstance.setMask('0');
@@ -1146,7 +1131,7 @@ describe('NxMaskDirective', () => {
       setMask('A');
 
       const component = fixture.componentInstance as HookedMaskComponent;
-      const spy = spyOn(component, 'customInputHook');
+      const spy = vi.spyOn(component, 'customInputHook').mockReturnValue(undefined);
       maskInstance.registerAfterInputHook(component.customInputHook);
 
       assertInputValue(nativeElement, '1', '1');
@@ -1158,7 +1143,7 @@ describe('NxMaskDirective', () => {
       setMask('A');
 
       const component = fixture.componentInstance as HookedMaskComponent;
-      const spy = spyOn(component, 'customPasteHook');
+      const spy = vi.spyOn(component, 'customPasteHook').mockReturnValue(undefined);
       maskInstance.registerBeforePasteHook(component.customPasteHook);
 
       const data = new DataTransfer();
@@ -1172,6 +1157,7 @@ describe('NxMaskDirective', () => {
 });
 
 @Component({
+  selector: 'test-basic-mask-component',
   template: `<input [nxMask]="mask" />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
@@ -1179,6 +1165,7 @@ describe('NxMaskDirective', () => {
 class BasicMaskComponent extends MaskTest {}
 
 @Component({
+  selector: 'test-configurable-mask-component',
   template: `
     <input
       [nxMask]="mask"
@@ -1196,6 +1183,7 @@ class BasicMaskComponent extends MaskTest {}
 class ConfigurableMaskComponent extends MaskTest {}
 
 @Component({
+  selector: 'test-validation-mask-component',
   template: `
     <form [formGroup]="testForm">
       <input
@@ -1212,6 +1200,7 @@ class ConfigurableMaskComponent extends MaskTest {}
 class ValidationMaskComponent extends MaskTest {}
 
 @Component({
+  selector: 'test-preset-deactive-mask-component',
   template: `
     <input
       [nxMask]="mask"
@@ -1232,6 +1221,7 @@ class PresetDeactiveMaskComponent extends MaskTest {
 }
 
 @Component({
+  selector: 'test-ng-model-mask',
   template: ` <input [nxMask]="mask" [(ngModel)]="modelVal" /> `,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
@@ -1242,6 +1232,7 @@ class NgModelMask extends MaskTest {
 }
 
 @Component({
+  selector: 'test-hooked-mask-component',
   template: `<input [nxMask]="mask" [separators]="separators" />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [FormsModule, ReactiveFormsModule, NxMaskModule],

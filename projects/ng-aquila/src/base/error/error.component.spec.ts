@@ -17,7 +17,8 @@ const errorOptions: ErrorDefaultOptions = {
 
 @Directive({ standalone: true })
 abstract class ErrorTest {
-  @ViewChild(NxErrorComponent) errorInstance!: NxErrorComponent;
+  @ViewChild(NxErrorComponent)
+  errorInstance!: NxErrorComponent;
   id!: string;
   appearance!: ErrorStyleType;
 }
@@ -65,7 +66,9 @@ describe('NxErrorComponent', () => {
       createTestComponent(BasicError);
       const content = fixture.nativeElement.querySelector('.nx-error__content') as HTMLElement;
 
-      expect(content.id).toMatch('nx-error-[0-9]');
+      // Must be a real RegExp: Vitest treats a string argument as a literal substring,
+      // whereas Jasmine compiled it as a pattern.
+      expect(content.id).toMatch(/nx-error-\d/);
     });
 
     it('creates the nx-error with a custom id', () => {
@@ -130,6 +133,7 @@ describe('NxErrorComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-error',
   template: `<nx-error>I am an error message.</nx-error>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxErrorModule],
@@ -137,6 +141,7 @@ describe('NxErrorComponent', () => {
 class BasicError extends ErrorTest {}
 
 @Component({
+  selector: 'test-configurable-error',
   template: `<nx-error [appearance]="appearance" [id]="id"
     >I am an error message with an icon.</nx-error
   >`,

@@ -5,7 +5,7 @@ import { NxPaginationUtils } from './pagination-utils';
 
 describe('NxPaginationUtils', () => {
   function assertCheck(collection: any, length: any, values: any) {
-    expect(collection).toHaveSize(length);
+    expect(collection).toHaveLength(length);
     for (let i = 0; i < values.length; i++) {
       expect(collection[i].label).toEqual(values[i]);
     }
@@ -51,7 +51,7 @@ describe('NxPaginationUtils', () => {
       },
     ));
 
-    it('should show first 2 elements and ellipsis when current position is "21"', inject(
+    it('should show only the first element when current position and total are "1"', inject(
       [NxPaginationUtils],
       (utils: NxPaginationUtils) => {
         const startArray = utils.getStartArray(1, 1);
@@ -251,7 +251,7 @@ describe('NxPaginationUtils', () => {
       [NxPaginationUtils],
       (utils: NxPaginationUtils) => {
         const endArray = utils.getEndArray(10, 10);
-        expect(endArray).toHaveSize(3);
+        expect(endArray).toHaveLength(3);
         assertCheck(endArray, 3, [8, 9, 10]);
       },
     ));

@@ -6,7 +6,8 @@ import { NxCardModule } from './card.module';
 
 @Directive({ standalone: true })
 abstract class CardTest {
-  @ViewChild(NxCardComponent) cardInstance!: NxCardComponent;
+  @ViewChild(NxCardComponent)
+  cardInstance!: NxCardComponent;
   isDisabled = false;
   isClickable = false;
   isElevated = false;
@@ -92,12 +93,13 @@ describe('NxCardComponent', () => {
   describe('a11y', () => {
     it('expert card has no accessibility violations', async () => {
       createTestComponent(BasicCard);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-basic-card',
   template: `<nx-card>Hello Text</nx-card>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxCardModule],
@@ -105,6 +107,7 @@ describe('NxCardComponent', () => {
 class BasicCard extends CardTest {}
 
 @Component({
+  selector: 'test-clickable-card-test',
   template: `<nx-card [clickable]="isClickable" [disabled]="isDisabled"
     ><a href="/" nxCardMainLink>Card title</a>
     <p>Hello Text</p></nx-card
@@ -115,6 +118,7 @@ class BasicCard extends CardTest {}
 class ClickableCardTest extends CardTest {}
 
 @Component({
+  selector: 'test-elevated-card-test',
   template: `<nx-card [elevated]="isElevated">Hello Text</nx-card>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxCardModule],

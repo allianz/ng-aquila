@@ -7,7 +7,8 @@ import { NxListModule } from './list.module';
 
 @Directive({ standalone: true })
 abstract class ListTest {
-  @ViewChild(NxListComponent) listInstance!: NxListComponent;
+  @ViewChild(NxListComponent)
+  listInstance!: NxListComponent;
 }
 
 describe('NxListComponent', () => {
@@ -90,7 +91,7 @@ describe('NxListComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicList);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should set aria-hidden to the icon', () => {

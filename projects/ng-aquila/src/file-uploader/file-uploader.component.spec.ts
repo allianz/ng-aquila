@@ -129,7 +129,7 @@ describe('NxFileUploaderComponent', () => {
 
     it('should open the file browser when click on the button', () => {
       createTestComponent(BasicFileUpload);
-      spyOn(inputElm, 'click').and.callThrough();
+      vi.spyOn(inputElm, 'click');
       buttonElm.click();
 
       expect(inputElm.click).toHaveBeenCalled();
@@ -242,9 +242,10 @@ describe('NxFileUploaderComponent', () => {
     it('should set the control to dirty when value changes in the DOM', () => {
       createTestComponent(ReactiveFileUpload);
 
-      expect(testInstance.form.get('documents')?.dirty)
-        .withContext('Expected control to start out pristine.')
-        .toBeFalse();
+      expect(
+        testInstance.form.get('documents')?.dirty,
+        'Expected control to start out pristine.',
+      ).toBe(false);
 
       let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
       fakeFile = Object.defineProperty(fakeFile, 'size', { value: 0, writable: false });
@@ -255,7 +256,7 @@ describe('NxFileUploaderComponent', () => {
 
       fixture.detectChanges();
 
-      expect(testInstance.form.dirty).withContext('Expected control to be dirty.').toBeTrue();
+      expect(testInstance.form.dirty, 'Expected control to be dirty.').toBe(true);
     });
 
     it('should programmatically set the files', () => {
@@ -303,7 +304,7 @@ describe('NxFileUploaderComponent', () => {
       const deleteAction = fixture.nativeElement.querySelector(
         '.nx-file-uploader--file-row-actions button',
       ) as HTMLElement;
-      expect(deleteAction.hasAttribute('disabled')).toBeTrue();
+      expect(deleteAction.hasAttribute('disabled')).toBe(true);
     });
   });
 
@@ -339,7 +340,27 @@ describe('NxFileUploaderComponent', () => {
       expect(testInstance.form.controls.documents.value.length).toBe(1);
     });
 
-    it('should set file state from the form', fakeAsync(() => {}));
+    it('should set file state from the form', () => {
+      createTestComponent(ReactiveFileUpload);
+
+      let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
+      fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024, writable: false });
+
+      const uploading = new FileItem(fakeFile);
+      uploading.isUploading = true;
+      const uploaded = new FileItem(fakeFile);
+      uploaded.isUploaded = true;
+
+      testInstance.form.patchValue({ documents: [uploading, uploaded] });
+      fixture.detectChanges();
+
+      const rows = fixture.nativeElement.querySelectorAll('.nx-file-uploader--file-row');
+      expect(rows).toHaveLength(2);
+      expect(rows[0]).toHaveClass('nx-file-uploader--file-state-uploading');
+      expect(rows[0].querySelector('nx-spinner')).not.toBeNull();
+      expect(rows[1]).not.toHaveClass('nx-file-uploader--file-state-uploading');
+      expect(rows[1].querySelector('nx-status-icon')).not.toBeNull();
+    });
   });
 
   describe('Validation', () => {
@@ -353,7 +374,7 @@ describe('NxFileUploaderComponent', () => {
       submitButton.click();
       fixture.detectChanges();
 
-      expect(testInstance.form.valid).toBeFalse();
+      expect(testInstance.form.valid).toBe(false);
     });
 
     it('should be invalid when all files are deleted from the queue', () => {
@@ -384,7 +405,7 @@ describe('NxFileUploaderComponent', () => {
       fixture.detectChanges();
 
       expect(testInstance.form.controls.documents.value.length).toBe(0);
-      expect(testInstance.form.controls.documents.hasError('required')).toBeTrue();
+      expect(testInstance.form.controls.documents.hasError('required')).toBe(true);
     });
 
     it('should remove failed upload file from the list and show error message', () => {
@@ -525,8 +546,8 @@ describe('NxFileUploaderComponent', () => {
           actual: '',
         },
       ]);
-      expect(fileUploaderInstance.errors.length).toEqual(2);
-      expect(fileUploaderInstance.value?.length).toEqual(2);
+      expect(fileUploaderInstance.errors.length).toBe(2);
+      expect(fileUploaderInstance.value?.length).toBe(2);
       expect(fileUploaderInstance.value?.[0].name).toBe('1');
       expect(fileUploaderInstance.value?.[1].name).toBe('3');
     });
@@ -554,17 +575,17 @@ describe('NxFileUploaderComponent', () => {
       });
       fixture.detectChanges();
 
-      expect(testInstance.form.controls.documents.valid).toBeFalse();
-      expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileSize')).toBeTrue();
-      expect(testInstance.form.controls.documents.hasError('required')).toBeTrue();
+      expect(testInstance.form.controls.documents.valid).toBe(false);
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileSize')).toBe(true);
+      expect(testInstance.form.controls.documents.hasError('required')).toBe(true);
     });
 
     it('should be valid when accept is not set', () => {
       createTestComponent(ReactiveFileUpload);
       createAndAddFile('fake file', 'text/html');
-      expect(
-        testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-      ).toBeFalse();
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBe(
+        false,
+      );
     });
 
     it('is invalid when file does not fit to mime type', () => {
@@ -573,9 +594,9 @@ describe('NxFileUploaderComponent', () => {
       fixture.detectChanges();
 
       createAndAddFile('fake file', 'text/html');
-      expect(
-        testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-      ).toBeTrue();
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBe(
+        true,
+      );
     });
 
     it('is valid when file fits to mime type', () => {
@@ -586,16 +607,16 @@ describe('NxFileUploaderComponent', () => {
         'fake file',
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
       );
-      expect(
-        testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-      ).toBeFalse();
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBe(
+        false,
+      );
 
       testInstance.accept = 'image/*';
       fixture.detectChanges();
       createAndAddFile('test.png', 'image/png');
-      expect(
-        testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-      ).toBeFalse();
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBe(
+        false,
+      );
     });
 
     it('no error when fileType is not set', () => {
@@ -603,9 +624,9 @@ describe('NxFileUploaderComponent', () => {
       testInstance.accept = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
       fixture.detectChanges();
       createAndAddFile('fake file', '');
-      expect(
-        testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-      ).toBeFalse();
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBe(
+        false,
+      );
     });
 
     it('valid when file ending is allowed', () => {
@@ -613,9 +634,9 @@ describe('NxFileUploaderComponent', () => {
       testInstance.accept = '.png, .jpg';
       fixture.detectChanges();
       createAndAddFile('test.png', 'some type');
-      expect(
-        testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-      ).toBeFalse();
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBe(
+        false,
+      );
     });
 
     it('valid when file ending is allowed case-insensitive', () => {
@@ -629,9 +650,9 @@ describe('NxFileUploaderComponent', () => {
       createAndAddFile('test.TXt', 'some type');
 
       fixture.detectChanges();
-      expect(
-        testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-      ).toBeFalse();
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBe(
+        false,
+      );
     });
 
     it('invalid when file ending is not allowed', () => {
@@ -639,9 +660,9 @@ describe('NxFileUploaderComponent', () => {
       testInstance.accept = '.jpg';
       fixture.detectChanges();
       createAndAddFile('test.png', 'some type');
-      expect(
-        testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-      ).toBeTrue();
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted')).toBe(
+        true,
+      );
     });
 
     it('invalid when file number reached max then click add button', () => {
@@ -653,7 +674,7 @@ describe('NxFileUploaderComponent', () => {
       createAndAddFile('test.png', 'some type');
       createAndAddFile('test.png', 'some type');
       fixture.detectChanges();
-      expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBeTrue();
+      expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBe(true);
     });
 
     describe('getFileExtension', () => {
@@ -683,7 +704,7 @@ describe('NxFileUploaderComponent', () => {
         createAndAddFile('test.log', '');
         expect(
           testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-        ).toBeTrue();
+        ).toBe(true);
       });
 
       it('should be valid when file extension matches', () => {
@@ -694,7 +715,7 @@ describe('NxFileUploaderComponent', () => {
         createAndAddFile('test.png', '');
         expect(
           testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-        ).toBeFalse();
+        ).toBe(false);
       });
 
       it('should be valid when mime type and file extension is given but file has no type set', () => {
@@ -705,25 +726,25 @@ describe('NxFileUploaderComponent', () => {
         createAndAddFile('test.png', '');
         expect(
           testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-        ).toBeFalse();
+        ).toBe(false);
       });
     });
 
     describe('maxFileNumber', () => {
       it('is valid if maxFileNumber is not set', () => {
         createTestComponent(ReactiveFileUpload);
-        expect(
-          testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber'),
-        ).toBeFalse();
+        expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBe(
+          false,
+        );
       });
 
       it('is valid with no file added', () => {
         createTestComponent(ReactiveFileUpload);
         testInstance.maxFileNumber = 2;
         fixture.detectChanges();
-        expect(
-          testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber'),
-        ).toBeFalse();
+        expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBe(
+          false,
+        );
       });
 
       it('is valid if file number <= maxFileNumber', () => {
@@ -732,17 +753,17 @@ describe('NxFileUploaderComponent', () => {
         createAndAddFile('test.png', 'some type');
         inputElm.dispatchEvent(new Event('change'));
         fixture.detectChanges();
-        expect(
-          testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber'),
-        ).toBeFalse();
+        expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBe(
+          false,
+        );
 
         // add a second file
         createAndAddFile('test.png', 'some type');
         inputElm.dispatchEvent(new Event('change'));
         fixture.detectChanges();
-        expect(
-          testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber'),
-        ).toBeFalse();
+        expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBe(
+          false,
+        );
       });
 
       it('should has fileNumber error in errors property if file number > maxFileNumbe', () => {
@@ -770,9 +791,9 @@ describe('NxFileUploaderComponent', () => {
         createAndAddFile('test.png', 'some type');
         createAndAddFile('test.png', 'some type');
         fixture.detectChanges();
-        expect(
-          testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber'),
-        ).toBeTrue();
+        expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBe(
+          true,
+        );
       });
 
       it('should not add file more than maxFileNumer', () => {
@@ -800,9 +821,9 @@ describe('NxFileUploaderComponent', () => {
         fixture.nativeElement.querySelector('nx-file-upload-delete').click();
         fixture.detectChanges();
 
-        expect(
-          testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber'),
-        ).toBeFalse();
+        expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBe(
+          false,
+        );
       });
     });
 
@@ -819,7 +840,7 @@ describe('NxFileUploaderComponent', () => {
         fixture.detectChanges();
         submitButton.click();
         fixture.detectChanges();
-        expect(testInstance.form.controls.documents.hasError('required')).toBeTrue();
+        expect(testInstance.form.controls.documents.hasError('required')).toBe(true);
       });
 
       it('should not have max fileNumber validator error if noBlockingValidators is true', () => {
@@ -833,9 +854,9 @@ describe('NxFileUploaderComponent', () => {
         createAndAddFile('test.png', 'some type');
         createAndAddFile('test.png', 'some type');
         fixture.detectChanges();
-        expect(
-          testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber'),
-        ).toBeFalse();
+        expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileNumber')).toBe(
+          false,
+        );
       });
 
       it('should not have file type validator error if noBlockingValidators is true', () => {
@@ -849,7 +870,7 @@ describe('NxFileUploaderComponent', () => {
         createAndAddFile('fake file', 'text/html');
         expect(
           testInstance.form.controls.documents.hasError('NxFileUploadFileTypeNotAccepted'),
-        ).toBeFalse();
+        ).toBe(false);
       });
 
       it('should not have file size validator error if noBlockingValidators is true', () => {
@@ -875,9 +896,9 @@ describe('NxFileUploaderComponent', () => {
           },
         });
         fixture.detectChanges();
-        expect(
-          testInstance.form.controls.documents.hasError('NxFileUploadMaxFileSize'),
-        ).toBeFalse();
+        expect(testInstance.form.controls.documents.hasError('NxFileUploadMaxFileSize')).toBe(
+          false,
+        );
       });
     });
 
@@ -886,14 +907,14 @@ describe('NxFileUploaderComponent', () => {
         bindings: [inputBinding('noBlockingValidators', () => true)],
       });
 
-      expect(testInstance.form.controls.documents.hasValidator(Validators.required)).toBeTrue();
+      expect(testInstance.form.controls.documents.hasValidator(Validators.required)).toBe(true);
     });
   });
 
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicFileUpload);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('should add aria described by for hint and label', fakeAsync(() => {
@@ -1019,6 +1040,7 @@ class IntlOverrideFileUpload extends FileUploaderTest {
 }
 
 @Component({
+  selector: 'test-reactive-file-upload',
   template: `
     <form [formGroup]="form">
       <nx-file-uploader
@@ -1072,7 +1094,8 @@ class ReactiveFileUpload extends FileUploaderTest {
   maxFileSize: any;
   queueList: any;
   maxFileNumber: any;
-  @Input() noBlockingValidators = false;
+  @Input()
+  noBlockingValidators = false;
 
   constructor() {
     super();

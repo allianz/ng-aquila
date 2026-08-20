@@ -10,7 +10,8 @@ import { NxIconRegistry } from './icon-registry';
 
 @Directive({ standalone: true })
 abstract class IconTest {
-  @ViewChild(NxIconComponent) buttonInstance!: NxIconComponent;
+  @ViewChild(NxIconComponent)
+  buttonInstance!: NxIconComponent;
   name = '';
   font = 'custom-font';
 }
@@ -86,7 +87,7 @@ describe('NxIconComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicIcon);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 
@@ -110,7 +111,7 @@ describe('NxIconComponent', () => {
      */
     function verifyAndGetSingleSvgChild(element: HTMLElement): SVGElement {
       expect(element.id).toBeFalsy();
-      expect(element.childNodes).toHaveSize(1);
+      expect(element.childNodes).toHaveLength(1);
       const svgChild = element.childNodes[0] as SVGElement;
       expect(svgChild.tagName.toLowerCase()).toBe('svg');
       return svgChild;
@@ -275,6 +276,7 @@ describe('NxIconComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-icon',
   template: `<nx-icon name="heart"></nx-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
@@ -282,6 +284,7 @@ describe('NxIconComponent', () => {
 class BasicIcon extends IconTest {}
 
 @Component({
+  selector: 'test-size-icon',
   template: `<nx-icon name="heart" size="m"></nx-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
@@ -289,6 +292,7 @@ class BasicIcon extends IconTest {}
 class SizeIcon extends IconTest {}
 
 @Component({
+  selector: 'test-outline-icon',
   template: `<nx-icon name="heart" outline="true"></nx-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
@@ -296,6 +300,7 @@ class SizeIcon extends IconTest {}
 class OutlineIcon extends IconTest {}
 
 @Component({
+  selector: 'test-fill-icon',
   template: `<nx-icon name="heart" fill="true"></nx-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
@@ -303,6 +308,7 @@ class OutlineIcon extends IconTest {}
 class FillIcon extends IconTest {}
 
 @Component({
+  selector: 'test-dynamic-icon',
   template: `<nx-icon [name]="name" [size]="size" fill="true"></nx-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],
@@ -313,6 +319,7 @@ class DynamicIcon extends IconTest {
 }
 
 @Component({
+  selector: 'test-font-icon',
   template: `<nx-icon [name]="name" [font]="font"></nx-icon>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxIconModule],

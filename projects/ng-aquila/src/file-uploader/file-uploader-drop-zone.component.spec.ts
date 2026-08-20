@@ -72,21 +72,21 @@ describe('NxFileUploaderComponent', () => {
   describe('drop zone', () => {
     it('should call onDrop when dropping event', () => {
       createTestComponent(DropZoneFileUpload);
-      spyOn(dropZone, 'onDrop');
+      vi.spyOn(dropZone, 'onDrop').mockReturnValue(undefined);
       dropZoneElm.triggerEventHandler('drop', new DragEvent('drop'));
       expect(dropZone.onDrop).toHaveBeenCalled();
     });
 
     it('should call onDragOver when a drop over event', () => {
       createTestComponent(DropZoneFileUpload);
-      spyOn(dropZone, 'onDragOver');
+      vi.spyOn(dropZone, 'onDragOver').mockReturnValue(undefined);
       dropZoneElm.triggerEventHandler('dragover', new DragEvent('dragover'));
       expect(dropZone.onDragOver).toHaveBeenCalled();
     });
 
     it('should call onDragLeave when a dragleave event', () => {
       createTestComponent(DropZoneFileUpload);
-      spyOn(dropZone, 'onDragLeave');
+      vi.spyOn(dropZone, 'onDragLeave').mockReturnValue(undefined);
       dropZoneElm.triggerEventHandler('dragleave', new DragEvent('dragleave'));
       expect(dropZone.onDragLeave).toHaveBeenCalled();
     });
@@ -94,7 +94,7 @@ describe('NxFileUploaderComponent', () => {
     it('should emit the dropped files', () => {
       createTestComponent(DropZoneFileUpload);
       fixture.detectChanges();
-      spyOn(dropZone.fileDropped, 'emit');
+      vi.spyOn(dropZone.fileDropped, 'emit').mockReturnValue(undefined);
       const file = new File([''], 'fake-file.jpg');
       const files = [file, file, file];
       const fileDropEvent = {
@@ -111,7 +111,7 @@ describe('NxFileUploaderComponent', () => {
       createTestComponent(DropZoneFileUpload);
       testInstance.disabled = true;
       fixture.detectChanges();
-      spyOn(dropZone.fileDropped, 'emit');
+      vi.spyOn(dropZone.fileDropped, 'emit').mockReturnValue(undefined);
       const file = new File([''], 'fake-file.jpg');
       const fileDropEvent = {
         preventDefault: () => {},
@@ -126,6 +126,7 @@ describe('NxFileUploaderComponent', () => {
 });
 
 @Component({
+  selector: 'test-drop-zone-file-upload',
   template: `
     <form [formGroup]="form">
       <nx-file-uploader

@@ -9,7 +9,8 @@ abstract class ActionTest {
   selected!: boolean;
   expandable!: boolean;
   expanded!: boolean;
-  @ViewChild(NxActionComponent) actionInstance!: NxActionComponent;
+  @ViewChild(NxActionComponent)
+  actionInstance!: NxActionComponent;
 }
 
 describe(NxActionComponent.name, () => {
@@ -135,7 +136,7 @@ describe(NxActionComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicAction);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });

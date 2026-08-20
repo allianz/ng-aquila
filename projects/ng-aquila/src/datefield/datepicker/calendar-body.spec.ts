@@ -45,8 +45,8 @@ describe('NxCalendarBodyComponent', () => {
     });
 
     it('creates body', () => {
-      expect(rowEls).toHaveSize(2);
-      expect(cellEls).toHaveSize(14);
+      expect(rowEls).toHaveLength(2);
+      expect(cellEls).toHaveLength(14);
     });
 
     it('highlights today', () => {
@@ -70,9 +70,7 @@ describe('NxCalendarBodyComponent', () => {
       todayElement.click();
       fixture.detectChanges();
 
-      expect(todayElement)
-        .withContext('today should be selected')
-        .toHaveClass('nx-calendar-body-selected');
+      expect(todayElement, 'today should be selected').toHaveClass('nx-calendar-body-selected');
     });
 
     it('should mark active date', () => {
@@ -133,7 +131,7 @@ describe('NxCalendarBodyComponent', () => {
 
     it('should have correct number of total rows', () => {
       let rows = calendarBodyNativeElement.querySelectorAll('tr');
-      expect(rows).toHaveSize(4);
+      expect(rows).toHaveLength(4);
 
       testComponent.previousItems = 0;
       testComponent.rows = [
@@ -144,12 +142,13 @@ describe('NxCalendarBodyComponent', () => {
       fixture.detectChanges();
 
       rows = calendarBodyNativeElement.querySelectorAll('tr');
-      expect(rows).toHaveSize(2);
+      expect(rows).toHaveLength(2);
     });
   });
 });
 
 @Component({
+  selector: 'test-standard-calendar-body',
   template: `<table
     nx-calendar-body
     [label]="label"
@@ -179,6 +178,7 @@ class StandardCalendarBody {
 }
 
 @Component({
+  selector: 'test-calendar-body-with-disabled-cells',
   template: `<table
     nx-calendar-body
     [rows]="rows"
@@ -195,6 +195,7 @@ class CalendarBodyWithDisabledCells {
 }
 
 @Component({
+  selector: 'test-calendar-body-with-previous-and-following-cells',
   template: `<table
     nx-calendar-body
     [rows]="rows"

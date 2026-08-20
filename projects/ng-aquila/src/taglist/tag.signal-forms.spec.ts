@@ -16,6 +16,7 @@ import { NxTaglistModule } from './taglist.module';
  * computeds in the tags keep working.
  */
 @Component({
+  selector: 'test-basic-tag-group-host',
   standalone: true,
   imports: [FormField, NxTaglistModule],
   template: `
@@ -36,6 +37,7 @@ class BasicTagGroupHost {
 }
 
 @Component({
+  selector: 'test-validated-tag-group-host',
   standalone: true,
   imports: [FormField, NxTaglistModule],
   template: `
@@ -59,6 +61,7 @@ class ValidatedTagGroupHost {
 }
 
 @Component({
+  selector: 'test-disabled-tag-group-host',
   standalone: true,
   imports: [FormField, NxTaglistModule],
   template: `
@@ -81,6 +84,7 @@ class DisabledTagGroupHost {
 }
 
 @Component({
+  selector: 'test-readonly-tag-group-host',
   standalone: true,
   imports: [FormField, NxTaglistModule],
   template: `
@@ -103,6 +107,7 @@ class ReadonlyTagGroupHost {
 }
 
 @Component({
+  selector: 'test-removable-tag-group-host',
   standalone: true,
   imports: [FormField, NxTaglistModule],
   template: `
@@ -203,7 +208,7 @@ describe('NxTagGroupComponent signal forms', () => {
 
       expect(host.tagForm.tags().value()).toEqual(['bar']);
       expect(host.model().tags).toEqual(['bar']);
-      expect(getInputs(fixture)[1].checked).toBeTrue();
+      expect(getInputs(fixture)[1].checked).toBe(true);
     });
 
     it('removes a deselected tag from the model array', () => {
@@ -220,7 +225,7 @@ describe('NxTagGroupComponent signal forms', () => {
       fixture.detectChanges();
 
       expect(host.tagForm.tags().value()).toEqual(['baz']);
-      expect(getInputs(fixture)[0].checked).toBeFalse();
+      expect(getInputs(fixture)[0].checked).toBe(false);
     });
 
     it('does not add the same tag twice', () => {
@@ -236,12 +241,12 @@ describe('NxTagGroupComponent signal forms', () => {
     it('marks the field dirty after user interaction', () => {
       const { fixture, host } = setup(BasicTagGroupHost);
 
-      expect(host.tagForm.tags().dirty()).toBeFalse();
+      expect(host.tagForm.tags().dirty()).toBe(false);
 
       getLabels(fixture)[0].click();
       fixture.detectChanges();
 
-      expect(host.tagForm.tags().dirty()).toBeTrue();
+      expect(host.tagForm.tags().dirty()).toBe(true);
     });
 
     it('removes a tag from the model when its delete button is clicked', () => {
@@ -252,7 +257,7 @@ describe('NxTagGroupComponent signal forms', () => {
       // A removable tag only emits (removed); the group does not remove the value itself, so the
       // host has to write it back. This mirrors the documented usage of nx-tag-group.
       const closeButtons = getCloseButtons(fixture);
-      expect(closeButtons).toHaveSize(2);
+      expect(closeButtons).toHaveLength(2);
       host.group().removeValue(host.tags[0]);
       fixture.detectChanges();
 
@@ -264,13 +269,13 @@ describe('NxTagGroupComponent signal forms', () => {
     it('marks the field as touched when the focus leaves the group', () => {
       const { fixture, host } = setup(BasicTagGroupHost);
 
-      expect(host.tagForm.tags().touched()).toBeFalse();
+      expect(host.tagForm.tags().touched()).toBe(false);
 
       const groupElement = fixture.nativeElement.querySelector('nx-tag-group') as HTMLElement;
       dispatchFakeEvent(groupElement, 'focusout');
       fixture.detectChanges();
 
-      expect(host.tagForm.tags().touched()).toBeTrue();
+      expect(host.tagForm.tags().touched()).toBe(true);
     });
 
     it('does not mark the field as touched while the focus stays inside the group', () => {
@@ -284,7 +289,7 @@ describe('NxTagGroupComponent signal forms', () => {
       groupElement.dispatchEvent(event);
       fixture.detectChanges();
 
-      expect(host.tagForm.tags().touched()).toBeFalse();
+      expect(host.tagForm.tags().touched()).toBe(false);
     });
   });
 
@@ -292,21 +297,21 @@ describe('NxTagGroupComponent signal forms', () => {
     it('honours a minLength(1) validator on the array field', () => {
       const { fixture, host } = setup(ValidatedTagGroupHost);
 
-      expect(host.tagForm.tags().valid()).toBeFalse();
-      expect(host.tagForm().invalid()).toBeTrue();
+      expect(host.tagForm.tags().valid()).toBe(false);
+      expect(host.tagForm().invalid()).toBe(true);
       expect(
         host.tagForm
           .tags()
           .errors()
           .some((error) => error.kind === 'minLength'),
-      ).toBeTrue();
+      ).toBe(true);
 
       getLabels(fixture)[0].click();
       fixture.detectChanges();
 
       expect(host.tagForm.tags().value()).toEqual(['foo']);
-      expect(host.tagForm.tags().valid()).toBeTrue();
-      expect(host.tagForm().invalid()).toBeFalse();
+      expect(host.tagForm.tags().valid()).toBe(true);
+      expect(host.tagForm().invalid()).toBe(false);
       expect(host.tagForm.tags().errors()).toEqual([]);
     });
   });
@@ -315,10 +320,10 @@ describe('NxTagGroupComponent signal forms', () => {
     it('disables the group and all its tags through a disabled() schema rule', () => {
       const { fixture, host } = setup(DisabledTagGroupHost);
 
-      expect(host.tagForm.tags().disabled()).toBeTrue();
-      expect(host.group().disabled()).toBeTrue();
-      host.tagInstances().forEach((tag) => expect(tag.disabled()).toBeTrue());
-      getInputs(fixture).forEach((input) => expect(input.disabled).toBeTrue());
+      expect(host.tagForm.tags().disabled()).toBe(true);
+      expect(host.group().disabled()).toBe(true);
+      host.tagInstances().forEach((tag) => expect(tag.disabled()).toBe(true));
+      getInputs(fixture).forEach((input) => expect(input.disabled).toBe(true));
     });
 
     it('does not update the model when a disabled tag is clicked', () => {
@@ -335,9 +340,9 @@ describe('NxTagGroupComponent signal forms', () => {
     it('makes the group and all its tags readonly through a readonly() schema rule', () => {
       const { fixture, host } = setup(ReadonlyTagGroupHost);
 
-      expect(host.tagForm.tags().readonly()).toBeTrue();
-      expect(host.group().readonly()).toBeTrue();
-      host.tagInstances().forEach((tag) => expect(tag.readonly()).toBeTrue());
+      expect(host.tagForm.tags().readonly()).toBe(true);
+      expect(host.group().readonly()).toBe(true);
+      host.tagInstances().forEach((tag) => expect(tag.readonly()).toBe(true));
       getInputs(fixture).forEach((input) =>
         expect(input.getAttribute('aria-disabled')).toBe('true'),
       );

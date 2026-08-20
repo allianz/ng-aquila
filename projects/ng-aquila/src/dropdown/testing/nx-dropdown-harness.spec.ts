@@ -155,6 +155,7 @@ describe('NxDropdownHarness', () => {
 });
 
 @Component({
+  selector: 'test-dropdown-harness-test',
   template: `
     <!-- Index 0: value="foo" with Foo/Bar items -->
     <nx-dropdown value="foo">

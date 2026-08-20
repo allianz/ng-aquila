@@ -28,8 +28,10 @@ const datepickerOptions: DatepickerDefaultOptions = {
 abstract class DatepickerToggleTest {
   tabindex!: number;
 
-  @ViewChild(NxDatepickerComponent) datepickerInstance!: NxDatepickerComponent<Date>;
-  @ViewChild(NxDatepickerToggleComponent) toggleInstance!: NxDatepickerToggleComponent<Date>;
+  @ViewChild(NxDatepickerComponent)
+  datepickerInstance!: NxDatepickerComponent<Date>;
+  @ViewChild(NxDatepickerToggleComponent)
+  toggleInstance!: NxDatepickerToggleComponent<Date>;
 }
 
 describe('NxDatepickerToggleComponent', () => {
@@ -75,19 +77,19 @@ describe('NxDatepickerToggleComponent', () => {
 
   it('focuses toggle after closing datepicker (toggle focusable)', fakeAsync(() => {
     createTestComponent(BasicToggleDateComponent);
-    spyOn(inputNativeElement, 'focus');
-    expect(datepickerInstance.opened).toBeFalse();
+    vi.spyOn(inputNativeElement, 'focus').mockReturnValue(undefined);
+    expect(datepickerInstance.opened).toBe(false);
 
     datepickerInstance.open();
     fixture.detectChanges();
-    expect(datepickerInstance.opened).toBeTrue();
+    expect(datepickerInstance.opened).toBe(true);
     flush();
     expect(inputNativeElement.focus).not.toHaveBeenCalled();
 
     datepickerInstance.close();
     fixture.detectChanges();
     flush();
-    expect(datepickerInstance.opened).toBeFalse();
+    expect(datepickerInstance.opened).toBe(false);
     expect(inputNativeElement.focus).not.toHaveBeenCalled();
   }));
 
@@ -99,25 +101,25 @@ describe('NxDatepickerToggleComponent', () => {
 
   it('should disable the datepicker in a readonly datefield', () => {
     createTestComponent(ReadonlyDatefield);
-    expect(toggleInstance.disabled()).toBeTrue();
+    expect(toggleInstance.disabled()).toBe(true);
   });
 
   it('focuses input after closing datepicker (toggle non-focusable)', fakeAsync(() => {
     createTestComponent(ConfigurableToggleDateComponent);
     testInstance.tabindex = -1;
-    const spy = spyOn(inputNativeElement, 'focus');
-    expect(datepickerInstance.opened).toBeFalse();
+    const spy = vi.spyOn(inputNativeElement, 'focus').mockReturnValue(undefined);
+    expect(datepickerInstance.opened).toBe(false);
 
     datepickerInstance.open();
     fixture.detectChanges();
-    expect(datepickerInstance.opened).toBeTrue();
+    expect(datepickerInstance.opened).toBe(true);
     flush();
     expect(spy).not.toHaveBeenCalled();
 
     datepickerInstance.close();
     fixture.detectChanges();
     flush();
-    expect(datepickerInstance.opened).toBeFalse();
+    expect(datepickerInstance.opened).toBe(false);
     expect(spy).toHaveBeenCalledTimes(1);
   }));
 
@@ -127,7 +129,7 @@ describe('NxDatepickerToggleComponent', () => {
       '.nx-datepicker-toggle-button',
     ) as HTMLButtonElement;
 
-    const focusSpy = spyOn(HTMLElement.prototype, 'focus').and.callThrough();
+    const focusSpy = vi.spyOn(HTMLElement.prototype, 'focus');
 
     toggleButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     fixture.detectChanges();
@@ -138,10 +140,9 @@ describe('NxDatepickerToggleComponent', () => {
     ) as HTMLElement;
     expect(activeDateElement).toBeTruthy();
 
-    const wasCalledOnActiveDate = focusSpy.calls
-      .all()
-      .some((call) => call.object === activeDateElement);
-    expect(wasCalledOnActiveDate).toBeTrue();
+    // `mock.contexts` holds the `this` of each call — the element `focus()` was called on.
+    const wasCalledOnActiveDate = focusSpy.mock.contexts.includes(activeDateElement);
+    expect(wasCalledOnActiveDate).toBe(true);
   }));
 });
 
@@ -198,6 +199,7 @@ describe('NxDatepickerToggleComponent using injection token', () => {
 });
 
 @Component({
+  selector: 'test-basic-toggle-date-component',
   template: `
     <input nxDatefield nxInput [datepicker]="myDatepicker1" />
     <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
@@ -209,6 +211,7 @@ describe('NxDatepickerToggleComponent using injection token', () => {
 class BasicToggleDateComponent extends DatepickerToggleTest {}
 
 @Component({
+  selector: 'test-configurable-toggle-date-component',
   template: `
     <input nxDatefield nxInput [datepicker]="myDatepicker1" />
     <nx-datepicker-toggle
@@ -224,6 +227,7 @@ class BasicToggleDateComponent extends DatepickerToggleTest {}
 class ConfigurableToggleDateComponent extends DatepickerToggleTest {}
 
 @Component({
+  selector: 'test-double-toggle-error-component',
   template: `
     <input nxDatefield nxInput [datepicker]="myDatepicker1" />
     <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
@@ -236,6 +240,7 @@ class ConfigurableToggleDateComponent extends DatepickerToggleTest {}
 class DoubleToggleErrorComponent extends DatepickerToggleTest {}
 
 @Component({
+  selector: 'test-datepicker-toggle-readonly-datefield',
   template: `
     <input nxDatefield nxInput [readonly]="true" [datepicker]="myDatepicker1" />
     <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>

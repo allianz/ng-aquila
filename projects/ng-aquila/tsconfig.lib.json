@@ -12,5 +12,11 @@
     "strictMetadataEmit": true,
     "enableResourceInlining": true
   },
-  "exclude": ["test.ts", "**/*.spec.ts", "documentation/**/*"]
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test-utils.ts",
+    "documentation/**/*",
+    "src/test-setup/**",
+    "src/types/vitest.d.ts"
+  ]
 }

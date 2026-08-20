@@ -9,7 +9,8 @@ abstract class MenuButtonTest {
   expandable!: boolean;
   expanded!: boolean;
   type!: NxMenuButtonType;
-  @ViewChild(NxMenuButtonComponent) menuButtonInstance!: NxMenuButtonComponent;
+  @ViewChild(NxMenuButtonComponent)
+  menuButtonInstance!: NxMenuButtonComponent;
 }
 
 describe(NxMenuButtonComponent.name, () => {
@@ -137,12 +138,13 @@ describe(NxMenuButtonComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicMenuButton);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-default-menu-button',
   template: `<button nxMenuButton>example menu button</button>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxMenuModule],
@@ -150,6 +152,7 @@ describe(NxMenuButtonComponent.name, () => {
 class DefaultMenuButton extends MenuButtonTest {}
 
 @Component({
+  selector: 'test-basic-menu-button',
   template: `<a
     nxMenuButton
     [menuButtonType]="type"

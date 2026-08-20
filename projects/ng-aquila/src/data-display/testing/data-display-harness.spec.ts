@@ -18,31 +18,32 @@ describe('NxDataDisplayHarness', () => {
   it('should get label', async () => {
     const display = await loader.getHarness(NxDataDisplayHarness.with({ label: 'FooBar' }));
 
-    expect(await display.getLabel()).toEqual('FooBar');
+    expect(await display.getLabel()).toBe('FooBar');
   });
 
   it('should get value', async () => {
     const display = await loader.getHarness(NxDataDisplayHarness.with({ label: 'FooBar' }));
 
-    expect(await display.getValue()).toEqual('Value');
+    expect(await display.getValue()).toBe('Value');
   });
 
   describe('filters', () => {
     it('should find by label', async () => {
       const display = await loader.getHarness(NxDataDisplayHarness.with({ label: /^Foo$/ }));
 
-      expect(await display.getLabel()).toEqual('Foo');
+      expect(await display.getLabel()).toBe('Foo');
     });
 
     it('should find by value', async () => {
       const display = await loader.getHarness(NxDataDisplayHarness.with({ label: /^Foo$/ }));
 
-      expect(await display.getLabel()).toEqual('Foo');
+      expect(await display.getLabel()).toBe('Foo');
     });
   });
 });
 
 @Component({
+  selector: 'test-data-display-harness-test',
   template: `
     <nx-data-display label="FooBar">Value</nx-data-display>
     <nx-data-display>

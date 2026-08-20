@@ -7,7 +7,8 @@ import { NxVideoModule } from './video.module';
 
 @Directive({ standalone: true })
 abstract class VideoTest {
-  @ViewChild(NxVideoComponent) videoInstance!: NxVideoComponent;
+  @ViewChild(NxVideoComponent)
+  videoInstance!: NxVideoComponent;
 
   videoId = 'fooBAR';
   altText = '';
@@ -191,7 +192,7 @@ describe('NxVideoComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicVideo);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
@@ -199,6 +200,7 @@ describe('NxVideoComponent', () => {
 // careful, don't include an actual video id the test template, or your headless test browser might start
 // playing the video in the background spook you out real good ;-)
 @Component({
+  selector: 'test-basic-video',
   template: `
     <nx-video
       [altText]="altText"

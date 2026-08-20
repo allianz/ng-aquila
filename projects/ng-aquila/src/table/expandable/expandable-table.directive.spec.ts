@@ -22,7 +22,8 @@ import { NxExpandableTableDirective } from './expandable-table.directive';
 
 @Directive({ standalone: true })
 abstract class TableTest {
-  @ViewChild(NxExpandableTableDirective) expandableTableInstance!: NxExpandableTableDirective;
+  @ViewChild(NxExpandableTableDirective)
+  expandableTableInstance!: NxExpandableTableDirective;
 }
 
 describe(NxTableComponent.name, () => {
@@ -63,7 +64,7 @@ describe(NxTableComponent.name, () => {
     });
 
     it('finds its nested row children', () => {
-      expect(tableInstance.rows).not.toHaveSize(0);
+      expect(tableInstance.rows).not.toHaveLength(0);
     });
 
     describe('when clicking on the toggle all button', () => {
@@ -152,12 +153,13 @@ describe(NxTableComponent.name, () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(ExpandableTableComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-expandable-table-component',
   template: `<table nxTable nxExpandableTable #expandableTable="nxExpandableTable">
     <thead>
       <tr nxTableRow>

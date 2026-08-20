@@ -64,7 +64,7 @@ describe('NxButtonHarness', () => {
     expect(disabled).toEqual([true, true, true, false, false, false, false, false, false]);
   });
 
-  it('should get whether button is disabled', async () => {
+  it('should get whether button is loading', async () => {
     const buttons = await loader.getAllHarnesses(NxButtonHarness.with({ ancestor: '#loading' }));
     const disabled = await parallel(() => buttons.map((button) => button.isLoading()));
     expect(disabled).toEqual([true, true, true, false, false, false, false, false, false]);
@@ -178,5 +178,6 @@ describe('NxButtonHarness', () => {
   imports: [NxButtonModule, NxIconModule],
 })
 class ButtonHarnessTest {
-  @Input() clicked = false;
+  @Input()
+  clicked = false;
 }

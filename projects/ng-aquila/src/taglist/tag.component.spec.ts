@@ -92,7 +92,7 @@ describe('NxTagComponent', () => {
 
     it('should show close icon when removable is set to true', () => {
       createTestComponent(RemovableTag);
-      expect(testInstance.tagInstance().removable()).toBeTrue();
+      expect(testInstance.tagInstance().removable()).toBe(true);
 
       const closeIcon = fixture.debugElement.query(By.css('.nx-tag__close'));
       expect(closeIcon).toBeTruthy();
@@ -100,7 +100,7 @@ describe('NxTagComponent', () => {
 
     it('should emit (clicked) event when tag is clicked', () => {
       createTestComponent(BasicTag);
-      spyOn(testInstance.tagInstance().clicked, 'emit');
+      vi.spyOn(testInstance.tagInstance().clicked, 'emit').mockReturnValue(undefined);
       fixture.debugElement.nativeElement.querySelector('nx-tag').click();
       fixture.detectChanges();
       expect(testInstance.tagInstance().clicked.emit).toHaveBeenCalledWith('foo');
@@ -108,7 +108,7 @@ describe('NxTagComponent', () => {
 
     it('should emit a (clicked) event when the tag is keydown with ENTER', () => {
       createTestComponent(BasicTag);
-      spyOn(testInstance.tagInstance().clicked, 'emit');
+      vi.spyOn(testInstance.tagInstance().clicked, 'emit').mockReturnValue(undefined);
       const tagEl = fixture.nativeElement.querySelector('nx-tag');
       dispatchKeyboardEvent(tagEl, 'keydown', undefined, 'enter');
       fixture.detectChanges();
@@ -117,7 +117,7 @@ describe('NxTagComponent', () => {
 
     it('should emit (removed) event when close icon is clicked', () => {
       createTestComponent(RemovableTag);
-      spyOn(testInstance.tagInstance().removed, 'emit');
+      vi.spyOn(testInstance.tagInstance().removed, 'emit').mockReturnValue(undefined);
       fixture.debugElement.nativeElement.querySelector('.nx-tag__close').click();
       fixture.detectChanges();
       expect(testInstance.tagInstance().removed.emit).toHaveBeenCalledWith('bar');
@@ -125,7 +125,7 @@ describe('NxTagComponent', () => {
 
     it('should not emit (removed) event if not removable', () => {
       createTestComponent(BasicTag);
-      spyOn(testInstance.tagInstance().removed, 'emit');
+      vi.spyOn(testInstance.tagInstance().removed, 'emit').mockReturnValue(undefined);
       const tagEl = fixture.nativeElement.querySelector('nx-tag');
       dispatchKeyboardEvent(tagEl, 'keydown', undefined, 'enter');
       fixture.detectChanges();
@@ -145,8 +145,8 @@ describe('NxTagComponent', () => {
 
       it('should emit (removed) event when delete', () => {
         createTestComponent(RemovableTag);
-        spyOn(testInstance.tagInstance().removed, 'emit');
-        spyOn(testInstance.tagInstance().clicked, 'emit');
+        vi.spyOn(testInstance.tagInstance().removed, 'emit').mockReturnValue(undefined);
+        vi.spyOn(testInstance.tagInstance().clicked, 'emit').mockReturnValue(undefined);
 
         const deleteButton = fixture.nativeElement.querySelector('.nx-tag__close');
         deleteButton.click();
@@ -158,12 +158,12 @@ describe('NxTagComponent', () => {
 
       it('has no accessibility violations', async () => {
         createTestComponent(BasicTag);
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
 
       it('should set aria-label of delete button', () => {
         createTestComponent(RemovableTag);
-        spyOn(testInstance.tagInstance().removed, 'emit');
+        vi.spyOn(testInstance.tagInstance().removed, 'emit').mockReturnValue(undefined);
         const deleteButton = fixture.nativeElement.querySelector('.nx-tag__close');
         expect(deleteButton.getAttribute('aria-label')).toBe('Delete tag');
 
@@ -211,7 +211,7 @@ describe('NxTagComponent', () => {
 
     it('should select tag from value in the tag group', () => {
       createTestComponent(TagInGroup);
-      expect(testInstance.tagInstances()[0].selected()).toBeTrue();
+      expect(testInstance.tagInstances()[0].selected()).toBe(true);
     });
 
     it('should toggle selection state when clicked', () => {
@@ -246,18 +246,18 @@ describe('NxTagComponent', () => {
       const inputElement = fixture.nativeElement.querySelector('input');
       inputElement.dispatchEvent(event);
       fixture.detectChanges();
-      expect(inputElement.checked).toBeFalse();
-      expect(event.defaultPrevented).toBeTrue();
+      expect(inputElement.checked).toBe(false);
+      expect(event.defaultPrevented).toBe(true);
     });
 
     it('should inherit removable property from tag group', () => {
       createTestComponent(TagInGroupRemovable);
-      expect(testInstance.tagInstances()?.[0]?.removable()).toBeTrue();
+      expect(testInstance.tagInstances()?.[0]?.removable()).toBe(true);
     });
 
     it('should inherit disabled property from tag group', () => {
       createTestComponent(TagInGroupDisabled);
-      expect(testInstance.tagInstances()?.[0]?.disabled()).toBeTrue();
+      expect(testInstance.tagInstances()?.[0]?.disabled()).toBe(true);
     });
 
     it('should add nx-tag--inverse class to all tags when inverse is set on tag group', () => {
@@ -270,7 +270,7 @@ describe('NxTagComponent', () => {
 
     it('should inherit inverse property from tag group', () => {
       createTestComponent(TagInGroupInverse);
-      expect(testInstance.tagInstances()?.[0]?.['_inverse']()).toBeTrue();
+      expect(testInstance.tagInstances()?.[0]?.['_inverse']()).toBe(true);
     });
 
     it('should apply nx-tag--inverse class on individual tag inside non-inverse group', () => {
@@ -291,35 +291,35 @@ describe('NxTagComponent', () => {
       createTestComponent(TagInGroupWithFormControl);
       (testInstance as TagInGroupWithFormControl).control.disable();
       fixture.detectChanges();
-      expect(testInstance.tagGroupInstance().disabled()).toBeTrue();
-      expect(testInstance.tagInstances()[0].disabled()).toBeTrue();
-      expect(testInstance.tagInstances()[1].disabled()).toBeTrue();
+      expect(testInstance.tagGroupInstance().disabled()).toBe(true);
+      expect(testInstance.tagInstances()[0].disabled()).toBe(true);
+      expect(testInstance.tagInstances()[1].disabled()).toBe(true);
       (testInstance as TagInGroupWithFormControl).control.enable();
       fixture.detectChanges();
-      expect(testInstance.tagGroupInstance().disabled()).toBeFalse();
-      expect(testInstance.tagInstances()[0].disabled()).toBeFalse();
-      expect(testInstance.tagInstances()[1].disabled()).toBeFalse();
+      expect(testInstance.tagGroupInstance().disabled()).toBe(false);
+      expect(testInstance.tagInstances()[0].disabled()).toBe(false);
+      expect(testInstance.tagInstances()[1].disabled()).toBe(false);
     });
 
     it('should be readonly through NxAbstractControl', () => {
       createTestComponent(TagInGroup);
       testInstance.abstractControl()?.setReadonly(true);
       fixture.detectChanges();
-      expect(testInstance.tagGroupInstance().readonly()).toBeTrue();
-      expect(testInstance.tagInstances()[0].readonly()).toBeTrue();
+      expect(testInstance.tagGroupInstance().readonly()).toBe(true);
+      expect(testInstance.tagInstances()[0].readonly()).toBe(true);
     });
 
     it('should inherit readonly property from tag group', () => {
       createTestComponent(TagInGroupReadonly);
-      expect(testInstance.tagInstances()?.[0]?.readonly()).toBeTrue();
+      expect(testInstance.tagInstances()?.[0]?.readonly()).toBe(true);
     });
 
     it('should update selected tag when value changes', () => {
       createTestComponent(TagInGroup);
       testInstance.value.set(['bar']);
       fixture.detectChanges();
-      expect(testInstance.tagInstances()[0].selected()).toBeFalse();
-      expect(testInstance.tagInstances()[1].selected()).toBeTrue();
+      expect(testInstance.tagInstances()[0].selected()).toBe(false);
+      expect(testInstance.tagInstances()[1].selected()).toBe(true);
     });
 
     it('should update selected tag when value changes through forms', fakeAsync(() => {
@@ -327,19 +327,19 @@ describe('NxTagComponent', () => {
       testInstance.value.set(['bar']);
       fixture.detectChanges();
       flush();
-      expect(testInstance.tagInstances()[0].selected()).toBeFalse();
-      expect(testInstance.tagInstances()[1].selected()).toBeTrue();
+      expect(testInstance.tagInstances()[0].selected()).toBe(false);
+      expect(testInstance.tagInstances()[1].selected()).toBe(true);
     }));
 
     describe('a11y', () => {
       it('should have no accessibility violations', async () => {
         createTestComponent(TagInGroup);
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
 
       it('should have no accessibility violations with removable', async () => {
         createTestComponent(TagInGroupRemovable);
-        await expectAsync(fixture.nativeElement).toBeAccessible();
+        await expect(fixture.nativeElement).toBeAccessible();
       });
 
       it('should set role to group of the tag group', () => {
@@ -365,6 +365,7 @@ describe('NxTagComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-tag',
   template: `<nx-tag value="foo"></nx-tag>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
@@ -372,6 +373,7 @@ describe('NxTagComponent', () => {
 class BasicTag extends TagTest {}
 
 @Component({
+  selector: 'test-tag-inverse',
   template: `<nx-tag value="foo" inverse></nx-tag>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
@@ -379,6 +381,7 @@ class BasicTag extends TagTest {}
 class TagInverse extends TagTest {}
 
 @Component({
+  selector: 'test-tag-in-group-inverse',
   template: `
     <nx-tag-group [value]="value()" inverse>
       @for (tag of tags(); track tag) {
@@ -392,6 +395,7 @@ class TagInverse extends TagTest {}
 class TagInGroupInverse extends TagTest {}
 
 @Component({
+  selector: 'test-tag-in-group-with-individual-inverse',
   template: `
     <nx-tag-group [value]="value()">
       <nx-tag [value]="tags()[0]" inverse></nx-tag>
@@ -409,6 +413,7 @@ class MyIntl extends NxTagIntl {
 }
 
 @Component({
+  selector: 'test-intl-tag',
   template: `<nx-tag value="foo" removable="true"></nx-tag>`,
   imports: [NxTaglistModule],
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -417,6 +422,7 @@ class MyIntl extends NxTagIntl {
 class IntlTag extends TagTest {}
 
 @Component({
+  selector: 'test-removable-tag',
   template: `<nx-tag value="bar" removable="true" [deleteAriaLabel]="deleteAriaLabel()"></nx-tag>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxTaglistModule],
@@ -426,6 +432,7 @@ class RemovableTag extends TagTest {
 }
 
 @Component({
+  selector: 'test-tag-in-group',
   template: `
     <nx-tag-group [value]="value()">
       @for (tag of tags(); track tag) {
@@ -439,6 +446,7 @@ class RemovableTag extends TagTest {
 class TagInGroup extends TagTest {}
 
 @Component({
+  selector: 'test-tag-in-group-content-projection',
   template: `
     <nx-tag-group [value]="value()">
       @for (tag of tags(); track tag) {
@@ -452,6 +460,7 @@ class TagInGroup extends TagTest {}
 class TagInGroupContentProjection extends TagTest {}
 
 @Component({
+  selector: 'test-tag-in-group-disabled',
   template: `
     <nx-tag-group [value]="value()" [disabled]="true">
       @for (tag of tags(); track tag) {
@@ -465,6 +474,7 @@ class TagInGroupContentProjection extends TagTest {}
 class TagInGroupDisabled extends TagTest {}
 
 @Component({
+  selector: 'test-tag-with-count',
   template: `
     <nx-tag-group>
       <nx-tag value="bugs">Bugs <span nxTagCount>12</span></nx-tag>
@@ -476,6 +486,7 @@ class TagInGroupDisabled extends TagTest {}
 class TagWithCount extends TagTest {}
 
 @Component({
+  selector: 'test-tag-in-group-readonly',
   template: `
     <nx-tag-group [value]="value()" [readonly]="true">
       @for (tag of tags(); track tag) {
@@ -489,6 +500,7 @@ class TagWithCount extends TagTest {}
 class TagInGroupReadonly extends TagTest {}
 
 @Component({
+  selector: 'test-tag-in-group-removable',
   template: `
     <nx-tag-group [removable]="true">
       @for (tag of tags(); track tag) {
@@ -502,6 +514,7 @@ class TagInGroupReadonly extends TagTest {}
 class TagInGroupRemovable extends TagTest {}
 
 @Component({
+  selector: 'test-tag-in-group-removable-content-projection',
   template: `
     <nx-tag-group [removable]="true">
       @for (tag of tags(); track tag) {
@@ -515,6 +528,7 @@ class TagInGroupRemovable extends TagTest {}
 class TagInGroupRemovableContentProjection extends TagTest {}
 
 @Component({
+  selector: 'test-tag-in-group-with-ng-model',
   template: `
     <nx-tag-group [(ngModel)]="value">
       @for (tag of tags(); track tag) {
@@ -528,6 +542,7 @@ class TagInGroupRemovableContentProjection extends TagTest {}
 class TagInGroupWithNgModel extends TagTest {}
 
 @Component({
+  selector: 'test-tag-in-group-with-form-control',
   template: `
     <nx-tag-group [formControl]="control">
       @for (tag of tags(); track tag) {

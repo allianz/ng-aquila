@@ -57,9 +57,12 @@ class NxTestComponent {}
 
 @Directive({ standalone: true })
 abstract class PopoverTest {
-  @ViewChild(NxPopoverComponent) popoverInstance!: NxPopoverComponent;
-  @ViewChild(NxPopoverTriggerDirective) triggerInstance!: NxPopoverTriggerDirective;
-  @ViewChild(NxTestComponent) testComponentInstance!: NxTestComponent;
+  @ViewChild(NxPopoverComponent)
+  popoverInstance!: NxPopoverComponent;
+  @ViewChild(NxPopoverTriggerDirective)
+  triggerInstance!: NxPopoverTriggerDirective;
+  @ViewChild(NxTestComponent)
+  testComponentInstance!: NxTestComponent;
 
   closeable = false;
   popoverWidth!: string;
@@ -178,24 +181,28 @@ describe('NxPopoverTriggerDirective', () => {
 
       popoverInstance.tabIndex = 42;
       click();
-      expect(getPopoverContent().getAttribute('tabindex')).toEqual('-1');
+      expect(getPopoverContent().getAttribute('tabindex')).toBe('-1');
     }));
 
     it('should set tabIndex for triggerType "manual"', fakeAsync(() => {
       createTestComponent(ManualTrigger);
       popoverInstance.tabIndex = 42;
-      spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
+      vi.spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit').mockReturnValue(
+        undefined,
+      );
       click();
 
-      expect(getPopoverContent().getAttribute('tabindex')).toEqual('42');
+      expect(getPopoverContent().getAttribute('tabindex')).toBe('42');
     }));
 
     it('should use default tabIndex for triggerType "manual"', fakeAsync(() => {
       createTestComponent(ManualTrigger);
-      spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
+      vi.spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit').mockReturnValue(
+        undefined,
+      );
       click();
 
-      expect(getPopoverContent().getAttribute('tabindex')).toEqual('-1');
+      expect(getPopoverContent().getAttribute('tabindex')).toBe('-1');
     }));
 
     it('should set active state for triggerType "manual" with implemented NxTriggerButton', fakeAsync(() => {
@@ -251,7 +258,7 @@ describe('NxPopoverTriggerDirective', () => {
       hover();
       expect(
         overlayContainer.getContainerElement().contains(_getFocusedElementPierceShadowDom()),
-      ).toBeFalse();
+      ).toBe(false);
     }));
 
     it('should support display to left', fakeAsync(() => {
@@ -300,7 +307,7 @@ describe('NxPopoverTriggerDirective', () => {
 
     it('should emit closed event on mouseleave', fakeAsync(() => {
       createTestComponent(PopoverHoverComponent);
-      const spy = jasmine.createSpy('closed spy');
+      const spy = vi.fn().mockName('closed spy');
 
       const subscription: Subscription = testInstance.popoverInstance.closed.subscribe(spy);
 
@@ -415,7 +422,7 @@ describe('NxPopoverTriggerDirective', () => {
 
     it('should emit closed event when clicking outside', fakeAsync(() => {
       createTestComponent(PopoverClickComponent);
-      const spy = jasmine.createSpy('closed spy');
+      const spy = vi.fn().mockName('closed spy');
 
       const subscription: Subscription = testInstance.popoverInstance.closed.subscribe(spy);
 
@@ -428,7 +435,7 @@ describe('NxPopoverTriggerDirective', () => {
 
     it('should emit closed event on trigger click', fakeAsync(() => {
       createTestComponent(PopoverClickComponent);
-      const spy = jasmine.createSpy('closed spy');
+      const spy = vi.fn().mockName('closed spy');
 
       const subscription: Subscription = testInstance.popoverInstance.closed.subscribe(spy);
       click();
@@ -440,7 +447,7 @@ describe('NxPopoverTriggerDirective', () => {
     it('should emit closed event on close icon click', fakeAsync(() => {
       createTestComponent(PopoverClickComponent);
 
-      const spy = jasmine.createSpy('closed spy');
+      const spy = vi.fn().mockName('closed spy');
       const subscription: Subscription = testInstance.popoverInstance.closed.subscribe(spy);
 
       click();
@@ -453,7 +460,7 @@ describe('NxPopoverTriggerDirective', () => {
     it('should emit closed event when overlay is clicked', fakeAsync(() => {
       createTestComponent(PopoverClickComponent);
 
-      const spy = jasmine.createSpy('closed spy');
+      const spy = vi.fn().mockName('closed spy');
       const subscription: Subscription = testInstance.popoverInstance.closed.subscribe(spy);
 
       click();
@@ -560,7 +567,7 @@ describe('NxPopoverTriggerDirective', () => {
 
       const triggerElement = fixture.debugElement.query(By.css('.trigger'));
       const keydownEvent = new KeyboardEvent('keydown', { keyCode: SPACE, which: SPACE });
-      const spy = spyOn(keydownEvent, 'preventDefault');
+      const spy = vi.spyOn(keydownEvent, 'preventDefault').mockReturnValue(undefined);
       triggerElement.nativeElement.dispatchEvent(keydownEvent);
 
       fixture.detectChanges();
@@ -575,7 +582,7 @@ describe('NxPopoverTriggerDirective', () => {
       fixture.detectChanges();
 
       const keydownEvent = new KeyboardEvent('keydown', { keyCode: SPACE, which: SPACE });
-      const spy = spyOn(keydownEvent, 'preventDefault');
+      const spy = vi.spyOn(keydownEvent, 'preventDefault').mockReturnValue(undefined);
       buttonNativeElement.dispatchEvent(keydownEvent);
 
       fixture.detectChanges();
@@ -619,7 +626,7 @@ describe('NxPopoverTriggerDirective', () => {
 
     it('should emit closed event on backdrop click', fakeAsync(() => {
       createTestComponent(ModalPopover);
-      const spy = jasmine.createSpy('closed spy');
+      const spy = vi.fn().mockName('closed spy');
 
       const subscription: Subscription = testInstance.popoverInstance.closed.subscribe(spy);
       click();
@@ -654,9 +661,11 @@ describe('NxPopoverTriggerDirective', () => {
   });
 
   describe('show change event emission', () => {
-    it('should emit a show change event on manual popover with esc key ', fakeAsync(() => {
+    it('should emit a show change event on manual popover with esc key', fakeAsync(() => {
       createTestComponent(ManualTrigger);
-      spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
+      vi.spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit').mockReturnValue(
+        undefined,
+      );
       click();
       expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledWith(true);
 
@@ -669,7 +678,9 @@ describe('NxPopoverTriggerDirective', () => {
 
     it('should emit a show change event on click popover', fakeAsync(() => {
       createTestComponent(PopoverClickComponent);
-      spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
+      vi.spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit').mockReturnValue(
+        undefined,
+      );
       click();
       expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledWith(true);
       expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledTimes(1);
@@ -680,7 +691,9 @@ describe('NxPopoverTriggerDirective', () => {
 
     it('should emit a show change event on hover popover', fakeAsync(() => {
       createTestComponent(PopoverHoverComponent);
-      spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
+      vi.spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit').mockReturnValue(
+        undefined,
+      );
       hover();
       expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledWith(true);
       expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledTimes(1);
@@ -691,7 +704,9 @@ describe('NxPopoverTriggerDirective', () => {
 
     it('should emit a show change event on closing due to scroll', fakeAsync(() => {
       createTestComponent(PopoverClickComponent);
-      spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
+      vi.spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit').mockReturnValue(
+        undefined,
+      );
       click();
       expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledWith(true);
       expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledTimes(1);
@@ -702,8 +717,10 @@ describe('NxPopoverTriggerDirective', () => {
 
     it('should be closed on scroll', fakeAsync(() => {
       createTestComponent(ScrollablePopover);
-      spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit');
-      const spy = jasmine.createSpy('closed spy');
+      vi.spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit').mockReturnValue(
+        undefined,
+      );
+      const spy = vi.fn().mockName('closed spy');
       const subscription: Subscription = testInstance.popoverInstance.closed.subscribe(spy);
       click();
 
@@ -784,7 +801,7 @@ describe('NxPopoverTriggerDirective', () => {
       buttonNativeElement.focus();
       click();
       fixture.detectChanges();
-      spyOn(buttonNativeElement, 'focus').and.callThrough();
+      vi.spyOn(buttonNativeElement, 'focus');
       getCloseIcon().click();
       tick();
 
@@ -798,7 +815,7 @@ describe('NxPopoverTriggerDirective', () => {
       createTestComponent(PopoverClickComponent);
       buttonNativeElement.dispatchEvent(new Event('click'));
       fixture.detectChanges();
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
 
     it('has aria-haspopup', async () => {
@@ -842,7 +859,7 @@ describe('NxPopoverTriggerDirective', () => {
       createTestComponent(PopoverWithinRTLContainer);
       click();
       fixture.detectChanges();
-      spyOn(triggerInstance as any, 'closePopover');
+      vi.spyOn(triggerInstance as any, 'closePopover').mockReturnValue(undefined);
       (testInstance as PopoverWithinRTLContainer).direction = 'ltr';
       fixture.detectChanges();
       expect((triggerInstance as any).closePopover).toHaveBeenCalled();
@@ -853,7 +870,7 @@ describe('NxPopoverTriggerDirective', () => {
       const triggerInstanceWithPrivateAccess = triggerInstance as any;
       click();
       fixture.detectChanges();
-      spyOn(triggerInstanceWithPrivateAccess.overlayRef, 'dispose');
+      vi.spyOn(triggerInstanceWithPrivateAccess.overlayRef, 'dispose').mockReturnValue(undefined);
       const disposeFunction = triggerInstanceWithPrivateAccess.overlayRef.dispose;
       (testInstance as PopoverWithinRTLContainer).direction = 'ltr';
       fixture.detectChanges();
@@ -975,6 +992,7 @@ class TriggerButtonTestDirective extends NxTriggerButton {
 }
 
 @Component({
+  selector: 'test-popover-hover-component',
   template: `<div
       style="width: 400px; height: 400px; display: flex; justify-content: center; align-items: center;"
     >
@@ -998,6 +1016,7 @@ class PopoverHoverComponent extends PopoverTest {
   direction: PopoverDirection = 'right';
 }
 @Component({
+  selector: 'test-popover-hover-formfield-component',
   template: `<div
       style="width: 400px; height: 400px; display: flex; justify-content: center; align-items: center;"
     >
@@ -1015,6 +1034,7 @@ class PopoverHoverComponent extends PopoverTest {
 class PopoverHoverFormfieldComponent extends PopoverTest {}
 
 @Component({
+  selector: 'test-popover-click-component',
   template: `<div>
       <button
         [nxPopoverTriggerFor]="popoverHover"
@@ -1040,12 +1060,16 @@ class PopoverHoverFormfieldComponent extends PopoverTest {}
   ],
 })
 class PopoverClickComponent extends PopoverTest {
-  constructor(@Inject(NX_POPOVER_SCROLL_STRATEGY) public scrollStrategy: any) {
+  constructor(
+    @Inject(NX_POPOVER_SCROLL_STRATEGY)
+    public scrollStrategy: any,
+  ) {
     super();
   }
 }
 
 @Component({
+  selector: 'test-popover-click-shadow-dom-component',
   template: `<div>
       <button
         [nxPopoverTriggerFor]="popoverHover"
@@ -1068,6 +1092,7 @@ class PopoverClickComponent extends PopoverTest {
 class PopoverClickShadowDomComponent extends PopoverTest {}
 
 @Component({
+  selector: 'test-popover-show-close',
   template: `<div>
       <button
         [nxPopoverTriggerFor]="popoverHover"
@@ -1088,6 +1113,7 @@ class PopoverClickShadowDomComponent extends PopoverTest {}
 class PopoverShowClose extends PopoverTest {}
 
 @Component({
+  selector: 'test-popover-hide-close',
   template: `<div>
       <button
         [nxPopoverTriggerFor]="popoverHover"
@@ -1108,6 +1134,7 @@ class PopoverShowClose extends PopoverTest {}
 class PopoverHideClose extends PopoverTest {}
 
 @Component({
+  selector: 'test-popover-hide-close-for-click',
   template: `<div>
       <button
         [nxPopoverTriggerFor]="popoverHover"
@@ -1128,6 +1155,7 @@ class PopoverHideClose extends PopoverTest {}
 class PopoverHideCloseForClick extends PopoverTest {}
 
 @Component({
+  selector: 'test-popover-fall-back-component',
   template: `<div>
       <button
         [nxPopoverTriggerFor]="popoverHover"
@@ -1151,6 +1179,7 @@ class PopoverFallBackComponent extends PopoverTest {
 }
 
 @Component({
+  selector: 'test-modal-popover',
   template: `<div>
       <button
         [nxPopoverTriggerFor]="popoverHover"
@@ -1175,6 +1204,7 @@ class ModalPopover extends PopoverTest {
 }
 
 @Component({
+  selector: 'test-lazyload-content',
   template: `
     <button [nxPopoverTriggerFor]="popoverLazyloadContent" nxPopoverTrigger="click">click</button>
 
@@ -1190,6 +1220,7 @@ class ModalPopover extends PopoverTest {
 class LazyloadContent extends PopoverTest {}
 
 @Component({
+  selector: 'test-manual-trigger',
   template: `
     <button
       #popoverTrigger="nxPopoverTrigger"
@@ -1232,6 +1263,7 @@ class ManualTrigger extends PopoverTest {
 }
 
 @Component({
+  selector: 'test-click-on-document',
   template: `<div>
       <button
         [nxPopoverTriggerFor]="popoverHover"
@@ -1252,6 +1284,7 @@ class ClickOnDocument extends PopoverTest {
 }
 
 @Component({
+  selector: 'test-scrollable-popover',
   template: `<div
       cdkScrollable
       class="scrollWindow"
@@ -1269,6 +1302,7 @@ class ClickOnDocument extends PopoverTest {
 class ScrollablePopover extends PopoverTest {}
 
 @Component({
+  selector: 'test-popover-within-rtl-container',
   template: `<div [dir]="direction">
       <button
         [nxPopoverTriggerFor]="popoverHover"
@@ -1289,6 +1323,7 @@ class PopoverWithinRTLContainer extends PopoverTest {
 }
 
 @Component({
+  selector: 'test-i18n-test',
   template: `<button [nxPopoverTriggerFor]="popover">Click</button
     ><nx-popover #popover></nx-popover>`,
   providers: [
@@ -1303,6 +1338,7 @@ class PopoverWithinRTLContainer extends PopoverTest {
 class I18nTest extends PopoverTest {}
 
 @Component({
+  selector: 'test-popover-div-trigger',
   template: `<div
       [nxPopoverTriggerFor]="popoverClick"
       nxPopoverTrigger="click"
@@ -1318,6 +1354,7 @@ class I18nTest extends PopoverTest {}
 class PopoverDivTrigger extends PopoverTest {}
 
 @Component({
+  selector: 'test-popover-width-component',
   template: `<button
       [nxPopoverTriggerFor]="popoverPropertyWidth"
       nxPopoverTrigger="click"
@@ -1334,6 +1371,7 @@ class PopoverDivTrigger extends PopoverTest {}
 class PopoverWidthComponent extends PopoverTest {}
 
 @Component({
+  selector: 'test-popover-default-width-component',
   template: `<button [nxPopoverTriggerFor]="popoverDefaultWidth" nxPopoverTrigger="click">
       Click
     </button>

@@ -15,7 +15,8 @@ import { NxExpandable, NxToggleButtonComponent } from './toggle-button.component
 
 @Directive({ standalone: true })
 abstract class ToggleButtonTest {
-  @ViewChild(NxToggleButtonComponent) toggleButtonInstance!: NxToggleButtonComponent;
+  @ViewChild(NxToggleButtonComponent)
+  toggleButtonInstance!: NxToggleButtonComponent;
   target!: NxExpandable;
 }
 
@@ -89,6 +90,7 @@ describe(NxToggleButtonComponent.name, () => {
 });
 
 @Component({
+  selector: 'test-basic-toggle-button-component',
   template: `<nx-toggle-button [target]="target" ariaLabel="toggle all rows"></nx-toggle-button>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxTableModule],
@@ -101,9 +103,12 @@ class BasicToggleButtonComponent extends ToggleButtonTest {
     const expanded = new BehaviorSubject(false);
     this.target = {
       expanded,
-      toggle: jasmine.createSpy('toggle').and.callFake(() => expanded.next(!expanded.value)),
-      expand: jasmine.createSpy('expand'),
-      close: jasmine.createSpy('close'),
+      toggle: vi
+        .fn()
+        .mockName('toggle')
+        .mockImplementation(() => expanded.next(!expanded.value)),
+      expand: vi.fn().mockName('expand'),
+      close: vi.fn().mockName('close'),
     };
   }
 }

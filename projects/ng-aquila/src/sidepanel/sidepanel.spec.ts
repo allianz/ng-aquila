@@ -21,7 +21,8 @@ import { NxSidepanelModule } from './sidepanel.module';
 
 @Directive({ standalone: true })
 abstract class SidepanelTest {
-  @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;
+  @ViewChild(NxSidepanelComponent)
+  sidebarInstance!: NxSidepanelComponent;
   @ViewChild(NxSidepanelOuterContainerComponent)
   wrapperInstance!: NxSidepanelOuterContainerComponent;
   opened = true;
@@ -77,7 +78,7 @@ describe('NxSidepanelComponent', () => {
     }));
 
     it('is open by default', () => {
-      expect(sidepanelInstance.opened).toBeTrue();
+      expect(sidepanelInstance.opened).toBe(true);
       expect(sidepanelElement.nativeElement).not.toHaveClass('is-closed');
     });
 
@@ -128,12 +129,12 @@ describe('NxSidepanelComponent', () => {
     it('toggles the sidepanel on input change', () => {
       testInstance.opened = false;
       fixture.detectChanges();
-      expect(sidepanelInstance.opened).toBeFalse();
+      expect(sidepanelInstance.opened).toBe(false);
       expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
 
       testInstance.opened = true;
       fixture.detectChanges();
-      expect(sidepanelInstance.opened).toBeTrue();
+      expect(sidepanelInstance.opened).toBe(true);
       expect(sidepanelElement.nativeElement).not.toHaveClass('is-closed');
     });
 
@@ -143,7 +144,7 @@ describe('NxSidepanelComponent', () => {
 
       sidepanelInstance.toggle();
       fixture.detectChanges();
-      expect(testInstance.opened).toBeFalse();
+      expect(testInstance.opened).toBe(false);
       expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
     });
 
@@ -153,7 +154,7 @@ describe('NxSidepanelComponent', () => {
 
       sidepanelInstance.open();
       fixture.detectChanges();
-      expect(testInstance.opened).toBeTrue();
+      expect(testInstance.opened).toBe(true);
       expect(sidepanelElement.nativeElement).not.toHaveClass('is-closed');
     });
 
@@ -163,7 +164,7 @@ describe('NxSidepanelComponent', () => {
 
       sidepanelInstance.close();
       fixture.detectChanges();
-      expect(testInstance.opened).toBeFalse();
+      expect(testInstance.opened).toBe(false);
       expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
     });
 
@@ -271,12 +272,13 @@ describe('NxSidepanelComponent', () => {
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicSidepanel);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+      await expect(fixture.nativeElement).toBeAccessible();
     });
   });
 });
 
 @Component({
+  selector: 'test-sidepanel-basic-sidepanel',
   template: `
     <nx-sidepanel-outer-container>
       Main content
@@ -292,6 +294,7 @@ describe('NxSidepanelComponent', () => {
 class BasicSidepanel extends SidepanelTest {}
 
 @Component({
+  selector: 'test-sidepanel-without-header-and-content',
   template: `
     <nx-sidepanel-outer-container>
       Main content
@@ -304,6 +307,7 @@ class BasicSidepanel extends SidepanelTest {}
 class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
 
 @Component({
+  selector: 'test-configurable-sidepanel',
   template: `
     <nx-sidepanel-outer-container>
       Main content
@@ -319,6 +323,7 @@ class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
 class ConfigurableSidepanel extends SidepanelTest {}
 
 @Component({
+  selector: 'test-sidepanel-with-direction',
   template: `
     <div [dir]="direction">
       <nx-sidepanel-outer-container>
@@ -335,6 +340,7 @@ class SidepanelWithDirection extends SidepanelTest {
 }
 
 @Component({
+  selector: 'test-color-scheme-sidepanel',
   template: `
     <nx-sidepanel-outer-container>
       Main content
