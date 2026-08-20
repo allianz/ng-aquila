@@ -140,7 +140,7 @@ describe('NxExpertPreset', () => {
   describe('error presets', () => {
     it('should set appearance to text on default', () => {
       createTestComponent(ErrorPresetComponent);
-      expect(errorInstance.appearance).toBe('text');
+      expect(errorInstance.appearance()).toBe('text');
     });
   });
 

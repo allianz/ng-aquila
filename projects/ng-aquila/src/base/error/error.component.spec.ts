@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  signal,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { Subject } from 'rxjs';
 
@@ -102,21 +110,21 @@ describe('NxErrorComponent', () => {
       const messageEl = fixture.nativeElement.querySelector('nx-message');
       expect(iconEl).toBeTruthy();
       expect(messageEl).toBeFalsy();
-      expect(testInstance.errorInstance.appearance).toBe('text');
+      expect(testInstance.errorInstance.appearance()).toBe('text');
     });
 
     it('changes the appearance on change', inject(
       [ERROR_DEFAULT_OPTIONS],
       (defaultOptions: ErrorDefaultOptions) => {
         createTestComponent(BasicError);
-        expect(testInstance.errorInstance.appearance).toBe('text');
+        expect(testInstance.errorInstance.appearance()).toBe('text');
         let messageEl = fixture.nativeElement.querySelector('nx-message');
         expect(messageEl).toBeFalsy();
 
         defaultOptions.appearance = 'message';
         defaultOptions.changes?.next();
         fixture.detectChanges();
-        expect(testInstance.errorInstance.appearance).toBe('message');
+        expect(testInstance.errorInstance.appearance()).toBe('message');
         messageEl = fixture.nativeElement.querySelector('nx-message');
         expect(messageEl).toBeTruthy();
       },
@@ -128,6 +136,32 @@ describe('NxErrorComponent', () => {
       fixture.detectChanges();
       const messageEl = fixture.nativeElement.querySelector('nx-message');
       expect(messageEl).toBeTruthy();
+    });
+  });
+
+  describe('under Allianz One', () => {
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NxErrorModule, BasicError, ConfigurableError],
+        providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }],
+      }).compileComponents();
+    }));
+
+    it('enforces "text" appearance even if "message" is explicitly set', () => {
+      createTestComponent(ConfigurableError);
+      testInstance.appearance = 'message';
+      fixture.detectChanges();
+
+      expect(errorInstance.appearance()).toBe('text');
+      const messageEl = fixture.nativeElement.querySelector('nx-message');
+      expect(messageEl).toBeFalsy();
+    });
+
+    it('enforces "text" appearance even if default options set "message"', () => {
+      TestBed.overrideProvider(ERROR_DEFAULT_OPTIONS, { useValue: { appearance: 'message' } });
+      createTestComponent(BasicError);
+
+      expect(errorInstance.appearance()).toBe('text');
     });
   });
 });

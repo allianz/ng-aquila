@@ -1,5 +1,5 @@
 <!-- b2b (expert) error notification -->
-@if (appearance === 'text') {
+@if (appearance() === 'text') {
   @if (showIcon) {
     <nx-status-icon type="error" class="nx-error__icon" aria-hidden="true"></nx-status-icon>
   }
@@ -11,7 +11,7 @@
 }
 
 <!-- b2c error notification -->
-@if (appearance === 'message') {
+@if (appearance() === 'message') {
   <nx-message context="error">
     <div class="nx-error__content" [attr.id]="id">
       <ng-container [ngTemplateOutlet]="errorContent"></ng-container>

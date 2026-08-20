@@ -195,6 +195,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   /**
    * Whether the label should float once the input is focused or filled (auto, default)
    * or force it to always float with a value of always to simulate a more static form.
+   * Can be changed for NDBX only. A1 enforces always floating labels.
    */
   @Input() set floatLabel(value: FloatLabelType) {
     if (value !== this._floatLabel) {
@@ -203,7 +204,12 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     }
   }
   get floatLabel(): FloatLabelType {
-    return this._floatLabel || this._defaultOptions?.nxFloatLabel || 'auto';
+    return (
+      (this._isAllianzOne() && 'always') ||
+      this._floatLabel ||
+      this._defaultOptions?.nxFloatLabel ||
+      'auto'
+    );
   }
   private _floatLabel!: FloatLabelType;
 
@@ -222,13 +228,18 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   /**
    * **Expert option**
    *
-   * Sets the appearance of the formfield.
+   * Sets the appearance of the formfield. Can be changed for NDBX only. A1 enforces outline appearance.
    */
   @Input() set appearance(value: AppearanceType) {
     this._appearanceSignal.set(value);
   }
   get appearance(): AppearanceType {
-    return this._appearanceSignal() || this._defaultOptions?.appearance || 'auto';
+    return (
+      (this._isAllianzOne() && 'outline') ||
+      this._appearanceSignal() ||
+      this._defaultOptions?.appearance ||
+      'auto'
+    );
   }
   private readonly _appearanceSignal = signal<AppearanceType | undefined>(undefined);
 

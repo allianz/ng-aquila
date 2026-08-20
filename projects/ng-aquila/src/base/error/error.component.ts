@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxMessageModule } from '@allianz/ng-aquila/message';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
@@ -7,13 +8,16 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   Inject,
   inject,
   Injectable,
   InjectionToken,
   Input,
+  input,
   OnDestroy,
   Optional,
+  signal,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -48,7 +52,7 @@ export const ERROR_DEFAULT_OPTIONS = new InjectionToken<ErrorDefaultOptions>(
   styleUrls: ['./error.component.scss'],
   host: {
     '[attr.role]': '"alert"',
-    '[class.nx-error--message]': 'appearance == "message"',
+    '[class.nx-error--message]': 'appearance() == "message"',
   },
   imports: [NxIconModule, NgTemplateOutlet, NxMessageModule],
 })
@@ -78,21 +82,26 @@ export class NxErrorComponent implements OnDestroy {
     return this._id;
   }
   private _id = inject(IdGenerationService).nextId('nx-error');
+  private readonly _allianzOne = inject<AllianzOneOptions | null>(ALLIANZ_ONE, { optional: true });
+
+  protected readonly _isAllianzOne = computed(() => this._allianzOne?.enabled?.() ?? false);
+
   /**
-   * Whether the error should have message or text styling.
+   * Whether the error should have message or text styling. Can be changed for NDBX only. A1 enforces text appearance.
    *
    * Default: `'message'`.
    */
-  @Input() set appearance(value: ErrorStyleType | undefined | '') {
-    if (value !== this.appearance) {
-      this._appearance = value ? value : 'message';
-      this._cdr.markForCheck();
+  readonly appearanceInput = input<ErrorStyleType | undefined | ''>(undefined, {
+    alias: 'appearance',
+  });
+
+  readonly appearance = computed<ErrorStyleType>(() => {
+    if (this._isAllianzOne()) {
+      return 'text';
     }
-  }
-  get appearance(): ErrorStyleType {
-    return this._appearance || this._defaultOptions?.appearance || 'message';
-  }
-  private _appearance!: ErrorStyleType;
+    return this.appearanceInput() || this._defaultAppearance() || 'message';
+  });
+  private readonly _defaultAppearance = signal<ErrorStyleType | undefined>(undefined);
 
   private readonly _destroyed = new Subject<void>();
 
@@ -102,8 +111,9 @@ export class NxErrorComponent implements OnDestroy {
     @Inject(ERROR_DEFAULT_OPTIONS)
     private readonly _defaultOptions: ErrorDefaultOptions | null,
   ) {
+    this._defaultAppearance.set(this._defaultOptions?.appearance);
     this._defaultOptions?.changes?.pipe(takeUntil(this._destroyed)).subscribe(() => {
-      this._cdr.markForCheck();
+      this._defaultAppearance.set(this._defaultOptions?.appearance);
     });
   }
 

@@ -643,6 +643,60 @@ describe('NxFormfieldComponent', () => {
       expect(labelElement.textContent).toContain('!!!OPTIONAL!!!');
     });
   });
+
+  describe('under Allianz One', () => {
+    const configureWithAllianzOne = (defaultOptions: FormfieldDefaultOptions = {}) => {
+      TestBed.configureTestingModule({
+        imports: [
+          ReactiveFormsModule,
+          FormsModule,
+          NxInputModule,
+          OutlineFormfield,
+          FloatingFormfield,
+        ],
+        providers: [
+          { provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } },
+          { provide: FORMFIELD_DEFAULT_OPTIONS, useValue: defaultOptions },
+        ],
+      }).compileComponents();
+    };
+
+    it('enforces "outline" appearance even if an "auto" input value is set', () => {
+      configureWithAllianzOne();
+      createTestComponent(OutlineFormfield);
+      testInstance.appearance = 'auto';
+      fixture.detectChanges();
+
+      expect(testInstance.textfieldInstance.appearance).toBe('outline');
+      expect(formfieldElement).toHaveClass('has-outline');
+    });
+
+    it('enforces "outline" appearance even if default options set "auto"', () => {
+      configureWithAllianzOne({ appearance: 'auto' });
+      createTestComponent(OutlineFormfield);
+
+      expect(testInstance.textfieldInstance.appearance).toBe('outline');
+      expect(formfieldElement).toHaveClass('has-outline');
+    });
+
+    it('enforces "always" floatLabel even if an "auto" input value is set', () => {
+      configureWithAllianzOne();
+      createTestComponent(FloatingFormfield);
+      testInstance.floatLabel = 'auto';
+      fixture.detectChanges();
+
+      expect(testInstance.textfieldInstance.floatLabel).toBe('always');
+      expect(formfieldElement).toHaveClass('is-floating');
+    });
+
+    it('enforces "always" floatLabel even if default options set "auto"', () => {
+      configureWithAllianzOne({ nxFloatLabel: 'auto' });
+      createTestComponent(FloatingFormfield);
+
+      expect(testInstance.textfieldInstance.floatLabel).toBe('always');
+      expect(formfieldElement).toHaveClass('is-floating');
+    });
+  });
 });
 
 describe('NxFormfieldComponent status', () => {

@@ -52,12 +52,15 @@ The formfield width depends only on the grid column it is placed in and expands 
 
 <!-- example(formfield-simple-form) -->
 
+<div class="docs-hide-a1">
+
 ### Floating
 
 By default the label will float once the input is focused or filled. By specifying `floatLabel` with a value of always you can make this formfield appear as a static input + label combination.
 
 <!-- example(formfield-floating) -->
 
+</div>
 ### Custom formfield label
 
 You can pass text label content via the input `label`. If you need a more complex label you an use the directive `nx-formfield-label` as shown in the code example below. If both are defined, then `nx-formfield-label` will take precedence.
@@ -183,7 +186,7 @@ In order to hide/show characters on inputs of type password you can use the `nx-
 For more information on the password toggle component have a look at the [Input API](./documentation/input/api).
 
 <!-- example(formfield-password-visibility) -->
-<div class="docs-expert-container">
+<div class="docs-expert-container docs-hide-a1">
 
 ### Expert: Appearance
 
@@ -203,6 +206,18 @@ For internal applications you can use the `nx-error` component with `appearance=
 
 ### Global settings
 
+<div class="docs-a1">
+
+The current Design System enforces
+
+- `appearance="outline"` for Formfield
+- `floatLabel="always"` for Formfield
+- `appearance="text"` for Error Component
+
+</div>
+
+<div class="docs-ndbx">
+
 If you want to use default settings for all of your formfields, you can use the `FORMFIELD_DEFAULT_OPTIONS` injection token. Here global settings for `appearance` and `nxFloatLabel` can be defined.
 
 If a certain formfield should have another styling, you can overwrite it by explicitly defining the property in the template.
@@ -210,6 +225,8 @@ If a certain formfield should have another styling, you can overwrite it by expl
 The same is valid for the formfield error notifications (`nx-error`). The default error style is 'message', but you can use the `ERROR_DEFAULT_OPTIONS` injection token to overwrite it, as shown in the example below.
 
 <!-- example(formfield-global) -->
+
+</div>
 
 ### Creating a custom form field control
 
