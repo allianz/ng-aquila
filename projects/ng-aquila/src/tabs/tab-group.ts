@@ -3,8 +3,10 @@ import {
   NxAccordionModule,
   NxExpansionPanelComponent,
 } from '@allianz/ng-aquila/accordion';
+import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
+import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { IdGenerationService, NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { FocusMonitor, InteractivityChecker, LiveAnnouncer } from '@angular/cdk/a11y';
 import {
   BooleanInput,
   coerceBooleanProperty,
@@ -27,6 +29,7 @@ import {
   OnDestroy,
   Optional,
   Output,
+  output,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -41,6 +44,7 @@ import { NxTabHeaderComponent } from './tab-header';
 import { NxTabHeaderOutletComponent } from './tab-header-outlet';
 import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
 import { NxTabsAppearance, TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tabs.models';
+import { NxTabsIntl } from './tabs-intl';
 
 export class NxTabChangeEvent {
   /** The index of the selected or focused tab. */
@@ -67,6 +71,8 @@ export class NxTabChangeEvent {
     NxTabHeaderOutletComponent,
     NxTabBodyComponent,
     NxAccordionModule,
+    NxPlainButtonComponent,
+    NxIconComponent,
   ],
 })
 export class NxTabGroupComponent
@@ -169,6 +175,11 @@ export class NxTabGroupComponent
   @Output() readonly selectedTabChange = new EventEmitter<NxTabChangeEvent>();
 
   /**
+   * An event emitted when a closable tab is to be closed.
+   */
+  readonly tabClose = output<NxTabChangeEvent>();
+
+  /**
    * An event emitted when focus has changed within a tab group.
    *
    * **Note:** is not supported in mobile view.
@@ -180,11 +191,41 @@ export class NxTabGroupComponent
 
   private _disabledTabsCache: boolean[] = [];
 
+  /**
+   * The tab instance last reported as active.
+   */
+  private _activeTab: NxTabComponent | null = null;
+
+  /**
+   * Index to focus once the tab list updates after a close.
+   * `null` when no close is pending.
+   */
+  private _pendingFocusIndex: number | null = null;
+
+  /**
+   * The tab whose close was requested. Used to announce the close
+   * once the consumer actually removes the tab.
+   */
+  private _pendingCloseTab: NxTabComponent | null = null;
+
   readonly _appearanceChange = new Subject<void>();
 
   private readonly _destroyed = new Subject<void>();
 
   private readonly _groupId = inject(IdGenerationService).nextId('');
+
+  /** Provides localized strings for the tab group, e.g. the close button label. */
+  readonly _intl = inject(NxTabsIntl);
+
+  private readonly _liveAnnouncer = inject(LiveAnnouncer);
+
+  private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  private readonly _interactivityChecker = inject(InteractivityChecker);
+
+  /** Potentially focusable elements. Used to find candidates outside the tab group. */
+  private static readonly _focusableSelector =
+    'a[href], button, input, select, textarea, audio[controls], video[controls], details > summary, [contenteditable], [tabindex]';
 
   constructor(
     readonly viewportService: NxViewportService,
@@ -198,6 +239,9 @@ export class NxTabGroupComponent
   ngAfterContentInit(): void {
     this._subscribeToTabLabels();
 
+    // Re-render if the localized labels change after initialization.
+    this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
+
     // Subscribe to changes in the amount of tabs, in order to be
     // able to re-render the content as new tabs are added or removed.
     this.tabs.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
@@ -205,20 +249,45 @@ export class NxTabGroupComponent
       // Maintain the previously-selected tab if a new tab is added or removed and there is no
       // explicit change that selects a different tab.
       if (indexToSelect === this._selectedIndex) {
-        const tabs = this.tabs.toArray();
+        const activeIndex = this._activeTab ? this.tabs.toArray().indexOf(this._activeTab) : -1;
 
-        for (let i = 0; i < tabs.length; i++) {
-          if (tabs[i].isActive) {
-            // Assign both to the `_indexToSelect` and `_selectedIndex` so we don't fire a changed
-            // event, otherwise the consumer may end up in an infinite loop in some edge cases like
-            // adding a tab within the `selectedIndexChange` event.
-            this._indexToSelect = this._selectedIndex = i;
-            break;
+        if (activeIndex > -1) {
+          const indexShifted = activeIndex !== this._selectedIndex;
+
+          // Assign both to the `_indexToSelect` and `_selectedIndex` so we don't fire a changed
+          // event, otherwise the consumer may end up in an infinite loop in some edge cases like
+          // adding a tab within the `selectedIndexChange` event.
+          this._indexToSelect = this._selectedIndex = activeIndex;
+
+          // Emit index changed when the active tab is the same but moved to a new index (close the tab before an active tab)
+          if (indexShifted) {
+            Promise.resolve().then(() => this.selectedIndexChange.emit(activeIndex));
           }
         }
       }
 
       this._cdr.markForCheck();
+
+      if (this._pendingCloseTab) {
+        const closedTab = this._pendingCloseTab;
+        const focusIndex = this._pendingFocusIndex;
+        this._pendingCloseTab = null;
+        this._pendingFocusIndex = null;
+
+        // Only move focus and announce the close if the tab was actually removed from the group
+        if (!this.tabs.toArray().includes(closedTab)) {
+          // Move focus to the tab that took the closed one's place (or the new last tab),
+          // falling back to the next focusable element after the group.
+          if (focusIndex !== null) {
+            Promise.resolve().then(() => {
+              if (!this.tabHeader?.focusTab(focusIndex)) {
+                this._focusNextAfterTabGroup();
+              }
+            });
+          }
+          this._liveAnnouncer.announce(this._intl.closeAnnouncement(closedTab.label));
+        }
+      }
     });
   }
 
@@ -231,15 +300,16 @@ export class NxTabGroupComponent
     // the amount of tabs changes before the actual change detection runs.
     let indexToSelect = (this._indexToSelect = this._clampTabIndex(this._indexToSelect));
 
-    // If the active tab is disabled select the next focusable tab
-    // if all tabs are disabled, allow selection of disabled active tab.
-    if (!this.disabled && this.tabs.toArray()[indexToSelect].disabled) {
+    // If the active tab is disabled select the next focusable tab.
+    // If none of the tabs are focusable, select none instead of leaving a
+    // disabled tab marked as active.
+    if (!this.disabled && this.tabs.length > 0 && this.tabs.toArray()[indexToSelect]?.disabled) {
       const nextFocusable = this.tabs
         .toArray()
         .map((tab, index) => ({ tab, index }))
         .find((item) => !item.tab.disabled);
 
-      indexToSelect = nextFocusable ? nextFocusable.index : indexToSelect;
+      indexToSelect = nextFocusable ? nextFocusable.index : -1;
     }
 
     // If the index to select was disabled previously leave the selection on the current
@@ -248,27 +318,38 @@ export class NxTabGroupComponent
       this._indexToSelect = this.selectedIndex;
     }
 
-    // If there is a change in selected index, emit a change event. Should not trigger if
-    // the selected index has not yet been initialized.
-    if (this._selectedIndex !== indexToSelect) {
-      const isFirstRun = this._selectedIndex == null;
+    const targetTab = indexToSelect >= 0 ? (this.tabs.toArray()[indexToSelect] ?? null) : null;
 
-      if (!isFirstRun) {
+    // Compare the target tab by identity, not just by index, so that closing the active tab is
+    // detected even if another tab shifts into the same numeric index.
+    const activeTabChanged = targetTab !== this._activeTab;
+    const indexChanged = indexToSelect !== this._selectedIndex;
+
+    // Should not trigger on the run where the selected index gets initialized.
+    const isFirstRun = this._selectedIndex == null;
+
+    // If the active tab identity changed, emit `selectedTabChange`.
+    // `indexToSelect` is -1 when no tab is selectable anymore. There is no tab instance to
+    // report then, so only `selectedIndexChange` announces the deselection.
+    if (activeTabChanged) {
+      if (!isFirstRun && indexToSelect >= 0) {
         this.selectedTabChange.emit(this._createChangeEvent(indexToSelect));
       }
 
-      // Changing these values after change detection has run
-      // since the checked content may contain references to them.
+      // Changing this value after change detection has run
+      // since the checked content may contain references to it.
       Promise.resolve().then(() => {
-        this.tabs.forEach((tab, index) => (tab.isActive = index === indexToSelect));
-
-        if (!isFirstRun) {
-          this.selectedIndexChange.emit(indexToSelect);
-        }
+        this.tabs.forEach((tab) => (tab.isActive = tab === targetTab));
       });
     }
 
-    if (this._selectedIndex !== indexToSelect) {
+    this._activeTab = targetTab;
+
+    if (indexChanged) {
+      if (!isFirstRun) {
+        Promise.resolve().then(() => this.selectedIndexChange.emit(indexToSelect));
+      }
+
       this._selectedIndex = indexToSelect;
       this._cdr.markForCheck();
     }
@@ -339,7 +420,7 @@ export class NxTabGroupComponent
   private _createChangeEvent(index: number): NxTabChangeEvent {
     const event = new NxTabChangeEvent();
     event.index = index;
-    if (this.tabs?.length) {
+    if (index >= 0 && this.tabs?.length) {
       event.tab = this.tabs.toArray()[index];
     }
     return event;
@@ -351,6 +432,78 @@ export class NxTabGroupComponent
     if (!this.disabled && !clickedTab.disabled) {
       this.selectedIndex = this.tabHeader.focusIndex = index;
     }
+  }
+
+  /**
+   * Moves focus from a tab label onto its own close button when the user
+   * presses TAB. Only the active tab can focus a closable button.
+   */
+  protected _focusCloseButton(index: number, event: Event) {
+    const tab = this.tabs.toArray()[index];
+    if (this.disabled || !tab || tab.disabled || !tab.closable()) {
+      return;
+    }
+
+    const group = (event.target as HTMLElement).closest('.nx-tab-header__item-group');
+    const closeButton = group?.querySelector<HTMLElement>('.nx-tab-header__close');
+    if (closeButton) {
+      event.preventDefault();
+      closeButton.focus();
+    }
+  }
+
+  /**
+   * Moves focus back from a close button onto its own tab label when the user presses SHIFT+TAB.
+   */
+  protected _focusTabItem(index: number, event: Event) {
+    event.preventDefault();
+    this.tabHeader?.focusTab(index);
+  }
+
+  /**
+   * Moves focus to the first focusable element that follows the tab group. Used when no tab can take focus anymore.
+   */
+  private _focusNextAfterTabGroup(): void {
+    const host = this._elementRef.nativeElement;
+    const candidates = host.ownerDocument.querySelectorAll<HTMLElement>(
+      NxTabGroupComponent._focusableSelector,
+    );
+
+    for (const candidate of Array.from(candidates)) {
+      const isAfterHost =
+        // eslint-disable-next-line no-bitwise -- compareDocumentPosition returns a bitmask
+        (host.compareDocumentPosition(candidate) & Node.DOCUMENT_POSITION_FOLLOWING) !== 0;
+      if (
+        isAfterHost &&
+        // Descendants also report FOLLOWING, so exclude them explicitly.
+        !host.contains(candidate) &&
+        // `isTabbable` assumes the element is already known to be focusable, so both are needed.
+        this._interactivityChecker.isFocusable(candidate) &&
+        this._interactivityChecker.isTabbable(candidate)
+      ) {
+        candidate.focus();
+        return;
+      }
+    }
+  }
+
+  /**
+   * Closes the tab at the given index by emitting the `tabClose` event.
+   * The actual removal of the tab is left to the consumer.
+   *
+   * Focus is moved to the tab that takes the closed tab's place (or the new last tab)
+   * once the consumer removes it.
+   */
+  protected _handleClose(index: number) {
+    const tab = this.tabs.toArray()[index];
+    if (this.disabled || !tab || tab.disabled || !tab.closable()) {
+      return;
+    }
+    // Remember where to place focus and what to announce once the tab is actually removed.
+    this._pendingFocusIndex = index;
+    this._pendingCloseTab = tab;
+    tab.closed.emit();
+    this.tabClose.emit(this._createChangeEvent(index));
   }
 
   /**

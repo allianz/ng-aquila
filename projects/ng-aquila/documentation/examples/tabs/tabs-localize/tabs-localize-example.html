@@ -1,0 +1,7 @@
+<nx-tab-group (tabClose)="closeTab($event.index)">
+  @for (tab of tabs; track tab) {
+    <nx-tab [label]="tab.label" [closable]="true">
+      <p class="tab__content">Inhalt von {{ tab.label }}</p>
+    </nx-tab>
+  }
+</nx-tab-group>

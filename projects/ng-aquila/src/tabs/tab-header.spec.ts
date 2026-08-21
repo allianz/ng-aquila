@@ -97,14 +97,14 @@ describe('NxTabHeaderComponent', () => {
         createTestComponent(BasicHeader);
         testInstance.selectedIndex = 1;
         fixture.detectChanges();
-        dispatchKeyboardEvent(tabListContainer, 'keydown', HOME);
+        dispatchKeyboardEvent(tabListContainer, 'keydown', HOME, 'Home');
         fixture.detectChanges();
         expect(testInstance.selectedIndex).toBe(0);
       });
 
       it('should select last tab when pressing END key', () => {
         createTestComponent(BasicHeader);
-        dispatchKeyboardEvent(tabListContainer, 'keydown', END);
+        dispatchKeyboardEvent(tabListContainer, 'keydown', END, 'End');
         fixture.detectChanges();
         expect(testInstance.selectedIndex).toBe(2);
       });
@@ -115,7 +115,7 @@ describe('NxTabHeaderComponent', () => {
         testInstance.tabHeaderInstance._isScrolledToEnd = false;
         fixture.detectChanges();
 
-        dispatchKeyboardEvent(tabListContainer, 'keydown', TAB);
+        dispatchKeyboardEvent(tabListContainer, 'keydown', TAB, 'Tab');
         fixture.detectChanges();
         const navigationButton = tabHeaderNativeElement.querySelector('.end-button button');
         expect(_getFocusedElementPierceShadowDom()).not.toBe(navigationButton as HTMLElement);
@@ -156,13 +156,13 @@ describe('NxTabHeaderComponent', () => {
       it('should focus first tab when pressing HOME key', () => {
         testInstance.selectedIndex = 1;
         fixture.detectChanges();
-        dispatchKeyboardEvent(tabListContainer, 'keydown', HOME);
+        dispatchKeyboardEvent(tabListContainer, 'keydown', HOME, 'Home');
         fixture.detectChanges();
         expect(tabHeaderInstance.focusIndex).toBe(0);
       });
 
       it('should focus last tab when pressing END key', () => {
-        dispatchKeyboardEvent(tabListContainer, 'keydown', END);
+        dispatchKeyboardEvent(tabListContainer, 'keydown', END, 'End');
         fixture.detectChanges();
         expect(tabHeaderInstance.focusIndex).toBe(2);
       });
@@ -170,12 +170,12 @@ describe('NxTabHeaderComponent', () => {
       it('should select focused tab when pressing SPACE or ENTER', () => {
         dispatchKeyboardEvent(tabListContainer, 'keydown', RIGHT_ARROW);
         fixture.detectChanges();
-        dispatchKeyboardEvent(tabListContainer, 'keydown', SPACE);
+        dispatchKeyboardEvent(tabListContainer, 'keydown', SPACE, ' ');
         fixture.detectChanges();
         expect(testInstance.selectedIndex).toBe(1);
         dispatchKeyboardEvent(tabListContainer, 'keydown', LEFT_ARROW);
         fixture.detectChanges();
-        dispatchKeyboardEvent(tabListContainer, 'keydown', ENTER);
+        dispatchKeyboardEvent(tabListContainer, 'keydown', ENTER, 'Enter');
         fixture.detectChanges();
         expect(testInstance.selectedIndex).toBe(0);
       });

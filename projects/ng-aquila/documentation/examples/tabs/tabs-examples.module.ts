@@ -8,10 +8,13 @@ import { ExamplesSharedModule } from '../examples-shared.module';
 import { TabsAppearanceExampleComponent } from './tabs-appearance/tabs-appearance-example';
 import { TabsAutoManualSelectExampleComponent } from './tabs-auto-manual-select/tabs-auto-manual-select-example';
 import { TabsBasicExampleComponent } from './tabs-basic/tabs-basic-example';
+import { TabsClosableExampleComponent } from './tabs-closable/tabs-closable-example';
+import { TabsClosableConfirmExampleComponent } from './tabs-closable-confirm/tabs-closable-confirm-example';
 import { TabsDisabledExampleComponent } from './tabs-disabled/tabs-disabled-example';
 import { TabsDynamicExampleComponent } from './tabs-dynamic/tabs-dynamic-example';
 import { TabsInjectionTokenExampleComponent } from './tabs-injection-token/tabs-injection-token-example';
 import { TabsLazyExampleComponent } from './tabs-lazy/tabs-lazy-example';
+import { TabsLocalizeExampleComponent } from './tabs-localize/tabs-localize-example';
 import { TabsNavBarExampleComponent } from './tabs-nav-bar/tabs-nav-bar-example';
 import { TabsNavBarAppearanceExampleComponent } from './tabs-nav-bar-appearance/tabs-nav-bar-appearance-example';
 import { TabsNavBarInjectionTokenExampleComponent } from './tabs-nav-bar-injection-token/tabs-nav-bar-injection-token-example';
@@ -27,10 +30,13 @@ const EXAMPLES = [
   TabsAppearanceExampleComponent,
   TabsAutoManualSelectExampleComponent,
   TabsBasicExampleComponent,
+  TabsClosableExampleComponent,
+  TabsClosableConfirmExampleComponent,
   TabsDisabledExampleComponent,
   TabsDynamicExampleComponent,
   TabsInjectionTokenExampleComponent,
   TabsLazyExampleComponent,
+  TabsLocalizeExampleComponent,
   TabsNavBarExampleComponent,
   TabsNavBarAppearanceExampleComponent,
   TabsNavBarInjectionTokenExampleComponent,
@@ -60,10 +66,13 @@ export class TabsExamplesModule {
       'tabs-appearance': TabsAppearanceExampleComponent,
       'tabs-auto-manual-select': TabsAutoManualSelectExampleComponent,
       'tabs-basic': TabsBasicExampleComponent,
+      'tabs-closable': TabsClosableExampleComponent,
+      'tabs-closable-confirm': TabsClosableConfirmExampleComponent,
       'tabs-disabled': TabsDisabledExampleComponent,
       'tabs-dynamic': TabsDynamicExampleComponent,
       'tabs-injection-token': TabsInjectionTokenExampleComponent,
       'tabs-lazy': TabsLazyExampleComponent,
+      'tabs-localize': TabsLocalizeExampleComponent,
       'tabs-nav-bar': TabsNavBarExampleComponent,
       'tabs-nav-bar-appearance': TabsNavBarAppearanceExampleComponent,
       'tabs-nav-bar-injection-token': TabsNavBarInjectionTokenExampleComponent,

@@ -6,5 +6,6 @@ export * from './tab-header';
 export * from './tab-label';
 export * from './tab-label-wrapper';
 export * from './tab-nav-bar';
+export * from './tabs-intl';
 export * from './tabs.models';
 export * from './tabs.module';

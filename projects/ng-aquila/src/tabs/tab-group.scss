@@ -4,32 +4,31 @@
   display: block;
 }
 
-.nx-tab-header__item {
-  @include tab__item;
+.nx-tab-header__item-wrapper {
   flex: 0 0 auto;
   display: flex;
+  align-items: stretch;
+  position: relative;
+  margin: v(tab-item-margin);
+  padding: v(tab-item-padding);
+  overflow: visible; // don't clip the focus box-shadow
 
-  // don't show inner dotted border on firefox
-  &::-moz-focus-inner {
-    border: 0;
-  }
-}
-
-:host {
-  .nx-tab-header__item {
-    overflow: visible; // fix for IE, which cuts off the box-shadow of the focus style
-  }
-
-  .nx-tab-header__item:first-child {
+  &:first-child {
     margin-inline-start: 0;
   }
 
-  .nx-tab-header__item:last-child {
+  &:last-child {
     margin-inline-end: 0;
   }
 }
 
-.nx-tab-header__item::before {
+.nx-tab-header__item-group {
+  display: flex;
+  align-items: stretch;
+  gap: v(tab-header-item-gap);
+}
+
+.nx-tab-header__item-wrapper::before {
   content: '';
   position: absolute;
   width: calc(100% + v(tab-item-gap-horizontal) * 2);
@@ -39,60 +38,57 @@
   background-color: v(tab-item-border-color);
 }
 
-.nx-tab-header__item:first-child::before {
+// The edge tabs only extend the baseline on their inner side.
+.nx-tab-header__item-wrapper:first-child::before {
   inset-inline-start: 0;
+}
+
+.nx-tab-header__item-wrapper:first-child::before,
+.nx-tab-header__item-wrapper:last-child::before {
   width: calc(100% + v(tab-item-gap-horizontal));
 }
 
-.nx-tab-header__item:last-child::before {
-  width: calc(100% + v(tab-item-gap-horizontal));
-}
-
-:host(.is-expert) {
-  .nx-tab-header__item::before {
-    display: none;
-  }
-
-  .nx-tab-header__item:not(.nx-tab-header__item--active) {
-    border-color: transparent;
-  }
-
-  .nx-tab-header__item {
-    padding-bottom: v(tab-expert-item-padding);
-  }
-
-  .nx-tab-header__item.nx-tab-header__item--active {
-    padding-bottom: v(tab-expert-item-active-padding);
-  }
-}
-
-:host(.is-expert):not(.is-negative) {
-  .nx-tab-header__item:not(.nx-tab-header__item--active):not(.nx-tab-header__item--disabled) {
-    color: v(tab-expert-color);
-
-    &:hover {
-      color: v(tab-item-hover-color);
-    }
-
-    &:active {
-      color: v(tab-item-active-color);
-    }
-
-    @media screen and (forced-colors: active) {
-      color: buttonText;
-    }
-  }
-  .nx-tab-header__item--disabled {
-    color: v(tab-expert-item-disabled-color);
-    border-color: v(tab-expert-item-disabled-color);
-  }
-}
-
-.nx-tab-header__item--active {
-  @include tab__item--active;
+// Active indicator spans the label and, if present, the close button.
+.nx-tab-header__item-wrapper--active {
+  padding-bottom: calc(v(tab-item-padding-bottom) - v(tab-item-active-border-width));
+  border-bottom: v(tab-item-active-border-width) solid v(tab-item-active-border-color);
 
   &::before {
     display: none;
+  }
+
+  // A disabled active tab keeps the underline, but in the disabled color.
+  &.nx-tab-header__item-wrapper--disabled {
+    border-bottom-color: v(tab-item-disabled-color);
+  }
+
+  @media screen and (forced-colors: active) {
+    border-color: highlight;
+  }
+
+  .nx-tab-header__item {
+    font-weight: v(tab-item-active-font-weight);
+  }
+
+  .nx-tab-header__item:not(.nx-tab-header__item--disabled) {
+    cursor: default;
+
+    &:hover,
+    &:active {
+      color: v(tab-item-color);
+    }
+  }
+}
+
+.nx-tab-header__item {
+  @include tab__item;
+  margin: 0;
+  padding: 0; // vertical padding lives on the wrapper now
+  display: flex;
+
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
   }
 }
 
@@ -107,10 +103,63 @@
   white-space: nowrap;
 }
 
-// Focus styles
-.nx-tab-header__item.cdk-keyboard-focused .nx-tab-label__content {
+// fix indicator overlap with close button by setting the indicator to static positioning and translating it up by the label gap
+.nx-tab-header__item-wrapper--closable ::ng-deep .nx-indicator.nx-indicator--over-text {
+  position: static;
+  vertical-align: top;
+
+  &:not(:empty) {
+    top: auto;
+    // TODO: tokenize the -4px value to avoid hardcoding it here. It is the same value as in indicator.component.scss
+    transform: translate(v(tab-item-label-gap), -4px);
+  }
+}
+
+// Focus ring wraps the label + close button (the inner group) when the tab is
+// focused via the keyboard, without enclosing the wrapper's active underline.
+.nx-tab-header__item-group:has(.nx-tab-header__item.cdk-keyboard-focused) {
   @include focus-style;
   border-radius: nx-border-radius(s);
+}
+
+:host(.is-expert) {
+  .nx-tab-header__item-wrapper::before {
+    display: none;
+  }
+
+  .nx-tab-header__item-wrapper {
+    padding-bottom: v(tab-expert-item-padding);
+  }
+
+  .nx-tab-header__item-wrapper--active {
+    padding-bottom: v(tab-expert-item-active-padding);
+  }
+}
+
+:host(.is-expert):not(.is-negative) {
+  .nx-tab-header__item-wrapper:not(.nx-tab-header__item-wrapper--active):not(
+      .nx-tab-header__item-wrapper--disabled
+    )
+    .nx-tab-header__item {
+    color: v(tab-expert-color);
+
+    &:hover {
+      color: v(tab-item-hover-color);
+    }
+
+    &:active {
+      color: v(tab-item-active-color);
+    }
+
+    @media screen and (forced-colors: active) {
+      color: buttonText;
+    }
+  }
+
+  .nx-tab-header__item--disabled {
+    color: v(tab-expert-item-disabled-color);
+    border-color: v(tab-expert-item-disabled-color);
+  }
 }
 
 :host(.is-negative) {
@@ -119,16 +168,35 @@
   .nx-tab-header__item {
     @include tab__item--negative('.nx-tab-header__item--active', '.nx-tab-header__item--disabled');
   }
+
+  // Colour the wrapper-level baseline and active indicator for negative tabs.
+  .nx-tab-header__item-wrapper::before {
+    background-color: v(negative);
+  }
+
+  .nx-tab-header__item-wrapper--active {
+    border-bottom-color: v(negative);
+
+    &.nx-tab-header__item-wrapper--disabled {
+      border-bottom-color: v(tab-item-disabled-negative-color);
+    }
+  }
 }
 
 :host(.is-negative.is-expert) {
-  .nx-tab-header__item.nx-tab-header__item--disabled:not(.nx-tab-header__item--active) {
+  .nx-tab-header__item-wrapper--disabled:not(.nx-tab-header__item-wrapper--active) {
     border-bottom-color: transparent;
   }
 }
 
 :host(.is-disabled) {
   cursor: not-allowed;
+}
+
+:host {
+  .nx-tab-header__item {
+    overflow: visible; // fix for IE, which cuts off the box-shadow of the focus style
+  }
 }
 
 @media screen and (forced-colors: active) {
@@ -139,11 +207,19 @@
       color: buttonText;
       border-bottom-color: buttonText;
     }
+
+    .nx-tab-header__item-wrapper {
+      border-bottom-color: buttonText;
+    }
   }
 
   :host(.is-disabled.is-negative) {
     .nx-tab-header__item {
       color: GrayText;
+      border-bottom-color: GrayText;
+    }
+
+    .nx-tab-header__item-wrapper {
       border-bottom-color: GrayText;
     }
   }

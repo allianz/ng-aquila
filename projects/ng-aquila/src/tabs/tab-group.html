@@ -4,33 +4,60 @@
     [selectedIndex]="selectedIndex"
     (selectFocusedIndex)="selectedIndex = $event"
     (indexFocused)="focusChanged($event)"
+    (closeFocusedIndex)="_handleClose($event)"
     [autoselect]="autoselect"
   >
     @for (tab of tabs; track tab; let i = $index) {
-      <button
-        #tabButton
-        type="button"
-        nxTabLabelWrapper
-        role="tab"
-        (click)="handleClick(i)"
-        class="nx-tab-header__item"
-        [id]="_getTabLabelId(i)"
-        [attr.aria-controls]="_getTabContentId(i)"
-        [attr.aria-selected]="selectedIndex === i"
-        [attr.tabindex]="getTabIndex(tab, i)"
-        [disabled]="tab.disabled"
-        [class.nx-tab-header__item--disabled]="tab.disabled"
-        [class.nx-tab-header__item--active]="selectedIndex === i"
+      <div
+        class="nx-tab-header__item-wrapper"
+        role="presentation"
+        [class.nx-tab-header__item-wrapper--closable]="tab.closable()"
+        [class.nx-tab-header__item-wrapper--active]="selectedIndex === i"
+        [class.nx-tab-header__item-wrapper--disabled]="tab.disabled"
       >
-        <div class="nx-tab-label__content">
-          @if (tab.templateLabel) {
-            <nx-tab-header-outlet [content]="tab.headerViewRef"></nx-tab-header-outlet>
-          }
-          @if (!tab.templateLabel) {
-            {{ tab.label }}
+        <div class="nx-tab-header__item-group" role="presentation">
+          <button
+            #tabButton
+            type="button"
+            nxTabLabelWrapper
+            role="tab"
+            (click)="handleClick(i)"
+            class="nx-tab-header__item"
+            [id]="_getTabLabelId(i)"
+            [attr.aria-controls]="_getTabContentId(i)"
+            [attr.aria-selected]="selectedIndex === i"
+            [attr.tabindex]="getTabIndex(tab, i)"
+            [disabled]="tab.disabled"
+            [class.nx-tab-header__item--disabled]="tab.disabled"
+            [class.nx-tab-header__item--active]="selectedIndex === i"
+            (keydown.tab)="_focusCloseButton(i, $event)"
+          >
+            <div class="nx-tab-label__content">
+              @if (tab.templateLabel) {
+                <nx-tab-header-outlet [content]="tab.headerViewRef"></nx-tab-header-outlet>
+              }
+              @if (!tab.templateLabel) {
+                {{ tab.label }}
+              }
+            </div>
+          </button>
+          @if (tab.closable()) {
+            <button
+              type="button"
+              nxPlainButton
+              class="nx-tab-header__close"
+              [disabled]="tab.disabled"
+              [inverse]="negative"
+              [attr.aria-label]="_intl.closeAriaLabel(tab.label)"
+              tabindex="-1"
+              (click)="_handleClose(i)"
+              (keydown.shift.tab)="_focusTabItem(i, $event)"
+            >
+              <nx-icon name="close" size="s" aria-hidden="true"></nx-icon>
+            </button>
           }
         </div>
-      </button>
+      </div>
     }
   </nx-tab-header>
   <div class="nx-tab-body__container">

@@ -246,16 +246,16 @@
 
   &:hover,
   &:active {
-    color: v(negative);
+    color: v(negative) !important;
   }
 
   &:not(#{$active-modifier}):not(#{$disabled-modifier}) {
     &:hover {
-      color: v(tab-item-inverse-hover-color);
+      color: v(tab-item-inverse-hover-color) !important;
     }
 
     &:active {
-      color: v(tab-item-inverse-active-color);
+      color: v(tab-item-inverse-active-color) !important;
     }
   }
 

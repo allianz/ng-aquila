@@ -1,6 +1,7 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterContentInit,
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   ContentChild,
@@ -8,9 +9,11 @@ import {
   Host,
   Inject,
   Input,
+  input,
   OnChanges,
   OnDestroy,
   Optional,
+  output,
   SimpleChanges,
   TemplateRef,
   ViewChild,
@@ -84,6 +87,15 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     return this._tabGroup?.disabled || this._disabled;
   }
   private _disabled = false;
+
+  /** Whether the tab can be closed. Default: false. */
+  readonly closable = input(false, { transform: booleanAttribute });
+
+  /**
+   * Emitted when the tab is to be closed. Only relevant when `closable` is set.
+   * The tab is not removed by this event, so a handler can decide to keep it.
+   */
+  readonly closed = output<void>();
 
   private _headerViewRef!: EmbeddedViewRef<any>;
   private _contentViewRef!: EmbeddedViewRef<any>;

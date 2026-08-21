@@ -1,7 +1,6 @@
 import { NxViewportService } from '@allianz/ng-aquila/utils';
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
-import { END, ENTER, HOME, SPACE } from '@angular/cdk/keycodes';
 import {
   AfterContentInit,
   AfterViewInit,
@@ -14,6 +13,7 @@ import {
   Input,
   Optional,
   Output,
+  output,
   QueryList,
   ViewChild,
 } from '@angular/core';
@@ -44,7 +44,7 @@ export class NxTabHeaderComponent
 
   @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
 
-  @ContentChildren('tabButton') tabButtons!: QueryList<HTMLElement>;
+  @ContentChildren('tabButton', { descendants: true }) tabButtons!: QueryList<HTMLElement>;
 
   @Input() set selectedIndex(value: number) {
     this._selectedIndex = value;
@@ -68,6 +68,37 @@ export class NxTabHeaderComponent
     return this._keyManager ? this._keyManager.activeItemIndex! : 0;
   }
 
+  /**
+   * Moves focus to the tab at the given index, or to the nearest enabled tab
+   * if that tab is disabled. Returns whether a tab could be focused.
+   */
+  focusTab(index: number): boolean {
+    if (!this._keyManager || !this.labels?.length) {
+      return false;
+    }
+    const items = this.labels.toArray();
+    const clamped = Math.max(0, Math.min(index, items.length - 1));
+
+    for (let offset = 0; offset < items.length; offset++) {
+      const forwardIndex = clamped + offset;
+      if (items[forwardIndex] && !items[forwardIndex].disabled) {
+        this._keyManager.setActiveItem(forwardIndex);
+        return true;
+      }
+      const backwardIndex = clamped - offset;
+      if (
+        backwardIndex !== forwardIndex &&
+        items[backwardIndex] &&
+        !items[backwardIndex].disabled
+      ) {
+        this._keyManager.setActiveItem(backwardIndex);
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   @Input() set autoselect(value: boolean) {
     this._autoselect = value;
   }
@@ -79,7 +110,11 @@ export class NxTabHeaderComponent
   @Output() readonly selectFocusedIndex = new EventEmitter<number>();
   @Output() readonly indexFocused = new EventEmitter<number>();
 
-  @ContentChildren(NxTabLabelWrapperDirective) labels!: QueryList<NxTabLabelWrapperDirective>;
+  /** Emits the index of the focused tab when the user requests to close it via the keyboard. */
+  readonly closeFocusedIndex = output<number>();
+
+  @ContentChildren(NxTabLabelWrapperDirective, { descendants: true })
+  labels!: QueryList<NxTabLabelWrapperDirective>;
 
   constructor(
     _cdr: ChangeDetectorRef,
@@ -140,27 +175,41 @@ export class NxTabHeaderComponent
    * If autoselect is disabled only the focus changes but the user still has to select the item by himself.
    */
   handleKeydown(event: KeyboardEvent) {
-    switch (event.keyCode) {
-      case HOME:
+    // ignore Enter and Space keydown events on the close button,
+    // since the close button handles those itself.
+    if (
+      (event.key === 'Enter' || event.key === ' ') &&
+      (event.target as HTMLElement).closest('.nx-tab-header__close')
+    ) {
+      return;
+    }
+
+    switch (event.key) {
+      case 'Home':
         this._keyManager.setFirstItemActive();
         event.preventDefault();
         break;
-      case END:
+      case 'End':
         this._keyManager.setLastItemActive();
         event.preventDefault();
         break;
-      case ENTER:
-      case SPACE:
+      case 'Enter':
+      case ' ':
         this.selectFocusedIndex.emit(this._keyManager.activeItemIndex!);
         event.preventDefault();
         break;
+      case 'Delete':
+      case 'Backspace':
+        this.closeFocusedIndex.emit(this._keyManager.activeItemIndex!);
+        event.preventDefault();
+        return;
       default:
         this._keyManager.onKeydown(event);
     }
 
     if (this.autoselect) {
       this.selectFocusedIndex.emit(this._keyManager.activeItemIndex!);
-    } else if (event.keyCode !== ENTER && event.keyCode !== SPACE) {
+    } else if (event.key !== 'Enter' && event.key !== ' ') {
       this.indexFocused.emit(this._keyManager.activeItemIndex!);
     }
   }
