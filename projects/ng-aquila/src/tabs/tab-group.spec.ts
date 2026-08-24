@@ -96,6 +96,7 @@ describe('NxTabGroupComponent', () => {
           DisabledTabs,
           TemplateTabs,
           NestedTabGroups,
+          PreselectedTabs,
           ClosableTabs,
           ClosableWithDisabledTabs,
         ],
@@ -872,6 +873,21 @@ describe('NxTabGroupComponent', () => {
       });
     });
 
+    describe('preselected tab', () => {
+      // see https://github.developer.allianz.io/ilt/ngx-brand-kit/issues/5518
+      it('should initialize the key manager with the selected tab', () => {
+        createTestComponent(PreselectedTabs);
+        expect(tabGroupInstance.tabHeader.focusIndex).toBe(1);
+      });
+
+      it('should keep the selection when tabbing out of the tab list', () => {
+        createTestComponent(PreselectedTabs);
+        const tabList = fixture.debugElement.query(By.css('.nx-tab-header')).nativeElement;
+        dispatchKeyboardEvent(tabList, 'keydown', TAB);
+        checkSelectedIndex(1);
+      });
+    });
+
     describe('nested tab groups', () => {
       it('should handle destruction of unactivated nested tabs', fakeAsync(() => {
         // see https://github.developer.allianz.io/ilt/ngx-brand-kit/issues/5118
@@ -1268,3 +1284,19 @@ class TemplateTabs extends TabsTest {
   imports: [NxTabsModule],
 })
 class NestedTabGroups extends TabsTest {}
+
+@Component({
+  selector: 'test-preselected-tabs',
+  template: `
+    <nx-tab-group [(selectedIndex)]="selectedIndex">
+      <nx-tab label="First label">First</nx-tab>
+      <nx-tab label="Second label">Second</nx-tab>
+      <nx-tab label="Third label">Third</nx-tab>
+    </nx-tab-group>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTabsModule],
+})
+class PreselectedTabs extends TabsTest {
+  selectedIndex = 1;
+}

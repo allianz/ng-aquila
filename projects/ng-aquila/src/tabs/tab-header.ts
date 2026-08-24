@@ -131,7 +131,9 @@ export class NxTabHeaderComponent
     this._keyManager = new FocusKeyManager<NxTabLabelWrapperDirective>(this.labels)
       .withHorizontalOrientation('ltr')
       .withWrap();
-    this._keyManager.updateActiveItem(0);
+    // the `selectedIndex` input is set before the key manager exists, so its sync is a
+    // no-op on init and the preselected tab has to be picked up here
+    this._keyManager.updateActiveItem(this._selectedIndex);
 
     this._cdr.markForCheck();
   }

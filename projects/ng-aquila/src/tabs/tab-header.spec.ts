@@ -46,7 +46,14 @@ describe('NxTabHeaderComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxTabsModule, FormsModule, ReactiveFormsModule, BasicHeader, SimpleHeader],
+      imports: [
+        NxTabsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BasicHeader,
+        SimpleHeader,
+        PreselectedHeader,
+      ],
     }).compileComponents();
   }));
 
@@ -119,6 +126,23 @@ describe('NxTabHeaderComponent', () => {
         fixture.detectChanges();
         const navigationButton = tabHeaderNativeElement.querySelector('.end-button button');
         expect(_getFocusedElementPierceShadowDom()).not.toBe(navigationButton as HTMLElement);
+      });
+    });
+
+    describe('with a preselected tab', () => {
+      // see https://github.developer.allianz.io/ilt/ngx-brand-kit/issues/5518
+      it('should keep the selection when tabbing out of the tab list', () => {
+        createTestComponent(PreselectedHeader);
+        dispatchKeyboardEvent(tabListContainer, 'keydown', TAB);
+        fixture.detectChanges();
+        expect(testInstance.selectedIndex).toBe(1);
+      });
+
+      it('should select the neighbouring tab on LEFT and RIGHT arrow', () => {
+        createTestComponent(PreselectedHeader);
+        dispatchKeyboardEvent(tabListContainer, 'keydown', RIGHT_ARROW);
+        fixture.detectChanges();
+        expect(testInstance.selectedIndex).toBe(2);
       });
     });
 
@@ -244,5 +268,29 @@ class BasicHeader extends TabHeaderTest {
   imports: [NxTabsModule, FormsModule, ReactiveFormsModule],
 })
 class SimpleHeader extends TabHeaderTest {
+  tabs = [{ label: 'First' }, { label: 'Second' }, { label: 'Third' }];
+}
+
+@Component({
+  selector: 'test-preselected-header',
+  template: `
+    <nx-tab-header [selectedIndex]="selectedIndex" (selectFocusedIndex)="selectedIndex = $event">
+      @for (tab of tabs; track tab; let i = $index) {
+        <button
+          nxTabLabelWrapper
+          (click)="selectedIndex = i"
+          class="nx-tab-header__item"
+          [class.nx-tab-header__item--active]="selectedIndex === i"
+        >
+          {{ tab.label }}
+        </button>
+      }
+    </nx-tab-header>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTabsModule],
+})
+class PreselectedHeader extends TabHeaderTest {
+  override selectedIndex = 1;
   tabs = [{ label: 'First' }, { label: 'Second' }, { label: 'Third' }];
 }
