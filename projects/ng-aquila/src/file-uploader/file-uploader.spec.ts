@@ -398,6 +398,66 @@ describe('NxFileUploaderComponent', () => {
         expect(closed).toHaveBeenCalled();
       });
     });
+
+    describe('form data field name', () => {
+      /**
+       * Uploads the given number of fake files and returns the spy of the stubbed post request.
+       * The request is stubbed so that the sent form data can be inspected directly.
+       */
+      function uploadFakeFiles(count: number) {
+        const postSpy = vi.spyOn(TestBed.inject(HttpClient), 'post').mockReturnValue(of({}));
+
+        let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
+        fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024, writable: false });
+        testInstance.form.patchValue({
+          documents: Array.from({ length: count }, () => new FileItem(fakeFile)),
+        });
+
+        fileUploaderInstance.uploadFiles();
+
+        return postSpy;
+      }
+
+      function formDataOfCall(
+        postSpy: ReturnType<typeof uploadFakeFiles>,
+        index: number,
+      ): FormData {
+        return postSpy.mock.calls[index][1] as FormData;
+      }
+
+      it('should append the files with "uploads[]" by default', () => {
+        createTestComponent(BasicFileUpload);
+
+        const formData = formDataOfCall(uploadFakeFiles(2), 0);
+
+        expect(formData.getAll('uploads[]')).toHaveLength(2);
+      });
+
+      it('should append the files with the configured field name', () => {
+        createTestComponent(BasicFileUpload);
+        testInstance.uploadConfig.formDataFieldName = 'upload';
+
+        const formData = formDataOfCall(uploadFakeFiles(2), 0);
+
+        expect(formData.has('uploads[]')).toBe(false);
+        expect(formData.getAll('upload')).toHaveLength(2);
+      });
+
+      it('should append the file with the configured field name when uploading separately', () => {
+        createTestComponent(BasicFileUpload);
+        testInstance.uploadConfig.formDataFieldName = 'upload';
+        testInstance.uploadConfig.uploadSeparately = true;
+
+        const postSpy = uploadFakeFiles(2);
+
+        expect(postSpy).toHaveBeenCalledTimes(2);
+        [0, 1].forEach((index) => {
+          const formData = formDataOfCall(postSpy, index);
+          expect(formData.has('uploads[]')).toBe(false);
+          expect(formData.getAll('upload')).toHaveLength(1);
+        });
+      });
+    });
   });
 });
 

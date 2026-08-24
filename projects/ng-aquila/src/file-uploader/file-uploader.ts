@@ -4,6 +4,9 @@ import { catchError } from 'rxjs/operators';
 
 import { FileItem } from './file-uploader.model';
 
+/** The form data field name that is used when no custom one is configured. */
+const DEFAULT_FORM_DATA_FIELD_NAME = 'uploads[]';
+
 export interface NxFileUploadConfig {
   /** Sets the url for uploading requests. */
   requestUrl: string;
@@ -11,6 +14,8 @@ export interface NxFileUploadConfig {
   options?: object;
   /** Whether the files should be uploaded separately. Default: false. */
   uploadSeparately?: boolean;
+  /** Sets the field name the files are appended with to the form data of the upload request. Default: 'uploads[]'. */
+  formDataFieldName?: string;
 }
 
 export class NxFileUploadSuccess {
@@ -57,6 +62,11 @@ export class NxFileUploader {
     return this._config;
   }
 
+  /** The field name the files are appended with to the form data of the upload request. */
+  private get _formDataFieldName(): string {
+    return this.config.formDataFieldName ?? DEFAULT_FORM_DATA_FIELD_NAME;
+  }
+
   constructor(config: NxFileUploadConfig, http: HttpClient) {
     this._config = config;
     this._httpClient = http;
@@ -84,7 +94,7 @@ export class NxFileUploader {
     const valuesToUpload = files.filter((file) => !file.isUploaded);
     valuesToUpload.forEach((file: FileItem) => {
       file.setUploadingState();
-      formData.append('uploads[]', file.file as Blob, file.name);
+      formData.append(this._formDataFieldName, file.file as Blob, file.name);
     });
 
     this._httpClient.post(this.config.requestUrl, formData, this.config.options).subscribe(
@@ -155,7 +165,7 @@ export class NxFileUploader {
     const formData = new FormData();
     if (!file.isUploaded) {
       file.setUploadingState();
-      formData.append('uploads[]', file.file as Blob, file.name);
+      formData.append(this._formDataFieldName, file.file as Blob, file.name);
     }
 
     this._httpClient.post(this.config.requestUrl, formData, this.config.options).subscribe(

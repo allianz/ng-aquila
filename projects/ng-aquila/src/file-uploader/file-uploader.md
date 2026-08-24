@@ -248,6 +248,10 @@ By default, all files are sent within one single upload request. You can also se
 
 </div>
 
+#### Form data field name
+
+The files are appended to the form data of the upload request with the field name `uploads[]`. If your backend expects another field name, you can change it by adding `formDataFieldName: 'upload'` to the configuration of the NxFileUploader.
+
 #### Custom uploading implementation
 
 Besides the build-in uploading functionality you can also send an http request by yourself if you want to do more complex requests. Then you have to set the uploading status of the files manually:
