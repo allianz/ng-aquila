@@ -384,6 +384,55 @@ describe('NxMaskDirective', () => {
       expect(testInstance.testForm.valid).toBe(false);
       expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
     });
+
+    it('should report lengths without separators in nxMaskLengthError', () => {
+      createTestComponent(ValidationMaskComponent);
+      testInstance.mask = '00:00-00';
+      fixture.detectChanges();
+
+      nativeElement.value = '1234';
+      nativeElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      // the mask engine appends the trailing separator, so the display value is
+      // 6 chars while only 4 characters were typed
+      expect(nativeElement.value).toBe('12:34-');
+      expect(testInstance.testForm.get('maskInput')!.getError('nxMaskLengthError')).toEqual({
+        length: 6,
+        actual: 4,
+      });
+    });
+
+    it('should use the configured separators when reporting lengths', () => {
+      createTestComponent(ValidationCustomSeparatorsMaskComponent);
+      testInstance.separators = ['#'];
+      testInstance.mask = '00#00';
+      fixture.detectChanges();
+
+      nativeElement.value = '12';
+      nativeElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      expect(testInstance.testForm.get('maskInput')!.getError('nxMaskLengthError')).toEqual({
+        length: 4,
+        actual: 2,
+      });
+    });
+
+    it('should stay valid for a mask ending in a separator once all characters are typed', () => {
+      createTestComponent(ValidationMaskComponent);
+      testInstance.mask = '00-00-';
+      fixture.detectChanges();
+
+      nativeElement.value = '1234';
+      nativeElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      const control = testInstance.testForm.get('maskInput')!;
+      expect(nativeElement.value).toBe('12-34-');
+      expect(control.valid).toBe(true);
+      expect(control.getError('nxMaskLengthError')).toBeNull();
+    });
   });
 
   describe('test ngModel', () => {
@@ -1201,6 +1250,22 @@ class ValidationMaskComponent extends MaskTest {}
 
 @Component({
   selector: 'test-preset-deactive-mask-component',
+  template: `
+    <form [formGroup]="testForm">
+      <input
+        [nxMask]="mask"
+        formControlName="maskInput"
+        [separators]="separators"
+        [validateMask]="validateMask"
+      />
+    </form>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
+})
+class ValidationCustomSeparatorsMaskComponent extends MaskTest {}
+
+@Component({
   template: `
     <input
       [nxMask]="mask"

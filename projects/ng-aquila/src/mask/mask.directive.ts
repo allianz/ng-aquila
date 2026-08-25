@@ -349,10 +349,15 @@ export class NxMaskDirective
     if (this.isEmptyInputValue(value)) {
       return null;
     }
-    const inputLength = this._elementRef.nativeElement.value.length;
-    const maskLength = this._mask.length;
-    if (inputLength !== maskLength && !this.deactivateMask) {
-      return { nxMaskLengthError: { length: maskLength, actual: inputLength } };
+    // Compared in display space (both sides include separators); reported in
+    // typed-character space, which is what a consumer shows to the user.
+    if (value.length !== this._mask.length && !this.deactivateMask) {
+      return {
+        nxMaskLengthError: {
+          length: this.nxMask?.getUnmaskedValue(this._mask).length,
+          actual: this.nxMask?.getUnmaskedValue(value).length,
+        },
+      };
     }
     return null;
   }

@@ -53,7 +53,7 @@ An alternative way to get the value without separators is calling the `getUnmask
 
 ### Validation
 
-Per default the mask is validated. It will send a `nxMaskLengthError`, if the lengths of input value and given mask do not match.
+Per default the mask is validated. It will send a `nxMaskLengthError`, if the lengths of input value and given mask do not match. The error carries `length` (how many characters the mask expects) and `actual` (how many were entered); both counts exclude separator characters, so they match what the user actually has to type.
 
 The validation can be turned off via the `[validateMask]` input. In both cases you can add your custom validators (e.g. `required`) for the input.
 

@@ -397,6 +397,25 @@ describe('NxIbanMaskDirective', () => {
       expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 02');
     });
 
+    it('should report the typed character count in nxMaskLengthError, not the display length', () => {
+      createTestComponent(FormIbanMaskComponent);
+
+      // quick solution for getting the mask updated after entering the first two letters
+      assertInputValue(nativeElement, 'FR', 'FR');
+      // a french iban is 27 characters long and renders as 33 including the
+      // separator spaces the mask inserts after every 4 characters
+      assertInputValue(
+        nativeElement,
+        'FR76300060000112345678901',
+        'FR76 3000 6000 0112 3456 7890 1',
+      );
+
+      expect(testInstance.testForm.controls.maskInput.getError('nxMaskLengthError')).toEqual({
+        length: 27,
+        actual: 25,
+      });
+    });
+
     it('should not do iban valdation on mask validation turned off', () => {
       createTestComponent(FormIbanMaskComponent);
       expect(maskInstance.validateMask).toBe(true);
