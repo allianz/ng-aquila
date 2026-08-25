@@ -4,6 +4,7 @@ import {
   NxExpansionPanelComponent,
 } from '@allianz/ng-aquila/accordion';
 import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { IdGenerationService, NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor, InteractivityChecker, LiveAnnouncer } from '@angular/cdk/a11y';
@@ -20,7 +21,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChildren,
+  effect,
   ElementRef,
   EventEmitter,
   Inject,
@@ -143,12 +146,15 @@ export class NxTabGroupComponent
   }
   private _autoselect = true;
 
-  /** Whether the tabs should to accordion on mobile viewports. */
+  /**
+   * Whether the tabs should to accordion on mobile viewports.
+   * Under A1 the accordion is never shown, regardless of this input.
+   */
   @Input() set mobileAccordion(value: BooleanInput) {
     this._mobileAccordion = coerceBooleanProperty(value);
   }
   get mobileAccordion(): boolean {
-    return this._mobileAccordion;
+    return this._isA1() ? false : this._mobileAccordion;
   }
   private _mobileAccordion = true;
 
@@ -223,6 +229,11 @@ export class NxTabGroupComponent
 
   private readonly _interactivityChecker = inject(InteractivityChecker);
 
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+  private readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
+
   /** Potentially focusable elements. Used to find candidates outside the tab group. */
   private static readonly _focusableSelector =
     'a[href], button, input, select, textarea, audio[controls], video[controls], details > summary, [contenteditable], [tabindex]';
@@ -234,7 +245,15 @@ export class NxTabGroupComponent
     @Inject(TAB_GROUP_DEFAULT_OPTIONS)
     private readonly _defaultOptions: TabGroupDefaultOptions | null,
     private readonly _focusMonitor: FocusMonitor,
-  ) {}
+  ) {
+    // Force the accordion off as soon as A1 becomes enabled, even if the group
+    // is already showing it (e.g. the ALLIANZ_ONE signal flips at runtime).
+    effect(() => {
+      if (this._isA1() && this._showAccordion) {
+        this._setShowAccordion(false);
+      }
+    });
+  }
 
   ngAfterContentInit(): void {
     this._subscribeToTabLabels();
@@ -525,18 +544,22 @@ export class NxTabGroupComponent
   }
 
   private _switchAppearance(isSmallTablet: boolean) {
-    if (!this._mobileAccordion) {
+    if (!this.mobileAccordion) {
       return;
     }
 
+    this._setShowAccordion(isSmallTablet);
+  }
+
+  private _setShowAccordion(showAccordion: boolean) {
     // trigger a change only when there is value difference
     // otherwise a switch is triggered by tablet <-> desktop change
-    if (this._showAccordion !== isSmallTablet) {
+    if (this._showAccordion !== showAccordion) {
       // notify the outlets to detach the viewrefs for header and body before
       // we switch the appearance. this way we only instantiate the templates
       // once so that they do not get destroyed during the switch
       this._appearanceChange.next();
-      this._showAccordion = isSmallTablet;
+      this._showAccordion = showAccordion;
       this._cdr.markForCheck();
     }
   }

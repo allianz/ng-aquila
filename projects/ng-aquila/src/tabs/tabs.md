@@ -84,9 +84,15 @@ Both events return an instance of `NxTabChangeEvent` containing the index and th
 
 If no tab is selectable anymore, `selectedIndexChange` emits `-1` while `selectedTabChange` does not emit, as there is no tab instance to report.
 
+<div class="docs-hide-a1">
+
 Limitations: The `focusChange` event is currently not supported on mobile breakpoints as the accordion is lacking this feature.
 
+</div>
+
 <!-- example(tabs-output-events) -->
+
+<div class="docs-hide-a1">
 
 ### Responsive behavior
 
@@ -97,6 +103,8 @@ You can access the accordion component instance by the public accordion property
 Important notice: The `(focusChange)` event is currently not supported by the accordion so you should not rely on this event for mobile viewports. The `(selectedTabChange)` event however will work also if the accordion is active.
 
 <!-- example(tabs-responsive) -->
+
+</div>
 
 <div class="docs-expert-container">
 

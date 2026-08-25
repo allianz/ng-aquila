@@ -1,4 +1,5 @@
 import { NxAccordionDirective } from '@allianz/ng-aquila/accordion';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { DELETE, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
 import {
@@ -8,6 +9,7 @@ import {
   Directive,
   OnDestroy,
   QueryList,
+  signal,
   Type,
   ViewChild,
   ViewChildren,
@@ -957,6 +959,58 @@ describe('NxTabGroupComponent', () => {
         expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-expert');
       },
     ));
+  });
+
+  describe('with A1', () => {
+    const a1Enabled = signal(true);
+
+    beforeEach(waitForAsync(() => {
+      a1Enabled.set(true);
+      TestBed.configureTestingModule({
+        imports: [NxTabsModule, BasicTabs, ConfigurableTabs],
+        providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: a1Enabled } }],
+      }).compileComponents();
+    }));
+
+    it('should not show accordion on viewport change', fakeAsync(() => {
+      createTestComponent(BasicTabs);
+      viewport.set('mobile');
+      window.dispatchEvent(new Event('resize'));
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-accordion')).toBeFalsy();
+      flush();
+    }));
+
+    it('should ignore an explicit mobileAccordion="true" input', fakeAsync(() => {
+      createTestComponent(ConfigurableTabs);
+      testInstance.showAccordion = true;
+      fixture.detectChanges();
+
+      expect(tabGroupInstance.mobileAccordion).toBe(false);
+
+      viewport.set('mobile');
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      expect(fixture.nativeElement.querySelector('nx-accordion')).toBeFalsy();
+      flush();
+    }));
+
+    it('should hide an already-shown accordion once A1 gets enabled at runtime', fakeAsync(() => {
+      a1Enabled.set(false);
+      createTestComponent(BasicTabs);
+      viewport.set('mobile');
+      window.dispatchEvent(new Event('resize'));
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-accordion')).toBeTruthy();
+
+      a1Enabled.set(true);
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-accordion')).toBeFalsy();
+      flush();
+    }));
   });
 });
 
