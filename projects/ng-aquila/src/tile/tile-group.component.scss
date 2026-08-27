@@ -1,3 +1,5 @@
+@use '../shared-styles/auto-grid' as *;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -31,11 +33,7 @@
     // TODO: the css var definitions need to come from outside
     --auto-grid-min-size: calc(24px * 6);
     --auto-grid-gap: 1rem;
-    display: grid;
-    --max-column-width: 100% /
-      var(--nx-auto-grid-max-columns, infinity) - var(--auto-grid-gap, 1rem);
-    --column-width: max(var(--max-column-width), min(var(--auto-grid-min-size, 10rem), 100%));
-    gap: var(--auto-grid-gap-vertical, var(--auto-grid-gap, 1rem)) var(--auto-grid-gap, 1rem);
-    grid-template-columns: repeat(auto-fit, minmax(var(--column-width), 1fr));
+
+    @include auto-grid;
   }
 }

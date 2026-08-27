@@ -1158,6 +1158,129 @@ $nx-theme: (
   tile-hint-font-weight: 400,
   tile-hint-letter-spacing: paragraph-04-letter-spacing,
 
+  // Toggle button tokens. The `a1` keeps them apart from the `toggle-button-*` tokens of the radio
+  // toggle, a different component that already occupies the plain prefix.
+  toggle-button-a1-group-spacing: 16px,
+  toggle-button-a1-group-gap-horizontal: 16px,
+  toggle-button-a1-group-gap-vertical: 16px,
+  toggle-button-a1-background-color: ui-01,
+  toggle-button-a1-border-color: interactive-primary,
+  toggle-button-a1-text-color: text-01,
+  toggle-button-a1-border-width: 1px,
+  toggle-button-a1-border-radius: 4px,
+  toggle-button-a1-padding: 14px 16px,
+  // The horizontal part of the padding on its own, which the equal column layout needs as a number.
+  toggle-button-a1-padding-horizontal: 16px,
+  toggle-button-a1-font-size: paragraph-03-font-size,
+  toggle-button-a1-font-weight: paragraph-03-font-weight,
+  toggle-button-a1-line-height: paragraph-03-line-height,
+  toggle-button-a1-letter-spacing: paragraph-03-letter-spacing,
+
+  // Selected state
+  toggle-button-a1-selected-background-color: interactive-primary,
+  toggle-button-a1-selected-border-color: interactive-primary,
+  toggle-button-a1-selected-text-color: text-02,
+
+  // Hover state
+  toggle-button-a1-hover-background-color: selectable-card-background-hover-color,
+  toggle-button-a1-hover-border-color: hover-primary,
+  toggle-button-a1-hover-text-color: hover-primary,
+  toggle-button-a1-selected-hover-background-color: hover-primary,
+  toggle-button-a1-selected-hover-border-color: hover-primary,
+  toggle-button-a1-selected-hover-text-color: text-02,
+
+  // Active state
+  toggle-button-a1-active-background-color: ui-03,
+  toggle-button-a1-active-border-color: active-primary,
+  toggle-button-a1-active-text-color: active-primary,
+  toggle-button-a1-selected-active-background-color: active-primary,
+  toggle-button-a1-selected-active-border-color: active-primary,
+  toggle-button-a1-selected-active-text-color: text-02,
+
+  // Disabled state
+  toggle-button-a1-disabled-opacity: 0.4,
+  toggle-button-a1-disabled-background-color: ui-01,
+  toggle-button-a1-disabled-border-color: interactive-primary,
+  toggle-button-a1-disabled-text-color: interactive-primary,
+  toggle-button-a1-disabled-selected-background-color: interactive-primary,
+  toggle-button-a1-disabled-selected-border-color: interactive-primary,
+  toggle-button-a1-disabled-selected-text-color: text-02,
+
+  // Readonly state
+  toggle-button-a1-readonly-background-color: readonly-surface-color,
+  toggle-button-a1-readonly-border-color: readonly-on-surface-color,
+  toggle-button-a1-readonly-text-color: text-01,
+  toggle-button-a1-readonly-selected-background-color: readonly-surface-active-color,
+  toggle-button-a1-readonly-selected-border-color: readonly-surface-active-color,
+  toggle-button-a1-readonly-selected-text-color: text-02,
+
+  // Error state
+  toggle-button-a1-error-border-color: danger,
+  toggle-button-a1-error-hover-border-color: danger-hover,
+  toggle-button-a1-error-active-border-color: danger-active,
+  toggle-button-a1-error-selected-background-color: danger,
+  toggle-button-a1-error-selected-border-color: danger,
+  toggle-button-a1-error-selected-text-color: text-02,
+  toggle-button-a1-error-selected-hover-background-color: danger-hover,
+  toggle-button-a1-error-selected-hover-border-color: danger-hover,
+  toggle-button-a1-error-selected-active-background-color: danger-active,
+  toggle-button-a1-error-selected-active-border-color: danger-active,
+
+  // Inverse variant, for a group on a dark surface. Every token has a counterpart above, which the
+  // component maps onto. None of them may resolve back to one of those, that would be a cycle.
+  toggle-button-a1-inverse-background-color: transparent,
+  toggle-button-a1-inverse-border-color: negative,
+  toggle-button-a1-inverse-text-color: negative,
+
+  // Inverse selected state
+  toggle-button-a1-inverse-selected-background-color: negative,
+  toggle-button-a1-inverse-selected-border-color: negative,
+  toggle-button-a1-inverse-selected-text-color: negative-accent,
+
+  // Inverse hover state
+  toggle-button-a1-inverse-hover-background-color: negative-dimmed,
+  toggle-button-a1-inverse-hover-border-color: negative-01,
+  toggle-button-a1-inverse-hover-text-color: negative,
+  toggle-button-a1-inverse-selected-hover-background-color: negative-01,
+  toggle-button-a1-inverse-selected-hover-border-color: negative-01,
+  toggle-button-a1-inverse-selected-hover-text-color: negative-accent,
+
+  // Inverse active state
+  toggle-button-a1-inverse-active-background-color: negative-dimmed,
+  toggle-button-a1-inverse-active-border-color: negative-02,
+  toggle-button-a1-inverse-active-text-color: negative,
+  toggle-button-a1-inverse-selected-active-background-color: negative-02,
+  toggle-button-a1-inverse-selected-active-border-color: negative-02,
+  toggle-button-a1-inverse-selected-active-text-color: negative-accent,
+
+  // Inverse disabled state, the opacity is shared with the other variant
+  toggle-button-a1-inverse-disabled-background-color: transparent,
+  toggle-button-a1-inverse-disabled-border-color: negative-dimmed,
+  toggle-button-a1-inverse-disabled-text-color: negative-dimmed,
+  toggle-button-a1-inverse-disabled-selected-background-color: negative-dimmed,
+  toggle-button-a1-inverse-disabled-selected-border-color: negative-dimmed,
+  toggle-button-a1-inverse-disabled-selected-text-color: negative-background-dimmed,
+
+  // Inverse readonly state
+  toggle-button-a1-inverse-readonly-background-color: transparent,
+  toggle-button-a1-inverse-readonly-border-color: readonly-on-surface-color,
+  toggle-button-a1-inverse-readonly-text-color: negative,
+  toggle-button-a1-inverse-readonly-selected-background-color: readonly-surface-active-color,
+  toggle-button-a1-inverse-readonly-selected-border-color: readonly-surface-active-color,
+  toggle-button-a1-inverse-readonly-selected-text-color: readonly-on-surface-active-color,
+
+  // Inverse error state
+  toggle-button-a1-inverse-error-border-color: danger,
+  toggle-button-a1-inverse-error-hover-border-color: danger-hover,
+  toggle-button-a1-inverse-error-active-border-color: danger-active,
+  toggle-button-a1-inverse-error-selected-background-color: danger,
+  toggle-button-a1-inverse-error-selected-border-color: danger,
+  toggle-button-a1-inverse-error-selected-text-color: text-02,
+  toggle-button-a1-inverse-error-selected-hover-background-color: danger-hover,
+  toggle-button-a1-inverse-error-selected-hover-border-color: danger-hover,
+  toggle-button-a1-inverse-error-selected-active-background-color: danger-active,
+  toggle-button-a1-inverse-error-selected-active-border-color: danger-active,
+
   circle-toggle-checkmark-background-color: accent-01,
   circle-toggle-checkmark-color: #ffffff,
   circle-toggle-checkmark-border-color: ui-background,

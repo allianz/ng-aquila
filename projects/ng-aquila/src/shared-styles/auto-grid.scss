@@ -1,0 +1,17 @@
+// Lays out items in as many equal width columns as fit into the available width. Every column is at
+// least `--auto-grid-min-size` wide and the count is capped at `--nx-auto-grid-max-columns`. Gaps
+// come from `--auto-grid-gap` and, for rows only, `--auto-grid-gap-vertical`.
+@mixin auto-grid {
+  gap: var(--auto-grid-gap-vertical, var(--auto-grid-gap, 1rem)) var(--auto-grid-gap, 1rem);
+
+  // A minimum column width of `100% / max-columns` is what caps the column count. Resolves to a
+  // negative value while the count is unlimited, which the `max()` discards.
+  --auto-grid-column-cap: 100% /
+    var(--nx-auto-grid-max-columns, infinity) - var(--auto-grid-gap, 1rem);
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(var(--auto-grid-column-cap), min(var(--auto-grid-min-size, 10rem), 100%)), 1fr)
+  );
+}

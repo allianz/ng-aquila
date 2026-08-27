@@ -1,0 +1,22 @@
+<ng-content select="nx-label"></ng-content>
+
+<!-- The radiogroup wraps only the buttons, so the projected label and error stay outside it and are
+referenced by id instead of being owned children of the group. -->
+<div
+  class="nx-toggle-button-group__buttons"
+  [class.nx-toggle-button-group__buttons--content]="autoGrid() && columnSizing() === 'content'"
+  [class.nx-toggle-button-group__buttons--equal]="autoGrid() && columnSizing() === 'equal'"
+  role="radiogroup"
+  [attr.aria-labelledby]="_label()?.id || null"
+  [attr.aria-describedby]="(_errorState() && _errorIds()) || null"
+  [attr.aria-invalid]="_errorState() || null"
+  [attr.aria-required]="required() || null"
+  [attr.aria-disabled]="disabled() || null"
+  [attr.aria-readonly]="_isReadonly() || null"
+>
+  <ng-content></ng-content>
+</div>
+
+@if (_errorState()) {
+  <ng-content select="nx-error"></ng-content>
+}

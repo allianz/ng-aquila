@@ -1,0 +1,278 @@
+@use '../shared-styles/index' as *;
+
+:host {
+  position: relative;
+  display: inline-flex;
+  box-sizing: border-box;
+  border: v(toggle-button-a1-border-width) solid v(toggle-button-a1-border-color);
+  border-radius: v(toggle-button-a1-border-radius);
+  background-color: v(toggle-button-a1-background-color);
+  color: v(toggle-button-a1-text-color);
+  font-family: inherit;
+  font-size: v(toggle-button-a1-font-size);
+  font-weight: v(toggle-button-a1-font-weight);
+  line-height: v(toggle-button-a1-line-height);
+  letter-spacing: v(toggle-button-a1-letter-spacing);
+  cursor: pointer;
+}
+
+.nx-toggle-button__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  opacity: 0;
+  appearance: none;
+}
+
+.nx-toggle-button__label {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  // A column of the group can end up narrower than the label, because the automatic minimum size of
+  // a grid item does not apply in a track with a fixed minimum. `min-width` lets the label follow the
+  // button instead of hanging out of it, and only `anywhere` — not `break-word` — lowers the minimum
+  // content size of the text, which is what the label is clamped to otherwise.
+  min-width: 0;
+  padding: v(toggle-button-a1-padding);
+  border-radius: inherit;
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: inherit;
+}
+
+// The inverse variant swaps the token values instead of repeating every state rule below. Custom
+// properties resolve per element, so this wins no matter how specific the rule that reads them is,
+// and the forced-colors overrides at the end keep working because they use no tokens at all.
+:host(.is-negative) {
+  --toggle-button-a1-background-color: #{v(toggle-button-a1-inverse-background-color)};
+  --toggle-button-a1-border-color: #{v(toggle-button-a1-inverse-border-color)};
+  --toggle-button-a1-text-color: #{v(toggle-button-a1-inverse-text-color)};
+  --toggle-button-a1-selected-background-color: #{v(
+      toggle-button-a1-inverse-selected-background-color
+    )};
+  --toggle-button-a1-selected-border-color: #{v(toggle-button-a1-inverse-selected-border-color)};
+  --toggle-button-a1-selected-text-color: #{v(toggle-button-a1-inverse-selected-text-color)};
+  --toggle-button-a1-hover-background-color: #{v(toggle-button-a1-inverse-hover-background-color)};
+  --toggle-button-a1-hover-border-color: #{v(toggle-button-a1-inverse-hover-border-color)};
+  --toggle-button-a1-hover-text-color: #{v(toggle-button-a1-inverse-hover-text-color)};
+  --toggle-button-a1-selected-hover-background-color: #{v(
+      toggle-button-a1-inverse-selected-hover-background-color
+    )};
+  --toggle-button-a1-selected-hover-border-color: #{v(
+      toggle-button-a1-inverse-selected-hover-border-color
+    )};
+  --toggle-button-a1-selected-hover-text-color: #{v(
+      toggle-button-a1-inverse-selected-hover-text-color
+    )};
+  --toggle-button-a1-active-background-color: #{v(toggle-button-a1-inverse-active-background-color)};
+  --toggle-button-a1-active-border-color: #{v(toggle-button-a1-inverse-active-border-color)};
+  --toggle-button-a1-active-text-color: #{v(toggle-button-a1-inverse-active-text-color)};
+  --toggle-button-a1-selected-active-background-color: #{v(
+      toggle-button-a1-inverse-selected-active-background-color
+    )};
+  --toggle-button-a1-selected-active-border-color: #{v(
+      toggle-button-a1-inverse-selected-active-border-color
+    )};
+  --toggle-button-a1-selected-active-text-color: #{v(
+      toggle-button-a1-inverse-selected-active-text-color
+    )};
+  --toggle-button-a1-disabled-background-color: #{v(
+      toggle-button-a1-inverse-disabled-background-color
+    )};
+  --toggle-button-a1-disabled-border-color: #{v(toggle-button-a1-inverse-disabled-border-color)};
+  --toggle-button-a1-disabled-text-color: #{v(toggle-button-a1-inverse-disabled-text-color)};
+  --toggle-button-a1-disabled-selected-background-color: #{v(
+      toggle-button-a1-inverse-disabled-selected-background-color
+    )};
+  --toggle-button-a1-disabled-selected-border-color: #{v(
+      toggle-button-a1-inverse-disabled-selected-border-color
+    )};
+  --toggle-button-a1-disabled-selected-text-color: #{v(
+      toggle-button-a1-inverse-disabled-selected-text-color
+    )};
+  --toggle-button-a1-readonly-background-color: #{v(
+      toggle-button-a1-inverse-readonly-background-color
+    )};
+  --toggle-button-a1-readonly-border-color: #{v(toggle-button-a1-inverse-readonly-border-color)};
+  --toggle-button-a1-readonly-text-color: #{v(toggle-button-a1-inverse-readonly-text-color)};
+  --toggle-button-a1-readonly-selected-background-color: #{v(
+      toggle-button-a1-inverse-readonly-selected-background-color
+    )};
+  --toggle-button-a1-readonly-selected-border-color: #{v(
+      toggle-button-a1-inverse-readonly-selected-border-color
+    )};
+  --toggle-button-a1-readonly-selected-text-color: #{v(
+      toggle-button-a1-inverse-readonly-selected-text-color
+    )};
+  --toggle-button-a1-error-border-color: #{v(toggle-button-a1-inverse-error-border-color)};
+  --toggle-button-a1-error-hover-border-color: #{v(
+      toggle-button-a1-inverse-error-hover-border-color
+    )};
+  --toggle-button-a1-error-active-border-color: #{v(
+      toggle-button-a1-inverse-error-active-border-color
+    )};
+  --toggle-button-a1-error-selected-background-color: #{v(
+      toggle-button-a1-inverse-error-selected-background-color
+    )};
+  --toggle-button-a1-error-selected-border-color: #{v(
+      toggle-button-a1-inverse-error-selected-border-color
+    )};
+  --toggle-button-a1-error-selected-text-color: #{v(
+      toggle-button-a1-inverse-error-selected-text-color
+    )};
+  --toggle-button-a1-error-selected-hover-background-color: #{v(
+      toggle-button-a1-inverse-error-selected-hover-background-color
+    )};
+  --toggle-button-a1-error-selected-hover-border-color: #{v(
+      toggle-button-a1-inverse-error-selected-hover-border-color
+    )};
+  --toggle-button-a1-error-selected-active-background-color: #{v(
+      toggle-button-a1-inverse-error-selected-active-background-color
+    )};
+  --toggle-button-a1-error-selected-active-border-color: #{v(
+      toggle-button-a1-inverse-error-selected-active-border-color
+    )};
+}
+
+// The states are ordered from the least to the most specific selector, so that every combination
+// that has its own design ends up with the styles of its own rule.
+:host(.can-interact:hover) {
+  border-color: v(toggle-button-a1-hover-border-color);
+  background-color: v(toggle-button-a1-hover-background-color);
+  color: v(toggle-button-a1-hover-text-color);
+}
+
+:host(.can-interact:active) {
+  border-color: v(toggle-button-a1-active-border-color);
+  background-color: v(toggle-button-a1-active-background-color);
+  color: v(toggle-button-a1-active-text-color);
+}
+
+:host(.is-selected) {
+  border-color: v(toggle-button-a1-selected-border-color);
+  background-color: v(toggle-button-a1-selected-background-color);
+  color: v(toggle-button-a1-selected-text-color);
+}
+
+:host(.is-selected.can-interact:hover) {
+  border-color: v(toggle-button-a1-selected-hover-border-color);
+  background-color: v(toggle-button-a1-selected-hover-background-color);
+  color: v(toggle-button-a1-selected-hover-text-color);
+}
+
+:host(.is-selected.can-interact:active) {
+  border-color: v(toggle-button-a1-selected-active-border-color);
+  background-color: v(toggle-button-a1-selected-active-background-color);
+  color: v(toggle-button-a1-selected-active-text-color);
+}
+
+:host(.has-error) {
+  border-color: v(toggle-button-a1-error-border-color);
+}
+
+:host(.has-error.can-interact:hover) {
+  border-color: v(toggle-button-a1-error-hover-border-color);
+}
+
+:host(.has-error.can-interact:active) {
+  border-color: v(toggle-button-a1-error-active-border-color);
+}
+
+:host(.has-error.is-selected) {
+  border-color: v(toggle-button-a1-error-selected-border-color);
+  background-color: v(toggle-button-a1-error-selected-background-color);
+  color: v(toggle-button-a1-error-selected-text-color);
+}
+
+:host(.has-error.is-selected.can-interact:hover) {
+  border-color: v(toggle-button-a1-error-selected-hover-border-color);
+  background-color: v(toggle-button-a1-error-selected-hover-background-color);
+}
+
+:host(.has-error.is-selected.can-interact:active) {
+  border-color: v(toggle-button-a1-error-selected-active-border-color);
+  background-color: v(toggle-button-a1-error-selected-active-background-color);
+}
+
+:host(.is-readonly) {
+  border-color: v(toggle-button-a1-readonly-border-color);
+  background-color: v(toggle-button-a1-readonly-background-color);
+  color: v(toggle-button-a1-readonly-text-color);
+  cursor: default;
+}
+
+:host(.is-readonly.is-selected) {
+  border-color: v(toggle-button-a1-readonly-selected-border-color);
+  background-color: v(toggle-button-a1-readonly-selected-background-color);
+  color: v(toggle-button-a1-readonly-selected-text-color);
+}
+
+:host(.is-disabled) {
+  border-color: v(toggle-button-a1-disabled-border-color);
+  background-color: v(toggle-button-a1-disabled-background-color);
+  color: v(toggle-button-a1-disabled-text-color);
+  opacity: v(toggle-button-a1-disabled-opacity);
+  cursor: not-allowed;
+}
+
+:host(.is-disabled.is-selected) {
+  border-color: v(toggle-button-a1-disabled-selected-border-color);
+  background-color: v(toggle-button-a1-disabled-selected-background-color);
+  color: v(toggle-button-a1-disabled-selected-text-color);
+}
+
+:host(.cdk-keyboard-focused) {
+  @include focus-style;
+}
+
+// The forced palette replaces every token color, so hover, active and error collapse into their
+// base state. The selectors repeat the ones above to match their specificity, which lets source
+// order decide instead of `!important`.
+@media screen and (forced-colors: active) {
+  :host {
+    forced-color-adjust: none;
+  }
+
+  :host,
+  :host(.can-interact:hover),
+  :host(.can-interact:active),
+  :host(.has-error),
+  :host(.has-error.can-interact:hover),
+  :host(.has-error.can-interact:active) {
+    border-color: buttonText;
+    background-color: buttonFace;
+    color: buttonText;
+  }
+
+  :host(.is-selected),
+  :host(.is-selected.can-interact:hover),
+  :host(.is-selected.can-interact:active),
+  :host(.has-error.is-selected),
+  :host(.has-error.is-selected.can-interact:hover),
+  :host(.has-error.is-selected.can-interact:active) {
+    border-color: buttonText;
+    background-color: highlight;
+    color: highlightText;
+  }
+
+  // Grey is the only inactive signal the forced palette offers, so readonly and disabled share it.
+  :host(.is-readonly),
+  :host(.is-disabled) {
+    border-color: GrayText;
+    background-color: buttonFace;
+    color: GrayText;
+    opacity: 1;
+  }
+
+  :host(.is-readonly.is-selected),
+  :host(.is-disabled.is-selected) {
+    border-color: GrayText;
+    background-color: GrayText;
+    color: buttonFace;
+  }
+}

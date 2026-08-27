@@ -1,0 +1,28 @@
+@use '../shared-styles/index' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: v(toggle-button-a1-group-spacing);
+}
+
+.nx-toggle-button-group__buttons {
+  --auto-grid-gap: #{v(toggle-button-a1-group-gap-horizontal)};
+  --auto-grid-gap-vertical: #{v(toggle-button-a1-group-gap-vertical)};
+
+  // The layout lives on the modifiers only, so that a switched off auto grid emits none at all and
+  // leaves the buttons to the consumer.
+  &--content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--auto-grid-gap-vertical) var(--auto-grid-gap);
+  }
+
+  &--equal {
+    // Equal columns need a minimum width to size the columns from. The padding of a button plus room
+    // for roughly eight characters, so that a column is never mostly padding.
+    --auto-grid-min-size: calc(2 * #{v(toggle-button-a1-padding-horizontal)} + 4rem);
+
+    @include auto-grid;
+  }
+}

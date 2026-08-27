@@ -1,0 +1,18 @@
+<input
+  #input
+  type="radio"
+  class="nx-toggle-button__input"
+  [id]="_inputId"
+  [name]="_group.name()"
+  [value]="value()"
+  [checked]="selected()"
+  [disabled]="_isDisabled()"
+  [attr.aria-describedby]="_ariaDescribedBy()"
+  [attr.aria-invalid]="_showError() || null"
+  [attr.aria-disabled]="_isReadonly() || _isDisabled() || null"
+  (click)="_onClick($event)"
+/>
+
+<label class="nx-toggle-button__label" [for]="_inputId">
+  <ng-content></ng-content>
+</label>

@@ -1,0 +1,10 @@
+<form #form="ngForm">
+  <nx-toggle-button-group name="interval" [(ngModel)]="interval">
+    <nx-label>Payment interval</nx-label>
+    <nx-toggle-button value="monthly">Monthly</nx-toggle-button>
+    <nx-toggle-button value="quarterly">Quarterly</nx-toggle-button>
+    <nx-toggle-button value="yearly">Yearly</nx-toggle-button>
+  </nx-toggle-button-group>
+</form>
+
+<p>Selected: {{ interval }}</p>

@@ -1,0 +1,7 @@
+<nx-toggle-button-group [(value)]="interval" [invalid]="true" [touched]="true">
+  <nx-label>Payment interval</nx-label>
+  @for (item of intervals; track item.value) {
+    <nx-toggle-button [value]="item.value">{{ item.label }}</nx-toggle-button>
+  }
+  <nx-error>Please choose a payment interval</nx-error>
+</nx-toggle-button-group>
