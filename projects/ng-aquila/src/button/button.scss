@@ -4,56 +4,51 @@
   @return calc(#{$padding} - #{v(button-border-width)});
 }
 
+// Every variant only assigns the `--nx-button-*` custom properties below; the
+// interaction-state rules that consume them exist exactly once, on `:host`.
+// Writing the states per variant instead multiplied the (very long) variant
+// selectors by five and blew up the bundle — see issue #5532.
 @mixin button-theme($type) {
-  color: v(button-#{$type}-text-color);
-  background-color: v(button-#{$type}-background-color);
-  border-color: v(button-#{$type}-border-color);
-
-  &:hover:not([disabled]):not(:active) {
-    background-color: v(button-#{$type}-hover-background-color);
-    color: v(button-#{$type}-hover-text-color);
-    border-color: v(button-#{$type}-hover-border-color);
-  }
-
-  // reset hover styles for devices that don't support hover
-  @media (hover: none) {
-    &:hover:not([disabled]):not(:active) {
-      color: v(button-#{$type}-text-color);
-      background-color: v(button-#{$type}-background-color);
-      border-color: v(button-#{$type}-border-color);
-    }
-  }
-
-  &:active,
-  &.nx-button--active {
-    background-color: v(button-#{$type}-active-background-color);
-    color: v(button-#{$type}-active-text-color);
-    border-color: v(button-#{$type}-active-border-color);
-  }
-
-  // resets the text-decoration of tertiary button
-  &:active:not([disabled]),
-  &:hover:not([disabled]) {
-    .nx-button__content.nx-button__content {
-      text-decoration: none;
-    }
-  }
-
-  &[disabled] {
-    background-color: v(button-#{$type}-disabled-background-color);
-    color: v(button-#{$type}-disabled-text-color);
-    border-color: v(button-#{$type}-disabled-border-color);
-  }
+  --nx-button-text-color: #{v(button-#{$type}-text-color)};
+  --nx-button-background-color: #{v(button-#{$type}-background-color)};
+  --nx-button-border-color: #{v(button-#{$type}-border-color)};
+  --nx-button-hover-text-color: #{v(button-#{$type}-hover-text-color)};
+  --nx-button-hover-background-color: #{v(button-#{$type}-hover-background-color)};
+  --nx-button-hover-border-color: #{v(button-#{$type}-hover-border-color)};
+  --nx-button-active-text-color: #{v(button-#{$type}-active-text-color)};
+  --nx-button-active-background-color: #{v(button-#{$type}-active-background-color)};
+  --nx-button-active-border-color: #{v(button-#{$type}-active-border-color)};
+  --nx-button-disabled-text-color: #{v(button-#{$type}-disabled-text-color)};
+  --nx-button-disabled-background-color: #{v(button-#{$type}-disabled-background-color)};
+  --nx-button-disabled-border-color: #{v(button-#{$type}-disabled-border-color)};
 }
 
 :host {
+  // Unset states resolve to the resting color, so a variant only declares what
+  // actually differs from it.
+  --nx-button-text-color: currentColor;
+  --nx-button-background-color: transparent;
+  --nx-button-border-color: transparent;
+  --nx-button-hover-text-color: var(--nx-button-text-color);
+  --nx-button-hover-background-color: var(--nx-button-background-color);
+  --nx-button-hover-border-color: var(--nx-button-border-color);
+  --nx-button-active-text-color: var(--nx-button-text-color);
+  --nx-button-active-background-color: var(--nx-button-background-color);
+  --nx-button-active-border-color: var(--nx-button-border-color);
+  --nx-button-disabled-text-color: var(--nx-button-text-color);
+  --nx-button-disabled-background-color: var(--nx-button-background-color);
+  --nx-button-disabled-border-color: var(--nx-button-border-color);
+
+  color: var(--nx-button-text-color);
+  background-color: var(--nx-button-background-color);
+  border-color: var(--nx-button-border-color);
+
   @include type-style('button-medium');
   min-height: v(button-medium-height);
   text-transform: v(button-text-transform);
   border-width: v(button-border-width);
   border-radius: v(button-border-radius);
   border-style: solid;
-  border-color: transparent;
   cursor: pointer;
   padding: v(button-medium-padding);
   user-select: none;
@@ -89,10 +84,6 @@
     width: 100%;
   }
 
-  &[disabled] {
-    cursor: not-allowed;
-  }
-
   &:focus {
     // This will ensure there is no second focus style shown in high contrast mode
     outline: none;
@@ -101,6 +92,41 @@
   // don't show inner dotted border on firefox
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  &:hover:not([disabled]):not(:active) {
+    color: var(--nx-button-hover-text-color);
+    background-color: var(--nx-button-hover-background-color);
+    border-color: var(--nx-button-hover-border-color);
+
+    // reset hover styles for devices that don't support hover
+    @media (hover: none) {
+      color: var(--nx-button-text-color);
+      background-color: var(--nx-button-background-color);
+      border-color: var(--nx-button-border-color);
+    }
+  }
+
+  &:active,
+  &.nx-button--active {
+    color: var(--nx-button-active-text-color);
+    background-color: var(--nx-button-active-background-color);
+    border-color: var(--nx-button-active-border-color);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: var(--nx-button-disabled-text-color);
+    background-color: var(--nx-button-disabled-background-color);
+    border-color: var(--nx-button-disabled-border-color);
+  }
+
+  // resets the text-decoration of the tertiary button
+  &:active:not([disabled]),
+  &:hover:not([disabled]) {
+    .nx-button__content.nx-button__content {
+      text-decoration: none;
+    }
   }
 }
 
@@ -158,31 +184,13 @@
 }
 
 :host(.nx-button--tertiary.nx-button--negative) {
-  color: v(negative);
-
-  &:hover:not([disabled]):not(:active) {
-    background-color: v(negative-01);
-    color: v(button-secondary-text-color);
-  }
-
-  // reset hover styles for devices that don't support hover
-  @media (hover: none) {
-    &:hover:not([disabled]):not(:active) {
-      background-color: transparent;
-      color: v(negative);
-    }
-  }
-
-  &:active,
-  &.nx-button--active {
-    background-color: v(negative-02);
-    color: v(button-secondary-text-color);
-  }
-
-  &[disabled] {
-    background-color: transparent;
-    color: v(negative-dimmed);
-  }
+  --nx-button-text-color: #{v(negative)};
+  --nx-button-hover-text-color: #{v(button-secondary-text-color)};
+  --nx-button-hover-background-color: #{v(negative-01)};
+  --nx-button-active-text-color: #{v(button-secondary-text-color)};
+  --nx-button-active-background-color: #{v(negative-02)};
+  --nx-button-disabled-text-color: #{v(negative-dimmed)};
+  --nx-button-disabled-background-color: transparent;
 }
 
 :host(.nx-button--tertiary.nx-button--danger.nx-button--negative) {
@@ -226,236 +234,159 @@
 }
 
 // A1 color schemes.
-$button-accent-colors: (yellow, orange, red, purple, aqua, blue, teal, green, gray);
+//
+// The accent palette is resolved into `--nx-button-accent*` / `--nx-button-on-accent*`
+// once per accent color, so the prominence rules below are written a single time
+// instead of once per color (and again per inverse variant).
+$button-accent-colors: (
+  'yellow',
+  'orange',
+  'red',
+  'purple',
+  'aqua',
+  'blue',
+  'teal',
+  'green',
+  'gray'
+);
 
-// Filled primary button. The text color is re-asserted on hover/active so it wins
-// over the base `button-theme` hover rule (which would otherwise force it white).
+@each $color in $button-accent-colors {
+  :host([data-accent-color='#{$color}']) {
+    --nx-button-accent: #{v(color-attention-#{$color})};
+    --nx-button-accent-hover: #{v(color-attention-#{$color}-hover)};
+    --nx-button-accent-active: #{v(color-attention-#{$color}-active)};
+  }
+
+  :host(.nx-button--negative[data-accent-color='#{$color}']) {
+    --nx-button-accent: #{v(color-attention-inverse-#{$color})};
+    --nx-button-accent-hover: #{v(color-attention-inverse-#{$color}-hover)};
+    --nx-button-accent-active: #{v(color-attention-inverse-#{$color}-active)};
+  }
+}
+
+:host([data-accent-color]) {
+  --nx-button-accent-disabled: #{v(color-attention-disabled)};
+  --nx-button-on-accent: #{v(color-on-attention-resting)};
+  --nx-button-on-accent-hover: #{v(color-on-attention-hover)};
+  --nx-button-on-accent-active: #{v(color-on-attention-active)};
+  --nx-button-on-accent-disabled: #{v(color-on-attention-disabled)};
+}
+
+:host(.nx-button--negative[data-accent-color]) {
+  --nx-button-accent-disabled: #{v(color-attention-inverse-disabled)};
+  --nx-button-on-accent: #{v(color-on-attention-inverse-resting)};
+  --nx-button-on-accent-hover: #{v(color-on-attention-inverse-hover)};
+  --nx-button-on-accent-active: #{v(color-on-attention-inverse-active)};
+  --nx-button-on-accent-disabled: #{v(color-on-attention-inverse-disabled)};
+}
+
+// Filled primary button.
 @mixin a1-button-filled($fill, $on-fill, $fill-hover, $fill-active, $fill-disabled, $on-disabled) {
-  background-color: v($fill);
-  color: v($on-fill);
-  border-color: transparent;
-
-  &:hover:not([disabled]):not(:active) {
-    background-color: v($fill-hover);
-    color: v($on-fill);
-  }
-
-  @media (hover: none) {
-    &:hover:not([disabled]):not(:active) {
-      background-color: v($fill);
-      color: v($on-fill);
-    }
-  }
-
-  &:active,
-  &.nx-button--active {
-    background-color: v($fill-active);
-    color: v($on-fill);
-  }
-
-  &[disabled] {
-    background-color: v($fill-disabled);
-    color: v($on-disabled);
-  }
+  --nx-button-background-color: #{$fill};
+  --nx-button-text-color: #{$on-fill};
+  --nx-button-hover-background-color: #{$fill-hover};
+  --nx-button-hover-text-color: #{$on-fill};
+  --nx-button-active-background-color: #{$fill-active};
+  --nx-button-active-text-color: #{$on-fill};
+  --nx-button-disabled-background-color: #{$fill-disabled};
+  --nx-button-disabled-text-color: #{$on-disabled};
 }
 
 // Outlined secondary button
 @mixin a1-button-outlined($color, $on-fill, $fill-hover, $fill-active, $disabled) {
-  background-color: transparent;
-  color: v($color);
-  border-color: v($color);
-
-  &:hover:not([disabled]):not(:active) {
-    background-color: v($fill-hover);
-    color: v($on-fill);
-    border-color: transparent;
-  }
-
-  @media (hover: none) {
-    &:hover:not([disabled]):not(:active) {
-      background-color: transparent;
-      color: v($color);
-      border-color: v($color);
-    }
-  }
-
-  &:active,
-  &.nx-button--active {
-    background-color: v($fill-active);
-    color: v($on-fill);
-    border-color: transparent;
-  }
-
-  &[disabled] {
-    background-color: transparent;
-    color: v($disabled);
-    border-color: v($disabled);
-  }
+  --nx-button-background-color: transparent;
+  --nx-button-text-color: #{$color};
+  --nx-button-border-color: #{$color};
+  --nx-button-hover-background-color: #{$fill-hover};
+  --nx-button-hover-text-color: #{$on-fill};
+  --nx-button-hover-border-color: transparent;
+  --nx-button-active-background-color: #{$fill-active};
+  --nx-button-active-text-color: #{$on-fill};
+  --nx-button-active-border-color: transparent;
+  --nx-button-disabled-background-color: transparent;
+  --nx-button-disabled-text-color: #{$disabled};
+  --nx-button-disabled-border-color: #{$disabled};
 }
 
 // Text-only tertiary button
 @mixin a1-button-text($color, $on-fill, $fill-hover, $fill-active, $disabled) {
-  background-color: transparent;
-  color: v($color);
-  border-color: transparent;
-
-  &:hover:not([disabled]):not(:active) {
-    background-color: v($fill-hover);
-    color: v($on-fill);
-  }
-
-  @media (hover: none) {
-    &:hover:not([disabled]):not(:active) {
-      background-color: transparent;
-      color: v($color);
-    }
-  }
-
-  &:active,
-  &.nx-button--active {
-    background-color: v($fill-active);
-    color: v($on-fill);
-  }
-
-  &[disabled] {
-    background-color: transparent;
-    color: v($disabled);
-  }
+  --nx-button-background-color: transparent;
+  --nx-button-text-color: #{$color};
+  --nx-button-hover-background-color: #{$fill-hover};
+  --nx-button-hover-text-color: #{$on-fill};
+  --nx-button-active-background-color: #{$fill-active};
+  --nx-button-active-text-color: #{$on-fill};
+  --nx-button-disabled-background-color: transparent;
+  --nx-button-disabled-text-color: #{$disabled};
 }
 
-@each $color in $button-accent-colors {
-  // `:not(.nx-button--danger)` lets the critical/danger styling win over the
-  // accent color schemes. In the design "critical" is a prominence of its own,
-  // but until that is modelled here we simply let danger override the schemes.
-  $sel: "[data-accent-color='#{$color}']:not(.nx-button--danger)";
+// `:not(.nx-button--danger)` lets the critical/danger styling win over the accent
+// color schemes. In the design "critical" is a prominence of its own, but until
+// that is modelled here we simply let danger override the schemes.
+$accent-sel: '[data-accent-color]:not(.nx-button--danger)';
 
-  // --- accent-attention: accent-colored button on a neutral surface ---
-  :host(.nx-button--accent-attention.nx-button--primary#{$sel}) {
-    @include a1-button-filled(
-      color-attention-#{$color},
-      color-on-attention-resting,
-      color-attention-#{$color}-hover,
-      color-attention-#{$color}-active,
-      color-attention-disabled,
-      color-on-attention-disabled
-    );
-  }
+// --- accent-attention: accent-colored button on a neutral surface ---
+:host(.nx-button--accent-attention.nx-button--primary#{$accent-sel}) {
+  @include a1-button-filled(
+    var(--nx-button-accent),
+    var(--nx-button-on-accent),
+    var(--nx-button-accent-hover),
+    var(--nx-button-accent-active),
+    var(--nx-button-accent-disabled),
+    var(--nx-button-on-accent-disabled)
+  );
+}
 
-  :host(.nx-button--accent-attention.nx-button--secondary#{$sel}) {
-    @include a1-button-outlined(
-      color-attention-#{$color},
-      color-on-attention-resting,
-      color-attention-#{$color}-hover,
-      color-attention-#{$color}-active,
-      color-attention-disabled
-    );
-  }
+:host(.nx-button--accent-attention.nx-button--secondary#{$accent-sel}) {
+  @include a1-button-outlined(
+    var(--nx-button-accent),
+    var(--nx-button-on-accent),
+    var(--nx-button-accent-hover),
+    var(--nx-button-accent-active),
+    var(--nx-button-accent-disabled)
+  );
+}
 
-  :host(.nx-button--accent-attention.nx-button--tertiary#{$sel}) {
-    @include a1-button-text(
-      color-attention-#{$color},
-      color-on-attention-resting,
-      color-attention-#{$color}-hover,
-      color-attention-#{$color}-active,
-      color-attention-disabled
-    );
-  }
+:host(.nx-button--accent-attention.nx-button--tertiary#{$accent-sel}) {
+  @include a1-button-text(
+    var(--nx-button-accent),
+    var(--nx-button-on-accent),
+    var(--nx-button-accent-hover),
+    var(--nx-button-accent-active),
+    var(--nx-button-accent-disabled)
+  );
+}
 
-  // --- on-accent-attention: button on an accent-colored surface ---
-  :host(.nx-button--on-accent-attention.nx-button--primary#{$sel}) {
-    @include a1-button-filled(
-      color-on-attention-resting,
-      color-attention-#{$color},
-      color-on-attention-hover,
-      color-on-attention-active,
-      color-on-attention-disabled,
-      color-attention-disabled
-    );
-  }
+// --- on-accent-attention: button on an accent-colored surface ---
+:host(.nx-button--on-accent-attention.nx-button--primary#{$accent-sel}) {
+  @include a1-button-filled(
+    var(--nx-button-on-accent),
+    var(--nx-button-accent),
+    var(--nx-button-on-accent-hover),
+    var(--nx-button-on-accent-active),
+    var(--nx-button-on-accent-disabled),
+    var(--nx-button-accent-disabled)
+  );
+}
 
-  :host(.nx-button--on-accent-attention.nx-button--secondary#{$sel}) {
-    @include a1-button-outlined(
-      color-on-attention-resting,
-      color-attention-#{$color},
-      color-on-attention-hover,
-      color-on-attention-active,
-      color-on-attention-disabled
-    );
-  }
+:host(.nx-button--on-accent-attention.nx-button--secondary#{$accent-sel}) {
+  @include a1-button-outlined(
+    var(--nx-button-on-accent),
+    var(--nx-button-accent),
+    var(--nx-button-on-accent-hover),
+    var(--nx-button-on-accent-active),
+    var(--nx-button-on-accent-disabled)
+  );
+}
 
-  :host(.nx-button--on-accent-attention.nx-button--tertiary#{$sel}) {
-    @include a1-button-text(
-      color-on-attention-resting,
-      color-attention-#{$color},
-      color-on-attention-hover,
-      color-on-attention-active,
-      color-on-attention-disabled
-    );
-  }
-
-  // --- accent-attention, inverse: same as accent-attention, using the inverse accent tokens ---
-  :host(.nx-button--accent-attention.nx-button--negative.nx-button--primary#{$sel}) {
-    @include a1-button-filled(
-      color-attention-inverse-#{$color},
-      color-on-attention-inverse-resting,
-      color-attention-inverse-#{$color}-hover,
-      color-attention-inverse-#{$color}-active,
-      color-attention-inverse-disabled,
-      color-on-attention-inverse-disabled
-    );
-  }
-
-  :host(.nx-button--accent-attention.nx-button--negative.nx-button--secondary#{$sel}) {
-    @include a1-button-outlined(
-      color-attention-inverse-#{$color},
-      color-on-attention-inverse-resting,
-      color-attention-inverse-#{$color}-hover,
-      color-attention-inverse-#{$color}-active,
-      color-attention-inverse-disabled
-    );
-  }
-
-  :host(.nx-button--accent-attention.nx-button--negative.nx-button--tertiary#{$sel}) {
-    @include a1-button-text(
-      color-attention-inverse-#{$color},
-      color-on-attention-inverse-resting,
-      color-attention-inverse-#{$color}-hover,
-      color-attention-inverse-#{$color}-active,
-      color-attention-inverse-disabled
-    );
-  }
-
-  // --- on-accent-attention, inverse: same as on-accent-attention, using the inverse accent tokens ---
-  :host(.nx-button--on-accent-attention.nx-button--negative.nx-button--primary#{$sel}) {
-    @include a1-button-filled(
-      color-on-attention-inverse-resting,
-      color-attention-inverse-#{$color},
-      color-on-attention-inverse-hover,
-      color-on-attention-inverse-active,
-      color-on-attention-inverse-disabled,
-      color-attention-inverse-disabled
-    );
-  }
-
-  :host(.nx-button--on-accent-attention.nx-button--negative.nx-button--secondary#{$sel}) {
-    @include a1-button-outlined(
-      color-on-attention-inverse-resting,
-      color-attention-inverse-#{$color},
-      color-on-attention-inverse-hover,
-      color-on-attention-inverse-active,
-      color-on-attention-inverse-disabled
-    );
-  }
-
-  :host(.nx-button--on-accent-attention.nx-button--negative.nx-button--tertiary#{$sel}) {
-    @include a1-button-text(
-      color-on-attention-inverse-resting,
-      color-attention-inverse-#{$color},
-      color-on-attention-inverse-hover,
-      color-on-attention-inverse-active,
-      color-on-attention-inverse-disabled
-    );
-  }
+:host(.nx-button--on-accent-attention.nx-button--tertiary#{$accent-sel}) {
+  @include a1-button-text(
+    var(--nx-button-on-accent),
+    var(--nx-button-accent),
+    var(--nx-button-on-accent-hover),
+    var(--nx-button-on-accent-active),
+    var(--nx-button-on-accent-disabled)
+  );
 }
 
 // Some additional colorful variants
