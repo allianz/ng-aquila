@@ -318,10 +318,12 @@
   }
 }
 
+// Deliberately not the generic focus styles above: those also set
+// formfield-outline-focus-background-color, which is a light surface.
 .nx-formfield--negative.is-focused.has-outline {
   .nx-formfield__input-container {
-    border-color: v(negative);
-    box-shadow: 0 0 0 2px v(negative);
+    border-color: v(formfield-negative-outline-active-border-color);
+    box-shadow: v(formfield-negative-outline-focus-box-shadow);
   }
 }
 
@@ -698,12 +700,61 @@
 
   // this has currently no effect on the outline elements, so the next block for .has-outline is needed
   .nx-formfield__input-container {
-    border-color: v(negative);
+    border-color: v(formfield-negative-border-color);
   }
 
   &.has-outline .nx-formfield__input-container {
-    border-color: v(negative);
+    border-color: v(formfield-negative-border-color);
     background-color: v(negative-background);
+  }
+
+  // Must stay below the generic .is-readonly blocks above, which otherwise win on source order.
+  // The selectors mirror their specificity, including the :not(.has-outline) part.
+  &.is-readonly:not(.is-disabled) {
+    // The generic read-only rule paints the toggle with the disabled text color rather than
+    // the read-only one, so the inverse disabled token is what keeps this unchanged.
+    nx-datepicker-toggle button {
+      color: v(formfield-negative-disabled-text-color);
+    }
+
+    &:not(.has-outline) .nx-formfield__input-container {
+      border-bottom-color: v(formfield-negative-readonly-border-color);
+    }
+
+    &.has-outline {
+      color: v(formfield-negative-readonly-text-color);
+
+      .nx-formfield__input-container {
+        border-color: v(formfield-negative-readonly-border-color);
+        background-color: v(formfield-negative-readonly-background-color);
+      }
+
+      .nx-formfield__prefix,
+      .nx-formfield__suffix {
+        color: v(formfield-negative-readonly-text-color);
+      }
+    }
+  }
+
+  // Must stay below the generic .is-disabled block above, which otherwise wins on source order.
+  &.is-disabled {
+    color: v(formfield-negative-disabled-text-color);
+
+    .nx-formfield__label,
+    .nx-formfield__prefix,
+    .nx-formfield__suffix,
+    nx-datepicker-toggle button {
+      color: v(formfield-negative-disabled-text-color);
+    }
+
+    .nx-formfield__input-container {
+      border-bottom-color: v(formfield-negative-disabled-border-color);
+    }
+
+    &.has-outline .nx-formfield__input-container {
+      border-color: v(formfield-negative-disabled-border-color);
+      background-color: v(formfield-negative-disabled-background-color);
+    }
   }
 
   .nx-formfield__appendix,
