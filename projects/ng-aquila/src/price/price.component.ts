@@ -11,6 +11,11 @@ import {
 /** size of the text price */
 export type NxPriceSize = 's' | 'm' | 'l' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
 
+/** Color scheme of a price. Only relevant for the A1 Design. */
+export type NxPriceColorScheme = 'default' | 'on-accent-attention';
+
+const DEFAULT_COLOR_SCHEME: NxPriceColorScheme = 'default';
+
 interface FormattedPrice {
   integer: string;
   decimal: string;
@@ -28,6 +33,7 @@ interface FormattedPrice {
     '[class]': '"nx-price--" + size()',
     '[class.nx-price--inverse]': 'inverse()',
     '[class.nx-price--superscript]': '_effectiveSuperscript()',
+    '[class.nx-price--on-accent-attention]': 'colorScheme() === "on-accent-attention"',
   },
   standalone: true,
 })
@@ -49,6 +55,9 @@ export class NxPriceComponent {
 
   /** Whether to apply inverse styling, suitable for dark backgrounds. */
   readonly inverse = input(false, { transform: booleanAttribute });
+
+  /** The color scheme of the price. Only relevant for the A1 Design. */
+  readonly colorScheme = input<NxPriceColorScheme>(DEFAULT_COLOR_SCHEME);
 
   /** Whether to render the currency symbol and decimals as superscript. */
   readonly superscript = input(false, { transform: booleanAttribute });

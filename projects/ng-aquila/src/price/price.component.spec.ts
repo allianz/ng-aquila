@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { type ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxPriceComponent, type NxPriceSize } from './price.component';
+import { type NxPriceColorScheme, NxPriceComponent, type NxPriceSize } from './price.component';
 import { NxPriceModule } from './price.module';
 
 /** Helper function to check if currency symbol appears before the value (e.g., $100 vs 100€). */
@@ -36,6 +36,7 @@ abstract class PriceTest {
   prefix?: string;
   suffix?: string;
   superscript = false;
+  colorScheme: NxPriceColorScheme = 'default';
 }
 
 describe('NxPriceComponent', () => {
@@ -63,6 +64,7 @@ describe('NxPriceComponent', () => {
         PriceWithPrefixSuffixComponent,
         PriceWithDifferentCurrencyComponent,
         PriceWithSuperscriptComponent,
+        PriceWithColorSchemeComponent,
       ],
     }).compileComponents();
   }));
@@ -210,6 +212,31 @@ describe('NxPriceComponent', () => {
     it('should not apply inverse class by default', () => {
       createTestComponent(PriceWithInverseComponent);
       expect(priceNativeElement).not.toHaveClass('nx-price--inverse');
+    });
+  });
+
+  describe('color scheme', () => {
+    it('should not apply on-accent-attention class by default', () => {
+      createTestComponent(PriceWithColorSchemeComponent);
+      expect(priceNativeElement).not.toHaveClass('nx-price--on-accent-attention');
+    });
+
+    it('should apply on-accent-attention class when colorScheme is on-accent-attention', () => {
+      createTestComponent(PriceWithColorSchemeComponent);
+      fixture.componentInstance.colorScheme = 'on-accent-attention';
+      fixture.detectChanges();
+
+      expect(priceNativeElement).toHaveClass('nx-price--on-accent-attention');
+    });
+
+    it('should apply both on-accent-attention and inverse classes together', () => {
+      createTestComponent(PriceWithColorSchemeComponent);
+      fixture.componentInstance.colorScheme = 'on-accent-attention';
+      fixture.componentInstance.inverse = true;
+      fixture.detectChanges();
+
+      expect(priceNativeElement).toHaveClass('nx-price--on-accent-attention');
+      expect(priceNativeElement).toHaveClass('nx-price--inverse');
     });
   });
 
@@ -530,3 +557,16 @@ class PriceWithLocaleIdComponent extends PriceTest {
   override value = 100;
   override currency = 'EUR';
 }
+
+@Component({
+  selector: 'test-price-with-color-scheme',
+  template: `<nx-price
+    [value]="value"
+    [currency]="currency"
+    [inverse]="inverse"
+    [colorScheme]="colorScheme"
+  />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxPriceModule],
+})
+class PriceWithColorSchemeComponent extends PriceTest {}

@@ -15,6 +15,12 @@ $price-sizes: s, m, l, xl, 2xl, 3xl, 4xl, 5xl, 6xl;
   :host.nx-price--inverse & {
     color: var(--negative-secondary);
   }
+  :host.nx-price--on-accent-attention & {
+    color: var(--color-on-attention-resting);
+  }
+  :host.nx-price--on-accent-attention.nx-price--inverse & {
+    color: var(--color-on-attention-inverse-resting);
+  }
 }
 
 .nx-price__value {
@@ -27,6 +33,12 @@ $price-sizes: s, m, l, xl, 2xl, 3xl, 4xl, 5xl, 6xl;
   }
   :host:not(.nx-price--inverse) & {
     color: var(--price-value-color);
+  }
+  :host.nx-price--on-accent-attention & {
+    color: var(--color-on-attention-resting);
+  }
+  :host.nx-price--on-accent-attention.nx-price--inverse & {
+    color: var(--color-on-attention-inverse-resting);
   }
 }
 

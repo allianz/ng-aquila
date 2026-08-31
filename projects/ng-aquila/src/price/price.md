@@ -56,3 +56,10 @@ Use `superscript` to elevate and reduce the currency symbol and decimal portion 
 Use the `inverse` input to apply inverse styling, suitable for dark backgrounds.
 
 <!-- example(price-inverse) -->
+
+### Color scheme
+
+The price supports the `colorScheme` input, which takes `default` or
+`on-accent-attention` for use on an accent-colored surface.
+
+<!-- example(price-accent-attention) -->
