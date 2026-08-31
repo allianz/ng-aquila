@@ -14,7 +14,10 @@ export type NxHeadlineType = 'primary' | 'secondary';
 /** The headline sizes */
 export type NxHeadlineSize =
   's' | 'm' | 'l' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | undefined;
+/** Color scheme of a headline. Only relevant for the A1 Design. */
+export type NxHeadlineColorScheme = 'default' | 'on-accent-attention';
 const DEFAULT_TYPE = 'section';
+const DEFAULT_COLOR_SCHEME: NxHeadlineColorScheme = 'default';
 
 @Component({
   selector: '[nxHeadline]',
@@ -42,6 +45,7 @@ const DEFAULT_TYPE = 'section';
     '[class.nx-heading--inverse]': 'inverse()',
     '[class.nx-heading--primary]': 'type() === "primary"',
     '[class.nx-heading--secondary]': 'type() === "secondary"',
+    '[class.nx-heading--on-accent-attention]': 'colorScheme() === "on-accent-attention"',
   },
   changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
@@ -91,6 +95,9 @@ export class NxHeadlineComponent {
   readonly inverse = input(false, { transform: booleanAttribute });
 
   readonly type = input<NxHeadlineType>('primary');
+
+  /** The color scheme of the headline. Only relevant for the A1 Design. */
+  readonly colorScheme = input<NxHeadlineColorScheme>(DEFAULT_COLOR_SCHEME);
 
   /** @docs-private */
   legacytype: HeadlineType = DEFAULT_TYPE;

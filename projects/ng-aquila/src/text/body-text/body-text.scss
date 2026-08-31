@@ -28,4 +28,12 @@
       color: v(body-text-inverse-secondary-color);
     }
   }
+
+  &.nx-body-text--on-accent-attention {
+    color: v(color-on-attention-resting);
+
+    &.nx-body-text--inverse {
+      color: v(color-on-attention-inverse-resting);
+    }
+  }
 }

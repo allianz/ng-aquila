@@ -80,17 +80,27 @@ For dark background, use the `inverse` input to apply inverse styling
 #### Size input
 <!-- example(headline-sizes-a1) -->
 
-<div class="docs-a1">
+<div class="docs-hide-ndbx">
 
 You can set the headline style using the existing `type` input. Choose either `primary` or `secondary` to apply the color scheme.
 
-#### Type
+### Type
 
 <!-- example(headline-type) -->
+
+### Color scheme
+
+Use the `colorScheme` input (`default` or `on-accent-attention`) to place a headline on an
+accent-colored surface. Combine with `inverse` for accent surfaces on dark backgrounds.
+
+Type `primary` and
+`secondary` headlines render identically once `colorScheme` is set to `on-accent-attention`.
+
+<!-- example(headline-color-scheme) -->
 </div>
 
 
-#### Mappings
+### Mappings
 This table shows you how the old names will translate to in the new design.
 
 <!-- example(headline-sizes-mapping, { "hideHeader": true }) -->

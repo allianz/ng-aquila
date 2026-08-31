@@ -45,6 +45,14 @@ dark backgrounds.
 
 <!-- example(body-text-type) -->
 
+#### Color scheme
+
+Use the `colorScheme` input (`default` or `on-accent-attention`) to place `nxBodyText` on an
+accent-colored surface. It overrides `type`, since the on-accent-attention foreground color is the
+same regardless of tone. Combine with `inverse` for accent surfaces on dark backgrounds.
+
+<!-- example(body-text-color-scheme) -->
+
 ### Utility text
 
 Use `nxUtilityText` for functional text that annotates the UI: form labels, captions, table cells
@@ -67,6 +75,14 @@ Available sizes are `s`, `m`, and `l`, with `m` as the default.
 the text with a heavier font weight. Set `inverse` for use on dark backgrounds.
 
 <!-- example(utility-text-attention) -->
+
+#### Color scheme
+
+Use the `colorScheme` input (`default` or `on-accent-attention`) to place `nxUtilityText` on an
+accent-colored surface. It overrides `type`, since the on-accent-attention foreground color is the
+same regardless of tone. Combine with `inverse` for accent surfaces on dark backgrounds.
+
+<!-- example(utility-text-color-scheme) -->
 
 ### Body Text vs Utility Text
 

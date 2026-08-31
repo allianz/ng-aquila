@@ -27,3 +27,10 @@ The selector for the Eyebrow can be used as a standalone html tag via `<nx-eyebr
 
 <!-- example(eyebrow) -->
 
+### Color scheme
+
+Use the `colorScheme` input (`default` or `on-accent-attention`) to place an eyebrow on an
+accent-colored surface. Combine with `inverse` for accent surfaces on dark backgrounds.
+
+<!-- example(eyebrow-color-scheme) -->
+

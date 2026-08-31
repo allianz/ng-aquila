@@ -33,4 +33,12 @@
       color: v(utility-text-inverse-secondary-color);
     }
   }
+
+  &.nx-utility-text--on-accent-attention {
+    color: v(color-on-attention-resting);
+
+    &.nx-utility-text--inverse {
+      color: v(color-on-attention-inverse-resting);
+    }
+  }
 }

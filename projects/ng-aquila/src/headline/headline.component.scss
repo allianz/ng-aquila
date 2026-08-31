@@ -102,6 +102,23 @@
   }
 }
 
+:host(.nx-heading--on-accent-attention) {
+  color: v(color-on-attention-resting);
+
+  ::ng-deep a {
+    color: v(color-on-attention-resting);
+  }
+}
+
+:host(.nx-heading--on-accent-attention.nx-heading--negative),
+:host(.nx-heading--on-accent-attention.nx-heading--inverse) {
+  color: v(color-on-attention-inverse-resting);
+
+  ::ng-deep a {
+    color: v(color-on-attention-inverse-resting);
+  }
+}
+
 :host(.nx-heading--page-bold-caps) {
   @include headline-typography('heading-01');
   font-weight: nx-font-weight(bold);

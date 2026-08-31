@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {
+  NxUtilityTextColorScheme,
   NxUtilityTextComponent,
   NxUtilityTextSize,
   NxUtilityTextType,
@@ -57,6 +58,16 @@ describe('NxUtilityTextComponent', () => {
     fixture.detectChanges();
     expect(element.classList.contains('nx-utility-text--inverse')).toBe(true);
   });
+
+  it('should not apply the on-accent-attention class by default', () => {
+    expect(element.classList.contains('nx-utility-text--on-accent-attention')).toBe(false);
+  });
+
+  it('should apply the on-accent-attention class when colorScheme is on-accent-attention', () => {
+    fixture.componentInstance.colorScheme = 'on-accent-attention';
+    fixture.detectChanges();
+    expect(element.classList.contains('nx-utility-text--on-accent-attention')).toBe(true);
+  });
 });
 
 @Component({
@@ -67,6 +78,7 @@ describe('NxUtilityTextComponent', () => {
     [type]="type"
     [attention]="attention"
     [inverse]="inverse"
+    [colorScheme]="colorScheme"
     >Utility text</span
   >`,
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -77,4 +89,5 @@ class UtilityTextTestComponent {
   type: NxUtilityTextType = 'primary';
   attention = false;
   inverse = false;
+  colorScheme: NxUtilityTextColorScheme = 'default';
 }

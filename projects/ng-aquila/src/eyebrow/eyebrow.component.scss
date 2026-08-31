@@ -17,4 +17,12 @@
   &.nx-eyebrow-inverse {
     color: v(eyebrow-font-color-inverse);
   }
+
+  &.nx-eyebrow-on-accent-attention {
+    color: v(color-on-attention-resting);
+
+    &.nx-eyebrow-inverse {
+      color: v(color-on-attention-inverse-resting);
+    }
+  }
 }

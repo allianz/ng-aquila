@@ -1,7 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NxBodyTextComponent, NxBodyTextSize, NxBodyTextType } from './body-text.component';
+import {
+  NxBodyTextColorScheme,
+  NxBodyTextComponent,
+  NxBodyTextSize,
+  NxBodyTextType,
+} from './body-text.component';
 
 describe('NxBodyTextComponent', () => {
   let fixture: ComponentFixture<BodyTextTestComponent>;
@@ -46,11 +51,29 @@ describe('NxBodyTextComponent', () => {
     fixture.detectChanges();
     expect(element.classList.contains('nx-body-text--inverse')).toBe(true);
   });
+
+  it('should not apply the on-accent-attention class by default', () => {
+    expect(element.classList.contains('nx-body-text--on-accent-attention')).toBe(false);
+  });
+
+  it('should apply the on-accent-attention class when colorScheme is on-accent-attention', () => {
+    fixture.componentInstance.colorScheme = 'on-accent-attention';
+    fixture.detectChanges();
+    expect(element.classList.contains('nx-body-text--on-accent-attention')).toBe(true);
+  });
 });
 
 @Component({
   selector: 'test-body-text-test-component',
-  template: `<p nxBodyText [size]="size" [type]="type" [inverse]="inverse">Body text</p>`,
+  template: `<p
+    nxBodyText
+    [size]="size"
+    [type]="type"
+    [inverse]="inverse"
+    [colorScheme]="colorScheme"
+  >
+    Body text
+  </p>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxBodyTextComponent],
 })
@@ -58,4 +81,5 @@ class BodyTextTestComponent {
   size: NxBodyTextSize = 'm';
   type: NxBodyTextType = 'primary';
   inverse = false;
+  colorScheme: NxBodyTextColorScheme = 'default';
 }

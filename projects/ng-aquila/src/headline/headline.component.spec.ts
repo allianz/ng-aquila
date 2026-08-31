@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxHeadlineComponent, NxHeadlineSize } from './headline.component';
+import { NxHeadlineColorScheme, NxHeadlineComponent, NxHeadlineSize } from './headline.component';
 import { NxHeadlineModule } from './headline.module';
 
 @Directive({ standalone: true })
@@ -11,6 +11,7 @@ abstract class HeadlineTest {
   size = '';
   typedSize: NxHeadlineSize = undefined;
   negative = false;
+  colorScheme: NxHeadlineColorScheme = 'default';
 }
 
 describe('NxHeadlineDirective', () => {
@@ -122,6 +123,18 @@ describe('NxHeadlineDirective', () => {
     expect(headlineNativeElement).toHaveClass('nx-heading--negative');
   });
 
+  it('should not set on-accent-attention class by default', () => {
+    createTestComponent(DynamicHeadline);
+    expect(headlineNativeElement).not.toHaveClass('nx-heading--on-accent-attention');
+  });
+
+  it('should set on-accent-attention class when colorScheme is on-accent-attention', () => {
+    createTestComponent(DynamicHeadline);
+    fixture.componentInstance.colorScheme = 'on-accent-attention';
+    fixture.detectChanges();
+    expect(headlineNativeElement).toHaveClass('nx-heading--on-accent-attention');
+  });
+
   it('passes through an unknown class', waitForAsync(() => {
     createTestComponent(HeadlineWithArbitraryClass);
     expect(headlineNativeElement).toHaveClass('some-arbitray-class-name');
@@ -153,7 +166,9 @@ class HeadlineWithArbitraryClass extends HeadlineTest {}
 
 @Component({
   selector: 'test-dynamic-headline',
-  template: `<h1 nxHeadline [size]="typedSize" [negative]="negative">Hello Headline</h1>`,
+  template: `<h1 nxHeadline [size]="typedSize" [negative]="negative" [colorScheme]="colorScheme">
+    Hello Headline
+  </h1>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxHeadlineModule],
 })
