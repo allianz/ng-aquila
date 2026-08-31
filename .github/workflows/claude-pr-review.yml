@@ -15,7 +15,7 @@ jobs:
       pull-requests: write
       id-token: write
       actions: read
-    uses: ilt/shared-actions-ilt-frontend/.github/workflows/reusable-claude-pr-review.yml@feat/shared-actions-library
+    uses: ilt/actions/.github/workflows/reusable-claude-pr-review.yml@v1
     with:
       model: eu.anthropic.claude-opus-4-8
     secrets: inherit
