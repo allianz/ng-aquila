@@ -14,6 +14,7 @@ import {
   FormControl,
   FormGroup,
   FormsModule,
+  NgModel,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -211,6 +212,27 @@ describe('DatemaskComponent', () => {
       ).toBeDefined();
     });
 
+    it('should stay pristine on init', () => {
+      expect(datemaskFormComponent.datemaskForm.controls.date.pristine).toBe(true);
+    });
+
+    it('should stay pristine when the value is set programmatically', async () => {
+      datemaskFormComponent.datemaskForm.controls.date.setValue(moment([2022, 5, 15]));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(datemaskFormComponent.datemaskForm.controls.date.pristine).toBe(true);
+    });
+
+    it('should become dirty on user input', () => {
+      const dayInput = nativeInputs[0];
+      dayInput.value = '30';
+      dayInput.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      expect(datemaskFormComponent.datemaskForm.controls.date.dirty).toBe(true);
+    });
+
     it('should reset input values on empty or invalid model values', async () => {
       const testDate = moment('2025-12-15', moment.ISO_8601);
       const testDateExpectedInputs = ['15', '12', '2025'];
@@ -232,6 +254,36 @@ describe('DatemaskComponent', () => {
       await setValueAndAssert('invalid-date-string', emptyExpectedInputs);
       await setValueAndAssert(testDate, testDateExpectedInputs);
       await setValueAndAssert(false, emptyExpectedInputs);
+    });
+
+    it('should stay pristine when deleting on the container while empty', () => {
+      const container = fixture.nativeElement.querySelector('.datemask-container');
+      container.dispatchEvent(new KeyboardEvent('keydown', { key: 'Backspace' }));
+      fixture.detectChanges();
+
+      expect(datemaskFormComponent.datemaskForm.controls.date.pristine).toBe(true);
+    });
+
+    it('should clear the value and become dirty when deleting on the container', async () => {
+      nativeInputs[0].value = '15';
+      nativeInputs[0].dispatchEvent(new Event('input'));
+      nativeInputs[1].value = '06';
+      nativeInputs[1].dispatchEvent(new Event('input'));
+      nativeInputs[2].value = '2022';
+      nativeInputs[2].dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(datemaskFormComponent.datemaskForm.controls.date.value).not.toBeNull();
+
+      const container = fixture.nativeElement.querySelector('.datemask-container');
+      container.dispatchEvent(new KeyboardEvent('keydown', { key: 'Backspace' }));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(datemaskFormComponent.datemaskForm.controls.date.value).toBeNull();
+      expect(datemaskFormComponent.datemaskForm.controls.date.dirty).toBe(true);
+      expect(nativeInputs[0].value).toBe('');
+      expect(nativeInputs[1].value).toBe('');
+      expect(nativeInputs[2].value).toBe('');
     });
   });
 
@@ -313,6 +365,152 @@ describe('DatemaskComponent', () => {
       dayInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Backspace' }));
       dayInput.dispatchEvent(new Event('input'));
       expect(document.activeElement).toBe(nativeInputs[0]);
+    });
+  });
+
+  describe('blur formatting', () => {
+    let test: DatemaskIncompleteTestForm;
+
+    function typeInto(index: number, value: string) {
+      nativeInputs[index].value = value;
+      nativeInputs[index].dispatchEvent(new Event('input'));
+    }
+
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DatemaskIncompleteTestForm],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DatemaskIncompleteTestForm);
+      component = fixture.componentInstance;
+      test = component as DatemaskIncompleteTestForm;
+      fixture.detectChanges();
+      nativeInputs = fixture.nativeElement.querySelectorAll('input');
+    });
+
+    it('should pad a single digit day on blur and notify the control', async () => {
+      typeInto(0, '3');
+      typeInto(1, '05');
+      typeInto(2, '2021');
+      fixture.detectChanges();
+      test.datemaskForm.controls.date.markAsPristine();
+
+      nativeInputs[0].dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(nativeInputs[0].value).toBe('03');
+      expect(test.datemaskForm.controls.date.dirty).toBe(true);
+      const value = test.datemaskForm.controls.date.value as Moment;
+      expect(moment(value).format('YYYY-MM-DD')).toBe('2021-05-03');
+    });
+
+    // a single digit month always advances the focus, so the blur that pads it is the
+    // real one triggered by that focus move, not a dispatched event
+    it('should pad a single digit month on blur and notify the control', async () => {
+      typeInto(0, '03');
+      typeInto(1, '5');
+      typeInto(2, '2021');
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(nativeInputs[1].value).toBe('05');
+      expect(test.datemaskForm.controls.date.dirty).toBe(true);
+      // an unpadded '03.5.2021' does not parse, so a valid control value can only come
+      // from the padded date being pushed through handleChange()
+      const value = test.datemaskForm.controls.date.value as Moment;
+      expect(moment(value).format('YYYY-MM-DD')).toBe('2021-05-03');
+    });
+
+    it('should not expand the year when the date does not parse', async () => {
+      typeInto(0, '31');
+      typeInto(1, '02');
+      typeInto(2, '21');
+      fixture.detectChanges();
+      test.datemaskForm.controls.date.markAsPristine();
+
+      nativeInputs[2].dispatchEvent(new Event('blur'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(nativeInputs[2].value).toBe('21');
+      expect(test.datemaskForm.controls.date.pristine).toBe(true);
+    });
+  });
+
+  describe('containerKeydown', () => {
+    let test: DatemaskIncompleteTestForm;
+    let container: HTMLElement;
+
+    function typeInto(index: number, value: string) {
+      nativeInputs[index].value = value;
+      nativeInputs[index].dispatchEvent(new Event('input'));
+    }
+
+    function fillMask() {
+      typeInto(0, '15');
+      typeInto(1, '06');
+      typeInto(2, '2022');
+      fixture.detectChanges();
+    }
+
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DatemaskIncompleteTestForm],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DatemaskIncompleteTestForm);
+      component = fixture.componentInstance;
+      test = component as DatemaskIncompleteTestForm;
+      fixture.detectChanges();
+      nativeInputs = fixture.nativeElement.querySelectorAll('input');
+      container = fixture.nativeElement.querySelector('.datemask-container');
+    });
+
+    it('should ignore keydown events bubbling up from the inputs', async () => {
+      fillMask();
+      nativeInputs[2].focus();
+
+      nativeInputs[2].dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Backspace', bubbles: true }),
+      );
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(nativeInputs[0].value).toBe('15');
+      expect(nativeInputs[1].value).toBe('06');
+      expect(nativeInputs[2].value).toBe('2022');
+      expect(test.datemaskForm.controls.date.value).not.toBeNull();
+    });
+
+    it('should clear the mask and focus the first input on Delete', async () => {
+      fillMask();
+
+      container.dispatchEvent(new KeyboardEvent('keydown', { key: 'Delete' }));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(nativeInputs[0].value).toBe('');
+      expect(nativeInputs[1].value).toBe('');
+      expect(nativeInputs[2].value).toBe('');
+      expect(test.datemaskForm.controls.date.value).toBeNull();
+      expect(test.datemaskForm.controls.date.dirty).toBe(true);
+      expect(document.activeElement).toBe(nativeInputs[0]);
+    });
+
+    it('should replace the mask with a typed digit and notify the control', async () => {
+      fillMask();
+
+      container.dispatchEvent(new KeyboardEvent('keydown', { key: '7' }));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      // the focus advances off the day input, whose blur pads the single digit
+      expect(nativeInputs[0].value).toBe('07');
+      expect(nativeInputs[1].value).toBe('');
+      expect(nativeInputs[2].value).toBe('');
+      expect(test.datemaskForm.controls.date.value).toBeNull();
+      expect(test.datemaskForm.controls.date.dirty).toBe(true);
     });
   });
 
@@ -435,6 +633,19 @@ describe('DatemaskComponent', () => {
       expect(toggle, 'nx-datepicker-toggle').not.toBeNull();
       expect(toggle.classList.contains('nx-datepicker-toggle--disabled')).toBe(true);
     }));
+
+    it('should update the model and mark it dirty when a date is picked', async () => {
+      const test = fixture.componentRef.instance as DatemaskWithDatePicker;
+      test.ngModelDirective().control.markAsPristine();
+
+      test.datepickerComponent.select(moment([2021, 2, 10]));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(test.datemaskComponent().value).not.toBeNull();
+      expect(test.ngModelDirective().value).not.toBeNull();
+      expect(test.ngModelDirective().dirty).toBe(true);
+    });
   });
 });
 
@@ -589,6 +800,7 @@ export class DatemaskTestFormat extends DateRangeTestBase {
 })
 export class DatemaskWithDatePicker extends DateRangeTestBase {
   datemaskComponent = viewChild.required(NxDatemaskComponent<Moment>);
+  ngModelDirective = viewChild.required(NgModel);
   datemaskModel = moment([2022, 5, 20]);
   format = 'YYYY-MM-DD';
   disabled = false;

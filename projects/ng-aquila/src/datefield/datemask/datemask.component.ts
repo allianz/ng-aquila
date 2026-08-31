@@ -281,7 +281,6 @@ export class NxDatemaskComponent<D>
    */
   private readonly _dateChangeEffect = effect(() => {
     this._valueChange.emit(this.date());
-    this.onChange(this.date());
   });
 
   private readonly _injector = inject(Injector);
@@ -651,6 +650,7 @@ export class NxDatemaskComponent<D>
         ?.selectedChanged.pipe(takeUntilDestroyed())
         .subscribe((selected: D) => {
           this.value = selected;
+          this.handleChange();
         });
     });
   }
@@ -675,7 +675,11 @@ export class NxDatemaskComponent<D>
 
     if (event.key === 'Delete' || event.key === 'Backspace') {
       event.preventDefault();
+      const hadValue = this._dayValue() || this._monthValue() || this._yearValue();
       this._resetInputValue();
+      if (hadValue) {
+        this.handleChange();
+      }
       this.moveFocus(this._inputs()[0], 'start');
     }
 
@@ -685,6 +689,7 @@ export class NxDatemaskComponent<D>
       this._resetInputValue();
       this._inputs()[0].elementRef.nativeElement.value = event.key;
       firstInputValueSignal.set(event.key);
+      this.handleChange();
       this.moveFocus(this._inputs()[0], 'none');
 
       const isFirstInputDay =
@@ -725,6 +730,7 @@ export class NxDatemaskComponent<D>
         // fall back as signal and input value are out of sync
         this._dayInput().elementRef.nativeElement.value = this._dayValue();
       }
+      this.handleChange();
     }
   }
 
@@ -736,17 +742,20 @@ export class NxDatemaskComponent<D>
         // fall back as signal and input value are out of sync
         this._monthInput().elementRef.nativeElement.value = this._monthValue();
       }
+      this.handleChange();
     }
   }
 
   yearBlur() {
-    if (this.date() && this._dateAdapter.isValid(this.date()!)) {
+    if (this.date() && this._dateAdapter.isValid(this.date()!) && this._yearValue()!.length < 4) {
       this._yearValue.set(`${this._dateAdapter.getYear(this.date()!)}`);
 
       if (this._yearInput().elementRef.nativeElement.value !== this._yearValue()) {
         // fall back as signal and input value are out of sync
         this._yearInput().elementRef.nativeElement.value = this._yearValue();
       }
+
+      this.handleChange();
     }
   }
 
