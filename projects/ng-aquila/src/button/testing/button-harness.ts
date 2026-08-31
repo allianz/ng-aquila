@@ -10,7 +10,7 @@ import {
 
 type Type = 'basic' | 'icon' | 'plain';
 
-interface NxButtonHarnessFilters extends BaseHarnessFilters {
+export interface NxButtonHarnessFilters extends BaseHarnessFilters {
   type?: Type;
   variant?: NxButtonType;
   critical?: boolean;
