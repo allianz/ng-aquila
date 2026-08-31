@@ -38,7 +38,17 @@ Context menus support displaying `<nx-icon>` elements before the menu item text.
 
 Using the [`<nx-indicator>`](./documentation/indicator/overview), certain entries of the context menu can be marked.
 
+<div class="docs-ndbx">
+
 <!-- example(context-menu-indicator) -->
+
+</div>
+
+<div class="docs-hide-ndbx">
+
+<!-- example(context-menu-indicator-a1) -->
+
+</div>
 
 ### Grouped context menu
 

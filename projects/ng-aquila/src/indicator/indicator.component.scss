@@ -71,6 +71,42 @@
     background-color: Canvas !important;
   }
 
+  // Corner positions sit flush with the container's top/bottom edge and outside of it on the
+  // inline axis. `.nx-indicator--overlap` then pulls them back inwards, over the container.
+  &:is(
+    .nx-indicator--top-start,
+    .nx-indicator--top-end,
+    .nx-indicator--bottom-start,
+    .nx-indicator--bottom-end
+  ) {
+    position: absolute;
+    --indicator-overlap-shift: 0px;
+
+    &.nx-indicator--overlap {
+      --indicator-overlap-shift: #{v(indicator-overlap-offset)};
+    }
+  }
+
+  &.nx-indicator--top-start,
+  &.nx-indicator--top-end {
+    top: 0;
+  }
+
+  &.nx-indicator--bottom-start,
+  &.nx-indicator--bottom-end {
+    bottom: 0;
+  }
+
+  &.nx-indicator--top-start,
+  &.nx-indicator--bottom-start {
+    inset-inline-end: calc(100% - var(--indicator-overlap-shift));
+  }
+
+  &.nx-indicator--top-end,
+  &.nx-indicator--bottom-end {
+    inset-inline-start: calc(100% - var(--indicator-overlap-shift));
+  }
+
   &.nx-indicator--over-text {
     position: absolute;
     top: 0;

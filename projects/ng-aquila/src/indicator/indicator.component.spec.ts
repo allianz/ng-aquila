@@ -33,6 +33,8 @@ describe('NxIndicatorComponent', () => {
         NxIndicatorModule,
         NxIconModule,
         BasicIndicator,
+        OverlapIndicator,
+        OverlapAttributeIndicator,
         SizedIndicator,
         TypedIndicator,
         EmptyIndicator,
@@ -75,6 +77,152 @@ describe('NxIndicatorComponent', () => {
 
       expect(indicatorNativeElement).toHaveClass('nx-indicator--over-text');
       expect(indicatorNativeElement).toHaveClass('nx-indicator--with-overlap');
+    });
+
+    it('sets after-text positioning class when passed through input', () => {
+      indicatorInstance.position = 'after-text';
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--after-text');
+    });
+  });
+
+  describe('corner positions', () => {
+    function positionClasses(): string[] {
+      return [...indicatorNativeElement.classList]
+        .filter((className) => className.startsWith('nx-indicator--'))
+        .sort();
+    }
+
+    for (const position of ['top-start', 'top-end', 'bottom-start', 'bottom-end'] as const) {
+      it(`applies the position class for "${position}"`, () => {
+        createTestComponent(BasicIndicator);
+        indicatorInstance.position = position;
+        fixture.detectChanges();
+
+        expect(indicatorNativeElement).toHaveClass(`nx-indicator--${position}`);
+      });
+    }
+
+    it('removes the previous position class when the position changes', () => {
+      createTestComponent(BasicIndicator);
+      indicatorInstance.position = 'top-end';
+      fixture.detectChanges();
+
+      indicatorInstance.position = 'bottom-start';
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--bottom-start');
+      expect(indicatorNativeElement).not.toHaveClass('nx-indicator--top-end');
+    });
+
+    it('removes the position class when the position is cleared', () => {
+      createTestComponent(BasicIndicator);
+      indicatorInstance.position = 'top-end';
+      fixture.detectChanges();
+
+      indicatorInstance.position = '';
+      fixture.detectChanges();
+
+      expect(positionClasses()).toEqual([
+        'nx-indicator--critical',
+        'nx-indicator--m',
+        'nx-indicator--padded',
+      ]);
+    });
+
+    it('emits no class for a blank position', () => {
+      createTestComponent(BasicIndicator);
+      indicatorInstance.position = '   ';
+      fixture.detectChanges();
+
+      expect(positionClasses()).toEqual([
+        'nx-indicator--critical',
+        'nx-indicator--m',
+        'nx-indicator--padded',
+      ]);
+    });
+
+    it('ignores extra whitespace between positions', () => {
+      createTestComponent(BasicIndicator);
+      indicatorInstance.position = '  over-text   with-overlap  ';
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--over-text');
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--with-overlap');
+      expect(indicatorInstance.position).toBe('over-text with-overlap');
+    });
+
+    it('drops unknown positions', () => {
+      createTestComponent(BasicIndicator);
+      indicatorInstance.position = 'top-end bogus';
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--top-end');
+      expect(indicatorNativeElement).not.toHaveClass('nx-indicator--bogus');
+      expect(indicatorInstance.position).toBe('top-end');
+    });
+
+    it('drops legacy positions when combined with a new position', () => {
+      createTestComponent(BasicIndicator);
+      indicatorInstance.position = 'top-end with-overlap';
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--top-end');
+      expect(indicatorNativeElement).not.toHaveClass('nx-indicator--with-overlap');
+      expect(indicatorInstance.position).toBe('top-end');
+    });
+
+    it('keeps legacy positions when no new position is given', () => {
+      createTestComponent(BasicIndicator);
+      indicatorInstance.position = 'over-text with-overlap';
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--over-text');
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--with-overlap');
+    });
+  });
+
+  describe('overlap', () => {
+    it('does not set the overlap class by default', () => {
+      createTestComponent(BasicIndicator);
+
+      expect(indicatorNativeElement).not.toHaveClass('nx-indicator--overlap');
+    });
+
+    it('sets the overlap class when enabled', () => {
+      createTestComponent(OverlapIndicator);
+      (testInstance as OverlapIndicator).overlap = true;
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--overlap');
+    });
+
+    it('removes the overlap class when disabled again', () => {
+      createTestComponent(OverlapIndicator);
+      (testInstance as OverlapIndicator).overlap = true;
+      fixture.detectChanges();
+
+      (testInstance as OverlapIndicator).overlap = false;
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).not.toHaveClass('nx-indicator--overlap');
+    });
+
+    it('treats a bare attribute as enabled', () => {
+      createTestComponent(OverlapAttributeIndicator);
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--overlap');
+    });
+
+    it('combines with a corner position', () => {
+      createTestComponent(OverlapIndicator);
+      (testInstance as OverlapIndicator).overlap = true;
+      indicatorInstance.position = 'top-end';
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--top-end');
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--overlap');
     });
   });
 
@@ -185,6 +333,25 @@ class BasicIndicator extends IndicatorTest {
 class SingleLetterIndicator extends IndicatorTest {
   position = '';
 }
+
+@Component({
+  selector: 'test-overlap-indicator',
+  template: `<nx-indicator [position]="position" [overlap]="overlap">99</nx-indicator>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxIndicatorModule],
+})
+class OverlapIndicator extends IndicatorTest {
+  position = '';
+  overlap = false;
+}
+
+@Component({
+  selector: 'test-overlap-attribute-indicator',
+  template: `<nx-indicator position="top-end" overlap>99</nx-indicator>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxIndicatorModule],
+})
+class OverlapAttributeIndicator extends IndicatorTest {}
 
 @Component({
   selector: 'test-sized-indicator',

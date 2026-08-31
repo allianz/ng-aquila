@@ -1,4 +1,5 @@
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   computed,
@@ -6,9 +7,34 @@ import {
   inject,
   Input,
   input,
+  signal,
 } from '@angular/core';
 
-export type NxIndicatorPosition = 'over-text' | 'over-icon' | 'after-text' | 'with-overlap';
+/** Positioning preset of an indicator. */
+export type NxIndicatorPosition =
+  | 'top-start'
+  | 'top-end'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'over-text'
+  | 'over-icon'
+  | 'after-text'
+  | 'with-overlap';
+
+const NX_INDICATOR_LEGACY_POSITIONS: readonly NxIndicatorPosition[] = [
+  'over-text',
+  'over-icon',
+  'after-text',
+  'with-overlap',
+];
+
+const NX_INDICATOR_POSITIONS: readonly NxIndicatorPosition[] = [
+  'top-start',
+  'top-end',
+  'bottom-start',
+  'bottom-end',
+  ...NX_INDICATOR_LEGACY_POSITIONS,
+];
 
 /**
  * Size of an indicator. Optimized for A1.
@@ -29,10 +55,6 @@ const ICON_CONTENT_SELECTOR = 'nx-icon, svg, img, picture, figure';
   styleUrls: ['./indicator.component.scss'],
   host: {
     '[class.nx-indicator]': 'true',
-    '[class.nx-indicator--over-text]': 'this._hasPosition("over-text")',
-    '[class.nx-indicator--over-icon]': 'this._hasPosition("over-icon")',
-    '[class.nx-indicator--after-text]': 'this._hasPosition("after-text")',
-    '[class.nx-indicator--with-overlap]': 'this._hasPosition("with-overlap")',
     '[class.nx-indicator--icon]': 'this._hasIcon()',
     '[class.nx-indicator--padded]': 'this._getTextLength() > 1',
     '[class]': '_variantClasses()',
@@ -43,16 +65,32 @@ export class NxIndicatorComponent {
   private readonly _elementRef = inject(ElementRef);
 
   /**
-   * Sets the indicator positioning preset.
-   * Should be one or more of 'over-text', 'over-icon', 'after-text', 'with-overlap'.
+   * Sets the indicator positioning preset. Accepts a space-separated list of
+   * `NxIndicatorPosition` values. Unrecognized values are ignored
+   *
+   * The legacy positions `over-text`, `over-icon`, `after-text` and `with-overlap` are ignored
+   * when combined with any other position.
    */
-  @Input() set position(value: string) {
-    this._position = value.split(' ') as NxIndicatorPosition[];
+  @Input() set position(value: NxIndicatorPosition | (string & {})) {
+    const tokens = value
+      .split(/\s+/)
+      .filter((token): token is NxIndicatorPosition =>
+        NX_INDICATOR_POSITIONS.includes(token as NxIndicatorPosition),
+      );
+    // If mixed, ignore the legacy presets: their styles would override the newer position.
+    const preferred = tokens.filter((token) => !NX_INDICATOR_LEGACY_POSITIONS.includes(token));
+    this._position.set(preferred.length ? preferred : tokens);
   }
   get position(): string {
-    return this._position.join(' ');
+    return this._position().join(' ');
   }
-  private _position: NxIndicatorPosition[] = [];
+  private readonly _position = signal<NxIndicatorPosition[]>([]);
+
+  /**
+   * Whether the indicator moves inwards to overlap its container.
+   * Only affects the 'top-start', 'top-end', 'bottom-start' and 'bottom-end' positions.
+   */
+  readonly overlap = input(false, { transform: booleanAttribute });
 
   /** Sets the indicator size. Optimized for A1. */
   readonly size = input<NxIndicatorSize>('m');
@@ -60,13 +98,14 @@ export class NxIndicatorComponent {
   /** Sets the indicator color type. Optimized for A1. */
   readonly type = input<NxIndicatorType>('critical');
 
-  protected readonly _variantClasses = computed(
-    () => `nx-indicator--${this.size()} nx-indicator--${this.type()}`,
+  protected readonly _variantClasses = computed(() =>
+    [
+      `nx-indicator--${this.size()}`,
+      `nx-indicator--${this.type()}`,
+      ...this._position().map((position) => `nx-indicator--${position}`),
+      ...(this.overlap() ? ['nx-indicator--overlap'] : []),
+    ].join(' '),
   );
-
-  _hasPosition(position: NxIndicatorPosition) {
-    return this._position.includes(position);
-  }
 
   _getTextLength(): number {
     return this._elementRef.nativeElement.textContent?.trim().length ?? 0;

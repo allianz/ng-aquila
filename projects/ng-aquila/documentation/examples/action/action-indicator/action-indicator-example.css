@@ -1,0 +1,7 @@
+.label-content {
+  position: relative;
+}
+
+.label-content nx-indicator {
+  margin-inline-start: 4px;
+}

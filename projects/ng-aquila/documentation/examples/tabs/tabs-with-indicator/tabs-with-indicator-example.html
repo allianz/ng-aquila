@@ -6,7 +6,7 @@
           {{ tab.label }}
           @if (tab.notification) {
             <nx-indicator
-              position="over-text"
+              position="top-end"
               [attr.aria-label]="getAriaLabel(tab.notificationCount!)"
               >{{ getIndicatorText(tab.notificationCount!) }}</nx-indicator
             >

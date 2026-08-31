@@ -48,9 +48,28 @@ Available types: `critical | warning | positive | info`
 
 </div>
 
+### Positioning
+
+Use the `position` input to place the indicator in one of the corners of its container:
+`top-start | top-end | bottom-start | bottom-end`. The indicator is aligned with the top or
+bottom edge of the container and sits just outside it. 
+
+Add the `overlap` input to pull it back inwards so it sits partly on top of the container 
+
+Corner positions rely on absolute positioning, so the container needs `position: relative`.
+
+<!-- example(indicator-positions) -->
+
+Note that `position` is optional: leave it out and the indicator stays a plain inline element
+that you can place entirely with your own css.
+
 ### Usage inside other components
 
 The indicator can be placed inside other components. You are free to position the indicator as needed with css or use `position` input to turn on one of our positioning presets. Note, that since most of our presets rely on absolute positioning, you might need to add `position: relative` style to the container element of indicator for best results. Here are a few examples.
+
+The legacy values `over-text`, `over-icon`, `after-text` and `with-overlap` still work, but
+prefer a corner position with `overlap` for new code. They cannot be combined with a corner
+position: if you pass both, the legacy value is ignored.
 
 #### Action
 
@@ -58,7 +77,17 @@ The indicator can be placed inside other components. You are free to position th
 
 #### Context Menu
 
+<div class="docs-ndbx">
+
 <!-- example(context-menu-indicator) -->
+
+</div>
+
+<div class="docs-hide-ndbx">
+
+<!-- example(context-menu-indicator-a1) -->
+
+</div>
 
 #### Icon Button
 

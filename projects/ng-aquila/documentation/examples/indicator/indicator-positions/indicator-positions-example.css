@@ -1,0 +1,25 @@
+.docs-indicator-positions {
+  display: grid;
+  grid-template-columns: auto repeat(3, minmax(48px, 1fr));
+  align-items: center;
+  gap: 16px;
+  max-width: 400px;
+}
+
+.docs-indicator-positions__head {
+  text-align: center;
+  text-wrap: balance;
+}
+
+.docs-indicator-positions__label {
+  padding-inline-end: 8px;
+}
+
+.docs-indicator-positions__box {
+  position: relative;
+  justify-self: center;
+  width: 48px;
+  height: 32px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+}
