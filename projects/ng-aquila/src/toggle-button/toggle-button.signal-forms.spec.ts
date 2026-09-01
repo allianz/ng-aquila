@@ -1,6 +1,8 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
 import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { AbstractControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { disabled, form, FormField, readonly, required, submit } from '@angular/forms/signals';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
@@ -70,6 +72,24 @@ class ReadonlyHost {
   intervalForm = form(this.model, (path) => {
     readonly(path.interval);
   });
+}
+
+class ShowOnDirtyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: AbstractControl | null): boolean {
+    return !!control?.dirty;
+  }
+}
+
+class RecordingErrorStateMatcher extends ErrorStateMatcher {
+  control: AbstractControl | NgControl | null = null;
+
+  override isErrorState(
+    control: AbstractControl | NgControl | null,
+    form: FormGroupDirective | NgForm | null,
+  ): boolean {
+    this.control = control;
+    return super.isErrorState(control, form);
+  }
 }
 
 describe('NxToggleButtonGroupComponent signal forms', () => {
@@ -215,5 +235,46 @@ describe('NxToggleButtonGroupComponent signal forms', () => {
     fixture.detectChanges();
 
     expect(host.model().interval).toBe('monthly');
+  });
+
+  describe('custom error state matcher', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [{ provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }],
+      });
+    });
+
+    it('is used instead of the default one', () => {
+      const { fixture, inputs } = setup(RequiredHost);
+
+      expect(fixture.nativeElement.querySelector('nx-error')).toBeNull();
+
+      inputs[0].click();
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('nx-error')).not.toBeNull();
+    });
+  });
+
+  describe('error state matcher interop', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [{ provide: ErrorStateMatcher, useClass: RecordingErrorStateMatcher }],
+      });
+    });
+
+    it('hands the state of the bound field to the matcher', () => {
+      const { fixture } = setup(RequiredHost);
+      const matcher = TestBed.inject(ErrorStateMatcher) as RecordingErrorStateMatcher;
+
+      expect(matcher.control?.invalid).toBe(true);
+      expect(matcher.control?.touched).toBe(false);
+      expect(Object.keys(matcher.control?.errors ?? {})).toEqual(['required']);
+
+      dispatchFakeEvent(groupElement(fixture), 'focusout');
+      fixture.detectChanges();
+
+      expect(matcher.control?.touched).toBe(true);
+    });
   });
 });

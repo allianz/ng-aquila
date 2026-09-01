@@ -71,9 +71,9 @@ Angular drives a `FormValueControl` from template-driven and reactive forms as w
 
 ### Signal forms
 
-Bind a field to the group with `[formField]`. The value and the disabled, readonly, invalid and
-touched state are kept in sync with the field. The field is marked as touched once the focus leaves
-the group, not when the focus moves from one button to another.
+Bind a field to the group with `[formField]`. The value and the disabled and readonly state are kept
+in sync with the field. The field is marked as touched once the focus leaves the group, not when the
+focus moves from one button to another.
 
 <!-- example(toggle-button-signal-forms) -->
 
@@ -83,24 +83,24 @@ the group, not when the focus moves from one button to another.
 
 ### Reactive forms
 
-Angular binds the value and the disabled, invalid, touched and required state of the
-`AbstractControl` to the group. The `readonly` state is not part of reactive forms, so it stays with
-the `readonly` input.
+Angular binds the value and the disabled and required state of the `AbstractControl` to the group.
+The `readonly` state is not part of reactive forms, so it stays with the `readonly` input.
 
 <!-- example(toggle-button-reactive-forms) -->
 
 ### Validation and error state
 
-The group shows its error state once it is invalid and touched: the unselected buttons get a
-critical border, the selected one a critical fill. `invalid` and `touched` are plain inputs, so the
-state can also be set without a form, for example to show a server side error.
+The error state needs a form: the [`ErrorStateMatcher`](./documentation/error-handling) decides when
+it is shown, in signal forms as well as in reactive and template-driven forms. A custom matcher
+provided app wide therefore also applies to the group. In the error state the unselected buttons get
+a critical border, the selected one a critical fill.
 
 <!-- example(toggle-button-error-state) -->
 
-A projected `nx-error` is shown as soon as the control is invalid and touched. Signal forms marks
-all fields of a form as touched when it is submitted with `submit()`, so the error also shows up for
-a group the user never focused. Reactive forms does not touch its controls on submit, so call
-`markAllAsTouched()` in your submit handler to get the same behaviour.
+A projected `nx-error` is shown as soon as the error state is matched. Signal forms marks all fields
+of a form as touched when it is submitted with `submit()`, so the error also shows up for a group the
+user never focused. Reactive forms does not touch its controls on submit, but the default matcher
+matches once the parent form was submitted, which gets to the same result.
 
 <!-- example(toggle-button-validation-error-state) -->
 

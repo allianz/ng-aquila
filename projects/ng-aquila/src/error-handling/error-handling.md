@@ -43,6 +43,7 @@ The `ErrorStateMatcher` is used in the following components:
 -   Radio Button Group
 -   Selectable Card
 -   Switcher
+-   Segmented Toggle Button
 -   Toggle Button
 -   Timefield
 

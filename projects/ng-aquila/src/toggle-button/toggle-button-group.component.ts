@@ -1,6 +1,6 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { IdGenerationService, SignalErrorStateMatcher } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -8,6 +8,7 @@ import {
   computed,
   contentChild,
   contentChildren,
+  DoCheck,
   ElementRef,
   forwardRef,
   inject,
@@ -16,6 +17,7 @@ import {
   output,
   signal,
 } from '@angular/core';
+import { AbstractControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { FormValueControl } from '@angular/forms/signals';
 
 import { NxToggleButtonComponent } from './toggle-button.component';
@@ -40,7 +42,9 @@ export type NxToggleButtonColumnSizing = 'content' | 'equal';
     },
   ],
 })
-export class NxToggleButtonGroupComponent implements FormValueControl<any>, NxAbstractControl {
+export class NxToggleButtonGroupComponent
+  implements FormValueControl<any>, NxAbstractControl, DoCheck
+{
   /** Id of the toggle button group. */
   readonly id = inject(IdGenerationService).nextId('nx-toggle-button-group');
 
@@ -67,12 +71,6 @@ export class NxToggleButtonGroupComponent implements FormValueControl<any>, NxAb
 
   /** Whether the toggle buttons are styled for a dark surface. */
   readonly negative = input(false, { transform: booleanAttribute });
-
-  /** Whether the current value is invalid. Set by the bound form control. */
-  readonly invalid = input(false, { transform: booleanAttribute });
-
-  /** Whether the group has been touched. Set by the bound form control. */
-  readonly touched = input(false, { transform: booleanAttribute });
 
   /** Emits when the user has finished interacting with the group. */
   readonly touch = output<void>();
@@ -102,17 +100,22 @@ export class NxToggleButtonGroupComponent implements FormValueControl<any>, NxAb
       .join(' '),
   );
 
-  readonly _errorState = computed(() =>
-    this._errorStateMatcher.isErrorState({
-      invalid: this.invalid(),
-      touched: this.touched(),
-    }),
-  );
+  readonly _errorState = signal(false);
 
   private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
-  private readonly _errorStateMatcher = inject(SignalErrorStateMatcher);
+  private readonly _errorStateMatcher = inject(ErrorStateMatcher);
+  private readonly _ngControl = inject(NgControl, { optional: true, self: true });
+  private readonly _parentForm = inject(NgForm, { optional: true });
+  private readonly _parentFormGroup = inject(FormGroupDirective, { optional: true });
 
   private readonly _controlReadonly = signal(false);
+
+  ngDoCheck(): void {
+    // With signal forms the control is the interop `NgControl` of the `[formField]` directive.
+    if (this._ngControl) {
+      this._errorState.set(this._isErrorState(this._ngControl.control));
+    }
+  }
 
   setReadonly(value: boolean): void {
     this._controlReadonly.set(value);
@@ -133,5 +136,9 @@ export class NxToggleButtonGroupComponent implements FormValueControl<any>, NxAb
     if (!this._elementRef.nativeElement.contains(event.relatedTarget as Node)) {
       this.touch.emit();
     }
+  }
+
+  private _isErrorState(control: AbstractControl | null): boolean {
+    return this._errorStateMatcher.isErrorState(control, this._parentFormGroup ?? this._parentForm);
   }
 }

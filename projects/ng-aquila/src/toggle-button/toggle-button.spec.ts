@@ -1,7 +1,9 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
+import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
 import { Component, signal, viewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   FormsModule,
@@ -95,6 +97,13 @@ class ReactiveToggleButtons {
 })
 class TemplateDrivenToggleButtons {
   interval: string | null = null;
+}
+
+/** Matches on `dirty`, for which the group has no input, so only the matcher can know it. */
+class ShowOnDirtyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: AbstractControl | null): boolean {
+    return !!control?.invalid && !!control.dirty;
+  }
 }
 
 describe('NxToggleButtonComponent', () => {
@@ -301,6 +310,38 @@ describe('NxToggleButtonComponent', () => {
 
       expect(fixture.componentInstance.form.value.interval).toBe('monthly');
       expect(fixture.nativeElement.querySelector('nx-error')).toBeNull();
+    });
+
+    it('shows the error of an untouched control once the parent form was submitted', () => {
+      const fixture = TestBed.createComponent(ReactiveToggleButtons);
+      fixture.detectChanges();
+
+      dispatchFakeEvent(fixture.nativeElement.querySelector('form'), 'submit');
+      fixture.detectChanges();
+
+      expect(fixture.componentInstance.form.controls.interval.touched).toBe(false);
+      expect(fixture.nativeElement.querySelector('nx-error')).not.toBeNull();
+    });
+  });
+
+  describe('custom error state matcher', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [{ provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }],
+      });
+    });
+
+    it('is used instead of the default one', () => {
+      const fixture = TestBed.createComponent(ReactiveToggleButtons);
+      fixture.componentInstance.form.controls.interval.markAsTouched();
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('nx-error')).toBeNull();
+
+      fixture.componentInstance.form.controls.interval.markAsDirty();
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('nx-error')).not.toBeNull();
     });
   });
 

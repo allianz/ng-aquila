@@ -4,6 +4,7 @@ import {
   NxToggleButtonGroupComponent,
 } from '@allianz/ng-aquila/toggle-button';
 import { Component, signal } from '@angular/core';
+import { form, FormField, validate } from '@angular/forms/signals';
 
 /**
  * @title Toggle Button Error State Example
@@ -12,6 +13,7 @@ import { Component, signal } from '@angular/core';
   selector: 'toggle-button-error-state-example',
   templateUrl: './toggle-button-error-state-example.html',
   imports: [
+    FormField,
     NxToggleButtonGroupComponent,
     NxToggleButtonComponent,
     NxLabelComponent,
@@ -24,5 +26,16 @@ export class ToggleButtonErrorStateExampleComponent {
     { value: 'quarterly', label: 'Quarterly' },
     { value: 'yearly', label: 'Yearly' },
   ];
-  interval = signal('quarterly');
+  model = signal({ interval: 'quarterly' });
+  paymentForm = form(this.model, (path) => {
+    validate(path.interval, ({ value }) =>
+      value() === 'quarterly' ? { kind: 'unavailable' } : undefined,
+    );
+  });
+
+  constructor() {
+    // Only to show the error state right away, a form usually gets there by the user leaving the
+    // group or by `submit()`.
+    this.paymentForm.interval().markAsTouched();
+  }
 }
