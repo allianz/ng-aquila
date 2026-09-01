@@ -1,10 +1,11 @@
 <form #form="ngForm" [formGroup]="codeForm">
-  <label>Enter PIN code</label>
+  <nx-label>Enter PIN code</nx-label>
   <nx-code-input
     #codeInput
     [length]="4"
     formControlName="keyCode"
-    type="number"
+    inputMode="numeric"
+    digitsOnly
   >
     @if (keyCode?.hasError('required')) {
       <nx-error class="nx-margin-y-xs"> Entry is required. </nx-error>

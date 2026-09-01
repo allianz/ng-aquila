@@ -1,0 +1,112 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Bank account&quot;</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+        <span class="hljs-attr">status</span>=<span class="hljs-string">&quot;positive&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;DE02 1203 0000 0000 2020 51&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldStatusMessage</span>&gt;</span>Account verified.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Email address&quot;</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+        <span class="hljs-attr">status</span>=<span class="hljs-string">&quot;warning&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;jane.doe@exmaple.com&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldStatusMessage</span>&gt;</span>
+          Did you mean <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>example.com<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>?
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Mileage&quot;</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+        [<span class="hljs-attr">status</span>]=<span class="hljs-string">&quot;mileageStatus()&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+          <span class="hljs-attr">nxInput</span>
+          [<span class="hljs-attr">ngModel</span>]=<span class="hljs-string">&quot;mileage()&quot;</span>
+          (<span class="hljs-attr">ngModelChange</span>)=<span class="hljs-string">&quot;mileage.set($event)&quot;</span>
+        /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldStatusMessage</span>&gt;</span>
+          We took this value from your last contract.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+        <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;IBAN&quot;</span>
+        <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+        <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+        [<span class="hljs-attr">status</span>]=<span class="hljs-string">&quot;ibanStatus()&quot;</span>
+      &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;iban&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldStatusMessage</span>&gt;</span>
+          This account belongs to Jane Doe.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;checkIban()&quot;</span>&gt;</span>
+        {{ ibanStatus() ? &#x27;Reset&#x27; : &#x27;Check account holder&#x27; }}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-m&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>&gt;</span>Inline<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;inline-mileage-label&quot;</span>&gt;</span>Mileage<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">inline</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">status</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;12500&quot;</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;inline-mileage-label&quot;</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-signal-button</span>
+            <span class="hljs-attr">nxFormfieldSuffix</span>
+            <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;info&quot;</span>
+            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Show the status of Mileage&quot;</span>
+          &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxPopoverMainContent</span>&gt;</span>
+              We took this value from your last contract.
+            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-signal-button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldStatusMessage</span>&gt;</span>
+            We took this value from your last contract.
+          <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;inline-iban-label&quot;</span>&gt;</span>IBAN<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">inline</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> [<span class="hljs-attr">status</span>]=<span class="hljs-string">&quot;inlineIbanStatus()&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+            <span class="hljs-attr">nxInput</span>
+            <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">&quot;inline-iban-label&quot;</span>
+            [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;inlineIban&quot;</span>
+          /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-signal-button</span>
+            <span class="hljs-attr">nxFormfieldSuffix</span>
+            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Show the status of IBAN&quot;</span>
+            [<span class="hljs-attr">context</span>]=<span class="hljs-string">&quot;inlineIbanSignalContext()&quot;</span>
+          &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxPopoverMainContent</span>&gt;</span>This account belongs to Jane Doe.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-signal-button</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldStatusMessage</span>&gt;</span>
+            This account belongs to Jane Doe.
+          <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

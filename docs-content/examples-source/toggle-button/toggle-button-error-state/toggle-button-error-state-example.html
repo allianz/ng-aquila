@@ -1,0 +1,7 @@
+<nx-toggle-button-group [formField]="paymentForm.interval">
+  <nx-label>Payment interval</nx-label>
+  @for (item of intervals; track item.value) {
+    <nx-toggle-button [value]="item.value">{{ item.label }}</nx-toggle-button>
+  }
+  <nx-error>Quarterly payment is not available for this product</nx-error>
+</nx-toggle-button-group>

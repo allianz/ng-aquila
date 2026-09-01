@@ -1,0 +1,77 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxFormfieldComponent</span>,
+  <span class="hljs-title class_">NxFormfieldStatus</span>,
+  <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxInputDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/input&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPopoverMainContentDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/popover&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxSignalButtonComponent</span>,
+  <span class="hljs-title class_">NxSignalButtonContext</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/signal-button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, computed, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-attr">SIGNAL_BUTTON_CONTEXT</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-title class_">NxFormfieldStatus</span>, <span class="hljs-title class_">NxSignalButtonContext</span>&gt; =
+  {
+    <span class="hljs-attr">positive</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+    <span class="hljs-attr">warning</span>: <span class="hljs-string">&#x27;warning&#x27;</span>,
+    <span class="hljs-attr">info</span>: <span class="hljs-string">&#x27;info&#x27;</span>,
+  };
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">INITIAL_MILEAGE</span> = <span class="hljs-string">&#x27;12500&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Status example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;formfield-status-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./formfield-status-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./formfield-status-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxFormfieldSuffixDirective</span>,
+    <span class="hljs-title class_">NxInputDirective</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">NxSignalButtonComponent</span>,
+    <span class="hljs-title class_">NxPopoverMainContentDirective</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
+    <span class="hljs-title class_">FormsModule</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FormfieldStatusExampleComponent</span> {
+  iban = <span class="hljs-string">&#x27;DE02 1203 0000 0000 2020 51&#x27;</span>;
+  inlineIban = <span class="hljs-string">&#x27;DE02 1203 0000 0000 2020 51&#x27;</span>;
+
+  <span class="hljs-keyword">readonly</span> mileage = <span class="hljs-title function_">signal</span>(<span class="hljs-variable constant_">INITIAL_MILEAGE</span>);
+
+  <span class="hljs-comment">/** Status only holds while the value matches what was taken from the contract. */</span>
+  <span class="hljs-keyword">readonly</span> mileageStatus = computed&lt;<span class="hljs-title class_">NxFormfieldStatus</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-function">() =&gt;</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">mileage</span>() === <span class="hljs-variable constant_">INITIAL_MILEAGE</span> ? <span class="hljs-string">&#x27;info&#x27;</span> : <span class="hljs-literal">null</span>,
+  );
+
+  <span class="hljs-comment">/** Status of the account field, set once the account has been checked. */</span>
+  <span class="hljs-keyword">readonly</span> ibanStatus = signal&lt;<span class="hljs-title class_">NxFormfieldStatus</span> | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+
+  <span class="hljs-comment">/** Status of the inline account field, set once the account has been checked. */</span>
+  <span class="hljs-keyword">readonly</span> inlineIbanStatus = signal&lt;<span class="hljs-title class_">NxFormfieldStatus</span>&gt;(<span class="hljs-string">&#x27;positive&#x27;</span>);
+
+  <span class="hljs-keyword">readonly</span> inlineIbanSignalContext = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-keyword">const</span> status = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">inlineIbanStatus</span>();
+    <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">SIGNAL_BUTTON_CONTEXT</span>[status];
+  });
+
+  <span class="hljs-title function_">checkIban</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">ibanStatus</span>.<span class="hljs-title function_">set</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">ibanStatus</span>() ? <span class="hljs-literal">null</span> : <span class="hljs-string">&#x27;positive&#x27;</span>);
+  }
+}

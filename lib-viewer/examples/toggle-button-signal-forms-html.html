@@ -1,0 +1,11 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-toggle-button-group</span> [<span class="hljs-attr">formField</span>]=<span class="hljs-string">&quot;paymentForm.interval&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>Payment interval<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+  @for (item of intervals; track item.value) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-toggle-button</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item.value&quot;</span>&gt;</span>{{ item.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-toggle-button</span>&gt;</span>
+  }
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>Please choose a payment interval<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-toggle-button-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Value: {{ model().interval || &#x27;-&#x27; }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Touched: {{ paymentForm.interval().touched() }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Valid: {{ paymentForm.interval().valid() }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

@@ -1,0 +1,76 @@
+<div class="docs-info">
+  <strong>Developer preview: </strong>
+  <code>nxSurface</code> is still being integrated across components. Not every component adapts to its surface yet, and the API may still change.
+</div>
+<h2 id="overview" tabindex="-1" class="docs-markdown--h2">Overview</h2>
+<p class="docs-markdown--p">A container that paints a coloured background needs everything inside it to switch to matching
+colours. When its content is arbitrary — projected via <code>ng-content</code>, or written by an app — it cannot
+reach in and set inputs.</p>
+<p class="docs-markdown--p"><code>nxSurface</code> declares the surface for its descendants and paints the matching background on itself.
+Adopting components adapt on their own. Use <code>accent-attention</code> with <code>nxSurfaceAccentColor</code> for one of
+the nine accent hues.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxSurface</span>=<span class="hljs-string">&quot;attention&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;my-banner&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;m&quot;</span>&gt;</span>Recommended<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">my-widget</span>&gt;</span>…<span class="hljs-tag">&lt;/<span class="hljs-name">my-widget</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p class="docs-markdown--p"><strong><code>accent-attention</code> is not supported in NDBX</strong> — it has no accent palette of its own, so contrast
+fails. Use <code>attention</code> or <code>emphasis</code> there.</p>
+<p class="docs-markdown--p">To use the ng-aquila components with <code>nxSurface</code> omit any inverse/negative or accentColor inputs otherwise the explicitly set inputs will take precedence.</p>
+<div nx-docs-example="surface-basic" config="{}">exampleID: surface-basic</div>
+<h2 id="reacting-in-your-own-component" tabindex="-1" class="docs-markdown--h2">Reacting in your own component</h2>
+<p class="docs-markdown--p">Map the surface onto the modes your component already has:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { injectSurface } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/surface&#x27;</span>;
+
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;my-widget&#x27;</span>,
+  <span class="hljs-attr">host</span>: { <span class="hljs-string">&#x27;[class.is-inverse]&#x27;</span>: <span class="hljs-string">&#x27;_inverse()&#x27;</span> },
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyWidgetComponent</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> surface = <span class="hljs-title function_">injectSurface</span>();
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> _inverse = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">surface</span>().<span class="hljs-property">surface</span> === <span class="hljs-string">&#x27;attention&#x27;</span>);
+}
+</code></pre>
+<p class="docs-markdown--p">The accent color only exists when surface is set to <code>accent-attention</code> arm, so narrow before reading it:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> _accentColor = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> resolved = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">surface</span>();
+  <span class="hljs-keyword">return</span> resolved.<span class="hljs-property">surface</span> === <span class="hljs-string">&#x27;accent-attention&#x27;</span> ? resolved.<span class="hljs-property">accentColor</span> : <span class="hljs-literal">undefined</span>;
+});
+</code></pre>
+<p class="docs-markdown--p">Narrowing needs a local — two <code>surface()</code> calls do not narrow each other. In a template, bind once
+with <code>@if (surface(); as resolved)</code>.</p>
+<h2 id="nesting" tabindex="-1" class="docs-markdown--h2">Nesting</h2>
+<p class="docs-markdown--p">The nearest declared <code>nxSurface</code> wins over any surface declared further out. Use <code>inherit</code> to pass
+the enclosing surface through unchanged instead of declaring a new one, and <code>default</code> to reset back
+to the neutral surface.</p>
+<div nx-docs-example="surface-nesting" config="{}">exampleID: surface-nesting</div>
+<h2 id="resetting-for-painted-containers" tabindex="-1" class="docs-markdown--h2">Resetting for painted containers</h2>
+<p class="docs-markdown--p">A component that paints its own background — a card, a modal panel — sits visually on its own
+surface, not on whatever surface encloses it. If it does nothing, <code>injectSurface()</code> inside it still
+resolves to the enclosing surface, so its content adapts to a background it no longer sits on. Such a
+component must reset propagation for its own content by providing <code>NX_SURFACE</code> as <code>undefined</code>:</p>
+<pre><code class="language-ts"><span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;my-panel&#x27;</span>,
+  <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_SURFACE</span>, <span class="hljs-attr">useValue</span>: <span class="hljs-literal">undefined</span> }],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPanelComponent</span> {}
+</code></pre>
+<p class="docs-markdown--p"><code>[nxSurfaceBackground]=&quot;false&quot;</code> is <strong>not</strong> that reset — it only suppresses the paint on the <code>nxSurface</code>
+host itself, while descendants keep reacting to the declared surface. Reach for it only when the host
+paints that <em>same</em> surface color itself, through other means.</p>
+<div nx-docs-example="surface-reset" config="{}">exampleID: surface-reset</div>
+<p class="docs-markdown--p">Overlays (dropdowns, tooltips, modals) are the trickiest case: they render at body level, outside the
+visual tree, but injection still reaches them through the trigger's injector, so they need this same
+reset. ng-aquila's overlays already do it. Note that today this only resets propagation to <code>default</code> —
+an overlay opened from an <code>attention</code>/inverse context does not yet get a non-attention surface of its
+own; that is a planned improvement, not something <code>NX_SURFACE</code> solves by itself.</p>
+<h2 id="styling-from-css" tabindex="-1" class="docs-markdown--h2">Styling from CSS</h2>
+<p class="docs-markdown--p">Declared surfaces are also rendered as attributes:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>data-nx-surface=&quot;attention&quot; | &quot;emphasis&quot; | &quot;accent-attention&quot;</code> — absent on the default surface.</li>
+<li class="docs-markdown--li"><code>data-nx-accent-color=&quot;purple&quot; | …</code> — only on an <code>accent-attention</code> surface.</li>
+</ul>
+<div nx-docs-example="surface-css" config="{}">exampleID: surface-css</div>
+<p class="docs-markdown--p">Unlike <code>injectSurface()</code>, a descendant selector does not stop at a nested reset:
+<code>[data-nx-surface='attention'] .x</code> still matches inside a <code>nxSurface=&quot;default&quot;</code>.</p>

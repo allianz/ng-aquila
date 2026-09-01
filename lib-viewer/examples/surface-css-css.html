@@ -1,0 +1,13 @@
+<span class="hljs-selector-class">.docs-surface-css-container</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">32px</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+}
+
+<span class="hljs-selector-class">.docs-legacy-widget</span> {
+  <span class="hljs-comment">/* will be overwritten by the more next selector */</span>
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--text-<span class="hljs-number">01</span>);
+}
+
+<span class="hljs-selector-attr">[data-nx-surface=<span class="hljs-string">&#x27;attention&#x27;</span>]</span> <span class="hljs-selector-class">.docs-legacy-widget</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--text-<span class="hljs-number">02</span>);
+}

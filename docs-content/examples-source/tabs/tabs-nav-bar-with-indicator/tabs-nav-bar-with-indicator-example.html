@@ -10,7 +10,7 @@
         {{ link.label }}
         @if (link.notification) {
           <nx-indicator
-            position="over-text"
+            position="top-end"
             [attr.aria-label]="getAriaLabel(link.notificationCount!)"
             >{{ link.notificationCount }}</nx-indicator
           >

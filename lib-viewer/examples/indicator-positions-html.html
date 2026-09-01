@@ -1,0 +1,19 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-indicator-positions&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-indicator-positions__head&quot;</span>&gt;</span>default (count)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-indicator-positions__head&quot;</span>&gt;</span>overlap (count)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-indicator-positions__head&quot;</span>&gt;</span>overlap (countless)<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+
+  @for (position of positions; track position) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-indicator-positions__label&quot;</span>&gt;</span>{{ position }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-indicator-positions__box&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-indicator</span> [<span class="hljs-attr">position</span>]=<span class="hljs-string">&quot;position&quot;</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">nx-indicator</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-indicator-positions__box&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-indicator</span> [<span class="hljs-attr">position</span>]=<span class="hljs-string">&quot;position&quot;</span> <span class="hljs-attr">overlap</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">nx-indicator</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-indicator-positions__box&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-indicator</span> [<span class="hljs-attr">position</span>]=<span class="hljs-string">&quot;position&quot;</span> <span class="hljs-attr">overlap</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-indicator</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  }
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { AnchorButtonExampleComponent } from './anchor-button/anchor-button-example';
-import { ButtonA1ShowcaseExampleComponent } from './button-a1-showcase/button-a1-showcase-example';
 import { ButtonExampleComponent } from './button/button-example';
+import { ButtonA1ShowcaseExampleComponent } from './button-a1-showcase/button-a1-showcase-example';
 import { ButtonBlockExampleComponent } from './button-block/button-block-example';
 import { ButtonColorSchemeA1ExampleComponent } from './button-color-scheme-a1/button-color-scheme-a1-example';
 import { ButtonCriticalExampleComponent } from './button-critical/button-critical-example';

@@ -16,6 +16,7 @@ import { ContextMenuDisabledExampleComponent } from './context-menu-disabled/con
 import { ContextMenuGroupExampleComponent } from './context-menu-group/context-menu-group-example';
 import { ContextMenuIconsExampleComponent } from './context-menu-icons/context-menu-icons-example';
 import { ContextMenuIndicatorExampleComponent } from './context-menu-indicator/context-menu-indicator-example';
+import { ContextMenuIndicatorA1ExampleComponent } from './context-menu-indicator-a1/context-menu-indicator-a1-example';
 import { ContextMenuLazyExampleComponent } from './context-menu-lazy/context-menu-lazy-example';
 import { ContextMenuMultiSelectableExampleComponent } from './context-menu-multi-selectable/context-menu-multi-selectable-example';
 import { ContextMenuNestedExampleComponent } from './context-menu-nested/context-menu-nested-example';
@@ -36,6 +37,7 @@ const EXAMPLES = [
   ContextMenuProgrammaticExampleComponent,
   ContextMenuScrollStrategyExampleComponent,
   ContextMenuIndicatorExampleComponent,
+  ContextMenuIndicatorA1ExampleComponent,
   ContextMenuCursorModeExampleComponent,
   ContextMenuScrollStrategyProviderExampleComponent,
   ContextMenuSelectionExampleComponent,
@@ -74,6 +76,7 @@ export class ContextExamplesModule {
       'context-menu-scroll-strategy-provider':
         ContextMenuScrollStrategyProviderExampleComponent,
       'context-menu-indicator': ContextMenuIndicatorExampleComponent,
+      'context-menu-indicator-a1': ContextMenuIndicatorA1ExampleComponent,
       'context-menu-cursor-mode': ContextMenuCursorModeExampleComponent,
       'context-menu-selection': ContextMenuSelectionExampleComponent,
       'context-menu-select-multiple': ContextMenuSelectMultipleExampleComponent,

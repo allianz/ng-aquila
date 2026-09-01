@@ -45,7 +45,7 @@
     </td>
     <td class="docs-api-property-description">
         <p><strong>Expert option</strong></p>
-<p>Sets the appearance of the formfield.</p>
+<p>Sets the appearance of the formfield. Can be changed for NDBX only. A1 enforces outline appearance.</p>
 </td>
 </tr>
    
@@ -65,7 +65,8 @@
     </td>
     <td class="docs-api-property-description">
         <p>Whether the label should float once the input is focused or filled (auto, default)
-or force it to always float with a value of always to simulate a more static form.</p>
+or force it to always float with a value of always to simulate a more static form.
+Can be changed for NDBX only. A1 enforces always floating labels.</p>
 </td>
 </tr>
    
@@ -83,11 +84,14 @@ or force it to always float with a value of always to simulate a more static for
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the form field is rendered inline. When enabled the label is
-visually hidden (kept for accessibility) and the reserved space around
-the field (top floating-label space and bottom hint/error/note space)
-is removed. Providing hints/errors/notes together with <code>inline</code> is not
-supported in this version — they will not be shown.</p>
+        <p>Whether the form field is rendered inline. When enabled the reserved space
+around the field (top floating-label space and bottom hint/error/note
+space) is removed and the label as well as the hints, errors, notes and
+status message are visually hidden. They are kept in the accessibility
+tree, so the control still references them via <code>aria-describedby</code> and a
+screen reader still announces them. Surface anything a sighted user needs
+to see some other way, for example with a <code>nx-signal-button</code> in the
+<code>nxFormfieldSuffix</code> slot.</p>
 </td>
 </tr>
    
@@ -144,6 +148,29 @@ In addition, the component uses input and label to properly support accessibilit
     <td class="docs-api-property-description">
         <p>Sets the size of the formfield.</p>
 <p>Only supported under A1.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                status: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxFormfieldStatus&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Colors the border of the formfield in the given signal color and renders a plain
+message below the field. Mark the message content with the
+<code>nxFormfieldStatusMessage</code> attribute — always provide it, as a status without a
+message leaves a colored border with no explanation of why.</p>
+<p>Only supported for <code>appearance=&quot;outline&quot;</code>. An error (an invalid, touched form
+control together with a <code>nxFormfieldError</code>) takes precedence over the status.</p>
 </td>
 </tr>
    
@@ -583,6 +610,16 @@ using the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token.</p>
 </p>
    
 
+<h4 id="NxFormfieldStatus" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxFormfieldStatus"></span>
+    <code>NxFormfieldStatus</code>
+</h4><p class="docs-api-type-alias-description"><p>Type for the signal status of the formfield. No <code>critical</code> value: an invalid control drives the error look instead.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'positive' | 'warning' | 'info'</code>
+</p>
+   
+
 <h4 id="FormfieldControlHarness" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="FormfieldControlHarness"></span>
     <code>FormfieldControlHarness</code>
@@ -879,6 +916,35 @@ with generic result typing.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
+            <span class="docs-api-method-name">getStatus(): <span class="docs-api-method-returns-type">Promise&lt;NxFormfieldStatus | null&gt;</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets the signal status of the form field, or null if none is applied.</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getStatusMessage(): <span class="docs-api-method-returns-type">Promise&lt;TestElement | null&gt;</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets the status message of the form field, or null if none is shown.</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getStatusMessageText(): <span class="docs-api-method-returns-type">Promise&lt;string | null&gt;</span></span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
             <span class="docs-api-method-name">getSuffix(): <span class="docs-api-method-returns-type">Promise&lt;TestElement | null&gt;</span></span>
         </code>
     </div>
@@ -1086,6 +1152,22 @@ with generic result typing.</p>
                 </span>
                  
                 <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                status?: 
+                </span>
+                 
+                <span class="docs-api-property__type">any</span>
             </code>
         </p>
     </td>

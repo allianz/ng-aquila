@@ -1,0 +1,22 @@
+<nx-toggle-button-group [(value)]="single">
+  <nx-label>Single buttons</nx-label>
+  <nx-toggle-button value="monthly">Monthly</nx-toggle-button>
+  <nx-toggle-button value="quarterly" readonly
+    >Quarterly, readonly</nx-toggle-button
+  >
+  <nx-toggle-button value="yearly" disabled>Yearly, disabled</nx-toggle-button>
+</nx-toggle-button-group>
+
+<nx-toggle-button-group [(value)]="readonly" readonly>
+  <nx-label>Readonly group</nx-label>
+  @for (item of intervals; track item.value) {
+    <nx-toggle-button [value]="item.value">{{ item.label }}</nx-toggle-button>
+  }
+</nx-toggle-button-group>
+
+<nx-toggle-button-group [(value)]="disabled" disabled>
+  <nx-label>Disabled group</nx-label>
+  @for (item of intervals; track item.value) {
+    <nx-toggle-button [value]="item.value">{{ item.label }}</nx-toggle-button>
+  }
+</nx-toggle-button-group>

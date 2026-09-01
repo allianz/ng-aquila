@@ -1,0 +1,34 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxTabComponent</span>,
+  <span class="hljs-title class_">NxTabGroupComponent</span>,
+  <span class="hljs-title class_">NxTabsIntl</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tabs&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Injectable</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">NxTabsIntl</span> {
+  closeAriaLabel = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">${label}</span> schließen`</span>;
+  closeAnnouncement = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-string">`<span class="hljs-subst">${label}</span> geschlossen`</span>;
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Tabs localization example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-localize-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-localize-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-localize-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxTabsIntl</span>, <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">MyIntl</span> }],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxTabGroupComponent</span>, <span class="hljs-title class_">NxTabComponent</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TabsLocalizeExampleComponent</span> {
+  tabs = [
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Erster Tab&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Zweiter Tab&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Dritter Tab&#x27;</span> },
+  ];
+
+  <span class="hljs-title function_">closeTab</span>(<span class="hljs-params"><span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tabs</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tabs</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> i !== index);
+  }
+}

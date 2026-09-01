@@ -1,0 +1,12 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-inverse-container&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-toggle-button-group</span> <span class="hljs-attr">negative</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;interval&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">negative</span>&gt;</span>Payment interval<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+    @for (item of intervals; track item.value) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-toggle-button</span>
+        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item.value&quot;</span>
+        [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;item.value === &#x27;yearly&#x27;&quot;</span>
+        &gt;</span>{{ item.label }}&lt;/nx-toggle-button
+      &gt;
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-toggle-button-group</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

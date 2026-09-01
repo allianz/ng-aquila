@@ -19,10 +19,12 @@
 <p class="docs-markdown--p">The formfield width depends only on the grid column it is placed in and expands until it has taken 100% of the width.</p>
 <p class="docs-markdown--p"><strong>Note:</strong> You have to include NxPopoverModule to run this example. See <a href="./documentation/popover/overview">NxPopover</a> for details.</p>
 <div nx-docs-example="formfield-simple-form" config="{}">exampleID: formfield-simple-form</div>
+<div class="docs-hide-a1">
 <h3 id="floating" tabindex="-1" class="docs-markdown--h3">Floating</h3>
 <p class="docs-markdown--p">By default the label will float once the input is focused or filled. By specifying <code>floatLabel</code> with a value of always you can make this formfield appear as a static input + label combination.</p>
 <div nx-docs-example="formfield-floating" config="{}">exampleID: formfield-floating</div>
-<h3 id="custom-formfield-label" tabindex="-1" class="docs-markdown--h3">Custom formfield label</h3>
+</div>
+### Custom formfield label
 <p class="docs-markdown--p">You can pass text label content via the input <code>label</code>. If you need a more complex label you an use the directive <code>nx-formfield-label</code> as shown in the code example below. If both are defined, then <code>nx-formfield-label</code> will take precedence.</p>
 <div nx-docs-example="formfield-custom-label" config="{}">exampleID: formfield-custom-label</div>
 <h3 id="info-icon" tabindex="-1" class="docs-markdown--h3">Info icon</h3>
@@ -37,8 +39,8 @@
 <h3 id="inline" tabindex="-1" class="docs-markdown--h3">Inline</h3>
 <p class="docs-markdown--p">Set the <code>inline</code> input to render the formfield in a compact way: the label is visually hidden and the space normally reserved above (for the floating label) and below the field (for hints, errors and notes) is removed. This is useful for dense layouts, for example a field inside a table cell where the column header already labels the control.</p>
 <p class="docs-markdown--p">For accessibility the label is kept in the DOM (only visually hidden), so you should always provide a meaningful <code>label</code>. Alternatively you can connect the control to an existing element via <code>aria-labelledby</code> (for example a table header).</p>
-<p class="docs-markdown--p"><strong>Note:</strong> hints, errors and notes are not supported together with <code>inline</code> and will not be shown.</p>
-<p class="docs-markdown--p">Because the projected error message is hidden in inline mode, you can surface the validation state with a <a href="/documentation/signal-button/overview">signal button</a> placed in the <code>nxFormfieldSuffix</code> slot, opening a popover that lists the current errors. Keep the projected <code>nx-error</code> in the DOM (it stays only visually hidden): the formfield still connects it to the control via <code>aria-describedby</code> and sets <code>aria-invalid</code>, so assistive technology continues to announce the error. The example below and the <a href="/documentation/table/overview">table with form elements</a> example show this pattern.</p>
+<p class="docs-markdown--p"><strong>Note:</strong> with <code>inline</code>, hints, errors, notes and the status message are visually hidden, not removed — the formfield still connects them via <code>aria-describedby</code>, so assistive technology still announces them. Keep projecting them.</p>
+<p class="docs-markdown--p">Since sighted users can't see the nots, it is important to show the information in some other way, for example with a <a href="/documentation/signal-button/overview">signal button</a> in the <code>nxFormfieldSuffix</code> slot, opening a popover with the details. The example below and the <a href="/documentation/table/overview">table with form elements</a> example show this for errors; the <a href="#status">status example</a> shows it for <code>status</code>.</p>
 <p class="docs-markdown--p"><code>inline</code> combines well with the <a href="#small-size">small size</a> for especially dense layouts. <strong>Note:</strong> when the formfield uses <code>size=&quot;s&quot;</code>, the signal button in the suffix needs <code>size=&quot;s&quot;</code> as well, so that its icon matches the reduced control height. The last row of the example below shows this combination.</p>
 <div nx-docs-example="formfield-inline" config="{}">exampleID: formfield-inline</div>
 <h3 id="character-count" tabindex="-1" class="docs-markdown--h3">Character count</h3>
@@ -60,6 +62,17 @@
 <h4 id="notes-and-errors" tabindex="-1" class="docs-markdown--h4">Notes and Errors</h4>
 <p class="docs-markdown--p">Initially, the info is shown here. But once you touch the textfield (try focus and blur), it displays the error instead.</p>
 <div nx-docs-example="formfield-note-and-error" config="{}">exampleID: formfield-note-and-error</div>
+<h3 id="status" tabindex="-1" class="docs-markdown--h3">Status</h3>
+<p class="docs-markdown--p">Set <code>status</code> to show the outcome of a check on the field — <code>positive</code>, <code>warning</code> or <code>info</code>. It colors the border and shows a message below the field via <code>nxFormfieldStatusMessage</code>.</p>
+<div class="docs-hide-a1">
+<p class="docs-markdown--p">Only works with <code>appearance=&quot;outline&quot;</code>; ignored otherwise.</p>
+</div>
+<p class="docs-markdown--p">Always add a message — color alone doesn't convey meaning to colorblind or screen-reader users.</p>
+<p class="docs-markdown--p">The border and message are suppressed while the control is disabled — a disabled field cannot be acted on, so there is nothing left to signal.</p>
+<div nx-docs-example="formfield-status" config="{}">exampleID: formfield-status</div>
+<p class="docs-markdown--p">There is deliberately no <code>critical</code> status — the error look stays driven by the validity of the form control (see <a href="#errors">Errors</a>), so what is shown always matches <code>aria-invalid</code>. Only one message is displayed at a time, in the order <strong>error &gt; status &gt; note</strong>.</p>
+<p class="docs-markdown--p">On an <a href="#inline"><code>inline</code></a> formfield the message is only visually hidden, so pair it with a <a href="/documentation/signal-button/overview">signal button</a> in the <code>nxFormfieldSuffix</code> slot to keep the status visible.</p>
+<p class="docs-markdown--p">The message is added to the <code>aria-describedby</code> of the input and carries <code>role=&quot;status&quot;</code>, so it is announced politely rather than interrupting the screen reader. A live region filled in the same tick is not reliably announced by all screen readers (as with <code>nxFormfieldError</code>) — if you need a guaranteed announcement, use the CDK <a href="https://material.angular.dev/cdk/a11y/api#LiveAnnouncer"><code>LiveAnnouncer</code></a>.</p>
 <h3 id="prefix%2C-suffix%2C-appendix" tabindex="-1" class="docs-markdown--h3">Prefix, Suffix, Appendix</h3>
 <p class="docs-markdown--p">Provide additional information like the unit or icons with popovers by using additional spaces before and after the input. Both prefix and suffix are visually inside the input, the appendix is located outside to display elements like info icons as they need to be placed outside.</p>
 <p class="docs-markdown--p">Projected content is automatically colored in a secondary color, auto-sized icons get a size of 24px (s) and a primary action dark color.</p>
@@ -74,7 +87,7 @@
 <p class="docs-markdown--p"><strong>Important:</strong> When using a formfield with a visibility toggle please pass an <code>aria-label</code> to the password toggle via the <code>ariaLabel</code> input. If you don't set it explicitly it will have 'Show password' as default value. As the default is in English, in almost all cases you should explicitly set the label.</p>
 <p class="docs-markdown--p">For more information on the password toggle component have a look at the <a href="./documentation/input/api">Input API</a>.</p>
 <div nx-docs-example="formfield-password-visibility" config="{}">exampleID: formfield-password-visibility</div>
-<div class="docs-expert-container">
+<div class="docs-expert-container docs-hide-a1">
 <h3 id="expert%3A-appearance" tabindex="-1" class="docs-markdown--h3">Expert: Appearance</h3>
 <p class="docs-markdown--p">With <code>appearance</code> you can change the styling of the formfield and add an outline.</p>
 <p class="docs-markdown--p">Please note that <strong>this is an Expert styling option</strong>. This means that the outline appearance is only intended for internal applications and not for applications that are client facing.</p>
@@ -84,10 +97,20 @@
 <div nx-docs-example="formfield-expert-error" config="{}">exampleID: formfield-expert-error</div>
 </div>
 <h3 id="global-settings" tabindex="-1" class="docs-markdown--h3">Global settings</h3>
+<div class="docs-a1">
+<p class="docs-markdown--p">The current Design System enforces</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>appearance=&quot;outline&quot;</code> for Formfield</li>
+<li class="docs-markdown--li"><code>floatLabel=&quot;always&quot;</code> for Formfield</li>
+<li class="docs-markdown--li"><code>appearance=&quot;text&quot;</code> for Error Component</li>
+</ul>
+</div>
+<div class="docs-ndbx">
 <p class="docs-markdown--p">If you want to use default settings for all of your formfields, you can use the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token. Here global settings for <code>appearance</code> and <code>nxFloatLabel</code> can be defined.</p>
 <p class="docs-markdown--p">If a certain formfield should have another styling, you can overwrite it by explicitly defining the property in the template.</p>
 <p class="docs-markdown--p">The same is valid for the formfield error notifications (<code>nx-error</code>). The default error style is 'message', but you can use the <code>ERROR_DEFAULT_OPTIONS</code> injection token to overwrite it, as shown in the example below.</p>
 <div nx-docs-example="formfield-global" config="{}">exampleID: formfield-global</div>
+</div>
 <h3 id="creating-a-custom-form-field-control" tabindex="-1" class="docs-markdown--h3">Creating a custom form field control</h3>
 <p class="docs-markdown--p">If you want you can create custom form field controls and add custom logic to it. Your custom form field control then should be wrapped inside <code>nx-formfield</code>. Let's start simple and check how it looks once you implement the necessary interfaces. Our goal is to implement custom form field controls for phone numbers.</p>
 <p class="docs-markdown--p">The HTML code below shows how we can consume our custom control.</p>

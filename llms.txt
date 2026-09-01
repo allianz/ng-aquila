@@ -33,7 +33,6 @@ Each topic's documentation is at: https://allianz.github.io/ng-aquila/documentat
 - rtl
 - theming
 - typography
-- utils
 - web-components
 
 ## Components
@@ -104,9 +103,10 @@ Each component's documentation is at: https://allianz.github.io/ng-aquila/docume
 - table: Data table with sorting and filtering
 - tabs: Tabbed content navigation
 - taglist: Tag/chip list with add/remove
-- text: Inline text styling utilities including accent colors
+- text: Body text, utility text and inline text styling utilities
 - tile: Selectable tile with icon, label, and hint
 - timefield: Time input field
+- toggle-button: Radio-style group of buttons for a single choice out of many options
 - toolbar: Action toolbar
 - tooltip: Simple text tooltip on hover
 - tree: Hierarchical tree view

@@ -1,0 +1,10 @@
+.docs-indicator-type {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 32px;
+}
+
+.docs-indicator-type__label {
+  width: 72px;
+}

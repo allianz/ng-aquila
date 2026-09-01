@@ -22,7 +22,7 @@
 <p class="docs-markdown--p">An alternative way to get the value without separators is calling the <code>getUnmaskedValue()</code> function.</p>
 <div nx-docs-example="mask-drop-characters" config="{}">exampleID: mask-drop-characters</div>
 <h3 id="validation" tabindex="-1" class="docs-markdown--h3">Validation</h3>
-<p class="docs-markdown--p">Per default the mask is validated. It will send a <code>nxMaskLengthError</code>, if the lengths of input value and given mask do not match.</p>
+<p class="docs-markdown--p">Per default the mask is validated. It will send a <code>nxMaskLengthError</code>, if the lengths of input value and given mask do not match. The error carries <code>length</code> (how many characters the mask expects) and <code>actual</code> (how many were entered); both counts exclude separator characters, so they match what the user actually has to type.</p>
 <p class="docs-markdown--p">The validation can be turned off via the <code>[validateMask]</code> input. In both cases you can add your custom validators (e.g. <code>required</code>) for the input.</p>
 <div nx-docs-example="mask-validation" config="{}">exampleID: mask-validation</div>
 <h3 id="case-sensitivity" tabindex="-1" class="docs-markdown--h3">Case sensitivity</h3>

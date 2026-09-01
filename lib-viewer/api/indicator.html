@@ -32,6 +32,25 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                overlap: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the indicator moves inwards to overlap its container.
+Only affects the &#39;top-start&#39;, &#39;top-end&#39;, &#39;bottom-start&#39; and &#39;bottom-end&#39; positions.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
@@ -44,8 +63,46 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the indicator positioning preset.
-Should be one or more of &#39;over-text&#39;, &#39;over-icon&#39;, &#39;after-text&#39;, &#39;with-overlap&#39;.</p>
+        <p>Sets the indicator positioning preset. Accepts a space-separated list of
+<code>NxIndicatorPosition</code> values. Unrecognized values are ignored</p>
+<p>The legacy positions <code>over-text</code>, <code>over-icon</code>, <code>after-text</code> and <code>with-overlap</code> are ignored
+when combined with any other position.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxIndicatorSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the indicator size. Optimized for A1.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                type: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxIndicatorType&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the indicator color type. Optimized for A1.</p>
 </td>
 </tr>
   
@@ -61,8 +118,29 @@ Should be one or more of &#39;over-text&#39;, &#39;over-icon&#39;, &#39;after-te
 <h4 id="NxIndicatorPosition" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="NxIndicatorPosition"></span>
     <code>NxIndicatorPosition</code>
-</h4><p class="docs-api-type-alias-value">
+</h4><p class="docs-api-type-alias-description"><p>Positioning preset of an indicator.</p>
+</p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'over-text' | 'over-icon' | 'after-text' | 'with-overlap'</code>
+    <code class="docs-api-type-alias-value">'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | 'over-text' | 'over-icon' | 'after-text' | 'with-overlap'</code>
+</p>
+   
+
+<h4 id="NxIndicatorSize" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxIndicatorSize"></span>
+    <code>NxIndicatorSize</code>
+</h4><p class="docs-api-type-alias-description"><p>Size of an indicator. Optimized for A1.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'s' | 'm' | '800' | '1000' | '1200' | '1400' | '1600' | '1800' | '2000'</code>
+</p>
+   
+
+<h4 id="NxIndicatorType" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxIndicatorType"></span>
+    <code>NxIndicatorType</code>
+</h4><p class="docs-api-type-alias-description"><p>Color type of an indicator. Optimized for A1.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'critical' | 'warning' | 'positive' | 'info'</code>
 </p>
   </div>

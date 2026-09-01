@@ -39,7 +39,25 @@
                 <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                inverse: 
+                colorScheme: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxEyebrowColorScheme&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The color scheme of the eyebrow. Only relevant for the A1 Design.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverseInput: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
@@ -47,7 +65,9 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Whether to use the inverse color. When not set, it follows the surface the
+eyebrow is placed on (see <code>nxSurface</code>).</p>
+</td>
 </tr>
    
 
@@ -66,6 +86,25 @@
     <td class="docs-api-property-description">
         </td>
 </tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved inverse: an explicit input wins, then the surface the component sits
+on. The accent hue is ignored - the eyebrow has no on-accent-attention
+tokens yet, so it just goes inverse regardless of hue.</p>
+</td>
+</tr>
   
 </table> 
 
@@ -82,5 +121,15 @@
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
     <code class="docs-api-type-alias-value">'s' | 'm'</code>
+</p>
+   
+
+<h4 id="NxEyebrowColorScheme" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxEyebrowColorScheme"></span>
+    <code>NxEyebrowColorScheme</code>
+</h4><p class="docs-api-type-alias-description"><p>Color scheme of an eyebrow. Only relevant for the A1 Design.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'default' | 'on-accent-attention'</code>
 </p>
   </div>

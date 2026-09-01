@@ -1,0 +1,281 @@
+       
+
+<div class="docs-api"><p class="docs-api-module-import">
+                <code>
+                    <span class="docs-api-module-import__import-span">import </span>
+                    { SurfaceProbeComponent }
+                    <span class="docs-api-module-import__from-span">from</span>
+                    <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/surface'</span>;
+                </code>
+            </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
+    </h3>
+     
+
+<h4 id="SurfaceProbeComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="SurfaceProbeComponent"></span>
+    <code>SurfaceProbeComponent</code></h4><p class="docs-api-class-description"><p>Reports what a component inside a surface resolves.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-surface-probe</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                accentColor: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxSurfaceAccentColor&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                resolved: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxResolvedSurface&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                surface: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;&quot;default&quot; | &quot;emphasis&quot; | &quot;attention&quot; | &quot;accent-attention&quot;&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+ 
+  <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
+    </h3>
+     
+
+<h4 id="NxSurface" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxSurface"></span>
+    <code>NxSurface</code></h4><p class="docs-api-class-description"><p>Declares the surface for everything inside the host element, and paints its
+background to match. Adopting ng-aquila components adapt automatically; other
+components and plain CSS can key off the <code>data-nx-surface</code> attribute.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxSurface]</span>
+        </code>
+    
+</p><p class="docs-api-directive-selectors">
+<span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxSurface</span>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>nxSurfaceAccentColor</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                accentColorInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxSurfaceAccentColor&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The accent hue. Only takes effect with an <code>accent-attention</code> surface.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>nxSurfaceBackground</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                background: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether to paint the surface&#39;s background on the host. Turn off when the host
+already paints this same surface itself - descendants keep reacting either
+way. To stop them reacting, reset the surface instead, see {@link NX_SURFACE}.
+Default: <code>true</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>nxSurface</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                surfaceInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxSurfaceInputValue&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The surface painted on this element. Use <code>inherit</code> to keep the enclosing
+surface, and <code>default</code> to reset it. Default: <code>&#39;default&#39;</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                resolved: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxResolvedSurface&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+ 
+  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
+    </h3>
+     
+
+<h4 id="NxSurfaceContext" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxSurfaceContext"></span>
+    <code>NxSurfaceContext</code>
+</h4><p class="docs-api-interface-description"><p>The value carried by {@link NX_SURFACE}.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                resolved: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxResolvedSurface&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
+  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
+    </h3>
+     
+
+<h4 id="NxSurfaceType" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxSurfaceType"></span>
+    <code>NxSurfaceType</code>
+</h4><p class="docs-api-type-alias-description"><p>The surface a component is sitting on.</p>
+<ul>
+<li><code>default</code> - the neutral page or card surface.</li>
+<li><code>attention</code> - the inverse, brand-colored surface.</li>
+<li><code>emphasis</code> - the emphasis tint.</li>
+<li><code>accent-attention</code> - one of the accent hues, see <code>NxSurfaceAccentColor</code>.</li>
+</ul>
+<p>A surface says what the background is, not what a component should do about
+it - each component decides that for itself.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'default' | 'attention' | 'emphasis' | 'accent-attention'</code>
+</p>
+   
+
+<h4 id="NxSurfaceInputValue" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxSurfaceInputValue"></span>
+    <code>NxSurfaceInputValue</code>
+</h4><p class="docs-api-type-alias-description"><p>The value accepted by <code>[nxSurface]</code> - an {@link NxSurfaceType}, or <code>inherit</code> to keep
+the enclosing surface instead of declaring a new one.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">NxSurfaceType | 'inherit'</code>
+</p>
+   
+
+<h4 id="NxSurfaceAccentColor" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxSurfaceAccentColor"></span>
+    <code>NxSurfaceAccentColor</code>
+</h4><p class="docs-api-type-alias-description"><p>Accent hue. Only meaningful when the surface is <code>accent-attention</code>.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'yellow' | 'orange' | 'red' | 'purple' | 'aqua' | 'blue' | 'teal' | 'green' | 'gray'</code>
+</p>
+   
+
+<h4 id="NxResolvedSurface" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxResolvedSurface"></span>
+    <code>NxResolvedSurface</code>
+</h4><p class="docs-api-type-alias-description"><p>A surface together with its accent hue, which only the accent arm carries.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">{
+    readonly surface: 'default' | 'attention' | 'emphasis';
+} | {
+    readonly surface: 'accent-attention';
+    readonly accentColor: NxSurfaceAccentColor;
+}</code>
+</p>
+  </div>

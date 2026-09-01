@@ -1,0 +1,71 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBadgeModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/badge&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxEyebrowModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/eyebrow&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPriceModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/price&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> {
+  <span class="hljs-title class_">NxSurfaceAccentColor</span>,
+  <span class="hljs-title class_">NxSurfaceType</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/surface&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSurface</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/surface&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, computed, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Surface basic example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;surface-basic-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./surface-basic-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./surface-basic-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxSurface</span>,
+    <span class="hljs-title class_">NxBadgeModule</span>,
+    <span class="hljs-title class_">NxButtonModule</span>,
+    <span class="hljs-title class_">NxPriceModule</span>,
+    <span class="hljs-title class_">NxEyebrowModule</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SurfaceBasicExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">surfaces</span>: <span class="hljs-title class_">NxSurfaceType</span>[] = [
+    <span class="hljs-string">&#x27;default&#x27;</span>,
+    <span class="hljs-string">&#x27;attention&#x27;</span>,
+    <span class="hljs-string">&#x27;emphasis&#x27;</span>,
+    <span class="hljs-string">&#x27;accent-attention&#x27;</span>,
+  ];
+
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">accentColors</span>: <span class="hljs-title class_">NxSurfaceAccentColor</span>[] = [
+    <span class="hljs-string">&#x27;yellow&#x27;</span>,
+    <span class="hljs-string">&#x27;orange&#x27;</span>,
+    <span class="hljs-string">&#x27;red&#x27;</span>,
+    <span class="hljs-string">&#x27;purple&#x27;</span>,
+    <span class="hljs-string">&#x27;aqua&#x27;</span>,
+    <span class="hljs-string">&#x27;blue&#x27;</span>,
+    <span class="hljs-string">&#x27;teal&#x27;</span>,
+    <span class="hljs-string">&#x27;green&#x27;</span>,
+    <span class="hljs-string">&#x27;gray&#x27;</span>,
+  ];
+
+  <span class="hljs-keyword">readonly</span> surface = signal&lt;<span class="hljs-title class_">NxSurfaceType</span>&gt;(<span class="hljs-string">&#x27;attention&#x27;</span>);
+  <span class="hljs-keyword">readonly</span> accentColor = signal&lt;<span class="hljs-title class_">NxSurfaceAccentColor</span>&gt;(<span class="hljs-string">&#x27;blue&#x27;</span>);
+
+  <span class="hljs-keyword">readonly</span> accentColorDisabled = <span class="hljs-title function_">computed</span>(
+    <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">surface</span>() !== <span class="hljs-string">&#x27;accent-attention&#x27;</span>,
+  );
+}

@@ -1,0 +1,66 @@
+<p class="docs-markdown--p">The toggle button is a component of the One Allianz Design System. A <code>nx-toggle-button-group</code> holds
+any number of <code>nx-toggle-button</code>s and behaves like a group of radio buttons: exactly one option can
+be selected at a time and the arrow keys move the selection.</p>
+<p class="docs-markdown--p"><strong>Not to be confused with the <a href="/documentation/radio-toggle/overview">Toggle Button</a> built from
+<code>nx-radio-toggle</code>.</strong> That component is the segmented control of the One Allianz Design System: a
+small, fixed set of options that are joined into a single bar. Use the toggle button group when the
+options are content of their own, when there are many of them, or when they should wrap over
+several lines.</p>
+<h2 id="examples" tabindex="-1" class="docs-markdown--h2">Examples</h2>
+<h3 id="basic" tabindex="-1" class="docs-markdown--h3">Basic</h3>
+<p class="docs-markdown--p">The label is projected as a <code>nx-label</code>, so all label features such as the info icon are available.</p>
+<div nx-docs-example="toggle-button-basic" config="{}">exampleID: toggle-button-basic</div>
+<h3 id="layout" tabindex="-1" class="docs-markdown--h3">Layout</h3>
+<p class="docs-markdown--p">The group arranges the buttons in as many columns as fit into the available width and wraps the rest
+into the next line. No media or container queries are needed for the group itself.</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>columnSizing</code> (default <code>content</code>) makes every button as wide as its content. With <code>equal</code> all
+buttons share the same width.</li>
+<li class="docs-markdown--li"><code>maxColumns</code> caps the number of columns and only applies to <code>columnSizing=&quot;equal&quot;</code>. It is a maximum,
+not a fixed number: if the available space is too small for that many buttons, fewer columns are
+used. With <code>content</code> sizing the number of columns follows from the width of the buttons, so there is
+nothing to cap and the input has no effect.</li>
+<li class="docs-markdown--li"><code>autoGrid</code> set to <code>false</code> emits no layout at all, which leaves the buttons to your own CSS on the
+<code>.nx-toggle-button-group__buttons</code> element. <code>columnSizing</code> and <code>maxColumns</code> then have no effect.</li>
+</ul>
+<div nx-docs-example="toggle-button-layout" config="{}">exampleID: toggle-button-layout</div>
+<h3 id="readonly-and-disabled" tabindex="-1" class="docs-markdown--h3">Readonly and disabled</h3>
+<p class="docs-markdown--p">Both states can be set on the whole group or on single buttons.
+<strong>Readonly</strong> should only be used in internal applications because of accessibility restrictions.</p>
+<div nx-docs-example="toggle-button-readonly-disabled" config="{}">exampleID: toggle-button-readonly-disabled</div>
+<h3 id="negative" tabindex="-1" class="docs-markdown--h3">Negative</h3>
+<p class="docs-markdown--p"><code>negative</code> styles the whole group for a dark surface. It is set on the group, not on single buttons,
+because a group always sits on one surface. The projected <code>nx-label</code> and any <code>nx-error</code> are not
+covered by it, so set <code>negative</code> on the label as well.</p>
+<div nx-docs-example="toggle-button-negative" config="{}">exampleID: toggle-button-negative</div>
+<h2 id="forms" tabindex="-1" class="docs-markdown--h2">Forms</h2>
+<p class="docs-markdown--p">The group is the form control, the single buttons are not. It is a pure signal forms control: it
+implements Angular's <code>FormValueControl</code> contract and does not register a <code>ControlValueAccessor</code>.
+Signal forms is the recommended API, but <code>ngModel</code> and <code>formControlName</code> keep working, because
+Angular drives a <code>FormValueControl</code> from template-driven and reactive forms as well.</p>
+<h3 id="signal-forms" tabindex="-1" class="docs-markdown--h3">Signal forms</h3>
+<p class="docs-markdown--p">Bind a field to the group with <code>[formField]</code>. The value and the disabled and readonly state are kept
+in sync with the field. The field is marked as touched once the focus leaves the group, not when the
+focus moves from one button to another.</p>
+<div nx-docs-example="toggle-button-signal-forms" config="{}">exampleID: toggle-button-signal-forms</div>
+<h3 id="template-driven-forms" tabindex="-1" class="docs-markdown--h3">Template-driven forms</h3>
+<div nx-docs-example="toggle-button-template-driven" config="{}">exampleID: toggle-button-template-driven</div>
+<h3 id="reactive-forms" tabindex="-1" class="docs-markdown--h3">Reactive forms</h3>
+<p class="docs-markdown--p">Angular binds the value and the disabled and required state of the <code>AbstractControl</code> to the group.
+The <code>readonly</code> state is not part of reactive forms, so it stays with the <code>readonly</code> input.</p>
+<div nx-docs-example="toggle-button-reactive-forms" config="{}">exampleID: toggle-button-reactive-forms</div>
+<h3 id="validation-and-error-state" tabindex="-1" class="docs-markdown--h3">Validation and error state</h3>
+<p class="docs-markdown--p">The error state needs a form: the <a href="./documentation/error-handling"><code>ErrorStateMatcher</code></a> decides when
+it is shown, in signal forms as well as in reactive and template-driven forms. A custom matcher
+provided app wide therefore also applies to the group. In the error state the unselected buttons get
+a critical border, the selected one a critical fill.</p>
+<div nx-docs-example="toggle-button-error-state" config="{}">exampleID: toggle-button-error-state</div>
+<p class="docs-markdown--p">A projected <code>nx-error</code> is shown as soon as the error state is matched. Signal forms marks all fields
+of a form as touched when it is submitted with <code>submit()</code>, so the error also shows up for a group the
+user never focused. Reactive forms does not touch its controls on submit, but the default matcher
+matches once the parent form was submitted, which gets to the same result.</p>
+<div nx-docs-example="toggle-button-validation-error-state" config="{}">exampleID: toggle-button-validation-error-state</div>
+<h2 id="accessibility" tabindex="-1" class="docs-markdown--h2">Accessibility</h2>
+<p class="docs-markdown--p">The group renders as a <code>radiogroup</code> that is labelled by the projected <code>nx-label</code> and described by
+the projected <code>nx-error</code>. Every button renders a native radio input, so the selection can be moved
+with the arrow keys and the whole group is a single tab stop.</p>

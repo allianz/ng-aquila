@@ -1,11 +1,49 @@
 <p class="docs-markdown--p">The indicator is a small badge that can be used to mark an element or page as unread for the user.</p>
+<h3 id="variants" tabindex="-1" class="docs-markdown--h3">Variants</h3>
+<p class="docs-markdown--p">The indicator renders as one of three variants, picked automatically from its
+content — there is no input for it:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>countless</strong> — an empty indicator, rendered as a plain dot</li>
+<li class="docs-markdown--li"><strong>count</strong> — a number, rendered with text inside</li>
+<li class="docs-markdown--li"><strong>icon</strong> — a projected icon, rendered as a circle</li>
+</ul>
+<p class="docs-markdown--p">Only text longer than one character gets horizontal padding and grows into a
+pill. A projected <code>nx-icon</code> is sized by the indicator, so it scales with the
+indicator size and needs no <code>size</code> of its own.</p>
 <div nx-docs-example="indicator" config="{}">exampleID: indicator</div>
+<div class="docs-hide-ndbx">
+<h3 id="sizes" tabindex="-1" class="docs-markdown--h3">Sizes</h3>
+<p class="docs-markdown--p">Use the <code>size</code> input to pick one of the sizes. Default size is <code>m</code>.</p>
+<p class="docs-markdown--p">Available sizes: <code>s | m | 800 | 1000 | 1200 | 1400 | 1600 | 1800 | 2000</code></p>
+<div nx-docs-example="indicator-sizes" config="{}">exampleID: indicator-sizes</div>
+<h3 id="color-types" tabindex="-1" class="docs-markdown--h3">Color types</h3>
+<p class="docs-markdown--p">Use the <code>type</code> input to set the signal color. Default type is <code>critical</code>.</p>
+<p class="docs-markdown--p">Available types: <code>critical | warning | positive | info</code></p>
+<div nx-docs-example="indicator-types" config="{}">exampleID: indicator-types</div>
+</div>
+<h3 id="positioning" tabindex="-1" class="docs-markdown--h3">Positioning</h3>
+<p class="docs-markdown--p">Use the <code>position</code> input to place the indicator in one of the corners of its container:
+<code>top-start | top-end | bottom-start | bottom-end</code>. The indicator is aligned with the top or
+bottom edge of the container and sits just outside it.</p>
+<p class="docs-markdown--p">Add the <code>overlap</code> input to pull it back inwards so it sits partly on top of the container</p>
+<p class="docs-markdown--p">Corner positions rely on absolute positioning, so the container needs <code>position: relative</code>.</p>
+<div nx-docs-example="indicator-positions" config="{}">exampleID: indicator-positions</div>
+<p class="docs-markdown--p">Note that <code>position</code> is optional: leave it out and the indicator stays a plain inline element
+that you can place entirely with your own css.</p>
 <h3 id="usage-inside-other-components" tabindex="-1" class="docs-markdown--h3">Usage inside other components</h3>
 <p class="docs-markdown--p">The indicator can be placed inside other components. You are free to position the indicator as needed with css or use <code>position</code> input to turn on one of our positioning presets. Note, that since most of our presets rely on absolute positioning, you might need to add <code>position: relative</code> style to the container element of indicator for best results. Here are a few examples.</p>
+<p class="docs-markdown--p">The legacy values <code>over-text</code>, <code>over-icon</code>, <code>after-text</code> and <code>with-overlap</code> still work, but
+prefer a corner position with <code>overlap</code> for new code. They cannot be combined with a corner
+position: if you pass both, the legacy value is ignored.</p>
 <h4 id="action" tabindex="-1" class="docs-markdown--h4">Action</h4>
 <div nx-docs-example="action-indicator" config="{}">exampleID: action-indicator</div>
 <h4 id="context-menu" tabindex="-1" class="docs-markdown--h4">Context Menu</h4>
+<div class="docs-ndbx">
 <div nx-docs-example="context-menu-indicator" config="{}">exampleID: context-menu-indicator</div>
+</div>
+<div class="docs-hide-ndbx">
+<div nx-docs-example="context-menu-indicator-a1" config="{}">exampleID: context-menu-indicator-a1</div>
+</div>
 <h4 id="icon-button" tabindex="-1" class="docs-markdown--h4">Icon Button</h4>
 <div nx-docs-example="button-icon-indicator" config="{}">exampleID: button-icon-indicator</div>
 <div class="docs-expert-container">
@@ -14,4 +52,15 @@
 <div nx-docs-example="tabs-with-indicator" config="{}">exampleID: tabs-with-indicator</div>
 <p class="docs-markdown--p">This is also possible with the navigation bar:</p>
 <div nx-docs-example="tabs-nav-bar-with-indicator" config="{}">exampleID: tabs-nav-bar-with-indicator</div>
+</div>
+</br>
+<div class="docs-hide-ndbx">
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">Per <a href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">WCAG 1.4.1 Use of Color</a>, color must not be the only way of distinguishing information. The indicator itself is accessible, but it can be used in a way that isn't:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>Only one indicator type (with the same content) used across the UI</strong> — this is accessible, since the information is communicated by the presence or absence of the indicator, not by its color.</li>
+<li class="docs-markdown--li"><strong>Different types or different content used side by side</strong> (e.g. different icons, or icons mixed with text) — this relies on color alone to distinguish meaning and creates an accessibility issue for people with color blindness or low
+vision. <code>aria-label</code>/<code>aria-description</code> alone do not fix this, since they only help users of screen readers.</li>
+</ul>
+<p class="docs-markdown--p">If you need to distinguish between multiple indicator states, add a non-color cue such as accompanying text, a tooltip, or a popover with additional information.</p>
 </div>

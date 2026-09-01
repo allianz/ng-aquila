@@ -13,10 +13,12 @@
 <h3 id="disabled" tabindex="-1" class="docs-markdown--h3">Disabled</h3>
 <p class="docs-markdown--p">With <code>[disabled]</code> the code input can be disabled. When using reactive forms you can also set the disabled state in the FormControl:</p>
 <div nx-docs-example="code-input-disabled" config="{}">exampleID: code-input-disabled</div>
-<h3 id="input-type" tabindex="-1" class="docs-markdown--h3">Input type</h3>
-<p class="docs-markdown--p">The default type of the inputs is <code>text</code>. The value can be changed by setting the property <code>type</code>. For example, a PIN code that accepts only four digits.</p>
-<p class="docs-markdown--p"><strong>Please note</strong> that the selection is not possible on <code>input[&quot;type=number&quot;]</code>. To get cross browser support for text selection on focus use <code>input[&quot;type=tel&quot;]</code> instead. For further information see <a href="https://html.spec.whatwg.org/multipage/input.html#concept-input-apply">WHATWG forms spec</a>.</p>
+<h3 id="input-mode-and-digits-only" tabindex="-1" class="docs-markdown--h3">Input mode and digits only</h3>
+<p class="docs-markdown--p">To control which mobile keyboard is shown, set the <code>inputMode</code> input (e.g. <code>numeric</code>). To restrict the entry to digits, set the <code>digitsOnly</code> input. For example, a PIN code that accepts only four digits.</p>
 <div nx-docs-example="code-input-type" config="{}">exampleID: code-input-type</div>
+<div class="docs-deprecation-warning">
+Please note that setting the HTML input type via the `type` input (e.g. <code>type="number"</code>) still works but is <strong>deprecated</strong>, since it comes with limitations (e.g. text selection is not possible on <code>input["type=number"]</code>, see the <a href="https://html.spec.whatwg.org/multipage/input.html#concept-input-apply">WHATWG forms spec</a>). Use <code>inputMode</code> and <code>digitsOnly</code> instead.
+</div>
 <div class="docs-hide-ndbx">
 <h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
 <p class="docs-markdown--p">For use on dark backgrounds, add <code>inverse</code> input.</p>

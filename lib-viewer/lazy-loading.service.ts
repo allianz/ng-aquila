@@ -84,6 +84,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'slider': return import('../examples/slider/slider-examples.module').then(m => m.SliderExamplesModule);
             case 'small-stage': return import('../examples/small-stage/small-stage-examples.module').then(m => m.SmallExamplesModule);
             case 'spinner': return import('../examples/spinner/spinner-examples.module').then(m => m.SpinnerExamplesModule);
+            case 'surface': return import('../examples/surface/surface-examples.module').then(m => m.SurfaceExamplesModule);
             case 'switcher': return import('../examples/switcher/switcher-examples.module').then(m => m.SwitcherExamplesModule);
             case 'table': return import('../examples/table/table-examples.module').then(m => m.TableExamplesModule);
             case 'tabs': return import('../examples/tabs/tabs-examples.module').then(m => m.TabsExamplesModule);
@@ -91,6 +92,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'text': return import('../examples/text/text-examples.module').then(m => m.TextExamplesModule);
             case 'tile': return import('../examples/tile/tile-examples.module').then(m => m.TileExamplesModule);
             case 'timefield': return import('../examples/timefield/timefield-examples.module').then(m => m.TimefieldExamplesModule);
+            case 'toggle-button': return import('../examples/toggle-button/toggle-button-examples.module').then(m => m.ToggleButtonExamplesModule);
             case 'toolbar': return import('../examples/toolbar/toolbar-examples.module').then(m => m.ToolbarExamplesModule);
             case 'tooltip': return import('../examples/tooltip/tooltip-examples.module').then(m => m.TooltipExamplesModule);
             case 'tree': return import('../examples/tree/tree-examples.module').then(m => m.TreeExamplesModule);

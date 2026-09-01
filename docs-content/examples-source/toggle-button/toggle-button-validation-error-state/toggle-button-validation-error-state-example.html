@@ -1,0 +1,11 @@
+<form class="interval-form" (submit)="onSubmit($event)">
+  <nx-toggle-button-group [formField]="paymentForm.interval">
+    <nx-label>Payment interval</nx-label>
+    <nx-toggle-button value="monthly">Monthly</nx-toggle-button>
+    <nx-toggle-button value="quarterly">Quarterly</nx-toggle-button>
+    <nx-toggle-button value="yearly">Yearly</nx-toggle-button>
+    <nx-error>Please choose a payment interval</nx-error>
+  </nx-toggle-button-group>
+
+  <button nxButton type="submit">Submit</button>
+</form>

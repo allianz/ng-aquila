@@ -77,10 +77,10 @@ the A1 Design.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>colorScheme</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                colorScheme: 
+                colorSchemeInput: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignal&lt;NxButtonColorScheme&gt;</span>
@@ -89,6 +89,9 @@ the A1 Design.</p>
     </td>
     <td class="docs-api-property-description">
         <p>The color scheme of the button. Only relevant for the A1 Design.</p>
+<p>When not set, an <code>accent-attention</code> surface resolves it to
+<code>on-accent-attention</code> (see <code>nxSurface</code>). The <code>attention</code> surface is handled
+through <code>negative</code> instead, since the button has no brand palette.</p>
 </td>
 </tr>
    
@@ -278,6 +281,23 @@ interchangeable.</p>
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                colorScheme: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxButtonColorScheme&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved color scheme: an explicit input wins, then the surface, then &#39;default&#39;.</p>
+</td>
 </tr>
    
 
@@ -479,10 +499,10 @@ the A1 Design.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>colorScheme</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                colorScheme: 
+                colorSchemeInput: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignal&lt;NxButtonColorScheme&gt;</span>
@@ -491,6 +511,9 @@ the A1 Design.</p>
     </td>
     <td class="docs-api-property-description">
         <p>The color scheme of the button. Only relevant for the A1 Design.</p>
+<p>When not set, an <code>accent-attention</code> surface resolves it to
+<code>on-accent-attention</code> (see <code>nxSurface</code>). The <code>attention</code> surface is handled
+through <code>negative</code> instead, since the button has no brand palette.</p>
 </td>
 </tr>
    
@@ -687,6 +710,23 @@ interchangeable.</p>
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
+                colorScheme: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxButtonColorScheme&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved color scheme: an explicit input wins, then the surface, then &#39;default&#39;.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
                 critical: 
                 </span>
                  
@@ -858,10 +898,10 @@ interchangeable.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>colorScheme</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                colorScheme: 
+                colorSchemeInput: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignal&lt;NxPlainButtonColorScheme&gt;</span>
@@ -870,6 +910,9 @@ interchangeable.</p>
     </td>
     <td class="docs-api-property-description">
         <p>The plain button color scheme. Please only use it for the A1 Design.</p>
+<p>When not set, an <code>accent-attention</code> surface resolves it to
+<code>on-accent-attention</code> (see <code>nxSurface</code>). The <code>attention</code> surface goes through
+<code>inverse</code> instead, since <code>on-brand</code> pairs with a brand-colored background.</p>
 </td>
 </tr>
    
@@ -912,18 +955,19 @@ interchangeable.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                inverse: 
+                inverseInput: 
                 </span>
                  
-                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, BooleanInput&gt;</span>
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the button should use the inverse color (for use on dark/colored backgrounds).</p>
+        <p>Whether the button should use the inverse color (for use on dark/colored
+backgrounds). When not set, it follows the surface (see <code>nxSurface</code>).</p>
 </td>
 </tr>
    
@@ -995,6 +1039,40 @@ interchangeable.</p>
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                colorScheme: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxPlainButtonColorScheme&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved color scheme: an explicit input wins, then the surface, then &#39;default&#39;.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved inverse: an explicit input wins, then the surface the button sits on.</p>
+</td>
 </tr>
   
 </table> 
@@ -1274,5 +1352,103 @@ interchangeable.</p>
     </div>
     <div class="docs-api-method-description"></div></div>
    
+ 
+            <h3 id="testing_interface" class="docs-header-link docs-api-h3">
+                Testing Interfaces
+            </h3>
+            
+                
+
+<h4 id="NxButtonHarnessFilters" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxButtonHarnessFilters"></span>
+    <code>NxButtonHarnessFilters</code>
+</h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                critical?: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                loading?: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                text?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string | RegExp</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                type?: 
+                </span>
+                 
+                <span class="docs-api-property__type">Type</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                variant?: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxButtonType</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
  
             </div>

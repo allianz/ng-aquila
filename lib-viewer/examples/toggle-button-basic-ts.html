@@ -1,0 +1,27 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLabelComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxToggleButtonComponent</span>,
+  <span class="hljs-title class_">NxToggleButtonGroupComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/toggle-button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Toggle Button Basic Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;toggle-button-basic-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./toggle-button-basic-example.html&#x27;</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxToggleButtonGroupComponent</span>,
+    <span class="hljs-title class_">NxToggleButtonComponent</span>,
+    <span class="hljs-title class_">NxLabelComponent</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ToggleButtonBasicExampleComponent</span> {
+  intervals = [
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;monthly&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Monthly&#x27;</span> },
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;quarterly&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Quarterly&#x27;</span> },
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;yearly&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Yearly&#x27;</span> },
+  ];
+  interval = <span class="hljs-title function_">signal</span>(<span class="hljs-string">&#x27;monthly&#x27;</span>);
+}

@@ -130,7 +130,9 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Whether the icon uses the inverse color. When not set, it follows the surface
+the icon is placed on (see <code>nxSurface</code>).</p>
+</td>
 </tr>
    
 
@@ -297,10 +299,10 @@ Use &#39;s&#39; and &#39;m&#39; for functional Icons and
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                inverse: 
+                inverseInput: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
@@ -308,7 +310,9 @@ Use &#39;s&#39; and &#39;m&#39; for functional Icons and
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the status icon uses the inverse color scheme (for placement on dark/inverse surfaces).</p>
+        <p>Whether the status icon uses the inverse color scheme (for placement on
+dark/inverse surfaces). When not set, it follows the surface the icon is placed
+on (see <code>nxSurface</code>).</p>
 </td>
 </tr>
    
@@ -345,6 +349,23 @@ Use &#39;s&#39; and &#39;m&#39; for functional Icons and
     </td>
     <td class="docs-api-property-description">
         <p>Sets status type</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved inverse: an explicit input wins, then the surface the component sits on.</p>
 </td>
 </tr>
   

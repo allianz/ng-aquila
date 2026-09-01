@@ -1,3 +1,4 @@
+import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxIndicatorComponent } from '@allianz/ng-aquila/indicator';
 import { Component } from '@angular/core';
 /**
@@ -7,6 +8,6 @@ import { Component } from '@angular/core';
   selector: 'indicator-example',
   templateUrl: './indicator-example.html',
   styleUrls: ['./indicator-example.css'],
-  imports: [NxIndicatorComponent],
+  imports: [NxIndicatorComponent, NxIconComponent],
 })
 export class IndicatorExampleComponent {}

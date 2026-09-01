@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.custom-layout ::ng-deep .nx-toggle-button-group__buttons {
+  display: grid;
+  gap: 8px;
+}
+
+@media (min-width: 600px) {
+  .custom-layout ::ng-deep .nx-toggle-button-group__buttons {
+    grid-template-columns: 1fr 1fr;
+  }
+}

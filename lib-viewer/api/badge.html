@@ -66,10 +66,10 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                inverse: 
+                inverseInput: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
@@ -77,7 +77,9 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Whether to use the inverse colors. When not set, it follows the surface the
+badge is placed on (see <code>nxSurface</code>).</p>
+</td>
 </tr>
    
 
@@ -152,6 +154,23 @@
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved inverse: an explicit input wins, then the surface the component sits on.</p>
+</td>
 </tr>
   
 </table> 

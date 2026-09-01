@@ -12,26 +12,40 @@
 <h3 id="dynamic" tabindex="-1" class="docs-markdown--h3">Dynamic</h3>
 <p class="docs-markdown--p">You can add and remove tabs dynamically.</p>
 <div nx-docs-example="tabs-dynamic" config="{}">exampleID: tabs-dynamic</div>
+<div class="docs-hide-ndbx">
+<h3 id="closable-tabs" tabindex="-1" class="docs-markdown--h3">Closable tabs</h3>
+<p class="docs-markdown--p">Add <code>closable</code> to an <code>nx-tab</code> to show a close button next to its label. The button can also be triggered with the keyboard by pressing <code>DELETE</code> or <code>BACKSPACE</code> while the tab is focused.</p>
+<p class="docs-markdown--p">Closing a tab doesn't remove it on its own. Instead the <code>nx-tab-group</code> emits <code>tabClose</code> (and the individual tab emits <code>closed</code>), leaving you in control of what happens next — usually removing the tab from the list you render it from, as shown below.</p>
+<div nx-docs-example="tabs-closable" config="{}">exampleID: tabs-closable</div>
+<h4 id="closing-event" tabindex="-1" class="docs-markdown--h4">Closing event</h4>
+<p class="docs-markdown--p">You can use the <code>tabClose</code> event to run your own logic before a tab disappears, for example asking the user to confirm. This is also useful to prevent a tab from being closed accidentally with <code>DELETE</code> or <code>BACKSPACE</code>.</p>
+<div nx-docs-example="tabs-closable-confirm" config="{}">exampleID: tabs-closable-confirm</div>
+</div>
 <h3 id="tabs-as-a-navigation-bar" tabindex="-1" class="docs-markdown--h3">Tabs as a Navigation Bar</h3>
 <p class="docs-markdown--p">While <code>nx-tab-group</code> is used to switch the content within a single route, <code>nx-tab-nav-bar</code> provides a tab-like component for navigating between routes. The <code>nx-tab-nav-bar</code> component is not tied to any router, it uses normal <code>a</code> elements and the active property of <code>nxTabLink</code> to determine which tab is currently active. The corresponding <code>router-outlet</code> can be placed anywhere in the view.</p>
 <div nx-docs-example="tabs-nav-bar" config="{}">exampleID: tabs-nav-bar</div>
 <h3 id="negative-styling" tabindex="-1" class="docs-markdown--h3">Negative styling</h3>
 <div nx-docs-example="tabs-negative" config="{}">exampleID: tabs-negative</div>
 <h3 id="disabled" tabindex="-1" class="docs-markdown--h3">Disabled</h3>
-<p class="docs-markdown--p">You can disable the whole tab group by setting the property <code>negative</code> on <code>nx-tab-group</code> or alternatively disable only a particular tab by setting it on <code>nx-tab</code>.</p>
-<p class="docs-markdown--p"><strong>Pay attention that a disabled and active tab violates the accessibility of the component</strong>, therefore we set the next focusable tab as active in case active and disabled is set on the same tab. If all tabs are disabled, than you can set a disabled active tab.</p>
+<p class="docs-markdown--p">You can disable the whole tab group by setting the property <code>disabled</code> on <code>nx-tab-group</code> or alternatively disable only a particular tab by setting it on <code>nx-tab</code>.</p>
+<p class="docs-markdown--p"><strong>Pay attention that a disabled and active tab violates the accessibility of the component</strong>, therefore we set the next focusable tab as active in case active and disabled is set on the same tab. If no tab is focusable, no tab is set as active and <code>selectedIndex</code> becomes -1.</p>
 <div nx-docs-example="tabs-disabled" config="{}">exampleID: tabs-disabled</div>
 <h3 id="output-events" tabindex="-1" class="docs-markdown--h3">Output events</h3>
 <p class="docs-markdown--p">The <code>selectedTabChange</code> event is emitted when the active tab changes</p>
 <p class="docs-markdown--p">The <code>focusChange</code> event is emitted when the focus on a tab label changed.</p>
 <p class="docs-markdown--p">Both events return an instance of <code>NxTabChangeEvent</code> containing the index and the tab instance.</p>
+<p class="docs-markdown--p">If no tab is selectable anymore, <code>selectedIndexChange</code> emits <code>-1</code> while <code>selectedTabChange</code> does not emit, as there is no tab instance to report.</p>
+<div class="docs-hide-a1">
 <p class="docs-markdown--p">Limitations: The <code>focusChange</code> event is currently not supported on mobile breakpoints as the accordion is lacking this feature.</p>
+</div>
 <div nx-docs-example="tabs-output-events" config="{}">exampleID: tabs-output-events</div>
+<div class="docs-hide-a1">
 <h3 id="responsive-behavior" tabindex="-1" class="docs-markdown--h3">Responsive behavior</h3>
 <p class="docs-markdown--p">The tabs component will switch to an accordion for mobile viewports and reuses the libraries' Accordion component. The content of the tab gets detached in this process and attached into the accordion and vice versa. Components in the tab contents will not be destroyed and keep their state so you can safely use any custom component.</p>
 <p class="docs-markdown--p">You can access the accordion component instance by the public accordion property of the TabGroupComponent. To disable the switch to the accordion you can set the input property <code>mobileAccordion = false</code>.</p>
 <p class="docs-markdown--p">Important notice: The <code>(focusChange)</code> event is currently not supported by the accordion so you should not rely on this event for mobile viewports. The <code>(selectedTabChange)</code> event however will work also if the accordion is active.</p>
 <div nx-docs-example="tabs-responsive" config="{}">exampleID: tabs-responsive</div>
+</div>
 <div class="docs-expert-container">
 <h3 id="expert%3A-appearance" tabindex="-1" class="docs-markdown--h3">Expert: Appearance</h3>
 <p class="docs-markdown--p">With <code>appearance=&quot;expert&quot;</code> you can change the styling of the tabs.</p>
@@ -77,10 +91,16 @@
 </tr>
 <tr>
 <td><code>ENTER</code>, <code>SPACE</code></td>
-<td>Select the focused tab and show its content.</td>
+<td>Select the focused tab and show its content. When a close button is focused, closes its tab instead.</td>
+</tr>
+<tr>
+<td><code>DELETE</code>, <code>BACKSPACE</code></td>
+<td>Close the focused tab if it is <code>closable</code>.</td>
 </tr>
 </tbody>
 </table>
+<p class="docs-markdown--p">On a <code>closable</code> tab, <code>TAB</code> moves focus from the tab onto its close button and <code>SHIFT+TAB</code> moves it back.</p>
+<p class="docs-markdown--p">After a tab is removed, focus moves to the tab that took its place, or to the nearest enabled tab. If no tab is focusable anymore, focus moves to the first focusable element after the tab group. When you remove the last tab, render an empty state, <code>selectedIndexChange</code> emits <code>-1</code> to signal that no tab is selectable.</p>
 <h4 id="auto-select-vs.-manual-select" tabindex="-1" class="docs-markdown--h4">Auto select vs. manual select</h4>
 <p class="docs-markdown--p">You can choose between two patterns:</p>
 <ul class="docs-markdown--ul">
@@ -89,6 +109,30 @@
 </ul>
 <p class="docs-markdown--p">You can toggle the autoselect setting with the button below. Then try it out by tabbing onto the tab labels and see the difference when you press the left and right arrow keys.</p>
 <div nx-docs-example="tabs-auto-manual-select" config="{}">exampleID: tabs-auto-manual-select</div>
+<h3 id="localization" tabindex="-1" class="docs-markdown--h3">Localization</h3>
+<p class="docs-markdown--p">The close button of a <code>closable</code> tab has an <code>aria-label</code> and closing a tab is announced to screen readers. Both texts are english by default. To translate them, subclass <code>NxTabsIntl</code> and provide it in your module or component.</p>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>closeAriaLabel</code></td>
+<td><code>Close {label}</code></td>
+<td>The <code>aria-label</code> of a closable tab's close button. Receives the tab's label.</td>
+</tr>
+<tr>
+<td><code>closeAnnouncement</code></td>
+<td><code>{label} closed</code></td>
+<td>The message announced to screen readers after a closable tab was closed. Receives the tab's label.</td>
+</tr>
+</tbody>
+</table>
+<div nx-docs-example="tabs-localize" config="{}">exampleID: tabs-localize</div>
 <h3 id="global-settings" tabindex="-1" class="docs-markdown--h3">Global settings</h3>
 <p class="docs-markdown--p">You can use the <code>TAB_GROUP_DEFAULT_OPTIONS</code> injection token if you want to set the <code>[appearance]</code> property on <code>&lt;nx-tab-group&gt;</code> component globally.</p>
 <div nx-docs-example="tabs-injection-token" config="{}">exampleID: tabs-injection-token</div>

@@ -16,7 +16,7 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label-content&quot;</span>&gt;</span>
         {{ action.label }}
         @if (action.notification) {
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-indicator</span> <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;after-text&quot;</span>&gt;</span>{{
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-indicator</span> <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;top-end&quot;</span>&gt;</span>{{
             getIndicatorText($any(action.notificationCount))
           }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-indicator</span>&gt;</span>
         }

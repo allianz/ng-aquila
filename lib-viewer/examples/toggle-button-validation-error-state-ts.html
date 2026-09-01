@@ -1,0 +1,36 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxErrorComponent</span>, <span class="hljs-title class_">NxLabelComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxToggleButtonComponent</span>,
+  <span class="hljs-title class_">NxToggleButtonGroupComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/toggle-button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { form, <span class="hljs-title class_">FormField</span>, required, submit } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms/signals&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Toggle Button Validation Error State Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;toggle-button-validation-error-state-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./toggle-button-validation-error-state-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./toggle-button-validation-error-state-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">FormField</span>,
+    <span class="hljs-title class_">NxToggleButtonGroupComponent</span>,
+    <span class="hljs-title class_">NxToggleButtonComponent</span>,
+    <span class="hljs-title class_">NxLabelComponent</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ToggleButtonValidationErrorStateExampleComponent</span> {
+  model = <span class="hljs-title function_">signal</span>({ <span class="hljs-attr">interval</span>: <span class="hljs-string">&#x27;&#x27;</span> });
+  paymentForm = <span class="hljs-title function_">form</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">model</span>, <span class="hljs-function">(<span class="hljs-params">path</span>) =&gt;</span> {
+    <span class="hljs-title function_">required</span>(path.<span class="hljs-property">interval</span>);
+  });
+
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">onSubmit</span>(<span class="hljs-attr">event</span>: <span class="hljs-title class_">Event</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; {
+    event.<span class="hljs-title function_">preventDefault</span>();
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">submit</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">paymentForm</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>());
+  }
+}

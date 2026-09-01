@@ -1,6 +1,75 @@
+<div class="docs-ndbx">
+<h3 id="not-available-in-ndbx" tabindex="-1" class="docs-markdown--h3">Not available in NDBX</h3>
+<p class="docs-markdown--p">Body text, utility text and accent color are only available in the A1 theme and are not supported in
+the NDBX theme.</p>
+<p class="docs-markdown--p">Switch the theme to A1 to see the documentation and examples. In NDBX, use
+<a href="./documentation/copytext/overview">copytext</a> for running text.</p>
+</div>
+<div class="docs-a1">
+<h3 id="body-text" tabindex="-1" class="docs-markdown--h3">Body text</h3>
+<p class="docs-markdown--p">Use <code>nxBodyText</code> for running text: paragraphs, descriptions and any longer prose that a user reads
+as content. This is the default choice for text. Use <code>nxUtilityText</code> only for the UI-labelling
+cases below. It is only available in the A1 theme and is not supported in the NDBX theme.</p>
+<p class="docs-markdown--p"><code>nxBodyText</code> is an attribute selector, so it works on any textual element and is not limited to the
+paragraphs used in the examples.</p>
+<h4 id="sizes" tabindex="-1" class="docs-markdown--h4">Sizes</h4>
+<p class="docs-markdown--p">Available sizes are <code>s</code>, <code>m</code>, and <code>l</code>, with <code>m</code> as the default.</p>
+<div nx-docs-example="body-text-sizes" config="{}">exampleID: body-text-sizes</div>
+<h4 id="type-and-inverse" tabindex="-1" class="docs-markdown--h4">Type and inverse</h4>
+<p class="docs-markdown--p"><code>type</code> switches between the <code>primary</code> (default) and <code>secondary</code> text tone. Set <code>inverse</code> for use on
+dark backgrounds.</p>
+<div nx-docs-example="body-text-type" config="{}">exampleID: body-text-type</div>
+<h4 id="color-scheme" tabindex="-1" class="docs-markdown--h4">Color scheme</h4>
+<p class="docs-markdown--p">Use the <code>colorScheme</code> input (<code>default</code> or <code>on-accent-attention</code>) to place <code>nxBodyText</code> on an
+accent-colored surface. It overrides <code>type</code>, since the on-accent-attention foreground color is the
+same regardless of tone. Combine with <code>inverse</code> for accent surfaces on dark backgrounds.</p>
+<div nx-docs-example="body-text-color-scheme" config="{}">exampleID: body-text-color-scheme</div>
+<h3 id="utility-text" tabindex="-1" class="docs-markdown--h3">Utility text</h3>
+<p class="docs-markdown--p">Use <code>nxUtilityText</code> for functional text that annotates the UI: form labels, captions, table cells
+and single-line strings that need to align with an adjacent control or icon. Prefer <code>nxBodyText</code> for anything
+that wraps onto several lines. It is only available in the A1 theme and is not supported in the NDBX
+theme.</p>
+<p class="docs-markdown--p"><code>nxUtilityText</code> is an attribute selector too, so it works on any textual element and is not limited to
+the paragraphs used in the examples.</p>
+<h4 id="sizes-1" tabindex="-1" class="docs-markdown--h4">Sizes</h4>
+<p class="docs-markdown--p">Available sizes are <code>s</code>, <code>m</code>, and <code>l</code>, with <code>m</code> as the default.</p>
+<div nx-docs-example="utility-text-sizes" config="{}">exampleID: utility-text-sizes</div>
+<h4 id="type%2C-attention-and-inverse" tabindex="-1" class="docs-markdown--h4">Type, attention and inverse</h4>
+<p class="docs-markdown--p"><code>type</code> switches between the <code>primary</code> (default) and <code>secondary</code> text tone. <code>attention</code> emphasizes
+the text with a heavier font weight. Set <code>inverse</code> for use on dark backgrounds.</p>
+<div nx-docs-example="utility-text-attention" config="{}">exampleID: utility-text-attention</div>
+<h4 id="color-scheme-1" tabindex="-1" class="docs-markdown--h4">Color scheme</h4>
+<p class="docs-markdown--p">Use the <code>colorScheme</code> input (<code>default</code> or <code>on-accent-attention</code>) to place <code>nxUtilityText</code> on an
+accent-colored surface. It overrides <code>type</code>, since the on-accent-attention foreground color is the
+same regardless of tone. Combine with <code>inverse</code> for accent surfaces on dark backgrounds.</p>
+<div nx-docs-example="utility-text-color-scheme" config="{}">exampleID: utility-text-color-scheme</div>
+<h3 id="body-text-vs-utility-text" tabindex="-1" class="docs-markdown--h3">Body Text vs Utility Text</h3>
+<p class="docs-markdown--p">A1 splits text into body text and utility text.</p>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Usage</th>
+<th>Component</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paragraphs, descriptions, running prose and any text that wraps</td>
+<td><code>nxBodyText</code></td>
+</tr>
+<tr>
+<td>Single-line text aligned to an adjacent control or icon, table cells, form labels, captions, or text needing <code>attention</code></td>
+<td><code>nxUtilityText</code></td>
+</tr>
+</tbody>
+</table>
+<p class="docs-markdown--p">The two always share font size, family and default weight; line-height is the only property that can
+differ. Utility line-heights sit on the baseline grid so text aligns with component boxes, while
+body line-heights leave the grid at some sizes for readability in multi-line prose.</p>
+</div>
+<div class="docs-hide-ndbx">
 <h3 id="accent-color" tabindex="-1" class="docs-markdown--h3">Accent color</h3>
 <p class="docs-markdown--p">Use the <code>nx-accent-color</code> selector to highlight inline text that requires emphasis. This feature is only available in the A1 theme and is not supported in the NDBX theme.</p>
-<div class="docs-hide-ndbx">
 <h4 id="available-colors" tabindex="-1" class="docs-markdown--h4">Available colors</h4>
 <p class="docs-markdown--p"><code>yellow | orange | red | purple | teal | aqua | blue | green | gray</code></p>
 <p class="docs-markdown--p">Example Usage: <code>&lt;span nx-accent-color=&quot;purple&quot;&gt; highlight &lt;/span&gt;</code></p>

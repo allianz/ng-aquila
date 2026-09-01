@@ -1,10 +1,11 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">form</span> #<span class="hljs-attr">form</span>=<span class="hljs-string">&quot;ngForm&quot;</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;codeForm&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span>Enter PIN code<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>Enter PIN code<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-code-input</span>
     #<span class="hljs-attr">codeInput</span>
     [<span class="hljs-attr">length</span>]=<span class="hljs-string">&quot;4&quot;</span>
     <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;keyCode&quot;</span>
-    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span>
+    <span class="hljs-attr">inputMode</span>=<span class="hljs-string">&quot;numeric&quot;</span>
+    <span class="hljs-attr">digitsOnly</span>
   &gt;</span>
     @if (keyCode?.hasError(&#x27;required&#x27;)) {
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span> Entry is required. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>

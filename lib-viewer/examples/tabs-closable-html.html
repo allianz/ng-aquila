@@ -1,0 +1,9 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tab-group</span> (<span class="hljs-attr">tabClose</span>)=<span class="hljs-string">&quot;closeTab($event.index)&quot;</span>&gt;</span>
+  @for (tab of tabs; track tab) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tab</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;tab.label&quot;</span> [<span class="hljs-attr">closable</span>]=<span class="hljs-string">&quot;true&quot;</span> [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;tab.disabled&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab__content&quot;</span>&gt;</span>Content of {{ tab.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab</span>&gt;</span>
+  }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;resetTabs()&quot;</span>&gt;</span>Reset Tabs<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

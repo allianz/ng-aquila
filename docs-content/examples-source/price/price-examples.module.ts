@@ -1,6 +1,7 @@
 import { NxPriceModule } from '@allianz/ng-aquila/price';
 import { NgModule } from '@angular/core';
 
+import { PriceAccentAttentionExampleComponent } from './price-accent-attention/price-accent-attention-example';
 import { PriceBasicExampleComponent } from './price-basic/price-basic-example';
 import { PriceInverseExampleComponent } from './price-inverse/price-inverse-example';
 import { PriceLocaleExampleComponent } from './price-locale/price-locale-example';
@@ -15,6 +16,7 @@ const EXAMPLES = [
   PriceInverseExampleComponent,
   PricePrefixSuffixExampleComponent,
   PriceSuperscriptExampleComponent,
+  PriceAccentAttentionExampleComponent,
 ];
 
 @NgModule({
@@ -30,6 +32,7 @@ export class PriceExamplesModule {
       'price-inverse': PriceInverseExampleComponent,
       'price-prefix-suffix': PricePrefixSuffixExampleComponent,
       'price-superscript': PriceSuperscriptExampleComponent,
+      'price-accent-attention': PriceAccentAttentionExampleComponent,
     };
   }
 }

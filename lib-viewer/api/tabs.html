@@ -35,6 +35,24 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                closable: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the tab can be closed. Default: false.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
@@ -67,6 +85,25 @@
     </td>
     <td class="docs-api-property-description">
         <p>Sets the label of the tab shown in the tablist.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                closed: 
+                </span>
+                 
+                <span class="docs-api-property__type">OutputEmitterRef&lt;void&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Emitted when the tab is to be closed. Only relevant when <code>closable</code> is set.
+The tab is not removed by this event, so a handler can decide to keep it.</p>
 </td>
 </tr>
    
@@ -181,7 +218,8 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the tabs should to accordion on mobile viewports.</p>
+        <p>Whether the tabs should to accordion on mobile viewports.
+Under A1 the accordion is never shown, regardless of this input.</p>
 </td>
 </tr>
    
@@ -278,6 +316,24 @@
     </td>
     <td class="docs-api-property-description">
         <p>An event emitted when the selected tab has changed.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                tabClose: 
+                </span>
+                 
+                <span class="docs-api-property__type">OutputEmitterRef&lt;NxTabChangeEvent&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>An event emitted when a closable tab is to be closed.</p>
 </td>
 </tr>
    
@@ -730,6 +786,74 @@
     </td>
     <td class="docs-api-property-description">
         <p>The component instance of the selected or focused tab.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="NxTabsIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxTabsIntl"></span>
+    <code>NxTabsIntl</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                changes: 
+                </span>
+                 
+                <span class="docs-api-property__type">Subject&lt;void&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Stream that emits whenever the labels here are changed. Use this to notify
+components if the labels have changed after initialization.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                closeAnnouncement: 
+                </span>
+                 
+                <span class="docs-api-property__type">(label: string) =&gt; string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The message announced to screen readers after a closable tab was closed.
+Receives the label of the closed tab.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                closeAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">(label: string) =&gt; string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The aria label for a closable tab&#39;s close button. Receives the tab&#39;s label
+so the announced text can reference which tab is being closed.</p>
 </td>
 </tr>
   

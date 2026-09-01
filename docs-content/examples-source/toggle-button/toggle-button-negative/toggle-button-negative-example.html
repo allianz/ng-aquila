@@ -1,0 +1,12 @@
+<div class="docs-inverse-container">
+  <nx-toggle-button-group negative [(value)]="interval">
+    <nx-label negative>Payment interval</nx-label>
+    @for (item of intervals; track item.value) {
+      <nx-toggle-button
+        [value]="item.value"
+        [disabled]="item.value === 'yearly'"
+        >{{ item.label }}</nx-toggle-button
+      >
+    }
+  </nx-toggle-button-group>
+</div>

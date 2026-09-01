@@ -6,7 +6,7 @@
           {{ tab.label }}
           @if (tab.notification) {
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-indicator</span>
-              <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;over-text&quot;</span>
+              <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;top-end&quot;</span>
               [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;getAriaLabel(tab.notificationCount!)&quot;</span>
               &gt;</span>{{ getIndicatorText(tab.notificationCount!) }}&lt;/nx-indicator
             &gt;

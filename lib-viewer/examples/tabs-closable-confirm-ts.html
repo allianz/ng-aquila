@@ -1,0 +1,73 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/copytext&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDialogService</span>,
+  <span class="hljs-title class_">NxModalActionsDirective</span>,
+  <span class="hljs-title class_">NxModalContentDirective</span>,
+  <span class="hljs-title class_">NxModalRef</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/modal&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTabComponent</span>, <span class="hljs-title class_">NxTabGroupComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tabs&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">ChangeDetectorRef</span>,
+  <span class="hljs-title class_">Component</span>,
+  <span class="hljs-title class_">TemplateRef</span>,
+  <span class="hljs-title class_">ViewChild</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Closable tabs with confirmation
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-closable-confirm-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-closable-confirm-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-closable-confirm-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxTabGroupComponent</span>,
+    <span class="hljs-title class_">NxTabComponent</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
+    <span class="hljs-title class_">NxCopytextComponent</span>,
+    <span class="hljs-title class_">NxModalContentDirective</span>,
+    <span class="hljs-title class_">NxModalActionsDirective</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TabsClosableConfirmExampleComponent</span> {
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;confirmTemplate&#x27;</span>) confirmTemplate!: <span class="hljs-title class_">TemplateRef</span>&lt;<span class="hljs-built_in">any</span>&gt;;
+
+  tabs = [
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;First tab&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Second tab&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Third tab&#x27;</span> },
+  ];
+
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">dialogRef</span>?: <span class="hljs-title class_">NxModalRef</span>&lt;<span class="hljs-built_in">any</span>, <span class="hljs-built_in">boolean</span>&gt;;
+
+  <span class="hljs-comment">/** Label of the tab awaiting confirmation, shown in the dialog. */</span>
+  pendingLabel = <span class="hljs-string">&#x27;&#x27;</span>;
+
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">dialogService</span>: <span class="hljs-title class_">NxDialogService</span>,
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> <span class="hljs-attr">_cdr</span>: <span class="hljs-title class_">ChangeDetectorRef</span>,
+  </span>) {}
+
+  <span class="hljs-title function_">confirmClose</span>(<span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">pendingLabel</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tabs</span>[index].<span class="hljs-property">label</span>;
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogRef</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogService</span>.<span class="hljs-property">open</span>&lt;<span class="hljs-built_in">any</span>, <span class="hljs-built_in">boolean</span>&gt;(
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">confirmTemplate</span>,
+      { <span class="hljs-attr">showCloseIcon</span>: <span class="hljs-literal">false</span> },
+    );
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogRef</span>.<span class="hljs-title function_">afterClosed</span>().<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">(<span class="hljs-params">confirmed</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (confirmed) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tabs</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">tabs</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> i !== index);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">markForCheck</span>();
+      }
+    });
+  }
+
+  <span class="hljs-title function_">handleClick</span>(<span class="hljs-attr">confirmed</span>: <span class="hljs-built_in">boolean</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">dialogRef</span>?.<span class="hljs-title function_">close</span>(confirmed);
+  }
+}

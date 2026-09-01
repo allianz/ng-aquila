@@ -1,0 +1,8 @@
+<nx-toggle-button-group [(value)]="interval">
+  <nx-label>Payment interval</nx-label>
+  @for (item of intervals; track item.value) {
+    <nx-toggle-button [value]="item.value">{{ item.label }}</nx-toggle-button>
+  }
+</nx-toggle-button-group>
+
+<p>Selected: {{ interval() }}</p>

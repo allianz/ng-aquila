@@ -1,0 +1,30 @@
+<nx-toggle-button-group [(value)]="hugging">
+  <nx-label>Content sizing, wraps into the next line</nx-label>
+  @for (country of countries; track country.value) {
+    <nx-toggle-button [value]="country.value">{{
+      country.label
+    }}</nx-toggle-button>
+  }
+</nx-toggle-button-group>
+
+<nx-toggle-button-group [(value)]="equal" columnSizing="equal" [maxColumns]="3">
+  <nx-label>Equal sizing with at most three columns</nx-label>
+  @for (country of countries; track country.value) {
+    <nx-toggle-button [value]="country.value">{{
+      country.label
+    }}</nx-toggle-button>
+  }
+</nx-toggle-button-group>
+
+<nx-toggle-button-group
+  class="custom-layout"
+  [(value)]="custom"
+  [autoGrid]="false"
+>
+  <nx-label>Own layout, two columns from 600px on</nx-label>
+  @for (country of countries; track country.value) {
+    <nx-toggle-button [value]="country.value">{{
+      country.label
+    }}</nx-toggle-button>
+  }
+</nx-toggle-button-group>

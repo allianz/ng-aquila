@@ -32,19 +32,18 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>appearance</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                appearance: 
+                appearanceInput: 
                 </span>
                  
-                <span class="docs-api-property__type">ErrorStyleType</span>
+                <span class="docs-api-property__type">InputSignal&lt;&quot;&quot; | ErrorStyleType&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the error should have message or text styling.</p>
+        <p>Whether the error should have message or text styling. Can be changed for NDBX only. A1 enforces text appearance.</p>
 <p>Default: <code>&#39;message&#39;</code>.</p>
 </td>
 </tr>
@@ -86,6 +85,22 @@
     <td class="docs-api-property-description">
         <p>Whether an icon should be displayed. Only has an effect for type &#39;text&#39;</p>
 </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                appearance: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;ErrorStyleType&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
   
 </table> 

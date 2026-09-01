@@ -1,0 +1,19 @@
+<div class="docs-indicator-positions">
+  <span></span>
+  <span class="docs-indicator-positions__head">default (count)</span>
+  <span class="docs-indicator-positions__head">overlap (count)</span>
+  <span class="docs-indicator-positions__head">overlap (countless)</span>
+
+  @for (position of positions; track position) {
+    <span class="docs-indicator-positions__label">{{ position }}</span>
+    <div class="docs-indicator-positions__box">
+      <nx-indicator [position]="position">3</nx-indicator>
+    </div>
+    <div class="docs-indicator-positions__box">
+      <nx-indicator [position]="position" overlap>3</nx-indicator>
+    </div>
+    <div class="docs-indicator-positions__box">
+      <nx-indicator [position]="position" overlap></nx-indicator>
+    </div>
+  }
+</div>

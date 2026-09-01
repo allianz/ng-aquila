@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+  <nx-toggle-button-group formControlName="interval">
+    <nx-label>Payment interval</nx-label>
+    <nx-toggle-button value="monthly">Monthly</nx-toggle-button>
+    <nx-toggle-button value="quarterly">Quarterly</nx-toggle-button>
+    <nx-toggle-button value="yearly">Yearly</nx-toggle-button>
+  </nx-toggle-button-group>
+</form>
+
+<p>Selected: {{ form.value.interval }}</p>
+<p>Touched: {{ form.controls.interval.touched }}</p>
