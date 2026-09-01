@@ -40,6 +40,7 @@ const AUTO_UPPERCASE = 'upper';
 const AUTO_LOWERCASE = 'lower';
 const INPUT_FIELD_GAP = 'nx-code-input--field-with-gap';
 export type NxConversionTypes = 'lower' | 'upper';
+export type NxCodeInputMode = 'text' | 'numeric' | 'decimal' | 'tel';
 
 @Component({
   selector: 'nx-code-input',
@@ -74,7 +75,12 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
   }
   private _codeLength: number = DEFAULT_INPUT_LENGTH;
 
-  /** The type of HTML input */
+  /**
+   * The type of HTML input.
+   * @deprecated Use `inputMode` to control the mobile keyboard and `digitsOnly` to restrict the
+   * entry to digits instead, especially instead of `type="number"`, which has several
+   * limitations (e.g. no text selection). Kept for backwards compatibility.
+   */
   @Input() set type(value: string) {
     this._type = value;
   }
@@ -82,6 +88,15 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     return this._type;
   }
   private _type = 'text';
+
+  /**
+   * The inputmode of the input elements, controlling e.g. which mobile keyboard is shown.
+   * Unset by default, so the browser derives it from the native `type` attribute instead.
+   */
+  readonly inputMode = input<NxCodeInputMode>();
+
+  /** Whether non-digit characters should be stripped from the entered value. */
+  readonly digitsOnly = input(false, { transform: booleanAttribute });
 
   /** Sets the tabindex of the contained input elements. */
   @Input() set tabindex(value: number) {
@@ -257,7 +272,8 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     // these type of events should be fired e.g. when using the clipboard on an android device
     // so we can either use the data property or the target value as fallback
     const eventData = (event as InputEvent).data?.trim() || eventTarget.value.trim();
-    const filteredData = this.type === 'number' ? this._filterNumbers(eventData) : eventData;
+    const filterDigits = this.digitsOnly() || this.type === 'number';
+    const filteredData = filterDigits ? this._filterNumbers(eventData) : eventData;
     const currentIndex = Number(this._getFocusedInputIndex(event));
 
     this._setKeyCodes(currentIndex, filteredData);

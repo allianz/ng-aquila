@@ -27,7 +27,7 @@ import {
 } from '@angular/forms';
 
 import { createKeyboardEvent, dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxCodeInputComponent } from './code-input.component';
+import { NxCodeInputComponent, NxCodeInputMode } from './code-input.component';
 import { NxCodeInputModule } from './code-input.module';
 import { NxCodeInputIntl } from './code-input-intl';
 
@@ -46,6 +46,8 @@ abstract class CodeInputTest {
   disabled = false;
   tabindex = 0;
   type = 'text';
+  inputMode: NxCodeInputMode = 'text';
+  digitsOnly = false;
 
   onSubmit() {}
 }
@@ -337,6 +339,48 @@ describe('NxCodeInputComponent', () => {
     expect(inputEl.getAttribute('type')).toBe('number');
   }));
 
+  describe('inputMode', () => {
+    it('should not set the attribute by default', () => {
+      createTestComponent(CodeInputTest1);
+      expect(inputElement.getAttribute('inputmode')).toBeNull();
+    });
+
+    it('should set the passed inputMode', () => {
+      createTestComponent(ConfigurableCodeInput);
+      testInstance.inputMode = 'numeric';
+      fixture.detectChanges();
+
+      const inputElements = codeInputElement.querySelectorAll('.nx-code-input__field');
+      Array.from(inputElements).forEach((inputEl) => {
+        expect((inputEl as HTMLElement).getAttribute('inputmode')).toBe('numeric');
+      });
+    });
+  });
+
+  describe('digitsOnly', () => {
+    it('should default to false', () => {
+      createTestComponent(CodeInputTest1);
+      expect(testInstance.codeInputInstance.digitsOnly()).toBe(false);
+    });
+
+    it('should ignore non-number characters on paste when enabled', () => {
+      createTestComponent(ConfigurableCodeInput);
+      testInstance.digitsOnly = true;
+      fixture.detectChanges();
+
+      inputElement.focus();
+      inputElement.dispatchEvent(new InputEvent('input', { data: '1a23' }));
+      fixture.detectChanges();
+
+      ['1', '2', '3', ''].forEach((char, i) => {
+        const input = codeInputElement.querySelector(
+          `input:nth-child(${i + 1})`,
+        ) as HTMLInputElement;
+        expect(input.value).toBe(char);
+      });
+    });
+  });
+
   describe('negative', () => {
     it('should create a basic code input with negative set to false', () => {
       createTestComponent(CodeInputTest1);
@@ -552,6 +596,8 @@ class NumberCodeInput extends CodeInputTest {}
     [length]="4"
     [tabindex]="tabindex"
     [type]="type"
+    [inputMode]="inputMode"
+    [digitsOnly]="digitsOnly"
   >
   </nx-code-input>`,
   changeDetection: ChangeDetectionStrategy.Eager,

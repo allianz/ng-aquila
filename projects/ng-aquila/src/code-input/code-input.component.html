@@ -5,6 +5,7 @@
     [ngClass]="_inputGap(i)"
     [attr.aria-label]="getAriaLabel(i)"
     [attr.type]="type"
+    [attr.inputmode]="inputMode()"
     (input)="_handleInput($event)"
     (blur)="_onBlur()"
     (focus)="_setFocusState()"

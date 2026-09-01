@@ -1,4 +1,4 @@
-import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import { NxCodeInputComponent } from '@allianz/ng-aquila/code-input';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 
 /**
- * @title Code input type example
+ * @title Code input inputMode and digitsOnly example
  */
 @Component({
   selector: 'code-input-type-example',
@@ -23,6 +23,7 @@ import {
     NxCodeInputComponent,
     NxErrorComponent,
     NxButtonComponent,
+    NxLabelComponent,
   ],
 })
 export class CodeInputTypeExampleComponent implements OnInit {

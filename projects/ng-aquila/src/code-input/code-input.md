@@ -41,13 +41,15 @@ With `[disabled]` the code input can be disabled. When using reactive forms you 
 
 <!-- example(code-input-disabled) -->
 
-### Input type
+### Input mode and digits only
 
-The default type of the inputs is `text`. The value can be changed by setting the property `type`. For example, a PIN code that accepts only four digits.
-
-**Please note** that the selection is not possible on `input["type=number"]`. To get cross browser support for text selection on focus use `input["type=tel"]` instead. For further information see [WHATWG forms spec](https://html.spec.whatwg.org/multipage/input.html#concept-input-apply).
+To control which mobile keyboard is shown, set the `inputMode` input (e.g. `numeric`). To restrict the entry to digits, set the `digitsOnly` input. For example, a PIN code that accepts only four digits.
 
 <!-- example(code-input-type) -->
+
+<div class="docs-deprecation-warning">
+Please note that setting the HTML input type via the `type` input (e.g. <code>type="number"</code>) still works but is <strong>deprecated</strong>, since it comes with limitations (e.g. text selection is not possible on <code>input["type=number"]</code>, see the <a href="https://html.spec.whatwg.org/multipage/input.html#concept-input-apply">WHATWG forms spec</a>). Use <code>inputMode</code> and <code>digitsOnly</code> instead.
+</div>
 
 <div class="docs-hide-ndbx">
 
