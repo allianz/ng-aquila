@@ -1,6 +1,13 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { FocusMonitor, FocusTrap, FocusTrapFactory, InteractivityChecker } from '@angular/cdk/a11y';
+import {
+  FocusMonitor,
+  FocusOrigin,
+  FocusTrap,
+  FocusTrapFactory,
+  InputModalityDetector,
+  InteractivityChecker,
+} from '@angular/cdk/a11y';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import {
   BasePortalOutlet,
@@ -20,6 +27,7 @@ import {
   EmbeddedViewRef,
   EventEmitter,
   Inject,
+  inject,
   NgZone,
   OnDestroy,
   OnInit,
@@ -99,6 +107,9 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
   /** for appearance of modal */
   _isExpert = false;
+
+  private readonly _inputModalityDetector = inject(InputModalityDetector);
+
   /** Timeout handles for animation callbacks */
   private _enterAnimationTimeout?: ReturnType<typeof setTimeout>;
   private _exitAnimationTimeout?: ReturnType<typeof setTimeout>;
@@ -192,6 +203,19 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
     return this._portalOutlet.attachDomPortal(portal);
   };
 
+  /**
+   * Origin to focus with, so the focus ring only shows for keyboard users. A bare `focus()` would
+   * never show it, since our focus styles hinge on the `cdk-keyboard-focused` class.
+   *
+   * No modality means nothing was ever pressed or clicked, so the modal was opened
+   * programmatically — `'program'` rather than `'keyboard'`, which would put a ring on a modal the
+   * user never asked for. `NxDialogService` primes the detector, so this is not the "we missed the
+   * interaction" case.
+   */
+  private _interactionFocusOrigin(): FocusOrigin {
+    return this._inputModalityDetector.mostRecentModality ?? 'keyboard';
+  }
+
   /** Moves the focus inside the focus trap. */
   private _trapFocus() {
     const dialog = this._elementRef.nativeElement;
@@ -222,8 +246,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
         this._focusTrap.focusInitialElementWhenReady().then(() => {
           const focused = dialog?.querySelector('.cdk-focused') as HTMLElement;
           if (focused) {
-            // make focus style appear because it only show on focus vis keyboard
-            this._focusMonitor.focusVia(focused, 'keyboard');
+            this._focusMonitor.focusVia(focused, this._interactionFocusOrigin());
           }
         });
         break;
@@ -288,7 +311,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
         activeElement === element ||
         element.contains(activeElement)
       ) {
-        this._focusMonitor.focusVia(toFocus as HTMLElement, 'keyboard');
+        this._focusMonitor.focusVia(toFocus as HTMLElement, this._interactionFocusOrigin());
       }
     }
 

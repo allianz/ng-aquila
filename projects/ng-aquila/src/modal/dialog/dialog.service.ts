@@ -1,5 +1,6 @@
 import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { InputModalityDetector } from '@angular/cdk/a11y';
 import {
   Overlay,
   OverlayConfig,
@@ -133,7 +134,12 @@ export class NxDialogService implements OnDestroy {
     @Inject(NX_MODAL_SCROLL_STRATEGY)
     private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
     @Inject(INERT_EXCEPTION_SELECTORS) private readonly _inertSelectors: string[],
-  ) {}
+  ) {
+    // Injected for its side effect only: the InputModalityDetector attaches its document listeners
+    // when it is first injected, so it has to exist before the interaction that opens a modal. The
+    // modal container cannot do this, as it is created *after* that interaction and would miss it.
+    inject(InputModalityDetector);
+  }
 
   /**
    * Opens a modal modal containing the given component.

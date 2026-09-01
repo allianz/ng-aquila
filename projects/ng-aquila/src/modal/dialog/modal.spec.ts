@@ -1,3 +1,4 @@
+import { NxButtonModule } from '@allianz/ng-aquila/button';
 import {
   INERT_EXCEPTION_SELECTORS,
   NX_MODAL_DATA,
@@ -9,6 +10,7 @@ import {
   NxModalState,
 } from '@allianz/ng-aquila/modal';
 import { fakeScrollStrategyFunction } from '@allianz/ng-aquila/utils';
+import { FocusMonitor, InputModalityDetector } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { A, ESCAPE } from '@angular/cdk/keycodes';
 import { Overlay, OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
@@ -1541,6 +1543,117 @@ describe('NxDialog', () => {
 
       document.body.removeChild(button);
     }));
+
+    describe('focus origin', () => {
+      // A real mouse press sets buttons/detail, so the InputModalityDetector records 'mouse'.
+      // (A screen reader's synthetic mousedown has buttons=0/detail=0 and is treated as keyboard.)
+      const dispatchMousedown = () =>
+        document.dispatchEvent(new MouseEvent('mousedown', { buttons: 1, detail: 1 }));
+
+      let focusMonitor: FocusMonitor;
+      let trigger: HTMLButtonElement;
+
+      beforeEach(() => {
+        focusMonitor = TestBed.inject(FocusMonitor);
+        trigger = document.createElement('button');
+        trigger.id = 'dialog-trigger';
+        document.body.appendChild(trigger);
+        // Focus classes are only applied to monitored elements.
+        focusMonitor.monitor(trigger);
+      });
+
+      afterEach(() => {
+        focusMonitor.stopMonitoring(trigger);
+        document.body.removeChild(trigger);
+      });
+
+      it('should not show the focus ring in the dialog when opened with the mouse', fakeAsync(() => {
+        dispatchMousedown();
+
+        dialog.open(ButtonDialog, { viewContainerRef: testViewContainerRef });
+        viewContainerFixture.detectChanges();
+        tick(500);
+        flushMicrotasks();
+
+        const focused = _getFocusedElementPierceShadowDom()!;
+        expect(focused.tagName).toBe('BUTTON');
+        expect(focused.classList).toContain('cdk-mouse-focused');
+        expect(focused.classList).not.toContain('cdk-keyboard-focused');
+      }));
+
+      it('should show the focus ring in the dialog when opened with the keyboard', fakeAsync(() => {
+        dispatchKeyboardEvent(document.body, 'keydown', A);
+
+        dialog.open(ButtonDialog, { viewContainerRef: testViewContainerRef });
+        viewContainerFixture.detectChanges();
+        tick(500);
+        flushMicrotasks();
+
+        const focused = _getFocusedElementPierceShadowDom()!;
+        expect(focused.tagName).toBe('BUTTON');
+        expect(focused.classList).toContain('cdk-keyboard-focused');
+      }));
+
+      it('should not show the focus ring on the trigger when closed with the mouse', fakeAsync(() => {
+        dispatchMousedown();
+        trigger.focus();
+
+        const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+        flushMicrotasks();
+        viewContainerFixture.detectChanges();
+        flushMicrotasks();
+
+        dispatchMousedown();
+        dialogRef.close();
+        flushMicrotasks();
+        viewContainerFixture.detectChanges();
+        tick(500);
+
+        expect(_getFocusedElementPierceShadowDom()!.id).toBe('dialog-trigger');
+        expect(trigger.classList).toContain('cdk-mouse-focused');
+        expect(trigger.classList).not.toContain('cdk-keyboard-focused');
+      }));
+
+      it('should show the focus ring on the trigger when closed with the keyboard', fakeAsync(() => {
+        dispatchMousedown();
+        trigger.focus();
+
+        dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+        flushMicrotasks();
+        viewContainerFixture.detectChanges();
+        flushMicrotasks();
+
+        dispatchKeyboardEvent(document.body, 'keydown', ESCAPE);
+        viewContainerFixture.detectChanges();
+        flush();
+
+        expect(_getFocusedElementPierceShadowDom()!.id).toBe('dialog-trigger');
+        expect(trigger.classList).toContain('cdk-keyboard-focused');
+      }));
+    });
+
+    // Deliberately a sibling of 'focus origin': that suite injects the FocusMonitor up front, which
+    // primes the InputModalityDetector and would hide a container that only injects it too late.
+    describe('focus origin without a monitored trigger', () => {
+      it('should have the input modality detector listening before a modal is opened', () => {
+        dispatchKeyboardEvent(document.body, 'keydown', A);
+
+        expect(TestBed.inject(InputModalityDetector).mostRecentModality).toBe('keyboard');
+      });
+
+      it('should show the focus ring in the dialog when opened with the keyboard', fakeAsync(() => {
+        dispatchKeyboardEvent(document.body, 'keydown', A);
+
+        dialog.open(ButtonDialog, { viewContainerRef: testViewContainerRef });
+        viewContainerFixture.detectChanges();
+        tick(500);
+        flushMicrotasks();
+
+        const focused = _getFocusedElementPierceShadowDom()!;
+        expect(focused.tagName).toBe('BUTTON');
+        expect(focused.classList).toContain('cdk-keyboard-focused');
+      }));
+    });
   });
 
   describe('dialog content elements', () => {
@@ -2098,6 +2211,16 @@ class PizzaMsg {
   ) {}
 }
 
+/** Dialog whose first tabbable element is monitored by the FocusMonitor. */
+@Component({
+  selector: 'test-button-dialog',
+  template: '<button nxButton="primary">Confirm</button>',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: true,
+  imports: [NxButtonModule],
+})
+class ButtonDialog {}
+
 /** Simple component for testing title and status headline. */
 @Component({
   selector: 'test-title-status-dialog',
@@ -2249,6 +2372,7 @@ const TEST_DIRECTIVES = [
   ComponentWithChildViewContainer,
   ComponentWithTemplateRef,
   PizzaMsg,
+  ButtonDialog,
   DirectiveWithViewContainer,
   ComponentWithOnPushViewContainer,
   ContentElementDialog,
