@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.3.0 (2026-09-01)
+
+### Code Refactoring 🔧
+
+* **grid:** unify A1 grid onto the padding-based gutter model ([128fd7e](https://github.com/allianz/ng-aquila/commit/128fd7e425106984b875f9213e5e75e900643fac))
+
+
+### Bug Fixes 🐛
+
+* **button/testing:** expose harness filters interface ([dfdbd33](https://github.com/allianz/ng-aquila/commit/dfdbd3371b70f51a9d835d3266266c14f048f25f))
+* **datemask:** remove onChange callback on dateChangeEffect ([3386d5f](https://github.com/allianz/ng-aquila/commit/3386d5f8e3b59821c52fc6dadddde92938f8dd61))
+* **formfield:** add token for the inverse border color ([ff3a6cd](https://github.com/allianz/ng-aquila/commit/ff3a6cd6e7f484737348247c8d7cfa44558a8b44)), closes [#c2c2c2](https://github.com/allianz/ng-aquila/issues/c2c2c2) [#414141](https://github.com/allianz/ng-aquila/issues/414141)
+* **formfield:** enforce outline appearance and floating labels for A1 ([7b50a49](https://github.com/allianz/ng-aquila/commit/7b50a49414bda057f07d525d0c751552c94b87ab))
+* **grid:** prevent content getting cut off ([877d49a](https://github.com/allianz/ng-aquila/commit/877d49a8871b573ec06bd42b5c2a550004b8db4c))
+* **mask:** exclude separators from nxMaskLengthError counts ([b56998d](https://github.com/allianz/ng-aquila/commit/b56998d24f6293463efc7feb2bcdf0e3b67f2f17)), closes [#5463](https://github.com/allianz/ng-aquila/issues/5463)
+* **modal:** only show the focus ring for keyboard interactions ([5c288f3](https://github.com/allianz/ng-aquila/commit/5c288f30d3e8a648027a89485ff285518cba529d))
+* resolve high-severity Dependabot alerts ([31493cc](https://github.com/allianz/ng-aquila/commit/31493cc2ebaf2d0d3380aa6018355134f5f061c7))
+* **tabs:** disable mobile accordion under A1 theme ([a2445a7](https://github.com/allianz/ng-aquila/commit/a2445a76651770abdf46f21bd0617842a2f104ef))
+* **tabs:** keep preselected tab when tabbing out of the tab list ([3364c68](https://github.com/allianz/ng-aquila/commit/3364c68f6f082b1e8b130f6756a02eb58461bb15))
+* **timefield:** prevent number get cut off in outline ([3d3951a](https://github.com/allianz/ng-aquila/commit/3d3951a03d9112bdecbe3c8ea9fadb33a8d1ee7b))
+* **toggle-button:** match the error state through ErrorStateMatcher ([69125e3](https://github.com/allianz/ng-aquila/commit/69125e3c6aac9766f244db0772331285a2a2df52))
+* **tooltip:** improve ARIA/WCAG compliance for hover, focus, and Escape dismissal ([df2c942](https://github.com/allianz/ng-aquila/commit/df2c9422ca8af1a469be66bf8630e236164911a6))
+
+
+### Features ✨
+
+* **code-input:** deprecate type input, add inputMode and digitsOnly ([612c7b6](https://github.com/allianz/ng-aquila/commit/612c7b6c2c561d55ac6b99e032be9c59b98ddcb4))
+* **file-uploader:** allow configuring the form data field name ([664202f](https://github.com/allianz/ng-aquila/commit/664202f7579b31d8f64f40f257748e804fb3ba43)), closes [#4846](https://github.com/allianz/ng-aquila/issues/4846)
+* **formfield:** add status input for colored states ([49e32cb](https://github.com/allianz/ng-aquila/commit/49e32cbd9f87020ccf4565eb0299f2dd6c762748))
+* **headline,eyebrow,text:** add on-accent-attention color scheme ([28e4889](https://github.com/allianz/ng-aquila/commit/28e4889e30188b03f39f018617a61bd75528bbf3))
+* **indicator:** A1 full implementation ([d2551d4](https://github.com/allianz/ng-aquila/commit/d2551d4cdbf4ebc72f99754ece371c79025af998))
+* **indicator:** add corner positions and overlap input ([9c885d7](https://github.com/allianz/ng-aquila/commit/9c885d75f2388883e45d8b0904c418fdeac6d53a))
+* **price:** add on-accent-attention color scheme ([015ec33](https://github.com/allianz/ng-aquila/commit/015ec33e71e20bc37c3f125dfd82dba7b5461070))
+* **signal-forms:** add signal forms tests ([0ba305d](https://github.com/allianz/ng-aquila/commit/0ba305d5467f01b4323f1a95c8adf5fb51ef842e))
+* **surface:** add surface theme utility ([30acb4d](https://github.com/allianz/ng-aquila/commit/30acb4db3ee829f454f23cef49d396bd0e439eea))
+* **tabs:** implement closable tabs ([7d0f3c2](https://github.com/allianz/ng-aquila/commit/7d0f3c2863f0914aea43665b7526d10821b3af04))
+* **text:** add body text and utility text components ([cfd7c2b](https://github.com/allianz/ng-aquila/commit/cfd7c2ba602e52d80951f46c7f218a73306c5db8))
+* **toggle-button:** add the A1 toggle button ([bc8c4b8](https://github.com/allianz/ng-aquila/commit/bc8c4b8b02ddd5b9141332f4bdb37834d00fa63d))
+
+### Deprecations ⚠️
+
+* **code-input:** The `type` input on `nx-code-input` is deprecated. Use `inputMode` to control the mobile keyboard shown and `digitsOnly` to restrict entry to digits instead.
+* **indicator:** The `indicator-single-letter-padding` token is unused now that the `.single-letter` class has been removed in favor of `.nx-indicator--padded`. It will be removed in the next major version.
+
 ## 22.2.0 (2026-08-12)
 
 
