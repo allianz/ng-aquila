@@ -181,10 +181,12 @@ If you want to offset a column you can use the `colOffset` property similar to t
 
 Use `nogutters` to remove the spacing from rows and (direct) columns. Use `nopadding` to remove the spacing around the grid, but keep the column gutters. This is useful when you need to place the grid inside of another component that already has spacing (including the grid in grid case).
 
+With `nopadding` alone the rows are pulled out by half a gutter so that the column content still aligns flush with the container edge — the row therefore overhangs its container, which is expected. Combine `nopadding` with `nogutters` when you want the grid to sit flush inside a parent container without any overhang.
+
 <!-- example(grid-nogutter) -->
 
 #### Grid in grid
-You can nest grids inside of other grids to get subdivided columns and achieve more granular positioning. Make sure to use `nogutters` and `nopadding` for [grid in grid scenario](./documentation/grid/overview#nogutters-and-nopadding).
+You can nest grids inside of other grids to get subdivided columns and achieve more granular positioning. Make sure to use `nopadding` for [grid in grid scenario](./documentation/grid/overview#nogutters-and-nopadding).
 <!-- example(grid-in-grid) -->
 
 #### MaxWidth

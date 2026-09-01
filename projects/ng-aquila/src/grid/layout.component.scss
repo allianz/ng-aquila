@@ -34,35 +34,6 @@
   padding-right: 0;
 }
 
-// Use to remove the outer spacing, for "edge to edge container" components
-:host(.nx-grid--no-padding.nx-grid--media-query) {
-  overflow-x: clip;
-
-  ::ng-deep .nx-grid__row {
-    margin-left: calc(-1 * var(--grid-gutter-width-base) * 0.5);
-    margin-right: calc(-1 * var(--grid-gutter-width-base) * 0.5);
-
-    @include media-breakpoint-down(small) {
-      margin-left: calc(-1 * var(--grid-gutter-width-mobile) * 0.5);
-      margin-right: calc(-1 * var(--grid-gutter-width-mobile) * 0.5);
-    }
-  }
-}
-
-:host(.nx-grid--no-padding.nx-grid--container-query) {
-  overflow-x: clip;
-
-  ::ng-deep .nx-grid__row {
-    margin-left: calc(-1 * var(--grid-gutter-width-base) * 0.5);
-    margin-right: calc(-1 * var(--grid-gutter-width-base) * 0.5);
-
-    @include container-breakpoint-down(small) {
-      margin-left: calc(-1 * var(--grid-gutter-width-mobile) * 0.5);
-      margin-right: calc(-1 * var(--grid-gutter-width-mobile) * 0.5);
-    }
-  }
-}
-
 :host(.nx-grid--max-width) {
   max-width: 100%;
   width: v(grid-max-width);

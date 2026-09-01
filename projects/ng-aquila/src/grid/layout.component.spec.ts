@@ -43,6 +43,8 @@ describe('NxLayoutDirective', () => {
         BasicGridLayoutClassTest,
         BasicNoGutters,
         BasicNoPadding,
+        BasicNoPaddingWithRow,
+        BasicNoPaddingNoGuttersWithRow,
         BasicMaxWidth,
         BasicCombinate,
         Basic2Combinate,
@@ -100,6 +102,22 @@ describe('NxLayoutDirective', () => {
     expect(getClassesCreated(BasicCompleteReverse)).toBe(
       'nx-grid nx-grid--max-width nx-grid--media-query nx-grid--no-gutters',
     );
+  });
+
+  it('should pull rows out by half a gutter with nopadding', () => {
+    createTestComponent(BasicNoPaddingWithRow);
+    const row = fixture.nativeElement.querySelector('[nxRow]') as HTMLElement;
+    const { marginLeft, marginRight } = getComputedStyle(row);
+    expect(marginLeft).toBe('-16px');
+    expect(marginRight).toBe('-16px');
+  });
+
+  it('should not pull rows out when nopadding is combined with nogutters', () => {
+    createTestComponent(BasicNoPaddingNoGuttersWithRow);
+    const row = fixture.nativeElement.querySelector('[nxRow]') as HTMLElement;
+    const { marginLeft, marginRight } = getComputedStyle(row);
+    expect(marginLeft).toBe('0px');
+    expect(marginRight).toBe('0px');
   });
 
   it('should update class names after input change', () => {
@@ -190,6 +208,32 @@ class BasicCompleteReverse extends DirectiveTest {}
   imports: [NxGridModule],
 })
 class BasicNoPadding extends DirectiveTest {}
+
+// Pin every gutter to the same width so the expected row margin does not depend on the
+// width of the runner iframe.
+const UNIFORM_GUTTERS = `:host {
+  --grid-gutter-width-mobile: 32px;
+  --grid-gutter-width-base: 32px;
+  --grid-gutter-width-large: 32px;
+}`;
+
+@Component({
+  selector: 'test-basic-no-padding-with-row',
+  template: `<div nxLayout="grid nopadding"><div nxRow></div></div>`,
+  styles: UNIFORM_GUTTERS,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxGridModule],
+})
+class BasicNoPaddingWithRow extends DirectiveTest {}
+
+@Component({
+  selector: 'test-basic-no-padding-no-gutters-with-row',
+  template: `<div nxLayout="grid nopadding nogutters"><div nxRow></div></div>`,
+  styles: UNIFORM_GUTTERS,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxGridModule],
+})
+class BasicNoPaddingNoGuttersWithRow extends DirectiveTest {}
 
 @Component({
   selector: 'test-dynamic-layout',
