@@ -1,3 +1,5 @@
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -53,8 +55,19 @@ export class NxPriceComponent {
   /** The size of the price display. Default is 'm' (medium). */
   readonly size = input<NxPriceSize>('m');
 
-  /** Whether to apply inverse styling, suitable for dark backgrounds. */
-  readonly inverse = input(false, { transform: booleanAttribute });
+  /**
+   * Whether to apply inverse styling, suitable for dark backgrounds. When not set,
+   * it follows the surface the price is placed on (see `nxSurface`).
+   */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'inverse',
+  });
+
+  private readonly _surface = injectSurface();
+
+  /** Resolved inverse: an explicit input wins, then the surface the component sits on. */
+  readonly inverse = computed(() => this.inverseInput() ?? this._surface().surface === 'attention');
 
   /** The color scheme of the price. Only relevant for the A1 Design. */
   readonly colorScheme = input<NxPriceColorScheme>(DEFAULT_COLOR_SCHEME);

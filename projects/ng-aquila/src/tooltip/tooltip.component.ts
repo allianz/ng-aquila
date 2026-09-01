@@ -1,4 +1,5 @@
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { NgClass, NgStyle } from '@angular/common';
 import {
@@ -26,6 +27,9 @@ type TooltipVisibility = 'initial' | 'visible' | 'hidden';
   templateUrl: 'tooltip.component.html',
   styleUrls: ['tooltip.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // The tooltip renders in the overlay container with its own background, so its content must not
+  // adapt to a surface the trigger happens to sit on.
+  providers: [{ provide: NX_SURFACE, useValue: undefined }],
   host: {
     // Forces the element to have a layout in IE and Edge. This fixes issues where the element
     // won't be rendered if the aninxions are disabled or there is no web aninxions polyfill.

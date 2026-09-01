@@ -1,3 +1,5 @@
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -56,7 +58,19 @@ export class NxBadgeComponent {
 
   readonly prominence = input<NxBadgeProminence>('subtle');
 
-  readonly inverse = input(false, { transform: booleanAttribute });
+  /**
+   * Whether to use the inverse colors. When not set, it follows the surface the
+   * badge is placed on (see `nxSurface`).
+   */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'inverse',
+  });
+
+  private readonly _surface = injectSurface();
+
+  /** Resolved inverse: an explicit input wins, then the surface the component sits on. */
+  readonly inverse = computed(() => this.inverseInput() ?? this._surface().surface === 'attention');
 
   readonly disabled = input(false, { transform: booleanAttribute });
 

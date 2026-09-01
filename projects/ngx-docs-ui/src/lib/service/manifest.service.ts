@@ -19,16 +19,24 @@ export class Category {
   children!: CategoryChild[];
 }
 
+// Categories pinned in this order before the rest sort alphabetically.
+const PINNED_CATEGORIES = ['general', 'utilities'];
+
 function sortByLabel(a: { label: string }, b: { label: string }) {
   const labelA = a.label.toLowerCase();
   const labelB = b.label.toLowerCase();
 
-  if (labelA === 'general') {
-    return -1;
-  }
+  const pinnedA = PINNED_CATEGORIES.indexOf(labelA);
+  const pinnedB = PINNED_CATEGORIES.indexOf(labelB);
 
-  if (labelB === 'general') {
-    return 1;
+  if (pinnedA !== -1 || pinnedB !== -1) {
+    if (pinnedA === -1) {
+      return 1;
+    }
+    if (pinnedB === -1) {
+      return -1;
+    }
+    return pinnedA - pinnedB;
   }
 
   return labelA > labelB ? 1 : labelA < labelB ? -1 : 0;

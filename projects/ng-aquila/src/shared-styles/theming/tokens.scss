@@ -353,6 +353,20 @@ $nx-theme: (
   shadow-large-color: rgba(0, 0, 0, 0.8),
   shadow-small: 0 2px 4px var(--shadow-small-color),
   shadow-large: 0 8px 24px var(--shadow-large-color),
+  // Backgrounds painted by nxSurface. Prefixed with `nx-` so the key can never collide with a
+  // future public A1 design token. accent-attention reuses the color-attention-* tokens per hue.
+  //
+  // Each of these has to pair with the foreground family the adopting components switch to, or the
+  // content will not read on it:
+  // - `default` leaves components on their default mode too, and is the plain page background
+  //   those foregrounds (`text-01`) expect.
+  // - `attention` makes components use their inverse mode, and in this theme inverse means dark ink
+  //   (`negative` is `ui-01`), so the background has to be the light one those foregrounds expect.
+  // - `emphasis` leaves components on their default mode, so it has to stay close to the page in
+  //   lightness for the default `text-01` to keep working.
+  nx-surface-default-background-color: ui-01,
+  nx-surface-attention-background-color: negative-background,
+  nx-surface-emphasis-background-color: ui-02,
   /************* COMPONENT SPECIFIC MAPPINGS *************/
   accordion-regular-font-size: heading-04-font-size,
   accordion-regular-line-height: heading-04-line-height,
@@ -1773,10 +1787,14 @@ $nx-theme: (
   icon-contained-2xl-container-size: 88px,
   // Status icon
   // plain inverse glyph colors (for placement on dark/inverse surfaces)
-  status-icon-error-inverse-color: danger,
+  // `inverse` means "on a light surface" throughout this theme, so these have to be the dark
+  // variants. The light ones they used before failed the 3:1 non-text contrast floor.
+  status-icon-error-inverse-color: danger-active,
+  // Warning is the exception: its glyph sits on its own `status-icon-warning-background-color`
+  // circle, not on the surface, so it stays the light amber that reads on that circle.
   status-icon-warning-inverse-color: warning,
-  status-icon-success-inverse-color: success,
-  status-icon-info-inverse-color: info,
+  status-icon-success-inverse-color: success-hover,
+  status-icon-info-inverse-color: info-hover,
   // contained: filled circular surface + glyph
   status-icon-error-contained-color: negative,
   status-icon-warning-contained-color: negative,

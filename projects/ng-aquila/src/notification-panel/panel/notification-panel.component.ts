@@ -1,3 +1,4 @@
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import {
   AfterContentInit,
@@ -24,6 +25,9 @@ import { NxNotificationPanelItemComponent } from './../notification-item/notific
     '(keydown)': '_handleKeydown($event)',
   },
   changeDetection: ChangeDetectionStrategy.Eager,
+  // The panel renders in the overlay container with its own background, so its items must not adapt
+  // to a surface the trigger happens to sit on.
+  providers: [{ provide: NX_SURFACE, useValue: undefined }],
   standalone: true,
 })
 export class NxNotificationPanelComponent implements OnDestroy, AfterContentInit {

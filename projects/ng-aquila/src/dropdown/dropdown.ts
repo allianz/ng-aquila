@@ -2,6 +2,7 @@ import { NxCheckboxModule } from '@allianz/ng-aquila/checkbox';
 import { NxFormfieldComponent, NxFormfieldControl } from '@allianz/ng-aquila/formfield';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { NxVirtualFor, NxVirtualViewportComponent } from '@allianz/ng-aquila/virtual-scroll';
@@ -222,6 +223,9 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = (value) =>
     { provide: NxDropdownControl, useExisting: NxDropdownComponent },
     { provide: NxFormfieldControl, useExisting: NxDropdownComponent },
     { provide: NxAbstractControl, useExisting: NxDropdownComponent },
+    // The panel renders in the overlay container with its own background, so its items must not
+    // adapt to a surface the trigger happens to sit on.
+    { provide: NX_SURFACE, useValue: undefined },
   ],
   host: {
     role: 'combobox',

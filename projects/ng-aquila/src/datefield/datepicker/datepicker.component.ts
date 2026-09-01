@@ -7,6 +7,7 @@
  */
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
@@ -118,6 +119,7 @@ export const DATEPICKER_DEFAULT_OPTIONS = new InjectionToken<DatepickerDefaultOp
   selector: 'nx-datepicker-content',
   templateUrl: 'datepicker-content.component.html',
   styleUrls: ['datepicker-content.component.scss'],
+  providers: [{ provide: NX_SURFACE, useValue: undefined }],
   host: {
     class: 'nx-datepicker-content',
   },

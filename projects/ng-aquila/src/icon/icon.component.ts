@@ -1,4 +1,6 @@
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -99,8 +101,20 @@ export class NxIconComponent implements OnChanges {
   /** Whether the icon is filled. */
   readonly fill = input(false, { transform: booleanAttribute });
 
-  readonly inverseInput = input(false, { alias: 'inverse', transform: booleanAttribute });
-  readonly inverse = computed(() => this.inverseInput() || this.fill());
+  /**
+   * Whether the icon uses the inverse color. When not set, it follows the surface
+   * the icon is placed on (see `nxSurface`).
+   */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    alias: 'inverse',
+    transform: nxOptionalBooleanAttribute,
+  });
+
+  private readonly _surface = injectSurface();
+
+  readonly inverse = computed(
+    () => (this.inverseInput() ?? this._surface().surface === 'attention') || this.fill(),
+  );
 
   /**
    * Specifies the size of the icon.

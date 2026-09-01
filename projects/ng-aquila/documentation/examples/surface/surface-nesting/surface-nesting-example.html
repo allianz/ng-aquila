@@ -1,0 +1,19 @@
+<div nxSurface="attention" class="docs-nesting-level">
+  <nx-eyebrow>attention (outer)</nx-eyebrow>
+  <nx-price [value]="9.99" />
+
+  <div nxSurface="emphasis" class="docs-nesting-level">
+    <nx-eyebrow>emphasis — nearest wins over attention</nx-eyebrow>
+    <nx-price [value]="9.99" />
+
+    <div nxSurface="inherit" class="docs-nesting-level">
+      <nx-eyebrow>inherit — passes emphasis through unchanged</nx-eyebrow>
+      <nx-price [value]="9.99" />
+    </div>
+
+    <div nxSurface="default" class="docs-nesting-level">
+      <nx-eyebrow>default — resets back to the neutral surface</nx-eyebrow>
+      <nx-price [value]="9.99" />
+    </div>
+  </div>
+</div>

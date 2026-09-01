@@ -1,0 +1,13 @@
+.docs-surface-css-container {
+  padding: 32px;
+  border-radius: 8px;
+}
+
+.docs-legacy-widget {
+  /* will be overwritten by the more next selector */
+  color: var(--text-01);
+}
+
+[data-nx-surface='attention'] .docs-legacy-widget {
+  color: var(--text-02);
+}

@@ -1,4 +1,6 @@
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -48,8 +50,20 @@ export class NxStatusIconComponent {
   /** Whether the status icon is rendered inside a filled, circular surface. */
   readonly contained = input(false, { transform: booleanAttribute });
 
-  /** Whether the status icon uses the inverse color scheme (for placement on dark/inverse surfaces). */
-  readonly inverse = input(false, { transform: booleanAttribute });
+  /**
+   * Whether the status icon uses the inverse color scheme (for placement on
+   * dark/inverse surfaces). When not set, it follows the surface the icon is placed
+   * on (see `nxSurface`).
+   */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'inverse',
+  });
+
+  private readonly _surface = injectSurface();
+
+  /** Resolved inverse: an explicit input wins, then the surface the component sits on. */
+  readonly inverse = computed(() => this.inverseInput() ?? this._surface().surface === 'attention');
 
   private readonly statusListNdbx: { [key in NxStatusIconType]: any } = {
     error: { icon: 'exclamation-triangle' },

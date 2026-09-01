@@ -1,5 +1,6 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule, NxStatusIconType } from '@allianz/ng-aquila/icon';
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { NgTemplateOutlet } from '@angular/common';
@@ -73,6 +74,11 @@ export class NxModalTitleComponent {
   templateUrl: 'modal.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./modal.component.scss'],
+  providers: [
+    // The modal floats above the page on its own background, so its content must not adapt to a
+    // surface the element it happens to be declared in is painting.
+    { provide: NX_SURFACE, useValue: undefined },
+  ],
   host: {
     '[class.nx-modal--fixed-width]': 'size() === "fixed"',
     '[class.nx-modal--entering]': 'true',

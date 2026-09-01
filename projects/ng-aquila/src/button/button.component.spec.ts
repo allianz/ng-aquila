@@ -703,4 +703,36 @@ describe('NxButton Implementations', () => {
       expect(fixture.nativeElement).toHaveClass('nx-button--negative');
     });
   });
+
+  describe('spinner negative with newer inputs', () => {
+    it('reflects the negative input even without a legacy negative class', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [
+          inputBinding('nxButton', () => 'secondary'),
+          inputBinding('negative', () => true),
+          inputBinding('loading', () => true),
+        ],
+      });
+      fixture.detectChanges();
+
+      const spinner = fixture.nativeElement.querySelector('nx-spinner');
+      expect(spinner).toHaveClass('nx-spinner--negative');
+    });
+
+    it('lets the negative input override a legacy negative class', () => {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: [
+          inputBinding('nxButton', () => 'secondary negative'),
+          inputBinding('negative', () => false),
+          inputBinding('loading', () => true),
+        ],
+      });
+      fixture.detectChanges();
+
+      const spinner = fixture.nativeElement.querySelector('nx-spinner');
+      expect(spinner).not.toHaveClass('nx-spinner--negative');
+    });
+  });
 });

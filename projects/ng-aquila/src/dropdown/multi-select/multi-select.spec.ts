@@ -6,6 +6,7 @@ import {
   NxFormfieldErrorDirective,
   NxFormfieldModule,
 } from '@allianz/ng-aquila/formfield';
+import { NX_SURFACE, NxSurface } from '@allianz/ng-aquila/surface';
 import {
   DOWN_ARROW,
   END,
@@ -179,6 +180,7 @@ describe('NxMultiSelectComponent', () => {
         ReactiveFormsModule,
         NxFormfieldModule,
         BasicMultiSelectComponent,
+        SurfaceMultiSelectComponent,
         A1MultiSelectComponent,
         ComplexMultiSelectComponent,
         ReactiveMultiSelectComponent,
@@ -233,6 +235,15 @@ describe('NxMultiSelectComponent', () => {
       expect(id).toMatch(/nx-multi-select-\d+$/);
       expect(ariaControls).toBe(`${multiSelectInstance.id}-combobox`);
       expect(ariaHaspopup).toBe('listbox');
+    });
+
+    it('does not leak an ancestor surface into its own content', async () => {
+      await createTestComponent(SurfaceMultiSelectComponent);
+
+      const multiSelectDebugElement = fixture.debugElement.query(
+        By.directive(NxMultiSelectComponent),
+      );
+      expect(multiSelectDebugElement.injector.get(NX_SURFACE)).toBeUndefined();
     });
 
     it('should set the tabindex of the select to -1 if disabled', fakeAsync(() => {
@@ -1309,6 +1320,33 @@ abstract class DropdownTest {
   imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
 })
 class BasicMultiSelectComponent extends DropdownTest {
+  options = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
+}
+
+@Component({
+  selector: 'test-surface-multi-select-component',
+  template: `
+    <div nxSurface="attention">
+      <nx-formfield label="Car brand" [appearance]="appearance">
+        <nx-multi-select
+          [(ngModel)]="model"
+          [filter]="filter"
+          [options]="options"
+        ></nx-multi-select>
+      </nx-formfield>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    OverlayModule,
+    NxDropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NxFormfieldModule,
+    NxSurface,
+  ],
+})
+class SurfaceMultiSelectComponent extends DropdownTest {
   options = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
 }
 

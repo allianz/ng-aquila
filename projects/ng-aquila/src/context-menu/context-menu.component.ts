@@ -1,3 +1,4 @@
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { FocusKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { Direction } from '@angular/cdk/bidi';
 import { END, ESCAPE, hasModifierKey, HOME, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
@@ -34,6 +35,9 @@ import { NxContextMenuItemBase, NxContextMenuItemWrapBase } from './context-menu
   styleUrls: ['./context-menu.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'nxContextMenu',
+  // The menu renders in the overlay container with its own background, so its items must not adapt
+  // to a surface the trigger happens to sit on.
+  providers: [{ provide: NX_SURFACE, useValue: undefined }],
   imports: [NgClass],
 })
 export class NxContextMenuComponent implements AfterContentInit, OnDestroy {

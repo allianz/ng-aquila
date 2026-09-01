@@ -8,6 +8,7 @@ import {
 } from '@allianz/ng-aquila/formfield';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxInputModule } from '@allianz/ng-aquila/input';
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager, FocusOrigin } from '@angular/cdk/a11y';
@@ -77,7 +78,10 @@ const _defaultFilterFn: NxMultiSelectFilterFn = (query, label) =>
   selector: 'nx-multi-select',
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss'],
-  providers: [{ provide: NxFormfieldControl, useExisting: NxMultiSelectComponent }],
+  providers: [
+    { provide: NxFormfieldControl, useExisting: NxMultiSelectComponent },
+    { provide: NX_SURFACE, useValue: undefined },
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.is-readonly]': 'readonly',

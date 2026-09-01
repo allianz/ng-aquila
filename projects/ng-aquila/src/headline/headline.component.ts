@@ -1,5 +1,7 @@
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { booleanAttribute, ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, Input, input } from '@angular/core';
 
 /** Types of headlines */
 export type HeadlineType =
@@ -90,9 +92,25 @@ export class NxHeadlineComponent {
 
   /**
    * Whether the headline should use inverse (light-on-dark) colors.
-   * Replaces the deprecated `negative` input.
+   * Replaces the deprecated `negative` input. When not set, it follows the
+   * surface the headline is placed on (see `nxSurface`).
    */
-  readonly inverse = input(false, { transform: booleanAttribute });
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'inverse',
+  });
+
+  private readonly _surface = injectSurface();
+
+  /**
+   * Resolved inverse: an explicit input wins, then the surface the component sits
+   * on. The accent hue is ignored - the headline has no on-accent-attention
+   * tokens yet, so it just goes inverse regardless of hue.
+   */
+  readonly inverse = computed(() => {
+    const { surface } = this._surface();
+    return this.inverseInput() ?? (surface === 'attention' || surface === 'accent-attention');
+  });
 
   readonly type = input<NxHeadlineType>('primary');
 

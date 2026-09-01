@@ -2,6 +2,7 @@ import { NxDatefieldDirective } from '@allianz/ng-aquila/datefield';
 import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxMomentDateModule } from '@allianz/ng-aquila/moment-date-adapter';
+import { NX_SURFACE, NxSurface } from '@allianz/ng-aquila/surface';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
@@ -112,6 +113,23 @@ describe('NxDatepicker', () => {
         }));
       });
 
+      it('does not leak an ancestor surface into the popup content', fakeAsync(() => {
+        const surfaceFixture = createComponent(SurfaceStandardDatepicker, [NxNativeDateModule]);
+        surfaceFixture.detectChanges();
+        const surfaceTestComponent: SurfaceStandardDatepicker = surfaceFixture.componentInstance;
+
+        surfaceTestComponent.datepicker.open();
+        surfaceFixture.detectChanges();
+        flush();
+
+        const popupComponentRef = (surfaceTestComponent.datepicker as any)._popupComponentRef;
+        expect(popupComponentRef.injector.get(NX_SURFACE)).toBeUndefined();
+
+        surfaceTestComponent.datepicker.close();
+        surfaceFixture.detectChanges();
+        flush();
+      }));
+
       describe('when ancestor directionality changes', () => {
         it('closes datepicker popup and removes ref', fakeAsync(() => {
           const [fakeDirectionality, changeEmitter] = fakeDirectionalityFactory('ltr', true);
@@ -172,6 +190,30 @@ class StandardDatepicker {
   datepicker!: NxDatepickerComponent<Date>;
   @ViewChild(NxDatefieldDirective)
   datepickerInput!: NxDatefieldDirective<Date>;
+}
+
+@Component({
+  selector: 'test-surface-standard-datepicker',
+  template: `
+    <div nxSurface="attention">
+      <input nxDatefield [datepicker]="d" [value]="date" />
+      <nx-datepicker #d></nx-datepicker>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    NxDatefieldModule,
+    NxFormfieldModule,
+    NxInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NxSurface,
+  ],
+})
+class SurfaceStandardDatepicker {
+  date: Date | null = new Date(2020, JAN, 1);
+  @ViewChild('d')
+  datepicker!: NxDatepickerComponent<Date>;
 }
 
 @Component({

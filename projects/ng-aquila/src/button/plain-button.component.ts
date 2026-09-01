@@ -1,5 +1,7 @@
 import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
 import { NxSpinnerComponent } from '@allianz/ng-aquila/spinner';
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, NumberInput } from '@angular/cdk/coercion';
 import {
@@ -100,8 +102,25 @@ export class NxPlainButtonComponent implements NxTriggerButton, AfterViewInit {
   /** The plain button variant. Please only use it for the A1 Design. */
   readonly variant = input<NxPlainButtonVariant>('primary');
 
-  /** The plain button color scheme. Please only use it for the A1 Design. */
-  readonly colorScheme = input<NxPlainButtonColorScheme>('default');
+  /**
+   * The plain button color scheme. Please only use it for the A1 Design.
+   *
+   * When not set, an `accent-attention` surface resolves it to
+   * `on-accent-attention` (see `nxSurface`). The `attention` surface goes through
+   * `inverse` instead, since `on-brand` pairs with a brand-colored background.
+   */
+  readonly colorSchemeInput = input<NxPlainButtonColorScheme | undefined>(undefined, {
+    alias: 'colorScheme',
+  });
+
+  private readonly _surface = injectSurface();
+
+  /** Resolved color scheme: an explicit input wins, then the surface, then 'default'. */
+  readonly colorScheme = computed<NxPlainButtonColorScheme>(
+    () =>
+      this.colorSchemeInput() ??
+      (this._surface().surface === 'accent-attention' ? 'on-accent-attention' : 'default'),
+  );
 
   /** Whether to show the critical/danger appearance */
   readonly critical = input<boolean, BooleanInput>(false, {
@@ -113,10 +132,17 @@ export class NxPlainButtonComponent implements NxTriggerButton, AfterViewInit {
     transform: booleanAttribute,
   });
 
-  /** Whether the button should use the inverse color (for use on dark/colored backgrounds). */
-  readonly inverse = input<boolean, BooleanInput>(false, {
-    transform: booleanAttribute,
+  /**
+   * Whether the button should use the inverse color (for use on dark/colored
+   * backgrounds). When not set, it follows the surface (see `nxSurface`).
+   */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'inverse',
   });
+
+  /** Resolved inverse: an explicit input wins, then the surface the button sits on. */
+  readonly inverse = computed(() => this.inverseInput() ?? this._surface().surface === 'attention');
 
   tabIndex = input<number | undefined, NumberInput>(undefined, { transform: tabIndexAttribute });
   /**

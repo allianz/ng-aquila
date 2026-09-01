@@ -1,3 +1,4 @@
+import { injectSurface } from '@allianz/ng-aquila/surface';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, NumberInput } from '@angular/cdk/coercion';
 import {
@@ -110,8 +111,23 @@ export class NxButtonBase implements AfterViewInit {
 
   /**
    * The color scheme of the button. Only relevant for the A1 Design.
+   *
+   * When not set, an `accent-attention` surface resolves it to
+   * `on-accent-attention` (see `nxSurface`). The `attention` surface is handled
+   * through `negative` instead, since the button has no brand palette.
    */
-  readonly colorScheme = input<NxButtonColorScheme>(DEFAULT_COLOR_SCHEME);
+  readonly colorSchemeInput = input<NxButtonColorScheme | undefined>(undefined, {
+    alias: 'colorScheme',
+  });
+
+  /** Resolved color scheme: an explicit input wins, then the surface, then 'default'. */
+  readonly colorScheme = computed<NxButtonColorScheme>(
+    () =>
+      this.colorSchemeInput() ??
+      (this._surface().surface === 'accent-attention'
+        ? 'on-accent-attention'
+        : DEFAULT_COLOR_SCHEME),
+  );
 
   /**
    * The accent color of the button. Only takes effect together with an
@@ -126,7 +142,9 @@ export class NxButtonBase implements AfterViewInit {
     if (this.colorScheme() === 'default') {
       return null;
     }
-    return this.accentColorInput() ?? DEFAULT_ACCENT_COLOR;
+    // On an accent surface the hue comes from the surface, so the button matches the
+    // background it was placed on rather than defaulting to blue.
+    return this.accentColorInput() ?? this._surfaceAccentColor() ?? DEFAULT_ACCENT_COLOR;
   }
 
   /**
@@ -159,8 +177,22 @@ export class NxButtonBase implements AfterViewInit {
     transform: booleanAttribute,
     alias: 'inverse',
   });
+  private readonly _surface = injectSurface();
+
+  private readonly _surfaceAccentColor = computed(() => {
+    const resolved = this._surface();
+    return resolved.surface === 'accent-attention' ? resolved.accentColor : undefined;
+  });
+
   get negative() {
-    return this.negativeInput() ?? this.inverseInput() ?? this.properties().negative;
+    return (
+      this.negativeInput() ??
+      this.inverseInput() ??
+      // `|| undefined` so that an absent `negative` in the legacy class string does not count as an
+      // explicit `false` and shadow the surface below.
+      (this.properties().negative || undefined) ??
+      this._surface().surface === 'attention'
+    );
   }
 
   blockInput = input<boolean, BooleanInput>(undefined, {
@@ -191,7 +223,8 @@ export class NxButtonBase implements AfterViewInit {
   readonly loading = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
 
   protected get spinnerNegative() {
-    const { appearance, negative } = this.properties();
+    const appearance = this.appearance;
+    const negative = this.negative;
     if (appearance === 'emphasis' || appearance === 'cta' || appearance === 'attention') {
       return true;
     }

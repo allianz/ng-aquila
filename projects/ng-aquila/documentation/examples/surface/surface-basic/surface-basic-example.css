@@ -1,0 +1,18 @@
+.docs-surface-controls {
+  margin-bottom: 24px;
+}
+
+.docs-surface-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+.docs-surface-preview-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,42 @@
+<div nxLayout="grid nopadding" class="docs-surface-controls">
+  <div nxRow>
+    <div nxCol="12,6">
+      <nx-formfield label="Surface">
+        <nx-dropdown [(value)]="surface" panelGrow="true">
+          @for (item of surfaces; track item) {
+            <nx-dropdown-item [value]="item">{{ item }}</nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+
+    <div nxCol="12,6">
+      <nx-formfield label="Accent color">
+        <nx-dropdown
+          [(value)]="accentColor"
+          [disabled]="accentColorDisabled()"
+          panelGrow
+        >
+          @for (item of accentColors; track item) {
+            <nx-dropdown-item [value]="item">{{ item }}</nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+</div>
+
+<div
+  class="docs-surface-preview"
+  [nxSurface]="surface()"
+  [nxSurfaceAccentColor]="accentColor()"
+>
+  <nx-eyebrow>Recommended</nx-eyebrow>
+  <h3 nxHeadline size="l">Business plan</h3>
+  <nx-price [value]="24.9" size="l" prefix="from" suffix="Monthly" />
+  <div class="docs-surface-preview-row">
+    <button nxButton="primary" type="button">Select</button>
+    <button nxPlainButton type="button">Learn more</button>
+    <nx-badge accentColor="brand">New</nx-badge>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 ---
-title: Utilities
-category: general
+title: Type Guards
+category: utilities
 b2c: true
 expert: true
 stable: progress

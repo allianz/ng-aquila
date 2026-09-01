@@ -1,6 +1,7 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { A11yModule, FocusOrigin } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
@@ -66,6 +67,9 @@ export class NxPopoverActionsDirective {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./popover.component.scss'],
   exportAs: 'nxPopover',
+  // The popover renders in the overlay container with its own background, so its content must not
+  // adapt to a surface the trigger happens to sit on.
+  providers: [{ provide: NX_SURFACE, useValue: undefined }],
   imports: [NgClass, NgStyle, NxIconModule, NgTemplateOutlet, NxButtonModule, A11yModule],
 })
 export class NxPopoverComponent implements OnDestroy, OnInit {

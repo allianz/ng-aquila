@@ -1,4 +1,5 @@
 import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { NgClass } from '@angular/common';
@@ -41,6 +42,9 @@ export class NxAutocompleteSelectedEvent {
   styleUrls: ['autocomplete.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'nxAutocomplete',
+  // The panel renders in the overlay container with its own background, so its options must not
+  // adapt to a surface the trigger happens to sit on.
+  providers: [{ provide: NX_SURFACE, useValue: undefined }],
   host: { class: 'nx-autocomplete' },
   imports: [NgClass, NxAutocompleteOptionComponent],
 })

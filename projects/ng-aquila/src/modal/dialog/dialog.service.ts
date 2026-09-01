@@ -1,3 +1,4 @@
+import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import {
   Overlay,
@@ -369,6 +370,10 @@ export class NxDialogService implements OnDestroy {
       { provide: NxModalContainer, useValue: modalContainer },
       { provide: NX_MODAL_DATA, useValue: config.data },
       { provide: NxModalRef, useValue: modalRef },
+      // The modal renders in the overlay container with its own background, so its content must not
+      // adapt to a surface the trigger happens to sit on. This has to be blocked here rather than on
+      // NxModalContainer: the content's injector parent is the trigger's, not the container's.
+      { provide: NX_SURFACE, useValue: undefined },
     ];
 
     return Injector.create({ parent: userInjector || this._injector, providers });

@@ -35,6 +35,17 @@ a {
   color: v(message-warning-text-color);
 }
 
+.docs-info {
+  border-width: $message-border-width;
+  border-style: solid;
+  border-color: v(message-info-border-color);
+  padding: v(message-padding);
+  border-radius: v(message-border-radius);
+  background-color: rgb(from var(--message-info-border-color) r g b / 0.12);
+  margin-bottom: 16px;
+  color: v(message-info-text-color);
+}
+
 .docs-danger-text {
   color: v(danger);
 }
@@ -146,7 +157,8 @@ a {
 ::ng-deep .docs-markdown--p a,
 ::ng-deep .docs-markdown--li a,
 ::ng-deep .docs-markdown--table a,
-::ng-deep .docs-deprecation-warning a {
+::ng-deep .docs-deprecation-warning a,
+::ng-deep .docs-info a {
   color: v(interactive-text);
   font-weight: 600;
 
@@ -276,6 +288,7 @@ a {
 
 ::ng-deep .docs-markdown--p code,
 ::ng-deep .docs-deprecation-warning code,
+::ng-deep .docs-info code,
 ::ng-deep .docs-markdown--li > code,
 ::ng-deep .docs-markdown--table code {
   padding: 2px;
