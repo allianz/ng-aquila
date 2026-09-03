@@ -74,7 +74,10 @@
       }
     }
     @if (!lastInput) {
-      <div [class.separator-as-placeholder]="shouldSeparatorBeGrayed(index)">
+      <div
+        [class.separator-as-placeholder]="shouldSeparatorBeGrayed(index)"
+        [class.is-disabled]="disabled"
+      >
         {{ separator() }}
       </div>
     }

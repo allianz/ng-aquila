@@ -647,6 +647,34 @@ describe('DatemaskComponent', () => {
       expect(test.ngModelDirective().dirty).toBe(true);
     });
   });
+
+  describe('disabled state', () => {
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DatemaskDisabledTest],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DatemaskDisabledTest);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
+
+    it('should dim the separators standing in for placeholders when disabled', async () => {
+      const separatorColor = () =>
+        getComputedStyle(fixture.nativeElement.querySelector('.separator-as-placeholder')).color;
+      const placeholderColor = separatorColor();
+
+      (component as DatemaskDisabledTest).disabled = true;
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      const formfield = fixture.nativeElement.querySelector('.nx-formfield');
+      expect(formfield.classList.contains('is-disabled')).toBe(true);
+
+      expect(separatorColor()).toBe(getComputedStyle(formfield).color);
+      expect(separatorColor()).not.toBe(placeholderColor);
+    });
+  });
 });
 
 @Directive({ standalone: true })
@@ -769,6 +797,22 @@ export class DatemaskTestFormat extends DateRangeTestBase {
   datemaskComponent = viewChild.required(NxDatemaskComponent<Moment>);
   datemaskModel = moment([2022, 5, 20]);
   format = 'YYYY-MM-DD';
+}
+
+@Component({
+  selector: 'test-datemask-disabled',
+  template: `
+    <nx-formfield>
+      <nx-datemask [(ngModel)]="datemaskModel" [disabled]="disabled"></nx-datemask>
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxFormfieldComponent, NxMomentDateModule, FormsModule, NxDatemaskComponent],
+})
+export class DatemaskDisabledTest extends DateRangeTestBase {
+  datemaskComponent = viewChild.required(NxDatemaskComponent<Moment>);
+  datemaskModel: Moment | null = null;
+  disabled = false;
 }
 
 @Component({
