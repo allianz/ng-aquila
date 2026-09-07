@@ -1,7 +1,9 @@
 import { injectSurface } from '@allianz/ng-aquila/surface';
 import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, Component, computed, Input, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Input, input } from '@angular/core';
+
+import { NX_HEADLINE_CONTEXT } from './headline-context';
 
 /** Types of headlines */
 export type HeadlineType =
@@ -33,16 +35,16 @@ const DEFAULT_COLOR_SCHEME: NxHeadlineColorScheme = 'default';
     '[class.nx-heading--subsection-medium]': 'legacytype === "subsection-medium"',
     '[class.nx-heading--subsection-small]': 'legacytype === "subsection-small"',
     '[class.nx-heading--subsection-xsmall]': 'legacytype === "subsection-xsmall"',
-    '[class.nx-heading--new-api]': 'size() !== undefined',
-    '[class.nx-heading--s]': 'size() === "s"',
-    '[class.nx-heading--m]': 'size() === "m"',
-    '[class.nx-heading--l]': 'size() === "l"',
-    '[class.nx-heading--xl]': 'size() === "xl"',
-    '[class.nx-heading--2xl]': 'size() === "2xl"',
-    '[class.nx-heading--3xl]': 'size() === "3xl"',
-    '[class.nx-heading--4xl]': 'size() === "4xl"',
-    '[class.nx-heading--5xl]': 'size() === "5xl"',
-    '[class.nx-heading--6xl]': 'size() === "6xl"',
+    '[class.nx-heading--new-api]': '_size() !== undefined',
+    '[class.nx-heading--s]': '_size() === "s"',
+    '[class.nx-heading--m]': '_size() === "m"',
+    '[class.nx-heading--l]': '_size() === "l"',
+    '[class.nx-heading--xl]': '_size() === "xl"',
+    '[class.nx-heading--2xl]': '_size() === "2xl"',
+    '[class.nx-heading--3xl]': '_size() === "3xl"',
+    '[class.nx-heading--4xl]': '_size() === "4xl"',
+    '[class.nx-heading--5xl]': '_size() === "5xl"',
+    '[class.nx-heading--6xl]': '_size() === "6xl"',
     '[class.nx-heading--negative]': 'negative', // To be removed in favor of nx-heading--inverse in the future
     '[class.nx-heading--inverse]': 'inverse()',
     '[class.nx-heading--primary]': 'type() === "primary"',
@@ -53,6 +55,8 @@ const DEFAULT_COLOR_SCHEME: NxHeadlineColorScheme = 'default';
   standalone: true,
 })
 export class NxHeadlineComponent {
+  private readonly _context = inject(NX_HEADLINE_CONTEXT, { optional: true });
+
   /**
    * Changes the type of the headline which affects the visual appearance.
    *
@@ -77,7 +81,14 @@ export class NxHeadlineComponent {
   }
   private _classNames = '';
 
+  /**
+   * The size of the headline. A wrapping component providing `NX_HEADLINE_CONTEXT` overrides this
+   * input.
+   */
   readonly size = input<NxHeadlineSize>();
+
+  /** The size actually rendered: the wrapper's, if one imposes it, otherwise the `size` input. */
+  protected readonly _size = computed(() => this._context?.headlineSize() ?? this.size());
 
   /**
    * @deprecated The `negative` input is deprecated and will be removed in favor of `inverse`.

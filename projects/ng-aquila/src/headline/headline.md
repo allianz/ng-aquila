@@ -105,4 +105,13 @@ This table shows you how the old names will translate to in the new design.
 
 <!-- example(headline-sizes-mapping, { "hideHeader": true }) -->
 
+### Imposing size from a wrapper
+
+A wrapping component (e.g. a card grid or a comparison table header) can provide
+`NX_HEADLINE_CONTEXT` to own the size of every `nxHeadline` rendered beneath it, overriding
+the consumer's `size` input. This keeps headlines visually consistent across all usages of
+that wrapper, even if each usage sets a different `size`.
+
+<!-- example(headline-context) -->
+
 

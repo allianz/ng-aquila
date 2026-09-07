@@ -1,8 +1,17 @@
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  forwardRef,
+  signal,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxHeadlineColorScheme, NxHeadlineComponent, NxHeadlineSize } from './headline.component';
 import { NxHeadlineModule } from './headline.module';
+import { NX_HEADLINE_CONTEXT, NxHeadlineContext } from './headline-context';
 
 @Directive({ standalone: true })
 abstract class HeadlineTest {
@@ -44,7 +53,13 @@ describe('NxHeadlineDirective', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxHeadlineModule, BasicHeadline, HeadlineWithArbitraryClass, DynamicHeadline],
+      imports: [
+        NxHeadlineModule,
+        BasicHeadline,
+        HeadlineWithArbitraryClass,
+        DynamicHeadline,
+        HeadlineInContextComponent,
+      ],
     }).compileComponents();
   }));
 
@@ -146,6 +161,40 @@ describe('NxHeadlineDirective', () => {
       await expect(fixture.nativeElement).toBeAccessible();
     });
   });
+
+  describe('headline context', () => {
+    it('lets a wrapper override the size input', () => {
+      createTestComponent(HeadlineInContextComponent);
+      setTypedSize('m');
+
+      expect(headlineNativeElement).toHaveClass('nx-heading--2xl');
+      expect(headlineNativeElement).not.toHaveClass('nx-heading--m');
+    });
+
+    it('follows the wrapper when its imposed size changes', () => {
+      createTestComponent(HeadlineInContextComponent);
+      (testInstance as HeadlineInContextComponent).imposedSize.set('l');
+      fixture.detectChanges();
+
+      expect(headlineNativeElement).toHaveClass('nx-heading--l');
+    });
+
+    it('falls back to the size input when the wrapper imposes nothing', () => {
+      createTestComponent(HeadlineInContextComponent);
+      (testInstance as HeadlineInContextComponent).imposedSize.set(undefined);
+      setTypedSize('xl');
+
+      expect(headlineNativeElement).toHaveClass('nx-heading--xl');
+    });
+
+    it('drops the new-api class when the resolved size is undefined', () => {
+      createTestComponent(HeadlineInContextComponent);
+      (testInstance as HeadlineInContextComponent).imposedSize.set(undefined);
+      setTypedSize(undefined);
+
+      expect(headlineNativeElement).not.toHaveClass('nx-heading--new-api');
+    });
+  });
 });
 
 @Component({
@@ -173,3 +222,20 @@ class HeadlineWithArbitraryClass extends HeadlineTest {}
   imports: [NxHeadlineModule],
 })
 class DynamicHeadline extends HeadlineTest {}
+
+@Component({
+  selector: 'test-headline-in-context',
+  template: `<h1 nxHeadline [size]="typedSize">Hello Headline</h1>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxHeadlineModule],
+  providers: [
+    {
+      provide: NX_HEADLINE_CONTEXT,
+      useExisting: forwardRef(() => HeadlineInContextComponent),
+    },
+  ],
+})
+class HeadlineInContextComponent extends HeadlineTest implements NxHeadlineContext {
+  readonly imposedSize = signal<NxHeadlineSize | undefined>('2xl');
+  readonly headlineSize = this.imposedSize.asReadonly();
+}

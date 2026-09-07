@@ -1,0 +1,14 @@
+<p class="nx-margin-bottom-m">
+  Each card below imposes <code>{{ cardSize() }}</code> via
+  <code>NX_HEADLINE_CONTEXT</code>, regardless of the <code>size</code> input
+  passed to the headline inside it.
+</p>
+
+<div class="example-cards">
+  @for (size of sizes; track size) {
+    <headline-context-card-example [headlineSize]="cardSize()">
+      <span class="example-card-label">size="{{ size }}"</span>
+      <h3 nxHeadline [size]="size">Headline</h3>
+    </headline-context-card-example>
+  }
+</div>
