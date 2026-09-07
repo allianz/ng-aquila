@@ -246,6 +246,12 @@ $icon-mapping: (
     background-image: none;
   }
 
+  // ag-grid marks ag-active-item on hover and on open without moving DOM focus off the
+  // picker trigger, so key off the trigger's own :focus-visible instead of the item's.
+  .ag-root-wrapper:has(:focus-visible) .ag-list-item.ag-active-item:not(:hover) {
+    box-shadow: var(--focus-inset-box-shadow);
+  }
+
   // pagination
   .ag-paging-button {
     color: var(--pagination-link-color);
