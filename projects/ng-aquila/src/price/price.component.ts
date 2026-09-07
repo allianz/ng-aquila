@@ -10,6 +10,8 @@ import {
   LOCALE_ID,
 } from '@angular/core';
 
+import { NX_PRICE_CONTEXT } from './price-context';
+
 /** size of the text price */
 export type NxPriceSize = 's' | 'm' | 'l' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
 
@@ -32,7 +34,7 @@ interface FormattedPrice {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./price.component.scss'],
   host: {
-    '[class]': '"nx-price--" + size()',
+    '[class]': '"nx-price--" + _size()',
     '[class.nx-price--inverse]': 'inverse()',
     '[class.nx-price--superscript]': '_effectiveSuperscript()',
     '[class.nx-price--on-accent-attention]': 'colorScheme() === "on-accent-attention"',
@@ -41,6 +43,7 @@ interface FormattedPrice {
 })
 export class NxPriceComponent {
   private readonly defaultLocale = inject(LOCALE_ID);
+  private readonly _context = inject(NX_PRICE_CONTEXT, { optional: true });
   private readonly superscriptEligibleSizes: NxPriceSize[] = ['2xl', '3xl', '4xl', '5xl', '6xl'];
 
   /** The numeric price value to display. */
@@ -52,8 +55,16 @@ export class NxPriceComponent {
   /** The locale to use for formatting (e.g., 'en-US', 'de-DE'). If not provided, uses the application's LOCALE_ID. */
   readonly locale = input<string>();
 
-  /** The size of the price display. Default is 'm' (medium). */
+  /**
+   * The size of the price display. Default is 'm' (medium).
+   *
+   * A wrapping component providing `NX_PRICE_CONTEXT` (e.g. a comparison table header cell) owns the
+   * size and overrides this input, so that its prices stay consistent.
+   */
   readonly size = input<NxPriceSize>('m');
+
+  /** The size actually rendered: the wrapper's, if one imposes it, otherwise the `size` input. */
+  protected readonly _size = computed(() => this._context?.priceSize() ?? this.size());
 
   /**
    * Whether to apply inverse styling, suitable for dark backgrounds. When not set,
@@ -76,7 +87,7 @@ export class NxPriceComponent {
   readonly superscript = input(false, { transform: booleanAttribute });
 
   protected readonly _effectiveSuperscript = computed(
-    () => this.superscript() && this.superscriptEligibleSizes.includes(this.size()),
+    () => this.superscript() && this.superscriptEligibleSizes.includes(this._size()),
   );
 
   /** Optional prefix text displayed before the price (e.g., 'from'). */

@@ -1,0 +1,14 @@
+<p class="nx-margin-bottom-m">
+  Each card below imposes <code>{{ cardSize() }}</code> via
+  <code>NX_PRICE_CONTEXT</code>, regardless of the <code>size</code> input
+  passed to the price inside it.
+</p>
+
+<div class="example-cards">
+  @for (size of sizes; track size) {
+    <price-context-card-example [priceSize]="cardSize()">
+      <span class="example-card-label">size="{{ size }}"</span>
+      <nx-price [value]="99.99" [size]="size" />
+    </price-context-card-example>
+  }
+</div>

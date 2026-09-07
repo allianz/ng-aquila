@@ -63,3 +63,12 @@ The price supports the `colorScheme` input, which takes `default` or
 `on-accent-attention` for use on an accent-colored surface.
 
 <!-- example(price-accent-attention) -->
+
+### Imposing size from a wrapper
+
+A wrapping component (e.g. a card grid or a comparison table header) can provide
+`NX_PRICE_CONTEXT` to own the size of every `nx-price` rendered beneath it, overriding
+the consumer's `size` input. This keeps prices visually consistent across all usages of
+that wrapper, even if each usage sets a different `size`.
+
+<!-- example(price-context) -->

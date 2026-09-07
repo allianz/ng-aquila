@@ -2,7 +2,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   Directive,
+  forwardRef,
   LOCALE_ID,
+  signal,
   type Type,
   ViewChild,
 } from '@angular/core';
@@ -10,6 +12,7 @@ import { type ComponentFixture, TestBed, waitForAsync } from '@angular/core/test
 
 import { type NxPriceColorScheme, NxPriceComponent, type NxPriceSize } from './price.component';
 import { NxPriceModule } from './price.module';
+import { NX_PRICE_CONTEXT, type NxPriceContext } from './price-context';
 
 /** Helper function to check if currency symbol appears before the value (e.g., $100 vs 100€). */
 function isCurrencyBeforeValue(formatted: string, currencySymbol: string): boolean {
@@ -65,6 +68,7 @@ describe('NxPriceComponent', () => {
         PriceWithDifferentCurrencyComponent,
         PriceWithSuperscriptComponent,
         PriceWithColorSchemeComponent,
+        PriceInContextComponent,
       ],
     }).compileComponents();
   }));
@@ -474,6 +478,55 @@ describe('NxPriceComponent', () => {
       await expect(fixture.nativeElement).toBeAccessible();
     });
   });
+
+  describe('price context', () => {
+    it('lets a wrapper override the size input', () => {
+      createTestComponent(PriceInContextComponent);
+      testInstance.size = 'm';
+      fixture.detectChanges();
+
+      expect(priceNativeElement).toHaveClass('nx-price--2xl');
+      expect(priceNativeElement).not.toHaveClass('nx-price--m');
+    });
+
+    it('follows the wrapper when its imposed size changes', () => {
+      createTestComponent(PriceInContextComponent);
+      (testInstance as PriceInContextComponent).imposedSize.set('l');
+      fixture.detectChanges();
+
+      expect(priceNativeElement).toHaveClass('nx-price--l');
+    });
+
+    it('falls back to the size input when the wrapper imposes nothing', () => {
+      createTestComponent(PriceInContextComponent);
+      (testInstance as PriceInContextComponent).imposedSize.set(undefined);
+      testInstance.size = 'xl';
+      fixture.detectChanges();
+
+      expect(priceNativeElement).toHaveClass('nx-price--xl');
+    });
+
+    it('gates superscript on the imposed size, not the input', () => {
+      createTestComponent(PriceInContextComponent);
+      testInstance.size = 's';
+      testInstance.superscript = true;
+      fixture.detectChanges();
+
+      // 's' is not superscript-eligible, the imposed '2xl' is.
+      expect(priceNativeElement).toHaveClass('nx-price--superscript');
+    });
+
+    it('suppresses superscript when the wrapper imposes a non-eligible size', () => {
+      createTestComponent(PriceInContextComponent);
+      (testInstance as PriceInContextComponent).imposedSize.set('s');
+      testInstance.size = '2xl';
+      testInstance.superscript = true;
+      fixture.detectChanges();
+
+      // '2xl' input is superscript-eligible, but the imposed 's' is not.
+      expect(priceNativeElement).not.toHaveClass('nx-price--superscript');
+    });
+  });
 });
 
 // Test Components
@@ -570,3 +623,22 @@ class PriceWithLocaleIdComponent extends PriceTest {
   imports: [NxPriceModule],
 })
 class PriceWithColorSchemeComponent extends PriceTest {}
+
+@Component({
+  selector: 'test-price-in-context',
+  template: `
+    <nx-price [value]="value" [currency]="currency" [size]="size" [superscript]="superscript" />
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxPriceModule],
+  providers: [
+    {
+      provide: NX_PRICE_CONTEXT,
+      useExisting: forwardRef(() => PriceInContextComponent),
+    },
+  ],
+})
+class PriceInContextComponent extends PriceTest implements NxPriceContext {
+  readonly imposedSize = signal<NxPriceSize | undefined>('2xl');
+  readonly priceSize = this.imposedSize.asReadonly();
+}
