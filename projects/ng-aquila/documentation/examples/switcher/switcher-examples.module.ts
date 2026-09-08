@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SwitcherDefaultExampleComponent } from './switcher-default/switcher-default-example';
 import { SwitcherDisabledExampleComponent } from './switcher-disabled/switcher-disabled-example';
+import { SwitcherHintExampleComponent } from './switcher-hint/switcher-hint-example';
+import { SwitcherInverseExampleComponent } from './switcher-inverse/switcher-inverse-example';
 import { SwitcherLabelLeftExampleComponent } from './switcher-label-left/switcher-label-left-example';
 import { SwitcherLabelSmallExampleComponent } from './switcher-label-small/switcher-label-small-example';
 import { SwitcherLargeExampleComponent } from './switcher-large/switcher-large-example';
-import { SwitcherNegativeExampleComponent } from './switcher-negative/switcher-negative-example';
 import { SwitcherReactiveFormExampleComponent } from './switcher-reactive-form/switcher-reactive-form-example';
 import { SwitcherReadonlyExampleComponent } from './switcher-readonly/switcher-readonly-example';
 import { SwitcherTemplateDrivenExampleComponent } from './switcher-template-driven/switcher-template-driven-example';
@@ -16,10 +17,11 @@ const EXAMPLES = [
   SwitcherReadonlyExampleComponent,
   SwitcherDefaultExampleComponent,
   SwitcherDisabledExampleComponent,
+  SwitcherHintExampleComponent,
+  SwitcherInverseExampleComponent,
   SwitcherLabelLeftExampleComponent,
   SwitcherLabelSmallExampleComponent,
   SwitcherLargeExampleComponent,
-  SwitcherNegativeExampleComponent,
   SwitcherReactiveFormExampleComponent,
   SwitcherTemplateDrivenExampleComponent,
 ];
@@ -34,10 +36,11 @@ export class SwitcherExamplesModule {
       'switcher-readonly': SwitcherReadonlyExampleComponent,
       'switcher-default': SwitcherDefaultExampleComponent,
       'switcher-disabled': SwitcherDisabledExampleComponent,
+      'switcher-hint': SwitcherHintExampleComponent,
+      'switcher-inverse': SwitcherInverseExampleComponent,
       'switcher-label-left': SwitcherLabelLeftExampleComponent,
       'switcher-label-small': SwitcherLabelSmallExampleComponent,
       'switcher-large': SwitcherLargeExampleComponent,
-      'switcher-negative': SwitcherNegativeExampleComponent,
       'switcher-reactive-form': SwitcherReactiveFormExampleComponent,
       'switcher-template-driven': SwitcherTemplateDrivenExampleComponent,
     };

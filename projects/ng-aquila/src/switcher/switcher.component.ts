@@ -11,6 +11,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChildren,
   DoCheck,
   ElementRef,
@@ -25,6 +26,7 @@ import {
   Optional,
   Output,
   QueryList,
+  signal,
   ViewChild,
 } from '@angular/core';
 import {
@@ -41,7 +43,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { asapScheduler, Subject } from 'rxjs';
-import { observeOn, startWith, takeUntil } from 'rxjs/operators';
+import { map, observeOn, startWith, takeUntil } from 'rxjs/operators';
 
 /** Options for placement of the label */
 export type POSITION = 'left' | 'right';
@@ -57,7 +59,7 @@ export type LABEL_SIZE = 'small' | 'large';
     /* the host id should be set to null, otherwise nx-switcher and its <input> get the same id
     and on label click the input click is not triggered (double id problem) */
     '[attr.id]': 'null',
-    '[class.is-negative]': 'negative',
+    '[class.is-negative]': 'inverse()',
     '[class.is-checked]': 'checked',
     '[class.is-big]': 'big',
     '[class.check-icon-small]': '!big',
@@ -109,27 +111,41 @@ export class NxSwitcherComponent
 
   readonly ariaLabel = input<string | null>(null);
   readonly ariaLabelledBy = input<string | null>(null);
+
   @Input() set ariaDescribedBy(value: string | null) {
-    this._ariaDescribedBy = value;
-    this._syncDescribedByIds();
-    this._cdr.markForCheck();
+    this._ariaDescribedBy.set(value);
   }
 
   get ariaDescribedBy(): string | null {
-    return this._ariaDescribedBy;
+    return this._ariaDescribedBy();
   }
 
-  private _ariaDescribedBy: string | null = null;
+  private readonly _ariaDescribedBy = signal<string | null>(null);
+
+  /** Ids of the projected `nx-error` children, kept in sync from their query list. */
+  private readonly _errorIds = signal('');
+
+  /** Sets a hint which is displayed underneath the label. */
+  readonly hint = input('');
+
+  protected readonly _hintId = computed(() => `${this._id()}-hint`);
+
+  /** The combined hint, error and consumer-provided ids as a space separated string. */
+  protected readonly _describedBy = computed(
+    () =>
+      [this.hint() ? this._hintId() : null, this._errorIds(), this._ariaDescribedBy()]
+        .filter(Boolean)
+        .join(' ') || null,
+  );
 
   /** Sets the id of the switcher */
   @Input() set id(value: string) {
-    this._id = value;
-    this._cdr.markForCheck();
+    this._id.set(value);
   }
   get id(): string {
-    return this._id;
+    return this._id();
   }
-  private _id: string;
+  private readonly _id = signal('');
 
   /** Specifies the placement of the label */
   @Input() set labelPosition(value: POSITION) {
@@ -182,16 +198,30 @@ export class NxSwitcherComponent
   }
   private _labelSize: LABEL_SIZE = 'large';
 
-  /** Whether the style for a dark background is used */
+  /** Whether the inverse set of styles, for use on a dark background, is applied. */
+  readonly inverseInput = input(false, {
+    alias: 'inverse',
+    transform: coerceBooleanProperty,
+  });
+
+  /**
+   * Whether the style for a dark background is used.
+   * @deprecated Use `inverse` instead. Kept for backwards compatibility.
+   */
   @Input() set negative(value: BooleanInput) {
-    const newValue = coerceBooleanProperty(value);
-    this._negative = newValue;
-    this._cdr.markForCheck();
+    this._negative.set(coerceBooleanProperty(value));
   }
   get negative(): boolean {
-    return this._negative;
+    return this._negative();
   }
-  private _negative = false;
+  private readonly _negative = signal(false);
+
+  /**
+   * Whether the inverse set of styles is applied.
+   *
+   * Resolves to `true` when either the `inverse` or the legacy `negative` input is set.
+   */
+  readonly inverse = computed(() => this.inverseInput() || this._negative());
 
   /** Whether the switcher is in the disabled state */
   @Input() set disabled(value: BooleanInput) {
@@ -231,7 +261,7 @@ export class NxSwitcherComponent
     private readonly _focusMonitor: FocusMonitor,
   ) {
     const idGenerationService = inject(IdGenerationService);
-    this._id = idGenerationService.nextId('nx-switcher');
+    this._id.set(idGenerationService.nextId('nx-switcher'));
   }
   validate(control: AbstractControl): ValidationErrors | null {
     return this.required && control.value !== true ? { required: true } : null;
@@ -246,10 +276,14 @@ export class NxSwitcherComponent
   ngAfterViewInit(): void {
     this._focusMonitor.monitor(this._nativeInput);
     this._errorChildren.changes
-      .pipe(startWith(null), observeOn(asapScheduler), takeUntil(this._destroyed))
-      .subscribe(() => {
-        this._syncDescribedByIds();
-        this._cdr.markForCheck();
+      .pipe(
+        startWith(null),
+        observeOn(asapScheduler),
+        takeUntil(this._destroyed),
+        map(() => this._errorChildren.map((error) => error.id).join(' ')),
+      )
+      .subscribe((errorIds) => {
+        this._errorIds.set(errorIds);
       });
   }
 
@@ -338,14 +372,6 @@ export class NxSwitcherComponent
   /** Forward focus from host to hidden input field */
   _forwardFocusToInput() {
     this._nativeInput.nativeElement.focus();
-  }
-
-  private _syncDescribedByIds() {
-    const errorChildren = this._errorChildren || [];
-
-    this._ariaDescribedBy = [...errorChildren.map((error) => error.id), this.ariaDescribedBy].join(
-      ' ',
-    );
   }
 
   /** Sets switcher to readonly. */

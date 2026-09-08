@@ -6,7 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: slide toggle, checkbox, switch, toggle
-a1Densities: true
+a1Full: true
 group: Forms & Inputs
 ---
 
@@ -17,6 +17,8 @@ The switcher component represents a boolean value, just like the native input of
 The default representation of the switcher does not include an icon.
 
 <!-- example(switcher-default) -->
+
+<div class="docs-hide-a1">
 
 ### Large
 
@@ -30,11 +32,24 @@ The font size of the label can be set to two different sizes with the `[labelSiz
 
 <!-- example(switcher-label-small) -->
 
-### Negative
+</div>
 
-This is a negative version of the switcher, which can be used on dark background.
+### Hint
 
-<!-- example(switcher-negative) -->
+Additional guidance can be shown underneath the label via the `hint` input. The hint is referenced by the control's `aria-describedby` attribute.
+
+<!-- example(switcher-hint) -->
+
+### Inverse
+
+The inverse version of the switcher can be used on a dark background. Set it via the `inverse` property.
+
+<div class="docs-deprecation-warning">
+  <strong>Deprecated: </strong>
+  The <code>negative</code> property is deprecated. Use <code>inverse</code> instead, <code>negative</code> is still supported as an alias for backwards compatibility.
+</div>
+
+<!-- example(switcher-inverse) -->
 
 ### Label on the left
 

@@ -10,7 +10,7 @@
   role="switch"
   [attr.aria-checked]="checked"
   [attr.aria-labelledby]="ariaLabelledBy()"
-  [attr.aria-describedby]="ariaDescribedBy"
+  [attr.aria-describedby]="_describedBy()"
   [attr.aria-label]="ariaLabel()"
   [attr.aria-invalid]="errorState"
   [attr.aria-required]="required"
@@ -19,17 +19,24 @@
   class="nx-switcher__input"
 />
 <label [attr.for]="id" class="nx-switcher__control" [class.has-label]="labelHasContent">
-  <div class="nx-switcher__toggle">
-    <div class="nx-switcher__dot">
-      <nx-icon name="check" aria-hidden="true"></nx-icon>
+  <div class="nx-switcher__toggle-wrapper">
+    <div class="nx-switcher__toggle">
+      <div class="nx-switcher__dot">
+        <nx-icon name="check" aria-hidden="true"></nx-icon>
+      </div>
     </div>
   </div>
-  <div
-    class="nx-switcher__label-text"
-    #switcherLabelWrapper
-    (cdkObserveContent)="labelContentChanged()"
-  >
-    <ng-content></ng-content>
+  <div class="nx-switcher__label-column">
+    <div
+      class="nx-switcher__label-text"
+      #switcherLabelWrapper
+      (cdkObserveContent)="labelContentChanged()"
+    >
+      <ng-content></ng-content>
+    </div>
+    @if (hint()) {
+      <span class="nx-switcher__hint" [id]="_hintId()" aria-hidden="true">{{ hint() }}</span>
+    }
   </div>
 </label>
 

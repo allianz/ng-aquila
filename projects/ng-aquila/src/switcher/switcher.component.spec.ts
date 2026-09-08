@@ -71,6 +71,9 @@ describe('NxSwitcherComponent', () => {
         ValidationSwitcherForm,
         LabellessSwitcher,
         SwitcherA11y,
+        HintSwitcher,
+        HintErrorSwitcher,
+        InverseSwitcher,
       ],
     }).compileComponents();
   }));
@@ -265,6 +268,119 @@ describe('NxSwitcherComponent', () => {
     });
   });
 
+  describe('hint', () => {
+    it('renders the hint underneath the label', () => {
+      createTestComponent(HintSwitcher);
+      const labelText = switcherNativeElement.querySelector('.nx-switcher__label-text')!;
+      const hint = switcherNativeElement.querySelector('.nx-switcher__hint')!;
+
+      expect(hint.textContent).toContain('This is a hint');
+      expect(labelText.compareDocumentPosition(hint)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    });
+
+    it('renders no hint element by default', () => {
+      createTestComponent(BasicSwitcher);
+      expect(switcherNativeElement.querySelector('.nx-switcher__hint')).toBeNull();
+    });
+
+    it('updates the hint when the input changes', () => {
+      createTestComponent(HintSwitcher);
+      (testInstance as HintSwitcher).hint = 'Another hint';
+      fixture.detectChanges();
+
+      expect(switcherNativeElement.querySelector('.nx-switcher__hint')!.textContent).toContain(
+        'Another hint',
+      );
+    });
+
+    it('describes the input by the hint', () => {
+      createTestComponent(HintSwitcher);
+      const hint = switcherNativeElement.querySelector('.nx-switcher__hint')!;
+
+      expect(inputElement.getAttribute('aria-describedby')).toBe(hint.id);
+    });
+
+    it('keeps aria-describedby pointing at the hint when the id changes', () => {
+      createTestComponent(HintSwitcher);
+      switcherInstance.id = 'newId';
+      fixture.detectChanges();
+
+      const hint = switcherNativeElement.querySelector('.nx-switcher__hint')!;
+      expect(hint.id).toBe('newId-hint');
+      expect(inputElement.getAttribute('aria-describedby')).toBe(hint.id);
+    });
+
+    it('keeps the hint out of the accessible name', () => {
+      createTestComponent(HintSwitcher);
+      const hint = switcherNativeElement.querySelector('.nx-switcher__hint')!;
+
+      expect(hint.getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('combines the hint with error ids and a consumer-provided id', fakeAsync(() => {
+      createTestComponent(HintErrorSwitcher);
+      // toggle on then off to leave the requiredTrue control invalid and touched
+      inputElement.click();
+      fixture.detectChanges();
+      tick();
+      inputElement.click();
+      fixture.detectChanges();
+      tick();
+
+      expect(switcherInstance.errorState).toBe(true);
+      const errorId = switcherInstance._errorChildren.first.id;
+      const hint = switcherNativeElement.querySelector('.nx-switcher__hint')!;
+
+      expect(inputElement.getAttribute('aria-describedby')).toBe(
+        `${hint.id} ${errorId} consumer-id`,
+      );
+    }));
+
+    it('has no accessibility violations', async () => {
+      createTestComponent(HintSwitcher);
+      await expect(fixture.nativeElement).toBeAccessible();
+    });
+  });
+
+  describe('inverse', () => {
+    it('applies no inverse styling by default', () => {
+      createTestComponent(InverseSwitcher);
+      expect(switcherInstance.inverse()).toBe(false);
+      expect(switcherNativeElement).not.toHaveClass('is-negative');
+    });
+
+    it('applies inverse styling via the inverse input', () => {
+      createTestComponent(InverseSwitcher);
+      (testInstance as InverseSwitcher).inverse = true;
+      fixture.detectChanges();
+
+      expect(switcherInstance.inverse()).toBe(true);
+      expect(switcherNativeElement).toHaveClass('is-negative');
+    });
+
+    it('applies inverse styling via the deprecated negative input', () => {
+      createTestComponent(InverseSwitcher);
+      (testInstance as InverseSwitcher).negative = true;
+      fixture.detectChanges();
+
+      expect(switcherInstance.inverse()).toBe(true);
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- asserting the alias itself
+      expect(switcherInstance.negative).toBe(true);
+      expect(switcherNativeElement).toHaveClass('is-negative');
+    });
+
+    it('leaves negative untouched when only inverse is set', () => {
+      createTestComponent(InverseSwitcher);
+      (testInstance as InverseSwitcher).inverse = true;
+      fixture.detectChanges();
+
+      // The two inputs stay independent: `negative` reports its own value while `inverse` styles.
+      // eslint-disable-next-line @typescript-eslint/no-deprecated -- asserting the alias itself
+      expect(switcherInstance.negative).toBe(false);
+      expect(switcherNativeElement).toHaveClass('is-negative');
+    });
+  });
+
   describe('Validation', () => {
     it('Should not show the error initially', () => {
       createTestComponent(ValidationSwitcherForm);
@@ -350,7 +466,7 @@ describe('NxSwitcherComponent', () => {
       expect(reactInstance.switcherInstance._errorChildren.length).toBe(1);
 
       expect(inputElement.getAttribute('aria-describedby')).toBe(
-        `${reactInstance.switcherInstance._errorChildren.first.id} `,
+        reactInstance.switcherInstance._errorChildren.first.id,
       );
     }));
 
@@ -393,6 +509,45 @@ class BasicSwitcher extends SwitcherTest {}
   imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
 })
 class BasicSwitcherOnPush extends SwitcherTest {}
+
+@Component({
+  selector: 'test-hint-switcher',
+  template: `<nx-switcher id="testSwitcher" [hint]="hint">basicLabel</nx-switcher>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
+})
+class HintSwitcher extends SwitcherTest {
+  hint = 'This is a hint';
+}
+
+@Component({
+  selector: 'test-hint-error-switcher',
+  template: `
+    <form [formGroup]="testForm">
+      <nx-switcher formControlName="value" hint="This is a hint" ariaDescribedBy="consumer-id">
+        switcher <nx-error>required</nx-error>
+      </nx-switcher>
+    </form>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule, NxErrorModule],
+})
+class HintErrorSwitcher extends SwitcherTest {
+  testForm = new FormBuilder().group({ value: [false, Validators.requiredTrue] });
+}
+
+@Component({
+  selector: 'test-inverse-switcher',
+  template: `<nx-switcher id="testSwitcher" [inverse]="inverse" [negative]="negative">
+    basicLabel
+  </nx-switcher>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
+})
+class InverseSwitcher extends SwitcherTest {
+  inverse = false;
+  negative = false;
+}
 
 @Component({
   selector: 'test-switcher-template-driven',
