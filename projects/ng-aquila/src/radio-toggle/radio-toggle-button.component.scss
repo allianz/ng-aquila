@@ -34,6 +34,11 @@ $border-radius: nx-border-radius(s);
       border-color: v(danger);
       color: v(danger);
     }
+
+    .nx-radio-toggle__input:active:not(:checked) + .nx-radio-toggle__label-container {
+      border-color: v(danger);
+      color: v(danger);
+    }
   }
 }
 
@@ -72,6 +77,10 @@ $border-radius: nx-border-radius(s);
     .nx-radio-toggle__label {
       cursor: not-allowed;
     }
+  }
+
+  :host(:not(.is-group-disabled)) &:disabled:not(:checked) + .nx-radio-toggle__label-container {
+    background-color: v(toggle-button-unselected-background-color);
   }
 
   &.is-readonly + .nx-radio-toggle__label-container {
@@ -276,46 +285,99 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
 :host-context(.nx-radio-toggle--negative) {
   .nx-radio-toggle__input {
     &:focus + .nx-radio-toggle__label-container {
-      background-color: v(negative-01);
-      border-color: v(negative-01);
-      color: v(negative-accent);
+      background-color: v(toggle-button-focus-inverse-background-color);
+      border-color: v(toggle-button-focus-inverse-border-color);
+      color: v(toggle-button-focus-inverse-text-color);
     }
 
     &:active + .nx-radio-toggle__label-container {
-      background-color: v(negative-02);
-      border-color: v(negative-02);
-      color: v(negative-accent);
+      background-color: v(toggle-button-active-inverse-background-color);
+      border-color: v(toggle-button-active-inverse-border-color);
+      color: v(toggle-button-active-inverse-text-color);
     }
 
     &:disabled:checked + .nx-radio-toggle__label-container {
-      background-color: v(negative-dimmed);
+      background-color: v(toggle-button-disabled-inverse-selected-background-color);
       border-color: transparent;
-      color: v(negative-background-dimmed);
+      color: v(toggle-button-disabled-inverse-selected-text-color);
     }
 
-    &:disabled + .nx-radio-toggle__label-container {
+    &:disabled:not(:checked) + .nx-radio-toggle__label-container {
       background-color: transparent;
-      border-color: v(negative-dimmed);
-      color: v(negative-dimmed);
+      border-color: v(toggle-button-disabled-inverse-unselected-border-color);
+      color: v(toggle-button-disabled-inverse-unselected-text-color);
+    }
+
+    &.is-readonly:checked + .nx-radio-toggle__label-container {
+      background-color: v(toggle-button-readonly-inverse-selected-background-color);
+      border-color: transparent;
+      color: v(toggle-button-readonly-inverse-selected-color);
+    }
+
+    &.is-readonly:not(:checked) + .nx-radio-toggle__label-container {
+      background-color: transparent;
+      border-color: v(toggle-button-readonly-inverse-unselected-border-color);
+      color: v(toggle-button-readonly-inverse-color);
     }
 
     &:checked + .nx-radio-toggle__label-container {
-      background-color: v(negative);
-      border-color: v(negative);
+      background-color: v(toggle-button-selected-inverse-background-color);
+      border-color: v(toggle-button-selected-inverse-border-color);
       color: v(toggle-button-negative-selected-font-color);
     }
   }
 
   .nx-radio-toggle__label-container {
     background-color: transparent;
-    border-color: v(negative);
-    color: v(negative);
+    border-color: v(toggle-button-unselected-inverse-border-color);
+    color: v(toggle-button-unselected-inverse-text-color);
   }
 
   .nx-radio-toggle__label-container:hover {
-    background-color: v(negative-01);
-    border-color: v(negative-01);
-    color: v(negative-accent);
+    background-color: v(toggle-button-hover-inverse-background-color);
+    border-color: v(toggle-button-hover-inverse-border-color);
+    color: v(toggle-button-hover-inverse-text-color);
+  }
+
+  .nx-radio-toggle__label-container:active {
+    background-color: v(toggle-button-active-inverse-background-color);
+    border-color: v(toggle-button-active-inverse-border-color);
+    color: v(toggle-button-active-inverse-text-color);
+  }
+}
+
+:host-context(.nx-radio-toggle--negative).has-error {
+  .nx-radio-toggle__label-container {
+    border-color: v(toggle-button-error-inverse-border-color);
+    color: v(toggle-button-error-inverse-color);
+  }
+
+  .nx-radio-toggle__input:not(:checked) + .nx-radio-toggle__label-container:hover {
+    border-color: v(toggle-button-error-inverse-hover-border-color);
+    background-color: v(toggle-button-error-inverse-hover-background-color);
+    color: v(toggle-button-error-inverse-hover-color);
+  }
+
+  .nx-radio-toggle__input:not(:checked) + .nx-radio-toggle__label-container:active {
+    border-color: v(toggle-button-error-inverse-active-border-color);
+    background-color: v(toggle-button-error-inverse-active-background-color);
+    color: v(toggle-button-error-inverse-active-color);
+  }
+
+  .nx-radio-toggle__input:checked + .nx-radio-toggle__label-container {
+    border-color: v(toggle-button-error-inverse-selected-border-color);
+    background-color: v(toggle-button-error-inverse-selected-background-color);
+    color: v(toggle-button-error-inverse-selected-color);
+  }
+
+  .nx-radio-toggle__input:checked + .nx-radio-toggle__label-container:hover {
+    border-color: v(toggle-button-error-selected-inverse-hover-border-color);
+    background-color: v(toggle-button-error-selected-inverse-hover-background-color);
+  }
+
+  .nx-radio-toggle__input:checked + .nx-radio-toggle__label-container:active {
+    border-color: v(toggle-button-error-selected-inverse-active-border-color);
+    background-color: v(toggle-button-error-selected-inverse-active-background-color);
   }
 }
 

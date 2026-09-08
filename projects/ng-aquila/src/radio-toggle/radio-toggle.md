@@ -1,11 +1,11 @@
 ---
-title: Toggle Button
+title: Segmented Toggle Button
 description: Toggle-style radio button group
 category: components
 b2c: true
 expert: true
 stable: done
-alias: radio toggle, segmented control, button group, toggle group
+alias: radio toggle, segmented control, button group, toggle group, Toggle Button
 a1Full: true
 group: Forms & Inputs
 ---
@@ -16,7 +16,13 @@ group: Forms & Inputs
 
 <!-- example(radio-toggle) -->
 
-### Negative
+### Inverse
+
+<div class="docs-deprecation-warning">
+  <strong><code>variant="negative"</code></strong> is deprecated. Use the <code>inverse</code> input instead.
+</div>
+
+For dark backgrounds, use the `inverse` input to apply inverse styling.
 
 <!-- example(radio-toggle-negative) -->
 
@@ -42,6 +48,17 @@ When using reactive forms you have to disable the control with the form control 
 Below you can find an example with a custom validator, which accepts only `B` as a correct option.
 
 <!-- example(radio-toggle-validation) -->
+
+### Size
+
+<div class="docs-deprecation-warning">
+  <strong><code>variant="small"</code></strong> is deprecated. Use the <code>size</code> input instead.
+</div>
+
+Use the `size` input to choose between the two available sizes. `m` is the default. `s` is a more compact variant with reduced padding, a smaller type style and a lower minimum height.
+
+<!-- example(radio-toggle-size) -->
+
 
 ### Expert: Readonly
 

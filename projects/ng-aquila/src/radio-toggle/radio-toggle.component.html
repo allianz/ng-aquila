@@ -1,5 +1,5 @@
 <div
-  class="nx-radio-toggle {{ additionalClasses }}"
+  class="nx-radio-toggle {{ additionalClasses() }} {{ _sizeClass() }}"
   [ngClass]="{ 'disable-mobile': disableMobile() }"
   role="radiogroup"
   [attr.aria-label]="ariaLabel"

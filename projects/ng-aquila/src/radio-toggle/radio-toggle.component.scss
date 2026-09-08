@@ -20,6 +20,20 @@
 .nx-radio-toggle:has(.has-error) {
   border-color: v(danger);
 }
+.nx-radio-toggle.nx-radio-toggle--negative {
+  border: v(toggle-button-inverse-border);
+}
+.nx-radio-toggle:has(.has-error).nx-radio-toggle--negative {
+  border: v(toggle-button-error-inverse-border);
+}
+:host(.is-disabled) .nx-radio-toggle.nx-radio-toggle--negative {
+  border: v(toggle-button-disabled-inverse-border);
+  background-color: v(toggle-button-disabled-inverse-background-color);
+}
+:host(.is-readonly) .nx-radio-toggle.nx-radio-toggle--negative {
+  border: v(toggle-button-readonly-inverse-border);
+  background-color: v(toggle-button-readonly-inverse-background-color);
+}
 
 .nx-radio-toggle:not(.disable-mobile) {
   @include media-breakpoint-down('small') {
@@ -30,11 +44,11 @@
     align-items: center;
   }
 }
-:host([disabled]) .nx-radio-toggle:not(.nx-radio-toggle--negative) {
+:host(.is-disabled) .nx-radio-toggle:not(.nx-radio-toggle--negative) {
   background-color: v(toggle-button-disabled-background-color);
   border: v(toggle-button-disabled-border);
 }
-:host([readonly]) .nx-radio-toggle:not(.nx-radio-toggle--negative) {
+:host(.is-readonly) .nx-radio-toggle:not(.nx-radio-toggle--negative) {
   background-color: v(toggle-button-disabled-background-color);
   border: v(toggle-button-readonly-border);
 }

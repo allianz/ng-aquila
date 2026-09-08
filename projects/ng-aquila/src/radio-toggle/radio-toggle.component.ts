@@ -47,6 +47,7 @@ const MAPPING = {
 };
 
 export const RESET_VALUES = [null, undefined, ''];
+export type NxRadioToggleButtonSize = 's' | 'm';
 
 @Component({
   selector: 'nx-radio-toggle',
@@ -56,6 +57,8 @@ export const RESET_VALUES = [null, undefined, ''];
   imports: [NgClass],
   host: {
     '(focusout)': '_onFocusOut($event)',
+    '[class.is-disabled]': 'disabled',
+    '[class.is-readonly]': 'readonly',
   },
   providers: [
     {
@@ -73,6 +76,14 @@ export class NxRadioToggleComponent
   /** Whether the component should switch to vertical buttons on mobile viewports. */
   readonly disableMobile = input(false, { transform: booleanAttribute });
 
+  /** Sets the size of the radio toggle buttons. Default size is M */
+  readonly size = input<NxRadioToggleButtonSize>('m');
+
+  /** Whether the radio toggle should use inverse styling. */
+  readonly inverse = input(false, { transform: booleanAttribute });
+
+  protected readonly _sizeClass = computed(() => (this.size() === 's' ? MAPPING.small : ''));
+
   private _selection: any;
 
   /** @docs-private */
@@ -80,8 +91,12 @@ export class NxRadioToggleComponent
   // emits to signal children to run change detection
   readonly _disableChange = new Subject<void>();
 
+  private readonly _variantClasses = signal('');
+
   /** @docs-private */
-  additionalClasses = '';
+  readonly additionalClasses = computed(() =>
+    [this._variantClasses(), this.inverse() ? MAPPING.negative : ''].filter(Boolean).join(' '),
+  );
 
   /** Sets the component to the disabled state.*/
   @Input() set disabled(value: BooleanInput) {
@@ -159,9 +174,12 @@ export class NxRadioToggleComponent
     return `nx-radio-toggle-${this._toggleId}`;
   }
 
-  /** Sets the modifiers for the component. */
+  /**
+   * Sets the modifiers for the component.
+   * @deprecated use `inverse` for negative styling and `size` for the small variant instead.
+   */
   @Input('variant') set style(value: string) {
-    this.additionalClasses = mapClassNames(value, [], MAPPING);
+    this._variantClasses.set(mapClassNames(value, [], MAPPING));
   }
 
   /** @docs-private */

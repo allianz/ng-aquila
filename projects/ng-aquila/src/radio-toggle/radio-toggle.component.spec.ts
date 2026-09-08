@@ -29,7 +29,11 @@ import {
 } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { NxRadioToggleComponent, RESET_VALUES } from './radio-toggle.component';
+import {
+  NxRadioToggleButtonSize,
+  NxRadioToggleComponent,
+  RESET_VALUES,
+} from './radio-toggle.component';
 import { NxRadioToggleModule } from './radio-toggle.module';
 import { NxRadioToggleButtonComponent } from './radio-toggle-button.component';
 
@@ -67,6 +71,7 @@ describe('NxRadioToggleComponent', () => {
         ValidationToggle,
         FocusRadioToggle,
         RadioToggleGroupErrorTest,
+        SizeRadioToggle,
       ],
     }).compileComponents();
   }));
@@ -173,6 +178,43 @@ describe('NxRadioToggleComponent', () => {
       const containerElement: HTMLDivElement = fixture.nativeElement.querySelector('div');
       expect(containerElement).toHaveClass('nx-radio-toggle--negative');
       expect(containerElement).toHaveClass('nx-radio-toggle--small');
+    });
+
+    it('should add the negative modifier class when inverse is set', () => {
+      createTestComponent(InverseRadioToggle);
+
+      const containerElement: HTMLDivElement = fixture.nativeElement.querySelector('div');
+      expect(containerElement).toHaveClass('nx-radio-toggle--negative');
+    });
+
+    it('should default to size m', () => {
+      createTestComponent(SizeRadioToggle);
+
+      expect(toggleComponent.size()).toBe('m');
+      const containerElement: HTMLDivElement = fixture.nativeElement.querySelector('div');
+      expect(containerElement).not.toHaveClass('nx-radio-toggle--small');
+    });
+
+    it('should add the small modifier class when size is s', () => {
+      createTestComponent(SizeRadioToggle);
+      (fixture.componentInstance as SizeRadioToggle).size = 's';
+      fixture.detectChanges();
+
+      const containerElement: HTMLDivElement = fixture.nativeElement.querySelector('div');
+      expect(containerElement).toHaveClass('nx-radio-toggle--small');
+    });
+
+    it('should remove the small modifier class when size changes back to m', () => {
+      createTestComponent(SizeRadioToggle);
+      const testInstance = fixture.componentInstance as SizeRadioToggle;
+      testInstance.size = 's';
+      fixture.detectChanges();
+
+      testInstance.size = 'm';
+      fixture.detectChanges();
+
+      const containerElement: HTMLDivElement = fixture.nativeElement.querySelector('div');
+      expect(containerElement).not.toHaveClass('nx-radio-toggle--small');
     });
 
     it('should support boolean values', fakeAsync(() => {
@@ -726,6 +768,26 @@ class SelectionRadioToggle extends RadioToggleTest {}
   imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
 })
 class ModifiedRadioToggle extends RadioToggleTest {}
+
+@Component({
+  template: `<nx-radio-toggle [inverse]="true">
+    <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
+  </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
+})
+class InverseRadioToggle extends RadioToggleTest {}
+
+@Component({
+  template: `<nx-radio-toggle [size]="size">
+    <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
+  </nx-radio-toggle>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
+})
+class SizeRadioToggle extends RadioToggleTest {
+  size: NxRadioToggleButtonSize = 'm';
+}
 
 @Component({
   selector: 'test-single-disable-radio-toggle',

@@ -51,6 +51,7 @@ export class NxRadioToggleButtonChange {
     '[class.has-error]': 'controlInvalid()',
     '(focus)': '_forwardFocusToInput()',
     '[class.is-readonly]': 'readonly',
+    '[class.is-group-disabled]': '_radioToggleDisabled',
   },
   imports: [NxIconModule, NgClass],
 })
@@ -92,6 +93,9 @@ export class NxRadioToggleButtonComponent
   }
   private _ariaLabel: string | null = null;
 
+  protected get _radioToggleDisabled(): boolean {
+    return this.radioToggle?.disabled;
+  }
   /** @docs-private */
   controlInvalid = computed(() => this.radioToggle?.errorState() || null);
 

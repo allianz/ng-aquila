@@ -1,7 +1,7 @@
 <div class="docs-inverse-container">
   <h3>Normal</h3>
 
-  <nx-radio-toggle variant="negative">
+  <nx-radio-toggle inverse>
     <nx-radio-toggle-button value="A">Label A</nx-radio-toggle-button>
     <nx-radio-toggle-button value="B" [selected]="true"
       >Label B</nx-radio-toggle-button
@@ -12,7 +12,7 @@
   <br />
 
   <h3>Small</h3>
-  <nx-radio-toggle variant="small negative">
+  <nx-radio-toggle [size]="'s'" inverse>
     <nx-radio-toggle-button value="A">Label A</nx-radio-toggle-button>
     <nx-radio-toggle-button value="B" [selected]="true"
       >Label B</nx-radio-toggle-button
@@ -23,7 +23,7 @@
   <br />
 
   <h3>Disabled</h3>
-  <nx-radio-toggle variant="negative" disabled>
+  <nx-radio-toggle inverse disabled>
     <nx-radio-toggle-button value="A">Label A</nx-radio-toggle-button>
     <nx-radio-toggle-button value="B" [selected]="true"
       >Label B</nx-radio-toggle-button
@@ -33,11 +33,21 @@
 
   <br />
 
-  <nx-radio-toggle variant="negative">
+  <nx-radio-toggle inverse>
     <nx-radio-toggle-button value="A" disabled>Label A</nx-radio-toggle-button>
     <nx-radio-toggle-button value="B" [selected]="true"
       >Label B</nx-radio-toggle-button
     >
     <nx-radio-toggle-button value="C">Label C</nx-radio-toggle-button>
   </nx-radio-toggle>
+  <br />
+
+  <h3>Critical</h3>
+  <form [formGroup]="criticalForm">
+    <nx-radio-toggle inverse formControlName="critical">
+      <nx-radio-toggle-button value="A">Label A</nx-radio-toggle-button>
+      <nx-radio-toggle-button value="B">Label B</nx-radio-toggle-button>
+      <nx-radio-toggle-button value="C">Label C</nx-radio-toggle-button>
+    </nx-radio-toggle>
+  </form>
 </div>
