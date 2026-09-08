@@ -104,6 +104,7 @@
             nxInput
             #filterInput
             [(ngModel)]="_filterValue"
+            [ngModelOptions]="{ standalone: true }"
             (ngModelChange)="_onFilterChange($event)"
             [placeholder]="filterPlaceholder()"
             autocomplete="off"

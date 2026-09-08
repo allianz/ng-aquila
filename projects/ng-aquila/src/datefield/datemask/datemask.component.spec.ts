@@ -287,6 +287,21 @@ describe('DatemaskComponent', () => {
     });
   });
 
+  describe('inside a form', () => {
+    it('should not log an NG01354 warning for the internal day/month/year inputs', async () => {
+      await TestBed.configureTestingModule({
+        imports: [DatemaskTestForm],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DatemaskTestForm);
+      const warnSpy = vi.spyOn(console, 'warn');
+
+      fixture.detectChanges();
+
+      expect(warnSpy).not.toHaveBeenCalledWith(expect.stringContaining('NG01354'));
+    });
+  });
+
   describe(`keyboard`, () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({

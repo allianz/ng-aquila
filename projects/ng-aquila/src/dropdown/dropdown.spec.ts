@@ -1422,6 +1422,19 @@ describe('NxDropdownComponent', () => {
     }));
   });
 
+  describe('inside a form', () => {
+    it('should not log an NG01354 warning for the internal filter input', fakeAsync(() => {
+      configureNxDropdownTestingModule([FilterDropdownInFormComponent]);
+      createTestComponent(FilterDropdownInFormComponent);
+      const warnSpy = vi.spyOn(console, 'warn');
+
+      openDropdownByClick();
+      tick();
+
+      expect(warnSpy).not.toHaveBeenCalledWith(expect.stringContaining('NG01354'));
+    }));
+  });
+
   describe('with a disabled item', () => {
     beforeEach(fakeAsync(() => {
       configureNxDropdownTestingModule([
@@ -3502,6 +3515,25 @@ class DropdownCustomToTextFunctionComponent extends DropdownTest {
 })
 class FilterDropdownComponent extends DropdownTest {
   filterResultChanged(event: any) {}
+}
+
+@Component({
+  selector: 'test-filter-dropdown-in-form-component',
+  template: `<form [formGroup]="testForm">
+    <nx-dropdown formControlName="dropdown" [showFilter]="true" nxLabel="Car brand">
+      <nx-dropdown-item value="BMW">BMW</nx-dropdown-item>
+      <nx-dropdown-item value="Audi">Audi</nx-dropdown-item>
+      <nx-dropdown-item value="Volvo">Volvo</nx-dropdown-item>
+      <nx-dropdown-item value="Mini">Mini</nx-dropdown-item>
+    </nx-dropdown>
+  </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxDropdownModule, ReactiveFormsModule],
+})
+class FilterDropdownInFormComponent extends DropdownTest {
+  testForm = new FormBuilder().group({
+    dropdown: ['BMW', Validators.required],
+  });
 }
 
 @Component({

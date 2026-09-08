@@ -12,7 +12,13 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
-import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import countries from 'i18n-iso-countries';
 import de from 'i18n-iso-countries/langs/de.json';
@@ -64,6 +70,7 @@ describe('PhoneInputComponent', () => {
         ReactiveFormsModule,
         FormsModule,
         ReactiveFormsPhoneInput,
+        PhoneInputInFormComponent,
         I18nProviderTest,
         DefaultPhoneInput,
         ConfigurablePhoneInput,
@@ -88,6 +95,15 @@ describe('PhoneInputComponent', () => {
       By.directive(NxFormfieldComponent),
     ).componentInstance;
     expect(formfield._control).toBe(phoneInputInstance);
+  });
+
+  it('should not log an NG01354 warning for the internal input inside a form', () => {
+    fixture = TestBed.createComponent(PhoneInputInFormComponent);
+    const warnSpy = vi.spyOn(console, 'warn');
+
+    fixture.detectChanges();
+
+    expect(warnSpy).not.toHaveBeenCalledWith(expect.stringContaining('NG01354'));
   });
 
   it('should have class on input', () => {
@@ -536,6 +552,22 @@ class ConfigurablePhoneInput extends PhoneInputTest {
 })
 class ReactiveFormsPhoneInput extends PhoneInputTest {
   formControl = new FormControl('+49123456', Validators.required);
+}
+
+@Component({
+  selector: 'test-phone-input-in-form',
+  template: `<form [formGroup]="testForm">
+    <nx-formfield label="Telephone number">
+      <nx-phone-input formControlName="phone"></nx-phone-input>
+    </nx-formfield>
+  </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxPhoneInputModule, ReactiveFormsModule, FormsModule],
+})
+class PhoneInputInFormComponent extends PhoneInputTest {
+  testForm = new FormGroup({
+    phone: new FormControl('+49123456'),
+  });
 }
 
 @Injectable()

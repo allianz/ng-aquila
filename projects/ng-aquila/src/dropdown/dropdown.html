@@ -71,6 +71,7 @@
             [type]="filterInputType"
             (input)="$event.preventDefault()"
             [(ngModel)]="filterValue"
+            [ngModelOptions]="{ standalone: true }"
             (ngModelChange)="_onFilter($event)"
             role="combobox"
             aria-expanded="true"

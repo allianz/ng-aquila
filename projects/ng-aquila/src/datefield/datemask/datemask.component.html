@@ -16,6 +16,7 @@
           (paste)="handlePaste($event, index)"
           (input)="_updateFocus($event, 3, index)"
           [(ngModel)]="_dayValue"
+          [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="handleChange()"
           (blur)="dayBlur()"
           nxDatemaskDay
@@ -37,6 +38,7 @@
           (paste)="handlePaste($event, index)"
           (input)="_updateFocus($event, 1, index)"
           [(ngModel)]="_monthValue"
+          [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="handleChange()"
           (blur)="monthBlur()"
           nxDatemaskMonth
@@ -57,6 +59,7 @@
           (paste)="handlePaste($event, index)"
           (input)="_updateFocus($event, 9999, index)"
           [(ngModel)]="_yearValue"
+          [ngModelOptions]="{ standalone: true }"
           (ngModelChange)="handleChange()"
           (blur)="yearBlur()"
           class="c-input year-input"

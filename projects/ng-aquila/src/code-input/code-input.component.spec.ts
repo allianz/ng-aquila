@@ -96,6 +96,15 @@ describe('NxCodeInputComponent', () => {
     expect(testInstance.codeInputInstance.codeLength).toBe(4);
   });
 
+  it('should not log an NG01354 warning for the internal per-digit inputs inside a form', () => {
+    fixture = TestBed.createComponent(CodeInputTest2);
+    const warnSpy = vi.spyOn(console, 'warn');
+
+    fixture.detectChanges();
+
+    expect(warnSpy).not.toHaveBeenCalledWith(expect.stringContaining('NG01354'));
+  });
+
   it('should be a 6 input form per default', () => {
     createTestComponent(CodeInputTest2);
     expect(testInstance.codeInputInstance.codeLength).toBe(6);

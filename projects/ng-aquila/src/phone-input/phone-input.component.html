@@ -27,6 +27,7 @@
     (blur)="_onInputBlur()"
     (focus)="_onInputFocus()"
     [(ngModel)]="_inputValue"
+    [ngModelOptions]="{ standalone: true }"
     (ngModelChange)="_onInput()"
     [attr.aria-describedby]="_describedBy"
     [attr.aria-label]="lineNumberLabel"

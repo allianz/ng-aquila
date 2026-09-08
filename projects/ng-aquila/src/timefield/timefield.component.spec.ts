@@ -375,6 +375,17 @@ describe('NxTimefieldComponent', () => {
     expect(inputElementHours.getAttribute('aria-describedby')).toBe(error?.id);
   });
 
+  it('should not log an NG01354 warning for the internal AM/PM toggle inside a form', () => {
+    createTestComponent(ReactiveTimefield);
+    const reactInstance = testInstance as ReactiveTimefield;
+    const warnSpy = vi.spyOn(console, 'warn');
+
+    reactInstance.twelveHourFormat = true;
+    fixture.detectChanges();
+
+    expect(warnSpy).not.toHaveBeenCalledWith(expect.stringContaining('NG01354'));
+  });
+
   it('should not set value for any non-numeric entries', fakeAsync(() => {
     createTestComponent(TemplateDrivenTimefield);
     const templateInstance = testInstance as TemplateDrivenTimefield;

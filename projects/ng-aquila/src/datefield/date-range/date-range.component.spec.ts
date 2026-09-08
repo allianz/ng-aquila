@@ -290,6 +290,22 @@ describe('DateRangeComponent', () => {
     });
   });
 
+  describe('inside a form', () => {
+    it('should not log an NG01354 warning for the internal start/end date inputs', async () => {
+      await TestBed.configureTestingModule({
+        imports: [DateRangeReactiveForm],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DateRangeReactiveForm);
+      const warnSpy = vi.spyOn(console, 'warn');
+
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(warnSpy).not.toHaveBeenCalledWith(expect.stringContaining('NG01354'));
+    });
+  });
+
   describe('disabled', () => {
     let component: DateRangeDisabledTestComponent;
     beforeEach(async () => {

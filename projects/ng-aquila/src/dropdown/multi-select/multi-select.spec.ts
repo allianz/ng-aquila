@@ -187,6 +187,7 @@ describe('NxMultiSelectComponent', () => {
         IntlOverrideMultiSelect,
         ErrorMultiSelectComponent,
         MultiSelectWithFilterComponent,
+        MultiSelectFilterInFormComponent,
       ],
     }).compileComponents();
   }
@@ -1192,6 +1193,18 @@ describe('NxMultiSelectComponent', () => {
     });
   });
 
+  describe('inside a form', () => {
+    it('should not log an NG01354 warning for the internal filter input', async () => {
+      await createTestComponent(MultiSelectFilterInFormComponent);
+      const warnSpy = vi.spyOn(console, 'warn');
+
+      await multiSelectHarness.click();
+      fixture.detectChanges();
+
+      expect(warnSpy).not.toHaveBeenCalledWith(expect.stringContaining('NG01354'));
+    });
+  });
+
   describe('a11y', () => {
     it('should open and focus option when type character', async () => {
       await createTestComponent(BasicMultiSelectComponent);
@@ -1515,6 +1528,23 @@ class MultiSelectWithFilterComponent extends DropdownTest {
   test(query: string) {
     this.filterInput = query;
   }
+}
+
+@Component({
+  selector: 'test-multi-select-filter-in-form-component',
+  template: `<form [formGroup]="testForm">
+    <nx-formfield>
+      <nx-multi-select formControlName="testControl" [options]="options" filter></nx-multi-select>
+    </nx-formfield>
+  </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
+})
+class MultiSelectFilterInFormComponent extends DropdownTest {
+  options = ['BMW', 'Audi', 'Volvo', 'Mini'];
+  testForm = new FormBuilder().group({
+    testControl: [['BMW'], Validators.required],
+  });
 }
 
 @Component({

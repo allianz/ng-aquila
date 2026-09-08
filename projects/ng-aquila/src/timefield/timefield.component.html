@@ -127,6 +127,7 @@
     <nx-radio-toggle
       [name]="idRadioGroup"
       [(ngModel)]="_toggleAMPM"
+      [ngModelOptions]="{ standalone: true }"
       (ngModelChange)="_updateTime()"
       (click)="_updateTime()"
       [disabled]="disabled"
