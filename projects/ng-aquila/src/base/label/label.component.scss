@@ -12,14 +12,17 @@
     @include type-style(base-label-large);
   }
 
-  &[disabled='true'] {
-    label {
-      cursor: not-allowed;
-    }
-  }
-
   &.nx-label--negative {
     color: v(negative);
+  }
+
+  &[disabled='true'] label {
+    cursor: not-allowed;
+    color: v(base-label-disabled-color);
+  }
+
+  &[disabled='true'].nx-label--negative label {
+    color: v(base-label-negative-disabled-color);
   }
 }
 
