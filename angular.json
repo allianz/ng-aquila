@@ -44,11 +44,7 @@
             "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
             "polyfills": ["zone.js"],
             "aot": true,
-            "styles": [
-              "node_modules/@angular/cdk/a11y-prebuilt.css",
-              "node_modules/@angular/cdk/overlay-prebuilt.css",
-              "projects/opensource-documentation/src/styles.scss"
-            ],
+            "styles": ["projects/opensource-documentation/src/styles.scss"],
             "stylePreprocessorOptions": {
               "sass": {
                 "silenceDeprecations": [
@@ -122,10 +118,7 @@
                 ]
               }
             },
-            "styles": [
-              "node_modules/@angular/cdk/a11y-prebuilt.css",
-              "node_modules/@angular/cdk/overlay-prebuilt.css"
-            ]
+            "styles": ["projects/opensource-documentation/src/styles.scss"]
           }
         },
         "test": {
@@ -211,8 +204,6 @@
               }
             ],
             "styles": [
-              "node_modules/@angular/cdk/a11y-prebuilt.css",
-              "node_modules/@angular/cdk/overlay-prebuilt.css",
               "projects/opensource-documentation/src/styles.scss",
               "projects/ng-aquila/src/shared-styles/utilities.scss",
               "projects/ngx-docs-ui/src/lib/styles/global-styles.scss",
