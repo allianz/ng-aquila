@@ -10,6 +10,8 @@ import {
   signal,
 } from '@angular/core';
 
+import { NX_INDICATOR_CONTEXT } from './indicator-context';
+
 /** Positioning preset of an indicator. */
 export type NxIndicatorPosition =
   | 'top-start'
@@ -92,11 +94,21 @@ export class NxIndicatorComponent {
    */
   readonly overlap = input(false, { transform: booleanAttribute });
 
-  /** Sets the indicator size. Optimized for A1. */
-  readonly size = input<NxIndicatorSize>('m');
+  /**
+   * Sets the indicator size. Optimized for A1.
+   *
+   * Ignored when the indicator sits in a component that provides an
+   * `NxIndicatorContext`: there the host owns the size.
+   */
+  readonly sizeInput = input<NxIndicatorSize>('m', { alias: 'size' });
 
   /** Sets the indicator color type. Optimized for A1. */
   readonly type = input<NxIndicatorType>('critical');
+
+  private readonly _context = inject(NX_INDICATOR_CONTEXT, { optional: true });
+
+  /** Size the indicator renders at: the hosting context wins over the `size` input. */
+  readonly size = computed(() => this._context?.indicatorSize() ?? this.sizeInput());
 
   protected readonly _variantClasses = computed(() =>
     [

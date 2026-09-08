@@ -1,9 +1,18 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  forwardRef,
+  signal,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxIndicatorComponent, NxIndicatorSize, NxIndicatorType } from './indicator.component';
 import { NxIndicatorModule } from './indicator.module';
+import { NX_INDICATOR_CONTEXT, NxIndicatorContext } from './indicator-context';
 
 @Directive({ standalone: true })
 abstract class IndicatorTest {
@@ -41,6 +50,7 @@ describe('NxIndicatorComponent', () => {
         IconIndicator,
         NestedIconIndicator,
         WrappedTextIndicator,
+        IndicatorContextComponent,
       ],
     }).compileComponents();
   }));
@@ -261,6 +271,30 @@ describe('NxIndicatorComponent', () => {
       });
     }
 
+    it('takes the size from the host context instead of the default', () => {
+      createTestComponent(IndicatorContextComponent);
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--1600');
+      expect(indicatorNativeElement).not.toHaveClass('nx-indicator--m');
+    });
+
+    it('follows the host context when it changes', () => {
+      createTestComponent(IndicatorContextComponent);
+      (testInstance as IndicatorContextComponent).indicatorSize.set('800');
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--800');
+    });
+
+    it('prefers the host context over an explicit size', () => {
+      createTestComponent(IndicatorContextComponent);
+      (testInstance as IndicatorContextComponent).size = '1000';
+      fixture.detectChanges();
+
+      expect(indicatorNativeElement).toHaveClass('nx-indicator--1600');
+      expect(indicatorNativeElement).not.toHaveClass('nx-indicator--1000');
+    });
+
     it('combines the size and type classes', () => {
       createTestComponent(TypedIndicator);
       (testInstance as TypedIndicator).type = 'positive';
@@ -361,6 +395,20 @@ class OverlapAttributeIndicator extends IndicatorTest {}
 })
 class SizedIndicator extends IndicatorTest {
   size: NxIndicatorSize = 'm';
+}
+
+@Component({
+  selector: 'test-context-indicator',
+  template: `<nx-indicator [size]="size">99</nx-indicator>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxIndicatorModule],
+  providers: [
+    { provide: NX_INDICATOR_CONTEXT, useExisting: forwardRef(() => IndicatorContextComponent) },
+  ],
+})
+class IndicatorContextComponent extends IndicatorTest implements NxIndicatorContext {
+  size: NxIndicatorSize = 'm';
+  readonly indicatorSize = signal<NxIndicatorSize>('1600');
 }
 
 @Component({

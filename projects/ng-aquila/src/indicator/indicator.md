@@ -38,6 +38,25 @@ Available sizes: `s | m | 800 | 1000 | 1200 | 1400 | 1600 | 1800 | 2000`
 
 <!-- example(indicator-sizes) -->
 
+#### Sizing inside other components
+
+A component that hosts an indicator can size it, so it scales with the host instead of
+having to be sized by hand. To do that, the host implements `NxIndicatorContext` and
+provides itself under `NX_INDICATOR_CONTEXT`:
+
+```ts
+@Component({                                                                                                                                                                                                                                                                                                              
+    selector: 'my-host',                                                                                                                                                                                                                                                                                                    
+    providers: [{ provide: NX_INDICATOR_CONTEXT, useExisting: forwardRef(() => MyHost) }],                                                                                                                                                                                                                                  
+  })                                                                                                                                                                                                                                                                                                                        
+  export class MyHost implements NxIndicatorContext {                                                                                                                                                                                                                                                                       
+    readonly indicatorSize = signal<NxIndicatorSize>('1600');                                                                                                                                                                                                                                                               
+  } 
+```
+
+The context owns the size: an indicator inside such a host follows it and its own `size`
+input is ignored.
+
 ### Color types
 
 Use the `type` input to set the signal color. Default type is `critical`.
