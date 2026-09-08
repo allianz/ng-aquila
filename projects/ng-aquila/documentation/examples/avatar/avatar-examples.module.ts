@@ -1,6 +1,7 @@
 import { NxAvatarModule } from '@allianz/ng-aquila/avatar';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxImageModule } from '@allianz/ng-aquila/image';
+import { NxIndicatorModule } from '@allianz/ng-aquila/indicator';
 import { NgModule } from '@angular/core';
 
 import { AvatarExampleComponent } from './avatar/avatar-example';
@@ -8,6 +9,8 @@ import { AvatarAccentColorsExampleComponent } from './avatar-accent-colors/avata
 import { AvatarButtonExampleComponent } from './avatar-button/avatar-button-example';
 import { AvatarColorsExampleComponent } from './avatar-colors/avatar-colors-example';
 import { AvatarDisabledExampleComponent } from './avatar-disabled/avatar-disabled-example';
+import { AvatarIndicatorExampleComponent } from './avatar-indicator/avatar-indicator-example';
+import { AvatarInverseExampleComponent } from './avatar-inverse/avatar-inverse-example';
 import { AvatarSizeExampleComponent } from './avatar-size/avatar-size-example';
 import { AvatarSizeA1ExampleComponent } from './avatar-size-a1/avatar-size-a1-example';
 
@@ -19,10 +22,18 @@ const EXAMPLES = [
   AvatarColorsExampleComponent,
   AvatarAccentColorsExampleComponent,
   AvatarDisabledExampleComponent,
+  AvatarInverseExampleComponent,
+  AvatarIndicatorExampleComponent,
 ];
 
 @NgModule({
-  imports: [NxAvatarModule, NxIconModule, NxImageModule, EXAMPLES],
+  imports: [
+    NxAvatarModule,
+    NxIconModule,
+    NxImageModule,
+    NxIndicatorModule,
+    EXAMPLES,
+  ],
   exports: [EXAMPLES],
 })
 export class AvatarExamplesModule {
@@ -35,6 +46,8 @@ export class AvatarExamplesModule {
       'avatar-colors': AvatarColorsExampleComponent,
       'avatar-accent-colors': AvatarAccentColorsExampleComponent,
       'avatar-disabled': AvatarDisabledExampleComponent,
+      'avatar-inverse': AvatarInverseExampleComponent,
+      'avatar-indicator': AvatarIndicatorExampleComponent,
     };
   }
 }

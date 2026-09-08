@@ -14,22 +14,30 @@
   }
 }
 
-@mixin accent-color($color, $attention) {
+@mixin accent-color($color, $attention, $inverse: false) {
+  $variant: '';
+  @if ($inverse) {
+    $variant: 'inverse-';
+  }
   @if ($attention) {
-    background-color: v(color-attention-#{$color});
-    color: v(color-on-attention-resting);
+    background-color: v(color-attention-#{$variant}#{$color});
+    color: v(color-on-attention-#{$variant}resting);
   } @else {
-    background-color: v(color-subtle-#{$color});
-    color: v(color-on-subtle-#{$color});
+    background-color: v(color-subtle-#{$variant}#{$color});
+    color: v(color-on-subtle-#{$variant}#{$color});
   }
 }
 
-@mixin button-color-states($color, $attention) {
+@mixin button-color-states($color, $attention, $inverse: false) {
+  $variant: '';
+  @if ($inverse) {
+    $variant: 'inverse-';
+  }
   &:hover:not(:disabled) {
     @if ($attention) {
-      background-color: v(color-attention-#{$color}-hover);
+      background-color: v(color-attention-#{$variant}#{$color}-hover);
     } @else {
-      background-color: v(color-subtle-#{$color}-hover);
+      background-color: v(color-subtle-#{$variant}#{$color}-hover);
     }
     &:before,
     ::ng-deep .nx-image:after {
@@ -38,9 +46,9 @@
   }
   &:active:not(:disabled) {
     @if ($attention) {
-      background-color: v(color-attention-#{$color}-active);
+      background-color: v(color-attention-#{$variant}#{$color}-active);
     } @else {
-      background-color: v(color-subtle-#{$color}-active);
+      background-color: v(color-subtle-#{$variant}#{$color}-active);
     }
     &:before,
     ::ng-deep .nx-image:after {
@@ -66,6 +74,16 @@
   &.is-attention {
     background-color: v(avatar-color-attention-disabled) !important;
     color: v(avatar-color-on-attention-disabled) !important;
+  }
+
+  &.nx-avatar--inverse {
+    color: v(avatar-inverse-color-on-subtle-disabled) !important;
+    background-color: v(avatar-inverse-color-subtle-disabled) !important;
+
+    &.is-attention {
+      background-color: v(avatar-inverse-color-attention-disabled) !important;
+      color: v(avatar-inverse-color-on-attention-disabled) !important;
+    }
   }
 }
 
@@ -100,6 +118,26 @@
   }
 }
 
+:host.nx-avatar--inverse {
+  background: v(avatar-inverse-background-color);
+  color: v(avatar-inverse-color);
+}
+
+// Force the projected indicator into the avatar's bottom right corner regardless of
+// whatever `position` the consumer sets on it.
+:host {
+  ::ng-deep .nx-avatar__indicator {
+    position: absolute !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: 0 !important;
+    inset-inline-start: auto !important;
+    inset-inline-end: 0 !important;
+    margin: 0 !important;
+  }
+}
+
 // ====================
 // Generated variants
 // ====================
@@ -119,6 +157,14 @@
     &.is-button {
       @include button-color-states($color, true);
     }
+
+    &.nx-avatar--inverse {
+      @include accent-color($color, true, true);
+
+      &.is-button {
+        @include button-color-states($color, true, true);
+      }
+    }
   }
 
   :host.nx-avatar--accent-subtle-#{$color} {
@@ -126,6 +172,14 @@
 
     &.is-button {
       @include button-color-states($color, false);
+    }
+
+    &.nx-avatar--inverse {
+      @include accent-color($color, false, true);
+
+      &.is-button {
+        @include button-color-states($color, false, true);
+      }
     }
   }
 }
@@ -169,6 +223,30 @@
     }
     ::ng-deep .nx-image:after {
       background-color: v(avatar-image-overlay-color-active);
+    }
+  }
+
+  &.nx-avatar--inverse {
+    &:hover:not(:disabled) {
+      background-color: v(avatar-inverse-background-color-hover);
+
+      &:before {
+        background-color: v(avatar-inverse-overlay-color-hover);
+      }
+      ::ng-deep .nx-image:after {
+        background-color: v(avatar-inverse-image-overlay-color-hover);
+      }
+    }
+
+    &:active:not(:disabled) {
+      background-color: v(avatar-inverse-background-color-active);
+
+      &:before {
+        background-color: v(avatar-inverse-overlay-color-active);
+      }
+      ::ng-deep .nx-image:after {
+        background-color: v(avatar-inverse-image-overlay-color-active);
+      }
     }
   }
 

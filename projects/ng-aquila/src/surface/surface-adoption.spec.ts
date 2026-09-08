@@ -1,3 +1,4 @@
+import { NxAvatarComponent } from '@allianz/ng-aquila/avatar';
 import { NxBadgeComponent } from '@allianz/ng-aquila/badge';
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
@@ -308,6 +309,32 @@ describe('nxSurface adoption', () => {
     });
   });
 
+  describe('avatar', () => {
+    it('inverts on the attention surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#avatar').contains('nx-avatar--inverse')).toBe(true);
+    });
+
+    it('does not invert on the other surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['default', 'emphasis', 'accent-attention'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('#avatar').contains('nx-avatar--inverse')).toBe(false);
+      }
+    });
+
+    it('lets an explicit inverse="false" win over the surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#avatar-explicit').contains('nx-avatar--inverse')).toBe(false);
+    });
+  });
+
   // The surface is not tied to a design system, so adopters react in every theme. The icon is left
   // out: it still gates its own inverse class on A1, see icon.component.ts.
   it('still adapts without an Allianz One provider', () => {
@@ -320,6 +347,7 @@ describe('nxSurface adoption', () => {
     expect(classesOf('#eyebrow').contains('nx-eyebrow-inverse')).toBe(true);
     expect(classesOf('#headline').contains('nx-heading--inverse')).toBe(true);
     expect(classesOf('#status-icon').contains('nx-status-icon--inverse')).toBe(true);
+    expect(classesOf('#avatar').contains('nx-avatar--inverse')).toBe(true);
   });
 });
 
@@ -343,6 +371,8 @@ const TEMPLATE = `
     <nx-eyebrow id="eyebrow-explicit" [inverse]="false">eyebrow</nx-eyebrow>
     <h2 id="headline" nxHeadline>headline</h2>
     <h2 id="headline-explicit" nxHeadline [inverse]="false">headline</h2>
+    <div id="avatar" nxAvatar>AB</div>
+    <div id="avatar-explicit" nxAvatar [inverse]="false">AB</div>
   </div>
 `;
 
@@ -358,6 +388,7 @@ const TEMPLATE = `
     NxBadgeComponent,
     NxIconComponent,
     NxStatusIconComponent,
+    NxAvatarComponent,
   ],
   providers: A1_PROVIDERS,
 })
@@ -379,6 +410,7 @@ class AdoptersComponent {
     NxBadgeComponent,
     NxIconComponent,
     NxStatusIconComponent,
+    NxAvatarComponent,
   ],
   host: { 'data-non-a1': '' },
 })

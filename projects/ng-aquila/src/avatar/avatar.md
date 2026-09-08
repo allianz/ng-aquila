@@ -6,6 +6,7 @@ b2c: false
 expert: true
 stable: done
 a1Densities: true
+a1Full: true
 group: Data Display
 ---
 
@@ -77,6 +78,37 @@ The avatar component now supports a range of new color variants for both attenti
 To use an accent color variant, apply the `[accentColor]` property; to control its emphasis, apply the `[prominence]` property (`subtle` by default, or `attention` for the emphasized variant).
 
 <!-- example(avatar-accent-colors) -->
+
+### Inverse
+
+For use on dark backgrounds, add the `inverse` input to use inverse colors.
+
+**Usage:** `<button nxAvatar inverse>MD</button>`
+
+<!-- example(avatar-inverse) -->
+
+
+</div>
+
+<div class="docs-a1">
+
+### Indicator
+
+An [`nx-indicator`](/documentation/indicator/overview) can be projected into the avatar to show status, e.g. an
+online state or unread count. Add the `nxAvatarIndicator` directive to it; it is always
+positioned in the bottom right corner, regardless of the `position` and `overlap` input.
+
+The avatar also set the indicator size: `s` avatars get an `800` indicator, `m` a `1200`, `l` a
+`1600` and `xl` a `2000`. This wins over the indicator's own `size` input, so there is no
+need to set it.
+
+<div class="docs-deprecation-warning">
+
+**Accessibility:** One indicator type used consistently is fine — the meaning comes from the indicator being present or absent. Mixing types (`positive`, `warning`, `critical`, `info`) or mixing indicator content (e.g. different icons, or icons next to counts) conveys meaning through color alone, which fails [WCAG 1.4.1 Use of Color](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html). An `aria-label` does not fix this, since it only reaches screen reader users — add a non-color cue such as accompanying text, a tooltip, or a popover instead. See the [indicator accessibility docs](/documentation/indicator/overview#accessibility) for more details.
+
+</div>
+
+<!-- example(avatar-indicator) -->
 
 </div>
 

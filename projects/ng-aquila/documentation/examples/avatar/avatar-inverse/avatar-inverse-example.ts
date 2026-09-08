@@ -3,18 +3,19 @@ import {
   NxAvatarComponent,
 } from '@allianz/ng-aquila/avatar';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
+import { NxFigureComponent } from '@allianz/ng-aquila/image';
 import { Component } from '@angular/core';
 
 /**
- * @title Colors example
+ * @title Inverse example
  */
 @Component({
-  selector: 'avatar-accent-colors-example',
-  templateUrl: './avatar-accent-colors-example.html',
-  styleUrls: ['./avatar-accent-colors-example.css'],
-  imports: [NxAvatarComponent, NxIconComponent],
+  selector: 'avatar-inverse-example',
+  templateUrl: './avatar-inverse-example.html',
+  styleUrls: ['./avatar-inverse-example.css'],
+  imports: [NxAvatarComponent, NxIconComponent, NxFigureComponent],
 })
-export class AvatarAccentColorsExampleComponent {
+export class AvatarInverseExampleComponent {
   readonly accentColors: NxAvatarAccentColor[] = [
     'yellow',
     'orange',

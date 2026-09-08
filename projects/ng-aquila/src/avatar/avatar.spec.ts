@@ -1,4 +1,5 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxIndicatorModule } from '@allianz/ng-aquila/indicator';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -39,6 +40,8 @@ describe('NxAvatarComponent', () => {
         AvatarWithAccent,
         ConfigurableDisabledAvatar,
         DisabledAvatarWithAccent,
+        ConfigurableAvatarWithIndicator,
+        AvatarWithSizedIndicator,
       ],
     }).compileComponents();
   }));
@@ -83,6 +86,30 @@ describe('NxAvatarComponent', () => {
       expect(avatarInstance.size).toBe('xlarge');
       expect(avatarElement).toHaveClass('nx-avatar--xlarge');
     });
+
+    const SIZE_CLASSES = [
+      ['xsmall', 'nx-avatar--xsmall'],
+      ['small', 'nx-avatar--small'],
+      ['s', 'nx-avatar--small'],
+      ['small-medium', 'nx-avatar--small-medium'],
+      ['medium', 'nx-avatar--medium'],
+      ['m', 'nx-avatar--medium'],
+      ['large', 'nx-avatar--large'],
+      ['l', 'nx-avatar--large'],
+      ['xlarge', 'nx-avatar--xlarge'],
+      ['xl', 'nx-avatar--xlarge'],
+    ] as const satisfies readonly (readonly [NxAvatarSize, string])[];
+
+    for (const [size, expectedClass] of SIZE_CLASSES) {
+      it(`applies only ${expectedClass} for size "${size}"`, () => {
+        createTestComponent(ConfigurableAvatar);
+        testInstance.size = size;
+        fixture.detectChanges();
+
+        expect(avatarElement).toHaveClass(expectedClass);
+        expect(avatarInstance.size).toBe(size);
+      });
+    }
   });
 
   describe('avatar button', () => {
@@ -145,6 +172,106 @@ describe('NxAvatarComponent', () => {
       createTestComponent(DisabledAvatarWithAccent);
       expect(avatarElement).toHaveClass('nx-avatar--disabled');
       expect(avatarElement).toHaveClass('is-attention');
+    });
+  });
+
+  describe('inverse', () => {
+    it('should not apply the inverse class by default', () => {
+      createTestComponent(AvatarWithText);
+      expect(avatarElement).not.toHaveClass('nx-avatar--inverse');
+    });
+
+    it('should update the inverse class on input change', () => {
+      createTestComponent(ConfigurableInverseAvatar);
+      expect(avatarElement).toHaveClass('nx-avatar--inverse');
+
+      (testInstance as any).inverse = false;
+      fixture.detectChanges();
+      expect(avatarElement).not.toHaveClass('nx-avatar--inverse');
+
+      (testInstance as any).inverse = true;
+      fixture.detectChanges();
+      expect(avatarElement).toHaveClass('nx-avatar--inverse');
+    });
+
+    it('should keep the accent color class alongside the inverse class', () => {
+      createTestComponent(ConfigurableInverseAvatar);
+      (testInstance as any).accentColor = 'blue';
+      (testInstance as any).prominence = 'attention';
+      fixture.detectChanges();
+      expect(avatarElement).toHaveClass('nx-avatar--accent-attention-blue');
+      expect(avatarElement).toHaveClass('nx-avatar--inverse');
+    });
+  });
+
+  describe('indicator', () => {
+    it('should project a nx-indicator with nxAvatarIndicator as a direct child of the host', () => {
+      createTestComponent(AvatarWithIndicator);
+      const indicator = avatarElement.querySelector('nx-indicator');
+      expect(indicator).toBeTruthy();
+      expect(indicator!.parentElement).toBe(avatarElement);
+      expect(indicator).toHaveClass('nx-indicator--bottom-end');
+      expect(indicator).toHaveClass('nx-avatar__indicator');
+    });
+
+    it('should not project a nx-indicator without nxAvatarIndicator into the indicator slot', () => {
+      createTestComponent(AvatarWithUnmarkedIndicator);
+      const indicator = avatarElement.querySelector('nx-indicator');
+      expect(indicator).toBeTruthy();
+      expect(indicator!.parentElement).not.toBe(avatarElement);
+    });
+
+    it('should visually force the indicator into the bottom-end corner regardless of the position input', () => {
+      createTestComponent(AvatarWithCustomPositionIndicator);
+      const indicator = avatarElement.querySelector('nx-indicator') as HTMLElement;
+      expect(getComputedStyle(indicator).position).toBe('absolute');
+
+      const avatarRect = avatarElement.getBoundingClientRect();
+      const indicatorRect = indicator.getBoundingClientRect();
+      expect(Math.round(indicatorRect.right)).toBe(Math.round(avatarRect.right));
+      expect(Math.round(indicatorRect.bottom)).toBe(Math.round(avatarRect.bottom));
+    });
+
+    const INDICATOR_SIZE_CLASSES = [
+      ['xsmall', 'nx-indicator--800'],
+      ['small', 'nx-indicator--800'],
+      ['s', 'nx-indicator--800'],
+      ['small-medium', 'nx-indicator--1200'],
+      ['medium', 'nx-indicator--1200'],
+      ['m', 'nx-indicator--1200'],
+      ['large', 'nx-indicator--1600'],
+      ['l', 'nx-indicator--1600'],
+      ['xlarge', 'nx-indicator--2000'],
+      ['xl', 'nx-indicator--2000'],
+    ] as const satisfies readonly (readonly [NxAvatarSize, string])[];
+
+    for (const [size, expectedClass] of INDICATOR_SIZE_CLASSES) {
+      it(`sizes the projected indicator as ${expectedClass} for avatar size "${size}"`, () => {
+        createTestComponent(ConfigurableAvatarWithIndicator);
+        testInstance.size = size;
+        fixture.detectChanges();
+
+        expect(avatarElement.querySelector('nx-indicator')).toHaveClass(expectedClass);
+      });
+    }
+
+    it('overrides the size input of the projected indicator', () => {
+      createTestComponent(AvatarWithSizedIndicator);
+      const indicator = avatarElement.querySelector('nx-indicator');
+
+      expect(indicator).toHaveClass('nx-indicator--1200');
+      expect(indicator).not.toHaveClass('nx-indicator--s');
+    });
+
+    it('resizes the projected indicator when the avatar size changes', () => {
+      createTestComponent(ConfigurableAvatarWithIndicator);
+      const indicator = avatarElement.querySelector('nx-indicator');
+      expect(indicator).toHaveClass('nx-indicator--800');
+
+      testInstance.size = 'xlarge';
+      fixture.detectChanges();
+      expect(indicator).toHaveClass('nx-indicator--2000');
+      expect(indicator).not.toHaveClass('nx-indicator--800');
     });
   });
 });
@@ -229,3 +356,77 @@ class ConfigurableDisabledAvatar extends AvatarTest {
   imports: [NxAvatarModule, NxIconModule],
 })
 class DisabledAvatarWithAccent extends AvatarTest {}
+
+@Component({
+  selector: 'test-configurable-inverse-avatar',
+  template: `<div
+    nxAvatar
+    [inverse]="inverse"
+    [accentColor]="accentColor"
+    [prominence]="prominence"
+  >
+    MD
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAvatarModule, NxIconModule],
+})
+class ConfigurableInverseAvatar extends AvatarTest {
+  inverse = true;
+  accentColor: NxAvatarAccentColor = 'default';
+  prominence: NxAvatarProminence = 'subtle';
+}
+
+@Component({
+  selector: 'test-avatar-with-indicator',
+  template: `<div nxAvatar>
+    <span aria-hidden="true">MD</span>
+    <nx-indicator nxAvatarIndicator position="bottom-end"></nx-indicator>
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAvatarModule, NxIconModule, NxIndicatorModule],
+})
+class AvatarWithIndicator extends AvatarTest {}
+
+@Component({
+  selector: 'test-avatar-with-unmarked-indicator',
+  template: `<div nxAvatar>
+    <span aria-hidden="true">MD</span>
+    <nx-indicator position="bottom-end"></nx-indicator>
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAvatarModule, NxIconModule, NxIndicatorModule],
+})
+class AvatarWithUnmarkedIndicator extends AvatarTest {}
+
+@Component({
+  selector: 'test-configurable-avatar-with-indicator',
+  template: `<div nxAvatar [size]="size">
+    <span aria-hidden="true">MD</span>
+    <nx-indicator nxAvatarIndicator position="bottom-end"></nx-indicator>
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAvatarModule, NxIconModule, NxIndicatorModule],
+})
+class ConfigurableAvatarWithIndicator extends AvatarTest {}
+
+@Component({
+  selector: 'test-avatar-with-sized-indicator',
+  template: `<div nxAvatar size="medium">
+    <span aria-hidden="true">MD</span>
+    <nx-indicator nxAvatarIndicator size="s"></nx-indicator>
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAvatarModule, NxIconModule, NxIndicatorModule],
+})
+class AvatarWithSizedIndicator extends AvatarTest {}
+
+@Component({
+  selector: 'test-avatar-with-custom-position-indicator',
+  template: `<div nxAvatar>
+    <span aria-hidden="true">MD</span>
+    <nx-indicator nxAvatarIndicator position="top-start"></nx-indicator>
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAvatarModule, NxIconModule, NxIndicatorModule],
+})
+class AvatarWithCustomPositionIndicator extends AvatarTest {}

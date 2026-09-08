@@ -112,6 +112,15 @@ position: if you pass both, the legacy value is ignored.
 
 <!-- example(button-icon-indicator) -->
 
+
+<div class="docs-a1">
+
+#### Avatar
+
+<!-- example(avatar-indicator) -->
+
+</div>
+
 <div class="docs-expert-container">
 
 #### Tabs
