@@ -1,10 +1,12 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
   NxFormfieldComponent,
   NxFormfieldErrorDirective,
   NxFormfieldLabelDirective,
 } from '@allianz/ng-aquila/formfield';
 import { NxPhoneInputComponent } from '@allianz/ng-aquila/phone-input';
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
@@ -69,6 +71,7 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
   templateUrl: 'phone-input-validation-example.html',
   styleUrls: ['./phone-input-validation-example.css'],
   imports: [
+    NxButtonComponent,
     NxFormfieldComponent,
     NxFormfieldLabelDirective,
     NxPhoneInputComponent,
@@ -76,9 +79,11 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
     ReactiveFormsModule,
     NxErrorComponent,
     NxFormfieldErrorDirective,
+    JsonPipe,
   ],
 })
 export class PhoneInputValidationExampleComponent {
+  parseControl = new FormControl('+4989123456', Validators.required);
   phoneControl = new FormControl('', [
     Validators.required,
     phoneNumberValidator('landline'),
@@ -87,4 +92,10 @@ export class PhoneInputValidationExampleComponent {
     Validators.required,
     phoneNumberValidator('mobile'),
   ]);
+
+  setValue(value: string) {
+    this.parseControl.setValue(value);
+    // errors are only displayed once the control is touched or the form is submitted
+    this.parseControl.markAsTouched();
+  }
 }

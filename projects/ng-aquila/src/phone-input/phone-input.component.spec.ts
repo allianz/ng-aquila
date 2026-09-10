@@ -122,10 +122,12 @@ describe('PhoneInputComponent', () => {
 
   it('should visually hide the dropdown when readonly', () => {
     createTestComponent(ConfigurablePhoneInput);
-    expect(fixture.nativeElement.querySelector('nx-dropdown')).not.toHaveClass('hide');
+    expect(fixture.nativeElement.querySelector('.nx-phone-input___country')).not.toHaveClass(
+      'hide',
+    );
     testInstance.readonly = true;
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('nx-dropdown')).toHaveClass('hide');
+    expect(fixture.nativeElement.querySelector('.nx-phone-input___country')).toHaveClass('hide');
   });
 
   it('should show the unformatted value when readonly', fakeAsync(() => {
@@ -195,6 +197,248 @@ describe('PhoneInputComponent', () => {
     // should fall back to what previous country code was set, by default +49
     expect(dropdown.nativeElement.innerText).toBe('+1');
   }));
+
+  describe('unparseable values', () => {
+    it('should not throw when the value has no calling code', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+      expect(() => {
+        formControl.setValue('234');
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+      }).not.toThrow();
+
+      expect(getInput().nativeElement.value).toBe('234');
+    }));
+
+    it('should not throw when the calling code is unknown', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+      expect(() => {
+        formControl.setValue('+999999');
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+      }).not.toThrow();
+    }));
+
+    it('should mark the control invalid', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+      formControl.setValue('234');
+      flush();
+
+      expect(formControl.errors).toEqual({ nxPhoneInputParse: { text: '234' } });
+    }));
+
+    it('should clear the error once a parseable value is set', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+      formControl.setValue('234');
+      flush();
+      expect(formControl.errors).toBeTruthy();
+
+      formControl.setValue('+49123456');
+      flush();
+      expect(formControl.errors).toBeNull();
+    }));
+
+    it('should not clear the error by typing alone, without picking a country', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+      formControl.setValue('234');
+      fixture.detectChanges();
+      flush();
+      fixture.detectChanges();
+
+      const input = getInput().nativeElement;
+      input.value = '2349';
+      dispatchFakeEvent(input, 'input');
+      fixture.detectChanges();
+      flush();
+
+      // still no country selected, so there is no calling code to prefix the digits with
+      expect(formControl.errors).toEqual({ nxPhoneInputParse: { text: '2349' } });
+    }));
+
+    it('should clear the error once a country is picked from the dropdown', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+      formControl.setValue('234');
+      fixture.detectChanges();
+      flush();
+      fixture.detectChanges();
+
+      dropdown.nativeElement.click();
+      fixture.detectChanges();
+      const selectOption = dropdown.query(By.css('[ng-reflect-value="DE"]'));
+      selectOption.nativeElement.click();
+      fixture.detectChanges();
+      flush();
+
+      expect(formControl.errors).toBeNull();
+    }));
+
+    it('should not report a parse error for an empty or whitespace formatted value', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+      formControl.setValue('+49 123 456');
+      flush();
+      expect(formControl.errors).toBeNull();
+
+      formControl.setValue('');
+      flush();
+      // empty values are left to `Validators.required`
+      expect(formControl.errors).toEqual({ required: true });
+    }));
+
+    it('should show the error only after the control was touched', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+      formControl.setValue('234');
+      fixture.detectChanges();
+      flush();
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-error')).toBeFalsy();
+
+      formControl.markAsTouched();
+      // the formfield reacts to `stateChanges` on the asap scheduler, so the error state has
+      // to be picked up by a change detection run before flushing that microtask
+      fixture.detectChanges();
+      flush();
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('nx-error')).toBeTruthy();
+    }));
+
+    describe('globe placeholder for an unresolved country', () => {
+      it('shows the globe icon and clears countryCode', fakeAsync(() => {
+        createTestComponent(ReactiveFormsPhoneInput);
+        const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+        formControl.setValue('234');
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        expect(testInstance.phoneInput.countryCode).toBe('');
+        expect(dropdown.componentInstance.empty).toBe(true);
+        expect(fixture.nativeElement.querySelector('.nx-phone-input___globe')).toBeTruthy();
+      }));
+
+      it('hides the globe icon again once a parseable value is set', fakeAsync(() => {
+        createTestComponent(ReactiveFormsPhoneInput);
+        const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+        formControl.setValue('234');
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        formControl.setValue('+49123456');
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        expect(fixture.nativeElement.querySelector('.nx-phone-input___globe')).toBeFalsy();
+      }));
+
+      it('cannot be brought back by typing once a country was picked from the list', fakeAsync(() => {
+        createTestComponent(ReactiveFormsPhoneInput);
+        const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+        formControl.setValue('234');
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        dropdown.nativeElement.click();
+        fixture.detectChanges();
+        const selectOption = dropdown.query(By.css('[ng-reflect-value="DE"]'));
+        selectOption.nativeElement.click();
+        fixture.detectChanges();
+        flush();
+
+        expect(fixture.nativeElement.querySelector('.nx-phone-input___globe')).toBeFalsy();
+
+        const input = getInput().nativeElement;
+        input.value = '999999999';
+        dispatchFakeEvent(input, 'input');
+        fixture.detectChanges();
+        flush();
+
+        expect(fixture.nativeElement.querySelector('.nx-phone-input___globe')).toBeFalsy();
+      }));
+
+      it('is never listed as a selectable option', fakeAsync(() => {
+        createTestComponent(ReactiveFormsPhoneInput);
+        flush();
+
+        expect(testInstance.phoneInput._sortedCountries.some((option) => option.value === '')).toBe(
+          false,
+        );
+      }));
+    });
+
+    describe('leading zero', () => {
+      it('is kept in the input and the model on blur', fakeAsync(() => {
+        createTestComponent(ReactiveFormsPhoneInput);
+        const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+        formControl.setValue('0891234567');
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        const input = getInput().nativeElement;
+        expect(input.value).toBe('0891234567');
+
+        dispatchFakeEvent(input, 'blur');
+        fixture.detectChanges();
+        flush();
+
+        // without a calling code the zero is not a trunk prefix, so it has to stay
+        expect(input.value).toBe('0891234567');
+        expect(formControl.value).toBe('0891234567');
+      }));
+
+      it('is kept in the readonly input', fakeAsync(() => {
+        createTestComponent(ReactiveFormsPhoneInput);
+        const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+        formControl.setValue('0891234567');
+        fixture.detectChanges();
+        flush();
+        testInstance.readonly = true;
+        fixture.detectChanges();
+        flush();
+
+        expect(fixture.nativeElement.querySelector('.readonly-input').value).toBe('0891234567');
+      }));
+
+      it('is kept in the model while typing', fakeAsync(() => {
+        createTestComponent(ReactiveFormsPhoneInput);
+        const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+        formControl.setValue('234');
+        fixture.detectChanges();
+        flush();
+        fixture.detectChanges();
+
+        const input = getInput().nativeElement;
+        input.value = '0234';
+        dispatchFakeEvent(input, 'input');
+        fixture.detectChanges();
+        flush();
+
+        expect(formControl.value).toBe('0234');
+        expect(formControl.errors).toEqual({ nxPhoneInputParse: { text: '0234' } });
+      }));
+    });
+  });
 
   it('should reset country code after reset of form', fakeAsync(() => {
     createTestComponent(ReactiveFormsPhoneInput);
@@ -280,6 +524,22 @@ describe('PhoneInputComponent', () => {
     fixture.detectChanges();
     flush();
     expect((testInstance as ReactiveFormsPhoneInput).formControl.value).toBe('+491234');
+  }));
+
+  it('should remove the leading zero that special characters hid', fakeAsync(() => {
+    createTestComponent(ReactiveFormsPhoneInput);
+    flush();
+    const input = getInput().nativeElement;
+    input.value = '(089)123';
+    dispatchFakeEvent(input, 'input');
+    fixture.detectChanges();
+    flush();
+    dispatchFakeEvent(input, 'blur');
+    fixture.detectChanges();
+    flush();
+
+    expect(input.value).toBe('89123');
+    expect((testInstance as ReactiveFormsPhoneInput).formControl.value).toBe('+4989123');
   }));
 
   it('should change the dropdown top label via input', () => {

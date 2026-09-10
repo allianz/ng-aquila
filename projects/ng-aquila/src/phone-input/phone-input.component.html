@@ -1,23 +1,30 @@
 <div class="nx-phone-input___wrapper">
-  <nx-dropdown
-    [class.hide]="readonly && !disabled"
-    [value]="countryCode"
-    #dropdown
-    [showFilter]="true"
-    [disabled]="disabled"
-    [required]="required"
-    [overlayLabel]="areaCodeLabel"
-    (valueChange)="_onCountryChange($event)"
-    [options]="_sortedCountries"
-    [overlayFallbackOrigin]="dropdown"
-    (focusOut)="_onInputBlur()"
-    (focus)="_onInputFocus()"
-    [panelGrow]="true"
-    [attr.aria-label]="areaCodeLabel"
-    ariaLabelledBy=""
-  >
-    <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
-  </nx-dropdown>
+  <div class="nx-phone-input___country" [class.hide]="readonly && !disabled">
+    <nx-dropdown
+      [value]="countryCode"
+      #dropdown
+      [showFilter]="true"
+      [disabled]="disabled"
+      [required]="required"
+      [overlayLabel]="areaCodeLabel"
+      (valueChange)="_onCountryChange($event)"
+      [options]="_sortedCountries"
+      [overlayFallbackOrigin]="dropdown"
+      (focusOut)="_onInputBlur()"
+      (focus)="_onInputFocus()"
+      [panelGrow]="true"
+      [attr.aria-label]="areaCodeLabel"
+      ariaLabelledBy=""
+    >
+      <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
+    </nx-dropdown>
+
+    <!-- Shown when no country is selected, e.g. after a programmatic value that couldn't
+    be parsed into a calling code.  -->
+    @if (!countryCode) {
+      <nx-icon name="globe" class="nx-phone-input___globe" aria-hidden="true"></nx-icon>
+    }
+  </div>
 
   <!-- adding c-input for the styles and to not get the overhead of the nxInput directive -->
   <input

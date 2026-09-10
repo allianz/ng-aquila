@@ -42,9 +42,11 @@ By adding the `disabled` attribute you can set the phone input into disabled mod
 
 ## Validation
 
-The component currently doesn't ship with built in validation to keep the dependency and bundle size impact low. For good validation results the dependency libphonenumber-js is often used which is quite heavy.
+The component only validates that it can represent the value. It sets a `nxPhoneInputParse` error when a value cannot be split into a calling code and a line number, for example a number set programmatically without a leading `+` and calling code. Such a value stays in the input as it was set. Like every other error it is only displayed once the control is touched or the form is submitted.
 
-We will look into providing validators separated from the component later on. If you need client side validation this example should be a good starting point. For the example to work please install libphonenumber-js.
+While no country can be resolved this way, the country dropdown shows a globe icon instead of a calling code, and `countryCode` returns an empty string. The globe disappears once the value resolves to a country — either by picking one from the dropdown or by setting a parseable value; it only reappears when another unparseable value is set.
+
+The component does not check whether the number is a real, dialable number for the selected country. That needs the libphonenumber-js dependency, which is quite heavy, so we keep it out to keep the bundle size impact low. If you need this check, install libphonenumber-js and use the last two fields of the example below as a starting point.
 
 <!-- example(phone-input-validation) -->
 

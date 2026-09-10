@@ -24,10 +24,26 @@ input {
   margin-inline-start: v(formfield-outline-spacing);
 }
 
-nx-dropdown {
+.nx-phone-input___country {
+  position: relative;
   width: auto;
   margin-inline-end: 8px;
+}
 
+.nx-phone-input___globe {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: v(input-field-inset);
+  font-family: inherit;
+  width: v(phone-input-country-code-min-width);
+  display: flex;
+  justify-content: center;
+  transform: translateY(-50%);
+  // Purely decorative: the dropdown trigger underneath stays clickable/focusable.
+  pointer-events: none;
+}
+
+nx-dropdown {
   &.cdk-keyboard-focused {
     @include focus-style();
     border-radius: 4px;
@@ -42,6 +58,11 @@ nx-dropdown {
       padding-inline-end: 0;
     }
 
+    .nx-dropdown__rendered {
+      // used for the globe icon on un-parsable numbers
+      min-width: v(phone-input-country-code-min-width);
+    }
+
     .nx-dropdown__icon {
       margin-inline-start: 8px;
     }
@@ -49,8 +70,12 @@ nx-dropdown {
 }
 
 :host-context(.nx-formfield.has-outline) {
-  nx-dropdown {
+  .nx-phone-input___country {
     margin-inline-start: v(formfield-outline-spacing);
+  }
+
+  .nx-phone-input___globe {
+    inset-inline-start: 0;
   }
 
   input {

@@ -153,6 +153,34 @@ describe('NxPhoneInputComponent signal forms', () => {
     }));
   });
 
+  describe('parse validator', () => {
+    it('reports a model value the component cannot represent', fakeAsync(() => {
+      const fixture = TestBed.createComponent(BasicSignalFormHost);
+      const host = fixture.componentInstance;
+      fixture.detectChanges();
+      flush();
+
+      host.model.update((m) => ({ ...m, value: '234' }));
+      fixture.detectChanges();
+      flush();
+      fixture.detectChanges();
+
+      expect(host.phoneForm.value().invalid()).toBe(true);
+      expect(
+        host.phoneForm
+          .value()
+          .errors()
+          .some((e) => e.kind === 'nxPhoneInputParse'),
+      ).toBe(true);
+
+      host.model.update((m) => ({ ...m, value: '+49123456' }));
+      fixture.detectChanges();
+      flush();
+
+      expect(host.phoneForm.value().valid()).toBe(true);
+    }));
+  });
+
   describe('disabled() rule', () => {
     it('disables the underlying input', fakeAsync(() => {
       const fixture = TestBed.createComponent(DisabledSignalFormHost);

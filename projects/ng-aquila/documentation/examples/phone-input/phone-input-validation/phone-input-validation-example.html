@@ -1,5 +1,38 @@
 <nx-formfield>
   <nx-formfield-label>Phone number</nx-formfield-label>
+  <nx-phone-input [formControl]="parseControl" #phoneInput></nx-phone-input>
+  @if (parseControl.hasError('required')) {
+    <nx-error nxFormfieldError> Please enter a phone number. </nx-error>
+  }
+  @if (parseControl.hasError('nxPhoneInputParse')) {
+    <nx-error nxFormfieldError> Please select a country code. </nx-error>
+  }
+</nx-formfield>
+
+<div class="example-buttons">
+  <button
+    nxButton="secondary small"
+    type="button"
+    (click)="setValue('+4989123456')"
+  >
+    Set "+4989123456"
+  </button>
+  <button nxButton="secondary small" type="button" (click)="setValue('234')">
+    Set "234"
+  </button>
+  <button nxButton="secondary small" type="button" (click)="setValue('')">
+    Clear
+  </button>
+</div>
+
+<p>
+  Model value: {{ parseControl.value | json }}<br />
+  Errors: {{ parseControl.errors | json }}<br />
+  Country code: {{ phoneInput.countryCode | json }}
+</p>
+
+<nx-formfield>
+  <nx-formfield-label>Landline phone number</nx-formfield-label>
   <nx-phone-input [formControl]="phoneControl"></nx-phone-input>
   @if (phoneControl.errors?.phoneNumber) {
     <nx-error nxFormfieldError> Please provide a valid phone number </nx-error>

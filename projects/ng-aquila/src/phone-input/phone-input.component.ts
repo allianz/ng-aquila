@@ -4,6 +4,7 @@ import {
   NxDropdownOption,
 } from '@allianz/ng-aquila/dropdown';
 import { NxFormfieldComponent, NxFormfieldControl } from '@allianz/ng-aquila/formfield';
+import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { ErrorStateMatcher } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -29,8 +30,10 @@ import {
   FormControl,
   FormGroupDirective,
   FormsModule,
+  NG_VALIDATORS,
   NgControl,
   NgForm,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { LocalizedCountryNames } from 'i18n-iso-countries';
@@ -47,6 +50,35 @@ import { NxPhoneInputIntl } from './phone-input-intl';
 
 let next = 0;
 
+/**
+ * Parses a number into calling code + line number, or returns `null` if it can't be
+ * parsed. Unparseable values are a normal state here: `nxPhoneInputParseValidator`
+ * reports them instead of `writeValue()` throwing during a CVA lifecycle call.
+ */
+function parseNumber(value: string): { countryCallingCode: string; number: string } | null {
+  try {
+    return getCountryCallingCodeFromNumber(value.replace(/\s/g, ''));
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Reports values the component cannot represent, e.g. a number without a leading '+'
+ * and calling code. Whether such a number is a real, dialable one stays with the
+ * consumer's validators.
+ */
+const nxPhoneInputParseValidator: ValidatorFn = (control) => {
+  const value = control.value;
+
+  // An empty value is the concern of `Validators.required`, not of parsing.
+  if (typeof value !== 'string' || value === '') {
+    return null;
+  }
+
+  return parseNumber(value) ? null : { nxPhoneInputParse: { text: value } };
+};
+
 @Component({
   selector: 'nx-phone-input',
   templateUrl: './phone-input.component.html',
@@ -55,13 +87,14 @@ let next = 0;
   providers: [
     { provide: NxFormfieldControl, useExisting: NxPhoneInputComponent },
     { provide: NxAbstractControl, useExisting: NxPhoneInputComponent },
+    { provide: NG_VALIDATORS, useValue: nxPhoneInputParseValidator, multi: true },
   ],
   host: {
     '[attr.id]': 'id',
     role: 'group',
     '[attr.aria-labelledby]': '_ariaLabelledBy',
   },
-  imports: [NxDropdownModule, FormsModule],
+  imports: [NxDropdownModule, FormsModule, NxIconModule],
 })
 export class NxPhoneInputComponent
   implements
@@ -295,12 +328,19 @@ export class NxPhoneInputComponent
   writeValue(value: any): void {
     if (typeof value === 'string') {
       const noWhitespaceNumber = value.replace(/\s/g, '');
-      const { countryCallingCode, number } = getCountryCallingCodeFromNumber(
-        noWhitespaceNumber || '+' + getDialCodeByCountryCode(this.countryCode),
-      ); // requires string starting with '+'
-      this._countryCallingCode = countryCallingCode;
-      this._inputValue = this.inputFormatter(number, countryCallingCode);
-      this._countryCode = getCountryCodeforCallingCode(countryCallingCode);
+      const parsed = parseNumber(
+        noWhitespaceNumber ||
+          '+' + getDialCodeByCountryCode(this.countryCode || this._initialCountryCode),
+      );
+      if (parsed) {
+        this._countryCallingCode = parsed.countryCallingCode;
+        this._inputValue = this.inputFormatter(parsed.number, parsed.countryCallingCode);
+        this._countryCode = getCountryCodeforCallingCode(parsed.countryCallingCode);
+      } else {
+        this._inputValue = noWhitespaceNumber;
+        this._countryCode = '';
+        this._countryCallingCode = '';
+      }
     } else {
       this.value = '';
       this._inputValue = '';
@@ -390,16 +430,22 @@ export class NxPhoneInputComponent
     // It is valid for an Italian landline phone numbers to start with 0.
     const italyCountryCallingCode = '39';
     const isItaly = this._countryCallingCode === italyCountryCallingCode;
-    return isItaly ? value : value.replace(/^0/, '');
+    // Without a calling code there is nothing to read the 0 as a trunk prefix against,
+    // and the value has to round-trip so the input, the model and the
+    // `nxPhoneInputParse` error text keep showing the same number.
+    const hasNoCountry = !this._countryCallingCode;
+    return isItaly || hasNoCountry ? value : value.replace(/^0/, '');
   }
 
   /** Returns the combined string of selected calling code + input number */
   getModelValue() {
-    return (
-      '+' +
-      this._getCallingCode(this.dropdown.value) +
-      this._trimInputValue(this._removeLeadingZero(this._inputValue))
-    );
+    const number = this._removeLeadingZero(this._trimInputValue(this._inputValue));
+    // No country selected yet (e.g. un-parsable number): there is no calling code to
+    // prefix, so only the special characters are removed and the number stays unparseable.
+    if (!this.countryCode) {
+      return number;
+    }
+    return '+' + this._getCallingCode(this.countryCode) + number;
   }
 
   _getCallingCode(country: string) {
