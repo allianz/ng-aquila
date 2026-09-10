@@ -23,6 +23,7 @@ abstract class InfoIconTest {
   popoverMaxWidth: string | undefined;
   popoverModal = false;
   disabled = false;
+  inverse: boolean | undefined;
 }
 
 describe('NxInfoIconComponent', () => {
@@ -74,6 +75,7 @@ describe('NxInfoIconComponent', () => {
         ConfigurableInfoIconComponent,
         ModalInfoIconComponent,
         DisabledInfoIconComponent,
+        InverseInfoIconComponent,
       ],
     }).compileComponents();
   }));
@@ -208,6 +210,27 @@ describe('NxInfoIconComponent', () => {
     }));
   });
 
+  describe('inverse', () => {
+    it('is not inverse by default', () => {
+      createTestComponent(BasicInfoIconComponent);
+      expect(getButton().classList).not.toContain('nx-plain-button--inverse');
+    });
+
+    it('applies the inverse class when inverse is set', () => {
+      createTestComponent(InverseInfoIconComponent);
+      expect(getButton().classList).toContain('nx-plain-button--inverse');
+    });
+
+    // Unset resolves through the button's surface, so that pairing is pinned in
+    // surface-adoption.spec.ts rather than duplicated here.
+    it('does not apply the inverse class for an explicit false', () => {
+      createTestComponent(ConfigurableInfoIconComponent);
+      testInstance.inverse = false;
+      fixture.detectChanges();
+      expect(getButton().classList).not.toContain('nx-plain-button--inverse');
+    });
+  });
+
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicInfoIconComponent);
@@ -240,6 +263,7 @@ class BasicInfoIconComponent extends InfoIconTest {}
       [popoverWidth]="popoverWidth"
       [popoverMaxWidth]="popoverMaxWidth"
       [popoverModal]="popoverModal"
+      [inverse]="inverse"
     >
       Configurable content
     </nx-info-icon>
@@ -264,3 +288,11 @@ class ModalInfoIconComponent extends InfoIconTest {}
   imports: [NxInfoIconModule],
 })
 class DisabledInfoIconComponent extends InfoIconTest {}
+
+@Component({
+  selector: 'test-inverse-info-icon-component',
+  template: `<nx-info-icon inverse>Inverse content</nx-info-icon>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxInfoIconModule],
+})
+class InverseInfoIconComponent extends InfoIconTest {}

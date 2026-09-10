@@ -19,18 +19,41 @@
 }
 
 .nx-plain-button .nx-info-icon__icon {
-  font-size: v(info-icon-size);
-  color: v(info-icon-color);
+  color: var(--info-icon-current-color);
+}
+
+.nx-plain-button {
+  --info-icon-current-color: #{v(info-icon-color)};
 
   &:hover {
-    color: v(info-icon-hover-color);
+    --info-icon-current-color: #{v(info-icon-hover-color)};
   }
 
-  &:active {
-    color: v(info-icon-active-color);
+  &:is(:active, .nx-button--active) {
+    --info-icon-current-color: #{v(info-icon-active-color)};
+  }
+
+  &:disabled {
+    --info-icon-current-color: #{v(info-icon-disabled-color)};
   }
 }
 
-.nx-plain-button:disabled .nx-info-icon__icon {
-  color: v(info-icon-disabled-color);
+.nx-plain-button--inverse {
+  --info-icon-current-color: #{v(info-icon-inverse-color)};
+
+  &:hover {
+    --info-icon-current-color: #{v(info-icon-inverse-hover-color)};
+  }
+
+  &:is(:active, .nx-button--active) {
+    --info-icon-current-color: #{v(info-icon-inverse-active-color)};
+  }
+
+  &:disabled {
+    --info-icon-current-color: #{v(info-icon-inverse-disabled-color)};
+  }
+}
+
+.nx-info-icon__icon {
+  --plain-button-icon-size: #{v(info-icon-size)};
 }

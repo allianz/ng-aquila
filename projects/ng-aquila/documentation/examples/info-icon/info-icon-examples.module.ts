@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { InfoIconExampleComponent } from './info-icon/info-icon-example';
 import { InfoIconInlineExampleComponent } from './info-icon-inline/info-icon-inline-example';
+import { InfoIconInverseExampleComponent } from './info-icon-inverse/info-icon-inverse-example';
 import { InfoIconModalExampleComponent } from './info-icon-modal/info-icon-modal-example';
 
 const EXAMPLES = [
   InfoIconExampleComponent,
   InfoIconInlineExampleComponent,
+  InfoIconInverseExampleComponent,
   InfoIconModalExampleComponent,
 ];
 
@@ -20,6 +22,7 @@ export class InfoIconExamplesModule {
     return {
       'info-icon': InfoIconExampleComponent,
       'info-icon-inline': InfoIconInlineExampleComponent,
+      'info-icon-inverse': InfoIconInverseExampleComponent,
       'info-icon-modal': InfoIconModalExampleComponent,
     };
   }

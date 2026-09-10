@@ -1,5 +1,6 @@
 import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import {
   NxPopoverComponent,
   NxPopoverTriggerDirective,
@@ -54,4 +55,13 @@ export class NxInfoIconComponent {
 
   /** Whether the info icon button is disabled. */
   readonly disabled = input(false, { transform: booleanAttribute });
+
+  /**
+   * Whether the icon should use the inverse color (for use on dark/colored
+   * backgrounds). When not set, it follows the surface the icon is placed on
+   * (see `nxSurface`).
+   */
+  readonly inverse = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+  });
 }

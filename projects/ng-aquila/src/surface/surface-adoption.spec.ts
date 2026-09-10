@@ -5,6 +5,7 @@ import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxEyebrowModule } from '@allianz/ng-aquila/eyebrow';
 import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
 import { NxIconComponent, NxStatusIconComponent } from '@allianz/ng-aquila/icon';
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 import { NxPriceModule } from '@allianz/ng-aquila/price';
 import { Component, signal, type Type } from '@angular/core';
 import { type ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
@@ -276,6 +277,36 @@ describe('nxSurface adoption', () => {
     });
   });
 
+  // The info icon owns no inverse class of its own; it forwards `inverse` to the plain button it
+  // wraps, so an unset input has to stay undefined for the button to reach the surface at all.
+  describe('info-icon', () => {
+    it('inverts its button on the attention surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#info-icon button').contains('nx-plain-button--inverse')).toBe(true);
+    });
+
+    it('does not invert its button on the other surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['default', 'emphasis', 'accent-attention'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('#info-icon button').contains('nx-plain-button--inverse')).toBe(false);
+      }
+    });
+
+    it('lets an explicit inverse="false" win over the surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#info-icon-explicit button').contains('nx-plain-button--inverse')).toBe(
+        false,
+      );
+    });
+  });
+
   // No on-accent-attention tokens yet, so unlike price these also invert on the accent surface.
   describe('headline and eyebrow', () => {
     it('invert on the attention and accent-attention surfaces', () => {
@@ -348,6 +379,7 @@ describe('nxSurface adoption', () => {
     expect(classesOf('#headline').contains('nx-heading--inverse')).toBe(true);
     expect(classesOf('#status-icon').contains('nx-status-icon--inverse')).toBe(true);
     expect(classesOf('#avatar').contains('nx-avatar--inverse')).toBe(true);
+    expect(classesOf('#info-icon button').contains('nx-plain-button--inverse')).toBe(true);
   });
 });
 
@@ -367,6 +399,8 @@ const TEMPLATE = `
     <button id="button-legacy-negative" nxButton="primary negative">button</button>
     <nx-price id="price" [value]="1" />
     <nx-price id="price-explicit" [value]="1" [inverse]="false" />
+    <nx-info-icon id="info-icon">info</nx-info-icon>
+    <nx-info-icon id="info-icon-explicit" [inverse]="false">info</nx-info-icon>
     <nx-eyebrow id="eyebrow">eyebrow</nx-eyebrow>
     <nx-eyebrow id="eyebrow-explicit" [inverse]="false">eyebrow</nx-eyebrow>
     <h2 id="headline" nxHeadline>headline</h2>
@@ -389,6 +423,7 @@ const TEMPLATE = `
     NxIconComponent,
     NxStatusIconComponent,
     NxAvatarComponent,
+    NxInfoIconComponent,
   ],
   providers: A1_PROVIDERS,
 })
@@ -411,6 +446,7 @@ class AdoptersComponent {
     NxIconComponent,
     NxStatusIconComponent,
     NxAvatarComponent,
+    NxInfoIconComponent,
   ],
   host: { 'data-non-a1': '' },
 })

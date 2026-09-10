@@ -22,6 +22,12 @@ The Info Icon component is a simplified wrapper around the [Popover component](.
 
 <!-- example(info-icon-inline) -->
 
+### Inverse
+
+Set `inverse` to use the icon on a dark or colored background.
+
+<!-- example(info-icon-inverse) -->
+
 ### Modal Popover
 
 <!-- example(info-icon-modal) -->
