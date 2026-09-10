@@ -1,3 +1,4 @@
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxSliderComponent } from '@allianz/ng-aquila/slider';
 import { Component } from '@angular/core';
 
@@ -8,6 +9,6 @@ import { Component } from '@angular/core';
   selector: 'slider-inverted-example',
   templateUrl: './slider-inverted-example.html',
   styleUrls: ['./slider-inverted-example.css'],
-  imports: [NxSliderComponent],
+  imports: [NxLabelComponent, NxSliderComponent],
 })
 export class SliderInvertedExampleComponent {}

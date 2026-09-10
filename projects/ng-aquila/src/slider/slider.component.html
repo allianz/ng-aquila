@@ -1,5 +1,14 @@
 @if (label) {
-  <label class="nx-slider__label" [id]="labelId" (click)="_focusHandleElement()">{{ label }}</label>
+  <nx-label
+    class="nx-slider__label"
+    [id]="labelId()"
+    [disabled]="disabled"
+    (click)="_focusHandleElement()"
+    [negative]="inverse()"
+    >{{ label }}</nx-label
+  >
+} @else {
+  <ng-content select="nx-label"></ng-content>
 }
 
 <div
@@ -14,7 +23,7 @@
           class="nx-slider__handle"
           [id]="id + '-handle'"
           [attr.tabindex]="tabindex"
-          [attr.aria-labelledby]="ariaLabelledBy() || (label ? labelId : null)"
+          [attr.aria-labelledby]="_labelledBy()"
           role="slider"
           [attr.aria-valuemin]="min"
           [attr.aria-valuemax]="max"

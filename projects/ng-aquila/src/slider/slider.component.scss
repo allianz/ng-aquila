@@ -4,13 +4,10 @@ $arrow-size: 1.5 * nx-spacer(3xs);
 
 :host {
   display: block;
-}
 
-.nx-slider__label {
-  display: inline-block;
-  @include type-style(slider-label);
-  color: v(slider-label-color);
-  margin-bottom: v(slider-label-margin-bottom);
+  ::ng-deep nx-label {
+    margin-bottom: v(slider-label-margin-bottom);
+  }
 }
 
 .nx-slider__wrapper {
@@ -266,54 +263,34 @@ $arrow-size: 1.5 * nx-spacer(3xs);
   .nx-slider__background {
     background: v(slider-disabled-background-color);
   }
-
-  .nx-slider__label {
-    color: v(slider-label-disabled-color);
-  }
 }
 
-// negative styles
+// Inverse
 :host(.nx-slider--negative) {
-  .nx-slider__label,
-  .nx-slider__value-label {
-    color: v(negative);
-  }
-
-  // A1 is the default: the inverse slider recolors the value label to the
-  // brand-inverse colors.
-  .nx-slider__value {
-    background-color: v(color-brand-inverse);
-    color: v(color-on-brand-inverse);
-  }
-
-  .nx-slider__filler {
-    background-color: v(negative);
-  }
-
-  .nx-slider__background {
-    background-color: v(slider-negative-background-color);
-  }
-}
-
-// Legacy themes (NDBX, Aposin) keep the default value background/color on the
-// inverse slider instead of the A1 brand-inverse recoloring.
-:host(:not(.nx-a1-slider).nx-slider--negative) {
-  .nx-slider__value {
-    background-color: v(slider-value-background-color);
-    color: v(slider-value-color);
-  }
-}
-
-// negative disabled styles
-:host(.nx-slider--negative.nx-slider--disabled) {
-  .nx-slider__label,
-  .nx-slider__value-label {
-    color: v(negative-01);
-  }
-
-  .nx-slider__filler {
-    background-color: v(negative-01);
-  }
+  --slider-value-label-color: #{v(slider-value-label-inverse-color)};
+  --slider-value-label-disabled-color: #{v(slider-value-label-inverse-disabled-color)};
+  --slider-value-color: #{v(slider-value-inverse-color)};
+  --slider-value-disabled-color: #{v(slider-value-inverse-disabled-color)};
+  --slider-value-background-color: #{v(slider-value-inverse-background-color)};
+  --slider-value-disabled-background-color: #{v(slider-value-inverse-disabled-background-color)};
+  --slider-value-border: #{v(slider-value-inverse-border)};
+  --slider-value-box-shadow: #{v(slider-value-inverse-box-shadow)};
+  --slider-filler-color: #{v(slider-filler-inverse-color)};
+  --slider-filler-disabled-color: #{v(slider-filler-inverse-disabled-color)};
+  --slider-background-color: #{v(slider-background-inverse-color)};
+  --slider-disabled-background-color: #{v(slider-background-inverse-disabled-color)};
+  --slider-handle-background-color: #{v(slider-handle-inverse-background-color)};
+  --slider-handle-hover-background-color: #{v(slider-handle-inverse-hover-background-color)};
+  --slider-handle-disabled-background-color: #{v(slider-handle-inverse-disabled-background-color)};
+  --slider-handle-border: #{v(slider-handle-inverse-border)};
+  --slider-handle-border-color: #{v(slider-handle-inverse-border-color)};
+  --slider-handle-hover-border-color: #{v(slider-handle-inverse-hover-border-color)};
+  --slider-handle-active-border-color: #{v(slider-handle-inverse-active-border-color)};
+  --slider-handle-focus-border-color: #{v(slider-handle-inverse-focus-border-color)};
+  --slider-handle-disabled-border: #{v(slider-handle-inverse-disabled-border)};
+  --slider-handle-active-inset-color: #{v(slider-handle-inverse-active-inset-color)};
+  --slider-handle-box-shadow: #{v(slider-handle-inverse-box-shadow)};
+  --slider-tick-color: #{v(slider-tick-inverse-color)};
 }
 
 @media screen and (forced-colors: active) {

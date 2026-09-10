@@ -1,3 +1,4 @@
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import {
   NxColComponent,
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './slider-tick-example.html',
   styleUrls: ['./slider-tick-example.css'],
   imports: [
+    NxLabelComponent,
     NxLayoutComponent,
     NxRowComponent,
     NxColComponent,

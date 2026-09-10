@@ -1,3 +1,4 @@
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { clamp, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -16,6 +17,7 @@ import {
   ChangeDetectorRef,
   Component,
   computed,
+  contentChild,
   ContentChildren,
   ElementRef,
   EventEmitter,
@@ -68,7 +70,7 @@ const VALUE_MARGIN = 4;
     '[class.nx-slider--negative]': 'inverse()',
     '[class.nx-a1-slider]': '_a1Enabled()',
   },
-  imports: [NgStyle],
+  imports: [NgStyle, NxLabelComponent],
 })
 export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
   private _dragSubscriptions: Subscription[] = [];
@@ -99,18 +101,13 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
 
   /** Sets the id of the slider. */
   @Input() set id(value: string) {
-    if (this._id !== value) {
-      this._id = value;
-      this._cdr.markForCheck();
-    }
+    this._id.set(value);
   }
   get id(): string {
-    return this._id;
+    return this._id();
   }
-  private _id = inject(IdGenerationService).nextId('nx-slider');
-  protected get labelId() {
-    return this._id + '-label';
-  }
+  private readonly _id = signal(inject(IdGenerationService).nextId('nx-slider'));
+  protected readonly labelId = computed(() => `${this._id()}-label`);
 
   /** Sets the tabindex of the slider. */
   @Input() set tabindex(value: NumberInput) {
@@ -158,17 +155,16 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
   }
   private _step: number = DEFAULT_STEP;
 
+  private readonly _projectedLabel = contentChild(NxLabelComponent, { descendants: true });
+
   /** Sets the label which is displayed on top of the slider. */
   @Input() set label(value: string) {
-    if (this._label !== value) {
-      this._label = value;
-      this._cdr.markForCheck();
-    }
+    this._label.set(value);
   }
   get label(): string {
-    return this._label;
+    return this._label();
   }
-  private _label = '';
+  private readonly _label = signal('');
 
   /**
    * Sets the value of the aria-labelledby attribute.
@@ -176,6 +172,13 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
    * Use this when you want to reference an external label element instead of using the internal label.
    */
   ariaLabelledBy = input<string>();
+
+  protected readonly _labelledBy = computed(
+    () =>
+      this.ariaLabelledBy() ||
+      (this._label() ? this.labelId() : this._projectedLabel()?.id) ||
+      null,
+  );
 
   /** Whether the input to the control of the slider should be disabled. */
   @Input() set disabled(value: BooleanInput) {

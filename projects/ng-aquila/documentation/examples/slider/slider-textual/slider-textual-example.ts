@@ -1,3 +1,4 @@
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import {
   NxColComponent,
   NxLayoutComponent,
@@ -22,6 +23,7 @@ enum FruitPreferenceType {
   templateUrl: './slider-textual-example.html',
   styleUrls: ['./slider-textual-example.css'],
   imports: [
+    NxLabelComponent,
     NxLayoutComponent,
     NxRowComponent,
     NxColComponent,

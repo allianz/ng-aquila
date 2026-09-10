@@ -6,6 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: number input, range
+a1Full: true
 a1Densities: true
 group: Forms & Inputs
 ---
@@ -17,6 +18,17 @@ For better decimal/floating point handling this module is using the 3rd party li
 ### Basic
 
 <!-- example(slider-basic) -->
+
+### Label with info icon
+
+Instead of the `label` input you can project an `nx-label` into the slider. This lets you
+enrich the label — for example adding an info icon marked with `nxLabelInfo`.
+
+A projected `nx-label` owns its own state: the slider does not forward `disabled` or `inverse`
+to it. Set `disabled` and `negative` on the `nx-label` yourself to keep it in sync with the
+slider.
+
+<!-- example(slider-label-info) -->
 
 ### Appendix
 

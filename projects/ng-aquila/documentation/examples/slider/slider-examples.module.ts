@@ -13,6 +13,7 @@ import { SliderDisabledExampleComponent } from './slider-disabled/slider-disable
 import { SliderInverseExampleComponent } from './slider-inverse/slider-inverse-example';
 import { SliderInvertedExampleComponent } from './slider-inverted/slider-inverted-example';
 import { SliderLabelExampleComponent } from './slider-label/slider-label-example';
+import { SliderLabelInfoExampleComponent } from './slider-label-info/slider-label-info-example';
 import { SliderLabelsExampleComponent } from './slider-labels/slider-labels-example';
 import { SliderReactiveExampleComponent } from './slider-reactive/slider-reactive-example';
 import { SliderTemplateExampleComponent } from './slider-template/slider-template-example';
@@ -29,6 +30,7 @@ const EXAMPLES = [
   SliderDisabledExampleComponent,
   SliderInvertedExampleComponent,
   SliderLabelExampleComponent,
+  SliderLabelInfoExampleComponent,
   SliderInverseExampleComponent,
   SliderReactiveExampleComponent,
   SliderTemplateExampleComponent,
@@ -59,6 +61,7 @@ export class SliderExamplesModule {
       'slider-disabled': SliderDisabledExampleComponent,
       'slider-inverted': SliderInvertedExampleComponent,
       'slider-label': SliderLabelExampleComponent,
+      'slider-label-info': SliderLabelInfoExampleComponent,
       'slider-inverse': SliderInverseExampleComponent,
       'slider-reactive': SliderReactiveExampleComponent,
       'slider-template': SliderTemplateExampleComponent,

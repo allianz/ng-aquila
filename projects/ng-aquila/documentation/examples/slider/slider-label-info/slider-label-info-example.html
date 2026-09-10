@@ -1,0 +1,11 @@
+<nx-slider [min]="10" [max]="110" [step]="2" [(value)]="sliderDemoValue">
+  <nx-label>
+    Monthly contribution
+    <nx-info-icon nxLabelInfo popoverMaxWidth="300px">
+      Your monthly contribution is calculated from your selected coverage and
+      your age at contract start.
+    </nx-info-icon>
+  </nx-label>
+</nx-slider>
+
+<div class="nx-margin-top-s">Slider value: {{ sliderDemoValue }}</div>

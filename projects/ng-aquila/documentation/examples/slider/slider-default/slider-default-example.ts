@@ -1,3 +1,4 @@
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxSliderComponent } from '@allianz/ng-aquila/slider';
 import { Component } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
   selector: 'slider-default-example',
   templateUrl: './slider-default-example.html',
   styleUrls: ['./slider-default-example.css'],
-  imports: [NxSliderComponent],
+  imports: [NxLabelComponent, NxSliderComponent],
 })
 export class SliderDefaultExampleComponent {
   sliderDemoValue = 42;

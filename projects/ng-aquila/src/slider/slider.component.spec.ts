@@ -1,3 +1,4 @@
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import {
@@ -85,6 +86,8 @@ describe('NxSliderComponent', () => {
         InverseSlider,
         AppendixSlider,
         AriaLabelledBySlider,
+        ProjectedLabelSlider,
+        ProjectedLabelWithoutIdSlider,
       ],
     }).compileComponents();
   }));
@@ -171,6 +174,43 @@ describe('NxSliderComponent', () => {
       fixture.detectChanges();
 
       expect(handleElement.getAttribute('aria-labelledby')).toBe('another-label');
+    });
+
+    it('renders a projected nx-label when no label input is given', () => {
+      createTestComponent(ProjectedLabelSlider);
+      expect(sliderNativeElement.querySelector('nx-label')?.textContent?.trim()).toBe(
+        'Projected label',
+      );
+      expect(sliderNativeElement.querySelector('.nx-slider__label')).toBeNull();
+    });
+
+    it('uses the projected label for aria-labelledby', () => {
+      createTestComponent(ProjectedLabelSlider);
+      const handleElement = sliderNativeElement.querySelector('.nx-slider__handle')!;
+      expect(handleElement.getAttribute('aria-labelledby')).toBe('projected-label');
+    });
+
+    it('falls back to the auto-generated id of a projected nx-label without an id', () => {
+      createTestComponent(ProjectedLabelWithoutIdSlider);
+      const labelledBy = sliderNativeElement
+        .querySelector('.nx-slider__handle')!
+        .getAttribute('aria-labelledby');
+
+      expect(labelledBy).toBeTruthy();
+      expect(document.getElementById(labelledBy!)?.textContent?.trim()).toBe('Projected label');
+    });
+
+    it('prefers the label input over a projected nx-label', () => {
+      createTestComponent(ProjectedLabelSlider);
+      (testInstance as ProjectedLabelSlider).label = 'Label input';
+      fixture.detectChanges();
+
+      const labelElement = sliderNativeElement.querySelector('.nx-slider__label')!;
+      expect(labelElement.textContent?.trim()).toBe('Label input');
+      expect(sliderNativeElement.querySelectorAll('nx-label').length).toBe(1);
+      expect(
+        sliderNativeElement.querySelector('.nx-slider__handle')!.getAttribute('aria-labelledby'),
+      ).toBe(labelElement.querySelector('label')!.id);
     });
 
     it('renders the Slider with a thumb label', () => {
@@ -979,3 +1019,31 @@ class AppendixSlider extends SliderTest {}
 class AriaLabelledBySlider extends SliderTest {
   customLabelId = 'custom-external-label';
 }
+
+@Component({
+  selector: 'test-projected-label-slider',
+  template: `
+    <nx-slider [min]="0" [max]="100" [label]="label">
+      <nx-label id="projected-label">Projected label</nx-label>
+    </nx-slider>
+  `,
+  styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxSliderModule, NxLabelComponent],
+})
+class ProjectedLabelSlider extends SliderTest {
+  label = '';
+}
+
+@Component({
+  selector: 'test-projected-label-without-id-slider',
+  template: `
+    <nx-slider [min]="0" [max]="100">
+      <nx-label>Projected label</nx-label>
+    </nx-slider>
+  `,
+  styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxSliderModule, NxLabelComponent],
+})
+class ProjectedLabelWithoutIdSlider extends SliderTest {}
