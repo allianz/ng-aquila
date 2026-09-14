@@ -1,4 +1,3 @@
-import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import {
@@ -16,12 +15,14 @@ import {
   FormsModule,
   NgModel,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxSliderComponent } from './slider.component';
 import { NxSliderModule } from './slider.module';
+import { vi } from 'vitest';
 
 const createKeyboardEvent = (keyCode: number) => {
   const event = document.createEvent('KeyboardEvent') as any;
@@ -84,6 +85,8 @@ describe('NxSliderComponent', () => {
         ReactiveFormsSlider,
         BasicSliderOnPush,
         InverseSlider,
+        CriticalSlider,
+        ProjectedErrorSlider,
         AppendixSlider,
         AriaLabelledBySlider,
         ProjectedLabelSlider,
@@ -747,6 +750,90 @@ describe('NxSliderComponent', () => {
     });
   });
 
+  describe('critical', () => {
+    function getHandle() {
+      return fixture.nativeElement.querySelector('.nx-slider__handle') as HTMLElement;
+    }
+
+    function getControl() {
+      return (testInstance as CriticalSlider).testForm.controls.slide;
+    }
+
+    function submitForm() {
+      dispatchFakeEvent(fixture.nativeElement.querySelector('form'), 'submit');
+      fixture.detectChanges();
+    }
+
+    it('stays neutral while the invalid control is untouched', () => {
+      createTestComponent(CriticalSlider);
+
+      expect(getControl().invalid).toBe(true);
+      expect(sliderNativeElement).not.toHaveClass('nx-slider--critical');
+      expect(getHandle().hasAttribute('aria-invalid')).toBe(false);
+    });
+
+    it('turns critical once the invalid control is touched', () => {
+      createTestComponent(CriticalSlider);
+
+      blurHandle();
+
+      expect(sliderNativeElement).toHaveClass('nx-slider--critical');
+      expect(getHandle().getAttribute('aria-invalid')).toBe('true');
+    });
+
+    it('turns critical when the form is submitted with an untouched invalid control', () => {
+      createTestComponent(CriticalSlider);
+      expect(getControl().touched).toBe(false);
+
+      submitForm();
+
+      expect(sliderNativeElement).toHaveClass('nx-slider--critical');
+      expect(getHandle().getAttribute('aria-invalid')).toBe('true');
+    });
+
+    it('leaves the critical state once the control becomes valid', () => {
+      createTestComponent(CriticalSlider);
+      blurHandle();
+      expect(sliderNativeElement).toHaveClass('nx-slider--critical');
+
+      getControl().setValue(60);
+      fixture.detectChanges();
+
+      expect(sliderNativeElement).not.toHaveClass('nx-slider--critical');
+      expect(getHandle().hasAttribute('aria-invalid')).toBe(false);
+    });
+
+    it('projects every error only in the critical state', () => {
+      createTestComponent(CriticalSlider);
+      expect(fixture.nativeElement.querySelector('nx-error')).toBeNull();
+      expect(getHandle().hasAttribute('aria-describedby')).toBe(false);
+
+      blurHandle();
+
+      const errorContents: HTMLElement[] = Array.from(
+        fixture.nativeElement.querySelectorAll('nx-error .nx-error__content'),
+      );
+      expect(errorContents.length).toBe(2);
+      expect(getHandle().getAttribute('aria-describedby')).toBe(
+        errorContents.map((content) => content.getAttribute('id')).join(' '),
+      );
+    });
+
+    it('stays neutral without a form control', () => {
+      createTestComponent(BasicSlider);
+
+      expect(sliderNativeElement).not.toHaveClass('nx-slider--critical');
+      expect(getHandle().hasAttribute('aria-invalid')).toBe(false);
+      expect(fixture.nativeElement.querySelector('.nx-slider__error')).toBeNull();
+    });
+
+    it('shows a projected error without a form control', () => {
+      createTestComponent(ProjectedErrorSlider);
+
+      expect(fixture.nativeElement.querySelector('.nx-slider__error nx-error')).not.toBeNull();
+    });
+  });
+
   describe('a11y', () => {
     it('should handle keyboard events', () => {
       createTestComponent(BasicSlider);
@@ -852,6 +939,41 @@ class BasicSliderOnPush extends SliderTest {}
 class InverseSlider extends SliderTest {
   inverse = false;
 }
+
+@Component({
+  selector: 'test-critical-slider',
+  template: `
+    <form [formGroup]="testForm">
+      <div class="slider-container">
+        <nx-slider [formControl]="testForm.controls.slide">
+          <nx-error>Too small.</nx-error>
+          <nx-error>Pick at least 40.</nx-error>
+        </nx-slider>
+      </div>
+    </form>
+  `,
+  styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
+})
+class CriticalSlider extends SliderTest {
+  testForm = new FormBuilder().group({
+    slide: new FormControl(10, Validators.min(40)),
+  });
+}
+
+@Component({
+  selector: 'test-projected-error-slider',
+  template: `
+    <nx-slider>
+      <nx-error>Too small.</nx-error>
+    </nx-slider>
+  `,
+  styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxSliderModule],
+})
+class ProjectedErrorSlider extends SliderTest {}
 
 @Component({
   selector: 'test-configurable-slider',
@@ -1029,7 +1151,7 @@ class AriaLabelledBySlider extends SliderTest {
   `,
   styles: [styles],
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [NxSliderModule, NxLabelComponent],
+  imports: [NxSliderModule],
 })
 class ProjectedLabelSlider extends SliderTest {
   label = '';
@@ -1044,6 +1166,6 @@ class ProjectedLabelSlider extends SliderTest {
   `,
   styles: [styles],
   changeDetection: ChangeDetectionStrategy.Eager,
-  imports: [NxSliderModule, NxLabelComponent],
+  imports: [NxSliderModule],
 })
 class ProjectedLabelWithoutIdSlider extends SliderTest {}

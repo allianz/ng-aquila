@@ -23,6 +23,8 @@
           class="nx-slider__handle"
           [id]="id + '-handle'"
           [attr.tabindex]="tabindex"
+          [attr.aria-invalid]="errorState() || null"
+          [attr.aria-describedby]="_errorDescribedBy()"
           [attr.aria-labelledby]="_labelledBy()"
           role="slider"
           [attr.aria-valuemin]="min"
@@ -69,3 +71,9 @@
     </div>
   }
 </div>
+
+@if (_showError()) {
+  <div class="nx-slider__error">
+    <ng-content select="nx-error"></ng-content>
+  </div>
+}

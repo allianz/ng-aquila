@@ -2565,6 +2565,15 @@ $nx-theme: (
   slider-tick-height: 5px,
   slider-handle-active-inset-border: 4px,
   slider-padding-bottom: 36px,
+  // Critical slider
+  slider-filler-critical-color: danger,
+  slider-filler-critical-inverse-color: danger,
+  slider-handle-critical-hover-border-color: danger-hover,
+  slider-handle-critical-active-border-color: danger-active,
+  slider-handle-critical-border: 1px solid danger,
+  slider-handle-critical-inverse-border: 1px solid danger,
+  slider-error-margin-top: 8px,
+
   // Inverse slider
   slider-value-label-inverse-color: negative,
   slider-value-label-inverse-disabled-color: negative,

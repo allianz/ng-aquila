@@ -220,6 +220,10 @@ $arrow-size: 1.5 * nx-spacer(3xs);
   padding-bottom: v(slider-padding-bottom);
 }
 
+.nx-slider__error {
+  margin-top: v(slider-error-margin-top);
+}
+
 :host(.nx-slider--disabled) {
   cursor: not-allowed;
 
@@ -291,6 +295,21 @@ $arrow-size: 1.5 * nx-spacer(3xs);
   --slider-handle-active-inset-color: #{v(slider-handle-inverse-active-inset-color)};
   --slider-handle-box-shadow: #{v(slider-handle-inverse-box-shadow)};
   --slider-tick-color: #{v(slider-tick-inverse-color)};
+}
+
+:host(.nx-slider--critical) {
+  --slider-filler-color: #{v(slider-filler-critical-color)};
+  --slider-handle-border: #{v(slider-handle-critical-border)};
+  --slider-handle-border-color: #{v(slider-filler-critical-color)};
+  --slider-handle-hover-border-color: #{v(slider-handle-critical-hover-border-color)};
+  --slider-handle-active-border-color: #{v(slider-handle-critical-active-border-color)};
+  --slider-handle-focus-border-color: #{v(slider-filler-critical-color)};
+}
+
+:host(.nx-slider--critical.nx-slider--negative) {
+  --slider-handle-focus-border-color: #{v(slider-filler-critical-inverse-color)};
+  --slider-filler-color: #{v(slider-filler-critical-inverse-color)};
+  --slider-handle-border: #{v(slider-handle-critical-inverse-border)};
 }
 
 @media screen and (forced-colors: active) {

@@ -1,6 +1,6 @@
-import { NxLabelComponent } from '@allianz/ng-aquila/base';
+import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
-import { clamp, IdGenerationService } from '@allianz/ng-aquila/utils';
+import { clamp, ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import {
@@ -19,21 +19,31 @@ import {
   computed,
   contentChild,
   ContentChildren,
+  contentChildren,
+  DoCheck,
   ElementRef,
   EventEmitter,
   forwardRef,
   inject,
+  Injector,
   Input,
   input,
   NgZone,
   OnDestroy,
+  OnInit,
   Optional,
   Output,
   QueryList,
   signal,
   ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormGroupDirective,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+  NgForm,
+} from '@angular/forms';
 import { Decimal } from 'decimal.js';
 import { fromEvent, Subscription } from 'rxjs';
 
@@ -68,11 +78,14 @@ const VALUE_MARGIN = 4;
     '(keydown)': '_handleKeypress($event)',
     '[class.nx-slider--disabled]': 'disabled',
     '[class.nx-slider--negative]': 'inverse()',
+    '[class.nx-slider--critical]': 'errorState()',
     '[class.nx-a1-slider]': '_a1Enabled()',
   },
   imports: [NgStyle, NxLabelComponent],
 })
-export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
+export class NxSliderComponent
+  implements ControlValueAccessor, AfterViewInit, OnInit, DoCheck, OnDestroy
+{
   private _dragSubscriptions: Subscription[] = [];
   private _decimalPlaces = 0;
   private _thumbLabel = true;
@@ -248,6 +261,36 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
    */
   readonly inverse = computed(() => this.inverseInput() || this._negative());
 
+  private readonly _errorState = signal(false);
+
+  /**
+   * Whether the slider shows the critical styles, i.e. its control is invalid and
+   * has been touched (or its form was submitted).
+   */
+  readonly errorState = this._errorState.asReadonly();
+
+  private readonly _errorStateMatcher = inject(ErrorStateMatcher);
+  private readonly _injector = inject(Injector);
+
+  private readonly _ngControl = signal<NgControl | null>(null);
+  private readonly _parentForm = inject(NgForm, { optional: true });
+  private readonly _parentFormGroup = inject(FormGroupDirective, { optional: true });
+
+  private readonly _errors = contentChildren(NxErrorComponent);
+
+  /** Without a control there is no error state to wait for, so a projected error is shown as-is. */
+  protected readonly _showError = computed(
+    () => this._errors().length > 0 && (!this._ngControl() || this.errorState()),
+  );
+
+  protected readonly _errorDescribedBy = computed(() =>
+    this._showError()
+      ? this._errors()
+          .map((error) => error.id)
+          .join(' ')
+      : null,
+  );
+
   private readonly _a1 = inject<AllianzOneOptions | null>(ALLIANZ_ONE, { optional: true });
   protected readonly _a1Enabled = computed(() => this._a1?.enabled?.() ?? false);
 
@@ -296,6 +339,22 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Optional() private readonly _dir: Directionality | null,
     private readonly _focusMonitor: FocusMonitor,
   ) {}
+
+  ngOnInit(): void {
+    // Resolved lazily: injecting NgControl directly would be circular dependency because the
+    // slider provides itself as NG_VALUE_ACCESSOR.
+    this._ngControl.set(this._injector.get(NgControl, null));
+  }
+
+  ngDoCheck(): void {
+    const ngControl = this._ngControl();
+
+    if (ngControl) {
+      this._errorState.set(
+        this._errorStateMatcher.isErrorState(ngControl, this._parentFormGroup || this._parentForm),
+      );
+    }
+  }
 
   ngAfterViewInit(): void {
     this._focusMonitor.monitor(this._handleElement);

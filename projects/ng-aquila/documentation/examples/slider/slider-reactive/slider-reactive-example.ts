@@ -1,4 +1,5 @@
-import { NxLabelComponent } from '@allianz/ng-aquila/base';
+import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import { NxSliderComponent } from '@allianz/ng-aquila/slider';
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
@@ -17,6 +18,8 @@ import {
   templateUrl: './slider-reactive-example.html',
   styleUrls: ['./slider-reactive-example.css'],
   imports: [
+    NxErrorComponent,
+    NxButtonComponent,
     NxLabelComponent,
     FormsModule,
     ReactiveFormsModule,
@@ -26,7 +29,7 @@ import {
 })
 export class SliderReactiveExampleComponent {
   readonly testForm = this.fb.group({
-    sliderTestReactive: [10, [Validators.required]],
+    sliderTestReactive: [10, [Validators.required, Validators.min(40)]],
   });
 
   constructor(private readonly fb: FormBuilder) {}
