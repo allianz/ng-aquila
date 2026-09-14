@@ -14,18 +14,17 @@
 
 .nx-radio__control {
   position: relative;
-  // TODO border-width needs to be variable
-  border-width: var(--radio-button-border-width);
+  border-width: #{v(radio-button-border-width)};
   border-style: solid;
   border-color: var(--outer-circle-border-color);
   border-radius: 50%;
-  width: var(--radio-button-circle-size);
-  min-width: var(--radio-button-circle-size);
-  height: var(--radio-button-circle-size);
+  width: #{v(radio-button-circle-size)};
+  min-width: #{v(radio-button-circle-size)};
+  height: #{v(radio-button-circle-size)};
   display: flex;
   justify-content: center;
   align-items: center;
-  --nx-radio-cutout-radius: calc(var(--radio-button-circle-size) / 2);
+  --nx-radio-cutout-radius: calc(#{v(radio-button-circle-size)} / 2);
   background: radial-gradient(
     circle at center center,
     var(--dot-color),
@@ -44,7 +43,7 @@
 
 :host.checked {
   .nx-radio__control {
-    --nx-radio-cutout-radius: calc(var(--radio-button-inner-dot-size) / 2);
+    --nx-radio-cutout-radius: calc(#{v(radio-button-inner-dot-size)} / 2);
   }
 }
 
@@ -118,33 +117,33 @@
 }
 
 :host.on-selection {
-  --outer-circle-border-color: var(--radio-button-on-selection-border-color);
+  --outer-circle-border-color: #{v(radio-button-on-selection-border-color)};
 
   &.checked {
-    --outer-circle-color: var(--radio-button-on-selection-selected-border-color);
+    --outer-circle-color: #{v(radio-button-on-selection-selected-border-color)};
     --outer-circle-border-color: var(--outer-circle-color);
-    --dot-color: var(--radio-button-on-selection-selected-dot-color);
+    --dot-color: #{v(radio-button-on-selection-selected-dot-color)};
   }
 
   // disabled state
   &.disabled {
-    --outer-circle-border-color: var(--radio-button-on-selection-disabled-border-color);
+    --outer-circle-border-color: #{v(radio-button-on-selection-disabled-border-color)};
 
     &.checked {
-      --outer-circle-color: var(--radio-button-on-selection-disabled-selected-border-color);
-      --dot-color: var(--radio-button-on-selection-disabled-selected-dot-color);
+      --outer-circle-color: #{v(radio-button-on-selection-disabled-selected-border-color)};
+      --dot-color: #{v(radio-button-on-selection-disabled-selected-dot-color)};
       --outer-circle-border-color: var(--outer-circle-color);
     }
   }
 
   // readonly state
   &.readonly {
-    --outer-circle-border-color: var(--radio-button-on-selection-readonly-border-color);
+    --outer-circle-border-color: #{v(radio-button-on-selection-readonly-border-color)};
 
     &.checked {
+      --outer-circle-color: #{v(radio-button-on-selection-readonly-selected-border-color)};
+      --dot-color: #{v(radio-button-on-selection-readonly-selected-dot-color)};
       --outer-circle-border-color: var(--outer-circle-color);
-      --outer-circle-color: var(--radio-button-on-selection-readonly-selected-border-color);
-      --dot-color: var(--radio-button-on-selection-readonly-selected-dot-color);
     }
   }
 
@@ -152,9 +151,9 @@
   &.critical {
     --outer-circle-border-color: #{v(danger)};
 
+    // Selected keeps the plain on-selection ring; critical only tints the unselected border.
     &.checked {
-      --outer-circle-color: #{v(radio-button-on-selection-critical-background-color)};
-      --outer-circle-border-color: #{v(radio-button-on-selection-critical-border-color)};
+      --outer-circle-border-color: var(--outer-circle-color);
     }
   }
 }

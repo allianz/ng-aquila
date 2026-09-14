@@ -1121,8 +1121,6 @@ $nx-theme: (
   radio-button-on-selection-border-color: ui-05,
   radio-button-on-selection-readonly-border-color: readonly-on-surface-color,
   radio-button-on-selection-disabled-border-color: interactive-primary,
-  radio-button-on-selection-critical-border-color: ui-01,
-  radio-button-on-selection-critical-background-color: ui-01,
   radio-button-on-selection-selected-border-color: ui-01,
   radio-button-on-selection-selected-dot-color: transparent,
   radio-button-on-selection-disabled-selected-border-color: ui-01,
@@ -3243,5 +3241,9 @@ $nx-theme: (
   grid-gutter-width-large-functional: layout-inset-container-large,
 
   // ----- Deprecated tokens, remove in next major version ----- //
-   // - indicator-single-letter-padding: unused since the indicator component switched from the `.single-letter` class to `.nx-indicator--padded`.
+  // - indicator-single-letter-padding: unused since the indicator component switched from the `.single-letter` class to `.nx-indicator--padded`.
+  // - radio-button-on-selection-critical-border-color, -critical-background-color: a selected
+  //   on-selection radio keeps its plain ring; critical only tints the unselected border.
+  radio-button-on-selection-critical-border-color: ui-01,
+  radio-button-on-selection-critical-background-color: ui-01,
 );
