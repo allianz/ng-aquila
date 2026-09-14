@@ -1,0 +1,17 @@
+<nx-multi-progress-indicator aria-label="Order Process Steps" layout="vertical">
+  <nx-multi-progress-step completed>
+    <a [routerLink]="'./'" nxProgressIndicatorStepAction>Billing Address</a>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step current>
+    <span>Shipping Address</span>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <span>Gift Wrapping</span>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <span>Review Order</span>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <span>Payment</span>
+  </nx-multi-progress-step>
+</nx-multi-progress-indicator>

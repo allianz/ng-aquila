@@ -1,0 +1,464 @@
+@use '../../shared-styles/index' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  // Bullet-to-label gap; the space to the *next* step is `step-gap` below - Figma specs them
+  // separately (12px vs 16px in the default density).
+  gap: v(multi-progress-indicator-gap);
+  margin-right: v(multi-progress-indicator-step-gap);
+  // Positioning context for the hit-area-extending ::before below.
+  position: relative;
+  // Own stacking context so the hover-pill ::before's negative z-index doesn't escape to an
+  // ancestor and paint behind some opaque background.
+  isolation: isolate;
+  // Only the current step fills the remaining row; others hug their content ("Fill container" /
+  // "Hug content" in the Figma layout).
+  flex: 0 0 auto;
+
+  &.is-current {
+    flex: 1 1 auto;
+  }
+
+  &.is-last {
+    margin-right: 0;
+  }
+}
+
+// `display: contents` makes bullet/bar direct flex items of `:host`, following their own `order`
+// below as if this wrapper weren't there. "horizontalLabelsBelow" turns it into a real flex row
+// instead - see that layout's rules further down.
+.nx-multi-progress-step__bullet-row {
+  display: contents;
+}
+
+.nx-multi-progress-step__bullet {
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: v(multi-progress-indicator-bullet-size);
+  height: v(multi-progress-indicator-bullet-size);
+  border-radius: 50%;
+  border: v(multi-progress-indicator-border-width) solid v(multi-progress-indicator-border-color);
+  // Shares the border's token rather than `label-disabled-color`, keeping the digit and the ring
+  // around it the same color. Both tokens resolve to the same `disabled-01` in this theme, but
+  // are kept separate so brand themes can diverge them (e.g. give the label its own, darker gray).
+  color: v(multi-progress-indicator-border-color);
+  @include type-style(multi-progress-indicator-step);
+  // Overrides the mixin's own (regular) font-weight: the digit is always bold, independent of
+  // the label's - which only turns bold itself once the step is current.
+  font-weight: v(multi-progress-indicator-bullet-font-weight);
+  // Keeps the digit centered - line-height would otherwise equal the bullet's height.
+  line-height: 1;
+
+  nx-icon {
+    font-size: v(multi-progress-indicator-check-icon-size);
+  }
+}
+
+.nx-multi-progress-step__label {
+  order: 2;
+  @include type-style(multi-progress-indicator-step);
+  color: v(multi-progress-indicator-label-disabled-color);
+}
+
+// Extends the projected link/button's hit/focus target to the whole step via an absolute
+// ::before, scoped to `.is-completed` - the only state where the action isn't disabled.
+// `::ng-deep` is required since the anchor/button carries the parent's `_ngcontent-*` attribute.
+// `position: relative` is set here unconditionally rather than only on `:hover`, since toggling
+// it would collapse/restore the ::before each time via `filter`'s containing-block effect below,
+// causing a flicker.
+:host(.is-completed) {
+  ::ng-deep a,
+  ::ng-deep button {
+    position: relative;
+  }
+
+  ::ng-deep a::before,
+  ::ng-deep button::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * nx-spacer(3xs));
+    bottom: calc(-1 * nx-spacer(3xs));
+    left: calc(-1 * (v(multi-progress-indicator-bullet-size) + v(multi-progress-indicator-gap)));
+    right: 0;
+  }
+}
+
+// The hit-area extension above assumes the label sits beside the bullet, which isn't true once
+// it moves below ("horizontalLabelsBelow"). Flip it to reach up through the row-gap instead of
+// left through the column-gap; no horizontal offset is needed since the anchor/button is already
+// centered on the bullet's width, at the same left edge.
+:host(.is-horizontal-labels-below.is-completed) {
+  ::ng-deep a::before,
+  ::ng-deep button::before {
+    top: calc(-1 * (v(multi-progress-indicator-bullet-size) + nx-spacer(2xs)));
+    left: 0;
+    right: 0;
+  }
+}
+
+// "verticalNoLabels" hides the label, leaving nothing for the hit area to extend into - fall
+// back to the anchor/button's own native hit area instead.
+:host(.is-vertical-no-labels.is-completed) {
+  ::ng-deep a::before,
+  ::ng-deep button::before {
+    content: none;
+  }
+}
+
+.nx-visually-hidden {
+  @include visually-hidden;
+}
+
+// A projected `<button>` still carries native chrome by default (unlike `<a>`, already reset
+// globally) - reset it unconditionally so it also reads as plain text while disabled. `color`
+// and `font` need resetting too: a `<button>` doesn't inherit them from its parent label the way
+// an `<a>` already does, so without this it falls back to the UA disabled/enabled text color and
+// size instead of the bullet/label's current-, completed-, or default-state color and weight.
+::ng-deep button[nxProgressIndicatorStepAction] {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+}
+
+// A class, not `[disabled]`: only `<button>` can carry that attribute. Dropping pointer events
+// also keeps the action out of the :hover/:active rules below, which neither `disabled` nor
+// `aria-disabled` suppresses on its own.
+::ng-deep .nx-progress-indicator-step-action--disabled {
+  pointer-events: none;
+}
+
+.nx-multi-progress-step__bar {
+  order: 3;
+  flex: 1 1 auto;
+  min-width: nx-spacer(2xs);
+  height: v(multi-progress-indicator-bar-height);
+  border-radius: v(multi-progress-indicator-bar-height);
+  background-color: v(multi-progress-indicator-track-color);
+}
+
+:host(.is-current) {
+  .nx-multi-progress-step__bullet {
+    border-color: v(multi-progress-indicator-color);
+    color: v(multi-progress-indicator-color);
+  }
+
+  .nx-multi-progress-step__label {
+    color: v(multi-progress-indicator-color);
+    font-weight: v(multi-progress-indicator-step-current-font-weight);
+  }
+}
+
+:host(.is-completed) {
+  .nx-multi-progress-step__bullet {
+    border-color: transparent;
+    background-color: v(multi-progress-indicator-color);
+    color: v(multi-progress-indicator-on-color);
+  }
+
+  // Always the plain default text color, never the scheme's active/positive color.
+  .nx-multi-progress-step__label {
+    color: v(multi-progress-indicator-label-color);
+  }
+}
+
+:host(.is-critical) {
+  .nx-multi-progress-step__bullet {
+    border-color: transparent;
+    background-color: v(multi-progress-indicator-critical-color);
+    color: v(multi-progress-indicator-on-color);
+  }
+}
+
+// `:host-context()` can't be chained with `:host()` as a per-element selector here, so the step
+// mirrors `colorScheme` onto its own `.is-positive` class instead of matching the ancestor.
+// Per design, positive only recolors *completed* steps green; current/critical are unaffected.
+:host(.is-positive.is-completed):not(.is-critical) {
+  .nx-multi-progress-step__bullet {
+    background-color: v(multi-progress-indicator-positive-color);
+  }
+}
+
+// "horizontalLabelsBelow" stacks the bullet-row and label into two rows instead of one.
+:host(.is-horizontal-labels-below) {
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  row-gap: nx-spacer(2xs);
+
+  .nx-multi-progress-step__bullet-row {
+    display: flex;
+    align-items: center;
+    column-gap: v(multi-progress-indicator-gap);
+  }
+
+  // Fixed to the bullet's own width (not the bullet-row's, which also includes the bar) so
+  // centered text lands under the bullet itself. `justify-content` rather than `text-align`,
+  // since the latter doesn't apply its offset to overflowing nowrap content.
+  .nx-multi-progress-step__label {
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    width: v(multi-progress-indicator-bullet-size);
+    white-space: nowrap;
+  }
+}
+
+// The last step never grows a bar, so it hugs its content like the default layout's non-current
+// steps. Not given `container-type` below: that would collapse this `flex: 0 0 auto` box to 0.
+:host(.is-horizontal-labels-below.is-last) {
+  flex: 0 0 auto;
+}
+
+// Lets the label below react to this step's own width - a better "is there enough room" signal
+// than the list's total width, since non-last steps grow/shrink with the viewport.
+:host(.is-horizontal-labels-below):not(.is-last) {
+  container-type: inline-size;
+}
+
+// Below a per-step width threshold, a centered single-line label risks overlapping its neighbor -
+// no CSS selector can detect that collision directly, so this is a calibrated heuristic: wrap the
+// label narrower instead. `width: 0` avoids feeding back into this step's own flex-basis; the
+// projected child wraps via `max-width`, with `overflow: visible` letting it render outside that
+// zero-width box. Excludes the last step, which never grows a bar and so is never a usable width
+// signal here - it falls back to the list's own width instead, further down.
+@container (max-width: 190px) {
+  // `cqi` scales the cap with this step's own width, so narrower steps always wrap sooner.
+  :host(.is-horizontal-labels-below):not(.is-last) .nx-multi-progress-step__label {
+    width: 0;
+    margin-left: calc(v(multi-progress-indicator-bullet-size) / 2);
+    overflow: visible;
+
+    ::ng-deep > *:not(.nx-visually-hidden) {
+      flex-shrink: 0;
+      max-width: 80cqi;
+      white-space: normal;
+      text-align: center;
+    }
+  }
+
+  // Anchored to the bullet's left edge instead of centered, so it can't overflow the list's edge.
+  :host(.is-horizontal-labels-below.is-first) .nx-multi-progress-step__label {
+    margin-left: 0;
+
+    ::ng-deep > *:not(.nx-visually-hidden) {
+      text-align: left;
+    }
+  }
+}
+
+// The last step's label can still collide with the previous step's, so this falls back to (and
+// is scoped to) the list's own container query instead, with a coarser, list-wide threshold.
+@container (max-width: 780px) {
+  :host(.is-horizontal-labels-below.is-last) .nx-multi-progress-step__label {
+    width: 0;
+    margin-left: v(multi-progress-indicator-bullet-size);
+    overflow: visible;
+
+    ::ng-deep > *:not(.nx-visually-hidden) {
+      flex-shrink: 0;
+      max-width: 140px;
+      white-space: normal;
+      text-align: right;
+    }
+  }
+}
+
+:host(.is-horizontal-labels-below.is-first) .nx-multi-progress-step__label {
+  justify-content: flex-start;
+}
+
+:host(.is-horizontal-labels-below.is-last) .nx-multi-progress-step__label {
+  justify-content: flex-end;
+}
+
+// Bars reflect completion here (filled once passed), unlike the default layout's single,
+// always track-colored bar for the current step only.
+:host(.is-horizontal-labels-below.is-completed) .nx-multi-progress-step__bar,
+:host(.is-vertical.is-completed) .nx-multi-progress-step__bar {
+  background-color: v(multi-progress-indicator-color);
+}
+
+// Does NOT exclude `.is-critical`: critical only flags this step's own bullet, not whether the
+// segment after it was passed.
+:host(.is-horizontal-labels-below.is-positive.is-completed) .nx-multi-progress-step__bar,
+:host(.is-vertical.is-positive.is-completed) .nx-multi-progress-step__bar {
+  background-color: v(multi-progress-indicator-positive-color);
+}
+
+// "vertical" turns the bullet-row into a real flex column (bullet above bar), with the label as
+// a plain sibling beside it since `:host` itself stays a flex row. `align-items: stretch` lets
+// the bullet-row grow to match a taller (wrapped) label, so the bar can grow into that extra
+// space below and still reach the next bullet.
+:host(.is-vertical) {
+  align-items: stretch;
+  margin-right: 0;
+  flex: 0 0 auto;
+}
+
+:host(.is-vertical) .nx-multi-progress-step__bullet-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Swaps the bar from a horizontal pill to a vertical one. `margin-top`/`margin-bottom` (rather
+// than a single `row-gap`) give equal space above and below the line, centering it between this
+// step's bullet and the next.
+:host(.is-vertical) .nx-multi-progress-step__bar {
+  width: v(multi-progress-indicator-bar-height);
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  margin-top: v(multi-progress-indicator-gap);
+  margin-bottom: v(multi-progress-indicator-gap);
+  flex: 1 1 v(multi-progress-indicator-bullet-size);
+}
+
+// `align-self: flex-start` opts the label out of the stretch above, so it keeps its own natural
+// height instead of being stretched to match it.
+:host(.is-vertical) .nx-multi-progress-step__label {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: v(multi-progress-indicator-bullet-size);
+}
+
+// "verticalNoLabels" hides the label visually (not removed) so its text, and any projected
+// `nxProgressIndicatorStepAction` link/button, stay in the accessibility tree.
+:host(.is-vertical-no-labels) .nx-multi-progress-step__label {
+  @include visually-hidden;
+}
+
+// Shared pill for the focus ring and hover/active backgrounds below. `z-index: -1` keeps it
+// behind the bullet/label.
+:host::before {
+  content: '';
+  position: absolute;
+  inset: calc(-1 * nx-spacer(4xs)) calc(-1 * nx-spacer(3xs));
+  border-radius: calc(v(multi-progress-indicator-bullet-size) / 2);
+  pointer-events: none;
+  z-index: -1;
+}
+
+// In "vertical", `:host`'s own box is stretched tall enough for the bar to reach the next
+// bullet - anchoring `height` to the bullet's size instead of `bottom` to `:host`'s far edge
+// keeps the pill scoped to just the bullet/label row, not the connector's dead space.
+:host(.is-vertical)::before {
+  bottom: auto;
+  height: calc(v(multi-progress-indicator-bullet-size) + 2 * nx-spacer(4xs));
+}
+
+// Only completed steps ever reach `:hover`/`:active` here - every other step's action is excluded
+// by the `pointer-events: none` above. Text darkens via `filter: brightness()` regardless of
+// scheme/critical.
+:host:has(a:hover, button:hover) {
+  .nx-multi-progress-step__bullet {
+    background-color: v(multi-progress-indicator-hover-color);
+    border-color: v(multi-progress-indicator-hover-color);
+  }
+
+  ::ng-deep a,
+  ::ng-deep button {
+    text-decoration: underline;
+    filter: brightness(0.85);
+  }
+}
+
+:host:has(a:active, button:active) {
+  .nx-multi-progress-step__bullet {
+    background-color: v(multi-progress-indicator-active-color);
+    border-color: v(multi-progress-indicator-active-color);
+  }
+
+  ::ng-deep a,
+  ::ng-deep button {
+    text-decoration: underline;
+    filter: brightness(0.7);
+  }
+}
+
+:host(.is-positive):not(.is-critical):has(a:hover, button:hover) {
+  .nx-multi-progress-step__bullet {
+    background-color: v(multi-progress-indicator-positive-hover-color);
+    border-color: v(multi-progress-indicator-positive-hover-color);
+  }
+}
+
+:host(.is-positive):not(.is-critical):has(a:active, button:active) {
+  .nx-multi-progress-step__bullet {
+    background-color: v(multi-progress-indicator-positive-active-color);
+    border-color: v(multi-progress-indicator-positive-active-color);
+  }
+}
+
+:host(.is-critical):has(a:hover, button:hover) {
+  .nx-multi-progress-step__bullet {
+    background-color: v(multi-progress-indicator-critical-hover-color);
+    border-color: v(multi-progress-indicator-critical-hover-color);
+  }
+}
+
+:host(.is-critical):has(a:active, button:active) {
+  .nx-multi-progress-step__bullet {
+    background-color: v(multi-progress-indicator-critical-active-color);
+    border-color: v(multi-progress-indicator-critical-active-color);
+  }
+}
+
+// One focus ring around the whole step, not two separate ones - suppress the projected
+// element's native outline and style the shared pill instead. Excludes "horizontalLabelsBelow": that
+// layout never extends the hit area over the bullet (see above), so its focus ring is scoped to
+// just the label below instead, right on the anchor/button itself.
+:host(:not(.is-horizontal-labels-below)):has(a:focus-visible, button:focus-visible)::before {
+  @include focus-style;
+}
+
+:host(.is-horizontal-labels-below) {
+  ::ng-deep a:focus-visible,
+  ::ng-deep button:focus-visible {
+    border-radius: nx-border-radius(s);
+    @include focus-style;
+  }
+}
+
+:host {
+  ::ng-deep a:focus-visible,
+  ::ng-deep button:focus-visible {
+    outline: none;
+  }
+}
+
+// `!important` throughout: layout/color-scheme modifiers (is-positive, is-horizontal-labels-below,
+// is-vertical, ...) combine into selectors more specific than these, and would otherwise keep
+// winning the cascade with a non-system color that forced colors then collapses to `Canvas`.
+@media screen and (forced-colors: active) {
+  .nx-multi-progress-step__bullet {
+    border-color: buttonText !important;
+  }
+
+  // Without this, Chrome's text auto-backplating fights the explicit Highlight/HighlightText
+  // pair below and punches a hole through the circle instead of filling it.
+  :host(.is-completed) .nx-multi-progress-step__bullet,
+  :host(.is-critical) .nx-multi-progress-step__bullet {
+    background-color: highlight !important;
+    color: highlightText !important;
+    forced-color-adjust: none;
+  }
+
+  .nx-multi-progress-step__bar {
+    background-color: buttonText !important;
+  }
+
+  :host(.is-completed) .nx-multi-progress-step__bar,
+  :host(.is-critical) .nx-multi-progress-step__bar {
+    background-color: highlight !important;
+  }
+}

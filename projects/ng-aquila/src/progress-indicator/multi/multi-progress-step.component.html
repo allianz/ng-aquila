@@ -1,0 +1,22 @@
+<span class="nx-multi-progress-step__bullet-row">
+  <span class="nx-multi-progress-step__bullet" aria-hidden="true">
+    @if (critical()) {
+      !
+    } @else if (_isCompleted() && !_numbered()) {
+      <nx-icon name="check"></nx-icon>
+    } @else if (_numbered()) {
+      {{ _index() }}
+    }
+  </span>
+  @if (_showBar()) {
+    <div class="nx-multi-progress-step__bar"></div>
+  }
+</span>
+<span class="nx-multi-progress-step__label">
+  @if (_isCompleted()) {
+    <span class="nx-visually-hidden">{{ _intl.completedLabel() }}</span>
+  } @else if (_isCurrent()) {
+    <span class="nx-visually-hidden">{{ _intl.currentLabel() }}</span>
+  }
+  <ng-content></ng-content>
+</span>

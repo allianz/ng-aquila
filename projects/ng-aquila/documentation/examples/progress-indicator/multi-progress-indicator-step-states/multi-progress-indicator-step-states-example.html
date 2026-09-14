@@ -1,0 +1,30 @@
+<nx-multi-progress-indicator aria-label="Order Process Steps">
+  <nx-multi-progress-step completed>
+    <span>Billing Address</span>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step completed critical>
+    <span tabindex="0" nxTooltip="The delivery address could not be verified"
+      >Shipping Address</span
+    >
+  </nx-multi-progress-step>
+  <nx-multi-progress-step completed>
+    <span>Gift Wrapping</span>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step completed critical>
+    <span nxTooltip="A signed consent form is still missing" tabindex="0"
+      >Review Order</span
+    >
+  </nx-multi-progress-step>
+  <nx-multi-progress-step current>
+    <span>Payment Method</span>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <span>Shipment Details</span>
+  </nx-multi-progress-step>
+</nx-multi-progress-indicator>
+
+<p class="nx-margin-top-s">
+  Two earlier steps still need your attention: the shipping address on step 2
+  could not be verified, and step 4 is still missing a signed consent form. Both
+  need to be resolved before you can submit the order.
+</p>
