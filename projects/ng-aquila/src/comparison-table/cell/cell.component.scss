@@ -47,6 +47,151 @@
   margin-bottom: 4px; //TODO change to A1 token
 }
 
+// ── Header slots ──────────────────────────────────────────────────────────────
+// Order/spacing comes from here; the content the consumer wraps and its typography stay entirely
+// up to them. `::ng-deep` is required because these are consumer-projected `ng-content` nodes, not
+// part of this component's own template — same reasoning as the sibling cells in this module (see
+// popular-cell/select-button .scss).
+
+// The slot elements carry no display of their own (they are directives, not components), and the
+// mobile cell has no flex wrapper to blockify them — so state it here, for both cell types.
+.nx-comparison-table__header-cell,
+.nx-comparison-table__mobile-header-cell {
+  ::ng-deep nx-comparison-table-header-top,
+  ::ng-deep nx-comparison-table-header-eyebrow,
+  ::ng-deep nx-comparison-table-header-title,
+  ::ng-deep nx-comparison-table-header-price {
+    display: block;
+  }
+}
+
+.nx-comparison-table__header-cell {
+  ::ng-deep nx-comparison-table-header-top {
+    margin-bottom: v(comparison-table-header-top-spacing-bottom);
+  }
+
+  // `display: grid` blockifies whatever the consumer projected, so the margin below applies even
+  // to inline content. The eyebrow's HEIGHT does not animate — see `.is-stuck`.
+  ::ng-deep nx-comparison-table-header-eyebrow {
+    display: grid;
+    margin-bottom: v(comparison-table-header-eyebrow-spacing-bottom);
+    opacity: 1;
+  }
+
+  ::ng-deep nx-comparison-table-header-title {
+    margin: 0 0 v(comparison-table-header-title-spacing-bottom);
+
+    // The slot owns the spacing, so a wrapped element brings none of its own — `nxHeadline` already
+    // zeroes its margin, a bare heading would not.
+    > * {
+      margin: 0;
+    }
+  }
+
+  // align-self (not text-align) so it sits at the inline-end of the column-flex cell,
+  // independent of the price content's own internal alignment.
+  ::ng-deep nx-comparison-table-header-price {
+    align-self: flex-end;
+    margin-top: auto;
+    margin-bottom: v(comparison-table-header-price-spacing-bottom);
+  }
+
+  // Ease the stuck/unstuck size changes below instead of snapping. `::ng-deep` reaches into
+  // price's/headline's own elements so the transition can live here without touching them.
+  @media (prefers-reduced-motion: no-preference) {
+    ::ng-deep nx-comparison-table-header-eyebrow {
+      transition:
+        opacity v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing),
+        margin-bottom v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing),
+        display v(comparison-table-header-stuck-transition-duration) allow-discrete;
+    }
+
+    // Fade the eyebrow back in, rather than snapping to visible, when it re-enters layout.
+    @starting-style {
+      &:not(.is-stuck) ::ng-deep nx-comparison-table-header-eyebrow {
+        margin-bottom: 0;
+        opacity: 0;
+      }
+    }
+
+    // Every longhand `nxHeadline` sets per size (see the `type-style` mixin) — font-weight
+    // included, since the A1 heading scale changes weight between the stuck and unstuck sizes.
+    // On the wrapped content, not the slot: the slot's own font never changes, and the imposed
+    // size reaches the whole slot subtree via `NX_HEADLINE_CONTEXT`, so the easing follows it there.
+    ::ng-deep nx-comparison-table-header-title * {
+      transition:
+        font-size v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing),
+        line-height v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing),
+        font-weight v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing),
+        letter-spacing v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing);
+    }
+
+    ::ng-deep nx-comparison-table-header-title {
+      transition: margin-bottom v(comparison-table-header-stuck-transition-duration)
+        v(comparison-table-header-stuck-transition-easing);
+    }
+
+    ::ng-deep nx-comparison-table-header-price .nx-price__value,
+    ::ng-deep nx-comparison-table-header-price .nx-price__prefix-secondary,
+    ::ng-deep nx-comparison-table-header-price .nx-price__suffix-secondary {
+      transition:
+        font v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing),
+        letter-spacing v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing);
+    }
+
+    ::ng-deep nx-comparison-table-header-price .nx-price__wrapper {
+      transition: gap v(comparison-table-header-stuck-transition-duration)
+        v(comparison-table-header-stuck-transition-easing);
+    }
+
+    ::ng-deep nx-comparison-table-header-price {
+      transition: margin-bottom v(comparison-table-header-stuck-transition-duration)
+        v(comparison-table-header-stuck-transition-easing);
+    }
+
+    ::ng-deep nx-comparison-table-header-top {
+      transition: margin-bottom v(comparison-table-header-stuck-transition-duration)
+        v(comparison-table-header-stuck-transition-easing);
+    }
+  }
+
+  // Applies once the header is actually pinned mid-scroll (see `_isHeaderStuck`), not merely
+  // sticky-enabled: the eyebrow collapses away, slots tighten, and the price steps down a size.
+  &.is-stuck {
+    // The eyebrow leaves layout in ONE discrete step: `display` is what removes it, deferred to the
+    // end of the transition by `allow-discrete`, so the opacity and margin fade out underneath it
+    // first. Its height therefore does not interpolate — measured, `grid-template-rows: 1fr → 0fr`
+    // never eased here (the row held its content size for the whole transition), and dropping that
+    // scaffolding changed nothing at any point of the collapse. Zero the margin, or it outlives the
+    // fade and the header tightens in two visible stages.
+    ::ng-deep nx-comparison-table-header-eyebrow {
+      margin-bottom: 0;
+      opacity: 0;
+      display: none;
+    }
+
+    ::ng-deep nx-comparison-table-header-top {
+      margin-bottom: v(comparison-table-header-top-spacing-bottom-sticky);
+    }
+
+    ::ng-deep nx-comparison-table-header-title {
+      margin-bottom: v(comparison-table-header-title-spacing-bottom-sticky);
+    }
+
+    ::ng-deep nx-comparison-table-header-price {
+      margin-bottom: v(comparison-table-header-price-spacing-bottom-sticky);
+    }
+  }
+}
+
 // ── Mobile ────────────────────────────────────────────────────────────────────
 
 // Rendered as <td class="nx-comparison-table__mobile-cell"> in the transposed table.

@@ -4,14 +4,22 @@
       <!-- header row -->
       @if (element['type'] === 'header') {
         <ng-container nxComparisonTableRow type="header">
-          @for (cell of element['cells']; track $index) {
+          @for (cell of element['cells']; track $index; let i = $index) {
             <nx-comparison-table-cell type="header">
-              {{ cell }}<br />
-              <button
-                nxComparisonTableSelectButton
-                type="button"
-                class="nx-margin-top-s nx-margin-bottom-0"
-              ></button>
+              <nx-comparison-table-header-title>
+                <h3 nxHeadline>{{ cell }}</h3>
+              </nx-comparison-table-header-title>
+              <!-- Fixed height reserves the price's space so late data causes no layout shift. -->
+              <nx-comparison-table-header-price>
+                <div class="price-slot">
+                  @if (loading) {
+                    <nx-spinner size="small"></nx-spinner>
+                  } @else {
+                    <nx-price [value]="prices[i]" currency="EUR"></nx-price>
+                  }
+                </div>
+              </nx-comparison-table-header-price>
+              <button nxComparisonTableSelectButton type="button"></button>
             </nx-comparison-table-cell>
           }
         </ng-container>
@@ -102,3 +110,13 @@
     }
   </nx-comparison-table>
 </div>
+
+<button
+  (click)="reload()"
+  [disabled]="loading"
+  nxButton="secondary small"
+  class="nx-margin-top-2m"
+  type="button"
+>
+  Reload prices
+</button>

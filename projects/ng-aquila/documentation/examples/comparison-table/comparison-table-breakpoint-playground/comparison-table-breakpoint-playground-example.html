@@ -21,64 +21,74 @@
 >
   <ng-container nxComparisonTableRow type="header">
     <nx-comparison-table-cell type="header">
-      <div class="header-container">
-        <p class="product-title">Product One</p>
-        <p class="product-price">105,99 €</p>
-        <button
-          nxComparisonTableSelectButton
-          unselectedLabel="Select"
-          selectedLabel="Selected"
-          type="button"
-        ></button>
-      </div>
+      <nx-comparison-table-header-title>
+        <h3 nxHeadline>Product One</h3>
+      </nx-comparison-table-header-title>
+      <nx-comparison-table-header-price>
+        <nx-price [value]="105.99" currency="EUR"></nx-price>
+      </nx-comparison-table-header-price>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
     </nx-comparison-table-cell>
     <nx-comparison-table-cell type="header">
-      <div class="header-container">
-        <p class="product-title">Product Two</p>
-        <p class="product-price">110,99 €</p>
-        <button
-          nxComparisonTableSelectButton
-          unselectedLabel="Select"
-          selectedLabel="Selected"
-          type="button"
-        ></button>
-      </div>
+      <nx-comparison-table-header-title>
+        <h3 nxHeadline>Product Two</h3>
+      </nx-comparison-table-header-title>
+      <nx-comparison-table-header-price>
+        <nx-price [value]="110.99" currency="EUR"></nx-price>
+      </nx-comparison-table-header-price>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
     </nx-comparison-table-cell>
     <nx-comparison-table-cell type="header">
-      <div class="header-container">
-        <p class="product-title">Product Three</p>
-        <p class="product-price">115,99 €</p>
-        <button
-          nxComparisonTableSelectButton
-          unselectedLabel="Select"
-          selectedLabel="Selected"
-          type="button"
-        ></button>
-      </div>
+      <nx-comparison-table-header-title>
+        <h3 nxHeadline>Product Three</h3>
+      </nx-comparison-table-header-title>
+      <nx-comparison-table-header-price>
+        <nx-price [value]="115.99" currency="EUR"></nx-price>
+      </nx-comparison-table-header-price>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
     </nx-comparison-table-cell>
     <nx-comparison-table-cell type="header">
-      <div class="header-container">
-        <p class="product-title">Product Four</p>
-        <p class="product-price">120,99 €</p>
-        <button
-          nxComparisonTableSelectButton
-          unselectedLabel="Select"
-          selectedLabel="Selected"
-          type="button"
-        ></button>
-      </div>
+      <nx-comparison-table-header-title>
+        <h3 nxHeadline>Product Four</h3>
+      </nx-comparison-table-header-title>
+      <nx-comparison-table-header-price>
+        <nx-price [value]="120.99" currency="EUR"></nx-price>
+      </nx-comparison-table-header-price>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
     </nx-comparison-table-cell>
     <nx-comparison-table-cell type="header">
-      <div class="header-container">
-        <p class="product-title">Product Five</p>
-        <p class="product-price">125,99 €</p>
-        <button
-          nxComparisonTableSelectButton
-          unselectedLabel="Select"
-          selectedLabel="Selected"
-          type="button"
-        ></button>
-      </div>
+      <nx-comparison-table-header-title>
+        <h3 nxHeadline>Product Five</h3>
+      </nx-comparison-table-header-title>
+      <nx-comparison-table-header-price>
+        <nx-price [value]="125.99" currency="EUR"></nx-price>
+      </nx-comparison-table-header-price>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
     </nx-comparison-table-cell>
   </ng-container>
 

@@ -3,6 +3,8 @@ import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableHeaderPrice,
+  NxComparisonTableHeaderTitle,
   NxComparisonTableIntersectionCell,
   NxComparisonTableRowDirective,
   NxComparisonTableRowGroupDirective,
@@ -16,7 +18,9 @@ import {
   NxDropdownItemComponent,
 } from '@allianz/ng-aquila/dropdown';
 import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
+import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -31,15 +35,19 @@ import {
   styleUrls: ['./comparison-table-breakpoint-playground-example.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    NxPriceComponent,
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
     NxComparisonTableRowGroupDirective,
     NxComparisonTableCell,
+    NxComparisonTableHeaderTitle,
+    NxComparisonTableHeaderPrice,
     NxComparisonTableDescriptionCell,
     NxComparisonTableIntersectionCell,
     NxComparisonTableSelectButton,
     NxToggleSectionDirective,
     NxToggleSectionHeaderComponent,
+    NxHeadlineComponent,
     NxIconComponent,
     NxFormfieldComponent,
     NxDropdownComponent,

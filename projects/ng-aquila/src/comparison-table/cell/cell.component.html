@@ -14,6 +14,7 @@
         [class.is-error]="_table.isError"
         [class.first]="_isFirst()"
         [class.last]="_isLast()"
+        [class.is-stuck]="_table._isHeaderStuck()"
       >
         <span class="nx-comparison-table__cell-inner">
           <ng-container *ngTemplateOutlet="ngContent"></ng-container>
@@ -70,5 +71,13 @@
       ></nx-radio-indicator>
     </span>
   }
+  <!-- Never gate these on `type`: projection is resolved statically, so a slot inside an @if that
+       doesn't render swallows its content instead of letting it fall through to the catch-all
+       below. Gating dropped select buttons on footer cells and header slots on content cells. -->
+  <ng-content select="nx-comparison-table-header-top"></ng-content>
+  <ng-content select="nx-comparison-table-header-eyebrow"></ng-content>
+  <ng-content select="nx-comparison-table-header-title"></ng-content>
+  <ng-content select="nx-comparison-table-header-price"></ng-content>
+  <ng-content select="button[nxComparisonTableSelectButton]"></ng-content>
   <ng-content></ng-content>
 </ng-template>

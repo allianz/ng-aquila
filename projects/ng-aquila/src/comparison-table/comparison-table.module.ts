@@ -7,6 +7,12 @@ import { NxComparisonTableComponent } from './comparison-table.component';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
 import { NxComparisonTableDescriptionCell } from './description-cell/description-cell.component';
+import {
+  NxComparisonTableHeaderEyebrow,
+  NxComparisonTableHeaderPrice,
+  NxComparisonTableHeaderTitle,
+  NxComparisonTableHeaderTop,
+} from './header-slots';
 import { NxComparisonTableIntersectionCell } from './intersection-cell/intersection-cell.component';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 import { NxComparisonTableSelectButton } from './select-button/select-button.component';
@@ -27,6 +33,10 @@ import { NxToggleSectionHeaderComponent } from './toggle-section/toggle-section-
     NxComparisonTableSelectButton,
     NxComparisonTableRowGroupDirective,
     NxComparisonTablePopularCell,
+    NxComparisonTableHeaderTop,
+    NxComparisonTableHeaderEyebrow,
+    NxComparisonTableHeaderTitle,
+    NxComparisonTableHeaderPrice,
   ],
   exports: [
     NxComparisonTableComponent,
@@ -39,6 +49,10 @@ import { NxToggleSectionHeaderComponent } from './toggle-section/toggle-section-
     NxComparisonTableSelectButton,
     NxComparisonTableRowGroupDirective,
     NxComparisonTablePopularCell,
+    NxComparisonTableHeaderTop,
+    NxComparisonTableHeaderEyebrow,
+    NxComparisonTableHeaderTitle,
+    NxComparisonTableHeaderPrice,
   ],
 })
 export class NxComparisonTableModule {}

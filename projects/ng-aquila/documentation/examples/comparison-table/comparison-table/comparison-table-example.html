@@ -1,10 +1,18 @@
-<ng-template #spinner>
-  <div class="spinner">
-    <nx-spinner size="medium"></nx-spinner>
-  </div>
-</ng-template>
 <div class="container">
-  <nx-comparison-table selectedIndex="1">
+  <div class="controls">
+    <nx-formfield label="Headline size">
+      <nx-dropdown
+        [value]="headlineSize()"
+        (valueChange)="headlineSize.set($event)"
+      >
+        @for (option of headlineSizeOptions; track option) {
+          <nx-dropdown-item [value]="option">{{ option }}</nx-dropdown-item>
+        }
+      </nx-dropdown>
+    </nx-formfield>
+  </div>
+
+  <nx-comparison-table selectedIndex="1" [headlineSize]="headlineSize()">
     <ng-container nxComparisonTableRow type="header">
       <nx-comparison-table-popular-cell forColumn="2">
         <div class="popular-cell__content-wrapper">
@@ -12,72 +20,71 @@
           <button
             nxPlainButton
             class="popular-info-icon"
-            #popoverTrigger="nxPopoverTrigger"
-            [nxPopoverTriggerFor]="popover"
+            [nxPopoverTriggerFor]="popularPopover"
             nxPopoverTrigger="click"
             aria-label="More information"
             type="button"
           >
             <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
           </button>
-          <nx-popover #popover>
+          <nx-popover #popularPopover>
             <span>This product was chosen by most of the users</span>
           </nx-popover>
         </div>
       </nx-comparison-table-popular-cell>
+
       <nx-comparison-table-cell type="header">
-        <div class="header-container">
-          <p class="product-title">Product One</p>
-          @if (!loading) {
-            <p aria-label="12,50 €" class="product-price-dynamic">105,99 €</p>
-          } @else {
-            <div class="spinner">
-              <nx-spinner size="medium"></nx-spinner>
-            </div>
-          }
-          <button
-            nxComparisonTableSelectButton
-            unselectedLabel="Select"
-            selectedLabel="Selected"
-            type="button"
-          ></button>
-        </div>
+        <nx-comparison-table-header-eyebrow>
+          <nx-eyebrow size="s">Basic</nx-eyebrow>
+        </nx-comparison-table-header-eyebrow>
+        <nx-comparison-table-header-title>
+          <h3 nxHeadline>Product One</h3>
+        </nx-comparison-table-header-title>
+        <nx-comparison-table-header-price>
+          <nx-price prefix="from" [value]="105.99" currency="EUR"></nx-price>
+        </nx-comparison-table-header-price>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
       </nx-comparison-table-cell>
+
       <nx-comparison-table-cell type="header">
-        <div class="header-container">
-          <p class="product-title">Product Two with a very long name</p>
-          @if (!loading) {
-            <p class="product-price-dynamic">110,99 €</p>
-          } @else {
-            <div class="spinner">
-              <nx-spinner size="medium"></nx-spinner>
-            </div>
-          }
-          <button
-            nxComparisonTableSelectButton
-            unselectedLabel="Select"
-            selectedLabel="Selected"
-            type="button"
-          ></button>
-        </div>
+        <nx-comparison-table-header-eyebrow>
+          <nx-eyebrow size="s">Recommended</nx-eyebrow>
+        </nx-comparison-table-header-eyebrow>
+        <nx-comparison-table-header-title>
+          <h3 nxHeadline>Product Two</h3>
+        </nx-comparison-table-header-title>
+        <nx-comparison-table-header-price>
+          <nx-price prefix="from" [value]="110.99" currency="EUR"></nx-price>
+        </nx-comparison-table-header-price>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
       </nx-comparison-table-cell>
+
       <nx-comparison-table-cell type="header">
-        <div class="header-container">
-          <p class="product-title">Product Three</p>
-          @if (!loading) {
-            <p class="product-price-dynamic">115,99 €</p>
-          } @else {
-            <div class="spinner">
-              <nx-spinner size="medium"></nx-spinner>
-            </div>
-          }
-          <button
-            nxComparisonTableSelectButton
-            unselectedLabel="Select"
-            selectedLabel="Selected"
-            type="button"
-          ></button>
-        </div>
+        <nx-comparison-table-header-eyebrow>
+          <nx-eyebrow size="s">Premium</nx-eyebrow>
+        </nx-comparison-table-header-eyebrow>
+        <nx-comparison-table-header-title>
+          <h3 nxHeadline>Product Three</h3>
+        </nx-comparison-table-header-title>
+        <nx-comparison-table-header-price>
+          <nx-price [value]="115.99" currency="EUR"></nx-price>
+        </nx-comparison-table-header-price>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
       </nx-comparison-table-cell>
     </ng-container>
 
@@ -89,13 +96,13 @@
             nxPlainButton
             class="info-icon"
             aria-label="More information"
-            [nxPopoverTriggerFor]="popoverContent1"
+            [nxPopoverTriggerFor]="servicePopover"
             nxPopoverTrigger="click"
             type="button"
           >
             <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
           </button>
-          <nx-popover #popoverContent1>
+          <nx-popover #servicePopover>
             <span>Service headline popover content</span>
           </nx-popover>
         </div>
@@ -106,24 +113,9 @@
     </ng-container>
 
     <ng-container nxComparisonTableRow>
-      <nx-comparison-table-description-cell>
-        <div class="has-popover">
-          <span>Service headline</span>
-          <button
-            nxPlainButton
-            class="info-icon"
-            aria-label="More information"
-            [nxPopoverTriggerFor]="popoverContent2"
-            nxPopoverTrigger="click"
-            type="button"
-          >
-            <nx-icon name="info-circle-o" aria-hidden="true"></nx-icon>
-          </button>
-          <nx-popover #popoverContent2>
-            <span>Service headline popover content</span>
-          </nx-popover>
-        </div>
-      </nx-comparison-table-description-cell>
+      <nx-comparison-table-description-cell
+        >Additional coverage</nx-comparison-table-description-cell
+      >
       <nx-comparison-table-cell>
         <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
       </nx-comparison-table-cell>
@@ -146,45 +138,30 @@
     </ng-container>
 
     <ng-container nxComparisonTableRow type="footer">
-      <nx-comparison-table-cell>
+      <nx-comparison-table-cell type="footer">
         <button
           nxComparisonTableSelectButton
           unselectedLabel="Select"
           selectedLabel="Selected"
-          class="nx-margin-bottom-s"
           type="button"
         ></button>
-        <p class="product-underline">Some short information</p>
       </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
+      <nx-comparison-table-cell type="footer">
         <button
           nxComparisonTableSelectButton
           unselectedLabel="Select"
           selectedLabel="Selected"
-          class="nx-margin-bottom-s"
           type="button"
         ></button>
-        <p class="product-underline">Some short information</p>
       </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
+      <nx-comparison-table-cell type="footer">
         <button
           nxComparisonTableSelectButton
           unselectedLabel="Select"
           selectedLabel="Selected"
-          class="nx-margin-bottom-s"
           type="button"
         ></button>
-        <p class="product-underline">Some short information</p>
       </nx-comparison-table-cell>
     </ng-container>
   </nx-comparison-table>
 </div>
-
-<button
-  (click)="reload()"
-  [disabled]="loading"
-  nxButton="secondary small"
-  class="nx-margin-top-2m"
->
-  Reload prices
-</button>

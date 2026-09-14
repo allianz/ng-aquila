@@ -28,6 +28,7 @@ import {
   Output,
   PLATFORM_ID,
   signal,
+  untracked,
   ViewChild,
   viewChild,
 } from '@angular/core';
@@ -51,6 +52,9 @@ export const DEFAULT_BREAKPOINTS: NxComparisonTableBreakpoint[] = [
   { minWidth: 704, viewType: 'tablet', columns: 3 },
   { minWidth: 992, viewType: 'desktop', columns: 3 },
 ];
+
+/** Desktop/tablet cells that get a measured `--ct-cell-start`; also the population fingerprint. */
+const CLIP_CELL_SELECTOR = '.nx-comparison-table__cell, .nx-comparison-table__popular-cell';
 
 @Component({
   selector: 'nx-comparison-table',
@@ -89,6 +93,13 @@ export class NxComparisonTableComponent
   /** Breakpoint configuration for container-based responsive behavior. */
   readonly responsiveBreakpoints = input<NxComparisonTableBreakpoint[] | undefined>(undefined);
 
+  /**
+   * Size for the `nx-comparison-table-header-title` slot of every header cell, overriding the
+   * projected `nxHeadline`'s own `size`. A docked header steps it down — see
+   * `NxComparisonTableCell.headlineSize`.
+   */
+  readonly headlineSize = input<'l' | 'xl'>('xl');
+
   protected readonly _measuredWidth = signal(0);
 
   private readonly _effectiveBreakpoints = computed(
@@ -126,6 +137,15 @@ export class NxComparisonTableComponent
   private readonly _native = viewChild<ElementRef<HTMLElement>>('native');
   /** The clipped viewport around the table — overflow-x: clip hides the off-screen columns. */
   private readonly _viewport = viewChild<ElementRef<HTMLElement>>('viewport');
+
+  private readonly _isHeaderStuckState = signal(false);
+
+  /**
+   * Whether the sticky header row is currently pinned (vs. merely sticky-*eligible*, which
+   * `thead.is-sticky`/`mayStick` already expresses). `position: sticky` gives no such signal by
+   * itself, so `_updateStuck` derives it from the header's position — see that method.
+   */
+  readonly _isHeaderStuck = this._isHeaderStuckState.asReadonly();
 
   /**
    * Number of columns that fill the visible width: the visible product columns, plus the
@@ -212,17 +232,38 @@ export class NxComparisonTableComponent
     this._ngZone.runOutsideAngular(() => {
       const observer = new ResizeObserver((entries) => {
         const width = entries[0].contentRect.width;
-        if (width !== this._measuredWidth()) {
+        const widthChanged = width !== this._measuredWidth();
+        if (widthChanged) {
           this._ngZone.run(() => this._measuredWidth.set(width));
         }
-        // Column widths (and therefore the column step) depend on the visible width.
-        this._measureClipGeometry();
-        // A wider viewport fits more columns → fewer pages; re-clamp so we never sit past the end.
+        // A wider viewport fits more columns → fewer pages; re-clamp before measuring so the shift
+        // and clip are written from the clamped index (same ordering as the view-type effect below).
         const max = this._maxPageIndex();
         if (this._pageIndex() > max) {
           this._ngZone.run(() => this._pageIndex.set(max));
         }
-        this._applyPageShift();
+        // The horizontal geometry — column step, per-cell inline offsets, visible end, sticky
+        // column width — follows the container WIDTH and the cell population; a taller row cannot
+        // move a cell horizontally. A height-only change is almost always the sticky header's own
+        // dock transition, which fires this observer frame after frame: re-measuring everything
+        // there cost ~5 full passes (~300 getBoundingClientRect) per dock. Re-measure the header
+        // band only — that IS what the transition changes, and --ct-thead-h feeds the viewport's
+        // negative margin. `_measureClipGeometry` re-asserts the page shift itself; the light path
+        // cannot need it, because every input of `_maxPageIndex` (the header-cell count via
+        // `_infoColumnCount`, the width via `_visibleColumnCount`) routes to the full path.
+        // Mobile always takes the full path: it has no sticky header, so it never sees the
+        // transition this split exists for, and its geometry is keyed off elements the fingerprint
+        // below does not track.
+        if (widthChanged || this.viewType === 'mobile' || this._clipCellCountChanged()) {
+          this._measureClipGeometry();
+        } else {
+          const native = this._native()?.nativeElement;
+          if (native) {
+            this._measureHeaderBand(native);
+          }
+          this._updateClip();
+        }
+        this._updateStuck();
       });
       observer.observe(this._element.nativeElement);
       this._destroyRef.onDestroy(() => observer.disconnect());
@@ -237,6 +278,7 @@ export class NxComparisonTableComponent
           // Catch up the clip to the current scroll position on the way back into view.
           if (this._isVisible && !wasVisible) {
             this._updateClip();
+            this._updateStuck();
           }
         },
         { rootMargin: '200px' },
@@ -252,6 +294,7 @@ export class NxComparisonTableComponent
       }
       this._measureClipGeometry();
       this._applyPageShift();
+      this._updateStuck();
     });
 
     // Re-measure whenever the viewport is (re)created — e.g. when the view type flips between
@@ -289,6 +332,71 @@ export class NxComparisonTableComponent
       this._measuredWidth();
       this._applyPageShift();
     });
+
+    // Re-evaluate when the wrapper is (re)created or the header row opts out of sticky. `untracked`
+    // keeps `_updateStuck`'s own read of `_isHeaderStuck` from making every dock re-arm this effect.
+    // Deferred to `afterNextRender`, because `mayStick` also drives `thead.is-sticky` in the
+    // template: measured before that class lands, a re-enabled header is still in flow and its top
+    // matches `.__native`'s, so we would read "not stuck" and nothing would correct it until the
+    // next scroll event.
+    effect(() => {
+      this._native();
+      void this._headerRow()?.mayStick;
+      afterNextRender(() => untracked(() => this._updateStuck()), { injector: this._injector });
+    });
+  }
+
+  /**
+   * Recomputes `_isHeaderStuck` from `getBoundingClientRect()`, not an IntersectionObserver
+   * (unreliable here: it pins to the nearest scrolling ancestor, not necessarily an observer's
+   * `root`). Compares against `<thead>` itself — the actual `position: sticky; top: 0` element
+   * (per-cell sticky in this file's .scss has no offset, so it never pins) — rather than a specific
+   * cell, since a preceding popular row would otherwise offset the comparison.
+   *
+   * `.__native`'s own top edge is the reference for where `<thead>` would sit unpinned: the
+   * nav-wrapper's `height: var(--ct-thead-h)` is cancelled by the viewport's matching negative
+   * `margin-block-start`, so the thead's in-flow top coincides with `.__native`'s (verified to the
+   * pixel at every scroll offset). No separate sentinel element is needed.
+   */
+  private _updateStuck(): void {
+    const native = this._native()?.nativeElement;
+    const mayStick = this._headerRow()?.mayStick ?? false;
+    let isStuck = false;
+    if (native && mayStick) {
+      if (this._clipThead === undefined) {
+        this._resolveClipTargets(this._element.nativeElement as HTMLElement);
+      }
+      const thead = this._clipThead;
+      // Strictly `<`: before the header sticks, it moves in lockstep with `.__native`, so the two
+      // stay equal (not just momentarily) until the header actually freezes in place.
+      isStuck = !!thead && native.getBoundingClientRect().top < thead.getBoundingClientRect().top;
+    }
+    if (isStuck !== this._isHeaderStuck()) {
+      this._ngZone.run(() => this._isHeaderStuckState.set(isStuck));
+    }
+  }
+
+  /** Pending rAF id for `_scheduleUpdateStuck`, or `null` if none is queued. */
+  private _stuckRaf: number | null = null;
+
+  /**
+   * Coalesces `_updateStuck` calls from the scroll path to at most one `getBoundingClientRect`
+   * pair per animation frame, instead of one per raw scroll event (WebKit dispatches scroll
+   * faster than once per frame — see `_scrollHandler`). Unlike `_updateClip`, `_isHeaderStuck`
+   * has no same-frame requirement: its visual effects already ease in over 100-200ms via the
+   * `comparison-table-header-stuck-transition-*` tokens, so landing a frame late is imperceptible.
+   *
+   * Bails before allocating the frame when nothing can be pinned at all — mobile has no `#native`,
+   * and a header row can opt out — so unrelated page scrolling costs no frame callback either.
+   */
+  private _scheduleUpdateStuck(): void {
+    if (this._stuckRaf !== null || !this._native() || !this._headerRow()?.mayStick) {
+      return;
+    }
+    this._stuckRaf = requestAnimationFrame(() => {
+      this._stuckRaf = null;
+      this._updateStuck();
+    });
   }
 
   // ── Carousel page offset ──────────────────────────────────────────────────────
@@ -306,8 +414,25 @@ export class NxComparisonTableComponent
     }
     const dir = this._dirValue === 'rtl' ? -1 : 1;
     const offset = this._pageIndex() * this._columnStepPx;
-    native.style.setProperty('--ct-page-shift', `${-dir * offset}px`);
-    native.style.setProperty('--ct-clip-istart', `${this._stickyColWidth + offset}px`);
+    this._writeCarouselOffset(native, -dir * offset, this._stickyColWidth + offset);
+  }
+
+  /**
+   * Both vars go on `native`: the product cells pick `--ct-page-shift` up by inheritance for
+   * their `translateX`, and the touch-pan handlers read it back as the source of truth. Rounded
+   * to whole px because `_measureClipGeometry` parses this value back out to recover each cell's
+   * resting position, and because sub-pixel transforms force text re-rasterisation on every frame.
+   */
+  private _writeCarouselOffset(native: HTMLElement, shiftPx: number, clipIstartPx: number): void {
+    this._setVarIfChanged(native, '--ct-page-shift', `${Math.round(shiftPx)}px`);
+    this._setVarIfChanged(native, '--ct-clip-istart', `${Math.round(clipIstartPx)}px`);
+  }
+
+  /** Skips the write (and the style invalidation it triggers) when the value is unchanged. */
+  private _setVarIfChanged(el: HTMLElement | null | undefined, name: string, value: string): void {
+    if (el && el.style.getPropertyValue(name) !== value) {
+      el.style.setProperty(name, value);
+    }
   }
 
   // ── Sticky-column / header clipping (all views) ───────────────────────────────
@@ -330,14 +455,16 @@ export class NxComparisonTableComponent
   private _shadowReserve = 0;
 
   // Cached desktop/tablet vertical-clip targets for the hot scroll path, so _updateClip walks no
-  // DOM per scroll event. Resolved during _measureClipGeometry — the single chokepoint for every
-  // change that recreates these elements: a view-type flip swaps the table template, and any
-  // content/size change is caught by the host ResizeObserver, both of which re-run measurement.
+  // DOM per scroll event — and the <thead> box, so `_updateStuck` doesn't either. Resolved during
+  // _measureClipGeometry — the single chokepoint for every change that recreates these elements: a
+  // view-type flip swaps the table template, and any content/size change is caught by the host
+  // ResizeObserver, both of which re-run measurement.
   // null = element absent in the current view (e.g. a table with no tfoot); undefined = not yet
   // resolved (a scroll/IntersectionObserver event that beat the first measurement — resolved lazily).
   private _clipHeaderCard: HTMLElement | null | undefined;
   private _clipBody: HTMLElement | null | undefined;
   private _clipFooter: HTMLElement | null | undefined;
+  private _clipThead: HTMLElement | null | undefined;
 
   /** Resolve (and cache) the desktop/tablet vertical-clip target elements from the live DOM. */
   private _resolveClipTargets(host: HTMLElement): void {
@@ -346,6 +473,36 @@ export class NxComparisonTableComponent
       host.querySelector<HTMLElement>('thead .is-header-row');
     this._clipBody = host.querySelector<HTMLElement>('tbody');
     this._clipFooter = host.querySelector<HTMLElement>('tfoot');
+    this._clipThead = host.querySelector<HTMLElement>('thead');
+  }
+
+  /** Live count of the cells that carry a measured `--ct-cell-start`; see the ResizeObserver. */
+  private _clipCellCount = -1;
+
+  /**
+   * Whether the clippable-cell population moved since the last measurement — i.e. whether a row or
+   * column was added/removed rather than merely resized. One `querySelectorAll`, no layout read.
+   */
+  private _clipCellCountChanged(): boolean {
+    const host = this._element.nativeElement as HTMLElement;
+    return host.querySelectorAll(CLIP_CELL_SELECTOR).length !== this._clipCellCount;
+  }
+
+  /**
+   * `.is-measuring` only keeps transitions from starting, so a glide already running would leave
+   * the reads mid-transform while `--ct-page-shift` already reads as the destination. `finish()`,
+   * not `cancel()`: the end value is where the carousel was going anyway.
+   */
+  private _finishCarouselTransitions(host: HTMLElement): void {
+    for (const animation of host.getAnimations?.({ subtree: true }) ?? []) {
+      if ((animation as { transitionProperty?: string }).transitionProperty !== 'transform') {
+        continue;
+      }
+      const target = (animation.effect as KeyframeEffect | null)?.target;
+      if (target?.classList.contains('nx-comparison-table__product-cell')) {
+        animation.finish();
+      }
+    }
   }
 
   /**
@@ -358,7 +515,7 @@ export class NxComparisonTableComponent
 
     // Invalidate the cached hot-path clip targets: a flip to mobile must leave no stale desktop
     // refs, and the desktop/tablet path re-resolves them below before the trailing _updateClip.
-    this._clipHeaderCard = this._clipBody = this._clipFooter = undefined;
+    this._clipHeaderCard = this._clipBody = this._clipFooter = this._clipThead = undefined;
 
     // Mobile: the host element is the horizontal scroller and the first column of the
     // transposed table is sticky. Measure the sticky column width and each clippable cell's
@@ -398,9 +555,9 @@ export class NxComparisonTableComponent
       }
 
       // Write phase: all reads are done, so these writes can't force a reflow on a subsequent read.
-      host.style.setProperty('--ct-sticky-w', `${Math.round(this._stickyColWidth)}px`);
+      this._setVarIfChanged(host, '--ct-sticky-w', `${Math.round(this._stickyColWidth)}px`);
       for (const { cell, start } of cellStarts) {
-        cell.style.setProperty('--ct-cell-start', `${Math.round(start)}px`);
+        this._setVarIfChanged(cell, '--ct-cell-start', `${Math.round(start)}px`);
       }
       this._updateClip();
       return;
@@ -440,16 +597,16 @@ export class NxComparisonTableComponent
     }
 
     const native = this._native()?.nativeElement;
-    // Zero the carousel offset so the translation-sensitive reads below see each cell's RESTING
-    // position (the product cells are translated when paged). `.is-measuring` suppresses the
-    // transform transition first, so zeroing the shift SNAPS the cells to their resting position
-    // synchronously — without it the transition would animate toward 0 and the getBoundingClientRect
-    // reads below would still see the cells at their paged offset, stamping a wrong --ct-cell-start
-    // that over-clips the column. Transform is paint-only, so this does not reflow; it's all one
-    // synchronous task → no visual flash. `_applyPageShift()` restores the offset for the current
-    // page (still measuring → also snaps, no animation) and the class is cleared at the end.
     this._element.nativeElement.classList.add('is-measuring');
-    native?.style.setProperty('--ct-page-shift', '0px');
+    this._finishCarouselTransitions(host);
+
+    // Product cells carry a live `translateX(shift)`, so the reads below see them displaced. Back
+    // that displacement out rather than zeroing the shift to read resting positions: zeroing is a
+    // real value change, and it would drag the cells to 0 and back on every measure. Valid only
+    // because `_finishCarouselTransitions` just parked every cell ON this value.
+    const currentShiftPx = native
+      ? parseFloat(native.style.getPropertyValue('--ct-page-shift')) || 0
+      : 0;
 
     // ── Read phase ──: keep every getBoundingClientRect here and every style.setProperty in the
     // write phase below, so a layout-affecting write (e.g. --ct-visible-end drives a banner width)
@@ -464,7 +621,7 @@ export class NxComparisonTableComponent
     // Derived geometrically — the last header product cell whose far edge still fits within the
     // viewport — rather than from `_visibleColumnCount()`, because the column-count signal can lag
     // a frame behind the resolved breakpoint when this runs from the ResizeObserver, which would
-    // pick the wrong column. The shift is zeroed above, so these are resting positions.
+    // pick the wrong column.
     const headerProducts = host.querySelectorAll<HTMLElement>(
       '.is-header-row .nx-comparison-table__product-cell',
     );
@@ -475,13 +632,28 @@ export class NxComparisonTableComponent
     const limit = vp.width - padInlineStart + 1;
     for (const cell of headerProducts) {
       const r = cell.getBoundingClientRect();
-      const far = rtl ? vp.right - padInlineStart - r.left : r.right - (vp.left + padInlineStart);
+      const far = rtl
+        ? vp.right - padInlineStart - (r.left - currentShiftPx)
+        : r.right - currentShiftPx - (vp.left + padInlineStart);
       if (far <= limit) {
         visibleEnd = far;
       } else {
         break;
       }
     }
+
+    // Each product cell's resting inline-start offset, measured from the VIEWPORT inline-start
+    // (x = 0 is the start of the sticky first column). The per-cell clip hides the band of the
+    // cell that sits under the sticky column: clamp(--ct-clip-istart − --ct-cell-start). Measuring
+    // from the viewport (not the table edge, which sits one phantom border-spacing gap further
+    // out) is what keeps a fully-hidden cell clipped to exactly 0 in A1, where the gap is 16px.
+    // Include the popular cell: it sits in .is-popular-row (not .is-header-row) and is not a
+    // .nx-comparison-table__cell, but it translates with the carousel and so must be clipped under
+    // the sticky column too — it needs its own resting --ct-cell-start to clip against.
+    // Queried (not measured) on tablet too, so `_clipCellCountChanged` has a live population count
+    // to compare against in either view.
+    const cells = host.querySelectorAll<HTMLElement>(CLIP_CELL_SELECTOR);
+    this._clipCellCount = cells.length;
 
     // Sticky column width + per-cell offsets: desktop only (tablet has no sticky first column).
     let stickyW = 0;
@@ -492,28 +664,55 @@ export class NxComparisonTableComponent
       );
       stickyW = firstCol ? firstCol.getBoundingClientRect().width : 0;
 
-      // Each product cell's resting inline-start offset, measured from the VIEWPORT inline-start
-      // (x = 0 is the start of the sticky first column). The per-cell clip hides the band of the
-      // cell that sits under the sticky column: clamp(--ct-clip-istart − --ct-cell-start). Measuring
-      // from the viewport (not the table edge, which sits one phantom border-spacing gap further
-      // out) is what keeps a fully-hidden cell clipped to exactly 0 in A1, where the gap is 16px.
-      // Include the popular cell: it sits in .is-popular-row (not .is-header-row) and is not a
-      // .nx-comparison-table__cell, but it translates with the carousel and so must be clipped under
-      // the sticky column too — it needs its own resting --ct-cell-start to clip against.
-      const cells = host.querySelectorAll<HTMLElement>(
-        '.nx-comparison-table__cell, .nx-comparison-table__popular-cell',
-      );
       for (const cell of cells) {
         const cellRect = cell.getBoundingClientRect();
+        // Only cells with the carousel's transform (product cells) need the shift subtracted.
+        const shift = cell.classList.contains('nx-comparison-table__product-cell')
+          ? currentShiftPx
+          : 0;
         // Measure from the viewport's CONTENT-box inline-start (border-box edge minus the
         // inline-start shadow padding), so the offset is unchanged by that padding (= 0 in base).
         const start = rtl
-          ? vp.right - padInlineStart - cellRect.right
-          : cellRect.left - (vp.left + padInlineStart);
+          ? vp.right - padInlineStart - (cellRect.right - shift)
+          : cellRect.left - shift - (vp.left + padInlineStart);
         cellStarts.push({ cell, start });
       }
     }
 
+    // Last read of this pass; reads then writes internally, so the boundary below still holds.
+    if (native) {
+      this._measureHeaderBand(native);
+    }
+
+    // ── Write phase ──: all reads are done.
+    this._stickyColWidth = stickyW;
+    if (visibleEnd != null) {
+      this._setVarIfChanged(native, '--ct-visible-end', `${Math.round(visibleEnd)}px`);
+    }
+    this._setVarIfChanged(native, '--ct-sticky-w', `${Math.round(stickyW)}px`);
+    if (this.viewType === 'desktop') {
+      // Expose the sticky column width so the intersection banner beside it pins to the product
+      // area [stickyColWidth, visibleEnd] instead of the whole viewport.
+      for (const { cell, start } of cellStarts) {
+        this._setVarIfChanged(cell, '--ct-cell-start', `${Math.round(start)}px`);
+      }
+    }
+    this._applyPageShift();
+    this._element.nativeElement.classList.remove('is-measuring');
+    // Cache the vertical-clip targets so the per-scroll _updateClip walks no DOM (see fields).
+    this._resolveClipTargets(host);
+    this._updateClip();
+  }
+
+  /**
+   * Measure the sticky header band's geometry and stamp it on `native`. Split out of
+   * `_measureClipGeometry` because this is the ONLY part the stuck/unstuck transition can change:
+   * that transition animates the header's padding and slot spacing, so it resizes the host on frame
+   * after frame, and the host ResizeObserver reruns from each one. Re-measuring the horizontal
+   * geometry there is wasted (a shorter header cannot move a cell sideways) and dominated the cost
+   * — see the ResizeObserver for the numbers.
+   */
+  private _measureHeaderBand(native: HTMLElement): void {
     // Vertical center of the header card, so the nav buttons (absolutely positioned at
     // `top: --ct-nav-center` inside the sticky wrapper, OUTSIDE the clipped viewport) sit centered
     // on it. Only meaningful when overflowing (no nav buttons otherwise); the card height is dynamic
@@ -539,7 +738,7 @@ export class NxComparisonTableComponent
     // thead top at rest; both pin at top:0). Using the whole thead box keeps theadHeight >= navCenter,
     // so the buttons always sit INSIDE the wrapper's box and never dangle below the header band.
     let theadHeight: number | null = null;
-    if (this._isOverflowing() && native) {
+    if (this._isOverflowing()) {
       const wrapper = native.querySelector<HTMLElement>('.nx-comparison-table__nav-wrapper');
       const card =
         native.querySelector<HTMLElement>(
@@ -556,38 +755,15 @@ export class NxComparisonTableComponent
       }
     }
 
-    // ── Write phase ──: all reads are done.
-    this._stickyColWidth = stickyW;
-    if (visibleEnd != null) {
-      native?.style.setProperty('--ct-visible-end', `${Math.round(visibleEnd)}px`);
-    }
     if (navCenter !== null) {
-      native?.style.setProperty('--ct-nav-center', `${navCenter}px`);
+      this._setVarIfChanged(native, '--ct-nav-center', `${navCenter}px`);
     }
-    native?.style.setProperty('--ct-thead-h', `${theadHeight ?? 0}px`);
-    native?.style.setProperty('--ct-sticky-w', `${Math.round(stickyW)}px`);
-    if (this.viewType === 'desktop') {
-      // Expose the sticky column width so the intersection banner beside it pins to the product
-      // area [stickyColWidth, visibleEnd] instead of the whole viewport.
-      for (const { cell, start } of cellStarts) {
-        cell.style.setProperty('--ct-cell-start', `${Math.round(start)}px`);
-      }
-    }
-    this._applyPageShift();
-    // Reads + the snap-back to the current page's offset are done in this synchronous task; restore
-    // the transition so the next user-driven page change animates again.
-    this._element.nativeElement.classList.remove('is-measuring');
-    // Cache the vertical-clip targets so the per-scroll _updateClip walks no DOM (see fields).
-    this._resolveClipTargets(host);
-    this._updateClip();
+    this._setVarIfChanged(native, '--ct-thead-h', `${theadHeight ?? 0}px`);
   }
 
   /**
-   * Hot path: update only the vertical clip variable (no layout reads on the horizontal axis).
-   * The horizontal clip (`--ct-clip-istart`) is owned by `_applyPageShift` (carousel-driven, not
-   * scroll-driven); this runs on page/host vertical scroll to keep the sticky-header occlusion in
-   * sync.
-   *   --ct-clip-top : how far the body has scrolled up behind the sticky header (desktop/tablet)
+   * Vertical clip only (`--ct-clip-top`: how far the body has scrolled up behind the sticky header).
+   * The horizontal clip is owned by `_applyPageShift` — carousel-driven, not scroll-driven.
    */
   private _updateClip(): void {
     // Mobile: write the live inline-scroll position onto the host; the per-cell CSS clamp
@@ -595,7 +771,7 @@ export class NxComparisonTableComponent
     if (this.viewType === 'mobile') {
       const host = this._element.nativeElement as HTMLElement;
       const scrollLeft = Math.abs(host.scrollLeft);
-      host.style.setProperty('--ct-clip-istart', `${this._stickyColWidth + scrollLeft}px`);
+      this._setVarIfChanged(host, '--ct-clip-istart', `${this._stickyColWidth + scrollLeft}px`);
       return;
     }
     const native = this._native()?.nativeElement;
@@ -639,8 +815,8 @@ export class NxComparisonTableComponent
     // independent: the body slides under the header as the page scrolls (its overlap grows), but
     // the footer sits far below and only meets the header at the very bottom of a tall table —
     // sharing the body's value over-clipped the footer the further you scrolled.
-    native.style.setProperty('--ct-clip-top', `${clipFromTop(this._clipBody)}px`);
-    native.style.setProperty('--ct-clip-foot-top', `${clipFromTop(this._clipFooter)}px`);
+    this._setVarIfChanged(native, '--ct-clip-top', `${clipFromTop(this._clipBody)}px`);
+    this._setVarIfChanged(native, '--ct-clip-foot-top', `${clipFromTop(this._clipFooter)}px`);
   }
 
   private readonly _injector = inject(Injector);
@@ -761,8 +937,9 @@ export class NxComparisonTableComponent
     const clamped =
       dir === 1 ? Math.max(-maxOffset, Math.min(0, raw)) : Math.min(maxOffset, Math.max(0, raw));
     const native = this._native()?.nativeElement;
-    native?.style.setProperty('--ct-page-shift', `${clamped}px`);
-    native?.style.setProperty('--ct-clip-istart', `${this._stickyColWidth + Math.abs(clamped)}px`);
+    if (native) {
+      this._writeCarouselOffset(native, clamped, this._stickyColWidth + Math.abs(clamped));
+    }
   };
 
   private readonly _onTouchEnd = (): void => {
@@ -789,25 +966,25 @@ export class NxComparisonTableComponent
 
   ngOnDestroy(): void {
     window.removeEventListener('scroll', this._scrollHandler, { capture: true });
+    if (this._stuckRaf !== null) {
+      cancelAnimationFrame(this._stuckRaf);
+    }
   }
 
   /** Whether the table is within (or near) the viewport; gates the page-wide scroll handler. */
   private _isVisible = true;
 
-  // Page/host scroll: keep the clip in sync with the scroll position. Synchronous (no rAF) so the
-  // clip updates in the SAME frame the scroll paints — a rAF defer let fast scrolls paint a frame
-  // of un-clipped content before catching up, and on WebKit (which dispatches scroll faster than
-  // once per frame) rAF lands a frame behind the compositor scroll. _updateClip only writes CSS
-  // variables (no layout reads on mobile / horizontal), so running it per event is cheap.
-  //
-  // The listener uses `capture: true` so it also catches scroll from ancestor scroll containers,
-  // which means it fires for EVERY scroll anywhere on the page. Skip the work when the table is
-  // detached or off-screen so unrelated scrolling (sidebars, modals, other tables) costs nothing.
+  // Synchronous (no rAF) so the clip updates in the SAME frame the scroll paints: a defer let fast
+  // scrolls paint a frame of un-clipped content, and on WebKit (scroll fires faster than once per
+  // frame) rAF lands a frame behind the compositor. The price is `_updateClip`'s rect reads on every
+  // event — worth it here, but it is why the visibility gate below matters: `capture: true` catches
+  // ancestor scroll containers too, so this runs for EVERY scroll on the page.
   private readonly _scrollHandler = (): void => {
     if (!this._isVisible || !this._element.nativeElement.isConnected) {
       return;
     }
     this._updateClip();
+    this._scheduleUpdateStuck();
   };
 
   /** Whether the element is a row. */

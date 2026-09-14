@@ -4,6 +4,8 @@ import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableHeaderPrice,
+  NxComparisonTableHeaderTitle,
   NxComparisonTableIntersectionCell,
   NxComparisonTableRowDirective,
   NxComparisonTableRowGroupDirective,
@@ -11,7 +13,9 @@ import {
   NxToggleSectionDirective,
   NxToggleSectionHeaderComponent,
 } from '@allianz/ng-aquila/comparison-table';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
+import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import { NxBreakpoints } from '@allianz/ng-aquila/utils';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -23,15 +27,19 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./comparison-table-overflow-example.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    NxPriceComponent,
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
     NxComparisonTableRowGroupDirective,
     NxComparisonTableCell,
+    NxComparisonTableHeaderTitle,
+    NxComparisonTableHeaderPrice,
     NxComparisonTableDescriptionCell,
     NxComparisonTableIntersectionCell,
     NxComparisonTableSelectButton,
     NxToggleSectionDirective,
     NxToggleSectionHeaderComponent,
+    NxHeadlineComponent,
     NxIconComponent,
     FormsModule,
   ],

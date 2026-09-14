@@ -6,33 +6,12 @@
   );
 }
 
-.product-title {
-  font-weight: 600;
-  margin: 0 0 12px 0;
-}
-
-.product-price {
-  font-weight: 600;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  letter-spacing: 0.0125rem;
-  margin-top: auto;
-  margin-bottom: 16px;
-}
-
 .product-underline {
   font-size: 0.875rem;
   line-height: 1rem;
   letter-spacing: 0.0125rem;
   font-weight: 400;
   margin: 0;
-}
-
-.header-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
 }
 
 .popular-cell__content-wrapper {

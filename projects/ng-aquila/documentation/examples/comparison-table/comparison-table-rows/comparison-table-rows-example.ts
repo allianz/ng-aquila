@@ -1,53 +1,45 @@
-import { NxErrorComponent } from '@allianz/ng-aquila/base';
-import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
 import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
   NxComparisonTableHeaderPrice,
   NxComparisonTableHeaderTitle,
-  NxComparisonTablePopularCell,
+  NxComparisonTableIntersectionCell,
   NxComparisonTableRowDirective,
+  NxComparisonTableRowGroupDirective,
   NxComparisonTableSelectButton,
+  NxToggleSectionDirective,
+  NxToggleSectionHeaderComponent,
 } from '@allianz/ng-aquila/comparison-table';
 import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
-import {
-  NxPopoverComponent,
-  NxPopoverTriggerDirective,
-} from '@allianz/ng-aquila/popover';
+import { NxListComponent, NxListIconComponent } from '@allianz/ng-aquila/list';
 import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 
+/** @title Structuring rows example */
 @Component({
-  selector: 'comparison-table-error-example',
-  templateUrl: './comparison-table-error-example.html',
-  styleUrls: ['./comparison-table-error-example.scss'],
+  selector: 'comparison-table-rows-example',
+  templateUrl: './comparison-table-rows-example.html',
+  styleUrls: ['./comparison-table-rows-example.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    NxPriceComponent,
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
-    NxComparisonTablePopularCell,
-    NxPlainButtonComponent,
-    NxPopoverTriggerDirective,
-    NxIconComponent,
-    NxPopoverComponent,
-    NxHeadlineComponent,
     NxComparisonTableCell,
     NxComparisonTableHeaderTitle,
     NxComparisonTableHeaderPrice,
     NxComparisonTableSelectButton,
     NxComparisonTableDescriptionCell,
-    NxErrorComponent,
+    NxComparisonTableIntersectionCell,
+    NxComparisonTableRowGroupDirective,
+    NxToggleSectionDirective,
+    NxToggleSectionHeaderComponent,
+    NxHeadlineComponent,
+    NxPriceComponent,
+    NxIconComponent,
+    NxListComponent,
+    NxListIconComponent,
   ],
 })
-export class ComparisonTableErrorExampleComponent {
-  constructor() {}
-  control = new FormControl(null);
-
-  select(v: any) {
-    this.control.setValue(v);
-  }
-}
+export class ComparisonTableRowsExampleComponent {}

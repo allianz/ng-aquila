@@ -9,114 +9,134 @@ a1Light: true
 group: Data Display
 ---
 
-### Notes about the usage of the component
+### Usage guidelines
 
-It is recommended to use the comparison table with a **maximum of 5 products**.
-
-The footer cells are not displayed on mobile. Therefore please **do not put any important content in the footer**.
-
-For better mobile user experience the table should be placed in a horizontal scrollable container.
-
-### Accessibility
-
-When using an icon-only cell it is important that the `nx-icon` has an `aria-label`. To learn more about the usage of an aria-label [click here](./documentation/accessibility/overview#usage-of-aria-label).
-
-### Avoiding CLS issues with dynamic content
-
-With the new [Core Web Vitals set of Google page metrics](https://web.dev/vitals/), pages can get penalized for hight [Cumulative Layout Shift](https://web.dev/cls/) measurements, which commonly occures with the content that is added to the page dynamically. To ensure good user experience (and avoid sanctions from search engines), make sure to [use placeholders or fixed-height containers](https://web.dev/optimize-cls/#dynamic-content) for content that is loaded dynamically. You can refer to our examples.
+- Use a **maximum of 5 products**. Beyond that the columns get too narrow to compare.
+- Footer cells are **not displayed on mobile** — do not put any important content there.
+- On mobile, place the table in a horizontally scrollable container, or let A1's [container based responsive layout](#responsive-layout-and-overflow) turn it into a carousel.
+- Icon-only cells need an `aria-label` on the `nx-icon`. See [usage of aria-label](./documentation/accessibility/overview#usage-of-aria-label).
+- Content that arrives after the first render (prices, availability) should sit in a fixed-height container so it does not shift the layout. See [dynamically filled content](#dynamically-filled-content).
 
 ### Examples
 
-#### Basic Comparison Table
+#### Header slots
 
-A basic comparison table consists of rows (`nxComparisonTableRow`) containing table cells: normal (`nx-comparison-table-cell`) and description ones (`nx-comparison-table-description-cell`) as shown in the example below.
+A comparison table has a header row of product cells (`nx-comparison-table-cell[type="header"]`) and content rows (`nxComparisonTableRow`) of cells (`nx-comparison-table-cell`) and description cells (`nx-comparison-table-description-cell`).
 
-Products/columns can be selected by using a `NxComparisonTableSelectButton` button. Pay attention that you have to specify the text of the button via the inputs `selectedLabel` and `unselectedLabel`.
+Wrap your markup inside a header cell in these slot elements to get consistent order, spacing and sizing:
 
-You can also set the initially selected product by using the `[selectedIndex]` input of the comparison table.
+- `nx-comparison-table-header-top` — freeform, e.g. a country-specific badge
+- `nx-comparison-table-header-eyebrow` — hidden while a sticky header is pinned (see [sticky header](./documentation/comparison-table#sticky-header))
+- `nx-comparison-table-header-title` — wrap an `[nxHeadline]` (no `size`); size is set via the table's `headlineSize` input (`'l' | 'xl'`, default `'xl'`)
+- `nx-comparison-table-header-price` — wrap an `nx-price`; size is imposed by the table (`2xl`, `l` while stuck)
+
+Each slot is a directive of the same name in PascalCase — import the ones you use, or `NxComparisonTableModule`.
+
+The named slots render in the order above regardless of markup order, then `nxComparisonTableSelectButton`, then any unslotted content.
+
+The imposed sizes are provided by the title and price slots, so they stop at the slot boundary. If you skip the slots and write your own header markup, the table leaves your headlines and prices alone — you own their sizes, and you no longer pick up our design updates to them automatically.
+
+Select a product with `nxComparisonTableSelectButton` (`selectedLabel` / `unselectedLabel`); the initial selection comes from the table's `[selectedIndex]`. Highlight a column with `nx-comparison-table-popular-cell forColumn="…"` in the header row.
 
 <!-- example(comparison-table) -->
 
-#### Container based responsive layout
+#### Responsive layout and overflow
 
-The component automatically switches into a carousel when the `responsiveMode` is set to `container` (default for A1, not supported in NDBX) and if there is not enough space to show all products.
-In addition it always switches between the tablet and desktop view depending on the size of the container.
+With `responsiveMode="container"` (the default for A1, not supported in NDBX) the table measures its container instead of the viewport: it switches between the tablet and desktop view as the container resizes, and turns into a carousel when there is not enough space for all products.
 
-The amount of visible columns and the view type per breakpoint can be customized. A breakpoint is a `NxComparisonTableBreakpoint` object: its `minWidth` defines the container width (in pixels) from which it applies, while `columns` sets how many product columns are shown and `viewType` (`tablet` or `desktop`, `mobile` is legacy and not intended to be used together with responsiveBreakpoints) controls the look. Both `columns` and `viewType` are optional and are carried over from the previous matching breakpoint when omitted.
+Which view applies at which width is controlled by breakpoints. A `NxComparisonTableBreakpoint` is `{ minWidth, columns?, viewType? }`: `minWidth` is the container width in pixels from which it applies, `columns` the number of visible product columns and `viewType` the look (`tablet` or `desktop`; `mobile` exists for legacy tables and is not meant to be combined with `responsiveBreakpoints`). `columns` and `viewType` are optional and carry over from the previous matching breakpoint.
 
-These breakpoints can either be set via the `responsiveBreakpoints` input on a single comparison table or be provided globally via the `COMPARISON_TABLE_DEFAULT_OPTIONS` provider token.
+Set them per table via the `responsiveBreakpoints` input, or globally through the `COMPARISON_TABLE_DEFAULT_OPTIONS` provider token. The defaults are exported as `DEFAULT_BREAKPOINTS`.
 
-The default breakpoints are exported through the `DEFAULT_BREAKPOINTS` constant.
-
-The following example uses custom breakpoints: it keeps the default breakpoints below `BREAKPOINT_LARGE` and replaces the largest one with a `tablet` view that shows 3 columns, so the table stays in the tablet look on wide containers instead of switching to desktop.
+The example below keeps the defaults below `BREAKPOINT_LARGE` and replaces the largest one with a `tablet` view showing 3 columns, so the table stays in the tablet look on wide containers instead of switching to desktop.
 
 <!-- example(comparison-table-overflow) -->
 
-#### Breakpoint playground
-
-To see how `columns` and `viewType` interact, the following example wires both fields of a single breakpoint to dropdowns. It uses just one breakpoint at `minWidth: 0`, which always matches regardless of the container width — this takes the container size out of the equation so the layout is driven purely by the two dropdowns.
-
-Note that `columns` and `viewType` are independent: setting `columns` to 3 with `viewType` left at its `tablet` default looks different from the tablet or desktop view with the same column count. Pick the `viewType` that matches the look you want, then set `columns` for the number of products shown.
+`columns` and `viewType` are independent: 3 columns in the `tablet` look is not the same as 3 columns in the `desktop` look. The playground below wires both fields of a single breakpoint at `minWidth: 0` — which always matches — to dropdowns, so the layout is driven purely by the two values and not by the container size.
 
 <!-- example(comparison-table-breakpoint-playground) -->
 
-#### Static Layout
+#### Sticky header
 
-If a specific layout is needed, the `view` input can be used to override the layout auto-set by the viewport width.
+On desktop the header row sticks to the top of the page while the user scrolls the table. When it is pinned, the header cells shrink their content to keep the docked header compact: an `nx-comparison-table-header-eyebrow` collapses away, `nx-price` steps down from `2xl` to `l`, and the cell padding plus the slot spacing tighten (via the `…-sticky` theming tokens). These changes ease in via the `comparison-table-header-stuck-transition-duration`/`-easing` tokens (skipped under `prefers-reduced-motion: reduce`).
 
-<!-- example(comparison-table-static) -->
+Opt out by adding `[mayStick]="false"` to your header row. The eyebrows and price sizes in this example stay put, because its header never docks.
 
-#### Intersection cells
+<!-- example(comparison-table-non-sticky-header) -->
 
-You can further use intersection cells (`nx-comparison-table-intersection-cell`) which are a merge of multiple cells.
+#### Structuring rows
 
-For the mobile view, in this example the content of the intersection cell is displayed inside an extra-light accordion above the table.
+The example below combines the three ways to structure the rows of a table. They are independent — leave out the blocks you do not need.
 
-<!-- example(comparison-table-with-intersection) -->
+`nx-comparison-table-intersection-cell` replaces all product cells of a row with one cell spanning the full width, for content that applies to every product. On mobile the table is transposed to a single column, so put long intersection content in an accordion above the table instead.
 
-#### Row Groups
+`nxComparisonTableToggleSection` with a `nx-comparison-table-toggle-section-header` groups rows under a collapsible category heading.
 
-If your table has a lot of rows you can group them inside a `nxComparisonTableRowGroup`. Then, only a certain number of rows is visible at the beginning. The rest can be expanded by the user. By default, the first 5 rows are shown when loading a page. You can change this number via the input `[visibleRows]`.
+`nxComparisonTableRowGroup` shows only the first `[visibleRows]` rows (5 by default) and hides the rest behind a toggle. Customize its labels with `[labelCollapsed]` and `[labelExpanded]`, and read or bind the open state through `isExpanded`.
 
-The text of the expandable button area can be customized by setting `[labelCollapsed]` and `[labelExpanded]` on the row group.
-
-You can also control the initial expanded state and react to its changes through setting or binding to the `isExpanded` property.
-
-<!-- example(comparison-table-row-group) -->
+<!-- example(comparison-table-rows) -->
 
 <div class="docs-expert-container">
 
-#### Expert: Expand the expandable area over the full row width
-
-By setting `useFullRowForExpandableArea="true"` on the `nxComparisonTableRowGroup` element the expandable area uses the full width of the table.
-
-If the `NxExpertModule` is used, this is set by default.
-
-Please **switch the theme to "EXPERT" at the top of the page** to see the correct expert comparison table.
+Setting `useFullRowForExpandableArea="true"` on the row group makes the expandable area span the full table width. The `NxExpertModule` does this by default. Please **switch the theme to "EXPERT" at the top of the page** to see the correct expert comparison table.
 
 <!-- example(comparison-table-expandable-area) -->
 
 </div>
 
-#### Toggle Sections
+#### Disabled and hidden columns
 
-Multiple table rows can be grouped in a toggle section (`nxComparisonTableToggleSection`) with a toggle section header (`nx-comparison-table-toggle-section-header`) as shown in the example below.
+`disabledColumn` on a header `nx-comparison-table-cell` greys out that product's whole column. It can only be set on header cells, and it does **not** reach form controls inside the column — disable dropdowns, inputs and checkboxes yourself.
 
-<!-- example(comparison-table-with-toggle-sections) -->
-
-#### Disabled table columns
-
-You can disable certain columns of the comparison table via the input `disabledColumn` on a header `nx-comparison-table-cell` as shown in the example below. Keep in mind that the `disabledColumn` attribute can be set only on header cells. Note that disabling a column in the comparison table using the `disabledColumn` attribute on a header cell won't automatically disable other input fields like dropdowns, text fields, and checkboxes. You'll have to manually disable those fields using the disabled attribute.
-
-<!-- example(comparison-table-disabled-columns) -->
-
-#### Hidden table columns
-
-You can hide certain columns of the comparison table via the input `hiddenIndexes` on table `nx-comparison-table` as shown in the example below. Keep in mind that `hiddenIndexes` will also hide selected columns - to avoid submitting selections of not visible columns please make sure that you do not provide the possibility to hide columns that are selected at the same time.
+`hiddenIndexes` on `nx-comparison-table` removes columns from the table entirely. It hides selected columns too, so make sure the currently selected column cannot be hidden — otherwise you submit a selection the user can no longer see.
 
 Please note that **this example is using the `nx-context-menu` component which is an Expert component**. This means that this combination is currently only intended for internal and not for client-facing applications.
 
-<!-- example(comparison-table-hidden-columns) -->
+<!-- example(comparison-table-columns) -->
+
+#### Error state
+
+The `isError` attribute displays an error state for the header and footer of the table.
+
+To enhance accessibility, please ensure that an explanation of any error messages is included above the table, if applicable.
+
+<!-- example(comparison-table-error) -->
+
+#### Dynamically filled content
+
+The table can be built from data instead of static markup. When values arrive after the first render, reserve their space with a fixed-height container — otherwise the late content shifts the page and hurts your [Cumulative Layout Shift](https://web.dev/cls/) score. The example below keeps the price slot at a fixed height and shows a spinner while loading; see [optimize CLS](https://web.dev/optimize-cls/#dynamic-content) for the general technique.
+
+<!-- example(comparison-table-dynamic) -->
+
+<div class="docs-expert-container">
+
+#### Expert: Form controls in a comparison table
+
+You can place other components like a dropdown in the comparison table.
+
+Please note that **this is an option for Expert**. This means that form controls inside the comparison table are currently only intended for internal and not for client-facing applications. Switch the theme to "EXPERT" at the top of the page to see the correct expert comparison table.
+
+<!-- example(comparison-table-form-elements) -->
+
+</div>
+
+#### Premium breakdown and recommendation tables
+
+Two further layouts build on the comparison table: a premium breakdown table for displaying how a price is composed, and a recommendation table for summarizing a single offer.
+
+<!-- example(breakdown-table) -->
+
+<!-- example(recommendation-table) -->
+
+<div class="docs-expert-container">
+
+Simplified, more neutral variants of both are available for expert applications.
+
+<!-- example(breakdown-table-expert) -->
+
+<!-- example(recommendation-table-expert) -->
+
+</div>
 
 <div class="docs-private">
 
@@ -130,60 +150,14 @@ Depending on the colors you choose, it may be necessary to modify the default bu
 
 </div>
 
-#### Dynamically filled table
+#### Legacy
 
-<!-- example(comparison-table-dynamic) -->
+The following two examples are kept for existing NDBX applications. Do not start from them.
 
-#### Non-sticky header on Desktop
+Before the header slots existed, header cells were composed of freeform markup with application-owned CSS for order, spacing and typography. This still works — unslotted content renders after the slots — but every application ended up looking slightly different, which is what the slots fix.
 
-You can opt-out of the sticky header row on Desktop by adding the attribute `[mayStick]="false"` to your header row.
+<!-- example(comparison-table-header-legacy) -->
 
-<!-- example(comparison-table-non-sticky-header) -->
+The `view` input forces a fixed layout instead of deriving it from the available width. Prefer `responsiveBreakpoints` (see [responsive layout](#responsive-layout-and-overflow)), which covers the same ground and is the supported path for A1.
 
-<div class="docs-expert-container">
-
-#### Expert: Form controls in a comparison table
-
-You can easily place other components like a dropdown in the comparison table:
-
-Please note that **this is an option for Expert**. This means that form controls inside the comparison table are currently only intended for internal and not for client-facing applications.
-
-Switch the theme to "EXPERT" at the top of the page to see the correct expert comparison table.
-
-<!-- example(comparison-table-form-elements) -->
-
-</div>
-
-#### Premium breakdown table
-
-Display data as premium breakdown table.
-
-<!-- example(breakdown-table) -->
-
-#### Recommendation table
-
-Display the summary of a single offer as recommendation table.
-
-<!-- example(recommendation-table) -->
-
-<div class="docs-expert-container">
-
-#### Expert: Premium breakdown table
-
-A simplified variant is available for expert applications.
-
-<!-- example(breakdown-table-expert) -->
-
-#### Expert: Recommendation table
-
-A more neutral variant is available for expert applications.
-
-<!-- example(recommendation-table-expert) -->
-
-</div>
-
- #### Error state
-You can display an error state for the header and footer of the table using the `isError` attribute as shown in the example below.
-
-To enhance accessibility,  please ensure that an explanation of any error messages is included above the table, if applicable.
- <!-- example(comparison-table-error) -->
+<!-- example(comparison-table-static) -->

@@ -127,10 +127,11 @@
       transform: translateX(var(--ct-page-shift, 0px));
     }
 
-    // `.is-measuring` suppresses the transition while `_measureClipGeometry` zeroes --ct-page-shift
-    // to read each cell's RESTING position: with the transition live, zeroing the shift would
-    // ANIMATE toward 0 and the synchronous getBoundingClientRect reads would still see the cell at
-    // its translated (paged) position → a wrong --ct-cell-start that over-clips the column.
+    // `.is-measuring` suppresses the transition while `_measureClipGeometry`'s trailing
+    // `_applyPageShift()` re-asserts the offset, so a resize-driven shift change snaps there
+    // instead of animating from the pre-resize position. It governs only transitions that start
+    // while it is set — one already running is unaffected, which is why `_measureClipGeometry`
+    // also has to finish those explicitly before it reads.
     @media (prefers-reduced-motion: no-preference) {
       &:not(.is-panning):not(.is-measuring) ::ng-deep .nx-comparison-table__product-cell {
         transition:
@@ -159,6 +160,9 @@
     thead .nx-comparison-table__corner-cell {
       position: sticky;
       z-index: 4;
+      // Prevents scroll-anchoring feedback loops while the stuck/unstuck transition
+      // (cell.component.scss) animates these cells' box size.
+      overflow-anchor: none;
     }
 
     thead {
@@ -166,6 +170,7 @@
       ::ng-deep .nx-comparison-table__popular-cell {
         position: sticky;
         z-index: 3;
+        overflow-anchor: none;
       }
     }
   }
@@ -500,6 +505,19 @@
       border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
       border-inline: nx-border-size(xs) solid v(comparison-table-border-color);
       border-radius: v(comparison-table-cell-border-radius);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      ::ng-deep .nx-comparison-table__header-cell .nx-comparison-table__cell-inner {
+        transition: padding v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing);
+      }
+    }
+
+    // Header only, and only while actually pinned (cell.component.ts `_isHeaderStuck`): the
+    // docked card trades padding for compactness, alongside the slot spacing in cell.component.scss.
+    ::ng-deep .nx-comparison-table__header-cell.is-stuck .nx-comparison-table__cell-inner {
+      padding: v(comparison-table-header-cell-padding-sticky);
     }
 
     ::ng-deep .nx-comparison-table__header-cell.is-selected .nx-comparison-table__cell-inner,

@@ -8,6 +8,7 @@ export * from './comparison-table-row.directive';
 export * from './comparison-table-row-base';
 export * from './comparison-table-row-group.directive';
 export * from './description-cell/description-cell.component';
+export * from './header-slots';
 export * from './intersection-cell/intersection-cell.component';
 export * from './popular-cell/popular-cell.component';
 export * from './select-button/select-button.component';

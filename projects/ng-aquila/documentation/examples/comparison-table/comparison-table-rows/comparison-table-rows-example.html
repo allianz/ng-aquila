@@ -1,0 +1,185 @@
+<div class="container">
+  <nx-comparison-table selectedIndex="1">
+    <ng-container nxComparisonTableRow type="header">
+      <nx-comparison-table-cell type="header">
+        <nx-comparison-table-header-title>
+          <h3 nxHeadline>Product One</h3>
+        </nx-comparison-table-header-title>
+        <nx-comparison-table-header-price>
+          <nx-price [value]="105.99" currency="EUR"></nx-price>
+        </nx-comparison-table-header-price>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell type="header">
+        <nx-comparison-table-header-title>
+          <h3 nxHeadline>Product Two</h3>
+        </nx-comparison-table-header-title>
+        <nx-comparison-table-header-price>
+          <nx-price [value]="110.99" currency="EUR"></nx-price>
+        </nx-comparison-table-header-price>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell type="header">
+        <nx-comparison-table-header-title>
+          <h3 nxHeadline>Product Three</h3>
+        </nx-comparison-table-header-title>
+        <nx-comparison-table-header-price>
+          <nx-price [value]="115.99" currency="EUR"></nx-price>
+        </nx-comparison-table-header-price>
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </nx-comparison-table-cell>
+    </ng-container>
+
+    <!-- An intersection cell merges all product columns into one. -->
+    <ng-container nxComparisonTableRow>
+      <nx-comparison-table-description-cell
+        >Overview of product benefits</nx-comparison-table-description-cell
+      >
+      <nx-comparison-table-intersection-cell>
+        <ul nxList="small" class="benefits-list nx-margin-bottom-0">
+          <li nxListIcon="check" class="nx-margin-bottom-2xs">
+            Space for offered services, advantages
+          </li>
+          <li nxListIcon="check" class="nx-margin-bottom-2xs">
+            Third party damages
+          </li>
+          <li nxListIcon="check">Burglary, theft, robbery and vandalism</li>
+        </ul>
+      </nx-comparison-table-intersection-cell>
+    </ng-container>
+
+    <!-- A toggle section groups rows under a collapsible category header. -->
+    <ng-container nxComparisonTableToggleSection>
+      <nx-comparison-table-toggle-section-header
+        >Service category</nx-comparison-table-toggle-section-header
+      >
+
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell
+          >Coverage amount</nx-comparison-table-description-cell
+        >
+        <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
+        <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
+        <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
+      </ng-container>
+
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell
+          >Worldwide protection</nx-comparison-table-description-cell
+        >
+        <nx-comparison-table-cell>
+          <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+        </nx-comparison-table-cell>
+        <nx-comparison-table-cell>
+          <nx-icon
+            name="check"
+            size="s"
+            aria-label="Included"
+            class="check-icon"
+          ></nx-icon>
+        </nx-comparison-table-cell>
+        <nx-comparison-table-cell>
+          <nx-icon
+            name="check"
+            size="s"
+            aria-label="Included"
+            class="check-icon"
+          ></nx-icon>
+        </nx-comparison-table-cell>
+      </ng-container>
+    </ng-container>
+
+    <!-- A row group shows `visibleRows` rows and hides the rest behind a toggle. -->
+    <ng-container
+      nxComparisonTableRowGroup
+      [visibleRows]="1"
+      labelCollapsed="Show all services"
+      labelExpanded="Show fewer services"
+    >
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell
+          >Legal advice</nx-comparison-table-description-cell
+        >
+        <nx-comparison-table-cell>
+          <nx-icon name="minus" size="s" aria-label="Not included"></nx-icon>
+        </nx-comparison-table-cell>
+        <nx-comparison-table-cell>
+          <nx-icon
+            name="check"
+            size="s"
+            aria-label="Included"
+            class="check-icon"
+          ></nx-icon>
+        </nx-comparison-table-cell>
+        <nx-comparison-table-cell>
+          <nx-icon
+            name="check"
+            size="s"
+            aria-label="Included"
+            class="check-icon"
+          ></nx-icon>
+        </nx-comparison-table-cell>
+      </ng-container>
+
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell
+          >Deductible</nx-comparison-table-description-cell
+        >
+        <nx-comparison-table-cell>500 Euro</nx-comparison-table-cell>
+        <nx-comparison-table-cell>250 Euro</nx-comparison-table-cell>
+        <nx-comparison-table-cell>0 Euro</nx-comparison-table-cell>
+      </ng-container>
+
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell
+          >Replacement value</nx-comparison-table-description-cell
+        >
+        <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
+        <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
+        <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
+      </ng-container>
+    </ng-container>
+
+    <ng-container nxComparisonTableRow type="footer">
+      <nx-comparison-table-cell type="footer">
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell type="footer">
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </nx-comparison-table-cell>
+      <nx-comparison-table-cell type="footer">
+        <button
+          nxComparisonTableSelectButton
+          unselectedLabel="Select"
+          selectedLabel="Selected"
+          type="button"
+        ></button>
+      </nx-comparison-table-cell>
+    </ng-container>
+  </nx-comparison-table>
+</div>

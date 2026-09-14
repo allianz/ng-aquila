@@ -77,6 +77,12 @@ export abstract class NxComparisonTableBase {
   /** The popular cell of the table. */
   abstract readonly _popularCell: Signal<NxComparisonTablePopularCell | undefined>;
 
+  /** Whether the sticky header row is currently pinned to the top of the page. */
+  abstract readonly _isHeaderStuck: Signal<boolean>;
+
+  /** Base headline size the table imposes on its header cells' title slots. */
+  abstract readonly headlineSize: Signal<'l' | 'xl'>;
+
   /** Add a column to the list of disabled columns. */
   abstract _addDisabledColumn(disabledColumn: number): void;
 

@@ -68,6 +68,8 @@ describe('NxComparisonTableCell', () => {
         ConfigurableCellComponent,
         ToggleSectionCellComponent,
         MultiColumnCellComponent,
+        HeaderSlotsCellComponent,
+        MisplacedHeaderSlotCellComponent,
       ],
     });
     TestBed.compileComponents();
@@ -285,10 +287,79 @@ describe('NxComparisonTableCell', () => {
       expect(headerCells[2].nativeElement).not.toHaveClass('has-popular-above');
     });
   });
+
+  describe('header cell slots', () => {
+    it('renders the default-variant slots in a fixed order, regardless of source order', () => {
+      createTestComponent(HeaderSlotsCellComponent);
+      const headerCell = cellElements[0].nativeElement as HTMLElement;
+      const texts = Array.from(headerCell.querySelectorAll('[data-slot]')).map((el) =>
+        (el as HTMLElement).textContent?.trim(),
+      );
+      expect(texts).toEqual(['Top', 'Eyebrow', 'Title', 'Price', 'Select']);
+    });
+
+    it('still renders unstructured content via the catch-all', () => {
+      createTestComponent(HeaderSlotsCellComponent);
+      const headerCell = cellElements[0].nativeElement as HTMLElement;
+      expect(headerCell.textContent).toContain('Unstructured extra');
+    });
+
+    // The slots are directives, so they inherit no display of their own — left inline they would
+    // run the title into the price instead of stacking, and the cell's own spacing would not apply.
+    it('lays the slots out as blocks and aligns the price to the end of the cell', () => {
+      createTestComponent(HeaderSlotsCellComponent);
+      const headerCell = cellElements[0].nativeElement as HTMLElement;
+      const displayOf = (selector: string) =>
+        getComputedStyle(headerCell.querySelector(selector)!).display;
+
+      expect(displayOf('nx-comparison-table-header-top')).toBe('block');
+      expect(displayOf('nx-comparison-table-header-eyebrow')).toBe('grid');
+      expect(displayOf('nx-comparison-table-header-title')).toBe('block');
+
+      const price = getComputedStyle(headerCell.querySelector('nx-comparison-table-header-price')!);
+      expect(price.display).toBe('block');
+      expect(price.alignSelf).toBe('flex-end');
+    });
+
+    it('renders a select button in a footer cell', () => {
+      createTestComponent(FooterSelectButtonCellComponent);
+      const footerCell = cellElements[1].nativeElement as HTMLElement;
+      expect(footerCell.querySelector('button[nxComparisonTableSelectButton]')).toBeTruthy();
+      expect(footerCell.textContent).toContain('Footer note');
+    });
+
+    it('renders header-slot content on a non-header cell instead of dropping it', () => {
+      // Projection is resolved statically: gating these slots on `type === "header"` made a
+      // misplaced slot swallow its content silently rather than fall through to the catch-all.
+      createTestComponent(MisplacedHeaderSlotCellComponent);
+      const contentCell = fixture.debugElement.query(
+        By.css('.nx-comparison-table__cell:not(.nx-comparison-table__header-cell)'),
+      ).nativeElement as HTMLElement;
+      expect(contentCell.textContent).toContain('Misplaced title');
+    });
+  });
 });
 
 @Component({
   selector: 'test-basic-cell-component',
+  template: `
+    <nx-comparison-table>
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-cell type="header">Header</nx-comparison-table-cell>
+      </ng-container>
+      <ng-container nxComparisonTableRow type="footer">
+        <nx-comparison-table-cell type="footer">
+          <button nxComparisonTableSelectButton unselectedLabel="Select"></button>
+          <span>Footer note</span>
+        </nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+  `,
+  imports: [NxComparisonTableModule],
+})
+class FooterSelectButtonCellComponent extends CellTest {}
+
+@Component({
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -389,3 +460,40 @@ class ToggleSectionCellComponent extends CellTest {
   imports: [NxComparisonTableModule],
 })
 class MultiColumnCellComponent extends CellTest {}
+
+@Component({
+  template: `
+    <nx-comparison-table>
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-cell type="header">
+          <nx-comparison-table-header-price data-slot>Price</nx-comparison-table-header-price>
+          <nx-comparison-table-header-title data-slot>Title</nx-comparison-table-header-title>
+          <span>Unstructured extra</span>
+          <button data-slot nxComparisonTableSelectButton unselectedLabel="Select"></button>
+          <nx-comparison-table-header-top data-slot>Top</nx-comparison-table-header-top>
+          <nx-comparison-table-header-eyebrow data-slot>Eyebrow</nx-comparison-table-header-eyebrow>
+        </nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+  `,
+  imports: [NxComparisonTableModule],
+})
+class HeaderSlotsCellComponent extends CellTest {}
+
+@Component({
+  template: `
+    <nx-comparison-table>
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-cell type="header">Header</nx-comparison-table-cell>
+      </ng-container>
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell>Desc</nx-comparison-table-description-cell>
+        <nx-comparison-table-cell>
+          <nx-comparison-table-header-title>Misplaced title</nx-comparison-table-header-title>
+        </nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+  `,
+  imports: [NxComparisonTableModule],
+})
+class MisplacedHeaderSlotCellComponent extends CellTest {}

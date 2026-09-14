@@ -1,4 +1,6 @@
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
+import { NxHeadlineSize } from '@allianz/ng-aquila/headline';
+import { NxPriceSize } from '@allianz/ng-aquila/price';
 import { NxRadioIndicatorComponent } from '@allianz/ng-aquila/selection';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -24,6 +26,9 @@ import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 import { NxComparisonTableSelectButton } from '../select-button/select-button.component';
 import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
+
+/** The step-down a docked header cell applies to its title; see `headlineSize` below. */
+const STUCK_HEADLINE_SIZE = { xl: 'l', l: 'm' } as const;
 
 @Component({
   selector: 'nx-comparison-table-cell',
@@ -105,6 +110,26 @@ export class NxComparisonTableCell {
     return this._type;
   }
   private _type: NxComparisonTableRowType = 'content';
+
+  /**
+   * Design fixes the size of price and headline content in header cells, so it's imposed on the
+   * projected component rather than picked by it — and both step down one notch while the sticky
+   * header is pinned, alongside the eyebrow collapsing, to keep the docked header compact. Other
+   * cell types impose nothing. Price and headline have separate scales, hence separate computeds.
+   * `NxComparisonTableHeaderTitle` / `NxComparisonTableHeaderPrice` turn these into the respective
+   * contexts, which is what keeps the imposed sizes off content outside the slots.
+   */
+  readonly priceSize = computed<NxPriceSize | undefined>(() =>
+    this._type !== 'header' ? undefined : this._table._isHeaderStuck() ? 'l' : '2xl',
+  );
+
+  readonly headlineSize = computed<NxHeadlineSize | undefined>(() => {
+    if (this._type !== 'header') {
+      return undefined;
+    }
+    const size = this._table.headlineSize();
+    return this._table._isHeaderStuck() ? STUCK_HEADLINE_SIZE[size] : size;
+  });
 
   readonly _isCellDisabled = computed(() =>
     this._table._disabledIndexes().has(this._indexReactive()),

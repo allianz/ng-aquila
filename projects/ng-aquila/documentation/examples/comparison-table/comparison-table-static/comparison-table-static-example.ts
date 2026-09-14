@@ -1,21 +1,16 @@
-import {
-  NxButtonComponent,
-  NxPlainButtonComponent,
-} from '@allianz/ng-aquila/button';
+import { NxButtonComponent } from '@allianz/ng-aquila/button';
 import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
-  NxComparisonTablePopularCell,
+  NxComparisonTableHeaderPrice,
+  NxComparisonTableHeaderTitle,
   NxComparisonTableRowDirective,
   NxComparisonTableSelectButton,
   NxComparisonTableViewType,
 } from '@allianz/ng-aquila/comparison-table';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
-import {
-  NxPopoverComponent,
-  NxPopoverTriggerDirective,
-} from '@allianz/ng-aquila/popover';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
+import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 /** @title Static layout example */
@@ -25,17 +20,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./comparison-table-static-example.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    NxButtonComponent,
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
-    NxComparisonTablePopularCell,
-    NxPlainButtonComponent,
-    NxPopoverTriggerDirective,
-    NxIconComponent,
-    NxPopoverComponent,
     NxComparisonTableCell,
+    NxComparisonTableHeaderTitle,
+    NxComparisonTableHeaderPrice,
     NxComparisonTableSelectButton,
     NxComparisonTableDescriptionCell,
+    NxHeadlineComponent,
+    NxPriceComponent,
+    NxButtonComponent,
   ],
 })
 export class ComparisonTableStaticExampleComponent {

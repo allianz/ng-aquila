@@ -1,20 +1,28 @@
-import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
+import {
+  NxButtonComponent,
+  NxPlainButtonComponent,
+} from '@allianz/ng-aquila/button';
 import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableHeaderPrice,
+  NxComparisonTableHeaderTitle,
   NxComparisonTableRowDirective,
   NxComparisonTableRowType,
   NxComparisonTableSelectButton,
   NxToggleSectionDirective,
   NxToggleSectionHeaderComponent,
 } from '@allianz/ng-aquila/comparison-table';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import {
   NxPopoverComponent,
   NxPopoverTriggerDirective,
 } from '@allianz/ng-aquila/popover';
-import { Component } from '@angular/core';
+import { NxPriceComponent } from '@allianz/ng-aquila/price';
+import { NxSpinnerComponent } from '@allianz/ng-aquila/spinner';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 
 interface ContentCell {
   type: NxComparisonTableRowType;
@@ -37,17 +45,27 @@ type TableData = (ContentCell | ToggleSection)[];
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
     NxComparisonTableCell,
+    NxComparisonTableHeaderTitle,
+    NxComparisonTableHeaderPrice,
     NxComparisonTableSelectButton,
     NxComparisonTableDescriptionCell,
+    NxHeadlineComponent,
     NxPlainButtonComponent,
     NxPopoverTriggerDirective,
     NxIconComponent,
     NxPopoverComponent,
     NxToggleSectionDirective,
     NxToggleSectionHeaderComponent,
+    NxPriceComponent,
+    NxSpinnerComponent,
+    NxButtonComponent,
   ],
 })
-export class ComparisonTableDynamicExampleComponent {
+export class ComparisonTableDynamicExampleComponent implements OnInit {
+  loading = true;
+
+  prices = [105.99, 110.99];
+
   data: TableData = [
     {
       type: 'header',
@@ -79,4 +97,19 @@ export class ComparisonTableDynamicExampleComponent {
       cells: ['This is a footer cell', 'This is a footer cell'],
     },
   ];
+
+  private readonly _cdr = inject(ChangeDetectorRef);
+
+  ngOnInit(): void {
+    this.reload();
+  }
+
+  reload() {
+    this.loading = true;
+
+    setTimeout(() => {
+      this.loading = false;
+      this._cdr.markForCheck();
+    }, 2000);
+  }
 }

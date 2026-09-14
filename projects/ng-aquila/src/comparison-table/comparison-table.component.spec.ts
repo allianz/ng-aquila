@@ -1,4 +1,6 @@
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
+import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
+import { NxPriceModule } from '@allianz/ng-aquila/price';
 import { BidiModule } from '@angular/cdk/bidi';
 import {
   ChangeDetectionStrategy,
@@ -99,6 +101,11 @@ describe('NxComparisonTableComponent', () => {
         OverflowRowGroupComponent,
         IntersectionComponent,
         RtlComponent,
+        HeaderEyebrowStuckComponent,
+        HeaderPriceComponent,
+        HeaderHeadlineComponent,
+        StickyRealScrollComponent,
+        OverflowStuckComponent,
       ],
     });
     TestBed.compileComponents();
@@ -504,6 +511,15 @@ describe('NxComparisonTableComponent', () => {
       return Math.max(0, istart - cellStart);
     };
 
+    // Drives real `_updateStuck` detection via window scroll. Callers wrap the table in a
+    // 1200px spacer on each side.
+    const scrollHeaderTo = (stuck: boolean): void => {
+      window.scrollTo(0, stuck ? 1300 : 0);
+      dispatchFakeEvent(window, 'scroll');
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+    };
+
     it('should not cut a left clipping-path by default on mobile', fakeAsync(() => {
       createTestComponent(BasicComponent);
 
@@ -647,6 +663,245 @@ describe('NxComparisonTableComponent', () => {
       // at-rest value here is 0 — the negative branch is exercised in A1 with a non-zero shadow.)
       const clipTop = parseFloat(native.style.getPropertyValue('--ct-clip-top') || '0');
       expect(Number.isFinite(clipTop)).toBe(true);
+      flush();
+    }));
+
+    // Proves the real `_updateStuck` detection (getBoundingClientRect-based, driven by the
+    // window scroll listener) rather than poking the signal.
+    it('should set _isHeaderStuck to true only once the page is scrolled past the header, real DOM/scroll driven', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(StickyRealScrollComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      expect(tableInstance._isHeaderStuck()).toBe(false);
+
+      scrollHeaderTo(true);
+      expect(tableInstance._isHeaderStuck()).toBe(true);
+
+      scrollHeaderTo(false);
+      expect(tableInstance._isHeaderStuck()).toBe(false);
+      flush();
+    }));
+
+    it('should keep a [mayStick]="false" header unstuck, and pick the current scroll position up when it is toggled back on', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(StickyRealScrollComponent);
+      const testComponent = testInstance as StickyRealScrollComponent;
+      testComponent.mayStick = false;
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      scrollHeaderTo(true);
+      expect(tableInstance._isHeaderStuck()).toBe(false);
+
+      // No further scroll event: re-evaluating on toggle is what the signal-backed `mayStick` buys.
+      testComponent.mayStick = true;
+      fixture.detectChanges();
+      flush();
+      expect(tableInstance._isHeaderStuck()).toBe(true);
+
+      testComponent.mayStick = false;
+      fixture.detectChanges();
+      flush();
+      expect(tableInstance._isHeaderStuck()).toBe(false);
+    }));
+
+    it('should reflect _isHeaderStuck on the header cell as is-stuck', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(StickyRealScrollComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const headerCell = fixture.debugElement.query(
+        By.css('.nx-comparison-table__header-cell'),
+      ).nativeElement;
+      expect(headerCell).not.toHaveClass('is-stuck');
+
+      scrollHeaderTo(true);
+      expect(headerCell).toHaveClass('is-stuck');
+
+      scrollHeaderTo(false);
+      expect(headerCell).not.toHaveClass('is-stuck');
+      flush();
+    }));
+
+    it('should hide the eyebrow slot only once the header is stuck', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(HeaderEyebrowStuckComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const eyebrow = fixture.debugElement.query(By.css('.eyebrow')).nativeElement;
+      expect(getComputedStyle(eyebrow).display).not.toBe('none');
+
+      // Jump the CSS transition to completion instead of asserting mid-flight.
+      scrollHeaderTo(true);
+      eyebrow.getAnimations().forEach((animation: Animation) => animation.finish());
+      expect(getComputedStyle(eyebrow).display).toBe('none');
+
+      scrollHeaderTo(false);
+      eyebrow.getAnimations().forEach((animation: Animation) => animation.finish());
+      expect(getComputedStyle(eyebrow).display).not.toBe('none');
+      flush();
+    }));
+
+    it('should step the projected price size down while the header is stuck', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(HeaderPriceComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const price = fixture.debugElement.query(By.css('nx-price')).nativeElement;
+      // The consumer asked for 's'; the header cell imposes '2xl'.
+      expect(price).toHaveClass('nx-price--2xl');
+
+      scrollHeaderTo(true);
+      expect(price).toHaveClass('nx-price--l');
+
+      scrollHeaderTo(false);
+      expect(price).toHaveClass('nx-price--2xl');
+      flush();
+    }));
+
+    it('should leave prices outside header cells alone', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(HeaderPriceComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const contentPrice = fixture.debugElement.query(By.css('.content-price')).nativeElement;
+      expect(contentPrice).toHaveClass('nx-price--s');
+      flush();
+    }));
+
+    it('should leave a price outside the price slot of a header cell alone', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(HeaderPriceComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const unslotted = fixture.debugElement.query(By.css('.unslotted-price')).nativeElement;
+      expect(unslotted).toHaveClass('nx-price--s');
+
+      scrollHeaderTo(true);
+      expect(unslotted).toHaveClass('nx-price--s');
+      flush();
+    }));
+
+    it('should default the projected headline size to xl and step it down to l while the header is stuck', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(HeaderHeadlineComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const title = fixture.debugElement.query(By.css('.title')).nativeElement;
+      // The consumer asked for 's'; the header cell imposes the table's default, 'xl'.
+      expect(title).toHaveClass('nx-heading--xl');
+
+      scrollHeaderTo(true);
+      expect(title).toHaveClass('nx-heading--l');
+
+      scrollHeaderTo(false);
+      expect(title).toHaveClass('nx-heading--xl');
+      flush();
+    }));
+
+    it("should use the table's headlineSize while not stuck, but still step down to m while stuck", fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(HeaderHeadlineComponent);
+      (testInstance as HeaderHeadlineComponent).headlineSize = 'l';
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const title = fixture.debugElement.query(By.css('.title')).nativeElement;
+      expect(title).toHaveClass('nx-heading--l');
+
+      scrollHeaderTo(true);
+      expect(title).toHaveClass('nx-heading--m');
+
+      scrollHeaderTo(false);
+      expect(title).toHaveClass('nx-heading--l');
+      flush();
+    }));
+
+    it('should leave a headline outside the title slot of a header cell alone', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(HeaderHeadlineComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const unslotted = fixture.debugElement.query(By.css('.unslotted-title')).nativeElement;
+      expect(unslotted).toHaveClass('nx-heading--s');
+
+      scrollHeaderTo(true);
+      expect(unslotted).toHaveClass('nx-heading--s');
+      flush();
+    }));
+
+    // Paging mid-carousel, then docking the header, must not re-slide the carousel.
+    it('should not shift the carousel while paged mid-carousel when the header sticks', fakeAsync(() => {
+      viewport.set('desktop');
+      window.dispatchEvent(new Event('resize'));
+      createTestComponent(OverflowStuckComponent);
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      (tableInstance as any).scrollNext();
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      const native = fixture.debugElement.query(
+        By.css('.nx-comparison-table__native'),
+      ).nativeElement;
+      const shiftBefore = native.style.getPropertyValue('--ct-page-shift');
+      const pageIndexBefore = (tableInstance as any)._pageIndex();
+      const theadBefore = fixture.debugElement.query(By.css('thead')).nativeElement;
+      const theadHeightBefore = theadBefore.getBoundingClientRect().height;
+
+      // Every write to --ct-page-shift while the header docks must carry the same value.
+      const pageShiftWrites: string[] = [];
+      const setPropertySpy = vi.spyOn(native.style, 'setProperty');
+      setPropertySpy.mockImplementation((...args: Parameters<typeof native.style.setProperty>) => {
+        if (args[0] === '--ct-page-shift') {
+          pageShiftWrites.push(args[1] as string);
+        }
+        return CSSStyleDeclaration.prototype.setProperty.apply(native.style, args as any);
+      });
+
+      window.scrollTo(0, 1300);
+      dispatchFakeEvent(window, 'scroll');
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+      // fakeAsync doesn't drive real CSS transitions; force them to their end state.
+      document.getAnimations().forEach((a: Animation) => a.finish());
+      fixture.detectChanges();
+      tick(1000);
+      fixture.detectChanges();
+      document.getAnimations().forEach((a: Animation) => a.finish());
+      fixture.detectChanges();
+
+      const theadAfter = fixture.debugElement.query(By.css('thead')).nativeElement;
+      // The header row genuinely shrinks — the carousel must stay indifferent to that.
+      expect(theadAfter.getBoundingClientRect().height).toBeLessThan(theadHeightBefore);
+      expect((tableInstance as any)._isHeaderStuck()).toBe(true);
+      expect((tableInstance as any)._pageIndex()).toBe(pageIndexBefore);
+      expect(native.style.getPropertyValue('--ct-page-shift')).toBe(shiftBefore);
+      expect(pageShiftWrites.every((value) => value === shiftBefore)).toBe(true);
+
+      window.scrollTo(0, 0);
+      dispatchFakeEvent(window, 'scroll');
+      tick(THROTTLE_TIME);
       flush();
     }));
   });
@@ -940,13 +1195,60 @@ describe('NxComparisonTableComponent', () => {
       flush();
     }));
 
+    it('should drive every column from one inherited page shift', fakeAsync(() => {
+      // The shift used to be stamped onto each product cell from a NodeList only
+      // `_measureClipGeometry` refreshed, so a `hiddenIndexes` round-trip left the revealed cells
+      // without their own copy: it changes neither the host's box (columns are sized
+      // 100cqi/colsShown) nor `_visibleColumnCount()` (min(3, n) stays 3), so nothing re-measured.
+      // Inheritance from `.__native` covered for it, which is exactly why the per-cell write was
+      // redundant. Assert the single-source invariant so it cannot creep back.
+      const instance = tableInstance as any;
+      expect(instance._infoColumnCount()).toBe(5);
+      const visibleBefore = instance._visibleColumnCount();
+
+      instance.hiddenIndexes = [3, 4];
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      instance.hiddenIndexes = [];
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+
+      // Precondition of the original staleness: neither re-measure trigger moved.
+      expect(instance._infoColumnCount()).toBe(5);
+      expect(instance._visibleColumnCount()).toBe(visibleBefore);
+
+      instance.scrollNext();
+      fixture.detectChanges();
+      tick(THROTTLE_TIME);
+      expect(instance._pageIndex()).toBe(1);
+
+      const native = fixture.debugElement.query(
+        By.css('.nx-comparison-table__native'),
+      ).nativeElement;
+      const shift = native.style.getPropertyValue('--ct-page-shift');
+      expect(parseFloat(shift)).toBeLessThan(0);
+
+      const productCells = fixture.debugElement.queryAll(
+        By.css('.nx-comparison-table__product-cell'),
+      );
+      expect(productCells.length).toBeGreaterThan(5);
+      for (const cell of productCells) {
+        // No per-cell copy to go stale...
+        expect(cell.nativeElement.style.getPropertyValue('--ct-page-shift')).toBe('');
+        // ...and every cell still resolves the one value that drives its translateX.
+        expect(
+          getComputedStyle(cell.nativeElement).getPropertyValue('--ct-page-shift').trim(),
+        ).toBe(shift);
+      }
+      flush();
+    }));
+
     it('should suppress the carousel transition while measuring resting positions', fakeAsync(() => {
-      // The product cells animate `transform` (carousel glide). _measureClipGeometry zeroes
-      // --ct-page-shift to read each cell's RESTING position; with the transition live, that zeroing
-      // would ANIMATE rather than snap and the synchronous rect reads would still see the cell at its
-      // paged offset → a wrong --ct-cell-start that over-clips the column. The `.is-measuring` class
-      // disables the transition for the duration of the (synchronous) measurement; it must be added
-      // during the measure and removed afterwards so subsequent user paging animates again.
+      // The product cells animate `transform` (carousel glide). `.is-measuring` suppresses that
+      // transition while _measureClipGeometry's trailing _applyPageShift() re-asserts the offset,
+      // so a resize-driven shift change snaps there instead of animating from the pre-resize
+      // position. It must be added during the measure and removed afterwards so subsequent user
+      // paging animates again.
       const instance = tableInstance as any;
       const host = tableElement.nativeElement as HTMLElement;
 
@@ -965,6 +1267,40 @@ describe('NxComparisonTableComponent', () => {
       expect(addSpy).toHaveBeenCalledWith('is-measuring');
       expect(removeSpy).toHaveBeenCalledWith('is-measuring');
       expect(host.classList.contains('is-measuring')).toBe(false);
+      flush();
+    }));
+
+    it('should finish an in-flight carousel glide before measuring resting positions', fakeAsync(() => {
+      const instance = tableInstance as any;
+      const host = tableElement.nativeElement as HTMLElement;
+
+      instance.scrollNext();
+      fixture.detectChanges();
+
+      // Stand in for a running carousel glide on a product cell; fakeAsync gives us no real clock,
+      // so assert the contract (transform transitions on product cells get finished) directly.
+      const cell = fixture.debugElement.query(
+        By.css('.nx-comparison-table__product-cell'),
+      ).nativeElement;
+      const finish = vi.fn();
+      const glide = { transitionProperty: 'transform', effect: { target: cell }, finish };
+      const unrelated = {
+        transitionProperty: 'opacity',
+        effect: { target: cell },
+        finish: vi.fn(),
+      };
+      const outside = {
+        transitionProperty: 'transform',
+        effect: { target: host },
+        finish: vi.fn(),
+      };
+      vi.spyOn(host, 'getAnimations').mockReturnValue([glide, unrelated, outside] as any);
+
+      instance._measureClipGeometry();
+
+      expect(finish).toHaveBeenCalledTimes(1);
+      expect(unrelated.finish).not.toHaveBeenCalled();
+      expect(outside.finish).not.toHaveBeenCalled();
       flush();
     }));
 
@@ -1042,8 +1378,7 @@ describe('NxComparisonTableComponent', () => {
       const navWrapper = native.querySelector('.nx-comparison-table__nav-wrapper');
       expect(navWrapper).not.toBeNull();
       expect(getComputedStyle(navWrapper).position).toBe('sticky');
-      // First child → its natural flow position is the table top, where sticky pins from.
-      expect(native.firstElementChild).toBe(navWrapper);
+      expect(navWrapper.previousElementSibling).toBeNull();
       flush();
     }));
 
@@ -1843,6 +2178,143 @@ class ToggleSectionOverlayComponent extends TableTest {
 })
 class OverflowComponent extends TableTest {
   breakpoints: NxComparisonTableBreakpoint[] = [{ minWidth: 0, columns: 3 }];
+}
+
+@Component({
+  template: `
+    <div style="height: 1200px"></div>
+    <nx-comparison-table [responsiveBreakpoints]="breakpoints" style="width: 600px;">
+      <ng-container nxComparisonTableRow type="header">
+        @for (n of [1, 2, 3, 4, 5]; track n) {
+          <nx-comparison-table-cell type="header">
+            <nx-comparison-table-header-eyebrow class="eyebrow">
+              Eyebrow {{ n }}
+            </nx-comparison-table-header-eyebrow>
+            <nx-comparison-table-header-title>
+              <span nxHeadline size="s">Product {{ n }}</span>
+            </nx-comparison-table-header-title>
+            <nx-comparison-table-header-price>
+              <nx-price [value]="99" size="s" />
+            </nx-comparison-table-header-price>
+          </nx-comparison-table-cell>
+        }
+      </ng-container>
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell>Feature 1</nx-comparison-table-description-cell>
+        <nx-comparison-table-cell>A</nx-comparison-table-cell>
+        <nx-comparison-table-cell>B</nx-comparison-table-cell>
+        <nx-comparison-table-cell>C</nx-comparison-table-cell>
+        <nx-comparison-table-cell>D</nx-comparison-table-cell>
+        <nx-comparison-table-cell>E</nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+    <div style="height: 1200px"></div>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxComparisonTableModule, NxHeadlineModule, NxPriceModule],
+  providers: A1_PROVIDERS,
+})
+class OverflowStuckComponent extends TableTest {
+  breakpoints: NxComparisonTableBreakpoint[] = [{ minWidth: 0, columns: 3 }];
+}
+
+@Component({
+  template: `
+    <div style="height: 1200px"></div>
+    <nx-comparison-table>
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-cell type="header">
+          <nx-comparison-table-header-eyebrow class="eyebrow">
+            Eyebrow
+          </nx-comparison-table-header-eyebrow>
+          Product 1
+        </nx-comparison-table-cell>
+      </ng-container>
+      <!-- Extra height: a header-only table is too short to stay sticky once scrolled past. -->
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell>Description</nx-comparison-table-description-cell>
+        <nx-comparison-table-cell>Cell</nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+    <div style="height: 1200px"></div>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxComparisonTableModule],
+})
+class HeaderEyebrowStuckComponent extends TableTest {}
+
+@Component({
+  template: `
+    <div style="height: 1200px"></div>
+    <nx-comparison-table>
+      <ng-container nxComparisonTableRow type="header" [mayStick]="mayStick">
+        <nx-comparison-table-cell type="header">Header</nx-comparison-table-cell>
+      </ng-container>
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell>Description</nx-comparison-table-description-cell>
+        <nx-comparison-table-cell>Cell</nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+    <div style="height: 1200px"></div>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxComparisonTableModule],
+})
+class StickyRealScrollComponent extends TableTest {
+  mayStick = true;
+}
+
+@Component({
+  template: `
+    <div style="height: 1200px"></div>
+    <nx-comparison-table>
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-cell type="header">
+          <nx-comparison-table-header-price>
+            <nx-price [value]="99" size="s" />
+          </nx-comparison-table-header-price>
+          <nx-price class="unslotted-price" [value]="99" size="s" />
+        </nx-comparison-table-cell>
+      </ng-container>
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell>Description</nx-comparison-table-description-cell>
+        <nx-comparison-table-cell>
+          <nx-price class="content-price" [value]="99" size="s" />
+        </nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+    <div style="height: 1200px"></div>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxComparisonTableModule, NxPriceModule],
+})
+class HeaderPriceComponent extends TableTest {}
+
+@Component({
+  template: `
+    <div style="height: 1200px"></div>
+    <nx-comparison-table [headlineSize]="headlineSize">
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-cell type="header">
+          <nx-comparison-table-header-title>
+            <span class="title" nxHeadline size="s">Product 1</span>
+          </nx-comparison-table-header-title>
+          <span class="unslotted-title" nxHeadline size="s">Own template</span>
+        </nx-comparison-table-cell>
+      </ng-container>
+      <!-- See HeaderEyebrowStuckComponent. -->
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell>Description</nx-comparison-table-description-cell>
+        <nx-comparison-table-cell>Cell</nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+    <div style="height: 1200px"></div>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxComparisonTableModule, NxHeadlineModule],
+})
+class HeaderHeadlineComponent extends TableTest {
+  headlineSize: 'l' | 'xl' = 'xl';
 }
 
 @Component({

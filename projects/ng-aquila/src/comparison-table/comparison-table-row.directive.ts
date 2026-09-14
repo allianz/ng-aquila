@@ -1,5 +1,13 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { contentChild, contentChildren, Directive, effect, Input, Optional } from '@angular/core';
+import {
+  contentChild,
+  contentChildren,
+  Directive,
+  effect,
+  Input,
+  Optional,
+  signal,
+} from '@angular/core';
 
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableRowType } from './comparison-table.models';
@@ -49,14 +57,12 @@ export class NxComparisonTableRowDirective
   private _type: NxComparisonTableRowType = 'content';
 
   @Input() set mayStick(newValue: BooleanInput) {
-    if (newValue !== this._mayStick) {
-      this._mayStick = coerceBooleanProperty(newValue);
-    }
+    this._mayStick.set(coerceBooleanProperty(newValue));
   }
   get mayStick(): boolean {
-    return this._type === 'header' && this._mayStick;
+    return this._type === 'header' && this._mayStick();
   }
-  private _mayStick = true;
+  private readonly _mayStick = signal(true);
 
   constructor(
     @Optional() private readonly _toggleSection: NxToggleSectionBase | null,
