@@ -4,7 +4,7 @@ category: utilities
 b2c: false
 expert: false
 stable: experimental
-a1: true
+a1Full: true
 ---
 
 <div class="docs-info">

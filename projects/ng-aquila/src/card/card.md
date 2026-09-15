@@ -6,7 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: card, selectable card
-a1Densities: true
+a1Full: true
 group:
   - Data Display
   - Forms & Inputs

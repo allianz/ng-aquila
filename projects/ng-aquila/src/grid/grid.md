@@ -7,7 +7,7 @@ b2c: true
 expert: true
 stable: done
 alias: container, column, layout
-a1Densities: true
+a1Full: true
 group: Layout
 ---
 <!--

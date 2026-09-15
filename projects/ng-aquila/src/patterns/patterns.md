@@ -5,8 +5,7 @@ b2c: true
 expert: true
 stable: done
 alias: patterns
-a1Light: true
-a1Densities: true
+a1Full: true
 private: true
 noApi: true
 ---

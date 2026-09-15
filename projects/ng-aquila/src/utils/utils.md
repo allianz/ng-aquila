@@ -5,8 +5,7 @@ b2c: true
 expert: true
 stable: progress
 noApi: true
-a1Light: true
-a1Densities: true
+a1Full: true
 ---
 
 ### Type Guards

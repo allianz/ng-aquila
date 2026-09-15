@@ -6,8 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: search field, search, search bar
-a1Light: true
-a1Densities: true
+a1Full: true
 group: Layout
 ---
 

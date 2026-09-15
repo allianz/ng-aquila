@@ -6,7 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: control
-a1Densities: true
+a1Full: true
 group: Forms & Inputs
 ---
 

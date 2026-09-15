@@ -6,7 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: number input, range, counter, quantity
-a1Densities: true
+a1Full: true
 group: Forms & Inputs
 ---
 

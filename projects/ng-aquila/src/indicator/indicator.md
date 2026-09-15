@@ -6,8 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: badge
-a1Light: true
-a1Densities: true
+a1Full: true
 group: Data Display
 ---
 

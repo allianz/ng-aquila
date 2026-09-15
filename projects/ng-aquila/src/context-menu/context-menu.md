@@ -6,8 +6,7 @@ b2c: false
 expert: true
 stable: done
 alias: menu
-a1Light: true
-a1Densities: true
+a1Full: true
 group: Overlays
 ---
 

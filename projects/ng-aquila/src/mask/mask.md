@@ -6,8 +6,7 @@ b2c: true
 expert: true
 stable: done
 alias: input mask, masked input
-a1Light: true
-a1Densities: true
+a1Full: true
 group: Forms & Inputs
 ---
 

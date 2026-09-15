@@ -6,7 +6,7 @@ b2c: false
 expert: true
 stable: progress
 noApi: true
-a1Light: true
+a1Full: true
 group: 
 - Utilities
 - Data Display

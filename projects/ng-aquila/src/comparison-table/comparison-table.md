@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-a1Light: true
+a1Densities: true
 group: Data Display
 ---
 

@@ -5,7 +5,7 @@ category: components
 b2c: true
 expert: true
 stable: done
-a1Densities: true
+a1Full: true
 group: Actions
 ---
 

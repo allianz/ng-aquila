@@ -5,7 +5,7 @@ b2c: true
 expert: true
 stable: done
 noApi: true
-a1Light: true
+a1Full: true
 ---
 
 ### Font-weights
