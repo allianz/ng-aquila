@@ -49,6 +49,8 @@
   }
 }
 
+// !important: `:host(.positive) ...::after` above is more specific and would otherwise still win
+// here, painting a non-system color that forced colors collapses to `Canvas` - invisible.
 @media screen and (forced-colors: active) {
   :host {
     // height made bigger because it's very little in high contrast
@@ -70,6 +72,6 @@
   }
 
   .nx-progress__indicator::after {
-    background: highlight;
+    background: highlight !important;
   }
 }

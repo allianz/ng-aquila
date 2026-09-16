@@ -1,0 +1,22 @@
+<nx-progressbar
+  [value]="value()"
+  [min]="min()"
+  [max]="max()"
+  [colorScheme]="colorScheme()"
+  [transparentBackground]="transparentBackground()"
+  [ariaLabel]="ariaLabel()"
+  [ariaLabelledBy]="_progressbarAriaLabelledBy()"
+></nx-progressbar>
+<div class="nx-single-progress-indicator__label-row">
+  <span class="nx-single-progress-indicator__label" [id]="_labelId">
+    <span class="nx-single-progress-indicator__projected-label" #projectedLabel>
+      <ng-content></ng-content>
+    </span>
+    @if (!_hasProjectedLabel()) {
+      {{ _defaultLabel() }}
+    }
+  </span>
+  @if (labelEnd()) {
+    <span class="nx-single-progress-indicator__label-end">{{ labelEnd() }}</span>
+  }
+</div>

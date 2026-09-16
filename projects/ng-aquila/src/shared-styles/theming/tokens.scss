@@ -2475,6 +2475,15 @@ $nx-theme: (
   multi-progress-indicator-bullet-font-weight: 700,
   multi-progress-indicator-step-letter-spacing: paragraph-03-letter-spacing,
   // ----- end multi progress indicator ----- //
+  // ----- single progress indicator ----- //
+  single-progress-indicator-gap: 8px,
+  single-progress-indicator-label-gap: 24px,
+  single-progress-indicator-label-color: text-01,
+  single-progress-indicator-label-font-size: paragraph-02-font-size,
+  single-progress-indicator-label-line-height: paragraph-02-line-height,
+  single-progress-indicator-label-font-weight: paragraph-02-font-weight,
+  single-progress-indicator-label-letter-spacing: paragraph-02-letter-spacing,
+  // ----- end single progress indicator ----- //
   radio-button-border-width: 2px,
   radio-button-circle-size: 24px,
   radio-button-circle-color: ui-05,

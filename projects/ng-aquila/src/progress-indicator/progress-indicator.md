@@ -12,6 +12,38 @@ group: Data Display
 
 An indicator is a wizard-like workflow that divides content into logical steps. You provide the content and distribute it in different steps. The indicator will ensure to show only the current content and inform the user about the overall progress.
 
+## Single Progress Indicator
+
+<!-- example(single-progress-indicator-basic) -->
+
+Project content to replace the default label, e.g. to describe the step instead of just numbering it.
+
+<!-- example(single-progress-indicator-custom-label) -->
+
+Set `labelEnd` for a second, right-aligned label, e.g. a hint about what's next.
+
+<!-- example(single-progress-indicator-with-end-label) -->
+
+#### Step Content
+
+The component shows progress only — it holds no step state and renders no step content. Your app owns which step is active and moves between them, which replaces the Legacy variant's `nxStepperPrevious`/`nxStepperNext` directives.
+
+If a step change swaps the content in place, without a page navigation, announce it via `LiveAnnouncer`: the label is the progressbar's accessible name, and renaming an element is not announced, so the step change is silent for a screen reader user. Steps that are routed pages of their own don't need this — the navigation is announced already.
+
+<!-- example(single-progress-indicator-with-content) -->
+
+#### Color Scheme
+
+Use `colorScheme="positive"` for the positive/success scheme.
+
+<!-- example(single-progress-indicator-positive) -->
+
+#### Translations
+
+The default label is English; subclass `NxSingleProgressIndicatorIntl` and provide it in your (root) module to translate it. `label` builds the whole sentence from the current and total step, so a translation is free to reorder the parts — Turkish renders "Step 1 of 4" as "4 adımdan 1.".
+
+<!-- example(single-progress-indicator-localize) -->
+
 ## Multi Progress Indicator
 
 `nx-multi-progress-indicator` renders an ordered list of steps. Your app controls which step is active and handles navigation.

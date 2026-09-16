@@ -1,0 +1,35 @@
+@use '../../shared-styles/index' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: v(single-progress-indicator-gap);
+}
+
+.nx-single-progress-indicator__label-row {
+  display: flex;
+  align-items: center;
+  gap: v(single-progress-indicator-label-gap);
+  @include type-style(single-progress-indicator-label);
+  color: v(single-progress-indicator-label-color);
+}
+
+.nx-single-progress-indicator__label {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+// Only exists to detect projected content; `display: contents` keeps it invisible to layout.
+.nx-single-progress-indicator__projected-label {
+  display: contents;
+}
+
+.nx-single-progress-indicator__label-end {
+  flex: 0 0 auto;
+  text-align: right;
+  white-space: nowrap;
+
+  :host-context([dir='rtl']) & {
+    text-align: left;
+  }
+}
