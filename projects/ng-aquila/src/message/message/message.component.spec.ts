@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 
 import { dispatchMouseEvent } from '../../cdk-test-utils';
 import { NxMessageModule } from '../message.module';
-import { CONTEXT, NxMessageComponent } from './message.component';
+import { CONTEXT, NxMessageComponent, ResolvedContext } from './message.component';
 
 @Directive({ standalone: true })
 abstract class MessageTest {
@@ -68,6 +69,7 @@ describe('NxMessageComponent', () => {
         ClosableMessageComponent,
         ClosableFormMessageComponent,
         PlainMessageTestComponent,
+        A1MessageComponent,
       ],
     }).compileComponents();
   }));
@@ -105,6 +107,58 @@ describe('NxMessageComponent', () => {
       setContextAndAssertIcon('error', 'exclamation-triangle');
       setContextAndAssertIcon('success', 'check-circle');
       setContextAndAssertIcon('warning', 'exclamation-circle-warning');
+    });
+  });
+
+  describe('contexts', () => {
+    // Every supported context, with the class and icon the design system pins to it.
+    const CONTEXTS: { context: ResolvedContext; className: string; icon: string }[] = [
+      { context: 'info', className: 'context-info', icon: 'info-circle' },
+      { context: 'positive', className: 'context-success', icon: 'check-circle' },
+      { context: 'warning', className: 'context-warning', icon: 'exclamation-circle-warning' },
+      { context: 'critical', className: 'context-error', icon: 'exclamation-triangle' },
+    ];
+
+    for (const { context, className, icon } of CONTEXTS) {
+      it(`should render the ${context} context`, () => {
+        createTestComponent(MessageBasicComponent);
+        setContextAndAssertClass(context, className);
+        setContextAndAssertIcon(context, icon);
+      });
+    }
+
+    // A1 swaps the critical and warning icons; the rest are shared with the other themes.
+    const A1_ICONS: { context: ResolvedContext; icon: string }[] = [
+      { context: 'info', icon: 'info-circle' },
+      { context: 'positive', icon: 'check-circle' },
+      { context: 'warning', icon: 'exclamation-triangle' },
+      { context: 'critical', icon: 'exclamation-circle' },
+    ];
+
+    for (const { context, icon } of A1_ICONS) {
+      it(`should render the A1 icon for the ${context} context`, () => {
+        createTestComponent(A1MessageComponent);
+        testInstance.context.set(context);
+        fixture.detectChanges();
+        expect(componentInstance._iconName()).toBe(icon);
+      });
+    }
+
+    it('should map the deprecated names onto their replacements', () => {
+      createTestComponent(MessageBasicComponent);
+
+      setContextAndAssertClass('error', 'context-error');
+      setContextAndAssertClass('success', 'context-success');
+    });
+
+    it('should read the context back exactly as it was set', () => {
+      createTestComponent(MessageBasicComponent);
+
+      for (const context of ['error', 'success', 'critical', 'positive', 'info'] as const) {
+        testInstance.context.set(context);
+        fixture.detectChanges();
+        expect(componentInstance.context).toBe(context);
+      }
     });
   });
 
@@ -242,3 +296,12 @@ class ClosableFormMessageComponent extends MessageTest {
   closable = signal(true);
   submitted = signal(false);
 }
+
+@Component({
+  selector: 'test-a1-message-component',
+  template: `<nx-message [context]="context()"> lorem ipsum </nx-message>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxMessageModule],
+  providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }],
+})
+class A1MessageComponent extends MessageTest {}

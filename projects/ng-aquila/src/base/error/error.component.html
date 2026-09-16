@@ -12,7 +12,7 @@
 
 <!-- b2c error notification -->
 @if (appearance() === 'message') {
-  <nx-message context="error">
+  <nx-message context="critical">
     <div class="nx-error__content" [attr.id]="id">
       <ng-container [ngTemplateOutlet]="errorContent"></ng-container>
     </div>

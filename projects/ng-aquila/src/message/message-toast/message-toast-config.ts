@@ -1,7 +1,11 @@
 import { AriaLivePoliteness } from '@angular/cdk/a11y';
 
-/** The contextual type of a message. */
-export type NxMessageToastContext = 'info' | 'success';
+/**
+ * The contextual type of a message toast.
+ *
+ * `'success'` is deprecated: use `'positive'` instead.
+ */
+export type NxMessageToastContext = 'info' | 'warning' | 'critical' | 'positive' | 'success';
 
 /**
  * Configuration used when opening a message toast.

@@ -10,9 +10,14 @@ import {
   signal,
 } from '@angular/core';
 
-import { CONTEXT, NxMessageComponent } from '../message/message.component';
+import { NxMessageComponent } from '../message/message.component';
 
-export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
+/**
+ * The contextual type of a message banner. Banners take every message context but `'regular'`.
+ *
+ * `'error'` and `'success'` are deprecated: use `'critical'` and `'positive'` instead.
+ */
+export type BANNER_CONTEXT = 'info' | 'critical' | 'positive' | 'warning' | 'error' | 'success';
 
 @Component({
   selector: 'nx-message-banner',
@@ -24,6 +29,7 @@ export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
 })
 export class NxMessageBannerComponent extends NxMessageComponent {
   protected override _hideIcon = computed(() => this._isAllianzOne());
+
   /**
    * Sets the context of the message banner. The message box will color accordingly.
    *
@@ -33,13 +39,11 @@ export class NxMessageBannerComponent extends NxMessageComponent {
     this._updateContext(value);
   }
   get context(): BANNER_CONTEXT {
-    return this._context();
+    return this._context() as BANNER_CONTEXT;
   }
   _context = signal<BANNER_CONTEXT>('info');
 
   _closable = true;
-
-  _allowedContexts: CONTEXT[] = ['info', 'error', 'warning'];
 
   constructor(_cdr: ChangeDetectorRef, _fm: FocusMonitor) {
     super(_cdr, _fm);

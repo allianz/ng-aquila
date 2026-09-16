@@ -13,6 +13,7 @@ import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angu
 
 import { NxMessageModule } from '../message.module';
 import { NxMessageToastService } from './message-toast.service';
+import { NxMessageToastContext } from './message-toast-config';
 
 describe('NxMessageToast', () => {
   let messageToastService: NxMessageToastService;
@@ -115,6 +116,22 @@ describe('NxMessageToast', () => {
       const messageElement = overlayContainerElement.querySelector('nx-message.context-success')!;
       expect(messageElement.textContent).toBeTruthy();
     });
+
+    // Toasts support info/positive/warning/critical (no `regular`, and unlike nx-message no deprecated `error`).
+    const CONTEXTS: { context: NxMessageToastContext; className: string }[] = [
+      { context: 'info', className: 'context-info' },
+      { context: 'positive', className: 'context-success' },
+      { context: 'warning', className: 'context-warning' },
+      { context: 'critical', className: 'context-error' },
+    ];
+
+    for (const { context, className } of CONTEXTS) {
+      it(`should render the ${context} context`, () => {
+        messageToastService.open(text, { context, duration: 0 });
+        fixture.detectChanges();
+        expect(overlayContainerElement.querySelector(`nx-message.${className}`)).toBeTruthy();
+      });
+    }
   });
 
   describe('open from template', () => {

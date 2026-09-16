@@ -22,7 +22,7 @@ import { takeUntil } from 'rxjs/operators';
 
 export const myCustomConfig: NxMessageToastConfig = {
   duration: 3000,
-  context: 'success',
+  context: 'positive',
   announcementMessage: 'File was uploaded successfully!',
 };
 

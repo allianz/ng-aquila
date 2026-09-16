@@ -8,6 +8,17 @@
     You are logged in as Max Mustermann.
   </nx-message-banner>
 }
+@if (positiveBanner) {
+  <nx-message-banner
+    context="positive"
+    closeButtonLabel="Close positive message banner"
+    (close)="positiveBanner = false"
+    class="nx-margin-bottom-xs"
+  >
+    <span class="nx-font-weight-bold">Notification title:</span><br />
+    Your changes have been saved.
+  </nx-message-banner>
+}
 @if (warningBanner) {
   <nx-message-banner
     context="warning"
@@ -19,11 +30,11 @@
     Your password expires in three days!
   </nx-message-banner>
 }
-@if (errorBanner) {
+@if (criticalBanner) {
   <nx-message-banner
-    context="error"
-    closeButtonLabel="Close error message banner"
-    (close)="errorBanner = false"
+    context="critical"
+    closeButtonLabel="Close critical message banner"
+    (close)="criticalBanner = false"
     class="nx-margin-bottom-xs"
   >
     <span class="nx-font-weight-bold">Notification title:</span><br />
@@ -32,7 +43,7 @@
 }
 
 <button
-  [disabled]="infoBanner && warningBanner && errorBanner"
+  [disabled]="allBannersVisible"
   nxButton
   type="button"
   (click)="showAllBanners()"

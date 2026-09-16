@@ -22,23 +22,43 @@ import {
   ViewChild,
 } from '@angular/core';
 
-/** @deprecated Use a specific context ('info', 'error', 'success', 'warning') instead. */
+/** @deprecated Use a specific context ('info', 'critical', 'positive', 'warning') instead. */
 type RegularContext = 'regular';
 
-/** The contextual type of a message. */
-export type CONTEXT = RegularContext | 'info' | 'error' | 'success' | 'warning';
+/**
+ * The contextual type of a message.
+ *
+ * `'error'` and `'success'` are deprecated: use `'critical'` and `'positive'` instead.
+ */
+// Listed as literals rather than composed from another alias: the API docs print the type
+// expression verbatim, so an alias name there tells the reader nothing.
+export type CONTEXT =
+  'regular' | 'info' | 'critical' | 'positive' | 'warning' | 'error' | 'success';
+
+/**
+ * A `CONTEXT` with the deprecated aliases resolved. Only the styling and the icon lookup work with
+ * this; consumers set and read `CONTEXT`.
+ * @docs-private
+ */
+export type ResolvedContext = RegularContext | 'info' | 'critical' | 'positive' | 'warning';
+
+/** Maps the deprecated context names onto the ones they were renamed to. */
+const CONTEXT_ALIASES: { readonly [k: string]: ResolvedContext } = {
+  error: 'critical',
+  success: 'positive',
+};
 
 const ICONS: { [k: string]: string } = {
   info: 'info-circle',
-  error: 'exclamation-triangle',
-  success: 'check-circle',
+  critical: 'exclamation-triangle',
+  positive: 'check-circle',
   warning: 'exclamation-circle-warning',
 };
 
 const A1ICONS: { [k: string]: string } = {
   info: 'info-circle',
-  error: 'exclamation-circle',
-  success: 'check-circle',
+  critical: 'exclamation-circle',
+  positive: 'check-circle',
   warning: 'exclamation-triangle',
 };
 
@@ -52,9 +72,9 @@ const A1ICONS: { [k: string]: string } = {
   host: {
     '[attr.id]': 'id()',
     '[class.context-info]': '_effectiveContext() === "info"',
-    '[class.context-success]': '_effectiveContext() === "success"',
+    '[class.context-success]': '_effectiveContext() === "positive"',
     '[class.context-warning]': '_effectiveContext() === "warning"',
-    '[class.context-error]': '_effectiveContext() === "error"',
+    '[class.context-error]': '_effectiveContext() === "critical"',
     '[class.nx-message--closable]': '_closable',
     '[class.nx-message--plain]': '!contained()',
   },
@@ -69,16 +89,18 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
   /** Whether the message is rendered inside a filled, bordered surface (`true`, default) or as plain icon and text (`false`). */
   readonly contained = input(true, { transform: booleanAttribute });
 
-  protected readonly _effectiveContext = computed<CONTEXT>(() => {
-    if (this._context() === 'regular' && this._isAllianzOne()) {
+  // `_context` keeps whatever the consumer set, so reading `context` back returns their own value.
+  // The deprecated names are resolved here instead, where the colors and the icon are picked.
+  protected readonly _effectiveContext = computed<ResolvedContext>(() => {
+    const raw = this._context();
+    const context = CONTEXT_ALIASES[raw] ?? (raw as ResolvedContext);
+    if (context === 'regular' && this._isAllianzOne()) {
       return 'info';
     }
-    return this._context();
+    return context;
   });
 
   protected _hideIcon = computed(() => false);
-
-  _allowedContexts: CONTEXT[] = ['regular', 'info', 'error', 'warning', 'success'];
 
   @ViewChild('closeButton') _closeButton!: ElementRef;
 
@@ -120,11 +142,8 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
   private _closeButtonLabel = 'Close dialog';
 
   readonly _iconName = computed<string>(() => {
-    const context = this._allowedContexts.includes(this._effectiveContext())
-      ? this._effectiveContext()
-      : this._allowedContexts[0];
-
-    return this._isAllianzOne() ? A1ICONS[context] : ICONS[context];
+    const context = this._effectiveContext();
+    return (this._isAllianzOne() ? A1ICONS[context] : ICONS[context]) ?? '';
   });
 
   /** Event emitted when the close icon of the message has been clicked. */
@@ -150,11 +169,6 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
   }
 
   _updateContext(value: CONTEXT) {
-    if (value === 'regular') {
-      console.warn(
-        `NxMessageComponent: context 'regular' is deprecated and will be removed in a future version. Use a specific context ('info', 'error', 'success', 'warning') instead.`,
-      );
-    }
     if (value !== this._context()) {
       this._context.set(value);
     }

@@ -8,7 +8,9 @@ import { NgModule } from '@angular/core';
 import { MessageBannerExampleComponent } from './message-banner/message-banner-example';
 import { MessageClosableExampleComponent } from './message-closable/message-closable-example';
 import { MessageContainedExampleComponent } from './message-contained/message-contained-example';
+import { MessageContextsExampleComponent } from './message-contexts/message-contexts-example';
 import { MessagePlainExampleComponent } from './message-plain/message-plain-example';
+import { MessageToastContextsExampleComponent } from './message-toast-contexts/message-toast-contexts-example';
 import { MessageToastCustomSettingsExampleComponent } from './message-toast-custom-settings/message-toast-custom-settings-example';
 import { MessageToastOpeningExampleComponent } from './message-toast-opening/message-toast-opening-example';
 
@@ -16,7 +18,9 @@ const EXAMPLES = [
   MessageBannerExampleComponent,
   MessageClosableExampleComponent,
   MessageContainedExampleComponent,
+  MessageContextsExampleComponent,
   MessagePlainExampleComponent,
+  MessageToastContextsExampleComponent,
   MessageToastCustomSettingsExampleComponent,
   MessageToastOpeningExampleComponent,
 ];
@@ -38,7 +42,9 @@ export class MessageExamplesModule {
       'message-banner': MessageBannerExampleComponent,
       'message-closable': MessageClosableExampleComponent,
       'message-contained': MessageContainedExampleComponent,
+      'message-contexts': MessageContextsExampleComponent,
       'message-plain': MessagePlainExampleComponent,
+      'message-toast-contexts': MessageToastContextsExampleComponent,
       'message-toast-custom-settings':
         MessageToastCustomSettingsExampleComponent,
       'message-toast-opening': MessageToastOpeningExampleComponent,

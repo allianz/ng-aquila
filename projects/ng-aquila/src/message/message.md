@@ -18,15 +18,38 @@ Use this component to present a contextual message with different color coding. 
 
 By default, the message is rendered inside a filled, bordered surface. Set the `contained` input to `false` to render it as plain icon and text instead, without a background or border.
 
+#### Contexts
+
+Available contexts: `info | positive | warning | critical`. The context drives the colors and the
+icon, and is shared by the toast and the banner below.
+
+<div class="docs-deprecation-warning">
+<code>error</code> and <code>success</code> are deprecated aliases of <code>critical</code> and <code>positive</code>. They still work, but use the new names for new code.
+</div>
+
 <!-- example(message-plain) -->
 
 ### Contained message
 
-Per default (or by explicitly setting `contained` to `true`), the message is rendered inside a filled, bordered surface, colored according to its context (info, success, warning or error).
+Per default (or by explicitly setting `contained` to `true`), the message is rendered inside a filled, bordered surface, colored according to its context.
+
+<div class="docs-hide-a1">
 
 Besides the message component you can also use `<nx-error>` for error messages. The NxErrorComponent has a different look in expert applications (for a global configuration please have a look at the [expert module](./documentation/config/overview)). We recommend using _nx-error_, especially for use cases where you need to support both styles.
 
 <!-- example(message-contained) -->
+
+</div>
+
+<div class="docs-a1">
+
+#### Contexts
+
+The contained message supports the same contexts as the plain message.
+
+<!-- example(message-contexts) -->
+
+</div>
 
 #### Closable
 
@@ -93,14 +116,29 @@ In the following example the toast message does not close automatically, but in 
 ```ts
 export const myCustomOptions: NxMessageToastConfig = {
     duration: 0,
-    context: 'success',
-    announcementMessage: 'Yay, you see a success message toast',
+    context: 'positive',
+    announcementMessage: 'Yay, you see a positive message toast',
 };
 
 let toastRef = messageToastService.open('My message toast text.', myCustomOptions);
 ```
 
 <!-- example(message-toast-custom-settings) -->
+
+#### Contexts
+
+Toasts support `info | positive | warning | critical` (the deprecated `success` alias also works). Unlike `nx-message`, toasts do not support `regular` or the deprecated `error`.
+
+**Accessibility:** Any warning or critical message toast needs a permanent representation on the
+page, and it must be connected to the error-causing element via `aria-describedby` where applicable.
+A message toast is a temporary element, so having important information in a toast alone is an
+accessibility issue.
+
+<div class="docs-hide-ndbx">
+
+<!-- example(message-toast-contexts) -->
+
+</div>
 
 #### Global Configuration
 
@@ -139,8 +177,13 @@ You can find more information on aria-live regions and the available politeness 
 
 ### Banner message
 
-The notification banner is a static element that shifts the content of the page down in order to communicate information, a warning or an error to the user. Respectively it can have an **info, success or warning context**. Per default, message banners have a close icon button in the top right, which can be disabled by the `closable` input.
+The notification banner is a static element that shifts the content of the page down in order to communicate information to the user. Per default, message banners have a close icon button in the top right, which can be disabled by the `closable` input.
 
 Analogously to the Inline Notification, a message banner emits a `close` event when being closed by the close icon button. The example below shows how the `close` event can be used for hiding a message banner.
+
+#### Contexts
+
+Banners support the same [contexts](#contexts) as `nx-message`, including the deprecated `error` and
+`success` aliases, except for `regular`.
 
 <!-- example(message-banner) -->

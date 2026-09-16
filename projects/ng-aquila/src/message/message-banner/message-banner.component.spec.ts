@@ -160,6 +160,41 @@ describe('NxMessageBannerComponent', () => {
       setContextProgrammaticlyAndAssertClass('warning', 'context-warning');
     });
   });
+
+  describe('contexts', () => {
+    // Banners take every message context except the deprecated `regular`.
+    const CONTEXTS: { context: BANNER_CONTEXT; className: string; icon: string }[] = [
+      { context: 'info', className: 'context-info', icon: 'info-circle' },
+      { context: 'positive', className: 'context-success', icon: 'check-circle' },
+      { context: 'warning', className: 'context-warning', icon: 'exclamation-circle-warning' },
+      { context: 'critical', className: 'context-error', icon: 'exclamation-triangle' },
+    ];
+
+    for (const { context, className, icon } of CONTEXTS) {
+      it(`should render the ${context} context`, () => {
+        createTestComponent(BasicMessageBannerComponent);
+        setContextAndAssertClass(context, className);
+        expect(componentInstance._iconName()).toBe(icon);
+      });
+    }
+
+    it('should map the deprecated names onto their replacements', () => {
+      createTestComponent(BasicMessageBannerComponent);
+
+      setContextAndAssertClass('error', 'context-error');
+      setContextAndAssertClass('success', 'context-success');
+    });
+
+    it('should read the context back exactly as it was set', () => {
+      createTestComponent(BasicMessageBannerComponent);
+
+      for (const context of ['error', 'success', 'critical', 'positive', 'info'] as const) {
+        testInstance.context = context;
+        fixture.detectChanges();
+        expect(componentInstance.context).toBe(context);
+      }
+    });
+  });
 });
 
 @Component({

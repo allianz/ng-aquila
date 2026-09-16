@@ -35,7 +35,7 @@ export class MessageToastOpeningExampleComponent {
 
   openFromText() {
     this.messageToastService.open(this.toastText, {
-      context: 'success',
+      context: 'positive',
       duration: 5000,
     });
   }

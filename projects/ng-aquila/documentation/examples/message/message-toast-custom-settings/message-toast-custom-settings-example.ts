@@ -8,7 +8,7 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 export const myCustomConfig: NxMessageToastConfig = {
   duration: 0,
-  context: 'success',
+  context: 'positive',
   announcementMessage: 'Yay, you see a success message toast',
 };
 

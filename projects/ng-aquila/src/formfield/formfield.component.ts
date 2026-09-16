@@ -1,6 +1,6 @@
 import { NxLabelInfoDirective } from '@allianz/ng-aquila/base';
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
-import { CONTEXT, NxMessageComponent } from '@allianz/ng-aquila/message';
+import { NxMessageComponent } from '@allianz/ng-aquila/message';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { NgTemplateOutlet } from '@angular/common';
@@ -79,13 +79,6 @@ export type NxFormfieldSize = 's' | 'm';
 
 /** Type for the signal status of the formfield. No `critical` value: an invalid control drives the error look instead. */
 export type NxFormfieldStatus = 'positive' | 'warning' | 'info';
-
-/** Maps a formfield status onto the vocabulary of `nx-message` (`positive` -> `success`). */
-const STATUS_MESSAGE_CONTEXT: Record<NxFormfieldStatus, CONTEXT> = {
-  positive: 'success',
-  warning: 'warning',
-  info: 'info',
-};
 
 @Component({
   selector: 'nx-formfield',
@@ -380,12 +373,6 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   _isStatusVisible(): boolean {
     return !!this._effectiveStatus() && !this._control.disabled;
   }
-
-  /** @docs-private */
-  readonly _statusMessageContext = computed<CONTEXT | null>(() => {
-    const status = this._effectiveStatus();
-    return status ? STATUS_MESSAGE_CONTEXT[status] : null;
-  });
 
   /** @docs-private */
   getDisplayedMessage(): 'note' | 'error' | 'status' | '' {

@@ -780,7 +780,6 @@ describe('NxFormfieldComponent status', () => {
 
     const message = getStatusMessage()!;
     expect(message).not.toBeNull();
-    // `positive` is `success` in the vocabulary of nx-message
     expect(message.classList).toContain('context-success');
     expect(message.classList).toContain('nx-message--plain');
     expect(message.textContent).toContain('content-status');
