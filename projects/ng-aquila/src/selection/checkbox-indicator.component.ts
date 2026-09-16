@@ -1,7 +1,7 @@
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { NxSelectionIndicatorColorScheme } from './types';
+import { NxCheckboxIndicatorColorScheme } from './types';
 
 @Component({
   selector: 'nx-checkbox-indicator',
@@ -30,5 +30,5 @@ export class NxCheckboxIndicatorComponent {
   readonly readonly = input(false, { transform: booleanAttribute });
   readonly critical = input(false, { transform: booleanAttribute });
   readonly indeterminate = input(false, { transform: booleanAttribute });
-  readonly colorScheme = input<NxSelectionIndicatorColorScheme>('default');
+  readonly colorScheme = input<NxCheckboxIndicatorColorScheme>('default');
 }

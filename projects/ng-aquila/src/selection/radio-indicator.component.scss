@@ -216,3 +216,49 @@
     }
   }
 }
+
+:host.on-accent-attention {
+  --outer-circle-border-color: #{v(radio-button-on-accent-attention-color)};
+  --dot-color: transparent;
+
+  &.checked {
+    --outer-circle-color: #{v(radio-button-on-accent-attention-color)};
+    --outer-circle-border-color: transparent;
+    --dot-color: transparent;
+  }
+
+  // disabled state
+  &.disabled {
+    --outer-circle-border-color: #{v(radio-button-on-accent-attention-disabled-color)};
+    --dot-color: transparent;
+
+    &.checked {
+      --outer-circle-color: #{v(radio-button-on-accent-attention-disabled-color)};
+      --outer-circle-border-color: transparent;
+      --dot-color: transparent;
+    }
+  }
+}
+
+:host.on-brand-static {
+  --outer-circle-border-color: #{v(radio-button-on-brand-static-color)};
+  --dot-color: transparent;
+
+  &.checked {
+    --outer-circle-color: #{v(radio-button-on-brand-static-color)};
+    --outer-circle-border-color: transparent;
+    --dot-color: transparent;
+  }
+
+  // disabled state
+  &.disabled {
+    --outer-circle-border-color: #{v(radio-button-on-brand-static-disabled-color)};
+    --dot-color: transparent;
+
+    &.checked {
+      --outer-circle-color: #{v(radio-button-on-brand-static-disabled-color)};
+      --outer-circle-border-color: transparent;
+      --dot-color: transparent;
+    }
+  }
+}

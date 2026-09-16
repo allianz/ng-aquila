@@ -1,6 +1,18 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+} from '@angular/core';
 
-import { NxSelectionIndicatorColorScheme } from './types';
+import { NxRadioIndicatorColorScheme } from './types';
+
+/** Color schemes that have no readonly appearance in the design. */
+const SCHEMES_WITHOUT_READONLY: readonly NxRadioIndicatorColorScheme[] = [
+  'on-accent-attention',
+  'on-brand-static',
+];
 
 @Component({
   selector: 'nx-radio-indicator',
@@ -15,7 +27,9 @@ import { NxSelectionIndicatorColorScheme } from './types';
     '[class.critical]': 'critical()',
     '[class.inverse]': 'inverse()',
     '[class.no-animation]': '!animations()',
-    '[class.on-selection]': 'colorScheme() === "on-selection"',
+    '[class.on-selection]': '_resolvedColorScheme() === "on-selection"',
+    '[class.on-accent-attention]': '_resolvedColorScheme() === "on-accent-attention"',
+    '[class.on-brand-static]': '_resolvedColorScheme() === "on-brand-static"',
   },
 })
 export class NxRadioIndicatorComponent {
@@ -25,6 +39,15 @@ export class NxRadioIndicatorComponent {
   readonly critical = input(false, { transform: booleanAttribute });
   /** Whether the inverse set of styles, for use on a dark background, is applied. */
   readonly inverse = input(false, { transform: booleanAttribute });
-  readonly colorScheme = input<NxSelectionIndicatorColorScheme>('default');
+  readonly colorScheme = input<NxRadioIndicatorColorScheme>('default');
   readonly animations = input(true, { transform: booleanAttribute });
+
+  /**
+   * The scheme actually rendered. A readonly indicator falls back to the default scheme where
+   * the requested one has no readonly appearance, which is what the design resolves to.
+   */
+  protected readonly _resolvedColorScheme = computed<NxRadioIndicatorColorScheme>(() => {
+    const scheme = this.colorScheme();
+    return this.readonly() && SCHEMES_WITHOUT_READONLY.includes(scheme) ? 'default' : scheme;
+  });
 }

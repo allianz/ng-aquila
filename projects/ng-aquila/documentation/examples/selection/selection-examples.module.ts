@@ -5,11 +5,13 @@ import {
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { SelectionIndicatorAccentBrandExampleComponent } from './selection-indicator-accent-brand/selection-indicator-accent-brand-example';
 import { SelectionIndicatorDefaultExampleComponent } from './selection-indicator-default/selection-indicator-default-example';
 import { SelectionIndicatorInverseExampleComponent } from './selection-indicator-inverse/selection-indicator-inverse-example';
 import { SelectionIndicatorOnSelectionExampleComponent } from './selection-indicator-on-selection/selection-indicator-on-selection-example';
 
 const EXAMPLES = [
+  SelectionIndicatorAccentBrandExampleComponent,
   SelectionIndicatorDefaultExampleComponent,
   SelectionIndicatorInverseExampleComponent,
   SelectionIndicatorOnSelectionExampleComponent,
@@ -27,6 +29,8 @@ const EXAMPLES = [
 export class SelectionExamplesModule {
   static components() {
     return {
+      'selection-indicator-accent-brand':
+        SelectionIndicatorAccentBrandExampleComponent,
       'selection-indicator-default': SelectionIndicatorDefaultExampleComponent,
       'selection-indicator-inverse': SelectionIndicatorInverseExampleComponent,
       'selection-indicator-on-selection':

@@ -36,6 +36,16 @@ The following example shows both the checkbox and radio indicators with the on-s
 
 <!-- example(selection-indicator-on-selection) -->
 
+<div class="docs-a1">
+
+### On-accent and On-brand Appearance
+
+The radio indicator also supports the `on-accent-attention` and `on-brand-static` appearances,
+for placement on an accent or brand coloured surface in Allianz One. If you select readonly with these two appearances the component will fall back to use the default color scheme.
+
+<!-- example(selection-indicator-accent-brand) -->
+
+</div>
 
 ## Hover and Active Styles
 
