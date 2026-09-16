@@ -22,6 +22,13 @@ This example shows both the checkbox and radio indicators in their default appea
 
 <!-- example(selection-indicator-default) -->
 
+### Inverse Appearance
+
+Set `inverse` on the radio indicator when it sits on a dark surface. It is available for the
+default and critical appearances; it is not combined with the on-selection appearance.
+
+<!-- example(selection-indicator-inverse) -->
+
 ### On-selection Appearance
 
 The on-selection appearance is used on other interactive elements like cards or tiles.

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { NxSelectionIndicatorColorScheme } from './types';
 
@@ -13,15 +13,18 @@ import { NxSelectionIndicatorColorScheme } from './types';
     '[class.disabled]': 'disabled()',
     '[class.readonly]': 'readonly()',
     '[class.critical]': 'critical()',
+    '[class.inverse]': 'inverse()',
     '[class.no-animation]': '!animations()',
     '[class.on-selection]': 'colorScheme() === "on-selection"',
   },
 })
 export class NxRadioIndicatorComponent {
-  readonly checked = input(false);
-  readonly disabled = input(false);
-  readonly readonly = input(false);
-  readonly critical = input(false);
+  readonly checked = input(false, { transform: booleanAttribute });
+  readonly disabled = input(false, { transform: booleanAttribute });
+  readonly readonly = input(false, { transform: booleanAttribute });
+  readonly critical = input(false, { transform: booleanAttribute });
+  /** Whether the inverse set of styles, for use on a dark background, is applied. */
+  readonly inverse = input(false, { transform: booleanAttribute });
   readonly colorScheme = input<NxSelectionIndicatorColorScheme>('default');
-  readonly animations = input(true);
+  readonly animations = input(true, { transform: booleanAttribute });
 }

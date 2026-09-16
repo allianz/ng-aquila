@@ -7,8 +7,11 @@
 }
 
 :host {
+  // Unselected, the cutout spans the whole circle, so --dot-color is its fill and
+  // --outer-circle-color is not painted. Selected, --dot-color is the hole and
+  // --outer-circle-color the ring.
   --outer-circle-color: transparent;
-  --dot-color: transparent;
+  --dot-color: #{v(radio-button-background-color)};
   --outer-circle-border-color: #{v(radio-button-circle-color)};
 }
 
@@ -48,30 +51,36 @@
 }
 
 :host {
+  // The background paints under the border, so the ring already covers the outer 1px.
+  // Colouring the border as well would stack two translucent layers (A1's inverse tokens
+  // have alpha) and read as a brighter rim.
   &.checked {
     --outer-circle-color: #{v(radio-button-selected-background-color)};
-    --outer-circle-border-color: var(--outer-circle-color);
+    --outer-circle-border-color: transparent;
     --dot-color: #{v(radio-button-selected-dot-color)};
   }
 
   // disabled state
   &.disabled {
     --outer-circle-border-color: #{v(radio-button-disabled-border-color)};
+    --dot-color: #{v(radio-button-disabled-background-color)};
 
     &.checked {
       --outer-circle-color: #{v(radio-button-disabled-selected-background-color)};
       --dot-color: #{v(radio-button-disabled-selected-dot-color)};
-      --outer-circle-border-color: var(--outer-circle-color);
+      --outer-circle-border-color: transparent;
     }
   }
 
   // readonly state
   &.readonly {
     --outer-circle-border-color: #{v(radio-button-readonly-border-color)};
+    --dot-color: #{v(radio-button-readonly-background-color)};
 
     &.checked {
       --outer-circle-color: #{v(radio-button-readonly-selected-background-color)};
       --dot-color: #{v(radio-button-readonly-selected-dot-color)};
+      --outer-circle-border-color: transparent;
     }
   }
 
@@ -81,6 +90,7 @@
 
     &.checked {
       --outer-circle-color: #{v(danger)};
+      --outer-circle-border-color: transparent;
     }
   }
 
@@ -116,34 +126,83 @@
   }
 }
 
+:host.inverse {
+  --outer-circle-border-color: #{v(radio-button-inverse-circle-color)};
+  --dot-color: #{v(radio-button-inverse-background-color)};
+
+  &.checked {
+    --outer-circle-color: #{v(radio-button-inverse-selected-background-color)};
+    --outer-circle-border-color: transparent;
+    --dot-color: #{v(radio-button-inverse-selected-dot-color)};
+  }
+
+  // disabled state
+  &.disabled {
+    --outer-circle-border-color: #{v(radio-button-inverse-disabled-border-color)};
+    --dot-color: #{v(radio-button-inverse-disabled-background-color)};
+
+    &.checked {
+      --outer-circle-color: #{v(radio-button-inverse-disabled-selected-background-color)};
+      --dot-color: #{v(radio-button-inverse-disabled-selected-dot-color)};
+      --outer-circle-border-color: transparent;
+    }
+  }
+
+  // readonly state
+  &.readonly {
+    --outer-circle-border-color: #{v(radio-button-inverse-readonly-border-color)};
+    --dot-color: #{v(radio-button-inverse-readonly-background-color)};
+
+    &.checked {
+      --outer-circle-color: #{v(radio-button-inverse-readonly-selected-background-color)};
+      --dot-color: #{v(radio-button-inverse-readonly-selected-dot-color)};
+      --outer-circle-border-color: transparent;
+    }
+  }
+
+  // critical state
+  &.critical {
+    --outer-circle-border-color: #{v(radio-button-inverse-critical-color)};
+
+    &.checked {
+      --outer-circle-color: #{v(radio-button-inverse-critical-color)};
+      --outer-circle-border-color: transparent;
+    }
+  }
+}
+
 :host.on-selection {
   --outer-circle-border-color: #{v(radio-button-on-selection-border-color)};
+  // The selection background it sits on shows through, so the circle is never filled.
+  --dot-color: transparent;
 
   &.checked {
     --outer-circle-color: #{v(radio-button-on-selection-selected-border-color)};
-    --outer-circle-border-color: var(--outer-circle-color);
+    --outer-circle-border-color: transparent;
     --dot-color: #{v(radio-button-on-selection-selected-dot-color)};
   }
 
   // disabled state
   &.disabled {
     --outer-circle-border-color: #{v(radio-button-on-selection-disabled-border-color)};
+    --dot-color: transparent;
 
     &.checked {
       --outer-circle-color: #{v(radio-button-on-selection-disabled-selected-border-color)};
       --dot-color: #{v(radio-button-on-selection-disabled-selected-dot-color)};
-      --outer-circle-border-color: var(--outer-circle-color);
+      --outer-circle-border-color: transparent;
     }
   }
 
   // readonly state
   &.readonly {
     --outer-circle-border-color: #{v(radio-button-on-selection-readonly-border-color)};
+    --dot-color: transparent;
 
     &.checked {
       --outer-circle-color: #{v(radio-button-on-selection-readonly-selected-border-color)};
       --dot-color: #{v(radio-button-on-selection-readonly-selected-dot-color)};
-      --outer-circle-border-color: var(--outer-circle-color);
+      --outer-circle-border-color: transparent;
     }
   }
 
@@ -153,7 +212,7 @@
 
     // Selected keeps the plain on-selection ring; critical only tints the unselected border.
     &.checked {
-      --outer-circle-border-color: var(--outer-circle-color);
+      --outer-circle-border-color: transparent;
     }
   }
 }
