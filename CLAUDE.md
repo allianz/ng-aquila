@@ -100,3 +100,20 @@ npx ng build ng-aquila
 
 ## Naming Conventions
 - Protected variables must be prefixed with an underscore (e.g., `protected _myVariable`)
+
+## Visibility
+
+Pick a real TypeScript modifier. Do not use `@docs-private` to make something "not public":
+
+- Private to the component → `private`, underscore prefixed.
+- Private to the component but used in the template or host bindings → `protected`, underscore prefixed.
+- Internal to the library but used by another component → public, underscore prefixed.
+
+`@docs-private` only removes a member from the API table in the documentation. In an IDE it
+still looks perfectly usable, and the generated MCP metadata still reports it as public. So
+it is a false sense of control — keep it for legacy members that have no prefix, util
+functions, whole internal classes, and noise like the `ControlValueAccessor` methods.
+
+Many older members are public with `@docs-private` even though only the component's own
+template uses them. Don't copy that for new code; this ladder wins over matching the
+neighbours.
