@@ -1,7 +1,7 @@
-import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxTileGroupComponent } from '@allianz/ng-aquila/tile';
-import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inputBinding, signal, viewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -95,6 +95,22 @@ class TileReactiveFormsTestComponent {
 })
 class TileContentProjectionTestComponent {}
 
+@Component({
+  selector: 'test-tile-group-aria-labelled-by-test-component',
+  template: `
+    <nx-tile-group [ariaLabelledBy]="ariaLabelledBy()">
+      <nx-label>Choose an option</nx-label>
+      <nx-tile value="tile1" label="First Tile" />
+      <nx-tile value="tile2" label="Second Tile" />
+    </nx-tile-group>
+  `,
+  imports: [NxTileGroupComponent, NxTileComponent, NxLabelComponent],
+})
+class TileGroupAriaLabelledByTestComponent {
+  ariaLabelledBy = signal<string | null>(null);
+  group = viewChild.required(NxTileGroupComponent);
+}
+
 describe('NxTileComponent', () => {
   let fixture: ComponentFixture<any>;
   let testInstance: any;
@@ -125,7 +141,11 @@ describe('NxTileComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [TileTestComponent, TileReactiveFormsTestComponent],
+      imports: [
+        TileTestComponent,
+        TileReactiveFormsTestComponent,
+        TileGroupAriaLabelledByTestComponent,
+      ],
     }).compileComponents();
   }));
 
@@ -412,6 +432,45 @@ describe('NxTileComponent', () => {
       // the individual tiles should have the error id AND still the hint id
       expect(tile.ariaDescribedBy()).toContain(error.componentInstance.id);
       expect(tile.ariaDescribedBy()).toContain(`${tile.id}-hint`);
+    });
+
+    it('should have aria-labelledby with the projected nx-label id', () => {
+      ({ fixture, testInstance } = createComponent(TileGroupAriaLabelledByTestComponent));
+
+      const groupElement = fixture.debugElement.query(By.directive(NxTileGroupComponent));
+      const labelId = fixture.nativeElement.querySelector('.nx-label__content')?.id;
+
+      expect(groupElement.nativeElement.getAttribute('aria-labelledby')).toBe(labelId);
+    });
+
+    it('should merge ariaLabelledBy with the projected nx-label id', () => {
+      ({ fixture, testInstance } = createComponent(TileGroupAriaLabelledByTestComponent));
+      (testInstance as TileGroupAriaLabelledByTestComponent).ariaLabelledBy.set('external-label');
+      fixture.detectChanges();
+
+      const groupElement = fixture.debugElement.query(By.directive(NxTileGroupComponent));
+      const labelId = fixture.nativeElement.querySelector('.nx-label__content')?.id;
+
+      expect(groupElement.nativeElement.getAttribute('aria-labelledby')).toBe(
+        `external-label ${labelId}`,
+      );
+    });
+
+    it('should not have aria-labelledby when neither is set', () => {
+      ({ fixture, testInstance } = createComponent(TileTestComponent));
+
+      const groupElement = fixture.debugElement.query(By.directive(NxTileGroupComponent));
+
+      expect(groupElement.nativeElement.getAttribute('aria-labelledby')).toBeNull();
+    });
+
+    it('should have aria-labelledby with only the ariaLabelledBy value when no nx-label is projected', () => {
+      fixture = TestBed.createComponent(NxTileGroupComponent, {
+        bindings: [inputBinding('ariaLabelledBy', () => 'external-label')],
+      });
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.getAttribute('aria-labelledby')).toBe('external-label');
     });
   });
 

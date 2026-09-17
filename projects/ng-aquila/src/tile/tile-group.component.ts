@@ -38,7 +38,7 @@ export type NxTileSelectionMode = 'single' | 'multi';
     '[class.auto-grid]': 'autoGrid()',
     '[style.--nx-auto-grid-max-columns]': 'maxColumns()',
     role: 'group',
-    '[attr.aria-labelledby]': 'label()?.id || null',
+    '[attr.aria-labelledby]': '_labelledBy()',
     '[attr.aria-describedby]': '_errorState() ? errorIds() : null',
     '(focusout)': '_onFocusOut($event)',
   },
@@ -73,11 +73,20 @@ export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDe
   /** The layout of the tiles in the group. Can be 'horizontal' or 'vertical'. Default is 'vertical'. */
   readonly tileLayout = input<NxTileLayout>('vertical');
 
+  /** Sets additional aria-labelledby IDs to be merged with the auto-detected label reference on the group element. */
+  readonly ariaLabelledBy = input<string | null>(null);
+
   readonly errorIds = computed(() =>
     this.errors()
       .map((error) => error.id)
       .join(' '),
   );
+
+  protected readonly _labelledBy = computed(() => {
+    const ids = [this.ariaLabelledBy(), this.label()?.id].filter(Boolean);
+    return ids.length ? ids.join(' ') : null;
+  });
+
   readonly disabled = computed(() => this.accessorDisabled() || this.disabledInput());
 
   protected readonly accessorDisabled = signal(false);
