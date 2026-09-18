@@ -18,11 +18,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { vi } from 'vitest';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxSliderComponent } from './slider.component';
 import { NxSliderModule } from './slider.module';
-import { vi } from 'vitest';
 
 const createKeyboardEvent = (keyCode: number) => {
   const event = document.createEvent('KeyboardEvent') as any;

@@ -1,0 +1,31 @@
+@if (_showContextIcon()) {
+  <nx-status-icon
+    class="nx-message__icon"
+    [type]="_statusIconType()"
+    [size]="_contextIconSize()"
+    aria-hidden="true"
+  >
+  </nx-status-icon>
+}
+
+@if (closable) {
+  <button
+    nxPlainButton
+    #closeButton
+    (click)="_emitCloseEvent()"
+    [attr.aria-label]="closeButtonLabel"
+    tabindex="0"
+    class="nx-message__close-icon"
+    type="button"
+  >
+    <nx-icon name="close" size="s" aria-hidden="true"> </nx-icon>
+  </button>
+}
+
+<div class="nx-message-banner__body">
+  <div class="nx-message__content">
+    <ng-content></ng-content>
+  </div>
+
+  <ng-content select="[nxMessageBannerActions]"></ng-content>
+</div>

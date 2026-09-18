@@ -1,14 +1,12 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { IdGenerationService, nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
   booleanAttribute,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   computed,
   ElementRef,
@@ -75,14 +73,14 @@ const A1ICONS: { [k: string]: string } = {
     '[class.context-success]': '_effectiveContext() === "positive"',
     '[class.context-warning]': '_effectiveContext() === "warning"',
     '[class.context-error]': '_effectiveContext() === "critical"',
-    '[class.nx-message--closable]': '_closable',
+    '[class.nx-message--closable]': '_closable()',
     '[class.nx-message--plain]': '!contained()',
   },
 })
 export class NxMessageComponent implements AfterViewInit, OnDestroy {
   private readonly _idGenerator = inject(IdGenerationService);
   protected readonly _allianzOneOptions = inject(ALLIANZ_ONE, { optional: true });
-  protected readonly _isAllianzOne = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
+  protected readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
 
   readonly id = input<string>(this._idGenerator.nextId('nx-message'));
 
@@ -94,13 +92,24 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
   protected readonly _effectiveContext = computed<ResolvedContext>(() => {
     const raw = this._context();
     const context = CONTEXT_ALIASES[raw] ?? (raw as ResolvedContext);
-    if (context === 'regular' && this._isAllianzOne()) {
+    if (context === 'regular' && this._isA1()) {
       return 'info';
     }
     return context;
   });
 
-  protected _hideIcon = computed(() => false);
+  /**
+   * Whether the context icon is shown.
+   *
+   * Default: `true` for `nx-message`. Subclasses may resolve an unset value
+   * differently — see the concrete component for its default.
+   */
+  // Keeps `undefined` so a subclass can default by theme
+  readonly showContextIcon = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+  });
+
+  protected readonly _showContextIcon = computed(() => this.showContextIcon() ?? true);
 
   @ViewChild('closeButton') _closeButton!: ElementRef;
 
@@ -117,42 +126,33 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
   _context = signal<CONTEXT>('regular');
 
   /** Whether a message should have a close icon in order to be dismissed. */
-  @Input() set closable(value: BooleanInput) {
-    const newValue = coerceBooleanProperty(value);
-    if (newValue !== this._closable) {
-      this._closable = newValue;
-      this._cdr.markForCheck();
-    }
+  @Input({ transform: booleanAttribute }) set closable(value: boolean) {
+    this._closable.set(value);
   }
   get closable(): boolean {
-    return this._closable;
+    return this._closable();
   }
-  _closable = false;
+  _closable = signal(false);
 
   /** Sets the label of the close button of the message. */
   @Input() set closeButtonLabel(value: string) {
-    if (value !== this._closeButtonLabel) {
-      this._closeButtonLabel = value;
-      this._cdr.markForCheck();
-    }
+    this._closeButtonLabel.set(value);
   }
   get closeButtonLabel(): string {
-    return this._closeButtonLabel;
+    return this._closeButtonLabel();
   }
-  private _closeButtonLabel = 'Close dialog';
+  private readonly _closeButtonLabel = signal('Close dialog');
 
-  readonly _iconName = computed<string>(() => {
-    const context = this._effectiveContext();
-    return (this._isAllianzOne() ? A1ICONS[context] : ICONS[context]) ?? '';
-  });
+  protected _contextIcons(): { readonly [k: string]: string } {
+    return this._isA1() ? A1ICONS : ICONS;
+  }
+
+  readonly _iconName = computed<string>(() => this._contextIcons()[this._effectiveContext()] ?? '');
 
   /** Event emitted when the close icon of the message has been clicked. */
   @Output('close') readonly closeEvent = new EventEmitter<void>();
 
-  constructor(
-    private readonly _cdr: ChangeDetectorRef,
-    private readonly _focusMonitor: FocusMonitor,
-  ) {}
+  constructor(private readonly _focusMonitor: FocusMonitor) {}
 
   ngAfterViewInit(): void {
     if (this.closable) {

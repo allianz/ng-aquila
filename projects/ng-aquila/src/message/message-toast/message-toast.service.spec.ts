@@ -132,6 +132,18 @@ describe('NxMessageToast', () => {
         expect(overlayContainerElement.querySelector(`nx-message.${className}`)).toBeTruthy();
       });
     }
+
+    it('should show the context icon by default', () => {
+      messageToastService.open(text, { context: 'positive', duration: 0 });
+      fixture.detectChanges();
+      expect(overlayContainerElement.querySelector('.nx-message__icon')).toBeTruthy();
+    });
+
+    it('should hide the context icon when configured to', () => {
+      messageToastService.open(text, { context: 'positive', showContextIcon: false, duration: 0 });
+      fixture.detectChanges();
+      expect(overlayContainerElement.querySelector('.nx-message__icon')).toBeFalsy();
+    });
   });
 
   describe('open from template', () => {

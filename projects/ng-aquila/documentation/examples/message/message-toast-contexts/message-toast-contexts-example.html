@@ -8,3 +8,13 @@
     {{ context }}
   </button>
 }
+
+<br />
+
+<button
+  nxButton="secondary small"
+  type="button"
+  (click)="showContextIcon = !showContextIcon"
+>
+  {{ showContextIcon ? 'Hide' : 'Show' }} context icon
+</button>

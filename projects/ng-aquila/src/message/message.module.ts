@@ -5,7 +5,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { NxMessageComponent } from './message/message.component';
-import { NxMessageBannerComponent } from './message-banner/message-banner.component';
+import {
+  NxMessageBannerActions,
+  NxMessageBannerComponent,
+} from './message-banner/message-banner.component';
 import { NxMessageToastComponent } from './message-toast/message-toast.component';
 
 @NgModule({
@@ -17,7 +20,8 @@ import { NxMessageToastComponent } from './message-toast/message-toast.component
     NxMessageComponent,
     NxMessageToastComponent,
     NxMessageBannerComponent,
+    NxMessageBannerActions,
   ],
-  exports: [NxMessageComponent, NxMessageBannerComponent],
+  exports: [NxMessageComponent, NxMessageBannerComponent, NxMessageBannerActions],
 })
 export class NxMessageModule {}

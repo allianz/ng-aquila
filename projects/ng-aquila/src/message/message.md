@@ -41,7 +41,7 @@ Besides the message component you can also use `<nx-error>` for error messages. 
 
 </div>
 
-<div class="docs-a1">
+<div class="docs-hide-ndbx">
 
 #### Contexts
 
@@ -50,6 +50,13 @@ The contained message supports the same contexts as the plain message.
 <!-- example(message-contexts) -->
 
 </div>
+
+#### Context icon
+
+Every context renders an icon in front of the content by default (`showContextIcon` defaults to `true`).
+Set `showContextIcon` to `false` to leave it out.
+
+<!-- example(message-show-context-icon) -->
 
 #### Closable
 
@@ -129,6 +136,9 @@ let toastRef = messageToastService.open('My message toast text.', myCustomOption
 
 Toasts support `info | positive | warning | critical` (the deprecated `success` alias also works). Unlike `nx-message`, toasts do not support `regular` or the deprecated `error`.
 
+The context icon is shown by default (`showContextIcon: true`). Set `showContextIcon` to `false` in the config to
+leave it out.
+
 **Accessibility:** Any warning or critical message toast needs a permanent representation on the
 page, and it must be connected to the error-causing element via `aria-describedby` where applicable.
 A message toast is a temporary element, so having important information in a toast alone is an
@@ -187,3 +197,27 @@ Banners support the same [contexts](#contexts) as `nx-message`, including the de
 `success` aliases, except for `regular`.
 
 <!-- example(message-banner) -->
+
+#### Context icon
+
+Banners follow the theme when `showContextIcon` is not set: no icon under A1, an icon under the other
+themes. Set `showContextIcon` explicitly to override that in either direction.
+
+#### Closable
+
+Banners are closable by default. Set `closable` to `false` for a banner the user cannot dismiss —
+the close button is left out and the reserved inline-end padding goes with it.
+
+<div class="docs-hide-ndbx">
+
+#### Actions
+
+Project action buttons into a banner with the `nxMessageBannerActions` directive. The
+`actionLayout` input decides where they go: 
+- `horizontal` (default) places them on the same line as
+the content, next to the close button
+- `vertical` puts them on their own line below the content.
+
+<!-- example(message-banner-configuration) -->
+
+</div>

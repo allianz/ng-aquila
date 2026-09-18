@@ -40,6 +40,13 @@ export class NxMessageToastConfig<D = any> {
    */
   context?: NxMessageToastContext = 'info';
 
+  /**
+   * Whether the context icon is shown.
+   *
+   * Default: `true`.
+   */
+  showContextIcon?: boolean = true;
+
   /** Data being injected into the child component. */
   data?: D | null = null;
 }

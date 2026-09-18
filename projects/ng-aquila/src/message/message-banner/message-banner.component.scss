@@ -1,9 +1,37 @@
 @use '../../shared-styles/index' as *;
 
 :host {
+  --message-icon-gap: var(--message-icon-gap-banner);
+
   border-radius: v(message-banner-border-radius);
   border-width: v(message-banner-border-width);
+
+  ::ng-deep .nx-message-banner__actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: v(message-banner-actions-gap);
+  }
+
+  &.nx-message-banner--actions-horizontal {
+    .nx-message__content {
+      flex: 1;
+    }
+
+    ::ng-deep .nx-message-banner__actions {
+      margin-inline-start: v(message-banner-actions-margin-inline);
+    }
+  }
+
+  &.nx-message-banner--actions-vertical ::ng-deep .nx-message-banner__actions {
+    flex-basis: 100%;
+    margin-block-start: v(message-banner-actions-margin-block);
+  }
 }
-:host(.nx-message--closable) {
-  --message-icon-gap: var(--message-icon-gap-banner);
+
+.nx-message-banner__body {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }

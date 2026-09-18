@@ -63,6 +63,8 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
 
   _context: NxMessageToastContext;
 
+  _showContextIcon: boolean;
+
   private readonly _idGenerationService = inject(IdGenerationService);
   _messageToastId = this._idGenerationService.nextId('nx-message-toast');
   _messageId = this._idGenerationService.nextId('nx-message');
@@ -80,6 +82,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
 
     // Context is guaranteed to be set by the service that creates this component
     this._context = this.config.context ?? 'info';
+    this._showContextIcon = this.config.showContextIcon ?? true;
     this._setAriaLabels();
   }
 

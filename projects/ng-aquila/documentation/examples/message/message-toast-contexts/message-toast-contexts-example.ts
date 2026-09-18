@@ -23,11 +23,14 @@ export class MessageToastContextsExampleComponent {
     'critical',
   ];
 
+  showContextIcon = true;
+
   private readonly messageToastService = inject(NxMessageToastService);
 
   open(context: NxMessageToastContext) {
     this.messageToastService.open(`A ${context} message toast.`, {
       context,
+      showContextIcon: this.showContextIcon,
       duration: 3000,
       announcementMessage: `A ${context} message toast.`,
     });

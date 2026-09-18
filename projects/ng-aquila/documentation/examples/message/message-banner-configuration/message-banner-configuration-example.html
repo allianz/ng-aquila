@@ -1,0 +1,36 @@
+<nx-message-banner
+  context="info"
+  [showContextIcon]="showContextIcon"
+  [closable]="closable"
+  [actionLayout]="actionLayout"
+  closeButtonLabel="Close message banner"
+  class="nx-margin-bottom-m"
+>
+  <span class="nx-font-weight-bold">Notification title:</span><br />
+  Place your notification message here.
+
+  <div nxMessageBannerActions>
+    <button nxPlainButton size="m" type="button">Button</button>
+  </div>
+</nx-message-banner>
+
+<button
+  nxButton="secondary small"
+  type="button"
+  class="nx-margin-right-xs"
+  (click)="showContextIcon = !showContextIcon"
+>
+  {{ showContextIcon ? 'Hide' : 'Show' }} context icon
+</button>
+<button
+  nxButton="secondary small"
+  type="button"
+  class="nx-margin-right-xs"
+  (click)="closable = !closable"
+>
+  {{ closable ? 'Hide' : 'Show' }} close button
+</button>
+<button nxButton="secondary small" type="button" (click)="toggleLayout()">
+  Switch to
+  {{ actionLayout === 'horizontal' ? 'vertical' : 'horizontal' }} actions
+</button>

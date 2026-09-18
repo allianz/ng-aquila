@@ -70,6 +70,7 @@ describe('NxMessageComponent', () => {
         ClosableFormMessageComponent,
         PlainMessageTestComponent,
         A1MessageComponent,
+        ShowContextIconMessageComponent,
       ],
     }).compileComponents();
   }));
@@ -159,6 +160,26 @@ describe('NxMessageComponent', () => {
         fixture.detectChanges();
         expect(componentInstance.context).toBe(context);
       }
+    });
+  });
+
+  describe('showContextIcon', () => {
+    it('should show the icon by default', () => {
+      createTestComponent(MessageBasicComponent);
+      setContextAndAssertClass('info', 'context-info');
+      expect(fixture.nativeElement.querySelector('.nx-message__icon')).toBeTruthy();
+    });
+
+    it('should hide the icon when showContextIcon is false', () => {
+      createTestComponent(ShowContextIconMessageComponent);
+      expect(fixture.nativeElement.querySelector('.nx-message__icon')).toBeFalsy();
+    });
+
+    it('should show the icon again when showContextIcon flips back to true', () => {
+      createTestComponent(ShowContextIconMessageComponent);
+      (testInstance as ShowContextIconMessageComponent).showContextIcon.set(true);
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.nx-message__icon')).toBeTruthy();
     });
   });
 
@@ -305,3 +326,15 @@ class ClosableFormMessageComponent extends MessageTest {
   providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }],
 })
 class A1MessageComponent extends MessageTest {}
+
+@Component({
+  selector: 'test-show-context-icon-message-component',
+  template: `<nx-message context="info" [showContextIcon]="showContextIcon()">
+    lorem ipsum
+  </nx-message>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxMessageModule],
+})
+class ShowContextIconMessageComponent extends MessageTest {
+  showContextIcon = signal(false);
+}
