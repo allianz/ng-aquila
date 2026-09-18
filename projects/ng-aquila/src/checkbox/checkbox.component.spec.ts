@@ -1,6 +1,6 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
-import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
+import { _getFocusedElementPierceShadowDom, Platform } from '@angular/cdk/platform';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -459,6 +459,48 @@ describe('NxCheckboxComponent', () => {
       const errorId = (testInstance as ReactiveCheckboxWithDescribedBy).error?.id;
 
       expect(inputElement.getAttribute('aria-describedby')).toBe(`my-hint ${errorId}`);
+    });
+  });
+
+  describe('safari repaint workaround', () => {
+    const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve));
+
+    function createWithPlatform(platform: Partial<Platform>) {
+      TestBed.overrideProvider(Platform, { useValue: platform });
+      createTestComponent(BasicCheckbox);
+      checkboxNativeElement.style.visibility = 'visible';
+    }
+
+    it('hides the host and restores its original visibility when Platform reports safari, whatever the user agent says', async () => {
+      createWithPlatform({ isBrowser: true, SAFARI: true });
+
+      inputElement.click();
+      fixture.detectChanges();
+      expect(checkboxNativeElement.style.visibility).toBe('hidden');
+
+      await nextFrame();
+      expect(checkboxNativeElement.style.visibility).toBe('visible');
+    });
+
+    it('does not capture the hidden state when toggled twice within one frame', async () => {
+      createWithPlatform({ isBrowser: true, SAFARI: true });
+
+      inputElement.click();
+      fixture.detectChanges();
+      inputElement.click();
+      fixture.detectChanges();
+
+      await nextFrame();
+      expect(checkboxNativeElement.style.visibility).toBe('visible');
+    });
+
+    it('leaves the host untouched on other browsers', () => {
+      createWithPlatform({ isBrowser: true, SAFARI: false });
+
+      inputElement.click();
+      fixture.detectChanges();
+
+      expect(checkboxNativeElement.style.visibility).toBe('visible');
     });
   });
 });

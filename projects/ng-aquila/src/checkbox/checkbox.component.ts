@@ -5,6 +5,7 @@ import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkObserveContent } from '@angular/cdk/observers';
+import { Platform } from '@angular/cdk/platform';
 import {
   AfterContentInit,
   AfterViewInit,
@@ -535,7 +536,7 @@ export class NxCheckboxComponent
   protected errorState = signal<boolean>(false);
 
   private readonly _elementRef = inject(ElementRef);
-  private readonly _isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  private readonly _isSafari = inject(Platform).SAFARI;
   private _repaintInProgress = false;
 
   constructor(
