@@ -1,11 +1,13 @@
 import { getFontShorthand } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { Platform } from '@angular/cdk/platform';
 import {
   AfterViewInit,
   ChangeDetectorRef,
   Directive,
   ElementRef,
   HostBinding,
+  inject,
   Input,
   OnDestroy,
   Renderer2,
@@ -33,6 +35,8 @@ export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
   }
   private _resize = true;
 
+  private readonly _platform = inject(Platform);
+
   constructor(
     private readonly _element: ElementRef,
     private readonly _renderer: Renderer2,
@@ -52,6 +56,11 @@ export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
   }
 
   updateInputWidth() {
+    // Measuring text needs a canvas 2d context, which the server side DOM does not implement.
+    if (!this._platform.isBrowser) {
+      return;
+    }
+
     const measureCanvas = this._renderer.createElement('canvas');
 
     const ctx = measureCanvas.getContext('2d');

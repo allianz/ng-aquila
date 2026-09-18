@@ -1,3 +1,4 @@
+import { Platform } from '@angular/cdk/platform';
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
@@ -143,6 +144,17 @@ describe('NxAutoResizeDirective', () => {
     fixture.detectChanges();
     styles = window.getComputedStyle(nativeElement);
     expect(parseFloat(styles.width)).toBe(22);
+  });
+
+  it('should not measure the input outside a browser', () => {
+    TestBed.overrideProvider(Platform, { useValue: { isBrowser: false } });
+    createTestComponent(DefaultResize);
+    nativeElement.value = '1000';
+    nativeElement.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    expect(inputInstance.width).toBeUndefined();
+    expect(parseFloat(window.getComputedStyle(nativeElement).width)).toBe(22);
   });
 
   describe('Error handling', () => {
