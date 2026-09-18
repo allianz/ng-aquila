@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DOCUMENT,
   forwardRef,
   NgModule,
   TemplateRef,
@@ -356,6 +357,26 @@ describe('NxMessageToast', () => {
       fixture.detectChanges();
       await fixture.whenStable();
       await expect(fixture.nativeElement).toBeAccessible();
+    });
+
+    it('creates the live region in the injected document', () => {
+      const otherDocument = document.implementation.createHTMLDocument();
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        imports: [NxMessageToastTestModule],
+        providers: [{ provide: DOCUMENT, useValue: otherDocument }],
+      });
+
+      // Asserting on `ownerDocument` would pass either way: appending the region to the
+      // overlay container adopts it into the container's document.
+      const createElement = vi.spyOn(otherDocument, 'createElement');
+
+      TestBed.inject(NxMessageToastService);
+      const region = TestBed.inject(OverlayContainer)
+        .getContainerElement()
+        .querySelector('#nx-toast-message-region');
+
+      expect(createElement.mock.results.map((result) => result.value)).toContain(region);
     });
   });
 });

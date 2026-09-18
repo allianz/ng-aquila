@@ -3,7 +3,9 @@ import { Overlay, OverlayConfig, OverlayContainer, OverlayRef } from '@angular/c
 import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/portal';
 import {
   ComponentRef,
+  DOCUMENT,
   Inject,
+  inject,
   Injectable,
   InjectionToken,
   Injector,
@@ -38,6 +40,8 @@ export class NxMessageToastService implements OnDestroy {
    */
   private _toastRefAtThisLevel: NxMessageToastRef | null = null;
   private _announcementToggle: boolean = false;
+  private readonly _document = inject(DOCUMENT);
+
   set _oldToastMessageRef(value: NxMessageToastRef | null) {
     if (this._parentMessageToastService) {
       this._parentMessageToastService._oldToastMessageRef = value;
@@ -73,7 +77,7 @@ export class NxMessageToastService implements OnDestroy {
     const overlayContainer = this._overlayContainer.getContainerElement();
 
     if (!overlayContainer.querySelector('#nx-toast-message-region')) {
-      const wrapperElement = document.createElement('div');
+      const wrapperElement = this._document.createElement('div');
       wrapperElement.setAttribute('aria-live', 'polite');
       wrapperElement.setAttribute('aria-atomic', 'true');
       wrapperElement.id = 'nx-toast-message-region';
