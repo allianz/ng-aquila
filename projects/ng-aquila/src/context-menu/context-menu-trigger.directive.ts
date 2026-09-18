@@ -16,6 +16,7 @@ import {
   AfterContentInit,
   ChangeDetectorRef,
   Directive,
+  DOCUMENT,
   ElementRef,
   EventEmitter,
   Inject,
@@ -122,7 +123,8 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
   private _contextMenuOpen = false;
   private _closingActionsSubscription = Subscription.EMPTY;
   private _contextMenuCloseSubscription = Subscription.EMPTY;
-  private readonly _documentClickObservable: Observable<MouseEvent>;
+  private readonly _document = inject(DOCUMENT);
+  private readonly _documentClickObservable = fromEvent<MouseEvent>(this._document, 'click');
 
   /** Strategy factory that will be used to handle scrolling while the context-menu panel is open. */
   private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
@@ -217,7 +219,6 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     if (_contextMenuItemInstance) {
       _contextMenuItemInstance._triggersSubmenu = this.triggersSubmenu();
     }
-    this._documentClickObservable = fromEvent<MouseEvent>(document, 'click');
 
     this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
       if (this.contextMenuOpen) {

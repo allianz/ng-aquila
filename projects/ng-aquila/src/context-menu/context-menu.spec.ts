@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DOCUMENT,
   ElementRef,
   EventEmitter,
   Inject,
@@ -950,6 +951,21 @@ describe('nxContextMenu', () => {
       fixture.detectChanges();
 
       expect(fixture.componentInstance.closeCallback).toHaveBeenCalledWith('keydown');
+      expect(fixture.componentInstance.closeCallback).toHaveBeenCalledTimes(1);
+      flush();
+    }));
+  });
+
+  describe('injected document', () => {
+    it('should close on clicks on the injected document instead of the global one', fakeAsync(() => {
+      const fixture = createComponent(InjectedDocumentMenu);
+      fixture.componentInstance.trigger.openContextMenu();
+      fixture.detectChanges();
+
+      dispatchMouseEvent(injectedDocument, 'click');
+      fixture.detectChanges();
+      tick(500);
+
       expect(fixture.componentInstance.closeCallback).toHaveBeenCalledTimes(1);
       flush();
     }));
@@ -2037,6 +2053,28 @@ class SimpleMenu {
   @ViewChildren(NxContextMenuItemComponent)
   items!: QueryList<NxContextMenuItemComponent>;
   extraItems: string[] = [];
+  closeCallback = vi.fn().mockName('menu closed callback');
+}
+
+const injectedDocument = document.implementation.createHTMLDocument();
+
+@Component({
+  selector: 'test-injected-document-menu',
+  template: `
+    <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #triggerEl>
+      Toggle menu
+    </button>
+    <nx-context-menu #menu="nxContextMenu" (closed)="closeCallback($event)">
+      <button nxContextMenuItem>Item</button>
+    </nx-context-menu>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxContextMenuModule, NxButtonComponent],
+  providers: [{ provide: DOCUMENT, useValue: injectedDocument }],
+})
+class InjectedDocumentMenu {
+  @ViewChild(NxContextMenuTriggerDirective)
+  trigger!: NxContextMenuTriggerDirective;
   closeCallback = vi.fn().mockName('menu closed callback');
 }
 
