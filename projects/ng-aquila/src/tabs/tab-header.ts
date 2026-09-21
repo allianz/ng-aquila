@@ -130,7 +130,11 @@ export class NxTabHeaderComponent
     super.ngAfterContentInit();
     this._keyManager = new FocusKeyManager<NxTabLabelWrapperDirective>(this.labels)
       .withHorizontalOrientation('ltr')
-      .withWrap();
+      .withWrap()
+      // A disabled tab has to stay reachable by the arrow keys so that assistive technology can
+      // announce its state; activating it is prevented instead. Without this the manager's default
+      // predicate skips it and the tab is silently unreachable.
+      .skipPredicate(() => false);
     // the `selectedIndex` input is set before the key manager exists, so its sync is a
     // no-op on init and the preselected tab has to be picked up here
     this._keyManager.updateActiveItem(this._selectedIndex);
@@ -172,6 +176,19 @@ export class NxTabHeaderComponent
   }
 
   /**
+   * Syncs the key manager's bookkeeping to a tab that received DOM focus outside of its own
+   * keyboard handling (e.g. native Tab/Shift+Tab into the tablist, or a mouse click). Uses
+   * `updateActiveItem` rather than `setActiveItem` so it never re-focuses the element the
+   * browser already focused.
+   */
+  updateFocusedIndex(index: number) {
+    if (this._keyManager.activeItemIndex !== index) {
+      this._keyManager.updateActiveItem(index);
+      this.indexFocused.emit(index);
+    }
+  }
+
+  /**
    * Handles keyboard inputs on the labels
    * If autoselect is enabled the tab gets changed immediately
    * If autoselect is disabled only the focus changes but the user still has to select the item by himself.
@@ -186,6 +203,8 @@ export class NxTabHeaderComponent
       return;
     }
 
+    const previousIndex = this._keyManager.activeItemIndex;
+
     switch (event.key) {
       case 'Home':
         this._keyManager.setFirstItemActive();
@@ -197,7 +216,9 @@ export class NxTabHeaderComponent
         break;
       case 'Enter':
       case ' ':
-        this.selectFocusedIndex.emit(this._keyManager.activeItemIndex!);
+        if (!this._isDisabled(this._keyManager.activeItemIndex!)) {
+          this.selectFocusedIndex.emit(this._keyManager.activeItemIndex!);
+        }
         event.preventDefault();
         break;
       case 'Delete':
@@ -209,10 +230,16 @@ export class NxTabHeaderComponent
         this._keyManager.onKeydown(event);
     }
 
-    if (this.autoselect) {
-      this.selectFocusedIndex.emit(this._keyManager.activeItemIndex!);
-    } else if (event.key !== 'Enter' && event.key !== ' ') {
-      this.indexFocused.emit(this._keyManager.activeItemIndex!);
+    const activeIndex = this._keyManager.activeItemIndex!;
+
+    if (this.autoselect && !this._isDisabled(activeIndex)) {
+      this.selectFocusedIndex.emit(activeIndex);
+    } else if (activeIndex !== previousIndex) {
+      this.indexFocused.emit(activeIndex);
     }
+  }
+
+  private _isDisabled(index: number): boolean {
+    return !!this.labels?.toArray()[index]?.disabled;
   }
 }

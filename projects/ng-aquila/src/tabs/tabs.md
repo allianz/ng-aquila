@@ -72,6 +72,8 @@ You can disable the whole tab group by setting the property `disabled` on `nx-ta
 
 **Pay attention that a disabled and active tab violates the accessibility of the component**, therefore we set the next focusable tab as active in case active and disabled is set on the same tab. If no tab is focusable, no tab is set as active and `selectedIndex` becomes -1.
 
+Following the WAI-ARIA tabs pattern, a disabled tab stays reachable with the arrow keys and reports `aria-disabled="true"`, so screen readers announce it as unavailable. Activating it by click, `ENTER` or `SPACE` is prevented, and it is never selected by `autoselect`.
+
 <!-- example(tabs-disabled) -->
 
 ### Output events

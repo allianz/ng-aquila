@@ -15,7 +15,11 @@
         [class.nx-tab-header__item-wrapper--active]="selectedIndex === i"
         [class.nx-tab-header__item-wrapper--disabled]="tab.disabled"
       >
-        <div class="nx-tab-header__item-group" role="presentation">
+        <div
+          class="nx-tab-header__item-group"
+          role="presentation"
+          (focusin)="updateFocusedIndex(i)"
+        >
           <button
             #tabButton
             type="button"

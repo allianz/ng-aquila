@@ -6,6 +6,11 @@ import { Directive, ElementRef, Input } from '@angular/core';
 @Directive({
   selector: '[nxTabLabelWrapper]',
   standalone: true,
+  host: {
+    // This directive owns a `disabled` input, so a `[disabled]` binding on the host button never
+    // reaches the element. `aria-disabled` is what keeps the state perceivable for screen readers.
+    '[attr.aria-disabled]': 'disabled || null',
+  },
 })
 export class NxTabLabelWrapperDirective implements FocusableOption {
   /** Whether the tab group is disabled. Default: false. */

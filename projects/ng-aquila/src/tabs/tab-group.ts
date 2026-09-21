@@ -84,6 +84,10 @@ export class NxTabGroupComponent
   private _indexToSelect: number | null = 0;
   _showAccordion = false;
 
+  updateFocusedIndex(index: number) {
+    this.tabHeader.updateFocusedIndex(index);
+  }
+
   /** @docs-private */
   @ContentChildren(NxTabComponent) tabs!: QueryList<NxTabComponent>;
 

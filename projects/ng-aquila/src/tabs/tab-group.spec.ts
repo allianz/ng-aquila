@@ -1,7 +1,7 @@
 import { NxAccordionDirective } from '@allianz/ng-aquila/accordion';
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { DELETE, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
+import { DELETE, ENTER, ESCAPE, LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -68,6 +68,9 @@ describe('NxTabGroupComponent', () => {
     tabGroupDebugElement = fixture.debugElement.query(By.directive(NxTabGroupComponent));
   };
 
+  const getTabItems = (): HTMLElement[] =>
+    Array.from(fixture.nativeElement.querySelectorAll('.nx-tab-header__item'));
+
   /**
    * Checks that the `selectedIndex` has been updated; checks that the label and body have their respective `active` classes.
    */
@@ -96,6 +99,7 @@ describe('NxTabGroupComponent', () => {
           BindingTabs,
           EventTabsTest,
           DisabledTabs,
+          DisabledMiddleTab,
           TemplateTabs,
           NestedTabGroups,
           PreselectedTabs,
@@ -261,6 +265,160 @@ describe('NxTabGroupComponent', () => {
         const selectedTabItem = fixture.nativeElement.querySelectorAll('.nx-tab-header__item')[1];
         expect(selectedTabItem).toHaveClass('nx-tab-header__item--active');
       });
+
+      it('should mark only the disabled tab as aria-disabled', () => {
+        createTestComponent(DisabledMiddleTab);
+
+        const tabItems = getTabItems();
+        expect(tabItems[1].getAttribute('aria-disabled')).toBe('true');
+        expect(tabItems[0].hasAttribute('aria-disabled')).toBe(false);
+        expect(tabItems[2].hasAttribute('aria-disabled')).toBe(false);
+      });
+
+      it('should not set the native disabled attribute on a disabled tab', () => {
+        createTestComponent(DisabledMiddleTab);
+
+        const disabledTabItem = getTabItems()[1];
+        expect(disabledTabItem.hasAttribute('disabled')).toBe(false);
+        expect((disabledTabItem as HTMLButtonElement).disabled).toBe(false);
+      });
+
+      it('should mark every tab as aria-disabled when the whole group is disabled', () => {
+        createTestComponent(DisabledTabs);
+        (testInstance as DisabledTabs).disabled = true;
+        fixture.detectChanges();
+
+        getTabItems().forEach((item) => expect(item.getAttribute('aria-disabled')).toBe('true'));
+      });
+
+      it('should move focus onto a disabled tab with the arrow keys', () => {
+        createTestComponent(DisabledMiddleTab);
+
+        const tabItems = getTabItems();
+        dispatchKeyboardEvent(tabItems[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+        fixture.detectChanges();
+
+        expect(document.activeElement).toBe(tabItems[1]);
+      });
+
+      it('should not select a disabled tab that receives focus while autoselect is on', () => {
+        createTestComponent(DisabledMiddleTab);
+
+        dispatchKeyboardEvent(getTabItems()[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+        checkSelectedIndex(0);
+      });
+
+      it('should still report the focus change for a disabled tab', () => {
+        createTestComponent(DisabledMiddleTab);
+        const focusChangeSpy = vi.fn<(event: NxTabChangeEvent) => void>();
+        tabGroupInstance.focusChange.subscribe(focusChangeSpy);
+
+        dispatchKeyboardEvent(getTabItems()[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+        fixture.detectChanges();
+
+        expect(focusChangeSpy).toHaveBeenCalledTimes(1);
+        expect(focusChangeSpy.mock.lastCall?.[0].index).toBe(1);
+      });
+
+      // see https://github.developer.allianz.io/ilt/ng-aquila/pull/2042#discussion_r2012024
+      it('should not re-report the focus change for a key that leaves a disabled tab focused', () => {
+        createTestComponent(DisabledMiddleTab);
+        const focusChangeSpy = vi.fn<(event: NxTabChangeEvent) => void>();
+
+        dispatchKeyboardEvent(getTabItems()[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+        fixture.detectChanges();
+
+        tabGroupInstance.focusChange.subscribe(focusChangeSpy);
+        dispatchKeyboardEvent(getTabItems()[1], 'keydown', ESCAPE, 'Escape');
+        fixture.detectChanges();
+
+        expect(focusChangeSpy).not.toHaveBeenCalled();
+      });
+
+      it('should not select a focused disabled tab on ENTER', () => {
+        createTestComponent(DisabledMiddleTab);
+        (testInstance as DisabledMiddleTab).autoselect = false;
+        fixture.detectChanges();
+
+        const tabItems = getTabItems();
+        dispatchKeyboardEvent(tabItems[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+        fixture.detectChanges();
+        expect(document.activeElement).toBe(tabItems[1]);
+
+        dispatchKeyboardEvent(tabItems[1], 'keydown', ENTER, 'Enter');
+        checkSelectedIndex(0);
+      });
+
+      // see https://github.developer.allianz.io/ilt/ngx-brand-kit/issues/5518
+      describe('refocusing the tablist after focus was left on a non-selected tab', () => {
+        // Only the selected tab carries `tabindex="0"` (`getTabIndex`), so TAB out of the
+        // tablist and SHIFT+TAB back in always lands native focus on the selected tab -
+        // simulated here with a direct `.focus()` call, since jumping out of the tablist
+        // entirely and back in isn't observable through keydown events on the tablist itself.
+        beforeEach(() => {
+          createTestComponent(DisabledMiddleTab);
+          (testInstance as DisabledMiddleTab).autoselect = false;
+          fixture.detectChanges();
+        });
+
+        it('should resync the key manager to the tab that regains native focus', () => {
+          const tabItems = getTabItems();
+
+          dispatchKeyboardEvent(tabItems[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+          fixture.detectChanges();
+          expect(tabGroupInstance.tabHeader.focusIndex).toBe(1);
+
+          tabItems[0].focus();
+          fixture.detectChanges();
+
+          expect(tabGroupInstance.tabHeader.focusIndex).toBe(0);
+        });
+
+        it('should move to the adjacent tab on RIGHT arrow instead of jumping to the last tab', () => {
+          const tabItems = getTabItems();
+
+          dispatchKeyboardEvent(tabItems[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+          fixture.detectChanges();
+          tabItems[0].focus();
+          fixture.detectChanges();
+
+          dispatchKeyboardEvent(tabItems[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+          fixture.detectChanges();
+
+          expect(document.activeElement).toBe(tabItems[1]);
+        });
+
+        it('should wrap to the last tab on LEFT arrow instead of refocusing the already-focused tab', () => {
+          const tabItems = getTabItems();
+
+          dispatchKeyboardEvent(tabItems[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+          fixture.detectChanges();
+          tabItems[0].focus();
+          fixture.detectChanges();
+
+          dispatchKeyboardEvent(tabItems[0], 'keydown', LEFT_ARROW, 'ArrowLeft');
+          fixture.detectChanges();
+
+          expect(document.activeElement).toBe(tabItems[2]);
+        });
+
+        it('should emit focusChange for the resync once, on top of the emit from the initial arrow move', () => {
+          const tabItems = getTabItems();
+          const focusChangeSpy = vi.fn<(event: NxTabChangeEvent) => void>();
+          tabGroupInstance.focusChange.subscribe(focusChangeSpy);
+
+          dispatchKeyboardEvent(tabItems[0], 'keydown', RIGHT_ARROW, 'ArrowRight');
+          fixture.detectChanges();
+          expect(focusChangeSpy).toHaveBeenCalledTimes(1);
+          expect(focusChangeSpy.mock.lastCall?.[0].index).toBe(1);
+
+          tabItems[0].focus();
+          fixture.detectChanges();
+
+          expect(focusChangeSpy).toHaveBeenCalledTimes(2);
+          expect(focusChangeSpy.mock.lastCall?.[0].index).toBe(0);
+        });
+      });
     });
 
     describe('closable tabs', () => {
@@ -280,28 +438,22 @@ describe('NxTabGroupComponent', () => {
 
       it('should move focus from the selected tab to its close button on TAB', () => {
         createTestComponent(ClosableTabs);
-        document.body.appendChild(fixture.nativeElement);
-
         const tabItem = fixture.nativeElement.querySelectorAll('.nx-tab-header__item')[0];
         const closeButton = fixture.nativeElement.querySelectorAll('.nx-tab-header__close')[0];
         dispatchKeyboardEvent(tabItem, 'keydown', TAB, 'Tab');
         fixture.detectChanges();
 
         expect(document.activeElement).toBe(closeButton);
-        document.body.removeChild(fixture.nativeElement);
       });
 
       it('should move focus from the close button back to its tab on SHIFT+TAB', () => {
         createTestComponent(ClosableTabs);
-        document.body.appendChild(fixture.nativeElement);
-
         const tabItem = fixture.nativeElement.querySelectorAll('.nx-tab-header__item')[0];
         const closeButton = fixture.nativeElement.querySelectorAll('.nx-tab-header__close')[0];
         dispatchKeyboardEvent(closeButton, 'keydown', TAB, 'Tab', { shift: true });
         fixture.detectChanges();
 
         expect(document.activeElement).toBe(tabItem);
-        document.body.removeChild(fixture.nativeElement);
       });
 
       it('should emit tabClose with the tab index when the close button is clicked', () => {
@@ -324,8 +476,6 @@ describe('NxTabGroupComponent', () => {
 
       it('should still move between tabs with the arrow keys while a close button is focused', () => {
         createTestComponent(ClosableTabs);
-        document.body.appendChild(fixture.nativeElement);
-
         const tabItems = fixture.nativeElement.querySelectorAll('.nx-tab-header__item');
         const closeButton = fixture.nativeElement.querySelectorAll('.nx-tab-header__close')[0];
         closeButton.focus();
@@ -333,13 +483,10 @@ describe('NxTabGroupComponent', () => {
         fixture.detectChanges();
 
         expect(document.activeElement).toBe(tabItems[1]);
-        document.body.removeChild(fixture.nativeElement);
       });
 
       it('should move focus to the next tab when the close button is activated via ENTER/SPACE', fakeAsync(() => {
         createTestComponent(ClosableWithDisabledTabs);
-        document.body.appendChild(fixture.nativeElement);
-
         const closeButton = fixture.nativeElement.querySelectorAll('.nx-tab-header__close')[0];
         closeButton.click();
         fixture.detectChanges();
@@ -347,14 +494,11 @@ describe('NxTabGroupComponent', () => {
 
         const remainingTabItem = fixture.nativeElement.querySelectorAll('.nx-tab-header__item')[0];
         expect(document.activeElement).toBe(remainingTabItem);
-        document.body.removeChild(fixture.nativeElement);
         flush();
       }));
 
       it('should not move focus onto the remaining disabled tab after closing the last enabled tab via keyboard', fakeAsync(() => {
         createTestComponent(ClosableWithDisabledTabs);
-        document.body.appendChild(fixture.nativeElement);
-
         // Close the first enabled tab via keyboard so only the second enabled tab remains.
         let tabItem = fixture.nativeElement.querySelectorAll('.nx-tab-header__item')[0];
         dispatchKeyboardEvent(tabItem, 'keydown', DELETE, 'Delete');
@@ -369,14 +513,11 @@ describe('NxTabGroupComponent', () => {
 
         const disabledTabItem = fixture.nativeElement.querySelector('.nx-tab-header__item');
         expect(document.activeElement).not.toBe(disabledTabItem);
-        document.body.removeChild(fixture.nativeElement);
         flush();
       }));
 
       it('should move focus to the next focusable element when no tab is focusable anymore', fakeAsync(() => {
         createTestComponent(ClosableTabsWithTrailingButton);
-        document.body.appendChild(fixture.nativeElement);
-
         // Close both enabled tabs; only the disabled one is left, so no tab is focusable.
         let tabItem = fixture.nativeElement.querySelectorAll('.nx-tab-header__item')[0];
         dispatchKeyboardEvent(tabItem, 'keydown', DELETE, 'Delete');
@@ -391,14 +532,11 @@ describe('NxTabGroupComponent', () => {
         // Without the fallback, focus would land on the body instead.
         const trailingButton = fixture.nativeElement.querySelector('#trailing-button');
         expect(document.activeElement).toBe(trailingButton);
-        document.body.removeChild(fixture.nativeElement);
         flush();
       }));
 
       it('should skip elements that are not tabbable', fakeAsync(() => {
         createTestComponent(ClosableTabsWithUntabbableButtons);
-        document.body.appendChild(fixture.nativeElement);
-
         let tabItem = fixture.nativeElement.querySelectorAll('.nx-tab-header__item')[0];
         dispatchKeyboardEvent(tabItem, 'keydown', DELETE, 'Delete');
         fixture.detectChanges();
@@ -411,7 +549,6 @@ describe('NxTabGroupComponent', () => {
 
         const reachableButton = fixture.nativeElement.querySelector('#reachable-button');
         expect(document.activeElement).toBe(reachableButton);
-        document.body.removeChild(fixture.nativeElement);
         flush();
       }));
 
@@ -436,7 +573,6 @@ describe('NxTabGroupComponent', () => {
 
       it('should not emit `selectedTabChange` when no tab is selectable anymore', fakeAsync(() => {
         createTestComponent(ClosableWithDisabledTabs);
-        document.body.appendChild(fixture.nativeElement);
         const tabChangeSpy = vi.fn<(event: NxTabChangeEvent) => void>();
         const indexChangeSpy = vi.fn();
         tabGroupInstance.selectedTabChange.subscribe(tabChangeSpy);
@@ -457,13 +593,11 @@ describe('NxTabGroupComponent', () => {
         expect(indexChangeSpy).toHaveBeenCalledWith(-1);
         // Every emitted event must carry a tab instance, so -1 is reported via the index only.
         tabChangeSpy.mock.calls.forEach(([event]) => expect(event.tab).toBeTruthy());
-        document.body.removeChild(fixture.nativeElement);
         flush();
       }));
 
       it('should emit `selectedTabChange` and update `isActive`, but not `selectedIndexChange`, when the active tab is closed and another tab takes its numeric index', fakeAsync(() => {
         createTestComponent(ClosableWithDisabledTabs);
-        document.body.appendChild(fixture.nativeElement);
         const indexChangeSpy = vi.fn();
         const tabChangeSpy = vi.fn();
         tabGroupInstance.selectedIndexChange.subscribe(indexChangeSpy);
@@ -481,14 +615,11 @@ describe('NxTabGroupComponent', () => {
         expect(tabChangeSpy).toHaveBeenCalledTimes(1);
         expect(tabChangeSpy.mock.lastCall![0].index).toBe(0);
         expect(tabGroupInstance.tabs.toArray()[0].isActive).toBe(true);
-        document.body.removeChild(fixture.nativeElement);
         flush();
       }));
 
       it('should emit `selectedIndexChange` when the active tab shifts to a new numeric index because an earlier sibling was closed', fakeAsync(() => {
         createTestComponent(ClosableWithDisabledTabs);
-        document.body.appendChild(fixture.nativeElement);
-
         // Select the second tab, then close the first tab so the second tab (still active)
         // shifts from index 1 down to index 0 without its identity changing.
         tabGroupInstance.selectedIndex = 1;
@@ -507,13 +638,11 @@ describe('NxTabGroupComponent', () => {
         expect(tabGroupInstance.selectedIndex).toBe(0);
         expect(tabGroupInstance.tabs.toArray()[0]).toBe(activeTabBeforeClose);
         expect(indexChangeSpy).toHaveBeenCalledWith(0);
-        document.body.removeChild(fixture.nativeElement);
         flush();
       }));
 
       it('should not emit `selectedIndexChange` or `selectedTabChange` when closing a tab that is not active', fakeAsync(() => {
         createTestComponent(ClosableWithDisabledTabs);
-        document.body.appendChild(fixture.nativeElement);
         const activeTabBeforeClose = tabGroupInstance.tabs.toArray()[0];
         const indexChangeSpy = vi.fn();
         const tabChangeSpy = vi.fn();
@@ -531,7 +660,6 @@ describe('NxTabGroupComponent', () => {
         expect(tabGroupInstance.tabs.toArray()[0]).toBe(activeTabBeforeClose);
         expect(indexChangeSpy).not.toHaveBeenCalled();
         expect(tabChangeSpy).not.toHaveBeenCalled();
-        document.body.removeChild(fixture.nativeElement);
         flush();
       }));
 
@@ -1281,6 +1409,22 @@ class CustomElementTest extends TabsTest {
 class DisabledTabs extends TabsTest {
   disabled = false;
   singleDisabled = false;
+}
+
+@Component({
+  selector: 'test-disabled-middle-tab',
+  template: `
+    <nx-tab-group [autoselect]="autoselect" [mobileAccordion]="false">
+      <nx-tab label="First label">First</nx-tab>
+      <nx-tab label="Second label" disabled>Second</nx-tab>
+      <nx-tab label="Third label">Third</nx-tab>
+    </nx-tab-group>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTabsModule],
+})
+class DisabledMiddleTab extends TabsTest {
+  override autoselect = true;
 }
 
 @Component({

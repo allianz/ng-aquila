@@ -1,4 +1,13 @@
-import { END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, TAB } from '@angular/cdk/keycodes';
+import {
+  END,
+  ENTER,
+  ESCAPE,
+  HOME,
+  LEFT_ARROW,
+  RIGHT_ARROW,
+  SPACE,
+  TAB,
+} from '@angular/cdk/keycodes';
 import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 import {
   ChangeDetectionStrategy,
@@ -210,6 +219,64 @@ describe('NxTabHeaderComponent', () => {
         fixture.detectChanges();
         expect((testInstance as BasicHeader).onFocus).toHaveBeenCalledTimes(1);
         expect((testInstance as BasicHeader).focusEvent).toBe(1);
+      });
+
+      // see https://github.developer.allianz.io/ilt/ng-aquila/pull/2042#discussion_r2012024
+      it('should not emit indexFocused for a key that does not move the active item', () => {
+        vi.spyOn(testInstance as BasicHeader, 'onFocus');
+        dispatchKeyboardEvent(tabListContainer, 'keydown', ESCAPE, 'Escape');
+        fixture.detectChanges();
+        expect((testInstance as BasicHeader).onFocus).not.toHaveBeenCalled();
+      });
+
+      // see https://github.developer.allianz.io/ilt/ngx-brand-kit/issues/5518
+      // `updateFocusedIndex` is what the tab group's `(focusin)` listener calls whenever native
+      // DOM focus lands anywhere in the tablist (e.g. TAB/SHIFT+TAB back into it), to resync the
+      // key manager's bookkeeping to wherever the browser actually put focus.
+      describe('updateFocusedIndex (native focus resync)', () => {
+        beforeEach(() => {
+          // move the key manager's active item to tab 1, so `focusIndex` and the tab that will
+          // receive the resync call (0) disagree, like they would after arrowing onto a tab and
+          // then leaving/re-entering the tablist via TAB
+          dispatchKeyboardEvent(tabListContainer, 'keydown', RIGHT_ARROW);
+          fixture.detectChanges();
+        });
+
+        it('should resync focusIndex to the tab that actually received focus', () => {
+          tabHeaderInstance.updateFocusedIndex(0);
+          fixture.detectChanges();
+
+          expect(tabHeaderInstance.focusIndex).toBe(0);
+        });
+
+        it('should emit indexFocused for the resync', () => {
+          vi.spyOn(testInstance as BasicHeader, 'onFocus');
+
+          tabHeaderInstance.updateFocusedIndex(0);
+          fixture.detectChanges();
+
+          expect((testInstance as BasicHeader).onFocus).toHaveBeenCalledTimes(1);
+          expect((testInstance as BasicHeader).focusEvent).toBe(0);
+        });
+
+        it('should navigate relative to the newly-focused tab afterwards', () => {
+          tabHeaderInstance.updateFocusedIndex(0);
+          fixture.detectChanges();
+
+          dispatchKeyboardEvent(tabListContainer, 'keydown', RIGHT_ARROW);
+          fixture.detectChanges();
+
+          expect(tabHeaderInstance.focusIndex).toBe(1);
+        });
+
+        it('should not emit again when focus lands on the tab the key manager already thinks is active', () => {
+          vi.spyOn(testInstance as BasicHeader, 'onFocus');
+
+          tabHeaderInstance.updateFocusedIndex(1);
+          fixture.detectChanges();
+
+          expect((testInstance as BasicHeader).onFocus).not.toHaveBeenCalled();
+        });
       });
     });
   });
