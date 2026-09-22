@@ -892,6 +892,17 @@ describe('NxSliderComponent', () => {
       await expect(fixture.nativeElement).toBeAccessible();
     });
   });
+
+  describe('label position', () => {
+    it('offsets the value label when it would overflow the viewport edge', async () => {
+      createTestComponent(BasicSlider);
+      await fixture.whenStable();
+      fixture.detectChanges();
+
+      const label: HTMLElement = sliderNativeElement.querySelector('.nx-slider__value')!;
+      expect(label.getBoundingClientRect().left).toBe(4);
+    });
+  });
 });
 
 // make the slider 100px wide and position it reliably, so we have nice predictable coordinates for simulated clicks

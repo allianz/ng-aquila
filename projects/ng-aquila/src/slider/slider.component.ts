@@ -12,6 +12,7 @@ import {
 import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { NgStyle } from '@angular/common';
 import {
+  afterNextRender,
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -110,7 +111,7 @@ export class NxSliderComponent
   @ContentChildren(NxSliderAppendixDirective)
   _appendixChildren!: QueryList<NxSliderAppendixDirective>;
 
-  _labelPosition: string = DEFAULT_LABEL_POSITION;
+  _labelPosition: string = `translateX(${DEFAULT_LABEL_POSITION})`;
 
   /** Sets the id of the slider. */
   @Input() set id(value: string) {
@@ -225,11 +226,7 @@ export class NxSliderComponent
   /** Sets the current value of the slider. */
   @Input() set value(value: NumberInput) {
     this.writeValue(Number(value));
-
-    // wait for rerender to calculate latest label position
-    setTimeout(() => {
-      this._updateLabelPosition();
-    });
+    this._scheduleLabelPositionUpdate();
   }
   get value(): number {
     return this._value;
@@ -358,10 +355,7 @@ export class NxSliderComponent
 
   ngAfterViewInit(): void {
     this._focusMonitor.monitor(this._handleElement);
-
-    setTimeout(() => {
-      this._updateLabelPosition();
-    });
+    this._scheduleLabelPositionUpdate();
   }
 
   ngOnDestroy(): void {
@@ -557,6 +551,11 @@ export class NxSliderComponent
 
   _focusHandleElement() {
     this._handleElement.nativeElement.focus();
+  }
+
+  /** Positioning the label needs a laid out handle, so it only ever runs after a real render. */
+  private _scheduleLabelPositionUpdate() {
+    afterNextRender({ read: () => this._updateLabelPosition() }, { injector: this._injector });
   }
 
   private _updateLabelPosition() {
