@@ -302,6 +302,51 @@ describe('DatemaskComponent', () => {
     });
   });
 
+  describe(`separator greying`, () => {
+    let separators: HTMLElement[];
+
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DatemaskIncompleteTestForm],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DatemaskIncompleteTestForm);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      nativeInputs = fixture.nativeElement.querySelectorAll('input');
+      separators = Array.from(fixture.nativeElement.querySelectorAll('.datemask-container > div'));
+    });
+
+    it('greys both separators while the mask is empty', () => {
+      expect(separators[0]).toHaveClass('separator-as-placeholder');
+      expect(separators[1]).toHaveClass('separator-as-placeholder');
+    });
+
+    it('keeps the separator black while the following input is focused', () => {
+      nativeInputs[1].focus();
+      nativeInputs[0].value = '15';
+      nativeInputs[0].dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      expect(separators[0]).not.toHaveClass('separator-as-placeholder');
+    });
+
+    it('greys the separator when the following input is empty and unfocused', () => {
+      nativeInputs[0].focus();
+      nativeInputs[0].value = '15';
+      nativeInputs[0].dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+
+      nativeInputs[2].focus();
+      fixture.detectChanges();
+
+      expect(nativeInputs[1].value).toBe('');
+      expect(separators[0]).toHaveClass('separator-as-placeholder');
+    });
+  });
+
   describe(`keyboard`, () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({

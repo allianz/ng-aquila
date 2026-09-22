@@ -15,6 +15,7 @@ import {
   computed,
   Directive,
   DoCheck,
+  DOCUMENT,
   effect,
   ElementRef,
   EventEmitter,
@@ -308,6 +309,7 @@ export class NxDatemaskComponent<D>
   private readonly _datemaskContainer = viewChild<ElementRef>('datemaskContainer');
 
   private readonly _textMeasurementService = inject(TextMeasurementService);
+  private readonly _document = inject(DOCUMENT);
 
   /**
    * The separator that will be shown in Browser.
@@ -658,8 +660,8 @@ export class NxDatemaskComponent<D>
   selectContainer() {
     const container = this._datemaskContainer()?.nativeElement;
     if (container) {
-      const selection = window.getSelection();
-      const range = document.createRange();
+      const selection = this._document?.getSelection();
+      const range = this._document?.createRange();
       range.selectNodeContents(container);
       selection?.removeAllRanges();
       selection?.addRange(range);
@@ -1017,7 +1019,7 @@ export class NxDatemaskComponent<D>
     const isPreceedingEmpty = !preceedingNativeInput?.value;
     const isProceedingEmpty = !proceedingNativeInput?.value;
 
-    const focussedInput = document.activeElement;
+    const focussedInput = this._document.activeElement;
     if (
       (isPreceedingEmpty && isProceedingEmpty) ||
       (!isPreceedingEmpty && isProceedingEmpty && proceedingNativeInput !== focussedInput)
