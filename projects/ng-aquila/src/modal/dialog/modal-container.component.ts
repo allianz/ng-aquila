@@ -1,5 +1,6 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { parseCssTimeToMs } from '@allianz/ng-aquila/utils';
 import {
   FocusMonitor,
   FocusOrigin,
@@ -115,8 +116,8 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
   private _exitAnimationTimeout?: ReturnType<typeof setTimeout>;
   /** Duration of the animation in milliseconds. */
   getAnimationDuration(): number {
-    return (
-      parseFloat(getComputedStyle(this._hostElement).getPropertyValue('--transitionDuration')) || 0
+    return parseCssTimeToMs(
+      getComputedStyle(this._hostElement).getPropertyValue('--transitionDuration'),
     );
   }
 

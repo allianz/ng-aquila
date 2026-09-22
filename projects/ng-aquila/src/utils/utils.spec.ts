@@ -1,7 +1,14 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Renderer2 } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 
-import { appendClasses, clamp, mapClassNames, numberOfDecimals, removeClasses } from './utils';
+import {
+  appendClasses,
+  clamp,
+  mapClassNames,
+  numberOfDecimals,
+  parseCssTimeToMs,
+  removeClasses,
+} from './utils';
 
 describe('shared utils', () => {
   describe('mapClassNames', () => {
@@ -99,6 +106,32 @@ describe('shared utils', () => {
 
     it('should support custom maximum', () => {
       expect(clamp(5, 0, 2)).toBe(2);
+    });
+  });
+
+  describe('parseCssTimeToMs', () => {
+    it('should convert seconds to milliseconds', () => {
+      expect(parseCssTimeToMs('0.25s')).toBe(250);
+      expect(parseCssTimeToMs('1s')).toBe(1000);
+      expect(parseCssTimeToMs('.5S')).toBe(500);
+    });
+
+    it('should keep milliseconds as they are', () => {
+      expect(parseCssTimeToMs('250ms')).toBe(250);
+      expect(parseCssTimeToMs('250MS')).toBe(250);
+    });
+
+    it('should tolerate the whitespace of a computed custom property', () => {
+      expect(parseCssTimeToMs(' 200ms ')).toBe(200);
+    });
+
+    it('should be 0 for values that are not a CSS time', () => {
+      expect(parseCssTimeToMs('')).toBe(0);
+      expect(parseCssTimeToMs('0')).toBe(0);
+      expect(parseCssTimeToMs('250')).toBe(0);
+      expect(parseCssTimeToMs('fast')).toBe(0);
+      expect(parseCssTimeToMs('var(--missing)')).toBe(0);
+      expect(parseCssTimeToMs('-200ms')).toBe(0);
     });
   });
 });

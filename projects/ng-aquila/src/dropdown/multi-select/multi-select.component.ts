@@ -10,7 +10,7 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
-import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService, parseCssTimeToMs } from '@allianz/ng-aquila/utils';
 import { ActiveDescendantKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -923,14 +923,9 @@ export class NxMultiSelectComponent<S, T>
   }
 
   private _getOverlayAnimationDuration(): number {
-    const duration =
-      parseFloat(
-        getComputedStyle(this._elementRef.nativeElement).getPropertyValue(
-          '--dropdown-anim-duration',
-        ),
-      ) || 0;
-
-    return duration * 1000;
+    return parseCssTimeToMs(
+      getComputedStyle(this._elementRef.nativeElement).getPropertyValue('--dropdown-anim-duration'),
+    );
   }
 
   private _clearCloseAnimationTimeout() {

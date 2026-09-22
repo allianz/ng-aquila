@@ -4,7 +4,7 @@ import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
-import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService, parseCssTimeToMs } from '@allianz/ng-aquila/utils';
 import { NxVirtualFor, NxVirtualViewportComponent } from '@allianz/ng-aquila/virtual-scroll';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { Dir, Direction, Directionality } from '@angular/cdk/bidi';
@@ -1318,13 +1318,9 @@ export class NxDropdownComponent
   }
 
   private _getOverlayAnimationDuration(): number {
-    const duration =
-      parseFloat(
-        getComputedStyle(this._elementRef.nativeElement).getPropertyValue(
-          '--dropdown-anim-duration',
-        ),
-      ) || 0;
-    return duration * 1000;
+    return parseCssTimeToMs(
+      getComputedStyle(this._elementRef.nativeElement).getPropertyValue('--dropdown-anim-duration'),
+    );
   }
 
   private _scrollActiveOptionIntoCenter() {

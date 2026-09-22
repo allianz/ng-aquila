@@ -136,3 +136,22 @@ export function clamp(value: number, min = 0, max = 1): number {
 export function randomString(): string {
   return Math.random().toString(36);
 }
+
+/** A CSS `<time>`: a number followed by `s` or `ms`, the only two time units CSS defines. */
+const CSS_TIME_PATTERN = /^([+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?)(s|ms)$/i;
+
+/**
+ * Convert a CSS time value, e.g. the computed value of a custom property, into milliseconds.
+ * Values that are not a valid CSS time, and negative ones, are reported as 0.
+ */
+export function parseCssTimeToMs(value: string): number {
+  const match = CSS_TIME_PATTERN.exec(value.trim());
+  if (!match) {
+    return 0;
+  }
+
+  const amount = parseFloat(match[1]);
+  const milliseconds = match[2].toLowerCase() === 's' ? amount * 1000 : amount;
+
+  return Number.isFinite(milliseconds) && milliseconds > 0 ? milliseconds : 0;
+}
