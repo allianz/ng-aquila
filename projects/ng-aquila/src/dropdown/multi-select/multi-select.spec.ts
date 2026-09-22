@@ -7,6 +7,7 @@ import {
   NxFormfieldModule,
 } from '@allianz/ng-aquila/formfield';
 import { NX_SURFACE, NxSurface } from '@allianz/ng-aquila/surface';
+import { NxTooltipDirective } from '@allianz/ng-aquila/tooltip';
 import {
   DOWN_ARROW,
   END,
@@ -35,7 +36,7 @@ import {
   Type,
   ViewChild,
 } from '@angular/core';
-import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
@@ -1306,6 +1307,47 @@ describe('NxMultiSelectComponent', () => {
       const badge = await multiSelectHarness.getBadge();
       expect(await badge!.hasClass('nx-badge-attention--disabled')).toBe(true);
     });
+  });
+
+  describe('tooltip for a truncated value', () => {
+    it('measures the trigger after a value is written', async () => {
+      const measure = vi.spyOn(window, 'getComputedStyle');
+      await createTestComponent(BasicMultiSelectComponent);
+      testInstance.model = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(measure).toHaveBeenCalledWith(fixture.nativeElement.querySelector('.value'));
+    });
+
+    it('passes the measured text on to the tooltip directive', fakeAsync(() => {
+      createTestComponent(BasicMultiSelectComponent);
+      fixture.detectChanges();
+      tick();
+
+      const trigger = fixture.nativeElement.querySelector('.value');
+      trigger.style.width = '40px';
+      testInstance.model = ['BMW', 'Audi', 'Volvo', 'Mini', 'Mercedes'];
+      fixture.detectChanges();
+      flush();
+      fixture.detectChanges();
+      tick();
+      fixture.detectChanges();
+
+      const tooltip = fixture.debugElement.query(By.css('.value')).injector.get(NxTooltipDirective);
+      expect(tooltip.message).toBe('BMW, Audi, Volvo, Mini, Mercedes');
+    }));
+
+    it('does not schedule an update for a value written before destroy', fakeAsync(() => {
+      createTestComponent(BasicMultiSelectComponent);
+      fixture.detectChanges();
+      tick();
+
+      multiSelectInstance.options = ['BMW', 'Audi'];
+      fixture.destroy();
+
+      expect(() => flush()).not.toThrow();
+    }));
   });
 });
 

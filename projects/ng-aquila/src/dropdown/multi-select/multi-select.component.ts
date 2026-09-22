@@ -20,6 +20,8 @@ import {
   FlexibleConnectedPositionStrategy,
 } from '@angular/cdk/overlay';
 import {
+  afterNextRender,
+  AfterRenderRef,
   AfterViewInit,
   booleanAttribute,
   ChangeDetectionStrategy,
@@ -30,6 +32,7 @@ import {
   ElementRef,
   EventEmitter,
   inject,
+  Injector,
   Input,
   input,
   OnDestroy,
@@ -332,13 +335,14 @@ export class NxMultiSelectComponent<S, T>
 
   _filterValue = '';
 
-  _tooltipText = '';
+  protected _tooltipText = signal('');
 
   listItems: S[] = [];
 
   selectedItems = new Set<T>();
 
   id = inject(IdGenerationService).nextId('nx-multi-select');
+  private readonly _injector = inject(Injector);
 
   _comboboxId = `${this.id}-combobox`;
 
@@ -407,6 +411,7 @@ export class NxMultiSelectComponent<S, T>
   private _closeAnimationTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   private readonly _destroyed = new Subject<void>();
+  private _isDestroyed = false;
 
   private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
     optional: true,
@@ -434,6 +439,8 @@ export class NxMultiSelectComponent<S, T>
   }
 
   ngOnDestroy(): void {
+    this._isDestroyed = true;
+    this._tooltipUpdateRef?.destroy();
     this._clearCloseAnimationTimeout();
     this._destroyed.next();
     this._destroyed.complete();
@@ -602,7 +609,7 @@ export class NxMultiSelectComponent<S, T>
       this._isOpen = false;
       this.isClosing = false;
       this._closeAnimationTimeoutId = null;
-      this._updateTooltipText();
+      this._scheduleTooltipUpdate();
       this._trigger?.nativeElement.focus();
       this._cdr.markForCheck();
     };
@@ -827,7 +834,7 @@ export class NxMultiSelectComponent<S, T>
           }
         }
       }
-      this._updateTooltipText();
+      this._scheduleTooltipUpdate();
       this._cdr.markForCheck();
     });
   }
@@ -858,6 +865,23 @@ export class NxMultiSelectComponent<S, T>
     }
   }
 
+  private _tooltipUpdateRef: AfterRenderRef | null = null;
+
+  private _scheduleTooltipUpdate() {
+    if (this._isDestroyed) {
+      return;
+    }
+
+    this._tooltipUpdateRef?.destroy();
+    this._tooltipUpdateRef = afterNextRender(
+      () => {
+        this._tooltipUpdateRef = null;
+        this._updateTooltipText();
+      },
+      { injector: this._injector },
+    );
+  }
+
   private _updateTooltipText() {
     if (!this._trigger) {
       return;
@@ -870,11 +894,11 @@ export class NxMultiSelectComponent<S, T>
       parseInt(paddingLeft, 10) -
       parseInt(paddingRight, 10);
 
-    if (triggerContentWidth - suffix.offsetWidth - icon.offsetWidth < label.scrollWidth) {
-      this._tooltipText = this._getValueText();
-    } else {
-      this._tooltipText = '';
-    }
+    this._tooltipText.set(
+      triggerContentWidth - suffix.offsetWidth - icon.offsetWidth < label.scrollWidth
+        ? this._getValueText()
+        : '',
+    );
   }
 
   private _scrollActiveOptionIntoView() {

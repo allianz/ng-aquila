@@ -33,6 +33,8 @@ import {
 import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterContentInit,
+  afterNextRender,
+  AfterRenderRef,
   AfterViewInit,
   Attribute,
   booleanAttribute,
@@ -51,6 +53,7 @@ import {
   inject,
   Injectable,
   InjectionToken,
+  Injector,
   Input,
   input,
   isDevMode,
@@ -277,6 +280,7 @@ export class NxDropdownComponent
     DoCheck
 {
   private readonly _defaultOptions = inject(DROPDOWN_DEFAULT_OPTIONS, { optional: true });
+  private readonly _injector = inject(Injector);
 
   /** Whether the dropdown is readonly. */
   @Input() set readonly(value: BooleanInput) {
@@ -892,10 +896,6 @@ export class NxDropdownComponent
   }
 
   ngOnDestroy(): void {
-    if (this._tooltipUpdateTimeoutId) {
-      clearTimeout(this._tooltipUpdateTimeoutId);
-      this._tooltipUpdateTimeoutId = null;
-    }
     this._clearCloseAnimationTimeout();
     this._destroyed.next();
     this._destroyed.complete();
@@ -2006,18 +2006,16 @@ export class NxDropdownComponent
     return null;
   }
 
-  private _tooltipUpdateTimeoutId: any;
+  private _tooltipUpdateRef: AfterRenderRef | null = null;
 
   private _scheduleTooltipUpdate() {
-    if (this._tooltipUpdateTimeoutId) {
-      clearTimeout(this._tooltipUpdateTimeoutId);
-    }
-    this._tooltipUpdateTimeoutId = setTimeout(() => {
-      this._tooltipUpdateTimeoutId = null;
-      if (this._destroyed.closed) {
-        return;
-      }
-      this._updateTooltipText();
-    }, 0);
+    this._tooltipUpdateRef?.destroy();
+    this._tooltipUpdateRef = afterNextRender(
+      () => {
+        this._tooltipUpdateRef = null;
+        this._updateTooltipText();
+      },
+      { injector: this._injector },
+    );
   }
 }
