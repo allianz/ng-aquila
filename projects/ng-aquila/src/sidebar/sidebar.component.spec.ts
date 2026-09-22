@@ -4,6 +4,7 @@ import {
   Component,
   DebugElement,
   Directive,
+  PLATFORM_ID,
   Type,
   ViewChild,
 } from '@angular/core';
@@ -415,6 +416,28 @@ describe('NxSidebarComponent', () => {
         const resizeHandle = sidebarElement.query(By.css('.nx-sidebar__handle'));
         expect(resizeHandle.attributes['aria-label']).toBe('changed label');
       });
+    });
+  });
+
+  describe('on the server', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [{ provide: PLATFORM_ID, useValue: 'server' }],
+      });
+      createTestComponent(BasicSidebar);
+    });
+
+    it('does not set an inline width', () => {
+      expect(sidebarInstance['_inlineWidth']).toBeNull();
+      expect(sidebarElement.nativeElement.style.width).toBe('');
+    });
+
+    it('does not hide the labels', () => {
+      expect(sidebarElement.nativeElement.classList).not.toContain('hide-label');
+    });
+
+    it('does not measure width from the DOM', () => {
+      expect(sidebarInstance.width).toBe(0);
     });
   });
 

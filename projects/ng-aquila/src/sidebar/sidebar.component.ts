@@ -9,6 +9,7 @@ import {
   NumberInput,
 } from '@angular/cdk/coercion';
 import { LEFT_ARROW, RIGHT_ARROW, SPACE } from '@angular/cdk/keycodes';
+import { Platform } from '@angular/cdk/platform';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -45,7 +46,7 @@ export type NxSidebarColorScheme = 'default' | 'emphasis';
     '[class.is-resizing]': '_resizing',
     '[class.is-closed]': '!open',
     '[class.hide-label]': '_sidebarElementWidth === _defaultMinWidth()',
-    '[style.width.px]': `_sidebarElementWidth`,
+    '[style.width.px]': `_inlineWidth`,
     '[class.nx-sidebar--emphasis]': "colorScheme() === 'emphasis'",
   },
   imports: [],
@@ -155,6 +156,8 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
   private readonly allianzOne = inject(ALLIANZ_ONE, { optional: true }) as AllianzOneOptions | null;
 
+  private readonly _platform = inject(Platform);
+
   protected readonly _defaultMinWidth = computed(() =>
     this.allianzOne?.enabled?.() ? MIN_WIDTH_A1 : MIN_WIDTH,
   );
@@ -176,7 +179,9 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.width = this._element.nativeElement.clientWidth;
+    if (this._platform.isBrowser) {
+      this.width = this._element.nativeElement.clientWidth;
+    }
   }
 
   ngAfterViewInit(): void {
@@ -219,6 +224,11 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     }
 
     return this.open ? this.width : this.minWidth;
+  }
+
+  /** The width is measured from the DOM, which the server can't do — leave the CSS width alone there. */
+  protected get _inlineWidth(): number | null {
+    return this._platform.isBrowser ? this._sidebarElementWidth : null;
   }
 
   _onResizeStart(event: any) {
