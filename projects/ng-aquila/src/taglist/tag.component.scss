@@ -186,9 +186,9 @@ label {
   }
 }
 
+// the label drives the interaction, so the input must not add a hit area of its own
 input {
-  opacity: 0;
-  position: absolute;
+  @include visually-hidden;
 }
 
 :host:has(input:disabled) {
