@@ -1,6 +1,5 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
-import { IconSize, NxIconModule, NxStatusIconType } from '@allianz/ng-aquila/icon';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { NxIconModule, NxStatusIconSize, NxStatusIconType } from '@allianz/ng-aquila/icon';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,7 +10,7 @@ import {
   signal,
 } from '@angular/core';
 
-import { NxMessageComponent, ResolvedContext } from '../message/message.component';
+import { NxMessageBase, ResolvedContext } from '../message-base';
 
 /**
  * The contextual type of a message banner. Banners take every message context but `'regular'`.
@@ -44,7 +43,7 @@ export class NxMessageBannerActions {}
 @Component({
   selector: 'nx-message-banner',
   templateUrl: './message-banner.component.html',
-  styleUrls: ['../message/message.component.scss', './message-banner.component.scss'],
+  styleUrls: ['../message-base.scss', './message-banner.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'nxMessageBanner',
   imports: [NxIconModule, NxButtonModule],
@@ -53,7 +52,7 @@ export class NxMessageBannerActions {}
     '[class.nx-message-banner--actions-vertical]': 'actionLayout() === "vertical"',
   },
 })
-export class NxMessageBannerComponent extends NxMessageComponent {
+export class NxMessageBannerComponent extends NxMessageBase {
   /**
    * Where the projected actions sit: `'horizontal'` puts them on the same line as the content,
    * next to the close button, `'vertical'` on their own line below it.
@@ -66,7 +65,9 @@ export class NxMessageBannerComponent extends NxMessageComponent {
     () => STATUS_ICON_TYPES[this._effectiveContext()] ?? 'info',
   );
 
-  protected readonly _contextIconSize = computed<IconSize>(() => (this._isA1() ? 'xl' : 's'));
+  protected readonly _contextIconSize = computed<NxStatusIconSize>(() =>
+    this._isA1() ? 'xl' : 's',
+  );
 
   // Banners show no context icon under A1 but do under the other themes, so an unset `showContextIcon`
   // falls back to the theme instead of to a single fixed default.
@@ -85,11 +86,7 @@ export class NxMessageBannerComponent extends NxMessageComponent {
   get context(): BANNER_CONTEXT {
     return this._context() as BANNER_CONTEXT;
   }
-  _context = signal<BANNER_CONTEXT>('info');
+  protected override _context = signal<BANNER_CONTEXT>('info');
 
   override _closable = signal(true);
-
-  constructor(_fm: FocusMonitor) {
-    super(_fm);
-  }
 }

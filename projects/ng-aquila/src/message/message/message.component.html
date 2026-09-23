@@ -2,7 +2,7 @@
   <nx-icon class="nx-message__icon" [name]="_iconName()" size="s" aria-hidden="true"> </nx-icon>
 }
 
-@if (closable) {
+@if (_showCloseButton()) {
   <button
     nxPlainButton
     #closeButton

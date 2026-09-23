@@ -69,6 +69,7 @@ describe('NxMessageComponent', () => {
         ClosableMessageComponent,
         ClosableFormMessageComponent,
         PlainMessageTestComponent,
+        PlainClosableMessageComponent,
         A1MessageComponent,
         ShowContextIconMessageComponent,
       ],
@@ -217,6 +218,15 @@ describe('NxMessageComponent', () => {
       expect(fixture.nativeElement.querySelector('nx-message')).toHaveClass('nx-message--closable');
     });
 
+    it('does not render a close button on a plain message', () => {
+      createTestComponent(PlainClosableMessageComponent);
+
+      expect(fixture.nativeElement.querySelector('.nx-message__close-icon')).toBeFalsy();
+      expect(fixture.nativeElement.querySelector('nx-message')).not.toHaveClass(
+        'nx-message--closable',
+      );
+    });
+
     it('does not submit form on closing', () => {
       createTestComponent(ClosableFormMessageComponent);
       const closeButton = fixture.nativeElement.querySelector(
@@ -302,6 +312,14 @@ class PlainMessageTestComponent extends MessageTest {
 class ClosableMessageComponent extends MessageTest {
   closable = signal(true);
 }
+
+@Component({
+  selector: 'test-plain-closable-message-component',
+  template: `<nx-message [contained]="false" closable> lorem ipsum </nx-message>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxMessageModule],
+})
+class PlainClosableMessageComponent extends MessageTest {}
 
 @Component({
   selector: 'test-closable-form-message-component',

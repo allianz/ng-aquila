@@ -257,6 +257,15 @@ describe('NxMessageBannerComponent', () => {
       expect(fixture.nativeElement.querySelector('.nx-message__icon')).toBeTruthy();
     });
 
+    it('should treat null as unset and fall back to the theme default', () => {
+      createTestComponent(ShowContextIconMessageBannerComponent);
+      const host = testInstance as ShowContextIconMessageBannerComponent;
+
+      host.showContextIcon = null;
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelector('.nx-message__icon')).toBeTruthy();
+    });
+
     it('should size the icon with the s step outside of A1', () => {
       createTestComponent(BasicMessageBannerComponent);
       expect(fixture.nativeElement.querySelector('.nx-message__icon')).toHaveClass(
@@ -385,7 +394,7 @@ class A1ShowContextIconMessageBannerComponent extends MessageBannerTest {}
   imports: [NxMessageModule],
 })
 class ShowContextIconMessageBannerComponent extends MessageBannerTest {
-  showContextIcon = true;
+  showContextIcon: boolean | null = true;
 }
 
 @Component({
