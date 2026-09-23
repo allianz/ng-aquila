@@ -7,6 +7,7 @@ import {
   Component,
   DebugElement,
   Directive,
+  PLATFORM_ID,
   QueryList,
   signal,
   Type,
@@ -2689,6 +2690,25 @@ describe('NxComparisonTable responsive breakpoints', () => {
       createComponent(ResponsiveContainerModeComponent);
       fixture.destroy();
       expect(disconnectSpy).toHaveBeenCalled();
+    });
+
+    it('should not touch window outside a browser', () => {
+      TestBed.configureTestingModule({
+        providers: [{ provide: PLATFORM_ID, useValue: 'server' }],
+      });
+      const addListener = vi.spyOn(window, 'addEventListener');
+      const removeListener = vi.spyOn(window, 'removeEventListener');
+
+      createComponent(ResponsiveContainerModeComponent);
+      fixture.destroy();
+
+      expect(addListener).not.toHaveBeenCalledWith('scroll', expect.anything(), {
+        capture: true,
+        passive: true,
+      });
+      expect(removeListener).not.toHaveBeenCalledWith('scroll', expect.anything(), {
+        capture: true,
+      });
     });
   });
 });

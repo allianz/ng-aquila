@@ -4,7 +4,8 @@ import { NxViewportService } from '@allianz/ng-aquila/utils';
 import { CdkMonitorFocus } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceArray, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
+import { Platform } from '@angular/cdk/platform';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   afterNextRender,
   AfterViewInit,
@@ -26,7 +27,6 @@ import {
   OnInit,
   Optional,
   Output,
-  PLATFORM_ID,
   signal,
   untracked,
   ViewChild,
@@ -229,65 +229,8 @@ export class NxComparisonTableComponent
   ) {
     super(viewportService, _cdr);
 
-    this._ngZone.runOutsideAngular(() => {
-      const observer = new ResizeObserver((entries) => {
-        const width = entries[0].contentRect.width;
-        const widthChanged = width !== this._measuredWidth();
-        if (widthChanged) {
-          this._ngZone.run(() => this._measuredWidth.set(width));
-        }
-        // A wider viewport fits more columns → fewer pages; re-clamp before measuring so the shift
-        // and clip are written from the clamped index (same ordering as the view-type effect below).
-        const max = this._maxPageIndex();
-        if (this._pageIndex() > max) {
-          this._ngZone.run(() => this._pageIndex.set(max));
-        }
-        // The horizontal geometry — column step, per-cell inline offsets, visible end, sticky
-        // column width — follows the container WIDTH and the cell population; a taller row cannot
-        // move a cell horizontally. A height-only change is almost always the sticky header's own
-        // dock transition, which fires this observer frame after frame: re-measuring everything
-        // there cost ~5 full passes (~300 getBoundingClientRect) per dock. Re-measure the header
-        // band only — that IS what the transition changes, and --ct-thead-h feeds the viewport's
-        // negative margin. `_measureClipGeometry` re-asserts the page shift itself; the light path
-        // cannot need it, because every input of `_maxPageIndex` (the header-cell count via
-        // `_infoColumnCount`, the width via `_visibleColumnCount`) routes to the full path.
-        // Mobile always takes the full path: it has no sticky header, so it never sees the
-        // transition this split exists for, and its geometry is keyed off elements the fingerprint
-        // below does not track.
-        if (widthChanged || this.viewType === 'mobile' || this._clipCellCountChanged()) {
-          this._measureClipGeometry();
-        } else {
-          const native = this._native()?.nativeElement;
-          if (native) {
-            this._measureHeaderBand(native);
-          }
-          this._updateClip();
-        }
-        this._updateStuck();
-      });
-      observer.observe(this._element.nativeElement);
-      this._destroyRef.onDestroy(() => observer.disconnect());
-
-      // Track viewport visibility so the page-wide scroll listener can skip the clip update
-      // while the table is off-screen (see `_scrollHandler`). The margin keeps the clip fresh
-      // just before the table scrolls into view, avoiding a flash of un-clipped content.
-      const visibility = new IntersectionObserver(
-        (entries) => {
-          const wasVisible = this._isVisible;
-          this._isVisible = entries[entries.length - 1].isIntersecting;
-          // Catch up the clip to the current scroll position on the way back into view.
-          if (this._isVisible && !wasVisible) {
-            this._updateClip();
-            this._updateStuck();
-          }
-        },
-        { rootMargin: '200px' },
-      );
-      visibility.observe(this._element.nativeElement);
-      this._destroyRef.onDestroy(() => visibility.disconnect());
-    });
-
     afterNextRender(() => {
+      this._registerObservers();
       const width = this._element.nativeElement.getBoundingClientRect?.().width;
       if (width && width !== this._measuredWidth()) {
         this._measuredWidth.set(width);
@@ -397,6 +340,64 @@ export class NxComparisonTableComponent
       this._stuckRaf = null;
       this._updateStuck();
     });
+  }
+
+  private _registerObservers(): void {
+    const observer = new ResizeObserver((entries) => {
+      const width = entries[0].contentRect.width;
+      const widthChanged = width !== this._measuredWidth();
+      if (widthChanged) {
+        this._ngZone.run(() => this._measuredWidth.set(width));
+      }
+      // A wider viewport fits more columns → fewer pages; re-clamp before measuring so the shift
+      // and clip are written from the clamped index (same ordering as the view-type effect below).
+      const max = this._maxPageIndex();
+      if (this._pageIndex() > max) {
+        this._ngZone.run(() => this._pageIndex.set(max));
+      }
+      // The horizontal geometry — column step, per-cell inline offsets, visible end, sticky
+      // column width — follows the container WIDTH and the cell population; a taller row cannot
+      // move a cell horizontally. A height-only change is almost always the sticky header's own
+      // dock transition, which fires this observer frame after frame: re-measuring everything
+      // there cost ~5 full passes (~300 getBoundingClientRect) per dock. Re-measure the header
+      // band only — that IS what the transition changes, and --ct-thead-h feeds the viewport's
+      // negative margin. `_measureClipGeometry` re-asserts the page shift itself; the light path
+      // cannot need it, because every input of `_maxPageIndex` (the header-cell count via
+      // `_infoColumnCount`, the width via `_visibleColumnCount`) routes to the full path.
+      // Mobile always takes the full path: it has no sticky header, so it never sees the
+      // transition this split exists for, and its geometry is keyed off elements the fingerprint
+      // below does not track.
+      if (widthChanged || this.viewType === 'mobile' || this._clipCellCountChanged()) {
+        this._measureClipGeometry();
+      } else {
+        const native = this._native()?.nativeElement;
+        if (native) {
+          this._measureHeaderBand(native);
+        }
+        this._updateClip();
+      }
+      this._updateStuck();
+    });
+    observer.observe(this._element.nativeElement);
+    this._destroyRef.onDestroy(() => observer.disconnect());
+
+    // Track viewport visibility so the page-wide scroll listener can skip the clip update
+    // while the table is off-screen (see `_scrollHandler`). The margin keeps the clip fresh
+    // just before the table scrolls into view, avoiding a flash of un-clipped content.
+    const visibility = new IntersectionObserver(
+      (entries) => {
+        const wasVisible = this._isVisible;
+        this._isVisible = entries[entries.length - 1].isIntersecting;
+        // Catch up the clip to the current scroll position on the way back into view.
+        if (this._isVisible && !wasVisible) {
+          this._updateClip();
+          this._updateStuck();
+        }
+      },
+      { rootMargin: '200px' },
+    );
+    visibility.observe(this._element.nativeElement);
+    this._destroyRef.onDestroy(() => visibility.disconnect());
   }
 
   // ── Carousel page offset ──────────────────────────────────────────────────────
@@ -820,14 +821,14 @@ export class NxComparisonTableComponent
   }
 
   private readonly _injector = inject(Injector);
-  private readonly _isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly _platform = inject(Platform);
 
   protected get _dirValue() {
     return this._dir?.value || 'ltr';
   }
 
   ngOnInit(): void {
-    if (!this._isBrowser) {
+    if (!this._platform.isBrowser) {
       return;
     }
     // Registered capture + passive, outside the Angular zone — see `_scrollHandler`.
@@ -965,7 +966,9 @@ export class NxComparisonTableComponent
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('scroll', this._scrollHandler, { capture: true });
+    if (this._platform.isBrowser) {
+      window.removeEventListener('scroll', this._scrollHandler, { capture: true });
+    }
     if (this._stuckRaf !== null) {
       cancelAnimationFrame(this._stuckRaf);
     }
