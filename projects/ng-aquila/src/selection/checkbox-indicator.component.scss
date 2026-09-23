@@ -1,6 +1,20 @@
 @use '../shared-styles/index' as *;
 
 :host {
+  // Each scheme declares what hover and active would paint, so the public mixins stay free of
+  // scheme knowledge. A value that does not react to the state repeats its resting token
+  // rather than referencing the variable, which would be a cycle.
+  --nx-checkbox-hover-border: #{v(checkbox-hover-border-color)};
+  --nx-checkbox-hover-selected-border: #{v(checkbox-hover-border-color)};
+  --nx-checkbox-hover-surface: #{v(checkbox-unselected-hover-background-color)};
+  --nx-checkbox-hover-fill: #{v(checkbox-selected-hover-background-color)};
+  --nx-checkbox-active-border: #{v(checkbox-active-border-color)};
+  --nx-checkbox-active-selected-border: #{v(checkbox-active-border-color)};
+  --nx-checkbox-active-surface: #{v(checkbox-unselected-active-background-color)};
+  --nx-checkbox-active-fill: #{v(checkbox-active-background-color)};
+  --nx-checkbox-hover-icon: #{v(checkbox-hover-icon-color)};
+  --nx-checkbox-active-icon: #{v(checkbox-active-icon-color)};
+
   .nx-checkbox__control {
     background-color: var(--checkbox-background-color);
     border-style: solid;
@@ -9,6 +23,9 @@
     border-radius: var(--checkbox-border-radius);
     color: var(--checkbox-icon-color);
     font-size: var(--checkbox-icon-size);
+    // Focus lives on the native input the indicator stands in for, so the surrounding
+    // component sets this via the nx-selection-indicator-focus mixin.
+    box-shadow: var(--nx-selection-indicator-focus-shadow, none);
     height: var(--checkbox-control-size);
     width: var(--checkbox-control-size);
     min-width: var(--checkbox-control-size);
@@ -24,12 +41,26 @@
     --checkbox-icon-color: var(--checkbox-on-selection-icon-color);
     --checkbox-selected-background-color: var(--checkbox-on-selection-selected-background-color);
     --checkbox-selected-border-color: var(--checkbox-on-selection-selected-border-color);
-    --checkbox-hover-border-color: var(--checkbox-on-selection-hover-border-color);
-    --checkbox-hover-background-color: var(--checkbox-on-selection-hover-background-color);
-    --checkbox-active-border-color: var(--checkbox-on-selection-active-border-color);
-    --checkbox-active-background-color: var(--checkbox-on-selection-active-background-color);
+    --nx-checkbox-hover-border: #{v(checkbox-on-selection-hover-border-color)};
+    // The checked box keeps its own border on a selection surface; only the icon carries the
+    // interaction, so the checked-hover/active border repeats the resting selected border
+    // rather than switching to the unselected hover/active border.
+    --nx-checkbox-hover-selected-border: var(--checkbox-on-selection-selected-border-color);
+    --nx-checkbox-hover-surface: #{v(checkbox-on-selection-hover-background-color)};
+    --nx-checkbox-hover-fill: #{v(checkbox-on-selection-selected-background-color)};
+    --nx-checkbox-active-border: #{v(checkbox-on-selection-active-border-color)};
+    --nx-checkbox-active-selected-border: var(--checkbox-on-selection-selected-border-color);
+    --nx-checkbox-active-surface: #{v(checkbox-on-selection-active-background-color)};
+    --nx-checkbox-active-fill: #{v(checkbox-on-selection-selected-background-color)};
+    --nx-checkbox-hover-icon: #{v(checkbox-on-selection-hover-icon-color)};
+    --nx-checkbox-active-icon: #{v(checkbox-on-selection-active-icon-color)};
 
     &.critical {
+      --nx-checkbox-hover-border: #{v(danger-hover)};
+      --nx-checkbox-hover-icon: #{v(danger-hover)};
+      --nx-checkbox-active-border: #{v(danger-active)};
+      --nx-checkbox-active-icon: #{v(danger-active)};
+
       .nx-checkbox__control {
         border-color: var(--danger);
       }
@@ -99,6 +130,11 @@
   }
 
   &.critical {
+    --nx-checkbox-hover-border: #{v(danger-hover)};
+    --nx-checkbox-hover-fill: #{v(danger-hover)};
+    --nx-checkbox-active-border: #{v(danger-active)};
+    --nx-checkbox-active-fill: #{v(danger-active)};
+
     .nx-checkbox__control {
       border-color: var(--danger);
     }

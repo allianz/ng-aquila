@@ -1,0 +1,105 @@
+@use 'mixins' as *;
+
+////
+/// Interaction styles for the selection indicators.
+///
+/// The indicators are presentational and never know that the element around them is hovered,
+/// pressed or focused: the pointer sits on the surrounding card, tile or label, and focus sits
+/// on the native input the indicator stands in for. The surrounding component therefore owns
+/// the selector, and these mixins supply the declarations for it.
+///
+/// ```scss
+/// @use '@allianz/ng-aquila/styles/selection-indicator-mixins' as *;
+///
+/// .my-card {
+///   &:hover nx-radio-indicator {
+///     @include nx-radio-indicator-hover;
+///   }
+///   &:active nx-radio-indicator {
+///     @include nx-radio-indicator-active;
+///   }
+///   &:has(input:focus-visible) nx-radio-indicator {
+///     @include nx-selection-indicator-focus;
+///   }
+/// }
+/// ```
+///
+/// The indicator resolves its own colours from its `colorScheme`, `inverse` and `critical`
+/// inputs, so nothing needs restating here.
+///
+/// Keep the indicator's element selector on your side rather than letting these mixins add it:
+/// it is what scopes the styles to the right indicator when several sit under one hover target,
+/// and it lets you use a combinator when the indicator is a sibling rather than a descendant.
+///
+/// Include them only from a selector carrying a pseudo-class. The `:not(.disabled):not(.readonly)`
+/// guard inside each mixin already outweighs the indicator's own `:host` rules by specificity, so
+/// a bare `nx-radio-indicator { @include … }` would apply unconditionally rather than only on
+/// hover/active — it needs the pseudo-class to scope it to the right moment, not to win a tie.
+////
+
+/// Hovered appearance of a radio indicator.
+@mixin nx-radio-indicator-hover {
+  // Disabled and readonly never react, so the guard lives here rather than in every caller.
+  &:not(.disabled):not(.readonly) {
+    // The ring is only painted when selected and the fill only when it is not, so each is
+    // scoped to the state that shows it. The checked border stays transparent, matching the
+    // indicator's own resting rule, since the ring is painted as a fill rather than a border.
+    &.checked {
+      --outer-circle-color: var(--nx-radio-hover-ring);
+    }
+
+    &:not(.checked) {
+      --outer-circle-border-color: var(--nx-radio-hover-border);
+      --dot-color: var(--nx-radio-hover-surface);
+    }
+  }
+}
+
+/// Pressed appearance of a radio indicator.
+@mixin nx-radio-indicator-active {
+  &:not(.disabled):not(.readonly) {
+    // The ring is only painted when selected and the fill only when it is not, so each is
+    // scoped to the state that shows it. The checked border stays transparent, matching the
+    // indicator's own resting rule, since the ring is painted as a fill rather than a border.
+    &.checked {
+      --outer-circle-color: var(--nx-radio-active-ring);
+    }
+
+    &:not(.checked) {
+      --outer-circle-border-color: var(--nx-radio-active-border);
+      --dot-color: var(--nx-radio-active-surface);
+    }
+  }
+}
+
+/// Checkbox indicator equivalents. The indicator's own rules pick the selected or unselected
+/// pair, so unlike the radio nothing needs scoping to the checked state here.
+@mixin nx-checkbox-indicator-hover {
+  &:not(.disabled):not(.readonly) {
+    --checkbox-border-color: var(--nx-checkbox-hover-border);
+    --checkbox-selected-border-color: var(--nx-checkbox-hover-selected-border);
+    --checkbox-background-color: var(--nx-checkbox-hover-surface);
+    --checkbox-selected-background-color: var(--nx-checkbox-hover-fill);
+    --checkbox-icon-color: var(--nx-checkbox-hover-icon);
+  }
+}
+
+@mixin nx-checkbox-indicator-active {
+  &:not(.disabled):not(.readonly) {
+    --checkbox-border-color: var(--nx-checkbox-active-border);
+    --checkbox-selected-border-color: var(--nx-checkbox-active-selected-border);
+    --checkbox-background-color: var(--nx-checkbox-active-surface);
+    --checkbox-selected-background-color: var(--nx-checkbox-active-fill);
+    --checkbox-icon-color: var(--nx-checkbox-active-icon);
+  }
+}
+
+/// Focus ring for either indicator. Drive it from the focus state of the native input the
+/// indicator stands in for, not from the indicator itself.
+@mixin nx-selection-indicator-focus {
+  --nx-selection-indicator-focus-shadow: #{v(focus-box-shadow)};
+
+  @media screen and (forced-colors: active) {
+    --nx-selection-indicator-focus-shadow: 0 0 0 2px background, 0 0 0 6px CanvasText;
+  }
+}

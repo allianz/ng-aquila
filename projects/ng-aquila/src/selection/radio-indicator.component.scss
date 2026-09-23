@@ -13,6 +13,16 @@
   --outer-circle-color: transparent;
   --dot-color: #{v(radio-button-background-color)};
   --outer-circle-border-color: #{v(radio-button-circle-color)};
+
+  // Each scheme declares what hover and active would paint, so the public mixins stay free
+  // of scheme knowledge. A value that does not react to the state repeats its resting token
+  // rather than referencing the variable, which would be a cycle.
+  --nx-radio-hover-border: #{v(radio-button-hover-circle-color)};
+  --nx-radio-hover-surface: #{v(radio-button-hover-unselected-background-color)};
+  --nx-radio-hover-ring: #{v(radio-button-hover-selected-circle-color)};
+  --nx-radio-active-border: #{v(radio-button-active-circle-color)};
+  --nx-radio-active-surface: #{v(radio-button-active-unselected-background-color)};
+  --nx-radio-active-ring: #{v(radio-button-active-selected-circle-color)};
 }
 
 .nx-radio__control {
@@ -36,6 +46,9 @@
     var(--outer-circle-color)
   );
   transition: --nx-radio-cutout-radius 0.3s ease;
+  // Focus lives on the native input the indicator stands in for, so the surrounding
+  // component sets this via the nx-radio-indicator-focus mixin.
+  box-shadow: var(--nx-selection-indicator-focus-shadow, none);
 }
 
 :host.no-animation {
@@ -87,6 +100,10 @@
   // critical state
   &.critical {
     --outer-circle-border-color: #{v(danger)};
+    --nx-radio-hover-border: #{v(radio-button-error-hover-circle-color)};
+    --nx-radio-hover-ring: #{v(radio-button-error-hover-circle-color)};
+    --nx-radio-active-border: #{v(radio-button-error-active-circle-color)};
+    --nx-radio-active-ring: #{v(radio-button-error-active-circle-color)};
 
     &.checked {
       --outer-circle-color: #{v(danger)};
@@ -129,6 +146,12 @@
 :host.inverse {
   --outer-circle-border-color: #{v(radio-button-inverse-circle-color)};
   --dot-color: #{v(radio-button-inverse-background-color)};
+  --nx-radio-hover-border: #{v(radio-button-inverse-hover-circle-color)};
+  --nx-radio-hover-surface: #{v(radio-button-inverse-hover-unselected-background-color)};
+  --nx-radio-hover-ring: #{v(radio-button-inverse-hover-selected-circle-color)};
+  --nx-radio-active-border: #{v(radio-button-inverse-active-circle-color)};
+  --nx-radio-active-surface: #{v(radio-button-inverse-active-unselected-background-color)};
+  --nx-radio-active-ring: #{v(radio-button-inverse-active-selected-circle-color)};
 
   &.checked {
     --outer-circle-color: #{v(radio-button-inverse-selected-background-color)};
@@ -163,6 +186,10 @@
   // critical state
   &.critical {
     --outer-circle-border-color: #{v(radio-button-inverse-critical-color)};
+    --nx-radio-hover-border: #{v(radio-button-inverse-critical-hover-color)};
+    --nx-radio-hover-ring: #{v(radio-button-inverse-critical-hover-color)};
+    --nx-radio-active-border: #{v(radio-button-inverse-critical-active-color)};
+    --nx-radio-active-ring: #{v(radio-button-inverse-critical-active-color)};
 
     &.checked {
       --outer-circle-color: #{v(radio-button-inverse-critical-color)};
@@ -175,6 +202,12 @@
   --outer-circle-border-color: #{v(radio-button-on-selection-border-color)};
   // The selection background it sits on shows through, so the circle is never filled.
   --dot-color: transparent;
+  --nx-radio-hover-border: #{v(radio-button-on-selection-hover-border-color)};
+  --nx-radio-hover-surface: transparent;
+  --nx-radio-hover-ring: #{v(radio-button-on-selection-selected-border-color)};
+  --nx-radio-active-border: #{v(radio-button-on-selection-active-border-color)};
+  --nx-radio-active-surface: transparent;
+  --nx-radio-active-ring: #{v(radio-button-on-selection-selected-border-color)};
 
   &.checked {
     --outer-circle-color: #{v(radio-button-on-selection-selected-border-color)};
@@ -209,6 +242,8 @@
   // critical state
   &.critical {
     --outer-circle-border-color: #{v(danger)};
+    --nx-radio-hover-border: #{v(radio-button-error-hover-circle-color)};
+    --nx-radio-active-border: #{v(radio-button-error-active-circle-color)};
 
     // Selected keeps the plain on-selection ring; critical only tints the unselected border.
     &.checked {
@@ -220,6 +255,12 @@
 :host.on-accent-attention {
   --outer-circle-border-color: #{v(radio-button-on-accent-attention-color)};
   --dot-color: transparent;
+  --nx-radio-hover-border: #{v(radio-button-on-accent-attention-hover-color)};
+  --nx-radio-hover-surface: transparent;
+  --nx-radio-hover-ring: #{v(radio-button-on-accent-attention-hover-color)};
+  --nx-radio-active-border: #{v(radio-button-on-accent-attention-active-color)};
+  --nx-radio-active-surface: transparent;
+  --nx-radio-active-ring: #{v(radio-button-on-accent-attention-active-color)};
 
   &.checked {
     --outer-circle-color: #{v(radio-button-on-accent-attention-color)};
@@ -243,6 +284,12 @@
 :host.on-brand-static {
   --outer-circle-border-color: #{v(radio-button-on-brand-static-color)};
   --dot-color: transparent;
+  --nx-radio-hover-border: #{v(radio-button-on-brand-static-hover-color)};
+  --nx-radio-hover-surface: transparent;
+  --nx-radio-hover-ring: #{v(radio-button-on-brand-static-hover-color)};
+  --nx-radio-active-border: #{v(radio-button-on-brand-static-active-color)};
+  --nx-radio-active-surface: transparent;
+  --nx-radio-active-ring: #{v(radio-button-on-brand-static-active-color)};
 
   &.checked {
     --outer-circle-color: #{v(radio-button-on-brand-static-color)};

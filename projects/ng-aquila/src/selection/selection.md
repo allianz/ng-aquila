@@ -47,9 +47,30 @@ for placement on an accent or brand coloured surface in Allianz One. If you sele
 
 </div>
 
-## Hover and Active Styles
+## Hover, Active and Focus Styles
 
-Hover and active styles for selection indicators must be implemented by the component that uses the indicators. The indicators themselves are purely visual and do not provide these interaction styles out of the box.
+The indicators are presentational and never know that the element around them is hovered,
+pressed or focused: the pointer sits on the surrounding component (like a card, tile or label), and focus sits on
+the native input the indicator stands in for. The surrounding component therefore owns the
+selector, and these mixins supply the declarations for both nx-radio-indicator and nx-checkbox-indicator:
+
+```scss
+@use '@allianz/ng-aquila/styles/selection-indicator-mixins' as *;
+
+.my-card {
+  &:hover nx-radio-indicator {
+    @include nx-radio-indicator-hover;
+  }
+  &:active nx-radio-indicator {
+    @include nx-radio-indicator-active;
+  }
+  &:has(input:focus-visible) nx-radio-indicator {
+    @include nx-selection-indicator-focus;
+  }
+}
+```
+
+Keep the indicator's element selector on your side.
 
 ## Usage
 
