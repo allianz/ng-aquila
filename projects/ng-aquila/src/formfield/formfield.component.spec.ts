@@ -229,6 +229,177 @@ describe('NxFormfieldComponent', () => {
       expect(caluclatedMatrix).toBe('matrix(1, 0, 0, 1, 0, -16)');
     }));
 
+    describe('clicking the field', () => {
+      function stubOnContainerClick() {
+        const onContainerClick = vi.fn();
+        (
+          formfieldInstance._control as { onContainerClick?(event: MouseEvent): void }
+        ).onContainerClick = onContainerClick;
+        return onContainerClick;
+      }
+
+      function clickField() {
+        formfieldElement.querySelector<HTMLElement>('.nx-formfield__input')!.click();
+      }
+
+      it('makes the floated label accept clicks', () => {
+        createTestComponent(FloatingFormfield);
+        testInstance.floatLabel = 'always';
+        fixture.detectChanges();
+
+        expect(formfieldElement).toHaveClass('is-floating');
+        expect(window.getComputedStyle(labelElement).pointerEvents).toBe('auto');
+      });
+
+      it('keeps the resting label transparent to clicks so they reach the control', () => {
+        createTestComponent(FloatingFormfield);
+        testInstance.floatLabel = 'auto';
+        fixture.detectChanges();
+
+        expect(formfieldElement).not.toHaveClass('is-floating');
+        expect(window.getComputedStyle(labelElement).pointerEvents).toBe('none');
+      });
+
+      // A programmatic `.click()` ignores `pointer-events`, so it cannot show that a real
+      // pointer reaches the label. Hit-test the label's own position instead. Needs a host
+      // with actual label text, otherwise the label box has no height to aim at.
+      it('hit-tests to the floated label rather than through it', () => {
+        createTestComponent(BasicFormfield);
+        formfieldInstance.floatLabel = 'always';
+        fixture.detectChanges();
+
+        const { left, top, height } = labelElement.getBoundingClientRect();
+        const hit = document.elementFromPoint(left + 4, top + height / 2);
+
+        expect(height).toBeGreaterThan(0);
+        // The text sits in a span inside the label, which inherits the label's pointer events.
+        expect(labelElement.contains(hit)).toBe(true);
+      });
+
+      it('focuses the input when the floated label is clicked', () => {
+        createTestComponent(FloatingFormfield);
+        testInstance.floatLabel = 'always';
+        fixture.detectChanges();
+
+        labelElement.click();
+
+        expect(document.activeElement).toBe(inputElement);
+      });
+
+      it('focuses the input when a floated custom label is clicked', () => {
+        createTestComponent(CustomLabelFormfield);
+        formfieldInstance.floatLabel = 'always';
+        fixture.detectChanges();
+
+        labelElement.click();
+
+        expect(document.activeElement).toBe(inputElement);
+      });
+
+      it('does not focus a disabled control', () => {
+        createTestComponent(BasicFormfield);
+        testInstance.disabled = true;
+        formfieldInstance.floatLabel = 'always';
+        fixture.detectChanges();
+
+        labelElement.click();
+
+        expect(document.activeElement).not.toBe(inputElement);
+      });
+
+      it('forwards a click on the field to the control', () => {
+        createTestComponent(FloatingFormfield);
+        const onContainerClick = stubOnContainerClick();
+
+        clickField();
+
+        expect(onContainerClick).toHaveBeenCalled();
+      });
+
+      // A control that opens a panel needs the event to call `preventDefault()` on it.
+      it('passes the click event to the control', () => {
+        createTestComponent(FloatingFormfield);
+        const onContainerClick = stubOnContainerClick();
+
+        clickField();
+
+        expect(onContainerClick).toHaveBeenCalledWith(expect.any(MouseEvent));
+      });
+
+      it('does not forward a click when the control is disabled', () => {
+        createTestComponent(BasicFormfield);
+        testInstance.disabled = true;
+        fixture.detectChanges();
+        const onContainerClick = stubOnContainerClick();
+
+        clickField();
+
+        expect(onContainerClick).not.toHaveBeenCalled();
+      });
+
+      // A prefix or suffix brings its own controls, like a datepicker toggle, and they must
+      // keep the focus they just took. They are siblings of the listener, so moving the
+      // listener back up to the container would break this.
+      it('does not forward a click on a prefix or a suffix', () => {
+        createTestComponent(DirectivesFormfield);
+        const onContainerClick = stubOnContainerClick();
+
+        formfieldElement.querySelector<HTMLElement>('.nx-formfield__prefix')!.click();
+        formfieldElement.querySelector<HTMLElement>('.nx-formfield__suffix')!.click();
+
+        expect(onContainerClick).not.toHaveBeenCalled();
+      });
+
+      // Covers both a click straight into the control and the click that ends a text
+      // selection inside it. Forwarding would jump to the control's leading element.
+      it('does not forward a click while focus already sits in the control', () => {
+        createTestComponent(FloatingFormfield);
+        const onContainerClick = stubOnContainerClick();
+        (inputElement as HTMLInputElement).focus();
+
+        clickField();
+
+        expect(onContainerClick).not.toHaveBeenCalled();
+      });
+
+      // The floated label sits in the space the wrapper reserves above the field. If it grew
+      // past that space it would cover either the control below or whatever sits above the
+      // formfield, and `pointer-events: auto` would then swallow those clicks. Guards the
+      // interplay of formfield-*label-height, formfield-*floating-distance and the label's
+      // line-height against a token change.
+      function expectFloatedLabelWithinReservedSpace() {
+        const label = labelElement.getBoundingClientRect();
+        const wrapper = formfieldElement
+          .querySelector('.nx-formfield__wrapper')!
+          .getBoundingClientRect();
+        const container = formfieldElement
+          .querySelector('.nx-formfield__input-container')!
+          .getBoundingClientRect();
+
+        expect(label.height).toBeGreaterThan(0);
+        expect(label.top).toBeGreaterThanOrEqual(wrapper.top);
+        expect(label.bottom).toBeLessThanOrEqual(container.top);
+      }
+
+      it('keeps the floated label inside the reserved space above the control', () => {
+        createTestComponent(BasicFormfield);
+        formfieldInstance.floatLabel = 'always';
+        fixture.detectChanges();
+
+        expectFloatedLabelWithinReservedSpace();
+      });
+
+      it('keeps the floated label inside the reserved space in the outline appearance', () => {
+        createTestComponent(BasicFormfield);
+        formfieldInstance.appearance = 'outline';
+        formfieldInstance.floatLabel = 'always';
+        fixture.detectChanges();
+
+        expect(formfieldElement).toHaveClass('has-outline');
+        expectFloatedLabelWithinReservedSpace();
+      });
+    });
+
     it('reflects control error state in css', fakeAsync(() => {
       createTestComponent(ErrorFormfield);
       testInstance.inputInstance.ngControl!.control!.markAsTouched();

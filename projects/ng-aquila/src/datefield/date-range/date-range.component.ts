@@ -395,6 +395,16 @@ export class NxDateRangeComponent<D>
   setAriaLabel?(value: string): void {
     this.groupAriaLabel.set(value);
   }
+  /**
+   * Moves focus to the start date while it is empty, to the end date otherwise.
+   */
+  onContainerClick(): void {
+    const start = (this._startDateDirective()._elementRef as ElementRef<HTMLInputElement>)
+      .nativeElement;
+    const end = (this._endDateDirective()._elementRef as ElementRef<HTMLInputElement>)
+      .nativeElement;
+    (start.value ? end : start).focus();
+  }
   get elementRef(): ElementRef<any> {
     return this._elementReference;
   }

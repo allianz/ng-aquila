@@ -141,6 +141,23 @@ describe('DateRangeComponent', () => {
       expect(component.dateRangeComponent().value!.start!.format('MM/DD/YYYY')).toBe('11/11/2011');
       expect(component.dateRangeComponent().value!.end).toBeNull();
     });
+
+    it('should focus the start date input when the label of an empty range is clicked', () => {
+      fixture.nativeElement.querySelector('.nx-formfield__label').click();
+
+      expect(document.activeElement).toBe(nativeInputs[0]);
+    });
+
+    it('should focus the end date input when the label of a half filled range is clicked', async () => {
+      nativeInputs[0].value = '11/11/2011';
+      nativeInputs[0].dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      fixture.nativeElement.querySelector('.nx-formfield__label').click();
+
+      expect(document.activeElement).toBe(nativeInputs[1]);
+    });
   });
 
   describe('with reactive forms', async () => {
@@ -165,6 +182,13 @@ describe('DateRangeComponent', () => {
       expect(component.dateRangeComponent().value!.end).not.toBeNull();
       expect(nativeInputs[0].value).toBe('03/05/2020');
       expect(nativeInputs[1].value).toBe('03/05/2021');
+    });
+
+    // `<label for>` cannot reach the inputs, since the id sits on the nx-date-range host.
+    it('should focus the end date input when the label of a filled range is clicked', () => {
+      fixture.nativeElement.querySelector('.nx-formfield__label').click();
+
+      expect(document.activeElement).toBe(nativeInputs[1]);
     });
 
     it('should update model on user input', async () => {

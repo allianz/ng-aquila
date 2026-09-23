@@ -1164,6 +1164,13 @@ export class NxDropdownComponent
     this._elementRef.nativeElement.focus();
   }
 
+  /** Takes focus onto the trigger and opens the panel. */
+  onContainerClick(event: MouseEvent): void {
+    this.focus();
+    this.openedByKeyboard = false;
+    this.openPanel(event);
+  }
+
   /**
    * Scrolls to the option at the specified index.
    * Works for both virtual and non-virtual scroll modes.

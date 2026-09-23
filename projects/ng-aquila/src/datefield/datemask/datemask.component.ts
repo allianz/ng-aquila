@@ -628,6 +628,16 @@ export class NxDatemaskComponent<D>
   }
 
   /**
+   * Moves focus to the first empty date segment, to the last one when the date is complete.
+   */
+  onContainerClick(): void {
+    const inputs = this._inputs();
+    const target =
+      inputs.find((input) => !input.elementRef.nativeElement.value) ?? inputs[inputs.length - 1];
+    target?.elementRef.nativeElement.focus();
+  }
+
+  /**
    * @docs-private
    */
   get elementRef(): ElementRef<any> {

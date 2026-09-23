@@ -61,6 +61,15 @@ describe('DatemaskComponent', () => {
 
       expect(component.datemaskComponent().separator()).toBe('.');
     });
+
+    // `<label for>` cannot reach the segments, since the id sits on the nx-datemask host.
+    it('should focus the leading segment when the formfield label is clicked', () => {
+      const untypedComponent: any = component.datemaskComponent();
+
+      fixture.nativeElement.querySelector('.nx-formfield__label').click();
+
+      expect(document.activeElement).toBe(untypedComponent._dayInput().elementRef.nativeElement);
+    });
   });
 
   describe(`formats`, () => {
@@ -116,6 +125,15 @@ describe('DatemaskComponent', () => {
       );
 
       expect(component.datemaskComponent().separator()).toBe('.');
+    });
+
+    // The leading segment follows the format, so here the label focuses the year, not the day.
+    it('should focus the leading segment of the format when the formfield label is clicked', () => {
+      const untypedComponent: any = component.datemaskComponent();
+
+      fixture.nativeElement.querySelector('.nx-formfield__label').click();
+
+      expect(document.activeElement).toBe(untypedComponent._yearInput().elementRef.nativeElement);
     });
 
     it('should throw error on invalid date formats', () => {

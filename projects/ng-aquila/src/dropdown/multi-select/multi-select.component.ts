@@ -541,6 +541,12 @@ export class NxMultiSelectComponent<S, T>
     this._ariaDescribedby = ids.join(' ');
   }
 
+  /** Takes focus onto the trigger and opens the panel. */
+  onContainerClick(event: MouseEvent): void {
+    this._trigger?.nativeElement.focus();
+    this._open(event, 'mouse');
+  }
+
   ngAfterViewInit(): void {
     this._initKeyManager();
   }

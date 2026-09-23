@@ -220,6 +220,17 @@ describe('NxMultiSelectComponent', () => {
       expect(await multiSelectHarness.isOpen()).toBe(false);
     });
 
+    // `<label for>` cannot reach the trigger, since the id sits on the nx-multi-select host.
+    // A mouse user can do nothing with a focused trigger, so the label opens the panel too.
+    it('focuses the trigger and opens the panel when the formfield label is clicked', async () => {
+      const trigger = fixture.nativeElement.querySelector('.value');
+
+      fixture.nativeElement.querySelector('.nx-formfield__label').click();
+
+      expect(document.activeElement).toBe(trigger);
+      expect(await multiSelectHarness.isOpen()).toBe(true);
+    });
+
     it('has the aria attributes', async () => {
       const value = await multiSelectHarness.getValue();
 

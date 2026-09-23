@@ -313,6 +313,46 @@ describe('NxDropdownComponent', () => {
       expect(dropdownInstance.shouldLabelFloat).toBe(true);
     }));
 
+    // `<label for>` cannot reach the host, since the id sits on the nx-dropdown element.
+    // A mouse user can do nothing with a focused dropdown, so the label opens it as well.
+    it('should open the panel when the floated label is clicked', fakeAsync(() => {
+      createTestComponent(SimpleDropdownComponent);
+      const formfield = fixture.debugElement.query(By.css('nx-formfield'))
+        .componentInstance as NxFormfieldComponent;
+      formfield.floatLabel = 'always';
+      fixture.detectChanges();
+      tick();
+
+      fixture.nativeElement.querySelector('.nx-formfield__label').click();
+      fixture.detectChanges();
+      tick();
+      flush();
+
+      expectDropdownOpen();
+      // The label is a mouse interaction, so the panel must not show the keyboard focus ring.
+      expect(getDropdown()?.querySelector('.nx-dropdown__panel-body')).not.toHaveClass(
+        'keyboard-focused',
+      );
+    }));
+
+    it('should only focus a readonly dropdown when its label is clicked', fakeAsync(() => {
+      createTestComponent(SimpleDropdownComponent);
+      const formfield = fixture.debugElement.query(By.css('nx-formfield'))
+        .componentInstance as NxFormfieldComponent;
+      formfield.floatLabel = 'always';
+      dropdownInstance.readonly = true;
+      fixture.detectChanges();
+      tick();
+
+      fixture.nativeElement.querySelector('.nx-formfield__label').click();
+      fixture.detectChanges();
+      tick();
+      flush();
+
+      expect(_getFocusedElementPierceShadowDom()).toBe(dropdownElement);
+      expectDropdownClose();
+    }));
+
     it('should restore focus to the host element', fakeAsync(() => {
       createTestComponent(SimpleDropdownComponent);
       openDropdownByClick();

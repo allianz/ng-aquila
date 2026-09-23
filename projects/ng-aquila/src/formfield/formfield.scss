@@ -515,6 +515,10 @@
   .nx-formfield__label {
     transform: translateY(v(formfield-floating-distance));
     @include type-style(formfield-label);
+    // Must stay scoped to `is-floating`. A floated label has left the field, so
+    // clicking it can focus the control. A resting label still overlays the
+    // control and has to let the click through to it.
+    pointer-events: auto;
   }
 
   // When an info icon is present, the whole holder row floats together and

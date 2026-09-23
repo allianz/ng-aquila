@@ -256,12 +256,14 @@ You could also use [default formfield settings](./documentation/formfield/overvi
 
 The implementation is similar to Angular Material and can be checked for reference [Angular Material - Custom Formfield Controls](https://material.angular.io/guide/creating-a-custom-form-field-control)
 
+Also implement the optional `onContainerClick(event)` method unless your control's `id` sits on a native `input`, `textarea` or `select`. If the `id` is on your own host element, on an inner `<div>`, or is never rendered, `<label for>` cannot focus the control. The formfield calls `onContainerClick()` when the user clicks your control's area, which includes the label and the empty space next to a control that does not fill the row. Usually you move focus to the leading element of your control, or, if it has several inputs, to the first one the user still has to fill. A prefix or suffix is not part of that area, so a toggle button placed there keeps the focus it just took. The formfield also skips the call while the control is disabled and while focus already sits inside your control.
+
 <!-- example(formfield-custom-tel-input) -->
 
 ### Showing optional label
 <!-- example(formfield-optional-label) -->
- 
-### Customizing Form Field Spacing with CSS Variables 
+
+### Customizing Form Field Spacing with CSS Variables
 
 To customize the spacing of form fields, you can adjust the existing CSS variables. This allows for flexibility when applying styles, whether you need to remove or modify the spacing across specific forms, individual form fields, or the entire application.
 

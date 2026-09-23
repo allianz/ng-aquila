@@ -150,6 +150,46 @@ describe('NxTimefieldComponent', () => {
     expect(timefieldInstance).toBeTruthy();
   });
 
+  // `<label for>` cannot reach the hours input, since the id sits on the nx-timefield host.
+  it('focuses the hours input when the label of an empty timefield is clicked', () => {
+    createTestComponent(SimpleTimefield);
+
+    timefieldElement.querySelector<HTMLElement>('.nx-formfield__label')!.click();
+
+    expect(document.activeElement).toBe(inputElementHours);
+  });
+
+  it('focuses the minutes input when the label of a filled timefield is clicked', () => {
+    createTestComponent(SimpleTimefield);
+    inputElementHours.value = '10';
+    inputElementHours.dispatchEvent(new Event('input'));
+    inputElementMinutes.value = '30';
+    inputElementMinutes.dispatchEvent(new Event('input'));
+    inputElementMinutes.blur();
+    fixture.detectChanges();
+
+    timefieldElement.querySelector<HTMLElement>('.nx-formfield__label')!.click();
+
+    expect(document.activeElement).toBe(inputElementMinutes);
+  });
+
+  it('focuses the hours input when the space next to the inputs is clicked', () => {
+    createTestComponent(SimpleTimefield);
+
+    timefieldElement.querySelector<HTMLElement>('.nx-formfield__input')!.click();
+
+    expect(document.activeElement).toBe(inputElementHours);
+  });
+
+  it('keeps focus in the minutes input when the space next to the inputs is clicked', () => {
+    createTestComponent(SimpleTimefield);
+    inputElementMinutes.focus();
+
+    timefieldElement.querySelector<HTMLElement>('.nx-formfield__input')!.click();
+
+    expect(document.activeElement).toBe(inputElementMinutes);
+  });
+
   describe('inline', () => {
     it('should forward inline to the inner formfield and keep an accessible name', () => {
       createTestComponent(InlineTimefield);

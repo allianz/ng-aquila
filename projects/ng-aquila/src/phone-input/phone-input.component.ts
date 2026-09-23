@@ -24,6 +24,7 @@ import {
   Output,
   Self,
   ViewChild,
+  viewChild,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -107,6 +108,9 @@ export class NxPhoneInputComponent
     NxAbstractControl
 {
   @ViewChild(NxDropdownComponent, { static: true }) dropdown!: NxDropdownComponent;
+  private readonly _numberInput = viewChild<ElementRef<HTMLInputElement>>('numberInput');
+  private readonly _readonlyNumberInput =
+    viewChild<ElementRef<HTMLInputElement>>('readonlyNumberInput');
   @Output() readonly focusOut = new EventEmitter<boolean>();
   @Output() readonly focusIn = new EventEmitter<boolean>();
 
@@ -315,6 +319,14 @@ export class NxPhoneInputComponent
   setDescribedByIds(ids: string[]): void {
     this._describedBy = ids.join(' ');
     this.dropdown.setDescribedByIds(ids);
+  }
+
+  /**
+   * Moves focus to the line number input, not the country dropdown, since the label names
+   * the phone number.
+   */
+  onContainerClick(): void {
+    (this._readonlyNumberInput() ?? this._numberInput())?.nativeElement.focus();
   }
 
   get _ariaLabelledBy() {

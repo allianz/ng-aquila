@@ -112,6 +112,25 @@ describe('PhoneInputComponent', () => {
     expect(input).toHaveClass('c-input');
   });
 
+  // `<label for>` cannot reach the input, since the id sits on the nx-phone-input host.
+  it('should focus the line number input when the formfield label is clicked', () => {
+    createTestComponent(DefaultPhoneInput);
+
+    fixture.nativeElement.querySelector('.nx-formfield__label').click();
+
+    expect(document.activeElement).toBe(getInput().nativeElement);
+  });
+
+  it('should focus the readonly input when the formfield label is clicked', () => {
+    createTestComponent(ConfigurablePhoneInput);
+    testInstance.readonly = true;
+    fixture.detectChanges();
+
+    fixture.nativeElement.querySelector('.nx-formfield__label').click();
+
+    expect(document.activeElement).toBe(fixture.nativeElement.querySelector('.readonly-input'));
+  });
+
   it('should class on readonly input', () => {
     createTestComponent(ConfigurablePhoneInput);
     testInstance.readonly = true;

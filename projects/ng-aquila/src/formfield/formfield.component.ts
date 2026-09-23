@@ -452,6 +452,17 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     }
   }
 
+  protected _onContainerClick(event: MouseEvent): void {
+    if (this._control.disabled) {
+      return;
+    }
+    // Focus already sits in the control.
+    if ((event.currentTarget as HTMLElement).contains(document.activeElement)) {
+      return;
+    }
+    this._control.onContainerClick?.(event);
+  }
+
   _isRequired() {
     return this._control.ngControl?.control?.hasValidator(Validators.required) || false;
   }

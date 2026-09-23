@@ -138,6 +138,9 @@ export class NxTimefieldControl implements NxFormfieldControl<string> {
   setAriaLabel?(value: string): void {
     // noop
   }
+  onContainerClick(): void {
+    this.timefield._focusFirstEmptyPart();
+  }
   get elementRef(): ElementRef<any> {
     return this.timefield.elementRef;
   }
@@ -691,6 +694,16 @@ export class NxTimefieldComponent
         break;
     }
     return label;
+  }
+
+  /**
+   * Moves focus to the hours while they are empty, to the minutes otherwise.
+   */
+  _focusFirstEmptyPart(): void {
+    const part = (this.hours ? this.inputMinutes() : this.inputHours())?.nativeElement;
+    part?.focus();
+    // Two digits already fill the part, so typing would be blocked without a selection.
+    part?.select();
   }
 
   _onInput(event: Event, type: string) {
