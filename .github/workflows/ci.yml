@@ -13,6 +13,13 @@ concurrency:
 jobs:
   build:
     runs-on: self-hosted
+    # Both extra scopes are for the entry point sizes action: `actions: read` for its baseline
+    # artifact lookup, `pull-requests: write` for its comment. Artifact uploads need neither --
+    # they use ACTIONS_RUNTIME_TOKEN, not this token.
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: write
     steps:
       - uses: actions/setup-node@v4
         with:
@@ -53,6 +60,13 @@ jobs:
 
       - name: Build ng-aquila
         run: npm run build:lib
+
+      # Measures, compares against the target branch, publishes to the run summary. Reporting only,
+      # never fails. Needs the build above; see .github/actions/entry-point-sizes for the details.
+      - name: Report entry point sizes
+        uses: ./.github/actions/entry-point-sizes
+        with:
+          token: ${{ github.token }}
 
       - name: Build documentation
         run: npm run build:docs -- --progress=false

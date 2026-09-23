@@ -11,6 +11,8 @@
     "build:package:full": "node ./scripts/build-package.js",
     "build:package:themes": "node ./scripts/build-package-themes.js",
     "build:package:schematics": "node ./scripts/build-package-schematics.js",
+    "sizes": "node ./scripts/entry-point-sizes.js report ./dist/ng-aquila",
+    "sizes:diff": "node ./scripts/entry-point-sizes.js diff",
     "generate:llms-txt": "node scripts/generate-llms-txt.js",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",

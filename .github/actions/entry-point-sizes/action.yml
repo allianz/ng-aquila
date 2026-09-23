@@ -1,0 +1,168 @@
+name: Entry point sizes
+description: >-
+  Measures the gzip size of every built entry point bundle and stylesheet, compares a pull request against its target branch, and publishes the table to the run summary. Reporting only -- it never fails a run.
+
+# Requires a built library (`npm run build:lib`) and, from the calling job:
+#   actions: read         -- the baseline artifact API lookup
+#   pull-requests: write  -- the comment (only reached when some file changed size)
+# Artifact upload needs neither; it uses ACTIONS_RUNTIME_TOKEN rather than this token.
+
+inputs:
+  token:
+    description: >-
+      Token for the artifact and comment API calls. Pass the workflow's github.token; not defaulted here because an action's input defaults cannot use the github context.
+    required: true
+  artifact:
+    description: Artifact name holding the baseline. Shared by the download and upload steps below.
+    required: false
+    default: entry-point-sizes-baseline
+  retention-days:
+    description: How long a baseline stays available for pull requests to compare against.
+    required: false
+    default: '7'
+
+outputs:
+  has-changes:
+    description: >-
+      'true' or 'false' once a comparison ran, empty when there was no baseline to compare against -- the three states are distinguishable on purpose.
+    value: ${{ steps.sizes.outputs.has-changes }}
+  report:
+    description: Path of the rendered table, for a caller that wants to publish it elsewhere.
+    value: ${{ steps.sizes.outputs.report }}
+
+runs:
+  using: composite
+  steps:
+    # get size baseline from artifact of PR's target branch.
+    # actions/download-artifact can't do this: it only sees its own run's artifacts
+    - name: Download entry point size baseline
+      if: github.event_name == 'pull_request'
+      shell: bash
+      env:
+        GH_ENTERPRISE_TOKEN: ${{ inputs.token }}
+        GH_TOKEN: ${{ inputs.token }}
+        BASE_REF: ${{ github.event.pull_request.base.ref }}
+        SIZES_ARTIFACT: ${{ inputs.artifact }}
+      run: |
+        dir=reports/entry-point-sizes
+        mkdir -p "$dir"
+
+        export GH_HOST="${GITHUB_SERVER_URL#https://}"
+
+        # A missing baseline is expected on a fresh branch, a failed lookup is not: falling back to
+        # absolute sizes for either would make a broken guard look exactly like a legitimate first run.
+        # So only an empty id passes quietly; anything else warns and stays attributable in the log.
+        warn() { echo "::warning title=Entry point sizes::$1 The report will be absolute sizes."; }
+
+        # Newest first; the head_branch filter is what keeps one pull request off another's numbers.
+        if ! id=$(gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?name=$SIZES_ARTIFACT&per_page=100" \
+          --jq "[.artifacts[] | select(.expired == false and .workflow_run.head_branch == env.BASE_REF)][0].id // empty"); then
+          warn "Looking up the $SIZES_ARTIFACT artifact for $BASE_REF failed."
+          exit 0
+        fi
+
+        if [ -z "$id" ]; then
+          echo "No $SIZES_ARTIFACT artifact for $BASE_REF yet; the report will be absolute sizes."
+          exit 0
+        fi
+
+        # $RUNNER_TEMP over /tmp (a fixed path on a shared runner invites a symlink race), and unzip only the member we expect.
+        zip="$RUNNER_TEMP/entry-point-sizes-baseline.zip"
+        if ! gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" > "$zip"; then
+          warn "Downloading $SIZES_ARTIFACT artifact $id failed."
+          exit 0
+        fi
+
+        if ! unzip -oj "$zip" baseline.json -d "$dir"; then
+          # A half-written baseline.json would be diffed as if it were real.
+          rm -f "$dir/baseline.json"
+          warn "$SIZES_ARTIFACT artifact $id holds no readable baseline.json."
+        fi
+
+    # Measure, compare, promote, publish.
+    - name: Report entry point sizes
+      id: sizes
+      shell: bash
+      run: |
+        dir=reports/entry-point-sizes
+        mkdir -p "$dir"
+
+        # `--silent` keeps report.txt to just the table.
+        npm run --silent sizes -- --out="$dir/current.json" | tee "$dir/report.txt"
+
+        # Compare sizes
+        if [ -f "$dir/baseline.json" ]; then
+          npm run --silent sizes:diff -- \
+            --before="$dir/baseline.json" \
+            --after="$dir/current.json" \
+            | tee "$dir/report.txt"
+        fi
+
+        # The filename is the contract -- the download step extracts a member named baseline.json.
+        if [ "$GITHUB_EVENT_NAME" = push ]; then
+          cp "$dir/current.json" "$dir/baseline.json"
+        fi
+
+        echo "report=$dir/report.txt" >> "$GITHUB_OUTPUT"
+
+        # Publish to summary. Fenced, not rendered as markdown, so the columns stay aligned.
+        {
+          echo '### Entry point sizes'
+          echo
+          echo '```'
+          cat "$dir/report.txt"
+          echo '```'
+        } >> "$GITHUB_STEP_SUMMARY"
+
+    # Only when some file changed size; the full table is in the run summary either way.
+    # A pull request comment is an issue comment -- a pull request is an issue with a diff attached,
+    # so the `issues` endpoints with the pull request's number are the ones for it.
+    #
+    # The hidden marker is how a re-run finds its own comment: without it every push would leave
+    # another copy behind. A branch that goes back to no size change at all still keeps its last
+    # table up -- this step doesn't run at all then.
+    - name: Comment entry point sizes on pull request
+      if: github.event_name == 'pull_request' && steps.sizes.outputs.has-changes == 'true'
+      continue-on-error: true
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ inputs.token }}
+        script: |
+          const fs = require('fs');
+          const MARKER = '<!-- entry-point-sizes -->';
+          // Fenced, not rendered as markdown, so the columns stay aligned -- as in the run summary.
+          const table = fs.readFileSync('reports/entry-point-sizes/report.txt', 'utf8').trimEnd();
+          const body = `${MARKER}\n### Entry point size changes\n\n\`\`\`\n${table}\n\`\`\``;
+
+          const comments = await github.paginate(github.rest.issues.listComments, {
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+          });
+          const existing = comments.find((comment) => comment.body?.startsWith(MARKER));
+
+          if (existing) {
+            await github.rest.issues.updateComment({
+              comment_id: existing.id,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body,
+            });
+          } else {
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body,
+            });
+          }
+
+    - name: Upload entry point size baseline
+      if: github.event_name == 'push'
+      continue-on-error: true
+      uses: actions/upload-artifact@v3.2.2-node20
+      with:
+        name: ${{ inputs.artifact }}
+        path: reports/entry-point-sizes/baseline.json
+        if-no-files-found: ignore
+        retention-days: ${{ inputs.retention-days }}
