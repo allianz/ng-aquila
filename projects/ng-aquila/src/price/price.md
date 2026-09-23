@@ -59,7 +59,8 @@ Use the `inverse` input to apply inverse styling, suitable for dark backgrounds.
 ### Color scheme
 
 The price supports the `colorScheme` input, which takes `default` or
-`on-accent-attention` for use on an accent-colored surface.
+`on-accent-attention` for use on an accent-colored surface. When not set, it follows
+the surface the price is placed on (see `nxSurface`).
 
 <!-- example(price-accent-attention) -->
 

@@ -80,8 +80,22 @@ export class NxPriceComponent {
   /** Resolved inverse: an explicit input wins, then the surface the component sits on. */
   readonly inverse = computed(() => this.inverseInput() ?? this._surface().surface === 'attention');
 
-  /** The color scheme of the price. Only relevant for the A1 Design. */
-  readonly colorScheme = input<NxPriceColorScheme>(DEFAULT_COLOR_SCHEME);
+  /**
+   * The color scheme of the price. Only relevant for the A1 Design. When not set,
+   * it follows the surface the price is placed on (see `nxSurface`).
+   */
+  readonly colorSchemeInput = input<NxPriceColorScheme | undefined>(undefined, {
+    alias: 'colorScheme',
+  });
+
+  /** Resolved color scheme: an explicit input wins, then the surface the component sits on. */
+  readonly colorScheme = computed<NxPriceColorScheme>(
+    () =>
+      this.colorSchemeInput() ??
+      (this._surface().surface === 'accent-attention'
+        ? 'on-accent-attention'
+        : DEFAULT_COLOR_SCHEME),
+  );
 
   /** Whether to render the currency symbol and decimals as superscript. */
   readonly superscript = input(false, { transform: booleanAttribute });

@@ -275,6 +275,32 @@ describe('nxSurface adoption', () => {
 
       expect(classesOf('#price-explicit').contains('nx-price--inverse')).toBe(false);
     });
+
+    it('uses the on-accent-attention scheme on the accent-attention surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('accent-attention');
+
+      expect(classesOf('#price').contains('nx-price--on-accent-attention')).toBe(true);
+    });
+
+    it('does not apply the on-accent-attention scheme on the other surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['default', 'attention', 'emphasis'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('#price').contains('nx-price--on-accent-attention')).toBe(false);
+      }
+    });
+
+    it('lets an explicit colorScheme="default" win over the surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('accent-attention');
+
+      expect(classesOf('#price-explicit-scheme').contains('nx-price--on-accent-attention')).toBe(
+        false,
+      );
+    });
   });
 
   // The info icon owns no inverse class of its own; it forwards `inverse` to the plain button it
@@ -399,6 +425,7 @@ const TEMPLATE = `
     <button id="button-legacy-negative" nxButton="primary negative">button</button>
     <nx-price id="price" [value]="1" />
     <nx-price id="price-explicit" [value]="1" [inverse]="false" />
+    <nx-price id="price-explicit-scheme" [value]="1" colorScheme="default" />
     <nx-info-icon id="info-icon">info</nx-info-icon>
     <nx-info-icon id="info-icon-explicit" [inverse]="false">info</nx-info-icon>
     <nx-eyebrow id="eyebrow">eyebrow</nx-eyebrow>
