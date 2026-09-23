@@ -91,6 +91,7 @@ describe('NxSliderComponent', () => {
         AriaLabelledBySlider,
         ProjectedLabelSlider,
         ProjectedLabelWithoutIdSlider,
+        LabelInfoSlider,
       ],
     }).compileComponents();
   }));
@@ -214,6 +215,48 @@ describe('NxSliderComponent', () => {
       expect(
         sliderNativeElement.querySelector('.nx-slider__handle')!.getAttribute('aria-labelledby'),
       ).toBe(labelElement.querySelector('label')!.id);
+    });
+
+    // `<label for>` cannot reach the handle, since it is a div with role="slider".
+    it('focuses the handle when the label is clicked', () => {
+      createTestComponent(BasicSlider);
+
+      sliderNativeElement.querySelector<HTMLElement>('.nx-label__content')!.click();
+
+      const handle = sliderNativeElement.querySelector('.nx-slider__handle')!;
+      expect(document.activeElement).toBe(handle);
+      // The focus ring hangs on this class, so without it the click looks like nothing happened.
+      expect(handle.classList).toContain('cdk-keyboard-focused');
+    });
+
+    it('focuses the handle when a projected label is clicked', () => {
+      createTestComponent(ProjectedLabelSlider);
+
+      sliderNativeElement.querySelector<HTMLElement>('.nx-label__content')!.click();
+
+      const handle = sliderNativeElement.querySelector('.nx-slider__handle')!;
+      expect(document.activeElement).toBe(handle);
+      expect(handle.classList).toContain('cdk-keyboard-focused');
+    });
+
+    it('does not focus the handle when the info icon inside the label is clicked', () => {
+      createTestComponent(LabelInfoSlider);
+
+      sliderNativeElement.querySelector<HTMLElement>('.test-info__icon')!.click();
+
+      const handle = sliderNativeElement.querySelector('.nx-slider__handle')!;
+      expect(document.activeElement).not.toBe(handle);
+      expect(handle.classList).not.toContain('cdk-keyboard-focused');
+    });
+
+    it('does not focus the handle of a disabled slider when the label is clicked', () => {
+      createTestComponent(DisabledSlider);
+
+      sliderNativeElement.querySelector<HTMLElement>('.nx-label__content')!.click();
+
+      expect(document.activeElement).not.toBe(
+        sliderNativeElement.querySelector('.nx-slider__handle'),
+      );
     });
 
     it('renders the Slider with a thumb label', () => {
@@ -1052,7 +1095,7 @@ class FloatSlider extends SliderTest {}
   selector: 'test-disabled-slider',
   template: `
     <div class="slider-container">
-      <nx-slider [value]="42" [disabled]="true"> </nx-slider>
+      <nx-slider label="testLabel" [value]="42" [disabled]="true"> </nx-slider>
     </div>
   `,
   styles: [styles],
@@ -1180,3 +1223,22 @@ class ProjectedLabelSlider extends SliderTest {
   imports: [NxSliderModule],
 })
 class ProjectedLabelWithoutIdSlider extends SliderTest {}
+
+/** The button stands in for `nx-info-icon`: the click lands on a child of the `nxLabelInfo` element. */
+@Component({
+  selector: 'test-label-info-slider',
+  template: `
+    <nx-slider [min]="0" [max]="100">
+      <nx-label>
+        Projected label
+        <button nxLabelInfo type="button">
+          <span class="test-info__icon">i</span>
+        </button>
+      </nx-label>
+    </nx-slider>
+  `,
+  styles: [styles],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxSliderModule],
+})
+class LabelInfoSlider extends SliderTest {}

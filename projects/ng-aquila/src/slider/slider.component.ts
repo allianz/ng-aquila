@@ -76,6 +76,7 @@ const VALUE_MARGIN = 4;
   ],
   host: {
     '[attr.aria-disabled]': 'disabled ? true : null',
+    '(click)': '_onHostClick($event)',
     '(keydown)': '_handleKeypress($event)',
     '[class.nx-slider--disabled]': 'disabled',
     '[class.nx-slider--negative]': 'inverse()',
@@ -446,6 +447,25 @@ export class NxSliderComponent
     return clamp(percentageValue, 0, 100);
   }
 
+  /**
+   * Moves focus to the handle on a label click, which `<label for>` cannot reach: it is a div with
+   * `role="slider"`. Listens on the host to cover both the `label` input and a projected `nx-label`.
+   */
+  protected _onHostClick(event: MouseEvent) {
+    if (this.disabled) {
+      return;
+    }
+    const target = event.target;
+    if (!(target instanceof Element)) {
+      return;
+    }
+    // Everything but the nxLabelInfo slot
+    if (target.closest('nx-label') && !target.closest('[nxLabelInfo]')) {
+      // Handle's focus ring is attached to .cdk-keyboard-focused only
+      this._focusMonitor.focusVia(this._handleElement, 'keyboard');
+    }
+  }
+
   _sliderClick(event: MouseEvent) {
     if (this.disabled) {
       return;
@@ -549,7 +569,7 @@ export class NxSliderComponent
     return this.labelMaxFormatter()(this.max);
   }
 
-  _focusHandleElement() {
+  private _focusHandleElement() {
     this._handleElement.nativeElement.focus();
   }
 
