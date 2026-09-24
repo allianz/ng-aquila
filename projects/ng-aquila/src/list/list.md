@@ -31,11 +31,25 @@ Custom icons are supported by means of the nxListIcon directive, which can be co
 
 <!-- example(list-icons) -->
 
+<div class="docs-a1">
+
+### List sizes
+
+You can use the attribute `size` to set the size of the list. It can be one of these values: `s`, `m`. When it is not set, the list uses the size given in the `nxList` string, which defaults to `normal`.
+
+<!-- example(list-sizes) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
 ### List with different copytext sizes
 
 The size can be one of these values: `xsmall`, `small`, `normal`. The default value is `normal`.
 
 <!-- example(list-copytext) -->
+
+</div>
 
 <div class="docs-a1">
 
@@ -57,9 +71,11 @@ By using attribute `condensed`, you can activate the condensed mode of the list.
 
 </div>
 
-### Negative styling
+### Inverse styling
 
-<!-- example(list-negative) -->
+Use the attribute `inverse` for lists on a dark background. When it is not set, the list follows the surface it is placed on (see `nxSurface`). The `negative` modifier of the `nxList` attribute is deprecated in favour of `inverse`.
+
+<!-- example(list-inverse) -->
 
 ### Custom color of list items
 

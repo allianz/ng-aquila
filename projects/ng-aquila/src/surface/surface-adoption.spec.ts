@@ -6,6 +6,7 @@ import { NxEyebrowModule } from '@allianz/ng-aquila/eyebrow';
 import { NxHeadlineModule } from '@allianz/ng-aquila/headline';
 import { NxIconComponent, NxStatusIconComponent } from '@allianz/ng-aquila/icon';
 import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
+import { NxListModule } from '@allianz/ng-aquila/list';
 import { NxPriceModule } from '@allianz/ng-aquila/price';
 import { Component, signal, type Type } from '@angular/core';
 import { type ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
@@ -366,6 +367,41 @@ describe('nxSurface adoption', () => {
     });
   });
 
+  describe('list', () => {
+    it('goes negative on the attention and accent-attention surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['attention', 'accent-attention'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('#list').contains('nx-list--negative')).toBe(true);
+      }
+    });
+
+    it('does not go negative on the other surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['default', 'emphasis'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('#list').contains('nx-list--negative')).toBe(false);
+      }
+    });
+
+    it('still honours the legacy negative modifier', () => {
+      createComponent(AdoptersComponent);
+
+      expect(classesOf('#list-legacy-negative').contains('nx-list--negative')).toBe(true);
+    });
+
+    it('lets an explicit inverse="false" win over the surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#list-explicit').contains('nx-list--negative')).toBe(false);
+    });
+  });
+
   describe('avatar', () => {
     it('inverts on the attention surface', () => {
       createComponent(AdoptersComponent);
@@ -406,6 +442,7 @@ describe('nxSurface adoption', () => {
     expect(classesOf('#status-icon').contains('nx-status-icon--inverse')).toBe(true);
     expect(classesOf('#avatar').contains('nx-avatar--inverse')).toBe(true);
     expect(classesOf('#info-icon button').contains('nx-plain-button--inverse')).toBe(true);
+    expect(classesOf('#list').contains('nx-list--negative')).toBe(true);
   });
 });
 
@@ -434,6 +471,15 @@ const TEMPLATE = `
     <h2 id="headline-explicit" nxHeadline [inverse]="false">headline</h2>
     <div id="avatar" nxAvatar>AB</div>
     <div id="avatar-explicit" nxAvatar [inverse]="false">AB</div>
+    <ul id="list" nxList>
+      <li>item</li>
+    </ul>
+    <ul id="list-explicit" nxList [inverse]="false">
+      <li>item</li>
+    </ul>
+    <ul id="list-legacy-negative" nxList="negative">
+      <li>item</li>
+    </ul>
   </div>
 `;
 
@@ -451,6 +497,7 @@ const TEMPLATE = `
     NxStatusIconComponent,
     NxAvatarComponent,
     NxInfoIconComponent,
+    NxListModule,
   ],
   providers: A1_PROVIDERS,
 })
@@ -474,6 +521,7 @@ class AdoptersComponent {
     NxStatusIconComponent,
     NxAvatarComponent,
     NxInfoIconComponent,
+    NxListModule,
   ],
   host: { 'data-non-a1': '' },
 })

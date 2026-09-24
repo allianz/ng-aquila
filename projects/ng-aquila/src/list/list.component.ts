@@ -1,9 +1,22 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
-
-const DEFAULT_SIZE = 'normal';
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  Input,
+  input,
+  signal,
+} from '@angular/core';
 
 /** Size of the list */
 export type NxListSize = 'xsmall' | 'small' | 'normal';
+
+/** A1 size of the list. */
+export type NxListA1Size = 's' | 'm';
+
+const DEFAULT_SIZE: NxListSize = 'normal';
 
 /** Color of the list */
 export type NxListType = 'primary' | 'secondary';
@@ -15,13 +28,13 @@ export type NxListType = 'primary' | 'secondary';
   styleUrls: ['list.component.scss'],
   host: {
     '[class.nx-list]': 'true',
-    '[class.nx-list--xsmall]': 'size === "xsmall"',
-    '[class.nx-list--xsmall-condensed]': 'size === "xsmall" && condensed',
-    '[class.nx-list--small]': 'size === "small"',
-    '[class.nx-list--small-condensed]': 'size === "small" && condensed',
-    '[class.nx-list--normal]': 'size === "normal"',
-    '[class.nx-list--normal-condensed]': 'size === "normal" && condensed',
-    '[class.nx-list--negative]': 'negative',
+    '[class.nx-list--xsmall]': '_sizeVariant() === "xsmall"',
+    '[class.nx-list--xsmall-condensed]': '_sizeVariant() === "xsmall" && condensed',
+    '[class.nx-list--small]': '_sizeVariant() === "small"',
+    '[class.nx-list--small-condensed]': '_sizeVariant() === "small" && condensed',
+    '[class.nx-list--normal]': '_sizeVariant() === "normal"',
+    '[class.nx-list--normal-condensed]': '_sizeVariant() === "normal" && condensed',
+    '[class.nx-list--negative]': 'inverse()',
     '[class.nx-list--ordered-circle]': 'orderedCircle',
     '[class.nx-list--primary]': 'type() === "primary"',
     '[class.nx-list--secondary]': 'type() === "secondary"',
@@ -33,9 +46,9 @@ export class NxListComponent {
    * Sets the visual appearance of the list. You can combine different values:
    *
    * xsmall | small | normal: The listed input values are expanded to the underlying BEM conform styles based
-   * on modifiers. Defaults to normal.
+   * on modifiers. Defaults to normal. Use the `size` input for the A1 sizes.
    *
-   * Negative: Display the list with a negative set of styling.
+   * Negative: Display the list with a negative set of styling. Deprecated, use the `inverse` input instead.
    *
    * Ordered-circle: Display the list item numbers in a color filled circle.
    */
@@ -47,9 +60,9 @@ export class NxListComponent {
 
     // TODO kick null safe-guards after setter value or any calling input values are properly coerced as string
     const [size = null] = this._classNames?.match(/xsmall|small|normal/) || [DEFAULT_SIZE];
-    this.size = size as any;
+    this._legacySize.set((size as NxListSize | null) ?? DEFAULT_SIZE);
 
-    this.negative = !!this._classNames?.match(/negative/);
+    this._negative.set(!!this._classNames?.match(/negative/));
     this.orderedCircle = !!this._classNames?.match(/ordered-circle/);
   }
 
@@ -69,11 +82,53 @@ export class NxListComponent {
 
   readonly type = input<NxListType>('primary');
 
-  /** @docs-private */
-  size?: NxListSize = DEFAULT_SIZE;
+  /**
+   * Sets the size of the list. When set it takes precedence over a size given
+   * in the `nxList` modifier string.
+   */
+  readonly size = input<NxListA1Size | undefined>(undefined);
 
-  /** @docs-private */
-  negative = false;
+  private readonly _legacySize = signal<NxListSize>(DEFAULT_SIZE);
+
+  protected readonly _sizeVariant = computed<NxListSize>(() => {
+    switch (this.size()) {
+      case 's':
+        return 'small';
+      case 'm':
+        return 'normal';
+      default:
+        return this._legacySize();
+    }
+  });
+
+  /** Whether the deprecated `negative` modifier was given in the `nxList` string. */
+  private readonly _negative = signal(false);
+
+  /**
+   * Whether the list should use inverse (light-on-dark) colors. Replaces the
+   * deprecated `negative` modifier. When not set, it follows the surface the
+   * list is placed on (see `nxSurface`).
+   */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'inverse',
+  });
+
+  private readonly _surface = injectSurface();
+
+  /**
+   * Whether the inverse (formerly "negative") set of styles is applied.
+   *
+   * Resolves to `true` when either the `inverse` input or the legacy `negative`
+   * modifier is set. Only `inverse` falls back to the surface.
+   */
+  readonly inverse = computed(() => {
+    const { surface } = this._surface();
+    return (
+      (this.inverseInput() ?? (surface === 'attention' || surface === 'accent-attention')) ||
+      this._negative()
+    );
+  });
 
   /** @docs-private */
   orderedCircle = false;

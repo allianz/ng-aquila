@@ -5,9 +5,10 @@ import { ListCondensedExampleComponent } from './list-condensed/list-condensed-e
 import { ListCopytextExampleComponent } from './list-copytext/list-copytext-example';
 import { ListCustomColorExampleComponent } from './list-custom-color/list-custom-color-example';
 import { ListIconsExampleComponent } from './list-icons/list-icons-example';
-import { ListNegativeExampleComponent } from './list-negative/list-negative-example';
+import { ListInverseExampleComponent } from './list-inverse/list-inverse-example';
 import { ListNestingExampleComponent } from './list-nesting/list-nesting-example';
 import { ListOrderedExampleComponent } from './list-ordered/list-ordered-example';
+import { ListSizesExampleComponent } from './list-sizes/list-sizes-example';
 import { ListTypeExampleComponent } from './list-type/list-type-example';
 import { ListUnorderedExampleComponent } from './list-unordered/list-unordered-example';
 
@@ -17,11 +18,12 @@ const EXAMPLES = [
   ListCopytextExampleComponent,
   ListCustomColorExampleComponent,
   ListIconsExampleComponent,
-  ListNegativeExampleComponent,
+  ListInverseExampleComponent,
   ListNestingExampleComponent,
   ListOrderedExampleComponent,
   ListUnorderedExampleComponent,
   ListCondensedExampleComponent,
+  ListSizesExampleComponent,
 ];
 
 @NgModule({
@@ -36,11 +38,12 @@ export class ListExamplesModule {
       'list-copytext': ListCopytextExampleComponent,
       'list-custom-color': ListCustomColorExampleComponent,
       'list-icons': ListIconsExampleComponent,
-      'list-negative': ListNegativeExampleComponent,
+      'list-inverse': ListInverseExampleComponent,
       'list-nesting': ListNestingExampleComponent,
       'list-ordered': ListOrderedExampleComponent,
       'list-unordered': ListUnorderedExampleComponent,
       'list-condensed': ListCondensedExampleComponent,
+      'list-sizes': ListSizesExampleComponent,
     };
   }
 }
