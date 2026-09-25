@@ -17,7 +17,11 @@ import {
 
 import { NxMessageModule } from '../message.module';
 import { NxMessageToastComponent } from './message-toast.component';
-import { NxMessageToastConfig, NxMessageToastData } from './message-toast-config';
+import {
+  NX_MESSAGE_TOAST_DEFAULT_WRAPPER_ID,
+  NxMessageToastConfig,
+  NxMessageToastData,
+} from './message-toast-config';
 import { NxMessageToastRef } from './message-toast-ref';
 
 /** Injection token that can be used to specify default message toast. */
@@ -55,6 +59,12 @@ export class NxMessageToastService implements OnDestroy {
     return parent ? parent._oldToastMessageRef : this._toastRefAtThisLevel;
   }
 
+  /**
+   * Id of the `aria-live` wrapper the toasts of this app are rendered into. Inherited from the
+   * parent service so that a service provided on a component cannot fork off a second region.
+   */
+  private readonly _wrapperId: string;
+
   constructor(
     private readonly _overlay: Overlay,
     private readonly _overlayContainer: OverlayContainer,
@@ -67,8 +77,13 @@ export class NxMessageToastService implements OnDestroy {
     @Inject(NX_MESSAGE_TOAST_DEFAULT_CONFIG)
     private readonly _defaultConfig: NxMessageToastConfig | null,
   ) {
+    this._wrapperId =
+      this._parentMessageToastService?._wrapperId ||
+      this._defaultConfig?.wrapperId ||
+      NX_MESSAGE_TOAST_DEFAULT_WRAPPER_ID;
     this._initializeWrapper();
   }
+
   /**
    * Initializes the wrapper element for toast message in the overlay container.
    * Create a wrapper with ARIA attributes for accessibility
@@ -76,13 +91,17 @@ export class NxMessageToastService implements OnDestroy {
   private _initializeWrapper(): void {
     const overlayContainer = this._overlayContainer.getContainerElement();
 
-    if (!overlayContainer.querySelector('#nx-toast-message-region')) {
+    if (!this._getWrapper()) {
       const wrapperElement = this._document.createElement('div');
       wrapperElement.setAttribute('aria-live', 'polite');
       wrapperElement.setAttribute('aria-atomic', 'true');
-      wrapperElement.id = 'nx-toast-message-region';
+      wrapperElement.id = this._wrapperId;
       overlayContainer.appendChild(wrapperElement);
     }
+  }
+
+  private _getWrapper(): Element | null {
+    return this._overlayContainer.getContainerElement().querySelector(`#${this._wrapperId}`);
   }
 
   /**
@@ -175,9 +194,7 @@ export class NxMessageToastService implements OnDestroy {
 
     const overlayRef = this._overlay.create(overlayConfig);
     const overlayElement = overlayRef.overlayElement.parentElement;
-    const wrapper = this._overlayContainer
-      .getContainerElement()
-      .querySelector('#nx-toast-message-region');
+    const wrapper = this._getWrapper();
     if (overlayElement) {
       wrapper?.appendChild(overlayElement);
     }

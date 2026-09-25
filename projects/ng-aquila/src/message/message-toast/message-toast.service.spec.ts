@@ -1,5 +1,5 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { OverlayContainer } from '@angular/cdk/overlay';
+import { Overlay, OverlayContainer } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -13,7 +13,7 @@ import {
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 
 import { NxMessageModule } from '../message.module';
-import { NxMessageToastService } from './message-toast.service';
+import { NX_MESSAGE_TOAST_DEFAULT_CONFIG, NxMessageToastService } from './message-toast.service';
 import { NxMessageToastContext } from './message-toast-config';
 
 describe('NxMessageToast', () => {
@@ -381,6 +381,142 @@ describe('NxMessageToast', () => {
   });
 });
 
+describe('NxMessageToast with a custom wrapper id', () => {
+  let messageToastService: NxMessageToastService;
+  let liveAnnouncer: LiveAnnouncer;
+  let overlayContainer: OverlayContainer;
+  let overlayContainerElement: HTMLElement;
+  let fixture: ComponentFixture<BasicMessageToastTest>;
+
+  beforeEach(fakeAsync(() => {
+    TestBed.configureTestingModule({
+      animationsEnabled: true,
+      imports: [NxMessageToastTestModule],
+      providers: [
+        {
+          provide: NX_MESSAGE_TOAST_DEFAULT_CONFIG,
+          useValue: { wrapperId: 'my-app-toast-message-region' },
+        },
+      ],
+    }).compileComponents();
+  }));
+
+  beforeEach(inject(
+    [NxMessageToastService, LiveAnnouncer, OverlayContainer],
+    (ns: NxMessageToastService, la: LiveAnnouncer, oc: OverlayContainer) => {
+      messageToastService = ns;
+      liveAnnouncer = la;
+      overlayContainer = oc;
+      overlayContainerElement = oc.getContainerElement();
+    },
+  ));
+
+  afterEach(() => {
+    overlayContainer.ngOnDestroy();
+    liveAnnouncer.ngOnDestroy();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(BasicMessageToastTest);
+    fixture.detectChanges();
+  });
+
+  it('should use the configured id for the wrapper', () => {
+    expect(overlayContainerElement.querySelector('#nx-toast-message-region')).toBeFalsy();
+
+    const wrapper = overlayContainerElement.querySelector('#my-app-toast-message-region');
+    expect(wrapper?.getAttribute('aria-live')).toBe('polite');
+    expect(wrapper?.getAttribute('aria-atomic')).toBe('true');
+  });
+
+  it('should render toasts into the renamed wrapper', fakeAsync(() => {
+    messageToastService.open('test');
+    fixture.detectChanges();
+    tick(100);
+
+    const wrapper = overlayContainerElement.querySelector('#my-app-toast-message-region');
+    expect(wrapper?.querySelector('nx-message-toast')).toBeTruthy();
+  }));
+
+  it('should ignore a wrapperId configured below the root service', fakeAsync(() => {
+    const nestedFixture = TestBed.createComponent(ComponentOverridingWrapperId);
+    nestedFixture.detectChanges();
+    flush();
+
+    expect(overlayContainerElement.querySelector('#ignored-toast-message-region')).toBeFalsy();
+    expect(overlayContainerElement.querySelectorAll('#my-app-toast-message-region')).toHaveLength(
+      1,
+    );
+
+    nestedFixture.componentInstance.messageToastService.open('Nested message toast', {
+      duration: 0,
+    });
+    nestedFixture.detectChanges();
+    flush();
+
+    expect(overlayContainerElement.querySelectorAll('#my-app-toast-message-region')).toHaveLength(
+      1,
+    );
+
+    const wrapper = overlayContainerElement.querySelector('#my-app-toast-message-region');
+    expect(wrapper?.querySelector('nx-message-toast')).toBeTruthy();
+  }));
+});
+
+describe('NxMessageToast with an empty wrapper id', () => {
+  let messageToastService: NxMessageToastService;
+  let liveAnnouncer: LiveAnnouncer;
+  let overlayContainer: OverlayContainer;
+  let overlayContainerElement: HTMLElement;
+  let overlay: Overlay;
+  let fixture: ComponentFixture<BasicMessageToastTest>;
+
+  beforeEach(fakeAsync(() => {
+    TestBed.configureTestingModule({
+      animationsEnabled: true,
+      imports: [NxMessageToastTestModule],
+      providers: [{ provide: NX_MESSAGE_TOAST_DEFAULT_CONFIG, useValue: { wrapperId: '' } }],
+    }).compileComponents();
+  }));
+
+  beforeEach(inject(
+    [NxMessageToastService, LiveAnnouncer, OverlayContainer, Overlay],
+    (ns: NxMessageToastService, la: LiveAnnouncer, oc: OverlayContainer, ov: Overlay) => {
+      messageToastService = ns;
+      liveAnnouncer = la;
+      overlayContainer = oc;
+      overlayContainerElement = oc.getContainerElement();
+      overlay = ov;
+    },
+  ));
+
+  afterEach(() => {
+    overlayContainer.ngOnDestroy();
+    liveAnnouncer.ngOnDestroy();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(BasicMessageToastTest);
+    fixture.detectChanges();
+  });
+
+  it('should fall back to the default id', () => {
+    expect(overlayContainerElement.querySelector('#nx-toast-message-region')).toBeTruthy();
+  });
+
+  it('should not mistake an unrelated overlay for the wrapper', fakeAsync(() => {
+    // Another component's overlay is a container child with no `id`.
+    overlay.create();
+
+    messageToastService.open('test', { duration: 0 });
+    fixture.detectChanges();
+    flush();
+
+    const wrapper = overlayContainerElement.querySelector('#nx-toast-message-region');
+    expect(wrapper?.querySelector('nx-message-toast')).toBeTruthy();
+  }));
+});
+
 describe('NxMessageToast with parent and child service', () => {
   let parentService: NxMessageToastService;
   let childService: NxMessageToastService;
@@ -501,6 +637,23 @@ class ComponentWithTemplateRef {
   imports: [forwardRef(() => NxMessageToastTestModule)],
 })
 class ComponentProvidingService {
+  constructor(readonly messageToastService: NxMessageToastService) {}
+}
+
+@Component({
+  selector: 'test-component-overriding-wrapper-id',
+  template: '',
+  providers: [
+    NxMessageToastService,
+    {
+      provide: NX_MESSAGE_TOAST_DEFAULT_CONFIG,
+      useValue: { wrapperId: 'ignored-toast-message-region' },
+    },
+  ],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [forwardRef(() => NxMessageToastTestModule)],
+})
+class ComponentOverridingWrapperId {
   constructor(readonly messageToastService: NxMessageToastService) {}
 }
 

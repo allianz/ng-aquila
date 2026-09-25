@@ -169,6 +169,19 @@ You can also overwrite the default message toast options by using the `NX_MESSAG
 
 #### Accessibility
 
+##### Wrapper id
+
+All message toasts of an app are rendered inside one `aria-live` wrapper element, which carries the id `nx-toast-message-region` by default. Every independently bootstrapped Angular app creates its own wrapper, so when several apps run on the same page (e.g. in a micro frontend setup) that id ends up on more than one element, which breaks `aria-labelledby` / `aria-describedby` relationships for screen readers.
+
+In that case give each app its own id via the `wrapperId` of the global configuration:
+
+```ts
+{
+  provide: NX_MESSAGE_TOAST_DEFAULT_CONFIG,
+  useValue: { wrapperId: 'my-app-toast-message-region' }
+}
+```
+
 ##### Aria-live and politeness
 
 Message toasts are announced via an `aria-live` region. By default, their politeness level is set to `polite`. This can be changed by overwriting the `politeness` in the message toast configuration. The `polite` value is recommended, as then the toast messages are not presented while the user is active on the page (e.g. while the user is listening to the text of another element), but at the next opportunity (e.g. when the user pauses typing).
