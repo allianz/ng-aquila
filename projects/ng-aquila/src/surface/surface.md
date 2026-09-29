@@ -105,7 +105,7 @@ own; that is a planned improvement, not something `NX_SURFACE` solves by itself.
 
 Declared surfaces are also rendered as attributes:
 
-- `data-nx-surface="attention" | "emphasis" | "accent-attention"` — absent on the default surface.
+- `data-nx-surface="default" | "attention" | "emphasis" | "accent-attention"` — always present.
 - `data-nx-accent-color="purple" | …` — only on an `accent-attention` surface.
 
 <!-- example(surface-css) -->

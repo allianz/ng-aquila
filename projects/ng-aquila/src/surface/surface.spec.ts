@@ -62,12 +62,12 @@ describe('nxSurface', () => {
       expect(surfaceElement().getAttribute('data-nx-surface')).toBe('attention');
     });
 
-    it('omits the attribute for the default surface', () => {
+    it('renders the attribute for the default surface', () => {
       createComponent(BasicSurfaceComponent);
       fixture.componentInstance.surface.set('default');
       fixture.detectChanges();
 
-      expect(surfaceElement().hasAttribute('data-nx-surface')).toBe(false);
+      expect(surfaceElement().getAttribute('data-nx-surface')).toBe('default');
     });
 
     it('propagates a change to an OnPush child', () => {

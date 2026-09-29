@@ -70,10 +70,7 @@ export class NxSurface implements NxSurfaceContext {
     };
   });
 
-  protected readonly _surface = computed<NxSurfaceType | null>(() => {
-    const { surface } = this.resolved();
-    return surface === 'default' ? null : surface;
-  });
+  protected readonly _surface = computed<NxSurfaceType>(() => this.resolved().surface);
 
   protected readonly _accentColor = computed<NxSurfaceAccentColor | null>(() => {
     const resolved = this.resolved();
