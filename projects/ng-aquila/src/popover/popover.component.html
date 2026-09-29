@@ -4,6 +4,7 @@
     class="nx-popover"
     role="dialog"
     aria-hidden="false"
+    [attr.data-nx-surface]="_surface()"
     (click)="_onClick($event)"
     cdkMonitorSubtreeFocus
     (cdkFocusChange)="_onFocusChange($event)"

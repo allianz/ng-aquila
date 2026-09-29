@@ -95,8 +95,9 @@ describe('nxSurface in overlays', () => {
       fixture.detectChanges();
     });
 
-    // Stands in for the six overlays that reset through a decorator `providers` entry
-    // (autocomplete, context-menu, dropdown, notification-panel, popover, tooltip).
+    // Stands in for the five overlays that reset through a decorator `providers` entry
+    // (autocomplete, context-menu, dropdown, notification-panel, tooltip). The popover publishes
+    // the surface it paints itself instead, see its own spec.
     it('resets the surface for its items', fakeAsync(() => {
       expect(triggerProbe().surface()).toBe('attention');
 

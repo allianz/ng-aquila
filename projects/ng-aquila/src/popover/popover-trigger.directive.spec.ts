@@ -2,6 +2,7 @@ import { NxFormfieldModule } from '@allianz/ng-aquila/formfield';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NxTriggerButton } from '@allianz/ng-aquila/overlay';
+import { NxSurface } from '@allianz/ng-aquila/surface';
 import { fakeScrollStrategyFunction } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction } from '@angular/cdk/bidi';
@@ -31,6 +32,7 @@ import { By } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
+import { SurfaceProbeComponent } from '../surface/surface.test-utils';
 import { NxPopoverComponent } from './popover.component';
 import { NxPopoverModule } from './popover.module';
 import { NxPopoverIntl } from './popover-intl';
@@ -957,6 +959,101 @@ describe('NxPopoverTriggerDirective', () => {
     }));
   });
 
+  describe('inverse', () => {
+    function getPopover(): HTMLElement {
+      return overlayContainer.getContainerElement().querySelector('.nx-popover') as HTMLElement;
+    }
+
+    it('is not inverse by default', fakeAsync(() => {
+      createTestComponent(PopoverInverseComponent);
+      click();
+
+      expect(popoverInstance.inverse()).toBe(false);
+      expect(getPopover().classList).not.toContain('nx-popover--inverse');
+      expect(getPopover().getAttribute('data-nx-surface')).toBe('default');
+    }));
+
+    it('paints the attention surface when inverse is set', fakeAsync(() => {
+      createTestComponent(PopoverInverseComponent);
+      (testInstance as PopoverInverseComponent).inverse = true;
+      fixture.detectChanges();
+      click();
+
+      expect(popoverInstance.inverse()).toBe(true);
+      expect(getPopover().classList).toContain('nx-popover--inverse');
+      expect(getPopover().getAttribute('data-nx-surface')).toBe('attention');
+    }));
+
+    // The panel paints its own background, so its content must adapt to that panel rather than to
+    // whatever surface the trigger sits on.
+    it('publishes the attention surface to its content', fakeAsync(() => {
+      createTestComponent(PopoverInverseComponent);
+      (testInstance as PopoverInverseComponent).inverse = true;
+      fixture.detectChanges();
+      click();
+
+      expect(probeSurface()).toBe('attention');
+    }));
+
+    it('publishes the default surface to its content when not inverse', fakeAsync(() => {
+      createTestComponent(PopoverInverseComponent);
+      click();
+
+      expect(probeSurface()).toBe('default');
+    }));
+
+    // Unlike the other adopters, the popover never derives `inverse` from its surroundings: a light
+    // popover opened from a button on a dark header is a valid design choice.
+    it('never reacts to an attention surface enclosing it', fakeAsync(() => {
+      createTestComponent(PopoverOnSurfaceComponent);
+      click();
+
+      expect(popoverInstance.inverse()).toBe(false);
+      expect(getPopover().classList).not.toContain('nx-popover--inverse');
+      expect(probeSurface()).toBe('default');
+    }));
+
+    it('is inverse on an enclosing surface only when asked', fakeAsync(() => {
+      createTestComponent(PopoverOnSurfaceComponent);
+      (testInstance as PopoverOnSurfaceComponent).inverse = true;
+      fixture.detectChanges();
+      click();
+
+      expect(popoverInstance.inverse()).toBe(true);
+      expect(getPopover().classList).toContain('nx-popover--inverse');
+    }));
+
+    // The bare `inverse` attribute is what the docs example ships, so the string-coercion path
+    // needs to resolve to true rather than to the attribute's empty-string value.
+    it('treats a bare inverse attribute as true', fakeAsync(() => {
+      createTestComponent(PopoverBareInverseComponent);
+      click();
+
+      expect(popoverInstance.inverse()).toBe(true);
+      expect(getPopover().classList).toContain('nx-popover--inverse');
+    }));
+
+    // Reacting to the input while open matters: the popover is only instantiated once, so a value
+    // pushed after the panel is attached must still repaint it.
+    it('reacts to the input changing while open', fakeAsync(() => {
+      createTestComponent(PopoverInverseComponent);
+      click();
+      expect(getPopover().classList).not.toContain('nx-popover--inverse');
+
+      (testInstance as PopoverInverseComponent).inverse = true;
+      fixture.detectChanges();
+
+      expect(getPopover().classList).toContain('nx-popover--inverse');
+    }));
+
+    function probeSurface(): string | null {
+      return overlayContainer
+        .getContainerElement()
+        .querySelector('nx-surface-probe')!
+        .getAttribute('data-resolved-surface');
+    }
+  });
+
   it('should be able to override the scroll strategy in parent injector', () => {
     TestBed.resetTestingModule()
       .configureTestingModule({
@@ -1066,6 +1163,51 @@ class PopoverClickComponent extends PopoverTest {
   ) {
     super();
   }
+}
+
+@Component({
+  selector: 'test-popover-inverse',
+  template: `<button [nxPopoverTriggerFor]="popover" nxPopoverTrigger="click">Open</button>
+
+    <nx-popover #popover [inverse]="inverse">
+      <span>Content</span>
+      <nx-surface-probe />
+    </nx-popover>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [OverlayModule, NxPopoverModule, SurfaceProbeComponent],
+})
+class PopoverInverseComponent extends PopoverTest {
+  inverse = false;
+}
+
+/** `inverse` written as a bare attribute, the way the docs example does. */
+@Component({
+  selector: 'test-popover-bare-inverse',
+  template: `<button [nxPopoverTriggerFor]="popover" nxPopoverTrigger="click">Open</button>
+
+    <nx-popover #popover inverse>
+      <span>Content</span>
+    </nx-popover>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [OverlayModule, NxPopoverModule],
+})
+class PopoverBareInverseComponent extends PopoverTest {}
+
+/** Both the trigger and the popover sit on an attention surface, which it must ignore. */
+@Component({
+  selector: 'test-popover-on-surface',
+  template: `<div nxSurface="attention">
+    <button [nxPopoverTriggerFor]="popover" nxPopoverTrigger="click">Open</button>
+    <nx-popover #popover [inverse]="inverse">
+      <span>Content</span>
+      <nx-surface-probe />
+    </nx-popover>
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [OverlayModule, NxPopoverModule, NxSurface, SurfaceProbeComponent],
+})
+class PopoverOnSurfaceComponent extends PopoverTest {
+  inverse = false;
 }
 
 @Component({

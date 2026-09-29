@@ -5,6 +5,12 @@
   filter: v(popover-filter-shadow);
 }
 
+.nx-popover--inverse {
+  --popover-background-color: #{v(popover-inverse-background-color)};
+  --popover-text-color: #{v(popover-inverse-text-color)};
+  --popover-border-color: #{v(popover-inverse-border-color)};
+}
+
 .nx-popover__content {
   @include type-style(popover-content);
   background-color: v(popover-background-color);
@@ -50,8 +56,6 @@
   position: absolute;
   top: v(popover-close-icon-top);
   right: v(popover-close-icon-right);
-  color: v(popover-close-icon-color);
-  font-size: v(popover-close-icon-size);
 
   [dir='rtl'] & {
     right: auto;

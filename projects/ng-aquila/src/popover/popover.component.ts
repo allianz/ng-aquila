@@ -1,11 +1,17 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { NX_SURFACE } from '@allianz/ng-aquila/surface';
+import {
+  NX_SURFACE,
+  NxResolvedSurface,
+  NxSurfaceContext,
+  NxSurfaceType,
+} from '@allianz/ng-aquila/surface';
 import { A11yModule, FocusOrigin } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -67,12 +73,12 @@ export class NxPopoverActionsDirective {
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./popover.component.scss'],
   exportAs: 'nxPopover',
-  // The popover renders in the overlay container with its own background, so its content must not
-  // adapt to a surface the trigger happens to sit on.
-  providers: [{ provide: NX_SURFACE, useValue: undefined }],
+  // The popover renders in the overlay container with its own background, so its content adapts to
+  // the panel the popover paints, not to the surface the trigger happens to sit on.
+  providers: [{ provide: NX_SURFACE, useExisting: NxPopoverComponent }],
   imports: [NgClass, NgStyle, NxIconModule, NgTemplateOutlet, NxButtonModule, A11yModule],
 })
-export class NxPopoverComponent implements OnDestroy, OnInit {
+export class NxPopoverComponent implements OnDestroy, OnInit, NxSurfaceContext {
   /** @docs-private */
   @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
 
@@ -129,6 +135,23 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
   /** @docs-private */
   arrowStyle = {};
+
+  /**
+   * Whether the popover paints the inverse (attention) surface, so it renders light-on-dark.
+   * The popover paints its own panel, so it does not follow the surface around it.
+   */
+  readonly inverse = input(false, { transform: booleanAttribute });
+
+  /**
+   * The surface of the panel the popover paints, published to its own content.
+   * @docs-private Mandated by `NxSurfaceContext`.
+   */
+  readonly resolved = computed<NxResolvedSurface>(() => ({
+    surface: this.inverse() ? 'attention' : 'default',
+  }));
+
+  /** Rendered as `data-nx-surface`. */
+  protected readonly _surface = computed<NxSurfaceType>(() => this.resolved().surface);
 
   private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
     optional: true,
@@ -217,14 +240,18 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
   /** @docs-private */
   get classList(): string {
+    const classes = [];
     if (this.direction()) {
       // Returning an array here caused an error that the classes were not set
       // after a prod build. Couldn't reproduce it properly in an isolated way.
       // As it doesn't make sense to return an array for a single value anyway
       // changed it to a string and that seems to work.
-      return `nx-popover--${this.direction()}`;
+      classes.push(`nx-popover--${this.direction()}`);
     }
-    return '';
+    if (this.inverse()) {
+      classes.push('nx-popover--inverse');
+    }
+    return classes.join(' ');
   }
 
   /** Prevent the popover from closing when the user clicks on the popover content. */

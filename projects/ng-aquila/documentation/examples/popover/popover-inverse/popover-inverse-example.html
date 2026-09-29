@@ -1,0 +1,57 @@
+<div class="popover-example">
+  <div nxSurface="default" class="popover-example__surface">
+    <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">
+      Default surface, inverse popover
+    </h3>
+
+    <button
+      nxButton="primary small"
+      [nxPopoverTriggerFor]="popoverInverse"
+      nxPopoverDirection="right"
+      nxPopoverTrigger="click"
+      type="button"
+    >
+      Open
+    </button>
+
+    <nx-popover #popoverInverse inverse>
+      <div nxPopoverTitle>
+        <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">
+          Popover
+        </h3>
+      </div>
+
+      <div nxPopoverMainContent>
+        <p nxCopytext="normal">I am inverse, on a default surface.</p>
+      </div>
+    </nx-popover>
+  </div>
+
+  <div nxSurface="attention" class="popover-example__surface">
+    <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">
+      Inverse surface, default popover
+    </h3>
+
+    <button
+      nxButton="primary small"
+      [nxPopoverTriggerFor]="popoverLight"
+      nxPopoverDirection="right"
+      nxPopoverTrigger="click"
+      type="button"
+    >
+      Open
+    </button>
+
+    <nx-popover #popoverLight>
+      <div nxPopoverTitle>
+        <h3 nxHeadline="subsection-small" class="nx-margin-bottom-s">
+          Popover
+        </h3>
+      </div>
+
+      <div nxPopoverMainContent>
+        <p nxCopytext="normal">I stay default, on an inverse surface.</p>
+      </div>
+    </nx-popover>
+  </div>
+</div>

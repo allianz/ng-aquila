@@ -67,6 +67,17 @@ The popover can be used for a guided tour
 
 <!-- example(popover-guided-tour) -->
 
+### Inverse
+
+Setting `inverse` on the popover renders it on the attention (inverse) surface, so it reads
+light-on-dark. The popover also declares that surface to its own content, so adopting components
+inside it (headline, copytext, etc.) adapt to the popover rather than to the surface behind the trigger.
+
+The popover never picks this up from a [surface](./documentation/surface/overview) around it, so you
+can keep a light popover even when it is opened from a button on a dark header.
+
+<!-- example(popover-inverse) -->
+
 ### Popover without arrow
 
 The popover arrow can be hidden using the `nxPopoverHideArrow`.

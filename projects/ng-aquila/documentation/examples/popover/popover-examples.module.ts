@@ -12,6 +12,7 @@ import { PopoverCustomExampleComponent } from './popover-custom/popover-custom-e
 import { PopoverGuidedTourExampleComponent } from './popover-guided-tour/popover-guided-tour-example';
 import { PopoverHoverExampleComponent } from './popover-hover/popover-hover-example';
 import { PopoverI18nExampleComponent } from './popover-i18n/popover-i18n-example';
+import { PopoverInverseExampleComponent } from './popover-inverse/popover-inverse-example';
 import { PopoverLazyloadExampleComponent } from './popover-lazyload/popover-lazyload-example';
 import { PopoverModalExampleComponent } from './popover-modal/popover-modal-example';
 import { PopoverPositioningExampleComponent } from './popover-positioning/popover-positioning-example';
@@ -41,6 +42,7 @@ const EXAMPLES = [
   PopoverWithoutArrowExampleComponent,
   PopoverGuidedTourExampleComponent,
   PopoverWidthExampleComponent,
+  PopoverInverseExampleComponent,
 ];
 
 @NgModule({
@@ -76,6 +78,7 @@ export class PopoverExamplesModule {
       'popover-without-arrow': PopoverWithoutArrowExampleComponent,
       'popover-guided-tour': PopoverGuidedTourExampleComponent,
       'popover-width': PopoverWidthExampleComponent,
+      'popover-inverse': PopoverInverseExampleComponent,
     };
   }
 }

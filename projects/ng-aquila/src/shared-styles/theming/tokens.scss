@@ -2329,12 +2329,13 @@ $nx-theme: (
   popover-content-line-height: paragraph-03-line-height,
   popover-content-font-weight: paragraph-03-font-weight,
   popover-content-letter-spacing: paragraph-03-letter-spacing,
-  popover-close-icon-size: 24px,
   popover-text-color: text-01,
   popover-background-color: ui-01,
   popover-border-size: 1px,
   popover-border-color: ui-04,
-  popover-close-icon-color: ui-04,
+  popover-inverse-background-color: nx-surface-attention-background-color,
+  popover-inverse-text-color: negative,
+  popover-inverse-border-color: nx-surface-attention-background-color,
   popover-border-radius: 4px,
   // nx-border-radius(s)
   popover-box-shadow: shadow-small,
@@ -3310,4 +3311,6 @@ $nx-theme: (
   //   on-selection radio keeps its plain ring; critical only tints the unselected border.
   radio-button-on-selection-critical-border-color: ui-01,
   radio-button-on-selection-critical-background-color: ui-01,
+  popover-close-icon-color: ui-04,
+  popover-close-icon-size: 24px,
 );
