@@ -10,6 +10,7 @@ import {
   ElementRef,
   inject,
   OnDestroy,
+  Signal,
   signal,
 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
@@ -108,6 +109,11 @@ export class NxTooltipComponent implements OnDestroy {
     }
     return isVertical ? 'M1 0.50980L0 0L0 1Z' : 'M0.50980 1L0 0L1 0Z';
   });
+
+  /**
+   * Whether the tooltip uses the inverse appearance.
+   */
+  _inverse: Signal<boolean | undefined> = signal(false);
 
   /** Whether interactions on the page should close the tooltip */
   private _closeOnInteraction = false;

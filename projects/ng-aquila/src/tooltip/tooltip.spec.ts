@@ -95,6 +95,7 @@ describe('NxTooltipDirective', () => {
         DynamicTooltipsDemo,
         TooltipOnTextFields,
         SelectableTooltip,
+        AttributeInverseTooltipDemo,
       ],
       providers: [
         { provide: Platform, useFactory: () => platform },
@@ -993,6 +994,71 @@ describe('NxTooltipDirective', () => {
     }));
   });
 
+  describe('inverse appearance', () => {
+    let fixture: ComponentFixture<BasicTooltipDemo>;
+    let tooltipDirective: NxTooltipDirective;
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(BasicTooltipDemo);
+      fixture.detectChanges();
+      tooltipDirective = fixture.debugElement
+        .query(By.css('button'))
+        .injector.get<NxTooltipDirective>(NxTooltipDirective);
+    });
+
+    function showAndGetTooltip(): HTMLElement {
+      tooltipDirective.show();
+      tick(200);
+      fixture.detectChanges();
+      return overlayContainerElement.querySelector('.nx-tooltip') as HTMLElement;
+    }
+
+    it('should not be inverse by default', fakeAsync(() => {
+      const tooltipElement = showAndGetTooltip();
+
+      expect(tooltipElement.classList.contains('nx-tooltip--inverse')).toBe(false);
+
+      flush();
+    }));
+
+    it('should be inverse when inverse is set', fakeAsync(() => {
+      fixture.componentInstance.inverse = true;
+      fixture.detectChanges();
+
+      const tooltipElement = showAndGetTooltip();
+
+      expect(tooltipElement.classList.contains('nx-tooltip--inverse')).toBe(true);
+
+      flush();
+    }));
+
+    it('should follow the input while the tooltip is open', fakeAsync(() => {
+      const tooltipElement = showAndGetTooltip();
+
+      fixture.componentInstance.inverse = true;
+      fixture.detectChanges();
+      expect(tooltipElement.classList.contains('nx-tooltip--inverse')).toBe(true);
+
+      fixture.componentInstance.inverse = false;
+      fixture.detectChanges();
+      expect(tooltipElement.classList.contains('nx-tooltip--inverse')).toBe(false);
+
+      flush();
+    }));
+
+    // The docs example uses the bare attribute form, so the coercion has to hold.
+    it('should coerce a value-less attribute to true', () => {
+      const attributeFixture = TestBed.createComponent(AttributeInverseTooltipDemo);
+      attributeFixture.detectChanges();
+
+      const directive = attributeFixture.debugElement
+        .query(By.css('button'))
+        .injector.get<NxTooltipDirective>(NxTooltipDirective);
+
+      expect(directive.inverse()).toBe(true);
+    });
+  });
+
   describe('fallback positions', () => {
     let fixture: ComponentFixture<BasicTooltipDemo>;
     let tooltip: NxTooltipDirective;
@@ -1354,6 +1420,7 @@ describe('NxTooltipComponent', () => {
       [nxTooltip]="message"
       [nxTooltipPosition]="position"
       [nxTooltipHideDelay]="hideDelay"
+      [nxTooltipInverse]="inverse"
     >
       Button
     </button>
@@ -1367,6 +1434,7 @@ class BasicTooltipDemo {
   showButton = true;
   showTooltipClass = false;
   hideDelay = 200;
+  inverse: boolean | undefined = undefined;
   @ViewChild(NxTooltipDirective)
   tooltip!: NxTooltipDirective;
   @ViewChild('button')
@@ -1376,6 +1444,16 @@ class BasicTooltipDemo {
     @Inject(NX_TOOLTIP_SCROLL_STRATEGY)
     public scrollStrategy: any,
   ) {}
+}
+
+@Component({
+  selector: 'nx-app',
+  template: `<button [nxTooltip]="message" nxTooltipInverse>Button</button>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTooltipModule],
+})
+class AttributeInverseTooltipDemo {
+  message = initialTooltipMessage;
 }
 
 @Component({

@@ -1,3 +1,4 @@
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { AriaDescriber, FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -218,6 +219,12 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
     alias: 'nxTooltipHideDelay',
   });
 
+  /** Whether the tooltip uses the inverse appearance, for triggers placed on a dark surface. */
+  readonly inverse = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'nxTooltipInverse',
+  });
+
   /** The message to be displayed in the tooltip */
   @Input('nxTooltip') set message(value: string) {
     this._ariaDescriber.removeDescription(this._elementRef.nativeElement, this._message);
@@ -368,6 +375,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit, AfterViewInit {
     this._embeddedViewRef = overlayRef.attach(this._portal);
     this._tooltipInstance = this._embeddedViewRef.instance;
     this._tooltipInstance._mouseLeaveHideDelay = this.hideDelay();
+    this._tooltipInstance._inverse = this.inverse;
     this._tooltipInstance._announceOnShow = announce;
     this._tooltipInstance
       .afterHidden()

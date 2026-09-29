@@ -41,6 +41,12 @@ By default the tooltip will be displayed below the element, but this can be conf
 
 <!-- example(tooltip-positions) -->
 
+### Inverse
+
+Set `nxTooltipInverse` to use the inverse (light) appearance, for triggers placed on a dark surface.
+
+<!-- example(tooltip-inverse) -->
+
 ### Fallback strategy
 
 The positioning of the tooltip follows a fallback strategy to make sure that the component is displayed correctly in the most common situations. Fallback means that the tooltip tries to find a fitting position within the window. The following table explains the fallback strategy of the tooltip.

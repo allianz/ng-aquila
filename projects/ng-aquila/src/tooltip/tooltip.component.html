@@ -1,6 +1,7 @@
 @if (shouldRender()) {
   <div
     class="nx-tooltip"
+    [class.nx-tooltip--inverse]="_inverse()"
     [class.fade-in]="visibility === 'visible'"
     [class.fade-out]="visibility === 'hidden'"
     [style.opacity]="visibility === 'initial' ? 0 : null"
