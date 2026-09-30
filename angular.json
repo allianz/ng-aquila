@@ -262,6 +262,91 @@
           }
         }
       }
+    },
+    "ssr-playground": {
+      "root": "projects/ssr-playground/",
+      "sourceRoot": "projects/ssr-playground/src",
+      "projectType": "application",
+      "prefix": "ssr",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "allowedCommonJsDependencies": ["parse-color", "decimal.js", "ibantools", "moment"],
+            "outputPath": "dist/ssr-playground",
+            "index": "projects/ssr-playground/src/index.html",
+            "browser": "projects/ssr-playground/src/main.ts",
+            "server": "projects/ssr-playground/src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "projects/ssr-playground/src/server.ts"
+            },
+            "tsConfig": "projects/ssr-playground/tsconfig.app.json",
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": [
+                  "color-functions",
+                  "global-builtin",
+                  "if-function",
+                  "import"
+                ]
+              }
+            },
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/ssr-playground/public/"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/ng-aquila/documentation/assets/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "dist/ng-aquila/themes/aquila.css",
+              "projects/ssr-playground/src/styles.scss",
+              "projects/ng-aquila/src/shared-styles/utilities.scss"
+            ],
+            "security": {
+              "allowedHosts": ["localhost"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "ssr-playground:build:production"
+            },
+            "development": {
+              "buildTarget": "ssr-playground:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ssr-playground/**/*.ts",
+              "projects/ssr-playground/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "schematics": {

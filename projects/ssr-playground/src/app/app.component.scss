@@ -1,0 +1,32 @@
+.layout {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+}
+
+.nav {
+  flex: 0 0 auto;
+  overflow-y: auto;
+}
+
+.nav__home {
+  display: block;
+  padding: 16px;
+  font-weight: 700;
+}
+
+.nav__title {
+  margin: 16px 0 4px;
+  padding: 0 16px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #666;
+}
+
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 16px 24px 96px;
+}

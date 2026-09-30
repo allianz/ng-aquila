@@ -1,0 +1,21 @@
+<h1>ng-aquila SSR Playground</h1>
+
+<p>
+  Renders the documentation examples through <code>@angular/ssr</code> so that server-render crashes
+  and hydration mismatches show up. Pick a page from the sidebar; the server console reports render
+  errors, the browser console reports hydration errors.
+</p>
+
+<p>
+  Currently active renderer: <strong>{{ _renderedOnServer ? 'server' : 'browser' }}</strong> —
+  {{ _pages.length }} pages, {{ _exampleCount }} examples.
+</p>
+
+<ul>
+  @for (page of _pages; track page.id) {
+    <li>
+      <a [routerLink]="['/page', page.id]">{{ page.title }}</a>
+      ({{ page.group }})
+    </li>
+  }
+</ul>

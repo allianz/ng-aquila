@@ -62,9 +62,12 @@ export class WebComponentsModalShadowDomExampleComponent implements OnInit {
   ngOnInit(): void {
     // Get the shadow root from the host element and set it on the overlay container
     // The host element IS the shadow host, so we access its shadowRoot property
-    const shadowRoot = this.elementRef.nativeElement.shadowRoot;
+    // Checked for truthiness rather than `instanceof ShadowRoot`: the global does not exist on the
+    // server, and reading it there throws before the component can render.
+    const shadowRoot: ShadowRoot | null =
+      this.elementRef.nativeElement.shadowRoot ?? null;
 
-    if (shadowRoot instanceof ShadowRoot) {
+    if (shadowRoot) {
       this.overlayContainer.setShadowRoot(shadowRoot);
     }
   }

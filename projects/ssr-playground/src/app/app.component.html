@@ -1,0 +1,25 @@
+<div class="layout">
+  <nx-sidebar class="nav" resizeHandleAriaLabel="Toggle sidebar width" resizeable>
+    <a class="nav__home" routerLink="/">SSR Playground</a>
+    @for (navGroup of _navGroups; track navGroup.group) {
+      <h2 class="nav__title">{{ navGroup.title }}</h2>
+      @for (page of navGroup.pages; track page.id) {
+        <a
+          nxAction
+          [routerLink]="['/page', page.id]"
+          routerLinkActive="is-selected"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >{{ page.title }}</a
+        >
+      }
+    }
+
+    <nx-sidebar-footer>
+      <button nxSidebarToggle aria-label="Toggle sidebar" type="button"></button>
+    </nx-sidebar-footer>
+  </nx-sidebar>
+
+  <main class="content">
+    <router-outlet />
+  </main>
+</div>
