@@ -6,11 +6,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ErrorExampleComponent } from './error/error-example';
 import { ErrorCustomMatcherFormfieldExampleComponent } from './error-custom-matcher-formfield/error-custom-matcher-formfield-example';
+import { ErrorInverseExampleComponent } from './error-inverse/error-inverse-example';
 import { ErrorResetExampleComponent } from './error-reset/error-reset-example';
 
 const EXAMPLES = [
   ErrorExampleComponent,
   ErrorCustomMatcherFormfieldExampleComponent,
+  ErrorInverseExampleComponent,
   ErrorResetExampleComponent,
 ];
 
@@ -30,6 +32,7 @@ export class ErrorExamplesModule {
       error: ErrorExampleComponent,
       'error-custom-matcher-formfield':
         ErrorCustomMatcherFormfieldExampleComponent,
+      'error-inverse': ErrorInverseExampleComponent,
       'error-reset': ErrorResetExampleComponent,
     };
   }

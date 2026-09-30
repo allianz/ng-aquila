@@ -6,11 +6,13 @@
 
 // Plain variants
 // -------------------------
-// The glyph picks up `color` via `currentColor` (svg `fill: currentColor`).
-:host(.nx-status-icon--error) {
+// Set on the glyph rather than inherited down from the host: the glyph adopts the enclosing
+// `nxSurface` on its own, and its own inverse color would win over an inherited one. Same
+// reason the contained variants below target it directly.
+:host(.nx-status-icon--error) nx-icon {
   color: v(danger);
 }
-:host(.nx-status-icon--warning) {
+:host(.nx-status-icon--warning) nx-icon {
   color: v(warning);
 }
 :host(.nx-status-icon--warning:not(.nx-status-icon--contained)) nx-icon {
@@ -19,25 +21,25 @@
   width: 0.8em;
   height: 0.8em;
 }
-:host(.nx-status-icon--info) {
+:host(.nx-status-icon--info) nx-icon {
   color: v(info);
 }
-:host(.nx-status-icon--success) {
+:host(.nx-status-icon--success) nx-icon {
   color: v(success);
 }
 
 // Plain inverse variants (for placement on dark/inverse surfaces)
 // -------------------------
-:host(.nx-status-icon--inverse.nx-status-icon--error) {
+:host(.nx-status-icon--inverse.nx-status-icon--error) nx-icon {
   color: v(status-icon-error-inverse-color);
 }
-:host(.nx-status-icon--inverse.nx-status-icon--warning) {
+:host(.nx-status-icon--inverse.nx-status-icon--warning) nx-icon {
   color: v(status-icon-warning-inverse-color);
 }
-:host(.nx-status-icon--inverse.nx-status-icon--info) {
+:host(.nx-status-icon--inverse.nx-status-icon--info) nx-icon {
   color: v(status-icon-info-inverse-color);
 }
-:host(.nx-status-icon--inverse.nx-status-icon--success) {
+:host(.nx-status-icon--inverse.nx-status-icon--success) nx-icon {
   color: v(status-icon-success-inverse-color);
 }
 

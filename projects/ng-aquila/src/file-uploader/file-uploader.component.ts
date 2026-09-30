@@ -645,7 +645,9 @@ export class NxFileUploaderComponent
   private _syncDescribedByIds() {
     let ids: string[] = [];
     ids = this._hintChildren.map((hint) => hint.id());
-    ids = this._label ? [this._label.id, ...ids] : ids;
+    ids = this._label
+      ? ([this._label.id, this._label.hintId(), ...ids].filter(Boolean) as string[])
+      : ids;
     ids = [...this._errorList.map((error) => error.id), ...ids];
     ids = this.ariaDescribedBy() ? [...ids, this.ariaDescribedBy()!] : ids;
     this.button?.setDescribedByIds(ids);

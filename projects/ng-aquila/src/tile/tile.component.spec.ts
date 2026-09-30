@@ -113,6 +113,21 @@ class TileGroupAriaLabelledByTestComponent {
 }
 
 @Component({
+  selector: 'test-tile-group-with-label-hint',
+  template: `
+    <nx-tile-group>
+      <nx-label [hint]="hint()">Pick a product</nx-label>
+      <nx-tile label="First Tile" value="tile1" />
+    </nx-tile-group>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTileGroupComponent, NxTileComponent, NxLabelComponent],
+})
+class TileGroupWithLabelHintTestComponent {
+  hint = signal<string | undefined>(undefined);
+}
+
+@Component({
   selector: 'test-tile-inverse-test-component',
   template: `<div [nxSurface]="surface()">
     <nx-tile-group [inverse]="inverse()" [selectionMode]="selectionMode()">
@@ -432,6 +447,20 @@ describe('NxTileComponent', () => {
       });
       fixture.detectChanges();
       expect(tile.ariaDescribedBy()).toBeFalsy();
+    });
+
+    it('should describe the group with the projected label hint', () => {
+      ({ fixture, testInstance } = createComponent(TileGroupWithLabelHintTestComponent));
+      const groupElement = fixture.debugElement.query(By.directive(NxTileGroupComponent));
+
+      expect(groupElement.nativeElement.getAttribute('aria-describedby')).toBeNull();
+
+      (testInstance as TileGroupWithLabelHintTestComponent).hint.set('Only one choice');
+      fixture.detectChanges();
+
+      const hintId = fixture.nativeElement.querySelector('.nx-label__hint').id;
+
+      expect(groupElement.nativeElement.getAttribute('aria-describedby')).toBe(hintId);
     });
 
     it('should have aria-describedby with error message', () => {

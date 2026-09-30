@@ -14,7 +14,7 @@ import {
   ChangeDetectorRef,
   Component,
   computed,
-  ContentChild,
+  contentChild,
   ContentChildren,
   contentChildren,
   DoCheck,
@@ -64,7 +64,8 @@ export type LabelSize = 'small' | 'big';
     role: 'radiogroup',
     '[attr.id]': 'id',
     '[class.nx-radio-group--negative]': 'negative',
-    '[attr.aria-labelledby]': 'this._label?.id  || null',
+    '[attr.aria-labelledby]': '_label()?.id || null',
+    '[attr.aria-describedby]': '_describedBy()',
     '[attr.data-nx-disabled]': 'disabled || null',
   },
   styleUrls: ['radio-button-group.scss'],
@@ -79,7 +80,7 @@ export type LabelSize = 'small' | 'big';
 export class NxRadioGroupComponent
   implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck, NxAbstractControl
 {
-  @ContentChild(forwardRef(() => NxLabelComponent)) _label!: NxLabelComponent;
+  readonly _label = contentChild(NxLabelComponent, { descendants: true });
   @ContentChildren(NxErrorComponent) errorChildren!: QueryList<NxErrorComponent>;
   @ContentChildren(forwardRef(() => NxRadioComponent), { descendants: true })
   _radios!: QueryList<NxRadioComponent>;
@@ -105,6 +106,10 @@ export class NxRadioGroupComponent
     const errorIds = this._errorIds();
     return [inputDescribedBy, messagesDescribedBy, errorIds].filter((id) => !!id).join(' ');
   });
+
+  // The `ariaDescribedBy` input is deliberately not merged in here — it already reaches every
+  // radio input through the computed above, and repeating it on the group would double it.
+  protected readonly _describedBy = computed(() => this._label()?.hintId() ?? null);
 
   /** Sets all radios in the group to readonly. */
   @Input({ transform: booleanAttribute }) set readonly(value) {

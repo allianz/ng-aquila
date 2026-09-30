@@ -1,7 +1,14 @@
 <span class="nx-label__row">
   <label class="nx-label__content" [for]="for" [id]="id">
     <ng-content></ng-content>
+    @if (optionalLabel()) {
+      <span class="nx-label__optional">{{ optionalLabel() }}</span>
+    }
   </label>
 
   <ng-content select="[nxLabelInfo]"></ng-content>
 </span>
+
+@if (hint()) {
+  <span class="nx-label__hint" [id]="hintId()">{{ hint() }}</span>
+}

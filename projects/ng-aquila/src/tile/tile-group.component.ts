@@ -45,7 +45,7 @@ export type NxTileSelectionMode = 'single' | 'multi';
     '[style.--nx-auto-grid-max-columns]': 'maxColumns()',
     role: 'group',
     '[attr.aria-labelledby]': '_labelledBy()',
-    '[attr.aria-describedby]': '_errorState() ? errorIds() : null',
+    '[attr.aria-describedby]': '_describedBy()',
     '(focusout)': '_onFocusOut($event)',
   },
 })
@@ -107,6 +107,13 @@ export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDe
 
   protected readonly _labelledBy = computed(() => {
     const ids = [this.ariaLabelledBy(), this.label()?.id].filter(Boolean);
+    return ids.length ? ids.join(' ') : null;
+  });
+
+  readonly _describedBy = computed(() => {
+    const ids = [this._errorState() ? this.errorIds() : null, this.label()?.hintId()].filter(
+      Boolean,
+    );
     return ids.length ? ids.join(' ') : null;
   });
 

@@ -1,5 +1,6 @@
 import { NxAvatarComponent } from '@allianz/ng-aquila/avatar';
 import { NxBadgeComponent } from '@allianz/ng-aquila/badge';
+import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxEyebrowModule } from '@allianz/ng-aquila/eyebrow';
@@ -154,6 +155,67 @@ describe('nxSurface adoption', () => {
       setSurface('attention');
 
       expect(classesOf('#status-icon-explicit').contains('nx-status-icon--inverse')).toBe(false);
+    });
+  });
+
+  // The error tracks the status icon it projects, so both must react to the same surfaces.
+  describe('error', () => {
+    it('inverts the error on the attention surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#error').contains('nx-error--inverse')).toBe(true);
+    });
+
+    it('does not invert the error on the other surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['default', 'emphasis', 'accent-attention'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('#error').contains('nx-error--inverse')).toBe(false);
+      }
+    });
+
+    it('lets an explicit error inverse="false" win over the surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#error-explicit').contains('nx-error--inverse')).toBe(false);
+    });
+  });
+
+  // The label sits next to the error, so both must react to the same surfaces or the pair disagrees.
+  describe('label', () => {
+    it('inverts the label and its hint on the attention surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('[data-label=surface]').contains('nx-label--negative')).toBe(true);
+    });
+
+    it('does not invert the label on the other surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['default', 'emphasis', 'accent-attention'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('[data-label=surface]').contains('nx-label--negative')).toBe(false);
+      }
+    });
+
+    it('lets an explicit label inverse="false" win over the surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('[data-label=explicit]').contains('nx-label--negative')).toBe(false);
+    });
+
+    // An absent `inverse` must not read as an explicit `false`, or the legacy input would stop working.
+    it('still honours the legacy negative input', () => {
+      createComponent(AdoptersComponent);
+
+      expect(classesOf('[data-label=legacy-negative]').contains('nx-label--negative')).toBe(true);
     });
   });
 
@@ -477,6 +539,8 @@ describe('nxSurface adoption', () => {
     expect(classesOf('#status-icon').contains('nx-status-icon--inverse')).toBe(true);
     expect(classesOf('#avatar').contains('nx-avatar--inverse')).toBe(true);
     expect(classesOf('#info-icon button').contains('nx-plain-button--inverse')).toBe(true);
+    expect(classesOf('#error').contains('nx-error--inverse')).toBe(true);
+    expect(classesOf('[data-label=surface]').contains('nx-label--negative')).toBe(true);
     expect(classesOf('#list').contains('nx-list--negative')).toBe(true);
     expect(classesOf('#tile-group').contains('is-inverse')).toBe(true);
   });
@@ -507,6 +571,12 @@ const TEMPLATE = `
     <h2 id="headline-explicit" nxHeadline [inverse]="false">headline</h2>
     <div id="avatar" nxAvatar>AB</div>
     <div id="avatar-explicit" nxAvatar [inverse]="false">AB</div>
+    <nx-error id="error">error</nx-error>
+    <nx-error id="error-explicit" [inverse]="false">error</nx-error>
+    <!-- 'id' is an input on nx-label and lands on the inner label, so these are marked by attribute. -->
+    <nx-label data-label="surface" hint="hint">label</nx-label>
+    <nx-label data-label="explicit" hint="hint" [inverse]="false">label</nx-label>
+    <nx-label data-label="legacy-negative" hint="hint" negative>label</nx-label>
     <ul id="list" nxList>
       <li>item</li>
     </ul>
@@ -539,6 +609,8 @@ const TEMPLATE = `
     NxStatusIconComponent,
     NxAvatarComponent,
     NxInfoIconComponent,
+    NxErrorModule,
+    NxLabelModule,
     NxListModule,
     NxTileComponent,
     NxTileGroupComponent,
@@ -565,6 +637,8 @@ class AdoptersComponent {
     NxStatusIconComponent,
     NxAvatarComponent,
     NxInfoIconComponent,
+    NxErrorModule,
+    NxLabelModule,
     NxListModule,
     NxTileComponent,
     NxTileGroupComponent,

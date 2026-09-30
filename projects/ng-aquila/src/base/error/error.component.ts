@@ -1,7 +1,8 @@
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { NxMessageModule } from '@allianz/ng-aquila/message';
-import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { IdGenerationService, nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgTemplateOutlet } from '@angular/common';
 import {
@@ -53,6 +54,7 @@ export const ERROR_DEFAULT_OPTIONS = new InjectionToken<ErrorDefaultOptions>(
   host: {
     '[attr.role]': '"alert"',
     '[class.nx-error--message]': 'appearance() == "message"',
+    '[class.nx-error--inverse]': 'inverse()',
   },
   imports: [NxIconModule, NgTemplateOutlet, NxMessageModule],
 })
@@ -102,6 +104,24 @@ export class NxErrorComponent implements OnDestroy {
     return this.appearanceInput() || this._defaultAppearance() || 'message';
   });
   private readonly _defaultAppearance = signal<ErrorStyleType | undefined>(undefined);
+
+  /**
+   * Whether the inverse set of styles, for use on a dark background, is applied.
+   * When not set, it follows the surface the error is placed on (see `nxSurface`).
+   */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'inverse',
+  });
+
+  private readonly _surface = injectSurface();
+
+  /**
+   * Resolved inverse: an explicit input wins, then the surface the component sits on.
+   * Deliberately the same condition as `nx-status-icon`, so the projected icon and the
+   * error text never disagree.
+   */
+  readonly inverse = computed(() => this.inverseInput() ?? this._surface().surface === 'attention');
 
   private readonly _destroyed = new Subject<void>();
 

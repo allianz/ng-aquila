@@ -79,6 +79,8 @@ describe('NxRadioComponent', () => {
         RadioGroupValidation,
         RadioGroupValidationTouched,
         RadioA11y,
+        RadioGroupWithHint,
+        RadioGroupWithBoundDescribedBy,
       ],
     }).compileComponents();
   }));
@@ -669,6 +671,54 @@ describe('NxRadioComponent', () => {
       expect(radioElements.item(1).getAttribute('aria-label')).toBeFalsy();
       expect(radioElements.item(1).getAttribute('aria-labelledby')).toBeFalsy();
     });
+
+    it('does not describe the group when the label has no hint', () => {
+      createTestComponent(RadioGroupTest);
+      const groupEl = fixture.nativeElement.querySelector('nx-radio-group') as HTMLElement;
+
+      expect(groupEl.hasAttribute('aria-describedby')).toBe(false);
+    });
+
+    it('describes the group with the label hint', () => {
+      createTestComponent(RadioGroupWithHint);
+      const groupEl = fixture.nativeElement.querySelector('nx-radio-group') as HTMLElement;
+      const hintId = fixture.nativeElement.querySelector('.nx-label__hint')?.id;
+
+      expect(hintId).toBe('prefs-label-hint');
+      expect(groupEl.getAttribute('aria-describedby')).toBe(hintId);
+    });
+
+    it('leaves the bound ariaDescribedBy on the radio inputs untouched by the group hint', () => {
+      createTestComponent(RadioGroupWithBoundDescribedBy);
+      const groupEl = fixture.nativeElement.querySelector('nx-radio-group') as HTMLElement;
+
+      expect(groupEl.getAttribute('aria-describedby')).toBe('prefs-label-hint');
+      expect(radioElements.item(0).getAttribute('aria-describedby')).toBe('bound-desc');
+    });
+
+    it('drops the hint reference again when the hint is removed', () => {
+      createTestComponent(RadioGroupWithBoundDescribedBy);
+      const instance = fixture.componentInstance as RadioGroupWithBoundDescribedBy;
+      const groupEl = fixture.nativeElement.querySelector('nx-radio-group') as HTMLElement;
+
+      instance.hint = undefined;
+      fixture.detectChanges();
+
+      expect(groupEl.hasAttribute('aria-describedby')).toBe(false);
+    });
+
+    it('picks up a label that is only projected later', () => {
+      createTestComponent(RadioGroupWithLateLabel);
+      const instance = fixture.componentInstance as RadioGroupWithLateLabel;
+      const groupEl = fixture.nativeElement.querySelector('nx-radio-group') as HTMLElement;
+      expect(groupEl.hasAttribute('aria-describedby')).toBe(false);
+
+      instance.showLabel = true;
+      fixture.detectChanges();
+
+      expect(groupEl.getAttribute('aria-describedby')).toBe('prefs-label-hint');
+      expect(groupEl.getAttribute('aria-labelledby')).toBe('prefs-label');
+    });
   });
 });
 
@@ -941,6 +991,57 @@ class RadioGroupValidationTouched extends RadioTest {
 })
 class RadioGroupTest extends RadioTest {
   readonly = false;
+}
+
+@Component({
+  selector: 'test-radio-group-with-hint',
+  template: `
+    <nx-radio-group name="radioGroupWithHint">
+      <nx-label [id]="'prefs-label'" hint="Choose the one you use most">
+        What do you prefer?
+      </nx-label>
+      <nx-radio value="0">0</nx-radio>
+      <nx-radio value="1">1</nx-radio>
+    </nx-radio-group>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
+})
+class RadioGroupWithHint extends RadioTest {}
+
+@Component({
+  selector: 'test-radio-group-with-bound-described-by',
+  template: `
+    <nx-radio-group name="radioGroupWithBoundDescribedBy" [ariaDescribedBy]="describedBy">
+      <nx-label [id]="'prefs-label'" [hint]="hint">What do you prefer?</nx-label>
+      <nx-radio value="0">0</nx-radio>
+    </nx-radio-group>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
+})
+class RadioGroupWithBoundDescribedBy extends RadioTest {
+  describedBy = 'bound-desc';
+  hint: string | undefined = 'Choose the one you use most';
+}
+
+@Component({
+  selector: 'test-radio-group-with-late-label',
+  template: `
+    <nx-radio-group name="radioGroupWithLateLabel">
+      @if (showLabel) {
+        <nx-label [id]="'prefs-label'" hint="Choose the one you use most">
+          What do you prefer?
+        </nx-label>
+      }
+      <nx-radio value="0">0</nx-radio>
+    </nx-radio-group>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
+})
+class RadioGroupWithLateLabel extends RadioTest {
+  showLabel = false;
 }
 
 @Component({

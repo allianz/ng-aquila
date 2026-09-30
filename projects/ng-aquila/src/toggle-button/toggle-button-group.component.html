@@ -8,7 +8,7 @@ referenced by id instead of being owned children of the group. -->
   [class.nx-toggle-button-group__buttons--equal]="autoGrid() && columnSizing() === 'equal'"
   role="radiogroup"
   [attr.aria-labelledby]="_label()?.id || null"
-  [attr.aria-describedby]="(_errorState() && _errorIds()) || null"
+  [attr.aria-describedby]="_describedBy()"
   [attr.aria-invalid]="_errorState() || null"
   [attr.aria-required]="required() || null"
   [attr.aria-disabled]="disabled() || null"

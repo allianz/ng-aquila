@@ -88,6 +88,8 @@ describe('NxCheckboxGroupComponent', () => {
         CheckboxGroupOnPush,
         CheckboxGroupAriaLabelledBy,
         CheckboxGroupAriaLabelledByWithError,
+        CheckboxGroupWithHint,
+        CheckboxGroupWithBoundDescribedBy,
       ],
     }).compileComponents();
   }));
@@ -431,6 +433,58 @@ describe('NxCheckboxGroupComponent', () => {
 
       expect(ariaLabelledBy).toBe(`external-label ${labelId} ${errorId}`);
     }));
+
+    it('is not described by anything when the label has no hint', () => {
+      createTestComponent(BasicCheckboxGroup);
+      const groupEl = fixture.nativeElement.querySelector('nx-checkbox-group') as HTMLElement;
+
+      expect(groupEl.hasAttribute('aria-describedby')).toBe(false);
+    });
+
+    it('is described by the label hint', () => {
+      createTestComponent(CheckboxGroupWithHint);
+      const groupEl = fixture.nativeElement.querySelector('nx-checkbox-group') as HTMLElement;
+      const hintId = fixture.nativeElement.querySelector('.nx-label__hint')?.id;
+
+      expect(hintId).toBe('terms-label-hint');
+      expect(groupEl.getAttribute('aria-describedby')).toBe(hintId);
+    });
+
+    it('merges a bound ariaDescribedBy into the hint reference', () => {
+      createTestComponent(CheckboxGroupWithBoundDescribedBy);
+      const instance = fixture.componentInstance as CheckboxGroupWithBoundDescribedBy;
+      const groupEl = fixture.nativeElement.querySelector('nx-checkbox-group') as HTMLElement;
+
+      expect(groupEl.getAttribute('aria-describedby')).toBe('bound-desc terms-label-hint');
+
+      instance.describedBy = 'other-desc';
+      fixture.detectChanges();
+
+      expect(groupEl.getAttribute('aria-describedby')).toBe('other-desc terms-label-hint');
+    });
+
+    it('drops the hint reference again when the hint is removed', () => {
+      createTestComponent(CheckboxGroupWithBoundDescribedBy);
+      const instance = fixture.componentInstance as CheckboxGroupWithBoundDescribedBy;
+      const groupEl = fixture.nativeElement.querySelector('nx-checkbox-group') as HTMLElement;
+
+      instance.hint = undefined;
+      fixture.detectChanges();
+
+      expect(groupEl.getAttribute('aria-describedby')).toBe('bound-desc');
+    });
+
+    it('picks up a label that is only projected later', () => {
+      createTestComponent(CheckboxGroupWithLateLabel);
+      const instance = fixture.componentInstance as CheckboxGroupWithLateLabel;
+      const groupEl = fixture.nativeElement.querySelector('nx-checkbox-group') as HTMLElement;
+      expect(groupEl.hasAttribute('aria-describedby')).toBe(false);
+
+      instance.showLabel = true;
+      fixture.detectChanges();
+
+      expect(groupEl.getAttribute('aria-describedby')).toBe('terms-label-hint');
+    });
   });
 });
 
@@ -448,6 +502,53 @@ describe('NxCheckboxGroupComponent', () => {
   imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
 })
 class BasicCheckboxGroup extends CheckboxGroupTest {}
+
+@Component({
+  selector: 'test-checkbox-group-with-hint',
+  template: `
+    <nx-checkbox-group name="terms">
+      <nx-label [id]="'terms-label'" hint="Pick at least one">Accept terms</nx-label>
+      <nx-checkbox>Term 1</nx-checkbox>
+      <nx-checkbox>Term 2</nx-checkbox>
+    </nx-checkbox-group>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
+})
+class CheckboxGroupWithHint extends CheckboxGroupTest {}
+
+@Component({
+  selector: 'test-checkbox-group-with-bound-described-by',
+  template: `
+    <nx-checkbox-group name="terms" [ariaDescribedBy]="describedBy">
+      <nx-label [id]="'terms-label'" [hint]="hint">Accept terms</nx-label>
+      <nx-checkbox>Term 1</nx-checkbox>
+    </nx-checkbox-group>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
+})
+class CheckboxGroupWithBoundDescribedBy extends CheckboxGroupTest {
+  describedBy = 'bound-desc';
+  hint: string | undefined = 'Pick at least one';
+}
+
+@Component({
+  selector: 'test-checkbox-group-with-late-label',
+  template: `
+    <nx-checkbox-group name="terms">
+      @if (showLabel) {
+        <nx-label [id]="'terms-label'" hint="Pick at least one">Accept terms</nx-label>
+      }
+      <nx-checkbox>Term 1</nx-checkbox>
+    </nx-checkbox-group>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
+})
+class CheckboxGroupWithLateLabel extends CheckboxGroupTest {
+  showLabel = false;
+}
 
 @Component({
   selector: 'test-configurable-checkbox-group',

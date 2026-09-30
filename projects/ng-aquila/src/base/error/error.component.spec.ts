@@ -1,4 +1,5 @@
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
+import { NxSurface, NxSurfaceType } from '@allianz/ng-aquila/surface';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -29,6 +30,8 @@ abstract class ErrorTest {
   errorInstance!: NxErrorComponent;
   id!: string;
   appearance!: ErrorStyleType;
+  inverse?: boolean;
+  readonly surface = signal<NxSurfaceType>('attention');
 }
 
 describe('NxErrorComponent', () => {
@@ -92,6 +95,17 @@ describe('NxErrorComponent', () => {
 
       expect(errorInstance.id).toBe('customID');
       expect(content.id).toBe('customID');
+    });
+
+    it('applies the inverse host class when inverse is set', () => {
+      createTestComponent(ConfigurableError);
+      const errorEl = fixture.nativeElement.querySelector('nx-error') as HTMLElement;
+      expect(errorEl).not.toHaveClass('nx-error--inverse');
+
+      testInstance.inverse = true;
+      fixture.detectChanges();
+
+      expect(errorEl).toHaveClass('nx-error--inverse');
     });
   });
 
@@ -164,6 +178,58 @@ describe('NxErrorComponent', () => {
       expect(errorInstance.appearance()).toBe('text');
     });
   });
+
+  describe('on a surface', () => {
+    function statusIcon(): HTMLElement {
+      return fixture.nativeElement.querySelector('nx-status-icon');
+    }
+
+    function errorEl(): HTMLElement {
+      return fixture.nativeElement.querySelector('nx-error');
+    }
+
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NxErrorModule, SurfaceError],
+        providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }],
+      }).compileComponents();
+    }));
+
+    it('follows the attention surface while inverse is unset', () => {
+      createTestComponent(SurfaceError);
+
+      expect(errorEl()).toHaveClass('nx-error--inverse');
+      expect(statusIcon()).toHaveClass('nx-status-icon--inverse');
+    });
+
+    it('does not invert on the default surface', () => {
+      createTestComponent(SurfaceError);
+      testInstance.surface.set('default');
+      fixture.detectChanges();
+
+      expect(errorEl()).not.toHaveClass('nx-error--inverse');
+      expect(statusIcon()).not.toHaveClass('nx-status-icon--inverse');
+    });
+
+    it('inverts on the default surface when inverse is set', () => {
+      createTestComponent(SurfaceError);
+      testInstance.surface.set('default');
+      testInstance.inverse = true;
+      fixture.detectChanges();
+
+      expect(errorEl()).toHaveClass('nx-error--inverse');
+      expect(statusIcon()).toHaveClass('nx-status-icon--inverse');
+    });
+
+    it('stays non-inverse on the attention surface when inverse is explicitly false', () => {
+      createTestComponent(SurfaceError);
+      testInstance.inverse = false;
+      fixture.detectChanges();
+
+      expect(errorEl()).not.toHaveClass('nx-error--inverse');
+      expect(statusIcon()).not.toHaveClass('nx-status-icon--inverse');
+    });
+  });
 });
 
 @Component({
@@ -176,10 +242,20 @@ class BasicError extends ErrorTest {}
 
 @Component({
   selector: 'test-configurable-error',
-  template: `<nx-error [appearance]="appearance" [id]="id"
+  template: `<nx-error [appearance]="appearance" [id]="id" [inverse]="inverse"
     >I am an error message with an icon.</nx-error
   >`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxErrorModule],
 })
 class ConfigurableError extends ErrorTest {}
+
+@Component({
+  selector: 'test-surface-error',
+  template: `<div [nxSurface]="surface()">
+    <nx-error [inverse]="inverse">I am an error message with an icon.</nx-error>
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxErrorModule, NxSurface],
+})
+class SurfaceError extends ErrorTest {}

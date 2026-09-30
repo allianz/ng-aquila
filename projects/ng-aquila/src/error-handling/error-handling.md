@@ -27,6 +27,12 @@ The module is auto-imported when you use the [formfield](./documentation/formfie
 
 <!-- example(error) -->
 
+### Inverse
+
+The inverse version of the error can be used on a dark background. Set it via the `inverse` property.
+
+<!-- example(error-inverse) -->
+
 ### Custom error state
 
 Our form control components use `ErrorStateMatcher` for determining when error messages should be shown. Using the `ErrorStateMatcher`, `nx-errors` are automatically managed by the component, you don't need to handle showing and hiding them manually in the markup anymore (except for when you have multiple errors on one input).

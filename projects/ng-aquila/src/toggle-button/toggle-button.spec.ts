@@ -31,7 +31,7 @@ import {
       [columnSizing]="columnSizing()"
       [autoGrid]="autoGrid()"
     >
-      <nx-label>Payment interval</nx-label>
+      <nx-label [hint]="hint()">Payment interval</nx-label>
       <nx-toggle-button value="monthly">Monthly</nx-toggle-button>
       <nx-toggle-button value="quarterly" [disabled]="secondDisabled()">Quarterly</nx-toggle-button>
       <nx-toggle-button value="yearly" [readonly]="thirdReadonly()">Yearly</nx-toggle-button>
@@ -49,6 +49,7 @@ class BasicToggleButtons {
   maxColumns = signal<number | null>(null);
   columnSizing = signal<NxToggleButtonColumnSizing>('content');
   autoGrid = signal(true);
+  hint = signal<string | undefined>(undefined);
 }
 
 @Component({
@@ -436,6 +437,20 @@ describe('NxToggleButtonComponent', () => {
 
       expect(radiogroupElement(fixture).getAttribute('role')).toBe('radiogroup');
       expect(radiogroupElement(fixture).getAttribute('aria-labelledby')).toBe(label.id);
+    });
+
+    it('describes the radio group with the label hint', () => {
+      const fixture = TestBed.createComponent(BasicToggleButtons);
+      fixture.detectChanges();
+
+      expect(radiogroupElement(fixture).getAttribute('aria-describedby')).toBeNull();
+
+      fixture.componentInstance.hint.set('Billed in advance');
+      fixture.detectChanges();
+
+      const hintId = fixture.nativeElement.querySelector('.nx-label__hint').id;
+
+      expect(radiogroupElement(fixture).getAttribute('aria-describedby')).toBe(hintId);
     });
 
     it('marks a readonly group as readonly, not as disabled', () => {

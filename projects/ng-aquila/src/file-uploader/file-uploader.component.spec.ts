@@ -930,6 +930,16 @@ describe('NxFileUploaderComponent', () => {
       expect(ariaDescribedBy).toContain(labelElm.id);
     }));
 
+    it('should add aria described by for the label hint', fakeAsync(() => {
+      createTestComponent(ReactiveFileUpload);
+      tick();
+      fixture.detectChanges();
+
+      const labelHintId = fixture.nativeElement.querySelector('.nx-label__hint').id;
+
+      expect(buttonElm.attributes.getNamedItem('aria-describedby')?.value).toContain(labelHintId);
+    }));
+
     it('should add aria described by set by input', fakeAsync(() => {
       createTestComponent(ReactiveFileUpload);
       tick();
@@ -1054,7 +1064,7 @@ class IntlOverrideFileUpload extends FileUploaderTest {
         [strictAcceptValidation]="strictAcceptValidation"
         ariaDescribedBy="additional-test-id"
       >
-        <nx-label size="small">Required file to upload</nx-label>
+        <nx-label size="small" hint="Only PDF files">Required file to upload</nx-label>
         <span nxFileUploadHint>maximum Filesize 2MB</span>
 
         <button nxButton="primary" type="button" nxFileUploadButton>

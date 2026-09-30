@@ -102,6 +102,13 @@ export class NxToggleButtonGroupComponent
 
   readonly _errorState = signal(false);
 
+  protected readonly _describedBy = computed(() => {
+    const ids = [this._errorState() ? this._errorIds() : null, this._label()?.hintId()].filter(
+      Boolean,
+    );
+    return ids.length ? ids.join(' ') : null;
+  });
+
   private readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly _errorStateMatcher = inject(ErrorStateMatcher);
   private readonly _ngControl = inject(NgControl, { optional: true, self: true });

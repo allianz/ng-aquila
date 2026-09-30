@@ -15,6 +15,7 @@ import {
   Component,
   computed,
   ContentChild,
+  contentChild,
   ContentChildren,
   DoCheck,
   ElementRef,
@@ -85,6 +86,7 @@ export type NxCheckboxLabelSize = 'small' | 'large';
     '[attr.disabled]': 'disabled || null',
     '[attr.role]': '"group"',
     '[attr.aria-labelledby]': 'getLabelledby()',
+    '[attr.aria-describedby]': '_describedBy()',
     '(focusout)': '_onFocusOut($event)',
   },
   imports: [],
@@ -101,7 +103,7 @@ export class NxCheckboxGroupComponent
   @ContentChildren(forwardRef(() => NxCheckboxComponent), { descendants: true })
   _checkboxes!: QueryList<NxCheckboxComponent>;
 
-  @ContentChild(forwardRef(() => NxLabelComponent)) _label!: NxLabelComponent;
+  readonly _label = contentChild(NxLabelComponent, { descendants: true });
 
   @ContentChild(NxErrorComponent) error!: NxErrorComponent;
 
@@ -122,6 +124,14 @@ export class NxCheckboxGroupComponent
   /** Sets additional aria-labelledby IDs to be merged with the auto-generated label reference on the group element. */
   readonly ariaLabelledBy = input<string | null>(null);
 
+  /** Sets additional aria-describedby IDs to be merged with the label hint reference on the group element. */
+  readonly ariaDescribedBy = input<string | null>(null);
+
+  protected readonly _describedBy = computed(() => {
+    const ids = [this.ariaDescribedBy(), this._label()?.hintId()].filter(Boolean);
+    return ids.length ? ids.join(' ') : null;
+  });
+
   /** Sets the name of the checkboxes inside the nx-checkbox-group. */
   @Input() set name(value: string) {
     this._name = value;
@@ -135,8 +145,9 @@ export class NxCheckboxGroupComponent
   /** Disables all checkboxes inside the nx-checkbox-group. */
   @Input() set disabled(value: BooleanInput) {
     this._disabled = coerceBooleanProperty(value);
-    if (this._label) {
-      this._label.disabled = this._disabled;
+    const label = this._label();
+    if (label) {
+      label.disabled = this._disabled;
     }
     this._stateChanges.next();
   }
@@ -304,9 +315,10 @@ export class NxCheckboxGroupComponent
   }
 
   getLabelledby() {
-    const ids = [this.ariaLabelledBy(), this._label?.id, this.error?.id].filter(Boolean);
+    const ids = [this.ariaLabelledBy(), this._label()?.id, this.error?.id].filter(Boolean);
     return ids.length ? ids.join(' ') : null;
   }
+
   _onFocusOut(event: FocusEvent) {
     if (!this._elementRef.nativeElement.contains(event.relatedTarget as Node)) {
       this._onTouched();

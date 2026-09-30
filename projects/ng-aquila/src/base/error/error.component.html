@@ -1,7 +1,12 @@
 <!-- b2b (expert) error notification -->
 @if (appearance() === 'text') {
   @if (showIcon) {
-    <nx-status-icon type="error" class="nx-error__icon" aria-hidden="true"></nx-status-icon>
+    <nx-status-icon
+      [inverse]="inverse()"
+      type="error"
+      class="nx-error__icon"
+      aria-hidden="true"
+    ></nx-status-icon>
   }
   <div class="nx-error__content-wrapper">
     <div class="nx-error__content" [attr.id]="id">

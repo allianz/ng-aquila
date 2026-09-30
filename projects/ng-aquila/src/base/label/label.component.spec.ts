@@ -26,6 +26,10 @@ abstract class LabelTest {
   @ViewChild(NxLabelComponent)
   labelInstance!: NxLabelComponent;
   size!: LABEL_SIZE_TYPE;
+  inverse!: boolean;
+  negative!: boolean;
+  optionalLabel!: string;
+  hint!: string;
 }
 
 describe('NxLabelComponent', () => {
@@ -91,6 +95,105 @@ describe('NxLabelComponent', () => {
       expect(labelInstance.size).toBe('large');
       expect(labelElement).not.toHaveClass('nx-label--small');
       expect(labelElement).toHaveClass('nx-label--large');
+    });
+  });
+
+  describe('inverse', () => {
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NxLabelModule, ConfigurableLabel],
+      }).compileComponents();
+    }));
+
+    it('applies the negative host class when inverse is set', () => {
+      createTestComponent(ConfigurableLabel);
+      expect(labelElement).not.toHaveClass('nx-label--negative');
+
+      testInstance.inverse = true;
+      fixture.detectChanges();
+
+      expect(labelElement).toHaveClass('nx-label--negative');
+    });
+
+    it('applies the negative host class when the deprecated negative input is set', () => {
+      createTestComponent(ConfigurableLabel);
+      testInstance.negative = true;
+      fixture.detectChanges();
+
+      expect(labelElement).toHaveClass('nx-label--negative');
+      expect(labelInstance.inverse()).toBe(true);
+    });
+  });
+
+  describe('optional text', () => {
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NxLabelModule, ConfigurableLabel],
+      }).compileComponents();
+    }));
+
+    it('does not render optional text when unset', () => {
+      createTestComponent(ConfigurableLabel);
+      expect(labelElement.querySelector('.nx-label__optional')).toBeNull();
+    });
+
+    it('renders the optional text', () => {
+      createTestComponent(ConfigurableLabel);
+      testInstance.optionalLabel = 'optional';
+      fixture.detectChanges();
+
+      const optionalEl = labelElement.querySelector('.nx-label__optional');
+      expect(optionalEl?.textContent).toBe('optional');
+    });
+  });
+
+  describe('hint', () => {
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NxLabelModule, ConfigurableLabel],
+      }).compileComponents();
+    }));
+
+    it('does not render a hint when unset', () => {
+      createTestComponent(ConfigurableLabel);
+      expect(labelElement.querySelector('.nx-label__hint')).toBeNull();
+    });
+
+    it('renders the hint', () => {
+      createTestComponent(ConfigurableLabel);
+      testInstance.hint = 'This is a hint';
+      fixture.detectChanges();
+
+      const hintEl = labelElement.querySelector('.nx-label__hint');
+      expect(hintEl?.textContent).toBe('This is a hint');
+    });
+
+    it('exposes no hint id when there is no hint', () => {
+      createTestComponent(ConfigurableLabel);
+      expect(labelInstance.hintId()).toBeNull();
+    });
+
+    it('gives the hint an id derived from the label id', () => {
+      createTestComponent(ConfigurableLabel);
+      testInstance.hint = 'This is a hint';
+      fixture.detectChanges();
+
+      const hintEl = labelElement.querySelector('.nx-label__hint')!;
+      expect(labelInstance.hintId()).toBe(`${labelInstance.id}-hint`);
+      expect(hintEl.id).toBe(labelInstance.hintId());
+    });
+
+    it('keeps the hint id in sync when the label id is reassigned', () => {
+      createTestComponent(ConfigurableLabel);
+      testInstance.hint = 'This is a hint';
+      fixture.detectChanges();
+
+      // Mirrors nx-file-uploader, which overwrites the generated id after content init.
+      labelInstance.id = 'custom-label';
+      fixture.detectChanges();
+
+      expect(labelInstance.hintId()).toBe('custom-label-hint');
+      expect(labelElement.querySelector('.nx-label__hint')!.id).toBe('custom-label-hint');
     });
   });
 
@@ -176,7 +279,14 @@ class BasicLabel extends LabelTest {}
 
 @Component({
   selector: 'test-configurable-label',
-  template: `<nx-label [size]="size">I am a label</nx-label>`,
+  template: `<nx-label
+    [size]="size"
+    [inverse]="inverse"
+    [negative]="negative"
+    [optionalLabel]="optionalLabel"
+    [hint]="hint"
+    >I am a label</nx-label
+  >`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxLabelModule],
 })

@@ -10,20 +10,65 @@
 
   &.nx-label--large {
     @include type-style(base-label-large);
+
+    .nx-label__optional {
+      font-weight: v(base-label-large-optional-font-weight);
+    }
+
+    .nx-label__hint {
+      font-weight: v(base-label-large-hint-font-weight);
+    }
   }
 
   &.nx-label--negative {
     color: v(negative);
+
+    .nx-label__hint {
+      color: v(base-label-hint-inverse-color);
+    }
   }
 
-  &[disabled='true'] label {
-    cursor: not-allowed;
-    color: v(base-label-disabled-color);
+  &[disabled='true'] {
+    label {
+      cursor: not-allowed;
+      color: v(base-label-disabled-color);
+    }
+
+    .nx-label__hint {
+      color: v(base-label-hint-disabled-color);
+    }
   }
 
-  &[disabled='true'].nx-label--negative label {
-    color: v(base-label-negative-disabled-color);
+  &[disabled='true'].nx-label--negative {
+    label {
+      color: v(base-label-negative-disabled-color);
+    }
+
+    .nx-label__hint {
+      color: v(base-label-hint-inverse-disabled-color);
+    }
   }
+}
+
+.nx-label__optional {
+  margin-inline-start: v(base-label-info-icon-gap);
+  font-weight: v(base-label-optional-font-weight);
+
+  &::before {
+    content: '(';
+  }
+
+  &::after {
+    content: ')';
+  }
+}
+
+.nx-label__hint {
+  @include type-style(base-label-hint);
+  // Own block + margin rather than a gap on :host, which consumers override the display of.
+  display: block;
+  margin-top: v(base-label-hint-gap);
+  color: v(base-label-hint-color);
 }
 
 .nx-label__row {

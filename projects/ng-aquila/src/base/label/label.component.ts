@@ -1,14 +1,18 @@
-import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { IdGenerationService, nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   Inject,
   inject,
   InjectionToken,
   Input,
+  input,
   Optional,
+  signal,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -31,7 +35,7 @@ export const LABEL_DEFAULT_OPTIONS = new InjectionToken<LabelDefaultOptions>(
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[attr.disabled]': 'disabled',
-    '[class.nx-label--negative]': 'negative',
+    '[class.nx-label--negative]': 'inverse()',
     '[class.nx-label--large]': 'size === "large"',
     '[class.nx-label--small]': 'size === "small"',
   },
@@ -50,24 +54,66 @@ export class NxLabelComponent {
   }
   private _disabled = false;
 
-  /** Sets the label to disabled */
+  /**
+   * Whether the inverse set of styles, for use on a dark background, is applied.
+   * When not set, it follows the surface the label is placed on (see `nxSurface`).
+   */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    alias: 'inverse',
+    transform: nxOptionalBooleanAttribute,
+  });
+
+  private readonly _surface = injectSurface();
+
+  /**
+   * Whether the style for a dark background is used.
+   * @deprecated Use `inverse` instead. Kept for backwards compatibility.
+   */
   @Input() set negative(value: BooleanInput) {
-    this._negative = coerceBooleanProperty(value);
+    this._negative.set(coerceBooleanProperty(value));
     this._stateChanges.next();
   }
   get negative(): boolean {
-    return this._negative;
+    return this._negative();
   }
-  private _negative = false;
+  private readonly _negative = signal(false);
+
+  /**
+   * Whether the inverse set of styles is applied.
+   *
+   * An explicit `inverse` wins, then the legacy `negative` input, then the surface the
+   * label sits on — the same order as `nx-error`, so a label and the error under it
+   * never disagree.
+   */
+  readonly inverse = computed(
+    () => this.inverseInput() ?? (this._negative() || this._surface().surface === 'attention'),
+  );
+
+  /**
+   * Optional text shown after the label, e.g. to indicate that the associated form
+   * control is not mandatory. Rendered wrapped in parentheses; pass the text without them.
+   */
+  readonly optionalLabel = input<string | undefined>(undefined);
+
+  /** Hint text shown below the label. Automatically adjusts to the `inverse` and `disabled` states. */
+  readonly hint = input<string | undefined>(undefined);
 
   /** Sets the Id of the label */
   @Input() set id(value: string) {
-    this._id = value;
+    this._id.set(value);
   }
   get id(): string {
-    return this._id;
+    return this._id();
   }
-  private _id = inject(IdGenerationService).nextId('nx-label');
+  private readonly _id = signal(inject(IdGenerationService).nextId('nx-label'));
+
+  /**
+   * Id of the rendered hint, or `null` when there is no hint.
+   *
+   * The label sits next to the control it describes rather than owning it, so the control
+   * has to pick this up itself and merge it into its own `aria-describedby`.
+   */
+  readonly hintId = computed(() => (this.hint() && this._id() ? `${this._id()}-hint` : null));
 
   /**
    * **Expert option**
