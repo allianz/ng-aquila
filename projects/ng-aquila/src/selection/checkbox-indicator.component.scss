@@ -35,6 +35,135 @@
     z-index: 0;
   }
 
+  // Inverse swaps the tokens the rules below read, not the rules themselves. It stays above
+  // `.on-selection` so an explicit scheme still wins the generic properties; the combination
+  // is handled by `.inverse.on-selection`, which only redirects that scheme's own tokens.
+  &.inverse {
+    --checkbox-background-color: var(--checkbox-inverse-background-color);
+    --checkbox-border-color: var(--checkbox-inverse-border-color);
+    --checkbox-icon-color: var(--checkbox-inverse-icon-color);
+    --checkbox-selected-background-color: var(--checkbox-inverse-selected-background-color);
+    --checkbox-selected-border-color: var(--checkbox-inverse-selected-border-color);
+
+    --checkbox-hover-border-color: var(--checkbox-inverse-hover-border-color);
+    --checkbox-hover-icon-color: var(--checkbox-inverse-hover-icon-color);
+    --checkbox-unselected-hover-background-color: var(
+      --checkbox-inverse-unselected-hover-background-color
+    );
+    --checkbox-selected-hover-background-color: var(
+      --checkbox-inverse-selected-hover-background-color
+    );
+    --checkbox-active-border-color: var(--checkbox-inverse-active-border-color);
+    --checkbox-active-icon-color: var(--checkbox-inverse-active-icon-color);
+    --checkbox-unselected-active-background-color: var(
+      --checkbox-inverse-unselected-active-background-color
+    );
+    --checkbox-active-background-color: var(--checkbox-inverse-active-background-color);
+
+    --checkbox-disabled-background-color: var(--checkbox-inverse-disabled-background-color);
+    --checkbox-disabled-border-color: var(--checkbox-inverse-disabled-border-color);
+    --checkbox-disabled-icon-color: var(--checkbox-inverse-disabled-icon-color);
+    --checkbox-disabled-selected-background-color: var(
+      --checkbox-inverse-disabled-selected-background-color
+    );
+    --checkbox-disabled-selected-border-color: var(
+      --checkbox-inverse-disabled-selected-border-color
+    );
+
+    --checkbox-readonly-background-color: var(--checkbox-inverse-readonly-background-color);
+    --checkbox-readonly-border-color: var(--checkbox-inverse-readonly-border-color);
+    --checkbox-readonly-icon-color: var(--checkbox-inverse-readonly-icon-color);
+    --checkbox-readonly-selected-background-color: var(
+      --checkbox-inverse-readonly-selected-background-color
+    );
+    --checkbox-readonly-selected-border-color: var(
+      --checkbox-inverse-readonly-selected-border-color
+    );
+
+    &.on-selection {
+      --checkbox-on-selection-background-color: var(
+        --checkbox-on-selection-inverse-background-color
+      );
+      --checkbox-on-selection-border-color: var(--checkbox-on-selection-inverse-border-color);
+      --checkbox-on-selection-icon-color: var(--checkbox-on-selection-inverse-icon-color);
+      --checkbox-on-selection-selected-background-color: var(
+        --checkbox-on-selection-inverse-selected-background-color
+      );
+      --checkbox-on-selection-selected-border-color: var(
+        --checkbox-on-selection-inverse-selected-border-color
+      );
+
+      --checkbox-on-selection-hover-border-color: var(
+        --checkbox-on-selection-inverse-hover-border-color
+      );
+      --checkbox-on-selection-hover-background-color: var(
+        --checkbox-on-selection-inverse-hover-background-color
+      );
+      --checkbox-on-selection-hover-icon-color: var(
+        --checkbox-on-selection-inverse-hover-icon-color
+      );
+      --checkbox-on-selection-active-border-color: var(
+        --checkbox-on-selection-inverse-active-border-color
+      );
+      --checkbox-on-selection-active-background-color: var(
+        --checkbox-on-selection-inverse-active-background-color
+      );
+      --checkbox-on-selection-active-icon-color: var(
+        --checkbox-on-selection-inverse-active-icon-color
+      );
+
+      --checkbox-on-selection-disabled-background-color: var(
+        --checkbox-on-selection-inverse-disabled-background-color
+      );
+      --checkbox-on-selection-disabled-border-color: var(
+        --checkbox-on-selection-inverse-disabled-border-color
+      );
+      --checkbox-on-selection-disabled-selected-background-color: var(
+        --checkbox-on-selection-inverse-disabled-selected-background-color
+      );
+      --checkbox-on-selection-disabled-selected-border-color: var(
+        --checkbox-on-selection-inverse-disabled-selected-border-color
+      );
+      --checkbox-on-selection-disabled-selected-icon-color: var(
+        --checkbox-on-selection-inverse-disabled-selected-icon-color
+      );
+
+      --checkbox-on-selection-readonly-background-color: var(
+        --checkbox-on-selection-inverse-readonly-background-color
+      );
+      --checkbox-on-selection-readonly-border-color: var(
+        --checkbox-on-selection-inverse-readonly-border-color
+      );
+      --checkbox-on-selection-readonly-selected-background-color: var(
+        --checkbox-on-selection-inverse-readonly-selected-background-color
+      );
+      --checkbox-on-selection-readonly-selected-border-color: var(
+        --checkbox-on-selection-inverse-readonly-selected-border-color
+      );
+      --checkbox-on-selection-readonly-selected-icon-color: var(
+        --checkbox-on-selection-inverse-readonly-selected-icon-color
+      );
+
+      // The plain danger red is the color the error selection surface itself is painted with, so
+      // filling the box with it would make the checked state invisible. Fill with the scheme's
+      // own selected ink and let the tick carry the critical color instead.
+      &.critical:has(.checked) {
+        --checkbox-icon-color: #{v(checkbox-on-selection-inverse-critical-icon-color)};
+
+        .nx-checkbox__control {
+          background-color: var(--checkbox-on-selection-inverse-critical-selected-background-color);
+          border-color: var(--checkbox-on-selection-inverse-critical-selected-border-color);
+
+          // Re-apply --checkbox-icon-color (the critical danger ink) onto the icon's own host so
+          // it beats the selected-background color it would otherwise inherit from the control.
+          nx-icon {
+            color: var(--checkbox-icon-color);
+          }
+        }
+      }
+    }
+  }
+
   &.on-selection {
     --checkbox-background-color: var(--checkbox-on-selection-background-color);
     --checkbox-border-color: var(--checkbox-on-selection-border-color);

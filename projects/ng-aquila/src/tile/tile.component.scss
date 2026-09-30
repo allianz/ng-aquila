@@ -157,14 +157,17 @@ $tile-gray-selected-color: #fff;
     background: var(--tile-disabled-background-color);
     color: var(--tile-disabled-text-color);
     border-color: var(--tile-disabled-border-color);
+    --tile-label-color: var(--tile-disabled-text-color);
 
     .nx-tile__hint {
       color: var(--tile-disabled-hint-color);
     }
 
     &.is-selected {
+      --tile-selected-color: var(--tile-disabled-selected-text-color);
+      --tile-selected-icon-color: var(--tile-disabled-selected-text-color);
+
       background: var(--tile-disabled-selected-background-color);
-      color: var(--tile-disabled-selected-text-color);
       border-color: var(--tile-disabled-selected-border-color);
 
       .nx-tile__hint {
@@ -178,12 +181,15 @@ $tile-gray-selected-color: #fff;
     background: var(--tile-readonly-background-color);
     color: var(--tile-readonly-text-color);
     border-color: var(--tile-readonly-border-color);
+    --tile-label-color: var(--tile-readonly-text-color);
     .nx-tile__hint {
       color: var(--tile-readonly-hint-color);
     }
     &.is-selected {
+      --tile-selected-color: var(--tile-readonly-selected-text-color);
+      --tile-selected-icon-color: var(--tile-readonly-selected-text-color);
+
       background: var(--tile-readonly-selected-background-color);
-      color: var(--tile-readonly-selected-text-color);
       border-color: var(--tile-readonly-selected-border-color);
 
       .nx-tile__hint {
@@ -214,6 +220,69 @@ $tile-gray-selected-color: #fff;
         background: var(--tile-error-selected-active-background-color);
       }
     }
+  }
+
+  // Inverse colors, for a tile on a dark surface. Only the token indirection is swapped here, so
+  // every state rule above keeps working unchanged. Each property has to be listed: a custom
+  // property declared at theme level resolves its own `var()` references there, so remapping
+  // `--tile-text-color` alone would not reach `--tile-hover-text-color`.
+  &.is-inverse {
+    --tile-background-color: var(--tile-inverse-background-color);
+    --tile-border-color: var(--tile-inverse-border-color);
+    --tile-text-color: var(--tile-inverse-text-color);
+    --tile-label-color: var(--tile-inverse-hint-color);
+    --tile-hint-color: var(--tile-inverse-hint-color);
+
+    --tile-hover-background-color: var(--tile-inverse-hover-background-color);
+    --tile-hover-border-color: var(--tile-inverse-hover-border-color);
+    --tile-hover-text-color: var(--tile-inverse-hover-text-color);
+    --tile-hover-hint-color: var(--tile-inverse-hover-hint-color);
+
+    --tile-active-background-color: var(--tile-inverse-active-background-color);
+    --tile-active-border-color: var(--tile-inverse-active-border-color);
+    --tile-active-text-color: var(--tile-inverse-active-text-color);
+    --tile-active-hint-color: var(--tile-inverse-active-hint-color);
+
+    --tile-selected-color: var(--tile-inverse-selected-color);
+    --tile-selected-icon-color: var(--tile-inverse-selected-color);
+    --tile-selected-hint-color: var(--tile-inverse-selected-hint-color);
+    --tile-selected-border-color: var(--tile-inverse-selected-border-color);
+    --tile-selected-background-color: var(--tile-inverse-selected-background-color);
+    --tile-selected-hover-background-color: var(--tile-inverse-selected-hover-background-color);
+    --tile-selected-active-background-color: var(--tile-inverse-selected-active-background-color);
+
+    --tile-disabled-background-color: var(--tile-inverse-disabled-background-color);
+    --tile-disabled-text-color: var(--tile-inverse-disabled-text-color);
+    --tile-disabled-border-color: var(--tile-inverse-disabled-border-color);
+    --tile-disabled-hint-color: var(--tile-inverse-disabled-hint-color);
+    --tile-disabled-selected-background-color: var(
+      --tile-inverse-disabled-selected-background-color
+    );
+    --tile-disabled-selected-text-color: var(--tile-inverse-disabled-selected-text-color);
+    --tile-disabled-selected-border-color: var(--tile-inverse-disabled-selected-border-color);
+    --tile-disabled-selected-hint-color: var(--tile-inverse-disabled-selected-hint-color);
+
+    --tile-readonly-background-color: var(--tile-inverse-readonly-background-color);
+    --tile-readonly-text-color: var(--tile-inverse-readonly-text-color);
+    --tile-readonly-border-color: var(--tile-inverse-readonly-border-color);
+    --tile-readonly-hint-color: var(--tile-inverse-readonly-hint-color);
+    --tile-readonly-selected-background-color: var(
+      --tile-inverse-readonly-selected-background-color
+    );
+    --tile-readonly-selected-text-color: var(--tile-inverse-readonly-selected-text-color);
+    --tile-readonly-selected-border-color: var(--tile-inverse-readonly-selected-border-color);
+    --tile-readonly-selected-hint-color: var(--tile-inverse-readonly-selected-hint-color);
+
+    --tile-error-border-color: var(--tile-inverse-error-border-color);
+    --tile-error-hover-border-color: var(--tile-inverse-error-hover-border-color);
+    --tile-error-active-border-color: var(--tile-inverse-error-active-border-color);
+    --tile-error-selected-background-color: var(--tile-inverse-error-selected-background-color);
+    --tile-error-selected-hover-background-color: var(
+      --tile-inverse-error-selected-hover-background-color
+    );
+    --tile-error-selected-active-background-color: var(
+      --tile-inverse-error-selected-active-background-color
+    );
   }
 
   // Hidden input styling
@@ -252,16 +321,18 @@ $tile-gray-selected-color: #fff;
 
   .nx-tile__icon {
     font-size: var(--tile-icon-size);
-    color: var(--tile-icon-color);
+    nx-icon {
+      color: var(--tile-icon-color);
+    }
 
-    .is-disabled & {
+    .is-disabled & nx-icon {
       color: var(--tile-icon-disabled-color);
     }
   }
 
   .nx-tile__label {
     font-weight: var(--tile-label-font-weight);
-    color: var(--text-01);
+    color: var(--tile-label-color);
   }
 
   .nx-tile__hint {

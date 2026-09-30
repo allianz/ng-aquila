@@ -18,6 +18,7 @@ import { NxCheckboxIndicatorColorScheme } from './types';
     '[class.disabled]': 'disabled()',
     '[class.readonly]': 'readonly()',
     '[class.critical]': 'critical()',
+    '[class.inverse]': 'inverse()',
     '[class.on-selection]': 'colorScheme() === "on-selection"',
   },
   styleUrls: ['./checkbox-indicator.component.scss'],
@@ -30,5 +31,7 @@ export class NxCheckboxIndicatorComponent {
   readonly readonly = input(false, { transform: booleanAttribute });
   readonly critical = input(false, { transform: booleanAttribute });
   readonly indeterminate = input(false, { transform: booleanAttribute });
+  /** Whether the inverse set of styles, for use on a dark background, is applied. */
+  readonly inverse = input(false, { transform: booleanAttribute });
   readonly colorScheme = input<NxCheckboxIndicatorColorScheme>('default');
 }

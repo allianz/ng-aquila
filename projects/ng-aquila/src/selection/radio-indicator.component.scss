@@ -252,6 +252,57 @@
   }
 }
 
+// `:host.inverse` and `:host.on-selection` are siblings at equal specificity, so on a dark
+// selection surface the scheme would simply win and the inverse colors would be lost. Redirecting
+// the scheme's own tokens instead reaches its nested states too, whatever the rule order.
+:host.inverse.on-selection {
+  --radio-button-on-selection-border-color: #{v(radio-button-on-selection-inverse-border-color)};
+  --radio-button-on-selection-selected-border-color: #{v(
+      radio-button-on-selection-inverse-selected-border-color
+    )};
+  --radio-button-on-selection-selected-dot-color: #{v(
+      radio-button-on-selection-inverse-selected-dot-color
+    )};
+  --radio-button-on-selection-hover-border-color: #{v(
+      radio-button-on-selection-inverse-hover-border-color
+    )};
+  --radio-button-on-selection-active-border-color: #{v(
+      radio-button-on-selection-inverse-active-border-color
+    )};
+  --radio-button-on-selection-disabled-border-color: #{v(
+      radio-button-on-selection-inverse-disabled-border-color
+    )};
+  --radio-button-on-selection-disabled-selected-border-color: #{v(
+      radio-button-on-selection-inverse-disabled-selected-border-color
+    )};
+  --radio-button-on-selection-disabled-selected-dot-color: #{v(
+      radio-button-on-selection-inverse-disabled-selected-dot-color
+    )};
+  --radio-button-on-selection-readonly-border-color: #{v(
+      radio-button-on-selection-inverse-readonly-border-color
+    )};
+  --radio-button-on-selection-readonly-selected-border-color: #{v(
+      radio-button-on-selection-inverse-readonly-selected-border-color
+    )};
+  --radio-button-on-selection-readonly-selected-dot-color: #{v(
+      radio-button-on-selection-inverse-readonly-selected-dot-color
+    )};
+
+  // inverse critical state
+  &.critical {
+    --outer-circle-border-color: #{v(radio-button-inverse-critical-color)};
+    --nx-radio-hover-border: #{v(radio-button-inverse-critical-hover-color)};
+    --nx-radio-active-border: #{v(radio-button-inverse-critical-active-color)};
+    --nx-radio-hover-ring: #{v(radio-button-on-selection-inverse-critical-selected-border-color)};
+    --nx-radio-active-ring: #{v(radio-button-on-selection-inverse-critical-selected-border-color)};
+
+    &.checked {
+      --outer-circle-color: #{v(radio-button-on-selection-inverse-critical-selected-border-color)};
+      --outer-circle-border-color: transparent;
+    }
+  }
+}
+
 :host.on-accent-attention {
   --outer-circle-border-color: #{v(radio-button-on-accent-attention-color)};
   --dot-color: transparent;

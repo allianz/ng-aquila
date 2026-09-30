@@ -56,6 +56,22 @@ Tiles can be set to readonly or disabled states.
 
 <!-- example(tile-readonly-disabled) -->
 
+<div class="docs-hide-ndbx">
+
+### Inverse
+
+On a dark background the tiles switch to their inverse colors. Placing the group on an `attention` or
+`accent-attention` `nxSurface` does this without any input, and paints the matching background too.
+
+<!-- example(tile-group-negative) -->
+
+The error state inverts along with the rest. The projected `nx-error` does not, and keeps its regular critical color.
+
+<!-- example(tile-group-inverse-error) -->
+
+</div>
+
+
 ### Content projection
 In case custom content or formatting is desired, the tile label and hint support content projection. If provided, the `label` and `hint` inputs will take priority over projected content.
 

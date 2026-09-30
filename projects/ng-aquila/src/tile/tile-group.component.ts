@@ -1,5 +1,10 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
-import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import {
+  ErrorStateMatcher,
+  IdGenerationService,
+  nxOptionalBooleanAttribute,
+} from '@allianz/ng-aquila/utils';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -36,6 +41,7 @@ export type NxTileSelectionMode = 'single' | 'multi';
     '[class.is-multi-select]': "selectionMode() === 'multi'",
     '[class.is-single-select]': "selectionMode() === 'single'",
     '[class.auto-grid]': 'autoGrid()',
+    '[class.is-inverse]': 'inverse()',
     '[style.--nx-auto-grid-max-columns]': 'maxColumns()',
     role: 'group',
     '[attr.aria-labelledby]': '_labelledBy()',
@@ -75,6 +81,23 @@ export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDe
 
   /** Sets additional aria-labelledby IDs to be merged with the auto-detected label reference on the group element. */
   readonly ariaLabelledBy = input<string | null>(null);
+
+  /**
+   * Whether the tiles should use inverse (light-on-dark) colors. When not set, it
+   * follows the surface the group is placed on (see `nxSurface`).
+   */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'inverse',
+  });
+
+  private readonly _surface = injectSurface();
+
+  /** Whether the inverse set of styles is applied to the group and its tiles. */
+  readonly inverse = computed(() => {
+    const { surface } = this._surface();
+    return this.inverseInput() ?? (surface === 'attention' || surface === 'accent-attention');
+  });
 
   readonly errorIds = computed(() =>
     this.errors()

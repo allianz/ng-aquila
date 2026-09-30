@@ -43,6 +43,7 @@
       [disabled]="disabled()"
       [readonly]="readonly()"
       [critical]="errorState()"
+      [inverse]="tileGroup.inverse()"
       colorScheme="on-selection"
     ></nx-checkbox-indicator>
   } @else if (selectionMode() === 'single') {
@@ -53,6 +54,7 @@
       [disabled]="disabled()"
       [readonly]="readonly()"
       [critical]="errorState()"
+      [inverse]="tileGroup.inverse()"
       colorScheme="on-selection"
     ></nx-radio-indicator>
   }

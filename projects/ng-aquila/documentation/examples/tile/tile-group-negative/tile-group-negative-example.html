@@ -1,0 +1,51 @@
+<div nxSurface="attention" class="docs-tile-group-surface">
+  <nx-tile-group [(ngModel)]="selectionMode">
+    <nx-label [negative]="true">Selection mode</nx-label>
+    <nx-tile label="Single" value="single" />
+    <nx-tile label="Multi" value="multi" />
+  </nx-tile-group>
+  <br />
+  <nx-tile-group [selectionMode]="selectionMode()" [(value)]="toggleableValue">
+    <nx-label [negative]="true">Choose options</nx-label>
+    @for (tile of tiles(); track tile.value) {
+      <nx-tile
+        [label]="tile.label"
+        [hint]="tile.hint"
+        [icon]="tile.icon"
+        [value]="tile.value"
+      ></nx-tile>
+    }
+  </nx-tile-group>
+  <br />
+  <nx-tile-group
+    [selectionMode]="selectionMode()"
+    [(value)]="readonlySelectedValue"
+    [readonly]="true"
+  >
+    <nx-label [negative]="true">Readonly options</nx-label>
+    @for (tile of tiles(); track tile.value) {
+      <nx-tile
+        [label]="tile.label"
+        [hint]="tile.hint"
+        [icon]="tile.icon"
+        [value]="tile.value"
+      ></nx-tile>
+    }
+  </nx-tile-group>
+  <br />
+  <nx-tile-group
+    [selectionMode]="selectionMode()"
+    [(value)]="disabledSelectedValue"
+    [disabled]="true"
+  >
+    <nx-label [negative]="true">Disabled options</nx-label>
+    @for (tile of tiles(); track tile.value) {
+      <nx-tile
+        [label]="tile.label"
+        [hint]="tile.hint"
+        [icon]="tile.icon"
+        [value]="tile.value"
+      ></nx-tile>
+    }
+  </nx-tile-group>
+</div>

@@ -8,6 +8,7 @@ import { NxIconComponent, NxStatusIconComponent } from '@allianz/ng-aquila/icon'
 import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 import { NxListModule } from '@allianz/ng-aquila/list';
 import { NxPriceModule } from '@allianz/ng-aquila/price';
+import { NxTileComponent, NxTileGroupComponent } from '@allianz/ng-aquila/tile';
 import { Component, signal, type Type } from '@angular/core';
 import { type ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
@@ -402,6 +403,40 @@ describe('nxSurface adoption', () => {
     });
   });
 
+  // The group resolves the surface once and the tiles read it from the group, so both carry the
+  // class; the tile owns the inverse tokens.
+  describe('tile group', () => {
+    it('goes inverse on the attention and accent-attention surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['attention', 'accent-attention'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('#tile-group').contains('is-inverse')).toBe(true);
+        expect(classesOf('#tile-group nx-tile').contains('is-inverse')).toBe(true);
+      }
+    });
+
+    it('does not go inverse on the other surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['default', 'emphasis'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('#tile-group').contains('is-inverse')).toBe(false);
+        expect(classesOf('#tile-group nx-tile').contains('is-inverse')).toBe(false);
+      }
+    });
+
+    it('lets an explicit inverse="false" win over the surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#tile-group-explicit').contains('is-inverse')).toBe(false);
+      expect(classesOf('#tile-group-explicit nx-tile').contains('is-inverse')).toBe(false);
+    });
+  });
+
   describe('avatar', () => {
     it('inverts on the attention surface', () => {
       createComponent(AdoptersComponent);
@@ -443,6 +478,7 @@ describe('nxSurface adoption', () => {
     expect(classesOf('#avatar').contains('nx-avatar--inverse')).toBe(true);
     expect(classesOf('#info-icon button').contains('nx-plain-button--inverse')).toBe(true);
     expect(classesOf('#list').contains('nx-list--negative')).toBe(true);
+    expect(classesOf('#tile-group').contains('is-inverse')).toBe(true);
   });
 });
 
@@ -480,6 +516,12 @@ const TEMPLATE = `
     <ul id="list-legacy-negative" nxList="negative">
       <li>item</li>
     </ul>
+    <nx-tile-group id="tile-group">
+      <nx-tile label="tile" value="a" />
+    </nx-tile-group>
+    <nx-tile-group id="tile-group-explicit" [inverse]="false">
+      <nx-tile label="tile" value="a" />
+    </nx-tile-group>
   </div>
 `;
 
@@ -498,6 +540,8 @@ const TEMPLATE = `
     NxAvatarComponent,
     NxInfoIconComponent,
     NxListModule,
+    NxTileComponent,
+    NxTileGroupComponent,
   ],
   providers: A1_PROVIDERS,
 })
@@ -522,6 +566,8 @@ class AdoptersComponent {
     NxAvatarComponent,
     NxInfoIconComponent,
     NxListModule,
+    NxTileComponent,
+    NxTileGroupComponent,
   ],
   host: { 'data-non-a1': '' },
 })

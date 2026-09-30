@@ -1,5 +1,6 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxSurface, NxSurfaceType } from '@allianz/ng-aquila/surface';
 import { NxTileGroupComponent } from '@allianz/ng-aquila/tile';
 import { ChangeDetectionStrategy, Component, inputBinding, signal, viewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
@@ -111,6 +112,22 @@ class TileGroupAriaLabelledByTestComponent {
   group = viewChild.required(NxTileGroupComponent);
 }
 
+@Component({
+  selector: 'test-tile-inverse-test-component',
+  template: `<div [nxSurface]="surface()">
+    <nx-tile-group [inverse]="inverse()" [selectionMode]="selectionMode()">
+      <nx-tile label="First Tile" value="tile1" />
+    </nx-tile-group>
+  </div>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxTileComponent, NxTileGroupComponent, NxSurface],
+})
+class TileInverseTestComponent {
+  surface = signal<NxSurfaceType>('default');
+  inverse = signal<boolean | undefined>(undefined);
+  selectionMode = signal<NxTileSelectionMode>('single');
+}
+
 describe('NxTileComponent', () => {
   let fixture: ComponentFixture<any>;
   let testInstance: any;
@@ -145,6 +162,7 @@ describe('NxTileComponent', () => {
         TileTestComponent,
         TileReactiveFormsTestComponent,
         TileGroupAriaLabelledByTestComponent,
+        TileInverseTestComponent,
       ],
     }).compileComponents();
   }));
@@ -496,5 +514,87 @@ describe('NxTileComponent', () => {
       const tile = tileInstances[0];
       expect(tile.ariaDescribedBy()).toContain(`${tile.id}-hint`);
     });
+  });
+
+  describe('inverse', () => {
+    let inverseFixture: ComponentFixture<TileInverseTestComponent>;
+
+    function groupClasses(): DOMTokenList {
+      return inverseFixture.debugElement.query(By.directive(NxTileGroupComponent)).nativeElement
+        .classList;
+    }
+
+    function tileClasses(): DOMTokenList {
+      return inverseFixture.debugElement.query(By.directive(NxTileComponent)).nativeElement
+        .classList;
+    }
+
+    function setSurface(surface: NxSurfaceType): void {
+      inverseFixture.componentInstance.surface.set(surface);
+      inverseFixture.detectChanges();
+    }
+
+    beforeEach(() => {
+      inverseFixture = TestBed.createComponent(TileInverseTestComponent);
+      inverseFixture.detectChanges();
+    });
+
+    it('is not inverse on the default surface', () => {
+      expect(groupClasses().contains('is-inverse')).toBe(false);
+      expect(tileClasses().contains('is-inverse')).toBe(false);
+    });
+
+    it('goes inverse on the attention and accent-attention surfaces', () => {
+      for (const surface of ['attention', 'accent-attention'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(groupClasses().contains('is-inverse')).toBe(true);
+        expect(tileClasses().contains('is-inverse')).toBe(true);
+      }
+    });
+
+    it('does not go inverse on the emphasis surface', () => {
+      setSurface('emphasis');
+
+      expect(groupClasses().contains('is-inverse')).toBe(false);
+      expect(tileClasses().contains('is-inverse')).toBe(false);
+    });
+
+    it('goes inverse from the input without any surface', () => {
+      inverseFixture.componentInstance.inverse.set(true);
+      inverseFixture.detectChanges();
+
+      expect(groupClasses().contains('is-inverse')).toBe(true);
+      expect(tileClasses().contains('is-inverse')).toBe(true);
+    });
+
+    it('lets an explicit inverse="false" win over the surface', () => {
+      inverseFixture.componentInstance.inverse.set(false);
+      setSurface('attention');
+
+      expect(groupClasses().contains('is-inverse')).toBe(false);
+      expect(tileClasses().contains('is-inverse')).toBe(false);
+    });
+
+    // Both indicators pick their inverse colors up from a host class, so forwarding is what makes
+    // the inverse SCSS apply at all — in either selection mode.
+    for (const [mode, selector] of [
+      ['single', 'nx-radio-indicator'],
+      ['multi', 'nx-checkbox-indicator'],
+    ] as const) {
+      it(`forwards inverse to the ${mode}-select indicator`, () => {
+        inverseFixture.componentInstance.selectionMode.set(mode);
+        inverseFixture.detectChanges();
+
+        const indicator = () =>
+          inverseFixture.debugElement.query(By.css(selector)).nativeElement as HTMLElement;
+
+        expect(indicator().classList.contains('inverse')).toBe(false);
+
+        setSurface('attention');
+
+        expect(indicator().classList.contains('inverse')).toBe(true);
+      });
+    }
   });
 });

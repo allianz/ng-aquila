@@ -42,6 +42,7 @@ export type NxTileLayout = 'horizontal' | 'vertical';
     '[class.is-readonly]': 'readonly()',
     '[class.has-error]': 'errorState()',
     '[class.has-icon]': 'icon()',
+    '[class.is-inverse]': 'tileGroup.inverse()',
     '[class.layout-vertical]': "tileGroup?.tileLayout() === 'vertical'",
     '[class.layout-horizontal]': "tileGroup?.tileLayout() === 'horizontal'",
     '[attr.tabindex]': '-1',

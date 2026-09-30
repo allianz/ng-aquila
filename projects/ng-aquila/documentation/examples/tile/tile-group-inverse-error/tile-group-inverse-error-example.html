@@ -1,0 +1,27 @@
+<div nxSurface="attention" class="docs-tile-group-surface">
+  <form>
+    <nx-tile-group [formControl]="tileControl">
+      <nx-label [negative]="true">Choose an option</nx-label>
+      @for (tile of tiles; track tile.value) {
+        <nx-tile
+          [value]="tile.value"
+          [label]="tile.label"
+          [icon]="tile.icon"
+        ></nx-tile>
+      }
+      <nx-error>Only Premium is available right now</nx-error>
+    </nx-tile-group>
+    <br />
+    <nx-tile-group selectionMode="multi" [formControl]="multiTileControl">
+      <nx-label [negative]="true">Choose one or more options</nx-label>
+      @for (tile of tiles; track tile.value) {
+        <nx-tile
+          [value]="tile.value"
+          [label]="tile.label"
+          [icon]="tile.icon"
+        ></nx-tile>
+      }
+      <nx-error>Only Premium is available right now</nx-error>
+    </nx-tile-group>
+  </form>
+</div>
