@@ -12,6 +12,7 @@ import {
 import { By } from '@angular/platform-browser';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
+import { NxAccordionSize } from './accordion';
 import { NxAccordionModule } from './accordion.module';
 import { NxExpansionPanelComponent } from './expansion-panel';
 
@@ -44,6 +45,12 @@ describe('NxExpansionPanelComponent', () => {
         LazyPanelOpenOnLoad,
         PanelWithTwoWayBinding,
         PanelWithDifferentAppearances,
+        PanelWithInverse,
+        PanelWithInverseAccordion,
+        PanelWithLegacyNegativeAccordion,
+        PanelWithSizes,
+        PanelWithAccordionSize,
+        PanelWithAccordionSizeAndPanelVariant,
         PanelWithAccordion,
       ],
     });
@@ -259,6 +266,30 @@ describe('NxExpansionPanelComponent', () => {
       expect(panelNativeElement).toHaveClass('nx-expansion-panel--negative');
     });
 
+    it('should allow inverse appearance', () => {
+      createTestComponent(PanelWithInverse);
+      const instance = testInstance as PanelWithInverse;
+      expect(panelNativeElement).not.toHaveClass('nx-expansion-panel--negative');
+
+      instance.panelInverse = true;
+      fixture.detectChanges();
+
+      expect(panelNativeElement).toHaveClass('nx-expansion-panel--negative');
+    });
+
+    it('should inherit inverse from the parent accordion', () => {
+      createTestComponent(PanelWithInverseAccordion);
+
+      expect(panelNativeElement).toHaveClass('nx-expansion-panel--negative');
+    });
+
+    it('should inherit the legacy negative flag of the accordion as inverse', () => {
+      createTestComponent(PanelWithLegacyNegativeAccordion);
+
+      expect(panelNativeElement).toHaveClass('nx-expansion-panel--negative');
+      expect(panelInstance.negative).toBe(true);
+    });
+
     it('should have regular style by default', () => {
       createTestComponent(PanelWithDifferentAppearances);
       expect(panelNativeElement).toHaveClass('nx-expansion-panel--regular');
@@ -333,6 +364,55 @@ describe('NxExpansionPanelComponent', () => {
         By.css('nx-expansion-panel:nth-child(2)'),
       ).nativeElement;
       expect(secondPanel).toHaveClass('nx-expansion-panel--regular');
+    });
+
+    it('should map the panel size to a style class', () => {
+      createTestComponent(PanelWithSizes);
+      const instance = testInstance as PanelWithSizes;
+
+      instance.panelSize = 'm';
+      fixture.detectChanges();
+      expect(panelNativeElement).toHaveClass('nx-expansion-panel--light');
+
+      instance.panelSize = 'l';
+      fixture.detectChanges();
+      expect(panelNativeElement).toHaveClass('nx-expansion-panel--regular');
+    });
+
+    it('should inherit the size from the parent accordion', () => {
+      createTestComponent(PanelWithSizes);
+      const instance = testInstance as PanelWithSizes;
+
+      instance.accordionSize = 'm';
+      fixture.detectChanges();
+
+      expect(panelNativeElement).toHaveClass('nx-expansion-panel--light');
+    });
+
+    it('should prefer its own size over the size of the accordion', () => {
+      createTestComponent(PanelWithSizes);
+      const instance = testInstance as PanelWithSizes;
+
+      instance.accordionSize = 'l';
+      instance.panelSize = 'm';
+      fixture.detectChanges();
+
+      expect(panelNativeElement).toHaveClass('nx-expansion-panel--light');
+      expect(panelNativeElement).not.toHaveClass('nx-expansion-panel--regular');
+    });
+
+    it('should prefer the size over the variant of the accordion', () => {
+      createTestComponent(PanelWithAccordionSize);
+
+      expect(panelNativeElement).toHaveClass('nx-expansion-panel--extra-light');
+      expect(panelNativeElement).not.toHaveClass('nx-expansion-panel--light');
+    });
+
+    it('should prefer its own variant over the size of the accordion', () => {
+      createTestComponent(PanelWithAccordionSizeAndPanelVariant);
+
+      expect(panelNativeElement).toHaveClass('nx-expansion-panel--extra-light');
+      expect(panelNativeElement).not.toHaveClass('nx-expansion-panel--light');
     });
 
     it('should override style of accordion if value is present', () => {
@@ -512,6 +592,81 @@ class PanelWithDifferentAppearances extends PanelTest {
   style: any = null;
   negative = false;
 }
+
+@Component({
+  selector: 'test-panel-with-inverse',
+  template: `<nx-expansion-panel [inverse]="panelInverse">
+    <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
+  </nx-expansion-panel>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAccordionModule],
+})
+class PanelWithInverse extends PanelTest {
+  panelInverse = false;
+}
+
+@Component({
+  selector: 'test-panel-with-inverse-accordion',
+  template: `<nx-accordion inverse="true">
+    <nx-expansion-panel>
+      <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
+    </nx-expansion-panel>
+  </nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAccordionModule],
+})
+class PanelWithInverseAccordion extends PanelTest {}
+
+@Component({
+  selector: 'test-panel-with-legacy-negative-accordion',
+  template: `<nx-accordion negative="true">
+    <nx-expansion-panel>
+      <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
+    </nx-expansion-panel>
+  </nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAccordionModule],
+})
+class PanelWithLegacyNegativeAccordion extends PanelTest {}
+
+@Component({
+  selector: 'test-panel-with-sizes',
+  template: `<nx-accordion [size]="accordionSize">
+    <nx-expansion-panel [size]="panelSize">
+      <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
+    </nx-expansion-panel>
+  </nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAccordionModule],
+})
+class PanelWithSizes extends PanelTest {
+  accordionSize?: NxAccordionSize;
+  panelSize?: NxAccordionSize;
+}
+
+@Component({
+  selector: 'test-panel-with-accordion-size',
+  template: `<nx-accordion variant="light" variant="extra-light">
+    <nx-expansion-panel>
+      <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
+    </nx-expansion-panel>
+  </nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAccordionModule],
+})
+class PanelWithAccordionSize extends PanelTest {}
+
+@Component({
+  selector: 'test-panel-with-accordion-size-and-panel-variant',
+  template: `<nx-accordion size="m">
+    <nx-expansion-panel variant="extra-light">
+      <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
+    </nx-expansion-panel>
+  </nx-accordion>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxAccordionModule],
+})
+class PanelWithAccordionSizeAndPanelVariant extends PanelTest {}
 
 @Component({
   selector: 'test-panel-with-accordion',

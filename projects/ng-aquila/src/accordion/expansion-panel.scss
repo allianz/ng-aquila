@@ -37,7 +37,7 @@
 
 :host(.nx-expansion-panel--negative) ::ng-deep {
   div.nx-expansion-panel__body * {
-    color: v(negative);
+    color: v(accordion-inverse-body-text-color);
   }
 }
 
@@ -113,36 +113,36 @@
 :host(.nx-expansion-panel--regular.nx-expansion-panel--negative) {
   @include media-breakpoint-down(small) {
     ::ng-deep .nx-expansion-panel__header-content {
-      box-shadow: inset 0 1px 0 0 v(negative-01);
+      box-shadow: inset 0 1px 0 0 v(accordion-regular-inverse-mobile-border-color);
     }
 
     &:last-child,
     &:only-child {
       ::ng-deep .nx-expansion-panel__header-content {
         box-shadow:
-          inset 0 1px 0 0 v(negative-01),
-          inset 0 -1px 0 0 v(negative-01);
+          inset 0 1px 0 0 v(accordion-regular-inverse-mobile-border-color),
+          inset 0 -1px 0 0 v(accordion-regular-inverse-mobile-separator-color);
       }
     }
 
     &.nx-expanded ::ng-deep .nx-expansion-panel__header-content {
       box-shadow:
-        inset 0 1px 0 0 v(negative-01),
-        inset 0 -1px 0 0 v(negative-01);
+        inset 0 1px 0 0 v(accordion-regular-inverse-mobile-border-color),
+        inset 0 -1px 0 0 v(accordion-regular-inverse-mobile-separator-color);
     }
   }
 }
 
 :host(.nx-expansion-panel--light.nx-expansion-panel--negative) {
-  color: v(negative);
+  color: v(accordion-light-inverse-header-text-color);
 
   ::ng-deep .nx-expansion-panel__header-content {
-    box-shadow: inset 0 1px 0 0 v(negative);
+    box-shadow: inset 0 1px 0 0 v(accordion-light-inverse-border-color);
   }
 
   &:last-child,
   &:only-child {
-    box-shadow: 0 1px 0 0 v(negative);
+    box-shadow: 0 1px 0 0 v(accordion-light-inverse-border-color);
   }
 }
 

@@ -30,31 +30,35 @@ If you want the user to be able to expand multiple items simultaneously you can 
 
 ### Styling options
 
-The appearance of an accordion can be changed by setting according properties `variant`, `negative`, `flushAlignment` on `nx-accordion` or by giving each of the expansion panels their own configuration. Panels will always prefer their own configuration if given for `variant` and `negative`.
+The appearance of an accordion can be changed by setting according properties `size`, `inverse`, `flushAlignment` on `nx-accordion` or by giving each of the expansion panels their own configuration. Panels will always prefer their own configuration if given for `size` and `inverse`.
 
-#### Negative
+`size` accepts `l` (default), and `m`. It supersedes `variant` (`regular`, `light`, `extra-light`), which keeps working: `l` renders like `regular`, `m` like `light`. If both are set on the same element, `size` wins. `extra-light` and other legacy size still accept through `variant` input.
 
-<!-- example(accordion-negative) -->
+`inverse` applies the styles for a dark background. It supersedes `negative`, which keeps working as an alias.
 
-#### Light
+#### Inverse
+
+<!-- example(accordion-inverse) -->
+
+#### Size m
 
 <!-- example(accordion-light) -->
 
-#### Light negative
+#### Size m inverse
 
-<!-- example(accordion-light-negative) -->
+<!-- example(accordion-light-inverse) -->
 
-#### Extra light
+#### Size extra-light
 
 <!-- example(accordion-extra-light) -->
 
-#### Extra light negative
+#### Size extra-light inverse
 
-<!-- example(accordion-extra-light-negative) -->
+<!-- example(accordion-extra-light-inverse) -->
 
 #### Flush Alignment
 
-Flush aligned accordions or expansion panels will have no left/right padding in the header and body. This is useful when the accordion is used inside other components that already bring padding, such as cards to align headings and other content with the accordion content. Has no effect on [extra light accordions](documentation/accordion/overview#extra-light).
+Flush aligned accordions or expansion panels will have no left/right padding in the header and body. This is useful when the accordion is used inside other components that already bring padding, such as cards to align headings and other content with the accordion content. Has no effect on [extra light accordions](documentation/accordion/overview#size-extra-light).
 
 <!-- example(accordion-flush) -->
 

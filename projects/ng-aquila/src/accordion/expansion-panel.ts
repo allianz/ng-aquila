@@ -1,4 +1,5 @@
-import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { IdGenerationService, nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { CDK_ACCORDION, CdkAccordionItem } from '@angular/cdk/accordion';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
@@ -24,7 +25,7 @@ import {
 import { Subject, Subscription } from 'rxjs';
 import { filter, startWith, take } from 'rxjs/operators';
 
-import { NxAccordionDirective } from './accordion';
+import { NX_ACCORDION_SIZE_STYLES, NxAccordionDirective, NxAccordionSize } from './accordion';
 import { NxExpansionPanelBodyDirective } from './expansion-panel-body';
 
 /** The styling of the accordion. */
@@ -60,9 +61,9 @@ export const EXPANSION_PANEL_DEFAULT_OPTIONS = new InjectionToken<ExpansionPanel
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.nx-expanded]': 'expanded',
-    '[class.nx-expansion-panel--light]': '_accordionStyle === "light"',
-    '[class.nx-expansion-panel--regular]': '_accordionStyle === "regular"',
-    '[class.nx-expansion-panel--extra-light]': '_accordionStyle === "extra-light"',
+    '[class.nx-expansion-panel--light]': '_accordionStyle() === "light"',
+    '[class.nx-expansion-panel--regular]': '_accordionStyle() === "regular"',
+    '[class.nx-expansion-panel--extra-light]': '_accordionStyle() === "extra-light"',
     '[class.nx-expansion-panel--negative]': 'negative',
     '[class.is-disabled]': 'disabled',
   },
@@ -90,16 +91,50 @@ export class NxExpansionPanelComponent
     { optional: true },
   )!;
 
-  /** Whether the negative set of styles should be used. */
+  /**
+   * Whether the negative set of styles should be used.
+   * @deprecated Use `inverse` instead.
+   */
   @Input() set negative(value: BooleanInput) {
-    this._negative = coerceBooleanProperty(value);
+    this._negative.set(coerceBooleanProperty(value));
   }
   get negative(): boolean {
-    return this._negative!;
+    return this.inverse();
   }
-  private _negative: boolean | null = null;
+  private readonly _negative = signal<boolean | null>(null);
 
-  _accordionStyle: AccordionStyle = DEFAULT_TYPE;
+  /** Whether the inverse set of styles, for use on a dark background, is applied. */
+  readonly inverseInput = input<boolean | undefined, unknown>(undefined, {
+    transform: nxOptionalBooleanAttribute,
+    alias: 'inverse',
+  });
+
+  private readonly _surface = injectSurface();
+
+  readonly inverse = computed(
+    () =>
+      this.inverseInput() ??
+      this._negative() ??
+      this.accordion?.inverse() ??
+      this._surface().surface === 'attention',
+  );
+
+  /** Sets the size of this panel. Takes precedence over the panel's `variant` and the accordion's size/variant. */
+  readonly size = input<NxAccordionSize | undefined>(undefined);
+
+  protected readonly _accordionStyle = computed<AccordionStyle>(() => {
+    const ownSize = this.size();
+    if (ownSize) {
+      return NX_ACCORDION_SIZE_STYLES[ownSize] ?? DEFAULT_TYPE;
+    }
+
+    const ownStyle = this._style();
+    if (ownStyle) {
+      return ownStyle;
+    }
+
+    return this.accordion?._resolvedStyle() ?? DEFAULT_TYPE;
+  });
 
   /**
    * Value for the styling that should be chosen.
@@ -109,13 +144,12 @@ export class NxExpansionPanelComponent
     value = value ? value : DEFAULT_TYPE;
 
     const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
-    this._style = newValue as AccordionStyle;
-    this._accordionStyle = newValue as AccordionStyle;
+    this._style.set(newValue as AccordionStyle);
   }
   get style(): AccordionStyle {
-    return this._style!;
+    return this._accordionStyle();
   }
-  private _style: AccordionStyle | null = null;
+  private readonly _style = signal<AccordionStyle | null>(null);
 
   /**
    * Setting flush alignment style: no left/right padding in expansion panel header and body
@@ -183,17 +217,6 @@ export class NxExpansionPanelComponent
           }, 0);
         }
       });
-    }
-
-    // Inherit appearance given by the accordion (if any).
-    if (this.accordion) {
-      if (this.style === null && this.accordion.style !== null) {
-        this.style = this.accordion.style;
-      }
-
-      if (this.negative === null && this.accordion.negative !== null) {
-        this.negative = this.accordion.negative;
-      }
     }
   }
 

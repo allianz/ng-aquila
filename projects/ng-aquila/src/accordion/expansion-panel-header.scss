@@ -37,12 +37,50 @@
 }
 
 // hover style for regular
-:host-context(.nx-expansion-panel--regular):not(.is-disabled) {
+:host-context(.nx-expansion-panel--regular:not(.nx-expansion-panel--negative)):not(.is-disabled) {
   .nx-expansion-panel__header-content:hover {
     color: v(accordion-regular-header-hover-text-color);
 
     .nx-expansion-panel__chevron {
       color: v(accordion-regular-hover-chevron-color);
+    }
+  }
+
+  .nx-expansion-panel__header-content:active {
+    color: v(accordion-header-active-text-color);
+
+    .nx-expansion-panel__chevron {
+      color: v(accordion-active-chevron-color);
+    }
+  }
+}
+
+// regular and negative
+:host-context(.nx-expansion-panel--regular.nx-expansion-panel--negative) {
+  .nx-expansion-panel__header-content {
+    color: v(accordion-regular-inverse-header-text-color);
+    background: v(accordion-regular-inverse-header-background-color);
+  }
+
+  .nx-expansion-panel__chevron {
+    color: v(accordion-regular-inverse-chevron-color);
+  }
+
+  &:not(.is-disabled) {
+    .nx-expansion-panel__header-content:hover {
+      color: v(accordion-inverse-header-hover-text-color);
+
+      .nx-expansion-panel__chevron {
+        color: v(accordion-inverse-hover-chevron-color);
+      }
+    }
+
+    .nx-expansion-panel__header-content:active {
+      color: v(accordion-inverse-header-active-text-color);
+
+      .nx-expansion-panel__chevron {
+        color: v(accordion-inverse-active-chevron-color);
+      }
     }
   }
 }
@@ -126,16 +164,42 @@ $header-title-small-screen-margin-after: nx-spacer(s);
       color: v(accordion-light-hover-chevron-color);
     }
   }
+
+  &:not(.is-disabled) .nx-expansion-panel__header-content:active {
+    color: v(accordion-light-header-active-text-color);
+
+    .nx-expansion-panel__chevron {
+      color: v(accordion-light-active-chevron-color);
+    }
+  }
 }
 
 // light and negative
 :host-context(.nx-expansion-panel--light.nx-expansion-panel--negative) {
   .nx-expansion-panel__header-content {
-    color: v(negative);
+    color: v(accordion-light-inverse-header-text-color);
   }
 
   .nx-expansion-panel__chevron {
-    color: v(negative);
+    color: v(accordion-light-inverse-chevron-color);
+  }
+
+  &:not(.is-disabled) {
+    .nx-expansion-panel__header-content:hover {
+      color: v(accordion-light-inverse-header-hover-text-color);
+
+      .nx-expansion-panel__chevron {
+        color: v(accordion-light-inverse-hover-chevron-color);
+      }
+    }
+
+    .nx-expansion-panel__header-content:active {
+      color: v(accordion-light-inverse-header-active-text-color);
+
+      .nx-expansion-panel__chevron {
+        color: v(accordion-light-inverse-active-chevron-color);
+      }
+    }
   }
 }
 
@@ -179,6 +243,26 @@ $extra-light-header-title-margin-after: 8px;
   }
 }
 
+:host-context(.nx-expansion-panel--extra-light:not(.nx-expansion-panel--negative)):not(
+  .is-disabled
+) {
+  .nx-expansion-panel__header-content:hover {
+    color: v(accordion-extra-light-header-hover-text-color);
+
+    .nx-expansion-panel__chevron {
+      color: v(accordion-extra-light-hover-chevron-color);
+    }
+  }
+
+  .nx-expansion-panel__header-content:active {
+    color: v(accordion-extra-light-header-active-text-color);
+
+    .nx-expansion-panel__chevron {
+      color: v(accordion-extra-light-active-chevron-color);
+    }
+  }
+}
+
 :host-context([dir='rtl'] .nx-expansion-panel--extra-light) {
   ::ng-deep .nx-expansion-panel__header-title {
     margin-left: $extra-light-header-title-margin-after;
@@ -188,20 +272,38 @@ $extra-light-header-title-margin-after: 8px;
 
 :host-context(.nx-expansion-panel--extra-light.nx-expansion-panel--negative) {
   .nx-expansion-panel__header-content {
-    color: v(negative);
+    color: v(accordion-extra-light-inverse-header-text-color);
   }
 
   .nx-expansion-panel__chevron {
-    color: v(negative);
+    color: v(accordion-extra-light-inverse-chevron-color);
+  }
+
+  &:not(.is-disabled) {
+    .nx-expansion-panel__header-content:hover {
+      color: v(accordion-extra-light-inverse-header-hover-text-color);
+
+      .nx-expansion-panel__chevron {
+        color: v(accordion-extra-light-inverse-hover-chevron-color);
+      }
+    }
+
+    .nx-expansion-panel__header-content:active {
+      color: v(accordion-extra-light-inverse-header-active-text-color);
+
+      .nx-expansion-panel__chevron {
+        color: v(accordion-extra-light-inverse-active-chevron-color);
+      }
+    }
   }
 
   &.is-disabled {
     .nx-expansion-panel__header-content {
-      color: v(negative-dimmed);
+      color: v(accordion-extra-light-inverse-disabled-color);
     }
 
     .nx-expansion-panel__chevron {
-      color: v(negative-dimmed);
+      color: v(accordion-extra-light-inverse-disabled-color);
     }
   }
 }

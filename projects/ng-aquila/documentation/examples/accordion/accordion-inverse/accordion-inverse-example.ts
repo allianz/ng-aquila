@@ -8,12 +8,12 @@ import { NxCopytextComponent } from '@allianz/ng-aquila/copytext';
 import { Component } from '@angular/core';
 
 /**
- * @title Light Negative Styling Example
+ * @title Inverse Styling Example
  */
 @Component({
-  selector: 'accordion-light-negative-example',
-  templateUrl: './accordion-light-negative-example.html',
-  styleUrls: ['./accordion-light-negative-example.css'],
+  selector: 'accordion-inverse-example',
+  templateUrl: './accordion-inverse-example.html',
+  styleUrls: ['./accordion-inverse-example.css'],
   imports: [
     NxAccordionDirective,
     NxExpansionPanelComponent,
@@ -22,4 +22,4 @@ import { Component } from '@angular/core';
     NxCopytextComponent,
   ],
 })
-export class AccordionLightNegativeExampleComponent {}
+export class AccordionInverseExampleComponent {}
