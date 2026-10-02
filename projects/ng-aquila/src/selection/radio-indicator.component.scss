@@ -6,13 +6,24 @@
   initial-value: 0;
 }
 
+// Registered so it interpolates: an unregistered custom property steps, which would repaint the
+// whole circle in the selected hole colour on the frame the cutout starts shrinking — a flash.
+@property --nx-radio-dot-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
 :host {
-  // Unselected, the cutout spans the whole circle, so --dot-color is its fill and
-  // --outer-circle-color is not painted. Selected, --dot-color is the hole and
-  // --outer-circle-color the ring.
-  --outer-circle-color: transparent;
-  --dot-color: #{v(radio-button-background-color)};
-  --outer-circle-border-color: #{v(radio-button-circle-color)};
+  transition: --nx-radio-dot-color #{v(radio-button-transition-duration)}
+    #{v(radio-button-transition-easing)};
+
+  // Unselected, the cutout spans the whole circle, so --nx-radio-dot-color is its fill and
+  // --nx-radio-outer-circle-color is not painted. Selected, --nx-radio-dot-color is the hole and
+  // --nx-radio-outer-circle-color the ring.
+  --nx-radio-outer-circle-color: transparent;
+  --nx-radio-dot-color: #{v(radio-button-background-color)};
+  --nx-radio-outer-circle-border-color: #{v(radio-button-circle-color)};
 
   // Each scheme declares what hover and active would paint, so the public mixins stay free
   // of scheme knowledge. A value that does not react to the state repeats its resting token
@@ -29,7 +40,7 @@
   position: relative;
   border-width: #{v(radio-button-border-width)};
   border-style: solid;
-  border-color: var(--outer-circle-border-color);
+  border-color: var(--nx-radio-outer-circle-border-color);
   border-radius: 50%;
   width: #{v(radio-button-circle-size)};
   min-width: #{v(radio-button-circle-size)};
@@ -40,18 +51,27 @@
   --nx-radio-cutout-radius: calc(#{v(radio-button-circle-size)} / 2);
   background: radial-gradient(
     circle at center center,
-    var(--dot-color),
-    var(--dot-color) var(--nx-radio-cutout-radius),
-    var(--outer-circle-color) var(--nx-radio-cutout-radius),
-    var(--outer-circle-color)
+    var(--nx-radio-dot-color),
+    var(--nx-radio-dot-color) var(--nx-radio-cutout-radius),
+    var(--nx-radio-outer-circle-color) var(--nx-radio-cutout-radius),
+    var(--nx-radio-outer-circle-color)
   );
-  transition: --nx-radio-cutout-radius 0.3s ease;
+  // Pressed is owned by whatever carries the pointer, so the scale arrives as a custom property
+  // through the nx-radio-indicator-active-scale mixin.
+  transform: var(--nx-radio-scale, none);
+  transition:
+    --nx-radio-cutout-radius #{v(radio-button-dot-transition-duration)}
+      #{v(radio-button-transition-easing)},
+    border-color #{v(radio-button-transition-duration)} #{v(radio-button-transition-easing)},
+    transform #{v(radio-button-active-scale-duration)} #{v(radio-button-transition-easing)};
   // Focus lives on the native input the indicator stands in for, so the surrounding
   // component sets this via the nx-radio-indicator-focus mixin.
   box-shadow: var(--nx-selection-indicator-focus-shadow, none);
 }
 
 :host.no-animation {
+  transition: unset;
+
   .nx-radio__control {
     transition: unset;
   }
@@ -68,84 +88,53 @@
   // Colouring the border as well would stack two translucent layers (A1's inverse tokens
   // have alpha) and read as a brighter rim.
   &.checked {
-    --outer-circle-color: #{v(radio-button-selected-background-color)};
-    --outer-circle-border-color: transparent;
-    --dot-color: #{v(radio-button-selected-dot-color)};
+    --nx-radio-outer-circle-color: #{v(radio-button-selected-background-color)};
+    --nx-radio-outer-circle-border-color: transparent;
+    --nx-radio-dot-color: #{v(radio-button-selected-dot-color)};
   }
 
   // disabled state
   &.disabled {
-    --outer-circle-border-color: #{v(radio-button-disabled-border-color)};
-    --dot-color: #{v(radio-button-disabled-background-color)};
+    --nx-radio-outer-circle-border-color: #{v(radio-button-disabled-border-color)};
+    --nx-radio-dot-color: #{v(radio-button-disabled-background-color)};
 
     &.checked {
-      --outer-circle-color: #{v(radio-button-disabled-selected-background-color)};
-      --dot-color: #{v(radio-button-disabled-selected-dot-color)};
-      --outer-circle-border-color: transparent;
+      --nx-radio-outer-circle-color: #{v(radio-button-disabled-selected-background-color)};
+      --nx-radio-dot-color: #{v(radio-button-disabled-selected-dot-color)};
+      --nx-radio-outer-circle-border-color: transparent;
     }
   }
 
   // readonly state
   &.readonly {
-    --outer-circle-border-color: #{v(radio-button-readonly-border-color)};
-    --dot-color: #{v(radio-button-readonly-background-color)};
+    --nx-radio-outer-circle-border-color: #{v(radio-button-readonly-border-color)};
+    --nx-radio-dot-color: #{v(radio-button-readonly-background-color)};
 
     &.checked {
-      --outer-circle-color: #{v(radio-button-readonly-selected-background-color)};
-      --dot-color: #{v(radio-button-readonly-selected-dot-color)};
-      --outer-circle-border-color: transparent;
+      --nx-radio-outer-circle-color: #{v(radio-button-readonly-selected-background-color)};
+      --nx-radio-dot-color: #{v(radio-button-readonly-selected-dot-color)};
+      --nx-radio-outer-circle-border-color: transparent;
     }
   }
 
   // critical state
   &.critical {
-    --outer-circle-border-color: #{v(danger)};
+    --nx-radio-outer-circle-border-color: #{v(danger)};
     --nx-radio-hover-border: #{v(radio-button-error-hover-circle-color)};
     --nx-radio-hover-ring: #{v(radio-button-error-hover-circle-color)};
     --nx-radio-active-border: #{v(radio-button-error-active-circle-color)};
     --nx-radio-active-ring: #{v(radio-button-error-active-circle-color)};
 
     &.checked {
-      --outer-circle-color: #{v(danger)};
-      --outer-circle-border-color: transparent;
-    }
-  }
-
-  // high contrast mode
-  @media screen and (forced-colors: active) {
-    .nx-radio__control {
-      forced-color-adjust: none;
-      border-color: buttonText !important;
-      background-color: buttonFace !important;
-    }
-
-    &.checked {
-      .nx-radio__control {
-        border-color: highlight !important;
-      }
-
-      .nx-radio__dot {
-        background-color: highlight !important;
-      }
-    }
-
-    &.disabled {
-      .nx-radio__control {
-        border-color: GrayText !important;
-      }
-
-      &.checked {
-        .nx-radio__dot {
-          background-color: GrayText !important;
-        }
-      }
+      --nx-radio-outer-circle-color: #{v(danger)};
+      --nx-radio-outer-circle-border-color: transparent;
     }
   }
 }
 
 :host.inverse {
-  --outer-circle-border-color: #{v(radio-button-inverse-circle-color)};
-  --dot-color: #{v(radio-button-inverse-background-color)};
+  --nx-radio-outer-circle-border-color: #{v(radio-button-inverse-circle-color)};
+  --nx-radio-dot-color: #{v(radio-button-inverse-background-color)};
   --nx-radio-hover-border: #{v(radio-button-inverse-hover-circle-color)};
   --nx-radio-hover-surface: #{v(radio-button-inverse-hover-unselected-background-color)};
   --nx-radio-hover-ring: #{v(radio-button-inverse-hover-selected-circle-color)};
@@ -154,54 +143,54 @@
   --nx-radio-active-ring: #{v(radio-button-inverse-active-selected-circle-color)};
 
   &.checked {
-    --outer-circle-color: #{v(radio-button-inverse-selected-background-color)};
-    --outer-circle-border-color: transparent;
-    --dot-color: #{v(radio-button-inverse-selected-dot-color)};
+    --nx-radio-outer-circle-color: #{v(radio-button-inverse-selected-background-color)};
+    --nx-radio-outer-circle-border-color: transparent;
+    --nx-radio-dot-color: #{v(radio-button-inverse-selected-dot-color)};
   }
 
   // disabled state
   &.disabled {
-    --outer-circle-border-color: #{v(radio-button-inverse-disabled-border-color)};
-    --dot-color: #{v(radio-button-inverse-disabled-background-color)};
+    --nx-radio-outer-circle-border-color: #{v(radio-button-inverse-disabled-border-color)};
+    --nx-radio-dot-color: #{v(radio-button-inverse-disabled-background-color)};
 
     &.checked {
-      --outer-circle-color: #{v(radio-button-inverse-disabled-selected-background-color)};
-      --dot-color: #{v(radio-button-inverse-disabled-selected-dot-color)};
-      --outer-circle-border-color: transparent;
+      --nx-radio-outer-circle-color: #{v(radio-button-inverse-disabled-selected-background-color)};
+      --nx-radio-dot-color: #{v(radio-button-inverse-disabled-selected-dot-color)};
+      --nx-radio-outer-circle-border-color: transparent;
     }
   }
 
   // readonly state
   &.readonly {
-    --outer-circle-border-color: #{v(radio-button-inverse-readonly-border-color)};
-    --dot-color: #{v(radio-button-inverse-readonly-background-color)};
+    --nx-radio-outer-circle-border-color: #{v(radio-button-inverse-readonly-border-color)};
+    --nx-radio-dot-color: #{v(radio-button-inverse-readonly-background-color)};
 
     &.checked {
-      --outer-circle-color: #{v(radio-button-inverse-readonly-selected-background-color)};
-      --dot-color: #{v(radio-button-inverse-readonly-selected-dot-color)};
-      --outer-circle-border-color: transparent;
+      --nx-radio-outer-circle-color: #{v(radio-button-inverse-readonly-selected-background-color)};
+      --nx-radio-dot-color: #{v(radio-button-inverse-readonly-selected-dot-color)};
+      --nx-radio-outer-circle-border-color: transparent;
     }
   }
 
   // critical state
   &.critical {
-    --outer-circle-border-color: #{v(radio-button-inverse-critical-color)};
+    --nx-radio-outer-circle-border-color: #{v(radio-button-inverse-critical-color)};
     --nx-radio-hover-border: #{v(radio-button-inverse-critical-hover-color)};
     --nx-radio-hover-ring: #{v(radio-button-inverse-critical-hover-color)};
     --nx-radio-active-border: #{v(radio-button-inverse-critical-active-color)};
     --nx-radio-active-ring: #{v(radio-button-inverse-critical-active-color)};
 
     &.checked {
-      --outer-circle-color: #{v(radio-button-inverse-critical-color)};
-      --outer-circle-border-color: transparent;
+      --nx-radio-outer-circle-color: #{v(radio-button-inverse-critical-color)};
+      --nx-radio-outer-circle-border-color: transparent;
     }
   }
 }
 
 :host.on-selection {
-  --outer-circle-border-color: #{v(radio-button-on-selection-border-color)};
+  --nx-radio-outer-circle-border-color: #{v(radio-button-on-selection-border-color)};
   // The selection background it sits on shows through, so the circle is never filled.
-  --dot-color: transparent;
+  --nx-radio-dot-color: transparent;
   --nx-radio-hover-border: #{v(radio-button-on-selection-hover-border-color)};
   --nx-radio-hover-surface: transparent;
   --nx-radio-hover-ring: #{v(radio-button-on-selection-selected-border-color)};
@@ -210,44 +199,44 @@
   --nx-radio-active-ring: #{v(radio-button-on-selection-selected-border-color)};
 
   &.checked {
-    --outer-circle-color: #{v(radio-button-on-selection-selected-border-color)};
-    --outer-circle-border-color: transparent;
-    --dot-color: #{v(radio-button-on-selection-selected-dot-color)};
+    --nx-radio-outer-circle-color: #{v(radio-button-on-selection-selected-border-color)};
+    --nx-radio-outer-circle-border-color: transparent;
+    --nx-radio-dot-color: #{v(radio-button-on-selection-selected-dot-color)};
   }
 
   // disabled state
   &.disabled {
-    --outer-circle-border-color: #{v(radio-button-on-selection-disabled-border-color)};
-    --dot-color: transparent;
+    --nx-radio-outer-circle-border-color: #{v(radio-button-on-selection-disabled-border-color)};
+    --nx-radio-dot-color: transparent;
 
     &.checked {
-      --outer-circle-color: #{v(radio-button-on-selection-disabled-selected-border-color)};
-      --dot-color: #{v(radio-button-on-selection-disabled-selected-dot-color)};
-      --outer-circle-border-color: transparent;
+      --nx-radio-outer-circle-color: #{v(radio-button-on-selection-disabled-selected-border-color)};
+      --nx-radio-dot-color: #{v(radio-button-on-selection-disabled-selected-dot-color)};
+      --nx-radio-outer-circle-border-color: transparent;
     }
   }
 
   // readonly state
   &.readonly {
-    --outer-circle-border-color: #{v(radio-button-on-selection-readonly-border-color)};
-    --dot-color: transparent;
+    --nx-radio-outer-circle-border-color: #{v(radio-button-on-selection-readonly-border-color)};
+    --nx-radio-dot-color: transparent;
 
     &.checked {
-      --outer-circle-color: #{v(radio-button-on-selection-readonly-selected-border-color)};
-      --dot-color: #{v(radio-button-on-selection-readonly-selected-dot-color)};
-      --outer-circle-border-color: transparent;
+      --nx-radio-outer-circle-color: #{v(radio-button-on-selection-readonly-selected-border-color)};
+      --nx-radio-dot-color: #{v(radio-button-on-selection-readonly-selected-dot-color)};
+      --nx-radio-outer-circle-border-color: transparent;
     }
   }
 
   // critical state
   &.critical {
-    --outer-circle-border-color: #{v(danger)};
+    --nx-radio-outer-circle-border-color: #{v(danger)};
     --nx-radio-hover-border: #{v(radio-button-error-hover-circle-color)};
     --nx-radio-active-border: #{v(radio-button-error-active-circle-color)};
 
     // Selected keeps the plain on-selection ring; critical only tints the unselected border.
     &.checked {
-      --outer-circle-border-color: transparent;
+      --nx-radio-outer-circle-border-color: transparent;
     }
   }
 }
@@ -304,8 +293,8 @@
 }
 
 :host.on-accent-attention {
-  --outer-circle-border-color: #{v(radio-button-on-accent-attention-color)};
-  --dot-color: transparent;
+  --nx-radio-outer-circle-border-color: #{v(radio-button-on-accent-attention-color)};
+  --nx-radio-dot-color: transparent;
   --nx-radio-hover-border: #{v(radio-button-on-accent-attention-hover-color)};
   --nx-radio-hover-surface: transparent;
   --nx-radio-hover-ring: #{v(radio-button-on-accent-attention-hover-color)};
@@ -314,27 +303,27 @@
   --nx-radio-active-ring: #{v(radio-button-on-accent-attention-active-color)};
 
   &.checked {
-    --outer-circle-color: #{v(radio-button-on-accent-attention-color)};
-    --outer-circle-border-color: transparent;
-    --dot-color: transparent;
+    --nx-radio-outer-circle-color: #{v(radio-button-on-accent-attention-color)};
+    --nx-radio-outer-circle-border-color: transparent;
+    --nx-radio-dot-color: transparent;
   }
 
   // disabled state
   &.disabled {
-    --outer-circle-border-color: #{v(radio-button-on-accent-attention-disabled-color)};
-    --dot-color: transparent;
+    --nx-radio-outer-circle-border-color: #{v(radio-button-on-accent-attention-disabled-color)};
+    --nx-radio-dot-color: transparent;
 
     &.checked {
-      --outer-circle-color: #{v(radio-button-on-accent-attention-disabled-color)};
-      --outer-circle-border-color: transparent;
-      --dot-color: transparent;
+      --nx-radio-outer-circle-color: #{v(radio-button-on-accent-attention-disabled-color)};
+      --nx-radio-outer-circle-border-color: transparent;
+      --nx-radio-dot-color: transparent;
     }
   }
 }
 
 :host.on-brand-static {
-  --outer-circle-border-color: #{v(radio-button-on-brand-static-color)};
-  --dot-color: transparent;
+  --nx-radio-outer-circle-border-color: #{v(radio-button-on-brand-static-color)};
+  --nx-radio-dot-color: transparent;
   --nx-radio-hover-border: #{v(radio-button-on-brand-static-hover-color)};
   --nx-radio-hover-surface: transparent;
   --nx-radio-hover-ring: #{v(radio-button-on-brand-static-hover-color)};
@@ -343,20 +332,48 @@
   --nx-radio-active-ring: #{v(radio-button-on-brand-static-active-color)};
 
   &.checked {
-    --outer-circle-color: #{v(radio-button-on-brand-static-color)};
-    --outer-circle-border-color: transparent;
-    --dot-color: transparent;
+    --nx-radio-outer-circle-color: #{v(radio-button-on-brand-static-color)};
+    --nx-radio-outer-circle-border-color: transparent;
+    --nx-radio-dot-color: transparent;
   }
 
   // disabled state
   &.disabled {
-    --outer-circle-border-color: #{v(radio-button-on-brand-static-disabled-color)};
-    --dot-color: transparent;
+    --nx-radio-outer-circle-border-color: #{v(radio-button-on-brand-static-disabled-color)};
+    --nx-radio-dot-color: transparent;
 
     &.checked {
-      --outer-circle-color: #{v(radio-button-on-brand-static-disabled-color)};
-      --outer-circle-border-color: transparent;
-      --dot-color: transparent;
+      --nx-radio-outer-circle-color: #{v(radio-button-on-brand-static-disabled-color)};
+      --nx-radio-outer-circle-border-color: transparent;
+      --nx-radio-dot-color: transparent;
+    }
+  }
+}
+
+// High contrast mode. The circle is painted as a gradient, so the system colours have to go
+// through the same custom properties: a background-color would sit underneath it. !important
+// keeps them ahead of the colour schemes above, whose selectors are more specific.
+@media screen and (forced-colors: active) {
+  :host {
+    --nx-radio-outer-circle-color: buttonFace !important;
+    --nx-radio-dot-color: buttonFace !important;
+    --nx-radio-outer-circle-border-color: buttonText !important;
+
+    .nx-radio__control {
+      forced-color-adjust: none;
+    }
+
+    &.checked {
+      --nx-radio-outer-circle-color: highlight !important;
+      --nx-radio-outer-circle-border-color: highlight !important;
+    }
+
+    &.disabled {
+      --nx-radio-outer-circle-border-color: GrayText !important;
+
+      &.checked {
+        --nx-radio-outer-circle-color: GrayText !important;
+      }
     }
   }
 }

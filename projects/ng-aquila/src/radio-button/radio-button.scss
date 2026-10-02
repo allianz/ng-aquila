@@ -1,4 +1,5 @@
 @use '../shared-styles/index' as *;
+@use '../shared-styles/theming/selection-indicator-mixins' as *;
 
 :host {
   display: block;
@@ -31,7 +32,6 @@
 
     &.has-label {
       .nx-radio__circle-wrapper {
-        display: inline-flex;
         align-items: center;
         height: v(radio-button-large-label-line-height);
       }
@@ -53,22 +53,8 @@
     color: v(negative);
   }
 
-  .nx-radio__circle {
-    border-color: v(negative);
-  }
-
-  .nx-radio__input:checked + .nx-radio__label {
-    .nx-radio__circle {
-      border-color: v(negative);
-      background-color: transparent;
-    }
-
-    .nx-radio__dot {
-      background: v(negative);
-    }
-  }
-
-  .nx-radio__input:disabled + .nx-radio__label {
+  // Only the text: the indicator has its own inverse disabled colours and would be dimmed twice.
+  .nx-radio__input:disabled + .nx-radio__label .nx-radio__label--text {
     opacity: 0.4;
   }
 }
@@ -81,70 +67,16 @@
   vertical-align: middle;
 }
 
-.nx-radio__circle {
-  border-width: v(radio-button-border-width);
-  border-style: solid;
-  border-color: v(radio-button-circle-color);
-  background-color: v(radio-button-background-color);
-  border-radius: v(radio-button-border-radius);
-  width: v(radio-button-circle-size);
-  min-width: v(radio-button-circle-size);
-  height: v(radio-button-circle-size);
-  position: relative;
+// The indicator host has no display of its own, so an inline box would put it in a line box
+// sized by the label's line-height.
+.nx-radio__circle-wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease;
 }
 
-.nx-radio__dot {
-  width: v(radio-button-inner-dot-size);
-  height: v(radio-button-inner-dot-size);
-  background-color: v(radio-button-dot-background-color);
-  border-radius: v(radio-button-border-radius);
-  transition: background-color 0.2s ease;
-}
-
-// unchecked state
-.nx-radio__input:not(:checked) + .nx-radio__label {
-  .nx-radio__dot {
-    display: none;
-  }
-}
-
-// checked state
-.nx-radio__input:checked + .nx-radio__label {
-  .nx-radio__circle {
-    border-color: v(radio-button-selected-circle-color);
-    background-color: v(radio-button-selected-background-color);
-  }
-
-  .nx-radio__dot {
-    background-color: v(radio-button-selected-dot-color);
-  }
-}
-
-// disabled unchecked state
+// disabled state
 .nx-radio__input:disabled + .nx-radio__label {
   cursor: not-allowed;
   color: v(radio-button-disabled-text-color);
-
-  .nx-radio__circle {
-    border-color: v(radio-button-disabled-border-color);
-    background-color: v(radio-button-disabled-background-color);
-  }
-}
-
-// disabled checked state
-.nx-radio__input:checked:disabled + .nx-radio__label {
-  .nx-radio__circle {
-    border-color: v(radio-button-disabled-selected-background-color);
-    background-color: v(radio-button-disabled-selected-background-color);
-  }
-
-  .nx-radio__dot {
-    background-color: v(radio-button-disabled-selected-dot-color);
-  }
 }
 
 // readonly state
@@ -152,141 +84,32 @@
   .nx-radio__label:hover {
     cursor: not-allowed;
   }
-
-  .nx-radio__circle {
-    background-color: v(radio-button-readonly-background-color);
-    border-color: v(radio-button-readonly-border-color);
-  }
-
-  .nx-radio__input:checked + .nx-radio__label {
-    .nx-radio__circle {
-      background-color: v(radio-button-readonly-selected-background-color);
-      border-color: v(radio-button-readonly-selected-background-color);
-    }
-
-    .nx-radio__dot {
-      background-color: v(radio-button-readonly-selected-dot-color);
-    }
-  }
 }
 
-// focus style
-.nx-radio__input.cdk-keyboard-focused + .nx-radio__label .nx-radio__circle {
-  @include focus-style;
+// The indicator is presentational: focus sits on the native input, the pointer on the label.
+// Disabled and readonly are guarded inside the hover and active mixins.
+.nx-radio__input.cdk-keyboard-focused + .nx-radio__label nx-radio-indicator {
+  @include nx-selection-indicator-focus;
 }
 
-// hover styling
-:host:not(.nx-radio--negative):not(.has-error):not(.is-readonly) .nx-radio__input:not(:disabled) {
-  & + .nx-radio__label:hover .nx-radio__circle {
-    border-color: v(radio-button-hover-circle-color);
-    background-color: v(radio-button-hover-unselected-background-color);
-  }
-
-  &:checked + .nx-radio__label:hover .nx-radio__circle {
-    border-color: v(radio-button-hover-selected-circle-color);
-    background-color: v(radio-button-hover-selected-circle-color);
-  }
-
-  &:checked + .nx-radio__label:hover .nx-radio__dot {
-    background-color: v(radio-button-hover-dot-color);
-  }
+.nx-radio__label:hover nx-radio-indicator {
+  @include nx-radio-indicator-hover;
 }
 
-// active styling
-:host:not(.nx-radio--negative):not(.has-error):not(.is-readonly) .nx-radio__input:not(:disabled) {
-  & + .nx-radio__label:active .nx-radio__circle {
-    border-color: v(radio-button-active-circle-color);
-    background-color: v(radio-button-active-unselected-background-color);
-  }
-
-  &:checked + .nx-radio__label:active .nx-radio__circle {
-    border-color: v(radio-button-active-selected-circle-color);
-    background-color: v(radio-button-active-selected-circle-color);
-  }
-
-  &:checked + .nx-radio__label:active .nx-radio__dot {
-    background-color: v(radio-button-hover-dot-color);
-  }
+.nx-radio__label:active nx-radio-indicator {
+  @include nx-radio-indicator-active;
+  @include nx-radio-indicator-active-scale;
 }
 
-// error style
-:host.has-error {
-  .nx-radio__input + .nx-radio__label {
-    .nx-radio__circle {
-      border-color: v(danger);
-    }
-  }
-  .nx-radio__input:checked + .nx-radio__label {
-    .nx-radio__circle {
-      background-color: v(danger);
-    }
-  }
-
-  // error hover, active
-  .nx-radio__input {
-    & + .nx-radio__label:hover .nx-radio__circle {
-      border-color: v(radio-button-error-hover-circle-color);
-      background-color: v(radio-button-hover-unselected-background-color);
-    }
-
-    & + .nx-radio__label:active .nx-radio__circle {
-      border-color: v(radio-button-error-active-circle-color);
-      background-color: v(radio-button-active-unselected-background-color);
-    }
-  }
-
-  // error checked hover, active
-  .nx-radio__input:checked {
-    & + .nx-radio__label:hover {
-      .nx-radio__circle {
-        background-color: v(radio-button-error-hover-circle-color);
-        border-color: v(radio-button-error-hover-circle-color);
-      }
-    }
-
-    & + .nx-radio__label:active {
-      .nx-radio__circle {
-        background-color: v(radio-button-error-active-circle-color);
-        border-color: v(radio-button-error-active-circle-color);
-      }
-    }
-  }
-}
 @media screen and (forced-colors: active) {
   :host {
     .nx-radio__label {
       color: buttonText !important;
     }
 
-    .nx-radio__circle {
-      forced-color-adjust: none;
-      border-color: buttonText !important;
-      background-color: buttonFace !important;
-    }
-
-    .nx-radio__input:checked + .nx-radio__label {
-      .nx-radio__circle {
-        border-color: highlight !important;
-      }
-
-      .nx-radio__dot {
-        background-color: highlight !important;
-      }
-    }
-
     .nx-radio__input:disabled + .nx-radio__label {
       color: GrayText !important;
       opacity: 1;
-
-      .nx-radio__circle {
-        border-color: GrayText !important;
-      }
-    }
-
-    .nx-radio__input:checked:disabled + .nx-radio__label {
-      .nx-radio__dot {
-        background-color: GrayText !important;
-      }
     }
   }
 }

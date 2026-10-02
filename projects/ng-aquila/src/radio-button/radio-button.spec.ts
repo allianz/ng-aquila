@@ -130,12 +130,12 @@ describe('NxRadioComponent', () => {
       assertChecked(0, true);
     });
 
-    it('displays the dot when checked', () => {
+    it('marks the indicator as checked when checked', () => {
       createTestComponent(BasicRadio);
-      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveLength(0);
+      expect(fixture.nativeElement.querySelectorAll('nx-radio-indicator.checked')).toHaveLength(0);
       testInstance.radioInstances.toArray()[0].checked = true;
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveLength(1);
+      expect(fixture.nativeElement.querySelectorAll('nx-radio-indicator.checked')).toHaveLength(1);
     });
 
     it('radio component emits change event', () => {
@@ -178,11 +178,11 @@ describe('NxRadioComponent', () => {
 
       labelElements.item(0).click();
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveLength(1);
+      expect(fixture.nativeElement.querySelectorAll('nx-radio-indicator.checked')).toHaveLength(1);
 
       labelElements.item(1).click();
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveLength(1);
+      expect(fixture.nativeElement.querySelectorAll('nx-radio-indicator.checked')).toHaveLength(1);
     });
   });
 
@@ -191,20 +191,6 @@ describe('NxRadioComponent', () => {
       createTestComponent(MultipleRadio);
       expect(testInstance.radioGroup.value).toBe('1');
       assertChecked(1, true);
-    });
-
-    it('should emit stateChanges on name and disabled changes', () => {
-      createTestComponent(MultipleRadio);
-      let spy = vi.fn().mockName('changeSpy');
-      let subscription = testInstance.radioGroup._stateChanges.subscribe(spy);
-      testInstance.radioGroup.name = 'newName';
-      expect(spy).toHaveBeenCalled();
-      subscription.unsubscribe();
-      spy = vi.fn().mockName('changeSpy');
-      subscription = testInstance.radioGroup._stateChanges.subscribe(spy);
-      testInstance.radioGroup.disabled = true;
-      expect(spy).toHaveBeenCalled();
-      subscription.unsubscribe();
     });
 
     it('should not throw when items are created with ngFor loop', () => {
@@ -487,10 +473,12 @@ describe('NxRadioComponent', () => {
     });
 
     it('should update on disabled change', () => {
-      createTestComponent(MultipleRadio);
+      createTestComponent(MultipleRadioOnPush);
       testInstance.radioGroup.disabled = true;
       fixture.detectChanges();
-      expect(radioElements.item(0).disabled).toBe(true);
+      Array.from(radioElements).map((radio) => {
+        expect(radio.disabled).toBe(true);
+      });
     });
 
     it('should update on negative input change', () => {
@@ -650,6 +638,117 @@ describe('NxRadioComponent', () => {
       radios.forEach((radio: any) => {
         expect(radio).toHaveClass('is-readonly');
       });
+    });
+  });
+
+  describe('indicator bindings', () => {
+    function getIndicators(): HTMLElement[] {
+      return Array.from(fixture.nativeElement.querySelectorAll('nx-radio-indicator'));
+    }
+
+    function expectIndicators(className: string, present: boolean) {
+      const indicators = getIndicators();
+      expect(indicators.length).toBeGreaterThan(0);
+      indicators.forEach((indicator) => {
+        if (present) {
+          expect(indicator).toHaveClass(className);
+        } else {
+          expect(indicator).not.toHaveClass(className);
+        }
+      });
+    }
+
+    it('marks the indicator as disabled', () => {
+      createTestComponent(BasicRadio);
+      expectIndicators('disabled', false);
+      radioInstances.toArray()[0].disabled = true;
+      fixture.detectChanges();
+      expectIndicators('disabled', true);
+    });
+
+    it('marks the indicator as readonly', () => {
+      createTestComponent(BasicRadio);
+      expectIndicators('readonly', false);
+      radioInstances.toArray()[0].setReadonly(true);
+      fixture.detectChanges();
+      expectIndicators('readonly', true);
+    });
+
+    it('marks the indicator as inverse when negative', () => {
+      createTestComponent(ConfigurableRadio);
+      expectIndicators('inverse', true);
+      testInstance.negative = false;
+      fixture.detectChanges();
+      expectIndicators('inverse', false);
+    });
+
+    it('marks the indicators as disabled via the group', () => {
+      createTestComponent(MultipleRadioDisabled);
+      expectIndicators('disabled', true);
+      testInstance.disabled = false;
+      fixture.detectChanges();
+      expectIndicators('disabled', false);
+    });
+
+    it('marks the indicators as readonly via the group', () => {
+      createTestComponent(RadioGroupTest);
+      expectIndicators('readonly', false);
+      (testInstance as RadioGroupTest).readonly = true;
+      fixture.detectChanges();
+      expectIndicators('readonly', true);
+    });
+
+    it('marks the indicators as inverse via the group', () => {
+      createTestComponent(MultipleRadio);
+      expectIndicators('inverse', true);
+      testInstance.groupNegative = false;
+      fixture.detectChanges();
+      expectIndicators('inverse', false);
+    });
+
+    it('marks the indicators as disabled on a programmatic group disabled change', () => {
+      createTestComponent(MultipleRadioOnPush);
+      expectIndicators('disabled', false);
+      testInstance.radioGroup.disabled = true;
+      fixture.detectChanges();
+      expectIndicators('disabled', true);
+    });
+
+    it('marks the indicators as readonly on a programmatic group readonly change', () => {
+      createTestComponent(MultipleRadioOnPush);
+      expectIndicators('readonly', false);
+      (testInstance as MultipleRadioOnPush).group.setReadonly(true);
+      fixture.detectChanges();
+      expectIndicators('readonly', true);
+    });
+
+    it('marks the indicators as inverse on a programmatic group negative change', () => {
+      createTestComponent(MultipleRadioOnPush);
+      expectIndicators('inverse', false);
+      testInstance.radioGroup.negative = true;
+      fixture.detectChanges();
+      expectIndicators('inverse', true);
+    });
+
+    it('marks the indicators as critical when touched and invalid', () => {
+      createTestComponent(RadioGroupValidationTouched);
+      expectIndicators('critical', true);
+    });
+
+    it('marks the indicators as critical on submitting the form', () => {
+      createTestComponent(RadioGroupValidation);
+      expectIndicators('critical', false);
+      fixture.nativeElement.querySelector('button').click();
+      fixture.detectChanges();
+      expectIndicators('critical', true);
+    });
+
+    it('marks the indicators as critical when the error state matcher is true', () => {
+      createTestComponent(RadioGroupValidation);
+      expectIndicators('critical', false);
+      (testInstance.radioGroup['_errorStateMatcher'] as any) = { isErrorState: () => true };
+      fixture.detectChanges();
+      expectIndicators('critical', true);
     });
   });
 

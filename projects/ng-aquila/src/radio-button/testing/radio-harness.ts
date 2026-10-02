@@ -11,7 +11,6 @@ export class NxRadioHarness extends ComponentHarness {
 
   private readonly _input = this.locatorFor('input');
   private readonly _label = this.locatorFor('label');
-  private readonly _dot = this.locatorForOptional('label .nx-radio__dot');
 
   static with(options: NxRadioHarnessFilters = {}): HarnessPredicate<NxRadioHarness> {
     return new HarnessPredicate(NxRadioHarness, options)
@@ -39,9 +38,9 @@ export class NxRadioHarness extends ComponentHarness {
     return this._getTextLabel();
   }
 
-  async isChecked() {
-    const dot = await this._dot();
-    return !!dot;
+  async isChecked(): Promise<boolean> {
+    const input = await this._input();
+    return input.getProperty('checked');
   }
 
   async isDisabled(): Promise<boolean> {

@@ -24,11 +24,13 @@
   [class.has-label]="labelHasContent"
 >
   <div class="nx-radio__circle-wrapper">
-    <div class="nx-radio__circle">
-      @if (checked) {
-        <div class="nx-radio__dot"></div>
-      }
-    </div>
+    <nx-radio-indicator
+      [checked]="checked"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [critical]="_controlInvalid()"
+      [inverse]="negative"
+    ></nx-radio-indicator>
   </div>
   <span
     class="nx-radio__label--text"

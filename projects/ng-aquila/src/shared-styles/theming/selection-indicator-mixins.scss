@@ -45,12 +45,12 @@
     // scoped to the state that shows it. The checked border stays transparent, matching the
     // indicator's own resting rule, since the ring is painted as a fill rather than a border.
     &.checked {
-      --outer-circle-color: var(--nx-radio-hover-ring);
+      --nx-radio-outer-circle-color: var(--nx-radio-hover-ring);
     }
 
     &:not(.checked) {
-      --outer-circle-border-color: var(--nx-radio-hover-border);
-      --dot-color: var(--nx-radio-hover-surface);
+      --nx-radio-outer-circle-border-color: var(--nx-radio-hover-border);
+      --nx-radio-dot-color: var(--nx-radio-hover-surface);
     }
   }
 }
@@ -62,13 +62,22 @@
     // scoped to the state that shows it. The checked border stays transparent, matching the
     // indicator's own resting rule, since the ring is painted as a fill rather than a border.
     &.checked {
-      --outer-circle-color: var(--nx-radio-active-ring);
+      --nx-radio-outer-circle-color: var(--nx-radio-active-ring);
     }
 
     &:not(.checked) {
-      --outer-circle-border-color: var(--nx-radio-active-border);
-      --dot-color: var(--nx-radio-active-surface);
+      --nx-radio-outer-circle-border-color: var(--nx-radio-active-border);
+      --nx-radio-dot-color: var(--nx-radio-active-surface);
     }
+  }
+}
+
+/// Shrink of a pressed radio indicator, separate from `nx-radio-indicator-active` because it only
+/// applies where the indicator itself is the thing being pressed. A card or tile presses as a
+/// whole, and those pass `[animations]="false"`, so the scale would jump rather than ease there.
+@mixin nx-radio-indicator-active-scale {
+  &:not(.disabled):not(.readonly) {
+    --nx-radio-scale: #{v(radio-button-active-scale)};
   }
 }
 
@@ -101,5 +110,8 @@
 
   @media screen and (forced-colors: active) {
     --nx-selection-indicator-focus-shadow: 0 0 0 2px background, 0 0 0 6px CanvasText;
+    // Chromium Edge ignores the shadow.
+    outline: 4px solid CanvasText;
+    outline-offset: 2px;
   }
 }

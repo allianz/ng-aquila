@@ -1,5 +1,6 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxMessageComponent } from '@allianz/ng-aquila/message';
+import { NxRadioIndicatorComponent } from '@allianz/ng-aquila/selection';
 import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
@@ -89,7 +90,13 @@ export class NxRadioGroupComponent
   private readonly messages = contentChildren(NxMessageComponent, { descendants: true });
 
   /** @docs-private */
-  errorState = false;
+  set errorState(value: boolean) {
+    this._errorState.set(value);
+  }
+  get errorState(): boolean {
+    return this._errorState();
+  }
+  private readonly _errorState = signal(false);
 
   /**
    * @docs-private
@@ -113,17 +120,12 @@ export class NxRadioGroupComponent
 
   /** Sets all radios in the group to readonly. */
   @Input({ transform: booleanAttribute }) set readonly(value) {
-    this._readonly = value;
-    this._stateChanges.next();
+    this._readonly.set(value);
   }
   get readonly() {
-    return this._readonly;
+    return this._readonly();
   }
-  private _readonly = false;
-
-  // emits when the internal state changes on properties which are relevant
-  // for the radio buttons so that they can mark themself for check
-  readonly _stateChanges = new Subject<void>();
+  private readonly _readonly = signal(false);
 
   /** Sets the Id of the radio group. */
   @Input() set id(value: string) {
@@ -139,34 +141,30 @@ export class NxRadioGroupComponent
 
   /** Whether every radio button in this group should be disabled. */
   @Input() set disabled(value: BooleanInput) {
-    this._disabled = coerceBooleanProperty(value);
-    // inform childs about the change where CD should be triggered
-    this._stateChanges.next();
+    this._disabled.set(coerceBooleanProperty(value));
   }
   get disabled(): boolean {
-    return this._disabled;
+    return this._disabled();
   }
-  private _disabled = false;
+  private readonly _disabled = signal(false);
 
   /** Whether the radio group should have negative styling. */
   @Input() set negative(value: BooleanInput) {
-    this._negative = coerceBooleanProperty(value);
-    this._cdr.markForCheck();
+    this._negative.set(coerceBooleanProperty(value));
   }
   get negative(): boolean {
-    return this._negative;
+    return this._negative();
   }
-  private _negative = false;
+  private readonly _negative = signal(false);
 
   /** Sets if at least an option should be selected. */
   @Input() set required(value: BooleanInput) {
-    this._required = coerceBooleanProperty(value);
-    this._stateChanges.next();
+    this._required.set(coerceBooleanProperty(value));
   }
   get required(): boolean {
-    return this._required;
+    return this._required();
   }
-  private _required = false;
+  private readonly _required = signal(false);
 
   /** An event is dispatched on each group value change. */
   @Output() readonly groupValueChange = new EventEmitter<NxRadioChange>();
@@ -177,13 +175,12 @@ export class NxRadioGroupComponent
   // this is also the name attribute, which is mandatory in conjunction with ngModel, hence no nx prefix
   /** Sets the name of this radio group, which is mandatory in conjunction with ngModel (Default: null). */
   @Input() set name(value: string) {
-    this._name = value;
-    this._stateChanges.next();
+    this._name.set(value);
   }
   get name(): string {
-    return this._name;
+    return this._name();
   }
-  private _name = inject(IdGenerationService).nextId('nx-radio-group');
+  private readonly _name = signal(inject(IdGenerationService).nextId('nx-radio-group'));
 
   /** Sets the value of the selected radion button in this group (Default: null). */
   @Input() set value(newValue: any) {
@@ -248,7 +245,6 @@ export class NxRadioGroupComponent
   ngOnDestroy(): void {
     this._destroyed.next();
     this._destroyed.complete();
-    this._stateChanges.complete();
   }
 
   writeValue(value: any): void {
@@ -283,7 +279,6 @@ export class NxRadioGroupComponent
 
   setReadonly(value: boolean): void {
     this.readonly = value;
-    this._cdr.markForCheck();
   }
 
   private _updateSelectedRadioFromValue(): void {
@@ -316,7 +311,6 @@ export class NxRadioGroupComponent
 
     if (newState !== oldState) {
       this.errorState = newState;
-      this._cdr.markForCheck();
     }
   }
 }
@@ -347,7 +341,7 @@ export class NxRadioGroupComponent
     '[class.is-readonly]': 'readonly || null',
     '(focus)': '_forwardFocusToInput()',
   },
-  imports: [CdkObserveContent],
+  imports: [CdkObserveContent, NxRadioIndicatorComponent],
 })
 export class NxRadioComponent
   implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy, NxAbstractControl
@@ -505,8 +499,6 @@ export class NxRadioComponent
   }
   private _required = false;
 
-  private readonly _destroyed = new Subject<void>();
-
   _removeUniqueSelectionListener: () => void = () => {};
 
   constructor(
@@ -520,11 +512,6 @@ export class NxRadioComponent
     this.attachListenerForName();
     if (this.radioGroup) {
       this.name = this.radioGroup.name;
-      // when relevant properties of the parent like name and disabled change
-      // we need to let change detection know that the template needs an update
-      this.radioGroup._stateChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
-        this._cdr.markForCheck();
-      });
       if (this.radioGroup.value === this._value) {
         this._checked = true;
       }
@@ -536,8 +523,6 @@ export class NxRadioComponent
   }
 
   ngOnDestroy(): void {
-    this._destroyed.next();
-    this._destroyed.complete();
     this._focusMonitor.stopMonitoring(this._nativeInput);
     this._removeUniqueSelectionListener();
   }
@@ -624,14 +609,6 @@ export class NxRadioComponent
 
   /** @docs-private */
   _controlInvalid(): boolean {
-    const form =
-      this.radioGroup && (this.radioGroup._parentFormGroup || this.radioGroup._parentForm);
-    const control = this.radioGroup?.ngControl
-      ? (this.radioGroup.ngControl.control as FormControl)
-      : null;
-    if (this.radioGroup?._errorStateMatcher) {
-      return this.radioGroup._errorStateMatcher.isErrorState(control, form);
-    }
-    return !!(control?.invalid && (control.touched || form?.submitted));
+    return this.radioGroup?.errorState ?? false;
   }
 }
