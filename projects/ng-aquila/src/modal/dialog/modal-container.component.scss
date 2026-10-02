@@ -14,6 +14,8 @@ $max-modal-content-height: 65vh !default;
   }
   &.is-fullscreen {
     padding-top: v(modal-padding-small);
+    // Lets clicks on the top padding reach the backdrop (CDK forces margin-top: 0 here)
+    pointer-events: none;
 
     @include media-breakpoint-down('small') {
       padding-top: nx-spacer(2xs);
@@ -31,6 +33,7 @@ $max-modal-content-height: 65vh !default;
   display: block;
   position: relative;
   box-sizing: border-box;
+  pointer-events: auto;
 
   overflow: auto;
   outline: 0;
