@@ -1,5 +1,36 @@
 @use '../shared-styles/index' as *;
 
+/** The A1 accent hues. A single `on-accent-attention` colour reads on all of them. */
+$comparison-table-accent-colors: (
+  'yellow',
+  'orange',
+  'red',
+  'purple',
+  'aqua',
+  'blue',
+  'teal',
+  'green',
+  'gray'
+);
+
+/// Colours of a header/footer card (`.__cell-inner`). Everything that recolours one — error, the
+/// A1 colour schemes — only reassigns one of these three custom properties, so no state has to
+/// out-specify (or exclude) another. All three unset is the plain card.
+///
+/// Selection is deliberately NOT one of the three: semantically it's still a border, drawn with
+/// `outline` instead so it costs no layout. A real `border` can't do that here — A1's selected
+/// width is wider than the resting one, so switching `border-width` on select would shift the
+/// card's content. An inset outline paints the same wider edge without resizing the box. Width 0
+/// (every theme but A1) makes it inert.
+@mixin ct-header-colors($background) {
+  color: var(--nx-ct-header-text-color, inherit);
+  background: var(--nx-ct-header-background, #{$background});
+  border: v(comparison-table-border-width) solid
+    var(--nx-ct-header-border-color, #{v(comparison-table-header-border-color)});
+  outline: v(comparison-table-selected-border-width) solid transparent;
+  outline-offset: calc(-1 * v(comparison-table-selected-border-width));
+}
+
 :host {
   display: block;
   @include type-style(comparison-table);
@@ -221,16 +252,18 @@
     thead .nx-comparison-table__corner-cell,
     tfoot .nx-comparison-table__corner-cell {
       background-color: v(comparison-table-placeholder-cell-background-color);
-      border-inline-start: nx-border-size(xs) solid
+      border-inline-start: v(comparison-table-border-width) solid
         v(comparison-table-placeholder-cell-border-color);
     }
 
     thead tr:first-child .nx-comparison-table__corner-cell {
-      border-top: nx-border-size(xs) solid v(comparison-table-placeholder-cell-border-color);
+      border-top: v(comparison-table-border-width) solid
+        v(comparison-table-placeholder-cell-border-color);
     }
 
     tfoot .nx-comparison-table__corner-cell {
-      border-bottom: nx-border-size(xs) solid v(comparison-table-placeholder-cell-border-color);
+      border-bottom: v(comparison-table-border-width) solid
+        v(comparison-table-placeholder-cell-border-color);
     }
   }
 
@@ -489,22 +522,15 @@
       border-inline-start: none;
     }
 
-    // The shadow + first/last inline borders belong on the card (inner wrapper) for
+    // The shadow, the border and the background belong on the card (inner wrapper) for
     // header/footer, not the transparent cell box.
-    ::ng-deep .nx-comparison-table__header-cell .nx-comparison-table__cell-inner,
-    ::ng-deep .nx-comparison-table__footer-cell .nx-comparison-table__cell-inner {
-      box-shadow: v(comparison-table-column-shadow);
-    }
-
     ::ng-deep .nx-comparison-table__header-cell .nx-comparison-table__cell-inner,
     ::ng-deep .nx-comparison-table__footer-cell .nx-comparison-table__cell-inner {
       height: 100%;
       padding: v(comparison-table-header-cell-padding);
-      background-color: v(comparison-table-header-background-color);
-      border-top: nx-border-size(xs) solid v(comparison-table-border-color);
-      border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
-      border-inline: nx-border-size(xs) solid v(comparison-table-border-color);
+      @include ct-header-colors(v(comparison-table-header-background-color));
       border-radius: v(comparison-table-cell-border-radius);
+      box-shadow: v(comparison-table-column-shadow);
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -520,26 +546,60 @@
       padding: v(comparison-table-header-cell-padding-sticky);
     }
 
+    // A coloured surface owns the card background: the selected tint is light and would wash
+    // a coloured header out. Selection still shows through the border below and the radio
+    // indicator. This is the only state that a surface opts out of.
+    ::ng-deep
+      .nx-comparison-table__header-cell.is-selected
+      .nx-comparison-table__cell-inner:not([data-nx-surface]),
+    ::ng-deep
+      .nx-comparison-table__footer-cell.is-selected
+      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
+      --nx-ct-header-background: #{v(comparison-table-selected-column-background-color)};
+    }
+
+    // The selected border (drawn as `outline` — see `ct-header-colors`). Deliberately NOT
+    // excluding `[data-nx-surface]` — every colour scheme uses the same selected colour, so a
+    // coloured card that opted out of the selected background above still shows selection here.
+    // Inert wherever the selected width is 0.
     ::ng-deep .nx-comparison-table__header-cell.is-selected .nx-comparison-table__cell-inner,
-    ::ng-deep .nx-comparison-table__footer-cell.is-selected .nx-comparison-table__cell-inner {
-      background-color: v(comparison-table-selected-column-background-color);
+    ::ng-deep
+      .is-footer-row
+      .nx-comparison-table__cell.is-selected
+      .nx-comparison-table__cell-inner {
+      outline-color: v(comparison-table-selected-border-color);
     }
 
     // Error state: the red border lives on the header/footer CARD (cell-inner), not
     // the transparent cell box. Top/bottom on every card + inline-start on the first
     // column + inline-end on the last → the block reads as one unit with a red
     // perimeter while the internal dividers between adjacent cards stay neutral. Only
-    // the color is overridden; the card already sets the border width/style.
-    ::ng-deep .nx-comparison-table__header-cell.is-error .nx-comparison-table__cell-inner,
-    ::ng-deep .nx-comparison-table__footer-cell.is-error .nx-comparison-table__cell-inner {
+    // the color is overridden; the card already sets the border width/style. Excludes
+    // `[data-nx-surface]` cells — a coloured header/footer does not turn red (so in A1,
+    // where the resting border is transparent, error is simply not shown on one). No Figma
+    // spec exists for error-on-a-coloured-card; this preserves the prior intent.
+    ::ng-deep
+      .nx-comparison-table__header-cell.is-error
+      .nx-comparison-table__cell-inner:not([data-nx-surface]),
+    ::ng-deep
+      .nx-comparison-table__footer-cell.is-error
+      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
       border-block-color: var(--danger);
     }
-    ::ng-deep .nx-comparison-table__header-cell.is-error.first .nx-comparison-table__cell-inner,
-    ::ng-deep .nx-comparison-table__footer-cell.is-error.first .nx-comparison-table__cell-inner {
+    ::ng-deep
+      .nx-comparison-table__header-cell.is-error.first
+      .nx-comparison-table__cell-inner:not([data-nx-surface]),
+    ::ng-deep
+      .nx-comparison-table__footer-cell.is-error.first
+      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
       border-inline-start-color: var(--danger);
     }
-    ::ng-deep .nx-comparison-table__header-cell.is-error.last .nx-comparison-table__cell-inner,
-    ::ng-deep .nx-comparison-table__footer-cell.is-error.last .nx-comparison-table__cell-inner {
+    ::ng-deep
+      .nx-comparison-table__header-cell.is-error.last
+      .nx-comparison-table__cell-inner:not([data-nx-surface]),
+    ::ng-deep
+      .nx-comparison-table__footer-cell.is-error.last
+      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
       border-inline-end-color: var(--danger);
     }
 
@@ -565,7 +625,7 @@
     // ── Content cells: bottom border ──
     ::ng-deep .is-content-row .nx-comparison-table__cell,
     ::ng-deep .is-content-row .nx-comparison-table__intersection-cell {
-      border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
+      border-bottom: v(comparison-table-border-width) solid v(comparison-table-border-color);
     }
 
     // Intersection row styling
@@ -622,7 +682,7 @@
   &:not(.is-a1).is-tablet-view ::ng-deep .is-content-row {
     .nx-comparison-table__cell,
     .nx-comparison-table__intersection-cell {
-      border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+      border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
     }
   }
 
@@ -636,10 +696,12 @@
   // matches the A1 product cells) and matches the cell's own left/right borders in NDBX.
   &.is-desktop-view {
     ::ng-deep .is-content-row .nx-comparison-table__description-cell {
-      border-bottom: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+      border-bottom: v(comparison-table-border-width) solid
+        v(comparison-table-description-cell-border-color);
     }
     ::ng-deep .is-content-row.is-first-content-row .nx-comparison-table__description-cell {
-      border-top: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+      border-top: v(comparison-table-border-width) solid
+        v(comparison-table-description-cell-border-color);
     }
   }
 
@@ -647,7 +709,7 @@
   &.is-a1.is-desktop-view,
   &.is-a1.is-tablet-view {
     ::ng-deep .nx-comparison-table__cell {
-      border: nx-border-size(xs) solid transparent;
+      border: v(comparison-table-border-width) solid transparent;
     }
 
     // Header/footer: the selected border belongs on the inner card, not the transparent cell box.
@@ -657,20 +719,12 @@
     }
 
     ::ng-deep .nx-comparison-table__cell.is-selected {
-      border-color: var(--semantic-color-selection-surface-attention-resting);
+      border-color: v(comparison-table-selected-border-color);
     }
 
     ::ng-deep .nx-comparison-table__header-cell.is-selected,
     ::ng-deep .is-footer-row .nx-comparison-table__cell.is-selected {
       border: none;
-    }
-
-    ::ng-deep .nx-comparison-table__header-cell.is-selected .nx-comparison-table__cell-inner,
-    ::ng-deep
-      .is-footer-row
-      .nx-comparison-table__cell.is-selected
-      .nx-comparison-table__cell-inner {
-      border-color: var(--semantic-color-selection-surface-attention-resting);
     }
 
     ::ng-deep .nx-comparison-table__cell.has-popular-above.is-selected {
@@ -679,8 +733,15 @@
 
     // A1 cards are separated by a 16px gap, so each header/footer card gets its own
     // full red border on all four sides (overrides the base perimeter logic above).
-    ::ng-deep .nx-comparison-table__header-cell.is-error .nx-comparison-table__cell-inner,
-    ::ng-deep .is-footer-row .nx-comparison-table__cell.is-error .nx-comparison-table__cell-inner {
+    // Error stays on the resting BORDER (1px), not the selected width — see the shared error
+    // rule above for the `[data-nx-surface]` exclusion.
+    ::ng-deep
+      .nx-comparison-table__header-cell.is-error
+      .nx-comparison-table__cell-inner:not([data-nx-surface]),
+    ::ng-deep
+      .is-footer-row
+      .nx-comparison-table__cell.is-error
+      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
       border-color: var(--danger);
     }
 
@@ -694,6 +755,34 @@
     ::ng-deep .nx-comparison-table__intersection-cell .nx-comparison-table__sticky-banner {
       border-inline-end-color: transparent;
     }
+
+    // ── Header/footer colour schemes (`colorScheme`) ──────────────────────────────
+    // A scheme feeds only the background and the text colour; the border stays the resting
+    // (transparent in A1) value, so no scheme has to restate it to hide it.
+    // `data-nx-surface` is set under A1 only, and only on header/footer cells, so this can
+    // never reach content cells or the other themes.
+    ::ng-deep .nx-comparison-table__cell-inner[data-nx-surface='attention'] {
+      --nx-ct-header-background: #{v(comparison-table-header-attention-background-color)};
+      --nx-ct-header-text-color: #{v(comparison-table-header-attention-text-color)};
+    }
+
+    ::ng-deep .nx-comparison-table__cell-inner[data-nx-surface='emphasis'] {
+      --nx-ct-header-background: #{v(comparison-table-header-emphasis-background-color)};
+      --nx-ct-header-text-color: #{v(comparison-table-header-emphasis-text-color)};
+    }
+
+    // The hue lookup is a separate rule so the card rule below stays hue-agnostic: one
+    // `on-accent-attention` colour reads on all nine.
+    @each $hue in $comparison-table-accent-colors {
+      ::ng-deep [data-nx-accent-color='#{$hue}'] {
+        --nx-ct-accent-color: var(--semantic-color-accent-attention-#{$hue}-resting);
+      }
+    }
+
+    ::ng-deep .nx-comparison-table__cell-inner[data-nx-surface='accent-attention'] {
+      --nx-ct-header-background: var(--nx-ct-accent-color);
+      --nx-ct-header-text-color: var(--semantic-color-on-accent-attention-resting);
+    }
   }
 
   &.is-a1.is-desktop-view {
@@ -702,8 +791,12 @@
       border-bottom-color: v(comparison-table-border-color);
     }
 
+    // Content cells mark selection with the real `border` (not `outline`, unlike the header):
+    // these edges double as the row dividers, so they have to participate in the no-double-border
+    // logic below. That also pins them to the resting border WIDTH — reusing the wider selected
+    // width here would change the column's box between states.
     ::ng-deep .is-content-row .nx-comparison-table__cell.is-selected {
-      border-inline-color: var(--semantic-color-selection-surface-attention-resting);
+      border-inline-color: v(comparison-table-selected-border-color);
       border-top-color: transparent;
       border-bottom-color: v(comparison-table-border-color);
     }
@@ -711,7 +804,7 @@
     // First content row of a block: selected gets top border
     ::ng-deep .is-content-row.is-first-content-row .nx-comparison-table__cell.is-selected,
     ::ng-deep .is-block-boundary + .is-content-row .nx-comparison-table__cell.is-selected {
-      border-top-color: var(--semantic-color-selection-surface-attention-resting);
+      border-top-color: v(comparison-table-selected-border-color);
     }
 
     // Last content row of a block: no divider, selected gets bottom border
@@ -721,7 +814,7 @@
     }
     ::ng-deep .is-content-row.is-last-content-row .nx-comparison-table__cell.is-selected,
     ::ng-deep .is-content-row:has(+ .is-block-boundary) .nx-comparison-table__cell.is-selected {
-      border-bottom-color: var(--semantic-color-selection-surface-attention-resting);
+      border-bottom-color: v(comparison-table-selected-border-color);
     }
   }
 
@@ -918,8 +1011,7 @@
       height: 100%;
       // The cell box is now just a transparent top spacer, so the content padding moves here.
       padding: v(comparison-table-cell-padding);
-      background-color: v(comparison-table-cell-background-color);
-      border: nx-border-size(xs) solid v(comparison-table-border-color);
+      @include ct-header-colors(v(comparison-table-cell-background-color));
       border-radius: v(comparison-table-cell-border-radius);
       box-shadow: v(comparison-table-column-shadow);
     }
@@ -928,31 +1020,36 @@
       background: transparent;
     }
 
+    // Surfaces keep their background when selected — see the header/footer rule above.
     ::ng-deep
       .is-footer-row
       .nx-comparison-table__cell.is-selected
-      .nx-comparison-table__cell-inner {
-      background-color: v(comparison-table-selected-column-background-color);
+      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
+      --nx-ct-header-background: #{v(comparison-table-selected-column-background-color)};
     }
 
     // Footer error perimeter. The footer card's full border is (re)set just above
     // (`.is-footer-row .nx-comparison-table__cell .nx-comparison-table__cell-inner`),
     // LATER in source than the shared header/footer error rule, so the error color
     // must be re-applied here to win. Same perimeter logic: top/bottom on every card,
-    // inline-start on the first column, inline-end on the last.
-    ::ng-deep .is-footer-row .nx-comparison-table__cell.is-error .nx-comparison-table__cell-inner {
+    // inline-start on the first column, inline-end on the last. Excludes `[data-nx-surface]`
+    // cells, same as the shared header/footer error rule above.
+    ::ng-deep
+      .is-footer-row
+      .nx-comparison-table__cell.is-error
+      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
       border-block-color: var(--danger);
     }
     ::ng-deep
       .is-footer-row
       .nx-comparison-table__cell.is-error.first
-      .nx-comparison-table__cell-inner {
+      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
       border-inline-start-color: var(--danger);
     }
     ::ng-deep
       .is-footer-row
       .nx-comparison-table__cell.is-error.last
-      .nx-comparison-table__cell-inner {
+      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
       border-inline-end-color: var(--danger);
     }
   }
@@ -1100,10 +1197,10 @@
     // ── mobile-toggle-section-header ─────────────────────────────────────────────
     .nx-comparison-table__mobile-toggle-section-header {
       text-align: start;
-      border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+      border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
 
       & + .nx-comparison-table__placeholder-cell {
-        border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+        border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
       }
     }
 
@@ -1112,7 +1209,7 @@
       display: none;
 
       & + .nx-comparison-table__placeholder-with-border-cell {
-        border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+        border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
       }
     }
 
@@ -1124,7 +1221,7 @@
     }
 
     .nx-comparison-table__placeholder-with-border-cell {
-      border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+      border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
     }
 
     // ── last row: bottom borders ──────────────────────────────────────────────────
@@ -1132,14 +1229,14 @@
       .nx-comparison-table__cell,
       .nx-comparison-table__description-cell,
       .nx-comparison-table__mobile-header-cell {
-        border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
+        border-bottom: v(comparison-table-border-width) solid v(comparison-table-border-color);
       }
     }
 
     // ── right border for last column ──────────────────────────────────────────────
     tr th:last-child,
     tr td:last-child:not(.nx-comparison-table__placeholder-with-border-cell) {
-      border-inline-end: nx-border-size(xs) solid v(comparison-table-border-color);
+      border-inline-end: v(comparison-table-border-width) solid v(comparison-table-border-color);
     }
 
     // ── sticky first column ───────────────────────────────────────────────────────

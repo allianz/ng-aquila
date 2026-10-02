@@ -923,8 +923,18 @@ $nx-theme: (
   comparison-table-selected-column-background-color: ui-03,
   comparison-table-selected-column-text-color: text-01,
   comparison-table-border-color: ui-04,
+  // Shared by every resting divider in the table, so a part with its own width would misalign the grid.
+  comparison-table-border-width: 1px,
   comparison-table-header-background-color: ui-01,
   comparison-table-header-text-color: text-01,
+  // Also styles the footer card — A1 drops the footer's own design language, so don't split into a footer-* token.
+  comparison-table-header-border-color: comparison-table-border-color,
+  comparison-table-selected-border-width: 0,
+  comparison-table-selected-border-color: transparent,
+  comparison-table-header-attention-background-color: comparison-table-header-background-color,
+  comparison-table-header-attention-text-color: comparison-table-header-text-color,
+  comparison-table-header-emphasis-background-color: comparison-table-header-background-color,
+  comparison-table-header-emphasis-text-color: comparison-table-header-text-color,
   comparison-table-header-spacing-bottom: 8px,
   comparison-table-header-top-spacing-bottom: 8px,
   comparison-table-header-top-spacing-bottom-sticky: 4px,

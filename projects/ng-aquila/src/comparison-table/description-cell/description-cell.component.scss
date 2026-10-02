@@ -12,8 +12,10 @@
   padding: v(comparison-table-description-cell-padding);
   height: 100%;
   background-color: v(comparison-table-description-cell-background-color);
-  border-inline-end: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
-  border-inline-start: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+  border-inline-end: v(comparison-table-border-width) solid
+    v(comparison-table-description-cell-border-color);
+  border-inline-start: v(comparison-table-border-width) solid
+    v(comparison-table-description-cell-border-color);
 
   @include ct.cell-content-reset;
 }
@@ -29,8 +31,10 @@
   .nx-comparison-table__sticky-banner {
     padding: v(comparison-table-description-cell-padding);
     background-color: v(comparison-table-description-cell-background-color);
-    border-inline-end: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
-    border-inline-start: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+    border-inline-end: v(comparison-table-border-width) solid
+      v(comparison-table-description-cell-border-color);
+    border-inline-start: v(comparison-table-border-width) solid
+      v(comparison-table-description-cell-border-color);
   }
 }
 
@@ -40,8 +44,10 @@
 th.nx-comparison-table__mobile-cell.nx-comparison-table__description-cell {
   text-align: v(comparison-table-cell-text-align);
   vertical-align: top;
-  border-top: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
-  border-inline-start: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+  border-top: v(comparison-table-border-width) solid
+    v(comparison-table-description-cell-border-color);
+  border-inline-start: v(comparison-table-border-width) solid
+    v(comparison-table-description-cell-border-color);
   padding: 8px;
   background-color: v(comparison-table-description-cell-background-color);
   @include type-style(comparison-table-description-cell-mobile);
@@ -54,7 +60,8 @@ th.nx-comparison-table__mobile-cell.nx-comparison-table__description-cell {
   }
 
   & + .nx-comparison-table__placeholder-cell {
-    border-inline-start: nx-border-size(xs) solid v(comparison-table-description-cell-border-color);
+    border-inline-start: v(comparison-table-border-width) solid
+      v(comparison-table-description-cell-border-color);
     min-width: 8px;
   }
 

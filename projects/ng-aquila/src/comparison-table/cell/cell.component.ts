@@ -1,7 +1,16 @@
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxHeadlineSize } from '@allianz/ng-aquila/headline';
 import { NxPriceSize } from '@allianz/ng-aquila/price';
-import { NxRadioIndicatorComponent } from '@allianz/ng-aquila/selection';
+import {
+  NxRadioIndicatorColorScheme,
+  NxRadioIndicatorComponent,
+} from '@allianz/ng-aquila/selection';
+import {
+  NX_SURFACE,
+  NxResolvedSurface,
+  NxSurfaceContext,
+  NxSurfaceType,
+} from '@allianz/ng-aquila/surface';
 import { IdGenerationService } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NgTemplateOutlet } from '@angular/common';
@@ -35,9 +44,10 @@ const STUCK_HEADLINE_SIZE = { xl: 'l', l: 'm' } as const;
   styleUrls: ['./cell.component.scss'],
   templateUrl: './cell.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
+  providers: [{ provide: NX_SURFACE, useExisting: NxComparisonTableCell }],
   imports: [NgTemplateOutlet, NxRadioIndicatorComponent],
 })
-export class NxComparisonTableCell {
+export class NxComparisonTableCell implements NxSurfaceContext {
   @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
 
   private readonly _allianzOneOptions = inject<AllianzOneOptions>(ALLIANZ_ONE, { optional: true });
@@ -103,13 +113,55 @@ export class NxComparisonTableCell {
   /** Sets the type of the cell. Default: 'content'. */
   @Input() set type(value: NxComparisonTableRowType) {
     if (this._type !== value) {
-      this._type = value;
+      this._typeReactive.set(value);
     }
   }
   get type(): NxComparisonTableRowType {
     return this._type;
   }
-  private _type: NxComparisonTableRowType = 'content';
+  /** Backed by a signal so that `surface` and friends recompute when the type is set. */
+  private readonly _typeReactive = signal<NxComparisonTableRowType>('content');
+  private get _type(): NxComparisonTableRowType {
+    return this._typeReactive();
+  }
+
+  /**
+   * The surface this cell's content sits on. Header and footer cells share the
+   * table's color scheme; content cells never do.
+   * @docs-private
+   */
+  readonly surface = computed<NxSurfaceType>(() => {
+    const type = this._typeReactive();
+    return type === 'header' || type === 'footer' ? this._table._surface() : 'default';
+  });
+
+  /** @docs-private */
+  readonly accentColor = computed(() =>
+    this.surface() === 'accent-attention' ? this._table.accentColor() : undefined,
+  );
+
+  /**
+   * The radio indicator's scheme for the cell's surface. `emphasis` is a light tint the
+   * default scheme still reads on; the other two are dark fills with their own scheme.
+   */
+  protected readonly _radioIndicatorColorScheme = computed<NxRadioIndicatorColorScheme>(() => {
+    switch (this.surface()) {
+      case 'attention':
+        return 'on-brand-static';
+      case 'accent-attention':
+        return 'on-accent-attention';
+      default:
+        return 'default';
+    }
+  });
+
+  /** What the cell publishes to its projected content via `NX_SURFACE`. @docs-private */
+  readonly resolved = computed<NxResolvedSurface>(() => {
+    const surface = this.surface();
+    return surface === 'accent-attention'
+      ? { surface, accentColor: this._table.accentColor() }
+      : { surface };
+  });
 
   /**
    * Design fixes the size of price and headline content in header cells, so it's imposed on the

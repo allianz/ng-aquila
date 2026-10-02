@@ -1,5 +1,18 @@
 @use '../../shared-styles/index' as *;
 
+/** The A1 accent hues. A single `on-accent-attention` colour reads on all of them. */
+$popular-cell-accent-colors: (
+  'yellow',
+  'orange',
+  'red',
+  'purple',
+  'aqua',
+  'blue',
+  'teal',
+  'green',
+  'gray'
+);
+
 // ── Desktop / tablet ──────────────────────────────────────────────────────────
 
 // The popular cell is a real table cell (<td>); its flex layout lives on the inner
@@ -53,7 +66,7 @@
   background-color: v(comparison-table-popular-cell-background-color);
   color: v(comparison-table-popular-cell-text-color);
   padding: 4px;
-  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
 }
 
 td.nx-comparison-table__mobile-popular-cell.is-hidden {
@@ -64,6 +77,15 @@ td.nx-comparison-table__mobile-popular-cell.is-hidden {
   &.is-error {
     border-left: 1px solid var(--danger) !important;
     border-right: 1px solid var(--danger) !important;
+  }
+}
+
+// ── Accent hue (`accentColor`) ────────────────────────────────────────────────
+@each $hue in $popular-cell-accent-colors {
+  .nx-comparison-table__popular-cell[data-nx-accent-color='#{$hue}'],
+  .nx-comparison-table__mobile-popular-cell[data-nx-accent-color='#{$hue}'] {
+    background-color: var(--semantic-color-accent-attention-#{$hue}-resting);
+    color: var(--semantic-color-on-accent-attention-resting);
   }
 }
 

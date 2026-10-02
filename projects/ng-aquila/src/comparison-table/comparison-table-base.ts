@@ -1,4 +1,5 @@
 import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
+import { NxSurfaceAccentColor, NxSurfaceType } from '@allianz/ng-aquila/surface';
 import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
 import {
   ChangeDetectorRef,
@@ -76,6 +77,16 @@ export abstract class NxComparisonTableBase {
 
   /** The popular cell of the table. */
   abstract readonly _popularCell: Signal<NxComparisonTablePopularCell | undefined>;
+
+  /**
+   * The surface the header and footer cells sit on: the `colorScheme` input,
+   * normalized and gated on A1. Read by the cells, which publish it to their
+   * content via `NX_SURFACE`.
+   */
+  abstract readonly _surface: Signal<NxSurfaceType>;
+
+  /** Accent hue of the header, for an `accent-attention` color scheme. */
+  abstract readonly accentColor: Signal<NxSurfaceAccentColor>;
 
   /** Whether the sticky header row is currently pinned to the top of the page. */
   abstract readonly _isHeaderStuck: Signal<boolean>;

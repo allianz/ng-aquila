@@ -15,8 +15,14 @@
         [class.first]="_isFirst()"
         [class.last]="_isLast()"
         [class.is-stuck]="_table._isHeaderStuck()"
+        [attr.data-nx-surface]="surface() === 'default' ? null : surface()"
+        [attr.data-nx-accent-color]="accentColor()"
       >
-        <span class="nx-comparison-table__cell-inner">
+        <span
+          class="nx-comparison-table__cell-inner"
+          [attr.data-nx-surface]="surface() === 'default' ? null : surface()"
+          [attr.data-nx-accent-color]="accentColor()"
+        >
           <ng-container *ngTemplateOutlet="ngContent"></ng-container>
         </span>
       </th>
@@ -35,8 +41,14 @@
         [class.is-error]="_table.isError"
         [class.first]="_isFirst()"
         [class.last]="_isLast()"
+        [attr.data-nx-surface]="surface() === 'default' ? null : surface()"
+        [attr.data-nx-accent-color]="accentColor()"
       >
-        <span class="nx-comparison-table__cell-inner">
+        <span
+          class="nx-comparison-table__cell-inner"
+          [attr.data-nx-surface]="surface() === 'default' ? null : surface()"
+          [attr.data-nx-accent-color]="accentColor()"
+        >
           <ng-container *ngTemplateOutlet="ngContent"></ng-container>
         </span>
       </td>
@@ -68,6 +80,7 @@
       <nx-radio-indicator
         [checked]="_isSelected()"
         [disabled]="_isCellDisabled()"
+        [colorScheme]="_radioIndicatorColorScheme()"
       ></nx-radio-indicator>
     </span>
   }

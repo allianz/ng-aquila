@@ -6,8 +6,14 @@
       [class.is-error]="_table.isError"
       [class.is-hidden]="_table._hiddenIndexes().indexOf(forColumn - 1) !== -1"
       [attr.id]="id"
+      [attr.data-nx-surface]="surface() === 'default' ? null : surface()"
+      [attr.data-nx-accent-color]="surface() === 'default' ? null : accentColor()"
     >
-      <span class="nx-comparison-table__popular-cell-inner">
+      <span
+        class="nx-comparison-table__popular-cell-inner"
+        [attr.data-nx-surface]="surface() === 'default' ? null : surface()"
+        [attr.data-nx-accent-color]="surface() === 'default' ? null : accentColor()"
+      >
         <ng-container *ngTemplateOutlet="ngContent"></ng-container>
       </span>
     </td>

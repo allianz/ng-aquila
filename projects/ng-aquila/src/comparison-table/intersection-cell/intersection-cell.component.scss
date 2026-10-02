@@ -20,10 +20,10 @@
 td.nx-comparison-table__mobile-cell.nx-comparison-table__intersection-cell {
   text-align: v(comparison-table-cell-text-align);
   vertical-align: top;
-  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
-  border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
+  border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
   padding: 8px;
-  border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-bottom: v(comparison-table-border-width) solid v(comparison-table-border-color);
   min-width: 256px;
   width: 256px;
   background: v(comparison-table-intersection-cell-background-color);

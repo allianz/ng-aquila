@@ -1,3 +1,4 @@
+import { NxSurfaceType } from '@allianz/ng-aquila/surface';
 import { InjectionToken } from '@angular/core';
 
 /**
@@ -26,5 +27,18 @@ export const COMPARISON_TABLE_DEFAULT_OPTIONS = new InjectionToken<ComparisonTab
 /** The type of the row. */
 export type NxComparisonTableRowType = 'header' | 'content' | 'footer';
 
-/** Color scheme for the comparison table header row (A1 only). */
-export type NxComparisonTableColorScheme = 'plain' | 'attention' | 'emphasis' | 'accent-attention';
+/**
+ * Color scheme for the comparison table header and footer rows (A1 only).
+ * `'plain'` is deprecated - use `'default'` instead.
+ */
+export type NxComparisonTableColorScheme = NxSurfaceType | 'plain';
+
+/**
+ * Folds the deprecated `'plain'` alias onto the surface vocabulary.
+ * @docs-private
+ */
+export function normalizeComparisonTableColorScheme(
+  colorScheme: NxComparisonTableColorScheme,
+): NxSurfaceType {
+  return colorScheme === 'plain' ? 'default' : colorScheme;
+}

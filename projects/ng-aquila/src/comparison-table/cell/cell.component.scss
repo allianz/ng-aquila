@@ -12,13 +12,13 @@
   text-align: v(comparison-table-cell-text-align);
   padding: v(comparison-table-cell-padding);
   background-color: v(comparison-table-cell-background-color);
-  border-inline-end: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-inline-end: v(comparison-table-border-width) solid v(comparison-table-border-color);
   box-shadow: v(comparison-table-column-shadow);
 
   @include ct.cell-content-reset;
 
   &:first-child {
-    border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+    border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
   }
 
   &.is-selected {
@@ -198,8 +198,8 @@
 td.nx-comparison-table__mobile-cell.nx-comparison-table__cell {
   text-align: v(comparison-table-cell-text-align);
   vertical-align: top;
-  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
-  border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
+  border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
   padding: 8px;
   background-color: v(comparison-table-cell-background-color);
   width: 128px;
@@ -209,7 +209,7 @@ td.nx-comparison-table__mobile-cell.nx-comparison-table__cell {
   box-shadow: none;
 
   & + .nx-comparison-table__placeholder-cell {
-    border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+    border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
   }
 
   @include ct.cell-content-reset;
@@ -219,12 +219,12 @@ td.nx-comparison-table__mobile-cell.nx-comparison-table__cell {
 .nx-comparison-table__mobile-header-cell {
   text-align: v(comparison-table-cell-text-align);
   vertical-align: top;
-  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
-  border-inline-start: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
+  border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
   padding: 8px 4px;
   width: 128px;
   min-width: 128px;
-  border-inline-end: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-inline-end: v(comparison-table-border-width) solid v(comparison-table-border-color);
 
   &:not(.is-selected) {
     background-color: v(comparison-table-header-background-color);

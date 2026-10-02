@@ -1,5 +1,10 @@
 import { NxIconButtonComponent } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import {
+  NX_DEFAULT_SURFACE_ACCENT_COLOR,
+  NxSurfaceAccentColor,
+  NxSurfaceType,
+} from '@allianz/ng-aquila/surface';
 import { NxViewportService } from '@allianz/ng-aquila/utils';
 import { CdkMonitorFocus } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
@@ -36,7 +41,9 @@ import {
 import {
   COMPARISON_TABLE_DEFAULT_OPTIONS,
   ComparisonTableDefaultOptions,
+  normalizeComparisonTableColorScheme,
   NxComparisonTableBreakpoint,
+  NxComparisonTableColorScheme,
   NxComparisonTableViewType,
 } from './comparison-table.models';
 import { NxComparisonTableBase } from './comparison-table-base';
@@ -92,6 +99,23 @@ export class NxComparisonTableComponent
 
   /** Breakpoint configuration for container-based responsive behavior. */
   readonly responsiveBreakpoints = input<NxComparisonTableBreakpoint[] | undefined>(undefined);
+
+  /**
+   * Color scheme of the header and footer rows. Only takes effect in the Allianz
+   * One design. Default: 'default'.
+   */
+  readonly colorScheme = input<NxComparisonTableColorScheme>('default');
+
+  /**
+   * Accent hue of the header and footer. Only takes effect with an
+   * `accent-attention` color scheme. Default: `'blue'`.
+   */
+  readonly accentColor = input<NxSurfaceAccentColor>(NX_DEFAULT_SURFACE_ACCENT_COLOR);
+
+  /** @docs-private */
+  readonly _surface = computed<NxSurfaceType>(() =>
+    this._isA1() ? normalizeComparisonTableColorScheme(this.colorScheme()) : 'default',
+  );
 
   /**
    * Size for the `nx-comparison-table-header-title` slot of every header cell, overriding the

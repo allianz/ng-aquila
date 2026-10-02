@@ -10,7 +10,7 @@
   padding: v(comparison-table-intersection-cell-padding);
   height: 100%;
   background-color: v(comparison-table-intersection-cell-background-color);
-  border-inline-end: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-inline-end: v(comparison-table-border-width) solid v(comparison-table-border-color);
 
   @include cell-content-reset;
 }

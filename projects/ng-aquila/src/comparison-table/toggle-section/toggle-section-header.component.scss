@@ -6,7 +6,7 @@
   background-color: v(comparison-table-toggle-section-header-background-color);
   padding: 8px 16px;
 
-  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+  border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
 }
 
 // On desktop/tablet the interactive element is the host <th class="…__toggle-section-header-cell">

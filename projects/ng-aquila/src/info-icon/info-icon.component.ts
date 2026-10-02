@@ -1,11 +1,11 @@
 import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import {
   NxPopoverComponent,
   NxPopoverTriggerDirective,
   PopoverDirection,
 } from '@allianz/ng-aquila/popover';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { NgTemplateOutlet } from '@angular/common';
 import {
   booleanAttribute,

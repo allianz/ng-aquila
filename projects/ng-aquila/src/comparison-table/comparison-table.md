@@ -64,6 +64,30 @@ Opt out by adding `[mayStick]="false"` to your header row. The eyebrows and pric
 
 <!-- example(comparison-table-non-sticky-header) -->
 
+#### Header and footer colour scheme
+
+A1 only. `colorScheme` gives the header and footer rows a coloured background — the Allianz brand
+colour with `attention`, the emphasis tint with `emphasis`, or one of the accent hues with
+`accent-attention` plus `accentColor`. Default is `default`.
+
+```html
+<nx-comparison-table colorScheme="attention">…</nx-comparison-table>
+<nx-comparison-table colorScheme="accent-attention" accentColor="teal">…</nx-comparison-table>
+```
+
+The expected components like headline, price automatically react to the color scheme through the surface utility, see [`nxSurface`](./documentation/surface).
+
+The popular cell has its own `accentColor`, independent of the header's — it is always an accent
+surface, never `attention` or `emphasis`:
+
+```html
+<nx-comparison-table-popular-cell [forColumn]="2" accentColor="purple">
+  Most popular
+</nx-comparison-table-popular-cell>
+```
+
+<!-- example(comparison-table-color-scheme) -->
+
 #### Structuring rows
 
 The example below combines the three ways to structure the rows of a table. They are independent — leave out the blocks you do not need.
@@ -138,18 +162,6 @@ Simplified, more neutral variants of both are available for expert applications.
 
 </div>
 
-<div class="docs-private">
-
-#### Theming variations
-
-By setting some theming tokens, you can modify the look of the comparison table. For the basic theming setup check the [theming page](./documentation/theming).
-
-Depending on the colors you choose, it may be necessary to modify the default button styling in the comparison table, e.g. use the negative button for an unselected button for the color combinations shown here. For this, you can set `unselectedClassNames="secondary small negative"` for `nxComparisonTableSelectButton`.
-
-<!-- example(comparison-table-private-modify-theming, { "privateExample": true, "hideStackblitzButton": true }) -->
-
-</div>
-
 #### Legacy
 
 The following two examples are kept for existing NDBX applications. Do not start from them.
@@ -161,3 +173,15 @@ Before the header slots existed, header cells were composed of freeform markup w
 The `view` input forces a fixed layout instead of deriving it from the available width. Prefer `responsiveBreakpoints` (see [responsive layout](#responsive-layout-and-overflow)), which covers the same ground and is the supported path for A1.
 
 <!-- example(comparison-table-static) -->
+
+<div class="docs-private">
+
+#### Theming variations
+
+By setting some theming tokens, you can modify the look of the comparison table. For the basic theming setup check the [theming page](./documentation/theming).
+
+Depending on the colors you choose, it may be necessary to modify the default button styling in the comparison table, e.g. use the negative button for an unselected button for the color combinations shown here. For this, you can set `unselectedClassNames="secondary small negative"` for `nxComparisonTableSelectButton`.
+
+<!-- example(comparison-table-private-modify-theming, { "privateExample": true, "hideStackblitzButton": true }) -->
+
+</div>

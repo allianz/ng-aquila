@@ -1,0 +1,136 @@
+<div class="controls">
+  <nx-formfield label="Colour scheme">
+    <nx-dropdown
+      [value]="colorScheme()"
+      (valueChange)="colorScheme.set($event)"
+    >
+      @for (option of colorSchemeOptions; track option) {
+        <nx-dropdown-item [value]="option">{{ option }}</nx-dropdown-item>
+      }
+    </nx-dropdown>
+  </nx-formfield>
+  <nx-formfield label="Header accent hue">
+    <nx-dropdown
+      [value]="accentColor()"
+      [disabled]="!accentColorApplies()"
+      (valueChange)="accentColor.set($event)"
+    >
+      @for (option of accentColorOptions; track option) {
+        <nx-dropdown-item [value]="option">{{ option }}</nx-dropdown-item>
+      }
+    </nx-dropdown>
+  </nx-formfield>
+  <nx-formfield label="Popular cell accent hue">
+    <nx-dropdown
+      [value]="popularAccentColor()"
+      (valueChange)="popularAccentColor.set($event)"
+    >
+      @for (option of accentColorOptions; track option) {
+        <nx-dropdown-item [value]="option">{{ option }}</nx-dropdown-item>
+      }
+    </nx-dropdown>
+  </nx-formfield>
+</div>
+
+<nx-comparison-table
+  [colorScheme]="colorScheme()"
+  [accentColor]="accentColor()"
+  [selectedIndex]="selectedIndex()"
+  (selectedIndexChange)="selectedIndex.set($event)"
+>
+  <ng-container nxComparisonTableRow type="header">
+    <nx-comparison-table-popular-cell
+      forColumn="2"
+      [accentColor]="popularAccentColor()"
+    >
+      Most popular
+    </nx-comparison-table-popular-cell>
+    <nx-comparison-table-cell type="header">
+      <nx-comparison-table-header-eyebrow>
+        <nx-eyebrow size="s">Basic</nx-eyebrow>
+      </nx-comparison-table-header-eyebrow>
+      <nx-comparison-table-header-title>
+        <h3 nxHeadline>Product One</h3>
+      </nx-comparison-table-header-title>
+      <nx-comparison-table-header-price>
+        <nx-price prefix="from" [value]="105.99" currency="EUR"></nx-price>
+      </nx-comparison-table-header-price>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell type="header">
+      <nx-comparison-table-header-eyebrow>
+        <nx-eyebrow size="s">Comfort</nx-eyebrow>
+      </nx-comparison-table-header-eyebrow>
+      <nx-comparison-table-header-title>
+        <h3 nxHeadline>Product Two</h3>
+      </nx-comparison-table-header-title>
+      <nx-comparison-table-header-price>
+        <nx-price prefix="from" [value]="110.99" currency="EUR"></nx-price>
+      </nx-comparison-table-header-price>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell type="header">
+      <nx-comparison-table-header-eyebrow>
+        <nx-eyebrow size="s">Premium</nx-eyebrow>
+      </nx-comparison-table-header-eyebrow>
+      <nx-comparison-table-header-title>
+        <h3 nxHeadline>Product Three</h3>
+      </nx-comparison-table-header-title>
+      <nx-comparison-table-header-price>
+        <nx-price prefix="from" [value]="115.99" currency="EUR"></nx-price>
+      </nx-comparison-table-header-price>
+      <button
+        nxComparisonTableSelectButton
+        unselectedLabel="Select"
+        selectedLabel="Selected"
+        type="button"
+      ></button>
+    </nx-comparison-table-cell>
+  </ng-container>
+
+  <ng-container nxComparisonTableRow>
+    <nx-comparison-table-description-cell>
+      Coverage
+    </nx-comparison-table-description-cell>
+    <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
+    <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
+    <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
+  </ng-container>
+
+  <ng-container nxComparisonTableRow>
+    <nx-comparison-table-description-cell>
+      Roadside assistance
+    </nx-comparison-table-description-cell>
+    <nx-comparison-table-cell>
+      <nx-icon name="check" aria-label="included"></nx-icon>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <nx-icon name="check" aria-label="included"></nx-icon>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell>
+      <nx-icon name="check" aria-label="included"></nx-icon>
+    </nx-comparison-table-cell>
+  </ng-container>
+
+  <ng-container nxComparisonTableRow type="footer">
+    <nx-comparison-table-cell type="footer">
+      <button nxPlainButton type="button">Details</button>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell type="footer">
+      <button nxPlainButton type="button">Details</button>
+    </nx-comparison-table-cell>
+    <nx-comparison-table-cell type="footer">
+      <button nxPlainButton type="button">Details</button>
+    </nx-comparison-table-cell>
+  </ng-container>
+</nx-comparison-table>

@@ -18,6 +18,7 @@ import { BreakdownTableExampleComponent } from './breakdown-table/breakdown-tabl
 import { BreakdownTableExpertExampleComponent } from './breakdown-table-expert/breakdown-table-expert-example';
 import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
 import { ComparisonTableBreakpointPlaygroundExampleComponent } from './comparison-table-breakpoint-playground/comparison-table-breakpoint-playground-example';
+import { ComparisonTableColorSchemeExampleComponent } from './comparison-table-color-scheme/comparison-table-color-scheme-example';
 import { ComparisonTableColumnsExampleComponent } from './comparison-table-columns/comparison-table-columns-example';
 import { ComparisonTableDynamicExampleComponent } from './comparison-table-dynamic/comparison-table-dynamic-example';
 import { ComparisonTableErrorExampleComponent } from './comparison-table-error/comparison-table-error-example';
@@ -35,6 +36,7 @@ const EXAMPLES = [
   ComparisonTableExampleComponent,
   ComparisonTableOverflowExampleComponent,
   ComparisonTableBreakpointPlaygroundExampleComponent,
+  ComparisonTableColorSchemeExampleComponent,
   ComparisonTableNonStickyHeaderExampleComponent,
   ComparisonTableRowsExampleComponent,
   ComparisonTableExpandableAreaExampleComponent,
@@ -77,6 +79,8 @@ export class ComparisonExamplesModule {
       'comparison-table-overflow': ComparisonTableOverflowExampleComponent,
       'comparison-table-breakpoint-playground':
         ComparisonTableBreakpointPlaygroundExampleComponent,
+      'comparison-table-color-scheme':
+        ComparisonTableColorSchemeExampleComponent,
       'comparison-table-non-sticky-header':
         ComparisonTableNonStickyHeaderExampleComponent,
       'comparison-table-rows': ComparisonTableRowsExampleComponent,
