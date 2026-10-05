@@ -13,7 +13,7 @@
                             {%- if parameter.isOptional %}?{%- endif %}
                             {%- if parameter.type %}:  
                                 <span class="docs-api-property__type">
-                                    {$ parameter.type $}
+                                    {$ parameter.type | escape $}
                                 </span>
                             {%- endif %}
                             {%- if not loop.last %}, {%- endif %}
@@ -42,10 +42,10 @@
                 {$ parameter.name $} {%- if parameter.isOptional -%}
                 <span class="docs-api-method-parameter-optional-marker">?</span>
                 {%- endif -%}:
-                <span class="docs-api-method-parameter-type">{$ parameter.type $}</span>
+                <span class="docs-api-method-parameter-type">{$ parameter.type | escape $}</span>
             </code>
             {%- if parameter.description %}
-            <p class="docs-api-method-parameter-description"> {$ parameter.description | safe $} </p>
+            <div class="docs-api-method-parameter-description">{$ parameter.description | marked | safe $}</div>
             {%- endif %}
         </div>
         {% endfor %}

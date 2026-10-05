@@ -6,6 +6,7 @@ import { ComponentGrouper } from './processors/component-grouper';
 import { DocsPrivateFilter } from './processors/docs-private-filter';
 import { FilterDuplicateExports } from './processors/filter-duplicate-exports';
 import { MergeInheritedProperties } from './processors/merge-inherited-properties';
+import { renderMarkdown } from './services/render-markdown';
 
 // Dgeni packages that the Material docs package depends on.
 import jsdocPackage = require('dgeni-packages/jsdoc');
@@ -17,6 +18,8 @@ export const apiDocsPackage = new Package('ng-aquila-api-docs', [
   nunjucksPackage,
   typescriptPackage,
 ]);
+
+apiDocsPackage.factory(renderMarkdown);
 
 // Processor that filters out duplicate exports that should not be shown in the docs.
 apiDocsPackage.processor(new FilterDuplicateExports());

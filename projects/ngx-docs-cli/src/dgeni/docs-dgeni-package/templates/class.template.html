@@ -6,7 +6,7 @@
     {%- if class.extendedDoc -%}
     <span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
-        <span class="docs-api-class-extends-type">{$ class.extendedDoc.text $}</span>
+        <span class="docs-api-class-extends-type">{$ class.extendedDoc.text | escape $}</span>
     </span>
     {%- endif -%}
 </h4>
@@ -37,8 +37,11 @@
     <span class="docs-api-class-deprecated-marker" {$ macros.deprecationTitle(class) $}>
         Deprecated
     </span>
-    {%- if class.content -%}
-        {$ class.content $}
+    {%- if class.deprecated -%}
+        {$ class.deprecated | marked | safe $}
+    {%- endif -%}
+    {%- if class.deletionTarget -%}
+        <strong>Deletion target:</strong> {$ class.deletionTarget $}
     {%- endif -%}
 {%- endif -%}
 

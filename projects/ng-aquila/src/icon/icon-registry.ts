@@ -116,7 +116,7 @@ export class NxIconRegistry implements OnDestroy {
    * @param hostClass The hostClass is the general class like `fa` and an optional prefix can be given.
    * @param prefix The prefix is helpful if your class name for the icon would be prefixed,
    * e.g. my-icons--heart but you still want to only use the name
-   * <code>&lt;nx-icon name="heart" font="my-icons"&gt;&lt;/nx-icon&gt;</code>.
+   * <nx-icon name="heart" font="my-icons"></nx-icon>.
    */
   registerFont(name: string, hostClass?: string, prefix?: string) {
     // register the name in a map

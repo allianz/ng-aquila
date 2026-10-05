@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "../../dist/ngx-docs-cli",
-    "module": "commonjs",
+    "module": "nodenext",
     "target": "es5",
     "lib": ["es2017", "es2019"],
     "sourceMap": true,
