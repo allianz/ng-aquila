@@ -7,9 +7,14 @@ import {
   Component,
   EventEmitter,
   Input,
+  isDevMode,
   Output,
 } from '@angular/core';
 
+/**
+ * @deprecated This component is deprecated. Use `nxInput` or `nxAutocomplete` inside an `nx-formfield` with a search icon or button instead.
+ * @deletion-target 23.0.0
+ */
 @Component({
   selector: 'nx-page-search',
   templateUrl: 'page-search.component.html',
@@ -73,7 +78,13 @@ export class NxPageSearchComponent {
   /** An event emitted when the user clicks the search button. */
   @Output() readonly buttonClick = new EventEmitter();
 
-  constructor(private readonly _cdr: ChangeDetectorRef) {}
+  constructor(private readonly _cdr: ChangeDetectorRef) {
+    if (isDevMode()) {
+      console.warn(
+        'The page search component is deprecated and will be deleted in v23. Please use nxInput or nxAutocomplete inside an nx-formfield instead.',
+      );
+    }
+  }
 
   /** @docs-private */
   onButtonClick() {

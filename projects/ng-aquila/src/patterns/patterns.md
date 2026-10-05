@@ -66,6 +66,23 @@ __Hint:__ There are many use cases for Contained Lists with clickable List Items
 <!-- example(contained-list, { "hideStackblitzButton": true }) -->
 
 
+## Search Field
+<div class="tag-list docs-private"> <div class="tag active-tag">technical example ⚙️</div> </div>
+
+Use these examples to replace the deprecated <nx-link><a href="./documentation/page-search/overview">Page Search</a></nx-link>. They combine `nxInput` or `nxAutocomplete` with an `nx-formfield`, a search icon in `nxFormfieldPrefix` and a search button in `nxFormfieldAppendix`.
+
+- Wrap the field in a `<form role="search">`. This keeps the search landmark that Page Search added, and users can submit with Enter.
+- If you use more than one search on a page, give each one a unique `aria-label`.
+- The input has no visible label, so it needs an `aria-label`.
+
+### Input
+
+<!-- example(search-field-input, { "hideStackblitzButton": true }) -->
+
+### Autocomplete
+
+<!-- example(search-field-autocomplete, { "hideStackblitzButton": true }) -->
+
 <style>
     body{
         --grid-max-width: 1337px;

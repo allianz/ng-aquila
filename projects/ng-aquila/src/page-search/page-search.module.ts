@@ -7,6 +7,10 @@ import { NgModule } from '@angular/core';
 
 import { NxPageSearchComponent } from './page-search.component';
 
+/**
+ * @deprecated This module is deprecated. Use `nxInput` or `nxAutocomplete` inside an `nx-formfield` with a search icon or button instead.
+ * @deletion-target 23.0.0
+ */
 @NgModule({
   imports: [
     CommonModule,

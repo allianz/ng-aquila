@@ -6,9 +6,13 @@ b2c: true
 expert: true
 stable: done
 alias: search field, search, search bar
-a1Full: true
+deprecated: true
 group: Layout
 ---
+
+<div class="docs-deprecation-warning">
+⚠️ <strong>Important:</strong> This component is deprecated and will be deleted in v23. Please use <a href="./documentation/input/overview">NxInput</a> or <a href="./documentation/autocomplete/overview">NxAutocomplete</a> inside an <a href="./documentation/formfield/overview">NxFormfield</a> with a search button instead. See the <a href="./documentation/patterns/overview#search-field">Search Field pattern</a> for examples.
+</div>
 
 The page search component implements a simple container with a button on the right side and custom content on the left. It is optimized for the usage of [NxInput](./documentation/input/overview) or [NxAutocomplete](./documentation/autocomplete/overview) as content.
 

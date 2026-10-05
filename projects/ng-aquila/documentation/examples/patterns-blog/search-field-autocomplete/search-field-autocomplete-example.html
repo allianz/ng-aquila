@@ -1,0 +1,29 @@
+<form
+  role="search"
+  aria-label="Search autocomplete example"
+  (ngSubmit)="search()"
+>
+  <nx-formfield>
+    <input
+      nxInput
+      type="search"
+      name="searchTerm"
+      placeholder="Enter Keyword"
+      aria-label="Search term"
+      [(ngModel)]="searchTerm"
+      [nxAutocomplete]="auto"
+      [nxAutocompleteItems]="searchFunction"
+    />
+    <nx-autocomplete #auto="nxAutocomplete"></nx-autocomplete>
+    <span nxFormfieldPrefix>
+      <nx-icon name="search" size="s" aria-hidden="true"></nx-icon>
+    </span>
+    <button nxFormfieldAppendix nxButton="primary medium" type="submit">
+      Search
+    </button>
+  </nx-formfield>
+</form>
+
+@if (submittedTerm()) {
+  <p>Searching for: {{ submittedTerm() }}</p>
+}
