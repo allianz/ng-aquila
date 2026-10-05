@@ -17,5 +17,5 @@ jobs:
       actions: read
     uses: ilt/actions/.github/workflows/reusable-claude-pr-review.yml@v1
     with:
-      model: eu.anthropic.claude-opus-4-8
+      model: eu.anthropic.claude-opus-5-5
     secrets: inherit
