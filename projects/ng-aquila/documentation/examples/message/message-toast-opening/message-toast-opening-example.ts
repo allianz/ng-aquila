@@ -6,7 +6,6 @@ import {
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'simple-message-toast',
   standalone: true,
   template: `<div class="u-text-center">
     <h3>Message from a component</h3>
