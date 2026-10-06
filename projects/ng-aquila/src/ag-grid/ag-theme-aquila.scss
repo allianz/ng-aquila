@@ -219,6 +219,19 @@ $icon-mapping: (
   .ag-row {
     font-size: var(--ag-font-size);
   }
+
+  // pushed sticky rows slide under each other, so odd rows need an opaque base below their color
+  .ag-sticky-top,
+  .ag-sticky-bottom {
+    .ag-row-odd {
+      background-color: var(--ag-background-color);
+      background-image: linear-gradient(
+        var(--ag-odd-row-background-color),
+        var(--ag-odd-row-background-color)
+      );
+    }
+  }
+
   .ag-cell {
     -webkit-font-smoothing: antialiased;
   }
