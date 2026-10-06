@@ -20,6 +20,14 @@ The Tile component is a versatile UI element that can display an icon, label, an
 <p class="docs-markdown--p">Tiles can be set to readonly or disabled states.
 <strong>Readonly</strong> tiles should only be used in internal applications because of accessibility restrictions.</p>
 <div nx-docs-example="tile-readonly-disabled" config="{}">exampleID: tile-readonly-disabled</div>
+<div class="docs-hide-ndbx">
+<h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
+<p class="docs-markdown--p">On a dark background the tiles switch to their inverse colors. Placing the group on an <code>attention</code> or
+<code>accent-attention</code> <code>nxSurface</code> does this without any input, and paints the matching background too.</p>
+<div nx-docs-example="tile-group-negative" config="{}">exampleID: tile-group-negative</div>
+<p class="docs-markdown--p">The error state inverts along with the rest. The projected <code>nx-error</code> does not, and keeps its regular critical color.</p>
+<div nx-docs-example="tile-group-inverse-error" config="{}">exampleID: tile-group-inverse-error</div>
+</div>
 <h3 id="content-projection" tabindex="-1" class="docs-markdown--h3">Content projection</h3>
 <p class="docs-markdown--p">In case custom content or formatting is desired, the tile label and hint support content projection. If provided, the <code>label</code> and <code>hint</code> inputs will take priority over projected content.</p>
 <p class="docs-markdown--p"><strong>Note:</strong> Projected content should be text or screenreader-compatible, as hints are referenced by <code>aria-describedby</code> for accessibility.</p>

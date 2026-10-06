@@ -44,7 +44,7 @@
     </td>
     <td class="docs-api-property-description">
         <p>Whether the indicator moves inwards to overlap its container.
-Only affects the &#39;top-start&#39;, &#39;top-end&#39;, &#39;bottom-start&#39; and &#39;bottom-end&#39; positions.</p>
+Only affects the 'top-start', 'top-end', 'bottom-start' and 'bottom-end' positions.</p>
 </td>
 </tr>
    
@@ -73,10 +73,10 @@ when combined with any other position.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>size</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                size: 
+                sizeInput: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignal&lt;NxIndicatorSize&gt;</span>
@@ -85,6 +85,8 @@ when combined with any other position.</p>
     </td>
     <td class="docs-api-property-description">
         <p>Sets the indicator size. Optimized for A1.</p>
+<p>Ignored when the indicator sits in a component that provides an
+<code>NxIndicatorContext</code>: there the host owns the size.</p>
 </td>
 </tr>
    
@@ -105,10 +107,62 @@ when combined with any other position.</p>
         <p>Sets the indicator color type. Optimized for A1.</p>
 </td>
 </tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxIndicatorSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Size the indicator renders at: the hosting context wins over the <code>size</code> input.</p>
+</td>
+</tr>
   
 </table> 
 
  
+  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
+    </h3>
+     
+
+<h4 id="NxIndicatorContext" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxIndicatorContext"></span>
+    <code>NxIndicatorContext</code>
+</h4><p class="docs-api-interface-description"><p>Implemented by components that host a projected indicator and want to control its
+size. Provide the implementation under <code>NX_INDICATOR_CONTEXT</code>.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                indicatorSize: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxIndicatorSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
   <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
         <span header-link="additional_type_aliases"></span>
         Additional type aliases
@@ -121,7 +175,7 @@ when combined with any other position.</p>
 </h4><p class="docs-api-type-alias-description"><p>Positioning preset of an indicator.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | 'over-text' | 'over-icon' | 'after-text' | 'with-overlap'</code>
+    <code class="docs-api-type-alias-value">&#39;top-start&#39; | &#39;top-end&#39; | &#39;bottom-start&#39; | &#39;bottom-end&#39; | &#39;over-text&#39; | &#39;over-icon&#39; | &#39;after-text&#39; | &#39;with-overlap&#39;</code>
 </p>
    
 
@@ -131,7 +185,7 @@ when combined with any other position.</p>
 </h4><p class="docs-api-type-alias-description"><p>Size of an indicator. Optimized for A1.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'s' | 'm' | '800' | '1000' | '1200' | '1400' | '1600' | '1800' | '2000'</code>
+    <code class="docs-api-type-alias-value">&#39;s&#39; | &#39;m&#39; | &#39;800&#39; | &#39;1000&#39; | &#39;1200&#39; | &#39;1400&#39; | &#39;1600&#39; | &#39;1800&#39; | &#39;2000&#39;</code>
 </p>
    
 
@@ -141,6 +195,6 @@ when combined with any other position.</p>
 </h4><p class="docs-api-type-alias-description"><p>Color type of an indicator. Optimized for A1.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'critical' | 'warning' | 'positive' | 'info'</code>
+    <code class="docs-api-type-alias-value">&#39;critical&#39; | &#39;warning&#39; | &#39;positive&#39; | &#39;info&#39;</code>
 </p>
   </div>

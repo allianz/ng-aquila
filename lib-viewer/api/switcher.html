@@ -141,6 +141,24 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                hint: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets a hint which is displayed underneath the label.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
@@ -154,6 +172,24 @@
     </td>
     <td class="docs-api-property-description">
         <p>Sets the id of the switcher</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverseInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the inverse set of styles, for use on a dark background, is applied.</p>
 </td>
 </tr>
    
@@ -211,25 +247,6 @@
     </td>
     <td class="docs-api-property-description">
         <p>Sets the label text of the switcher</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">
-                negative: 
-                </span>
-                 
-                <span class="docs-api-property__type">boolean</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the style for a dark background is used</p>
 </td>
 </tr>
    
@@ -300,6 +317,24 @@
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the inverse set of styles is applied.</p>
+<p>Resolves to <code>true</code> when either the <code>inverse</code> or the legacy <code>negative</code> input is set.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
                 ngControl: 
                 </span>
                  
@@ -309,6 +344,25 @@
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                negative: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the style for a dark background is used.</p>
+</td>
 </tr>
   
 </table> 
@@ -371,7 +425,7 @@
             <span class="docs-api-method-name">validate(
                             control:  
                                 <span class="docs-api-property__type">
-                                    AbstractControl<any, any, any>
+                                    AbstractControl&lt;any, any, any&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">ValidationErrors | null</span></span>
         </code>
@@ -382,7 +436,7 @@
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 control:
-                <span class="docs-api-method-parameter-type">AbstractControl<any, any, any></span>
+                <span class="docs-api-method-parameter-type">AbstractControl&lt;any, any, any&gt;</span>
             </code>
         </div>
         
@@ -400,7 +454,7 @@
 </h4><p class="docs-api-type-alias-description"><p>Options for placement of the label</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'left' | 'right'</code>
+    <code class="docs-api-type-alias-value">&#39;left&#39; | &#39;right&#39;</code>
 </p>
    
 
@@ -410,6 +464,6 @@
 </h4><p class="docs-api-type-alias-description"><p>Options for sizing of the label</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'small' | 'large'</code>
+    <code class="docs-api-type-alias-value">&#39;small&#39; | &#39;large&#39;</code>
 </p>
   </div>

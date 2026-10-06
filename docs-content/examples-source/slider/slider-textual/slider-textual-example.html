@@ -2,13 +2,13 @@
   <div nxRow>
     <div nxCol="12">
       <nx-slider
-        label="Do you prefer apples over oranges?"
         [min]="0"
         [max]="4"
         [labelMinFormatter]="minFruitPreferenceFormatter"
         [labelMaxFormatter]="maxFruitPreferenceFormatter"
         [valueFormatter]="fruitPreferenceFormatter"
       >
+        <nx-label>Do you prefer apples over oranges?</nx-label>
       </nx-slider>
     </div>
   </div>

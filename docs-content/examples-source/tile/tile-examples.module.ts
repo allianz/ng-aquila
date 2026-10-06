@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { TileContentProjectionExampleComponent } from './tile-content-projection/tile-content-projection-example';
 import { TileGroupAutoGridExampleComponent } from './tile-group-auto-grid/tile-group-auto-grid-example';
 import { TileGroupCustomGridExampleComponent } from './tile-group-custom-grid/tile-group-custom-grid-example';
+import { TileGroupInverseErrorExampleComponent } from './tile-group-inverse-error/tile-group-inverse-error-example';
 import { TileGroupMultiSelectExampleComponent } from './tile-group-multi-select/tile-group-multi-select-example';
+import { TileGroupNegativeExampleComponent } from './tile-group-negative/tile-group-negative-example';
 import { TileGroupSingleSelectExampleComponent } from './tile-group-single-select/tile-group-single-select-example';
 import { TileLayoutsExampleComponent } from './tile-layouts/tile-layouts-example';
 import { TileReactiveFormsExampleComponent } from './tile-reactive-forms/tile-reactive-forms-example';
@@ -23,6 +25,8 @@ const EXAMPLES = [
   TileGroupAutoGridExampleComponent,
   TileGroupCustomGridExampleComponent,
   TileContentProjectionExampleComponent,
+  TileGroupNegativeExampleComponent,
+  TileGroupInverseErrorExampleComponent,
 ];
 
 @NgModule({
@@ -41,6 +45,8 @@ export class TileExamplesModule {
       'tile-validation-error-state': TileValidationErrorStateExample,
       'tile-group-auto-grid': TileGroupAutoGridExampleComponent,
       'tile-group-custom-grid': TileGroupCustomGridExampleComponent,
+      'tile-group-negative': TileGroupNegativeExampleComponent,
+      'tile-group-inverse-error': TileGroupInverseErrorExampleComponent,
       'tile-content-projection': TileContentProjectionExampleComponent,
     };
   }

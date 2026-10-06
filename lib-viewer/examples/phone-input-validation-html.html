@@ -1,5 +1,38 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield-label</span>&gt;</span>Phone number<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield-label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-phone-input</span> [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;parseControl&quot;</span> #<span class="hljs-attr">phoneInput</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-phone-input</span>&gt;</span>
+  @if (parseControl.hasError(&#x27;required&#x27;)) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> Please enter a phone number. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  }
+  @if (parseControl.hasError(&#x27;nxPhoneInputParse&#x27;)) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> Please select a country code. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-buttons&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;setValue(&#x27;+4989123456&#x27;)&quot;</span>
+  &gt;</span>
+    Set &quot;+4989123456&quot;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;setValue(&#x27;234&#x27;)&quot;</span>&gt;</span>
+    Set &quot;234&quot;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;setValue(&#x27;&#x27;)&quot;</span>&gt;</span>
+    Clear
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+  Model value: {{ parseControl.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  Errors: {{ parseControl.errors | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  Country code: {{ phoneInput.countryCode | json }}
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield-label</span>&gt;</span>Landline phone number<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield-label</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-phone-input</span> [<span class="hljs-attr">formControl</span>]=<span class="hljs-string">&quot;phoneControl&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-phone-input</span>&gt;</span>
   @if (phoneControl.errors?.phoneNumber) {
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span> Please provide a valid phone number <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>

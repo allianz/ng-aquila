@@ -1,0 +1,7 @@
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+  align-items: baseline;
+  gap: 32px;
+  margin-bottom: 24px;
+}

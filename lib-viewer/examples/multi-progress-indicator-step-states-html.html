@@ -1,0 +1,30 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-indicator</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Order Process Steps&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span> <span class="hljs-attr">completed</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Billing Address<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span> <span class="hljs-attr">completed</span> <span class="hljs-attr">critical</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">nxTooltip</span>=<span class="hljs-string">&quot;The delivery address could not be verified&quot;</span>
+      &gt;</span>Shipping Address&lt;/span
+    &gt;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span> <span class="hljs-attr">completed</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Gift Wrapping<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span> <span class="hljs-attr">completed</span> <span class="hljs-attr">critical</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxTooltip</span>=<span class="hljs-string">&quot;A signed consent form is still missing&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>
+      &gt;</span>Review Order&lt;/span
+    &gt;
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span> <span class="hljs-attr">current</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Payment Method<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Shipment Details<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-indicator</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span>&gt;</span>
+  Two earlier steps still need your attention: the shipping address on step 2
+  could not be verified, and step 4 is still missing a signed consent form. Both
+  need to be resolved before you can submit the order.
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

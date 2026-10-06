@@ -6,6 +6,7 @@ import {
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
+  selector: 'simple-message-toast',
   standalone: true,
   template: `<div class="u-text-center">
     <h3>Message from a component</h3>
@@ -35,7 +36,7 @@ export class MessageToastOpeningExampleComponent {
 
   openFromText() {
     this.messageToastService.open(this.toastText, {
-      context: 'success',
+      context: 'positive',
       duration: 5000,
     });
   }

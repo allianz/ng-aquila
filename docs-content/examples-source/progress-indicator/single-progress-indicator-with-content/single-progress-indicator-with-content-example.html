@@ -1,0 +1,25 @@
+<nx-single-progress-indicator [value]="activeStep()" [max]="stepCount">
+  Step {{ activeStep() }} of {{ stepCount }}: {{ currentStep().label }}
+</nx-single-progress-indicator>
+
+<div class="nx-margin-top-s nx-margin-bottom-s">
+  <p>{{ currentStep().content }}</p>
+</div>
+
+<button
+  nxButton="secondary small"
+  type="button"
+  class="nx-margin-right-2xs"
+  [disabled]="activeStep() === 1"
+  (click)="previous()"
+>
+  Previous
+</button>
+<button
+  nxButton="primary small"
+  type="button"
+  [disabled]="activeStep() === stepCount"
+  (click)="next()"
+>
+  Next
+</button>

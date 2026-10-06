@@ -101,6 +101,11 @@
 .theming-api-aquila .ag-row {
   font-size: var(--ag-font-size);
 }
+.theming-api-aquila .ag-sticky-top .ag-row-odd,
+.theming-api-aquila .ag-sticky-bottom .ag-row-odd {
+  background-color: var(--ag-background-color);
+  background-image: linear-gradient(var(--ag-odd-row-background-color), var(--ag-odd-row-background-color));
+}
 .theming-api-aquila .ag-cell {
   -webkit-font-smoothing: antialiased;
 }
@@ -117,6 +122,9 @@
 }
 .theming-api-aquila .ag-floating-filter {
   border-top: none !important;
+}
+.theming-api-aquila .ag-root-wrapper:has(:focus-visible) .ag-list-item.ag-active-item:not(:hover) {
+  box-shadow: var(--focus-inset-box-shadow);
 }
 .theming-api-aquila .ag-row-hover.ag-row-selected::before {
   background-color: var(--selectable-table-row-selected-hover-background-color);

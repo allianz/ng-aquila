@@ -1,6 +1,10 @@
-import { NxAvatarComponent } from '@allianz/ng-aquila/avatar';
+import {
+  NxAvatarAccentColor,
+  NxAvatarComponent,
+} from '@allianz/ng-aquila/avatar';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { Component } from '@angular/core';
+
 /**
  * @title Colors example
  */
@@ -10,4 +14,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./avatar-accent-colors-example.css'],
   imports: [NxAvatarComponent, NxIconComponent],
 })
-export class AvatarAccentColorsExampleComponent {}
+export class AvatarAccentColorsExampleComponent {
+  readonly accentColors: NxAvatarAccentColor[] = [
+    'yellow',
+    'orange',
+    'red',
+    'purple',
+    'teal',
+    'aqua',
+    'blue',
+    'green',
+    'gray',
+  ];
+}

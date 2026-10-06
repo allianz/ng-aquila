@@ -4,14 +4,22 @@
       <span class="hljs-comment">&lt;!-- header row --&gt;</span>
       @if (element[&#x27;type&#x27;] === &#x27;header&#x27;) {
         <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
-          @for (cell of element[&#x27;cells&#x27;]; track $index) {
+          @for (cell of element[&#x27;cells&#x27;]; track $index; let i = $index) {
             <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
-              {{ cell }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s nx-margin-bottom-0&quot;</span>
-              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-header-title</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>&gt;</span>{{ cell }}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-header-title</span>&gt;</span>
+              <span class="hljs-comment">&lt;!-- Fixed height reserves the price&#x27;s space so late data causes no layout shift. --&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-header-price</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;price-slot&quot;</span>&gt;</span>
+                  @if (loading) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-spinner</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-spinner</span>&gt;</span>
+                  } @else {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-price</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;prices[i]&quot;</span> <span class="hljs-attr">currency</span>=<span class="hljs-string">&quot;EUR&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-price</span>&gt;</span>
+                  }
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-header-price</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxComparisonTableSelectButton</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
           }
         <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
@@ -102,3 +110,13 @@
     }
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;reload()&quot;</span>
+  [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;loading&quot;</span>
+  <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-2m&quot;</span>
+  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+&gt;</span>
+  Reload prices
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

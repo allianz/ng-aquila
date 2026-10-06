@@ -1,0 +1,1 @@
+function e(r){return r==null?``:typeof r==`string`?r:`${r}px`}function i(r){return r!=null&&`${r}`!=`false`}export{i as n,e as t};

@@ -9,6 +9,7 @@ import { RadioToggleFormExampleComponent } from './radio-toggle-form/radio-toggl
 import { RadioToggleNegativeExampleComponent } from './radio-toggle-negative/radio-toggle-negative-example';
 import { RadioToggleReactiveExampleComponent } from './radio-toggle-reactive/radio-toggle-reactive-example';
 import { RadioToggleReadonlyExampleComponent } from './radio-toggle-readonly/radio-toggle-readonly-example';
+import { RadioToggleSizeExampleComponent } from './radio-toggle-size/radio-toggle-size-example';
 import { RadioToggleValidationExampleComponent } from './radio-toggle-validation/radio-toggle-validation-example';
 
 const EXAMPLES = [
@@ -19,6 +20,7 @@ const EXAMPLES = [
   RadioToggleNegativeExampleComponent,
   RadioToggleReactiveExampleComponent,
   RadioToggleValidationExampleComponent,
+  RadioToggleSizeExampleComponent,
 ];
 
 @NgModule({
@@ -35,6 +37,7 @@ export class RadioToggleExamplesModule {
       'radio-toggle-negative': RadioToggleNegativeExampleComponent,
       'radio-toggle-reactive': RadioToggleReactiveExampleComponent,
       'radio-toggle-validation': RadioToggleValidationExampleComponent,
+      'radio-toggle-size': RadioToggleSizeExampleComponent,
     };
   }
 }

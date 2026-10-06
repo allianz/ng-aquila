@@ -425,6 +425,24 @@
                 <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
+                ariaLabelledBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets additional aria-labelledby IDs to be merged with the auto-detected label reference on the group element.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
                 autoGrid: 
                 </span>
                  
@@ -452,6 +470,25 @@
     </td>
     <td class="docs-api-property-description">
         <p>Whether the tile group is disabled. Default is false.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverseInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the tiles should use inverse (light-on-dark) colors. When not set, it
+follows the surface the group is placed on (see <code>nxSurface</code>).</p>
 </td>
 </tr>
    
@@ -505,7 +542,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Selection mode for the tile group. Can be &#39;single&#39; or &#39;multi&#39;. Default is &#39;single&#39;.</p>
+        <p>Selection mode for the tile group. Can be 'single' or 'multi'. Default is 'single'.</p>
 </td>
 </tr>
    
@@ -523,7 +560,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>The layout of the tiles in the group. Can be &#39;horizontal&#39; or &#39;vertical&#39;. Default is &#39;vertical&#39;.</p>
+        <p>The layout of the tiles in the group. Can be 'horizontal' or 'vertical'. Default is 'vertical'.</p>
 </td>
 </tr>
    
@@ -639,6 +676,23 @@
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the inverse set of styles is applied to the group and its tiles.</p>
+</td>
 </tr>
    
 
@@ -765,7 +819,7 @@ Since the tiles can change dynamically, the effect takes care of unsubscribing a
     <code>NxTileLayout</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'horizontal' | 'vertical'</code>
+    <code class="docs-api-type-alias-value">&#39;horizontal&#39; | &#39;vertical&#39;</code>
 </p>
    
 
@@ -774,6 +828,6 @@ Since the tiles can change dynamically, the effect takes care of unsubscribing a
     <code>NxTileSelectionMode</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'single' | 'multi'</code>
+    <code class="docs-api-type-alias-value">&#39;single&#39; | &#39;multi&#39;</code>
 </p>
   </div>

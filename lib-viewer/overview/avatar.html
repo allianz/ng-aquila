@@ -39,6 +39,23 @@
 </ul>
 <p class="docs-markdown--p">To use an accent color variant, apply the <code>[accentColor]</code> property; to control its emphasis, apply the <code>[prominence]</code> property (<code>subtle</code> by default, or <code>attention</code> for the emphasized variant).</p>
 <div nx-docs-example="avatar-accent-colors" config="{}">exampleID: avatar-accent-colors</div>
+<h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
+<p class="docs-markdown--p">For use on dark backgrounds, add the <code>inverse</code> input to use inverse colors.</p>
+<p class="docs-markdown--p"><strong>Usage:</strong> <code>&lt;button nxAvatar inverse&gt;MD&lt;/button&gt;</code></p>
+<div nx-docs-example="avatar-inverse" config="{}">exampleID: avatar-inverse</div>
+</div>
+<div class="docs-a1">
+<h3 id="indicator" tabindex="-1" class="docs-markdown--h3">Indicator</h3>
+<p class="docs-markdown--p">An <a href="/documentation/indicator/overview"><code>nx-indicator</code></a> can be projected into the avatar to show status, e.g. an
+online state or unread count. Add the <code>nxAvatarIndicator</code> directive to it; it is always
+positioned in the bottom right corner, regardless of the <code>position</code> and <code>overlap</code> input.</p>
+<p class="docs-markdown--p">The avatar also set the indicator size: <code>s</code> avatars get an <code>800</code> indicator, <code>m</code> a <code>1200</code>, <code>l</code> a
+<code>1600</code> and <code>xl</code> a <code>2000</code>. This wins over the indicator's own <code>size</code> input, so there is no
+need to set it.</p>
+<div class="docs-deprecation-warning">
+<p class="docs-markdown--p"><strong>Accessibility:</strong> One indicator type used consistently is fine — the meaning comes from the indicator being present or absent. Mixing types (<code>positive</code>, <code>warning</code>, <code>critical</code>, <code>info</code>) or mixing indicator content (e.g. different icons, or icons next to counts) conveys meaning through color alone, which fails <a href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html">WCAG 1.4.1 Use of Color</a>. An <code>aria-label</code> does not fix this, since it only reaches screen reader users — add a non-color cue such as accompanying text, a tooltip, or a popover instead. See the <a href="/documentation/indicator/overview#accessibility">indicator accessibility docs</a> for more details.</p>
+</div>
+<div nx-docs-example="avatar-indicator" config="{}">exampleID: avatar-indicator</div>
 </div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">When using <code>nxAvatar</code> on a native button, please set a suitable <code>aria-label</code> for it.</p>

@@ -1,13 +1,31 @@
 <h3 id="message" tabindex="-1" class="docs-markdown--h3">Message</h3>
 <p class="docs-markdown--p">Use this component to present a contextual message with different color coding. You can pass in any content you consider appropriate.</p>
 <p class="docs-markdown--p">By default, the message is rendered inside a filled, bordered surface. Set the <code>contained</code> input to <code>false</code> to render it as plain icon and text instead, without a background or border.</p>
+<h4 id="contexts" tabindex="-1" class="docs-markdown--h4">Contexts</h4>
+<p class="docs-markdown--p">Available contexts: <code>info | positive | warning | critical</code>. The context drives the colors and the
+icon, and is shared by the toast and the banner below.</p>
+<div class="docs-deprecation-warning">
+<code>error</code> and <code>success</code> are deprecated aliases of <code>critical</code> and <code>positive</code>. They still work, but use the new names for new code.
+</div>
 <div nx-docs-example="message-plain" config="{}">exampleID: message-plain</div>
 <h3 id="contained-message" tabindex="-1" class="docs-markdown--h3">Contained message</h3>
-<p class="docs-markdown--p">Per default (or by explicitly setting <code>contained</code> to <code>true</code>), the message is rendered inside a filled, bordered surface, colored according to its context (info, success, warning or error).</p>
+<p class="docs-markdown--p">Per default (or by explicitly setting <code>contained</code> to <code>true</code>), the message is rendered inside a filled, bordered surface, colored according to its context.</p>
+<div class="docs-hide-a1">
 <p class="docs-markdown--p">Besides the message component you can also use <code>&lt;nx-error&gt;</code> for error messages. The NxErrorComponent has a different look in expert applications (for a global configuration please have a look at the <a href="./documentation/config/overview">expert module</a>). We recommend using <em>nx-error</em>, especially for use cases where you need to support both styles.</p>
 <div nx-docs-example="message-contained" config="{}">exampleID: message-contained</div>
+</div>
+<div class="docs-hide-ndbx">
+<h4 id="contexts-1" tabindex="-1" class="docs-markdown--h4">Contexts</h4>
+<p class="docs-markdown--p">The contained message supports the same contexts as the plain message.</p>
+<div nx-docs-example="message-contexts" config="{}">exampleID: message-contexts</div>
+</div>
+<h4 id="context-icon" tabindex="-1" class="docs-markdown--h4">Context icon</h4>
+<p class="docs-markdown--p">Every context renders an icon in front of the content by default (<code>showContextIcon</code> defaults to <code>true</code>).
+Set <code>showContextIcon</code> to <code>false</code> to leave it out.</p>
+<div nx-docs-example="message-show-context-icon" config="{}">exampleID: message-show-context-icon</div>
 <h4 id="closable" tabindex="-1" class="docs-markdown--h4">Closable</h4>
 <p class="docs-markdown--p">You can add a close icon to the message component by using the <code>closable</code> input. A <code>(close)</code> event is emitted when the user clicks on the close icon.</p>
+<p class="docs-markdown--p">The close button is only rendered on a contained message. Combining <code>closable</code> with <code>contained=&quot;false&quot;</code> leaves the message plain and without a close button.</p>
 <p class="docs-markdown--p">When using a closable message please set an <code>aria-label</code> on the close button via the <code>closeButtonLabel</code> property. If you don't set the <code>aria-label</code> explicitly it will have <strong>'Close dialog'</strong> as default value. As the default is in English, in almost all cases you should explicitly set the label.</p>
 <p class="docs-markdown--p">When displaying notifications we recommend that you use <code>aria-live</code> combined with the <a href="https://material.angular.io/cdk/a11y/api">LiveAnnouncer</a> in order to be accessibility compliant.</p>
 <div nx-docs-example="message-closable" config="{}">exampleID: message-closable</div>
@@ -48,13 +66,24 @@
 <p class="docs-markdown--p">In the following example the toast message does not close automatically, but in a programmatic way. By pasing a <code>duration: 0</code> via the toast message config the toast won't close automatically,</p>
 <pre><code class="language-ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">myCustomOptions</span>: <span class="hljs-title class_">NxMessageToastConfig</span> = {
     <span class="hljs-attr">duration</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
-    <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;Yay, you see a success message toast&#x27;</span>,
+    <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;positive&#x27;</span>,
+    <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;Yay, you see a positive message toast&#x27;</span>,
 };
 
 <span class="hljs-keyword">let</span> toastRef = messageToastService.<span class="hljs-title function_">open</span>(<span class="hljs-string">&#x27;My message toast text.&#x27;</span>, myCustomOptions);
 </code></pre>
 <div nx-docs-example="message-toast-custom-settings" config="{}">exampleID: message-toast-custom-settings</div>
+<h4 id="contexts-2" tabindex="-1" class="docs-markdown--h4">Contexts</h4>
+<p class="docs-markdown--p">Toasts support <code>info | positive | warning | critical</code> (the deprecated <code>success</code> alias also works). Unlike <code>nx-message</code>, toasts do not support <code>regular</code> or the deprecated <code>error</code>.</p>
+<p class="docs-markdown--p">The context icon is shown by default (<code>showContextIcon: true</code>). Set <code>showContextIcon</code> to <code>false</code> in the config to
+leave it out.</p>
+<p class="docs-markdown--p"><strong>Accessibility:</strong> Any warning or critical message toast needs a permanent representation on the
+page, and it must be connected to the error-causing element via <code>aria-describedby</code> where applicable.
+A message toast is a temporary element, so having important information in a toast alone is an
+accessibility issue.</p>
+<div class="docs-hide-ndbx">
+<div nx-docs-example="message-toast-contexts" config="{}">exampleID: message-toast-contexts</div>
+</div>
 <h4 id="global-configuration" tabindex="-1" class="docs-markdown--h4">Global Configuration</h4>
 <p class="docs-markdown--p">You can also overwrite the default message toast options by using the <code>NX_MESSAGE_TOAST_DEFAULT_CONFIG</code> injection token as shown in the code snippet below:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
@@ -67,6 +96,14 @@
 })
 </code></pre>
 <h4 id="accessibility" tabindex="-1" class="docs-markdown--h4">Accessibility</h4>
+<h5 id="wrapper-id" tabindex="-1" class="docs-markdown--h5">Wrapper id</h5>
+<p class="docs-markdown--p">All message toasts of an app are rendered inside one <code>aria-live</code> wrapper element, which carries the id <code>nx-toast-message-region</code> by default. Every independently bootstrapped Angular app creates its own wrapper, so when several apps run on the same page (e.g. in a micro frontend setup) that id ends up on more than one element, which breaks <code>aria-labelledby</code> / <code>aria-describedby</code> relationships for screen readers.</p>
+<p class="docs-markdown--p">In that case give each app its own id via the <code>wrapperId</code> of the global configuration:</p>
+<pre><code class="language-ts">{
+  <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_MESSAGE_TOAST_DEFAULT_CONFIG</span>,
+  <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">wrapperId</span>: <span class="hljs-string">&#x27;my-app-toast-message-region&#x27;</span> }
+}
+</code></pre>
 <h5 id="aria-live-and-politeness" tabindex="-1" class="docs-markdown--h5">Aria-live and politeness</h5>
 <p class="docs-markdown--p">Message toasts are announced via an <code>aria-live</code> region. By default, their politeness level is set to <code>polite</code>. This can be changed by overwriting the <code>politeness</code> in the message toast configuration. The <code>polite</code> value is recommended, as then the toast messages are not presented while the user is active on the page (e.g. while the user is listening to the text of another element), but at the next opportunity (e.g. when the user pauses typing).</p>
 <h5 id="announcement-messages" tabindex="-1" class="docs-markdown--h5">Announcement messages</h5>
@@ -77,6 +114,26 @@
 </code></pre>
 <p class="docs-markdown--p">You can find more information on aria-live regions and the available politeness values <a href="https://www.w3.org/WAI/PF/aria-1.1/states_and_properties#aria-live">here</a>.</p>
 <h3 id="banner-message" tabindex="-1" class="docs-markdown--h3">Banner message</h3>
-<p class="docs-markdown--p">The notification banner is a static element that shifts the content of the page down in order to communicate information, a warning or an error to the user. Respectively it can have an <strong>info, success or warning context</strong>. Per default, message banners have a close icon button in the top right, which can be disabled by the <code>closable</code> input.</p>
+<p class="docs-markdown--p">The notification banner is a static element that shifts the content of the page down in order to communicate information to the user. Per default, message banners have a close icon button in the top right, which can be disabled by the <code>closable</code> input.</p>
 <p class="docs-markdown--p">Analogously to the Inline Notification, a message banner emits a <code>close</code> event when being closed by the close icon button. The example below shows how the <code>close</code> event can be used for hiding a message banner.</p>
+<h4 id="contexts-3" tabindex="-1" class="docs-markdown--h4">Contexts</h4>
+<p class="docs-markdown--p">Banners support the same <a href="#contexts">contexts</a> as <code>nx-message</code>, including the deprecated <code>error</code> and
+<code>success</code> aliases, except for <code>regular</code>.</p>
 <div nx-docs-example="message-banner" config="{}">exampleID: message-banner</div>
+<h4 id="context-icon-1" tabindex="-1" class="docs-markdown--h4">Context icon</h4>
+<p class="docs-markdown--p">Banners follow the theme when <code>showContextIcon</code> is not set: no icon under A1, an icon under the other
+themes. Set <code>showContextIcon</code> explicitly to override that in either direction.</p>
+<h4 id="closable-1" tabindex="-1" class="docs-markdown--h4">Closable</h4>
+<p class="docs-markdown--p">Banners are closable by default. Set <code>closable</code> to <code>false</code> for a banner the user cannot dismiss —
+the close button is left out and the reserved inline-end padding goes with it.</p>
+<div class="docs-hide-ndbx">
+<h4 id="actions" tabindex="-1" class="docs-markdown--h4">Actions</h4>
+<p class="docs-markdown--p">Project action buttons into a banner with the <code>nxMessageBannerActions</code> directive. The
+<code>actionLayout</code> input decides where they go:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>horizontal</code> (default) places them on the same line as
+the content, next to the close button</li>
+<li class="docs-markdown--li"><code>vertical</code> puts them on their own line below the content.</li>
+</ul>
+<div nx-docs-example="message-banner-configuration" config="{}">exampleID: message-banner-configuration</div>
+</div>

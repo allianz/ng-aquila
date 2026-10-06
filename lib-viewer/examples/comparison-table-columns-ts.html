@@ -1,0 +1,64 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCheckboxComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/checkbox&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxComparisonTableCell</span>,
+  <span class="hljs-title class_">NxComparisonTableComponent</span>,
+  <span class="hljs-title class_">NxComparisonTableDescriptionCell</span>,
+  <span class="hljs-title class_">NxComparisonTableHeaderPrice</span>,
+  <span class="hljs-title class_">NxComparisonTableHeaderTitle</span>,
+  <span class="hljs-title class_">NxComparisonTableRowDirective</span>,
+  <span class="hljs-title class_">NxComparisonTableSelectButton</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/comparison-table&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxContextMenuComponent</span>,
+  <span class="hljs-title class_">NxContextMenuItemComponent</span>,
+  <span class="hljs-title class_">NxContextMenuTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/context-menu&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPriceComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/price&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/** <span class="hljs-doctag">@title</span> Disabled and hidden columns example */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;comparison-table-columns-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./comparison-table-columns-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./comparison-table-columns-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxComparisonTableComponent</span>,
+    <span class="hljs-title class_">NxComparisonTableRowDirective</span>,
+    <span class="hljs-title class_">NxComparisonTableCell</span>,
+    <span class="hljs-title class_">NxComparisonTableHeaderTitle</span>,
+    <span class="hljs-title class_">NxComparisonTableHeaderPrice</span>,
+    <span class="hljs-title class_">NxComparisonTableSelectButton</span>,
+    <span class="hljs-title class_">NxComparisonTableDescriptionCell</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
+    <span class="hljs-title class_">NxPriceComponent</span>,
+    <span class="hljs-title class_">NxCheckboxComponent</span>,
+    <span class="hljs-title class_">NxIconButtonComponent</span>,
+    <span class="hljs-title class_">NxIconComponent</span>,
+    <span class="hljs-title class_">NxContextMenuComponent</span>,
+    <span class="hljs-title class_">NxContextMenuItemComponent</span>,
+    <span class="hljs-title class_">NxContextMenuTriggerDirective</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComparisonTableColumnsExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> productTitles = [<span class="hljs-string">&#x27;Product One&#x27;</span>, <span class="hljs-string">&#x27;Product Two&#x27;</span>, <span class="hljs-string">&#x27;Product Three&#x27;</span>];
+
+  selectedColumnIndex = <span class="hljs-number">1</span>;
+
+  <span class="hljs-attr">hiddenIndexes</span>: <span class="hljs-built_in">number</span>[] = [];
+
+  isHidden = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span>.<span class="hljs-title function_">includes</span>(index);
+
+  <span class="hljs-title function_">toggleHiddenIndex</span>(<span class="hljs-params"><span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-comment">// Hiding the selected column would submit a selection the user cannot see.</span>
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-variable language_">this</span>.<span class="hljs-property">selectedColumnIndex</span>) {
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">isHidden</span>(index)
+      ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> value !== index)
+      : [...<span class="hljs-variable language_">this</span>.<span class="hljs-property">hiddenIndexes</span>, index];
+  }
+}

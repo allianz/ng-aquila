@@ -1,0 +1,29 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxSingleProgressIndicatorComponent</span>,
+  <span class="hljs-title class_">NxSingleProgressIndicatorIntl</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/progress-indicator&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Injectable</span>, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MySingleProgressIndicatorIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">NxSingleProgressIndicatorIntl</span> {
+  <span class="hljs-keyword">override</span> <span class="hljs-keyword">readonly</span> label = <span class="hljs-title function_">signal</span>(
+    <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">currentStep</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">totalSteps</span>: <span class="hljs-built_in">number</span></span>) =&gt;</span>
+      <span class="hljs-string">`Schritt <span class="hljs-subst">${currentStep}</span> von <span class="hljs-subst">${totalSteps}</span>`</span>,
+  );
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Single Progress Indicator localization example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;single-progress-indicator-localize-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./single-progress-indicator-localize-example.html&#x27;</span>,
+  <span class="hljs-attr">providers</span>: [
+    {
+      <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxSingleProgressIndicatorIntl</span>,
+      <span class="hljs-attr">useClass</span>: <span class="hljs-title class_">MySingleProgressIndicatorIntl</span>,
+    },
+  ],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxSingleProgressIndicatorComponent</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SingleProgressIndicatorLocalizeExampleComponent</span> {}

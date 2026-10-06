@@ -9,6 +9,7 @@ import { TooltipBasicExampleComponent } from './tooltip-basic/tooltip-basic-exam
 import { TooltipDelayExampleComponent } from './tooltip-delay/tooltip-delay-example';
 import { TooltipDisabledExampleComponent } from './tooltip-disabled/tooltip-disabled-example';
 import { TooltipFallbacksTableExampleComponent } from './tooltip-fallbacks-table/tooltip-fallbacks-table-example';
+import { TooltipInverseExampleComponent } from './tooltip-inverse/tooltip-inverse-example';
 import { TooltipPositionsExampleComponent } from './tooltip-positions/tooltip-positions-example';
 import { TooltipProgrammaticExampleComponent } from './tooltip-programmatic/tooltip-programmatic-example';
 import { TooltipScrollStrategyProviderExampleComponent } from './tooltip-scroll-strategy-provider/tooltip-scroll-strategy-provider-example';
@@ -21,6 +22,7 @@ const EXAMPLES = [
   TooltipDelayExampleComponent,
   TooltipDisabledExampleComponent,
   TooltipFallbacksTableExampleComponent,
+  TooltipInverseExampleComponent,
   TooltipPositionsExampleComponent,
   TooltipProgrammaticExampleComponent,
   TooltipSettingsExampleComponent,
@@ -46,6 +48,7 @@ export class TooltipExamplesModule {
       'tooltip-delay': TooltipDelayExampleComponent,
       'tooltip-disabled': TooltipDisabledExampleComponent,
       'tooltip-fallbacks-table': TooltipFallbacksTableExampleComponent,
+      'tooltip-inverse': TooltipInverseExampleComponent,
       'tooltip-positions': TooltipPositionsExampleComponent,
       'tooltip-programmatic': TooltipProgrammaticExampleComponent,
       'tooltip-settings': TooltipSettingsExampleComponent,

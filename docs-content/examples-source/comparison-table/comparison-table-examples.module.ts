@@ -18,40 +18,38 @@ import { BreakdownTableExampleComponent } from './breakdown-table/breakdown-tabl
 import { BreakdownTableExpertExampleComponent } from './breakdown-table-expert/breakdown-table-expert-example';
 import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
 import { ComparisonTableBreakpointPlaygroundExampleComponent } from './comparison-table-breakpoint-playground/comparison-table-breakpoint-playground-example';
-import { ComparisonTableDisabledColumnsExampleComponent } from './comparison-table-disabled-columns/comparison-table-disabled-columns-example';
+import { ComparisonTableColorSchemeExampleComponent } from './comparison-table-color-scheme/comparison-table-color-scheme-example';
+import { ComparisonTableColumnsExampleComponent } from './comparison-table-columns/comparison-table-columns-example';
 import { ComparisonTableDynamicExampleComponent } from './comparison-table-dynamic/comparison-table-dynamic-example';
 import { ComparisonTableErrorExampleComponent } from './comparison-table-error/comparison-table-error-example';
 import { ComparisonTableExpandableAreaExampleComponent } from './comparison-table-expandable-area/comparison-table-expandable-area-example';
 import { ComparisonTableFormElementsExampleComponent } from './comparison-table-form-elements/comparison-table-form-elements-example';
-import { ComparisonTableHiddenColumnsExampleComponent } from './comparison-table-hidden-columns/comparison-table-hidden-columns-example';
+import { ComparisonTableHeaderLegacyExampleComponent } from './comparison-table-header-legacy/comparison-table-header-legacy-example';
 import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-table-non-sticky-header/comparison-table-non-sticky-header-example';
 import { ComparisonTableOverflowExampleComponent } from './comparison-table-overflow/comparison-table-overflow-example';
-import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-group/comparison-table-row-group-example';
+import { ComparisonTableRowsExampleComponent } from './comparison-table-rows/comparison-table-rows-example';
 import { ComparisonTableStaticExampleComponent } from './comparison-table-static/comparison-table-static-example';
-import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
-import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
 import { RecommendationTableExampleComponent } from './recommendation-table/recommendation-table-example';
 import { RecommendationTableExpertExampleComponent } from './recommendation-table-expert/recommendation-table-expert-example';
 
 const EXAMPLES = [
-  ComparisonTableErrorExampleComponent,
   ComparisonTableExampleComponent,
-  ComparisonTableStaticExampleComponent,
-  ComparisonTableDisabledColumnsExampleComponent,
-  ComparisonTableDynamicExampleComponent,
-  ComparisonTableFormElementsExampleComponent,
-  ComparisonTableRowGroupExampleComponent,
-  ComparisonTableWithIntersectionExampleComponent,
-  ComparisonTableWithToggleSectionsExampleComponent,
-  ComparisonTableExpandableAreaExampleComponent,
-  ComparisonTableHiddenColumnsExampleComponent,
-  ComparisonTableNonStickyHeaderExampleComponent,
   ComparisonTableOverflowExampleComponent,
   ComparisonTableBreakpointPlaygroundExampleComponent,
+  ComparisonTableColorSchemeExampleComponent,
+  ComparisonTableNonStickyHeaderExampleComponent,
+  ComparisonTableRowsExampleComponent,
+  ComparisonTableExpandableAreaExampleComponent,
+  ComparisonTableColumnsExampleComponent,
+  ComparisonTableErrorExampleComponent,
+  ComparisonTableDynamicExampleComponent,
+  ComparisonTableFormElementsExampleComponent,
   BreakdownTableExampleComponent,
   BreakdownTableExpertExampleComponent,
   RecommendationTableExampleComponent,
   RecommendationTableExpertExampleComponent,
+  ComparisonTableHeaderLegacyExampleComponent,
+  ComparisonTableStaticExampleComponent,
 ];
 
 @NgModule({
@@ -77,32 +75,29 @@ const EXAMPLES = [
 export class ComparisonExamplesModule {
   static components() {
     return {
-      'comparison-table-error': ComparisonTableErrorExampleComponent,
       'comparison-table': ComparisonTableExampleComponent,
-      'comparison-table-static': ComparisonTableStaticExampleComponent,
-      'comparison-table-disabled-columns':
-        ComparisonTableDisabledColumnsExampleComponent,
-      'comparison-table-dynamic': ComparisonTableDynamicExampleComponent,
-      'comparison-table-form-elements':
-        ComparisonTableFormElementsExampleComponent,
-      'comparison-table-row-group': ComparisonTableRowGroupExampleComponent,
-      'comparison-table-with-intersection':
-        ComparisonTableWithIntersectionExampleComponent,
-      'comparison-table-with-toggle-sections':
-        ComparisonTableWithToggleSectionsExampleComponent,
-      'comparison-table-expandable-area':
-        ComparisonTableExpandableAreaExampleComponent,
-      'comparison-table-hidden-columns':
-        ComparisonTableHiddenColumnsExampleComponent,
-      'comparison-table-non-sticky-header':
-        ComparisonTableNonStickyHeaderExampleComponent,
       'comparison-table-overflow': ComparisonTableOverflowExampleComponent,
       'comparison-table-breakpoint-playground':
         ComparisonTableBreakpointPlaygroundExampleComponent,
+      'comparison-table-color-scheme':
+        ComparisonTableColorSchemeExampleComponent,
+      'comparison-table-non-sticky-header':
+        ComparisonTableNonStickyHeaderExampleComponent,
+      'comparison-table-rows': ComparisonTableRowsExampleComponent,
+      'comparison-table-expandable-area':
+        ComparisonTableExpandableAreaExampleComponent,
+      'comparison-table-columns': ComparisonTableColumnsExampleComponent,
+      'comparison-table-error': ComparisonTableErrorExampleComponent,
+      'comparison-table-dynamic': ComparisonTableDynamicExampleComponent,
+      'comparison-table-form-elements':
+        ComparisonTableFormElementsExampleComponent,
       'breakdown-table': BreakdownTableExampleComponent,
       'breakdown-table-expert': BreakdownTableExpertExampleComponent,
       'recommendation-table': RecommendationTableExampleComponent,
       'recommendation-table-expert': RecommendationTableExpertExampleComponent,
+      'comparison-table-header-legacy':
+        ComparisonTableHeaderLegacyExampleComponent,
+      'comparison-table-static': ComparisonTableStaticExampleComponent,
     };
   }
 }

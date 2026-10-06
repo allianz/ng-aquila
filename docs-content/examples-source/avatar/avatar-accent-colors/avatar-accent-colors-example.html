@@ -1,215 +1,47 @@
 <div class="container nx-margin-bottom-m">
+  @for (accentColor of accentColors; track accentColor) {
+    <button
+      nxAvatar
+      size="medium"
+      [accentColor]="accentColor"
+      class="nx-margin-right-s"
+      aria-label="Mercedes Deutsch"
+    >
+      <span aria-hidden="true">MD</span>
+    </button>
+  }
   <button
     nxAvatar
     size="medium"
     accentColor="yellow"
     class="nx-margin-right-s"
     aria-label="Mercedes Deutsch"
-    role="img"
-  >
-    <span aria-hidden="true">MD</span>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="orange"
-    class="nx-margin-right-s"
-    aria-label="Mercedes Deutsch"
-    role="img"
-  >
-    <span aria-hidden="true">MD</span>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="red"
-    aria-label="Logged in"
-    role="img"
-    class="nx-margin-right-s"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="purple"
-    aria-label="Logged in"
-    role="img"
-    class="nx-margin-right-s"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="purple"
     disabled
-    aria-label="Logged in"
   >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
+    <span aria-hidden="true">MD</span>
   </button>
 </div>
 
 <div class="container nx-margin-bottom-m">
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="teal"
-    class="nx-margin-right-s"
-    aria-label="Mercedes Deutsch"
-    role="img"
-  >
-    <span aria-hidden="true">MD</span>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="aqua"
-    class="nx-margin-right-s"
-    aria-label="Mercedes Deutsch"
-    role="img"
-  >
-    <span aria-hidden="true">MD</span>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="blue"
-    aria-label="Logged in"
-    role="img"
-    class="nx-margin-right-s"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="green"
-    aria-label="Logged in"
-    role="img"
-    class="nx-margin-right-s"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="gray"
-    aria-label="Logged in"
-    role="img"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
-</div>
-<div class="container nx-margin-bottom-m">
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="yellow"
-    prominence="attention"
-    class="nx-margin-right-s"
-    aria-label="Mercedes Deutsch"
-    role="img"
-  >
-    <span aria-hidden="true">MD</span>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="orange"
-    prominence="attention"
-    class="nx-margin-right-s"
-    aria-label="Mercedes Deutsch"
-    role="img"
-  >
-    <span aria-hidden="true">MD</span>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="red"
-    prominence="attention"
-    aria-label="Logged in"
-    role="img"
-    class="nx-margin-right-s"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
+  @for (accentColor of accentColors; track accentColor) {
+    <button
+      nxAvatar
+      size="medium"
+      [accentColor]="accentColor"
+      prominence="attention"
+      class="nx-margin-right-s"
+      aria-label="Logged in"
+    >
+      <nx-icon name="user-o" aria-hidden="true"></nx-icon>
+    </button>
+  }
   <button
     nxAvatar
     size="medium"
     accentColor="purple"
     prominence="attention"
     aria-label="Logged in"
-    role="img"
-    class="nx-margin-right-s"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
-
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="purple"
-    prominence="attention"
     disabled
-    aria-label="Logged in"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
-</div>
-<div class="container nx-margin-bottom-m">
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="teal"
-    prominence="attention"
-    class="nx-margin-right-s"
-    aria-label="Mercedes Deutsch"
-    role="img"
-  >
-    <span aria-hidden="true">MD</span>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="aqua"
-    prominence="attention"
-    class="nx-margin-right-s"
-    aria-label="Mercedes Deutsch"
-    role="img"
-  >
-    <span aria-hidden="true">MD</span>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="blue"
-    prominence="attention"
-    aria-label="Logged in"
-    role="img"
-    class="nx-margin-right-s"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="green"
-    prominence="attention"
-    aria-label="Logged in"
-    role="img"
-    class="nx-margin-right-s"
-  >
-    <nx-icon name="user-o" aria-hidden="true"></nx-icon>
-  </button>
-  <button
-    nxAvatar
-    size="medium"
-    accentColor="gray"
-    prominence="attention"
-    aria-label="Logged in"
-    role="img"
   >
     <nx-icon name="user-o" aria-hidden="true"></nx-icon>
   </button>

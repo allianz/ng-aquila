@@ -1,0 +1,20 @@
+@for (context of contexts; track context) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs nx-margin-bottom-xs&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;open(context)&quot;</span>
+  &gt;</span>
+    {{ context }}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+}
+
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+  <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;showContextIcon = !showContextIcon&quot;</span>
+&gt;</span>
+  {{ showContextIcon ? &#x27;Hide&#x27; : &#x27;Show&#x27; }} context icon
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

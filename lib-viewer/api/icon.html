@@ -187,8 +187,8 @@ the icon is placed on (see <code>nxSurface</code>).</p>
     </td>
     <td class="docs-api-property-description">
         <p>Specifies the size of the icon.
-Use &#39;s&#39; and &#39;m&#39; for functional Icons and
-&#39;l&#39;, &#39;xl&#39; and &#39;2xl&#39; for illustrative icons.</p>
+Use 's' and 'm' for functional Icons and
+'l', 'xl' and '2xl' for illustrative icons.</p>
 </td>
 </tr>
    
@@ -1047,12 +1047,12 @@ with a font class. Useful to override the essential library icons.
 To register an icon font in general use <code>registerFont</code> and
 <code>setDefaultFontClass</code>.</p>
 <p>Example: you want to override the essential svg icon of the library <code>chevron-down</code>
-with an icon from your icon font called &#39;arrow-down&#39;. You would first register your
+with an icon from your icon font called 'arrow-down'. You would first register your
 icon font:
-<code>iconRegistry.registerFont(&#39;my-icons&#39;);</code>
-<code>iconRegistry.setDefaultFontClass(&#39;my-icons&#39;);</code>
+<code>iconRegistry.registerFont('my-icons');</code>
+<code>iconRegistry.setDefaultFontClass('my-icons');</code>
 and then override the chevron-down icon in the registry:
-<code>iconRegistry.addFontIcon(&#39;chevron-down&#39;, &#39;arrow-down&#39;);</code></p>
+<code>iconRegistry.addFontIcon('chevron-down', 'arrow-down');</code></p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
@@ -1244,7 +1244,8 @@ and then override the chevron-down icon in the registry:
                 name:
                 <span class="docs-api-method-parameter-type">string</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Custom name identifier. </p>
+            <div class="docs-api-method-parameter-description"><p>Custom name identifier.</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
@@ -1252,7 +1253,8 @@ and then override the chevron-down icon in the registry:
                 hostClass<span class="docs-api-method-parameter-optional-marker">?</span>:
                 <span class="docs-api-method-parameter-type">string</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The hostClass is the general class like `fa` and an optional prefix can be given. </p>
+            <div class="docs-api-method-parameter-description"><p>The hostClass is the general class like <code>fa</code> and an optional prefix can be given.</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
@@ -1260,9 +1262,10 @@ and then override the chevron-down icon in the registry:
                 prefix<span class="docs-api-method-parameter-optional-marker">?</span>:
                 <span class="docs-api-method-parameter-type">string</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The prefix is helpful if your class name for the icon would be prefixed,
+            <div class="docs-api-method-parameter-description"><p>The prefix is helpful if your class name for the icon would be prefixed,
 e.g. my-icons--heart but you still want to only use the name
-<code>&lt;nx-icon name="heart" font="my-icons"&gt;&lt;/nx-icon&gt;</code>. </p>
+&lt;nx-icon name=&quot;heart&quot; font=&quot;my-icons&quot;&gt;&lt;/nx-icon&gt;.</p>
+</div>
         </div>
         
     </div></div>
@@ -1435,7 +1438,7 @@ is omitted.</p>
             <span class="docs-api-method-name">getContent(): <span class="docs-api-method-returns-type">Observable&lt;SVGElement&gt;</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Returns the content. If the SVG is not already loaded it fetches the SVG from icons&#39; URL</p>
+    <div class="docs-api-method-description"><p>Returns the content. If the SVG is not already loaded it fetches the SVG from icons' URL</p>
 </div></div>
    
    
@@ -1506,7 +1509,7 @@ is omitted.</p>
 </h4><p class="docs-api-type-alias-description"><p>Types of icon sizes</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'auto' | 's' | 'm' | 'l' | 'xl' | '2xl'</code>
+    <code class="docs-api-type-alias-value">&#39;auto&#39; | &#39;s&#39; | &#39;m&#39; | &#39;l&#39; | &#39;xl&#39; | &#39;2xl&#39;</code>
 </p>
    
 
@@ -1515,7 +1518,7 @@ is omitted.</p>
     <code>IconAccentColor</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'yellow' | 'orange' | 'red' | 'purple' | 'aqua' | 'blue' | 'teal' | 'green' | 'gray'</code>
+    <code class="docs-api-type-alias-value">&#39;yellow&#39; | &#39;orange&#39; | &#39;red&#39; | &#39;purple&#39; | &#39;aqua&#39; | &#39;blue&#39; | &#39;teal&#39; | &#39;green&#39; | &#39;gray&#39;</code>
 </p>
    
 
@@ -1524,7 +1527,7 @@ is omitted.</p>
     <code>NxIconType</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'auto' | 'primary' | 'secondary' | 'accent-attention' | 'accent-subtle'</code>
+    <code class="docs-api-type-alias-value">&#39;auto&#39; | &#39;primary&#39; | &#39;secondary&#39; | &#39;accent-attention&#39; | &#39;accent-subtle&#39;</code>
 </p>
    
 
@@ -1533,7 +1536,7 @@ is omitted.</p>
     <code>NxStatusIconType</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'success' | 'info' | 'error' | 'warning'</code>
+    <code class="docs-api-type-alias-value">&#39;success&#39; | &#39;info&#39; | &#39;error&#39; | &#39;warning&#39;</code>
 </p>
    
 
@@ -1542,7 +1545,7 @@ is omitted.</p>
     <code>NxStatusIconSize</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'auto' | 's' | 'm' | 'l' | 'xl' | '2xl'</code>
+    <code class="docs-api-type-alias-value">&#39;auto&#39; | &#39;s&#39; | &#39;m&#39; | &#39;l&#39; | &#39;xl&#39; | &#39;2xl&#39;</code>
 </p>
   <h3 id="testing_class" class="docs-header-link docs-api-h3">
                 Testing Classes

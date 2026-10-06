@@ -1,0 +1,57 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;popover-example&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxSurface</span>=<span class="hljs-string">&quot;default&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;popover-example__surface&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
+      Default surface, inverse popover
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+      <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
+      [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverInverse&quot;</span>
+      <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;right&quot;</span>
+      <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    &gt;</span>
+      Open
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverInverse</span> <span class="hljs-attr">inverse</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
+          Popover
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverMainContent</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;normal&quot;</span>&gt;</span>I am inverse, on a default surface.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxSurface</span>=<span class="hljs-string">&quot;attention&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;popover-example__surface&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
+      Inverse surface, default popover
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+      <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
+      [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverLight&quot;</span>
+      <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">&quot;right&quot;</span>
+      <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    &gt;</span>
+      Open
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverLight</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverTitle</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
+          Popover
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxPopoverMainContent</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;normal&quot;</span>&gt;</span>I stay default, on an inverse surface.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

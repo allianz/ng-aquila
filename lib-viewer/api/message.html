@@ -42,7 +42,7 @@
                         
                             config?:  
                                 <span class="docs-api-property__type">
-                                    NxMessageToastConfig<any>
+                                    NxMessageToastConfig&lt;any&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
         </code>
@@ -56,15 +56,17 @@
                 text:
                 <span class="docs-api-method-parameter-type">string</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Text to be used for the message toast. </p>
+            <div class="docs-api-method-parameter-description"><p>Text to be used for the message toast.</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 config<span class="docs-api-method-parameter-optional-marker">?</span>:
-                <span class="docs-api-method-parameter-type">NxMessageToastConfig<any></span>
+                <span class="docs-api-method-parameter-type">NxMessageToastConfig&lt;any&gt;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Extra configuration for the message toast. </p>
+            <div class="docs-api-method-parameter-description"><p>Extra configuration for the message toast.</p>
+</div>
         </div>
         
     </div></div>
@@ -76,12 +78,12 @@
             <span class="docs-api-method-name">openFromComponent(
                             component:  
                                 <span class="docs-api-property__type">
-                                    ComponentType<any>
+                                    ComponentType&lt;any&gt;
                                 </span>,
                         
                             config?:  
                                 <span class="docs-api-property__type">
-                                    NxMessageToastConfig<any>
+                                    NxMessageToastConfig&lt;any&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
         </code>
@@ -93,17 +95,19 @@
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 component:
-                <span class="docs-api-method-parameter-type">ComponentType<any></span>
+                <span class="docs-api-method-parameter-type">ComponentType&lt;any&gt;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Component to be used for the message toast. </p>
+            <div class="docs-api-method-parameter-description"><p>Component to be used for the message toast.</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 config<span class="docs-api-method-parameter-optional-marker">?</span>:
-                <span class="docs-api-method-parameter-type">NxMessageToastConfig<any></span>
+                <span class="docs-api-method-parameter-type">NxMessageToastConfig&lt;any&gt;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Extra configuration for the message toast. </p>
+            <div class="docs-api-method-parameter-description"><p>Extra configuration for the message toast.</p>
+</div>
         </div>
         
     </div></div>
@@ -115,12 +119,12 @@
             <span class="docs-api-method-name">openFromTemplate(
                             template:  
                                 <span class="docs-api-property__type">
-                                    TemplateRef<any>
+                                    TemplateRef&lt;any&gt;
                                 </span>,
                         
                             config?:  
                                 <span class="docs-api-property__type">
-                                    NxMessageToastConfig<any>
+                                    NxMessageToastConfig&lt;any&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
         </code>
@@ -132,17 +136,19 @@
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 template:
-                <span class="docs-api-method-parameter-type">TemplateRef<any></span>
+                <span class="docs-api-method-parameter-type">TemplateRef&lt;any&gt;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Template to be used for the message toast. </p>
+            <div class="docs-api-method-parameter-description"><p>Template to be used for the message toast.</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 config<span class="docs-api-method-parameter-optional-marker">?</span>:
-                <span class="docs-api-method-parameter-type">NxMessageToastConfig<any></span>
+                <span class="docs-api-method-parameter-type">NxMessageToastConfig&lt;any&gt;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Extra configuration for the message toast. </p>
+            <div class="docs-api-method-parameter-description"><p>Extra configuration for the message toast.</p>
+</div>
         </div>
         
     </div></div>
@@ -155,7 +161,10 @@
 
 <h4 id="NxMessageComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxMessageComponent"></span>
-    <code>NxMessageComponent</code></h4><p class="docs-api-directive-selectors">
+    <code>NxMessageComponent</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">NxMessageBase</span>
+    </span></h4><p class="docs-api-directive-selectors">
     <span class="docs-api-class-selector-label ">Selector:</span>
     
         <code class="docs-api__selector-container nx-margin-left-2xs">
@@ -175,8 +184,11 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">{ transform: booleanAttribute }</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 closable: 
@@ -244,7 +256,7 @@
     </td>
     <td class="docs-api-property-description">
         <p>Sets the context of the message.
-The message box will color accordingly. Default: &#39;regular&#39;.</p>
+The message box will color accordingly. Default: 'regular'.</p>
 </td>
 </tr>
    
@@ -263,6 +275,26 @@ The message box will color accordingly. Default: &#39;regular&#39;.</p>
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                showContextIcon: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the context icon is shown.</p>
+<p>Default: <code>true</code> for <code>nx-message</code>. Subclasses may resolve an unset value differently — see the
+concrete component for its default.</p>
+</td>
 </tr>
    
 
@@ -296,7 +328,7 @@ The message box will color accordingly. Default: &#39;regular&#39;.</p>
     <span header-link="NxMessageBannerComponent"></span>
     <code>NxMessageBannerComponent</code><span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
-        <span class="docs-api-class-extends-type">NxMessageComponent</span>
+        <span class="docs-api-class-extends-type">NxMessageBase</span>
     </span></h4><p class="docs-api-directive-selectors">
     <span class="docs-api-class-selector-label ">Selector:</span>
     
@@ -317,8 +349,31 @@ The message box will color accordingly. Default: &#39;regular&#39;.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                actionLayout: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;BANNER_ACTION_LAYOUT&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Where the projected actions sit: <code>'horizontal'</code> puts them on the same line as the content,
+next to the close button, <code>'vertical'</code> on their own line below it.</p>
+<p>Default: <code>'horizontal'</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span><span class="docs-api-input__keyword">
+                        @Input
+                        (<span class="docs-api-input-alias">{ transform: booleanAttribute }</span>) 
+                    </span>
+                </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 closable: 
@@ -355,24 +410,6 @@ The message box will color accordingly. Default: &#39;regular&#39;.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
-            <code>
-                <span class="docs-api-property__name">
-                contained: 
-                </span>
-                 
-                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
-            </code>
-        </p>
-    </td>
-    <td class="docs-api-property-description">
-        <p>Whether the message is rendered inside a filled, bordered surface (<code>true</code>, default) or as plain icon and text (<code>false</code>).</p>
-</td>
-</tr>
-   
-
-<tr class="docs-api-properties-row">
-    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
@@ -386,7 +423,7 @@ The message box will color accordingly. Default: &#39;regular&#39;.</p>
     </td>
     <td class="docs-api-property-description">
         <p>Sets the context of the message banner. The message box will color accordingly.</p>
-<p>Default: <code>&#39;info&#39;</code>.</p>
+<p>Default: <code>'info'</code>.</p>
 </td>
 </tr>
    
@@ -405,6 +442,26 @@ The message box will color accordingly. Default: &#39;regular&#39;.</p>
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                showContextIcon: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the context icon is shown.</p>
+<p>Default: <code>true</code> for <code>nx-message</code>. Subclasses may resolve an unset value differently — see the
+concrete component for its default.</p>
+</td>
 </tr>
    
 
@@ -430,6 +487,25 @@ The message box will color accordingly. Default: &#39;regular&#39;.</p>
 </tr>
   
 </table> 
+
+ 
+  <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
+    </h3>
+     
+
+<h4 id="NxMessageBannerActions" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxMessageBannerActions"></span>
+    <code>NxMessageBannerActions</code></h4><p class="docs-api-class-description"><p>Container for the action buttons of a message banner.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxMessageBannerActions]</span>
+        </code>
+    
+</p> 
 
  
   <h3 id="additional_classes" class="docs-header-link docs-api-h3">
@@ -463,7 +539,7 @@ The message box will color accordingly. Default: &#39;regular&#39;.</p>
     <td class="docs-api-property-description">
         <p>Message to be announced by the LiveAnnouncer. When opening a toast message without a custom
 component or template, the announcement message will default to the specified message.</p>
-<p>Default: <code>&#39;&#39;</code>.</p>
+<p>Default: <code>''</code>.</p>
 </td>
 </tr>
    
@@ -481,7 +557,7 @@ component or template, the announcement message will default to the specified me
     </td>
     <td class="docs-api-property-description">
         <p>Context of the message toast.</p>
-<p>Default: <code>&#39;info&#39;</code>.</p>
+<p>Default: <code>'info'</code>.</p>
 </td>
 </tr>
    
@@ -534,7 +610,46 @@ component or template, the announcement message will default to the specified me
     </td>
     <td class="docs-api-property-description">
         <p>The politeness level for the LiveAnnouncer announcement.</p>
-<p>Default: <code>&#39;polite&#39;</code>.</p>
+<p>Default: <code>'polite'</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                showContextIcon?: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the context icon is shown.</p>
+<p>Default: <code>true</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                wrapperId?: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Id of the <code>aria-live</code> wrapper element that holds the message toasts. Set a unique value when
+several Angular apps share a page.</p>
+<p>Only honored on the root (first-created) service: passing it to <code>open()</code> has no effect,
+and a value set on a nested/component-level provider is ignored, since child services inherit the parent's region.</p>
+<p>Default: <code>'nx-toast-message-region'</code>.</p>
 </td>
 </tr>
   
@@ -589,27 +704,41 @@ component or template, the announcement message will default to the specified me
     <span header-link="CONTEXT"></span>
     <code>CONTEXT</code>
 </h4><p class="docs-api-type-alias-description"><p>The contextual type of a message.</p>
+<p><code>'error'</code> and <code>'success'</code> are deprecated: use <code>'critical'</code> and <code>'positive'</code> instead.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">RegularContext | 'info' | 'error' | 'success' | 'warning'</code>
+    <code class="docs-api-type-alias-value">&#39;regular&#39; | &#39;info&#39; | &#39;critical&#39; | &#39;positive&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;success&#39;</code>
 </p>
    
 
 <h4 id="BANNER_CONTEXT" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="BANNER_CONTEXT"></span>
     <code>BANNER_CONTEXT</code>
-</h4><p class="docs-api-type-alias-value">
+</h4><p class="docs-api-type-alias-description"><p>The contextual type of a message banner. Banners take every message context but <code>'regular'</code>.</p>
+<p><code>'error'</code> and <code>'success'</code> are deprecated: use <code>'critical'</code> and <code>'positive'</code> instead.</p>
+</p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'info' | 'error' | 'warning'</code>
+    <code class="docs-api-type-alias-value">&#39;info&#39; | &#39;critical&#39; | &#39;positive&#39; | &#39;warning&#39; | &#39;error&#39; | &#39;success&#39;</code>
+</p>
+   
+
+<h4 id="BANNER_ACTION_LAYOUT" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="BANNER_ACTION_LAYOUT"></span>
+    <code>BANNER_ACTION_LAYOUT</code>
+</h4><p class="docs-api-type-alias-description"><p>Where the projected actions of a message banner sit relative to its content.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">&#39;horizontal&#39; | &#39;vertical&#39;</code>
 </p>
    
 
 <h4 id="NxMessageToastContext" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="NxMessageToastContext"></span>
     <code>NxMessageToastContext</code>
-</h4><p class="docs-api-type-alias-description"><p>The contextual type of a message.</p>
+</h4><p class="docs-api-type-alias-description"><p>The contextual type of a message toast.</p>
+<p><code>'success'</code> is deprecated: use <code>'positive'</code> instead.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'info' | 'success'</code>
+    <code class="docs-api-type-alias-value">&#39;info&#39; | &#39;warning&#39; | &#39;critical&#39; | &#39;positive&#39; | &#39;success&#39;</code>
 </p>
   </div>

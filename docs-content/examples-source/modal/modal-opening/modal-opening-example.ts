@@ -5,6 +5,7 @@ import { NxDialogService, NxModalRef } from '@allianz/ng-aquila/modal';
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
+  selector: 'simple-modal',
   standalone: true,
   template: `<div class="u-text-center">
     <h3>Modal Dialog from a component</h3>

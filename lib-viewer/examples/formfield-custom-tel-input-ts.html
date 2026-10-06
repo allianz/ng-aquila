@@ -188,10 +188,8 @@
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">describedBy</span> = ids.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; &#x27;</span>);
   }
 
-  <span class="hljs-title function_">onContainerClick</span>(<span class="hljs-params"><span class="hljs-attr">event</span>: <span class="hljs-title class_">MouseEvent</span></span>) {
-    <span class="hljs-keyword">if</span> ((event.<span class="hljs-property">target</span> <span class="hljs-keyword">as</span> <span class="hljs-title class_">Element</span>).<span class="hljs-property">tagName</span>.<span class="hljs-title function_">toLowerCase</span>() !== <span class="hljs-string">&#x27;input&#x27;</span>) {
-      <span class="hljs-variable language_">this</span>.<span class="hljs-property">_elementRef</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;input&#x27;</span>)!.<span class="hljs-title function_">focus</span>();
-    }
+  <span class="hljs-title function_">onContainerClick</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_elementRef</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;input&#x27;</span>)!.<span class="hljs-title function_">focus</span>();
   }
 
   <span class="hljs-title function_">writeValue</span>(<span class="hljs-attr">tel</span>: <span class="hljs-title class_">MyTel</span> | <span class="hljs-literal">null</span>): <span class="hljs-built_in">void</span> {

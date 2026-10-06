@@ -32,10 +32,10 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>colorScheme</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                colorScheme: 
+                colorSchemeInput: 
                 </span>
                  
                 <span class="docs-api-property__type">InputSignal&lt;NxPriceColorScheme&gt;</span>
@@ -43,7 +43,8 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>The color scheme of the price. Only relevant for the A1 Design.</p>
+        <p>The color scheme of the price. Only relevant for the A1 Design. When not set,
+it follows the surface the price is placed on (see <code>nxSurface</code>).</p>
 </td>
 </tr>
    
@@ -61,7 +62,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>The ISO 4217 currency code (e.g., &#39;USD&#39;, &#39;EUR&#39;).</p>
+        <p>The ISO 4217 currency code (e.g., 'USD', 'EUR').</p>
 </td>
 </tr>
    
@@ -98,7 +99,7 @@ it follows the surface the price is placed on (see <code>nxSurface</code>).</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>The locale to use for formatting (e.g., &#39;en-US&#39;, &#39;de-DE&#39;). If not provided, uses the application&#39;s LOCALE_ID.</p>
+        <p>The locale to use for formatting (e.g., 'en-US', 'de-DE'). If not provided, uses the application's LOCALE_ID.</p>
 </td>
 </tr>
    
@@ -116,7 +117,7 @@ it follows the surface the price is placed on (see <code>nxSurface</code>).</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Optional prefix text displayed before the price (e.g., &#39;from&#39;).</p>
+        <p>Optional prefix text displayed before the price (e.g., 'from').</p>
 </td>
 </tr>
    
@@ -134,7 +135,9 @@ it follows the surface the price is placed on (see <code>nxSurface</code>).</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>The size of the price display. Default is &#39;m&#39; (medium).</p>
+        <p>The size of the price display. Default is 'm' (medium).</p>
+<p>A wrapping component providing <code>NX_PRICE_CONTEXT</code> (e.g. a comparison table header cell) owns the
+size and overrides this input, so that its prices stay consistent.</p>
 </td>
 </tr>
    
@@ -152,7 +155,7 @@ it follows the surface the price is placed on (see <code>nxSurface</code>).</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Optional suffix text displayed after the price (e.g., &#39;monthly&#39;).</p>
+        <p>Optional suffix text displayed after the price (e.g., 'monthly').</p>
 </td>
 </tr>
    
@@ -197,6 +200,23 @@ it follows the surface the price is placed on (see <code>nxSurface</code>).</p>
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
+                colorScheme: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxPriceColorScheme&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved color scheme: an explicit input wins, then the surface the component sits on.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
                 formattedPrice: 
                 </span>
                  
@@ -228,6 +248,44 @@ it follows the surface the price is placed on (see <code>nxSurface</code>).</p>
 </table> 
 
  
+  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
+    </h3>
+     
+
+<h4 id="NxPriceContext" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxPriceContext"></span>
+    <code>NxPriceContext</code>
+</h4><p class="docs-api-interface-description"><p>Lets a wrapping component impose the size of the <code>nx-price</code> elements rendered beneath it (any
+<code>nx-price</code> that resolves this token from its injector hierarchy), so that prices are consistent
+across all usages of that wrapper. Takes precedence over the consumer's <code>size</code> input — a
+wrapper that opts in owns the size.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                priceSize: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxPriceSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The size to impose, or <code>undefined</code> to leave the consumer's <code>size</code> input in charge.</p>
+</td>
+</tr>
+  
+</table>   
   <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
         <span header-link="additional_type_aliases"></span>
         Additional type aliases
@@ -240,7 +298,7 @@ it follows the surface the price is placed on (see <code>nxSurface</code>).</p>
 </h4><p class="docs-api-type-alias-description"><p>size of the text price</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'s' | 'm' | 'l' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl'</code>
+    <code class="docs-api-type-alias-value">&#39;s&#39; | &#39;m&#39; | &#39;l&#39; | &#39;xl&#39; | &#39;2xl&#39; | &#39;3xl&#39; | &#39;4xl&#39; | &#39;5xl&#39; | &#39;6xl&#39;</code>
 </p>
    
 
@@ -250,6 +308,6 @@ it follows the surface the price is placed on (see <code>nxSurface</code>).</p>
 </h4><p class="docs-api-type-alias-description"><p>Color scheme of a price. Only relevant for the A1 Design.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'default' | 'on-accent-attention'</code>
+    <code class="docs-api-type-alias-value">&#39;default&#39; | &#39;on-accent-attention&#39;</code>
 </p>
   </div>

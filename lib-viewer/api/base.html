@@ -44,7 +44,7 @@
     </td>
     <td class="docs-api-property-description">
         <p>Whether the error should have message or text styling. Can be changed for NDBX only. A1 enforces text appearance.</p>
-<p>Default: <code>&#39;message&#39;</code>.</p>
+<p>Default: <code>'message'</code>.</p>
 </td>
 </tr>
    
@@ -71,6 +71,25 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverseInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the inverse set of styles, for use on a dark background, is applied.
+When not set, it follows the surface the error is placed on (see <code>nxSurface</code>).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
@@ -83,7 +102,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether an icon should be displayed. Only has an effect for type &#39;text&#39;</p>
+        <p>Whether an icon should be displayed. Only has an effect for type 'text'</p>
 </td>
 </tr>
    
@@ -101,6 +120,25 @@
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved inverse: an explicit input wins, then the surface the component sits on.
+Deliberately the same condition as <code>nx-status-icon</code>, so the projected icon and the
+error text never disagree.</p>
+</td>
 </tr>
   
 </table> 
@@ -165,6 +203,24 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                hint: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Hint text shown below the label. Automatically adjusts to the <code>inverse</code> and <code>disabled</code> states.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
@@ -184,19 +240,38 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                negative: 
+                inverseInput: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the label to disabled</p>
+        <p>Whether the inverse set of styles, for use on a dark background, is applied.
+When not set, it follows the surface the label is placed on (see <code>nxSurface</code>).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                optionalLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Optional text shown after the label, e.g. to indicate that the associated form
+control is not mandatory. Rendered wrapped in parentheses; pass the text without them.</p>
 </td>
 </tr>
    
@@ -217,6 +292,64 @@
     <td class="docs-api-property-description">
         <p><strong>Expert option</strong></p>
 <p>Sets the appearance of the label.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                hintId: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Id of the rendered hint, or <code>null</code> when there is no hint.</p>
+<p>The label sits next to the control it describes rather than owning it, so the control
+has to pick this up itself and merge it into its own <code>aria-describedby</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the inverse set of styles is applied.</p>
+<p>An explicit <code>inverse</code> wins, then the legacy <code>negative</code> input, then the surface the
+label sits on — the same order as <code>nx-error</code>, so a label and the error under it
+never disagree.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                negative: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the style for a dark background is used.</p>
 </td>
 </tr>
   
@@ -240,7 +373,8 @@ modal behaviour, etc.).</p>
 <pre><code class="language-html">&lt;nx-label&gt;
   First name
   &lt;nx-info-icon nxLabelInfo&gt;Help text&lt;/nx-info-icon&gt;
-&lt;/nx-label&gt;</code></pre>
+&lt;/nx-label&gt;
+</code></pre>
 </p><p class="docs-api-directive-selectors">
     <span class="docs-api-class-selector-label ">Selector:</span>
     
@@ -351,7 +485,7 @@ components if the default options have changed after initialization.</p>
     <code>ErrorStyleType</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'message' | 'text'</code>
+    <code class="docs-api-type-alias-value">&#39;message&#39; | &#39;text&#39;</code>
 </p>
    
 
@@ -361,6 +495,6 @@ components if the default options have changed after initialization.</p>
 </h4><p class="docs-api-type-alias-description"><p>Options for sizing of the label.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'small' | 'large'</code>
+    <code class="docs-api-type-alias-value">&#39;small&#39; | &#39;large&#39;</code>
 </p>
   </div>

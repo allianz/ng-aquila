@@ -1,4 +1,5 @@
 import { NxLabelComponent } from '@allianz/ng-aquila/base';
+import { NxSurface } from '@allianz/ng-aquila/surface';
 import { Component } from '@angular/core';
 
 /** @title Label example */
@@ -6,6 +7,6 @@ import { Component } from '@angular/core';
   selector: 'label-example',
   templateUrl: './label-example.html',
   styleUrls: ['./label-example.css'],
-  imports: [NxLabelComponent],
+  imports: [NxLabelComponent, NxSurface],
 })
 export class LabelExampleComponent {}

@@ -141,7 +141,7 @@ components and plain CSS can key off the <code>data-nx-surface</code> attribute.
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether to paint the surface&#39;s background on the host. Turn off when the host
+        <p>Whether to paint the surface's background on the host. Turn off when the host
 already paints this same surface itself - descendants keep reacting either
 way. To stop them reacting, reset the surface instead, see {@link NX_SURFACE}.
 Default: <code>true</code>.</p>
@@ -163,7 +163,7 @@ Default: <code>true</code>.</p>
     </td>
     <td class="docs-api-property-description">
         <p>The surface painted on this element. Use <code>inherit</code> to keep the enclosing
-surface, and <code>default</code> to reset it. Default: <code>&#39;default&#39;</code>.</p>
+surface, and <code>default</code> to reset it. Default: <code>'default'</code>.</p>
 </td>
 </tr>
    
@@ -240,7 +240,7 @@ surface, and <code>default</code> to reset it. Default: <code>&#39;default&#39;<
 it - each component decides that for itself.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'default' | 'attention' | 'emphasis' | 'accent-attention'</code>
+    <code class="docs-api-type-alias-value">&#39;default&#39; | &#39;attention&#39; | &#39;emphasis&#39; | &#39;accent-attention&#39;</code>
 </p>
    
 
@@ -251,7 +251,7 @@ it - each component decides that for itself.</p>
 the enclosing surface instead of declaring a new one.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">NxSurfaceType | 'inherit'</code>
+    <code class="docs-api-type-alias-value">NxSurfaceType | &#39;inherit&#39;</code>
 </p>
    
 
@@ -261,7 +261,7 @@ the enclosing surface instead of declaring a new one.</p>
 </h4><p class="docs-api-type-alias-description"><p>Accent hue. Only meaningful when the surface is <code>accent-attention</code>.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'yellow' | 'orange' | 'red' | 'purple' | 'aqua' | 'blue' | 'teal' | 'green' | 'gray'</code>
+    <code class="docs-api-type-alias-value">&#39;yellow&#39; | &#39;orange&#39; | &#39;red&#39; | &#39;purple&#39; | &#39;aqua&#39; | &#39;blue&#39; | &#39;teal&#39; | &#39;green&#39; | &#39;gray&#39;</code>
 </p>
    
 
@@ -272,9 +272,9 @@ the enclosing surface instead of declaring a new one.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
     <code class="docs-api-type-alias-value">{
-    readonly surface: 'default' | 'attention' | 'emphasis';
+    readonly surface: &#39;default&#39; | &#39;attention&#39; | &#39;emphasis&#39;;
 } | {
-    readonly surface: 'accent-attention';
+    readonly surface: &#39;accent-attention&#39;;
     readonly accentColor: NxSurfaceAccentColor;
 }</code>
 </p>

@@ -334,7 +334,7 @@ panelGrow: false means the overlay is the size of the trigger</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>If set to &#39;negative&#39;, the component is displayed with the negative set of styles.</p>
+        <p>If set to 'negative', the component is displayed with the negative set of styles.</p>
 </td>
 </tr>
    
@@ -374,7 +374,7 @@ panelGrow: false means the overlay is the size of the trigger</p>
     <td class="docs-api-property-description">
         <p>Function that transforms the value into a string.
 This function is used for displaying and filtering the content.</p>
-<p>Default: <code>(value: any) =&gt; value == null ? &#39;&#39; : value.toString()</code>.</p>
+<p>Default: <code>(value: any) =&gt; value == null ? '' : value.toString()</code>.</p>
 </td>
 </tr>
    
@@ -698,7 +698,7 @@ Requires using the <code>options</code> input (data-driven mode).</p>
     <td class="docs-api-property-description">
         <p>Disable truncation of long item texts.
 We recommend following UX guidelines and always truncating long items.
-Please only disable truncation if it&#39;s impossible to use short descriptions.</p>
+Please only disable truncation if it's impossible to use short descriptions.</p>
 </td>
 </tr>
    
@@ -737,8 +737,8 @@ Note: Please make sure the value you bind is an array.</p>
     </td>
     <td class="docs-api-property-description">
         <p>Sets how the panel min width will be determined.
-&#39;trigger&#39; will set the panels min-width to the trigger width.
-&#39;none&#39; will not set a min-width and will let the panel grow naturally with its content so it can be smaller than the trigger.
+'trigger' will set the panels min-width to the trigger width.
+'none' will not set a min-width and will let the panel grow naturally with its content so it can be smaller than the trigger.
 This is mostly for special use cases like the country code dropdown in the phone input.</p>
 </td>
 </tr>
@@ -766,6 +766,31 @@ This is mostly for special use cases like the country code dropdown in the phone
     </div>
     <div class="docs-api-method-description"><p>Focuses the select element.</p>
 </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">onContainerClick(
+                            event:  
+                                <span class="docs-api-property__type">
+                                    MouseEvent
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Takes focus onto the trigger and opens the panel.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                event:
+                <span class="docs-api-method-parameter-type">MouseEvent</span>
+            </code>
+        </div>
+        
+    </div></div>
    
 
 <div class="docs-api-method-card">
@@ -804,7 +829,7 @@ This is mostly for special use cases like the country code dropdown in the phone
                         
                             behavior:  
                                 <span class="docs-api-property__type">
-                                    ScrollBehavior = 'auto'
+                                    ScrollBehavior = &#39;auto&#39;
                                 </span>
                         )</span>
         </code>
@@ -819,15 +844,17 @@ Works for both virtual and non-virtual scroll modes.</p>
                 index:
                 <span class="docs-api-method-parameter-type">number</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The zero-based index of the option to scroll to </p>
+            <div class="docs-api-method-parameter-description"><p>The zero-based index of the option to scroll to</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 behavior:
-                <span class="docs-api-method-parameter-type">ScrollBehavior = 'auto'</span>
+                <span class="docs-api-method-parameter-type">ScrollBehavior = &#39;auto&#39;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Scroll behavior ('auto' or 'smooth'). Default: 'auto' </p>
+            <div class="docs-api-method-parameter-description"><p>Scroll behavior ('auto' or 'smooth'). Default: 'auto'</p>
+</div>
         </div>
         
     </div></div>
@@ -844,7 +871,7 @@ Works for both virtual and non-virtual scroll modes.</p>
                         
                             behavior:  
                                 <span class="docs-api-property__type">
-                                    ScrollBehavior = 'auto'
+                                    ScrollBehavior = &#39;auto&#39;
                                 </span>
                         )</span>
         </code>
@@ -859,15 +886,17 @@ Uses the compareWith function to match values.</p>
                 value:
                 <span class="docs-api-method-parameter-type">unknown</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The value of the option to scroll to </p>
+            <div class="docs-api-method-parameter-description"><p>The value of the option to scroll to</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 behavior:
-                <span class="docs-api-method-parameter-type">ScrollBehavior = 'auto'</span>
+                <span class="docs-api-method-parameter-type">ScrollBehavior = &#39;auto&#39;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Scroll behavior ('auto' or 'smooth'). Default: 'auto' </p>
+            <div class="docs-api-method-parameter-description"><p>Scroll behavior ('auto' or 'smooth'). Default: 'auto'</p>
+</div>
         </div>
         
     </div></div>
@@ -1059,7 +1088,7 @@ Uses the compareWith function to match values.</p>
     </td>
     <td class="docs-api-property-description">
         <p>The value of the dropdown item.
-You can&#39;t use undefined, null and &#39;&#39; (empty strings)
+You can't use undefined, null and '' (empty strings)
 as they are sentinel values signalling empty data.</p>
 </td>
 </tr>
@@ -1744,6 +1773,31 @@ When providing objects as options, it is recommended to set selectValue to speci
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
+            <span class="docs-api-method-name">onContainerClick(
+                            event:  
+                                <span class="docs-api-property__type">
+                                    MouseEvent
+                                </span>
+                        )</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Takes focus onto the trigger and opens the panel.</p>
+</div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                event:
+                <span class="docs-api-method-parameter-type">MouseEvent</span>
+            </code>
+        </div>
+        
+    </div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
             <span class="docs-api-method-name">open(
                             $event:  
                                 <span class="docs-api-property__type">
@@ -1861,7 +1915,7 @@ When providing objects as options, it is recommended to set selectValue to speci
     <span header-link="NxDropdownControl"></span>
     <code>NxDropdownControl</code><span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
-        <span class="docs-api-class-extends-type">NxFormfieldControl<any></span>
+        <span class="docs-api-class-extends-type">NxFormfieldControl&lt;any&gt;</span>
     </span></h4><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -2150,7 +2204,7 @@ components if the labels have changed after initialization.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the change in the option&#39;s value was a result of a user action.</p>
+        <p>Whether the change in the option's value was a result of a user action.</p>
 </td>
 </tr>
    
@@ -2334,7 +2388,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
     <code>NxDropdownPanelMinWidth</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'trigger' | 'none'</code>
+    <code class="docs-api-type-alias-value">&#39;trigger&#39; | &#39;none&#39;</code>
 </p>
    
 
@@ -2344,7 +2398,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
 </h4><p class="docs-api-type-alias-description"><p>Vertical alignment of dropdown checkmark</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'top' | 'center'</code>
+    <code class="docs-api-type-alias-value">&#39;top&#39; | &#39;center&#39;</code>
 </p>
    
 
@@ -2353,7 +2407,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
     <code>FilterInputType</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'text' | 'number' | 'tel' | 'search' | 'date' | 'datetime' | 'month' | 'email'</code>
+    <code class="docs-api-type-alias-value">&#39;text&#39; | &#39;number&#39; | &#39;tel&#39; | &#39;search&#39; | &#39;date&#39; | &#39;datetime&#39; | &#39;month&#39; | &#39;email&#39;</code>
 </p>
    
 
@@ -2362,7 +2416,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
     <code>NxDropdownFilterFn</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">(query: string, label: string) => boolean</code>
+    <code class="docs-api-type-alias-value">(query: string, label: string) =&gt; boolean</code>
 </p>
    
 
@@ -2371,7 +2425,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
     <code>NxDropdownCompareWithFn</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">(o1: any, o2: any) => boolean</code>
+    <code class="docs-api-type-alias-value">(o1: any, o2: any) =&gt; boolean</code>
 </p>
    
 
@@ -2380,7 +2434,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
     <code>NxDropdownValueFormatterFn</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">(value: any) => any</code>
+    <code class="docs-api-type-alias-value">(value: any) =&gt; any</code>
 </p>
    
 
@@ -2389,7 +2443,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
     <code>NxMultiSelectFilterFn</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">(query: string, label: string) => boolean</code>
+    <code class="docs-api-type-alias-value">(query: string, label: string) =&gt; boolean</code>
 </p>
   <h3 id="testing_class" class="docs-header-link docs-api-h3">
                 Testing Classes
@@ -2530,7 +2584,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
             <span class="docs-api-method-name">getGroups(
                             filter?:  
                                 <span class="docs-api-property__type">
-                                    Omit<NxDropdownGroupHarnessFilters, "ancestor">
+                                    Omit&lt;NxDropdownGroupHarnessFilters, &quot;ancestor&quot;&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">Promise&lt;NxDropdownGroupHarness[]&gt;</span></span>
         </code>
@@ -2541,7 +2595,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 filter<span class="docs-api-method-parameter-optional-marker">?</span>:
-                <span class="docs-api-method-parameter-type">Omit<NxDropdownGroupHarnessFilters, "ancestor"></span>
+                <span class="docs-api-method-parameter-type">Omit&lt;NxDropdownGroupHarnessFilters, &quot;ancestor&quot;&gt;</span>
             </code>
         </div>
         
@@ -2554,7 +2608,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
             <span class="docs-api-method-name">getItems(
                             filter?:  
                                 <span class="docs-api-property__type">
-                                    Omit<NxDropdownItemFilters, "ancestor">
+                                    Omit&lt;NxDropdownItemFilters, &quot;ancestor&quot;&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">Promise&lt;NxDropdownItemHarness[]&gt;</span></span>
         </code>
@@ -2566,7 +2620,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 filter<span class="docs-api-method-parameter-optional-marker">?</span>:
-                <span class="docs-api-method-parameter-type">Omit<NxDropdownItemFilters, "ancestor"></span>
+                <span class="docs-api-method-parameter-type">Omit&lt;NxDropdownItemFilters, &quot;ancestor&quot;&gt;</span>
             </code>
         </div>
         
@@ -2701,7 +2755,7 @@ Use with <code>#nxDropdownItemTemplate</code> template reference.</p>
             <span class="docs-api-method-name">getText(): <span class="docs-api-method-returns-type">Promise&lt;string&gt;</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Get the option&#39;s label text</p>
+    <div class="docs-api-method-description"><p>Get the option's label text</p>
 </div></div>
    
 

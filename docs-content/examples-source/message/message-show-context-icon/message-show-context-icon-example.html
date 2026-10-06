@@ -1,0 +1,30 @@
+<nx-message context="positive" class="nx-margin-bottom-xs">
+  <span class="nx-font-weight-bold">With context icon:</span><br />
+  The icon is shown by default.
+</nx-message>
+
+<nx-message
+  context="positive"
+  [showContextIcon]="false"
+  class="nx-margin-bottom-m"
+>
+  <span class="nx-font-weight-bold">Without context icon:</span><br />
+  Set <code>showContextIcon</code> to <code>false</code> to leave the icon out.
+</nx-message>
+
+<nx-message
+  context="info"
+  [showContextIcon]="showContextIcon"
+  class="nx-margin-bottom-xs"
+>
+  <span class="nx-font-weight-bold">Notification title:</span><br />
+  Place your notification message here.
+</nx-message>
+
+<button
+  nxButton="secondary small"
+  type="button"
+  (click)="showContextIcon = !showContextIcon"
+>
+  {{ showContextIcon ? 'Hide' : 'Show' }} context icon
+</button>

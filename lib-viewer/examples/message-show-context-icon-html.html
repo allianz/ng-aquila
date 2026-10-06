@@ -1,0 +1,30 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;positive&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>With context icon:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  The icon is shown by default.
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span>
+  <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;positive&quot;</span>
+  [<span class="hljs-attr">showContextIcon</span>]=<span class="hljs-string">&quot;false&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Without context icon:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  Set <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>showContextIcon<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> to <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> to leave the icon out.
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span>
+  <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;info&quot;</span>
+  [<span class="hljs-attr">showContextIcon</span>]=<span class="hljs-string">&quot;showContextIcon&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-bold&quot;</span>&gt;</span>Notification title:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  Place your notification message here.
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+  <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;showContextIcon = !showContextIcon&quot;</span>
+&gt;</span>
+  {{ showContextIcon ? &#x27;Hide&#x27; : &#x27;Show&#x27; }} context icon
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

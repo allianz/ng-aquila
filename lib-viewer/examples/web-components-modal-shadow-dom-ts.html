@@ -62,9 +62,12 @@
   <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
     <span class="hljs-comment">// Get the shadow root from the host element and set it on the overlay container</span>
     <span class="hljs-comment">// The host element IS the shadow host, so we access its shadowRoot property</span>
-    <span class="hljs-keyword">const</span> shadowRoot = <span class="hljs-variable language_">this</span>.<span class="hljs-property">elementRef</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-property">shadowRoot</span>;
+    <span class="hljs-comment">// Checked for truthiness rather than `instanceof ShadowRoot`: the global does not exist on the</span>
+    <span class="hljs-comment">// server, and reading it there throws before the component can render.</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-attr">shadowRoot</span>: <span class="hljs-title class_">ShadowRoot</span> | <span class="hljs-literal">null</span> =
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">elementRef</span>.<span class="hljs-property">nativeElement</span>.<span class="hljs-property">shadowRoot</span> ?? <span class="hljs-literal">null</span>;
 
-    <span class="hljs-keyword">if</span> (shadowRoot <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">ShadowRoot</span>) {
+    <span class="hljs-keyword">if</span> (shadowRoot) {
       <span class="hljs-variable language_">this</span>.<span class="hljs-property">overlayContainer</span>.<span class="hljs-title function_">setShadowRoot</span>(shadowRoot);
     }
   }

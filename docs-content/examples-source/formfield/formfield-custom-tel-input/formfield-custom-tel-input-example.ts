@@ -188,10 +188,8 @@ export class FormfieldCustomTelInputExampleComponent
     this.describedBy = ids.join(' ');
   }
 
-  onContainerClick(event: MouseEvent) {
-    if ((event.target as Element).tagName.toLowerCase() !== 'input') {
-      this._elementRef.nativeElement.querySelector('input')!.focus();
-    }
+  onContainerClick(): void {
+    this._elementRef.nativeElement.querySelector('input')!.focus();
   }
 
   writeValue(tel: MyTel | null): void {

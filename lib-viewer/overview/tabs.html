@@ -29,6 +29,7 @@
 <h3 id="disabled" tabindex="-1" class="docs-markdown--h3">Disabled</h3>
 <p class="docs-markdown--p">You can disable the whole tab group by setting the property <code>disabled</code> on <code>nx-tab-group</code> or alternatively disable only a particular tab by setting it on <code>nx-tab</code>.</p>
 <p class="docs-markdown--p"><strong>Pay attention that a disabled and active tab violates the accessibility of the component</strong>, therefore we set the next focusable tab as active in case active and disabled is set on the same tab. If no tab is focusable, no tab is set as active and <code>selectedIndex</code> becomes -1.</p>
+<p class="docs-markdown--p">Following the WAI-ARIA tabs pattern, a disabled tab stays reachable with the arrow keys and reports <code>aria-disabled=&quot;true&quot;</code>, so screen readers announce it as unavailable. Activating it by click, <code>ENTER</code> or <code>SPACE</code> is prevented, and it is never selected by <code>autoselect</code>.</p>
 <div nx-docs-example="tabs-disabled" config="{}">exampleID: tabs-disabled</div>
 <h3 id="output-events" tabindex="-1" class="docs-markdown--h3">Output events</h3>
 <p class="docs-markdown--p">The <code>selectedTabChange</code> event is emitted when the active tab changes</p>

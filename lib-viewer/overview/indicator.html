@@ -16,6 +16,20 @@ indicator size and needs no <code>size</code> of its own.</p>
 <p class="docs-markdown--p">Use the <code>size</code> input to pick one of the sizes. Default size is <code>m</code>.</p>
 <p class="docs-markdown--p">Available sizes: <code>s | m | 800 | 1000 | 1200 | 1400 | 1600 | 1800 | 2000</code></p>
 <div nx-docs-example="indicator-sizes" config="{}">exampleID: indicator-sizes</div>
+<h4 id="sizing-inside-other-components" tabindex="-1" class="docs-markdown--h4">Sizing inside other components</h4>
+<p class="docs-markdown--p">A component that hosts an indicator can size it, so it scales with the host instead of
+having to be sized by hand. To do that, the host implements <code>NxIndicatorContext</code> and
+provides itself under <code>NX_INDICATOR_CONTEXT</code>:</p>
+<pre><code class="language-ts"><span class="hljs-meta">@Component</span>({                                                                                                                                                                                                                                                                                                              
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;my-host&#x27;</span>,                                                                                                                                                                                                                                                                                                    
+    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_INDICATOR_CONTEXT</span>, <span class="hljs-attr">useExisting</span>: <span class="hljs-title function_">forwardRef</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">MyHost</span>) }],                                                                                                                                                                                                                                  
+  })                                                                                                                                                                                                                                                                                                                        
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyHost</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">NxIndicatorContext</span> {                                                                                                                                                                                                                                                                       
+    <span class="hljs-keyword">readonly</span> indicatorSize = signal&lt;<span class="hljs-title class_">NxIndicatorSize</span>&gt;(<span class="hljs-string">&#x27;1600&#x27;</span>);                                                                                                                                                                                                                                                               
+  } 
+</code></pre>
+<p class="docs-markdown--p">The context owns the size: an indicator inside such a host follows it and its own <code>size</code>
+input is ignored.</p>
 <h3 id="color-types" tabindex="-1" class="docs-markdown--h3">Color types</h3>
 <p class="docs-markdown--p">Use the <code>type</code> input to set the signal color. Default type is <code>critical</code>.</p>
 <p class="docs-markdown--p">Available types: <code>critical | warning | positive | info</code></p>
@@ -46,6 +60,10 @@ position: if you pass both, the legacy value is ignored.</p>
 </div>
 <h4 id="icon-button" tabindex="-1" class="docs-markdown--h4">Icon Button</h4>
 <div nx-docs-example="button-icon-indicator" config="{}">exampleID: button-icon-indicator</div>
+<div class="docs-a1">
+<h4 id="avatar" tabindex="-1" class="docs-markdown--h4">Avatar</h4>
+<div nx-docs-example="avatar-indicator" config="{}">exampleID: avatar-indicator</div>
+</div>
 <div class="docs-expert-container">
 <h4 id="tabs" tabindex="-1" class="docs-markdown--h4">Tabs</h4>
 <p class="docs-markdown--p">Please note that <strong>this is an Expert styling option</strong>. This means that the indicator position is currently only defined for internal applications and not for applications that are client facing.</p>

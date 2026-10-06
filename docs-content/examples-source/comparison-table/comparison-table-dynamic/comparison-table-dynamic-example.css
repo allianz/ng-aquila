@@ -6,6 +6,13 @@
   padding: 12px;
 }
 
+.price-slot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 40px;
+}
+
 .has-popover {
   display: flex;
   flex-direction: row;

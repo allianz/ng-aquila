@@ -1,0 +1,55 @@
+.indicator-surfaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.indicator-surface {
+  flex: 1 1 280px;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.indicator-surface--accent {
+  background: var(--semantic-color-accent-attention-blue-resting, #0870d8);
+  color: var(--semantic-color-on-accent-attention-resting, #ffffff);
+}
+
+.indicator-surface--brand {
+  background: var(--semantic-color-brand-default-static-resting, #003781);
+  color: var(--semantic-color-on-brand-primary-static-resting, #ffffff);
+}
+
+.indicator-table {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(80px, 1fr) minmax(80px, 1fr);
+  gap: 8px 24px;
+  align-items: center;
+}
+
+.indicator-table-header {
+  display: contents;
+}
+
+.indicator-table-header > div {
+  font-weight: bold;
+  padding-bottom: 4px;
+}
+
+.indicator-table-row {
+  display: contents;
+}
+
+.indicator-label {
+  font-size: 0.95em;
+}
+
+@media (max-width: 600px) {
+  .indicator-table {
+    grid-template-columns: 1fr;
+  }
+  .indicator-table-header > div,
+  .indicator-table-row > div {
+    padding-bottom: 8px;
+  }
+}

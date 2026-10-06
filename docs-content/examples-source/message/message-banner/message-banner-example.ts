@@ -13,12 +13,23 @@ import { Component } from '@angular/core';
 })
 export class MessageBannerExampleComponent {
   infoBanner = true;
+  positiveBanner = true;
   warningBanner = true;
-  errorBanner = true;
+  criticalBanner = true;
+
+  get allBannersVisible(): boolean {
+    return (
+      this.infoBanner &&
+      this.positiveBanner &&
+      this.warningBanner &&
+      this.criticalBanner
+    );
+  }
 
   showAllBanners() {
     this.infoBanner = true;
+    this.positiveBanner = true;
     this.warningBanner = true;
-    this.errorBanner = true;
+    this.criticalBanner = true;
   }
 }

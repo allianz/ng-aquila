@@ -66,6 +66,25 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverseInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the avatar should use the inverse style for dark backgrounds. When not
+set, it follows the surface the avatar is placed on (see <code>nxSurface</code>).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
@@ -95,7 +114,41 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the size of the avatar. Default: &#39;medium&#39;.</p>
+        <p>Sets the size of the avatar. Default: 'medium'.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                indicatorSize: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;any&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Size a projected indicator renders at, derived from the avatar's own size.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Resolved inverse: an explicit input wins, then the surface the component sits on.</p>
 </td>
 </tr>
   
@@ -143,6 +196,21 @@
 </table> 
 
  
+   
+
+<h4 id="NxAvatarIndicatorDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxAvatarIndicatorDirective"></span>
+    <code>NxAvatarIndicatorDirective</code></h4><p class="docs-api-class-description"><p>Marks an element as the avatar's status indicator, projected into the avatar's corner slot.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">[nxAvatarIndicator]</span>
+        </code>
+    
+</p> 
+
+ 
   <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
         <span header-link="additional_type_aliases"></span>
         Additional type aliases
@@ -155,7 +223,7 @@
 </h4><p class="docs-api-type-alias-description"><p>Size of an avatar.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'xsmall' | 'small' | 'small-medium' | 'medium' | 'large' | 'xlarge'</code>
+    <code class="docs-api-type-alias-value">&#39;xsmall&#39; | &#39;small&#39; | &#39;small-medium&#39; | &#39;medium&#39; | &#39;large&#39; | &#39;xlarge&#39; | &#39;s&#39; | &#39;m&#39; | &#39;l&#39; | &#39;xl&#39;</code>
 </p>
    
 
@@ -164,16 +232,16 @@
     <code>NxAvatarAccentColor</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'yellow' | 'orange' | 'red' | 'purple' | 'teal' | 'aqua' | 'blue' | 'green' | 'gray' | 'default'</code>
+    <code class="docs-api-type-alias-value">&#39;yellow&#39; | &#39;orange&#39; | &#39;red&#39; | &#39;purple&#39; | &#39;teal&#39; | &#39;aqua&#39; | &#39;blue&#39; | &#39;green&#39; | &#39;gray&#39; | &#39;default&#39;</code>
 </p>
    
 
 <h4 id="NxAvatarProminence" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="NxAvatarProminence"></span>
     <code>NxAvatarProminence</code>
-</h4><p class="docs-api-type-alias-description"><p>Prominence of an avatar&#39;s accent color.</p>
+</h4><p class="docs-api-type-alias-description"><p>Prominence of an avatar's accent color.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'subtle' | 'attention'</code>
+    <code class="docs-api-type-alias-value">&#39;subtle&#39; | &#39;attention&#39;</code>
 </p>
   </div>

@@ -158,6 +158,11 @@
 .ag-theme-aquila .ag-row {
   font-size: var(--ag-font-size);
 }
+.ag-theme-aquila .ag-sticky-top .ag-row-odd,
+.ag-theme-aquila .ag-sticky-bottom .ag-row-odd {
+  background-color: var(--ag-background-color);
+  background-image: linear-gradient(var(--ag-odd-row-background-color), var(--ag-odd-row-background-color));
+}
 .ag-theme-aquila .ag-cell {
   -webkit-font-smoothing: antialiased;
 }
@@ -178,6 +183,9 @@
 .ag-theme-aquila .ag-row-hover.ag-row-selected::before {
   background-color: var(--selectable-table-row-selected-hover-background-color);
   background-image: none;
+}
+.ag-theme-aquila .ag-root-wrapper:has(:focus-visible) .ag-list-item.ag-active-item:not(:hover) {
+  box-shadow: var(--focus-inset-box-shadow);
 }
 .ag-theme-aquila .ag-paging-button {
   color: var(--pagination-link-color);

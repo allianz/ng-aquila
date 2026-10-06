@@ -83,7 +83,62 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the type of the cell. Default: &#39;content&#39;.</p>
+        <p>Sets the type of the cell. Default: 'content'.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                headlineSize: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;any&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                priceSize: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;any&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Design fixes the size of price and headline content in header cells, so it's imposed on the
+projected component rather than picked by it — and both step down one notch while the sticky
+header is pinned, alongside the eyebrow collapsing, to keep the docked header compact. Other
+cell types impose nothing. Price and headline have separate scales, hence separate computeds.
+<code>NxComparisonTableHeaderTitle</code> / <code>NxComparisonTableHeaderPrice</code> turn these into the respective
+contexts, which is what keeps the imposed sizes off content outside the slots.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                resolved: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxResolvedSurface&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>What the cell publishes to its projected content via <code>NX_SURFACE</code>. @docs-private</p>
 </td>
 </tr>
   
@@ -111,6 +166,64 @@
         <th class="docs-api-properties-th">Description</th>
     </tr>
      
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                accentColor: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxSurfaceAccentColor&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Accent hue of the header and footer. Only takes effect with an
+<code>accent-attention</code> color scheme. Default: <code>'blue'</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                colorScheme: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;any&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Color scheme of the header and footer rows. Only takes effect in the Allianz
+One design. Default: 'default'.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                headlineSize: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;&quot;l&quot; | &quot;xl&quot;&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Size for the <code>nx-comparison-table-header-title</code> slot of every header cell, overriding the
+projected <code>nxHeadline</code>'s own <code>size</code>. A docked header steps it down — see
+<code>NxComparisonTableCell.headlineSize</code>.</p>
+</td>
+</tr>
+   
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
@@ -356,6 +469,26 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                accentColor: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxSurfaceAccentColor&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Accent hue of the popular cell. Independent of the table's <code>accentColor</code> - the
+popular cell is always an accent surface and can use a different hue than the
+header it sits above. Only takes effect in the Allianz One design.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span>
                     <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
@@ -389,6 +522,23 @@
     </td>
     <td class="docs-api-property-description">
         <p>Sets the Id of the popular cell.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                resolved: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxResolvedSurface&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>What the popular cell publishes to its projected label via <code>NX_SURFACE</code>. @docs-private</p>
 </td>
 </tr>
   
@@ -431,7 +581,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the classNames (style, size and negative) of the selected button. Default: &#39;primary small&#39;.</p>
+        <p>Sets the classNames (style, size and negative) of the selected button. Default: 'primary small'.</p>
 </td>
 </tr>
    
@@ -450,7 +600,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the label that is displayed when the column is selected. Default: &#39;Selected&#39;.</p>
+        <p>Sets the label that is displayed when the column is selected. Default: 'Selected'.</p>
 </td>
 </tr>
    
@@ -469,7 +619,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the classNames (style, size and negative) of the unselected button. Default: &#39;secondary small&#39;.</p>
+        <p>Sets the classNames (style, size and negative) of the unselected button. Default: 'secondary small'.</p>
 </td>
 </tr>
    
@@ -488,7 +638,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the label that is displayed when the column is not selected. Default: &#39;Select&#39;.</p>
+        <p>Sets the label that is displayed when the column is not selected. Default: 'Select'.</p>
 </td>
 </tr>
    
@@ -792,7 +942,7 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the type of the row. Default: &#39;content&#39;.</p>
+        <p>Sets the type of the row. Default: 'content'.</p>
 </td>
 </tr>
    
@@ -805,6 +955,115 @@
                 </span>
                  
                 <span class="docs-api-property__type">&quot;row&quot;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="NxComparisonTableHeaderTop" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxComparisonTableHeaderTop"></span>
+    <code>NxComparisonTableHeaderTop</code></h4><p class="docs-api-class-description"><p>The slots are elements rather than attributes on the consumer's own markup for two reasons:
+a forgotten import of an element fails the build (NG8001), where a forgotten attribute
+directive is invisible — projection matches the attribute either way, so the cell would still
+render correctly while the imposed sizes silently never arrive. And the imposed sizes are
+provided here rather than on the cell, so they stop at the slot: a consumer who skips the slots
+and writes their own header markup keeps ownership of every <code>nxHeadline</code> and <code>nx-price</code> in it,
+at the price of no longer following our design updates automatically.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-comparison-table-header-top</span>
+        </code>
+    
+</p> 
+
+ 
+   
+
+<h4 id="NxComparisonTableHeaderEyebrow" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxComparisonTableHeaderEyebrow"></span>
+    <code>NxComparisonTableHeaderEyebrow</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-comparison-table-header-eyebrow</span>
+        </code>
+    
+</p> 
+
+ 
+   
+
+<h4 id="NxComparisonTableHeaderTitle" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxComparisonTableHeaderTitle"></span>
+    <code>NxComparisonTableHeaderTitle</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-comparison-table-header-title</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                headlineSize: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;any&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="NxComparisonTableHeaderPrice" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxComparisonTableHeaderPrice"></span>
+    <code>NxComparisonTableHeaderPrice</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-comparison-table-header-price</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                priceSize: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;any&gt;</span>
             </code>
         </p>
     </td>
@@ -1094,17 +1353,18 @@ components if the labels have changed after initialization.</p>
 </h4><p class="docs-api-type-alias-description"><p>The type of the row.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'header' | 'content' | 'footer'</code>
+    <code class="docs-api-type-alias-value">&#39;header&#39; | &#39;content&#39; | &#39;footer&#39;</code>
 </p>
    
 
 <h4 id="NxComparisonTableColorScheme" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="NxComparisonTableColorScheme"></span>
     <code>NxComparisonTableColorScheme</code>
-</h4><p class="docs-api-type-alias-description"><p>Color scheme for the comparison table header row (A1 only).</p>
+</h4><p class="docs-api-type-alias-description"><p>Color scheme for the comparison table header and footer rows (A1 only).
+<code>'plain'</code> is deprecated - use <code>'default'</code> instead.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'plain' | 'attention' | 'emphasis' | 'accent-attention'</code>
+    <code class="docs-api-type-alias-value">NxSurfaceType | &#39;plain&#39;</code>
 </p>
    
 
@@ -1113,6 +1373,6 @@ components if the labels have changed after initialization.</p>
     <code>TableContentElementKind</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'row' | 'toggleSection' | 'rowGroup'</code>
+    <code class="docs-api-type-alias-value">&#39;row&#39; | &#39;toggleSection&#39; | &#39;rowGroup&#39;</code>
 </p>
   </div>

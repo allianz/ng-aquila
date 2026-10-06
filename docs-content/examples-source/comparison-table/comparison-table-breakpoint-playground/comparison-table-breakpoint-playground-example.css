@@ -6,20 +6,6 @@
   margin-bottom: 24px;
 }
 
-.header-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.product-title {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.product-price {
-  margin-bottom: 12px;
-}
-
 .product-underline {
   margin-top: 8px;
   font-size: 12px;

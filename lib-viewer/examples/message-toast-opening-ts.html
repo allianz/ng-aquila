@@ -6,6 +6,7 @@
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">TemplateRef</span>, <span class="hljs-title class_">ViewChild</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;simple-message-toast&#x27;</span>,
   <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
   <span class="hljs-attr">template</span>: <span class="hljs-string">`&lt;div class=&quot;u-text-center&quot;&gt;
     &lt;h3&gt;Message from a component&lt;/h3&gt;
@@ -35,7 +36,7 @@
 
   <span class="hljs-title function_">openFromText</span>(<span class="hljs-params"></span>) {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">messageToastService</span>.<span class="hljs-title function_">open</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">toastText</span>, {
-      <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+      <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;positive&#x27;</span>,
       <span class="hljs-attr">duration</span>: <span class="hljs-number">5000</span>,
     });
   }

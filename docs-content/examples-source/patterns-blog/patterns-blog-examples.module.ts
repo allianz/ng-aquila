@@ -5,6 +5,8 @@ import { A11ySkipToDataDescriptionComponent } from './a11y-skip-to-data-descript
 import { AiAutofillExampleComponent } from './ai-autofill/ai-autofill-example';
 import { ContainedListExampleComponent } from './contained-list/contained-list-example';
 import { DropdownFetchOnFilterComponent } from './dropdown-fetch-on-filter/dropdown-fetch-on-filter-example';
+import { SearchFieldAutocompleteExampleComponent } from './search-field-autocomplete/search-field-autocomplete-example';
+import { SearchFieldInputExampleComponent } from './search-field-input/search-field-input-example';
 import { TextAreaCharacterLimitExampleComponent } from './text-area-character-limit/text-area-character-limit-example';
 
 const EXAMPLES = [
@@ -12,6 +14,8 @@ const EXAMPLES = [
   AiAutofillExampleComponent,
   A11ySkipToDataDescriptionComponent,
   DropdownFetchOnFilterComponent,
+  SearchFieldInputExampleComponent,
+  SearchFieldAutocompleteExampleComponent,
 ];
 
 @NgModule({
@@ -26,6 +30,8 @@ export class PatternExamplesModule {
       'a11y-skip-to-data-description': A11ySkipToDataDescriptionComponent,
       'dropdown-fetch-on-filter': DropdownFetchOnFilterComponent,
       'contained-list': ContainedListExampleComponent,
+      'search-field-input': SearchFieldInputExampleComponent,
+      'search-field-autocomplete': SearchFieldAutocompleteExampleComponent,
     };
   }
 }

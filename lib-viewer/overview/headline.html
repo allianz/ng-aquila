@@ -53,3 +53,9 @@ accent-colored surface. Combine with <code>inverse</code> for accent surfaces on
 <h3 id="mappings" tabindex="-1" class="docs-markdown--h3">Mappings</h3>
 <p class="docs-markdown--p">This table shows you how the old names will translate to in the new design.</p>
 <div nx-docs-example="headline-sizes-mapping" config="{ 'hideHeader': true }">exampleID: headline-sizes-mapping</div>
+<h3 id="imposing-size-from-a-wrapper" tabindex="-1" class="docs-markdown--h3">Imposing size from a wrapper</h3>
+<p class="docs-markdown--p">A wrapping component (e.g. a card grid or a comparison table header) can provide
+<code>NX_HEADLINE_CONTEXT</code> to own the size of every <code>nxHeadline</code> rendered beneath it, overriding
+the consumer's <code>size</code> input. This keeps headlines visually consistent across all usages of
+that wrapper, even if each usage sets a different <code>size</code>.</p>
+<div nx-docs-example="headline-context" config="{}">exampleID: headline-context</div>

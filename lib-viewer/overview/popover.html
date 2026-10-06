@@ -31,6 +31,13 @@
 <div nx-docs-example="popover-custom" config="{}">exampleID: popover-custom</div>
 <p class="docs-markdown--p">The popover can be used for a guided tour</p>
 <div nx-docs-example="popover-guided-tour" config="{}">exampleID: popover-guided-tour</div>
+<h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
+<p class="docs-markdown--p">Setting <code>inverse</code> on the popover renders it on the attention (inverse) surface, so it reads
+light-on-dark. The popover also declares that surface to its own content, so adopting components
+inside it (headline, copytext, etc.) adapt to the popover rather than to the surface behind the trigger.</p>
+<p class="docs-markdown--p">The popover never picks this up from a <a href="./documentation/surface/overview">surface</a> around it, so you
+can keep a light popover even when it is opened from a button on a dark header.</p>
+<div nx-docs-example="popover-inverse" config="{}">exampleID: popover-inverse</div>
 <h3 id="popover-without-arrow" tabindex="-1" class="docs-markdown--h3">Popover without arrow</h3>
 <p class="docs-markdown--p">The popover arrow can be hidden using the <code>nxPopoverHideArrow</code>.</p>
 <div nx-docs-example="popover-without-arrow" config="{}">exampleID: popover-without-arrow</div>

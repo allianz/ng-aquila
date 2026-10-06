@@ -1,0 +1,1 @@
+import{rt as Lr}from"./chunk-s6oCE-mn.js";function i(r,n=0){return t(r)?Number(r):arguments.length===2?n:0}function t(r){return!isNaN(parseFloat(r))&&!isNaN(Number(r))}function c(r){return r instanceof Lr?r.nativeElement:r}function m(r){return Array.isArray(r)?r:[r]}export{i as n,m as r,c as t};

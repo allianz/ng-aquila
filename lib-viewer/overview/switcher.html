@@ -2,15 +2,24 @@
 <h3 id="default" tabindex="-1" class="docs-markdown--h3">Default</h3>
 <p class="docs-markdown--p">The default representation of the switcher does not include an icon.</p>
 <div nx-docs-example="switcher-default" config="{}">exampleID: switcher-default</div>
+<div class="docs-hide-a1">
 <h3 id="large" tabindex="-1" class="docs-markdown--h3">Large</h3>
 <p class="docs-markdown--p">This alternative representation of the switcher component is not only larger, but also includes an icon.</p>
 <div nx-docs-example="switcher-large" config="{}">exampleID: switcher-large</div>
 <h3 id="label-size" tabindex="-1" class="docs-markdown--h3">Label size</h3>
 <p class="docs-markdown--p">The font size of the label can be set to two different sizes with the <code>[labelSize]</code> property</p>
 <div nx-docs-example="switcher-label-small" config="{}">exampleID: switcher-label-small</div>
-<h3 id="negative" tabindex="-1" class="docs-markdown--h3">Negative</h3>
-<p class="docs-markdown--p">This is a negative version of the switcher, which can be used on dark background.</p>
-<div nx-docs-example="switcher-negative" config="{}">exampleID: switcher-negative</div>
+</div>
+<h3 id="hint" tabindex="-1" class="docs-markdown--h3">Hint</h3>
+<p class="docs-markdown--p">Additional guidance can be shown underneath the label via the <code>hint</code> input. The hint is referenced by the control's <code>aria-describedby</code> attribute.</p>
+<div nx-docs-example="switcher-hint" config="{}">exampleID: switcher-hint</div>
+<h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
+<p class="docs-markdown--p">The inverse version of the switcher can be used on a dark background. Set it via the <code>inverse</code> property.</p>
+<div class="docs-deprecation-warning">
+  <strong>Deprecated: </strong>
+  The <code>negative</code> property is deprecated. Use <code>inverse</code> instead, <code>negative</code> is still supported as an alias for backwards compatibility.
+</div>
+<div nx-docs-example="switcher-inverse" config="{}">exampleID: switcher-inverse</div>
 <h3 id="label-on-the-left" tabindex="-1" class="docs-markdown--h3">Label on the left</h3>
 <p class="docs-markdown--p">In case the label of the switcher should be positioned on the left the property <code>[labelPosition]</code> can be used. If the property is set to &quot;left&quot; the switcher is aligned on the right and the label on the left side.</p>
 <div nx-docs-example="switcher-label-left" config="{}">exampleID: switcher-label-left</div>

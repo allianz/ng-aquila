@@ -1,0 +1,61 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxErrorComponent</span>,
+  <span class="hljs-title class_">NxLabelComponent</span>,
+  <span class="hljs-title class_">NxLabelModule</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSurface</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/surface&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTileComponent</span>, <span class="hljs-title class_">NxTileGroupComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tile&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">AfterViewInit</span>, <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">AbstractControl</span>,
+  <span class="hljs-title class_">FormControl</span>,
+  <span class="hljs-title class_">ReactiveFormsModule</span>,
+  <span class="hljs-title class_">ValidationErrors</span>,
+  <span class="hljs-title class_">Validators</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-keyword">const</span> premiumOnly = (<span class="hljs-attr">control</span>: <span class="hljs-title class_">AbstractControl</span>): <span class="hljs-title class_">ValidationErrors</span> | <span class="hljs-function"><span class="hljs-params">null</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">selected</span>: <span class="hljs-keyword">readonly</span> <span class="hljs-built_in">string</span>[] = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(control.<span class="hljs-property">value</span>)
+    ? control.<span class="hljs-property">value</span>
+    : [control.<span class="hljs-property">value</span>];
+
+  <span class="hljs-keyword">return</span> selected.<span class="hljs-title function_">every</span>(<span class="hljs-function">(<span class="hljs-params">value</span>) =&gt;</span> value === <span class="hljs-string">&#x27;premium&#x27;</span>)
+    ? <span class="hljs-literal">null</span>
+    : { <span class="hljs-attr">premiumOnly</span>: <span class="hljs-literal">true</span> };
+};
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Inverse Tile Group Error State Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tile-group-inverse-error-example&#x27;</span>,
+  <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tile-group-inverse-error-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tile-group-inverse-error-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">ReactiveFormsModule</span>,
+    <span class="hljs-title class_">NxTileComponent</span>,
+    <span class="hljs-title class_">NxTileGroupComponent</span>,
+    <span class="hljs-title class_">NxErrorComponent</span>,
+    <span class="hljs-title class_">NxLabelModule</span>,
+    <span class="hljs-title class_">NxLabelComponent</span>,
+    <span class="hljs-title class_">NxSurface</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TileGroupInverseErrorExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AfterViewInit</span> {
+  tileControl = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(<span class="hljs-string">&#x27;standard&#x27;</span>, [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, premiumOnly]);
+  multiTileControl = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FormControl</span>(
+    [<span class="hljs-string">&#x27;standard&#x27;</span>, <span class="hljs-string">&#x27;family&#x27;</span>],
+    [<span class="hljs-title class_">Validators</span>.<span class="hljs-property">required</span>, premiumOnly],
+  );
+  tiles = [
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;standard&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Standard&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span> },
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;premium&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Premium&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-heart&#x27;</span> },
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;family&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Family&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-plane&#x27;</span> },
+  ];
+
+  <span class="hljs-title function_">ngAfterViewInit</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">tileControl</span>.<span class="hljs-title function_">markAsTouched</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">multiTileControl</span>.<span class="hljs-title function_">markAsTouched</span>();
+  }
+}

@@ -1,0 +1,48 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSingleProgressIndicatorComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/progress-indicator&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">LiveAnnouncer</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/a11y&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, computed, inject, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">STEPS</span> = [
+  { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Address&#x27;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Please enter your address.&#x27;</span> },
+  { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Personal details&#x27;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Please enter your personal details.&#x27;</span> },
+  { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Claim details&#x27;</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Please describe your claim.&#x27;</span> },
+  {
+    <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Summary&#x27;</span>,
+    <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;Please review your claim before submitting it.&#x27;</span>,
+  },
+];
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Single Progress Indicator with step content example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;single-progress-indicator-with-content-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./single-progress-indicator-with-content-example.html&#x27;</span>,
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxSingleProgressIndicatorComponent</span>, <span class="hljs-title class_">NxButtonComponent</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SingleProgressIndicatorWithContentExampleComponent</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _liveAnnouncer = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">LiveAnnouncer</span>);
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> stepCount = <span class="hljs-variable constant_">STEPS</span>.<span class="hljs-property">length</span>;
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> activeStep = <span class="hljs-title function_">signal</span>(<span class="hljs-number">1</span>);
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> currentStep = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable constant_">STEPS</span>[<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">activeStep</span>() - <span class="hljs-number">1</span>]);
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-title function_">previous</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_goToStep</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-number">1</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">activeStep</span>() - <span class="hljs-number">1</span>));
+  }
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-title function_">next</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_goToStep</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">stepCount</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">activeStep</span>() + <span class="hljs-number">1</span>));
+  }
+
+  <span class="hljs-comment">// Needed because the steps change in place: there is no navigation to announce the change for us.</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">_goToStep</span>(<span class="hljs-attr">step</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeStep</span>.<span class="hljs-title function_">set</span>(step);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_liveAnnouncer</span>.<span class="hljs-title function_">announce</span>(
+      <span class="hljs-string">`Now on Step <span class="hljs-subst">${step}</span>: <span class="hljs-subst">${STEPS[step - <span class="hljs-number">1</span>].label}</span>`</span>,
+    );
+  }
+}

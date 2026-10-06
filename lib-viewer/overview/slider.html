@@ -2,6 +2,13 @@
 <p class="docs-markdown--p">For better decimal/floating point handling this module is using the 3rd party library <a href="http://mikemcl.github.io/decimal.js/">decimal.js</a> which is required in the library dependencies and will be installed automatically.</p>
 <h3 id="basic" tabindex="-1" class="docs-markdown--h3">Basic</h3>
 <div nx-docs-example="slider-basic" config="{}">exampleID: slider-basic</div>
+<h3 id="label-with-info-icon" tabindex="-1" class="docs-markdown--h3">Label with info icon</h3>
+<p class="docs-markdown--p">Instead of the <code>label</code> input you can project an <code>nx-label</code> into the slider. This lets you
+enrich the label — for example adding an info icon marked with <code>nxLabelInfo</code>.</p>
+<p class="docs-markdown--p">A projected <code>nx-label</code> owns its own state: the slider does not forward <code>disabled</code> or <code>inverse</code>
+to it. Set <code>disabled</code> and <code>negative</code> on the <code>nx-label</code> yourself to keep it in sync with the
+slider.</p>
+<div nx-docs-example="slider-label-info" config="{}">exampleID: slider-label-info</div>
 <h3 id="appendix" tabindex="-1" class="docs-markdown--h3">Appendix</h3>
 <p class="docs-markdown--p">Provide additional information like info icons aligned with the slider line.</p>
 <div nx-docs-example="slider-appendix" config="{}">exampleID: slider-appendix</div>

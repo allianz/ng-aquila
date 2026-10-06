@@ -1,0 +1,20 @@
+@for (context of contexts; track context) {
+  <button
+    nxButton="primary small"
+    type="button"
+    class="nx-margin-right-xs nx-margin-bottom-xs"
+    (click)="open(context)"
+  >
+    {{ context }}
+  </button>
+}
+
+<br />
+
+<button
+  nxButton="secondary small"
+  type="button"
+  (click)="showContextIcon = !showContextIcon"
+>
+  {{ showContextIcon ? 'Hide' : 'Show' }} context icon
+</button>

@@ -1,0 +1,21 @@
+.example-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.example-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  min-width: 120px;
+}
+
+.example-card-label {
+  color: #666666;
+  font-size: 12px;
+}

@@ -1,0 +1,67 @@
+<div class="indicator-surface">
+  <div class="indicator-table">
+    <div class="indicator-table-header">
+      <div></div>
+      <div>Unselected</div>
+      <div>Selected</div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Resting</div>
+      <div><nx-radio-indicator [inverse]="true"></nx-radio-indicator></div>
+      <div>
+        <nx-radio-indicator
+          [inverse]="true"
+          [checked]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Disabled</div>
+      <div>
+        <nx-radio-indicator
+          [inverse]="true"
+          [disabled]="true"
+        ></nx-radio-indicator>
+      </div>
+      <div>
+        <nx-radio-indicator
+          [inverse]="true"
+          [disabled]="true"
+          [checked]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Read-only</div>
+      <div>
+        <nx-radio-indicator
+          [inverse]="true"
+          [readonly]="true"
+        ></nx-radio-indicator>
+      </div>
+      <div>
+        <nx-radio-indicator
+          [inverse]="true"
+          [readonly]="true"
+          [checked]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+    <div class="indicator-table-row">
+      <div class="indicator-label">Critical</div>
+      <div>
+        <nx-radio-indicator
+          [inverse]="true"
+          [critical]="true"
+        ></nx-radio-indicator>
+      </div>
+      <div>
+        <nx-radio-indicator
+          [inverse]="true"
+          [critical]="true"
+          [checked]="true"
+        ></nx-radio-indicator>
+      </div>
+    </div>
+  </div>
+</div>

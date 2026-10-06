@@ -30,6 +30,18 @@ A soft character limit enables a user to paste any text and cleanup the text bef
 <p class="docs-markdown--p"><strong>Important:</strong> Do <strong>not</strong> nest interactive elements like buttons into clickable List Items. That will result in unexpected UX for Users and <a href="https://www.accessibilitychecker.org/wcag-guides/ensure-interactive-controls-are-not-nested-as-they-are-not-always-announced-by-screen-readers-or-can-cause-focus-problems-for-assistive-technologies/">accessibility violations</a>.</p>
 <p class="docs-markdown--p"><strong>Hint:</strong> There are many use cases for Contained Lists with clickable List Items. Make sure to use the right pattern for your use case like using anchors and encapsulating it into a <code>&lt;nav&gt;</code> container if you're using it for navigation.</p>
 <div nx-docs-example="contained-list" config="{ 'hideStackblitzButton': true }">exampleID: contained-list</div>
+<h2 id="search-field" tabindex="-1" class="docs-markdown--h2">Search Field</h2>
+<div class="tag-list docs-private"> <div class="tag active-tag">technical example ⚙️</div> </div>
+<p class="docs-markdown--p">Use these examples to replace the deprecated <nx-link><a href="./documentation/page-search/overview">Page Search</a></nx-link>. They combine <code>nxInput</code> or <code>nxAutocomplete</code> with an <code>nx-formfield</code>, a search icon in <code>nxFormfieldPrefix</code> and a search button in <code>nxFormfieldAppendix</code>.</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">Wrap the field in a <code>&lt;form role=&quot;search&quot;&gt;</code>. This keeps the search landmark that Page Search added, and users can submit with Enter.</li>
+<li class="docs-markdown--li">If you use more than one search on a page, give each one a unique <code>aria-label</code>.</li>
+<li class="docs-markdown--li">The input has no visible label, so it needs an <code>aria-label</code>.</li>
+</ul>
+<h3 id="input" tabindex="-1" class="docs-markdown--h3">Input</h3>
+<div nx-docs-example="search-field-input" config="{ 'hideStackblitzButton': true }">exampleID: search-field-input</div>
+<h3 id="autocomplete" tabindex="-1" class="docs-markdown--h3">Autocomplete</h3>
+<div nx-docs-example="search-field-autocomplete" config="{ 'hideStackblitzButton': true }">exampleID: search-field-autocomplete</div>
 <style>
     body{
         --grid-max-width: 1337px;

@@ -1,0 +1,60 @@
+<nx-multi-progress-indicator
+  [currentStep]="activeStep()"
+  aria-label="Insurance Quote Process"
+>
+  <nx-multi-progress-step>
+    <button type="button" nxProgressIndicatorStepAction (click)="goToStep(1)">
+      Billing Address
+    </button>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <button type="button" nxProgressIndicatorStepAction (click)="goToStep(2)">
+      Shipping Address
+    </button>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <button type="button" nxProgressIndicatorStepAction (click)="goToStep(3)">
+      Review Order
+    </button>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <button type="button" nxProgressIndicatorStepAction (click)="goToStep(4)">
+      Payment
+    </button>
+  </nx-multi-progress-step>
+</nx-multi-progress-indicator>
+
+<div class="nx-margin-top-s nx-margin-bottom-s">
+  @switch (activeStep()) {
+    @case (1) {
+      <p>Please enter your billing address.</p>
+    }
+    @case (2) {
+      <p>Please enter your shipping address.</p>
+    }
+    @case (3) {
+      <p>Please review your order before continuing to payment.</p>
+    }
+    @case (4) {
+      <p>Please enter your payment details.</p>
+    }
+  }
+</div>
+
+<button
+  nxButton="secondary small"
+  type="button"
+  class="nx-margin-right-2xs"
+  [disabled]="activeStep() === 1"
+  (click)="previous()"
+>
+  Previous
+</button>
+<button
+  nxButton="primary small"
+  type="button"
+  [disabled]="activeStep() === stepCount"
+  (click)="next()"
+>
+  Next
+</button>

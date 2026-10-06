@@ -1,0 +1,27 @@
+.container {
+  padding: 12px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header-container button {
+  margin: 0 auto;
+}
+
+.product-title {
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.product-price {
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 0.0125rem;
+  margin-top: auto;
+  margin-bottom: 16px;
+}

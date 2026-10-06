@@ -48,7 +48,7 @@
     </td>
     <td class="docs-api-property-description">
         <p>Changes the type of the headline which affects the visual appearance.</p>
-<p>You can combine a HeadlineType and &#39;inverse&#39;.</p>
+<p>You can combine a HeadlineType and 'inverse'.</p>
 </td>
 </tr>
    
@@ -104,7 +104,9 @@ surface the headline is placed on (see <code>nxSurface</code>).</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>The size of the headline. A wrapping component providing <code>NX_HEADLINE_CONTEXT</code> overrides this
+input.</p>
+</td>
 </tr>
    
 
@@ -164,6 +166,42 @@ tokens yet, so it just goes inverse regardless of hue.</p>
 </table> 
 
  
+  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
+    </h3>
+     
+
+<h4 id="NxHeadlineContext" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxHeadlineContext"></span>
+    <code>NxHeadlineContext</code>
+</h4><p class="docs-api-interface-description"><p>Lets a wrapping component impose the size of the <code>nxHeadline</code> elements rendered beneath it (any
+<code>nxHeadline</code> that resolves this token from its injector hierarchy), taking precedence over the
+consumer's <code>size</code> input. Mirrors <code>NxPriceContext</code>.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                headlineSize: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxHeadlineSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+  
+</table>   
   <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
         <span header-link="additional_type_aliases"></span>
         Additional type aliases
@@ -176,7 +214,7 @@ tokens yet, so it just goes inverse regardless of hue.</p>
 </h4><p class="docs-api-type-alias-description"><p>Types of headlines</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'page' | 'page-bold-caps' | 'section' | 'subsection-large' | 'subsection-medium' | 'subsection-small' | 'subsection-xsmall'</code>
+    <code class="docs-api-type-alias-value">&#39;page&#39; | &#39;page-bold-caps&#39; | &#39;section&#39; | &#39;subsection-large&#39; | &#39;subsection-medium&#39; | &#39;subsection-small&#39; | &#39;subsection-xsmall&#39;</code>
 </p>
    
 
@@ -185,7 +223,7 @@ tokens yet, so it just goes inverse regardless of hue.</p>
     <code>NxHeadlineType</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'primary' | 'secondary'</code>
+    <code class="docs-api-type-alias-value">&#39;primary&#39; | &#39;secondary&#39;</code>
 </p>
    
 
@@ -195,7 +233,7 @@ tokens yet, so it just goes inverse regardless of hue.</p>
 </h4><p class="docs-api-type-alias-description"><p>The headline sizes</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'s' | 'm' | 'l' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | undefined</code>
+    <code class="docs-api-type-alias-value">&#39;s&#39; | &#39;m&#39; | &#39;l&#39; | &#39;xl&#39; | &#39;2xl&#39; | &#39;3xl&#39; | &#39;4xl&#39; | &#39;5xl&#39; | &#39;6xl&#39; | undefined</code>
 </p>
    
 
@@ -205,6 +243,6 @@ tokens yet, so it just goes inverse regardless of hue.</p>
 </h4><p class="docs-api-type-alias-description"><p>Color scheme of a headline. Only relevant for the A1 Design.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'default' | 'on-accent-attention'</code>
+    <code class="docs-api-type-alias-value">&#39;default&#39; | &#39;on-accent-attention&#39;</code>
 </p>
   </div>

@@ -92,8 +92,8 @@
     <td class="docs-api-property-description">
         <p>Sets the visual appearance of the list. You can combine different values:</p>
 <p>xsmall | small | normal: The listed input values are expanded to the underlying BEM conform styles based
-on modifiers. Defaults to normal.</p>
-<p>Negative: Display the list with a negative set of styling.</p>
+on modifiers. Defaults to normal. Use the <code>size</code> input for the A1 sizes.</p>
+<p>Negative: Display the list with a negative set of styling. Deprecated, use the <code>inverse</code> input instead.</p>
 <p>Ordered-circle: Display the list item numbers in a color filled circle.</p>
 </td>
 </tr>
@@ -123,6 +123,45 @@ on modifiers. Defaults to normal.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverseInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the list should use inverse (light-on-dark) colors. Replaces the
+deprecated <code>negative</code> modifier. When not set, it follows the surface the
+list is placed on (see <code>nxSurface</code>).</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxListA1Size&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the size of the list. When set it takes precedence over a size given
+in the <code>nxList</code> modifier string.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
@@ -135,6 +174,25 @@ on modifiers. Defaults to normal.</p>
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the inverse (formerly &quot;negative&quot;) set of styles is applied.</p>
+<p>Resolves to <code>true</code> when either the <code>inverse</code> input or the legacy <code>negative</code>
+modifier is set. Only <code>inverse</code> falls back to the surface.</p>
+</td>
 </tr>
   
 </table> 
@@ -152,7 +210,17 @@ on modifiers. Defaults to normal.</p>
 </h4><p class="docs-api-type-alias-description"><p>Size of the list</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'xsmall' | 'small' | 'normal'</code>
+    <code class="docs-api-type-alias-value">&#39;xsmall&#39; | &#39;small&#39; | &#39;normal&#39;</code>
+</p>
+   
+
+<h4 id="NxListA1Size" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxListA1Size"></span>
+    <code>NxListA1Size</code>
+</h4><p class="docs-api-type-alias-description"><p>A1 size of the list.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">&#39;s&#39; | &#39;m&#39;</code>
 </p>
    
 
@@ -162,6 +230,6 @@ on modifiers. Defaults to normal.</p>
 </h4><p class="docs-api-type-alias-description"><p>Color of the list</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'primary' | 'secondary'</code>
+    <code class="docs-api-type-alias-value">&#39;primary&#39; | &#39;secondary&#39;</code>
 </p>
   </div>

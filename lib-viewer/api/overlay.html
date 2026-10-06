@@ -97,7 +97,8 @@
                 id:
                 <span class="docs-api-method-parameter-type">string</span>
             </code>
-            <p class="docs-api-method-parameter-description"> ID to use when looking up the overlay. </p>
+            <div class="docs-api-method-parameter-description"><p>ID to use when looking up the overlay.</p>
+</div>
         </div>
         
     </div></div>
@@ -119,7 +120,7 @@
                         
                             config?:  
                                 <span class="docs-api-property__type">
-                                    NxOverlayConfig<D>
+                                    NxOverlayConfig&lt;D&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">NxOverlayRef&lt;T, R&gt;</span></span>
         </code>
@@ -133,7 +134,8 @@
                 componentOrTemplateRef:
                 <span class="docs-api-method-parameter-type">any</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Type of the component to load into the dialog, or a TemplateRef to instantiate as the panel content. </p>
+            <div class="docs-api-method-parameter-description"><p>Type of the component to load into the dialog, or a TemplateRef to instantiate as the panel content.</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
@@ -141,15 +143,17 @@
                 origin:
                 <span class="docs-api-method-parameter-type">FlexibleConnectedPositionStrategyOrigin</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Reference element for positioning. </p>
+            <div class="docs-api-method-parameter-description"><p>Reference element for positioning.</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 config<span class="docs-api-method-parameter-optional-marker">?</span>:
-                <span class="docs-api-method-parameter-type">NxOverlayConfig<D></span>
+                <span class="docs-api-method-parameter-type">NxOverlayConfig&lt;D&gt;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Extra configuration options. </p>
+            <div class="docs-api-method-parameter-description"><p>Extra configuration options.</p>
+</div>
         </div>
         
     </div><div class="docs-api-method-returns">
@@ -228,7 +232,7 @@
             <span class="docs-api-method-name">attachComponentPortal(
                             portal:  
                                 <span class="docs-api-property__type">
-                                    ComponentPortal<T>
+                                    ComponentPortal&lt;T&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">ComponentRef&lt;T&gt;</span></span>
         </code>
@@ -240,9 +244,10 @@
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 portal:
-                <span class="docs-api-method-parameter-type">ComponentPortal<T></span>
+                <span class="docs-api-method-parameter-type">ComponentPortal&lt;T&gt;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Portal to be attached as the overlay content. </p>
+            <div class="docs-api-method-parameter-description"><p>Portal to be attached as the overlay content.</p>
+</div>
         </div>
         
     </div></div>
@@ -254,7 +259,7 @@
             <span class="docs-api-method-name">attachTemplatePortal(
                             portal:  
                                 <span class="docs-api-property__type">
-                                    TemplatePortal<C>
+                                    TemplatePortal&lt;C&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">EmbeddedViewRef&lt;C&gt;</span></span>
         </code>
@@ -266,9 +271,10 @@
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 portal:
-                <span class="docs-api-method-parameter-type">TemplatePortal<C></span>
+                <span class="docs-api-method-parameter-type">TemplatePortal&lt;C&gt;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Portal to be attached as the overlay content. </p>
+            <div class="docs-api-method-parameter-description"><p>Portal to be attached as the overlay content.</p>
+</div>
         </div>
         
     </div></div>
@@ -449,7 +455,7 @@ an overlay is open.</p>
     </td>
     <td class="docs-api-property-description">
         <p>Whether the overlay should close when the user goes backwards/forwards in history.
-Note that this usually doesn&#39;t include clicking on links (unless the user is using
+Note that this usually doesn't include clicking on links (unless the user is using
 the <code>HashLocationStrategy</code>).</p>
 </td>
 </tr>
@@ -672,7 +678,7 @@ the <code>HashLocationStrategy</code>).</p>
     </td>
     <td class="docs-api-property-description">
         <p>Whether the overlay should restore focus to the
-previously-focused element, after it&#39;s closed.</p>
+previously-focused element, after it's closed.</p>
 </td>
 </tr>
    
@@ -739,7 +745,7 @@ previously-focused element, after it&#39;s closed.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Where the attached component should live in Angular&#39;s <em>logical</em> component tree.
+        <p>Where the attached component should live in Angular's <em>logical</em> component tree.
 This affects what is available for injection and the change detection order for the
 component instantiated inside of the overlay. This does not affect where the overlay
 content will be rendered.</p>
@@ -917,7 +923,7 @@ content will be rendered.</p>
             <span class="docs-api-method-name">backdropClick(): <span class="docs-api-method-returns-type">Observable&lt;MouseEvent&gt;</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Gets an observable that emits when the overlay&#39;s backdrop has been clicked.</p>
+    <div class="docs-api-method-description"><p>Gets an observable that emits when the overlay's backdrop has been clicked.</p>
 </div></div>
    
 
@@ -951,7 +957,8 @@ content will be rendered.</p>
                 overlayResult<span class="docs-api-method-parameter-optional-marker">?</span>:
                 <span class="docs-api-method-parameter-type">R</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Optional result to return to the overlay opener. </p>
+            <div class="docs-api-method-parameter-description"><p>Optional result to return to the overlay opener.</p>
+</div>
         </div>
         
     </div></div>
@@ -963,7 +970,7 @@ content will be rendered.</p>
             <span class="docs-api-method-name">getState(): <span class="docs-api-method-returns-type">NxOverlayState</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Gets the current state of the overlay&#39;s lifecycle.</p>
+    <div class="docs-api-method-description"><p>Gets the current state of the overlay's lifecycle.</p>
 </div></div>
    
 
@@ -1053,7 +1060,7 @@ content will be rendered.</p>
                         
                             config:  
                                 <span class="docs-api-property__type">
-                                    NxOverlayConfig<any>
+                                    NxOverlayConfig&lt;any&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">any</span></span>
         </code>
@@ -1071,7 +1078,7 @@ content will be rendered.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 config:
-                <span class="docs-api-method-parameter-type">NxOverlayConfig<any></span>
+                <span class="docs-api-method-parameter-type">NxOverlayConfig&lt;any&gt;</span>
             </code>
         </div>
         
@@ -1089,12 +1096,12 @@ content will be rendered.</p>
                         
                             config:  
                                 <span class="docs-api-property__type">
-                                    NxOverlayConfig<any>
+                                    NxOverlayConfig&lt;any&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">{ offsetY: number; offsetX?: undefined; } | { offsetX: number; offsetY?: undefined; }</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Returns the overlay offset required by the user&#39;s direction preference</p>
+    <div class="docs-api-method-description"><p>Returns the overlay offset required by the user's direction preference</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
@@ -1108,7 +1115,7 @@ content will be rendered.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 config:
-                <span class="docs-api-method-parameter-type">NxOverlayConfig<any></span>
+                <span class="docs-api-method-parameter-type">NxOverlayConfig&lt;any&gt;</span>
             </code>
         </div>
         
@@ -1126,7 +1133,7 @@ content will be rendered.</p>
                         ): <span class="docs-api-method-returns-type">OriginConnectionPosition</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Returns the origin position based on the user&#39;s direction preference.</p>
+    <div class="docs-api-method-description"><p>Returns the origin position based on the user's direction preference.</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
@@ -1151,7 +1158,7 @@ content will be rendered.</p>
                         ): <span class="docs-api-method-returns-type">OverlayConnectionPosition</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Returns the overlay position based on the user&#39;s direction preference</p>
+    <div class="docs-api-method-description"><p>Returns the overlay position based on the user's direction preference</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
@@ -1194,7 +1201,7 @@ content will be rendered.</p>
     <code>NxOverlayVerticalDirection</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'</code>
+    <code class="docs-api-type-alias-value">&#39;top&#39; | &#39;top-start&#39; | &#39;top-end&#39; | &#39;bottom&#39; | &#39;bottom-start&#39; | &#39;bottom-end&#39;</code>
 </p>
    
 
@@ -1203,7 +1210,7 @@ content will be rendered.</p>
     <code>NxOverlayHorizontalDirection</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'left' | 'right'</code>
+    <code class="docs-api-type-alias-value">&#39;left&#39; | &#39;right&#39;</code>
 </p>
    
 
@@ -1212,6 +1219,6 @@ content will be rendered.</p>
     <code>NxOverlayFallbackOrientation</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'vertical' | 'horizontal' | 'clockwise'</code>
+    <code class="docs-api-type-alias-value">&#39;vertical&#39; | &#39;horizontal&#39; | &#39;clockwise&#39;</code>
 </p>
   </div>

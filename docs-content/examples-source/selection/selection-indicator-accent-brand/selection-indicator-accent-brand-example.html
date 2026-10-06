@@ -1,0 +1,113 @@
+<div class="indicator-surfaces">
+  <div class="indicator-surface indicator-surface--accent">
+    <div class="indicator-table">
+      <div class="indicator-table-header">
+        <div>On accent attention</div>
+        <div>Unselected</div>
+        <div>Selected</div>
+      </div>
+      <div class="indicator-table-row">
+        <div class="indicator-label">Resting</div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-accent-attention"
+          ></nx-radio-indicator>
+        </div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-accent-attention"
+            [checked]="true"
+          ></nx-radio-indicator>
+        </div>
+      </div>
+      <div class="indicator-table-row">
+        <div class="indicator-label">Disabled</div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-accent-attention"
+            [disabled]="true"
+          ></nx-radio-indicator>
+        </div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-accent-attention"
+            [disabled]="true"
+            [checked]="true"
+          ></nx-radio-indicator>
+        </div>
+      </div>
+      <div class="indicator-table-row">
+        <div class="indicator-label">Read-only</div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-accent-attention"
+            [readonly]="true"
+          ></nx-radio-indicator>
+        </div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-accent-attention"
+            [readonly]="true"
+            [checked]="true"
+          ></nx-radio-indicator>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="indicator-surface indicator-surface--brand">
+    <div class="indicator-table">
+      <div class="indicator-table-header">
+        <div>On brand static</div>
+        <div>Unselected</div>
+        <div>Selected</div>
+      </div>
+      <div class="indicator-table-row">
+        <div class="indicator-label">Resting</div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-brand-static"
+          ></nx-radio-indicator>
+        </div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-brand-static"
+            [checked]="true"
+          ></nx-radio-indicator>
+        </div>
+      </div>
+      <div class="indicator-table-row">
+        <div class="indicator-label">Disabled</div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-brand-static"
+            [disabled]="true"
+          ></nx-radio-indicator>
+        </div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-brand-static"
+            [disabled]="true"
+            [checked]="true"
+          ></nx-radio-indicator>
+        </div>
+      </div>
+      <div class="indicator-table-row">
+        <div class="indicator-label">Read-only</div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-brand-static"
+            [readonly]="true"
+          ></nx-radio-indicator>
+        </div>
+        <div>
+          <nx-radio-indicator
+            colorScheme="on-brand-static"
+            [readonly]="true"
+            [checked]="true"
+          ></nx-radio-indicator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

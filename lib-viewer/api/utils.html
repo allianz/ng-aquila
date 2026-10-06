@@ -9,7 +9,7 @@
 <h4 id="IdGenerationService" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="IdGenerationService"></span>
     <code>IdGenerationService</code></h4><p class="docs-api-class-description"><p>Service to generate unique IDs using the Angular APP_ID as a namespace.
-If the APP_ID is the default &#39;ng&#39;, a random string is used instead.
+If the APP_ID is the default 'ng', a random string is used instead.
 This helps prevent ID collisions in micro frontend scenarios.</p>
 </p> 
 
@@ -36,7 +36,8 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
                 prefix:
                 <span class="docs-api-method-parameter-type">string</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The prefix for the ID (e.g., component name) </p>
+            <div class="docs-api-method-parameter-description"><p>The prefix for the ID (e.g., component name)</p>
+</div>
         </div>
         
     </div><div class="docs-api-method-returns">
@@ -90,7 +91,8 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
                 value:
                 <span class="docs-api-method-parameter-type">string</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The current value of the input </p>
+            <div class="docs-api-method-parameter-description"><p>The current value of the input</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
@@ -98,7 +100,8 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
                 placeholder:
                 <span class="docs-api-method-parameter-type">string</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The placeholder text </p>
+            <div class="docs-api-method-parameter-description"><p>The placeholder text</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
@@ -106,7 +109,8 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
                 maxInputLength:
                 <span class="docs-api-method-parameter-type">number</span>
             </code>
-            <p class="docs-api-method-parameter-description"> The maximum length of the input </p>
+            <div class="docs-api-method-parameter-description"><p>The maximum length of the input</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
@@ -114,7 +118,8 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
                 inputElement<span class="docs-api-method-parameter-optional-marker">?</span>:
                 <span class="docs-api-method-parameter-type">HTMLInputElement</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Optional input element to get font styles from </p>
+            <div class="docs-api-method-parameter-description"><p>Optional input element to get font styles from</p>
+</div>
         </div>
         
     </div><div class="docs-api-method-returns">
@@ -298,7 +303,7 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
             <span class="docs-api-method-name">isErrorState(
                             control:  
                                 <span class="docs-api-property__type">
-                                    NgControl | AbstractControl<any, any, any>
+                                    NgControl | AbstractControl&lt;any, any, any&gt;
                                 </span>,
                         
                             form:  
@@ -314,7 +319,7 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 control:
-                <span class="docs-api-method-parameter-type">NgControl | AbstractControl<any, any, any></span>
+                <span class="docs-api-method-parameter-type">NgControl | AbstractControl&lt;any, any, any&gt;</span>
             </code>
         </div>
         
@@ -338,8 +343,8 @@ TestBed.resetTestingModule()
 imports: [ScrollStrategyOverrideComponent, NxAutocompleteModule, NxInputModule],
 providers: [
 {
- provide: NX_AUTOCOMPLETE_SCROLL_STRATEGY,
- useFactory: () =&gt; fakeScrollStrategyFunction,
+provide: NX_AUTOCOMPLETE_SCROLL_STRATEGY,
+useFactory: () =&gt; fakeScrollStrategyFunction,
 },
 ],
 })

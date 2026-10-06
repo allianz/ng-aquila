@@ -1,7 +1,11 @@
 <h2 id="examples" tabindex="-1" class="docs-markdown--h2">Examples</h2>
 <h3 id="basic" tabindex="-1" class="docs-markdown--h3">Basic</h3>
 <div nx-docs-example="radio-toggle" config="{}">exampleID: radio-toggle</div>
-<h3 id="negative" tabindex="-1" class="docs-markdown--h3">Negative</h3>
+<h3 id="inverse" tabindex="-1" class="docs-markdown--h3">Inverse</h3>
+<div class="docs-deprecation-warning">
+  <strong><code>variant="negative"</code></strong> is deprecated. Use the <code>inverse</code> input instead.
+</div>
+<p class="docs-markdown--p">For dark backgrounds, use the <code>inverse</code> input to apply inverse styling.</p>
 <div nx-docs-example="radio-toggle-negative" config="{}">exampleID: radio-toggle-negative</div>
 <h3 id="custom" tabindex="-1" class="docs-markdown--h3">Custom</h3>
 <p class="docs-markdown--p">Important: If you use only icons or anything else that is not descriptive enough for screen readers, make sure to set a
@@ -15,6 +19,12 @@ descriptive <code>ariaLabel</code>.</p>
 <h3 id="validation" tabindex="-1" class="docs-markdown--h3">Validation</h3>
 <p class="docs-markdown--p">Below you can find an example with a custom validator, which accepts only <code>B</code> as a correct option.</p>
 <div nx-docs-example="radio-toggle-validation" config="{}">exampleID: radio-toggle-validation</div>
+<h3 id="size" tabindex="-1" class="docs-markdown--h3">Size</h3>
+<div class="docs-deprecation-warning">
+  <strong><code>variant="small"</code></strong> is deprecated. Use the <code>size</code> input instead.
+</div>
+<p class="docs-markdown--p">Use the <code>size</code> input to choose between the two available sizes. <code>m</code> is the default. <code>s</code> is a more compact variant with reduced padding, a smaller type style and a lower minimum height.</p>
+<div nx-docs-example="radio-toggle-size" config="{}">exampleID: radio-toggle-size</div>
 <h3 id="expert%3A-readonly" tabindex="-1" class="docs-markdown--h3">Expert: Readonly</h3>
 <div class="docs-deprecation-warning">
 <strong>Expert only: </strong>

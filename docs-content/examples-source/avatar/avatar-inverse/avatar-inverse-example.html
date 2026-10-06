@@ -1,0 +1,88 @@
+<div class="docs-inverse-container">
+  <div class="container nx-margin-bottom-m">
+    <button
+      nxAvatar
+      class="nx-margin-right-s"
+      aria-label="Mercedes Deutsch"
+      inverse
+    >
+      <span aria-hidden="true">MD</span>
+    </button>
+
+    <div
+      nxAvatar
+      inverse
+      aria-label="Logged in"
+      class="nx-margin-right-s"
+      role="img"
+    >
+      <nx-icon name="user-o" aria-hidden="true"></nx-icon>
+    </div>
+
+    <div
+      nxAvatar
+      inverse
+      aria-label="Logged in as Samantha Owl"
+      class="nx-margin-right-s"
+      role="img"
+    >
+      <figure nxFigure="rounded">
+        <img
+          src="docs-assets/images/vidar-nordli-mathisen-owl-unsplash.jpg"
+          alt="A photo of an owl, made by Vidar Nordli-Mathisen"
+        />
+      </figure>
+    </div>
+  </div>
+  <div class="container nx-margin-bottom-m">
+    @for (accentColor of accentColors; track accentColor) {
+      <button
+        nxAvatar
+        size="medium"
+        [accentColor]="accentColor"
+        class="nx-margin-right-s"
+        aria-label="Mercedes Deutsch"
+        inverse
+      >
+        <span aria-hidden="true">MD</span>
+      </button>
+    }
+    <button
+      nxAvatar
+      size="medium"
+      accentColor="yellow"
+      aria-label="Mercedes Deutsch"
+      inverse
+      disabled
+    >
+      <span aria-hidden="true">MD</span>
+    </button>
+  </div>
+
+  <div class="container nx-margin-bottom-m">
+    @for (accentColor of accentColors; track accentColor) {
+      <button
+        nxAvatar
+        size="medium"
+        [accentColor]="accentColor"
+        prominence="attention"
+        class="nx-margin-right-s"
+        aria-label="Logged in"
+        inverse
+      >
+        <nx-icon name="user-o" aria-hidden="true"></nx-icon>
+      </button>
+    }
+    <button
+      nxAvatar
+      size="medium"
+      accentColor="purple"
+      prominence="attention"
+      aria-label="Logged in"
+      inverse
+      disabled
+    >
+      <nx-icon name="user-o" aria-hidden="true"></nx-icon>
+    </button>
+  </div>
+</div>

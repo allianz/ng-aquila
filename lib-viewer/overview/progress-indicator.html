@@ -1,0 +1,119 @@
+<p class="docs-markdown--p">An indicator is a wizard-like workflow that divides content into logical steps. You provide the content and distribute it in different steps. The indicator will ensure to show only the current content and inform the user about the overall progress.</p>
+<h2 id="single-progress-indicator" tabindex="-1" class="docs-markdown--h2">Single Progress Indicator</h2>
+<div nx-docs-example="single-progress-indicator-basic" config="{}">exampleID: single-progress-indicator-basic</div>
+<p class="docs-markdown--p">Project content to replace the default label, e.g. to describe the step instead of just numbering it.</p>
+<div nx-docs-example="single-progress-indicator-custom-label" config="{}">exampleID: single-progress-indicator-custom-label</div>
+<p class="docs-markdown--p">Set <code>labelEnd</code> for a second, right-aligned label, e.g. a hint about what's next.</p>
+<div nx-docs-example="single-progress-indicator-with-end-label" config="{}">exampleID: single-progress-indicator-with-end-label</div>
+<h4 id="step-content" tabindex="-1" class="docs-markdown--h4">Step Content</h4>
+<p class="docs-markdown--p">The component shows progress only — it holds no step state and renders no step content. Your app owns which step is active and moves between them, which replaces the Legacy variant's <code>nxStepperPrevious</code>/<code>nxStepperNext</code> directives.</p>
+<p class="docs-markdown--p">If a step change swaps the content in place, without a page navigation, announce it via <code>LiveAnnouncer</code>: the label is the progressbar's accessible name, and renaming an element is not announced, so the step change is silent for a screen reader user. Steps that are routed pages of their own don't need this — the navigation is announced already.</p>
+<div nx-docs-example="single-progress-indicator-with-content" config="{}">exampleID: single-progress-indicator-with-content</div>
+<h4 id="color-scheme" tabindex="-1" class="docs-markdown--h4">Color Scheme</h4>
+<p class="docs-markdown--p">Use <code>colorScheme=&quot;positive&quot;</code> for the positive/success scheme.</p>
+<div nx-docs-example="single-progress-indicator-positive" config="{}">exampleID: single-progress-indicator-positive</div>
+<h4 id="translations" tabindex="-1" class="docs-markdown--h4">Translations</h4>
+<p class="docs-markdown--p">The default label is English; subclass <code>NxSingleProgressIndicatorIntl</code> and provide it in your (root) module to translate it. <code>label</code> builds the whole sentence from the current and total step, so a translation is free to reorder the parts — Turkish renders &quot;Step 1 of 4&quot; as &quot;4 adımdan 1.&quot;.</p>
+<div nx-docs-example="single-progress-indicator-localize" config="{}">exampleID: single-progress-indicator-localize</div>
+<h2 id="multi-progress-indicator" tabindex="-1" class="docs-markdown--h2">Multi Progress Indicator</h2>
+<p class="docs-markdown--p"><code>nx-multi-progress-indicator</code> renders an ordered list of steps. Your app controls which step is active and handles navigation.</p>
+<div nx-docs-example="multi-progress-indicator-basic" config="{}">exampleID: multi-progress-indicator-basic</div>
+<p class="docs-markdown--p">Set <code>[numbered]=&quot;false&quot;</code> for dot-only bullets with a checkmark on completion.</p>
+<div nx-docs-example="multi-progress-indicator-unnumbered" config="{}">exampleID: multi-progress-indicator-unnumbered</div>
+<h4 id="color-scheme-1" tabindex="-1" class="docs-markdown--h4">Color Scheme</h4>
+<p class="docs-markdown--p">Use <code>colorScheme=&quot;positive&quot;</code> to switch the active color to the positive/success scheme.</p>
+<div nx-docs-example="multi-progress-indicator-positive" config="{}">exampleID: multi-progress-indicator-positive</div>
+<h4 id="step-actions" tabindex="-1" class="docs-markdown--h4">Step Actions</h4>
+<p class="docs-markdown--p"><strong>Links</strong></p>
+<p class="docs-markdown--p">Set <code>[currentStep]</code> (1-based). Steps before it are automatically marked completed, and the step at that index becomes current.</p>
+<p class="docs-markdown--p"><strong>Accessibility:</strong> An incomplete step's anchor should not have an <code>href</code>, so it isn't a link at all (see <a href="#accessibility">Accessibility</a> below).</p>
+<div nx-docs-example="multi-progress-indicator-current-step" config="{}">exampleID: multi-progress-indicator-current-step</div>
+<p class="docs-markdown--p"><strong>Buttons</strong></p>
+<p class="docs-markdown--p">Showing the active step's content and stepping through it is up to your app - drive it off the same <code>[currentStep]</code>.</p>
+<div nx-docs-example="multi-progress-indicator-with-content" config="{}">exampleID: multi-progress-indicator-with-content</div>
+<p class="docs-markdown--p"><code>nxProgressIndicatorStepAction</code> on a projected <code>&lt;a&gt;</code>/<code>&lt;button&gt;</code> makes it focusable and clickable only once its step is completed. Content without it (e.g. a plain <code>&lt;span&gt;</code>) is left as-is.</p>
+<h4 id="layout" tabindex="-1" class="docs-markdown--h4">Layout</h4>
+<p class="docs-markdown--p"><strong>Horizontal labels below</strong></p>
+<p class="docs-markdown--p"><code>layout=&quot;horizontal-labels-below&quot;</code> bars every step and moves labels below the bullet, instead of a bar for just the current step with labels beside it.</p>
+<div nx-docs-example="multi-progress-indicator-horizontal-labels-below" config="{}">exampleID: multi-progress-indicator-horizontal-labels-below</div>
+<p class="docs-markdown--p"><strong>Vertical</strong></p>
+<p class="docs-markdown--p"><code>layout=&quot;vertical&quot;</code> stacks steps top to bottom with a bar between each.</p>
+<div nx-docs-example="multi-progress-indicator-vertical" config="{}">exampleID: multi-progress-indicator-vertical</div>
+<p class="docs-markdown--p"><strong>Vertical no labels</strong></p>
+<p class="docs-markdown--p"><code>layout=&quot;vertical-no-labels&quot;</code> is <code>&quot;vertical&quot;</code> without a visible label (still read by assistive tech). Keep it decorative, not clickable - with no visible label, there's no visible target to click.</p>
+<div nx-docs-example="multi-progress-indicator-vertical-no-labels" config="{}">exampleID: multi-progress-indicator-vertical-no-labels</div>
+<p class="docs-markdown--p"><strong>Vertical no bars</strong></p>
+<p class="docs-markdown--p"><code>layout=&quot;vertical-no-bars&quot;</code> is <code>&quot;vertical&quot;</code> without a connecting bar.</p>
+<div nx-docs-example="multi-progress-indicator-vertical-no-bars" config="{}">exampleID: multi-progress-indicator-vertical-no-bars</div>
+<p class="docs-markdown--p">A compact horizontal layout isn't implemented yet.</p>
+<h4 id="step-states" tabindex="-1" class="docs-markdown--h4">Step states</h4>
+<p class="docs-markdown--p">A step is <code>completed</code>, <code>current</code>, and/or <code>critical</code> - <code>completed</code>/<code>current</code> are usually derived from <code>[currentStep]</code> on the parent (see <a href="#step-actions">Step Actions</a>) rather than set by hand.</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>Upcoming</strong> (default): disabled color.</li>
+<li class="docs-markdown--li"><strong>Current</strong>: <code>[current]=&quot;true&quot;</code>, or at <code>[currentStep]</code>'s index. Active color.</li>
+<li class="docs-markdown--li"><strong>Completed</strong>: <code>[completed]=&quot;true&quot;</code>, or before <code>[currentStep]</code>. Filled bullet with a checkmark (or number, if <code>[numbered]</code>).</li>
+<li class="docs-markdown--li"><strong>Critical</strong>: <code>[critical]=&quot;true&quot;</code>, independent of the others. Critical color, &quot;!&quot; bullet.</li>
+</ul>
+<div nx-docs-example="multi-progress-indicator-step-states" config="{}">exampleID: multi-progress-indicator-step-states</div>
+<p class="docs-markdown--p"><code>critical</code> only recolors the bullet - needs to be communicated to the user with something like <code>nxTooltip</code> to explain why, especially when the critical step isn't the current one.</p>
+<h4 id="localization" tabindex="-1" class="docs-markdown--h4">Localization</h4>
+<p class="docs-markdown--p">The visually-hidden &quot;Completed: &quot;/&quot;Current: &quot; prefixes announced before a step's label (see <a href="#accessibility">Accessibility</a> below) default to English. To translate them, subclass <code>NxMultiProgressIndicatorIntl</code> and provide it in your (root) module.</p>
+<div nx-docs-example="multi-progress-indicator-localize" config="{}">exampleID: multi-progress-indicator-localize</div>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">Name the indicator with <code>aria-label</code> or <code>aria-labelledby</code> (forwarded to the inner <code>&lt;ol&gt;</code>). Add <code>aria-describedby</code> for more detail.</p>
+<p class="docs-markdown--p">Steps render as <code>role=&quot;listitem&quot;</code> and aren't interactive themselves - project an <code>&lt;a&gt;</code>/<code>&lt;button&gt;</code> to make one clickable, or a <code>&lt;span&gt;</code> to keep it inert. The component adds a visually-hidden &quot;Completed: &quot;/&quot;Current: &quot; prefix (<a href="#localization">translatable</a>) and <code>aria-current=&quot;step&quot;</code> automatically.</p>
+<p class="docs-markdown--p">A projected <code>nxProgressIndicatorStepAction</code> link/button is focusable and clickable only once its step is completed. Prefer <code>&lt;button&gt;</code> (native <code>disabled</code>) over <code>&lt;a&gt;</code> (<code>aria-disabled</code> + <code>tabindex=&quot;-1&quot;</code>, less reliably announced); drop the <code>&lt;a&gt;</code>'s <code>href</code> too once disabled, to remove its link semantics entirely.</p>
+<p class="docs-markdown--p">When something outside the list drives <code>[currentStep]</code> (e.g. &quot;Previous&quot;/&quot;Next&quot; buttons, as in the <a href="#step-actions">Buttons</a> example), moving to a new step doesn't move focus - a screen reader user gets no feedback that anything changed. Announce it yourself with <code>LiveAnnouncer</code> from <code>@angular/cdk/a11y</code>.</p>
+<h2 id="legacy" tabindex="-1" class="docs-markdown--h2">Legacy</h2>
+<p class="docs-markdown--p">The following documents the older, Angular CDK Stepper based implementation (<code>nx-multi-stepper</code>, <code>nx-step</code> and related directives/components). It is kept for backward compatibility — for new usage prefer the Multi Progress Indicator above where its horizontal-only scope fits your use case.</p>
+<p class="docs-markdown--p">These legacy implementations offer three variants: &quot;Single Indicator&quot;, &quot;Multi Indicator&quot; and &quot;Progress Indicator&quot;. Those indicators can show different details of the overall progress.</p>
+<details>
+<summary>Legacy progress indicator components</summary>
+<p class="docs-markdown--p">Ensure that you import the required modules. This implementation relies on the <a href="https://material.angular.io/cdk/stepper/overview">Angular CDK stepper</a> implementation so you have to fulfill the peer dependency on the CDK to use it.</p>
+<h4 id="single-indicator" tabindex="-1" class="docs-markdown--h4">Single Indicator</h4>
+<p class="docs-markdown--p">This type of indicator shows a progress bar, a caption for the current step and if available there is a hint shown for the following step.</p>
+<p class="docs-markdown--p">You control the indicator through your own buttons decorated with directives <code>nxStepperPrevious</code> and <code>nxStepperNext</code> to connect them to the current indicator.</p>
+<div nx-docs-example="progress-stepper" config="{}">exampleID: progress-stepper</div>
+<h4 id="labels" tabindex="-1" class="docs-markdown--h4">Labels</h4>
+<h4 id="custom-step-labels" tabindex="-1" class="docs-markdown--h4">Custom Step Labels</h4>
+<p class="docs-markdown--p">You can change the step labels in the single indicator prefixed for the current step (left hand) and also the following step (right hand).</p>
+<p class="docs-markdown--p">Note: The <code>currentStepLabel</code> will be used in all indicators for the mobile view.</p>
+<div nx-docs-example="progress-stepper-custom" config="{}">exampleID: progress-stepper-custom</div>
+<h4 id="stepper-label" tabindex="-1" class="docs-markdown--h4">Stepper Label</h4>
+<p class="docs-markdown--p">The <code>&lt;nx-label&gt;</code> will be shown above the single indicator for all steps.</p>
+<div nx-docs-example="progress-stepper-title" config="{}">exampleID: progress-stepper-title</div>
+<h5 id="multi-indicator" tabindex="-1" class="docs-markdown--h5">Multi Indicator</h5>
+<p class="docs-markdown--p">That's the Multi Indicator. In difference to the Single Indicator you have the overall progress bar divided by the step names.</p>
+<p class="docs-markdown--p"><strong>Warning</strong>: If a Multi Indicator step does not have a <code>[stepControl]</code> assigned, then a step is per default marked as completed after being passed.</p>
+<div nx-docs-example="progress-stepper-multi" config="{}">exampleID: progress-stepper-multi</div>
+<h5 id="multi-indicator---manual-step-completion" tabindex="-1" class="docs-markdown--h5">Multi Indicator - manual step completion</h5>
+<p class="docs-markdown--p">Per default, valid steps except for the last step are completed when you set <code>[linear]=&quot;true&quot;</code>. You can complete the last step manually via its <code>[complete]</code> Input, as shown in the example below.</p>
+<div nx-docs-example="progress-stepper-form" config="{}">exampleID: progress-stepper-form</div>
+<p class="docs-markdown--p">If you are not using the <code>[linear]</code> Input, you could also control the completion of the steps manually.</p>
+<div nx-docs-example="progress-stepper-nonlinear" config="{}">exampleID: progress-stepper-nonlinear</div>
+<div class="docs-expert-container">
+<h4 id="expert%3A-multi-indicator-vertical" tabindex="-1" class="docs-markdown--h4">Expert: Multi Indicator Vertical</h4>
+<p class="docs-markdown--p">Please note that <strong>this is an Expert option</strong>. This means that the vertical direction and group feature is only intended for internal applications and not for applications that are client facing.</p>
+<p class="docs-markdown--p">The progress indicator can be switched to a vertical layout, by setting the <code>direction</code> input to <code>vertical</code>.</p>
+<div nx-docs-example="progress-stepper-multi-vertical" config="{}">exampleID: progress-stepper-multi-vertical</div>
+<h4 id="expert%3A-multi-indicator-groups" tabindex="-1" class="docs-markdown--h4">Expert: Multi Indicator Groups</h4>
+<p class="docs-markdown--p">Steps can be grouped by wrapping them in <code>nx-stepper-group</code> tags. Each group needs a label and at least one step inside of it. Groups are currently limited to the vertical multi stepper.</p>
+<div nx-docs-example="progress-stepper-multi-groups" config="{}">exampleID: progress-stepper-multi-groups</div>
+</div>
+<h4 id="progress-indicator-(legacy-variant)" tabindex="-1" class="docs-markdown--h4">Progress Indicator (Legacy variant)</h4>
+<p class="docs-markdown--p">With this variant the user will see all steps listed horizontally, but there is only one progress bar visible for the current step.</p>
+<p class="docs-markdown--p">That progress bar can be controlled to inform the user about the progress of the current step. This update can't be done automatically by the indicator you have to provide the progress value.</p>
+<div nx-docs-example="progress-stepper-step" config="{}">exampleID: progress-stepper-step</div>
+<h4 id="reactive-forms" tabindex="-1" class="docs-markdown--h4">Reactive Forms</h4>
+<p class="docs-markdown--p">You can use reactive forms the way you are used to it with normal forms. In addition each <code>nx-step</code> can be provided with a <code>stepControl</code> attribute which points to the top level <code>AbstractControl (FormControl, FormGroup or FormArray)</code> for the step. The <code>stepControl</code> is used to check the validity of the step which is mainly used for the &quot;linear&quot; option.</p>
+<p class="docs-markdown--p">There are two possible approaches. One is using a single form for the indicator, and the other is using a different form for each step</p>
+<div nx-docs-example="progress-stepper-reactivesingle" config="{}">exampleID: progress-stepper-reactivesingle</div>
+<h4 id="reactive-form-example-with-separate-form-per-step" tabindex="-1" class="docs-markdown--h4">Reactive Form example with separate form per step</h4>
+<div nx-docs-example="progress-stepper-reactivemulti" config="{}">exampleID: progress-stepper-reactivemulti</div>
+<h4 id="linear-progress" tabindex="-1" class="docs-markdown--h4">Linear Progress</h4>
+<p class="docs-markdown--p">You can force the user to complete a form before continuing. To make a indicator aware of it you have to enable linear progress with the property <code>linear</code> on any indicator and you have to assign the involved form group to the step through the <code>[stepControl]</code> Input.</p>
+<div nx-docs-example="progress-stepper-progress" config="{}">exampleID: progress-stepper-progress</div>
+<h4 id="accessibility-(legacy)" tabindex="-1" class="docs-markdown--h4">Accessibility (Legacy)</h4>
+<p class="docs-markdown--p">In case of the Single Indicator also make sure to set the appropriate <code>progressbarAriaLabel</code> or <code>progressbarAriaLabeledBy</code> for your use case.
+This will set the associated aria attributes on the nested <a href="./documentation/progressbar/overview">NxProgressbarComponent</a></p>
+</details>

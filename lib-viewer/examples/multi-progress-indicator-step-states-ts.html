@@ -1,0 +1,20 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxMultiProgressIndicatorComponent</span>,
+  <span class="hljs-title class_">NxMultiProgressStepComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/progress-indicator&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxTooltipDirective</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/tooltip&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Multi Progress Indicator step states example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;multi-progress-indicator-step-states-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./multi-progress-indicator-step-states-example.html&#x27;</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxMultiProgressIndicatorComponent</span>,
+    <span class="hljs-title class_">NxMultiProgressStepComponent</span>,
+    <span class="hljs-title class_">NxTooltipDirective</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MultiProgressIndicatorStepStatesExampleComponent</span> {}

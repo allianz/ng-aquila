@@ -85,19 +85,18 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                negative: 
+                inverseInput: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the negative set of styles should be used.</p>
+        <p>Whether the inverse set of styles, for use on a dark background, is applied.</p>
 </td>
 </tr>
    
@@ -141,6 +140,24 @@
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxAccordionSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the size of this panel. Takes precedence over the panel's <code>variant</code> and the accordion's size/variant.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input{ alias:  <strong>variant</strong> }</span><span class="docs-api-input__keyword">
                         @Input
                         (<span class="docs-api-input-alias">'variant'</span>) 
@@ -157,7 +174,42 @@
     </td>
     <td class="docs-api-property-description">
         <p>Value for the styling that should be chosen.
-Default: <code>&#39;regular&#39;</code>.</p>
+Default: <code>'regular'</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                negative: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the negative set of styles should be used.</p>
 </td>
 </tr>
   
@@ -213,19 +265,36 @@ Default: <code>&#39;regular&#39;</code>.</p>
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-                <span class="docs-api-input__badge">Input</span>
-                    <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>inverse</strong> }</span></div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
-                negative: 
+                inverseInput: 
                 </span>
                  
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Whether the negative set of styles should be used.</p>
+        <p>Whether the inverse set of styles, for use on a dark background, is applied.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                size: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxAccordionSize&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the size of all panels of the accordion. Takes precedence over <code>variant</code>.</p>
 </td>
 </tr>
    
@@ -248,7 +317,7 @@ Default: <code>&#39;regular&#39;</code>.</p>
     </td>
     <td class="docs-api-property-description">
         <p>Value for the styling that should be chosen.</p>
-<p>Default: <code>&#39;regular&#39;</code>.</p>
+<p>Default: <code>'regular'</code>.</p>
 </td>
 </tr>
    
@@ -266,6 +335,41 @@ Default: <code>&#39;regular&#39;</code>.</p>
     </td>
     <td class="docs-api-property-description">
         </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                inverse: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span>
+                    <span class="docs-api-input__keyword">@Input</span>()</div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                negative: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the negative set of styles should be used.</p>
+</td>
 </tr>
   
 </table> 
@@ -371,12 +475,21 @@ Default: <code>&#39;regular&#39;</code>.</p>
     </h3>
      
 
+<h4 id="NxAccordionSize" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxAccordionSize"></span>
+    <code>NxAccordionSize</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">&#39;l&#39; | &#39;m&#39;</code>
+</p>
+   
+
 <h4 id="AccordionStyle" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="AccordionStyle"></span>
     <code>AccordionStyle</code>
 </h4><p class="docs-api-type-alias-description"><p>The styling of the accordion.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'regular' | 'light' | 'extra-light'</code>
+    <code class="docs-api-type-alias-value">&#39;regular&#39; | &#39;light&#39; | &#39;extra-light&#39;</code>
 </p>
   </div>

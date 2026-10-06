@@ -1,0 +1,60 @@
+<!--
+  Binding `routerLink` to `null` for a step that is completed drops the `href` - see the component's accessibility notes.
+-->
+<nx-multi-progress-indicator
+  [currentStep]="activeStep()"
+  aria-label="Insurance Quote Process"
+>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="activeStep() > 1 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Billing Address
+    </a>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="activeStep() > 2 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Shipping Address
+    </a>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="activeStep() > 3 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Gift Wrapping
+    </a>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="activeStep() > 4 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Review Order
+    </a>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="activeStep() > 5 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Payment
+    </a>
+  </nx-multi-progress-step>
+</nx-multi-progress-indicator>
+
+<div class="nx-margin-top-s">
+  <button
+    nxButton="secondary small"
+    type="button"
+    class="nx-margin-right-2xs"
+    (click)="previous()"
+  >
+    Previous
+  </button>
+  <button nxButton="primary small" type="button" (click)="next()">Next</button>
+</div>

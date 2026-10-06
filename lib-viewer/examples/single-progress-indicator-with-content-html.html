@@ -1,0 +1,25 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-single-progress-indicator</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;activeStep()&quot;</span> [<span class="hljs-attr">max</span>]=<span class="hljs-string">&quot;stepCount&quot;</span>&gt;</span>
+  Step {{ activeStep() }} of {{ stepCount }}: {{ currentStep().label }}
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-single-progress-indicator</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s nx-margin-bottom-s&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{{ currentStep().content }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+  <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>
+  [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;activeStep() === 1&quot;</span>
+  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;previous()&quot;</span>
+&gt;</span>
+  Previous
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+  <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
+  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+  [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;activeStep() === stepCount&quot;</span>
+  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;next()&quot;</span>
+&gt;</span>
+  Next
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

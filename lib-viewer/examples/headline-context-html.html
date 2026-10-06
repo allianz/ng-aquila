@@ -1,0 +1,14 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
+  Each card below imposes <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>{{ cardSize() }}<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> via
+  <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>NX_HEADLINE_CONTEXT<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>, regardless of the <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>size<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> input
+  passed to the headline inside it.
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-cards&quot;</span>&gt;</span>
+  @for (size of sizes; track size) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">headline-context-card-example</span> [<span class="hljs-attr">headlineSize</span>]=<span class="hljs-string">&quot;cardSize()&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-card-label&quot;</span>&gt;</span>size=&quot;{{ size }}&quot;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span> [<span class="hljs-attr">size</span>]=<span class="hljs-string">&quot;size&quot;</span>&gt;</span>Headline<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">headline-context-card-example</span>&gt;</span>
+  }
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

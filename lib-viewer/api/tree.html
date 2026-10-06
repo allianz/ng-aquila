@@ -17,7 +17,7 @@
     <span header-link="NxTreeNodeComponent"></span>
     <code>NxTreeNodeComponent</code><span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
-        <span class="docs-api-class-extends-type">CdkTreeNode<T></span>
+        <span class="docs-api-class-extends-type">CdkTreeNode&lt;T&gt;</span>
     </span></h4><p class="docs-api-class-description"><p>Wrapper for the CdkTree node with custom design styles.</p>
 </p><p class="docs-api-directive-selectors">
     <span class="docs-api-class-selector-label ">Selector:</span>
@@ -135,7 +135,7 @@
     <span header-link="NxTreeComponent"></span>
     <code>NxTreeComponent</code><span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
-        <span class="docs-api-class-extends-type">CdkTree<T></span>
+        <span class="docs-api-class-extends-type">CdkTree&lt;T&gt;</span>
     </span></h4><p class="docs-api-class-description"><p>Wrapper for the CdkTree with custom design styles and keyboard nav mechanics.</p>
 </p><p class="docs-api-directive-selectors">
     <span class="docs-api-class-selector-label ">Selector:</span>
@@ -233,7 +233,7 @@
             <span class="docs-api-method-name">collapseCurrentFocusedNode()</span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Collapse the current node if it&#39;s expanded. Otherwise move to parent.</p>
+    <div class="docs-api-method-description"><p>Collapse the current node if it's expanded. Otherwise move to parent.</p>
 </div></div>
    
 
@@ -253,7 +253,7 @@
             <span class="docs-api-method-name">expandCurrentFocusedNode()</span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Expand the current node if it&#39;s not expanded. Otherwise move to its first child.</p>
+    <div class="docs-api-method-description"><p>Expand the current node if it's not expanded. Otherwise move to its first child.</p>
 </div></div>
    
 
@@ -450,7 +450,7 @@
                         )</span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Update node&#39;s index information based on the owner of view container.</p>
+    <div class="docs-api-method-description"><p>Update node's index information based on the owner of view container.</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
@@ -526,7 +526,7 @@
                         
                             dataDiffer:  
                                 <span class="docs-api-property__type">
-                                    IterableDiffer<T> = this['_dataDiffer']
+                                    IterableDiffer&lt;T&gt; = this[&#39;_dataDiffer&#39;]
                                 </span>,
                         
                             viewContainer:  
@@ -556,7 +556,7 @@ Adds some extra method calls to update the a11y node tracking.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 dataDiffer:
-                <span class="docs-api-method-parameter-type">IterableDiffer<T> = this['_dataDiffer']</span>
+                <span class="docs-api-method-parameter-type">IterableDiffer&lt;T&gt; = this[&#39;_dataDiffer&#39;]</span>
             </code>
         </div>
         
@@ -583,7 +583,7 @@ Adds some extra method calls to update the a11y node tracking.</p>
             <span class="docs-api-method-name">toggleCurrentFocusedNode()</span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Expand the current node if it&#39;s not expanded. Otherwise move to its first child.</p>
+    <div class="docs-api-method-description"><p>Expand the current node if it's not expanded. Otherwise move to its first child.</p>
 </div></div>
    
 
@@ -669,7 +669,7 @@ Adds some extra method calls to update the a11y node tracking.</p>
     <span header-link="NxTreeNodeDefDirective"></span>
     <code>NxTreeNodeDefDirective</code><span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
-        <span class="docs-api-class-extends-type">CdkTreeNodeDef<T></span>
+        <span class="docs-api-class-extends-type">CdkTreeNodeDef&lt;T&gt;</span>
     </span></h4><p class="docs-api-class-description"><p>Wrapper for the CdkTree node definition with custom design styles.</p>
 </p><p class="docs-api-directive-selectors">
     <span class="docs-api-class-selector-label ">Selector:</span>
@@ -873,8 +873,8 @@ Default number 24px from material design menu sub-menu spec.</p>
     <span header-link="NxTreeNodeToggleDirective"></span>
     <code>NxTreeNodeToggleDirective</code><span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
-        <span class="docs-api-class-extends-type">CdkTreeNodeToggle<T></span>
-    </span></h4><p class="docs-api-class-description"><p>Wrapper for the CdkTree&#39;s toggle with custom design styles.</p>
+        <span class="docs-api-class-extends-type">CdkTreeNodeToggle&lt;T&gt;</span>
+    </span></h4><p class="docs-api-class-description"><p>Wrapper for the CdkTree's toggle with custom design styles.</p>
 </p><p class="docs-api-directive-selectors">
     <span class="docs-api-class-selector-label ">Selector:</span>
     
@@ -895,7 +895,7 @@ Default number 24px from material design menu sub-menu spec.</p>
     <span header-link="NxTreeFlatDataSource"></span>
     <code>NxTreeFlatDataSource</code><span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
-        <span class="docs-api-class-extends-type">DataSource<F></span>
+        <span class="docs-api-class-extends-type">DataSource&lt;F&gt;</span>
     </span></h4><p class="docs-api-class-description"><p>Data source for flat tree.
 The data source need to handle expansion/collapsion of the tree node and change the data feed
 to <code>NxTree</code>.
@@ -967,7 +967,7 @@ to type <code>F extends NxFlatTreeNode</code> for <code>NxTree</code> to consume
     <span header-link="NxFlatTreeControl"></span>
     <code>NxFlatTreeControl</code><span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
-        <span class="docs-api-class-extends-type">FlatTreeControl<F></span>
+        <span class="docs-api-class-extends-type">FlatTreeControl&lt;F&gt;</span>
     </span></h4><p class="docs-api-class-description"><p>Flat tree control, allows to expand/collapse a subtree recursively for flattened tree.</p>
 </p> 
 

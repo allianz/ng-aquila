@@ -1,11 +1,17 @@
 <div class="docs-inverse-container">
+  <nx-slider inverse="true" [max]="110" [min]="10" [step]="2" value="35">
+    <nx-label negative>Inverse slider</nx-label>
+  </nx-slider>
+
   <nx-slider
+    class="nx-margin-top-m"
     inverse="true"
+    [disabled]="true"
     [max]="110"
     [min]="10"
     [step]="2"
-    label="Inverse slider"
-    value="13"
+    value="35"
   >
+    <nx-label negative disabled>Inverse slider, disabled</nx-label>
   </nx-slider>
 </div>

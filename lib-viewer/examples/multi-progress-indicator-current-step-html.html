@@ -1,0 +1,60 @@
+<span class="hljs-comment">&lt;!--
+  Binding `routerLink` to `null` for a step that is completed drops the `href` - see the component&#x27;s accessibility notes.
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-indicator</span>
+  [<span class="hljs-attr">currentStep</span>]=<span class="hljs-string">&quot;activeStep()&quot;</span>
+  <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Insurance Quote Process&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;activeStep() &gt; 1 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Billing Address
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;activeStep() &gt; 2 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Shipping Address
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;activeStep() &gt; 3 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Gift Wrapping
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;activeStep() &gt; 4 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Review Order
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;activeStep() &gt; 5 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Payment
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-indicator</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;previous()&quot;</span>
+  &gt;</span>
+    Previous
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;next()&quot;</span>&gt;</span>Next<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

@@ -1,0 +1,35 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxButtonComponent</span>,
+  <span class="hljs-title class_">NxPlainButtonComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-variable constant_">BANNER_ACTION_LAYOUT</span>,
+  <span class="hljs-title class_">NxMessageBannerActions</span>,
+  <span class="hljs-title class_">NxMessageBannerComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/message&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Notification banner configuration example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;message-banner-configuration-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./message-banner-configuration-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./message-banner-configuration-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxMessageBannerComponent</span>,
+    <span class="hljs-title class_">NxMessageBannerActions</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">NxPlainButtonComponent</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MessageBannerConfigurationExampleComponent</span> {
+  showContextIcon = <span class="hljs-literal">true</span>;
+  closable = <span class="hljs-literal">true</span>;
+  <span class="hljs-attr">actionLayout</span>: <span class="hljs-variable constant_">BANNER_ACTION_LAYOUT</span> = <span class="hljs-string">&#x27;horizontal&#x27;</span>;
+
+  <span class="hljs-title function_">toggleLayout</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">actionLayout</span> =
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">actionLayout</span> === <span class="hljs-string">&#x27;horizontal&#x27;</span> ? <span class="hljs-string">&#x27;vertical&#x27;</span> : <span class="hljs-string">&#x27;horizontal&#x27;</span>;
+  }
+}

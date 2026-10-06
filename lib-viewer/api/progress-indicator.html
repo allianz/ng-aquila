@@ -1,0 +1,546 @@
+       
+
+<div class="docs-api"><p class="docs-api-module-import">
+        <code>
+            <span class="docs-api-module-import__import-span">import </span>
+            { NxProgressIndicatorModule }
+            <span class="docs-api-module-import__from-span">from</span>
+            <span class="docs-api-module-import__path-span">'@allianz/ng-aquila/progress-indicator'</span>;
+        </code>
+    </p><h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
+    </h3>
+     
+
+<h4 id="NxMultiProgressIndicatorComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxMultiProgressIndicatorComponent"></span>
+    <code>NxMultiProgressIndicatorComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-multi-progress-indicator</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-describedby</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaDescribedBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Points the list of steps at an element describing it in more detail, e.g. a hint about what
+happens after the last step. Bind as <code>aria-describedby</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-label</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the accessible name of the list of steps, e.g. &quot;Order process&quot;. Bind as <code>aria-label</code>.
+Give the list a name through either this or <code>aria-labelledby</code> - without one, screen reader
+users get an unlabelled list of steps.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-labelledby</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaLabelledBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Names the list of steps after an existing element instead of a literal string, e.g. the
+heading above it. Bind as <code>aria-labelledby</code>. Takes precedence over <code>aria-label</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                colorScheme: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxMultiProgressIndicatorColorScheme&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the color scheme of the progress indicator. Defaults to &quot;default&quot;.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                currentStep: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the 1-based index of the active step. Steps before it are marked completed and the
+step at this index is marked current - both automatically, without setting <code>completed</code>/
+<code>current</code> on every <code>nx-multi-progress-step</code> yourself. A step can still override this by
+setting its own <code>completed</code>/<code>current</code> input, e.g. to mark an out-of-order step as done.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                layout: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxMultiProgressIndicatorLayout&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the layout of the progress indicator. Defaults to &quot;horizontal&quot; (bar for the current
+step only, label beside the bullet). &quot;horizontal-labels-below&quot; bars every step and moves labels
+below the bullet. &quot;vertical&quot; stacks steps top to bottom with a bar between each one.
+&quot;vertical-no-labels&quot; and &quot;vertical-no-bars&quot; are &quot;vertical&quot; without a visible label or bar,
+respectively. A compact layout is not yet implemented.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                numbered: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the steps show their number in the bullet. Defaults to true.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="NxMultiProgressStepComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxMultiProgressStepComponent"></span>
+    <code>NxMultiProgressStepComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-multi-progress-step</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                completed: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Marks the step as completed. Set this explicitly to override the value derived from the
+parent's <code>currentStep</code>, e.g. to mark an out-of-order step as done.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                critical: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Marks the step as critical.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                current: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Marks the step as the current step. Set this explicitly to override the value derived from
+the parent's <code>currentStep</code>.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="NxProgressIndicatorStepActionComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxProgressIndicatorStepActionComponent"></span>
+    <code>NxProgressIndicatorStepActionComponent</code></h4><p class="docs-api-class-description"><p>Put this on a projected <code>&lt;a&gt;</code>/<code>&lt;button&gt;</code> inside <code>nx-multi-progress-step</code> to reflect the
+step's state onto it: until the step is completed the action is neither focusable nor
+activatable, while staying in the accessibility tree so its content is still read.</p>
+<p>A <code>&lt;button&gt;</code> gets the native <code>disabled</code> attribute. <code>disabled</code> is not valid on <code>&lt;a&gt;</code>, so an
+anchor gets <code>aria-disabled</code> + <code>tabindex=&quot;-1&quot;</code> and a click guard instead. That reliably keeps it
+out of the tab order and unactivatable, but an anchor with an <code>href</code> keeps its <code>link</code> role and
+<code>aria-disabled</code> support on links varies - see <code>progress-indicator.md</code> for how to opt out of
+link semantics entirely.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">a[nxProgressIndicatorStepAction]</span>
+        </code>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">button[nxProgressIndicatorStepAction]</span>
+        </code>
+    
+</p> 
+
+ 
+   
+
+<h4 id="NxSingleProgressIndicatorComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxSingleProgressIndicatorComponent"></span>
+    <code>NxSingleProgressIndicatorComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-single-progress-indicator</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Overrides the <code>aria-label</code> of the underlying <code>nx-progressbar</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaLabelledBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>passes to the <code>aria-labelledby</code> of the underlying <code>nx-progressbar</code>. Defaults to the visible
+label(s)</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                colorScheme: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxProgressbarColorScheme&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the color scheme of the progress bar. Defaults to &quot;default&quot;. Forwarded to the underlying <code>nx-progressbar</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                labelEnd: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets a second, right-aligned label. Hidden unless set.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                max: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;number, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The maximum value of the progress bar. Defaults to 1. Forwarded to the underlying <code>nx-progressbar</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                min: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;number, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The minimum value of the progress bar. Defaults to 0. Forwarded to the underlying <code>nx-progressbar</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                transparentBackground: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Makes the progress bar's background transparent. Defaults to false. Forwarded to the underlying <code>nx-progressbar</code>.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                value: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;number, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the current value of the progress bar. Defaults to zero. Forwarded to the underlying <code>nx-progressbar</code>.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+  <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+        <span header-link="additional_classes"></span>
+        Additional classes
+    </h3>
+     
+
+<h4 id="NxMultiProgressIndicatorIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxMultiProgressIndicatorIntl"></span>
+    <code>NxMultiProgressIndicatorIntl</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                completedLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Visually-hidden prefix announced before a completed step's label</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                currentLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Visually-hidden prefix announced before the current step's label</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="NxSingleProgressIndicatorIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxSingleProgressIndicatorIntl"></span>
+    <code>NxSingleProgressIndicatorIntl</code></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                label: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;(currentStep: number, totalSteps: number) =&gt; string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Builds the default label, e.g. &quot;Step 1 of 4&quot;.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
+    </h3>
+     
+
+<h4 id="NxMultiProgressIndicatorColorScheme" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxMultiProgressIndicatorColorScheme"></span>
+    <code>NxMultiProgressIndicatorColorScheme</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">&#39;default&#39; | &#39;positive&#39;</code>
+</p>
+   
+
+<h4 id="NxMultiProgressIndicatorLayout" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxMultiProgressIndicatorLayout"></span>
+    <code>NxMultiProgressIndicatorLayout</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">&#39;horizontal&#39; | &#39;horizontal-labels-below&#39; | &#39;vertical&#39; | &#39;vertical-no-labels&#39; | &#39;vertical-no-bars&#39;</code>
+</p>
+  </div>

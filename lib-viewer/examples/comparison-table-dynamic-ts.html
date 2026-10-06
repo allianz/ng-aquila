@@ -1,20 +1,28 @@
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPlainButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxButtonComponent</span>,
+  <span class="hljs-title class_">NxPlainButtonComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
 <span class="hljs-keyword">import</span> {
   <span class="hljs-title class_">NxComparisonTableCell</span>,
   <span class="hljs-title class_">NxComparisonTableComponent</span>,
   <span class="hljs-title class_">NxComparisonTableDescriptionCell</span>,
+  <span class="hljs-title class_">NxComparisonTableHeaderPrice</span>,
+  <span class="hljs-title class_">NxComparisonTableHeaderTitle</span>,
   <span class="hljs-title class_">NxComparisonTableRowDirective</span>,
   <span class="hljs-title class_">NxComparisonTableRowType</span>,
   <span class="hljs-title class_">NxComparisonTableSelectButton</span>,
   <span class="hljs-title class_">NxToggleSectionDirective</span>,
   <span class="hljs-title class_">NxToggleSectionHeaderComponent</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/comparison-table&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
 <span class="hljs-keyword">import</span> {
   <span class="hljs-title class_">NxPopoverComponent</span>,
   <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/popover&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPriceComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/price&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxSpinnerComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/spinner&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">ChangeDetectorRef</span>, <span class="hljs-title class_">Component</span>, inject, <span class="hljs-title class_">OnInit</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ContentCell</span> {
   <span class="hljs-attr">type</span>: <span class="hljs-title class_">NxComparisonTableRowType</span>;
@@ -37,17 +45,27 @@
     <span class="hljs-title class_">NxComparisonTableComponent</span>,
     <span class="hljs-title class_">NxComparisonTableRowDirective</span>,
     <span class="hljs-title class_">NxComparisonTableCell</span>,
+    <span class="hljs-title class_">NxComparisonTableHeaderTitle</span>,
+    <span class="hljs-title class_">NxComparisonTableHeaderPrice</span>,
     <span class="hljs-title class_">NxComparisonTableSelectButton</span>,
     <span class="hljs-title class_">NxComparisonTableDescriptionCell</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
     <span class="hljs-title class_">NxPlainButtonComponent</span>,
     <span class="hljs-title class_">NxPopoverTriggerDirective</span>,
     <span class="hljs-title class_">NxIconComponent</span>,
     <span class="hljs-title class_">NxPopoverComponent</span>,
     <span class="hljs-title class_">NxToggleSectionDirective</span>,
     <span class="hljs-title class_">NxToggleSectionHeaderComponent</span>,
+    <span class="hljs-title class_">NxPriceComponent</span>,
+    <span class="hljs-title class_">NxSpinnerComponent</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
   ],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComparisonTableDynamicExampleComponent</span> {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ComparisonTableDynamicExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span> {
+  loading = <span class="hljs-literal">true</span>;
+
+  prices = [<span class="hljs-number">105.99</span>, <span class="hljs-number">110.99</span>];
+
   <span class="hljs-attr">data</span>: <span class="hljs-title class_">TableData</span> = [
     {
       <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;header&#x27;</span>,
@@ -79,4 +97,19 @@
       <span class="hljs-attr">cells</span>: [<span class="hljs-string">&#x27;This is a footer cell&#x27;</span>, <span class="hljs-string">&#x27;This is a footer cell&#x27;</span>],
     },
   ];
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _cdr = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">ChangeDetectorRef</span>);
+
+  <span class="hljs-title function_">ngOnInit</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">reload</span>();
+  }
+
+  <span class="hljs-title function_">reload</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">true</span>;
+
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">loading</span> = <span class="hljs-literal">false</span>;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">markForCheck</span>();
+    }, <span class="hljs-number">2000</span>);
+  }
 }

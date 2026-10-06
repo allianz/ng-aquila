@@ -17,7 +17,7 @@ import { Component, ViewChild } from '@angular/core';
 
 const myCustomConfig: NxMessageToastConfig = {
   duration: 3000,
-  context: 'success',
+  context: 'positive',
   announcementMessage: 'File was uploaded successfully!',
 };
 

@@ -1,0 +1,42 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-variable constant_">NX_HEADLINE_CONTEXT</span>,
+  <span class="hljs-title class_">NxHeadlineComponent</span>,
+  <span class="hljs-keyword">type</span> <span class="hljs-title class_">NxHeadlineContext</span>,
+  <span class="hljs-keyword">type</span> <span class="hljs-title class_">NxHeadlineSize</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, input, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Imposing a size via NX_HEADLINE_CONTEXT
+ */</span>
+
+<span class="hljs-comment">/** Wrapper that owns the size of any `nxHeadline` rendered inside it, e.g. for a card grid. */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;headline-context-card-example&#x27;</span>,
+  <span class="hljs-attr">template</span>: <span class="hljs-string">`
+    &lt;div class=&quot;example-card&quot;&gt;
+      &lt;ng-content /&gt;
+    &lt;/div&gt;
+  `</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./headline-context-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [
+    {
+      <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_HEADLINE_CONTEXT</span>,
+      <span class="hljs-attr">useExisting</span>: <span class="hljs-title class_">HeadlineContextCardExampleComponent</span>,
+    },
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HeadlineContextCardExampleComponent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">NxHeadlineContext</span> {
+  <span class="hljs-keyword">readonly</span> headlineSize = input&lt;<span class="hljs-title class_">NxHeadlineSize</span>&gt;(<span class="hljs-string">&#x27;2xl&#x27;</span>);
+}
+
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;headline-context-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./headline-context-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./headline-context-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxHeadlineComponent</span>, <span class="hljs-title class_">HeadlineContextCardExampleComponent</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HeadlineContextExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> cardSize = signal&lt;<span class="hljs-title class_">NxHeadlineSize</span>&gt;(<span class="hljs-string">&#x27;2xl&#x27;</span>);
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">sizes</span>: <span class="hljs-title class_">NxHeadlineSize</span>[] = [<span class="hljs-string">&#x27;m&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;xl&#x27;</span>, <span class="hljs-string">&#x27;2xl&#x27;</span>, <span class="hljs-string">&#x27;3xl&#x27;</span>];
+}

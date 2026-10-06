@@ -4,12 +4,40 @@
 <h3 id="default-appearance" tabindex="-1" class="docs-markdown--h3">Default Appearance</h3>
 <p class="docs-markdown--p">This example shows both the checkbox and radio indicators in their default appearance.</p>
 <div nx-docs-example="selection-indicator-default" config="{}">exampleID: selection-indicator-default</div>
+<h3 id="inverse-appearance" tabindex="-1" class="docs-markdown--h3">Inverse Appearance</h3>
+<p class="docs-markdown--p">Set <code>inverse</code> on the radio indicator when it sits on a dark surface. It is available for the
+default and critical appearances; it is not combined with the on-selection appearance.</p>
+<div nx-docs-example="selection-indicator-inverse" config="{}">exampleID: selection-indicator-inverse</div>
 <h3 id="on-selection-appearance" tabindex="-1" class="docs-markdown--h3">On-selection Appearance</h3>
 <p class="docs-markdown--p">The on-selection appearance is used on other interactive elements like cards or tiles.
 The following example shows both the checkbox and radio indicators with the on-selection appearance (all states).</p>
 <div nx-docs-example="selection-indicator-on-selection" config="{}">exampleID: selection-indicator-on-selection</div>
-<h2 id="hover-and-active-styles" tabindex="-1" class="docs-markdown--h2">Hover and Active Styles</h2>
-<p class="docs-markdown--p">Hover and active styles for selection indicators must be implemented by the component that uses the indicators. The indicators themselves are purely visual and do not provide these interaction styles out of the box.</p>
+<div class="docs-a1">
+<h3 id="on-accent-and-on-brand-appearance" tabindex="-1" class="docs-markdown--h3">On-accent and On-brand Appearance</h3>
+<p class="docs-markdown--p">The radio indicator also supports the <code>on-accent-attention</code> and <code>on-brand-static</code> appearances,
+for placement on an accent or brand coloured surface in Allianz One. If you select readonly with these two appearances the component will fall back to use the default color scheme.</p>
+<div nx-docs-example="selection-indicator-accent-brand" config="{}">exampleID: selection-indicator-accent-brand</div>
+</div>
+<h2 id="hover%2C-active-and-focus-styles" tabindex="-1" class="docs-markdown--h2">Hover, Active and Focus Styles</h2>
+<p class="docs-markdown--p">The indicators are presentational and never know that the element around them is hovered,
+pressed or focused: the pointer sits on the surrounding component (like a card, tile or label), and focus sits on
+the native input the indicator stands in for. The surrounding component therefore owns the
+selector, and these mixins supply the declarations for both nx-radio-indicator and nx-checkbox-indicator:</p>
+<pre><code class="language-scss"><span class="hljs-keyword">@use</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/styles/selection-indicator-mixins&#x27;</span> as *;
+
+<span class="hljs-selector-class">.my-card</span> {
+  &amp;<span class="hljs-selector-pseudo">:hover</span> nx-radio-indicator {
+    <span class="hljs-keyword">@include</span> nx-radio-indicator-hover;
+  }
+  &amp;<span class="hljs-selector-pseudo">:active</span> nx-radio-indicator {
+    <span class="hljs-keyword">@include</span> nx-radio-indicator-active;
+  }
+  &amp;<span class="hljs-selector-pseudo">:has</span>(input:focus-visible) nx-radio-indicator {
+    <span class="hljs-keyword">@include</span> nx-selection-indicator-focus;
+  }
+}
+</code></pre>
+<p class="docs-markdown--p">Keep the indicator's element selector on your side.</p>
 <h2 id="usage" tabindex="-1" class="docs-markdown--h2">Usage</h2>
 <p class="docs-markdown--p">Import the components, use them in your templates and position them in your layout:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox-indicator</span> /&gt;</span>

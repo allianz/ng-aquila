@@ -13,12 +13,23 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MessageBannerExampleComponent</span> {
   infoBanner = <span class="hljs-literal">true</span>;
+  positiveBanner = <span class="hljs-literal">true</span>;
   warningBanner = <span class="hljs-literal">true</span>;
-  errorBanner = <span class="hljs-literal">true</span>;
+  criticalBanner = <span class="hljs-literal">true</span>;
+
+  <span class="hljs-keyword">get</span> <span class="hljs-title function_">allBannersVisible</span>(): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">return</span> (
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">infoBanner</span> &amp;&amp;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">positiveBanner</span> &amp;&amp;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">warningBanner</span> &amp;&amp;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">criticalBanner</span>
+    );
+  }
 
   <span class="hljs-title function_">showAllBanners</span>(<span class="hljs-params"></span>) {
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">infoBanner</span> = <span class="hljs-literal">true</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">positiveBanner</span> = <span class="hljs-literal">true</span>;
     <span class="hljs-variable language_">this</span>.<span class="hljs-property">warningBanner</span> = <span class="hljs-literal">true</span>;
-    <span class="hljs-variable language_">this</span>.<span class="hljs-property">errorBanner</span> = <span class="hljs-literal">true</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">criticalBanner</span> = <span class="hljs-literal">true</span>;
   }
 }

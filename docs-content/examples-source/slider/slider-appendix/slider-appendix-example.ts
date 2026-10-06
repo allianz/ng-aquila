@@ -1,3 +1,4 @@
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxPlainButtonComponent } from '@allianz/ng-aquila/button';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import {
@@ -18,6 +19,7 @@ import { Component } from '@angular/core';
   templateUrl: './slider-appendix-example.html',
   styleUrls: ['./slider-appendix-example.css'],
   imports: [
+    NxLabelComponent,
     NxSliderComponent,
     NxPlainButtonComponent,
     NxSliderAppendixDirective,

@@ -3,6 +3,8 @@ import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableHeaderPrice,
+  NxComparisonTableHeaderTitle,
   NxComparisonTableRowDirective,
   NxComparisonTableSelectButton,
 } from '@allianz/ng-aquila/comparison-table';
@@ -21,6 +23,7 @@ import {
   NxPopoverMainContentDirective,
   NxPopoverTitleDirective,
 } from '@allianz/ng-aquila/popover';
+import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import { NxSignalButtonComponent } from '@allianz/ng-aquila/signal-button';
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -31,9 +34,12 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   templateUrl: './comparison-table-form-elements-example.html',
   styleUrls: ['./comparison-table-form-elements-example.css'],
   imports: [
+    NxPriceComponent,
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
     NxComparisonTableCell,
+    NxComparisonTableHeaderTitle,
+    NxComparisonTableHeaderPrice,
     NxComparisonTableSelectButton,
     NxComparisonTableDescriptionCell,
     NxIconComponent,

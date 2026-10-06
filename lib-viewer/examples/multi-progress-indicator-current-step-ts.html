@@ -1,0 +1,36 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxButtonComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxMultiProgressIndicatorComponent</span>,
+  <span class="hljs-title class_">NxMultiProgressStepComponent</span>,
+  <span class="hljs-title class_">NxProgressIndicatorStepActionComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/progress-indicator&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">RouterLink</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/router&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Multi Progress Indicator currentStep example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;multi-progress-indicator-current-step-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./multi-progress-indicator-current-step-example.html&#x27;</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxMultiProgressIndicatorComponent</span>,
+    <span class="hljs-title class_">NxMultiProgressStepComponent</span>,
+    <span class="hljs-title class_">NxProgressIndicatorStepActionComponent</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">RouterLink</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MultiProgressIndicatorCurrentStepExampleComponent</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _stepCount = <span class="hljs-number">5</span>;
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> activeStep = <span class="hljs-title function_">signal</span>(<span class="hljs-number">2</span>);
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-title function_">previous</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeStep</span>.<span class="hljs-title function_">update</span>(<span class="hljs-function">(<span class="hljs-params">step</span>) =&gt;</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-number">1</span>, step - <span class="hljs-number">1</span>));
+  }
+
+  <span class="hljs-keyword">protected</span> <span class="hljs-title function_">next</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeStep</span>.<span class="hljs-title function_">update</span>(<span class="hljs-function">(<span class="hljs-params">step</span>) =&gt;</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_stepCount</span>, step + <span class="hljs-number">1</span>));
+  }
+}

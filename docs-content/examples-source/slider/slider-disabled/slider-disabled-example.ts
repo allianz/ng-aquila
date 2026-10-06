@@ -1,3 +1,4 @@
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxSliderComponent } from '@allianz/ng-aquila/slider';
 import { Component } from '@angular/core';
 
@@ -8,6 +9,6 @@ import { Component } from '@angular/core';
   selector: 'slider-disabled-example',
   templateUrl: './slider-disabled-example.html',
   styleUrls: ['./slider-disabled-example.css'],
-  imports: [NxSliderComponent],
+  imports: [NxLabelComponent, NxSliderComponent],
 })
 export class SliderDisabledExampleComponent {}

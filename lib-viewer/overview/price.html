@@ -31,5 +31,12 @@
 <div nx-docs-example="price-inverse" config="{}">exampleID: price-inverse</div>
 <h3 id="color-scheme" tabindex="-1" class="docs-markdown--h3">Color scheme</h3>
 <p class="docs-markdown--p">The price supports the <code>colorScheme</code> input, which takes <code>default</code> or
-<code>on-accent-attention</code> for use on an accent-colored surface.</p>
+<code>on-accent-attention</code> for use on an accent-colored surface. When not set, it follows
+the surface the price is placed on (see <code>nxSurface</code>).</p>
 <div nx-docs-example="price-accent-attention" config="{}">exampleID: price-accent-attention</div>
+<h3 id="imposing-size-from-a-wrapper" tabindex="-1" class="docs-markdown--h3">Imposing size from a wrapper</h3>
+<p class="docs-markdown--p">A wrapping component (e.g. a card grid or a comparison table header) can provide
+<code>NX_PRICE_CONTEXT</code> to own the size of every <code>nx-price</code> rendered beneath it, overriding
+the consumer's <code>size</code> input. This keeps prices visually consistent across all usages of
+that wrapper, even if each usage sets a different <code>size</code>.</p>
+<div nx-docs-example="price-context" config="{}">exampleID: price-context</div>

@@ -127,7 +127,8 @@ Will emit on subscribe if there are no open modals to begin with.</p>
                 id:
                 <span class="docs-api-method-parameter-type">string</span>
             </code>
-            <p class="docs-api-method-parameter-description"> ID to use when looking up the modal. </p>
+            <div class="docs-api-method-parameter-description"><p>ID to use when looking up the modal.</p>
+</div>
         </div>
         
     </div></div>
@@ -144,7 +145,7 @@ Will emit on subscribe if there are no open modals to begin with.</p>
                         
                             config?:  
                                 <span class="docs-api-property__type">
-                                    NxModalConfig<D>
+                                    NxModalConfig&lt;D&gt;
                                 </span>
                         ): <span class="docs-api-method-returns-type">NxModalRef&lt;T, R&gt;</span></span>
         </code>
@@ -158,15 +159,17 @@ Will emit on subscribe if there are no open modals to begin with.</p>
                 componentOrTemplateRef:
                 <span class="docs-api-method-parameter-type">any</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Type of the component to load into the dialog, or a TemplateRef to instantiate as the modal content. </p>
+            <div class="docs-api-method-parameter-description"><p>Type of the component to load into the dialog, or a TemplateRef to instantiate as the modal content.</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 config<span class="docs-api-method-parameter-optional-marker">?</span>:
-                <span class="docs-api-method-parameter-type">NxModalConfig<D></span>
+                <span class="docs-api-method-parameter-type">NxModalConfig&lt;D&gt;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Extra configuration options. </p>
+            <div class="docs-api-method-parameter-description"><p>Extra configuration options.</p>
+</div>
         </div>
         
     </div><div class="docs-api-method-returns">
@@ -272,8 +275,8 @@ which contains the content of the modal view.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the &#39;aria-label&#39; of the modal close button needed for accessibility.</p>
-<p>Default: <code>&#39;Close dialog&#39;</code>.</p>
+        <p>Sets the 'aria-label' of the modal close button needed for accessibility.</p>
+<p>Default: <code>'Close dialog'</code>.</p>
 </td>
 </tr>
    
@@ -454,7 +457,7 @@ of a modal to close it when requested by the user.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Defaults to <code>&#39;button&#39;</code> to prevents accidental form submits.</p>
+        <p>Defaults to <code>'button'</code> to prevents accidental form submits.</p>
 </td>
 </tr>
    
@@ -579,7 +582,7 @@ which should trigger opening the modal on click.</p>
     </td>
     <td class="docs-api-property-description">
         <p>The appearance of the modal.</p>
-<p>Default: <code>&#39;default&#39;</code>.</p>
+<p>Default: <code>'default'</code>.</p>
 </td>
 </tr>
    
@@ -681,8 +684,8 @@ which should trigger opening the modal on click.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the &#39;aria-label&#39; of the modal close button needed for accessibility.</p>
-<p>Default: <code>&#39;Close dialog&#39;</code>.</p>
+        <p>Sets the 'aria-label' of the modal close button needed for accessibility.</p>
+<p>Default: <code>'Close dialog'</code>.</p>
 </td>
 </tr>
    
@@ -700,7 +703,7 @@ which should trigger opening the modal on click.</p>
     </td>
     <td class="docs-api-property-description">
         <p>Whether the modal should close when the user goes backwards/forwards in history.
-Note that this usually doesn&#39;t include clicking on links (unless the user is using
+Note that this usually doesn't include clicking on links (unless the user is using
 the <code>HashLocationStrategy</code>).</p>
 </td>
 </tr>
@@ -736,7 +739,7 @@ the <code>HashLocationStrategy</code>).</p>
     </td>
     <td class="docs-api-property-description">
         <p>Sets locale direction for the modal.</p>
-<p>Default: <code>&#39;ltr&#39;</code>.</p>
+<p>Default: <code>'ltr'</code>.</p>
 </td>
 </tr>
    
@@ -838,7 +841,7 @@ the <code>HashLocationStrategy</code>).</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Max-height of the modal. If a number is provided, assumes pixel units. Defaults to &#39;65vh&#39;.</p>
+        <p>Max-height of the modal. If a number is provided, assumes pixel units. Defaults to '65vh'.</p>
 </td>
 </tr>
    
@@ -855,7 +858,7 @@ the <code>HashLocationStrategy</code>).</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Max-width of the modal. If a number is provided, assumes pixel units. Defaults to &#39;736px&#39;.</p>
+        <p>Max-width of the modal. If a number is provided, assumes pixel units. Defaults to '736px'.</p>
 </td>
 </tr>
    
@@ -941,7 +944,7 @@ the <code>HashLocationStrategy</code>).</p>
     </td>
     <td class="docs-api-property-description">
         <p>Whether the modal should restore focus to the
-previously-focused element, after it&#39;s closed.</p>
+previously-focused element, after it's closed.</p>
 </td>
 </tr>
    
@@ -1027,7 +1030,7 @@ previously-focused element, after it&#39;s closed.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Where the attached component should live in Angular&#39;s <em>logical</em> component tree.
+        <p>Where the attached component should live in Angular's <em>logical</em> component tree.
 This affects what is available for injection and the change detection order for the
 component instantiated inside of the modal. This does not affect where the modal
 content will be rendered.</p>
@@ -1189,7 +1192,7 @@ content will be rendered.</p>
             <span class="docs-api-method-name">backdropClick(): <span class="docs-api-method-returns-type">Observable&lt;MouseEvent&gt;</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Gets an observable that emits when the overlay&#39;s backdrop has been clicked.</p>
+    <div class="docs-api-method-description"><p>Gets an observable that emits when the overlay's backdrop has been clicked.</p>
 </div></div>
    
 
@@ -1223,7 +1226,8 @@ content will be rendered.</p>
                 modalResult<span class="docs-api-method-parameter-optional-marker">?</span>:
                 <span class="docs-api-method-parameter-type">R</span>
             </code>
-            <p class="docs-api-method-parameter-description"> Optional result to return to the modal opener. </p>
+            <div class="docs-api-method-parameter-description"><p>Optional result to return to the modal opener.</p>
+</div>
         </div>
         
     </div></div>
@@ -1235,7 +1239,7 @@ content will be rendered.</p>
             <span class="docs-api-method-name">getState(): <span class="docs-api-method-returns-type">NxModalState</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Gets the current state of the modal&#39;s lifecycle.</p>
+    <div class="docs-api-method-description"><p>Gets the current state of the modal's lifecycle.</p>
 </div></div>
    
 
@@ -1285,7 +1289,7 @@ content will be rendered.</p>
                         ): <span class="docs-api-method-returns-type">this</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Updates the modal&#39;s position.</p>
+    <div class="docs-api-method-description"><p>Updates the modal's position.</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
@@ -1294,7 +1298,8 @@ content will be rendered.</p>
                 position<span class="docs-api-method-parameter-optional-marker">?</span>:
                 <span class="docs-api-method-parameter-type">NxDialogPosition</span>
             </code>
-            <p class="docs-api-method-parameter-description"> New modal position. </p>
+            <div class="docs-api-method-parameter-description"><p>New modal position.</p>
+</div>
         </div>
         
     </div></div>
@@ -1306,34 +1311,36 @@ content will be rendered.</p>
             <span class="docs-api-method-name">updateSize(
                             width:  
                                 <span class="docs-api-property__type">
-                                    string = ''
+                                    string = &#39;&#39;
                                 </span>,
                         
                             height:  
                                 <span class="docs-api-property__type">
-                                    string = ''
+                                    string = &#39;&#39;
                                 </span>
                         ): <span class="docs-api-method-returns-type">this</span></span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Updates the modal&#39;s width and height.</p>
+    <div class="docs-api-method-description"><p>Updates the modal's width and height.</p>
 </div><div class="docs-api-method-params">
         <p class="docs-api-method-param-title">Parameters:</p>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 width:
-                <span class="docs-api-method-parameter-type">string = ''</span>
+                <span class="docs-api-method-parameter-type">string = &#39;&#39;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> New width of the modal. </p>
+            <div class="docs-api-method-parameter-description"><p>New width of the modal.</p>
+</div>
         </div>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 height:
-                <span class="docs-api-method-parameter-type">string = ''</span>
+                <span class="docs-api-method-parameter-type">string = &#39;&#39;</span>
             </code>
-            <p class="docs-api-method-parameter-description"> New height of the modal. </p>
+            <div class="docs-api-method-parameter-description"><p>New height of the modal.</p>
+</div>
         </div>
         
     </div></div>
@@ -1347,7 +1354,7 @@ content will be rendered.</p>
 <h4 id="NxDialogPosition" class="docs-header-link docs-api-h4 docs-api-interface-name">
     <span header-link="NxDialogPosition"></span>
     <code>NxDialogPosition</code>
-</h4><p class="docs-api-interface-description"><p>Possible overrides for a modal&#39;s position.</p>
+</h4><p class="docs-api-interface-description"><p>Possible overrides for a modal's position.</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -1368,7 +1375,7 @@ content will be rendered.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Override for the modal&#39;s bottom position.</p>
+        <p>Override for the modal's bottom position.</p>
 </td>
 </tr>
    
@@ -1385,7 +1392,7 @@ content will be rendered.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Override for the modal&#39;s left position.</p>
+        <p>Override for the modal's left position.</p>
 </td>
 </tr>
    
@@ -1402,7 +1409,7 @@ content will be rendered.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Override for the modal&#39;s right position.</p>
+        <p>Override for the modal's right position.</p>
 </td>
 </tr>
    
@@ -1419,7 +1426,7 @@ content will be rendered.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Override for the modal&#39;s top position.</p>
+        <p>Override for the modal's top position.</p>
 </td>
 </tr>
   
@@ -1436,7 +1443,7 @@ content will be rendered.</p>
 </h4><p class="docs-api-type-alias-description"><p>Valid ARIA roles for a modal element.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'dialog' | 'alertdialog'</code>
+    <code class="docs-api-type-alias-value">&#39;dialog&#39; | &#39;alertdialog&#39;</code>
 </p>
    
 
@@ -1445,7 +1452,7 @@ content will be rendered.</p>
     <code>NxModalAppearance</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'expert' | 'default'</code>
+    <code class="docs-api-type-alias-value">&#39;expert&#39; | &#39;default&#39;</code>
 </p>
    
 
@@ -1454,7 +1461,7 @@ content will be rendered.</p>
     <code>AutoFocusTarget</code>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'dialog' | 'first-tabbable' | 'first-heading'</code>
+    <code class="docs-api-type-alias-value">&#39;dialog&#39; | &#39;first-tabbable&#39; | &#39;first-heading&#39;</code>
 </p>
    
 
@@ -1464,6 +1471,6 @@ content will be rendered.</p>
 </h4><p class="docs-api-type-alias-description"><p>State of the modal animation.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">'opening' | 'opened' | 'closing' | 'closed'</code>
+    <code class="docs-api-type-alias-value">&#39;opening&#39; | &#39;opened&#39; | &#39;closing&#39; | &#39;closed&#39;</code>
 </p>
   </div>

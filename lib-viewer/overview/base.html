@@ -14,6 +14,11 @@
 <p class="docs-markdown--p">The current Design System enforces <code>appearance=&quot;text&quot;</code></p>
 </div>
 <div nx-docs-example="error" config="{}">exampleID: error</div>
+<h4 id="inverse" tabindex="-1" class="docs-markdown--h4">Inverse</h4>
+<p class="docs-markdown--p">The inverse version of the error can be used on a dark background. Set it via the <code>inverse</code> property. When
+you leave it unset, the error follows the surface it is placed on (see <code>nxSurface</code>), so an error inside a
+dark surface inverts on its own.</p>
+<div nx-docs-example="error-inverse" config="{}">exampleID: error-inverse</div>
 <p class="docs-markdown--p">If you want to use a custom HTML element for error messages and have it picked up by a component's content projection (e.g. number stepper), you can add <code>ngProjectAs=&quot;nx-error&quot;</code> to your element. This allows the component to recognize and project your custom error element as if it were an <code>&lt;nx-error&gt;</code>.</p>
 <h3 id="label" tabindex="-1" class="docs-markdown--h3">Label</h3>
 <p class="docs-markdown--p">The <code>&lt;nx-label&gt;</code> is a base component to display a styled label.</p>
@@ -27,6 +32,16 @@
   </code>
 </p>
 <p class="docs-markdown--p">The module is auto-imported when you use the <a href="./documentation/formfield">formfield</a>, <a href="./documentation/checkbox">checkbox</a> or <a href="./documentation/radio-button">radio-button</a> module.</p>
+<p class="docs-markdown--p">The inverse version of the label can be used on a dark background. Set it via the <code>inverse</code> property. When
+you leave it unset, the label and its hint follow the surface they are placed on (see <code>nxSurface</code>), the same
+way the error does.</p>
+<div class="docs-deprecation-warning">
+  <strong>Deprecated: </strong>
+  The <code>negative</code> property is deprecated. Use <code>inverse</code> instead; setting either one still applies the inverse styles, so existing usages keep working.
+</div>
+<p class="docs-markdown--p">Set <code>optionalLabel</code> to indicate that the associated form control is not mandatory. The text is always rendered wrapped in parentheses.</p>
+<p class="docs-markdown--p">Set <code>hint</code> to show a supplementary line of text below the label. It automatically adjusts to the <code>inverse</code> and <code>disabled</code> states.</p>
+<p class="docs-markdown--p">The label describes a control it does not own, so it cannot wire the hint up itself. It exposes the rendered hint's id as the <code>hintId</code> signal (<code>null</code> when there is no hint), which the control merges into its own <code>aria-describedby</code>. <code>nx-checkbox-group</code>, <code>nx-radio-group</code>, <code>nx-tile-group</code>, <code>nx-toggle-button-group</code> and <code>nx-file-uploader</code> already do this; when you place a label next to a control yourself, read <code>hintId</code> and set <code>aria-describedby</code> on that control.</p>
 <div nx-docs-example="label" config="{}">exampleID: label</div>
 <h4 id="info-icon" tabindex="-1" class="docs-markdown--h4">Info icon</h4>
 <p class="docs-markdown--p">A label can show an info icon next to its text. Project an info-icon component into the label and mark it with the <code>nxLabelInfo</code> directive. Use the standard <code>nx-info-icon</code> (from <code>@allianz/ng-aquila/info-icon</code>) for the common case, or project your own implementation — the projected component keeps full control over its own API (popover direction, width, modal behaviour, etc.). The icon is rendered as a sibling of the <code>&lt;label&gt;</code> element (never nested inside it) so it stays accessible.</p>

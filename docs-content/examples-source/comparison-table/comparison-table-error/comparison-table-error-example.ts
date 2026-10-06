@@ -4,15 +4,19 @@ import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableHeaderPrice,
+  NxComparisonTableHeaderTitle,
   NxComparisonTablePopularCell,
   NxComparisonTableRowDirective,
   NxComparisonTableSelectButton,
 } from '@allianz/ng-aquila/comparison-table';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
 import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import {
   NxPopoverComponent,
   NxPopoverTriggerDirective,
 } from '@allianz/ng-aquila/popover';
+import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -22,6 +26,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./comparison-table-error-example.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    NxPriceComponent,
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
     NxComparisonTablePopularCell,
@@ -29,7 +34,10 @@ import { FormControl } from '@angular/forms';
     NxPopoverTriggerDirective,
     NxIconComponent,
     NxPopoverComponent,
+    NxHeadlineComponent,
     NxComparisonTableCell,
+    NxComparisonTableHeaderTitle,
+    NxComparisonTableHeaderPrice,
     NxComparisonTableSelectButton,
     NxComparisonTableDescriptionCell,
     NxErrorComponent,

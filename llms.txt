@@ -87,7 +87,7 @@ Each component's documentation is at: https://allianz.github.io/ng-aquila/docume
 - phone-input: International phone number input
 - popover: Popover tooltip with rich content
 - price: Formatted price display with locale-aware currency formatting
-- progress-stepper: Multi-step wizard/progress indicator
+- progress-indicator: Multi-step wizard/progress indicator
 - progressbar: Progress bar indicator
 - radio-button: Radio button form control
 - radio-toggle: Toggle-style radio button group

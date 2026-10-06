@@ -1,0 +1,51 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxSurface</span>=<span class="hljs-string">&quot;attention&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;docs-tile-group-surface&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;selectionMode&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> [<span class="hljs-attr">negative</span>]=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Selection mode<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Single&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;single&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Multi&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;multi&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span> [<span class="hljs-attr">selectionMode</span>]=<span class="hljs-string">&quot;selectionMode()&quot;</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;toggleableValue&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> [<span class="hljs-attr">negative</span>]=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Choose options<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+    @for (tile of tiles(); track tile.value) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+        [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;tile.label&quot;</span>
+        [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;tile.hint&quot;</span>
+        [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;tile.icon&quot;</span>
+        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tile.value&quot;</span>
+      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span>
+    [<span class="hljs-attr">selectionMode</span>]=<span class="hljs-string">&quot;selectionMode()&quot;</span>
+    [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;readonlySelectedValue&quot;</span>
+    [<span class="hljs-attr">readonly</span>]=<span class="hljs-string">&quot;true&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> [<span class="hljs-attr">negative</span>]=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Readonly options<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+    @for (tile of tiles(); track tile.value) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+        [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;tile.label&quot;</span>
+        [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;tile.hint&quot;</span>
+        [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;tile.icon&quot;</span>
+        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tile.value&quot;</span>
+      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile-group</span>
+    [<span class="hljs-attr">selectionMode</span>]=<span class="hljs-string">&quot;selectionMode()&quot;</span>
+    [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;disabledSelectedValue&quot;</span>
+    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;true&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> [<span class="hljs-attr">negative</span>]=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Disabled options<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+    @for (tile of tiles(); track tile.value) {
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-tile</span>
+        [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;tile.label&quot;</span>
+        [<span class="hljs-attr">hint</span>]=<span class="hljs-string">&quot;tile.hint&quot;</span>
+        [<span class="hljs-attr">icon</span>]=<span class="hljs-string">&quot;tile.icon&quot;</span>
+        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;tile.value&quot;</span>
+      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile</span>&gt;</span>
+    }
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tile-group</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
