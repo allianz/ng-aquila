@@ -2,6 +2,79 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.4.0 (2026-10-06)
+
+
+### Features ✨
+
+* **accordion:** add size and inverse inputs ([4747595](https://github.com/allianz/ng-aquila/commit/47475954ef5b57fdfcbb0a48ee875bbe33e7abca))
+* **avatar:** a1 features gap implementation ([8642c55](https://github.com/allianz/ng-aquila/commit/8642c55fe1b545d24b781be374045c333983d10e))
+* **base:** add inverse, optional text and hint inputs to label and error ([62fc064](https://github.com/allianz/ng-aquila/commit/62fc064e1a4aaac412b5a73671172b37e9309964))
+* **comparison-table:** color scheme for the header and footer rows ([b21ec6e](https://github.com/allianz/ng-aquila/commit/b21ec6e0610af6af136d1e8ffd64c6267cafa50e))
+* **comparison-table:** new header slots for consistent design ([68c3978](https://github.com/allianz/ng-aquila/commit/68c3978d0a52291a771140f79640d896998dc62a))
+* **headline:** let a wrapper impose headline size via NX_HEADLINE_CONTEXT ([04a7602](https://github.com/allianz/ng-aquila/commit/04a7602ab71f336e275829c6e3cd5b07c1aba0d3))
+* **indicator:** add NX_INDICATOR_CONTEXT to set indicator size based on host ([3fabc6a](https://github.com/allianz/ng-aquila/commit/3fabc6acc79a6fa4d34cb3ec946d436611dbf93a))
+* **info-icon:** add inverse variant ([7d34681](https://github.com/allianz/ng-aquila/commit/7d34681f99608963d32251f1effabdde275320f8))
+* **label:** add A1 disabled color ([13b70ec](https://github.com/allianz/ng-aquila/commit/13b70ecba8fd38aefd44d182fcb96227df86cdd0))
+* **list:** add size and inverse inputs ([a0c3426](https://github.com/allianz/ng-aquila/commit/a0c3426516c20813e25544d012a42e663d653ab5))
+* **message:** add A1 critical and positive contexts ([4580644](https://github.com/allianz/ng-aquila/commit/4580644417bb75ab80b5a53a97c28fef3db2d24c))
+* **message:** add showContextIcon input and banner action slot ([bac7ba7](https://github.com/allianz/ng-aquila/commit/bac7ba78cd5be408d1d8dc3cacba39d98676592d))
+* **page-search:** deprecate page search component ([e61e556](https://github.com/allianz/ng-aquila/commit/e61e5565b64e28017d86e7eaba56f125ebfdf467))
+* **popover:** add inverse input ([1b05acb](https://github.com/allianz/ng-aquila/commit/1b05acbf8b31790284fc230995d3850f6cbf0355))
+* **price:** let a wrapper impose price size via NX_PRICE_CONTEXT ([21b9fe1](https://github.com/allianz/ng-aquila/commit/21b9fe1fdb1eb55b28738edcbb10f52dbcaa6b95))
+* **price:** react to accent-attention surface ([2042b64](https://github.com/allianz/ng-aquila/commit/2042b64eefebd7c6f18c91e1eb36e0868a9153d9))
+* **progress-indicator:** add single progress indicator component ([2f2bb21](https://github.com/allianz/ng-aquila/commit/2f2bb21ce2dc32614edc184bf2734bd4dcae252c))
+* **progress-indicator:** new A1 multi progress indicator component ([b5d579c](https://github.com/allianz/ng-aquila/commit/b5d579c66b661485f3f34db755c222cbb90e5864))
+* **radio-button:** render the circle with nx-radio-indicator ([4f2dd67](https://github.com/allianz/ng-aquila/commit/4f2dd671488cc8fdb3ab6125a3c526cb7ea8bc59))
+* **segmented-toggle-button:** a1 full implementation ([868e812](https://github.com/allianz/ng-aquila/commit/868e81226bbaa70e28a72713069dd683ed8f4d6b))
+* **selection-indicator:** add inverse to the radio indicator ([909255f](https://github.com/allianz/ng-aquila/commit/909255f1c4ebba5fd5de03b0b809c3a12601d75f))
+* **selection-indicator:** add on-accent-attention and on-brand-static color schemes ([9118b04](https://github.com/allianz/ng-aquila/commit/9118b04e41ff54802d923adb753397454a1e4109))
+* **selection-indicator:** add public hover, active and focus mixins for the indicators ([a155960](https://github.com/allianz/ng-aquila/commit/a155960384c9f6d0264629c193dabd902d1d8c94))
+* **slider:** add critical variant ([4840615](https://github.com/allianz/ng-aquila/commit/4840615250b7f1c392334b1c78e8d310fc29b803))
+* **slider:** add label projection and update inverse style ([bb09874](https://github.com/allianz/ng-aquila/commit/bb0987423f25a859a953ea363fba9e5e749d7938))
+* **ssr-playground:** add SSR playground application ([8832540](https://github.com/allianz/ng-aquila/commit/88325405342d876e2f57bf5de1567adb100e5ab6))
+* **switcher:** add inverse and hint input ([6b052d9](https://github.com/allianz/ng-aquila/commit/6b052d9c8636345a7f3e2df0be70434bd3da6d2a))
+* **tile-group:** add ariaLabelledBy input ([04b9277](https://github.com/allianz/ng-aquila/commit/04b92777dcf3b801389c5d2b15ed6a20a1b2048c))
+* **tile:** Add inverse input and add inverse variant for checkbox ([0fa3273](https://github.com/allianz/ng-aquila/commit/0fa32735b07e4ac6b0d6670a3edab134f9fdf766))
+* **tooltip:** add inverse input ([40c66b3](https://github.com/allianz/ng-aquila/commit/40c66b38e9a342bcfabc5be125737701c9c46d2a))
+
+
+### Bug Fixes 🐛
+
+* **ag-grid:** add focus ring to filter dropdown items ([355fda1](https://github.com/allianz/ng-aquila/commit/355fda1707160c2cf252172442dcf28ec8e041ef))
+* **ag-grid:** stop sticky group rows from showing through each other ([09f24c9](https://github.com/allianz/ng-aquila/commit/09f24c96ba5a253844619c64895528a6b5fad183))
+* **checkbox:** SSR - use Platform.SAFARI instead of sniffing navigator during SSR ([2894aa8](https://github.com/allianz/ng-aquila/commit/2894aa8f27f147f0f3db6c3c0cc3904fe5c3a584))
+* **checkbox:** stop nested checkbox from inheriting an ancestor's error state ([c5f607a](https://github.com/allianz/ng-aquila/commit/c5f607abe81e29b99d82db1ef7fcb208658be2d7))
+* **comparison-table:** SSR - guard ResizeObserver/IntersectionObserver setup ([a345f45](https://github.com/allianz/ng-aquila/commit/a345f454c36bcd603a5940f35a23ae680a11fff2))
+* **context-menu:** SSR - inject DOCUMENT instead of the global for SSR ([1c132d8](https://github.com/allianz/ng-aquila/commit/1c132d8353509141be2e3d3208fd916a25288208))
+* **datefield:** SSR - inject DOCUMENT instead of the global for SSR ([f0ba8f4](https://github.com/allianz/ng-aquila/commit/f0ba8f4d94cde7541a3411ea132745e7b0da292e))
+* **datemask:** dim separators in the disabled state ([2f1e1c5](https://github.com/allianz/ng-aquila/commit/2f1e1c53dac6353f1156eb8a5e7b1523521d1a24)), closes [#5546](https://github.com/allianz/ng-aquila/issues/5546)
+* **docs:** add selectors to the modal and message toast helper examples ([8708a30](https://github.com/allianz/ng-aquila/commit/8708a30d5041c7e7f0deb993fe147f97fa679d2a))
+* **docs:** add selectors to the modal and message toast helper examples ([34702bd](https://github.com/allianz/ng-aquila/commit/34702bd555271ec44055e8f628abb3fc332ce4e3))
+* **docs:** escape HTML from doc comments in API tables ([df46ea4](https://github.com/allianz/ng-aquila/commit/df46ea4bd238b81b098b1c4fde0b7e94d36c260a))
+* **dropdown, modal:** parse animation durations as CSS times ([6f5c35f](https://github.com/allianz/ng-aquila/commit/6f5c35fce75d37c9d5b68401f66badfd3de254a9))
+* **dropdown:** SSR - skip tooltip-truncation measurement during SSR ([5d420ec](https://github.com/allianz/ng-aquila/commit/5d420ece3ec8585870f9a971efca1de1d1d1d74c))
+* **formfield:** focus the control when the label is clicked ([46eba99](https://github.com/allianz/ng-aquila/commit/46eba99bcaa14907567f82ac4a304ef784059bd7))
+* mark internal ngModel bindings as standalone ([1940393](https://github.com/allianz/ng-aquila/commit/194039304b9f1934fefa4c4c3f8627c50a2906dd))
+* **message:** allow configuring the toast message region id ([247ec79](https://github.com/allianz/ng-aquila/commit/247ec793b6fcc0c5aab98c5ccf3bd04b78ff9271))
+* **message:** SSR - inject DOCUMENT instead of the global for SSR ([1844ae9](https://github.com/allianz/ng-aquila/commit/1844ae92055d3a3ae164af7dd3e100f87a76e372))
+* **modal:** close fullscreen modal when clicking the top gap ([432359c](https://github.com/allianz/ng-aquila/commit/432359c2875d8d27827b7b9119bb46f45da37fc2))
+* **number-stepper:** SSR - skip canvas-based input measurement during SSR ([6c9588f](https://github.com/allianz/ng-aquila/commit/6c9588f2c9c4fd9bded0d99bb3afe099798a2fe0))
+* **phone-input:** handle unparseable values instead of throwing ([218a0d2](https://github.com/allianz/ng-aquila/commit/218a0d29419da7dff2a2e8ab749a83f28a22b64c))
+* **selection-indicator:** keep the on-selection ring plain when critical ([4a1f382](https://github.com/allianz/ng-aquila/commit/4a1f38227a4a0c268066a3e8aff4befd584a63bd))
+* **sidebar:** SSR - don't write an inline width style during SSR ([2c6cde1](https://github.com/allianz/ng-aquila/commit/2c6cde159b769d65c111b4c82721da95765d74f8))
+* **slider:** focus the handle when the label is clicked ([0555572](https://github.com/allianz/ng-aquila/commit/0555572a077453aa6eb657e2b775fd26afcaf14a))
+* **slider:** SSR - skip label positioning during SSR ([fb6ea17](https://github.com/allianz/ng-aquila/commit/fb6ea1794927211ba16f27f9add94aabbc8648b3))
+* **surface:** render the data-nx-surface attribute for default type ([0a21c63](https://github.com/allianz/ng-aquila/commit/0a21c63c98fd72662bb4f209ab4bc2e2e0c441db))
+* **tabs:** add missing aria-disabled and allow keyboard focus ([de7813f](https://github.com/allianz/ng-aquila/commit/de7813f1a980f459b758d856cd44b991033d4270))
+* **tag:** remove stray click area next to selectable tags ([1ada453](https://github.com/allianz/ng-aquila/commit/1ada45374ef4fb87a6cc531069cea90c3d541650))
+
+### Deprecations ⚠️
+
+* **page-search:** The `nx-page-search` component (`NxPageSearchComponent`, `NxPageSearchModule`) is deprecated and will be deleted in v23. Use `nxInput` or `nxAutocomplete` inside an `nx-formfield` with a search icon or button instead.
+* **selection-indicator:** The `NxSelectionIndicatorColorScheme` type is deprecated. Use `NxRadioIndicatorColorScheme` or `NxCheckboxIndicatorColorScheme` instead, which each list the schemes their own indicator renders.
+* **selection-indicator:** The `radio-button-on-selection-critical-border-color` and `radio-button-on-selection-critical-background-color` tokens have no effect. A selected on-selection radio keeps the ring drawn by `radio-button-on-selection-selected-border-color`. They will be removed in the next major version.
+
 ## 22.3.0 (2026-09-01)
 
 ### Code Refactoring 🔧
