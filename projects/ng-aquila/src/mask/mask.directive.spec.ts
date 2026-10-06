@@ -1266,6 +1266,7 @@ class ValidationMaskComponent extends MaskTest {}
 class ValidationCustomSeparatorsMaskComponent extends MaskTest {}
 
 @Component({
+  selector: 'test-preset-deactive-mask',
   template: `
     <input
       [nxMask]="mask"

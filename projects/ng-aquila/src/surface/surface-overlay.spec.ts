@@ -120,6 +120,7 @@ describe('nxSurface in overlays', () => {
 class DialogContentComponent {}
 
 @Component({
+  selector: 'test-dialog-host',
   template: `
     <div nxSurface="attention">
       <nx-surface-probe />
@@ -135,6 +136,7 @@ class DialogHostComponent {
 }
 
 @Component({
+  selector: 'test-inline-modal-host',
   template: `
     <div nxSurface="attention">
       <nx-surface-probe />
@@ -153,6 +155,7 @@ class InlineModalHostComponent {
 }
 
 @Component({
+  selector: 'test-dropdown-host',
   template: `
     <div nxSurface="attention">
       <nx-surface-probe />

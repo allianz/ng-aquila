@@ -2182,6 +2182,7 @@ class OverflowComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-overflow-stuck',
   template: `
     <div style="height: 1200px"></div>
     <nx-comparison-table [responsiveBreakpoints]="breakpoints" style="width: 600px;">
@@ -2220,6 +2221,7 @@ class OverflowStuckComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-header-eyebrow-stuck',
   template: `
     <div style="height: 1200px"></div>
     <nx-comparison-table>
@@ -2245,6 +2247,7 @@ class OverflowStuckComponent extends TableTest {
 class HeaderEyebrowStuckComponent extends TableTest {}
 
 @Component({
+  selector: 'test-sticky-real-scroll',
   template: `
     <div style="height: 1200px"></div>
     <nx-comparison-table>
@@ -2266,6 +2269,7 @@ class StickyRealScrollComponent extends TableTest {
 }
 
 @Component({
+  selector: 'test-header-price',
   template: `
     <div style="height: 1200px"></div>
     <nx-comparison-table>
@@ -2292,6 +2296,7 @@ class StickyRealScrollComponent extends TableTest {
 class HeaderPriceComponent extends TableTest {}
 
 @Component({
+  selector: 'test-header-headline',
   template: `
     <div style="height: 1200px"></div>
     <nx-comparison-table [headlineSize]="headlineSize">

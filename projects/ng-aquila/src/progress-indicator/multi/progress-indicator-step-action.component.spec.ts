@@ -264,6 +264,7 @@ describe('NxProgressIndicatorStepActionComponent', () => {
 });
 
 @Component({
+  selector: 'test-progress-indicator-step-action',
   template: '',
   imports: [
     CommonModule,

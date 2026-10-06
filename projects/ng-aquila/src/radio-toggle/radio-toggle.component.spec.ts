@@ -770,6 +770,7 @@ class SelectionRadioToggle extends RadioToggleTest {}
 class ModifiedRadioToggle extends RadioToggleTest {}
 
 @Component({
+  selector: 'test-inverse-radio-toggle',
   template: `<nx-radio-toggle [inverse]="true">
     <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
   </nx-radio-toggle>`,
@@ -779,6 +780,7 @@ class ModifiedRadioToggle extends RadioToggleTest {}
 class InverseRadioToggle extends RadioToggleTest {}
 
 @Component({
+  selector: 'test-size-radio-toggle',
   template: `<nx-radio-toggle [size]="size">
     <nx-radio-toggle-button value="A">A</nx-radio-toggle-button>
   </nx-radio-toggle>`,

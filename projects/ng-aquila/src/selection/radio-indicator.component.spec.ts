@@ -6,6 +6,7 @@ import { NxRadioIndicatorComponent } from './radio-indicator.component';
 import { NxRadioIndicatorColorScheme } from './types';
 
 @Component({
+  selector: 'test-radio-indicator-host',
   template: `<nx-radio-indicator
     [checked]="checked"
     [disabled]="disabled"

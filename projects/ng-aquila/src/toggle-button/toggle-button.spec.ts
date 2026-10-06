@@ -20,6 +20,7 @@ import {
 } from './toggle-button-group.component';
 
 @Component({
+  selector: 'test-basic-toggle-buttons',
   imports: [NxToggleButtonGroupComponent, NxToggleButtonComponent, NxLabelComponent],
   template: `
     <nx-toggle-button-group
@@ -53,6 +54,7 @@ class BasicToggleButtons {
 }
 
 @Component({
+  selector: 'test-named-toggle-buttons',
   imports: [NxToggleButtonGroupComponent, NxToggleButtonComponent],
   template: `
     <nx-toggle-button-group name="interval">
@@ -64,6 +66,7 @@ class BasicToggleButtons {
 class NamedToggleButtons {}
 
 @Component({
+  selector: 'test-reactive-toggle-buttons',
   imports: [
     ReactiveFormsModule,
     NxToggleButtonGroupComponent,
@@ -88,6 +91,7 @@ class ReactiveToggleButtons {
 }
 
 @Component({
+  selector: 'test-template-driven-toggle-buttons',
   imports: [FormsModule, NxToggleButtonGroupComponent, NxToggleButtonComponent],
   template: `
     <nx-toggle-button-group [(ngModel)]="interval">

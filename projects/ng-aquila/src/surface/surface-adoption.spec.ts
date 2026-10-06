@@ -596,6 +596,7 @@ const TEMPLATE = `
 `;
 
 @Component({
+  selector: 'test-adopters',
   template: TEMPLATE,
   standalone: true,
   imports: [
@@ -624,6 +625,7 @@ class AdoptersComponent {
 
 /** No ALLIANZ_ONE provider, so only the design-agnostic reactions are asserted. */
 @Component({
+  selector: 'test-non-a1-adopters',
   template: TEMPLATE,
   standalone: true,
   imports: [

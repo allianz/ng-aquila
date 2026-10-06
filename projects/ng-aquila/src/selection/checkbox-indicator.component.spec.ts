@@ -6,6 +6,7 @@ import { NxCheckboxIndicatorComponent } from './checkbox-indicator.component';
 import { NxCheckboxIndicatorColorScheme } from './types';
 
 @Component({
+  selector: 'test-checkbox-indicator-host',
   template: `<nx-checkbox-indicator
     [checked]="checked"
     [disabled]="disabled"

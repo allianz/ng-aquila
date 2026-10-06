@@ -360,6 +360,7 @@ describe('NxComparisonTableCell', () => {
 class FooterSelectButtonCellComponent extends CellTest {}
 
 @Component({
+  selector: 'test-basic-cell',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -462,6 +463,7 @@ class ToggleSectionCellComponent extends CellTest {
 class MultiColumnCellComponent extends CellTest {}
 
 @Component({
+  selector: 'test-header-slots-cell',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">
@@ -481,6 +483,7 @@ class MultiColumnCellComponent extends CellTest {}
 class HeaderSlotsCellComponent extends CellTest {}
 
 @Component({
+  selector: 'test-misplaced-header-slot-cell',
   template: `
     <nx-comparison-table>
       <ng-container nxComparisonTableRow type="header">

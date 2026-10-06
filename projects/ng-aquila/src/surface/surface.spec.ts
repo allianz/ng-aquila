@@ -189,6 +189,7 @@ describe('nxSurface', () => {
 });
 
 @Component({
+  selector: 'test-basic-surface',
   template: ` <div [nxSurface]="surface()"><nx-surface-probe /></div> `,
   standalone: true,
   imports: [NxSurface, SurfaceProbeComponent],
@@ -198,6 +199,7 @@ class BasicSurfaceComponent {
 }
 
 @Component({
+  selector: 'test-nested-surface',
   template: `
     <div nxSurface="attention">
       <div [nxSurface]="inner()"><nx-surface-probe /></div>
@@ -211,6 +213,7 @@ class NestedSurfaceComponent {
 }
 
 @Component({
+  selector: 'test-inherit-surface',
   template: `
     <div nxSurface="attention">
       <div nxSurface="inherit"><nx-surface-probe /></div>
@@ -234,6 +237,7 @@ class BlockingPanelComponent {
 }
 
 @Component({
+  selector: 'test-blocked-surface',
   template: `
     <div nxSurface="attention">
       <nx-blocking-panel><nx-surface-probe /></nx-blocking-panel>
@@ -245,6 +249,7 @@ class BlockingPanelComponent {
 class BlockedSurfaceComponent {}
 
 @Component({
+  selector: 'test-accent-surface',
   template: `
     <div [nxSurface]="surface()" nxSurfaceAccentColor="yellow"><nx-surface-probe /></div>
   `,
@@ -256,6 +261,7 @@ class AccentSurfaceComponent {
 }
 
 @Component({
+  selector: 'test-nested-accent-surface',
   template: `
     <div nxSurface="accent-attention" nxSurfaceAccentColor="teal">
       <div nxSurface="emphasis"><nx-surface-probe /></div>
@@ -267,6 +273,7 @@ class AccentSurfaceComponent {
 class NestedAccentSurfaceComponent {}
 
 @Component({
+  selector: 'test-inherit-accent-surface',
   template: `
     <div nxSurface="accent-attention" nxSurfaceAccentColor="teal">
       <div nxSurface="inherit"><nx-surface-probe /></div>
@@ -278,6 +285,7 @@ class NestedAccentSurfaceComponent {}
 class InheritAccentSurfaceComponent {}
 
 @Component({
+  selector: 'test-no-surface',
   template: '<nx-surface-probe />',
   standalone: true,
   imports: [SurfaceProbeComponent],
@@ -285,6 +293,7 @@ class InheritAccentSurfaceComponent {}
 class NoSurfaceComponent {}
 
 @Component({
+  selector: 'test-no-background-surface',
   template: ` <div nxSurface="attention" [nxSurfaceBackground]="false"><nx-surface-probe /></div> `,
   standalone: true,
   imports: [NxSurface, SurfaceProbeComponent],

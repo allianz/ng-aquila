@@ -13,6 +13,7 @@ import { LazyExampleOutletComponent } from '../lazy-example-outlet/lazy-example-
 type ExampleBackgroundType = '' | 'blank';
 
 @Component({
+  selector: 'nxv-example-full-screen',
   templateUrl: './example-full-screen.component.html',
   styleUrls: ['./example-full-screen.component.scss'],
   changeDetection: ChangeDetectionStrategy.Eager,

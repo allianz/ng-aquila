@@ -66,6 +66,7 @@ describe('NxvTableOfContentsComponent', () => {
 });
 
 @Component({
+  selector: 'test-table-of-contents-test',
   template: `
     <div class="test-content">
       <h3 class="docs-markdown--h3">Markdown parent</h3>

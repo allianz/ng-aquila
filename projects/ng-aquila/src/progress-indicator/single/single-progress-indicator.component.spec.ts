@@ -222,6 +222,7 @@ describe('NxSingleProgressIndicatorComponent', () => {
 });
 
 @Component({
+  selector: 'test-single-progress-indicator',
   template: '',
   imports: [NxSingleProgressIndicatorComponent],
   changeDetection: ChangeDetectionStrategy.Eager,

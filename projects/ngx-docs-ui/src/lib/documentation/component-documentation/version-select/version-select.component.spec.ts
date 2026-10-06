@@ -97,6 +97,7 @@ describe('NxvVersionSelectComponent', () => {
 });
 
 @Component({
+  selector: 'test-basic-version-select',
   template: `<nxv-version-select [versions]="versions"> </nxv-version-select>`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxvVersionSelectModule],
@@ -114,6 +115,7 @@ const versions: DocVersions = {
 };
 
 @Component({
+  selector: 'test-version-select-with-token',
   template: `<nxv-version-select> </nxv-version-select>`,
   providers: [{ provide: NX_DOC_VERSIONS, useValue: versions }],
   changeDetection: ChangeDetectionStrategy.Eager,

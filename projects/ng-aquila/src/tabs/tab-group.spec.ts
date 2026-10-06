@@ -1169,7 +1169,7 @@ class BasicTabs extends TabsTest {}
 class OnPushTabs extends TabsTest {}
 
 @Component({
-  selector: 'test-configurable-tabs',
+  selector: 'test-closable-tabs',
   template: `
     <nx-tab-group (tabClose)="tabClosed($event)">
       <nx-tab label="First label" [closable]="true" (closed)="closedLabels.push('First label')">
@@ -1192,6 +1192,7 @@ class ClosableTabs extends TabsTest {
 }
 
 @Component({
+  selector: 'test-closable-with-disabled-tabs',
   template: `
     <nx-tab-group (tabClose)="closeTab($event.index)">
       @for (tab of tabs; track tab) {
@@ -1217,6 +1218,7 @@ class ClosableWithDisabledTabs extends TabsTest {
 }
 
 @Component({
+  selector: 'test-closable-tabs-with-trailing-button',
   template: `
     <nx-tab-group (tabClose)="closeTab($event.index)">
       @for (tab of tabs; track tab) {
@@ -1233,6 +1235,7 @@ class ClosableWithDisabledTabs extends TabsTest {
 class ClosableTabsWithTrailingButton extends ClosableWithDisabledTabs {}
 
 @Component({
+  selector: 'test-closable-tabs-with-untabbable-buttons',
   template: `
     <nx-tab-group (tabClose)="closeTab($event.index)">
       @for (tab of tabs; track tab) {
@@ -1252,6 +1255,7 @@ class ClosableTabsWithTrailingButton extends ClosableWithDisabledTabs {}
 class ClosableTabsWithUntabbableButtons extends ClosableWithDisabledTabs {}
 
 @Component({
+  selector: 'test-closable-tabs-declined-close',
   template: `
     <nx-tab-group (tabClose)="confirmClose()">
       @for (tab of tabs; track tab.label) {
@@ -1275,6 +1279,7 @@ class ClosableTabsDeclinedClose extends TabsTest {
 }
 
 @Component({
+  selector: 'test-configurable-tabs',
   template: `
     <nx-tab-group [negative]="negative" [mobileAccordion]="showAccordion" [appearance]="appearance">
       <nx-tab [label]="customLabel">First</nx-tab>

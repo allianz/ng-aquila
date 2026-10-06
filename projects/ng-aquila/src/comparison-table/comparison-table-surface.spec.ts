@@ -287,6 +287,7 @@ describe('NxComparisonTable surface', () => {
 });
 
 @Component({
+  selector: 'test-surface-table',
   template: TEMPLATE,
   standalone: true,
   imports: [NxComparisonTableModule, ContentProbeComponent],
@@ -301,6 +302,7 @@ class SurfaceTableComponent {
 
 /** No ALLIANZ_ONE provider: the colour scheme must have no effect at all. */
 @Component({
+  selector: 'test-non-a1-table',
   template: TEMPLATE,
   standalone: true,
   imports: [NxComparisonTableModule, ContentProbeComponent],
@@ -311,6 +313,7 @@ class NonA1TableComponent extends SurfaceTableComponent {}
 
 /** Leaves `accentColor` unbound, so the table's own default hue is what takes effect. */
 @Component({
+  selector: 'test-default-accent-table',
   template: `
     <nx-comparison-table colorScheme="accent-attention">
       <ng-container nxComparisonTableRow type="header">

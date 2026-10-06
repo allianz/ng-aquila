@@ -445,6 +445,7 @@ describe('NxButton Implementations', () => {
 
   describe('Anchor Behavior', () => {
     @Component({
+      selector: 'test-button-anchor',
       template: `<a
         nxButton
         #button

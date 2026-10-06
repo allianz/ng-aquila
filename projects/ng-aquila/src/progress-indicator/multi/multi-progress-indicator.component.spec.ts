@@ -422,6 +422,7 @@ describe('NxMultiProgressIndicatorComponent', () => {
 });
 
 @Component({
+  selector: 'test-multi-progress-indicator',
   template: '',
   imports: [NxMultiProgressIndicatorComponent, NxMultiProgressStepComponent],
 })

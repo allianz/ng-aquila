@@ -331,6 +331,7 @@ export default tseslint.config(
       '@angular-eslint/directive-class-suffix': 'off',
       '@angular-eslint/no-output-rename': 'off',
       '@angular-eslint/prefer-inject': 'warn',
+      '@angular-eslint/use-component-selector': 'error',
     },
   },
 

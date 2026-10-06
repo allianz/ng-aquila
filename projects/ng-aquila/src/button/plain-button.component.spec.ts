@@ -137,6 +137,7 @@ describe('NxPlainButtonComponent', () => {
 
   describe('Anchor Behavior', () => {
     @Component({
+      selector: 'test-plain-button-anchor',
       template: `<a
         nxPlainButton
         #button
