@@ -581,7 +581,7 @@ export class NxCheckboxComponent
   }
 
   ngOnInit(): void {
-    this.ngControl = this.injector.get(NgControl, null);
+    this.ngControl = this.injector.get(NgControl, null, { self: true });
     this._parentForm = this.injector.get(NgForm, null);
     this._parentFormGroup = this.injector.get(FormGroupDirective, null);
 

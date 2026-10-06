@@ -6,6 +6,7 @@ import {
   Component,
   DebugElement,
   Directive,
+  forwardRef,
   Type,
   ViewChild,
 } from '@angular/core';
@@ -18,10 +19,12 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import {
+  ControlValueAccessor,
   FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
+  NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -99,6 +102,8 @@ describe('NxCheckboxComponent', () => {
         CheckboxConfigurable,
         CheckboxAriaDescribedBy,
         ReactiveCheckboxWithDescribedBy,
+        TestControlValueAccessor,
+        CheckboxNotBoundToAncestorControl,
       ],
     }).compileComponents();
   }));
@@ -399,6 +404,16 @@ describe('NxCheckboxComponent', () => {
       expect(errorElement).toBeDefined();
       expect(errorElement.textContent).toBe('This is error');
     }));
+
+    it('does not inherit error state from an ancestor control it is not bound to', fakeAsync(() => {
+      createTestComponent(CheckboxNotBoundToAncestorControl);
+      testInstance.testForm.controls.other.markAsTouched();
+      fixture.detectChanges();
+      flush();
+
+      expect(testInstance.testForm.controls.other.invalid).toBe(true);
+      expect(checkboxNativeElement).not.toHaveClass('has-error');
+    }));
   });
 
   describe('a11y', () => {
@@ -635,6 +650,52 @@ class ReactiveCheckbox extends CheckboxTest {
         { value: false, disabled: false },
         { validators: Validators.requiredTrue },
       ),
+    });
+  }
+}
+
+/**
+ * Stands in for a component like `nx-multi-select`: a `ControlValueAccessor` with its own
+ * `NgControl` on its host, applied to an element that nests an `nx-checkbox` which has no
+ * control of its own - mirroring how `nx-multi-select-all` renders inside `nx-multi-select`.
+ */
+@Directive({
+  selector: '[testControlValueAccessor]',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TestControlValueAccessor),
+      multi: true,
+    },
+  ],
+})
+class TestControlValueAccessor implements ControlValueAccessor {
+  writeValue(): void {}
+  registerOnChange(): void {}
+  registerOnTouched(): void {}
+}
+
+@Component({
+  selector: 'test-checkbox-not-bound-to-ancestor-control',
+  template: `
+    <form [formGroup]="testForm">
+      <div testControlValueAccessor formControlName="other">
+        <nx-checkbox>Select all</nx-checkbox>
+      </div>
+    </form>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule, TestControlValueAccessor],
+})
+class CheckboxNotBoundToAncestorControl extends CheckboxTest {
+  fb;
+  constructor() {
+    super();
+
+    this.fb = new FormBuilder();
+
+    this.testForm = this.fb.group({
+      other: new FormControl('', { validators: Validators.required }),
     });
   }
 }
