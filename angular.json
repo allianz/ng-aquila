@@ -63,6 +63,7 @@
             "buildTarget": "ng-aquila:test-build",
             "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
             "include": ["!(schematics)/**/*.spec.ts"],
+            "runnerConfig": "vitest-base.config.mts",
             "browsers": ["ChromiumHeadless"],
             "browserViewport": "1184x900",
             "setupFiles": [
