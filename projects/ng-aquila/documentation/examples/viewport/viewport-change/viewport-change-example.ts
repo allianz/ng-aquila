@@ -8,7 +8,7 @@ import {
   NxSidebarComponent as NxSidebarComponent_1,
 } from '@allianz/ng-aquila/sidebar';
 import { NxBreakpoints, NxViewportService } from '@allianz/ng-aquila/utils';
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, viewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -29,8 +29,8 @@ import { takeUntil } from 'rxjs/operators';
     NxActionIconDirective,
   ],
 })
-export class ViewportChangeExampleComponent implements OnDestroy {
-  @ViewChild('sidebar') sidebar!: NxSidebarComponent;
+export class ViewportChangeExampleComponent implements OnInit, OnDestroy {
+  readonly sidebar = viewChild.required<NxSidebarComponent>('sidebar');
 
   readonly actions = [
     {
@@ -62,17 +62,20 @@ export class ViewportChangeExampleComponent implements OnDestroy {
 
   private readonly _destroyed = new Subject<void>();
 
-  constructor(private readonly viewportService: NxViewportService) {
+  constructor(private readonly viewportService: NxViewportService) {}
+
+  ngOnInit(): void {
     this.viewportService
       .min(NxBreakpoints.BREAKPOINT_MEDIUM)
       .pipe(takeUntil(this._destroyed))
       .subscribe((isGreaterThanMedium) => {
-        if (isGreaterThanMedium && !this.sidebar.open) {
-          this.sidebar.expand();
+        const sidebar = this.sidebar();
+        if (isGreaterThanMedium && !sidebar.open) {
+          sidebar.expand();
         } else if (!isGreaterThanMedium) {
           // don't trigger unneeded close() and expand()
-          if (this.sidebar.open) {
-            this.sidebar.close();
+          if (sidebar.open) {
+            sidebar.close();
           }
         }
       });

@@ -18,7 +18,7 @@ import {
   Component,
   OnDestroy,
   OnInit,
-  ViewChild,
+  viewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { merge, Subject } from 'rxjs';
@@ -55,7 +55,7 @@ interface MenuItem {
 export class HeaderIconsResponsiveExampleComponent
   implements OnInit, OnDestroy
 {
-  @ViewChild(NxMenuComponent) menu!: NxMenuComponent;
+  readonly menu = viewChild.required(NxMenuComponent);
 
   protected readonly _destroyed = new Subject<void>();
 
@@ -96,9 +96,9 @@ export class HeaderIconsResponsiveExampleComponent
       .subscribe((viewType) => {
         if (
           (viewType === 'tablet' || viewType === 'desktop') &&
-          this.menu.open
+          this.menu().open
         ) {
-          this.menu.toggle();
+          this.menu().toggle();
         }
         this.viewType = viewType;
         this._cdr.markForCheck();
