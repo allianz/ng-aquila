@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 
 import { NxSidebarComponent } from './sidebar.component';
 import { NxSidebarFooterComponent } from './sidebar-footer';
+import { NxSidebarGroupComponent } from './sidebar-group.component';
 import { NxSidebarToggleComponent } from './sidebar-toggle';
 
 @NgModule({
@@ -14,8 +15,14 @@ import { NxSidebarToggleComponent } from './sidebar-toggle';
     NxButtonModule,
     NxSidebarComponent,
     NxSidebarFooterComponent,
+    NxSidebarGroupComponent,
     NxSidebarToggleComponent,
   ],
-  exports: [NxSidebarComponent, NxSidebarFooterComponent, NxSidebarToggleComponent],
+  exports: [
+    NxSidebarComponent,
+    NxSidebarFooterComponent,
+    NxSidebarGroupComponent,
+    NxSidebarToggleComponent,
+  ],
 })
 export class NxSidebarModule {}

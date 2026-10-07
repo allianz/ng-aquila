@@ -26,6 +26,14 @@ One possible content for the sidebar is a list of navigation links, in this case
 
 <!-- example(sidebar) -->
 
+### Groups and dividers
+
+Wrap related actions in an `<nx-sidebar-group>` to group them. The optional `label` shows a group header. Screen readers announce it as the name of the group. To separate items without a header, place an `<nx-divider>` between them (import `NxDividerModule` from `@allianz/ng-aquila/divider`).
+
+When the sidebar is collapsed, a group header turns into a divider line.
+
+<!-- example(sidebar-group) -->
+
 ### Resizeable Side navigation with Tree
 
 [nxTree](./documentation/tree/overview) is designed to work in conjunction with the Sidebar. It is heavily inspired my the Angular Material Flat Tree. For an in depth documentation see [material.angular.io](https://material.angular.io/components/tree/overview).
@@ -53,6 +61,11 @@ If you have to reinit the default width in an expanded state, you can call `expa
 <div class="docs-a1">
 
 ### Color Schemes
+
+<div class="docs-deprecation-warning">
+  <strong>Deprecated: </strong>
+  The <code>colorScheme</code> input and the emphasis color scheme are deprecated. Use the default sidebar instead. Setting <code>colorScheme="emphasis"</code> still applies the emphasis styles, so existing usages keep working.
+</div>
 
 Use the `colorScheme` input to switch between the default neutral background and the emphasis variant. The emphasis scheme highlights the sidebar with the dedicated emphasis tokens while keeping the same content structure.
 

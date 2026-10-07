@@ -3336,6 +3336,15 @@ $nx-theme: (
 
   sidebar-handle-small-display: none,
   sidebar-handle-big-display: block,
+  sidebar-group-header-color: text-01,
+  sidebar-group-header-font: var(--paragraph-02-font-weight) var(--paragraph-02-font-size) /
+    var(--paragraph-02-line-height) var(--font-family),
+  sidebar-group-header-letter-spacing: paragraph-02-letter-spacing,
+  sidebar-group-header-padding-vertical: 8px,
+  sidebar-group-header-padding-horizontal: 32px,
+  sidebar-group-spacing-top: 24px,
+  sidebar-divider-spacing-vertical: 8px,
+  sidebar-divider-spacing-horizontal: 32px,
 
   sidepanel-background-color: ui-02,
   sidepanel-close-icon-color: text-01,

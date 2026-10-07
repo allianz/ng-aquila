@@ -35,6 +35,7 @@ export const MIN_WIDTH_A1 = 82;
 export const AUTO_COLLAPSE_WIDTH = 168;
 export const RESIZE_STEP_SIZE = 20;
 
+/** @deprecated The emphasis color scheme is deprecated. */
 export type NxSidebarColorScheme = 'default' | 'emphasis';
 
 @Component({
@@ -101,7 +102,11 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
   }
   private _resizeHandleAriaLabel = '';
 
-  /** Controls the visual color scheme of the sidebar. */
+  /**
+   * Controls the visual color scheme of the sidebar.
+   * @deprecated The emphasis color scheme is deprecated. Use the default sidebar instead.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- the deprecated input keeps its own type
   readonly colorScheme = input<NxSidebarColorScheme>('default');
 
   /**

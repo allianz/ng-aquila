@@ -66,6 +66,15 @@ $sidebar-width: 280px;
   }
 }
 
+.nx-sidebar__content ::ng-deep .nx-divider {
+  width: auto;
+  margin: v(sidebar-divider-spacing-vertical) v(sidebar-divider-spacing-horizontal);
+
+  :host(.hide-label) & {
+    margin-inline: 0;
+  }
+}
+
 ::ng-deep .nx-sidebar__footer {
   padding-bottom: 8px;
   display: flex;
