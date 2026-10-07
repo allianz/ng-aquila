@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
-import { disabled, form, FormField, required } from '@angular/forms/signals';
+import { disabled, form, FormField, readonly, required } from '@angular/forms/signals';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxCheckboxComponent } from './checkbox.component';
@@ -53,6 +53,21 @@ class DisabledSignalFormCheckbox {
 }
 
 @Component({
+  selector: 'test-readonly-signal-form-checkbox',
+  template: `<nx-checkbox [formField]="checkboxForm.enabled">Accept terms</nx-checkbox>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NxCheckboxModule, FormField],
+})
+class ReadonlySignalFormCheckbox {
+  readonly isReadonly = signal(false);
+  readonly model = signal({ enabled: false });
+  readonly checkboxForm = form(this.model, (schema) => {
+    readonly(schema.enabled, { when: () => this.isReadonly() });
+  });
+}
+
+@Component({
   selector: 'test-dynamic-signal-form-checkbox-group',
   template: `
     <nx-checkbox-group [formField]="groupForm.picked">
@@ -89,6 +104,7 @@ describe('NxCheckboxComponent signal forms', () => {
         BasicSignalFormCheckbox,
         RequiredSignalFormCheckbox,
         DisabledSignalFormCheckbox,
+        ReadonlySignalFormCheckbox,
         DynamicSignalFormCheckboxGroup,
       ],
     }).compileComponents();
@@ -218,6 +234,22 @@ describe('NxCheckboxComponent signal forms', () => {
       fixture.detectChanges();
 
       expect(host.checkboxForm.enabled().value()).toBe(false);
+    });
+  });
+
+  describe('readonly rule', () => {
+    it('marks the native input as aria-disabled while the field is readonly', () => {
+      fixture = create(ReadonlySignalFormCheckbox);
+      const host = fixture.componentInstance as ReadonlySignalFormCheckbox;
+      expect(inputElement.getAttribute('aria-disabled')).toBeNull();
+
+      host.isReadonly.set(true);
+      fixture.detectChanges();
+      expect(inputElement.getAttribute('aria-disabled')).toBe('true');
+
+      host.isReadonly.set(false);
+      fixture.detectChanges();
+      expect(inputElement.getAttribute('aria-disabled')).toBeNull();
     });
   });
 

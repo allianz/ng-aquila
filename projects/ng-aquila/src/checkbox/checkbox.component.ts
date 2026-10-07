@@ -340,7 +340,7 @@ export class NxCheckboxGroupComponent
     '[class.has-error]': 'errorState() || null',
     '[attr.required]': 'required',
     '[attr.aria-invalid]': 'errorState() || null',
-    '[class.is-readonly]': 'checkboxGroup?.readonly || readonly',
+    '[class.is-readonly]': 'readonly',
     '[class.can-hover]': '!readonly && !disabled && !negative',
   },
   providers: [
@@ -423,12 +423,12 @@ export class NxCheckboxComponent
 
   /** Whether the checkbox should be readonly. */
   @Input({ transform: booleanAttribute }) set readonly(value) {
-    this._readonly = value;
+    this._readonly.set(value);
   }
   get readonly() {
-    return this.checkboxGroup?.readonly || this._readonly;
+    return this.checkboxGroup?.readonly || this._readonly();
   }
-  private _readonly = false;
+  private readonly _readonly = signal(false);
   /**
    * Sets the label size of the checkbox.
    *
@@ -567,7 +567,6 @@ export class NxCheckboxComponent
 
   setReadonly(value: boolean): void {
     this.readonly = value;
-    this._cdr.markForCheck();
   }
 
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
