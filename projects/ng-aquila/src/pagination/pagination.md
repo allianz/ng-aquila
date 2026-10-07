@@ -21,6 +21,16 @@ Pagination is used for splitting up content or data into several pages, with con
 
 <!-- example(pagination-advanced) -->
 
+#### Configuring the navigation controls
+
+The first, previous, next and last controls are configurable:
+
+-   `firstLastControls`, `prevNextControls` — how each control pair is rendered: `icon` (default), `label`, which shows the `IPaginationTexts` label instead of the icon, or `hidden`.
+-   `controlsPosition` — `around` (default), or `start` / `end` to group all controls on one side.
+-   `alignment` — `start` (default), or `space-between` to stretch the pagination across the container width and pin the controls to its edges.
+
+<!-- example(pagination-advanced-controls) -->
+
 ### Simple Pagination
 
 <!-- example(pagination-simple) -->

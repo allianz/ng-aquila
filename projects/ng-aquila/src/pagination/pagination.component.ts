@@ -3,7 +3,7 @@ import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allian
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
-import { NgClass } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   AfterContentInit,
   AfterViewInit,
@@ -16,6 +16,7 @@ import {
   Inject,
   inject,
   Input,
+  input,
   OnDestroy,
   OnInit,
   Optional,
@@ -36,12 +37,21 @@ export interface Page {
   class: string;
 }
 
+/** Where the navigation controls of an advanced pagination sit relative to the page numbers. */
+export type NxPaginationControlsPosition = 'around' | 'start' | 'end';
+
+/** How an advanced pagination spreads across the width of its container. */
+export type NxPaginationAlignment = 'start' | 'space-between';
+
+/** How a pair of navigation controls of an advanced pagination is rendered. */
+export type NxPaginationControlDisplay = 'icon' | 'label' | 'hidden';
+
 @Component({
   selector: 'nx-pagination',
   templateUrl: './pagination.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./pagination.component.scss'],
-  imports: [NxIconModule, NgClass, NxButtonComponent],
+  imports: [NxIconModule, NgClass, NgTemplateOutlet, NxButtonComponent],
   host: {
     '[class.nx-a1-pagination]': '_a1Enabled()',
   },
@@ -115,6 +125,40 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
   }
   private _type = 'simple';
 
+  /**
+   * Where the navigation controls sit relative to the page numbers.
+   * Only applies to `type="advanced"`.
+   *
+   * default: around.
+   */
+  readonly controlsPosition = input<NxPaginationControlsPosition>('around');
+
+  /**
+   * How the first and last page controls are rendered. `label` replaces the icon with the label
+   * from `IPaginationTexts`.
+   * Only applies to `type="advanced"`.
+   *
+   * default: icon.
+   */
+  readonly firstLastControls = input<NxPaginationControlDisplay>('icon');
+
+  /**
+   * How the previous and next page controls are rendered. `label` replaces the icon with the label
+   * from `IPaginationTexts`.
+   * Only applies to `type="advanced"`.
+   *
+   * default: icon.
+   */
+  readonly prevNextControls = input<NxPaginationControlDisplay>('icon');
+
+  /**
+   * How the pagination spreads across the width of its container.
+   * Only applies to `type="advanced"`.
+   *
+   * default: start.
+   */
+  readonly alignment = input<NxPaginationAlignment>('start');
+
   /** An event emitted when the previous page button is clicked. */
   @Output() readonly goPrev = new EventEmitter<void>();
 
@@ -131,6 +175,32 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
 
   private readonly _a1 = inject<AllianzOneOptions | null>(ALLIANZ_ONE, { optional: true });
   protected readonly _a1Enabled = computed(() => this._a1?.enabled?.() ?? false);
+
+  protected readonly _showFirstLast = computed(() => this.firstLastControls() !== 'hidden');
+
+  protected readonly _showPrevNext = computed(() => this.prevNextControls() !== 'hidden');
+
+  protected readonly _firstLastLabels = computed(() => this.firstLastControls() === 'label');
+
+  protected readonly _prevNextLabels = computed(() => this.prevNextControls() === 'label');
+
+  private readonly _hasControls = computed(() => this._showFirstLast() || this._showPrevNext());
+
+  protected readonly _isSpaceBetween = computed(
+    () => this.alignment() === 'space-between' && this._hasControls(),
+  );
+
+  protected readonly _spaceBeforeLeadingControls = computed(
+    () => this._isSpaceBetween() && this.controlsPosition() === 'end',
+  );
+
+  protected readonly _spaceBeforePages = computed(
+    () => this._isSpaceBetween() && this.controlsPosition() !== 'end',
+  );
+
+  protected readonly _spaceBeforeTrailingControls = computed(
+    () => this._isSpaceBetween() && this.controlsPosition() === 'around',
+  );
 
   constructor(
     @Optional() @Inject(NX_PAGINATION_TEXTS) paginationTexts: IPaginationTexts | null,
@@ -151,7 +221,11 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
   }
 
   ngAfterContentInit(): void {
-    if (this.type === 'advanced' && (!this.paginationTexts.last || !this.paginationTexts.first)) {
+    if (
+      this.type === 'advanced' &&
+      this._showFirstLast() &&
+      (!this.paginationTexts.last || !this.paginationTexts.first)
+    ) {
       console.warn('Please define aria labels for the last and first arrows.');
     }
   }

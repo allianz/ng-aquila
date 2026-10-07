@@ -1,0 +1,5 @@
+.options {
+  background-color: var(--documentation-codeblock-background-color);
+  padding: 16px !important;
+  border-radius: 8px;
+}

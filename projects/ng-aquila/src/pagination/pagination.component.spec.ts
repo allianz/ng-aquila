@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { BidiModule, Direction } from '@angular/cdk/bidi';
 import {
   ChangeDetectionStrategy,
@@ -7,6 +8,7 @@ import {
   ElementRef,
   provideNgReflectAttributes,
   QueryList,
+  signal,
   Type,
   ViewChild,
   ViewChildren,
@@ -14,7 +16,12 @@ import {
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { NxPaginationComponent } from './pagination.component';
+import {
+  NxPaginationAlignment,
+  NxPaginationComponent,
+  NxPaginationControlDisplay,
+  NxPaginationControlsPosition,
+} from './pagination.component';
 import { NxPaginationModule } from './pagination.module';
 import { DefaultPaginationTexts, IPaginationTexts, NX_PAGINATION_TEXTS } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';
@@ -793,3 +800,275 @@ class FocusCurrentPageButtonPagination extends PaginationTest {
     return false;
   }
 }
+
+@Component({
+  selector: 'test-configurable-advanced-pagination',
+  template: `
+    <nx-pagination
+      type="advanced"
+      [count]="count"
+      [perPage]="perPage"
+      [page]="page"
+      [controlsPosition]="controlsPosition"
+      [firstLastControls]="firstLastControls"
+      [prevNextControls]="prevNextControls"
+      [alignment]="alignment"
+    ></nx-pagination>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxPaginationModule],
+})
+class ConfigurableAdvancedPagination {
+  @ViewChild(NxPaginationComponent)
+  paginationInstance!: NxPaginationComponent;
+  count = 210;
+  perPage = 10;
+  page = 5;
+  controlsPosition: NxPaginationControlsPosition = 'around';
+  firstLastControls: NxPaginationControlDisplay = 'icon';
+  prevNextControls: NxPaginationControlDisplay = 'icon';
+  alignment: NxPaginationAlignment = 'start';
+}
+
+for (const a1Enabled of [true, false]) {
+  describe(`NxPaginationComponent configurable advanced controls (Allianz One: ${a1Enabled})`, () => {
+    let fixture: ComponentFixture<ConfigurableAdvancedPagination>;
+    let testInstance: ConfigurableAdvancedPagination;
+
+    beforeEach(waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NxPaginationModule, ConfigurableAdvancedPagination],
+        providers: [
+          NxPaginationUtils,
+          { provide: ALLIANZ_ONE, useValue: { enabled: signal(a1Enabled) } },
+        ],
+      }).compileComponents();
+    }));
+
+    beforeEach(() => {
+      fixture = TestBed.createComponent(ConfigurableAdvancedPagination);
+      testInstance = fixture.componentInstance;
+      fixture.detectChanges();
+    });
+
+    function items(): HTMLLIElement[] {
+      return Array.from(
+        fixture.nativeElement.querySelectorAll('.nx-pagination .nx-pagination__container > li'),
+      );
+    }
+
+    function itemFor(control: 'first' | 'prev' | 'next' | 'last'): HTMLLIElement | undefined {
+      return items().find((item) => nameOf(item) === control);
+    }
+
+    function nameOf(item: HTMLLIElement): string {
+      if (item.querySelector('.pagination-button-first, .nx-pagination__link--first')) {
+        return 'first';
+      }
+      if (item.querySelector('.pagination-button-last, .nx-pagination__link--last')) {
+        return 'last';
+      }
+      if (item.classList.contains('nx-pagination__item-previous')) {
+        return 'prev';
+      }
+      if (item.classList.contains('nx-pagination__item-next')) {
+        return 'next';
+      }
+      return 'page';
+    }
+
+    /** The desktop and mobile page-number items are interchangeable here, so count them as one. */
+    function collapsePages(names: string[]): string[] {
+      return names.filter((name, index, all) => name !== 'page' || all[index - 1] !== 'page');
+    }
+
+    function layout(): string[] {
+      return collapsePages(items().map(nameOf));
+    }
+
+    function spacedControls(): string[] {
+      return collapsePages(
+        items()
+          .filter((item) => item.classList.contains('nx-pagination__item--space-before'))
+          .map(nameOf),
+      );
+    }
+
+    it('keeps the controls around the page numbers by default', () => {
+      expect(layout()).toEqual(['first', 'prev', 'page', 'next', 'last']);
+    });
+
+    it('groups all controls before the page numbers', () => {
+      testInstance.controlsPosition = 'start';
+      fixture.detectChanges();
+      expect(layout()).toEqual(['first', 'prev', 'next', 'last', 'page']);
+    });
+
+    it('groups all controls after the page numbers', () => {
+      testInstance.controlsPosition = 'end';
+      fixture.detectChanges();
+      expect(layout()).toEqual(['page', 'first', 'prev', 'next', 'last']);
+    });
+
+    it('hides the first and last controls', () => {
+      testInstance.firstLastControls = 'hidden';
+      fixture.detectChanges();
+      expect(layout()).toEqual(['prev', 'page', 'next']);
+    });
+
+    it('hides the previous and next controls', () => {
+      testInstance.prevNextControls = 'hidden';
+      fixture.detectChanges();
+      expect(layout()).toEqual(['first', 'page', 'last']);
+    });
+
+    it('renders no controls at all', () => {
+      testInstance.firstLastControls = 'hidden';
+      testInstance.prevNextControls = 'hidden';
+      fixture.detectChanges();
+      expect(layout()).toEqual(['page']);
+    });
+
+    it('labels the controls with the pagination texts', () => {
+      testInstance.firstLastControls = 'label';
+      testInstance.prevNextControls = 'label';
+      fixture.detectChanges();
+
+      for (const control of ['first', 'prev', 'next', 'last'] as const) {
+        const button = itemFor(control)!.querySelector('button')!;
+        const text =
+          control === 'prev' || control === 'next'
+            ? DefaultPaginationTexts[control === 'prev' ? 'previous' : 'next']
+            : DefaultPaginationTexts[control];
+        expect(button.textContent?.trim()).toBe(text);
+        expect(button.querySelector('nx-icon')).toBeNull();
+        // the visible text is the accessible name now, so the duplicate must be gone
+        expect(button.getAttribute('aria-label')).toBeNull();
+      }
+    });
+
+    it('exposes the control texts to screen readers only when unlabelled', () => {
+      const button = itemFor('first')!.querySelector('button')!;
+      expect(button.textContent?.trim()).toBe('');
+      expect(button.getAttribute('aria-label')).toBe(DefaultPaginationTexts.first);
+    });
+
+    it('renders an unlabelled control as an icon button', () => {
+      const button = itemFor('next')!.querySelector('button')!;
+      expect(button.querySelector('nx-icon')).not.toBeNull();
+    });
+
+    it('labels one control pair without labelling the other', () => {
+      testInstance.prevNextControls = 'label';
+      fixture.detectChanges();
+
+      for (const [control, text] of [
+        ['prev', DefaultPaginationTexts.previous],
+        ['next', DefaultPaginationTexts.next],
+      ] as const) {
+        const button = itemFor(control)!.querySelector('button')!;
+        expect(button.textContent?.trim()).toBe(text);
+        expect(button.getAttribute('aria-label')).toBeNull();
+      }
+
+      for (const [control, text] of [
+        ['first', DefaultPaginationTexts.first],
+        ['last', DefaultPaginationTexts.last],
+      ] as const) {
+        const button = itemFor(control)!.querySelector('button')!;
+        expect(button.textContent?.trim()).toBe('');
+        expect(button.getAttribute('aria-label')).toBe(text);
+      }
+    });
+
+    if (a1Enabled) {
+      it('switches a labelled control to the text button padding', () => {
+        testInstance.firstLastControls = 'label';
+        testInstance.prevNextControls = 'label';
+        fixture.detectChanges();
+
+        for (const control of ['first', 'prev', 'next', 'last'] as const) {
+          expect(itemFor(control)!.querySelector('button')).not.toHaveClass('pagination-button');
+        }
+      });
+    }
+
+    it('does not stretch or space out a start aligned pagination', () => {
+      const container = fixture.nativeElement.querySelector('.nx-pagination__container');
+      expect(container).not.toHaveClass('nx-pagination__container--fill');
+      expect(spacedControls()).toEqual([]);
+    });
+
+    it('pushes the controls to both container edges when spaced around the numbers', () => {
+      testInstance.alignment = 'space-between';
+      fixture.detectChanges();
+
+      const container = fixture.nativeElement.querySelector('.nx-pagination__container');
+      expect(container).toHaveClass('nx-pagination__container--fill');
+      expect(spacedControls()).toEqual(['page', 'next']);
+    });
+
+    it('pushes grouped trailing controls to the container end', () => {
+      testInstance.alignment = 'space-between';
+      testInstance.controlsPosition = 'end';
+      fixture.detectChanges();
+      expect(spacedControls()).toEqual(['first']);
+    });
+
+    it('pushes the page numbers to the container end when the controls are grouped first', () => {
+      testInstance.alignment = 'space-between';
+      testInstance.controlsPosition = 'start';
+      fixture.detectChanges();
+      expect(spacedControls()).toEqual(['page']);
+    });
+
+    it('moves the flexible gap onto the previous control when first and last are hidden', () => {
+      testInstance.alignment = 'space-between';
+      testInstance.controlsPosition = 'end';
+      testInstance.firstLastControls = 'hidden';
+      fixture.detectChanges();
+      expect(spacedControls()).toEqual(['prev']);
+    });
+
+    it('does not stretch a pagination that has no controls to space out', () => {
+      testInstance.alignment = 'space-between';
+      testInstance.firstLastControls = 'hidden';
+      testInstance.prevNextControls = 'hidden';
+      fixture.detectChanges();
+
+      const container = fixture.nativeElement.querySelector('.nx-pagination__container');
+      expect(container).not.toHaveClass('nx-pagination__container--fill');
+      expect(spacedControls()).toEqual([]);
+    });
+  });
+}
+
+describe('NxPaginationComponent missing first/last texts warning', () => {
+  function render(a1Enabled: boolean, firstLastControls: NxPaginationControlDisplay) {
+    TestBed.configureTestingModule({
+      imports: [NxPaginationModule, ConfigurableAdvancedPagination],
+      providers: [
+        NxPaginationUtils,
+        { provide: NX_PAGINATION_TEXTS, useValue: customTexts },
+        { provide: ALLIANZ_ONE, useValue: { enabled: signal(a1Enabled) } },
+      ],
+    });
+    const fixture = TestBed.createComponent(ConfigurableAdvancedPagination);
+    fixture.componentInstance.firstLastControls = firstLastControls;
+    fixture.detectChanges();
+  }
+
+  it('warns when the first and last controls are shown', () => {
+    const warn = vi.spyOn(console, 'warn').mockReturnValue();
+    render(true, 'icon');
+    expect(warn).toHaveBeenCalledWith('Please define aria labels for the last and first arrows.');
+  });
+
+  for (const a1Enabled of [true, false]) {
+    it(`does not warn when the first and last controls are hidden (Allianz One: ${a1Enabled})`, () => {
+      const warn = vi.spyOn(console, 'warn').mockReturnValue();
+      render(a1Enabled, 'hidden');
+      expect(warn).not.toHaveBeenCalled();
+    });
+  }
+});

@@ -34,6 +34,11 @@
   margin: 0;
 }
 
+// Page numbers lead with `controlsPosition="end"`; keep the gap to the next number.
+.nx-pagination__item--desktop:first-child {
+  margin-inline-end: nx-spacer(s);
+}
+
 .nx-pagination__item.is-ellipsis {
   color: v(pagination-text-color);
 }
@@ -206,11 +211,7 @@ nx-icon.nx-pagination__arrow {
 }
 
 .nx-pagination-compact__direction-label,
-.nx-pagination__link--first,
-.nx-pagination__link--last,
-.nx-pagination__item--desktop,
-.pagination-button-last,
-.pagination-button-first {
+.nx-pagination__item--desktop {
   display: flex;
 
   @include container-breakpoint-down(small) {
@@ -352,4 +353,13 @@ nx-icon.nx-pagination__arrow {
   .nx-pagination-compact__total-pages {
     margin: 0;
   }
+}
+
+.nx-pagination__container--fill {
+  width: 100%;
+}
+
+// Ties with the A1 item margin on specificity, so it must stay after it.
+.nx-pagination__container--fill > .nx-pagination__item--space-before {
+  margin-inline-start: auto;
 }
