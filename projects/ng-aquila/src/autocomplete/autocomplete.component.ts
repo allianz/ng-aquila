@@ -140,7 +140,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
   }
   _classList: { [key: string]: boolean } = {};
 
-  /** Unique ID to be used by autocomplete trigger's "aria-owns" property. */
+  /** Unique ID to be used by autocomplete trigger's "aria-controls" property. */
   id = inject(IdGenerationService).nextId('nx-autocomplete');
 
   private readonly _destroyed = new Subject<void>();

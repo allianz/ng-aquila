@@ -310,10 +310,28 @@ describe('NxAutocompleteComponent:', () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', async () => {
+    it('has no accessibility violations while the panel is open', async () => {
       createTestComponent(BasicAutocompleteComponent);
       typeInput('A');
+      await fixture.whenStable();
+
+      expect(getAutocompletePanel()).toBeTruthy();
       await expect(fixture.nativeElement).toBeAccessible();
+    });
+
+    it('references the listbox via aria-controls only while the panel is open', async () => {
+      createTestComponent(BasicAutocompleteComponent);
+      expect(input.getAttribute('aria-controls')).toBeNull();
+
+      typeInput('A');
+      await fixture.whenStable();
+      expect(input.getAttribute('aria-controls')).toBe(getAutocompletePanel().id);
+      expect(input.hasAttribute('aria-owns')).toBe(false);
+
+      document.dispatchEvent(new Event('mouseup'));
+      await fixture.whenStable();
+      expect(getAutocompletePanel()).toBeFalsy();
+      expect(input.getAttribute('aria-controls')).toBeNull();
     });
   });
 
