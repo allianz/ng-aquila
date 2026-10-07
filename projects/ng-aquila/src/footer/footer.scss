@@ -10,9 +10,23 @@
   gap: v(footer-copyright-gap);
 
   @include media-breakpoint-response(mobile) {
-    flex-direction: column-reverse;
+    flex-direction: v(footer-mobile-flex-direction);
     padding: v(footer-mobile-padding-vertical) v(footer-mobile-padding-horizontal);
     gap: v(footer-copyright-gap-mobile);
+  }
+}
+
+:host(.nx-footer--divider) {
+  border-top: v(divider-height) solid v(divider-background-color);
+}
+
+:host(.nx-footer--max-width-content) {
+  padding-inline: calc(v(footer-padding-horizontal) + max(0px, (100% - v(grid-max-width)) / 2));
+
+  @include media-breakpoint-response(mobile) {
+    padding-inline: calc(
+      v(footer-mobile-padding-horizontal) + max(0px, (100% - v(grid-max-width)) / 2)
+    );
   }
 }
 

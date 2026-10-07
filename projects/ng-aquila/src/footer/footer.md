@@ -27,3 +27,21 @@ Use the `nx-footer-copyright` directive to set any copyright text and navigation
 You can set default copyright text by omitting the `nx-footer-copyright` directive and using the `copyright` input for company name instead.
 
 <!-- example(footer-default-copyright) -->
+
+<div class="docs-a1">
+
+#### Divider
+
+With the A1 theme, a divider is shown at the top of the footer and spans its full width. Set the `divider` input to `false` to hide it.
+
+<!-- example(footer-divider) -->
+
+#### Max width
+
+With the A1 theme and the default grid, the footer content is limited to the maximum content width and centered. The background and the divider still span the full width. With the functional grid, the content is not limited. Set the `maxWidthContent` input to `false` to let the content span the full width. Open the example in fullscreen to see the difference.
+
+<!-- example(footer-max-width) -->
+
+Both defaults can be changed for the whole app with the `FOOTER_DEFAULT_OPTIONS` injection token.
+
+</div>

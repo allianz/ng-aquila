@@ -1,7 +1,14 @@
-import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Directive,
+  signal,
+  Type,
+  ViewChild,
+} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxFooterComponent } from './footer.component';
+import { FOOTER_DEFAULT_OPTIONS, NxFooterComponent } from './footer.component';
 import { NxFooterModule } from './footer.module';
 
 const currentYear = new Date().getFullYear();
@@ -28,7 +35,8 @@ describe(NxFooterComponent.name, () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [NxFooterModule, BasicFooter, DefaultCopyrightFooter],
+      imports: [NxFooterModule, BasicFooter, DefaultCopyrightFooter, ConfigurableFooter],
+      providers: [{ provide: FOOTER_DEFAULT_OPTIONS, useValue: null }],
     });
   }));
 
@@ -82,6 +90,45 @@ describe(NxFooterComponent.name, () => {
     });
   });
 
+  describe('divider and maxWidthContent', () => {
+    it('should not apply the classes by default', () => {
+      createTestComponent(BasicFooter);
+      expect(footerNativeElement).not.toHaveClass('nx-footer--divider');
+      expect(footerNativeElement).not.toHaveClass('nx-footer--max-width-content');
+    });
+
+    it('should apply the classes when the inputs are set', () => {
+      createTestComponent(ConfigurableFooter);
+      expect(footerNativeElement).not.toHaveClass('nx-footer--divider');
+      expect(footerNativeElement).not.toHaveClass('nx-footer--max-width-content');
+
+      const testComponent = testInstance as ConfigurableFooter;
+      testComponent.divider.set(true);
+      testComponent.maxWidthContent.set(true);
+      fixture.detectChanges();
+      expect(footerNativeElement).toHaveClass('nx-footer--divider');
+      expect(footerNativeElement).toHaveClass('nx-footer--max-width-content');
+    });
+
+    it('should use the default options when the inputs are not set', () => {
+      TestBed.overrideProvider(FOOTER_DEFAULT_OPTIONS, {
+        useValue: { divider: true, maxWidthContent: true },
+      });
+      createTestComponent(BasicFooter);
+      expect(footerNativeElement).toHaveClass('nx-footer--divider');
+      expect(footerNativeElement).toHaveClass('nx-footer--max-width-content');
+    });
+
+    it('should let the inputs override the default options', () => {
+      TestBed.overrideProvider(FOOTER_DEFAULT_OPTIONS, {
+        useValue: { divider: true, maxWidthContent: true },
+      });
+      createTestComponent(ConfigurableFooter);
+      expect(footerNativeElement).not.toHaveClass('nx-footer--divider');
+      expect(footerNativeElement).not.toHaveClass('nx-footer--max-width-content');
+    });
+  });
+
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(BasicFooter);
@@ -114,3 +161,14 @@ class BasicFooter extends FooterTest {}
   imports: [NxFooterModule],
 })
 class DefaultCopyrightFooter extends FooterTest {}
+
+@Component({
+  selector: 'test-configurable-footer',
+  template: `<nx-footer [divider]="divider()" [maxWidthContent]="maxWidthContent()"></nx-footer>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxFooterModule],
+})
+class ConfigurableFooter extends FooterTest {
+  readonly divider = signal(false);
+  readonly maxWidthContent = signal(false);
+}
