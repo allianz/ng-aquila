@@ -1,4 +1,5 @@
 import { NxButtonModule } from '@allianz/ng-aquila/button';
+import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule, NxStatusIconType } from '@allianz/ng-aquila/icon';
 import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { CdkTrapFocus, FocusMonitor } from '@angular/cdk/a11y';
@@ -9,9 +10,11 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   Directive,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
   input,
   OnDestroy,
@@ -54,7 +57,12 @@ export class NxModalContentDirective {}
     '[class.nx-modal__title]': 'true',
   },
   template: `@if (status()) {
-      <nx-status-icon [type]="status()!" class="nx-modal__status"></nx-status-icon>
+      <nx-status-icon
+        [contained]="_isA1()"
+        [size]="_isA1() ? 'xl' : 'auto'"
+        [type]="status()!"
+        class="nx-modal__status"
+      ></nx-status-icon>
     }
     <ng-content></ng-content>`,
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -67,6 +75,12 @@ export class NxModalTitleComponent {
    * Default: `undefined`.
    */
   readonly status = input<NxStatusIconType>();
+
+  private readonly _allianzOneOptions = inject<AllianzOneOptions | null>(ALLIANZ_ONE, {
+    optional: true,
+  });
+
+  protected readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
 }
 
 @Component({

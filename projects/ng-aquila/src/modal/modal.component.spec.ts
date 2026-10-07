@@ -1,10 +1,12 @@
 import { NxButtonBase, NxButtonComponent } from '@allianz/ng-aquila/button';
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import {
   ChangeDetectionStrategy,
   Component,
   DebugElement,
   Directive,
   QueryList,
+  signal,
   Type,
   ViewChild,
   viewChild,
@@ -268,3 +270,39 @@ class FixedWidthModal extends ModalTest {}
 class OnPushTest extends ModalTest {
   button = viewChild.required<NxButtonBase>('basicModalButton');
 }
+
+@Component({
+  selector: 'test-status-icon-title-modal',
+  template: `<h2 nxModalTitle status="success">Title</h2>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxModalModule],
+})
+class StatusTitle {}
+
+describe('NxModalTitleComponent', () => {
+  const a1Enabled = signal(false);
+
+  const createStatusIcon = () => {
+    TestBed.configureTestingModule({
+      imports: [StatusTitle],
+      providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: a1Enabled } }],
+    });
+    const fixture = TestBed.createComponent(StatusTitle);
+    fixture.detectChanges();
+    return fixture.nativeElement.querySelector('nx-status-icon') as HTMLElement;
+  };
+
+  it('should render a plain status icon outside of A1', () => {
+    a1Enabled.set(false);
+    const icon = createStatusIcon();
+    expect(icon).not.toHaveClass('nx-status-icon--contained');
+    expect(icon).not.toHaveClass('nx-status-icon--xl');
+  });
+
+  it('should render a contained xl status icon under A1', () => {
+    a1Enabled.set(true);
+    const icon = createStatusIcon();
+    expect(icon).toHaveClass('nx-status-icon--contained');
+    expect(icon).toHaveClass('nx-status-icon--xl');
+  });
+});

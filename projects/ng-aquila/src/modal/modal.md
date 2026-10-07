@@ -8,6 +8,7 @@ stable: done
 alias: dialog, popup
 a1Light: true
 a1Densities: true
+a1Full: true
 
 desc: |
     this require adding cdk style to angular.json
@@ -83,9 +84,26 @@ By default the width of the modal dialog is `736px`. You can change this behavio
 
 <!-- example(modal-fixed-width) -->
 
- ### Modal with status
- Below is an example of how to create a modal with status by using the `nxModalTitle`
- <!-- example(modal-status) -->
+### Modal with status
+Below is an example of how to create a modal with status by using the `nxModalTitle`
+<!-- example(modal-status) -->
+
+### Modal with custom icon in header
+Below is an example of how to add a custom icon in the modal header by placing an `nx-icon` inside the `nxModalTitle`. The default title layout stacks the icon above the heading; to place it in front of the heading, override the title's `flex-direction` to `row` (as the example does with its `.custom-icon-title--inline` class).
+
+<div class="docs-a1">
+
+<!-- example(modal-custom-icon) -->
+
+</div>
+
+<div class="docs-hide-a1">
+
+In NDBX, use `size="auto"` so the icon follows the heading's font size. The fixed icon sizes are illustrative sizes there (`xl` and `2xl` are both 96px).
+
+<!-- example(modal-custom-icon-ndbx) -->
+
+</div>
 
 ### Fullscreen
 
