@@ -1,6 +1,23 @@
 <div class="docs-inverse-container">
-  <nav aria-label="Breadcrumb">
-    <ol nxBreadcrumb negative="true">
+  <nx-label #defaultLabel class="nx-margin-bottom-xs" [inverse]="true"
+    >Default</nx-label
+  >
+  <nav [attr.aria-labelledby]="defaultLabel.id" class="nx-margin-bottom-m">
+    <ol nxBreadcrumb inverse>
+      @for (item of items; track item; let isLast = $last) {
+        <li>
+          <a nxBreadcrumbItem [routerLink]="isLast ? null : '#'">
+            {{ item }}
+          </a>
+        </li>
+      }
+    </ol>
+  </nav>
+  <nx-label #primaryLabel class="nx-margin-bottom-xs" [inverse]="true"
+    >Primary</nx-label
+  >
+  <nav [attr.aria-labelledby]="primaryLabel.id">
+    <ol nxBreadcrumb inverse type="primary">
       @for (item of items; track item; let i = $index; let isLast = $last) {
         <li>
           <a nxBreadcrumbItem [routerLink]="isLast ? null : '#'">

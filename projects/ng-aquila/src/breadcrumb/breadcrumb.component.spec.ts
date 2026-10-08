@@ -1,15 +1,17 @@
+import { NxSurface, NxSurfaceType } from '@allianz/ng-aquila/surface';
 import {
   ChangeDetectionStrategy,
   Component,
   Directive,
   QueryList,
+  signal,
   Type,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxBreadcrumbComponent } from './breadcrumb.component';
+import { NxBreadcrumbComponent, NxBreadcrumbType } from './breadcrumb.component';
 import { NxBreadcrumbModule } from './breadcrumb.module';
 import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
 
@@ -41,6 +43,8 @@ describe('NxBreadcrumbComponent', () => {
         BreadcrumbOnPushComponent,
         DynamicBreadcrumbComponent,
         LinkBreadcrumbComponent,
+        InverseBreadcrumbComponent,
+        SurfaceBreadcrumbComponent,
       ],
     }).compileComponents();
   }));
@@ -66,6 +70,68 @@ describe('NxBreadcrumbComponent', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.is-negative')).toBeTruthy();
     expect(testInstance.breadcrumbInstance.negative).toBe(true);
+  });
+
+  it('should apply inverse style via input', () => {
+    createTestComponent(InverseBreadcrumbComponent);
+    const ol: HTMLElement = fixture.nativeElement.querySelector('ol');
+    expect(ol).not.toHaveClass('is-negative');
+
+    (testInstance as InverseBreadcrumbComponent).inverse = true;
+    fixture.detectChanges();
+    expect(ol).toHaveClass('is-negative');
+    expect(testInstance.breadcrumbInstance.negative).toBe(true);
+  });
+
+  it('should combine inverse with the primary type', () => {
+    createTestComponent(InverseBreadcrumbComponent);
+    (testInstance as InverseBreadcrumbComponent).inverse = true;
+    (testInstance as InverseBreadcrumbComponent).type = 'primary';
+    fixture.detectChanges();
+
+    const ol: HTMLElement = fixture.nativeElement.querySelector('ol');
+    expect(ol).toHaveClass('is-negative');
+    expect(ol).toHaveClass('is-primary');
+  });
+
+  it('should apply the primary type without inverse', () => {
+    createTestComponent(InverseBreadcrumbComponent);
+    const ol: HTMLElement = fixture.nativeElement.querySelector('ol');
+    expect(ol).not.toHaveClass('is-primary');
+
+    (testInstance as InverseBreadcrumbComponent).type = 'primary';
+    fixture.detectChanges();
+    expect(ol).toHaveClass('is-primary');
+    expect(ol).not.toHaveClass('is-negative');
+  });
+
+  it('should follow the attention surface while inverse is unset', () => {
+    createTestComponent(SurfaceBreadcrumbComponent);
+    expect(fixture.nativeElement.querySelector('ol')).toHaveClass('is-negative');
+  });
+
+  it('should not apply inverse style on the default surface', () => {
+    createTestComponent(SurfaceBreadcrumbComponent);
+    (testInstance as SurfaceBreadcrumbComponent).surface.set('default');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('ol')).not.toHaveClass('is-negative');
+  });
+
+  it('should stay non-inverse on the attention surface when inverse is explicitly false', () => {
+    createTestComponent(SurfaceBreadcrumbComponent);
+    (testInstance as SurfaceBreadcrumbComponent).inverse = false;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('ol')).not.toHaveClass('is-negative');
+  });
+
+  it('should combine the primary type with the attention surface', () => {
+    createTestComponent(SurfaceBreadcrumbComponent);
+    (testInstance as SurfaceBreadcrumbComponent).type = 'primary';
+    fixture.detectChanges();
+
+    const ol: HTMLElement = fixture.nativeElement.querySelector('ol');
+    expect(ol).toHaveClass('is-primary');
+    expect(ol).toHaveClass('is-negative');
   });
 
   it('should have appearence "link"', () => {
@@ -161,4 +227,47 @@ class DynamicBreadcrumbComponent extends BreadcrumbTest {
 })
 class LinkBreadcrumbComponent extends BreadcrumbTest {
   appearance = 'link' as const;
+}
+
+@Component({
+  selector: 'test-inverse-breadcrumb-component',
+  template: `
+    <ol nxBreadcrumb [inverse]="inverse" [type]="type">
+      <li>
+        <a nxBreadcrumbItem> test </a>
+      </li>
+      <li>
+        <a nxBreadcrumbItem> test 2 </a>
+      </li>
+    </ol>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxBreadcrumbModule],
+})
+class InverseBreadcrumbComponent extends BreadcrumbTest {
+  inverse = false;
+  type: NxBreadcrumbType = 'secondary';
+}
+
+@Component({
+  selector: 'test-surface-breadcrumb-component',
+  template: `
+    <div [nxSurface]="surface()">
+      <ol nxBreadcrumb [inverse]="inverse" [type]="type">
+        <li>
+          <a nxBreadcrumbItem> test </a>
+        </li>
+        <li>
+          <a nxBreadcrumbItem> test 2 </a>
+        </li>
+      </ol>
+    </div>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxBreadcrumbModule, NxSurface],
+})
+class SurfaceBreadcrumbComponent extends BreadcrumbTest {
+  inverse?: boolean;
+  type: NxBreadcrumbType = 'secondary';
+  readonly surface = signal<NxSurfaceType>('attention');
 }

@@ -1,0 +1,32 @@
+<div class="breadcrumb-resizable">
+  <nav #container aria-label="Breadcrumb">
+    <ol #list nxBreadcrumb class="breadcrumb-list">
+      @for (item of leadingItems(); track item.label) {
+        <li>
+          <a nxBreadcrumbItem [routerLink]="item.link">{{ item.label }}</a>
+        </li>
+      }
+      @if (hiddenItems().length) {
+        <li>
+          <span nxBreadcrumbItem>
+            <span class="breadcrumb-overflow">
+              <nx-icon name="ellipsis-v" size="s" aria-hidden="true"></nx-icon>
+              <select
+                class="breadcrumb-overflow__select"
+                aria-label="Show hidden breadcrumbs"
+              >
+                <option value="" disabled selected hidden>...</option>
+                @for (item of hiddenItems(); track item.label; let i = $index) {
+                  <option [value]="i">{{ item.label }}</option>
+                }
+              </select>
+            </span>
+          </span>
+        </li>
+      }
+      <li>
+        <a nxBreadcrumbItem [routerLink]="null">{{ lastItem.label }}</a>
+      </li>
+    </ol>
+  </nav>
+</div>

@@ -2,17 +2,18 @@ import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import {
   NxBreadcrumbComponent,
   NxBreadcrumbItemComponent,
+  NxBreadcrumbType,
 } from '@allianz/ng-aquila/breadcrumb';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 /**
- * @title Negative styling example
+ * @title Types
  */
 @Component({
-  selector: 'breadcrumb-negative-example',
-  templateUrl: './breadcrumb-negative-example.html',
-  styleUrls: ['./breadcrumb-negative-example.css'],
+  selector: 'breadcrumb-type-example',
+  templateUrl: './breadcrumb-type-example.html',
+  styleUrls: ['./breadcrumb-type-example.css'],
   imports: [
     NxBreadcrumbComponent,
     NxBreadcrumbItemComponent,
@@ -20,6 +21,13 @@ import { RouterLink } from '@angular/router';
     RouterLink,
   ],
 })
-export class BreadcrumbNegativeExampleComponent {
+export class BreadcrumbTypeExampleComponent {
   items = ['Home', 'Insurance', 'Health Insurance'];
+  readonly schemes: readonly {
+    readonly type: NxBreadcrumbType;
+    readonly label: string;
+  }[] = [
+    { type: 'secondary', label: 'Secondary (default)' },
+    { type: 'primary', label: 'Primary' },
+  ];
 }

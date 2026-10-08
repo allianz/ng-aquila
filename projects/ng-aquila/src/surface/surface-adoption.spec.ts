@@ -1,6 +1,7 @@
 import { NxAvatarComponent } from '@allianz/ng-aquila/avatar';
 import { NxBadgeComponent } from '@allianz/ng-aquila/badge';
 import { NxErrorModule, NxLabelModule } from '@allianz/ng-aquila/base';
+import { NxBreadcrumbModule } from '@allianz/ng-aquila/breadcrumb';
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxEyebrowModule } from '@allianz/ng-aquila/eyebrow';
@@ -526,6 +527,38 @@ describe('nxSurface adoption', () => {
     });
   });
 
+  describe('breadcrumb', () => {
+    it('goes negative on the attention surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#breadcrumb').contains('is-negative')).toBe(true);
+    });
+
+    it('does not go negative on the other surfaces', () => {
+      createComponent(AdoptersComponent);
+
+      for (const surface of ['default', 'emphasis', 'accent-attention'] as NxSurfaceType[]) {
+        setSurface(surface);
+
+        expect(classesOf('#breadcrumb').contains('is-negative')).toBe(false);
+      }
+    });
+
+    it('still honours the legacy negative input', () => {
+      createComponent(AdoptersComponent);
+
+      expect(classesOf('#breadcrumb-legacy-negative').contains('is-negative')).toBe(true);
+    });
+
+    it('lets an explicit inverse="false" win over the surface', () => {
+      createComponent(AdoptersComponent);
+      setSurface('attention');
+
+      expect(classesOf('#breadcrumb-explicit').contains('is-negative')).toBe(false);
+    });
+  });
+
   // The surface is not tied to a design system, so adopters react in every theme. The icon is left
   // out: it still gates its own inverse class on A1, see icon.component.ts.
   it('still adapts without an Allianz One provider', () => {
@@ -544,6 +577,7 @@ describe('nxSurface adoption', () => {
     expect(classesOf('[data-label=surface]').contains('nx-label--negative')).toBe(true);
     expect(classesOf('#list').contains('nx-list--negative')).toBe(true);
     expect(classesOf('#tile-group').contains('is-inverse')).toBe(true);
+    expect(classesOf('#breadcrumb').contains('is-negative')).toBe(true);
   });
 });
 
@@ -593,6 +627,15 @@ const TEMPLATE = `
     <nx-tile-group id="tile-group-explicit" [inverse]="false">
       <nx-tile label="tile" value="a" />
     </nx-tile-group>
+    <ol id="breadcrumb" nxBreadcrumb>
+      <li><a nxBreadcrumbItem>item</a></li>
+    </ol>
+    <ol id="breadcrumb-explicit" nxBreadcrumb [inverse]="false">
+      <li><a nxBreadcrumbItem>item</a></li>
+    </ol>
+    <ol id="breadcrumb-legacy-negative" nxBreadcrumb negative>
+      <li><a nxBreadcrumbItem>item</a></li>
+    </ol>
   </div>
 `;
 
@@ -616,6 +659,7 @@ const TEMPLATE = `
     NxListModule,
     NxTileComponent,
     NxTileGroupComponent,
+    NxBreadcrumbModule,
   ],
   providers: A1_PROVIDERS,
 })
@@ -645,6 +689,7 @@ class AdoptersComponent {
     NxListModule,
     NxTileComponent,
     NxTileGroupComponent,
+    NxBreadcrumbModule,
   ],
   host: { 'data-non-a1': '' },
 })

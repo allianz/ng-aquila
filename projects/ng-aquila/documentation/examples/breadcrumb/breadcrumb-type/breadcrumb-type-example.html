@@ -1,0 +1,17 @@
+@for (scheme of schemes; track scheme.type; let isLastScheme = $last) {
+  <nx-label #label class="nx-margin-bottom-xs">{{ scheme.label }}</nx-label>
+  <nav
+    [attr.aria-labelledby]="label.id"
+    [class.nx-margin-bottom-m]="!isLastScheme"
+  >
+    <ol nxBreadcrumb [type]="scheme.type">
+      @for (item of items; track item; let isLast = $last) {
+        <li>
+          <a nxBreadcrumbItem [routerLink]="isLast ? null : '#'">
+            {{ item }}
+          </a>
+        </li>
+      }
+    </ol>
+  </nav>
+}

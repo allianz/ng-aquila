@@ -7,12 +7,16 @@ import { BreadcrumbExampleComponent } from './breadcrumb/breadcrumb-example';
 import { BreadcrumbContextMenuExampleComponent } from './breadcrumb-context-menu/breadcrumb-context-menu-example';
 import { BreadcrumbLinkExampleComponent } from './breadcrumb-link/breadcrumb-link-example';
 import { BreadcrumbNegativeExampleComponent } from './breadcrumb-negative/breadcrumb-negative-example';
+import { BreadcrumbResponsiveExampleComponent } from './breadcrumb-responsive/breadcrumb-responsive-example';
+import { BreadcrumbTypeExampleComponent } from './breadcrumb-type/breadcrumb-type-example';
 
 const EXAMPLES = [
   BreadcrumbExampleComponent,
   BreadcrumbNegativeExampleComponent,
   BreadcrumbLinkExampleComponent,
+  BreadcrumbTypeExampleComponent,
   BreadcrumbContextMenuExampleComponent,
+  BreadcrumbResponsiveExampleComponent,
 ];
 
 @NgModule({
@@ -25,7 +29,9 @@ export class BreadcrumbExamplesModule {
       breadcrumb: BreadcrumbExampleComponent,
       'breadcrumb-negative': BreadcrumbNegativeExampleComponent,
       'breadcrumb-link': BreadcrumbLinkExampleComponent,
+      'breadcrumb-type': BreadcrumbTypeExampleComponent,
       'breadcrumb-context-menu': BreadcrumbContextMenuExampleComponent,
+      'breadcrumb-responsive': BreadcrumbResponsiveExampleComponent,
     };
   }
 }

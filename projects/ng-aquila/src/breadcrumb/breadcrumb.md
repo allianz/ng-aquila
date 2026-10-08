@@ -27,13 +27,31 @@ You can select the style of the breadcrumb via the `appearance` input.
 
 <!-- example(breadcrumb-link) -->
 
+<div class="docs-a1">
+
+### Type
+
+You can set the type of the breadcrumb via the `type` input, either `'secondary'` or `'primary'`. By default, the breadcrumb uses the `'secondary'` type.
+
+<!-- example(breadcrumb-type) -->
+
+</div>
+
 ### With Context Menu
 
 This example uses the `nxBreadcrumbItem` on a `button` to open a context menu.
 
 <!-- example(breadcrumb-context-menu) -->
 
-### Negative styling
+### Responsive
+
+The breadcrumb component itself does not collapse items. This example measures the available width with a `ResizeObserver` and collapses the items before the current page, starting with the closest one, into a "..." item once the trail no longer fits. Activating "..." opens a native `<select>` listing the hidden links, so the platform's own picker is used on mobile devices. Resize the container to try it.
+
+<!-- example(breadcrumb-responsive) -->
+
+### Inverse styling
+
+Set the `inverse` input to use the breadcrumb on a dark background. It supersedes `negative`, which keeps working as an alias. `inverse` can be combined with the `'primary'` type.
 
 <!-- example(breadcrumb-negative) -->
 

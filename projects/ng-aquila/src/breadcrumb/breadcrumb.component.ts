@@ -1,13 +1,18 @@
+import { injectSurface } from '@allianz/ng-aquila/surface';
+import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   ContentChildren,
   Input,
+  input,
   OnDestroy,
   QueryList,
+  signal,
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
@@ -16,8 +21,12 @@ import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
 
 /**
  * The appearance of the breadcrumb.
+ *
+ * TODO: the name contains a typo; it will be renamed to `NxBreadcrumbAppearance` in 23.0.0.
  */
 export type NxBreadcrumpAppearance = 'default' | 'link';
+
+export type NxBreadcrumbType = 'secondary' | 'primary';
 
 @Component({
   selector: 'ol[nxBreadcrumb]',
@@ -25,8 +34,9 @@ export type NxBreadcrumpAppearance = 'default' | 'link';
   styleUrls: ['./breadcrumb.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[class.is-negative]': 'negative',
+    '[class.is-negative]': 'inverse()',
     '[class.is-link]': 'appearance === "link"',
+    '[class.is-primary]': 'type() === "primary"',
   },
   standalone: true,
 })
@@ -45,15 +55,37 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
   }
   private _appeareance: NxBreadcrumpAppearance = 'default';
 
-  /** Whether the component uses the negative styling. */
+  /**
+   * Whether the component uses the negative styling.
+   * @deprecated Use `inverse` instead.
+   */
   @Input() set negative(value: BooleanInput) {
-    this._negative = coerceBooleanProperty(value);
-    this._cdr.markForCheck();
+    this._negative.set(coerceBooleanProperty(value));
   }
-  get negative() {
-    return this._negative;
+  get negative(): boolean {
+    return this.inverse();
   }
-  private _negative = false;
+  private readonly _negative = signal(false);
+
+  private readonly _surface = injectSurface();
+
+  /** Whether the inverse set of styles, for use on a dark background, is applied. */
+  readonly inverseInput = input(undefined, {
+    alias: 'inverse',
+    transform: nxOptionalBooleanAttribute,
+  });
+
+  readonly inverse = computed(
+    () => this.inverseInput() ?? (this._negative() || this._surface().surface === 'attention'),
+  );
+
+  /**
+   * Sets the type of the breadcrumb.
+   *
+   * Default: `'secondary'`.
+   */
+
+  readonly type = input<NxBreadcrumbType>('secondary');
 
   /** @docs-private */
   @ContentChildren(NxBreadcrumbItemComponent, { descendants: true })
