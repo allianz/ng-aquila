@@ -1,0 +1,268 @@
+@use '../shared-styles/index' as *;
+@use './product-tile-rows' as rows;
+
+:host {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: rows.$nx-product-tile-rows;
+  overflow: hidden;
+  border-radius: v(product-tile-border-radius);
+  background-color: v(product-tile-background-color);
+  box-shadow: v(product-tile-shadow);
+  isolation: isolate;
+}
+
+:host(.is-selected) {
+  background-color: v(product-tile-selected-background-color);
+}
+
+// The emphasis header keeps its own colour when picked, and the body takes it too: the selection
+// tint and the emphasis surface are both near-white, so stacking the two reads as a seam across the
+// tile rather than as a header over a body. The ring is what marks the tile as picked here.
+:host(.is-selected[data-color-scheme='emphasis']) {
+  background-color: v(nx-surface-emphasis-background-color);
+}
+
+// Selection and error ring. It is a grid item spanning the header row down rather than an overlay
+// across the whole tile, because the promotion strip runs full bleed and the ring must not cut into
+// it. Nothing else reflows when it turns on, and the header's background cannot paint over it.
+:host::before {
+  content: '';
+  grid-column: 1;
+  grid-row: 2 / -1;
+  z-index: 2;
+  border: v(product-tile-border-width) solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+:host(.has-promotion)::before {
+  border-top-width: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+:host(.is-selected)::before {
+  border-color: v(product-tile-selected-border-color);
+}
+
+:host(.has-error)::before {
+  border-color: v(product-tile-error-border-color);
+}
+
+:host::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+:host(:has(.nx-product-tile__input:focus-visible))::after {
+  @include focus-style-inset;
+}
+
+.nx-product-tile__promotion,
+.nx-product-tile__header,
+.nx-product-tile__body,
+.nx-product-tile__action,
+.nx-product-tile__secondary-action {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+}
+
+.nx-product-tile__promotion {
+  grid-row: rows.$nx-product-tile-row-promotion;
+  padding: v(product-tile-promotion-padding-vertical) v(product-tile-promotion-padding-horizontal);
+  background-color: v(product-tile-promotion-background-color);
+  color: v(product-tile-promotion-color);
+  text-align: center;
+
+  @include type-style(product-tile-promotion);
+}
+
+.nx-product-tile__header-background {
+  position: relative;
+  grid-column: 1;
+  // Covers the top action's row too, so that a tile without one is painted as tall as the tallest
+  // in its group; the row is empty, and collapses, wherever nobody has a button there.
+  grid-row: rows.$nx-product-tile-row-header / span 2;
+  z-index: 0;
+}
+
+.nx-product-tile__header {
+  grid-row: rows.$nx-product-tile-row-header;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: v(product-tile-control-gap);
+  row-gap: v(product-tile-header-gap);
+  // A header stretched to the group's tallest keeps the headline at the top and the price along the
+  // bottom, rather than spreading the gap between the two rows.
+  align-content: space-between;
+  padding: v(product-tile-padding);
+  cursor: pointer;
+}
+
+.nx-product-tile__control {
+  position: relative;
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  align-items: flex-start;
+
+  // Unselected, the indicator's fill is --nx-radio-dot-color; the header it sits on has to show through.
+  nx-radio-indicator:not(.checked) {
+    --nx-radio-dot-color: transparent;
+  }
+
+  // The indicator paints over the input that spans this box, so without this a click on the one
+  // thing that looks like the control is the one place that does not pick the tile.
+  nx-radio-indicator {
+    pointer-events: none;
+  }
+}
+
+.nx-product-tile__input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+// A custom header gets the row under the control rather than the column beside it, so that its own
+// layout has the header's full width to work with.
+.nx-product-tile__header-content {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+// The container takes the rest of the header instead of being pushed to its bottom, so that a tile
+// stretched to the group's tallest leaves the alignment to the content's own layout.
+:host(.has-header-content) .nx-product-tile__header {
+  grid-template-rows: auto 1fr;
+}
+
+.nx-product-tile__headline {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  gap: v(product-tile-headline-gap);
+  // Kept in the flow so that a long title wraps instead of pushing the price out of the header.
+  min-width: 0;
+}
+
+.nx-product-tile__eyebrow {
+  color: v(product-tile-eyebrow-color);
+  text-transform: uppercase;
+
+  @include type-style(product-tile-eyebrow);
+}
+
+.nx-product-tile__title {
+  display: block;
+  color: v(product-tile-title-color);
+  // A word wider than the column - a long compound - would otherwise run under the control.
+  overflow-wrap: break-word;
+  hyphens: auto;
+
+  @include type-style(product-tile-title);
+}
+
+.nx-product-tile__subline {
+  color: v(product-tile-subline-color);
+
+  @include type-style(product-tile-subline);
+}
+
+.nx-product-tile__price {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  justify-self: end;
+}
+
+.nx-product-tile__body {
+  grid-row: rows.$nx-product-tile-row-body;
+  padding: v(product-tile-padding);
+}
+
+// A list icon carries no colour of its own, it inherits the text's - which leaves the check reading
+// as another line of copy. Only the check bullet: any other icon may mean something else entirely.
+// The list is projected, hence `::ng-deep`.
+.nx-product-tile__body
+  ::ng-deep
+  .nx-list__icon-wrapper
+  > .nx-list__icon:has(> nx-icon[data-nx-icon-name='check']) {
+  color: v(product-tile-list-icon-color);
+}
+
+.nx-product-tile__action {
+  grid-row: rows.$nx-product-tile-row-action-bottom;
+  padding: v(product-tile-action-gap) v(product-tile-padding) v(product-tile-padding);
+}
+
+.nx-product-tile__secondary-action {
+  grid-row: rows.$nx-product-tile-row-secondary-action;
+  display: flex;
+  justify-content: center;
+  padding: 0 v(product-tile-padding) v(product-tile-padding);
+}
+
+:host(.button-position-top) {
+  .nx-product-tile__action {
+    grid-row: rows.$nx-product-tile-row-action-top;
+    padding: 0 v(product-tile-padding) v(product-tile-padding);
+  }
+}
+
+// The `plain` scheme paints the header in the tile's own background colour, so the boundary to the
+// body only reads as one with a divider. It runs the width of the content rather than the tile's, so
+// it cannot be a border on the background itself.
+:host([data-color-scheme='plain']) .nx-product-tile__header-background::after {
+  content: '';
+  position: absolute;
+  inset: auto v(product-tile-padding) 0;
+  border-bottom: v(divider-height) solid v(product-tile-divider-color);
+}
+
+:host([data-color-scheme='attention']) .nx-product-tile__header-background {
+  background-image: linear-gradient(
+    v(product-tile-header-attention-gradient-angle),
+    v(product-tile-header-attention-gradient-from) 0%,
+    v(product-tile-header-attention-gradient-to) 100%
+  );
+}
+
+:host([data-color-scheme='attention']) {
+  .nx-product-tile__eyebrow {
+    color: v(product-tile-eyebrow-inverse-color);
+  }
+
+  .nx-product-tile__title,
+  .nx-product-tile__subline {
+    color: v(product-tile-title-inverse-color);
+  }
+}
+
+// The accent header is a colour of its own rather than the inverse surface, so its content takes the
+// on-accent colour every other component on such a surface takes - the eyebrow's and the headline's
+// `on-accent-attention` scheme, the button's `--nx-button-on-accent`. Inverse only agrees with it in
+// a light theme; a dark one keeps the accent bright and turns its on-colour dark.
+:host([data-color-scheme='accent-attention']) {
+  .nx-product-tile__eyebrow,
+  .nx-product-tile__title,
+  .nx-product-tile__subline {
+    color: v(color-on-attention-resting);
+  }
+}
+
+// The primary action stretches to the tile's width in both positions. Projected content carries the
+// consumer's encapsulation attribute, so it can only be reached with `::ng-deep`.
+:host ::ng-deep .nx-product-tile__action > * {
+  width: 100%;
+}

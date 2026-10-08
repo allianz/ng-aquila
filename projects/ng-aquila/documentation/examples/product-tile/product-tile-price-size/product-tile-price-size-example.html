@@ -1,0 +1,55 @@
+<nx-product-tile-group
+  aria-label="Choose your car insurance"
+  [(value)]="selectedProduct"
+  class="example__group"
+>
+  <nx-product-tile value="basic" colorScheme="emphasis">
+    <span nxProductTileEyebrow>Imposed</span>
+    <span nxProductTileTitle>Basic</span>
+    <span nxProductTileSubline>The tile's own 2xl</span>
+    <nx-price nxProductTilePrice [value]="24" prefix="from" />
+
+    <ul nxList>
+      <li nxListIcon="check">Third party liability</li>
+    </ul>
+
+    <button nxProductTileSelectButton type="button"></button>
+  </nx-product-tile>
+
+  <nx-product-tile value="comfort" colorScheme="emphasis">
+    <span nxProductTileEyebrow>Overridden</span>
+    <span nxProductTileTitle>Comfort</span>
+    <span nxProductTileSubline>A nearer context imposes l</span>
+    <div nxProductTilePrice>
+      <nx-price examplePriceSize="l" [value]="42" prefix="from" />
+    </div>
+
+    <ul nxList>
+      <li nxListIcon="check">Third party liability</li>
+      <li nxListIcon="check">Partial coverage</li>
+    </ul>
+
+    <button nxProductTileSelectButton type="button"></button>
+  </nx-product-tile>
+
+  <nx-product-tile value="premium" colorScheme="emphasis">
+    <span nxProductTileEyebrow>Released</span>
+    <span nxProductTileTitle>Premium</span>
+    <span nxProductTileSubline>An empty context, so size wins</span>
+    <div nxProductTilePrice>
+      <nx-price
+        [examplePriceSize]="undefined"
+        size="s"
+        [value]="68"
+        prefix="from"
+      />
+    </div>
+
+    <ul nxList>
+      <li nxListIcon="check">Third party liability</li>
+      <li nxListIcon="check">Full coverage</li>
+    </ul>
+
+    <button nxProductTileSelectButton type="button"></button>
+  </nx-product-tile>
+</nx-product-tile-group>

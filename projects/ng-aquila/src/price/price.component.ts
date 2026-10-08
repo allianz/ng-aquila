@@ -77,7 +77,11 @@ export class NxPriceComponent {
 
   private readonly _surface = injectSurface();
 
-  /** Resolved inverse: an explicit input wins, then the surface the component sits on. */
+  /**
+   * Resolved inverse: an explicit input wins, then the surface the component sits on. An
+   * `accent-attention` surface goes through `colorScheme` instead - the inverse tokens name A1's
+   * pale accent fill, which no surface paints, so inverting there picks dark text on a dark fill.
+   */
   readonly inverse = computed(() => this.inverseInput() ?? this._surface().surface === 'attention');
 
   /**

@@ -1,0 +1,14 @@
+.example__legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 0 16px;
+}
+
+.example__legend-excluded {
+  margin-left: 12px;
+}
+
+.example__excluded {
+  color: var(--semantic-color-on-surface-secondary-resting);
+}

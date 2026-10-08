@@ -1,0 +1,33 @@
+.example__group {
+  display: block;
+  max-width: 340px;
+}
+
+/* The body is a plain projection slot, so the spacing between these blocks is the example's own. */
+.example__intro,
+.example__list,
+.example__facts {
+  margin: 0 0 20px;
+}
+
+.example__link {
+  display: block;
+}
+
+.example__facts {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 8px 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--semantic-color-border-tertiary-resting);
+}
+
+.example__facts dt {
+  color: var(--semantic-color-on-surface-secondary-resting);
+}
+
+.example__facts dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 600;
+}

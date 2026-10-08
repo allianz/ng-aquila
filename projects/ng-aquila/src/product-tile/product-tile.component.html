@@ -1,0 +1,90 @@
+@if (promotion()) {
+  <div class="nx-product-tile__promotion">{{ promotion() }}</div>
+}
+
+<!-- The plain scheme has no color of its own, so leaving it unpainted lets the selected tint through. -->
+<div
+  class="nx-product-tile__header-background"
+  [nxSurface]="_surface()"
+  [nxSurfaceAccentColor]="accentColor()"
+  [nxSurfaceBackground]="colorScheme() !== 'plain'"
+  aria-hidden="true"
+></div>
+
+<div
+  class="nx-product-tile__header"
+  [nxSurface]="_surface()"
+  [nxSurfaceAccentColor]="accentColor()"
+  [nxSurfaceBackground]="false"
+  (click)="_onHeaderClick($event)"
+>
+  <div class="nx-product-tile__control">
+    <input
+      #input
+      class="nx-product-tile__input"
+      [id]="_id"
+      type="radio"
+      [name]="_group._id"
+      [value]="value()"
+      [checked]="selected()"
+      [attr.aria-labelledby]="_headlineIds()"
+      [attr.aria-describedby]="_ariaDescribedBy()"
+      [attr.aria-invalid]="_errorState() || null"
+    />
+    <nx-radio-indicator
+      [checked]="selected()"
+      [critical]="_errorState()"
+      [inverse]="colorScheme() === 'attention'"
+      [colorScheme]="_indicatorColorScheme()"
+    />
+  </div>
+
+  @if (_projectedHeaderContent()) {
+    <div class="nx-product-tile__header-content" [id]="_id + '-header'">
+      <ng-content select="[nxProductTileHeaderContent]"></ng-content>
+    </div>
+  } @else {
+    <div class="nx-product-tile__headline">
+      @if (_projectedEyebrow()) {
+        <div class="nx-product-tile__eyebrow">
+          <ng-content select="[nxProductTileEyebrow]"></ng-content>
+        </div>
+      }
+      <div class="nx-product-tile__title" [id]="_id + '-title'">
+        <ng-content select="[nxProductTileTitle]"></ng-content>
+      </div>
+      @if (_projectedSubline()) {
+        <div class="nx-product-tile__subline">
+          <ng-content select="[nxProductTileSubline]"></ng-content>
+        </div>
+      }
+    </div>
+
+    @if (_projectedPrice()) {
+      <div class="nx-product-tile__price" [id]="_id + '-price'">
+        <ng-content select="[nxProductTilePrice]"></ng-content>
+      </div>
+    }
+  }
+</div>
+
+<div class="nx-product-tile__body">
+  <ng-content></ng-content>
+</div>
+
+@if (_hasAction()) {
+  <div
+    class="nx-product-tile__action"
+    [nxSurface]="_actionSurfaceType()"
+    [nxSurfaceAccentColor]="accentColor()"
+    [nxSurfaceBackground]="false"
+  >
+    <ng-content select="[nxProductTileSelectButton]"></ng-content>
+  </div>
+}
+
+@if (_projectedSecondaryAction()) {
+  <div class="nx-product-tile__secondary-action">
+    <ng-content select="[nxProductTileSecondaryAction]"></ng-content>
+  </div>
+}

@@ -1,0 +1,304 @@
+@use '../shared-styles/index' as *;
+@use './product-tile-rows' as rows;
+
+/** How far a tab's focus ring reaches past it - the widest any theme's `focus-box-shadow` spreads. */
+$nx-product-tile-carousel-tab-focus-reach: 6px;
+
+:host {
+  display: block;
+  // The track clips at its own edges, so the room the tiles' shadows need has to come out of the host
+  // rather than out of the space the tiles get - otherwise the outer ones would sit inset from
+  // everything else in the column.
+  margin-inline: calc(-1 * #{v(product-tile-carousel-shadow-inset)});
+  // The grid breakpoints are measured against the carousel rather than the viewport: in a narrow
+  // column, a viewport breakpoint would squeeze in three tiles and run the title under the control.
+  container-type: inline-size;
+}
+
+.nx-product-tile-carousel__tabs {
+  position: relative;
+  display: flex;
+  // The track's shadow inset already leaves room above the tiles, on both axes.
+  margin-inline: v(product-tile-carousel-shadow-inset);
+  margin-block-end: calc(
+    #{v(product-tile-carousel-tabs-gap)} - #{v(product-tile-carousel-shadow-inset)}
+  );
+
+  // The baseline belongs to the bar rather than to the tabs: it runs the full width of the track, out to
+  // the edge the tiles end at, however few tabs there are and wherever they have been scrolled to.
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    inset-inline: 0;
+    height: v(tab-item-border-width);
+    background-color: v(tab-item-border-color);
+  }
+}
+
+.nx-product-tile-carousel__tab-list {
+  position: relative;
+  display: flex;
+  // A focus ring reaches past the tab it belongs to, and a scroll container paints nothing outside its
+  // padding box - which would cut the ring of the first tab in half. The room it needs is taken as
+  // padding and handed straight back as margin, so the tabs still start at the bar's own edge.
+  padding-inline: $nx-product-tile-carousel-tab-focus-reach;
+  margin-inline: calc(-1 * #{$nx-product-tile-carousel-tab-focus-reach});
+  // The bar carries the tiles' names, which are as long as they are: it scrolls on its own rather than
+  // squeezing them, and independently of the track.
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.nx-product-tile-carousel__tab {
+  @include tab__item;
+  white-space: nowrap;
+
+  // The mixin's margin is there to space the tabs from each other, so the first one keeps none of it: the
+  // bar starts at the edge the tiles below it start at.
+  &:first-child {
+    margin-inline-start: 0;
+  }
+
+  &.is-active {
+    @include tab__item--active;
+    // The tabs of the tiles that share the view carry one indicator between them, so it cannot be this
+    // item's own border - which would stop at the item and start again at the next one.
+    border-bottom-style: none;
+    // The mixin takes the border it draws out of the padding below the label. With no border drawn the
+    // padding is owed back: a button centres its content, so the shorter box would carry the label of
+    // every tab coming into view half a border's width down and back up again as it leaves.
+    padding-bottom: v(tab-item-padding-bottom);
+  }
+
+  // The mixin drops the outline, so the ring goes on a box of its own - around the label rather than
+  // around the item, whose padding reaches down to the baseline. Placed rather than left at its static
+  // position, which is the end of the label.
+  &:focus-visible::after {
+    content: '';
+    position: absolute;
+    // The label's own box: the item's top padding down to the top of its bottom one.
+    top: 4px;
+    inset-inline: 0;
+    height: v(tab-item-line-height);
+    border-radius: nx-border-radius(s);
+
+    @include focus-style;
+  }
+}
+
+// One indicator for the whole bar, laid over the baseline: it spans the labels of the tabs whose tiles
+// share the view and slides to the next set of them the way the progress bar follows the track.
+.nx-product-tile-carousel__tab-indicator {
+  position: absolute;
+  bottom: 0;
+  inset-inline-start: 0;
+  // Scaled from a single pixel and moved with the same transform, so that the whole bar travels on one
+  // clock. An offset and a width would be two animations of the same move, each rounded to the layout
+  // grid of its own frame, which is what makes a bar crawl rather than slide.
+  width: 1px;
+  height: v(tab-item-active-border-width);
+  transform-origin: 0 0;
+  background-color: v(tab-item-active-border-color);
+  transition: transform $animation-duration-normal $animation-easing-standard;
+
+  @media screen and (forced-colors: active) {
+    background-color: highlight;
+  }
+}
+
+.nx-product-tile-carousel__tab-overflow {
+  position: absolute;
+  top: 0;
+  // Off the baseline, which runs the whole width of the bar.
+  bottom: v(tab-item-border-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: v(tab-scroll-indicator-width);
+  background-color: v(tab-scroll-indicator-background-color);
+
+  // Fades the tab the button covers rather than cutting it off.
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: v(tab-scroll-indicator-fade-width);
+    background: linear-gradient(
+      to var(--nx-product-tile-carousel-fade-direction),
+      v(tab-scroll-indicator-background-color) 0%,
+      transparent 100%
+    );
+  }
+
+  &--previous {
+    inset-inline-start: 0;
+    --nx-product-tile-carousel-fade-direction: right;
+
+    &::after {
+      inset-inline-start: 100%;
+    }
+
+    [dir='rtl'] & {
+      --nx-product-tile-carousel-fade-direction: left;
+    }
+  }
+
+  &--next {
+    inset-inline-end: 0;
+    --nx-product-tile-carousel-fade-direction: left;
+
+    &::after {
+      inset-inline-end: 100%;
+    }
+
+    [dir='rtl'] & {
+      --nx-product-tile-carousel-fade-direction: right;
+    }
+  }
+}
+
+.nx-product-tile-carousel__track {
+  position: relative;
+  --nx-product-tile-carousel-columns: 1;
+  --nx-product-tile-carousel-peek: #{v(product-tile-carousel-peek-width-mobile)};
+
+  @container (min-width: #{breakpoint-min(medium)}) {
+    --nx-product-tile-carousel-columns: 2;
+  }
+
+  @container (min-width: #{breakpoint-min(large)}) {
+    --nx-product-tile-carousel-columns: 3;
+    --nx-product-tile-carousel-peek: #{v(product-tile-carousel-peek-width)};
+  }
+}
+
+.nx-product-tile-carousel__viewport {
+  display: grid;
+  grid-auto-flow: column;
+  // Tiles never wrap. They fill the track while they all fit and fall back to the column width - which
+  // leaves the next one peeking - as soon as they do not.
+  grid-auto-columns: minmax(
+    calc(
+      (
+          100% - var(--nx-product-tile-carousel-peek) -
+            (var(--nx-product-tile-carousel-columns) - 1) * #{v(product-tile-carousel-gap)}
+        ) /
+        var(--nx-product-tile-carousel-columns)
+    ),
+    1fr
+  );
+  grid-template-rows: rows.$nx-product-tile-rows;
+  // The rows are the tiles' own, so nothing may come between them.
+  column-gap: v(product-tile-carousel-gap);
+  // Room for the tiles' shadows inside the scrollport. The matching `scroll-padding` keeps the snap
+  // points on the tiles' edges, which plain padding would shift.
+  padding: v(product-tile-carousel-shadow-inset);
+  scroll-padding-inline-end: v(product-tile-carousel-shadow-inset);
+  // Half the peek is kept on the near side, so a tile in the middle of the track leaves the one before
+  // it showing as much as the one after it. The first and last snap positions have nowhere to go and
+  // clamp to the ends of the track, which is what leaves the peek on one side there.
+  scroll-padding-inline-start: calc(
+    #{v(product-tile-carousel-shadow-inset)} + var(--nx-product-tile-carousel-peek) / 2
+  );
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  // The progress bar below already reports the scroll position.
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Projected content carries the consumer's encapsulation attribute, so it can only be reached with
+// `::ng-deep`.
+:host ::ng-deep .nx-product-tile-carousel__viewport > * {
+  grid-row: 1 / -1;
+  min-width: 0;
+  scroll-snap-align: start;
+  transition: opacity $animation-duration-normal $animation-easing-standard;
+}
+
+// Tiles take their rows from the track instead of sizing their own, so a header, a price or an action
+// is as tall in every tile of the group as it is in the tallest one.
+:host ::ng-deep .nx-product-tile-carousel__viewport > nx-product-tile {
+  grid-template-rows: subgrid;
+}
+
+:host ::ng-deep .nx-product-tile-carousel__viewport > .nx-product-tile-carousel__item--outside {
+  opacity: v(product-tile-carousel-inactive-opacity);
+}
+
+// The fade never runs alongside the movement: a tile coming in is back to full opacity before it
+// arrives, and one leaving keeps it until the track has come to a stand.
+:host(.is-scrolling)
+  ::ng-deep
+  .nx-product-tile-carousel__viewport
+  > .nx-product-tile-carousel__item--outside {
+  opacity: 1;
+}
+
+.nx-product-tile-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  // The arrows only shortcut a scroll the track can do on its own, so they stay out of sight until a
+  // pointer or the focus is on the track. Hidden with opacity rather than `visibility`, which would
+  // take them out of the tab order and leave keyboard users without them for good.
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $animation-duration-normal $animation-easing-standard;
+
+  &--previous {
+    inset-inline-start: v(product-tile-carousel-shadow-inset);
+  }
+
+  &--next {
+    inset-inline-end: v(product-tile-carousel-shadow-inset);
+  }
+}
+
+// `:focus-visible` rather than `:focus-within`: a click leaves its arrow focused, and that would keep
+// both of them on screen long after the pointer has left the track.
+.nx-product-tile-carousel__track:hover,
+.nx-product-tile-carousel__track:has(:focus-visible) {
+  .nx-product-tile-carousel__arrow {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// At either end of the track one arrow has nothing left to do, and a disabled button sitting on top of
+// the tiles offers nothing either.
+:host(:not(.can-scroll-back)) .nx-product-tile-carousel__arrow--previous,
+:host(:not(.can-scroll-forward)) .nx-product-tile-carousel__arrow--next {
+  display: none;
+}
+
+.nx-product-tile-carousel__progress {
+  display: flex;
+  margin-block-start: v(product-tile-carousel-progress-gap);
+  margin-inline: v(product-tile-carousel-shadow-inset);
+  height: v(product-tile-carousel-progress-height);
+  border-radius: calc(v(product-tile-carousel-progress-height) / 2);
+  background-color: v(product-tile-carousel-progress-track-color);
+  overflow: hidden;
+}
+
+.nx-product-tile-carousel__progress-handle {
+  height: 100%;
+  border-radius: inherit;
+  background-color: v(product-tile-carousel-progress-handle-color);
+}
+
+// Nothing to scroll: nothing to report either.
+:host(:not(.can-scroll-back):not(.can-scroll-forward)) .nx-product-tile-carousel__progress {
+  display: none;
+}

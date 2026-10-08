@@ -323,6 +323,8 @@ describe('nxSurface adoption', () => {
       expect(classesOf('#price').contains('nx-price--inverse')).toBe(true);
     });
 
+    // Stacking inverse on the accent scheme asks for the on-color of A1's pale accent fill, which
+    // is dark - while the surface paints the saturated one. The scheme alone owns the accent arm.
     it('does not invert on the other surfaces', () => {
       createComponent(AdoptersComponent);
 
@@ -397,7 +399,6 @@ describe('nxSurface adoption', () => {
     });
   });
 
-  // No on-accent-attention tokens yet, so unlike price these also invert on the accent surface.
   describe('headline and eyebrow', () => {
     it('invert on the attention and accent-attention surfaces', () => {
       createComponent(AdoptersComponent);

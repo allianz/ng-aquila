@@ -1,0 +1,21 @@
+.example__group {
+  display: block;
+  max-width: 640px;
+}
+
+.example__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.example__headline-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.example__header h3 {
+  margin: 0;
+}

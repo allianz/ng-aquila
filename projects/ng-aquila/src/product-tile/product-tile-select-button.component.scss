@@ -1,0 +1,12 @@
+@use '../shared-styles/index' as *;
+
+:host {
+  // More specific than the button styles this pulls in, which target `.nx-button` on their own.
+  &.nx-button.nx-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: v(button-gap);
+    width: 100%;
+  }
+}

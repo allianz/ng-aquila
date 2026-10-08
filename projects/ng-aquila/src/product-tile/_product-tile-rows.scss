@@ -1,0 +1,13 @@
+// Tiles in a group share their row tracks through `subgrid`, so the carousel track has to declare the
+// same list as the tile itself - hence a shared definition rather than one in either stylesheet.
+// The primary action gets a row in each of its two positions and the unused one collapses to nothing,
+// so a group mixing both positions still lines up. The body row is the flexible one, which
+// keeps the actions along the bottom of tiles stretched to a common height.
+$nx-product-tile-rows: auto auto auto 1fr auto auto;
+
+$nx-product-tile-row-promotion: 1;
+$nx-product-tile-row-header: 2;
+$nx-product-tile-row-action-top: 3;
+$nx-product-tile-row-body: 4;
+$nx-product-tile-row-action-bottom: 5;
+$nx-product-tile-row-secondary-action: 6;

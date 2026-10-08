@@ -1,0 +1,15 @@
+@if (_selected()) {
+  <!--
+    The check mark belongs to the label, so it takes the colour the button gives it. Left to answer to
+    the surface it would go inverse on a painted header - the light colour a picked button is filled
+    with - and disappear into the fill.
+  -->
+  <nx-icon
+    class="nx-product-tile__select-button-icon"
+    name="check"
+    nxIconPositionStart
+    [inverse]="false"
+    aria-hidden="true"
+  />
+}
+{{ _label() }}

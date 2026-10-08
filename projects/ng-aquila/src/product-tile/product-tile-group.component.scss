@@ -1,0 +1,7 @@
+@use '../shared-styles/index' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: v(product-tile-group-gap);
+}

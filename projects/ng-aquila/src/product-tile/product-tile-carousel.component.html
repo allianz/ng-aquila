@@ -1,0 +1,84 @@
+@if (_tabs().length) {
+  <div class="nx-product-tile-carousel__tabs">
+    <div #tabList class="nx-product-tile-carousel__tab-list" (scroll)="_onTabsScroll()">
+      @for (tab of _tabs(); track tab.element) {
+        <button
+          #tabButton
+          type="button"
+          tabindex="-1"
+          class="nx-product-tile-carousel__tab"
+          [class.is-active]="tab.active"
+          (click)="_scrollToTab($index)"
+        >
+          {{ tab.label }}
+        </button>
+      }
+
+      @if (_tabIndicatorTransform(); as transform) {
+        <div class="nx-product-tile-carousel__tab-indicator" [style.transform]="transform"></div>
+      }
+    </div>
+
+    @if (_tabsCanScrollBack()) {
+      <button
+        type="button"
+        nxPlainButton
+        class="nx-product-tile-carousel__tab-overflow nx-product-tile-carousel__tab-overflow--previous"
+        [attr.aria-label]="_intl.previousLabel()"
+        (click)="_scrollByTile(-1)"
+      >
+        <nx-icon name="chevron-left-small" aria-hidden="true"></nx-icon>
+      </button>
+    }
+
+    @if (_tabsCanScrollForward()) {
+      <button
+        type="button"
+        nxPlainButton
+        class="nx-product-tile-carousel__tab-overflow nx-product-tile-carousel__tab-overflow--next"
+        [attr.aria-label]="_intl.nextLabel()"
+        (click)="_scrollByTile(1)"
+      >
+        <nx-icon name="chevron-right-small" aria-hidden="true"></nx-icon>
+      </button>
+    }
+  </div>
+}
+
+<div class="nx-product-tile-carousel__track">
+  <div #viewport class="nx-product-tile-carousel__viewport" (scroll)="_onScroll()">
+    <ng-content></ng-content>
+  </div>
+
+  <button
+    type="button"
+    nxIconButton="primary small"
+    tabIndex="-1"
+    class="nx-product-tile-carousel__arrow nx-product-tile-carousel__arrow--previous"
+    [attr.aria-label]="_intl.previousLabel()"
+    [disabled]="!_canScrollBack()"
+    (click)="_scrollByTile(-1)"
+  >
+    <nx-icon name="chevron-left-small" aria-hidden="true"></nx-icon>
+  </button>
+
+  <button
+    type="button"
+    nxIconButton="primary small"
+    tabIndex="-1"
+    class="nx-product-tile-carousel__arrow nx-product-tile-carousel__arrow--next"
+    [attr.aria-label]="_intl.nextLabel()"
+    [disabled]="!_canScrollForward()"
+    (click)="_scrollByTile(1)"
+  >
+    <nx-icon name="chevron-right-small" aria-hidden="true"></nx-icon>
+  </button>
+</div>
+
+<div class="nx-product-tile-carousel__progress" aria-hidden="true">
+  <div
+    class="nx-product-tile-carousel__progress-handle"
+    [style.width]="_progressWidth()"
+    [style.margin-inline-start]="_progressOffset()"
+  ></div>
+</div>

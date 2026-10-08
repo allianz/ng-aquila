@@ -1,0 +1,9 @@
+<nx-product-tile-carousel>
+  <ng-content></ng-content>
+</nx-product-tile-carousel>
+
+@if (_errorState()) {
+  <div>
+    <ng-content select="nx-error"></ng-content>
+  </div>
+}

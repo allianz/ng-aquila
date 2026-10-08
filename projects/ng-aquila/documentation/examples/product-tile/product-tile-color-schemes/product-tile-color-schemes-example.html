@@ -1,0 +1,21 @@
+<nx-product-tile-group aria-label="Car insurance products">
+  @for (colorScheme of colorSchemes; track colorScheme) {
+    <nx-product-tile
+      [value]="colorScheme"
+      [colorScheme]="colorScheme"
+      accentColor="green"
+    >
+      <span nxProductTileEyebrow>{{ colorScheme }}</span>
+      <span nxProductTileTitle>Comfort</span>
+      <span nxProductTileSubline>Everyday cover for your car</span>
+      <nx-price nxProductTilePrice [value]="42" prefix="from" />
+
+      <ul nxList>
+        <li nxListIcon="check">Third party liability</li>
+        <li nxListIcon="check">Partial coverage</li>
+      </ul>
+
+      <button nxProductTileSelectButton type="button"></button>
+    </nx-product-tile>
+  }
+</nx-product-tile-group>
