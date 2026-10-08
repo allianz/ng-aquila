@@ -37,6 +37,38 @@ export interface CategorizedClassDoc extends ClassExportDoc, CategorizedClassLik
   directiveSelectors?: string[];
   directiveMetadata: Map<string, any> | null;
   extendedDoc: HeritageInfo | null;
+  /** Only set on components and directives, by the content slot linker. */
+  contentSlots?: ContentSlot[];
+  /** Only set on components and directives, by the content slot linker. */
+  contentSlotSelectors?: ContentSlotSelector[];
+}
+
+/** A single `<ng-content>` slot of a component or directive template. */
+export interface ContentSlot {
+  /** The `select` attribute of the slot, empty for the default slot. */
+  select: string;
+  /** Whether this is the default slot, i.e. the one without a `select`. */
+  isDefault: boolean;
+  /** Description of the slot, taken from an `<!-- @slot … -->` comment in the template. */
+  description: string;
+  /** Documented directives and components that the slot projects. */
+  targets: ContentSlotTarget[];
+}
+
+/** One of the selectors a directive that has content slots is used by. */
+export interface ContentSlotSelector {
+  /** The selector itself. */
+  text: string;
+  /** Whether the selector is only an element name, so that it can be rendered as a tag. */
+  isElement: boolean;
+}
+
+/** A directive or component that is projected into a content slot. */
+export interface ContentSlotTarget {
+  /** Class name of the directive or component. */
+  name: string;
+  /** Name of the component group the directive or component is documented in. */
+  groupName: string;
 }
 
 /** Extended Dgeni property-member document that includes extracted Angular metadata. */
@@ -48,6 +80,8 @@ export interface CategorizedPropertyMemberDoc extends PropertyMemberDoc, Depreca
   directiveInputAlias: string;
   directiveOutputAlias: string;
   nameAlias: string;
+  /** String values the input accepts, if its type is a union of string literals. */
+  inputValues: string[];
 }
 
 /** Extended Dgeni method-member document that simplifies logic for the Dgeni template. */

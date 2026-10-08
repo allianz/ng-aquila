@@ -1,0 +1,13 @@
+<div class="docs-component-page-content">
+  <p class="docs-markdown--p">
+    Content projection slots for {{ (componentService.current | async)?.title }}
+  </p>
+  <nxv-doc-viewer
+    (contentLoaded)="onSlotsLoaded()"
+    fileUrl="{{ (componentService.current | async)?.slotsFile }}"
+  ></nxv-doc-viewer>
+</div>
+
+<div class="docs-toc">
+  <nxv-table-of-contents #toc container="main"></nxv-table-of-contents>
+</div>

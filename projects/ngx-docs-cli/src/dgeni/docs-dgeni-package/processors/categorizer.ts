@@ -19,6 +19,7 @@ import {
   CategorizedPropertyMemberDoc,
 } from '../common/dgeni-definitions';
 import { getDirectiveMetadata } from '../common/directive-metadata';
+import { getInputValues } from '../common/input-values';
 import { normalizeMethodParameters } from '../common/normalize-method-parameters';
 import { getInputBindingData, getOutputBindingData } from '../common/property-bindings';
 import { sortCategorizedMembers } from '../common/sort-members';
@@ -162,8 +163,13 @@ export class Categorizer implements Processor {
 
     if (propertyDoc.isDirectiveInput || propertyDoc.isDirectiveOutput) {
       propertyDoc.nameAlias =
-        getAnnotationAlias(propertyDoc.decorators) || getsignalAlias(propertyDoc.type);
+        getAnnotationAlias(propertyDoc.decorators) ||
+        getsignalAlias(propertyDoc.type) ||
+        inputMetadata?.alias ||
+        outputMetadata?.alias ||
+        '';
     }
+    propertyDoc.inputValues = propertyDoc.isDirectiveInput ? getInputValues(propertyDoc) : [];
     propertyDoc.type = inferredType;
   }
 

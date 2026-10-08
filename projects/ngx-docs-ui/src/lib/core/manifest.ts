@@ -14,6 +14,7 @@ export interface ComponentDescriptor {
   category: string;
   apiFile: string;
   overviewFile: string;
+  slotsFile: string;
   noApi: boolean;
   b2c: boolean;
   expert: boolean;
@@ -36,6 +37,7 @@ export interface GuideDescriptor {
 
 export interface ApiDescriptor {
   id: string;
+  hasSlots?: boolean;
 }
 
 export interface ExampleDescriptor {

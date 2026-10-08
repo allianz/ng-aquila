@@ -4,19 +4,60 @@
       <div nxCol="12">
         <div class="searchresult__content documentation__content">
           @if ((initReady$ | async) === false) {
-            <h1 class="searchresults__header">Initializing search ...</h1>
+            <div class="searchresults__heading">
+              <h1 class="searchresults__header">Initializing search ...</h1>
+            </div>
           }
 
           @if (searchTerm()) {
-            <h1 class="searchresults__header">Results found for '{{ searchTerm() }}'</h1>
+            <div class="searchresults__heading">
+              @if (inputValueQuery(); as query) {
+                <h1 class="searchresults__header">
+                  @if (!query.value) {
+                    Values of [{{ query.input }}] inputs
+                  } @else if (query.input) {
+                    [{{ query.input }}] inputs that accept '{{ query.value }}'
+                  } @else {
+                    Inputs that accept '{{ query.value }}'
+                  }
+                </h1>
+              } @else if (hasResults()) {
+                <h1 class="searchresults__header">Results found for '{{ searchTerm() }}'</h1>
+              } @else if (searchResults()) {
+                <h1 class="searchresults__header">No results found for '{{ searchTerm() }}'</h1>
+              }
+              <button
+                nxIconButton="tertiary small"
+                type="button"
+                [nxPopoverTriggerFor]="syntaxHelp"
+                nxPopoverTrigger="click"
+                aria-label="Search syntax help"
+              >
+                <nx-icon name="circle-question" aria-hidden="true"></nx-icon>
+              </button>
+            </div>
+            @if (searchResults() && !hasResults()) {
+              @if (inputValueQuery(); as query) {
+                @if (!query.value) {
+                  <p>No [{{ query.input }}] input has a fixed set of values.</p>
+                } @else {
+                  <p>
+                    No {{ query.input ? '[' + query.input + '] input' : 'input' }} accepts a value
+                    like '{{ query.value }}'.
+                  </p>
+                }
+              } @else {
+                <p>Check the spelling, or try fewer or more general words.</p>
+              }
+            }
             <div class="searchresults__info">
-              We're showing maximum {{ maxEntriesPerCategory }} per category. Use quotation marks to
-              search for a specific group of words (eg. <code>"search term"</code>).
+              We're showing {{ maxEntriesPerCategory }} per category at a time. Use quotation marks
+              to search for a specific group of words (e.g. <code>"search term"</code>).
             </div>
             <div class="search-results">
               @if (searchResults()?.component?.entries?.length) {
                 <div>
-                  <h2>Components ({{ countLabel(searchResults().component) }})</h2>
+                  <h2>Components ({{ countLabel('component') }})</h2>
                   @for (group of componentGroups(); track group.name) {
                     <h3 class="search-results__group-heading">
                       {{ group.name }}
@@ -41,14 +82,17 @@
                       </div>
                     }
                   }
+                  @if (hasMore('component')) {
+                    <button nxButton="tertiary small" type="button" (click)="showMore('component')">
+                      Load more
+                    </button>
+                  }
                 </div>
               }
               @if (searchResults()?.general?.entries?.length) {
                 <div>
-                  <h2 class="nx-margin-top-3m">
-                    General ({{ countLabel(searchResults().general) }})
-                  </h2>
-                  @for (entry of searchResults().general.entries; track entry.item.id) {
+                  <h2 class="nx-margin-top-3m">General ({{ countLabel('general') }})</h2>
+                  @for (entry of visibleEntries('general'); track entry.item.id) {
                     <div class="nx-margin-bottom-m">
                       <nx-link>
                         <a [routerLink]="['/my-viewer/documentation', entry.item.id]">{{
@@ -57,13 +101,18 @@
                       </nx-link>
                     </div>
                   }
+                  @if (hasMore('general')) {
+                    <button nxButton="tertiary small" type="button" (click)="showMore('general')">
+                      Load more
+                    </button>
+                  }
                 </div>
               }
               @if (searchResults()?.api?.entries?.length) {
                 <div>
-                  <h2 class="nx-margin-top-3m">API ({{ countLabel(searchResults().api) }})</h2>
+                  <h2 class="nx-margin-top-3m">API ({{ countLabel('api') }})</h2>
                   @for (
-                    entry of searchResults().api.entries;
+                    entry of visibleEntries('api');
                     track entry.item.id + '.' + entry.item.name
                   ) {
                     <div class="search-results__entry">
@@ -84,15 +133,61 @@
                       @if (entry.item.directiveSelectors && entry.item.directiveSelectors?.length) {
                         <span class="hint"> <{{ entry.item.directiveSelectors?.join(',') }}> </span>
                       }
+                      @if (matchedMembers(entry).length) {
+                        <span class="search-results__matches">
+                          @for (member of matchedMembers(entry); track member.name) {
+                            <a
+                              class="search-results__match search-results__match--{{ member.kind }}"
+                              [routerLink]="['/my-viewer/documentation', entry.item.id, 'api']"
+                              [fragment]="entry.item.name + '.' + member.name"
+                              ><code>{{
+                                member.kind === 'input'
+                                  ? '[' + member.name + ']'
+                                  : '(' + member.name + ')'
+                              }}</code></a
+                            >
+                          }
+                        </span>
+                      }
+                      @if (entry.valueMatches?.length) {
+                        <ul class="search-results__values">
+                          @for (input of entry.valueMatches; track input.name) {
+                            <li>
+                              <a
+                                class="search-results__match search-results__match--input"
+                                [routerLink]="['/my-viewer/documentation', entry.item.id, 'api']"
+                                [fragment]="entry.item.name + '.' + input.name"
+                                ><code>[{{ input.name }}]</code></a
+                              >
+                              :
+                              @for (option of input.values; track option.value; let last = $last) {
+                                <code
+                                  class="search-results__value"
+                                  [class.search-results__value--matched]="option.matched"
+                                  >{{ option.value }}</code
+                                >
+                                @if (!last) {
+                                  <span class="search-results__value-separator">|</span>
+                                }
+                              }
+                            </li>
+                          }
+                        </ul>
+                      }
                       <div class="nx-margin-bottom-m nx-margin-top-3xs">{{ entry.item.title }}</div>
                     </div>
+                  }
+                  @if (hasMore('api')) {
+                    <button nxButton="tertiary small" type="button" (click)="showMore('api')">
+                      Load more
+                    </button>
                   }
                 </div>
               }
               @if (searchResults()?.guide?.entries?.length) {
                 <div>
-                  <h2 class="nx-margin-top-3m">Guides ({{ countLabel(searchResults().guide) }})</h2>
-                  @for (entry of searchResults().guide.entries; track entry.item.id) {
+                  <h2 class="nx-margin-top-3m">Guides ({{ countLabel('guide') }})</h2>
+                  @for (entry of visibleEntries('guide'); track entry.item.id) {
                     <p class="search-results__entry">
                       <nx-link>
                         <a [routerLink]="['/my-viewer/guides', entry.item.id]">{{
@@ -101,14 +196,17 @@
                       </nx-link>
                     </p>
                   }
+                  @if (hasMore('guide')) {
+                    <button nxButton="tertiary small" type="button" (click)="showMore('guide')">
+                      Load more
+                    </button>
+                  }
                 </div>
               }
               @if (searchResults()?.example?.entries?.length) {
                 <div>
-                  <h2 class="nx-margin-top-3m">
-                    Example ({{ countLabel(searchResults().example) }})
-                  </h2>
-                  @for (entry of searchResults().example.entries; track entry.item.id) {
+                  <h2 class="nx-margin-top-3m">Example ({{ countLabel('example') }})</h2>
+                  @for (entry of visibleEntries('example'); track entry.item.id) {
                     <p class="search-results__entry">
                       <span style="text-transform: capitalize"> {{ entry.item.module }} </span>
                       &#9656;
@@ -122,6 +220,11 @@
                       </nx-link>
                     </p>
                   }
+                  @if (hasMore('example')) {
+                    <button nxButton="tertiary small" type="button" (click)="showMore('example')">
+                      Load more
+                    </button>
+                  }
                 </div>
               }
             </div>
@@ -131,3 +234,23 @@
     </div>
   </div>
 </main>
+
+<nx-popover #syntaxHelp>
+  <div nxPopoverTitle>
+    <h3 nxHeadline="subsection-small">Search syntax</h3>
+  </div>
+  <div nxPopoverMainContent class="searchresults__syntax nx-margin-top-s">
+    <dl>
+      <dt><code>"search term"</code></dt>
+      <dd>Exact group of words</dd>
+      <dt><code>input/output</code></dt>
+      <dd>A directive with that input or output, e.g. <code>colorScheme</code></dd>
+      <dt><code>input:value</code></dt>
+      <dd>An input that accepts a value, e.g. <code>size:small</code></dd>
+      <dt><code>:value</code></dt>
+      <dd>Any input that accepts a value, e.g. <code>:primary</code></dd>
+      <dt><code>input:</code></dt>
+      <dd>Every value of an input, e.g. <code>size:</code></dd>
+    </dl>
+  </div>
+</nx-popover>

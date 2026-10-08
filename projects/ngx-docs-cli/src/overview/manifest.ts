@@ -22,6 +22,7 @@ export const manifest = ({ key }) =>
         category: DEFAULT_CATEGORY,
         apiFile: `lib-viewer/api/${id}.html`,
         overviewFile: `lib-viewer/overview/${id}.html`,
+        slotsFile: `lib-viewer/slots/${id}.html`,
         ...attributes,
       };
 

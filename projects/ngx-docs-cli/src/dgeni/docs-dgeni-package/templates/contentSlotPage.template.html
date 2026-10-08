@@ -1,0 +1,6 @@
+{# Lists the content projection slots of every directive and component of one entry point. #}
+{% macro contentSlots(class, groupName) -%} {% include 'content-slots.template.html' %} {% endmacro %}
+
+<div class="docs-api">
+    {% for item in doc.contentSlotClasses %} {$ contentSlots(item, doc.packageName) $} {% endfor %}
+</div>

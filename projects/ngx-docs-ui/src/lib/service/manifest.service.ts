@@ -93,6 +93,11 @@ export class ManifestService {
     return this._current.components.find((item) => item.id === id)!;
   }
 
+  /** Whether the entry point has a generated slots page. */
+  hasSlots(id: string) {
+    return this._current.api?.some((item) => item.id === id && item.hasSlots) ?? false;
+  }
+
   groupedComponents = computed(() => {
     const groupedComponents = this.getGroupedComponents();
     // if (this.themingService.selectedTheme().name.includes('allianz-one')) {

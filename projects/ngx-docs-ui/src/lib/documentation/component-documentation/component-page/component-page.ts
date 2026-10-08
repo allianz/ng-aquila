@@ -70,6 +70,11 @@ export class NxvComponentPage implements OnDestroy {
       show: true,
     },
     {
+      label: 'slots',
+      path: 'slots',
+      show: false,
+    },
+    {
       label: 'examples',
       path: 'examples',
       show: true,
@@ -116,6 +121,11 @@ export class NxvComponentPage implements OnDestroy {
         const apiTab = this.tabs.find((tab) => tab.label === 'api');
         if (apiTab) {
           apiTab.show = !component?.noApi;
+        }
+        const slotsTab = this.tabs.find((tab) => tab.label === 'slots');
+        if (slotsTab) {
+          // Only entry points with at least one <ng-content> get a generated slots page.
+          slotsTab.show = !component?.noApi && this.manifestService.hasSlots(component!.id);
         }
       });
   }

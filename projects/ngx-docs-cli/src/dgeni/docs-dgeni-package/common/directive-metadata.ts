@@ -1,14 +1,24 @@
-import {
+import { createRequire } from 'module';
+import type {
   ArrayLiteralExpression,
   CallExpression,
   NodeArray,
   ObjectLiteralExpression,
   PropertyAssignment,
   StringLiteral,
-  SyntaxKind,
 } from 'typescript';
 
 import { CategorizedClassDoc } from './dgeni-definitions';
+
+/**
+ * The syntax kinds of the compiler that dgeni parses the sources with. dgeni ships its own version
+ * of TypeScript, and the numeric value of a syntax kind changes between versions, so comparing the
+ * nodes dgeni hands over against the `SyntaxKind` of any other version silently matches the wrong
+ * kinds: array literals are never recognized, and string literals only by accident.
+ */
+const { SyntaxKind }: typeof import('typescript') = createRequire(
+  require.resolve('dgeni-packages/package.json'),
+)('typescript');
 
 /**
  * Determines the component or directive metadata from the specified Dgeni class doc. The resolved

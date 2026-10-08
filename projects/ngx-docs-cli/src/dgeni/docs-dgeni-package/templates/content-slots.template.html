@@ -1,0 +1,40 @@
+{# Lists the content projection slots of a single directive or component as a tree: the selector the
+directive is used by is the root, each slot is a branch, and the directives that go into a slot are
+the leaves. Links are relative to the base href, never a bare fragment: the page sets
+<base href="/">, so "#Name" would resolve against the base instead of the page it sits on. #}
+<div class="docs-api-content-slots">
+    <h4 id="{$ class.name $}" class="docs-header-link docs-api-h3 docs-api-content-slots__class nx-margin-bottom-3xs">
+        <span header-link="{$ class.name $}"></span>
+        <code class="docs-api-content-slots__host">
+            {%- for selector in class.contentSlotSelectors -%}
+                {%- if not loop.first -%}<span class="docs-api-content-slots__host-separator">, </span>{%- endif -%}
+                {%- if selector.isElement -%}&lt;{$ selector.text $}&gt;{%- else -%}{$ selector.text $}{%- endif -%}
+            {%- endfor -%}
+        </code>
+        <a class="docs-link docs-api-content-slots__class-link" href="./documentation/{$ groupName $}/api#{$ class.name $}">{$ class.name $}</a>
+    </h4>
+    <ul class="docs-api-content-slots__list">
+        {% for slot in class.contentSlots %}
+        <li class="docs-api-content-slots__item">
+            {%- if slot.isDefault -%}
+            <code class="docs-api-content-slots__slot docs-api-content-slots__slot--any" title="Takes all content that no other slot selects">any content</code>
+            {%- elseif slot.targets.length -%}
+            <code class="docs-api-content-slots__slot">{$ slot.select $}</code>
+            {%- else -%}
+            <code class="docs-api-content-slots__slot docs-api-content-slots__slot--unmatched" title="No documented directive matches this selector">{$ slot.select $}</code>
+            {%- endif -%}
+            {%- if slot.targets.length -%}
+            <span class="docs-api-content-slots__targets">
+                {%- for target in slot.targets -%}
+                {%- if not loop.first -%}<span class="docs-api-content-slots__target-separator">, </span>{%- endif -%}
+                <a class="docs-link docs-api-content-slots__link" href="./documentation/{$ target.groupName $}/api#{$ target.name $}">{$ target.name $}</a>
+                {%- endfor -%}
+            </span>
+            {%- endif -%}
+            {%- if slot.description -%}
+            <span class="docs-api-content-slots__description">{$ slot.description $}</span>
+            {%- endif -%}
+        </li>
+        {% endfor %}
+    </ul>
+</div>

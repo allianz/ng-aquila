@@ -14,6 +14,7 @@ import { ComponentApi } from './component-api';
 import { ComponentExamples } from './component-examples';
 import { ComponentOverview } from './component-overview';
 import { NxvComponentPage } from './component-page';
+import { ComponentSlots } from './component-slots';
 
 @NgModule({
   imports: [
@@ -29,10 +30,7 @@ import { NxvComponentPage } from './component-page';
     NxvComponentPage,
     ComponentOverview,
     ComponentApi,
-    ComponentExamples,
-    NxvComponentPage,
-    ComponentOverview,
-    ComponentApi,
+    ComponentSlots,
     ComponentExamples,
   ],
   providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())],

@@ -1,11 +1,10 @@
 import { Document, Processor } from 'dgeni';
 import { InterfaceExportDoc } from 'dgeni-packages/typescript/api-doc-types/InterfaceExportDoc';
 import { TypeAliasExportDoc } from 'dgeni-packages/typescript/api-doc-types/TypeAliasExportDoc';
+import * as fs from 'fs';
 import * as path from 'path';
 
 import { CategorizedClassDoc } from '../common/dgeni-definitions';
-
-const fs = require('fs');
 
 /** Component group data structure. */
 export class ComponentGroup {
@@ -41,6 +40,9 @@ export class ComponentGroup {
 
   /** List of categorized class docs that are defining a service. */
   services: CategorizedClassDoc[] = [];
+
+  /** Directives and components of the group that project content into slots. */
+  contentSlotClasses: CategorizedClassDoc[] = [];
 
   /** Additional classes that belong to the component group. */
   additionalClasses: CategorizedClassDoc[] = [];
@@ -122,7 +124,15 @@ export class ComponentGrouper implements Processor {
       } else if (doc.docType === 'type-alias') {
         group.additionalTypeAliases.push(doc);
       }
+
+      if (doc.contentSlots?.length) {
+        group.contentSlotClasses.push(doc);
+      }
     });
+
+    groups.forEach((group) =>
+      group.contentSlotClasses.sort((a, b) => a.name.localeCompare(b.name)),
+    );
 
     // you can return from $process to manipulate or change the docs collection for
     // further processing. in this case we grouped the docs into their logical groups
@@ -132,7 +142,7 @@ export class ComponentGrouper implements Processor {
 }
 
 /** Resolves package information for the given Dgeni document. */
-function getDocumentPackageInfo(doc: Document) {
+export function getDocumentPackageInfo(doc: Document) {
   // Full path to the file for this doc.
   const basePath = doc.fileInfo.basePath;
   const filePath = doc.fileInfo.filePath;

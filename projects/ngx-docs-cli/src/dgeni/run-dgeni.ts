@@ -5,6 +5,30 @@ import { catchError, concatAll, filter, map, toArray } from 'rxjs/operators';
 
 import { apiDocsPackage } from './docs-dgeni-package/package';
 
+/**
+ * Maps every input that accepts a fixed set of string values to those values, so that the search can
+ * find inputs by a value such as `primary`. Inputs without such a set are left out to keep the
+ * search payload small.
+ */
+const getInputValueMap = (doc) =>
+  doc.properties
+    .filter((p) => p.isDirectiveInput && p.inputValues.length > 0)
+    .map((p) => ({ name: bindingName(p), values: p.inputValues }));
+
+/** The name an input or output is bound by in a template. */
+const bindingName = (property) => property.nameAlias || property.name;
+
+/** Search entry of a directive or component. */
+const getDirectiveEntry = (doc) => ({
+  name: doc.name,
+  directiveExportAs: doc.directiveExportAs,
+  directiveSelectors: doc.directiveSelectors,
+  inputs: doc.properties.filter((p) => p.isDirectiveInput).map(bindingName),
+  outputs: doc.properties.filter((p) => p.isDirectiveOutput).map(bindingName),
+  inputValues: getInputValueMap(doc),
+  title: doc.description,
+});
+
 export const build = ({ source, dest }) => {
   apiDocsPackage.config((readFilesProcessor, readTypeScriptModules, writeFilesProcessor) => {
     readFilesProcessor.basePath = source;
@@ -32,18 +56,10 @@ export const build = ({ source, dest }) => {
     map((value) => ({
       id: value.packageName,
       ngModule: value.ngModule?.name,
-      directive: value.directives.map((t) => ({
-        name: t.name,
-        directiveExportAs: t.directiveExportAs,
-        directiveSelectors: t.directiveSelectors,
-        title: t.description,
-      })),
-      component: value.components.map((t) => ({
-        name: t.name,
-        directiveExportAs: t.directiveExportAs,
-        directiveSelectors: t.directiveSelectors,
-        title: t.description,
-      })),
+      // Lets the viewer hide the slots tab for entry points that have no slots at all.
+      hasSlots: value.contentSlotClasses.length > 0,
+      directive: value.directives.map(getDirectiveEntry),
+      component: value.components.map(getDirectiveEntry),
       services: value.services.map((t) => ({
         name: t.name,
         title: t.description,

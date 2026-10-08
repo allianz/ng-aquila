@@ -42,12 +42,13 @@ function getBindingPropertyData(
 ) {
   if (metadata) {
     const metadataValues: string[] = metadata.get(propertyName) || [];
-    const foundValue = metadataValues.find((value) => value.split(':')[0] === doc.name);
+    // Entries are `name` or `name: alias`, with or without a space after the colon.
+    const foundValue = metadataValues.find((value) => value.split(':')[0].trim() === doc.name);
 
     if (foundValue) {
       return {
         name: doc.name,
-        alias: foundValue.split(':')[1],
+        alias: foundValue.split(':')[1]?.trim(),
       };
     }
   }

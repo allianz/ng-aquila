@@ -3,6 +3,8 @@ import * as path from 'path';
 
 import { Categorizer } from './processors/categorizer';
 import { ComponentGrouper } from './processors/component-grouper';
+import { ContentSlotLinker } from './processors/content-slot-linker';
+import { ContentSlotPager } from './processors/content-slot-page';
 import { DocsPrivateFilter } from './processors/docs-private-filter';
 import { FilterDuplicateExports } from './processors/filter-duplicate-exports';
 import { MergeInheritedProperties } from './processors/merge-inherited-properties';
@@ -33,8 +35,15 @@ apiDocsPackage.processor(new DocsPrivateFilter());
 // Processor that appends categorization flags to the docs, e.g. `isDirective`, `isNgModule`, etc.
 apiDocsPackage.processor(new Categorizer());
 
+// Processor that lists the content projection slots of a template and links them to the API
+// of the directives and components that go into them.
+apiDocsPackage.processor(new ContentSlotLinker());
+
 // Processor to group components into top-level groups such as "Tabs", "Sidenav", etc.
 apiDocsPackage.processor(new ComponentGrouper());
+
+// Processor that gives the slots of a group a page of their own, next to the api page.
+apiDocsPackage.processor(new ContentSlotPager());
 
 apiDocsPackage.config(
   (
@@ -104,6 +113,12 @@ apiDocsPackage.config((computePathsProcessor) => {
       docTypes: ['componentGroup'],
       pathTemplate: '${name}',
       outputPathTemplate: '${name}.html',
+    },
+    {
+      // The output folder is the api folder, so the slot pages are written next to it.
+      docTypes: ['contentSlotPage'],
+      pathTemplate: '${name}',
+      outputPathTemplate: '../slots/${name}.html',
     },
   ];
 });

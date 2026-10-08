@@ -1,6 +1,14 @@
 import { NxBadgeModule } from '@allianz/ng-aquila/badge';
+import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxGridModule } from '@allianz/ng-aquila/grid';
+import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
+import { NxIconModule, NxIconRegistry } from '@allianz/ng-aquila/icon';
 import { NxLinkModule } from '@allianz/ng-aquila/link';
+import {
+  NxPopoverMainContentDirective,
+  NxPopoverModule,
+  NxPopoverTitleDirective,
+} from '@allianz/ng-aquila/popover';
 import { NxAccentColorComponent } from '@allianz/ng-aquila/text';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { AsyncPipe } from '@angular/common';
@@ -8,6 +16,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  inject,
   Input,
   OnDestroy,
   OnInit,
@@ -30,6 +39,12 @@ import { NxvComponentIconComponent } from '../component-icon/component-icon.comp
     NxGridModule,
     NxLinkModule,
     NxBadgeModule,
+    NxButtonModule,
+    NxIconModule,
+    NxPopoverModule,
+    NxPopoverTitleDirective,
+    NxPopoverMainContentDirective,
+    NxHeadlineComponent,
     AsyncPipe,
     RouterModule,
     NxvComponentIconComponent,
@@ -41,8 +56,16 @@ export class NxvSearchResultsComponent implements OnInit, OnDestroy {
   readonly searchTerm = signal('');
   initializing = false;
   readonly searchResults = signal<any>(null);
+  /** The input and value searched for with `input:value` or `:value`, or null for a normal search. */
+  readonly inputValueQuery = computed(() =>
+    this.fuseSearch.parseInputValueQuery(this.searchTerm() ?? ''),
+  );
+  /** Whether the search found anything. False until the first search has run, too. */
+  readonly hasResults = computed(() => Object.keys(this.searchResults() ?? {}).length > 0);
+  /** How many entries each category shows. Grows by maxEntriesPerCategory per "load more" click. */
+  private readonly _visibleCounts = signal<{ [category: string]: number }>({});
   readonly componentGroups = computed(() => {
-    const entries: any[] = this.searchResults()?.component?.entries ?? [];
+    const entries: any[] = this.visibleEntries('component');
     const groups = entries.reduce<{ [key: string]: any[] }>((acc, entry) => {
       const groupValue = entry.item.group;
       const groupKeys: string[] = Array.isArray(groupValue)
@@ -76,7 +99,11 @@ export class NxvSearchResultsComponent implements OnInit, OnDestroy {
   constructor(
     private readonly activeRoute: ActivatedRoute,
     private readonly fuseSearch: FuseSearchService,
-  ) {}
+  ) {
+    const iconRegistry = inject(NxIconRegistry);
+    iconRegistry.registerFont('fa', 'fas', 'fa-');
+    iconRegistry.addFontIcon('circle-question', 'circle-question', 'fa');
+  }
 
   ngOnInit() {
     this.initSearch();
@@ -96,6 +123,8 @@ export class NxvSearchResultsComponent implements OnInit, OnDestroy {
       )
       .subscribe((params) => {
         this.searchTerm.set(params.term);
+        // A new term starts over, so every category collapses back to the first page again.
+        this._visibleCounts.set({});
         this.searchResults.set(this.groupResults(this.fuseSearch.search(this.searchTerm())));
       });
   }
@@ -103,23 +132,47 @@ export class NxvSearchResultsComponent implements OnInit, OnDestroy {
   groupResults(entries: any[]) {
     const data: any = {};
     for (const entry of entries) {
-      const item = entry.item;
-      if (!data[item?.searchDisplayType]) {
-        data[item.searchDisplayType] = { entries: [], total: 0 };
-      } else if (data[item.searchDisplayType].entries.length === this.maxEntriesPerCategory) {
-        data[item.searchDisplayType].total++;
-        continue;
-      }
-      data[item.searchDisplayType].entries.push(entry);
-      data[item.searchDisplayType].total++;
+      const type = entry.item?.searchDisplayType;
+      (data[type] ??= { entries: [], total: 0 }).entries.push(entry);
+      data[type].total++;
     }
     return data;
   }
 
-  countLabel(category: { entries: any[]; total: number }): string {
-    return category.entries.length < category.total
-      ? `${category.entries.length} of ${category.total}`
-      : `${category.entries.length}`;
+  /** The slice of a category that is currently shown. Everything is searched already, so this is display only. */
+  visibleEntries(category: string): any[] {
+    const entries: any[] = this.searchResults()?.[category]?.entries ?? [];
+    return entries.slice(0, this._visibleCounts()[category] ?? this.maxEntriesPerCategory);
+  }
+
+  hasMore(category: string): boolean {
+    return this.visibleEntries(category).length < (this.searchResults()?.[category]?.total ?? 0);
+  }
+
+  showMore(category: string): void {
+    this._visibleCounts.update((counts) => ({
+      ...counts,
+      [category]: this.visibleEntries(category).length + this.maxEntriesPerCategory,
+    }));
+  }
+
+  countLabel(category: string): string {
+    const total = this.searchResults()?.[category]?.total ?? 0;
+    const shown = this.visibleEntries(category).length;
+    return shown < total ? `${shown} of ${total}` : `${total}`;
+  }
+
+  /**
+   * Inputs and outputs of the entry that the search term matched, so the result can show why it is
+   * listed. The kind carries the same colour coding the api page uses for its Input/Output badges.
+   */
+  matchedMembers(entry: any): { name: string; kind: 'input' | 'output' }[] {
+    return (entry.matches ?? [])
+      .filter((match: any) => match.key === 'inputs' || match.key === 'outputs')
+      .map((match: any) => ({
+        name: match.value,
+        kind: match.key === 'inputs' ? 'input' : 'output',
+      }));
   }
 
   getApiBadge(type: string) {

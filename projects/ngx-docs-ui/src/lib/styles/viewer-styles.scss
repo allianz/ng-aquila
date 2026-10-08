@@ -108,6 +108,122 @@ a {
   opacity: 0.5;
 }
 
+::ng-deep .docs-api-content-slots {
+  margin-bottom: 32px;
+}
+
+// Keeps the heading size the .docs-api-h3 rule gives it, so the host selector reads the same as a
+// class name on the api page, and only tightens the gap to the slot list below.
+::ng-deep .docs-api-content-slots__class {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 4px;
+}
+
+::ng-deep .docs-api-content-slots__class-link {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+::ng-deep .docs-api-content-slots__list {
+  list-style: none;
+  margin: 0;
+  // Lines up the trunk of the tree under the first character of the host selector above it.
+  padding-left: 32px;
+}
+
+::ng-deep .docs-api-content-slots__item {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 0 6px 24px;
+
+  // The tree guides: a trunk down the whole list and a tick out to every branch. Drawing them
+  // with pseudo elements keeps the markup a plain list for screen readers.
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    border-color: v(text-01);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  &::before {
+    top: 0;
+    bottom: 0;
+    border-left-width: 1px;
+  }
+
+  &::after {
+    top: 1.3em;
+    width: 14px;
+    border-top-width: 1px;
+  }
+
+  // Ends the trunk at the last tick, so the branch reads as a corner instead of running on.
+  &:last-child::before {
+    bottom: auto;
+    height: 1.3em;
+  }
+}
+
+::ng-deep .docs-api-content-slots__slot {
+  border-width: 1px;
+  border-style: solid;
+  border-color: v(card-border-color);
+  border-radius: 5px;
+  letter-spacing: 0.0125rem;
+  padding: 2px 8px;
+}
+
+// Transparent rather than none keeps the default slot the same size as the chips, so the columns line up.
+::ng-deep .docs-api-content-slots__slot--any {
+  border-color: transparent;
+}
+
+// A slot whose selector no documented directive matches still documents what the slot takes.
+::ng-deep .docs-api-content-slots__slot--unmatched {
+  border-style: dotted;
+  opacity: 0.6;
+}
+
+::ng-deep .docs-api-content-slots__targets::before {
+  content: '\2192';
+  margin-right: 8px;
+  opacity: 0.5;
+}
+
+::ng-deep .docs-api-content-slots__description {
+  flex-basis: 100%;
+  opacity: 0.75;
+  font-size: 0.875rem;
+  margin-left: 12px;
+}
+
+// Where subgrid is available the selectors and the targets of all branches line up in two columns.
+@supports (grid-template-columns: subgrid) {
+  ::ng-deep .docs-api-content-slots__list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+  }
+
+  ::ng-deep .docs-api-content-slots__item {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+  }
+
+  ::ng-deep .docs-api-content-slots__description {
+    grid-column: 1 / -1;
+  }
+}
+
 ::ng-deep .docs-api table,
 ::ng-deep .docs-markdown--table {
   width: 100%;
@@ -200,7 +316,7 @@ a {
 
 ::ng-deep .docs-api-input__badge,
 ::ng-deep .docs-api-output__badge {
-  color: black;
+  color: v(text-01);
   border-radius: 6px;
   padding: 0 6px;
   font-size: 14px;
@@ -208,11 +324,11 @@ a {
 }
 
 ::ng-deep .docs-api-input__badge {
-  background-color: rgb(from var(--documentation-api-code-alias-text-color) r g b / 0.5);
+  background-color: rgb(from var(--documentation-api-code-alias-text-color) r g b / 0.25);
 }
 
 ::ng-deep .docs-api-output__badge {
-  background-color: rgb(from var(--documentation-api-code-types-text-color) r g b / 0.5);
+  background-color: rgb(from var(--documentation-api-code-types-text-color) r g b / 0.25);
 }
 
 ::ng-deep .docs-api-deprecated-marker,

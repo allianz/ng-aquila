@@ -15,8 +15,9 @@ export const fuseOptions = {
   // isCaseSensitive: false,
   // includeScore: true,
   // shouldSort: true,
-  // includeMatches: true,
   // findAllMatches: false,
+  // report which key matched, so a result can show why it is listed
+  includeMatches: true,
   minMatchCharLength: 4,
   // location: 0,
   threshold: 0.6,
@@ -37,6 +38,8 @@ export const fuseOptions = {
     'alias',
     'directiveSelectors',
     'directiveExportAs',
+    'inputs',
+    'outputs',
     'group',
   ],
 };

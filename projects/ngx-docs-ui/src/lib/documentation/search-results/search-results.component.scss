@@ -18,8 +18,32 @@ nx-link {
   flex: 1 0 auto;
 }
 
-.searchresults__header {
+.searchresults__heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 20px 0;
+}
+
+.searchresults__header {
+  margin: 0;
+}
+
+.searchresults__syntax {
+  max-width: 320px;
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 12px;
+    margin: 0;
+  }
+  dt,
+  dd {
+    margin: 0;
+  }
+  dt code {
+    white-space: nowrap;
+  }
 }
 
 .searchresults__info {
@@ -31,6 +55,31 @@ nx-link {
   opacity: 0.5;
   font-style: italic;
   font-weight: 100;
+}
+
+// Mirrors .docs-api-input__badge / .docs-api-output__badge on the api page, so an input or an
+// output is recognisable by the same colour in both places.
+.search-results__match {
+  display: inline-block;
+  border-radius: 6px;
+  padding: 0 6px;
+  margin-left: 4px;
+  font-size: 0.875rem;
+  color: var(--text-01);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+.search-results__match--input {
+  background-color: rgb(from var(--documentation-api-code-alias-text-color) r g b / 0.25);
+}
+
+.search-results__match--output {
+  background-color: rgb(from var(--documentation-api-code-types-text-color) r g b / 0.25);
 }
 
 .search-results__component-info {
@@ -64,4 +113,35 @@ nx-link {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+// One line per input of an `input:value` search: the input, then every value it accepts, with the ones
+// that matched the search picked out so that the alternatives still read as a set.
+.search-results__values {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+
+  li {
+    padding: 2px 0;
+  }
+
+  .search-results__match {
+    margin-left: 0;
+  }
+}
+
+.search-results__value {
+  opacity: 0.6;
+}
+
+.search-results__value--matched {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.search-results__value-separator {
+  margin: 0 4px;
+  opacity: 0.4;
 }

@@ -5,6 +5,7 @@ import { ComponentApi } from './component-documentation/component-page/component
 import { ComponentExamples } from './component-documentation/component-page/component-examples';
 import { ComponentOverview } from './component-documentation/component-page/component-overview';
 import { NxvComponentPage } from './component-documentation/component-page/component-page';
+import { ComponentSlots } from './component-documentation/component-page/component-slots';
 import { NxvDocumentationComponent } from './component-documentation/documentation-page.component';
 import { NxvOverviewComponent } from './component-documentation/overview/overview.component';
 import { DocumentationFrameComponent } from './documentation-frame.component';
@@ -59,6 +60,7 @@ export const createViewerRoutes: (args: any) => Routes = (args) => [
               { path: '', redirectTo: 'overview', pathMatch: 'full' },
               { path: 'overview', component: ComponentOverview, pathMatch: 'full' },
               { path: 'api', component: ComponentApi, pathMatch: 'full' },
+              { path: 'slots', component: ComponentSlots, pathMatch: 'full' },
               { path: 'examples', component: ComponentExamples, pathMatch: 'full' },
               { path: '**', redirectTo: 'overview' },
             ],
