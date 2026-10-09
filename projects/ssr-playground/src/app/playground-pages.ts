@@ -49,6 +49,7 @@ import { OverlayExamplesModule } from '../../../ng-aquila/documentation/examples
 import { PageExamplesModule } from '../../../ng-aquila/documentation/examples/page-search/page-search-examples.module';
 import { PaginationExamplesModule } from '../../../ng-aquila/documentation/examples/pagination/pagination-examples.module';
 import { PatternExamplesModule } from '../../../ng-aquila/documentation/examples/patterns-blog/patterns-blog-examples.module';
+import { PhoneInputExamplesModule } from '../../../ng-aquila/documentation/examples/phone-input/phone-input-examples.module';
 import { PopoverExamplesModule } from '../../../ng-aquila/documentation/examples/popover/popover-examples.module';
 import { PriceExamplesModule } from '../../../ng-aquila/documentation/examples/price/price-examples.module';
 import { ProgressExamplesModule } from '../../../ng-aquila/documentation/examples/progress-stepper/progress-stepper-examples.module';
@@ -211,6 +212,12 @@ export const PLAYGROUND_PAGES: readonly PlaygroundPage[] = [
     title: 'Mask',
     group: 'form-controls',
     examples: pick(MaskExamplesModule, 'mask'),
+  },
+  {
+    id: 'phone-input',
+    title: 'Phone Input',
+    group: 'form-controls',
+    examples: pick(PhoneInputExamplesModule, 'phone-input-retail', 'phone-input-i18n'),
   },
   {
     id: 'number-stepper',

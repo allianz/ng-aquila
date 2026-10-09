@@ -63,6 +63,17 @@ To get translations for the countries you can import a different locale from the
 
 <!-- example(phone-input-i18n) -->
 
+## Server-side rendering
+
+With `i18n-iso-countries` 7.5.0 or later, the package fails in `ng serve` when an app uses server-side rendering (SSR) and imports `i18n-iso-countries` from the package root. Every route then returns a 500 error such as `Cannot find module './langs/br.json'`. Production builds are not affected.
+
+The phone input itself imports the package in a safe way. To avoid the error in your own code, use one of these options.
+
+Import the browser entry point, as the example above does:
+
+```ts
+import countries from 'i18n-iso-countries/index.js';
+```
 
 ## Blur/focus events
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import countries, { LocalizedCountryNames } from 'i18n-iso-countries';
+import countries, { LocalizedCountryNames } from 'i18n-iso-countries/index.js';
 import en from 'i18n-iso-countries/langs/en.json';
 import { Subject } from 'rxjs';
 

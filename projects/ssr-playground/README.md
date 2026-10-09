@@ -6,7 +6,7 @@ the browser, so server-render failures (a component touching `window`, `document
 the library **source**, so a fix shows up as soon as you save it.
 
 `PLAYGROUND_PAGES` in `src/app/playground-pages.ts` is a hand-written list of one simple example per
-group — 85 examples, 81 pages. A new example group reports nothing until you add an import and an
+group — 87 examples, 82 pages. A new example group reports nothing until you add an import and an
 entry. Three kept examples are the **sole reproducer** of a fixed failure, so they are the regression
 guard for it and must not be dropped: `dropdown/multi-select`, `datefield/datemask-basic`,
 `number-stepper/number-stepper-auto-resizing`.
@@ -25,7 +25,7 @@ node dist/ssr-playground/server/server.mjs  # run that build on :4000
 node projects/ssr-playground/tools/sweep.mjs       # BASE=http://localhost:4000 by default
 ```
 
-The sweep requests `/` plus all 81 pages and asserts each returns 200 **and** mounts at least one
+The sweep requests `/` plus all 82 pages and asserts each returns 200 **and** mounts at least one
 `<section class="example">` — an empty page still returns a valid 200, which hid 23 blank pages during
 the original trim.
 
@@ -35,13 +35,12 @@ Hydration errors only appear in a browser console, and nothing checks those auto
 
 ## Current state
 
-With the SSR fixes (#2031–#2038) merged, all 81 pages return 200 with 85 examples mounted and the
+With the SSR fixes (#2031–#2038) merged, all 82 pages return 200 with 87 examples mounted and the
 server log carries **one** render error:
 
 | Component | Where | Failure | Page | Status |
 | --- | --- | --- | --- | --- |
 | `NxComparisonTable` | constructor | `ReferenceError: ResizeObserver is not defined` | `comparison-table` | open; fix not merged yet |
-| `NxPhoneInput` | `i18n-iso-countries` import | `Cannot find module './langs/br.json'` | none; unregistered | open, and unmeasured — see below |
 
 ### Regression set
 
@@ -69,23 +68,20 @@ Every failure was server-side only. Spot checks in a real browser produced no hy
 no console errors, so the client recovered silently and none of it was visible to someone testing in a
 browser.
 
-### `NxPhoneInput`: is being left out
-
-`@allianz/ng-aquila/phone-input` is the only entry point importing `i18n-iso-countries`, which makes a
-working dev server impossible, so the group is left out of `PLAYGROUND_PAGES` entirely — its errors are
-not in the counts above.
+### `NxPhoneInput` and `i18n-iso-countries`
 
 `i18n-iso-countries` is CommonJS and its `main` (`entry-node.js`) loops over every locale doing
 `require("./langs/" + locale + ".json")`. The specifier is fully dynamic, so Vite's prebundle resolves
-it against the cache directory and the first locale throws before any component renders. Excluding the
-package from prebundling is worse: it then gets bundled into the app, `index.js` opens with
-`require("diacritics")`, esbuild's `__require` shim throws during bootstrap, and **every route becomes
-non-interactive** — server HTML paints, the client bundle dies, and the server log says nothing.
+it against the cache directory and the first locale throws before any component renders. With the
+package root imported anywhere, `ng serve` answers every route with a 500. Production builds are not
+affected: esbuild bundles the locale files.
 
-Any one of these fixes it: import `i18n-iso-countries/index.js` (the path browsers already get) instead
-of the package root; load the country list lazily behind the first call that needs it; or replace the
-dependency with `libphonenumber-js`, already a workspace dependency. Until then, consumers doing SSR
-must keep `nx-phone-input` off server-rendered routes.
+The library and the `phone-input-i18n` example import `i18n-iso-countries/index.js` (the path
+browsers already get) instead of the package root. Excluding the package from prebundling is worse:
+it then gets bundled into the app, `index.js` opens with `require("diacritics")`, esbuild's `__require`
+shim throws during bootstrap, and **every route becomes non-interactive** — server HTML paints, the
+client bundle dies, and the server log says nothing. Turning prebundling off (`"prebundle": false`)
+works. Consumer guidance is in the "Server-side rendering" section of `phone-input.md`.
 
 ## Not failures
 
