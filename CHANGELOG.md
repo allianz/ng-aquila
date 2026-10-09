@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.5.0 (2026-10-09)
+
+
+### Features ✨
+
+* **autocomplete:** support the WAI-ARIA 1.2 combobox pattern ([be2e1b7](https://github.com/allianz/ng-aquila/commit/be2e1b7b746999b74e471758c209015897b617e0)), closes [ilt/ngx-brand-kit#5608](https://github.com/ilt/ngx-brand-kit/issues/5608)
+* **breadcrumb:** add example and type input ([47ac680](https://github.com/allianz/ng-aquila/commit/47ac680923df8f20c9b8c19df899b310b2e7428f))
+* **footer:** add divider and maxWidthContent inputs ([df8070d](https://github.com/allianz/ng-aquila/commit/df8070debaf2cea883196bd67078afbd48c16993))
+* **info-icon:** add popoverCloseable input ([12eae1c](https://github.com/allianz/ng-aquila/commit/12eae1c31d531b3ef473af01301bb559cfbb2c78))
+* **modal:** adapt icon for a1 and add example modal title ([bf9de7c](https://github.com/allianz/ng-aquila/commit/bf9de7c4d2cdaf0b7994a69f0f49a1b6f3bb2e8f))
+* **pagination:** add button control to advanced pagination ([322a90a](https://github.com/allianz/ng-aquila/commit/322a90ac4376a732bd4b1eea49421ed9a4362070))
+* **product-tile:** introduce new product tile component ([68d5464](https://github.com/allianz/ng-aquila/commit/68d5464d2b39cecb70cf7fce9505a8ca33cc92bb))
+* **sidebar:** add groups and divider support, deprecate color scheme ([0f28813](https://github.com/allianz/ng-aquila/commit/0f288130e6686cfe6a4a74b172d047d6df09f443))
+
+
+### Bug Fixes 🐛
+
+* **button:** inverse loading spinner and A1 loading state ([9bc7ab5](https://github.com/allianz/ng-aquila/commit/9bc7ab5fe24f779cacdedab8fe229431697d24c8))
+* **checkbox:** update aria-disabled when readonly changes via signal forms ([170d02f](https://github.com/allianz/ng-aquila/commit/170d02fef838f70759fe8c9ecc4d59a0dbef8b1b))
+* **docs:** replace the unavailable video in the video examples ([5a416c3](https://github.com/allianz/ng-aquila/commit/5a416c32f01d0e5ac5b0deee87acb6efee94d8d1))
+* **docs:** use viewChild signals in viewport and header examples ([cd9cfa8](https://github.com/allianz/ng-aquila/commit/cd9cfa8280137bf71765f91bde5663a77e3176e1))
+* **phone-input:** make i18n-iso-countries import SSR-safe ([abfe6fc](https://github.com/allianz/ng-aquila/commit/abfe6fc2c061bbe9376badaed17add699b606804))
+
 ## 22.4.0 (2026-10-06)
 
 
