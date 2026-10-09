@@ -2,12 +2,14 @@ import { NxInfoIconModule } from '@allianz/ng-aquila/info-icon';
 import { NgModule } from '@angular/core';
 
 import { InfoIconExampleComponent } from './info-icon/info-icon-example';
+import { InfoIconCloseableExampleComponent } from './info-icon-closeable/info-icon-closeable-example';
 import { InfoIconInlineExampleComponent } from './info-icon-inline/info-icon-inline-example';
 import { InfoIconInverseExampleComponent } from './info-icon-inverse/info-icon-inverse-example';
 import { InfoIconModalExampleComponent } from './info-icon-modal/info-icon-modal-example';
 
 const EXAMPLES = [
   InfoIconExampleComponent,
+  InfoIconCloseableExampleComponent,
   InfoIconInlineExampleComponent,
   InfoIconInverseExampleComponent,
   InfoIconModalExampleComponent,
@@ -21,6 +23,7 @@ export class InfoIconExamplesModule {
   static components() {
     return {
       'info-icon': InfoIconExampleComponent,
+      'info-icon-closeable': InfoIconCloseableExampleComponent,
       'info-icon-inline': InfoIconInlineExampleComponent,
       'info-icon-inverse': InfoIconInverseExampleComponent,
       'info-icon-modal': InfoIconModalExampleComponent,

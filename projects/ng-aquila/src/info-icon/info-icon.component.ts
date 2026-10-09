@@ -53,6 +53,9 @@ export class NxInfoIconComponent {
   /** Whether the popover should be modal (with backdrop and focus trap). */
   readonly popoverModal = input(false, { transform: booleanAttribute });
 
+  /** Whether the popover should show a close button. */
+  readonly popoverCloseable = input(false, { transform: booleanAttribute });
+
   /** Whether the info icon button is disabled. */
   readonly disabled = input(false, { transform: booleanAttribute });
 

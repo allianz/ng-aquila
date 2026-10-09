@@ -31,6 +31,12 @@ Set `inverse` to use the icon on a dark or colored background.
 
 <!-- example(info-icon-modal) -->
 
+### Closeable Popover
+
+Set `popoverCloseable` to show a close button inside the popover.
+
+<!-- example(info-icon-closeable) -->
+
 ### Scroll Strategy
 
 The Info Icon component uses the [Popover component](./documentation/popover/overview) internally. The scroll strategy is set to `close` by default, which means the popover will automatically close when the user scrolls. For further Information, refer to the [Popover global settings documentation](./documentation/popover/overview#global-settings-1).

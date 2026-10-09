@@ -22,6 +22,7 @@ abstract class InfoIconTest {
   popoverWidth: string | undefined;
   popoverMaxWidth: string | undefined;
   popoverModal = false;
+  popoverCloseable = false;
   disabled = false;
   inverse: boolean | undefined;
 }
@@ -59,6 +60,12 @@ describe('NxInfoIconComponent', () => {
     return overlayContainer
       .getContainerElement()
       .querySelector('.cdk-overlay-backdrop') as HTMLElement;
+  }
+
+  function getCloseButton(): HTMLButtonElement {
+    return overlayContainer
+      .getContainerElement()
+      .querySelector('.nx-popover__close-icon') as HTMLButtonElement;
   }
 
   function clickButton() {
@@ -196,6 +203,39 @@ describe('NxInfoIconComponent', () => {
     }));
   });
 
+  describe('closeable popover', () => {
+    async function openPopover() {
+      getButton().click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+    }
+
+    it('should not show a close button by default', async () => {
+      createTestComponent(BasicInfoIconComponent);
+      await openPopover();
+      expect(getCloseButton()).toBeFalsy();
+    });
+
+    it('should show a close button when popoverCloseable is true', async () => {
+      createTestComponent(ConfigurableInfoIconComponent);
+      testInstance.popoverCloseable = true;
+      fixture.detectChanges();
+      await openPopover();
+      expect(getCloseButton()).toBeTruthy();
+    });
+
+    it('should close popover on close button click', async () => {
+      createTestComponent(ConfigurableInfoIconComponent);
+      testInstance.popoverCloseable = true;
+      fixture.detectChanges();
+      await openPopover();
+      getCloseButton().click();
+      fixture.detectChanges();
+      await fixture.whenStable();
+      expect(getPopoverContent()).toBeFalsy();
+    });
+  });
+
   describe('disabled state', () => {
     it('should disable button when disabled is true', () => {
       createTestComponent(DisabledInfoIconComponent);
@@ -263,6 +303,7 @@ class BasicInfoIconComponent extends InfoIconTest {}
       [popoverWidth]="popoverWidth"
       [popoverMaxWidth]="popoverMaxWidth"
       [popoverModal]="popoverModal"
+      [popoverCloseable]="popoverCloseable"
       [inverse]="inverse"
     >
       Configurable content
