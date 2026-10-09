@@ -32,7 +32,7 @@ import { FormsModule } from '@angular/forms';
 export class ButtonLoadingExampleComponent {
   loading = signal(true);
   readonly size = signal<NxButtonSize>('medium');
-  readonly negative = signal(false);
+  readonly inverse = signal(false);
 
   sizeOptions: { value: NxButtonSize; label: string }[] = [
     {

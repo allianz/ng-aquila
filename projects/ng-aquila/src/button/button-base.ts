@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { injectSurface } from '@allianz/ng-aquila/surface';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, NumberInput } from '@angular/cdk/coercion';
@@ -72,6 +73,7 @@ function normalizeSize(size: NxButtonSize): NxButtonSize {
     '[class.nx-button--block]': 'block',
 
     '[class.nx-button--loading]': 'loading()',
+    '[class.nx-button--loading-disabled]': 'loading() && _isA1()',
     '[class.nx-button--active]': '_active()',
     '[attr.disabled]': 'disabled() || null',
     '[attr.aria-disabled]': '_ariaDisabled',
@@ -84,6 +86,8 @@ export class NxButtonBase implements AfterViewInit {
   private readonly _destroyRef = inject(DestroyRef);
   private readonly _renderer = inject(Renderer2);
   private readonly _ngZone = inject(NgZone);
+  private readonly _allianzOneOptions = inject(ALLIANZ_ONE, { optional: true });
+  protected readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
 
   private readonly _isAnchor = this._elementRef.nativeElement.tagName === 'A';
   protected get _ariaDisabled() {
@@ -225,6 +229,10 @@ export class NxButtonBase implements AfterViewInit {
   protected get spinnerNegative() {
     const appearance = this.appearance;
     const negative = this.negative;
+    // A1 shows loading buttons in their disabled colors, so the spinner follows the surface, not the fill.
+    if (this._isA1()) {
+      return negative || (this.colorScheme() === 'on-accent-attention' && appearance !== 'primary');
+    }
     if (appearance === 'emphasis' || appearance === 'cta' || appearance === 'attention') {
       return true;
     }

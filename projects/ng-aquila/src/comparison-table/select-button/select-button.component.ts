@@ -1,5 +1,4 @@
 import { NxButtonBase } from '@allianz/ng-aquila/button';
-import { ALLIANZ_ONE, AllianzOneOptions } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import {
   ChangeDetectionStrategy,
@@ -31,8 +30,6 @@ import { NxComparisonTableCell } from '../cell/cell.component';
 })
 export class NxComparisonTableSelectButton extends NxButtonBase implements OnDestroy {
   protected readonly _cell = inject(NxComparisonTableCell);
-  private readonly _allianzOneOptions = inject<AllianzOneOptions>(ALLIANZ_ONE, { optional: true });
-  protected readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
 
   /** Sets the label that is displayed when the column is selected. Default: 'Selected'. */
   @Input() set selectedLabel(value: string) {

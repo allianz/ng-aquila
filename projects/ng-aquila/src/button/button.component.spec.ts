@@ -1,3 +1,4 @@
+import { ALLIANZ_ONE } from '@allianz/ng-aquila/config/allianz-one/token';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
 import {
   ChangeDetectionStrategy,
@@ -734,6 +735,77 @@ describe('NxButton Implementations', () => {
 
       const spinner = fixture.nativeElement.querySelector('nx-spinner');
       expect(spinner).not.toHaveClass('nx-spinner--negative');
+    });
+  });
+
+  describe('A1 loading state', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        providers: [{ provide: ALLIANZ_ONE, useValue: { enabled: signal(true) } }],
+      });
+    });
+
+    function createLoadingButton(inputs: { [name: string]: unknown }) {
+      const fixture = TestBed.createComponent(NxButtonComponent, {
+        inferTagName: true,
+        bindings: Object.entries(inputs).map(([name, value]) => inputBinding(name, () => value)),
+      });
+      fixture.detectChanges();
+      return fixture;
+    }
+
+    it('shows the disabled colors while loading', () => {
+      const fixture = createLoadingButton({ nxButton: 'primary', loading: true });
+
+      expect(fixture.nativeElement).toHaveClass('nx-button--loading-disabled');
+    });
+
+    it('does not show the disabled colors when not loading', () => {
+      const fixture = createLoadingButton({ nxButton: 'primary', loading: false });
+
+      expect(fixture.nativeElement).not.toHaveClass('nx-button--loading-disabled');
+    });
+
+    (['primary', 'secondary', 'tertiary', 'cta', 'emphasis', 'attention'] as const).forEach(
+      (type) => {
+        it(`uses a negative spinner for type=${type} only when inverse`, () => {
+          const fixture = createLoadingButton({ nxButton: type, loading: true });
+          expect(fixture.nativeElement.querySelector('nx-spinner')).not.toHaveClass(
+            'nx-spinner--negative',
+          );
+
+          const inverseFixture = createLoadingButton({
+            nxButton: type,
+            loading: true,
+            inverse: true,
+          });
+          expect(inverseFixture.nativeElement.querySelector('nx-spinner')).toHaveClass(
+            'nx-spinner--negative',
+          );
+        });
+      },
+    );
+
+    it('uses a negative spinner for a transparent appearance on an accent surface', () => {
+      const fixture = createLoadingButton({
+        nxButton: 'secondary',
+        colorScheme: 'on-accent-attention',
+        loading: true,
+      });
+
+      expect(fixture.nativeElement.querySelector('nx-spinner')).toHaveClass('nx-spinner--negative');
+    });
+
+    it('keeps the spinner on a primary button on an accent surface non-negative', () => {
+      const fixture = createLoadingButton({
+        nxButton: 'primary',
+        colorScheme: 'on-accent-attention',
+        loading: true,
+      });
+
+      expect(fixture.nativeElement.querySelector('nx-spinner')).not.toHaveClass(
+        'nx-spinner--negative',
+      );
     });
   });
 });

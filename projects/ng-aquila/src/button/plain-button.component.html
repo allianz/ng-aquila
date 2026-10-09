@@ -7,6 +7,6 @@
 
 @if (loading()) {
   <div inert class="nx-plain-button__spinner-wrapper">
-    <nx-spinner size="medium" />
+    <nx-spinner size="medium" [inverse]="_spinnerInverse()" />
   </div>
 }

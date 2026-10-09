@@ -144,6 +144,11 @@ export class NxPlainButtonComponent implements NxTriggerButton, AfterViewInit {
   /** Resolved inverse: an explicit input wins, then the surface the button sits on. */
   readonly inverse = computed(() => this.inverseInput() ?? this._surface().surface === 'attention');
 
+  // The on-* schemes already sit on a filled background, so `inverse` there flips the spinner back.
+  protected readonly _spinnerInverse = computed(
+    () => (this.colorScheme() !== 'default') !== this.inverse(),
+  );
+
   tabIndex = input<number | undefined, NumberInput>(undefined, { transform: tabIndexAttribute });
   /**
    * Use 'tabindex' to handle existing usages of `[tabindex]` bindings on button elements

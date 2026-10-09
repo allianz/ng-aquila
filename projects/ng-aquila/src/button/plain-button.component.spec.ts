@@ -54,6 +54,31 @@ describe('NxPlainButtonComponent', () => {
     expect(buttonElement.getAttribute('aria-disabled')).toBe('true');
   });
 
+  it('uses an inverse spinner when inverse and loading', () => {
+    createTestComponent(ButtonTest);
+    testInstance.loading = true;
+    fixture.detectChanges();
+    const spinner = buttonElement.querySelector('nx-spinner')!;
+    expect(spinner).not.toHaveClass('nx-spinner--negative');
+
+    testInstance.inverse = true;
+    fixture.detectChanges();
+    expect(spinner).toHaveClass('nx-spinner--negative');
+  });
+
+  it('uses an inverse spinner on an on-* color scheme unless inverse is set', () => {
+    createTestComponent(ButtonTest);
+    testInstance.loading = true;
+    testInstance.colorScheme = 'on-brand';
+    fixture.detectChanges();
+    const spinner = buttonElement.querySelector('nx-spinner')!;
+    expect(spinner).toHaveClass('nx-spinner--negative');
+
+    testInstance.inverse = true;
+    fixture.detectChanges();
+    expect(spinner).not.toHaveClass('nx-spinner--negative');
+  });
+
   it('has no aria-disabled when not loading and not disabled', () => {
     createTestComponent(ButtonTest);
     testInstance.loading = false;
@@ -232,6 +257,7 @@ describe('NxPlainButtonComponent', () => {
     [colorScheme]="colorScheme"
     [critical]="critical"
     [loading]="loading"
+    [inverse]="inverse"
     [tabindex]="tabindexAttribute"
     [tabIndex]="tabIndex"
     (click)="clickSpy()"
@@ -251,6 +277,7 @@ class ButtonTest {
   colorScheme: NxPlainButtonColorScheme = 'default';
   critical = false;
   loading = false;
+  inverse: boolean | undefined = undefined;
   tabindexAttribute: number | null = null;
   tabIndex: number | null = null;
   readonly clickSpy = vi.fn().mockName('clickSpy');

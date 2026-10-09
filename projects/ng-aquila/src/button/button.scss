@@ -94,7 +94,7 @@
     border: 0;
   }
 
-  &:hover:not([disabled]):not(:active) {
+  &:hover:not([disabled]):not(.nx-button--loading-disabled):not(:active) {
     color: var(--nx-button-hover-text-color);
     background-color: var(--nx-button-hover-background-color);
     border-color: var(--nx-button-hover-border-color);
@@ -116,6 +116,12 @@
 
   &[disabled] {
     cursor: not-allowed;
+    color: var(--nx-button-disabled-text-color);
+    background-color: var(--nx-button-disabled-background-color);
+    border-color: var(--nx-button-disabled-border-color);
+  }
+
+  &.nx-button--loading-disabled {
     color: var(--nx-button-disabled-text-color);
     background-color: var(--nx-button-disabled-background-color);
     border-color: var(--nx-button-disabled-border-color);
