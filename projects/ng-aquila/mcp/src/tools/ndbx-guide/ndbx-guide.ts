@@ -3,7 +3,7 @@ import fs from 'fs';
 import Fuse from 'fuse.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import z from 'zod/v3';
+import { z } from 'zod';
 
 import { SectionDoc } from '../models.js';
 

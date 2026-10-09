@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { Resource } from '@modelcontextprotocol/sdk/types.js';
+import { McpServer, Resource, ResourceTemplate } from '@modelcontextprotocol/server';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

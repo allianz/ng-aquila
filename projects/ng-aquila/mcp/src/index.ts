@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { McpServer } from '@modelcontextprotocol/server';
+import { StdioServerTransport } from '@modelcontextprotocol/server/stdio';
 
 import { registerResources } from './register-resources.js';
 import { registerTools } from './register-tools.js';
@@ -12,7 +12,6 @@ const mcpServer = new McpServer(
   },
   {
     capabilities: {
-      logging: {},
       tools: {},
       resources: {},
     },
@@ -25,19 +24,10 @@ registerResources(mcpServer);
 async function main() {
   const transport = new StdioServerTransport();
   await mcpServer.connect(transport);
-  mcpServer.server.sendLoggingMessage({
-    level: 'info',
-    data: 'NDBX MCP Server running on stdio',
-  });
+  console.error('NDBX MCP Server running on stdio');
 }
 
 main().catch((error) => {
-  mcpServer.server.sendLoggingMessage({
-    level: 'error',
-    data: {
-      context: 'Fatal error in main():',
-      error,
-    },
-  });
+  console.error('Fatal error in main():', error);
   process.exit(1);
 });
