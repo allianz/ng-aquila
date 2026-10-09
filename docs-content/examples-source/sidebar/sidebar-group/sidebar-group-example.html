@@ -1,0 +1,31 @@
+<nx-sidebar resizeHandleAriaLabel="Toggle sidebar width" resizeable>
+  @for (group of groups; track group.label) {
+    <nx-sidebar-group [label]="group.label">
+      @for (action of group.actions; track action.label) {
+        <a
+          nxAction
+          routerLink="./"
+          [queryParams]="action.query"
+          routerLinkActive="is-selected"
+        >
+          <nx-icon
+            nxActionIcon
+            [name]="action.icon"
+            aria-hidden="true"
+          ></nx-icon>
+          {{ action.label }}
+        </a>
+      }
+    </nx-sidebar-group>
+  }
+  <nx-divider></nx-divider>
+  <a
+    nxAction
+    routerLink="./"
+    [queryParams]="{ a: 5 }"
+    routerLinkActive="is-selected"
+  >
+    <nx-icon nxActionIcon name="user-o" aria-hidden="true"></nx-icon>
+    My Profile
+  </a>
+</nx-sidebar>

@@ -34,7 +34,8 @@
     </tr>
      
 
-<tr class="docs-api-properties-row">
+
+<tr class="docs-api-properties-row" id="NxFooterComponent.copyright">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
                 <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
             <code>
@@ -51,7 +52,48 @@
 </tr>
    
 
-<tr class="docs-api-properties-row">
+
+<tr class="docs-api-properties-row" id="NxFooterComponent.divider">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>divider</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                dividerInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Shows a divider at the top of the footer.
+Defaults to <code>false</code>, or to the value set in <code>FOOTER_DEFAULT_OPTIONS</code> (<code>true</code> for A1).</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxFooterComponent.maxWidthContent">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>maxWidthContent</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                maxWidthContentInput: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Limits the width of the footer content on large screens.
+Defaults to <code>false</code>, or to the value set in <code>FOOTER_DEFAULT_OPTIONS</code> (<code>true</code> for A1 with default grid).</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxFooterComponent.currentYear">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
@@ -124,4 +166,59 @@
 </p> 
 
  
+  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
+    </h3>
+     
+
+<h4 id="FooterDefaultOptions" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="FooterDefaultOptions"></span>
+    <code>FooterDefaultOptions</code>
+</h4><p class="docs-api-interface-description"><p>Represents the default options for the footer.
+It can be configured using the <code>FOOTER_DEFAULT_OPTIONS</code> injection token.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+
+<tr class="docs-api-properties-row" id="FooterDefaultOptions.divider">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                divider?: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Shows a divider at the top of the footer.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="FooterDefaultOptions.maxWidthContent">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                maxWidthContent?: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Limits the width of the footer content on large screens.</p>
+</td>
+</tr>
+  
+</table>   
   </div>

@@ -1,0 +1,27 @@
+<span class="hljs-selector-class">.breadcrumb-resizable</span> {
+  <span class="hljs-attribute">resize</span>: horizontal;
+  <span class="hljs-attribute">overflow</span>: hidden;
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">120px</span>;
+}
+
+<span class="hljs-selector-class">.breadcrumb-list</span> &gt; <span class="hljs-selector-tag">li</span> {
+  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.breadcrumb-overflow</span> {
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">display</span>: inline-flex;
+}
+
+<span class="hljs-selector-class">.breadcrumb-overflow</span><span class="hljs-selector-pseudo">:has</span>(<span class="hljs-selector-class">.breadcrumb-overflow__select</span><span class="hljs-selector-pseudo">:focus-visible</span>) {
+  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-built_in">var</span>(--focus-box-shadow);
+}
+
+<span class="hljs-selector-class">.breadcrumb-overflow__select</span> {
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">inset</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">font</span>: inherit;
+}

@@ -1,0 +1,17 @@
+@for (scheme of schemes; track scheme.type; let isLastScheme = $last) {
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> #<span class="hljs-attr">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>&gt;</span>{{ scheme.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>
+    [<span class="hljs-attr">attr.aria-labelledby</span>]=<span class="hljs-string">&quot;label.id&quot;</span>
+    [<span class="hljs-attr">class.nx-margin-bottom-m</span>]=<span class="hljs-string">&quot;!isLastScheme&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">nxBreadcrumb</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;scheme.type&quot;</span>&gt;</span>
+      @for (item of items; track item; let isLast = $last) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">nxBreadcrumbItem</span> [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;isLast ? null : &#x27;#&#x27;&quot;</span>&gt;</span>
+            {{ item }}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+}

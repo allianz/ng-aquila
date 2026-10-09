@@ -1,3 +1,4 @@
+import { NxLabelComponent } from '@allianz/ng-aquila/base';
 import {
   NxBreadcrumbComponent,
   NxBreadcrumbItemComponent,
@@ -12,7 +13,12 @@ import { RouterLink } from '@angular/router';
   selector: 'breadcrumb-negative-example',
   templateUrl: './breadcrumb-negative-example.html',
   styleUrls: ['./breadcrumb-negative-example.css'],
-  imports: [NxBreadcrumbComponent, NxBreadcrumbItemComponent, RouterLink],
+  imports: [
+    NxBreadcrumbComponent,
+    NxBreadcrumbItemComponent,
+    NxLabelComponent,
+    RouterLink,
+  ],
 })
 export class BreadcrumbNegativeExampleComponent {
   items = ['Home', 'Insurance', 'Health Insurance'];

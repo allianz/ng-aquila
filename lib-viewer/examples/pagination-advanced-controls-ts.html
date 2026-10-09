@@ -1,0 +1,71 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxDropdownComponent</span>,
+  <span class="hljs-title class_">NxDropdownItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxColComponent</span>,
+  <span class="hljs-title class_">NxLayoutComponent</span>,
+  <span class="hljs-title class_">NxRowComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/grid&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxPaginationAlignment</span>,
+  <span class="hljs-title class_">NxPaginationComponent</span>,
+  <span class="hljs-title class_">NxPaginationControlDisplay</span>,
+  <span class="hljs-title class_">NxPaginationControlsPosition</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/pagination&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, signal } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Configurable Advanced Pagination Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;pagination-advanced-controls-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./pagination-advanced-controls-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./pagination-advanced-controls-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxPaginationComponent</span>,
+    <span class="hljs-title class_">NxDropdownComponent</span>,
+    <span class="hljs-title class_">NxDropdownItemComponent</span>,
+    <span class="hljs-title class_">NxFormfieldComponent</span>,
+    <span class="hljs-title class_">NxLayoutComponent</span>,
+    <span class="hljs-title class_">NxRowComponent</span>,
+    <span class="hljs-title class_">NxColComponent</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PaginationAdvancedControlsExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">controlsPositions</span>: <span class="hljs-title class_">NxPaginationControlsPosition</span>[] = [
+    <span class="hljs-string">&#x27;around&#x27;</span>,
+    <span class="hljs-string">&#x27;start&#x27;</span>,
+    <span class="hljs-string">&#x27;end&#x27;</span>,
+  ];
+
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">alignments</span>: <span class="hljs-title class_">NxPaginationAlignment</span>[] = [<span class="hljs-string">&#x27;start&#x27;</span>, <span class="hljs-string">&#x27;space-between&#x27;</span>];
+
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">controlDisplays</span>: <span class="hljs-title class_">NxPaginationControlDisplay</span>[] = [
+    <span class="hljs-string">&#x27;icon&#x27;</span>,
+    <span class="hljs-string">&#x27;label&#x27;</span>,
+    <span class="hljs-string">&#x27;hidden&#x27;</span>,
+  ];
+
+  <span class="hljs-keyword">readonly</span> controlsPosition = signal&lt;<span class="hljs-title class_">NxPaginationControlsPosition</span>&gt;(<span class="hljs-string">&#x27;around&#x27;</span>);
+  <span class="hljs-keyword">readonly</span> alignment = signal&lt;<span class="hljs-title class_">NxPaginationAlignment</span>&gt;(<span class="hljs-string">&#x27;start&#x27;</span>);
+  <span class="hljs-keyword">readonly</span> firstLastControls = signal&lt;<span class="hljs-title class_">NxPaginationControlDisplay</span>&gt;(<span class="hljs-string">&#x27;icon&#x27;</span>);
+  <span class="hljs-keyword">readonly</span> prevNextControls = signal&lt;<span class="hljs-title class_">NxPaginationControlDisplay</span>&gt;(<span class="hljs-string">&#x27;icon&#x27;</span>);
+
+  <span class="hljs-keyword">readonly</span> count = <span class="hljs-number">210</span>;
+  <span class="hljs-keyword">readonly</span> perPage = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">readonly</span> page = <span class="hljs-title function_">signal</span>(<span class="hljs-number">4</span>);
+
+  <span class="hljs-title function_">prevPage</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">page</span>.<span class="hljs-title function_">update</span>(<span class="hljs-function">(<span class="hljs-params">page</span>) =&gt;</span> page - <span class="hljs-number">1</span>);
+  }
+
+  <span class="hljs-title function_">nextPage</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">page</span>.<span class="hljs-title function_">update</span>(<span class="hljs-function">(<span class="hljs-params">page</span>) =&gt;</span> page + <span class="hljs-number">1</span>);
+  }
+
+  <span class="hljs-title function_">goToPage</span>(<span class="hljs-params"><span class="hljs-attr">n</span>: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">page</span>.<span class="hljs-title function_">set</span>(n);
+  }
+}

@@ -1,0 +1,39 @@
+<nx-product-tile-group
+  aria-label="Choose your car insurance"
+  [(value)]="selectedProduct"
+  class="example__group"
+>
+  <nx-product-tile
+    value="comfort"
+    colorScheme="accent-attention"
+    accentColor="green"
+  >
+    <div nxProductTileHeaderContent class="example__header">
+      <nx-eyebrow size="s">Recommended</nx-eyebrow>
+      <div class="example__headline-row">
+        <h3 nxHeadline size="l">Comfort</h3>
+        <nx-price size="l" [value]="42" prefix="from" />
+      </div>
+    </div>
+
+    <ul nxList>
+      <li nxListIcon="check">Third party liability</li>
+      <li nxListIcon="check">Partial coverage</li>
+    </ul>
+
+    <button nxProductTileSelectButton type="button"></button>
+  </nx-product-tile>
+
+  <nx-product-tile value="basic" colorScheme="emphasis">
+    <span nxProductTileEyebrow>Entry</span>
+    <span nxProductTileTitle>Basic</span>
+    <span nxProductTileSubline>The essentials, nothing more</span>
+    <nx-price nxProductTilePrice [value]="24" prefix="from" />
+
+    <ul nxList>
+      <li nxListIcon="check">Third party liability</li>
+    </ul>
+
+    <button nxProductTileSelectButton type="button"></button>
+  </nx-product-tile>
+</nx-product-tile-group>

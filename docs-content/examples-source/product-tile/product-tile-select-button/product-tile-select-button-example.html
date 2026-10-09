@@ -1,0 +1,55 @@
+<nx-product-tile-group
+  aria-label="Choose your car insurance"
+  [(value)]="selectedProduct"
+>
+  <nx-product-tile value="basic" colorScheme="emphasis">
+    <span nxProductTileTitle>Basic</span>
+    <span nxProductTileSubline>The essentials, nothing more</span>
+    <nx-price nxProductTilePrice [value]="24" prefix="from" />
+
+    <ul nxList>
+      <li nxListIcon="check">Third party liability</li>
+    </ul>
+
+    <button nxProductTileSelectButton type="button"></button>
+  </nx-product-tile>
+
+  <nx-product-tile
+    value="comfort"
+    colorScheme="accent-attention"
+    accentColor="green"
+  >
+    <span nxProductTileEyebrow>Recommended</span>
+    <span nxProductTileTitle>Comfort</span>
+    <span nxProductTileSubline>Everyday cover for your car</span>
+    <nx-price nxProductTilePrice [value]="42" prefix="from" />
+
+    <ul nxList>
+      <li nxListIcon="check">Third party liability</li>
+      <li nxListIcon="check">Partial coverage</li>
+    </ul>
+
+    <button
+      nxProductTileSelectButton
+      type="button"
+      unselectedLabel="Take Comfort"
+      selectedLabel="Comfort it is"
+    ></button>
+  </nx-product-tile>
+
+  <nx-product-tile value="premium-top" colorScheme="attention">
+    <span nxProductTileEyebrow>Button in the header</span>
+    <span nxProductTileTitle>Premium</span>
+    <span nxProductTileSubline>Everything covered, all year</span>
+    <nx-price nxProductTilePrice [value]="68" prefix="from" />
+
+    <ul nxList>
+      <li nxListIcon="check">Third party liability</li>
+      <li nxListIcon="check">Full coverage</li>
+    </ul>
+
+    <button nxProductTileSelectButton type="button" position="top"></button>
+  </nx-product-tile>
+</nx-product-tile-group>
+
+<p>Selected product: {{ selectedProduct ?? 'none' }}</p>

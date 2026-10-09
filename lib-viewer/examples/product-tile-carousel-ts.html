@@ -1,0 +1,74 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxListComponent</span>, <span class="hljs-title class_">NxListIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/list&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPriceComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/price&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">NX_PRODUCT_TILE_IMPORTS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/product-tile&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Product Tile Carousel Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;product-tile-carousel-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./product-tile-carousel-example.html&#x27;</span>,
+  <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxListComponent</span>,
+    <span class="hljs-title class_">NxListIconComponent</span>,
+    <span class="hljs-title class_">NxPriceComponent</span>,
+    ...<span class="hljs-variable constant_">NX_PRODUCT_TILE_IMPORTS</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProductTileCarouselExampleComponent</span> {
+  <span class="hljs-comment">// Sublines and feature lists of different lengths, to show the tiles sharing their rows: every</span>
+  <span class="hljs-comment">// header, price and action lines up across the track however much content sits in the body.</span>
+  <span class="hljs-keyword">readonly</span> products = [
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;basic&#x27;</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Basic&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-number">24</span>,
+      <span class="hljs-attr">subline</span>: <span class="hljs-string">&#x27;Third party only&#x27;</span>,
+      <span class="hljs-attr">features</span>: [<span class="hljs-string">&#x27;Third party liability&#x27;</span>],
+    },
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;comfort&#x27;</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Comfort&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-number">42</span>,
+      <span class="hljs-attr">subline</span>: <span class="hljs-string">&#x27;Everyday cover for your car&#x27;</span>,
+      <span class="hljs-attr">features</span>: [<span class="hljs-string">&#x27;Third party liability&#x27;</span>, <span class="hljs-string">&#x27;Partial coverage&#x27;</span>],
+    },
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;premium&#x27;</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Premium&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-number">68</span>,
+      <span class="hljs-attr">subline</span>: <span class="hljs-string">&#x27;Everything covered, all year round, wherever you drive&#x27;</span>,
+      <span class="hljs-attr">features</span>: [
+        <span class="hljs-string">&#x27;Third party liability&#x27;</span>,
+        <span class="hljs-string">&#x27;Full coverage&#x27;</span>,
+        <span class="hljs-string">&#x27;24/7 breakdown service&#x27;</span>,
+        <span class="hljs-string">&#x27;Replacement car for 14 days&#x27;</span>,
+      ],
+    },
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;premium-plus&#x27;</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Premium Plus&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-number">92</span>,
+      <span class="hljs-attr">subline</span>: <span class="hljs-string">&#x27;Premium, and a second driver&#x27;</span>,
+      <span class="hljs-attr">features</span>: [
+        <span class="hljs-string">&#x27;Third party liability&#x27;</span>,
+        <span class="hljs-string">&#x27;Full coverage&#x27;</span>,
+        <span class="hljs-string">&#x27;24/7 breakdown service&#x27;</span>,
+        <span class="hljs-string">&#x27;Replacement car for 30 days&#x27;</span>,
+        <span class="hljs-string">&#x27;Second driver included&#x27;</span>,
+        <span class="hljs-string">&#x27;No deductible&#x27;</span>,
+      ],
+    },
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;business&#x27;</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Business&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-number">128</span>,
+      <span class="hljs-attr">subline</span>: <span class="hljs-string">&#x27;For a fleet of up to ten&#x27;</span>,
+      <span class="hljs-attr">features</span>: [<span class="hljs-string">&#x27;Third party liability&#x27;</span>, <span class="hljs-string">&#x27;Full coverage&#x27;</span>, <span class="hljs-string">&#x27;Fleet management&#x27;</span>],
+    },
+  ];
+
+  <span class="hljs-attr">selectedProduct</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+}

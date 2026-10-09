@@ -1,0 +1,61 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid nopadding&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m options&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;firstLastControls&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;firstLastControls&quot;</span>&gt;</span>
+          @for (item of controlDisplays; track item) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{ item }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;prevNextControls&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;prevNextControls&quot;</span>&gt;</span>
+          @for (item of controlDisplays; track item) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{ item }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;controlsPosition&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;controlsPosition&quot;</span>&gt;</span>
+          @for (item of controlsPositions; track item) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{ item }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,6&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;alignment&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;alignment&quot;</span>&gt;</span>
+          @for (item of alignments; track item) {
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span>{{ item }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-pagination</span>
+  [<span class="hljs-attr">count</span>]=<span class="hljs-string">&quot;count&quot;</span>
+  [<span class="hljs-attr">page</span>]=<span class="hljs-string">&quot;page()&quot;</span>
+  [<span class="hljs-attr">perPage</span>]=<span class="hljs-string">&quot;perPage&quot;</span>
+  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;advanced&quot;</span>
+  [<span class="hljs-attr">firstLastControls</span>]=<span class="hljs-string">&quot;firstLastControls()&quot;</span>
+  [<span class="hljs-attr">prevNextControls</span>]=<span class="hljs-string">&quot;prevNextControls()&quot;</span>
+  [<span class="hljs-attr">controlsPosition</span>]=<span class="hljs-string">&quot;controlsPosition()&quot;</span>
+  [<span class="hljs-attr">alignment</span>]=<span class="hljs-string">&quot;alignment()&quot;</span>
+  (<span class="hljs-attr">goPrev</span>)=<span class="hljs-string">&quot;prevPage()&quot;</span>
+  (<span class="hljs-attr">goNext</span>)=<span class="hljs-string">&quot;nextPage()&quot;</span>
+  (<span class="hljs-attr">goPage</span>)=<span class="hljs-string">&quot;goToPage($event)&quot;</span>
+  <span class="hljs-attr">ariaLabel</span>=<span class="hljs-string">&quot;Configurable advanced pagination&quot;</span>
+&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-pagination</span>&gt;</span>

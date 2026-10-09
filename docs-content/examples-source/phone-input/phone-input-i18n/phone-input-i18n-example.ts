@@ -8,7 +8,7 @@ import {
 } from '@allianz/ng-aquila/phone-input';
 import { Component, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import countries from 'i18n-iso-countries';
+import countries from 'i18n-iso-countries/index.js';
 import de from 'i18n-iso-countries/langs/de.json';
 import fr from 'i18n-iso-countries/langs/fr.json';
 

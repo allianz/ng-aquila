@@ -1,0 +1,101 @@
+<div class="docs-hide-a1">
+<div class="docs-deprecation-warning">
+  The product tile is an A1 component. Some color variants have contrast issues in the NDBX theme.
+</div>
+</div>
+<p class="docs-markdown--p">A product tile presents one product or plan. Content comes from slots rather than inputs - project an <code>nx-price</code>, an <code>nx-list</code>, and whichever button fits.</p>
+<h2 id="carousel" tabindex="-1" class="docs-markdown--h2">Carousel</h2>
+<p class="docs-markdown--p">A group puts one, two or three tiles side by side depending on the room it has, so a tile never gets too narrow for its title. Add more than fit and the track scrolls: a tile peeks in from either end, the tiles outside fade, and a progress bar appears. It stays a scroll container with snap points, so touch, trackpad and keyboard scrolling keep working - the arrows only shortcut that scroll and show on hover or focus.</p>
+<p class="docs-markdown--p">Tiles on a track share their rows, so headers, prices and actions line up across the group. A promotion bar is one of those rows, so tiles without one show an empty strip.</p>
+<p class="docs-markdown--p">The track opens on the tile selected before the first render, centred where there is room.</p>
+<div nx-docs-example="product-tile-carousel" config="{}">exampleID: product-tile-carousel</div>
+<h3 id="tab-bar" tabindex="-1" class="docs-markdown--h3">Tab bar</h3>
+<p class="docs-markdown--p">Give <strong>every</strong> tile a <code>carouselLabel</code> and a tab bar appears above the track, one tab per tile. Tabs highlight whichever tiles are in view, and clicking one brings its tile in. Miss a label on any tile and the bar stays away.</p>
+<h2 id="slots" tabindex="-1" class="docs-markdown--h2">Slots</h2>
+<p class="docs-markdown--p"><code>NX_PRODUCT_TILE_IMPORTS</code> brings the group, the tile, every slot directive and the select button in one go - spread it into a standalone component's <code>imports</code>.</p>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Directive</th>
+<th>What goes in it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nxProductTileHeaderContent</code></td>
+<td>A whole custom header, replacing the four slots below</td>
+</tr>
+<tr>
+<td><code>nxProductTileEyebrow</code></td>
+<td>Small uppercased line above the title</td>
+</tr>
+<tr>
+<td><code>nxProductTileTitle</code></td>
+<td>The product name</td>
+</tr>
+<tr>
+<td><code>nxProductTileSubline</code></td>
+<td>One supporting line below the title</td>
+</tr>
+<tr>
+<td><code>nxProductTilePrice</code></td>
+<td>An <code>nx-price</code>; sized <code>2xl</code> by the slot</td>
+</tr>
+<tr>
+<td><code>nxProductTileSelectButton</code></td>
+<td>The ready-made select button as the action</td>
+</tr>
+<tr>
+<td><code>nxProductTileSecondaryAction</code></td>
+<td>A low-emphasis action below it</td>
+</tr>
+</tbody>
+</table>
+<div nx-docs-example="product-tile-basic" config="{}">exampleID: product-tile-basic</div>
+<h3 id="custom-header" tabindex="-1" class="docs-markdown--h3">Custom Header</h3>
+<p class="docs-markdown--p"><code>nxProductTileHeaderContent</code> replaces the eyebrow, title, subline and price slots - those are ignored while it is present. Tiles in one group can mix the two.</p>
+<p class="docs-markdown--p">It also stands in for the missing title as the accessible name of the selection control, so keep it to what names the product.</p>
+<p class="docs-markdown--p">Only components that read the surface adapt to a painted header, so reach for <code>nx-headline</code>, <code>nx-eyebrow</code> or <code>nx-body-text</code> instead of plain text. Size an <code>nx-price</code> here yourself - the slot's <code>2xl</code> does not reach it.</p>
+<div nx-docs-example="product-tile-header-content" config="{}">exampleID: product-tile-header-content</div>
+<h3 id="custom-body" tabindex="-1" class="docs-markdown--h3">Custom Body</h3>
+<p class="docs-markdown--p">Anything projected without one of the directives above lands in the body, unwrapped and unstyled. Markup order does not matter: the tile places its own slots.</p>
+<div nx-docs-example="product-tile-body-content" config="{}">exampleID: product-tile-body-content</div>
+<h2 id="color-schemes" tabindex="-1" class="docs-markdown--h2">Color Schemes</h2>
+<p class="docs-markdown--p"><code>colorScheme</code> picks the surface the header is painted with, and its content adapts on its own. <code>plain</code> keeps the tile's own background and adds a divider instead. <code>accentColor</code> only takes effect with <code>accent-attention</code>.</p>
+<div nx-docs-example="product-tile-color-schemes" config="{}">exampleID: product-tile-color-schemes</div>
+<h2 id="select-button" tabindex="-1" class="docs-markdown--h2">Select Button</h2>
+<p class="docs-markdown--p"><code>nxProductTileSelectButton</code> is the action as a button that already knows what it does: <code>Select</code>, then <code>Selected</code> behind a check mark once picked, secondary while unpicked and primary once picked.</p>
+<p class="docs-markdown--p"><code>position=&quot;top&quot;</code> moves it into the header, next to the price.</p>
+<p class="docs-markdown--p">Labels come from <code>selectedLabel</code> and <code>unselectedLabel</code>, or from <code>NxProductTileSelectButtonIntl</code> for every tile beneath its provider. A label on the button wins.</p>
+<div nx-docs-example="product-tile-select-button" config="{}">exampleID: product-tile-select-button</div>
+<h2 id="promotion" tabindex="-1" class="docs-markdown--h2">Promotion</h2>
+<p class="docs-markdown--p"><code>[promotion]</code> adds a text bar above the header.</p>
+<div nx-docs-example="product-tile-promotion" config="{}">exampleID: product-tile-promotion</div>
+<h2 id="price-size" tabindex="-1" class="docs-markdown--h2">Price Size</h2>
+<p class="docs-markdown--p">The <code>nxProductTilePrice</code> slot imposes <code>2xl</code> through <code>NX_PRICE_CONTEXT</code> so prices match across a group. An <code>nx-price</code> anywhere else is sized by its own <code>size</code> input.</p>
+<p class="docs-markdown--p">Name a <code>priceSize</code> to impose your own, or <code>undefined</code> to hand the decision back to the price. A nearer provider wins, but it has to sit on a <strong>separate</strong> element - two directives on one element provide into the same injector, where directive order decides.</p>
+<div nx-docs-example="product-tile-price-size" config="{}">exampleID: product-tile-price-size</div>
+<h2 id="selection" tabindex="-1" class="docs-markdown--h2">Selection</h2>
+<p class="docs-markdown--p">Tiles are always selectable, and always need a <code>nx-product-tile-group</code> - even a single one; a tile without a group throws. The group holds the selected value, works with <code>[(value)]</code>, <code>ngModel</code> and reactive forms, and accepts a projected <code>nx-error</code>. Single-select only.</p>
+<div nx-docs-example="product-tile-selection" config="{}">exampleID: product-tile-selection</div>
+<h2 id="accessibility" tabindex="-1" class="docs-markdown--h2">Accessibility</h2>
+<p class="docs-markdown--p">The group is a <code>radiogroup</code> of real radio inputs, each labelled by its tile's title and price. A <code>nxProductTileSelectButton</code> is described by the same, so <code>Select</code> reads out which product it picks.</p>
+<p class="docs-markdown--p">Name the group with an <code>aria-label</code>, or an <code>aria-labelledby</code> pointing at a headline above the tiles.</p>
+<div nx-docs-example="product-tile-labelled-by" config="{}">exampleID: product-tile-labelled-by</div>
+<p class="docs-markdown--p">A body that only lists included features needs nothing extra - a list of what the product covers reads fine with a check icon or none. As soon as any tile shows another status, such as a feature that is excluded or only partly covered, the difference has to be spelled out, for screen reader users too. An icon alone is not enough: add the status as text, visible or visually hidden, next to each affected item.</p>
+<p class="docs-markdown--p">Here a legend explains the icons to everyone who sees them, and a visually hidden <code>Included:</code> or <code>Not included:</code> gives each item its status for screen readers.</p>
+<div nx-docs-example="product-tile-feature-status" config="{}">exampleID: product-tile-feature-status</div>
+<p class="docs-markdown--p">The tab bar's semantics are not settled yet: its tabs are plain buttons without a <code>role</code> of their own.</p>
+<p class="docs-markdown--p">Carousel arrows - and the tab bar's edge buttons - are labelled through <code>NxProductTileCarouselIntl</code>:</p>
+<pre><code class="language-ts"><span class="hljs-attr">providers</span>: [
+  {
+    <span class="hljs-attr">provide</span>: <span class="hljs-title class_">NxProductTileCarouselIntl</span>,
+    <span class="hljs-attr">useFactory</span>: <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-keyword">const</span> intl = <span class="hljs-keyword">new</span> <span class="hljs-title class_">NxProductTileCarouselIntl</span>();
+      intl.<span class="hljs-property">previousLabel</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;Vorherige Produkte&#x27;</span>);
+      intl.<span class="hljs-property">nextLabel</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;Nächste Produkte&#x27;</span>);
+      <span class="hljs-keyword">return</span> intl;
+    },
+  },
+];
+</code></pre>

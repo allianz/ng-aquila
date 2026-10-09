@@ -1,0 +1,50 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxListComponent</span>, <span class="hljs-title class_">NxListIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/list&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-variable constant_">NX_PRICE_CONTEXT</span>,
+  <span class="hljs-title class_">NxPriceComponent</span>,
+  <span class="hljs-title class_">NxPriceContext</span>,
+  <span class="hljs-title class_">NxPriceSize</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/price&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">NX_PRODUCT_TILE_IMPORTS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/product-tile&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Directive</span>, forwardRef, input } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * The `nxProductTilePrice` slot imposes `2xl` through `NX_PRICE_CONTEXT`. Providing the token again
+ * closer to the price replaces that: name a size to impose your own, or leave it unset to hand the
+ * price&#x27;s own `size` input back the decision.
+ */</span>
+<span class="hljs-meta">@Directive</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;[examplePriceSize]&#x27;</span>,
+  <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">providers</span>: [
+    {
+      <span class="hljs-attr">provide</span>: <span class="hljs-variable constant_">NX_PRICE_CONTEXT</span>,
+      <span class="hljs-attr">useExisting</span>: <span class="hljs-title function_">forwardRef</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title class_">ExamplePriceSizeDirective</span>),
+    },
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ExamplePriceSizeDirective</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">NxPriceContext</span> {
+  <span class="hljs-keyword">readonly</span> priceSize = input&lt;<span class="hljs-title class_">NxPriceSize</span> | <span class="hljs-literal">undefined</span>&gt;(<span class="hljs-literal">undefined</span>, {
+    <span class="hljs-attr">alias</span>: <span class="hljs-string">&#x27;examplePriceSize&#x27;</span>,
+  });
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Overriding The Price Size In A Product Tile Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;product-tile-price-size-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./product-tile-price-size-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./product-tile-price-size-example.css&#x27;</span>],
+  <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">ExamplePriceSizeDirective</span>,
+    <span class="hljs-title class_">NxListComponent</span>,
+    <span class="hljs-title class_">NxListIconComponent</span>,
+    <span class="hljs-title class_">NxPriceComponent</span>,
+    ...<span class="hljs-variable constant_">NX_PRODUCT_TILE_IMPORTS</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProductTilePriceSizeExampleComponent</span> {
+  <span class="hljs-attr">selectedProduct</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> = <span class="hljs-string">&#x27;comfort&#x27;</span>;
+}

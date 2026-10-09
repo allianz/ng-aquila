@@ -1,0 +1,33 @@
+<span class="hljs-selector-class">.example__group</span> {
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">340px</span>;
+}
+
+<span class="hljs-comment">/* The body is a plain projection slot, so the spacing between these blocks is the example&#x27;s own. */</span>
+<span class="hljs-selector-class">.example__intro</span>,
+<span class="hljs-selector-class">.example__list</span>,
+<span class="hljs-selector-class">.example__facts</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.example__link</span> {
+  <span class="hljs-attribute">display</span>: block;
+}
+
+<span class="hljs-selector-class">.example__facts</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: auto auto;
+  <span class="hljs-attribute">gap</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-built_in">var</span>(--semantic-color-border-tertiary-resting);
+}
+
+<span class="hljs-selector-class">.example__facts</span> <span class="hljs-selector-tag">dt</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--semantic-color-on-surface-secondary-resting);
+}
+
+<span class="hljs-selector-class">.example__facts</span> <span class="hljs-selector-tag">dd</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">text-align</span>: right;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+}

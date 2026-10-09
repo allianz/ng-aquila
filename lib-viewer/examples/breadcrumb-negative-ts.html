@@ -1,3 +1,4 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxLabelComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/base&#x27;</span>;
 <span class="hljs-keyword">import</span> {
   <span class="hljs-title class_">NxBreadcrumbComponent</span>,
   <span class="hljs-title class_">NxBreadcrumbItemComponent</span>,
@@ -12,7 +13,12 @@
   <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;breadcrumb-negative-example&#x27;</span>,
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./breadcrumb-negative-example.html&#x27;</span>,
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./breadcrumb-negative-example.css&#x27;</span>],
-  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxBreadcrumbComponent</span>, <span class="hljs-title class_">NxBreadcrumbItemComponent</span>, <span class="hljs-title class_">RouterLink</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxBreadcrumbComponent</span>,
+    <span class="hljs-title class_">NxBreadcrumbItemComponent</span>,
+    <span class="hljs-title class_">NxLabelComponent</span>,
+    <span class="hljs-title class_">RouterLink</span>,
+  ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BreadcrumbNegativeExampleComponent</span> {
   items = [<span class="hljs-string">&#x27;Home&#x27;</span>, <span class="hljs-string">&#x27;Insurance&#x27;</span>, <span class="hljs-string">&#x27;Health Insurance&#x27;</span>];

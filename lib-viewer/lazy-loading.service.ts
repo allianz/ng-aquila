@@ -71,6 +71,7 @@ export class LazyLoadingService implements BaseLazyLoadingService {
             case 'phone-input': return import('../examples/phone-input/phone-input-examples.module').then(m => m.PhoneInputExamplesModule);
             case 'popover': return import('../examples/popover/popover-examples.module').then(m => m.PopoverExamplesModule);
             case 'price': return import('../examples/price/price-examples.module').then(m => m.PriceExamplesModule);
+            case 'product-tile': return import('../examples/product-tile/product-tile-examples.module').then(m => m.ProductTileExamplesModule);
             case 'progress-indicator': return import('../examples/progress-indicator/progress-indicator-examples.module').then(m => m.ProgressIndicatorExamplesModule);
             case 'progress-stepper': return import('../examples/progress-stepper/progress-stepper-examples.module').then(m => m.ProgressExamplesModule);
             case 'progressbar': return import('../examples/progressbar/progressbar-examples.module').then(m => m.ProgressbarExamplesModule);

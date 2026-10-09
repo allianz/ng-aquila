@@ -1,0 +1,34 @@
+<nx-product-tile-group
+  aria-label="Choose your car insurance"
+  [(value)]="selectedProduct"
+  class="example__group"
+>
+  <nx-product-tile value="comfort" colorScheme="emphasis">
+    <span nxProductTileEyebrow>Recommended</span>
+    <span nxProductTileTitle>Comfort</span>
+    <span nxProductTileSubline>Everyday cover for your car</span>
+    <nx-price nxProductTilePrice [value]="42" prefix="from" />
+
+    <!-- None of this carries a product tile directive, so the tile puts it all in the body. -->
+    <p nxBodyText size="s" class="example__intro">
+      Cancel any time in the first 30 days and we refund the lot.
+    </p>
+
+    <ul nxList class="example__list">
+      <li nxListIcon="check">Third party liability</li>
+      <li nxListIcon="check">Partial coverage</li>
+      <li nxListIcon="check">Replacement car for 14 days</li>
+    </ul>
+
+    <dl class="example__facts">
+      <dt>Deductible</dt>
+      <dd>$300</dd>
+      <dt>Coverage</dt>
+      <dd>Worldwide</dd>
+    </dl>
+
+    <nx-link class="example__link"><a href="#">Read the full terms</a></nx-link>
+
+    <button nxProductTileSelectButton type="button"></button>
+  </nx-product-tile>
+</nx-product-tile-group>

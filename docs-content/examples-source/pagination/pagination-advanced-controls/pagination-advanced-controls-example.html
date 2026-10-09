@@ -1,0 +1,61 @@
+<div nxLayout="grid nopadding" class="nx-margin-bottom-m options">
+  <div nxRow>
+    <div nxCol="12,6">
+      <nx-formfield label="firstLastControls">
+        <nx-dropdown [(value)]="firstLastControls">
+          @for (item of controlDisplays; track item) {
+            <nx-dropdown-item [value]="item">{{ item }}</nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+
+    <div nxCol="12,6">
+      <nx-formfield label="prevNextControls">
+        <nx-dropdown [(value)]="prevNextControls">
+          @for (item of controlDisplays; track item) {
+            <nx-dropdown-item [value]="item">{{ item }}</nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="12,6">
+      <nx-formfield label="controlsPosition">
+        <nx-dropdown [(value)]="controlsPosition">
+          @for (item of controlsPositions; track item) {
+            <nx-dropdown-item [value]="item">{{ item }}</nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+
+    <div nxCol="12,6">
+      <nx-formfield label="alignment">
+        <nx-dropdown [(value)]="alignment">
+          @for (item of alignments; track item) {
+            <nx-dropdown-item [value]="item">{{ item }}</nx-dropdown-item>
+          }
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+</div>
+
+<nx-pagination
+  [count]="count"
+  [page]="page()"
+  [perPage]="perPage"
+  type="advanced"
+  [firstLastControls]="firstLastControls()"
+  [prevNextControls]="prevNextControls()"
+  [controlsPosition]="controlsPosition()"
+  [alignment]="alignment()"
+  (goPrev)="prevPage()"
+  (goNext)="nextPage()"
+  (goPage)="goToPage($event)"
+  ariaLabel="Configurable advanced pagination"
+>
+</nx-pagination>

@@ -5,6 +5,10 @@
 <h3 id="static-sidebar-with-actions" tabindex="-1" class="docs-markdown--h3">Static Sidebar with Actions</h3>
 <p class="docs-markdown--p">One possible content for the sidebar is a list of navigation links, in this case a list of <code>nxAction</code> items. The default width of <code>280px</code> can be overwritten by your own css like in the following example.</p>
 <div nx-docs-example="sidebar" config="{}">exampleID: sidebar</div>
+<h3 id="groups-and-dividers" tabindex="-1" class="docs-markdown--h3">Groups and dividers</h3>
+<p class="docs-markdown--p">Wrap related actions in an <code>&lt;nx-sidebar-group&gt;</code> to group them. The optional <code>label</code> shows a group header. Screen readers announce it as the name of the group. To separate items without a header, place an <code>&lt;nx-divider&gt;</code> between them (import <code>NxDividerModule</code> from <code>@allianz/ng-aquila/divider</code>).</p>
+<p class="docs-markdown--p">When the sidebar is collapsed, a group header turns into a divider line.</p>
+<div nx-docs-example="sidebar-group" config="{}">exampleID: sidebar-group</div>
 <h3 id="resizeable-side-navigation-with-tree" tabindex="-1" class="docs-markdown--h3">Resizeable Side navigation with Tree</h3>
 <p class="docs-markdown--p"><a href="./documentation/tree/overview">nxTree</a> is designed to work in conjunction with the Sidebar. It is heavily inspired my the Angular Material Flat Tree. For an in depth documentation see <a href="https://material.angular.io/components/tree/overview">material.angular.io</a>.</p>
 <p class="docs-markdown--p">A <code>&lt;nx-sidebar&gt;</code> can be resized by dragging the right edge when the option <code>resizeable</code> is set.</p>
@@ -19,6 +23,10 @@
 <div nx-docs-example="sidebar-methods" config="{}">exampleID: sidebar-methods</div>
 <div class="docs-a1">
 <h3 id="color-schemes" tabindex="-1" class="docs-markdown--h3">Color Schemes</h3>
+<div class="docs-deprecation-warning">
+  <strong>Deprecated: </strong>
+  The <code>colorScheme</code> input and the emphasis color scheme are deprecated. Use the default sidebar instead. Setting <code>colorScheme="emphasis"</code> still applies the emphasis styles, so existing usages keep working.
+</div>
 <p class="docs-markdown--p">Use the <code>colorScheme</code> input to switch between the default neutral background and the emphasis variant. The emphasis scheme highlights the sidebar with the dedicated emphasis tokens while keeping the same content structure.</p>
 <div nx-docs-example="sidebar-color-scheme" config="{}">exampleID: sidebar-color-scheme</div>
 </div>

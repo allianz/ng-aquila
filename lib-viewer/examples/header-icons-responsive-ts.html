@@ -18,7 +18,7 @@
   <span class="hljs-title class_">Component</span>,
   <span class="hljs-title class_">OnDestroy</span>,
   <span class="hljs-title class_">OnInit</span>,
-  <span class="hljs-title class_">ViewChild</span>,
+  viewChild,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">RouterLink</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/router&#x27;</span>;
 <span class="hljs-keyword">import</span> { merge, <span class="hljs-title class_">Subject</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
@@ -55,7 +55,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HeaderIconsResponsiveExampleComponent</span>
   <span class="hljs-keyword">implements</span> <span class="hljs-title class_">OnInit</span>, <span class="hljs-title class_">OnDestroy</span>
 {
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-title class_">NxMenuComponent</span>) menu!: <span class="hljs-title class_">NxMenuComponent</span>;
+  <span class="hljs-keyword">readonly</span> menu = viewChild.<span class="hljs-title function_">required</span>(<span class="hljs-title class_">NxMenuComponent</span>);
 
   <span class="hljs-keyword">protected</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subject</span>&lt;<span class="hljs-built_in">void</span>&gt;();
 
@@ -96,9 +96,9 @@
       .<span class="hljs-title function_">subscribe</span>(<span class="hljs-function">(<span class="hljs-params">viewType</span>) =&gt;</span> {
         <span class="hljs-keyword">if</span> (
           (viewType === <span class="hljs-string">&#x27;tablet&#x27;</span> || viewType === <span class="hljs-string">&#x27;desktop&#x27;</span>) &amp;&amp;
-          <span class="hljs-variable language_">this</span>.<span class="hljs-property">menu</span>.<span class="hljs-property">open</span>
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">menu</span>().<span class="hljs-property">open</span>
         ) {
-          <span class="hljs-variable language_">this</span>.<span class="hljs-property">menu</span>.<span class="hljs-title function_">toggle</span>();
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">menu</span>().<span class="hljs-title function_">toggle</span>();
         }
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">viewType</span> = viewType;
         <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">markForCheck</span>();

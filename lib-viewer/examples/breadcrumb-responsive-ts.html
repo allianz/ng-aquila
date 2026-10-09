@@ -1,0 +1,90 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxBreadcrumbComponent</span>,
+  <span class="hljs-title class_">NxBreadcrumbItemComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/breadcrumb&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  afterNextRender,
+  <span class="hljs-title class_">ChangeDetectorRef</span>,
+  <span class="hljs-title class_">Component</span>,
+  computed,
+  <span class="hljs-title class_">DestroyRef</span>,
+  <span class="hljs-title class_">ElementRef</span>,
+  inject,
+  signal,
+  viewChild,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">RouterLink</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/router&#x27;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">BreadcrumbLink</span> {
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">link</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Responsive breadcrumb
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;breadcrumb-responsive-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./breadcrumb-responsive-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./breadcrumb-responsive-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxBreadcrumbComponent</span>,
+    <span class="hljs-title class_">NxBreadcrumbItemComponent</span>,
+    <span class="hljs-title class_">NxIconModule</span>,
+    <span class="hljs-title class_">RouterLink</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BreadcrumbResponsiveExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">items</span>: <span class="hljs-keyword">readonly</span> <span class="hljs-title class_">BreadcrumbLink</span>[] = [
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Home&#x27;</span>, <span class="hljs-attr">link</span>: <span class="hljs-string">&#x27;#&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Insurance&#x27;</span>, <span class="hljs-attr">link</span>: <span class="hljs-string">&#x27;#&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Health Insurance&#x27;</span>, <span class="hljs-attr">link</span>: <span class="hljs-string">&#x27;#&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Supplementary Insurance&#x27;</span>, <span class="hljs-attr">link</span>: <span class="hljs-string">&#x27;#&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Dental Treatment&#x27;</span>, <span class="hljs-attr">link</span>: <span class="hljs-string">&#x27;#&#x27;</span> },
+    { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Tariff Overview&#x27;</span>, <span class="hljs-attr">link</span>: <span class="hljs-string">&#x27;#&#x27;</span> },
+  ];
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _cdr = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">ChangeDetectorRef</span>);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _container =
+    viewChild.<span class="hljs-property">required</span>&lt;<span class="hljs-title class_">ElementRef</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;&gt;(<span class="hljs-string">&#x27;container&#x27;</span>);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _list = viewChild.<span class="hljs-property">required</span>&lt;
+    <span class="hljs-title class_">NxBreadcrumbComponent</span>,
+    <span class="hljs-title class_">ElementRef</span>&lt;<span class="hljs-title class_">HTMLOListElement</span>&gt;
+  &gt;(<span class="hljs-string">&#x27;list&#x27;</span>, { <span class="hljs-attr">read</span>: <span class="hljs-title class_">ElementRef</span> });
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _lastIndex = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _maxCollapsed = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-property">length</span> - <span class="hljs-number">2</span>, <span class="hljs-number">0</span>);
+  <span class="hljs-keyword">readonly</span> collapsedCount = <span class="hljs-title function_">signal</span>(<span class="hljs-number">0</span>);
+
+  <span class="hljs-keyword">readonly</span> lastItem = <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>[<span class="hljs-variable language_">this</span>.<span class="hljs-property">_lastIndex</span>];
+  <span class="hljs-keyword">readonly</span> leadingItems = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">_lastIndex</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">collapsedCount</span>()),
+  );
+  <span class="hljs-keyword">readonly</span> hiddenItems = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span>
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">items</span>.<span class="hljs-title function_">slice</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">_lastIndex</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">collapsedCount</span>(), <span class="hljs-variable language_">this</span>.<span class="hljs-property">_lastIndex</span>),
+  );
+
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">const</span> destroyRef = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">DestroyRef</span>);
+
+    <span class="hljs-title function_">afterNextRender</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-keyword">const</span> observer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ResizeObserver</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_fit</span>());
+      observer.<span class="hljs-title function_">observe</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_container</span>().<span class="hljs-property">nativeElement</span>);
+      destroyRef.<span class="hljs-title function_">onDestroy</span>(<span class="hljs-function">() =&gt;</span> observer.<span class="hljs-title function_">disconnect</span>());
+    });
+  }
+
+  <span class="hljs-keyword">private</span> <span class="hljs-title function_">_fit</span>(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">const</span> list = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_list</span>().<span class="hljs-property">nativeElement</span>;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">collapsedCount</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">0</span>);
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">detectChanges</span>();
+    <span class="hljs-keyword">while</span> (
+      list.<span class="hljs-property">scrollWidth</span> &gt; list.<span class="hljs-property">clientWidth</span> &amp;&amp;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">collapsedCount</span>() &lt; <span class="hljs-variable language_">this</span>.<span class="hljs-property">_maxCollapsed</span>
+    ) {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">collapsedCount</span>.<span class="hljs-title function_">update</span>(<span class="hljs-function">(<span class="hljs-params">count</span>) =&gt;</span> count + <span class="hljs-number">1</span>);
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">_cdr</span>.<span class="hljs-title function_">detectChanges</span>();
+    }
+  }
+}

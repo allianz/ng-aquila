@@ -41,7 +41,16 @@ myDialogRef.<span class="hljs-title function_">close</span>(<span class="hljs-st
 <div nx-docs-example="modal-fixed-width" config="{}">exampleID: modal-fixed-width</div>
 <h3 id="modal-with-status" tabindex="-1" class="docs-markdown--h3">Modal with status</h3>
 <p class="docs-markdown--p">Below is an example of how to create a modal with status by using the <code>nxModalTitle</code></p>
- <div nx-docs-example="modal-status" config="{}">exampleID: modal-status</div>
+<div nx-docs-example="modal-status" config="{}">exampleID: modal-status</div>
+<h3 id="modal-with-custom-icon-in-header" tabindex="-1" class="docs-markdown--h3">Modal with custom icon in header</h3>
+<p class="docs-markdown--p">Below is an example of how to add a custom icon in the modal header by placing an <code>nx-icon</code> inside the <code>nxModalTitle</code>. The default title layout stacks the icon above the heading; to place it in front of the heading, override the title's <code>flex-direction</code> to <code>row</code> (as the example does with its <code>.custom-icon-title--inline</code> class).</p>
+<div class="docs-a1">
+<div nx-docs-example="modal-custom-icon" config="{}">exampleID: modal-custom-icon</div>
+</div>
+<div class="docs-hide-a1">
+<p class="docs-markdown--p">In NDBX, use <code>size=&quot;auto&quot;</code> so the icon follows the heading's font size. The fixed icon sizes are illustrative sizes there (<code>xl</code> and <code>2xl</code> are both 96px).</p>
+<div nx-docs-example="modal-custom-icon-ndbx" config="{}">exampleID: modal-custom-icon-ndbx</div>
+</div>
 <h3 id="fullscreen" tabindex="-1" class="docs-markdown--h3">Fullscreen</h3>
 <p class="docs-markdown--p">Set <code>fullscreen</code> to <code>true</code> to show the modal in fullscreen. When using <code>fullscreen</code> the <code>width</code>, <code>height</code>, <code>maxWidth</code> and <code>maxHeight</code> are overwritten and any <code>position</code> overrides are ignored.</p>
 <div nx-docs-example="modal-fullscreen" config="{}">exampleID: modal-fullscreen</div>

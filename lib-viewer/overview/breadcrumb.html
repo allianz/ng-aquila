@@ -6,10 +6,19 @@
 <h3 id="link-appearance" tabindex="-1" class="docs-markdown--h3">Link appearance</h3>
 <p class="docs-markdown--p">You can select the style of the breadcrumb via the <code>appearance</code> input.</p>
 <div nx-docs-example="breadcrumb-link" config="{}">exampleID: breadcrumb-link</div>
+<div class="docs-a1">
+<h3 id="type" tabindex="-1" class="docs-markdown--h3">Type</h3>
+<p class="docs-markdown--p">You can set the type of the breadcrumb via the <code>type</code> input, either <code>'secondary'</code> or <code>'primary'</code>. By default, the breadcrumb uses the <code>'secondary'</code> type.</p>
+<div nx-docs-example="breadcrumb-type" config="{}">exampleID: breadcrumb-type</div>
+</div>
 <h3 id="with-context-menu" tabindex="-1" class="docs-markdown--h3">With Context Menu</h3>
 <p class="docs-markdown--p">This example uses the <code>nxBreadcrumbItem</code> on a <code>button</code> to open a context menu.</p>
 <div nx-docs-example="breadcrumb-context-menu" config="{}">exampleID: breadcrumb-context-menu</div>
-<h3 id="negative-styling" tabindex="-1" class="docs-markdown--h3">Negative styling</h3>
+<h3 id="responsive" tabindex="-1" class="docs-markdown--h3">Responsive</h3>
+<p class="docs-markdown--p">The breadcrumb component itself does not collapse items. This example measures the available width with a <code>ResizeObserver</code> and collapses the items before the current page, starting with the closest one, into a &quot;...&quot; item once the trail no longer fits. Activating &quot;...&quot; opens a native <code>&lt;select&gt;</code> listing the hidden links, so the platform's own picker is used on mobile devices. Resize the container to try it.</p>
+<div nx-docs-example="breadcrumb-responsive" config="{}">exampleID: breadcrumb-responsive</div>
+<h3 id="inverse-styling" tabindex="-1" class="docs-markdown--h3">Inverse styling</h3>
+<p class="docs-markdown--p">Set the <code>inverse</code> input to use the breadcrumb on a dark background. It supersedes <code>negative</code>, which keeps working as an alias. <code>inverse</code> can be combined with the <code>'primary'</code> type.</p>
 <div nx-docs-example="breadcrumb-negative" config="{}">exampleID: breadcrumb-negative</div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">Note that the breadcrumb component should be always applied on a <code>&lt;ol&gt;</code> tag and wrapped in a <code>&lt;nav&gt;</code> with <code>aria-label='Breadcrumb'</code>. The breadcrumb items should wrapped in <code>&lt;li&gt;</code>. The currently active item is automatically marked with <code>aria-current='page'</code>. These best practices for breadcrumbs are already applied in the basic example above. You can find further information on the breadcrumb a11y practices <a href="https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html">here</a>.</p>

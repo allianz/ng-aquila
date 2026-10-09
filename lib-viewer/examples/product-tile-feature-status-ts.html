@@ -1,0 +1,50 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxListComponent</span>, <span class="hljs-title class_">NxListIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/list&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxPriceComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/price&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-variable constant_">NX_PRODUCT_TILE_IMPORTS</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/product-tile&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBodyTextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/text&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Product Tile With Feature Status Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;product-tile-feature-status-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./product-tile-feature-status-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./product-tile-feature-status-example.css&#x27;</span>],
+  <span class="hljs-attr">standalone</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxBodyTextComponent</span>,
+    <span class="hljs-title class_">NxIconComponent</span>,
+    <span class="hljs-title class_">NxListComponent</span>,
+    <span class="hljs-title class_">NxListIconComponent</span>,
+    <span class="hljs-title class_">NxPriceComponent</span>,
+    ...<span class="hljs-variable constant_">NX_PRODUCT_TILE_IMPORTS</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProductTileFeatureStatusExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> features = [
+    <span class="hljs-string">&#x27;Third party liability&#x27;</span>,
+    <span class="hljs-string">&#x27;Partial coverage&#x27;</span>,
+    <span class="hljs-string">&#x27;Full coverage&#x27;</span>,
+    <span class="hljs-string">&#x27;24/7 breakdown service&#x27;</span>,
+  ];
+
+  <span class="hljs-keyword">readonly</span> products = [
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;basic&#x27;</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Basic&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-number">24</span>,
+      <span class="hljs-attr">included</span>: [<span class="hljs-string">&#x27;Third party liability&#x27;</span>],
+    },
+    {
+      <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;comfort&#x27;</span>,
+      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Comfort&#x27;</span>,
+      <span class="hljs-attr">price</span>: <span class="hljs-number">42</span>,
+      <span class="hljs-attr">included</span>: [<span class="hljs-string">&#x27;Third party liability&#x27;</span>, <span class="hljs-string">&#x27;Partial coverage&#x27;</span>],
+    },
+    { <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;premium&#x27;</span>, <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Premium&#x27;</span>, <span class="hljs-attr">price</span>: <span class="hljs-number">68</span>, <span class="hljs-attr">included</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">features</span> },
+  ];
+
+  <span class="hljs-attr">selectedProduct</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+}

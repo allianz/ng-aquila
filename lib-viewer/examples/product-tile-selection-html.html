@@ -1,0 +1,22 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-product-tile-group</span>
+  <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Choose your car insurance&quot;</span>
+  [(<span class="hljs-attr">value</span>)]=<span class="hljs-string">&quot;selectedProduct&quot;</span>
+&gt;</span>
+  @for (product of products; track product.value) {
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-product-tile</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;product.value&quot;</span> [<span class="hljs-attr">carouselLabel</span>]=<span class="hljs-string">&quot;product.title&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxProductTileTitle</span>&gt;</span>{{ product.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxProductTileSubline</span>&gt;</span>{{ product.subline }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-price</span> <span class="hljs-attr">nxProductTilePrice</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;product.price&quot;</span> <span class="hljs-attr">prefix</span>=<span class="hljs-string">&quot;from&quot;</span> /&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">nxList</span>&gt;</span>
+        @for (feature of product.features; track feature) {
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">nxListIcon</span>=<span class="hljs-string">&quot;check&quot;</span>&gt;</span>{{ feature }}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxProductTileSelectButton</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-product-tile</span>&gt;</span>
+  }
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-product-tile-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Selected product: {{ selectedProduct ?? &#x27;none&#x27; }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

@@ -1,0 +1,22 @@
+<h3 nxHeadline="subsection-small" id="cover-headline">Choose your cover</h3>
+
+<nx-product-tile-group
+  aria-labelledby="cover-headline"
+  [(value)]="selectedProduct"
+>
+  @for (product of products; track product.value) {
+    <nx-product-tile [value]="product.value">
+      <span nxProductTileTitle>{{ product.title }}</span>
+      <span nxProductTileSubline>{{ product.subline }}</span>
+      <nx-price nxProductTilePrice [value]="product.price" prefix="from" />
+
+      <ul nxList>
+        @for (feature of product.features; track feature) {
+          <li nxListIcon="check">{{ feature }}</li>
+        }
+      </ul>
+
+      <button nxProductTileSelectButton type="button"></button>
+    </nx-product-tile>
+  }
+</nx-product-tile-group>

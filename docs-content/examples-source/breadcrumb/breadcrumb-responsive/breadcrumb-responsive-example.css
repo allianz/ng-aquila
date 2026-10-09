@@ -1,0 +1,27 @@
+.breadcrumb-resizable {
+  resize: horizontal;
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.breadcrumb-list > li {
+  flex-shrink: 0;
+}
+
+.breadcrumb-overflow {
+  position: relative;
+  display: inline-flex;
+}
+
+.breadcrumb-overflow:has(.breadcrumb-overflow__select:focus-visible) {
+  box-shadow: var(--focus-box-shadow);
+}
+
+.breadcrumb-overflow__select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font: inherit;
+}

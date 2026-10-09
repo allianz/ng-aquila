@@ -15,6 +15,8 @@ import { ModalBasicExampleComponent } from './modal-basic/modal-basic-example';
 import { ModalClosingExampleComponent } from './modal-closing/modal-closing-example';
 import { ModalClosingBehaviourExampleComponent } from './modal-closing-behaviour/modal-closing-behaviour-example';
 import { ModalContentActionsExampleComponent } from './modal-content-actions/modal-content-actions-example';
+import { ModalCustomIconExampleComponent } from './modal-custom-icon/modal-custom-icon-example';
+import { ModalCustomIconNdbxExampleComponent } from './modal-custom-icon-ndbx/modal-custom-icon-ndbx-example';
 import { ModalDataInjectionExampleComponent } from './modal-data-injection/modal-data-injection-example';
 import { ModalDefaultOptionsExampleComponent } from './modal-default-options/modal-default-options-example';
 import { ModalFixedWidthExampleComponent } from './modal-fixed-width/modal-fixed-width-example';
@@ -27,6 +29,8 @@ import { ModalWithDirectionExampleComponent } from './modal-with-direction/modal
 const EXAMPLES = [
   ModalAutofocusExampleComponent,
   ModalStatusExampleComponent,
+  ModalCustomIconExampleComponent,
+  ModalCustomIconNdbxExampleComponent,
   ModalUnsavedExampleComponent,
   ModalBasicExampleComponent,
   ModalClosingExampleComponent,
@@ -61,6 +65,8 @@ export class ModalExamplesModule {
     return {
       'modal-autofocus': ModalAutofocusExampleComponent,
       'modal-status': ModalStatusExampleComponent,
+      'modal-custom-icon': ModalCustomIconExampleComponent,
+      'modal-custom-icon-ndbx': ModalCustomIconNdbxExampleComponent,
       'modal-unsaved': ModalUnsavedExampleComponent,
       'modal-basic': ModalBasicExampleComponent,
       'modal-closing': ModalClosingExampleComponent,

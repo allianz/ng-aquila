@@ -12,6 +12,7 @@ import { SidebarA1OutputsExampleComponent } from './sidebar-a1-outputs/sidebar-a
 import { SidebarA1ResizeableExampleComponent } from './sidebar-a1-resizeable/sidebar-a1-resizeable-example';
 import { SidebarColorSchemeExampleComponent } from './sidebar-color-scheme/sidebar-color-scheme-example';
 import { SidebarFooterExampleComponent } from './sidebar-footer/sidebar-footer-example';
+import { SidebarGroupExampleComponent } from './sidebar-group/sidebar-group-example';
 import { SidebarMethodsExampleComponent } from './sidebar-methods/sidebar-methods-example';
 import { SidebarOutputsExampleComponent } from './sidebar-outputs/sidebar-outputs-example';
 import { SidebarResizeableExampleComponent } from './sidebar-resizeable/sidebar-resizeable-example';
@@ -20,6 +21,7 @@ const EXAMPLES = [
   SidebarColorSchemeExampleComponent,
   SidebarExampleComponent,
   SidebarFooterExampleComponent,
+  SidebarGroupExampleComponent,
   SidebarMethodsExampleComponent,
   SidebarOutputsExampleComponent,
   SidebarResizeableExampleComponent,
@@ -46,6 +48,7 @@ export class SidebarExamplesModule {
       'sidebar-color-scheme': SidebarColorSchemeExampleComponent,
       sidebar: SidebarExampleComponent,
       'sidebar-footer': SidebarFooterExampleComponent,
+      'sidebar-group': SidebarGroupExampleComponent,
       'sidebar-methods': SidebarMethodsExampleComponent,
       'sidebar-outputs': SidebarOutputsExampleComponent,
       'sidebar-resizeable': SidebarResizeableExampleComponent,

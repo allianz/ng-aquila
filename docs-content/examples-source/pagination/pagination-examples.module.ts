@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 
 import { PaginationA11yExampleComponent } from './pagination-a11y/pagination-a11y-example';
 import { PaginationAdvancedExampleComponent } from './pagination-advanced/pagination-advanced-example';
+import { PaginationAdvancedControlsExampleComponent } from './pagination-advanced-controls/pagination-advanced-controls-example';
 import { PaginationLocalizeExampleComponent } from './pagination-localize/pagination-localize-example';
 import { PaginationLocalizeAdvancedExampleComponent } from './pagination-localize-advanced/pagination-localize-advanced-example';
 import { PaginationSimpleExampleComponent } from './pagination-simple/pagination-simple-example';
@@ -13,6 +14,7 @@ import { PaginationSliderExampleComponent } from './pagination-slider/pagination
 
 const EXAMPLES = [
   PaginationAdvancedExampleComponent,
+  PaginationAdvancedControlsExampleComponent,
   PaginationLocalizeExampleComponent,
   PaginationLocalizeAdvancedExampleComponent,
   PaginationSimpleExampleComponent,
@@ -34,6 +36,8 @@ export class PaginationExamplesModule {
   static components() {
     return {
       'pagination-advanced': PaginationAdvancedExampleComponent,
+      'pagination-advanced-controls':
+        PaginationAdvancedControlsExampleComponent,
       'pagination-localize': PaginationLocalizeExampleComponent,
       'pagination-localize-advanced':
         PaginationLocalizeAdvancedExampleComponent,
