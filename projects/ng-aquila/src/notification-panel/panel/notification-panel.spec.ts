@@ -98,15 +98,20 @@ describe('NxLinkComponent', () => {
 @Component({
   selector: 'test-component',
   template: `
-    <button nxIconButton="small-medium" [nxNotificationPanelTriggerFor]="panel1" aria-label="hi">
+    <button
+      nxIconButton
+      size="small-medium"
+      [nxNotificationPanelTriggerFor]="panel1"
+      aria-label="hi"
+    >
       <nx-icon name="chevron-down"></nx-icon>
     </button>
 
     <ng-template #panel1>
       <nx-notification-panel>
         <nx-notification-header>
-          <h3 nxCopytext="large" class="nx-margin-0">Unread</h3>
-          <button nxPlainButton="small" type="button">
+          <h3 nxCopytext="medium" class="nx-margin-0">Unread</h3>
+          <button nxPlainButton size="s" type="button">
             Mark all as read <nx-icon name="check"></nx-icon>
           </button>
         </nx-notification-header>
@@ -125,7 +130,7 @@ describe('NxLinkComponent', () => {
           </nx-notification-item-content>
         </a>
         <nx-notification-header>
-          <h3 nxCopytext="large" class="nx-margin-0">Read</h3>
+          <h3 nxCopytext="medium" class="nx-margin-0">Read</h3>
         </nx-notification-header>
         <a nx-notification-panel-item read routerLink="/documentation/button">
           <nx-notification-item-metadata>Offers &middot; Yesterday </nx-notification-item-metadata>

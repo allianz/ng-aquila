@@ -33,6 +33,17 @@ If you need more actions inside a notification set the property `clickable` to f
 
 <!-- example(notification-panel-actions) -->
 
+<div class="docs-hide-ndbx">
+
+## Empty state
+
+If there are no notifications to show, you can display a message instead of the list.
+Try adding/removing notifications to see the empty state in action.
+
+<!-- example(notification-panel-empty) -->
+
+</div>
+
 ## Global Settings
 
 If you want to use a custom scroll strategy, you can use the `NX_NOTIFICATION_PANEL_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:

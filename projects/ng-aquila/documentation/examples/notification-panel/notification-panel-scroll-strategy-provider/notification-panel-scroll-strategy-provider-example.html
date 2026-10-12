@@ -1,5 +1,6 @@
 <button
-  nxIconButton="small tertiary"
+  nxIconButton="tertiary"
+  size="s"
   class="nx-margin-0"
   [nxNotificationPanelTriggerFor]="panel1"
   title="Notifications"
@@ -11,10 +12,9 @@
 <ng-template #panel1>
   <nx-notification-panel>
     <nx-notification-header>
-      <h3 nxCopytext="large" class="nx-font-weight-semibold">Unread</h3>
-      <button nxPlainButton="small" type="button">
+      <h3 nxCopytext="medium" class="nx-font-weight-semibold">Unread</h3>
+      <button nxPlainButton variant="secondary" size="s" type="button">
         Mark all as read
-        <nx-icon name="check" nxIconPositionEnd aria-hidden="true"></nx-icon>
       </button>
     </nx-notification-header>
 
@@ -36,7 +36,8 @@
       <nx-notification-item-actions>
         <nx-link><a href="#file-link">Edit file</a></nx-link>
         <button
-          nxPlainButton="small"
+          nxPlainButton
+          size="s"
           type="button"
           title="Delete"
           aria-label="Delete"

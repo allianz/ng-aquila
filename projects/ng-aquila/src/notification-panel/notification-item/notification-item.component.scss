@@ -28,6 +28,10 @@
     display: flex;
     align-items: center;
     color: v(notification-panel-item-secondary-color);
+
+    nx-icon {
+      color: v(notification-panel-item-primary-color);
+    }
   }
 
   nx-notification-item-content {
