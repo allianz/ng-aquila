@@ -210,7 +210,7 @@ For the components to use your desired icons for the essential icons list you ca
 
 ### Register icons service
 
-Custom icons can be registered via the `NxIconRegistry` injectable service. With the `NxIconRegistry` you can associate icon names with SVG, URL and HTML strings and define a CSS font class. When you are registering an icon by URL please make sure to import the `HttpClientModule` from `@angular/common/http`.
+Custom icons can be registered via the `NxIconRegistry` injectable service. With the `NxIconRegistry` you can associate icon names with SVG, URL and HTML strings and define a CSS font class. When you are registering an icon by URL, add `provideHttpClient()` from `@angular/common/http` to your application's providers.
 
 💡 When registering multiple font sets,
 you can use `font` attribute to specify font set (`<nx-icon font="FONT_SET_NAME" name="ICON_NAME">`)
