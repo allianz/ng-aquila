@@ -1,3 +1,4 @@
+import { NxDropdownModule } from '@allianz/ng-aquila/dropdown';
 import { NxInputDirective, NxInputModule } from '@allianz/ng-aquila/input';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
@@ -264,6 +265,19 @@ describe('NxNaturalLanguageFormComponent', () => {
       expect(inputId).toBe(labelForId);
     }));
 
+    it('omits the for attribute on the label when a dropdown is projected', fakeAsync(() => {
+      createTestComponent(NaturalLanguageFormDropdownComponent);
+      tick();
+
+      const label = fixture.debugElement.query(By.css('nx-word>div>label'));
+      const dropdown = fixture.debugElement.query(By.css('nx-dropdown'));
+
+      expect(label.nativeElement.hasAttribute('for')).toBe(false);
+      expect(dropdown.nativeElement.getAttribute('aria-labelledby')).toContain(
+        label.nativeElement.id,
+      );
+    }));
+
     it('assigns aria-describedby to input element', fakeAsync(() => {
       createTestComponent(NaturalLanguageFormErrorInNlfComponent);
       tick();
@@ -357,6 +371,25 @@ describe('NxNaturalLanguageFormComponent', () => {
   imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
 })
 class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
+
+@Component({
+  selector: 'test-natural-language-form-dropdown-component',
+  template: `
+    <nx-natural-language-form>
+      A Word
+      <nx-word label="Label for the dropdown">
+        <nx-dropdown [(ngModel)]="value">
+          <nx-dropdown-item value="a">A</nx-dropdown-item>
+          <nx-dropdown-item value="b">B</nx-dropdown-item>
+        </nx-dropdown>
+      </nx-word>
+      with copy.
+    </nx-natural-language-form>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxNaturalLanguageFormModule, FormsModule, NxDropdownModule],
+})
+class NaturalLanguageFormDropdownComponent extends NaturalLanguageFormTest {}
 
 @Component({
   selector: 'test-natural-language-form-error-component',
