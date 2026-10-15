@@ -30,6 +30,8 @@ import {
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
+import { onTestFinished } from 'vitest';
+import { userEvent } from 'vitest/browser';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { SurfaceProbeComponent } from '../surface/surface.test-utils';
@@ -717,6 +719,22 @@ describe('NxPopoverTriggerDirective', () => {
       expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledTimes(2);
     }));
 
+    it('should release the focus trap and focus monitoring when closed by scroll', fakeAsync(() => {
+      createTestComponent(PopoverClickComponent);
+      click();
+      const trigger = fixture.componentInstance.triggerInstance as any;
+      const destroySpy = vi.spyOn(trigger._focusTrap, 'destroy');
+      const stopSpy = vi.spyOn(trigger._focusMonitor, 'stopMonitoring');
+      const monitored = [...trigger._monitoredElements];
+      expect(monitored.length).toBeGreaterThan(0);
+
+      dispatchFakeEvent(document, 'scroll');
+
+      expect(destroySpy).toHaveBeenCalled();
+      monitored.forEach((el) => expect(stopSpy).toHaveBeenCalledWith(el));
+      expect(trigger._monitoredElements).toEqual([]);
+    }));
+
     it('should be closed on scroll', fakeAsync(() => {
       createTestComponent(ScrollablePopover);
       vi.spyOn(fixture.componentInstance.triggerInstance.changeShow, 'emit').mockReturnValue(
@@ -810,6 +828,185 @@ describe('NxPopoverTriggerDirective', () => {
       expect(buttonNativeElement.focus).toHaveBeenCalled();
       flush();
     }));
+  });
+
+  // Real key presses: synthetic events skip default actions like scrolling and button activation.
+  describe('focus restoration with real keyboard input', () => {
+    let focusWhenRemoved: Element | null | undefined;
+
+    async function openWithKeyboard(trigger: HTMLElement, key: string) {
+      trigger.focus();
+      await userEvent.keyboard(key);
+      await vi.waitFor(() =>
+        expect(getPopoverContent()?.contains(_getFocusedElementPierceShadowDom())).toBe(true),
+      );
+      focusWhenRemoved = undefined;
+      testInstance.popoverInstance.closed.subscribe(() => {
+        focusWhenRemoved = _getFocusedElementPierceShadowDom();
+      });
+    }
+
+    async function expectClosedWithFocusOn(trigger: HTMLElement) {
+      await vi.waitFor(() => expect(getPopoverContent()).toBeNull());
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      fixture.detectChanges();
+      expect(getPopoverContent()).toBeNull();
+      expect(focusWhenRemoved).toBe(trigger);
+      expect(_getFocusedElementPierceShadowDom()).toBe(trigger);
+    }
+
+    describe.each([
+      ['button trigger', 'button'],
+      ['non-button trigger', 'div'],
+    ] as const)('%s', (_triggerName, triggerElement) => {
+      let trigger: HTMLElement;
+
+      beforeEach(() => {
+        const keyboardFixture = TestBed.createComponent(PopoverKeyboardComponent);
+        keyboardFixture.componentInstance.triggerElement = triggerElement;
+        keyboardFixture.detectChanges();
+        fixture = keyboardFixture;
+        testInstance = keyboardFixture.componentInstance;
+        trigger = keyboardFixture.nativeElement.querySelector('.trigger');
+      });
+
+      // Space is left out for <button>: if focus hasn't moved into the popover by keyup, the native click closes it again.
+      it.each(
+        triggerElement === 'button'
+          ? [['Enter', '{Enter}']]
+          : [
+              ['Space', ' '],
+              ['Enter', '{Enter}'],
+            ],
+      )('opens with %s, stays open and does not scroll the page', async (_, key) => {
+        await openWithKeyboard(trigger, key);
+        await new Promise((resolve) => setTimeout(resolve, 50));
+        expect(getPopoverContent()).not.toBeNull();
+        expect(window.scrollY).toBe(0);
+      });
+
+      it.each([
+        ['Space', ' '],
+        ['Enter', '{Enter}'],
+      ])('closes with %s on the close button and returns focus', async (_, key) => {
+        await openWithKeyboard(trigger, '{Enter}');
+        await userEvent.tab();
+        expect(_getFocusedElementPierceShadowDom()).toBe(getCloseIcon());
+
+        await userEvent.keyboard(key);
+
+        await expectClosedWithFocusOn(trigger);
+        expect(window.scrollY).toBe(0);
+      });
+
+      it('closes with Escape and returns focus', async () => {
+        await openWithKeyboard(trigger, '{Enter}');
+        await userEvent.keyboard('{Escape}');
+        await expectClosedWithFocusOn(trigger);
+      });
+
+      it('does not take focus away from an element clicked outside', async () => {
+        await openWithKeyboard(trigger, '{Enter}');
+        const outside: HTMLInputElement = fixture.nativeElement.querySelector('input');
+
+        await userEvent.click(outside);
+
+        await vi.waitFor(() => expect(getPopoverContent()).toBeNull());
+        await new Promise((resolve) => setTimeout(resolve, 50));
+        expect(document.activeElement).toBe(outside);
+      });
+    });
+
+    describe('trigger inside shadow DOM', () => {
+      beforeEach(() => createTestComponent(PopoverClickShadowDomComponent));
+
+      it('closes with Escape and returns focus into the shadow root', async () => {
+        await openWithKeyboard(buttonNativeElement, '{Enter}');
+        await userEvent.keyboard('{Escape}');
+        await expectClosedWithFocusOn(buttonNativeElement);
+      });
+
+      it('closes with Space on the close button and returns focus into the shadow root', async () => {
+        await openWithKeyboard(buttonNativeElement, '{Enter}');
+        await userEvent.tab();
+        await userEvent.keyboard(' ');
+        await expectClosedWithFocusOn(buttonNativeElement);
+      });
+    });
+
+    describe('focus inside shadow DOM', () => {
+      let trigger: HTMLElement;
+
+      function createKeyboardComponent<T extends PopoverTest>(component: Type<T>) {
+        fixture = TestBed.createComponent(component);
+        fixture.detectChanges();
+        testInstance = fixture.componentInstance;
+        trigger = fixture.nativeElement.querySelector('.trigger');
+      }
+
+      it('returns focus when a web component inside the popover is focused', async () => {
+        createKeyboardComponent(PopoverWithShadowDomContentComponent);
+        await openWithKeyboard(trigger, '{Enter}');
+        const innerInput = overlayContainer
+          .getContainerElement()
+          .querySelector('test-shadow-dom-input')!
+          .shadowRoot!.querySelector('input')!;
+        innerInput.focus();
+        expect(_getFocusedElementPierceShadowDom()).toBe(innerInput);
+
+        await userEvent.keyboard('{Escape}');
+
+        await expectClosedWithFocusOn(trigger);
+      });
+
+      it('returns focus when the overlay container lives inside a shadow root', async () => {
+        const host = document.createElement('div');
+        const container = overlayContainer.getContainerElement();
+        document.body.appendChild(host);
+        host.attachShadow({ mode: 'open' }).appendChild(container);
+        onTestFinished(() => {
+          document.body.appendChild(container);
+          host.remove();
+        });
+        createKeyboardComponent(PopoverKeyboardComponent);
+        await openWithKeyboard(trigger, '{Enter}');
+
+        await userEvent.keyboard('{Escape}');
+
+        await expectClosedWithFocusOn(trigger);
+      });
+    });
+
+    it('returns focus when closed while focus is in a nested popover from lazy content', async () => {
+      const nestedFixture = TestBed.createComponent(NestedPopoverComponent);
+      nestedFixture.detectChanges();
+      const outerTrigger: HTMLElement = nestedFixture.nativeElement.querySelector('.trigger');
+      outerTrigger.focus();
+      await userEvent.keyboard('{Enter}');
+      const innerTrigger = await vi.waitFor(() =>
+        overlayContainer.getContainerElement().querySelector<HTMLElement>('.inner-trigger')!,
+      );
+      innerTrigger.focus();
+      await userEvent.keyboard('{Enter}');
+      await vi.waitFor(() =>
+        expect(
+          overlayContainer.getContainerElement().querySelectorAll('.nx-popover__content'),
+        ).toHaveLength(2),
+      );
+      const innerContent = overlayContainer
+        .getContainerElement()
+        .querySelectorAll('.nx-popover__content')[1];
+      await vi.waitFor(() =>
+        expect(innerContent.contains(_getFocusedElementPierceShadowDom())).toBe(true),
+      );
+
+      nestedFixture.componentInstance.outer.close();
+
+      expect(
+        overlayContainer.getContainerElement().querySelector('.nx-popover__content'),
+      ).toBeNull();
+      expect(_getFocusedElementPierceShadowDom()).toBe(outerTrigger);
+    });
   });
 
   describe('a11y', () => {
@@ -1494,6 +1691,82 @@ class I18nTest extends PopoverTest {}
   imports: [OverlayModule, NxPopoverModule, NxFormfieldModule, NxInputModule],
 })
 class PopoverDivTrigger extends PopoverTest {}
+
+@Component({
+  selector: 'test-popover-keyboard',
+  template: `
+    @if (triggerElement === 'button') {
+      <button class="trigger" [nxPopoverTriggerFor]="popover" nxPopoverTrigger="click">
+        Trigger
+      </button>
+    } @else {
+      <div class="trigger" tabindex="0" [nxPopoverTriggerFor]="popover" nxPopoverTrigger="click">
+        Trigger
+      </div>
+    }
+    <input aria-label="outside" />
+    <div style="height: 300vh"></div>
+    <nx-popover #popover>
+      <span>Content</span>
+    </nx-popover>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxPopoverModule],
+})
+class PopoverKeyboardComponent extends PopoverTest {
+  triggerElement: 'button' | 'div' = 'button';
+}
+
+@Component({
+  selector: 'test-shadow-dom-input',
+  template: `<input aria-label="inside shadow DOM" />`,
+  encapsulation: ViewEncapsulation.ShadowDom,
+})
+class ShadowDomInputComponent {}
+
+@Component({
+  selector: 'test-popover-with-shadow-dom-content',
+  template: `
+    <button class="trigger" [nxPopoverTriggerFor]="popover" nxPopoverTrigger="click">
+      Trigger
+    </button>
+    <nx-popover #popover>
+      <test-shadow-dom-input />
+    </nx-popover>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxPopoverModule, ShadowDomInputComponent],
+})
+class PopoverWithShadowDomContentComponent extends PopoverTest {}
+
+@Component({
+  selector: 'test-nested-popover',
+  template: `
+    <button
+      class="trigger"
+      #outer="nxPopoverTrigger"
+      [nxPopoverTriggerFor]="outerPopover"
+      nxPopoverTrigger="click"
+    >
+      Outer
+    </button>
+    <nx-popover #outerPopover>
+      <ng-template nxPopoverContent>
+        <button class="inner-trigger" [nxPopoverTriggerFor]="innerPopover" nxPopoverTrigger="click">
+          Inner
+        </button>
+      </ng-template>
+    </nx-popover>
+    <nx-popover #innerPopover>
+      <span>Inner content</span>
+    </nx-popover>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxPopoverModule],
+})
+class NestedPopoverComponent {
+  @ViewChild('outer') outer!: NxPopoverTriggerDirective;
+}
 
 @Component({
   selector: 'test-popover-width-component',

@@ -27,6 +27,7 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Directive,
+  DOCUMENT,
   ElementRef,
   EmbeddedViewRef,
   EventEmitter,
@@ -140,7 +141,9 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
   private _positionStrategy!: PositionStrategy;
   private _embeddedViewRef!: EmbeddedViewRef<any> | null;
   /** The class that traps and manages focus within the popover. */
-  private _focusTrap!: ConfigurableFocusTrap;
+  private _focusTrap?: ConfigurableFocusTrap;
+
+  private _monitoredElements: HTMLElement[] = [];
   /** Element that was focused before the Popover was opened. Save this to restore upon close. */
   private _elementFocusedBeforePopoverWasOpened: HTMLElement | null = null;
   private readonly _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
@@ -169,6 +172,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
 
   /** @docs-private */
   id = inject(IdGenerationService).nextId('nx-popover');
+
+  private readonly _document = inject(DOCUMENT);
 
   /** An event is emitted if the visibility status of the popover changes. */
   @Output('nxPopoverShowChange') readonly changeShow = new EventEmitter<boolean>();
@@ -468,11 +473,10 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         this._focusTrap = this._focusTrapFactory.create(element);
 
         this._elementFocusedBeforePopoverWasOpened = this.elementRef.nativeElement;
-        this._focusMonitor.monitor(element.querySelector('.nx-popover__content')!);
-        const closeIcon: HTMLElement = element.querySelector('.nx-popover__close-icon')!;
-        if (closeIcon) {
-          this._focusMonitor.monitor(closeIcon);
-        }
+        const content: HTMLElement = element.querySelector('.nx-popover__content')!;
+        const closeIcon: HTMLElement | null = element.querySelector('.nx-popover__close-icon');
+        this._monitoredElements = closeIcon ? [content, closeIcon] : [content];
+        this._monitoredElements.forEach((el) => this._focusMonitor.monitor(el));
 
         setTimeout(() => {
           // prevent page scroll, when it lose focus from trigger element.
@@ -498,7 +502,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
    * focus the popover instead.
    */
   private _autoFocusFirstTabbableElement(element: HTMLElement) {
-    this._focusTrap.focusInitialElementWhenReady().then((hasMovedFocus) => {
+    this._focusTrap!.focusInitialElementWhenReady().then((hasMovedFocus) => {
       // If we didn't find any focusable elements inside the popover, focus the
       // container so the user can't tab into other elements behind it.
       if (!hasMovedFocus) {
@@ -512,14 +516,14 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
   // on the popover component
   private closePopover(): void {
     if (this.overlayRef!.hasAttached()) {
-      if (this.trigger() !== 'hover') {
-        const element = this.getPopoverContainer();
-        this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__content')!);
-        this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__close-icon')!);
-
-        setTimeout(() => {
+      const managesFocus = this.trigger() !== 'hover';
+      if (managesFocus) {
+        const element = this.getPopoverContainer()!;
+        this._releaseFocusResources();
+        // Before detaching, so focus never falls back to <body> (freezes Windows Narrator).
+        if (this._isFocusOnBody() || this._isFocusIn(element)) {
           this._returnFocusAfterPopover();
-        });
+        }
       }
 
       // Reset margin before detach so CDK's position strategy isn't affected on next open
@@ -527,10 +531,18 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
       this.overlayRef!.detach();
       this._embeddedViewRef = null;
 
-      if (this._focusTrap) {
-        this._focusTrap.destroy();
+      // Child overlays opened from the popover (e.g. a nested popover) aren't inside it, but are torn down with it.
+      if (managesFocus && this._isFocusOnBody()) {
+        this._returnFocusAfterPopover();
       }
     }
+  }
+
+  private _releaseFocusResources(): void {
+    this._monitoredElements.forEach((el) => this._focusMonitor.stopMonitoring(el));
+    this._monitoredElements = [];
+    this._focusTrap?.destroy();
+    this._focusTrap = undefined;
   }
 
   private getScrollStrategyFactory(
@@ -611,6 +623,12 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
         // This is an exception: when the popover is closed by a scrolling event,
         // then only the detached method is called but the show state variable remains unchanged.
         if (this.show) {
+          // closePopover() is a no-op once detached, so release what it would have.
+          this._releaseFocusResources();
+          this._embeddedViewRef = null;
+          if (this.trigger() !== 'hover' && this._isFocusOnBody()) {
+            this._returnFocusAfterPopover();
+          }
           this.show = false;
         }
         this.changeShow.emit(this._show);
@@ -721,6 +739,17 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy {
     if (toFocus && typeof toFocus.focus === 'function') {
       this._focusMonitor.focusVia(toFocus, this.popover()?._lastFocusOrigin() ?? null);
     }
+  }
+
+  private _isFocusOnBody(): boolean {
+    const focused = this._document.activeElement;
+    return !focused || focused === this._document.body;
+  }
+
+  private _isFocusIn(element: HTMLElement): boolean {
+    // The root's activeElement is retargeted to the element's own tree, so a focused web component inside it still counts.
+    const focused = (element.getRootNode() as Document | ShadowRoot).activeElement;
+    return !!focused && element.contains(focused);
   }
 
   /** Returns the main popover container of the injected content. */
