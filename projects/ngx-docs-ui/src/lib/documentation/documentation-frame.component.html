@@ -1,5 +1,5 @@
 @if (!hideNavigation) {
-  <header nx-header>
+  <header nx-header class="documentation-header">
     @if (showAnnouncement) {
       <nx-header-row>
         <nx-error appearance="text">
@@ -18,13 +18,17 @@
         <nx-link>
           <a [routerLink]="'/welcome'">
             <figure nxFigure>
-              <img
-                class="documentation-header__main-logo"
-                [class.documentation-header__main-logo--dark]="isA1DarkTheme()"
-                src="{{ logoPath.logoWithTitlePath }}"
-                alt="Brand Logo"
-                role="none"
-              />
+              @if (_isHalloweenTheme()) {
+                <span class="documentation-header__halloween-logo" role="none">🎃</span>
+              } @else {
+                <img
+                  class="documentation-header__main-logo"
+                  [class.documentation-header__main-logo--dark]="isA1DarkTheme()"
+                  src="{{ logoPath.logoWithTitlePath }}"
+                  alt="Brand Logo"
+                  role="none"
+                />
+              }
             </figure>
           </a>
         </nx-link>
@@ -131,3 +135,109 @@
 @if (showThemingSidebar) {
   <nxv-css-var-sidebar></nxv-css-var-sidebar>
 }
+
+@if (_showHalloweenFlyby()) {
+  <div class="documentation-halloween-flyby" aria-hidden="true">
+    <span>👻</span>
+    <span>💀</span>
+    <span>😱</span>
+    <span>🎃</span>
+    <span>🦇</span>
+    <span>🕷️</span>
+    <span>🧟</span>
+    <span>🧛</span>
+    <span>👹</span>
+    <span>🧙</span>
+    <span>🍬</span>
+    <span>🕸️</span>
+    <span>
+      <svg viewBox="0 -25 240 165" focusable="false">
+        <!-- scarf -->
+        <path d="M128 54 Q104 40 78 52 Q100 58 120 66 Z" fill="#e0452f" />
+        <!-- tail -->
+        <path
+          d="M110 80 Q80 86 82 58 Q83 46 95 50"
+          fill="none"
+          stroke="#2b2438"
+          stroke-width="7"
+          stroke-linecap="round"
+        />
+        <!-- broom bristles -->
+        <path d="M52 94 L10 80 L4 100 L12 120 L52 108 Z" fill="#d9a441" />
+        <path
+          d="M50 96 L14 86 M50 101 L9 100 M50 106 L14 114"
+          stroke="#a9742a"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+        <!-- broom handle -->
+        <line
+          x1="50"
+          y1="101"
+          x2="226"
+          y2="76"
+          stroke="#8b5a2b"
+          stroke-width="6"
+          stroke-linecap="round"
+        />
+        <rect x="46" y="92" width="8" height="18" rx="2" fill="#5a3a1a" />
+        <!-- legs -->
+        <path
+          d="M118 86 Q114 104 108 114 M130 86 Q130 104 126 116"
+          fill="none"
+          stroke="#2b2438"
+          stroke-width="9"
+          stroke-linecap="round"
+        />
+        <ellipse cx="106" cy="116" rx="8" ry="4.5" fill="#2b2438" />
+        <ellipse cx="125" cy="118" rx="8" ry="4.5" fill="#2b2438" />
+        <!-- body -->
+        <ellipse cx="127" cy="68" rx="19" ry="25" transform="rotate(8 127 68)" fill="#2b2438" />
+        <ellipse cx="129" cy="72" rx="9" ry="14" fill="#4a3d63" />
+        <!-- arm and hand on the handle -->
+        <path
+          d="M136 58 Q156 66 162 84"
+          fill="none"
+          stroke="#2b2438"
+          stroke-width="8"
+          stroke-linecap="round"
+        />
+        <circle cx="163" cy="85" r="5.5" fill="#2b2438" />
+        <!-- head -->
+        <path d="M126 28 L127 6 L142 21 Z M144 21 L158 6 L159 30 Z" fill="#2b2438" />
+        <path d="M130 24 L130 12 L139 21 Z M147 21 L154 12 L155 26 Z" fill="#e58aa6" />
+        <circle cx="143" cy="38" r="18" fill="#2b2438" />
+        <!-- eyes -->
+        <ellipse cx="136" cy="37" rx="4.5" ry="5.5" fill="#f5d442" />
+        <ellipse cx="151" cy="37" rx="4.5" ry="5.5" fill="#f5d442" />
+        <ellipse cx="137" cy="37" rx="1.4" ry="4.5" fill="#1a1426" />
+        <ellipse cx="152" cy="37" rx="1.4" ry="4.5" fill="#1a1426" />
+        <!-- nose, mouth, whiskers -->
+        <path d="M141 44 L147 44 L144 48 Z" fill="#e58aa6" />
+        <path
+          d="M144 48 Q144 53 139 53 M144 48 Q144 53 149 53"
+          fill="none"
+          stroke="#e58aa6"
+          stroke-width="1.5"
+        />
+        <path
+          d="M132 47 L118 44 M132 50 L118 52 M156 47 L170 44 M156 50 L170 52"
+          stroke="#cfc6e0"
+          stroke-width="1.2"
+          stroke-linecap="round"
+        />
+        <!-- witch hat -->
+        <ellipse cx="143" cy="23" rx="29" ry="6" fill="#5b2a86" />
+        <path d="M127 22 Q142 -2 164 -22 Q160 6 160 22 Z" fill="#6f35a3" />
+        <path d="M128 17 Q144 21 160 16 L160 22 Q144 26 127 22 Z" fill="#f0a030" />
+      </svg>
+    </span>
+  </div>
+}
+
+<ng-template #hiddenThemeToast>
+  <span class="cdk-visually-hidden">You found an easter egg! </span>
+  <span aria-hidden="true">🎃👻</span>
+  Boo! A spooky new theme has crept into the theme switcher... dare to try "A1 Halloween"?
+  <span aria-hidden="true">🦇🕸️</span>
+</ng-template>

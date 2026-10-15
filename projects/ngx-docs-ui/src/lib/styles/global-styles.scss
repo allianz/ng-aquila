@@ -15,3 +15,202 @@
   font-weight: normal;
   font-display: swap;
 }
+
+// Halloween decorations, toggled by the documentation frame via `nxv-halloween` on <body>
+// plays once whenever the class is added, so the fog is only a short intro
+@keyframes nxv-halloween-fog {
+  0% {
+    opacity: 0;
+    transform: translate(0, 20%);
+  }
+
+  25%,
+  65% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-25%, -5%);
+  }
+}
+
+body.nxv-halloween {
+  &::before,
+  &::after {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 200%;
+    background-repeat: repeat-x;
+    background-size: 50% 100%;
+    filter: blur(24px);
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+    content: '';
+  }
+
+  &::before {
+    height: 65vh;
+    background-image:
+      radial-gradient(ellipse 20% 50% at 12% 70%, #fbeedd, transparent),
+      radial-gradient(ellipse 24% 42% at 45% 85%, #fbeedd, transparent),
+      radial-gradient(ellipse 18% 55% at 78% 65%, #fbeedd, transparent);
+    animation: nxv-halloween-fog 11s ease-in-out 1;
+  }
+
+  &::after {
+    height: 50vh;
+    background-image:
+      radial-gradient(ellipse 22% 48% at 28% 80%, #c9b3e6, transparent),
+      radial-gradient(ellipse 16% 52% at 62% 70%, #c9b3e6, transparent),
+      radial-gradient(ellipse 20% 44% at 92% 85%, #c9b3e6, transparent);
+    animation: nxv-halloween-fog 14s ease-in-out 1 reverse;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+@keyframes nxv-halloween-flyby {
+  from {
+    transform: translate(var(--x0), var(--y0)) rotate(var(--r0));
+  }
+
+  50% {
+    transform: translate(calc((var(--x0) + var(--x1)) / 2), calc(var(--y0) - 8vh)) rotate(0deg);
+  }
+
+  to {
+    transform: translate(var(--x1), var(--y1)) rotate(var(--r1));
+  }
+}
+
+.documentation-halloween-flyby {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  overflow: hidden;
+  pointer-events: none;
+
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 100px;
+    line-height: 1;
+    animation: nxv-halloween-flyby 7s ease-in-out both;
+    animation-delay: var(--delay);
+
+    svg {
+      display: block;
+      width: 2em;
+      height: auto;
+    }
+  }
+
+  // delay, x0, x1, y0, y1, r0, r1, font-size
+  $flyby: (
+    (0.5s, -15vw, 115vw, 70vh, 20vh, -15deg, 15deg, 110px),
+    (1.5s, 115vw, -15vw, 25vh, 65vh, 20deg, -20deg, 90px),
+    (2.5s, -15vw, 115vw, 50vh, 85vh, 10deg, -25deg, 130px),
+    (3.5s, 115vw, -15vw, 85vh, 40vh, -20deg, 25deg, 100px),
+    (4.5s, -15vw, 115vw, 15vh, 55vh, 0deg, 0deg, 80px),
+    (5.5s, 115vw, -15vw, 60vh, 10vh, 15deg, -15deg, 120px),
+    (6.5s, -15vw, 115vw, 80vh, 45vh, -10deg, 20deg, 140px),
+    (7.5s, 115vw, -15vw, 35vh, 75vh, 25deg, -10deg, 95px),
+    (8.5s, -15vw, 115vw, 40vh, 10vh, -25deg, 10deg, 115px),
+    (9.5s, 115vw, -15vw, 90vh, 55vh, 10deg, -30deg, 85px),
+    (10.5s, -15vw, 115vw, 25vh, 70vh, 0deg, 20deg, 125px),
+    (11.5s, 115vw, -15vw, 55vh, 20vh, -15deg, 15deg, 105px),
+    (12.5s, -15vw, 115vw, 30vh, 12vh, -8deg, -8deg, 120px)
+  );
+
+  @for $i from 1 through length($flyby) {
+    $f: nth($flyby, $i);
+
+    span:nth-child(#{$i}) {
+      --delay: #{nth($f, 1)};
+      --x0: #{nth($f, 2)};
+      --x1: #{nth($f, 3)};
+      --y0: #{nth($f, 4)};
+      --y1: #{nth($f, 5)};
+      --r0: #{nth($f, 6)};
+      --r1: #{nth($f, 7)};
+      font-size: nth($f, 8);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}
+
+body.nxv-halloween {
+  .nxv-example-viewer:not(.nxv-example-viewer--no-box) {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 32px;
+      font-size: 28px;
+      line-height: 1;
+      transform: translateY(-70%);
+      clip-path: inset(0 0 30% 0);
+      pointer-events: none;
+      content: '🎃';
+      content: '🎃' / '';
+    }
+  }
+
+  .documentation-header::before {
+    position: absolute;
+    top: 100%;
+    left: 40%;
+    font-size: 28px;
+    line-height: 1;
+    transform: translateY(-12%) scaleY(-1);
+    pointer-events: none;
+    content: '🦇';
+    content: '🦇' / '';
+  }
+
+  .nxv-example-viewer[data-halloween='1']::before {
+    right: 120px;
+    content: '👻';
+    content: '👻' / '';
+  }
+
+  .nxv-example-viewer[data-halloween='2']::before {
+    right: auto;
+    left: 48px;
+    content: '🕷️';
+    content: '🕷️' / '';
+  }
+
+  .nxv-example-viewer[data-halloween='3']::before {
+    right: 220px;
+    content: '🍬';
+    content: '🍬' / '';
+  }
+
+  .nxv-example-viewer[data-halloween='4']::before {
+    right: auto;
+    left: 45%;
+    content: '🦇';
+    content: '🦇' / '';
+  }
+
+  .nxv-example-viewer[data-halloween='5']::before {
+    right: 64px;
+    content: '💀';
+    content: '💀' / '';
+  }
+}

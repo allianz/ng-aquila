@@ -8,6 +8,8 @@ export interface Theme {
   name: string;
   displayName: string;
   url: string;
+  /** Left out of the selectable list until `unlockHiddenThemes()` is called. */
+  hidden?: boolean;
 }
 
 export type GridType = 'default' | 'functional';
@@ -28,6 +30,7 @@ export class ThemeSwitcherService {
   );
   readonly selectedGridType = signal<GridType>('default');
   readonly isThemeLoading = signal<boolean>(false);
+  private readonly _hiddenThemesUnlocked = signal(false);
 
   private readonly layoutOptions = inject<LayoutDefaultOptions>(LAYOUT_DEFAULT_OPTIONS, {
     optional: true,
@@ -38,6 +41,9 @@ export class ThemeSwitcherService {
     gridTypeFromQuery: GridType | undefined,
   ): void {
     // Priority: URL > localStorage > default
+    if (themeFromQuery?.hidden || this._loadFromStorage()?.hidden) {
+      this.unlockHiddenThemes();
+    }
     if (themeFromQuery) {
       this.selectedTheme.set(themeFromQuery);
       this._saveToStorage(themeFromQuery);
@@ -145,7 +151,14 @@ export class ThemeSwitcherService {
   }
 
   themes(): Theme[] {
-    return this._themes;
+    return this._hiddenThemesUnlocked() ? this._themes : this._themes.filter((t) => !t.hidden);
+  }
+
+  /** Returns whether the hidden themes were locked before this call. */
+  unlockHiddenThemes(): boolean {
+    const wasLocked = !this._hiddenThemesUnlocked();
+    this._hiddenThemesUnlocked.set(true);
+    return wasLocked;
   }
 
   get(name: string) {

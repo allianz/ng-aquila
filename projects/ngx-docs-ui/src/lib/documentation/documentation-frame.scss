@@ -42,6 +42,11 @@ $toc-width: 200px;
       filter: brightness(0) invert(1);
     }
 
+    .documentation-header__halloween-logo {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
     @media (max-width: 703px) {
       margin-right: 16px;
     }

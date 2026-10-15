@@ -3,7 +3,8 @@ import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { NxHeaderModule } from '@allianz/ng-aquila/header';
 import { NxIconModule, NxIconRegistry } from '@allianz/ng-aquila/icon';
 import { NxLinkModule } from '@allianz/ng-aquila/link';
-import { AsyncPipe, NgComponentOutlet } from '@angular/common';
+import { NxMessageModule, NxMessageToastService } from '@allianz/ng-aquila/message';
+import { AsyncPipe, DOCUMENT, NgComponentOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -11,10 +12,12 @@ import {
   computed,
   effect,
   Inject,
+  inject,
   InjectionToken,
   OnDestroy,
   Optional,
   signal,
+  TemplateRef,
   viewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -27,7 +30,7 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
-import { Subject } from 'rxjs';
+import { fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import {
@@ -52,6 +55,10 @@ export class NxDocFeatures {
 
 export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_FEATURE_FLAGS');
 
+const HIDDEN_THEMES_PHRASES = ['scary', 'halloween'];
+const MAX_PHRASE_LENGTH = Math.max(...HIDDEN_THEMES_PHRASES.map((p) => p.length));
+const HALLOWEEN_FLYBY_DURATION = 20000;
+
 @Component({
   selector: 'nxv-viewer',
   templateUrl: 'documentation-frame.component.html',
@@ -65,6 +72,7 @@ export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_
     NxHeaderModule,
     NxErrorModule,
     NxLinkModule,
+    NxMessageModule,
     RouterLink,
     RouterLinkActive,
     NxvSearchInputComponent,
@@ -95,8 +103,11 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
 
   cssVarSidebar = viewChild(CssVarSidebarComponent);
   mobileSearch = viewChild<NxvSearchInputComponent>('mobileSearch');
+  private readonly _hiddenThemeToast = viewChild.required<TemplateRef<unknown>>('hiddenThemeToast');
 
   readonly mobileSearchOpen = signal(false);
+
+  protected readonly _showHalloweenFlyby = signal(false);
 
   openMobileSearch() {
     this.mobileSearchOpen.set(true);
@@ -112,6 +123,14 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     const name = this._themeSwitcherService.selectedTheme().name;
     return name.includes('allianz-one') && name.includes('dark');
   });
+
+  protected readonly _isHalloweenTheme = computed(() =>
+    this._themeSwitcherService.selectedTheme().name.includes('halloween'),
+  );
+
+  private readonly _document = inject(DOCUMENT);
+
+  private readonly _messageToast = inject(NxMessageToastService);
 
   private readonly _destroyed = new Subject<void>();
 
@@ -160,6 +179,40 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
       if (this.cssVarSidebar()) {
         this.cssVarSidebar()?.reset();
       }
+    });
+
+    let typed = '';
+    fromEvent<KeyboardEvent>(this._document, 'keydown')
+      .pipe(takeUntil(this._destroyed))
+      .subscribe((event) => {
+        if (event.key.length !== 1) {
+          return;
+        }
+        typed = (typed + event.key.toLowerCase()).slice(-MAX_PHRASE_LENGTH);
+        if (HIDDEN_THEMES_PHRASES.some((phrase) => typed.endsWith(phrase))) {
+          if (this._themeSwitcherService.unlockHiddenThemes()) {
+            this._messageToast.openFromTemplate(this._hiddenThemeToast(), { duration: 8000 });
+          }
+        }
+      });
+
+    effect(() => {
+      this._document.body.classList.toggle('nxv-halloween', this._isHalloweenTheme());
+    });
+
+    effect((onCleanup) => {
+      if (!this._isHalloweenTheme()) {
+        return;
+      }
+      this._showHalloweenFlyby.set(true);
+      const timeout = setTimeout(
+        () => this._showHalloweenFlyby.set(false),
+        HALLOWEEN_FLYBY_DURATION,
+      );
+      onCleanup(() => {
+        clearTimeout(timeout);
+        this._showHalloweenFlyby.set(false);
+      });
     });
 
     effect(() => {
@@ -230,6 +283,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
+    this._document.body.classList.remove('nxv-halloween');
     this._destroyed.next();
     this._destroyed.complete();
   }
