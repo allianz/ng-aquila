@@ -2,9 +2,6 @@
 title: Slider
 description: Range slider input
 category: components
-b2c: true
-expert: true
-stable: done
 alias: number input, range
 a1Full: true
 a1Densities: true

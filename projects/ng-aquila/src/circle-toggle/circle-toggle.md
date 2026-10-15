@@ -2,9 +2,6 @@
 title: Circle Toggle
 description: Circular toggle buttons for option selection
 category: components
-b2c: true
-expert: true
-stable: done
 alias: button, radio, toggle, checkbox
 a1Light: true
 a1: false

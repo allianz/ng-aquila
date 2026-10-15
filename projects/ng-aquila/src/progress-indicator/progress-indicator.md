@@ -2,9 +2,6 @@
 title: Progress Indicator
 description: Multi-step wizard/progress indicator
 category: components
-b2c: true
-expert: true
-stable: done
 alias: stepper, wizard, multi step, progress indicator, 🧙‍♂️ 
 a1Densities: true
 group: Data Display

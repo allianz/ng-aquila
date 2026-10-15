@@ -1,9 +1,6 @@
 ---
 title: Surface
 category: utilities
-b2c: false
-expert: false
-stable: experimental
 a1Full: true
 ---
 

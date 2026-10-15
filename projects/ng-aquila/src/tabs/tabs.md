@@ -2,9 +2,6 @@
 title: Tabs
 description: Tabbed content navigation
 category: components
-b2c: true
-expert: true
-stable: done
 alias: navigation tabs
 a1Full: true
 group: Navigation

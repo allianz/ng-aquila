@@ -2,9 +2,6 @@
 title: Number Stepper
 description: Numeric input with increment/decrement
 category: components
-b2c: true
-expert: true
-stable: done
 alias: number input, range, counter, quantity
 a1Full: true
 group: Forms & Inputs

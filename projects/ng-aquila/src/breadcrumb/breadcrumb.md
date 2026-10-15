@@ -2,12 +2,8 @@
 title: Breadcrumb
 description: Navigation breadcrumb trail
 category: components
-b2c: true
-expert: true
-stable: done
 alias: location
-a1Light: true
-a1Densities: true
+a1Full: true
 group: Navigation
 ---
 

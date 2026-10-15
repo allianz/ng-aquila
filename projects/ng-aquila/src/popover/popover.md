@@ -2,10 +2,7 @@
 title: Popover
 description: Popover tooltip with rich content
 category: components
-b2c: true
-expert: true
-stable: done
-a1Densities: true
+a1Full: true
 group: Overlays
 ---
 

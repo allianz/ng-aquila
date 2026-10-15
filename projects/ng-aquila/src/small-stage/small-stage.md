@@ -2,9 +2,6 @@
 title: Small stage
 description: Hero/stage banner area
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 alias: page banner, hero, banner
 a1Densities: true

@@ -2,9 +2,6 @@
 title: Badge
 description: Status badges and labels
 category: components
-b2c: true
-expert: true
-stable: done
 alias: chip
 a1Full: true
 group: Data Display

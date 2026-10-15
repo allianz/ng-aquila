@@ -2,9 +2,6 @@
 title: Input Mask
 description: Input mask for formatted text entry
 category: components
-b2c: true
-expert: true
-stable: done
 alias: input mask, masked input
 a1Full: true
 group: Forms & Inputs

@@ -2,9 +2,6 @@
 title: Ag-grid
 description: Allianz-themed AG Grid integration
 category: Third-party
-b2c: false
-expert: true
-stable: progress
 noApi: true
 a1Full: true
 group: 

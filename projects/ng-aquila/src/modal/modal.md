@@ -2,9 +2,6 @@
 title: Modal
 description: Dialog/modal overlay
 category: components
-b2c: true
-expert: true
-stable: done
 alias: dialog, popup
 a1Light: true
 a1Densities: true

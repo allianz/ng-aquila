@@ -2,9 +2,6 @@
 title: Dynamic Tables
 description: Configurable data tables
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 a1Light: true
 a1Densities: true

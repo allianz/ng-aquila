@@ -2,10 +2,7 @@
 title: Selection Indicators
 description: Purely presentational selection indicators (checkbox and radio) for use in custom UI
 category: components
-b2c: true
-expert: true
-stable: true
-a1Densities: true
+a1Full: true
 group: Utilities
 ---
 

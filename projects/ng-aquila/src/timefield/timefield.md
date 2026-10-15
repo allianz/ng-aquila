@@ -2,9 +2,6 @@
 title: Timefield
 description: Time input field
 category: components
-b2c: true
-expert: true
-stable: done
 alias: timepicker, time input
 a1Full: true
 group: Forms & Inputs

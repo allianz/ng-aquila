@@ -2,9 +2,6 @@
 title: Button
 description: Buttons with variants (primary, secondary, tertiary, danger, cta)
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 group: Actions
 ---

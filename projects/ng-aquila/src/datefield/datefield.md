@@ -2,9 +2,6 @@
 title: Date Field
 description: Date input with datepicker
 category: components
-b2c: true
-expert: true
-stable: done
 alias: datepicker, calendar, date input
 a1Full: true
 desc: |

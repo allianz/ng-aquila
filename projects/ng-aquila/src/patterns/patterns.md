@@ -1,9 +1,6 @@
 ---
 title: Patterns
 category: general
-b2c: true
-expert: true
-stable: done
 alias: patterns
 a1Full: true
 private: true

@@ -2,9 +2,6 @@
 title: Natural Language Form
 description: Sentence-style form layout
 category: components
-b2c: true
-expert: true
-stable: done
 alias: text form, inline field
 a1: false
 a1Light: true

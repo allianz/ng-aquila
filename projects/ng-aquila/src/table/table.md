@@ -2,9 +2,6 @@
 title: Table
 description: Data table with sorting and filtering
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 a1Densities: true
 group: Data Display

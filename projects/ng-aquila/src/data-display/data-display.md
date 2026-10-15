@@ -2,9 +2,6 @@
 title: Data Display
 description: Key-value data display pairs
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 a1Densities: true
 group: Data Display

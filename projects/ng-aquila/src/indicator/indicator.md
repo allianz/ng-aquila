@@ -2,9 +2,6 @@
 title: Indicator
 description: Status indicator dots
 category: components
-b2c: true
-expert: true
-stable: done
 alias: badge
 a1Full: true
 group: Data Display

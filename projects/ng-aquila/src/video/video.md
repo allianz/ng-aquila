@@ -2,9 +2,6 @@
 title: Video
 description: Video player component
 category: components
-b2c: true
-expert: true
-stable: done
 a1: false
 group: Data Display
 ---

@@ -2,9 +2,6 @@
 title: Signal Button
 description: Button with integrated status signal
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 group: Data Display
 ---

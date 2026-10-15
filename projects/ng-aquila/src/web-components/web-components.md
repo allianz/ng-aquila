@@ -1,9 +1,6 @@
 ---
 title: Web Components & ShadowDOM
 category: general
-b2c: true
-expert: true
-stable: done
 noApi: true
 a1Full: true
 ---

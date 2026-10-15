@@ -1,9 +1,6 @@
 ---
 title: Theming
 category: general
-b2c: true
-expert: true
-stable: done
 noApi: true
 a1Densities: true
 ---

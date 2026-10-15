@@ -2,9 +2,6 @@
 title: Progress Bar
 description: Progress bar indicator
 category: components
-b2c: true
-expert: true
-stable: done
 alias: progress, loading bar
 a1Light: true
 a1Densities: true

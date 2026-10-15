@@ -2,9 +2,6 @@
 title: Menu
 description: Navigation menu component
 category: components
-b2c: false
-expert: true
-stable: done
 a1Full: true
 a1Densities: true
 group: Navigation

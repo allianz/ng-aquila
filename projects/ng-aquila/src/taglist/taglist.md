@@ -2,9 +2,6 @@
 title: Tag
 description: Tag/chip list with add/remove
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 alias: chip, Tags, tag, token
 a1Densities: true

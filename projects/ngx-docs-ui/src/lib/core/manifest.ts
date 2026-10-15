@@ -1,5 +1,3 @@
-export type STATUS_TYPE = 'done' | 'progress' | 'na';
-
 export interface Manifest {
   components: ComponentDescriptor[];
   guides: GuideDescriptor[];
@@ -16,10 +14,7 @@ export interface ComponentDescriptor {
   overviewFile: string;
   slotsFile: string;
   noApi: boolean;
-  b2c: boolean;
-  expert: boolean;
   deprecated: boolean;
-  stable: STATUS_TYPE;
   private: boolean;
   a1?: boolean;
   a1Full?: boolean;

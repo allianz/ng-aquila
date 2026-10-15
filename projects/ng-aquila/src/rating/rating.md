@@ -2,9 +2,6 @@
 title: Rating
 description: Star rating input
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 group: 
 - Forms & Inputs

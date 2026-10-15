@@ -2,9 +2,6 @@
 title: Segmented Toggle Button
 description: Toggle-style radio button group
 category: components
-b2c: true
-expert: true
-stable: done
 alias: radio toggle, segmented control, button group, toggle group, Toggle Button
 a1Full: true
 group: Forms & Inputs

@@ -2,12 +2,8 @@
 title: Notifications
 description: Inline message banners (info, success, warning, error)
 category: components
-b2c: true
-expert: true
-stable: done
 alias: message banner, toast, snackbar, alert, info, error, warning, success, notification, message
-a1Light: true
-a1Densities: true
+a1Full: true
 group: Data Display
 ---
 

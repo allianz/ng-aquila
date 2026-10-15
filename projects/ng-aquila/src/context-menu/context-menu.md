@@ -2,9 +2,6 @@
 title: Context Menu
 description: Right-click or trigger-based context menus
 category: components
-b2c: false
-expert: true
-stable: done
 alias: menu
 a1Full: true
 group: Overlays

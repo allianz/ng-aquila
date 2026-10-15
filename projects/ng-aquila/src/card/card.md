@@ -2,9 +2,6 @@
 title: Cards
 description: Content card containers
 category: components
-b2c: true
-expert: true
-stable: done
 alias: card, selectable card
 a1Full: true
 group:

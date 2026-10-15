@@ -2,12 +2,8 @@
 title: Notification panel
 description: Notification dropdown panel
 category: components
-b2c: false
-expert: true
-stable: done
 alias: popover
-a1Light: true
-a1Densities: true
+a1Full: true
 group: 
 - Data Display
 - Overlays

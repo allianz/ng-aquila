@@ -2,9 +2,6 @@
 title: Page Search
 description: In-page search functionality
 category: components
-b2c: true
-expert: true
-stable: done
 alias: search field, search, search bar
 deprecated: true
 group: Layout

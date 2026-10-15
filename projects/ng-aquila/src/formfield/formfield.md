@@ -2,9 +2,6 @@
 title: Formfield
 description: Form field wrapper with label, hints, and error messages
 category: components
-b2c: true
-expert: true
-stable: done
 alias: control
 a1Full: true
 group: Forms & Inputs

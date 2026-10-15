@@ -2,9 +2,6 @@
 title: Sidepanel
 description: Slide-in side panel
 category: components
-b2c: false
-expert: true
-stable: done
 a1Full: true
 alias: sidebar, drawer, sheet, side sheet
 a1Densities: true

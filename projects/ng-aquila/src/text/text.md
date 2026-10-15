@@ -2,9 +2,6 @@
 title: Text
 description: Body text, utility text and inline text styling utilities
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 group: Data Display
 ---

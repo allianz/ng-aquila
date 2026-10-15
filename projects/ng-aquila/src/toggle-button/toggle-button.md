@@ -2,9 +2,6 @@
 title: Toggle Button (A1)
 description: Radio-style group of buttons for a single choice out of many options
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 alias: toggle button group, choice button
 components:

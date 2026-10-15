@@ -2,9 +2,6 @@
 title: Images
 description: Responsive image component
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 a1Light: true
 a1Densities: true

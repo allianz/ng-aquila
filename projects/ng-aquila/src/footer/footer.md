@@ -2,10 +2,7 @@
 title: Footer
 description: Page footer component
 category: components
-b2c: false
-expert: true
-stable: done
-a1Densities: true
+a1Full: true
 group: Navigation
 ---
 

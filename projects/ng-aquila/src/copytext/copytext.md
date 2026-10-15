@@ -2,9 +2,6 @@
 title: Copytext
 description: Body text with consistent typography
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 group: Data Display
 ---

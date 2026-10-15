@@ -2,11 +2,8 @@
 title: Pagination
 description: Page navigation for paged content
 category: components
-b2c: true
-expert: true
-stable: done
 alias: pager, paginator
-a1Densities: true
+a1Full: true
 group: Navigation
 ---
 

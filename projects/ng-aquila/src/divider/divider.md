@@ -2,9 +2,6 @@
 title: Divider
 description: Horizontal divider line
 category: components
-b2c: true
-expert: true
-stable: done
 alias: separator
 a1Full: true
 group: Layout

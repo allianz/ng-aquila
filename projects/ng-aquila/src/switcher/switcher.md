@@ -2,9 +2,6 @@
 title: Switcher
 description: Toggle switch control
 category: components
-b2c: true
-expert: true
-stable: done
 alias: slide toggle, checkbox, switch, toggle
 a1Full: true
 group: Forms & Inputs

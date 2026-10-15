@@ -2,9 +2,6 @@
 title: Product Tile
 description: Product offering with a headline, price, feature list and a call to action
 category: components
-b2c: true
-expert: false
-stable: experimental
 a1Full: true
 alias: product tile, offer tile, plan tile, pricing tile
 components:

@@ -154,10 +154,11 @@ For a new component:
 | --- | --- | --- |
 | title | `string` | The name of the component that is displayed. |
 | category | `components \| Expert (Alpha)` | The category in which the component is listed. |
-| b2c | `true \| **false**` | Whether the component is allowed to be used in client facing applications (B2C). |
-| expert | `true \| **false**` | Whether the component is an expert option and can be used for internal applications (Expert). |
-| stable | `done \| progress \| **na**` | Describes the stable status of the component. |
 | noApi | `true \| **false**` | If the API tab should be hidden. Useful for more general pages that don't belong to a specific component, e.g. 'Accessibility', 'Theming', ... |
+| a1 | `true \| false` | Set to `false` to mark the component as "NDBX Only" (not part of A1, usage in A1 projects is not recommended). Omit it otherwise. |
+| a1Light | `true \| **false**` | A1 support level "A1 Light": the component only picks up A1 colors and typography. |
+| a1Densities | `true \| **false**` | A1 support level "A1 Ready": A1 colors and typography, A1 appearance, densities and the dark theme are supported. |
+| a1Full | `true \| **false**` | A1 support level "A1 Full": everything in "A1 Ready" plus all new A1 features. |
 
 Button example:
 
@@ -165,9 +166,7 @@ Button example:
 ---
 title: Button
 category: components
-b2c: true
-expert: true
-stable: done
+a1Full: true
 ---
 ```
 

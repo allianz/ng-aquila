@@ -2,9 +2,6 @@
 title: Dropdown
 description: Select dropdown for single or multi-selection
 category: components
-b2c: true
-expert: true
-stable: done
 alias: select, multi select, combobox, picker
 a1Densities: true
 group: Forms & Inputs

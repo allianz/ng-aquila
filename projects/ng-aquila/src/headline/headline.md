@@ -2,9 +2,6 @@
 title: Headline
 description: Heading typography (h1-h6)
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 alias: heading, title
 a1Light: true

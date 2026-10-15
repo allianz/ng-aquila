@@ -2,9 +2,6 @@
 title: File uploader
 description: File upload with drag-and-drop
 category: components
-b2c: true
-expert: true
-stable: done
 alias: file upload, attachment
 a1Full: true
 group: Forms & Inputs

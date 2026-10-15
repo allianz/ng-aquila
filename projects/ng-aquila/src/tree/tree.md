@@ -2,11 +2,8 @@
 title: Tree
 description: Hierarchical tree view
 category: components
-b2c: false
-expert: true
-stable: done
 alias: treeview
-a1Densities: true
+a1Full: true
 group: Navigation
 ---
 

@@ -2,11 +2,8 @@
 title: Accordion
 description: Expandable panels for collapsible content sections
 category: components
-b2c: true
-expert: true
-stable: done
 alias: expansion panel, collapse
-a1Densities: true
+a1Full: true
 group: Layout
 ---
 

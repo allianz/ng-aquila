@@ -2,9 +2,6 @@
 title: Code Input
 description: Multi-digit code entry (e.g., OTP)
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 alias: otp, pin input
 a1Densities: true

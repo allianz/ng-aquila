@@ -2,9 +2,6 @@
 title: List
 description: Styled ordered and unordered lists
 category: components
-b2c: true
-expert: true
-stable: done
 a1Full: true
 group: Data Display
 ---

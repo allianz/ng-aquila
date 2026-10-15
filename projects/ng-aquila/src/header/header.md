@@ -2,9 +2,6 @@
 title: Header
 description: Application header/navigation bar
 category: components
-b2c: false
-expert: true
-stable: done
 alias: toolbar, navbar, app bar, navigation bar
 a1Full: true
 group: Navigation
