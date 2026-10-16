@@ -17,9 +17,9 @@
 }
 :host(.nx-status-icon--warning:not(.nx-status-icon--contained)) nx-icon {
   background: v(status-icon-warning-background-color);
+  background-clip: content-box;
+  padding: 0.2em;
   border-radius: 50%;
-  width: 0.8em;
-  height: 0.8em;
 }
 :host(.nx-status-icon--info) nx-icon {
   color: v(info);

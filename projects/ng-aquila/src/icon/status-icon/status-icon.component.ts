@@ -81,7 +81,7 @@ export class NxStatusIconComponent {
     warning: {
       iconSmall: 'exclamation-triangle',
       iconContainedSmall: 'exclamation-triangle-o',
-      iconLarge: 'exclamation-triangle-o',
+      iconLarge: 'product-danger',
     },
     success: {
       iconSmall: 'check-circle',
