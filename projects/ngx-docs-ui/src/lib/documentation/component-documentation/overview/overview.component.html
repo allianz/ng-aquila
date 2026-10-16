@@ -400,6 +400,18 @@
                         </div>
                       </nx-badge>
                     }
+                    @if (component.component.deprecated) {
+                      <nx-badge
+                        class="nxv-components-table__status-badge"
+                        accentColor="yellow"
+                        prominence="subtle"
+                      >
+                        <div class="badge-content-centered">
+                          <nx-icon name="product-danger" size="auto"></nx-icon>
+                          Deprecated
+                        </div>
+                      </nx-badge>
+                    }
                   }
                 </td>
               </tr>

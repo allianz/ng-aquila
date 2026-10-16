@@ -31,7 +31,7 @@ import { GithubLinkConfig } from '../../../core/types';
 import { NxvComponentIconComponent } from '../../../documentation/component-icon/component-icon.component';
 import { ManifestService } from '../../../service/manifest.service';
 
-type A1FilterTag = 'a1Light' | 'densities' | 'a1Full' | 'ndbxOnly';
+type A1FilterTag = 'a1Light' | 'densities' | 'a1Full' | 'ndbxOnly' | 'deprecated';
 
 @Component({
   selector: 'nxv-overview',
@@ -77,6 +77,7 @@ export class NxvOverviewComponent {
     { value: 'densities', label: 'A1 Ready' },
     { value: 'a1Full', label: 'A1 Full' },
     { value: 'ndbxOnly', label: 'NDBX Only' },
+    { value: 'deprecated', label: 'Deprecated' },
   ];
 
   readonly selectedFilters = signal<A1FilterTag[]>([]);
@@ -164,6 +165,9 @@ export class NxvOverviewComponent {
       categories.push('densities');
     } else if (c.a1Light) {
       categories.push('a1Light');
+    }
+    if (c.deprecated) {
+      categories.push('deprecated');
     }
     return categories;
   }

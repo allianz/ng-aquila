@@ -176,7 +176,7 @@
   cursor: pointer;
 
   &.is-deprecated {
-    background: v(documentation-deprecated-color);
+    font-style: italic;
   }
 }
 
@@ -194,6 +194,7 @@
 .nxv-components-table__status-badge {
   margin-left: 4px;
   margin-right: 4px;
+  font-style: normal;
 }
 
 .nxv-filter-heading {
