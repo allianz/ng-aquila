@@ -91,7 +91,7 @@ export class TableSelectingExampleComponent implements OnDestroy {
       contractNumber: 1234,
       website: 'www.example.com',
       endingAt: new Date('1/3/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -123,7 +123,7 @@ export class TableSelectingExampleComponent implements OnDestroy {
       contractNumber: 76344,
       website: 'www.allianz.com',
       endingAt: new Date('8/3/2026'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -147,7 +147,7 @@ export class TableSelectingExampleComponent implements OnDestroy {
       contractNumber: 91102,
       website: 'www.example.org',
       endingAt: new Date('1/2/2027'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -163,7 +163,7 @@ export class TableSelectingExampleComponent implements OnDestroy {
       contractNumber: 11298,
       website: 'www.example.org',
       endingAt: new Date('2/3/2026'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -179,7 +179,7 @@ export class TableSelectingExampleComponent implements OnDestroy {
       contractNumber: 12411,
       website: 'www.example.org',
       endingAt: new Date('1/12/2028'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -187,7 +187,7 @@ export class TableSelectingExampleComponent implements OnDestroy {
       contractNumber: 36711,
       website: 'www.allianz.com',
       endingAt: new Date('1/3/2028'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {

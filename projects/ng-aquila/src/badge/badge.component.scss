@@ -1,5 +1,19 @@
 @use '../shared-styles/index' as *;
+
+@mixin badge-colors($background-color, $text-color) {
+  --nx-badge-background-color: #{v($background-color)};
+  --nx-badge-text-color: #{v($text-color)};
+}
+
+@mixin badge-disabled($background-color, $text-color) {
+  @include badge-colors($background-color, $text-color);
+  cursor: not-allowed;
+}
+
 :host {
+  background-color: var(--nx-badge-background-color);
+  color: var(--nx-badge-text-color);
+
   @include type-style(badge);
   display: inline-flex;
   justify-content: center;
@@ -22,44 +36,71 @@
 
 :host {
   &.nx-badge-accent-color-brand {
-    background-color: v(color-brand);
-    color: v(color-on-brand);
+    @include badge-colors(color-brand, color-on-brand);
   }
   &.nx-badge-accent-color-brand--inverse {
-    background-color: v(color-brand-inverse);
-    color: v(color-on-brand-inverse);
+    @include badge-colors(color-brand-inverse, color-on-brand-inverse);
   }
   // Quoted so Sass treats these as strings rather than colour values -- see the note in
   // `icon/icon.component.scss`. The generated CSS is identical either way.
   @each $color in ('yellow', 'orange', 'red', 'purple', 'teal', 'aqua', 'blue', 'green', 'gray') {
     &.nx-badge-accent-color-subtle-#{$color} {
-      background-color: v(color-subtle-#{$color});
-      color: v(color-on-subtle-#{$color});
+      @include badge-colors(color-subtle-#{$color}, color-on-subtle-#{$color});
     }
     &.nx-badge-accent-color-attention-#{$color} {
-      background-color: v(color-attention-#{$color});
-      color: v(color-on-attention-resting);
+      @include badge-colors(color-attention-#{$color}, color-on-attention-resting);
     }
     &.nx-badge-accent-color-subtle-#{$color}--inverse {
-      background-color: v(color-subtle-inverse-#{$color});
-      color: v(color-on-subtle-inverse-#{$color});
+      @include badge-colors(color-subtle-inverse-#{$color}, color-on-subtle-inverse-#{$color});
     }
     &.nx-badge-accent-color-attention-#{$color}--inverse {
-      background-color: v(color-attention-inverse-#{$color});
-      color: v(color-on-attention-inverse-resting);
+      @include badge-colors(color-attention-inverse-#{$color}, color-on-attention-inverse-resting);
     }
   }
 
-  &.nx-badge-subtle--disabled {
-    background-color: v(color-subtle-disabled);
-    color: v(color-on-subtle-disabled);
-    cursor: not-allowed;
+  @each $signal in (info, warning, positive, critical) {
+    &.nx-badge-signal-subtle-#{$signal} {
+      @include badge-colors(color-signal-subtle-#{$signal}, color-on-signal-subtle-#{$signal});
+    }
+    &.nx-badge-signal-attention-#{$signal} {
+      @include badge-colors(color-signal-attention-#{$signal}, color-on-signal-attention-resting);
+    }
+    &.nx-badge-signal-subtle-#{$signal}--inverse {
+      @include badge-colors(
+        color-signal-subtle-inverse-#{$signal},
+        color-on-signal-subtle-inverse-#{$signal}
+      );
+    }
+    &.nx-badge-signal-attention-#{$signal}--inverse {
+      @include badge-colors(
+        color-signal-attention-inverse-#{$signal},
+        color-on-signal-attention-inverse-resting
+      );
+    }
   }
 
-  &.nx-badge-attention--disabled {
-    background-color: v(color-attention-disabled);
-    color: v(color-on-attention-disabled);
-    cursor: not-allowed;
+  @each $prominence in (subtle, attention) {
+    &.nx-badge-#{$prominence}--disabled {
+      @include badge-disabled(color-#{$prominence}-disabled, color-on-#{$prominence}-disabled);
+    }
+    &.nx-badge-#{$prominence}--disabled--inverse {
+      @include badge-disabled(
+        color-#{$prominence}-inverse-disabled,
+        color-on-#{$prominence}-inverse-disabled
+      );
+    }
+    &.nx-badge-signal-#{$prominence}--disabled {
+      @include badge-disabled(
+        color-signal-#{$prominence}-disabled,
+        color-on-signal-#{$prominence}-disabled
+      );
+    }
+    &.nx-badge-signal-#{$prominence}--disabled--inverse {
+      @include badge-disabled(
+        color-signal-#{$prominence}-inverse-disabled,
+        color-on-signal-#{$prominence}-inverse-disabled
+      );
+    }
   }
 }
 
@@ -69,24 +110,19 @@
     $prefix: 'badge-#{$variation}-';
   }
 
-  color: v($prefix + color);
-  background-color: v($prefix + 'background-color');
+  @include badge-colors($prefix + 'background-color', $prefix + color);
 
   &.nx-badge--active {
-    background-color: v($prefix + active-background-color);
-    color: v($prefix + active-color);
+    @include badge-colors($prefix + active-background-color, $prefix + active-color);
   }
   &.nx-badge--positive {
-    background-color: v($prefix + positive-background-color);
-    color: v($prefix + positive-color);
+    @include badge-colors($prefix + positive-background-color, $prefix + positive-color);
   }
   &.nx-badge--critical {
-    background-color: v($prefix + critical-background-color);
-    color: v($prefix + critical-color);
+    @include badge-colors($prefix + critical-background-color, $prefix + critical-color);
   }
   &.nx-badge--negative {
-    background-color: v($prefix + negative-background-color);
-    color: v($prefix + negative-color);
+    @include badge-colors($prefix + negative-background-color, $prefix + negative-color);
   }
 }
 

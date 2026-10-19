@@ -19,6 +19,7 @@ interface Contract {
   id: string;
   user: string;
   status: NxBadgeType;
+  statusText: string;
   documents: string[];
 }
 
@@ -48,19 +49,22 @@ export class ContextMenuDataExampleComponent {
     {
       id: '23412',
       user: 'Anna Schuster',
-      status: 'active',
+      status: 'info',
+      statusText: 'Active',
       documents: ['Contract 01/04/2017'],
     },
     {
       id: '09090',
       user: 'Max Pecu',
-      status: 'active',
+      status: 'info',
+      statusText: 'Active',
       documents: ['Contract 11/07/2015'],
     },
     {
       id: '45234',
       user: 'Sefan Maier',
-      status: 'active',
+      status: 'info',
+      statusText: 'Active',
       documents: ['Contract 01/01/2017'],
     },
   ];

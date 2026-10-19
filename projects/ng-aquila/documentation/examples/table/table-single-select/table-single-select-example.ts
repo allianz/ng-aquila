@@ -52,7 +52,7 @@ export class TableSingleSelectExampleComponent {
       contractNumber: 1234,
       website: 'www.example.com',
       endingAt: new Date('1/3/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {

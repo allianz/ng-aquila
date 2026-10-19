@@ -48,7 +48,9 @@
       <tr nxTableRow>
         <td nxTableCell>{{ contract.id }}</td>
         <td nxTableCell>
-          <nx-badge [type]="contract.status">{{ contract.status }}</nx-badge>
+          <nx-badge [type]="contract.status">{{
+            contract.statusText
+          }}</nx-badge>
         </td>
         <td nxTableCell>
           <button

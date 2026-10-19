@@ -70,7 +70,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.example.com',
       endingAt: new Date('1/3/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -79,7 +79,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.allianz.com',
       endingAt: new Date('1/3/2019'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -88,7 +88,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.example.com',
       endingAt: new Date('1/3/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -97,7 +97,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.example.com',
       endingAt: new Date('1/12/2018'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -106,7 +106,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.example.com',
       endingAt: new Date('1/11/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -115,7 +115,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.example.org',
       endingAt: new Date('12/6/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -124,7 +124,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.allianz.com',
       endingAt: new Date('1/3/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -133,7 +133,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.example.org',
       endingAt: new Date('4/5/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -142,7 +142,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.allianz.com',
       endingAt: new Date('1/4/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -151,7 +151,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is another contract',
       website: 'www.allianz.com',
       endingAt: new Date('4/2/2020'),
-      status: 'active',
+      status: 'info',
       statusText: 'processing',
     },
     {
@@ -160,7 +160,7 @@ export class TableFilterSortPaginateExampleComponent {
       desc: 'This is a contract',
       website: 'www.example.com',
       endingAt: new Date('1/9/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {

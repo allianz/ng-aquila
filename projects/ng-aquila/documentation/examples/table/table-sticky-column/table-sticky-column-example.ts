@@ -45,7 +45,7 @@ export class TableStickyColumnExampleComponent {
       desc: 'This is a contract',
       website: 'www.example.com',
       endingAt: '1/3/2020',
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -54,7 +54,7 @@ export class TableStickyColumnExampleComponent {
       desc: 'This is another contract',
       website: 'www.allianz.com',
       endingAt: '4/2/2020',
-      status: 'active',
+      status: 'info',
       statusText: 'accepted',
     },
     {

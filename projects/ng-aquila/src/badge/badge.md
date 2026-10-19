@@ -9,7 +9,14 @@ group: Data Display
 
 <div class="docs-hide-ndbx">
 
-### Accent colors
+### Type
+
+The `type` input defines what the badge communicates. There are two kinds of types:
+
+- `accent` is the default. It is not a status and takes its color from the `accentColor` input.
+- `info | warning | critical | positive` are the signal types. They communicate a status and have their own signal colors. If both a signal `type` and `accentColor` are set, `type` wins.
+
+#### Accent colors
 
 You can customize the badge appearance using different accent colors. Available accent colors are:
 
@@ -19,7 +26,7 @@ You can customize the badge appearance using different accent colors. Available 
 
 <!-- example(badge-accent-color) -->
 
-### Brand accent color
+#### Brand accent color
 
 The `brand` accent color is unlike other options, as it is not affected by the `prominence` input.
 
@@ -27,9 +34,17 @@ The `brand` accent color is unlike other options, as it is not affected by the `
 
 <!-- example(badge-brand) -->
 
+#### Signal types
+
+Signal types support `prominence`, `inverse` and `disabled` like accent colors.
+
+**Usage:** `<nx-badge type="critical" prominence="attention">Badge</nx-badge>`
+
+<!-- example(badge-signal) -->
+
 ### Prominence
 
-The `prominence` input allows you to control the visual emphasis of the badge. Available options are:
+The `prominence` input allows you to control the visual emphasis of the badge. It applies to accent colors and signal types. Available options are:
 
 `subtle | attention` which default value is `subtle`
 
@@ -39,14 +54,9 @@ Note: The `prominence` input does not apply to the `brand` accent color.
 
 <!-- example(badge-prominence) -->
 
-### Character badge
-If the text contains only one character, the badge will be displayed as a circle.
-
-<!-- example(badge-character) -->
-
 ### Disabled state
 
-Badges can be disabled using the `disabled` input.
+Badges can be disabled using the `disabled` input. A disabled badge is shown in neutral colors, regardless of its accent color or signal type.
 
 **Usage:** `<nx-badge disabled>Badge</nx-badge>`
 
@@ -60,6 +70,11 @@ For use on dark backgrounds, add `inverse` input to use inverse colors.
 
 <!-- example(badge-inverse) -->
 
+### Character badge
+If the text contains only one character, the badge will be displayed as a circle.
+
+<!-- example(badge-character) -->
+
 </div>
 
 <div class="docs-hide-a1">
@@ -72,7 +87,11 @@ For use on dark backgrounds, add `inverse` input to use inverse colors.
 
 #### Type
 
-You can change the color of the badge by setting the `type` to either `active`, `positive`, `critical` or `negative`.
+You can change the color of the badge by setting the `type` to either `info`, `positive`, `critical` or `warning`. Without a `type`, the badge is shown in gray.
+
+<div class="docs-deprecation-warning">
+  The <code>active</code> and <code>negative</code> types are legacy names for <code>info</code> and <code>warning</code>. They are deprecated. Please use <code>info</code> and <code>warning</code> instead.
+</div>
 
 <!-- example(badge) -->
 
