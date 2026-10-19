@@ -2695,6 +2695,19 @@ $nx-theme: (
   multi-progress-indicator-bullet-font-weight: 700,
   multi-progress-indicator-step-letter-spacing: paragraph-03-letter-spacing,
   // ----- end multi progress indicator ----- //
+  // ----- compact progress indicator ----- //
+  compact-progress-indicator-gap: 8px,
+  compact-progress-indicator-counter-color: text-01,
+  // Sized like the plain button beside it, but at the regular weight.
+  compact-progress-indicator-counter-font-size: link-small-font-size,
+  compact-progress-indicator-counter-line-height: link-small-line-height,
+  compact-progress-indicator-counter-font-weight: paragraph-03-font-weight,
+  compact-progress-indicator-counter-letter-spacing: link-small-letter-spacing,
+  compact-progress-indicator-panel-padding: 24px,
+  compact-progress-indicator-panel-background-color: ui-02,
+  compact-progress-indicator-panel-border-radius: nx-border-radius(s),
+  compact-progress-indicator-panel-shadow: shadow-small,
+  // ----- end compact progress indicator ----- //
   // ----- single progress indicator ----- //
   single-progress-indicator-gap: 8px,
   single-progress-indicator-label-gap: 24px,

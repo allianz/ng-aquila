@@ -112,23 +112,56 @@ describe('NxMultiProgressStepComponent', () => {
     expect(stepElement.nativeElement.getAttribute('aria-current')).toBe('step');
   });
 
+  it('shows a visually-hidden "Not completed: " prefix when neither completed nor current', () => {
+    createTestComponent(`
+      <nx-multi-progress-indicator>
+        <nx-multi-progress-step>Step</nx-multi-progress-step>
+      </nx-multi-progress-indicator>
+    `);
+    const hidden = stepElement.query(By.css('.nx-visually-hidden'));
+    expect(hidden.nativeElement.textContent.trim()).toBe('Not completed:');
+  });
+
+  it('announces a critical step as not completed, even when also completed', () => {
+    createTestComponent(`
+      <nx-multi-progress-indicator>
+        <nx-multi-progress-step completed critical>Step</nx-multi-progress-step>
+      </nx-multi-progress-indicator>
+    `);
+    const hidden = stepElement.query(By.css('.nx-visually-hidden'));
+    expect(hidden.nativeElement.textContent.trim()).toBe('Not completed:');
+  });
+
+  it('still announces a critical current step as current', () => {
+    createTestComponent(`
+      <nx-multi-progress-indicator>
+        <nx-multi-progress-step current critical>Step</nx-multi-progress-step>
+      </nx-multi-progress-indicator>
+    `);
+    const hidden = stepElement.query(By.css('.nx-visually-hidden'));
+    expect(hidden.nativeElement.textContent.trim()).toBe('Current:');
+  });
+
   it('reads the visually-hidden prefixes from a provided NxMultiProgressIndicatorIntl', () => {
     TestBed.overrideProvider(NxMultiProgressIndicatorIntl, {
       useValue: {
         completedLabel: signal('Abgeschlossen: '),
         currentLabel: signal('Aktuell: '),
+        notCompletedLabel: signal('Nicht abgeschlossen: '),
       },
     });
     createTestComponent(`
       <nx-multi-progress-indicator>
         <nx-multi-progress-step completed>Step 1</nx-multi-progress-step>
         <nx-multi-progress-step current>Step 2</nx-multi-progress-step>
+        <nx-multi-progress-step>Step 3</nx-multi-progress-step>
       </nx-multi-progress-indicator>
     `);
 
     const hidden = fixture.debugElement.queryAll(By.css('.nx-visually-hidden'));
     expect(hidden[0].nativeElement.textContent.trim()).toBe('Abgeschlossen:');
     expect(hidden[1].nativeElement.textContent.trim()).toBe('Aktuell:');
+    expect(hidden[2].nativeElement.textContent.trim()).toBe('Nicht abgeschlossen:');
   });
 
   it('does not set aria-current when not the current step', () => {

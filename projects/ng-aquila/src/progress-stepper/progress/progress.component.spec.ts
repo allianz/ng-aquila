@@ -3,6 +3,7 @@ import {
   Component,
   Directive,
   ElementRef,
+  signal,
   Type,
   ViewChild,
 } from '@angular/core';
@@ -11,6 +12,7 @@ import { By } from '@angular/platform-browser';
 
 import { NxProgressStepperDirective } from '../progress-stepper.component';
 import { NxProgressStepperModule } from '../progress-stepper.module';
+import { NxProgressStepperIntl } from '../progress-stepper-intl';
 import { NxProgressStepperComponent } from './progress.component';
 
 @Directive({ standalone: true })
@@ -66,6 +68,36 @@ describe('NxProgressStepperComponent', () => {
     fixture.detectChanges();
     expect(progressInstance.progress).toBe(0);
   }));
+
+  it('prefixes the step labels with a visually-hidden state', () => {
+    createTestComponent(ProgressBasicTest);
+    const prefixes = () =>
+      Array.from<HTMLElement>(
+        fixture.nativeElement.querySelectorAll('.nx-subprogress__label .nx-visually-hidden'),
+      ).map((prefix) => prefix.textContent);
+    expect(prefixes()).toEqual(['Current: ', 'Not completed: ']);
+
+    componentInstance.next();
+    fixture.detectChanges();
+
+    expect(prefixes()).toEqual(['Completed: ', 'Current: ']);
+  });
+
+  it('reads the state prefixes from a provided NxProgressStepperIntl', () => {
+    TestBed.overrideProvider(NxProgressStepperIntl, {
+      useValue: {
+        completedLabel: signal('Abgeschlossen: '),
+        currentLabel: signal('Aktuell: '),
+        notCompletedLabel: signal('Nicht abgeschlossen: '),
+      },
+    });
+    createTestComponent(ProgressBasicTest);
+
+    const prefix = fixture.nativeElement.querySelector(
+      '.nx-subprogress__label .nx-visually-hidden',
+    );
+    expect(prefix.textContent).toBe('Aktuell: ');
+  });
 
   describe('a11y', () => {
     it('has no accessibility violations', async () => {

@@ -4,13 +4,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  forwardRef,
   inject,
   input,
 } from '@angular/core';
 
-import { NxMultiProgressIndicatorComponent } from './multi-progress-indicator.component';
 import { NxMultiProgressIndicatorIntl } from './multi-progress-indicator.intl';
+import { NX_MULTI_PROGRESS_INDICATOR } from './multi-progress-indicator-types';
 
 @Component({
   selector: 'nx-multi-progress-step',
@@ -33,9 +32,7 @@ import { NxMultiProgressIndicatorIntl } from './multi-progress-indicator.intl';
   imports: [NxIconModule],
 })
 export class NxMultiProgressStepComponent {
-  private readonly _parent = inject<NxMultiProgressIndicatorComponent>(
-    forwardRef(() => NxMultiProgressIndicatorComponent),
-  );
+  private readonly _parent = inject(NX_MULTI_PROGRESS_INDICATOR);
 
   protected readonly _intl = inject(NxMultiProgressIndicatorIntl);
 
@@ -86,7 +83,8 @@ export class NxMultiProgressStepComponent {
       this._layout() === 'vertical-no-bars',
   );
 
-  protected readonly _isCurrent = computed(
+  // Not `protected`: read by the compact indicator's counter.
+  readonly _isCurrent = computed(
     () => this.current() || this._index() === this._parent.currentStep(),
   );
 

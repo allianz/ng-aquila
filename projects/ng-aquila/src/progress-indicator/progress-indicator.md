@@ -3,7 +3,7 @@ title: Progress Indicator
 description: Multi-step wizard/progress indicator
 category: components
 alias: stepper, wizard, multi step, progress indicator, 🧙‍♂️ 
-a1Densities: true
+a1Full: true
 group: Data Display
 ---
 
@@ -101,7 +101,7 @@ __Vertical no bars__
 
 <!-- example(multi-progress-indicator-vertical-no-bars) -->
 
-A compact horizontal layout isn't implemented yet.
+For a compact horizontal layout, use [`nx-compact-progress-indicator`](#compact-progress-indicator).
 
 #### Step states
 
@@ -110,29 +110,49 @@ A step is `completed`, `current`, and/or `critical` - `completed`/`current` are 
 - **Upcoming** (default): disabled color.
 - **Current**: `[current]="true"`, or at `[currentStep]`'s index. Active color.
 - **Completed**: `[completed]="true"`, or before `[currentStep]`. Filled bullet with a checkmark (or number, if `[numbered]`).
-- **Critical**: `[critical]="true"`, independent of the others. Critical color, "!" bullet.
+- **Critical**: `[critical]="true"`, independent of the others. Critical color, "!" bullet - filled, or outlined while the step is also the current one.
 
 <!-- example(multi-progress-indicator-step-states) -->
 
-`critical` only recolors the bullet - needs to be communicated to the user with something like `nxTooltip` to explain why, especially when the critical step isn't the current one.
+Apart from the bullet, `critical` only changes the visually-hidden prefix: a critical step reads "Not completed: " even when it's also completed, unless it's the current one. Why it's critical still needs to be communicated to the user with something like `nxTooltip`, especially when the critical step isn't the current one.
 
 #### Localization
 
-The visually-hidden "Completed: "/"Current: " prefixes announced before a step's label (see [Accessibility](#accessibility) below) default to English. To translate them, subclass `NxMultiProgressIndicatorIntl` and provide it in your (root) module.
-
+The visually-hidden "Completed: "/"Current: "/"Not completed: " prefixes announced before a step's label (see [Accessibility](#accessibility) below) default to English. To translate them, subclass `NxMultiProgressIndicatorIntl` and provide it in your (root) module.
 
 <!-- example(multi-progress-indicator-localize) -->
 
-### Accessibility
+## Compact Progress Indicator
+
+`nx-compact-progress-indicator` collapses the whole list to an "X of Y" counter plus a button that reveals the steps in an overlay panel. 
+
+It takes the same `nx-multi-progress-step` children and the same `[currentStep]` input as `nx-multi-progress-indicator`, and derives the counter from them. The steps in the panel always render numbered, in the default color scheme and as `"vertical-no-bars"`.
+
+<!-- example(compact-progress-indicator) -->
+
+#### Localization
+
+The compact indicator's own strings - `stepCounterLabel` (a `(current, total) => string` builder, so "X of Y" can be reordered) and `expandLabel` - live on `NxCompactProgressIndicatorIntl`, which extends that class. Its steps still read their prefixes from the base `NxMultiProgressIndicatorIntl` class, so provide both translations.
+
+<!-- example(compact-progress-indicator-localize) -->
+
+## Accessibility
 
 Name the indicator with `aria-label` or `aria-labelledby` (forwarded to the inner `<ol>`). Add `aria-describedby` for more detail.
 
-Steps render as `role="listitem"` and aren't interactive themselves - project an `<a>`/`<button>` to make one clickable, or a `<span>` to keep it inert. The component adds a visually-hidden "Completed: "/"Current: " prefix ([translatable](#localization)) and `aria-current="step"` automatically.
+Steps render as `role="listitem"` and aren't interactive themselves - project an `<a>`/`<button>` to make one clickable, or a `<span>` to keep it inert. The component adds a visually-hidden "Completed: "/"Current: "/"Not completed: " prefix ([translatable](#localization)) and `aria-current="step"` automatically.
 
 A projected `nxProgressIndicatorStepAction` link/button is focusable and clickable only once its step is completed. Prefer `<button>` (native `disabled`) over `<a>` (`aria-disabled` + `tabindex="-1"`, less reliably announced); drop the `<a>`'s `href` too once disabled, to remove its link semantics entirely.
 
 When something outside the list drives `[currentStep]` (e.g. "Previous"/"Next" buttons, as in the [Buttons](#step-actions) example), moving to a new step doesn't move focus - a screen reader user gets no feedback that anything changed. Announce it yourself with `LiveAnnouncer` from `@angular/cdk/a11y`.
 
+The compact indicator follows the [Disclosure](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/) pattern: its button carries `aria-expanded`, and the panel it reveals is the named `<ol>` of steps and nothing more - no `role="dialog"`, no `role="menu"`. A menu would flatten the steps into `menuitem`s and lose the ordered-list structure and `aria-current="step"` that communicate progress in the first place - and it would have to keep the current and upcoming steps focusable, since a menu's disabled items stay reachable.
+
+The counter sits next to the button rather than inside it, so `aria-labelledby` pulls it into the button's accessible name: focusing the button reads "2 of 3 steps", not just "steps".
+
+As in the [disclosure example](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-faq/), opening the panel leaves focus on the button, which then points at the panel with `aria-controls`. Tab or the down arrow moves from the button into the panel, to the first completed step (the up arrow goes to the last) - the panel is rendered at the end of the page, so the browser would otherwise skip it. Shift+Tab from that step goes back to the button.
+
+Inside the panel, the up/down arrows and Home/End move focus between the step actions, wrapping and skipping steps that aren't completed yet - in addition to the tab order, not instead of it. Tab past the last completed step closes the panel and continues with whatever follows the button. Escape closes it too, and returns focus to the button.
 
 ## Legacy
 
@@ -235,5 +255,7 @@ You can force the user to complete a form before continuing. To make a indicator
 
 In case of the Single Indicator also make sure to set the appropriate `progressbarAriaLabel` or `progressbarAriaLabeledBy` for your use case.
 This will set the associated aria attributes on the nested <a href="./documentation/progressbar/overview">NxProgressbarComponent</a>
+
+The Multi Indicator and the Progress Indicator announce each step's state before its label: "Completed: ", "Current: " or "Not completed: ". To translate these prefixes, subclass `NxProgressStepperIntl` and provide it in your (root) module.
 
 </details>

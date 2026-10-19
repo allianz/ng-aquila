@@ -85,6 +85,12 @@ export class NxOverlayConfig<D = any> {
   /** Aria label to assign to the overlay element. */
   ariaLabel?: string | null = null;
 
+  /**
+   * Whether opening the overlay moves focus into it at all. Turn off to leave focus on the
+   * trigger, e.g. for a disclosure; `autoFocus` is then ignored and focus is not trapped.
+   */
+  moveFocus?: boolean = true;
+
   /** Whether the overlay should focus the first focusable element on open. */
   autoFocus?: boolean = true;
 

@@ -15,7 +15,10 @@
           {{ i + 1 }}
         </div>
       </div>
-      <div class="nx-subprogress__label">{{ step.stepLabel || step.label }}</div>
+      <div class="nx-subprogress__label">
+        <span class="nx-visually-hidden">{{ _stateLabel(i) }}</span
+        >{{ step.stepLabel || step.label }}
+      </div>
       @if (selectedIndex === i) {
         <div class="nx-subprogress__progress">
           <nx-progressbar

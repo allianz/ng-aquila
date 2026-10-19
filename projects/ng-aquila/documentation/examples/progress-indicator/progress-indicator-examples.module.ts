@@ -2,6 +2,8 @@ import { NxProgressIndicatorModule } from '@allianz/ng-aquila/progress-indicator
 import { NgModule } from '@angular/core';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { CompactProgressIndicatorExampleComponent } from './compact-progress-indicator/compact-progress-indicator-example';
+import { CompactProgressIndicatorLocalizeExampleComponent } from './compact-progress-indicator-localize/compact-progress-indicator-localize-example';
 import { MultiProgressIndicatorBasicExampleComponent } from './multi-progress-indicator-basic/multi-progress-indicator-basic-example';
 import { MultiProgressIndicatorCurrentStepExampleComponent } from './multi-progress-indicator-current-step/multi-progress-indicator-current-step-example';
 import { MultiProgressIndicatorHorizontalLabelsBelowExampleComponent } from './multi-progress-indicator-horizontal-labels-below/multi-progress-indicator-horizontal-labels-below-example';
@@ -28,6 +30,8 @@ const EXAMPLES = [
   SingleProgressIndicatorPositiveExampleComponent,
   SingleProgressIndicatorLocalizeExampleComponent,
   MultiProgressIndicatorBasicExampleComponent,
+  CompactProgressIndicatorExampleComponent,
+  CompactProgressIndicatorLocalizeExampleComponent,
   MultiProgressIndicatorUnnumberedExampleComponent,
   MultiProgressIndicatorPositiveExampleComponent,
   MultiProgressIndicatorStepStatesExampleComponent,
@@ -61,6 +65,9 @@ export class ProgressIndicatorExamplesModule {
         SingleProgressIndicatorLocalizeExampleComponent,
       'multi-progress-indicator-basic':
         MultiProgressIndicatorBasicExampleComponent,
+      'compact-progress-indicator': CompactProgressIndicatorExampleComponent,
+      'compact-progress-indicator-localize':
+        CompactProgressIndicatorLocalizeExampleComponent,
       'multi-progress-indicator-unnumbered':
         MultiProgressIndicatorUnnumberedExampleComponent,
       'multi-progress-indicator-positive':

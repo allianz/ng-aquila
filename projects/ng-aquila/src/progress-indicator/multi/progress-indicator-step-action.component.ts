@@ -1,3 +1,4 @@
+import { FocusableOption } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -33,10 +34,12 @@ import { NxMultiProgressStepComponent } from './multi-progress-step.component';
     '[attr.tabindex]': '_isAnchor && _isDisabled() ? -1 : null',
   },
 })
-export class NxProgressIndicatorStepActionComponent {
+export class NxProgressIndicatorStepActionComponent implements FocusableOption {
   private readonly _step = inject(NxMultiProgressStepComponent);
 
-  private readonly _elementRef = inject(ElementRef);
+  // Not private: read by the compact indicator.
+  readonly _elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
   private readonly _destroyRef = inject(DestroyRef);
   private readonly _renderer = inject(Renderer2);
   private readonly _ngZone = inject(NgZone);
@@ -57,5 +60,14 @@ export class NxProgressIndicatorStepActionComponent {
       }),
     );
     this._destroyRef.onDestroy(cleanUp);
+  }
+
+  /** `FocusableOption`: a `FocusKeyManager` skips uncompleted steps. */
+  get disabled(): boolean {
+    return this._isDisabled();
+  }
+
+  focus(): void {
+    this._elementRef.nativeElement.focus();
   }
 }

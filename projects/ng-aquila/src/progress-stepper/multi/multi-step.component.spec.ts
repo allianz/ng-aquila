@@ -7,6 +7,7 @@ import {
   Component,
   Directive,
   ElementRef,
+  signal,
   Type,
   ViewChild,
 } from '@angular/core';
@@ -24,6 +25,7 @@ import { By } from '@angular/platform-browser';
 import { dispatchKeyboardEvent } from '../../cdk-test-utils';
 import { NxMultiStepperDirection } from '../progress-stepper.models';
 import { NxProgressStepperModule } from '../progress-stepper.module';
+import { NxProgressStepperIntl } from '../progress-stepper-intl';
 import { NxMultiStepperComponent } from './multi-step.component';
 
 @Directive({ standalone: true })
@@ -91,6 +93,33 @@ describe('NxMultiStepperComponent', () => {
 
     checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
     expect(checkIcon).toHaveLength(1);
+  });
+
+  it('prefixes the step labels with their state', () => {
+    createTestComponent(MultiStepBasicTest);
+    const labels = () => getSteps().map((step) => step.getAttribute('aria-label'));
+    expect(labels()).toEqual(['Current: Step 1', 'Not completed: Step 2']);
+
+    multiStepInstance.next();
+    fixture.detectChanges();
+
+    expect(labels()).toEqual(['Completed: Step 1', 'Current: Step 2']);
+  });
+
+  it('reads the state prefixes from a provided NxProgressStepperIntl', () => {
+    TestBed.overrideProvider(NxProgressStepperIntl, {
+      useValue: {
+        completedLabel: signal('Abgeschlossen: '),
+        currentLabel: signal('Aktuell: '),
+        notCompletedLabel: signal('Nicht abgeschlossen: '),
+      },
+    });
+    createTestComponent(MultiStepBasicTest);
+
+    expect(getSteps().map((step) => step.getAttribute('aria-label'))).toEqual([
+      'Aktuell: Step 1',
+      'Nicht abgeschlossen: Step 2',
+    ]);
   });
 
   it('sets correctly selected class on the currently selected step', () => {

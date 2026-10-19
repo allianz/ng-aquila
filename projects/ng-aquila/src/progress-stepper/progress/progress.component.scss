@@ -110,3 +110,7 @@
 .nx-subprogress__number {
   @include type-style(progress-stepper-dotnumber);
 }
+
+.nx-visually-hidden {
+  @include visually-hidden;
+}

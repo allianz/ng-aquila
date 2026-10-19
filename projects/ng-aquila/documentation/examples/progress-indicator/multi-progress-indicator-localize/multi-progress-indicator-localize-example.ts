@@ -9,6 +9,7 @@ import { Component, Injectable, signal } from '@angular/core';
 export class MyProgressIndicatorIntl extends NxMultiProgressIndicatorIntl {
   override readonly completedLabel = signal('Abgeschlossen: ');
   override readonly currentLabel = signal('Aktuell: ');
+  override readonly notCompletedLabel = signal('Nicht abgeschlossen: ');
 }
 
 /**

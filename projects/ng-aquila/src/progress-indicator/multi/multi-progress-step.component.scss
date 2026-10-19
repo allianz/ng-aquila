@@ -177,6 +177,18 @@
   }
 }
 
+// The *current* critical step stays outlined, exactly like a regular current step but in the
+// critical color instead of the active one - only critical steps the user has already left behind
+// get the filled treatment above. Two classes in `:host()`, so this outranks both rules it
+// overrides (`.is-current`, `.is-critical`).
+:host(.is-critical.is-current) {
+  .nx-multi-progress-step__bullet {
+    border-color: v(multi-progress-indicator-critical-color);
+    background-color: transparent;
+    color: v(multi-progress-indicator-critical-color);
+  }
+}
+
 // `:host-context()` can't be chained with `:host()` as a per-element selector here, so the step
 // mirrors `colorScheme` onto its own `.is-positive` class instead of matching the ancestor.
 // Per design, positive only recolors *completed* steps green; current/critical are unaffected.
@@ -447,10 +459,16 @@
   // Without this, Chrome's text auto-backplating fights the explicit Highlight/HighlightText
   // pair below and punches a hole through the circle instead of filling it.
   :host(.is-completed) .nx-multi-progress-step__bullet,
-  :host(.is-critical) .nx-multi-progress-step__bullet {
+  :host(.is-critical:not(.is-current)) .nx-multi-progress-step__bullet {
     background-color: highlight !important;
     color: highlightText !important;
     forced-color-adjust: none;
+  }
+
+  // Mirrors the outlined treatment above: ring and "!" in Highlight, no fill.
+  :host(.is-critical.is-current) .nx-multi-progress-step__bullet {
+    border-color: highlight !important;
+    color: highlight !important;
   }
 
   .nx-multi-progress-step__bar {

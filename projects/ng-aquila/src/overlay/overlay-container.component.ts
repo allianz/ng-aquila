@@ -123,6 +123,11 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
 
   /** Moves the focus inside the focus trap. */
   private _trapFocus() {
+    // The focus trap would pull focus back in as soon as it lands outside, e.g. on the trigger.
+    if (!this._config.moveFocus) {
+      return;
+    }
+
     const element = this._elementRef.nativeElement;
 
     if (!this._focusTrap) {
@@ -184,7 +189,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
     this._elementFocusedBeforeDialogWasOpened = _getFocusedElementPierceShadowDom() as HTMLElement;
 
     // Note that there is no focus method when rendering on the server.
-    if (this._elementRef.nativeElement.focus) {
+    if (this._config.moveFocus && this._elementRef.nativeElement.focus) {
       // Move focus onto the overlay immediately in order to prevent the user from accidentally
       // opening multiple overlays at the same time. Needs to be async, because the element
       // may not be focusable immediately.

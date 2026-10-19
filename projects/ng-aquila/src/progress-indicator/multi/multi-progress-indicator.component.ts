@@ -3,21 +3,28 @@ import {
   ChangeDetectionStrategy,
   Component,
   contentChildren,
+  forwardRef,
   input,
 } from '@angular/core';
 
+import {
+  NX_MULTI_PROGRESS_INDICATOR,
+  NxMultiProgressIndicatorColorScheme,
+  NxMultiProgressIndicatorLayout,
+} from './multi-progress-indicator-types';
 import { NxMultiProgressStepComponent } from './multi-progress-step.component';
-
-export type NxMultiProgressIndicatorColorScheme = 'default' | 'positive';
-
-export type NxMultiProgressIndicatorLayout =
-  'horizontal' | 'horizontal-labels-below' | 'vertical' | 'vertical-no-labels' | 'vertical-no-bars';
 
 @Component({
   selector: 'nx-multi-progress-indicator',
   templateUrl: './multi-progress-indicator.component.html',
   styleUrls: ['./multi-progress-indicator.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NX_MULTI_PROGRESS_INDICATOR,
+      useExisting: forwardRef(() => NxMultiProgressIndicatorComponent),
+    },
+  ],
   host: {
     '[class.positive]': 'colorScheme() === "positive"',
     '[class.vertical]':
@@ -42,7 +49,7 @@ export class NxMultiProgressIndicatorComponent {
    * step only, label beside the bullet). "horizontal-labels-below" bars every step and moves labels
    * below the bullet. "vertical" stacks steps top to bottom with a bar between each one.
    * "vertical-no-labels" and "vertical-no-bars" are "vertical" without a visible label or bar,
-   * respectively. A compact layout is not yet implemented.
+   * respectively. For the compact layout, use `nx-compact-progress-indicator` instead.
    */
   readonly layout = input<NxMultiProgressIndicatorLayout>('horizontal');
 

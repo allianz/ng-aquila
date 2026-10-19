@@ -173,6 +173,38 @@ describe('NxOverlayService', () => {
     flush();
     expect(fixture.componentInstance.button.active).toBe(false);
   }));
+
+  describe('focus on open', () => {
+    let focusFixture: ComponentFixture<ComponentWithFocusableTemplate>;
+    let trigger: HTMLElement;
+
+    function open(config = {}) {
+      overlayService.open(
+        focusFixture.componentInstance.templateRef,
+        focusFixture.componentInstance.trigger,
+        config,
+      );
+      focusFixture.detectChanges();
+      flush();
+    }
+
+    beforeEach(() => {
+      focusFixture = TestBed.createComponent(ComponentWithFocusableTemplate);
+      focusFixture.detectChanges();
+      trigger = focusFixture.componentInstance.trigger.nativeElement;
+      trigger.focus();
+    });
+
+    it('should move focus into the overlay by default', fakeAsync(() => {
+      open();
+      expect(document.activeElement).toBe(overlayContainerElement.querySelector('.inside'));
+    }));
+
+    it('should leave focus on the trigger when moveFocus is false', fakeAsync(() => {
+      open({ moveFocus: false });
+      expect(document.activeElement).toBe(trigger);
+    }));
+  });
 });
 
 @Component({
@@ -210,9 +242,28 @@ class ComponentWithTemplateRef {
 })
 class PlainComponent {}
 
+@Component({
+  selector: 'test-overlay-component-with-focusable-template',
+  template: `<button #button>Trigger</button>
+    <ng-template><button class="inside">Inside</button></ng-template>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class ComponentWithFocusableTemplate {
+  @ViewChild(TemplateRef)
+  templateRef!: TemplateRef<any>;
+  @ViewChild('button')
+  trigger!: ElementRef<HTMLElement>;
+}
+
 @NgModule({
-  imports: [NxOverlayModule, NxButtonModule, ComponentWithTemplateRef, PlainComponent],
-  exports: [ComponentWithTemplateRef, PlainComponent],
+  imports: [
+    NxOverlayModule,
+    NxButtonModule,
+    ComponentWithTemplateRef,
+    PlainComponent,
+    ComponentWithFocusableTemplate,
+  ],
+  exports: [ComponentWithTemplateRef, PlainComponent, ComponentWithFocusableTemplate],
 })
 class OverlayTestModule {}
 

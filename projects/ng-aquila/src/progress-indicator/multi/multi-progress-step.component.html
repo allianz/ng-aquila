@@ -13,10 +13,12 @@
   }
 </span>
 <span class="nx-multi-progress-step__label">
-  @if (_isCompleted()) {
+  @if (_isCompleted() && !critical()) {
     <span class="nx-visually-hidden">{{ _intl.completedLabel() }}</span>
   } @else if (_isCurrent()) {
     <span class="nx-visually-hidden">{{ _intl.currentLabel() }}</span>
+  } @else {
+    <span class="nx-visually-hidden">{{ _intl.notCompletedLabel() }}</span>
   }
   <ng-content></ng-content>
 </span>

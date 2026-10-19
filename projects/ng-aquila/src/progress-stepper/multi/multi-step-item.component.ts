@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 
 import { NxMultiStepperDirection } from '../progress-stepper.models';
+import { NxProgressStepperIntl } from '../progress-stepper-intl';
 
 /** @docs-private */
 @Component({
@@ -32,7 +33,7 @@ import { NxMultiStepperDirection } from '../progress-stepper.models';
     role: 'tab',
     '[attr.aria-controls]': 'ariaControls',
     '[attr.aria-selected]': 'selected',
-    '[attr.aria-label]': 'label()',
+    '[attr.aria-label]': '_stateLabel() + label()',
   },
   imports: [NxIconModule],
 })
@@ -118,6 +119,18 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
 
   private readonly _cdr = inject(ChangeDetectorRef);
   private readonly _focusMonitor = inject(FocusMonitor);
+  private readonly _intl = inject(NxProgressStepperIntl);
+
+  // Same condition as the checkmark in the template.
+  protected _stateLabel(): string {
+    if (this.selected) {
+      return this._intl.currentLabel();
+    }
+    if (this.wasCompleted || (this.completed && !this.disabled)) {
+      return this._intl.completedLabel();
+    }
+    return this._intl.notCompletedLabel();
+  }
 
   ngAfterViewInit(): void {
     this._focusMonitor.monitor(this._elementRef);

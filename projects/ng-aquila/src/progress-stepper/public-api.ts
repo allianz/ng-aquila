@@ -6,4 +6,5 @@ export * from './progress/progress.component';
 export * from './progress-stepper.component';
 export * from './progress-stepper.models';
 export * from './progress-stepper.module';
+export * from './progress-stepper-intl';
 export * from './single/single-step.component';

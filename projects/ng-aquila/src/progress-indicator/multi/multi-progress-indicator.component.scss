@@ -10,8 +10,12 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  // Container query fallback for the last "horizontalLabelsBelow" step's label - see
-  // multi-progress-step.component.scss.
+}
+
+// Container query fallback for the last "horizontalLabelsBelow" step's label - see
+// multi-progress-step.component.scss. Horizontal only: `container-type` also drops this box's
+// intrinsic width, collapsing a shrink-to-fit parent.
+:host(:not(.vertical)) .nx-multi-progress-indicator__list {
   container-type: inline-size;
 }
 

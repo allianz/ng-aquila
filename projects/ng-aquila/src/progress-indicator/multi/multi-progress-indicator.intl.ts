@@ -7,4 +7,7 @@ export class NxMultiProgressIndicatorIntl {
 
   /** Visually-hidden prefix announced before the current step's label */
   readonly currentLabel = signal('Current: ');
+
+  /** Visually-hidden prefix announced before the label of a step that is neither completed nor current */
+  readonly notCompletedLabel = signal('Not completed: ');
 }

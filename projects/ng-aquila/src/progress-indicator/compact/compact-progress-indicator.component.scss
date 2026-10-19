@@ -1,0 +1,48 @@
+@use '../../shared-styles/index' as *;
+
+:host {
+  display: block;
+}
+
+// The fixed "vertical-no-bars" form of multi-progress-indicator.component.scss's list.
+.nx-compact-progress-indicator__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: v(multi-progress-indicator-vertical-no-bars-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  // Only ever focused programmatically, so a ring here would confuse rather than guide.
+  &:focus {
+    outline: none;
+  }
+}
+
+.nx-compact-progress-indicator__step-container {
+  display: flex;
+  align-items: center;
+  gap: v(compact-progress-indicator-gap);
+
+  button {
+    --button-tertiary-text-decoration: none;
+  }
+}
+
+.nx-compact-progress-indicator__counter {
+  @include type-style(compact-progress-indicator-counter);
+  color: v(compact-progress-indicator-counter-color);
+}
+
+.nx-compact-progress-indicator__panel {
+  padding: v(compact-progress-indicator-panel-padding);
+  background-color: v(compact-progress-indicator-panel-background-color);
+  border-radius: v(compact-progress-indicator-panel-border-radius);
+  box-shadow: v(compact-progress-indicator-panel-shadow);
+
+  // The overlay container is transparent, so the edges would vanish.
+  @media screen and (forced-colors: active) {
+    border: 1px solid CanvasText;
+  }
+}

@@ -1,0 +1,37 @@
+<div class="nx-compact-progress-indicator__step-container">
+  <!-- Read as part of the button's name below -->
+  <span [id]="_counterId" class="nx-compact-progress-indicator__counter" aria-hidden="true">
+    {{ _counter() }}
+  </span>
+  <button
+    #trigger
+    nxPlainButton
+    type="button"
+    [attr.aria-labelledby]="_counterId + ' ' + _labelId"
+    [attr.aria-expanded]="_isOpen()"
+    [attr.aria-controls]="_isOpen() ? _panelId : null"
+    (click)="toggle()"
+    (keydown)="_onTriggerKeydown($event)"
+  >
+    <span [id]="_labelId">{{ expandLabel() ?? _intl.expandLabel() }}</span>
+    <nx-icon [name]="_isOpen() ? 'chevron-up' : 'chevron-down'" aria-hidden="true"></nx-icon>
+  </button>
+</div>
+
+<ng-template #panel>
+  <div
+    [id]="_panelId"
+    class="nx-compact-progress-indicator__panel"
+    (keydown)="_onPanelKeydown($event)"
+  >
+    <ol
+      class="nx-compact-progress-indicator__list"
+      role="list"
+      [attr.aria-label]="ariaLabel()"
+      [attr.aria-labelledby]="ariaLabelledBy()"
+      [attr.aria-describedby]="ariaDescribedBy()"
+    >
+      <ng-content></ng-content>
+    </ol>
+  </div>
+</ng-template>
