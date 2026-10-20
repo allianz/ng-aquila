@@ -334,9 +334,22 @@
             },
             "development": {
               "buildTarget": "ssr-playground:build:development"
+            },
+            "e2e": {
+              "buildTarget": "ssr-playground:build:development",
+              "watch": false,
+              "liveReload": false
             }
           },
           "defaultConfiguration": "development"
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "ssr-playground:serve:e2e",
+            "port": 4310,
+            "config": "projects/ssr-playground/playwright.config.ts"
+          }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",

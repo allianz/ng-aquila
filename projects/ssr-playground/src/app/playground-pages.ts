@@ -98,7 +98,7 @@ interface ExampleModule {
 
 // The documentation modules declare every example of their group. The playground renders one simple
 // example per group instead: enough to catch a component's server-render and hydration failures,
-// few enough that a sweep stays readable. See README.md for why the trim costs no coverage.
+// few enough that a test run stays fast and readable. See README.md for why the trim costs no coverage.
 const pick = (
   module: ExampleModule,
   ...ids: readonly string[]
@@ -106,7 +106,7 @@ const pick = (
   const components = module.components();
   // An unknown id would hand `ngComponentOutlet` undefined, which renders nothing while the
   // wrapping <section class="example"> still counts as mounted — a rename upstream would drop a
-  // component from the matrix with a green sweep. Fail loudly instead.
+  // component from the matrix with a green test run. Fail loudly instead.
   const missing = ids.filter((id) => !components[id]);
   if (missing.length > 0) {
     throw new Error(

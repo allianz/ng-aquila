@@ -14,33 +14,46 @@ guard for it and must not be dropped: `dropdown/multi-select`, `datefield/datema
 ## Running it
 
 ```bash
-npm run start:ssr-playground                             # dev server, SSR + hydration, :4200
-npm run build:ssr-playground                             # production build into dist/ssr-playground
+npm run start:ssr-playground       # dev server, SSR + hydration, :4200
+npm run build:ssr-playground       # production build into dist/ssr-playground
 node dist/ssr-playground/server/server.mjs  # run that build on :4000
 ```
 
-## Reading the results
+## Testing it
 
 ```bash
-node projects/ssr-playground/tools/sweep.mjs       # BASE=http://localhost:4000 by default
+npm run test:ssr-playground        # `ng e2e`: starts `ng serve` on :4310 and runs Playwright
 ```
 
-The sweep requests `/` plus all 82 pages and asserts each returns 200 **and** mounts at least one
-`<section class="example">` — an empty page still returns a valid 200, which hid 23 blank pages during
-the original trim.
+`ng e2e` uses the `playwright-ng-schematics` builder. It starts the `serve:e2e` configuration, runs
+`playwright test` with `playwright.config.ts`, and stops the server again. `e2e/ssr.e2e.ts` has one
+test per entry in `PLAYGROUND_PAGES`, so a new page is tested without further work. A separate test
+checks that the nav links every page. Each page loads in Chromium. A page fails when:
 
-Neither check says anything about render *correctness*: Angular catches most render errors and still
-returns HTML, so **read the server log** — a green sweep is consistent with the errors below.
-Hydration errors only appear in a browser console, and nothing checks those automatically.
+- the response is not 200, or it has no `<section class="example">`
+- the server `ErrorHandler` caught an error (`src/app/ssr-errors.ts` writes them into the HTML)
+- an attribute in the server HTML contains `NaN`, e.g. `style="width: NaNpx"`
+- the browser throws, logs a console error (except a failed load from another host), or logs an
+  `NG0` warning
+- the app never becomes stable, or Angular does not log hydration stats, or skips a component
 
-## Current state
+The run also fails when the server catches an `uncaughtException` or `unhandledRejection`. That is
+an error thrown from a timer after the render was sent, so no page can report it. `server.ts`
+collects these errors and serves them on `/__ssr-playground/errors`, and `e2e/global-teardown.ts`
+fails the run if that list is not empty.
 
-With the SSR fixes (#2031–#2038) merged, all 82 pages return 200 with 87 examples mounted and the
-server log carries **one** render error:
+The test uses `ng serve` because Angular logs hydration stats and full `NG0` messages only in dev
+mode, and because it is the server developers use. It does not run the production-style
+`server.ts` entry (`node dist/ssr-playground/server/server.mjs`).
 
-| Component | Where | Failure | Page | Status |
-| --- | --- | --- | --- | --- |
-| `NxComparisonTable` | constructor | `ReferenceError: ResizeObserver is not defined` | `comparison-table` | open; fix not merged yet |
+To test a server that is already running, for example `npm run start:ssr-playground`:
+
+```bash
+SSR_PLAYGROUND_URL=http://localhost:4200 npx playwright test --config projects/ssr-playground/playwright.config.ts
+```
+
+On CI, a failed run uploads the Playwright report with screenshots and traces as the
+`ssr-playground-report` artifact. Open it with `npx playwright show-report <folder>`.
 
 ### Regression set
 
@@ -68,21 +81,6 @@ Every failure was server-side only. Spot checks in a real browser produced no hy
 no console errors, so the client recovered silently and none of it was visible to someone testing in a
 browser.
 
-### `NxPhoneInput` and `i18n-iso-countries`
-
-`i18n-iso-countries` is CommonJS and its `main` (`entry-node.js`) loops over every locale doing
-`require("./langs/" + locale + ".json")`. The specifier is fully dynamic, so Vite's prebundle resolves
-it against the cache directory and the first locale throws before any component renders. With the
-package root imported anywhere, `ng serve` answers every route with a 500. Production builds are not
-affected: esbuild bundles the locale files.
-
-The library and the `phone-input-i18n` example import `i18n-iso-countries/index.js` (the path
-browsers already get) instead of the package root. Excluding the package from prebundling is worse:
-it then gets bundled into the app, `index.js` opens with `require("diacritics")`, esbuild's `__require`
-shim throws during bootstrap, and **every route becomes non-interactive** — server HTML paints, the
-client bundle dies, and the server log says nothing. Turning prebundling off (`"prebundle": false`)
-works. Consumer guidance is in the "Server-side rendering" section of `phone-input.md`.
-
 ## Not failures
 
 - Viewport-adaptive components render their **desktop** branch on the server (`NxViewportService`
@@ -92,5 +90,3 @@ works. Consumer guidance is in the "Server-side rendering" section of `phone-inp
   `nx-radio` is by design an empty ring. Clicking one renders `.nx-radio__dot`.
 - **`nx-icon` renders no glyph** and pages carry no brand theme — both ship with ngx-brand-kit, which
   this app does not pull in. Components branching on the `ALLIANZ_ONE` token are therefore untested.
-- **`NG0912` component ID collision** on every page: `_SimpleMessageToastComponent` and
-  `_SimpleModalComponent` share the `ng-component` selector. Real, but unrelated to SSR.

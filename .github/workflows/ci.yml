@@ -68,6 +68,19 @@ jobs:
         with:
           token: ${{ github.token }}
 
+      - name: Test SSR playground
+        run: npm run test:ssr-playground
+
+      # Screenshots and traces of the failed pages; open with `npx playwright show-report <folder>`.
+      - name: Upload SSR playground report
+        uses: actions/upload-artifact@v3.2.2-node20
+        if: failure()
+        with:
+          name: ssr-playground-report
+          path: dist/ssr-playground-e2e/report/
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Build documentation
         run: npm run build:docs -- --progress=false
 
