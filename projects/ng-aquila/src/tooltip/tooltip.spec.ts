@@ -389,6 +389,39 @@ describe('NxTooltipDirective', () => {
       expect(overlayContainerElement.textContent).toBe('');
     }));
 
+    it('should cancel a pending show when the trigger is destroyed', fakeAsync(() => {
+      const liveAnnouncer = TestBed.inject(LiveAnnouncer);
+      const announceSpy = vi
+        .spyOn(liveAnnouncer, 'announce')
+        .mockImplementation(() => Promise.resolve());
+
+      buttonElement.dispatchEvent(createFakeEvent('mouseenter'));
+      const tooltipInstance = tooltipDirective._tooltipInstance!;
+      expect(tooltipInstance.isPendingShow()).toBe(true);
+
+      fixture.componentInstance.showButton = false;
+      fixture.detectChanges();
+
+      expect(tooltipInstance.isDelayed()).toBe(false);
+      tick(200);
+      expect(announceSpy).not.toHaveBeenCalled();
+    }));
+
+    it('should cancel a pending hide when the trigger is destroyed', fakeAsync(() => {
+      tooltipDirective.show();
+      tick(200);
+      tooltipDirective.hide(1000);
+      const tooltipInstance = tooltipDirective._tooltipInstance!;
+      expect(tooltipInstance.isDelayed()).toBe(true);
+
+      fixture.componentInstance.showButton = false;
+      fixture.detectChanges();
+
+      expect(tooltipInstance.isDelayed()).toBe(false);
+      tick(1000);
+      expect(tooltipInstance.visibility).toBe('visible');
+    }));
+
     it('should have an aria-described element with the tooltip message', () => {
       const dynamicTooltipsDemoFixture = TestBed.createComponent(DynamicTooltipsDemo);
       const dynamicTooltipsComponent = dynamicTooltipsDemoFixture.componentInstance;
