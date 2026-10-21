@@ -1,0 +1,81 @@
+@if (_hasToggleSection()) {
+  <tr class="nx-comparison-table__toggle-section-header-row">
+    <th class="nx-comparison-table__placeholder-cell"></th>
+    @for (column of columns(); track column.key) {
+      @if (column.spacer) {
+        <th
+          class="nx-comparison-table__placeholder-cell"
+          [class.needs-clipping]="column.section"
+          aria-hidden="true"
+        ></th>
+      }
+      @if (column.section; as section) {
+        <ng-container
+          *ngTemplateOutlet="
+            section.toggleSectionHeader()._content;
+            context: { $implicit: column.rows.length }
+          "
+        ></ng-container>
+      } @else {
+        <th class="nx-comparison-table__placeholder-cell"></th>
+      }
+    }
+  </tr>
+}
+
+<tr class="nx-comparison-table__description-row">
+  <th #stickyCell class="nx-comparison-table__placeholder-cell" scope="col"></th>
+  @for (column of columns(); track column.key) {
+    @if (column.spacer) {
+      <th
+        class="nx-comparison-table__placeholder-cell"
+        [class.needs-clipping]="column.section"
+        aria-hidden="true"
+      ></th>
+    }
+    @for (row of column.rows; track row) {
+      <ng-container *ngTemplateOutlet="row.descriptionCell()?._content ?? null"></ng-container>
+    }
+  }
+</tr>
+
+<!-- One row per product; the intersection cells span them all from the first one. -->
+@for (headerCell of _table._headerCells(); track headerCell; let headerIndex = $index) {
+  @if (_table._popularCell(); as popular) {
+    @if (popular.forColumn === headerIndex + 1) {
+      <tr class="nx-comparison-table__popular-row">
+        <ng-container *ngTemplateOutlet="popular._content"></ng-container>
+        @for (column of columns(); track column.key) {
+          @if (column.spacer) {
+            <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
+          }
+          @for (row of column.rows; track row) {
+            <!-- marks the next placeholder as the first after an intersection, which draws its border -->
+            @if (row.intersectionCell()) {
+              <div class="nx-comparison-table__intersection-cell-marker"></div>
+            }
+            @if (row.cells().length > 0) {
+              <td class="nx-comparison-table__placeholder-with-border-cell" aria-hidden="true"></td>
+            }
+          }
+        }
+      </tr>
+    }
+  }
+  <tr [class.is-disabled]="headerCell.disabledColumn">
+    <ng-container *ngTemplateOutlet="headerCell._content"></ng-container>
+    @for (column of columns(); track column.key) {
+      @if (column.spacer) {
+        <td class="nx-comparison-table__placeholder-cell" aria-hidden="true"></td>
+      }
+      @for (row of column.rows; track row) {
+        @if (headerIndex === 0 && row.intersectionCell(); as intersection) {
+          <ng-container *ngTemplateOutlet="intersection._content"></ng-container>
+        }
+        @if (row.cells()[headerIndex]; as cell) {
+          <ng-container *ngTemplateOutlet="cell._content"></ng-container>
+        }
+      }
+    }
+  </tr>
+}

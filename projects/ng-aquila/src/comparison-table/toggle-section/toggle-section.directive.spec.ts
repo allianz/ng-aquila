@@ -44,12 +44,6 @@ describe('ToggleSectionHeaderComponent', () => {
   }));
 
   describe('basic', () => {
-    it('sets numberOfRows correctly', () => {
-      createTestComponent(BasicComponent);
-      expect(toggleSectionInstances.toArray()[0]._numberOfRows()).toBe(1);
-      expect(toggleSectionInstances.toArray()[1]._numberOfRows()).toBe(2);
-    });
-
     it('sets _isPartOfToggleSection correctly', () => {
       createTestComponent(BasicComponent);
       expect(rowInstances.toArray()[0]._isPartOfToggleSection()).toBe(false); // header row

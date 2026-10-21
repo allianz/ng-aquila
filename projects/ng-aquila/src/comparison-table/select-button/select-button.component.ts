@@ -9,7 +9,6 @@ import {
   Input,
   OnDestroy,
 } from '@angular/core';
-import { Subject } from 'rxjs';
 
 import { NxComparisonTableCell } from '../cell/cell.component';
 
@@ -73,28 +72,35 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
   }
   private _selectedClassNames = 'primary small';
 
-  protected iconFilled = computed(() => (this._isA1() ? 'false' : 'true'));
-  protected iconOutlined = computed(() => (this._isA1() ? 'false' : 'true'));
+  protected readonly _iconFilled = computed(() => (this._isA1() ? 'false' : 'true'));
 
-  _ariaPressed = false;
+  /**
+   * @deprecated No longer used.
+   * @deletion-target 23.0.0
+   */
+  protected iconFilled = this._iconFilled;
 
-  private readonly _destroyed = new Subject<void>();
+  /**
+   * @deprecated No longer used.
+   * @deletion-target 23.0.0
+   */
+  protected iconOutlined = this._iconFilled;
 
   // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(...args: unknown[]);
   constructor() {
     super();
-    this._setClassNames();
 
     effect(() => {
       this._setClassNames();
     });
   }
 
-  ngOnDestroy(): void {
-    this._destroyed.next();
-    this._destroyed.complete();
-  }
+  /**
+   * @deprecated No longer used.
+   * @deletion-target 23.0.0
+   */
+  ngOnDestroy(): void {}
 
   private _setClassNames() {
     this.classNames = this._cell._isSelected()
@@ -108,9 +114,5 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
 
   _getButtonLabel() {
     return this._cell._isSelected() ? this._selectedLabel : this._unselectedLabel;
-  }
-
-  private _setAriaPressed() {
-    this._ariaPressed = this._cell._isSelected();
   }
 }

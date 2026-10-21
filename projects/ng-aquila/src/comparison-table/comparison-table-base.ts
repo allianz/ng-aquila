@@ -9,6 +9,7 @@ import {
   EventEmitter,
   inject,
   InputSignal,
+  Output,
   Signal,
   signal,
 } from '@angular/core';
@@ -28,12 +29,31 @@ export abstract class NxComparisonTableBase {
 
   selectedIndexChange!: EventEmitter<number>;
 
-  readonly _disabledIndexes = signal<ReadonlySet<number>>(new Set());
   abstract readonly _hiddenIndexes: Signal<number[]>;
+
+  /** The distinct hidden indexes that refer to an existing header cell. */
+  readonly _hiddenIndexSet = computed<ReadonlySet<number>>(() => {
+    const columnCount = this._headerCells().length;
+    return new Set(
+      this._hiddenIndexes().filter((i) => Number.isInteger(i) && i >= 0 && i < columnCount),
+    );
+  });
+
+  /** A product column's position among the visible columns (the carousel pages in these). */
+  _visibleColumnIndex(index: number): number {
+    let hiddenBefore = 0;
+    for (const hidden of this._hiddenIndexSet()) {
+      if (hidden < index) {
+        hiddenBefore++;
+      }
+    }
+    return index - hiddenBefore;
+  }
 
   abstract selectedIndex: number;
 
-  readonly viewTypeChange = new EventEmitter<NxComparisonTableViewType>();
+  /** An event that is dispatched each time the view type of the table has changed. */
+  @Output() readonly viewTypeChange = new EventEmitter<NxComparisonTableViewType>();
 
   protected readonly _viewInput = signal<NxComparisonTableViewType | null | undefined>(undefined);
 
@@ -60,22 +80,19 @@ export abstract class NxComparisonTableBase {
 
   abstract isError: boolean;
 
-  /** All header cells of the table. */
   abstract readonly _headerCells: Signal<readonly NxComparisonTableCell[]>;
 
-  /** How many product columns the table has. */
+  /** Product columns that are not hidden. */
   abstract readonly _infoColumnCount: Signal<number>;
 
   /** How many product columns are fully shown at once (the carousel page-window width). */
   abstract readonly _visibleColumnCount: Signal<number>;
 
-  /** Whether the table overflows its visible width (the carousel is active). */
   abstract readonly _isOverflowing: Signal<boolean>;
 
   /** Current carousel page, 0-based, in product-column units. */
   abstract readonly _pageIndex: Signal<number>;
 
-  /** The popular cell of the table. */
   abstract readonly _popularCell: Signal<NxComparisonTablePopularCell | undefined>;
 
   /**
@@ -88,17 +105,19 @@ export abstract class NxComparisonTableBase {
   /** Accent hue of the header, for an `accent-attention` color scheme. */
   abstract readonly accentColor: Signal<NxSurfaceAccentColor>;
 
-  /** Whether the sticky header row is currently pinned to the top of the page. */
+  /** Whether the header is currently pinned, not merely allowed to stick (`mayStick`). */
   abstract readonly _isHeaderStuck: Signal<boolean>;
 
-  /** Base headline size the table imposes on its header cells' title slots. */
   abstract readonly headlineSize: Signal<'l' | 'xl'>;
 
-  /** Add a column to the list of disabled columns. */
-  abstract _addDisabledColumn(disabledColumn: number): void;
-
-  /** Remove a column from the list of disabled columns. */
-  abstract _removeDisabledColumn(enabledColumn: number): void;
+  readonly _disabledIndexes = computed<ReadonlySet<number>>(
+    () =>
+      new Set(
+        this._headerCells()
+          .filter((cell) => cell.disabledColumn)
+          .map((cell) => cell.index),
+      ),
+  );
 
   /** @docs-private */
   get viewType(): NxComparisonTableViewType {

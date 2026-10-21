@@ -984,6 +984,7 @@ $nx-theme: (
   comparison-table-header-title-spacing-bottom-sticky: 8px,
   comparison-table-header-price-spacing-bottom: 16px,
   comparison-table-header-price-spacing-bottom-sticky: 8px,
+  comparison-table-header-radio-indicator-spacing-bottom: 4px,
   // Eases the eyebrow collapse, headline/price size step and spacing changes that fire when
   // the sticky header docks/undocks (see cell.component.scss `.is-stuck`).
   comparison-table-header-stuck-transition-duration: 200ms,
@@ -1061,6 +1062,11 @@ $nx-theme: (
   comparison-table-expansion-cell-margin-top: 0,
   comparison-table-expansion-cell-border-size: 1px,
   comparison-table-cell-text-align: center,
+  comparison-table-nav-button-background-color: #fff,
+  comparison-table-nav-button-box-shadow: (
+    0 1px 4px 0 rgba(18, 43, 84, 0.16),
+    0 4px 16px 0 rgba(18, 43, 84, 0.12),
+  ),
   data-display-label-font-weight: 600,
   data-display-large-font-size: paragraph-02-font-size,
   data-display-large-line-height: paragraph-02-line-height,

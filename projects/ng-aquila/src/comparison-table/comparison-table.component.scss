@@ -1,87 +1,118 @@
 @use '../shared-styles/index' as *;
+@use './comparison-table-mixins' as ct;
 
-/** The A1 accent hues. A single `on-accent-attention` colour reads on all of them. */
-$comparison-table-accent-colors: (
-  'yellow',
-  'orange',
-  'red',
-  'purple',
-  'aqua',
-  'blue',
-  'teal',
-  'green',
-  'gray'
+// No default, so overrides of `comparison-table-border-color` still reach these borders.
+$intersection-border-color: var(
+  --comparison-table-intersection-cell-border-color,
+  #{v(comparison-table-border-color)}
 );
 
-/// Colours of a header/footer card (`.__cell-inner`). Everything that recolours one — error, the
-/// A1 colour schemes — only reassigns one of these three custom properties, so no state has to
-/// out-specify (or exclude) another. All three unset is the plain card.
-///
-/// Selection is deliberately NOT one of the three: semantically it's still a border, drawn with
-/// `outline` instead so it costs no layout. A real `border` can't do that here — A1's selected
-/// width is wider than the resting one, so switching `border-width` on select would shift the
-/// card's content. An inset outline paints the same wider edge without resizing the box. Width 0
-/// (every theme but A1) makes it inert.
-@mixin ct-header-colors($background) {
-  color: var(--nx-ct-header-text-color, inherit);
-  background: var(--nx-ct-header-background, #{$background});
-  border: v(comparison-table-border-width) solid
-    var(--nx-ct-header-border-color, #{v(comparison-table-header-border-color)});
-  outline: v(comparison-table-selected-border-width) solid transparent;
-  outline-offset: calc(-1 * v(comparison-table-selected-border-width));
+// Inlined: as unregistered custom properties they would inherit into, and restyle, the cell content.
+$offset: round(calc(var(--ct-page) * var(--ct-step) + var(--ct-pan)), 1px);
+// = $offset in % of the cell, so a resize leaves the transform alone instead of replaying the glide.
+$shift: round(calc(var(--ct-page) * (100% + var(--ct-gap)) + var(--ct-pan)), 1px);
+
+// Registered so the component can read them in px, to work out how many columns fit.
+@property --ct-gap {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+@property --ct-min-col-w {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+// Not inherited: written per scroll on tbody/tfoot, so it restyles only those two elements.
+@property --ct-clip-top {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+// Computed to px once: substituting `100cqi` in every cell restyles them all on any viewport resize.
+@property --ct-col-w {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+@property --ct-step {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+// Not inherited: only the product cells take them over (`inherit` below), so a page or pan step
+// restyles those cells, not everything inside them.
+@property --ct-page {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --ct-pan {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
 }
 
 :host {
   display: block;
   @include type-style(comparison-table);
-
-  // ─── NATIVE TABLE (desktop + tablet) ──────────────────────────────────────────
-  // ONE native <table>. There is no horizontal scroll: the product columns are a CAROUSEL moved
-  // by `transform: translateX(--ct-page-shift)`. Because `overflow-x: clip` (on the inner
-  // .__viewport) is NOT coerced into a scroll container (unlike auto/scroll/hidden — CSS Overflow
-  // L3), the page stays the vertical scroller and `thead{position:sticky;top:0}` pins to the PAGE
-  // while keeping the body in the SAME table (so AT sees a genuine table). The nav buttons live
-  // OUTSIDE the clipped viewport so the clip never crops their hit area.
-  // `container-type: inline-size` makes `100cqi` resolve to the visible width — used to size
-  // columns and the full-width spanning banners.
+  --ct-gap: #{v(comparison-table-row-gap)};
+  --ct-min-col-w: #{v(comparison-table-min-column-width)};
 
   &.is-desktop-view,
   &.is-tablet-view {
     .nx-comparison-table__native {
       position: relative;
       container-type: inline-size;
+      --ct-shadow: #{v(comparison-table-column-shadow-space)};
+      --ct-bleed-start: 0px;
+      --ct-bleed-end: 0px;
+      --ct-peek-center: 0px;
     }
 
-    // Clips the off-screen (translated) product columns horizontally without becoming a scroll
-    // container. `overflow-clip-margin` keeps the edge cards' shadows from being cropped; the
-    // block padding/negative-margin gives the first/last rows' shadows room inside the clip box.
+    // On the container itself, container units would resolve against an ancestor container.
+    .nx-comparison-table__native > * {
+      --ct-col-w: calc((100cqi + var(--ct-gap)) / var(--ct-cols-shown, 1) - var(--ct-gap));
+      --ct-step: calc(var(--ct-col-w) + var(--ct-gap));
+    }
+
+    // Only while overflowing: explicit inheritance makes each of these elements costlier to style.
+    &.is-overflowing {
+      .nx-comparison-table__viewport,
+      .nx-comparison-table__table,
+      .nx-comparison-table__table > *,
+      .nx-comparison-table__table > * > tr,
+      ::ng-deep .nx-comparison-table__product-cell {
+        --ct-page: inherit;
+        --ct-pan: inherit;
+      }
+    }
+
+    // `clip`, unlike hidden/auto, makes no scroll container, so the thead stays sticky to the page.
+    // Padding + negative margin (not overflow-clip-margin, Firefox-only) lets shadows and peek out.
     .nx-comparison-table__viewport {
+      --ct-clip-start: max(var(--ct-shadow), var(--ct-bleed-start, 0px));
+      --ct-clip-end: max(var(--ct-shadow), var(--ct-bleed-end, 0px));
       overflow-x: clip;
       overflow-y: visible;
-      // Trailing-edge (inline-end) shadow room: the overflow peek already gives the right edge
-      // space, so overflow-clip-margin (reliable only in Firefox) is enough there and is inert in
-      // base themes (--ct-shadow = 0). The LEADING edge can't rely on it — Chromium/WebKit crop the
-      // leftmost card's shadow — so it gets a real padding box below instead.
-      overflow-clip-margin: var(--ct-shadow);
-      // Leading-edge (inline-start) shadow room, done the same way as the block axis: a REAL
-      // padding-inline-start makes the shadow space part of the overflow-clip (= padding) box, so
-      // the leftmost card's shadow is preserved in EVERY engine (not just Firefox). The negative
-      // margin-inline-start keeps the viewport's MARGIN box at the container width, so the table's
-      // `width` (resolved against the CONTENT box) and the column grid are unchanged. Logical
-      // properties → correct in RTL. Falls back to 0px in base themes (no-op).
-      padding-inline-start: var(--ct-shadow);
+      padding-inline: var(--ct-clip-start) var(--ct-clip-end);
       padding-block: var(--ct-shadow);
-      margin-inline-start: calc(-1 * var(--ct-shadow));
-      // Pull the viewport up by the nav-wrapper's measured height (--ct-thead-h) so the wrapper —
-      // which now carries a real header-band height to align its sticky release with the header —
-      // adds no net vertical space. The negative margin lives on this in-flow, non-sticky sibling,
-      // NOT on the sticky wrapper itself: a negative margin on a sticky box shifts its
-      // sticky-constraint rectangle (CSS Position L3 uses the margin box), which would undo the fix.
-      // Bottom side keeps the existing -shadow bleed. Falls back to 0px (today's behaviour).
-      margin-block: calc(-1 * var(--ct-thead-h, 0px) - var(--ct-shadow)) calc(-1 * var(--ct-shadow));
+      margin-inline: calc(-1 * var(--ct-clip-start)) calc(-1 * var(--ct-clip-end));
+      margin-block: calc(-1 * var(--ct-shadow));
     }
 
-    // The header pins to the PAGE on vertical scroll (the page/inner-main is the vertical scroller).
+    // Cancels the nav-wrapper's height here: a negative margin on the sticky wrapper itself would
+    // shift its sticky-constraint rectangle.
+    .nx-comparison-table__nav-wrapper + .nx-comparison-table__viewport {
+      margin-block-start: calc(-1 * var(--ct-thead-h, 0px) - var(--ct-shadow));
+    }
+
     thead.is-sticky {
       position: sticky;
       top: 0;
@@ -90,38 +121,30 @@ $comparison-table-accent-colors: (
 
     .nx-comparison-table__table {
       border-collapse: separate;
-      border-spacing: v(comparison-table-row-gap) 0;
+      border-spacing: var(--ct-gap) 0;
       table-layout: fixed;
-      // `height: 1px` makes the table's height DEFINITE without constraining it (content far
-      // exceeds 1px, so the table still grows to fit). This is what lets the header/footer cards'
-      // `height: 100%` resolve and equalise every column to its row's height: a percentage height
-      // on the inner card only resolves when its containing cell has a definite height, and a table
-      // cell's height is definite only when the table itself is. Without this the cards collapse to
-      // their own content height, so a column with a longer title ends up taller than its siblings.
-      // It must sit on the TABLE (not the cell or row, which don't propagate definiteness to the
-      // card) — verified across engines.
+      // Makes the table height definite without limiting it, so the header/footer cards'
+      // `height: 100%` resolves and every card of a row is equally tall. Only works on the table.
       height: 1px;
-      // `border-spacing` also lays a phantom gap on the table's OUTER edges (one BEFORE the
-      // first column and one AFTER the last), not just between columns. Pull the table back by
-      // one gap on BOTH inline sides so the column grid sits flush against the visible edges:
-      //   • leading negative margin → the leading phantom gap sits at [-gap, 0], off-screen
-      //     (clipped by the viewport's overflow-x: clip);
-      //   • trailing negative margin → trims the trailing phantom gap so the last column ends
-      //     flush and the full-width spanning banners are not pushed past their cell at the far end.
-      // In non-overflow mode the table is grown by two gaps so, after the two negative margins,
-      // its MARGIN box is exactly the container width and the columns fill [0, 100%].
-      // In overflow mode `width: max-content` (below) overrides the grow; the negative margins
-      // still cancel both outer gaps.
-      width: calc(100% + 2 * v(comparison-table-row-gap));
-      margin-inline: calc(-1 * v(comparison-table-row-gap));
+      // `border-spacing` also adds a gap outside the first and the last column; cancel both.
+      width: calc(100% + 2 * var(--ct-gap));
+      margin-inline: calc(-1 * var(--ct-gap));
     }
   }
 
-  // Overflow: the table grows to its intrinsic width and each column is sized so that
-  // `--ct-cols-shown` columns (visible products, plus the row-header column on desktop) fill
-  // the visible width (100cqi). The remaining columns overflow the viewport and are revealed by
-  // paging the carousel (transform). Not overflowing → table-layout:fixed splits 100% equally.
+  &.is-desktop-view .nx-comparison-table__native > * {
+    --ct-sticky-w: round(var(--ct-col-w), 1px);
+  }
+
+  // `--ct-cols-shown` is picked to fit, so the minimum only applies when not even one column does.
   &.is-overflowing {
+    .nx-comparison-table__native > * {
+      --ct-col-w: max(
+        var(--ct-min-col-w),
+        calc((100cqi + var(--ct-gap)) / var(--ct-cols-shown, 1) - var(--ct-gap))
+      );
+    }
+
     &.is-desktop-view .nx-comparison-table__table,
     &.is-tablet-view .nx-comparison-table__table {
       width: max-content;
@@ -131,40 +154,26 @@ $comparison-table-accent-colors: (
     &.is-desktop-view .nx-comparison-table__col-first,
     &.is-desktop-view .nx-comparison-table__col-product,
     &.is-tablet-view .nx-comparison-table__col-product {
-      // Subtract the peek from the visible width before splitting it across the shown
-      // columns, so the last shown column ends one peek short of the trailing edge and a
-      // sliver of the next column stays visible (signalling there is more to page to).
-      width: max(
-        v(comparison-table-min-column-width),
-        calc(
-          (100cqi - v(comparison-table-overflow-peek)) /
-            var(--ct-cols-shown, 1) - v(comparison-table-row-gap)
-        )
-      );
+      width: var(--ct-col-w);
     }
   }
 
-  // ── Carousel: translate the product columns ─────────────────────────────────────
-  // The product cells slide by `--ct-page-shift` (set in JS from the page index, ≤ 0 in LTR).
-  // The first column (description / corner cells) and the full-width spanning cells (intersection,
-  // toggle-section header, group expander, tablet description banner) carry NO product-cell class,
-  // so they stay put — the first column is "fixed" simply by not being translated, and the
-  // spanning cells keep filling the product area. Transform is paint-only (no relayout) and does
-  // NOT break the sticky thead (only a transformed ANCESTOR would). The transition gives the
-  // carousel its smooth glide; disabled under reduced-motion and during a live touch pan.
+  // Only the product cells move; a transformed ancestor would break the sticky thead.
   &.is-desktop-view,
   &.is-tablet-view {
     ::ng-deep .nx-comparison-table__product-cell {
-      transform: translateX(var(--ct-page-shift, 0px));
+      transform: translateX(calc(-1 * #{$shift}));
+
+      &:dir(rtl) {
+        transform: translateX($shift);
+      }
     }
 
-    // `.is-measuring` suppresses the transition while `_measureClipGeometry`'s trailing
-    // `_applyPageShift()` re-asserts the offset, so a resize-driven shift change snaps there
-    // instead of animating from the pre-resize position. It governs only transitions that start
-    // while it is set — one already running is unaffected, which is why `_measureClipGeometry`
-    // also has to finish those explicitly before it reads.
     @media (prefers-reduced-motion: no-preference) {
-      &:not(.is-panning):not(.is-measuring) ::ng-deep .nx-comparison-table__product-cell {
+      &:not(.is-panning):not(.is-snapping)
+        tr:not(.is-out-of-view)
+        > ::ng-deep
+        .nx-comparison-table__product-cell {
         transition:
           transform v(comparison-table-toggle-section-animation-duration)
             v(comparison-table-toggle-section-animation-easing),
@@ -173,26 +182,23 @@ $comparison-table-accent-colors: (
       }
     }
 
-    // Content / footer cells whose column has left the page window fade OUT, so only the
-    // fully-visible columns' body content shows — the header keeps its peek sliver as the
-    // "more columns" affordance. Opacity (not visibility/display) keeps the cell focusable: tabbing
-    // into a faded column triggers the focusin auto-pagination, which pages it back into view and
-    // fades it in. The fade animates via the product-cell transition above (skipped under
-    // reduced-motion / during a live pan). Header cells never get `.is-faded` (binding is on the
-    // content/footer <td> only), so this never touches them.
+    // Horizontal pans reach the component's pan handlers without any preventDefault.
+    &.is-overflowing .nx-comparison-table__native {
+      touch-action: pan-y pinch-zoom;
+    }
+
+    // Opacity, not visibility/display, so a faded cell stays focusable and focus can page it in.
     ::ng-deep .nx-comparison-table__cell.is-faded {
       opacity: 0;
     }
   }
 
-  // ── Sticky header
   &.is-desktop-view,
   &.is-tablet-view {
     thead .nx-comparison-table__corner-cell {
       position: sticky;
       z-index: 4;
-      // Prevents scroll-anchoring feedback loops while the stuck/unstuck transition
-      // (cell.component.scss) animates these cells' box size.
+      // Avoids a scroll-anchoring feedback loop while the stuck transition resizes these cells.
       overflow-anchor: none;
     }
 
@@ -206,21 +212,14 @@ $comparison-table-accent-colors: (
     }
   }
 
-  // ── Fixed first column (desktop) ────────────────────────────────────────────────
-  // The row-header column (description + corner cells) is "fixed" by NOT being translated with the
-  // carousel. We still mark it position: sticky; inset-inline-start: 0 so the thead corner is
-  // pinned on the vertical axis above the product cells and the z-order is unambiguous.
+  // The first column stays put by not being translated; sticky only for the stacking order.
   &.is-desktop-view {
     .nx-comparison-table__corner-cell {
       position: sticky;
       inset-inline-start: 0;
       z-index: 2;
-      background: transparent;
-      border: none;
-      box-shadow: none;
     }
 
-    // The corner cell of the (sticky) header is sticky on both axes → above everything.
     thead .nx-comparison-table__corner-cell {
       inset-inline-start: 0;
       z-index: 6;
@@ -231,24 +230,315 @@ $comparison-table-accent-colors: (
       inset-inline-start: 0;
       z-index: 2;
     }
+  }
 
-    // Frame the empty header & footer corner cells — the sticky first-column cells aligned under
-    // the description column. Driven by the placeholder-cell tokens, which carry a surface + border
-    // ONLY in the Expert theme (transparent / none in Aquila, NDBX and A1), so this is inert
-    // everywhere else without a theme guard. More specific than the base corner-cell reset above
-    // (`background: transparent; border: none`), so it wins.
-    //
-    // No-double borders: the first column is a continuous band — thead corners on top, the
-    // description block (tbody) in the middle, the footer corner at the bottom. The description
-    // block already draws its own top (first content row) + bottom (every content row) edges, and
-    // the header/footer product CARDS already draw their inline-start border on the first column.
-    // So the corners must add ONLY the edges nobody else draws:
-    //   • inline-start on every framed corner → the table's outer-left edge (nothing to its left);
-    //   • top on the FIRST thead row's corner → the outer-top edge above the header band;
-    //   • bottom on the footer corner → the outer-bottom edge below the table.
-    // The corner↔description seams are the description block's top/bottom; the corner↔card seam is
-    // the card's inline-start border — each drawn once. tbody corners (content rows without a
-    // description cell) are intentionally left untouched.
+  // Content under the sticky column and header is clipped, not covered: the table may sit on any
+  // surface, and A1's surfaces are transparent.
+  &.is-desktop-view,
+  &.is-tablet-view {
+    tbody,
+    tfoot {
+      clip-path: inset(
+        var(--ct-clip-top) calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow))
+          calc(-1 * var(--ct-shadow))
+      );
+    }
+  }
+
+  // The popular cell must not cast its shadow onto the header card below it.
+  &:where(.is-desktop-view, .is-tablet-view) {
+    ::ng-deep .nx-comparison-table__popular-cell {
+      clip-path: inset(
+        calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow)) 0 calc(-1 * var(--ct-shadow))
+      );
+    }
+  }
+
+  // The part under the sticky column (offset − col·step − gap − clip-peek); capped at
+  // `100% + shadow` so a fully covered cell leaves no shadow sliver either.
+  &.is-desktop-view.is-overflowing ::ng-deep {
+    .nx-comparison-table__cell,
+    .nx-comparison-table__popular-cell {
+      @include ct.clip-inline-start(
+        clamp(
+          calc(-1 * var(--ct-shadow)),
+          calc(
+            #{$offset} - var(--ct-col) * var(--ct-step) - var(--ct-gap) - var(--ct-clip-peek, 0px)
+          ),
+          calc(100% + var(--ct-shadow))
+        ),
+        calc(-1 * var(--ct-shadow)),
+        var(--ct-clip-block-end, calc(-1 * var(--ct-shadow)))
+      );
+    }
+
+    .nx-comparison-table__popular-cell {
+      --ct-clip-block-end: 0px;
+    }
+  }
+
+  // No leading bleed on desktop: there the previous column peeks under the description column.
+  &.is-overflowing {
+    &.is-desktop-view .nx-comparison-table__native,
+    &.is-tablet-view .nx-comparison-table__native {
+      --ct-bleed-end: calc(var(--ct-gap) + #{v(comparison-table-overflow-peek)});
+      --ct-peek-center: calc(var(--ct-gap) + #{v(comparison-table-overflow-peek)} / 2);
+    }
+
+    &.is-tablet-view .nx-comparison-table__native {
+      --ct-bleed-start: calc(var(--ct-gap) + #{v(comparison-table-overflow-peek)});
+    }
+  }
+
+  // In the header band the clip leaves a sliver of the column paged under the sticky column.
+  &.is-desktop-view.is-overflowing {
+    .nx-comparison-table__native {
+      --ct-header-peek: #{v(comparison-table-overflow-peek)};
+    }
+  }
+
+  &.is-desktop-view.is-overflowing ::ng-deep {
+    .is-header-row .nx-comparison-table__cell,
+    .nx-comparison-table__popular-cell {
+      --ct-clip-peek: var(--ct-header-peek);
+    }
+  }
+
+  // A spanning cell is as wide as the whole table; its banner is the visible part.
+  &.is-desktop-view,
+  &.is-tablet-view {
+    ::ng-deep .nx-comparison-table__sticky-banner {
+      width: 100cqi;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  &.is-desktop-view {
+    ::ng-deep .has-intersection .nx-comparison-table__sticky-banner {
+      width: calc(100cqi - var(--ct-sticky-w) - var(--ct-gap));
+    }
+
+    // Full-row expanders (Expert, A1) span the description column as well.
+    ::ng-deep
+      .is-group-expansion-row:not(.is-full-row-expansion)
+      .nx-comparison-table__sticky-banner {
+      margin-inline-start: calc(var(--ct-sticky-w) + var(--ct-gap));
+      width: calc(100cqi - var(--ct-sticky-w) - var(--ct-gap));
+    }
+  }
+
+  // The desktop/tablet card of every cell kind is styled here, where row, view and theme classes
+  // are visible. Context sits in `:where()` wherever a rule replaces one from a cell component,
+  // so it keeps that rule's specificity and consumer overrides of the BEM classes still win.
+  &:where(.is-desktop-view, .is-tablet-view) {
+    ::ng-deep .nx-comparison-table__cell {
+      min-width: 0;
+      vertical-align: top;
+      text-align: v(comparison-table-cell-text-align);
+    }
+
+    ::ng-deep :where(.is-content-row) .nx-comparison-table__cell {
+      padding: v(comparison-table-cell-padding);
+      background-color: v(comparison-table-cell-background-color);
+      box-shadow: v(comparison-table-column-shadow);
+
+      &.is-selected {
+        background-color: v(comparison-table-selected-column-background-color);
+      }
+    }
+
+    ::ng-deep .nx-comparison-table__popular-cell {
+      min-width: 0;
+      vertical-align: bottom;
+      background-color: v(comparison-table-popular-cell-background-color);
+      color: v(comparison-table-popular-cell-text-color);
+      padding: nx-spacer(2xs) nx-spacer(xs);
+      box-shadow: v(comparison-table-column-shadow);
+      border-radius: v(comparison-table-popular-cell-border-radius);
+
+      // Set under A1 only; the hue comes from the `--nx-ct-accent-color` lookup below.
+      &[data-nx-accent-color] {
+        background-color: var(--nx-ct-accent-color);
+        color: var(--semantic-color-on-accent-attention-resting);
+      }
+    }
+
+    // The intersection cell's surface is its banner.
+    ::ng-deep .nx-comparison-table__intersection-cell {
+      padding: 0;
+    }
+  }
+
+  &.is-desktop-view,
+  &.is-tablet-view {
+    // The header/footer cell is a transparent spacer; the card is the inner wrapper.
+    ::ng-deep .nx-comparison-table__header-cell,
+    ::ng-deep .is-footer-row .nx-comparison-table__cell {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+
+      &.is-selected {
+        background: transparent;
+      }
+    }
+
+    ::ng-deep .nx-comparison-table__header-cell {
+      height: 100%;
+      padding: 0 0 v(comparison-table-header-spacing-bottom) 0;
+    }
+
+    ::ng-deep .is-footer-row .nx-comparison-table__cell {
+      height: 100%;
+      padding: v(comparison-table-header-spacing-bottom) 0 0 0;
+    }
+
+    ::ng-deep .nx-comparison-table__header-cell:not(.is-selected),
+    ::ng-deep .nx-comparison-table__footer-cell:not(.is-selected) {
+      color: v(comparison-table-header-text-color);
+    }
+
+    ::ng-deep .nx-comparison-table__header-cell .nx-comparison-table__cell-inner {
+      padding: v(comparison-table-header-cell-padding);
+      background: var(--nx-ct-header-background, #{v(comparison-table-header-background-color)});
+    }
+
+    ::ng-deep .is-footer-row .nx-comparison-table__cell .nx-comparison-table__cell-inner {
+      padding: v(comparison-table-cell-padding);
+      background: var(--nx-ct-header-background, #{v(comparison-table-cell-background-color)});
+    }
+
+    // States and colour schemes only reassign the `--nx-ct-header-*` properties, so none of them
+    // has to out-specify another.
+    ::ng-deep .nx-comparison-table__header-cell,
+    ::ng-deep .is-footer-row .nx-comparison-table__cell {
+      .nx-comparison-table__cell-inner {
+        color: var(--nx-ct-header-text-color, inherit);
+        border: v(comparison-table-border-width) solid
+          var(--nx-ct-header-border-color, #{v(comparison-table-header-border-color)});
+        // An inset outline, not the border: A1's wider selected edge would shift the content.
+        outline: v(comparison-table-selected-border-width) solid transparent;
+        outline-offset: calc(-1 * v(comparison-table-selected-border-width));
+        border-radius: v(comparison-table-cell-border-radius);
+        box-shadow: v(comparison-table-column-shadow);
+      }
+
+      &.is-selected .nx-comparison-table__cell-inner {
+        outline-color: v(comparison-table-selected-border-color);
+      }
+
+      // A colour scheme keeps its background: the light selected tint would wash it out.
+      &.is-selected .nx-comparison-table__cell-inner:not([data-nx-surface]) {
+        --nx-ct-header-background: #{v(comparison-table-selected-column-background-color)};
+      }
+
+      // One error perimeter around the header block and one around the footer block. A coloured
+      // card does not turn red.
+      &.is-error .nx-comparison-table__cell-inner:not([data-nx-surface]) {
+        border-block-color: v(danger);
+      }
+
+      &.is-error.first .nx-comparison-table__cell-inner:not([data-nx-surface]) {
+        border-inline-start-color: v(danger);
+      }
+
+      &.is-error.last .nx-comparison-table__cell-inner:not([data-nx-surface]) {
+        border-inline-end-color: v(danger);
+      }
+    }
+
+    ::ng-deep .nx-comparison-table__header-cell.is-stuck .nx-comparison-table__cell-inner {
+      padding: v(comparison-table-header-cell-padding-sticky);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      ::ng-deep .nx-comparison-table__header-cell .nx-comparison-table__cell-inner {
+        transition: padding v(comparison-table-header-stuck-transition-duration)
+          v(comparison-table-header-stuck-transition-easing);
+      }
+    }
+
+    ::ng-deep .nx-comparison-table__header-cell.has-popular-above .nx-comparison-table__cell-inner {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    ::ng-deep .is-content-row .nx-comparison-table__intersection-cell {
+      background: v(comparison-table-intersection-cell-background-color);
+      border-bottom: v(comparison-table-border-width) solid $intersection-border-color;
+    }
+
+    ::ng-deep .nx-comparison-table__intersection-cell .nx-comparison-table__sticky-banner {
+      min-width: 0;
+      text-align: v(comparison-table-cell-text-align);
+      padding: v(comparison-table-intersection-cell-padding);
+      height: 100%;
+      background-color: v(comparison-table-intersection-cell-background-color);
+      border-inline-end: v(comparison-table-border-width) solid $intersection-border-color;
+    }
+  }
+
+  ::ng-deep .has-intersection.has-gap-below .nx-comparison-table__intersection-cell {
+    padding-bottom: v(comparison-table-intersection-row-margin-bottom);
+  }
+
+  &:where(.is-desktop-view) ::ng-deep .nx-comparison-table__description-cell {
+    min-width: 0;
+    font-weight: nx-font-weight(semibold);
+    text-align: start;
+    padding: v(comparison-table-description-cell-padding);
+    height: 100%;
+    background-color: v(comparison-table-description-cell-background-color);
+    border-inline: v(comparison-table-border-width) solid
+      v(comparison-table-description-cell-border-color);
+  }
+
+  &.is-desktop-view {
+    ::ng-deep .is-content-row .nx-comparison-table__description-cell {
+      border-bottom: v(comparison-table-border-width) solid
+        v(comparison-table-description-cell-border-color);
+    }
+
+    ::ng-deep .is-content-row.is-first-content-row .nx-comparison-table__description-cell {
+      border-top: v(comparison-table-border-width) solid
+        v(comparison-table-description-cell-border-color);
+    }
+
+    // Matches the banner's inset, so the label starts on the intersection content's first line.
+    ::ng-deep .has-intersection .nx-comparison-table__description-cell {
+      vertical-align: top;
+      padding: v(comparison-table-description-cell-intersection-padding);
+    }
+  }
+
+  // Tablet: a spanning row whose surface is the banner.
+  &:where(.is-tablet-view) ::ng-deep .nx-comparison-table__description-cell {
+    min-width: 0;
+    font-weight: nx-font-weight(semibold);
+    text-align: start;
+    height: 100%;
+
+    &.is-description-banner {
+      padding: 0;
+      background-color: transparent;
+      border-inline: none;
+    }
+  }
+
+  &.is-tablet-view
+    ::ng-deep
+    .nx-comparison-table__description-cell.is-description-banner
+    .nx-comparison-table__sticky-banner {
+    padding: v(comparison-table-description-cell-padding);
+    background-color: v(comparison-table-description-cell-background-color);
+    border-inline: v(comparison-table-border-width) solid
+      v(comparison-table-description-cell-border-color);
+  }
+
+  // Corner cells draw only the outer edges, where the placeholder tokens give them a surface.
+  &.is-desktop-view {
     thead .nx-comparison-table__corner-cell,
     tfoot .nx-comparison-table__corner-cell {
       background-color: v(comparison-table-placeholder-cell-background-color);
@@ -267,641 +557,163 @@ $comparison-table-accent-colors: (
     }
   }
 
-  // ── Clip scrolling cells behind the sticky column / header ──────────────────────
-  // The sticky first column (desktop) and sticky header must HIDE the product cells that
-  // scroll underneath them. A background fill cannot do this: the table may sit on a colored
-  // / inverse surface, and A1's description/intersection surfaces are intentionally
-  // transparent. So instead we clip the scrolling content so nothing paints in the strip
-  // covered by the sticky column (horizontal) or the sticky header (vertical).
-  //
-  // To avoid per-frame layout reads, geometry is fed in as CSS variables and the browser
-  // recomputes the clip from them. Per scroll frame only ONE variable is written:
-  //   --ct-clip-istart : px at the inline start hidden by the sticky column (stickyW + page offset)
-  //   --ct-clip-top    : px at the top hidden behind the sticky header
-  //   --ct-cell-start  : each cell's static inline-start offset from the viewport start, set once
-  //                      per layout; the live hidden width is --ct-clip-istart minus it
-  //   --ct-shadow      : shadow bleed kept OUTSIDE the clip so card shadows are not cropped
-  &.is-desktop-view,
-  &.is-tablet-view {
-    .nx-comparison-table__native {
-      --ct-clip-istart: 0px;
-      --ct-clip-top: 0px;
-      // Top clip for the FOOTER, driven by the footer's own overlap with the sticky header (set in
-      // JS). Separate from --ct-clip-top (the body's) so the footer is not over-clipped as the body
-      // scrolls under the header. 0px until measured.
-      --ct-clip-foot-top: 0px;
-      --ct-page-shift: 0px;
-      // Width of the sticky first column (desktop); 0 on tablet / non-overflow. Set in JS.
-      --ct-sticky-w: 0px;
-      // Inline distance from the viewport start to the right edge of the last FULLY-visible column
-      // (a fixed position, < 100cqi by the peek sliver). Spanning banners cap their width here so
-      // they end flush with that column. Falls back to 100cqi until measured / when not overflowing.
-      --ct-visible-end: 100cqi;
-      // #{} is required: a custom-property value is plain text, so the v() function must be
-      // interpolated to emit its var(--token) rather than the literal string "v(...)".
-      --ct-shadow: #{v(comparison-table-column-shadow-space)};
-    }
+  // NDBX / Expert draw one shared grid; A1 separate cards, each with a border on all four sides.
+  // The box metrics differ, hence a theme branch rather than tokens.
+  &:where(:not(.is-a1)):where(.is-desktop-view, .is-tablet-view) ::ng-deep :where(.is-content-row) {
+    .nx-comparison-table__cell {
+      border-inline-end: v(comparison-table-border-width) solid v(comparison-table-border-color);
 
-    // Vertical: clip the top of the body so its content (product AND description cells) does not
-    // paint above the sticky header's lower edge. Shadows are preserved on the other three sides.
-    // --ct-clip-top is 0 (well, -shadow) until the header actually overlaps the body.
-    ::ng-deep tbody {
-      clip-path: inset(
-        var(--ct-clip-top) calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow))
-          calc(-1 * var(--ct-shadow))
-      );
-    }
-
-    // The footer needs the SAME occlusion, but driven by its OWN overlap with the sticky header
-    // (--ct-clip-foot-top), NOT the body's (--ct-clip-top). The body's overlap grows as the body
-    // scrolls under the header, so reusing it here clipped MORE of the footer the further you
-    // scrolled — even while the footer was still far below the header. --ct-clip-foot-top stays at
-    // -shadow until the footer itself reaches the header (only possible right at the bottom of a
-    // tall table), then clips at the header's lower edge.
-    ::ng-deep tfoot {
-      clip-path: inset(
-        var(--ct-clip-foot-top) calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow))
-          calc(-1 * var(--ct-shadow))
-      );
+      // Tablet only: on desktop the row header is the first child.
+      &:first-child {
+        border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
+      }
     }
   }
 
-  // Horizontal: desktop-only (tablet has no sticky first column). Each product cell (header AND
-  // body) is clipped on its inline-start by however much of it is hidden under the sticky column
-  // right now: (--ct-clip-istart - --ct-cell-start), clamped into the cell's own box. The other
-  // three sides keep a negative inset so the card's drop shadow is NOT cropped on the visible
-  // portion. The clamp upper bound is `100% + shadow` (not `100%`): once the start inset passes
-  // the far edge, the visible band collapses to empty, so a fully-hidden cell shows nothing —
-  // not even the shadow sliver that a `100%` cap would leave just past the sticky-column edge.
-  &.is-desktop-view.is-overflowing[dir='ltr'] {
-    ::ng-deep .nx-comparison-table__cell {
-      clip-path: inset(
-        calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow))
-          clamp(
-            calc(-1 * var(--ct-shadow)),
-            calc(var(--ct-clip-istart) - var(--ct-cell-start, 99999px)),
-            calc(100% + var(--ct-shadow))
-          )
-      );
+  &:where(:not(.is-a1)).is-desktop-view,
+  &:where(:not(.is-a1)).is-tablet-view {
+    ::ng-deep .is-content-row .nx-comparison-table__cell {
+      border-bottom: v(comparison-table-border-width) solid v(comparison-table-border-color);
     }
   }
 
-  &.is-desktop-view.is-overflowing[dir='rtl'] {
-    ::ng-deep .nx-comparison-table__cell {
-      clip-path: inset(
-        calc(-1 * var(--ct-shadow))
-          clamp(
-            calc(-1 * var(--ct-shadow)),
-            calc(var(--ct-clip-istart) - var(--ct-cell-start, 99999px)),
-            calc(100% + var(--ct-shadow))
-          )
-          calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow))
-      );
+  &:not(.is-a1) {
+    &.is-desktop-view ::ng-deep .is-content-row.is-first-content-row,
+    &.is-tablet-view ::ng-deep .is-content-row {
+      .nx-comparison-table__cell {
+        border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
+      }
+
+      .nx-comparison-table__intersection-cell {
+        border-top: v(comparison-table-border-width) solid $intersection-border-color;
+      }
     }
   }
 
-  // ── Header row: peek the previous (off-screen) column under the placeholder ──────
-  // In overflow mode the previous column is translated into the placeholder/sticky-column zone
-  // [0, --ct-sticky-w] and fully hidden by the clip above (the description column is transparent in
-  // A1, so it's the CLIP — not a background — that hides it). In the HEADER row only we pull that
-  // clip back by --ct-header-peek so a sliver of the off-screen column's trailing edge stays visible
-  // under the placeholder, signalling there is more to page back to — mirroring the trailing
-  // overflow-peek on the right. Header-scoped (the placeholder cell only exists in the header) and
-  // higher-specificity than the generic per-cell clip so it wins. Still clip-path (NOT mask-image):
-  // the negative insets on the other three sides keep the card's drop shadow uncropped. At a snapped
-  // page the value is ≤ -peek for fully-visible columns (→ clamped, no reveal) and only the single
-  // column sitting in the placeholder zone lands in the partial range. The reveal width reuses the
-  // trailing overflow-peek token so the leading (left) and trailing (right) peeks stay balanced;
-  // #{} interpolation is required to emit the token's var() inside a custom-property value.
-  &.is-desktop-view.is-overflowing {
-    .nx-comparison-table__native {
-      --ct-header-peek: #{v(comparison-table-overflow-peek)};
-    }
-  }
-
-  &.is-desktop-view.is-overflowing[dir='ltr'] {
-    ::ng-deep .is-header-row .nx-comparison-table__cell {
-      clip-path: inset(
-        calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow))
-          clamp(
-            calc(-1 * var(--ct-shadow)),
-            calc(
-              var(--ct-clip-istart) - var(--ct-cell-start, 99999px) - var(--ct-header-peek, 0px)
-            ),
-            calc(100% + var(--ct-shadow))
-          )
-      );
-    }
-  }
-
-  &.is-desktop-view.is-overflowing[dir='rtl'] {
-    ::ng-deep .is-header-row .nx-comparison-table__cell {
-      clip-path: inset(
-        calc(-1 * var(--ct-shadow))
-          clamp(
-            calc(-1 * var(--ct-shadow)),
-            calc(
-              var(--ct-clip-istart) - var(--ct-cell-start, 99999px) - var(--ct-header-peek, 0px)
-            ),
-            calc(100% + var(--ct-shadow))
-          )
-          calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow))
-      );
-    }
-  }
-
-  // ── Popular cell clipping
-  &.is-desktop-view.is-overflowing[dir='ltr'] {
-    ::ng-deep .nx-comparison-table__popular-cell {
-      clip-path: inset(
-        calc(-1 * var(--ct-shadow)) calc(-1 * var(--ct-shadow)) 0
-          clamp(
-            calc(-1 * var(--ct-shadow)),
-            calc(
-              var(--ct-clip-istart) - var(--ct-cell-start, 99999px) - var(--ct-header-peek, 0px)
-            ),
-            calc(100% + var(--ct-shadow))
-          )
-      );
-    }
-  }
-
-  &.is-desktop-view.is-overflowing[dir='rtl'] {
-    ::ng-deep .nx-comparison-table__popular-cell {
-      clip-path: inset(
-        calc(-1 * var(--ct-shadow))
-          clamp(
-            calc(-1 * var(--ct-shadow)),
-            calc(
-              var(--ct-clip-istart) - var(--ct-cell-start, 99999px) - var(--ct-header-peek, 0px)
-            ),
-            calc(100% + var(--ct-shadow))
-          )
-          0 calc(-1 * var(--ct-shadow))
-      );
-    }
-  }
-
-  // ── Full-width spanning banner ──────────────────────────────────────────────────
-  // Spanning rows (toggle-section headers, intersection cells, row-group expanders, the tablet
-  // description row) span every column via colspan, so their cell box is as wide as the whole
-  // (overflowing) table and extends off the visible viewport (clipped). These cells carry NO
-  // product-cell class, so they are NOT translated by the carousel — they stay put. The banner
-  // inside is capped at --ct-visible-end (the right edge of the last FULLY-visible column) so it
-  // ends flush with that column instead of running into the peek sliver of the next one; the
-  // cell's own inline-start already sits at the viewport start (the table margin trick lands it at
-  // x = 0), so no sticky / offset is needed.
-  &.is-desktop-view,
-  &.is-tablet-view {
-    ::ng-deep .nx-comparison-table__sticky-banner {
-      width: var(--ct-visible-end, 100cqi);
-      box-sizing: border-box;
-      position: relative;
-      z-index: 1;
-    }
-  }
-
-  // The intersection cell sits BESIDE the (non-translated) first column, not over it. Its cell
-  // box already begins at the sticky column width PLUS the border-spacing gap, so its banner only
-  // needs to be narrowed to the remaining visible product area: from the sticky column edge to the
-  // last fully-visible column's right edge. (--ct-sticky-w is 0 on tablet / non-overflow.)
-  &.is-desktop-view {
-    ::ng-deep .has-intersection .nx-comparison-table__sticky-banner {
-      width: calc(
-        var(--ct-visible-end, 100cqi) - var(--ct-sticky-w, 0px) - v(comparison-table-row-gap)
-      );
+  &.is-a1 {
+    &:where(.is-desktop-view, .is-tablet-view)
+      ::ng-deep
+      .is-content-row
+      .nx-comparison-table__cell {
+      border: v(comparison-table-border-width) solid transparent;
     }
 
-    // Retail row-group expander: the box (colspan) spans the whole table from x = 0, but the
-    // banner must start at the first PRODUCT column (skip the sticky description column) — so
-    // offset it by the sticky width + gap and narrow it to the remaining product area, exactly
-    // like the intersection banner beside the first column. Full-row expanders (Expert + A1)
-    // keep the default banner (x = 0 → spans the description column too). --ct-sticky-w is 0 on
-    // tablet, so there the retail banner naturally spans the full product width.
-    ::ng-deep
-      .is-group-expansion-row:not(.is-full-row-expansion)
-      .nx-comparison-table__sticky-banner {
-      margin-inline-start: calc(var(--ct-sticky-w, 0px) + v(comparison-table-row-gap));
-      width: calc(
-        var(--ct-visible-end, 100cqi) - var(--ct-sticky-w, 0px) - v(comparison-table-row-gap)
-      );
-    }
-  }
+    &.is-desktop-view,
+    &.is-tablet-view {
+      // Separate cards, so every card of an erroneous block is fully outlined.
+      ::ng-deep .nx-comparison-table__header-cell,
+      ::ng-deep .is-footer-row .nx-comparison-table__cell {
+        &.is-error .nx-comparison-table__cell-inner:not([data-nx-surface]) {
+          border-color: v(danger);
+        }
+      }
 
-  // ── Header / footer cells ──────────────────────────────────────────────────────
-  // The header/footer "card" (background, border, radius) is painted on the inner wrapper
-  // so the cell itself can carry a TRANSPARENT gap (padding) between the header and the
-  // first content row, and between the last content row and the footer.
-  &.is-desktop-view,
-  &.is-tablet-view {
-    ::ng-deep .nx-comparison-table__header-cell {
-      // `height: 100%` (not `1px`) so the inner card's own `height: 100%` resolves the same in
-      // every engine: it equalises every column to the row's height. The old `height: 1px`
-      // relied on Chrome resolving the card against the cell's *used* (stretched) height while
-      // ignoring the 1px — Firefox instead treats 1px as a definite height and clamps the card
-      // to ~1px, so its content (radio indicator + headline) overflowed the card.
-      height: 100%;
-      padding: 0 0 v(comparison-table-header-spacing-bottom) 0;
-      background: transparent;
-      border: none;
-      box-shadow: none;
-    }
+      // `data-nx-surface` is only set under A1 and only on header/footer cards.
+      ::ng-deep .nx-comparison-table__cell-inner[data-nx-surface='attention'] {
+        --nx-ct-header-background: #{v(comparison-table-header-attention-background-color)};
+        --nx-ct-header-text-color: #{v(comparison-table-header-attention-text-color)};
+      }
 
-    ::ng-deep .nx-comparison-table__footer-cell {
-      padding: v(comparison-table-header-spacing-bottom) 0 0 0;
-      background: transparent;
-      border: none;
-      box-shadow: none;
-    }
+      ::ng-deep .nx-comparison-table__cell-inner[data-nx-surface='emphasis'] {
+        --nx-ct-header-background: #{v(comparison-table-header-emphasis-background-color)};
+        --nx-ct-header-text-color: #{v(comparison-table-header-emphasis-text-color)};
+      }
 
-    // In tablet view the product header is the row's first child, so the generic
-    // `.nx-comparison-table__cell:first-child` inline-start border (cell component)
-    // leaks a divider onto the transparent header box. Neutralise it — the card
-    // (cell-inner) carries the visible borders. Mirrors the footer reset below.
-    ::ng-deep .is-header-row .nx-comparison-table__cell:first-child {
-      border-inline-start: none;
-    }
+      @each $hue in ct.$accent-colors {
+        ::ng-deep [data-nx-accent-color='#{$hue}'] {
+          --nx-ct-accent-color: var(--semantic-color-accent-attention-#{$hue}-resting);
+        }
+      }
 
-    // The shadow, the border and the background belong on the card (inner wrapper) for
-    // header/footer, not the transparent cell box.
-    ::ng-deep .nx-comparison-table__header-cell .nx-comparison-table__cell-inner,
-    ::ng-deep .nx-comparison-table__footer-cell .nx-comparison-table__cell-inner {
-      height: 100%;
-      padding: v(comparison-table-header-cell-padding);
-      @include ct-header-colors(v(comparison-table-header-background-color));
-      border-radius: v(comparison-table-cell-border-radius);
-      box-shadow: v(comparison-table-column-shadow);
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      ::ng-deep .nx-comparison-table__header-cell .nx-comparison-table__cell-inner {
-        transition: padding v(comparison-table-header-stuck-transition-duration)
-          v(comparison-table-header-stuck-transition-easing);
+      ::ng-deep .nx-comparison-table__cell-inner[data-nx-surface='accent-attention'] {
+        --nx-ct-header-background: var(--nx-ct-accent-color);
+        --nx-ct-header-text-color: var(--semantic-color-on-accent-attention-resting);
       }
     }
 
-    // Header only, and only while actually pinned (cell.component.ts `_isHeaderStuck`): the
-    // docked card trades padding for compactness, alongside the slot spacing in cell.component.scss.
-    ::ng-deep .nx-comparison-table__header-cell.is-stuck .nx-comparison-table__cell-inner {
-      padding: v(comparison-table-header-cell-padding-sticky);
+    &.is-tablet-view ::ng-deep :where(.is-content-row) .nx-comparison-table__cell.is-selected {
+      border-color: v(comparison-table-selected-border-color);
     }
 
-    // A coloured surface owns the card background: the selected tint is light and would wash
-    // a coloured header out. Selection still shows through the border below and the radio
-    // indicator. This is the only state that a surface opts out of.
-    ::ng-deep
-      .nx-comparison-table__header-cell.is-selected
-      .nx-comparison-table__cell-inner:not([data-nx-surface]),
-    ::ng-deep
-      .nx-comparison-table__footer-cell.is-selected
-      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
-      --nx-ct-header-background: #{v(comparison-table-selected-column-background-color)};
-    }
+    // Desktop stacks the content cells of a block into one column card.
+    &.is-desktop-view ::ng-deep .is-content-row {
+      &:where(:not(.is-block-end)) .nx-comparison-table__cell {
+        border-bottom-color: v(comparison-table-border-color);
+      }
 
-    // The selected border (drawn as `outline` — see `ct-header-colors`). Deliberately NOT
-    // excluding `[data-nx-surface]` — every colour scheme uses the same selected colour, so a
-    // coloured card that opted out of the selected background above still shows selection here.
-    // Inert wherever the selected width is 0.
-    ::ng-deep .nx-comparison-table__header-cell.is-selected .nx-comparison-table__cell-inner,
-    ::ng-deep
-      .is-footer-row
-      .nx-comparison-table__cell.is-selected
-      .nx-comparison-table__cell-inner {
-      outline-color: v(comparison-table-selected-border-color);
-    }
+      .nx-comparison-table__cell.is-selected {
+        border-inline-color: v(comparison-table-selected-border-color);
+      }
 
-    // Error state: the red border lives on the header/footer CARD (cell-inner), not
-    // the transparent cell box. Top/bottom on every card + inline-start on the first
-    // column + inline-end on the last → the block reads as one unit with a red
-    // perimeter while the internal dividers between adjacent cards stay neutral. Only
-    // the color is overridden; the card already sets the border width/style. Excludes
-    // `[data-nx-surface]` cells — a coloured header/footer does not turn red (so in A1,
-    // where the resting border is transparent, error is simply not shown on one). No Figma
-    // spec exists for error-on-a-coloured-card; this preserves the prior intent.
-    ::ng-deep
-      .nx-comparison-table__header-cell.is-error
-      .nx-comparison-table__cell-inner:not([data-nx-surface]),
-    ::ng-deep
-      .nx-comparison-table__footer-cell.is-error
-      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
-      border-block-color: var(--danger);
-    }
-    ::ng-deep
-      .nx-comparison-table__header-cell.is-error.first
-      .nx-comparison-table__cell-inner:not([data-nx-surface]),
-    ::ng-deep
-      .nx-comparison-table__footer-cell.is-error.first
-      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
-      border-inline-start-color: var(--danger);
-    }
-    ::ng-deep
-      .nx-comparison-table__header-cell.is-error.last
-      .nx-comparison-table__cell-inner:not([data-nx-surface]),
-    ::ng-deep
-      .nx-comparison-table__footer-cell.is-error.last
-      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
-      border-inline-end-color: var(--danger);
-    }
+      &.is-block-start .nx-comparison-table__cell.is-selected {
+        border-top-color: v(comparison-table-selected-border-color);
+      }
 
-    // The selected surface belongs to the card (cell-inner), not the cell box — the box
-    // carries the transparent spacing gap between header/footer and the content rows. Keep
-    // the box transparent when selected; the generic `.nx-comparison-table__cell.is-selected`
-    // (from the cell component) would otherwise paint the gap with the selected color.
-    ::ng-deep .nx-comparison-table__header-cell.is-selected,
-    ::ng-deep .nx-comparison-table__footer-cell.is-selected {
-      background: transparent;
-    }
-
-    ::ng-deep .nx-comparison-table__header-cell:not(.is-selected),
-    ::ng-deep .nx-comparison-table__footer-cell:not(.is-selected) {
-      color: v(comparison-table-header-text-color);
-    }
-
-    ::ng-deep .nx-comparison-table__cell.has-popular-above .nx-comparison-table__cell-inner {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-
-    // ── Content cells: bottom border ──
-    ::ng-deep .is-content-row .nx-comparison-table__cell,
-    ::ng-deep .is-content-row .nx-comparison-table__intersection-cell {
-      border-bottom: v(comparison-table-border-width) solid v(comparison-table-border-color);
-    }
-
-    // Intersection row styling
-    ::ng-deep .has-intersection .nx-comparison-table__intersection-cell {
-      background: v(comparison-table-intersection-cell-background-color);
+      &.is-block-end .nx-comparison-table__cell.is-selected {
+        border-bottom-color: v(comparison-table-selected-border-color);
+      }
     }
   }
 
-  // ── Column border-radius (desktop: per-block cards) ────────────────────────────
+  // Desktop rounds each block of stacked cells, tablet every cell.
   &.is-desktop-view {
-    // Top radius: first content row of a block
-    ::ng-deep .is-content-row.is-first-content-row .nx-comparison-table__cell,
-    ::ng-deep .is-block-boundary + .is-content-row .nx-comparison-table__cell {
-      border-radius: v(comparison-table-cell-border-radius) v(comparison-table-cell-border-radius) 0
-        0;
+    ::ng-deep .is-content-row.is-block-start .nx-comparison-table__cell {
+      border-top-left-radius: v(comparison-table-cell-border-radius);
+      border-top-right-radius: v(comparison-table-cell-border-radius);
     }
 
-    // Bottom radius: last content row of a block
-    ::ng-deep .is-content-row.is-last-content-row .nx-comparison-table__cell,
-    ::ng-deep .is-content-row:has(+ .is-block-boundary) .nx-comparison-table__cell {
-      border-radius: 0 0 v(comparison-table-cell-border-radius)
-        v(comparison-table-cell-border-radius);
-    }
-
-    // Single content row in a block: all corners. A block is a single row when it is bounded on
-    // both sides: by is-first/is-last-content-row (table edge) or by an adjacent .is-block-boundary.
-    // The mixed cases — first-content-row followed by a boundary (single row at the top of the
-    // table, e.g. one row before a toggle section) and a boundary followed by the last-content-row
-    // (single row at the end) — would otherwise tie the top- and bottom-radius rules above on
-    // specificity and lose the top (or bottom) corners to whichever comes later in source.
-    ::ng-deep .is-content-row.is-first-content-row.is-last-content-row .nx-comparison-table__cell,
-    ::ng-deep
-      .is-content-row.is-first-content-row:has(+ .is-block-boundary)
-      .nx-comparison-table__cell,
-    ::ng-deep .is-block-boundary + .is-content-row.is-last-content-row .nx-comparison-table__cell,
-    ::ng-deep
-      .is-block-boundary
-      + .is-content-row:has(+ .is-block-boundary)
-      .nx-comparison-table__cell {
-      border-radius: v(comparison-table-cell-border-radius);
+    ::ng-deep .is-content-row.is-block-end .nx-comparison-table__cell {
+      border-bottom-left-radius: v(comparison-table-cell-border-radius);
+      border-bottom-right-radius: v(comparison-table-cell-border-radius);
     }
   }
 
-  // Tablet: every content row is standalone → all corners
   &.is-tablet-view ::ng-deep .is-content-row .nx-comparison-table__cell {
     border-radius: v(comparison-table-cell-border-radius);
   }
 
-  // ── First content row: top border (default theme only) ──────────────────────────
-  // Mirrors the content-row bottom-border rule above (which lists both cell types): the
-  // intersection cell is NOT a .__cell, so it must be named explicitly or its top edge stays
-  // open when the intersection row is the first content row (no row above to draw the divider).
-  &:not(.is-a1).is-desktop-view ::ng-deep .is-content-row.is-first-content-row,
-  &:not(.is-a1).is-tablet-view ::ng-deep .is-content-row {
-    .nx-comparison-table__cell,
-    .nx-comparison-table__intersection-cell {
-      border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
-    }
-  }
-
-  // ── Description (row-header) column: close the box vertically ────────────────────
-  // The description cell is NOT a .__cell, so the content-row border rules above skip it,
-  // leaving the sticky first column boxed only on its left/right (description-cell.component.scss)
-  // while the product columns are fully boxed. Mirror the product-cell vertical pattern here:
-  // bottom on every content row + top on the FIRST content row only → adjacent description cells
-  // never double their shared horizontal edge. Driven by the description-cell border token, which
-  // is transparent in A1 (invisible there, giving a 1px transparent border on all four sides that
-  // matches the A1 product cells) and matches the cell's own left/right borders in NDBX.
-  &.is-desktop-view {
-    ::ng-deep .is-content-row .nx-comparison-table__description-cell {
-      border-bottom: v(comparison-table-border-width) solid
-        v(comparison-table-description-cell-border-color);
-    }
-    ::ng-deep .is-content-row.is-first-content-row .nx-comparison-table__description-cell {
-      border-top: v(comparison-table-border-width) solid
-        v(comparison-table-description-cell-border-color);
-    }
-  }
-
-  // ── A1 theme borders ────────────────────────────────────────────────────────────
-  &.is-a1.is-desktop-view,
-  &.is-a1.is-tablet-view {
-    ::ng-deep .nx-comparison-table__cell {
-      border: v(comparison-table-border-width) solid transparent;
-    }
-
-    // Header/footer: the selected border belongs on the inner card, not the transparent cell box.
-    ::ng-deep .nx-comparison-table__header-cell,
-    ::ng-deep .is-footer-row .nx-comparison-table__cell {
-      border: none;
-    }
-
-    ::ng-deep .nx-comparison-table__cell.is-selected {
-      border-color: v(comparison-table-selected-border-color);
-    }
-
-    ::ng-deep .nx-comparison-table__header-cell.is-selected,
-    ::ng-deep .is-footer-row .nx-comparison-table__cell.is-selected {
-      border: none;
-    }
-
-    ::ng-deep .nx-comparison-table__cell.has-popular-above.is-selected {
-      border-top: none;
-    }
-
-    // A1 cards are separated by a 16px gap, so each header/footer card gets its own
-    // full red border on all four sides (overrides the base perimeter logic above).
-    // Error stays on the resting BORDER (1px), not the selected width — see the shared error
-    // rule above for the `[data-nx-surface]` exclusion.
-    ::ng-deep
-      .nx-comparison-table__header-cell.is-error
-      .nx-comparison-table__cell-inner:not([data-nx-surface]),
-    ::ng-deep
-      .is-footer-row
-      .nx-comparison-table__cell.is-error
-      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
-      border-color: var(--danger);
-    }
-
-    // A1: the full-width intersection banner reads as borderless — drop the content-row
-    // bottom divider (line ~532) and the sticky banner's inline-end border (from the
-    // intersection-cell-base mixin) that the all-themes rules add. Kept transparent rather
-    // than `none` to preserve the 1px box metrics, matching the A1 transparent-border idiom.
-    ::ng-deep .is-content-row .nx-comparison-table__intersection-cell {
-      border-bottom-color: transparent;
-    }
-    ::ng-deep .nx-comparison-table__intersection-cell .nx-comparison-table__sticky-banner {
-      border-inline-end-color: transparent;
-    }
-
-    // ── Header/footer colour schemes (`colorScheme`) ──────────────────────────────
-    // A scheme feeds only the background and the text colour; the border stays the resting
-    // (transparent in A1) value, so no scheme has to restate it to hide it.
-    // `data-nx-surface` is set under A1 only, and only on header/footer cells, so this can
-    // never reach content cells or the other themes.
-    ::ng-deep .nx-comparison-table__cell-inner[data-nx-surface='attention'] {
-      --nx-ct-header-background: #{v(comparison-table-header-attention-background-color)};
-      --nx-ct-header-text-color: #{v(comparison-table-header-attention-text-color)};
-    }
-
-    ::ng-deep .nx-comparison-table__cell-inner[data-nx-surface='emphasis'] {
-      --nx-ct-header-background: #{v(comparison-table-header-emphasis-background-color)};
-      --nx-ct-header-text-color: #{v(comparison-table-header-emphasis-text-color)};
-    }
-
-    // The hue lookup is a separate rule so the card rule below stays hue-agnostic: one
-    // `on-accent-attention` colour reads on all nine.
-    @each $hue in $comparison-table-accent-colors {
-      ::ng-deep [data-nx-accent-color='#{$hue}'] {
-        --nx-ct-accent-color: var(--semantic-color-accent-attention-#{$hue}-resting);
-      }
-    }
-
-    ::ng-deep .nx-comparison-table__cell-inner[data-nx-surface='accent-attention'] {
-      --nx-ct-header-background: var(--nx-ct-accent-color);
-      --nx-ct-header-text-color: var(--semantic-color-on-accent-attention-resting);
-    }
-  }
-
-  &.is-a1.is-desktop-view {
-    // Middle content rows: bottom divider between stacked cells
-    ::ng-deep .is-content-row .nx-comparison-table__cell {
-      border-bottom-color: v(comparison-table-border-color);
-    }
-
-    // Content cells mark selection with the real `border` (not `outline`, unlike the header):
-    // these edges double as the row dividers, so they have to participate in the no-double-border
-    // logic below. That also pins them to the resting border WIDTH — reusing the wider selected
-    // width here would change the column's box between states.
-    ::ng-deep .is-content-row .nx-comparison-table__cell.is-selected {
-      border-inline-color: v(comparison-table-selected-border-color);
-      border-top-color: transparent;
-      border-bottom-color: v(comparison-table-border-color);
-    }
-
-    // First content row of a block: selected gets top border
-    ::ng-deep .is-content-row.is-first-content-row .nx-comparison-table__cell.is-selected,
-    ::ng-deep .is-block-boundary + .is-content-row .nx-comparison-table__cell.is-selected {
-      border-top-color: v(comparison-table-selected-border-color);
-    }
-
-    // Last content row of a block: no divider, selected gets bottom border
-    ::ng-deep .is-content-row.is-last-content-row .nx-comparison-table__cell,
-    ::ng-deep .is-content-row:has(+ .is-block-boundary) .nx-comparison-table__cell {
-      border-bottom-color: transparent;
-    }
-    ::ng-deep .is-content-row.is-last-content-row .nx-comparison-table__cell.is-selected,
-    ::ng-deep .is-content-row:has(+ .is-block-boundary) .nx-comparison-table__cell.is-selected {
-      border-bottom-color: v(comparison-table-selected-border-color);
-    }
-  }
-
-  // ── Placeholder cells (popular row, desktop/tablet) ─────────────────────────────
-  &.is-desktop-view,
-  &.is-tablet-view {
-    .is-popular-row .nx-comparison-table__placeholder-cell {
-      background: transparent;
-      border: none;
-    }
-  }
-
-  // ── Navigation buttons: overlay the header row ──────────────────────────────────
-  // The buttons are centered on the header card via --ct-nav-center (its measured vertical
-  // center, in px from the top of the table). It varies with the popular row / content /
-  // responsive reflow, so it is measured in JS rather than hardcoded — stamped onto
-  // .nx-comparison-table__native alongside the other geometry vars (--ct-visible-end etc.) by
-  // `_measureClipGeometry`. Falls back to the fixed center if the variable has not been set yet.
-  //
-  // `position: sticky` with the SAME top offset as the page-pinned thead keeps the buttons
-  // glued to the header while a long table scrolls (an absolute overlay would scroll away with
-  // the body). The wrapper is the FIRST child of .__native (see template) so its natural flow
-  // position is the table top — sticky pins from there; as a later child after the tall table it
-  // would instead rest at the bottom. height: 0 means it adds no layout box; z-index keeps the
-  // buttons painted above the (later, lower-z) header cells. It stays OUTSIDE the clipped
-  // viewport so the horizontal clip never crops the buttons' hit area.
+  // Sticky like the thead, as the first child of .__native and outside the clipped viewport, which
+  // would crop the buttons. As tall as the header band, so it stops sticking with the header.
   .nx-comparison-table__nav-wrapper {
     position: sticky;
     inset-inline: 0;
-    // SAME top offset as the page-pinned thead (now top: 0) so the buttons stay glued to the header.
     top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     pointer-events: none;
     z-index: 10;
-    // Real height == the sticky header band (--ct-thead-h, measured in JS) so the wrapper's sticky
-    // containment releases in lockstep with the header instead of lingering until the WHOLE table
-    // has scrolled off: with height 0 the buttons hang --ct-nav-center px below a zero-height box
-    // whose containing block (.__native) spans the full table, so they stayed visible long after
-    // the header had gone. The added flow height is cancelled on the sibling viewport (a negative
-    // margin HERE would shift this sticky box's own constraint rect). Falls back to 0px (today's
-    // behaviour) until measured / on SSR.
     height: var(--ct-thead-h, 0px);
   }
 
-  // position the nav buttons
   .nx-comparison-table__nav-button {
     pointer-events: auto;
     position: absolute;
     top: var(--ct-nav-center, 28px);
 
-    background: var(--semantic-color-elevation-surface-default-100-resting, #fff);
+    background: v(comparison-table-nav-button-background-color);
 
-    // Elevation. Scoped to :not(.cdk-keyboard-focused) so the button's own focus ring
-    // (box-shadow: focus-box-shadow, applied by FocusMonitor) wins on keyboard focus instead of
-    // competing with this shadow at equal specificity across the two compiled stylesheets.
+    // Off on keyboard focus, where the focus ring is a box-shadow of equal specificity.
     &:not(.cdk-keyboard-focused) {
-      box-shadow:
-        var(--semantic-dimension-shadow-first-100-x, 0)
-          var(--semantic-dimension-shadow-first-100-y, 1px)
-          var(--semantic-dimension-shadow-first-100-blur, 4px)
-          var(--semantic-dimension-shadow-first-100-spread, 0)
-          var(--semantic-color-shadow-first, rgba(18, 43, 84, 0.16)),
-        var(--semantic-dimension-shadow-second-100-x, 0)
-          var(--semantic-dimension-shadow-second-100-y, 4px)
-          var(--semantic-dimension-shadow-second-100-blur, 16px)
-          var(--semantic-dimension-shadow-second-100-spread, 0)
-          var(--semantic-color-shadow-second, rgba(18, 43, 84, 0.12));
+      box-shadow: v(comparison-table-nav-button-box-shadow);
     }
 
-    // The prev button's RIGHT edge sits 16px to the inline-start of the first VISIBLE header
-    // cell's start edge (--ct-sticky-w; 0 on tablet / non-overflow, where there is no sticky
-    // column). `translateX(-100%)` anchors it by its right edge, so the 16px gap is exact without
-    // knowing the (theme-dependent, possibly auto) button width.
+    // Centred on the peek sliver they page towards, independent of the button width.
     &--prev {
-      inset-inline-start: calc(var(--ct-sticky-w, 0px) - 16px);
-      transform: translateX(-100%) translateY(-50%);
+      inset-inline-start: calc(-1 * var(--ct-peek-center, 0px));
     }
 
-    // The next button's LEFT edge sits 16px to the inline-end of the last FULLY-visible column's
-    // right edge. --ct-visible-end is that column's right edge in inline coords (measured in JS,
-    // RTL-aware); falls back to 100cqi (viewport edge) until measured — only a transient
-    // pre-measurement value.
     &--next {
-      inset-inline-start: calc(var(--ct-visible-end, 100cqi) + 16px);
-      transform: translateY(-50%);
+      inset-inline-start: calc(100cqi + var(--ct-peek-center, 0px));
+    }
+
+    &--prev,
+    &--next {
+      transform: translateX(-50%) translateY(-50%);
+
+      &:dir(rtl) {
+        transform: translateX(50%) translateY(-50%);
+      }
     }
 
     &.is-hidden {
@@ -909,28 +721,10 @@ $comparison-table-accent-colors: (
     }
   }
 
-  // RTL: the prev button's right-edge anchor becomes a left-edge anchor, so flip the pull-back.
-  &[dir='rtl'] .nx-comparison-table__nav-button--prev {
-    transform: translateX(100%) translateY(-50%);
-  }
-
-  // On desktop the first fully-visible PRODUCT column starts one inter-column (border-spacing)
-  // gap past the sticky first column's right edge, so the prev button must clear that gap too;
-  // otherwise it lands a full gap too far out — level with the header peek sliver instead of the
-  // first real column. Mirrors --next (16px past the last product column's right edge). Tablet has
-  // no sticky column (the first product column sits flush at the viewport start), so the base
-  // rule's gap-less offset stays correct there. `inset-inline-start` is logical, so this also
-  // covers RTL; only the transform is flipped separately.
   &.is-desktop-view .nx-comparison-table__nav-button--prev {
-    inset-inline-start: calc(var(--ct-sticky-w, 0px) + v(comparison-table-row-gap) - 16px);
+    inset-inline-start: calc(var(--ct-sticky-w) - var(--ct-header-peek, 0px) / 2);
   }
 
-  // ── Toggle section header (full-width row spanning all columns) ──────────────────
-  // The <th> spans the whole (overflowing) table; the visible "card" lives on the inner
-  // sticky banner so it fills exactly the visible viewport and stays put on horizontal
-  // scroll. NOTE: comparison-table-toggle-section-header-border-width is a 4-value shorthand
-  // in A1 (e.g. `0 0 1px 0`), so it must be fed to `border-width` + `border-style`, NOT to
-  // `border-top`/`border-bottom` (which expect a single width).
   ::ng-deep .nx-comparison-table__toggle-section-header-cell {
     cursor: pointer;
     text-align: start;
@@ -941,6 +735,7 @@ $comparison-table-accent-colors: (
     }
   }
 
+  // The border-width token is a 4-value shorthand in A1, so it cannot go into `border-top` etc.
   ::ng-deep .nx-comparison-table__toggle-section-header-cell .nx-comparison-table__sticky-banner {
     background: v(comparison-table-toggle-section-header-background-color);
     border-style: solid;
@@ -955,116 +750,26 @@ $comparison-table-accent-colors: (
     }
   }
 
-  // Gap between the toggle section header and the first content row after it. The gap must be
-  // a TRANSPARENT space ABOVE the first card — not padding inside the cell, because in A1 the
-  // content cell IS the card (background/border/radius), so padding there would make the first
-  // row taller than its siblings. Put it on the header's block-end instead so the gap sits
-  // outside the card and every row keeps the same height. Only apply it when the section is
-  // OPEN (`aria-expanded='true'`) — when collapsed the content rows are `display: none`, so the
-  // gap would otherwise leave dead space below the header.
-  ::ng-deep .nx-comparison-table__toggle-section-header-cell[aria-expanded='true'] {
-    padding-bottom: v(comparison-table-toggle-section-content-padding-top);
+  // Gaps around the spanning rows go on the cell box: a <tr> takes no padding.
+  ::ng-deep .nx-comparison-table__toggle-section-header {
+    &.has-content-gap-below .nx-comparison-table__toggle-section-header-cell {
+      padding-bottom: v(comparison-table-toggle-section-content-padding-top);
+    }
+
+    &.has-gap-below .nx-comparison-table__toggle-section-header-cell {
+      padding-bottom: v(comparison-table-toggle-section-spacing);
+    }
+
+    &.has-gap-above .nx-comparison-table__toggle-section-header-cell {
+      padding-top: v(comparison-table-toggle-section-spacing);
+    }
   }
 
-  // Gap ABOVE a block boundary (toggle-section header, intersection row, row-group expander) when
-  // it follows a content block — symmetric to the footer's content→footer gap. A <tr> cannot take
-  // padding in table layout, so the transparent spacer goes on the boundary's cell box, and only
-  // when a content row precedes it (so the first boundary directly under the page header keeps just
-  // its own header→content gap — the page header lives in <thead>, not a .is-content-row sibling).
-  // The boundary row is never collapsed, so the spacer never leaves phantom space when the section
-  // below it is collapsed.
-  ::ng-deep
-    .is-content-row
-    + .nx-comparison-table__toggle-section-header
-    .nx-comparison-table__toggle-section-header-cell {
-    padding-top: v(comparison-table-toggle-section-spacing);
-  }
-
-  ::ng-deep .is-content-row + .is-group-expansion-row .nx-comparison-table__group-expansion-cell {
+  ::ng-deep .is-group-expansion-row.has-gap-above .nx-comparison-table__group-expansion-cell {
     padding-top: v(comparison-table-row-group-spacing);
   }
 
-  // ── Footer spacing ───────────────────────────────────────────────────────────────
-  // The footer row's cells are plain content cells (the row carries type="footer", but the
-  // cells do not), so the card surface is painted on the cell box. To get a TRANSPARENT gap
-  // ABOVE the footer card — symmetric to the header's gap below it — the cell box becomes a
-  // transparent spacer (padding-top only) and the card (background/border/shadow/radius) moves
-  // onto the inner wrapper. Otherwise padding-top would sit inside the card and just enlarge it.
-  &.is-desktop-view,
-  &.is-tablet-view {
-    ::ng-deep .is-footer-row .nx-comparison-table__cell {
-      // `height: 100%` makes the cell box take the row's height (table cells grow to the row),
-      // so the inner card's `height: 100%` resolves and every footer card is the same height.
-      // See the header cell above for why `1px` here broke the card layout in Firefox.
-      height: 100%;
-      padding: v(comparison-table-header-spacing-bottom) 0 0 0;
-      background: transparent;
-      border: none;
-      box-shadow: none;
-    }
-
-    ::ng-deep .is-footer-row .nx-comparison-table__cell:first-child {
-      border-inline-start: none;
-    }
-
-    ::ng-deep .is-footer-row .nx-comparison-table__cell .nx-comparison-table__cell-inner {
-      height: 100%;
-      // The cell box is now just a transparent top spacer, so the content padding moves here.
-      padding: v(comparison-table-cell-padding);
-      @include ct-header-colors(v(comparison-table-cell-background-color));
-      border-radius: v(comparison-table-cell-border-radius);
-      box-shadow: v(comparison-table-column-shadow);
-    }
-
-    ::ng-deep .is-footer-row .nx-comparison-table__cell.is-selected {
-      background: transparent;
-    }
-
-    // Surfaces keep their background when selected — see the header/footer rule above.
-    ::ng-deep
-      .is-footer-row
-      .nx-comparison-table__cell.is-selected
-      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
-      --nx-ct-header-background: #{v(comparison-table-selected-column-background-color)};
-    }
-
-    // Footer error perimeter. The footer card's full border is (re)set just above
-    // (`.is-footer-row .nx-comparison-table__cell .nx-comparison-table__cell-inner`),
-    // LATER in source than the shared header/footer error rule, so the error color
-    // must be re-applied here to win. Same perimeter logic: top/bottom on every card,
-    // inline-start on the first column, inline-end on the last. Excludes `[data-nx-surface]`
-    // cells, same as the shared header/footer error rule above.
-    ::ng-deep
-      .is-footer-row
-      .nx-comparison-table__cell.is-error
-      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
-      border-block-color: var(--danger);
-    }
-    ::ng-deep
-      .is-footer-row
-      .nx-comparison-table__cell.is-error.first
-      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
-      border-inline-start-color: var(--danger);
-    }
-    ::ng-deep
-      .is-footer-row
-      .nx-comparison-table__cell.is-error.last
-      .nx-comparison-table__cell-inner:not([data-nx-surface]) {
-      border-inline-end-color: var(--danger);
-    }
-  }
-
-  // ── Collapsible toggle-section / row-group rows ──────────────────────────────────
-  // Rows stay real <tr> (full table semantics + column alignment). Collapse is a fast composited
-  // OPACITY fade, then the row leaves layout (`display: none`, sequenced after the fade via
-  // `transition-behavior: allow-discrete`). We deliberately do NOT animate the row HEIGHT:
-  //   • `max-height` cannot be composited (DevTools: "Compositing failed: unsupported CSS property
-  //     max-height") — it forces a full-table relayout + paint every frame; and
-  //   • on real <tr>s the height can't ease smoothly anyway — the cells have differing content
-  //     heights and a `max-height` overshoot leaves a long dead-zone where nothing visibly moves,
-  //     which read as the multi-phase jank.
-  // So the height snaps and opacity carries the transition. This is the rewrite's agreed fallback
-  // (instant hide + opacity fade) — see [[project-comparison-table-native-table-rewrite]].
+  // Collapse fades, then display: none; height is not animated (max-height cannot composite).
   &.is-desktop-view,
   &.is-tablet-view {
     ::ng-deep .nx-comparison-table__grid-row.is-collapsible {
@@ -1074,7 +779,6 @@ $comparison-table-accent-colors: (
         display v(comparison-table-toggle-section-animation-duration) allow-discrete;
     }
 
-    // Fade the row in from transparent when it (re)enters layout on expand.
     @starting-style {
       ::ng-deep .nx-comparison-table__grid-row.is-collapsible:not(.is-collapsed) {
         opacity: 0;
@@ -1087,9 +791,6 @@ $comparison-table-accent-colors: (
     }
   }
 
-  // ── Row group expansion cell (full-width row) ──────────────────────────────────────
-  // The <td> spans the whole table; the clickable card lives on the inner sticky banner so
-  // it fills the visible viewport and stays put on horizontal scroll.
   .nx-comparison-table__group-expansion-cell {
     cursor: pointer;
     padding: 0;
@@ -1101,9 +802,7 @@ $comparison-table-accent-colors: (
     .nx-comparison-table__sticky-banner {
       color: v(comparison-table-expansion-cell-color);
       background-color: v(comparison-table-expansion-cell-background-color);
-      // Box the banner: bottom + inline (left/right). Width comes from the expansion-cell border
-      // token (0 in A1 → borderless; 1px in NDBX/Expert), so A1 stays clean without a theme guard.
-      // No top border — the last visible content row above already draws the separating divider.
+      // No top border: the content row above already draws the divider.
       border-bottom: v(comparison-table-expansion-cell-border-size) solid
         v(comparison-table-border-color);
       border-inline: v(comparison-table-expansion-cell-border-size) solid
@@ -1147,104 +846,10 @@ $comparison-table-accent-colors: (
     }
   }
 
-  // ─── MOBILE ────────────────────────────────────────────────────────────────────
-  // Legacy transposed table. The horizontal scroller is the host element; the FIRST column is
-  // sticky and must HIDE the cells scrolling underneath it. Same approach as desktop: each cell
-  // that scrolls under the sticky column carries a static inline-start offset (--ct-cell-start,
-  // set once on layout), and a single live variable (--ct-clip-istart = sticky width + scrollLeft,
-  // written per scroll event) drives a pure-CSS clip — no per-frame JS / getBoundingClientRect.
-  // No shadow bleed here (mobile cells have no drop shadow), so the other three sides clip at 0.
-  //
-  // Only the description cells + toggle-section headers + their placeholders scroll UNDER the
-  // sticky column — NOT the first column itself. The first column is made of mobile-header cells
-  // (which also carry .nx-comparison-table__mobile-cell), so the selector must NOT match the
-  // generic .mobile-cell or it would clip the sticky column's own content to nothing.
-
+  // The host is the legacy mobile table's horizontal scroller.
   @include media-breakpoint-down(small) {
     &:has(.nx-comparison-table__mobile-view) {
       overflow-x: scroll;
-    }
-  }
-
-  &:has(.nx-comparison-table__mobile-view) {
-    --ct-clip-istart: 0px;
-  }
-
-  &[dir='rtl'] ::ng-deep table.nx-comparison-table__mobile-view {
-    .nx-comparison-table__description-cell,
-    .nx-comparison-table__mobile-toggle-section-header,
-    .needs-clipping {
-      clip-path: inset(
-        0 clamp(0px, calc(var(--ct-clip-istart, 0px) - var(--ct-cell-start, 99999px)), 100%) 0 0
-      );
-    }
-  }
-
-  &:not([dir='rtl']) ::ng-deep table.nx-comparison-table__mobile-view {
-    .nx-comparison-table__description-cell,
-    .nx-comparison-table__mobile-toggle-section-header,
-    .needs-clipping {
-      clip-path: inset(
-        0 0 0 clamp(0px, calc(var(--ct-clip-istart, 0px) - var(--ct-cell-start, 99999px)), 100%)
-      );
-    }
-  }
-
-  ::ng-deep table.nx-comparison-table__mobile-view {
-    border-collapse: separate;
-    border-spacing: 0;
-
-    // ── mobile-toggle-section-header ─────────────────────────────────────────────
-    .nx-comparison-table__mobile-toggle-section-header {
-      text-align: start;
-      border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
-
-      & + .nx-comparison-table__placeholder-cell {
-        border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
-      }
-    }
-
-    // ── intersection-cell-marker ─────────────────────────────────────────────────
-    .nx-comparison-table__intersection-cell-marker {
-      display: none;
-
-      & + .nx-comparison-table__placeholder-with-border-cell {
-        border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
-      }
-    }
-
-    // ── placeholder cells ─────────────────────────────────────────────────────────
-    .nx-comparison-table__placeholder-cell {
-      padding: 0;
-      border: none;
-      min-width: 4px;
-    }
-
-    .nx-comparison-table__placeholder-with-border-cell {
-      border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
-    }
-
-    // ── last row: bottom borders ──────────────────────────────────────────────────
-    tr:last-child {
-      .nx-comparison-table__cell,
-      .nx-comparison-table__description-cell,
-      .nx-comparison-table__mobile-header-cell {
-        border-bottom: v(comparison-table-border-width) solid v(comparison-table-border-color);
-      }
-    }
-
-    // ── right border for last column ──────────────────────────────────────────────
-    tr th:last-child,
-    tr td:last-child:not(.nx-comparison-table__placeholder-with-border-cell) {
-      border-inline-end: v(comparison-table-border-width) solid v(comparison-table-border-color);
-    }
-
-    // ── sticky first column ───────────────────────────────────────────────────────
-    tr th:first-child,
-    tr td:first-child {
-      position: sticky;
-      z-index: 1;
-      inset-inline-start: 0;
     }
   }
 }

@@ -1,36 +1,5 @@
 @use '../../shared-styles/index' as *;
-
-/** The A1 accent hues. A single `on-accent-attention` colour reads on all of them. */
-$popular-cell-accent-colors: (
-  'yellow',
-  'orange',
-  'red',
-  'purple',
-  'aqua',
-  'blue',
-  'teal',
-  'green',
-  'gray'
-);
-
-// ── Desktop / tablet ──────────────────────────────────────────────────────────
-
-// The popular cell is a real table cell (<td>); its flex layout lives on the inner
-// wrapper so the cell keeps `display: table-cell`.
-.nx-comparison-table__popular-cell {
-  min-width: 0;
-  vertical-align: bottom;
-  background-color: v(comparison-table-popular-cell-background-color);
-  color: v(comparison-table-popular-cell-text-color);
-  padding: nx-spacer(2xs) nx-spacer(xs);
-  box-shadow: v(comparison-table-column-shadow);
-  border-radius: v(comparison-table-popular-cell-border-radius);
-  clip-path: inset(
-    calc(-1 * v(comparison-table-column-shadow-space))
-      calc(-1 * v(comparison-table-column-shadow-space)) 0
-      calc(-1 * v(comparison-table-column-shadow-space))
-  );
-}
+@use '../comparison-table-mixins' as ct;
 
 .nx-comparison-table__popular-cell-inner {
   display: flex;
@@ -41,9 +10,7 @@ $popular-cell-accent-colors: (
   @include type-style(comparison-table-popular-cell);
 }
 
-// quick override because e.g. the info icon/button with a popover is sometimes used in the popular cell,
-// as it is content we cannot control it (yet). The class is repeated (.is-a1.is-a1.is-a1) purely to
-// raise specificity above the projected content's own button/icon color rules.
+// Projected buttons/icons (e.g. a popover trigger) bring their own colour; the repeats beat it.
 ::ng-deep nx-comparison-table.is-a1.is-a1.is-a1 .nx-comparison-table__popular-cell {
   margin-inline-end: 0;
 
@@ -58,9 +25,6 @@ $popular-cell-accent-colors: (
   display: none;
 }
 
-// ── Mobile ────────────────────────────────────────────────────────────────────
-
-// Rendered as <td> in a <table>.
 .nx-comparison-table__mobile-popular-cell {
   @include type-style(comparison-table-popular-cell);
   background-color: v(comparison-table-popular-cell-background-color);
@@ -75,22 +39,20 @@ td.nx-comparison-table__mobile-popular-cell.is-hidden {
 
 .nx-comparison-table__mobile-popular-cell {
   &.is-error {
-    border-left: 1px solid var(--danger) !important;
-    border-right: 1px solid var(--danger) !important;
+    border-left: 1px solid v(danger) !important;
+    border-right: 1px solid v(danger) !important;
   }
 }
 
-// ── Accent hue (`accentColor`) ────────────────────────────────────────────────
-@each $hue in $popular-cell-accent-colors {
-  .nx-comparison-table__popular-cell[data-nx-accent-color='#{$hue}'],
+// The desktop/tablet hue lives with the other card styles in comparison-table.component.scss.
+@each $hue in ct.$accent-colors {
   .nx-comparison-table__mobile-popular-cell[data-nx-accent-color='#{$hue}'] {
     background-color: var(--semantic-color-accent-attention-#{$hue}-resting);
     color: var(--semantic-color-on-accent-attention-resting);
   }
 }
 
-// ── Forced colors (Windows High Contrast) ────────────────────────────────────
-// Background color is overridden by the OS — use borders as fallback visual cue.
+// Forced colors drop the background, so borders mark the cell instead.
 @media screen and (forced-colors: active) {
   .nx-comparison-table__popular-cell,
   .nx-comparison-table__mobile-popular-cell {

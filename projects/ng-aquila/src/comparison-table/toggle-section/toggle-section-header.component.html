@@ -1,8 +1,6 @@
-<ng-template #content>
+<ng-template #content let-mobileColspan>
   @if (_table.viewType === 'desktop' || _table.viewType === 'tablet') {
-    <!-- The interactive element + aria-expanded + id live on the host <th> in the table template
-         (so the id is on a real <th> for the cells' headers= association). Here we only project
-         the label + chevron. -->
+    <!-- The table renders the interactive <th> with the id, so `headers` point at a real <th>. -->
     <span class="nx-comparison-table-toggle-section__header-content">
       <ng-container *ngTemplateOutlet="ngContent"></ng-container>
       <nx-icon
@@ -19,7 +17,7 @@
     <th
       class="nx-comparison-table__mobile-toggle-section-header"
       scope="col"
-      [attr.colspan]="_toggleSection._numberOfRows()"
+      [attr.colspan]="mobileColspan"
       [attr.id]="id"
     >
       <ng-container *ngTemplateOutlet="ngContent"></ng-container>

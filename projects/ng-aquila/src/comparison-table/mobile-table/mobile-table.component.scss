@@ -1,0 +1,67 @@
+@use '../../shared-styles/index' as *;
+@use '../comparison-table-mixins' as ct;
+
+// `:host(table.…)` keeps the specificity these rules had inside the table's stylesheet.
+:host(table.nx-comparison-table__mobile-view) {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+:host(table.nx-comparison-table__mobile-view) ::ng-deep {
+  // Not `.mobile-cell`: the sticky column's own cells carry it too, and would clip to nothing.
+  .nx-comparison-table__description-cell,
+  .nx-comparison-table__mobile-toggle-section-header,
+  .needs-clipping {
+    @include ct.clip-inline-start(
+      clamp(0px, calc(var(--ct-clip-istart, 0px) - var(--ct-cell-start, 99999px)), 100%),
+      0
+    );
+  }
+
+  .nx-comparison-table__mobile-toggle-section-header {
+    text-align: start;
+    border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
+
+    & + .nx-comparison-table__placeholder-cell {
+      border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
+    }
+  }
+
+  .nx-comparison-table__intersection-cell-marker {
+    display: none;
+
+    & + .nx-comparison-table__placeholder-with-border-cell {
+      border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
+    }
+  }
+
+  .nx-comparison-table__placeholder-cell {
+    padding: 0;
+    border: none;
+    min-width: 4px;
+  }
+
+  .nx-comparison-table__placeholder-with-border-cell {
+    border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
+  }
+
+  tr:last-child {
+    .nx-comparison-table__cell,
+    .nx-comparison-table__description-cell,
+    .nx-comparison-table__mobile-header-cell {
+      border-bottom: v(comparison-table-border-width) solid v(comparison-table-border-color);
+    }
+  }
+
+  tr th:last-child,
+  tr td:last-child:not(.nx-comparison-table__placeholder-with-border-cell) {
+    border-inline-end: v(comparison-table-border-width) solid v(comparison-table-border-color);
+  }
+
+  tr th:first-child,
+  tr td:first-child {
+    position: sticky;
+    z-index: 1;
+    inset-inline-start: 0;
+  }
+}

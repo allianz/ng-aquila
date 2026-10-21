@@ -9,8 +9,6 @@ export abstract class NxToggleSectionBase {
   abstract isExpanded: boolean;
 
   abstract readonly toggleSectionHeader: Signal<NxToggleSectionHeaderComponent>;
-  /** @docs-private */
-  abstract readonly _numberOfRows: Signal<number>;
 
   /** Toggles the toggle section. */
   toggleExpanded() {

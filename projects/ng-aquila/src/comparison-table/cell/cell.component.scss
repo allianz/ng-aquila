@@ -1,33 +1,7 @@
 @use '../../shared-styles/index' as *;
-@use '../comparison-table-mixins' as ct;
 
-// ── Desktop / tablet ──────────────────────────────────────────────────────────
-// The cell itself is a real table cell (<td>/<th>); layout of its content lives on
-// the inner wrapper so the cell keeps `display: table-cell` (a flex/grid display on
-// the cell would drop it out of table layout and the row would mis-render).
-
-.nx-comparison-table__cell {
-  min-width: 0;
-  vertical-align: top;
-  text-align: v(comparison-table-cell-text-align);
-  padding: v(comparison-table-cell-padding);
-  background-color: v(comparison-table-cell-background-color);
-  border-inline-end: v(comparison-table-border-width) solid v(comparison-table-border-color);
-  box-shadow: v(comparison-table-column-shadow);
-
-  @include ct.cell-content-reset;
-
-  &:first-child {
-    border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
-  }
-
-  &.is-selected {
-    background-color: v(comparison-table-selected-column-background-color);
-  }
-}
-
-// Inner wrapper fills the cell height so stacked content (title / price / button)
-// distributes vertically the way the header/footer layout expects.
+// Content layout lives on the inner wrapper: a flex/grid display on the cell would drop it out of
+// table layout.
 .nx-comparison-table__cell-inner {
   display: block;
   height: 100%;
@@ -39,22 +13,14 @@
   flex-direction: column;
 }
 
-// ── Radio indicator (A1 only) ─────────────────────────────────────────────────
-
 .nx-comparison-table__radio-indicator {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 4px; //TODO change to A1 token
+  margin-bottom: v(comparison-table-header-radio-indicator-spacing-bottom);
 }
 
-// ── Header slots ──────────────────────────────────────────────────────────────
-// Order/spacing comes from here; the content the consumer wraps and its typography stay entirely
-// up to them. `::ng-deep` is required because these are consumer-projected `ng-content` nodes, not
-// part of this component's own template — same reasoning as the sibling cells in this module (see
-// popular-cell/select-button .scss).
-
-// The slot elements carry no display of their own (they are directives, not components), and the
-// mobile cell has no flex wrapper to blockify them — so state it here, for both cell types.
+// The slots are directives, so they have no display of their own, and the mobile cell has no flex
+// wrapper to blockify them.
 .nx-comparison-table__header-cell,
 .nx-comparison-table__mobile-header-cell {
   ::ng-deep nx-comparison-table-header-top,
@@ -70,8 +36,7 @@
     margin-bottom: v(comparison-table-header-top-spacing-bottom);
   }
 
-  // `display: grid` blockifies whatever the consumer projected, so the margin below applies even
-  // to inline content. The eyebrow's HEIGHT does not animate — see `.is-stuck`.
+  // `display: grid` blockifies the projected content, so the margin also applies to inline content.
   ::ng-deep nx-comparison-table-header-eyebrow {
     display: grid;
     margin-bottom: v(comparison-table-header-eyebrow-spacing-bottom);
@@ -81,23 +46,19 @@
   ::ng-deep nx-comparison-table-header-title {
     margin: 0 0 v(comparison-table-header-title-spacing-bottom);
 
-    // The slot owns the spacing, so a wrapped element brings none of its own — `nxHeadline` already
-    // zeroes its margin, a bare heading would not.
+    // The slot owns the spacing; a bare heading would bring its own margin.
     > * {
       margin: 0;
     }
   }
 
-  // align-self (not text-align) so it sits at the inline-end of the column-flex cell,
-  // independent of the price content's own internal alignment.
+  // align-self, not text-align, so the price content's own alignment does not matter.
   ::ng-deep nx-comparison-table-header-price {
     align-self: flex-end;
     margin-top: auto;
     margin-bottom: v(comparison-table-header-price-spacing-bottom);
   }
 
-  // Ease the stuck/unstuck size changes below instead of snapping. `::ng-deep` reaches into
-  // price's/headline's own elements so the transition can live here without touching them.
   @media (prefers-reduced-motion: no-preference) {
     ::ng-deep nx-comparison-table-header-eyebrow {
       transition:
@@ -108,7 +69,6 @@
         display v(comparison-table-header-stuck-transition-duration) allow-discrete;
     }
 
-    // Fade the eyebrow back in, rather than snapping to visible, when it re-enters layout.
     @starting-style {
       &:not(.is-stuck) ::ng-deep nx-comparison-table-header-eyebrow {
         margin-bottom: 0;
@@ -116,10 +76,8 @@
       }
     }
 
-    // Every longhand `nxHeadline` sets per size (see the `type-style` mixin) — font-weight
-    // included, since the A1 heading scale changes weight between the stuck and unstuck sizes.
-    // On the wrapped content, not the slot: the slot's own font never changes, and the imposed
-    // size reaches the whole slot subtree via `NX_HEADLINE_CONTEXT`, so the easing follows it there.
+    // Every longhand `nxHeadline` sets per size (A1 changes the weight too), on the wrapped
+    // content: the slot's own font never changes.
     ::ng-deep nx-comparison-table-header-title * {
       transition:
         font-size v(comparison-table-header-stuck-transition-duration)
@@ -163,15 +121,9 @@
     }
   }
 
-  // Applies once the header is actually pinned mid-scroll (see `_isHeaderStuck`), not merely
-  // sticky-enabled: the eyebrow collapses away, slots tighten, and the price steps down a size.
   &.is-stuck {
-    // The eyebrow leaves layout in ONE discrete step: `display` is what removes it, deferred to the
-    // end of the transition by `allow-discrete`, so the opacity and margin fade out underneath it
-    // first. Its height therefore does not interpolate — measured, `grid-template-rows: 1fr → 0fr`
-    // never eased here (the row held its content size for the whole transition), and dropping that
-    // scaffolding changed nothing at any point of the collapse. Zero the margin, or it outlives the
-    // fade and the header tightens in two visible stages.
+    // `display` removes it after the fade (allow-discrete), so its height does not ease. Zero the
+    // margin too, or the header tightens in two visible stages.
     ::ng-deep nx-comparison-table-header-eyebrow {
       margin-bottom: 0;
       opacity: 0;
@@ -192,9 +144,10 @@
   }
 }
 
-// ── Mobile ────────────────────────────────────────────────────────────────────
+.nx-comparison-table__mobile-cell {
+  border-inline-end: v(comparison-table-border-width) solid v(comparison-table-border-color);
+}
 
-// Rendered as <td class="nx-comparison-table__mobile-cell"> in the transposed table.
 td.nx-comparison-table__mobile-cell.nx-comparison-table__cell {
   text-align: v(comparison-table-cell-text-align);
   vertical-align: top;
@@ -204,18 +157,12 @@ td.nx-comparison-table__mobile-cell.nx-comparison-table__cell {
   background-color: v(comparison-table-cell-background-color);
   width: 128px;
   min-width: 128px;
-  // reset the desktop card styles that the shared .nx-comparison-table__cell rule sets
-  height: auto;
-  box-shadow: none;
 
   & + .nx-comparison-table__placeholder-cell {
     border-inline-start: v(comparison-table-border-width) solid v(comparison-table-border-color);
   }
-
-  @include ct.cell-content-reset;
 }
 
-// Mobile header cell (rendered as <td class="nx-comparison-table__mobile-header-cell">)
 .nx-comparison-table__mobile-header-cell {
   text-align: v(comparison-table-cell-text-align);
   vertical-align: top;
@@ -230,8 +177,6 @@ td.nx-comparison-table__mobile-cell.nx-comparison-table__cell {
     background-color: v(comparison-table-header-background-color);
     color: v(comparison-table-header-text-color);
   }
-
-  @include ct.cell-content-reset;
 }
 
 .nx-comparison-table__mobile-header-cell.is-selected,
@@ -245,16 +190,15 @@ td.nx-comparison-table__mobile-cell.nx-comparison-table__cell.is-selected {
   display: none;
 }
 
-// Error state: mobile
 .nx-comparison-table__mobile-header-cell {
   &.is-error {
-    border-left: 1px solid var(--danger) !important;
-    border-right: 1px solid var(--danger) !important;
+    border-left: 1px solid v(danger) !important;
+    border-right: 1px solid v(danger) !important;
   }
   &.first.is-error {
-    border-top: 1px solid var(--danger) !important;
+    border-top: 1px solid v(danger) !important;
   }
   &.last.is-error {
-    border-bottom: 1px solid var(--danger) !important;
+    border-bottom: 1px solid v(danger) !important;
   }
 }

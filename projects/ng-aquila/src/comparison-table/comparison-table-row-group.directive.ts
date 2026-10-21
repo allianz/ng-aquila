@@ -67,15 +67,12 @@ export class NxComparisonTableRowGroupDirective
 
   /** Sets the number of rows that are visible when loading the component. Default: 5. */
   @Input() set visibleRows(value: NumberInput) {
-    const newValue = coerceNumberProperty(value);
-    if (newValue !== this._visibleRows) {
-      this._visibleRows = newValue;
-    }
+    this._visibleRows.set(coerceNumberProperty(value));
   }
   get visibleRows(): number {
-    return this._visibleRows;
+    return this._visibleRows();
   }
-  private _visibleRows = 5;
+  private readonly _visibleRows = signal(5);
 
   /** Sets the expanded state of the row group */
   @Input() set isExpanded(value: BooleanInput) {

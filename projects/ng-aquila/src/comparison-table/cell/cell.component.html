@@ -11,6 +11,7 @@
         [class.is-hidden]="_isCellHidden()"
         [attr.id]="id"
         [attr.data-ct-col]="_visiblePosition()"
+        [style.--ct-col]="_visiblePosition()"
         [class.is-error]="_table.isError"
         [class.first]="_isFirst()"
         [class.last]="_isLast()"
@@ -37,6 +38,7 @@
         [class.is-faded]="_isOutsidePage()"
         [attr.id]="id"
         [attr.data-ct-col]="_visiblePosition()"
+        [style.--ct-col]="_visiblePosition()"
         [attr.headers]="_headerIds()"
         [class.is-error]="_table.isError"
         [class.first]="_isFirst()"
@@ -84,9 +86,8 @@
       ></nx-radio-indicator>
     </span>
   }
-  <!-- Never gate these on `type`: projection is resolved statically, so a slot inside an @if that
-       doesn't render swallows its content instead of letting it fall through to the catch-all
-       below. Gating dropped select buttons on footer cells and header slots on content cells. -->
+  <!-- Never gate these on `type`: projection is static, so a slot inside an unrendered @if
+       swallows its content instead of passing it on to the catch-all below. -->
   <ng-content select="nx-comparison-table-header-top"></ng-content>
   <ng-content select="nx-comparison-table-header-eyebrow"></ng-content>
   <ng-content select="nx-comparison-table-header-title"></ng-content>

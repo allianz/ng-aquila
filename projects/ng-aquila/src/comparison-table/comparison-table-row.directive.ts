@@ -47,20 +47,18 @@ export class NxComparisonTableRowDirective
 
   /** Sets the type of the row. Default: 'content'. */
   @Input() set type(newValue: NxComparisonTableRowType) {
-    if (newValue !== this._type) {
-      this._type = newValue;
-    }
+    this._type.set(newValue);
   }
   get type(): NxComparisonTableRowType {
-    return this._type;
+    return this._type();
   }
-  private _type: NxComparisonTableRowType = 'content';
+  private readonly _type = signal<NxComparisonTableRowType>('content');
 
   @Input() set mayStick(newValue: BooleanInput) {
     this._mayStick.set(coerceBooleanProperty(newValue));
   }
   get mayStick(): boolean {
-    return this._type === 'header' && this._mayStick();
+    return this._type() === 'header' && this._mayStick();
   }
   private readonly _mayStick = signal(true);
 

@@ -4,8 +4,9 @@
       class="nx-comparison-table__popular-cell nx-comparison-table__product-cell"
       role="cell"
       [class.is-error]="_table.isError"
-      [class.is-hidden]="_table._hiddenIndexes().indexOf(forColumn - 1) !== -1"
+      [class.is-hidden]="_table._hiddenIndexSet().has(forColumn - 1)"
       [attr.id]="id"
+      [style.--ct-col]="_table._visibleColumnIndex(forColumn - 1)"
       [attr.data-nx-surface]="surface() === 'default' ? null : surface()"
       [attr.data-nx-accent-color]="surface() === 'default' ? null : accentColor()"
     >
@@ -22,8 +23,10 @@
     <td
       class="nx-comparison-table__mobile-popular-cell"
       [class.is-error]="_table.isError"
-      [class.is-hidden]="_table._hiddenIndexes().indexOf(forColumn - 1) !== -1"
+      [class.is-hidden]="_table._hiddenIndexSet().has(forColumn - 1)"
       [attr.id]="id"
+      [attr.data-nx-surface]="surface() === 'default' ? null : surface()"
+      [attr.data-nx-accent-color]="surface() === 'default' ? null : accentColor()"
     >
       <ng-container *ngTemplateOutlet="ngContent"></ng-container>
     </td>

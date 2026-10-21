@@ -41,9 +41,9 @@ Select a product with `nxComparisonTableSelectButton` (`selectedLabel` / `unsele
 
 With `responsiveMode="container"` (the default for A1, not supported in NDBX) the table measures its container instead of the viewport: it switches between the tablet and desktop view as the container resizes, and turns into a carousel when there is not enough space for all products.
 
-Which view applies at which width is controlled by breakpoints. A `NxComparisonTableBreakpoint` is `{ minWidth, columns?, viewType? }`: `minWidth` is the container width in pixels from which it applies, `columns` the number of visible product columns and `viewType` the look (`tablet` or `desktop`; `mobile` exists for legacy tables and is not meant to be combined with `responsiveBreakpoints`). `columns` and `viewType` are optional and carry over from the previous matching breakpoint.
+Which view applies at which width is controlled by breakpoints. A `NxComparisonTableBreakpoint` is `{ minWidth, columns?, viewType? }`: `minWidth` is the container width in pixels from which it applies, `columns` the number of visible product columns (in carousel mode, fewer when they would be narrower than the `comparison-table-min-column-width` token) and `viewType` the look (`tablet` or `desktop`; `mobile` exists for legacy tables and is not meant to be combined with `responsiveBreakpoints`). `columns` and `viewType` are optional and carry over from the previous matching breakpoint.
 
-Set them per table via the `responsiveBreakpoints` input, or globally through the `COMPARISON_TABLE_DEFAULT_OPTIONS` provider token. The defaults are exported as `DEFAULT_BREAKPOINTS`.
+Set them per table via the `responsiveBreakpoints` input, or globally through the `COMPARISON_TABLE_DEFAULT_OPTIONS` provider token. The defaults are exported as `DEFAULT_BREAKPOINTS`. The `viewTypeChange` output emits whenever the resulting view changes.
 
 The example below keeps the defaults below `BREAKPOINT_LARGE` and replaces the largest one with a `tablet` view showing 3 columns, so the table stays in the tablet look on wide containers instead of switching to desktop.
 

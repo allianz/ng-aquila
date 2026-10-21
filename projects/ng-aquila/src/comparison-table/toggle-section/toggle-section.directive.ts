@@ -1,4 +1,4 @@
-import { computed, contentChild, contentChildren, Directive, Input } from '@angular/core';
+import { contentChild, contentChildren, Directive, Input, signal } from '@angular/core';
 
 import { NxTableContentElement } from '../table-content-element.directive';
 import { NxToggleSectionBase } from './toggle-section-base';
@@ -23,14 +23,10 @@ export class NxToggleSectionDirective extends NxToggleSectionBase implements NxT
 
   /** Whether the toggle section is expanded. Default: true. */
   @Input() set isExpanded(value: boolean) {
-    if (this._isExpanded !== value) {
-      this._isExpanded = value;
-    }
+    this._isExpanded.set(value);
   }
   get isExpanded(): boolean {
-    return this._isExpanded;
+    return this._isExpanded();
   }
-  private _isExpanded = true;
-
-  readonly _numberOfRows = computed(() => this.rows().filter((row) => row.kind === 'row').length);
+  private readonly _isExpanded = signal(true);
 }

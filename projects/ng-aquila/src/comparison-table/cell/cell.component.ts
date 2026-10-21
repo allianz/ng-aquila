@@ -36,7 +36,6 @@ import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 import { NxComparisonTableSelectButton } from '../select-button/select-button.component';
 import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
 
-/** The step-down a docked header cell applies to its title; see `headlineSize` below. */
 const STUCK_HEADLINE_SIZE = { xl: 'l', l: 'm' } as const;
 
 @Component({
@@ -54,18 +53,12 @@ export class NxComparisonTableCell implements NxSurfaceContext {
   protected readonly _isA1 = computed(() => this._allianzOneOptions?.enabled?.() ?? false);
   protected readonly _selectButton = contentChild(forwardRef(() => NxComparisonTableSelectButton));
   protected readonly _showRadioIndicator = computed(
-    () => this._type === 'header' && this._isA1() && !!this._selectButton(),
+    () => this._type() === 'header' && this._isA1() && !!this._selectButton(),
   );
 
   /** @docs-private */
   @Input() set index(newValue: number) {
-    const oldIndex = this.index;
-    if (oldIndex !== newValue) {
-      if (this._disabledColumn) {
-        this._table._removeDisabledColumn(oldIndex);
-        this._table._addDisabledColumn(newValue);
-      }
-
+    if (this._indexReactive() !== newValue) {
       this._indexReactive.set(newValue);
       this.indexChange.emit(newValue);
     }
@@ -81,20 +74,15 @@ export class NxComparisonTableCell implements NxSurfaceContext {
    * **Important**: this property can be set only on header cells.
    */
   @Input() set disabledColumn(value: BooleanInput) {
-    const newValue = coerceBooleanProperty(value);
-    if (this._type === 'header' && newValue !== this.disabledColumn) {
-      this._disabledColumn = newValue;
-      if (this._disabledColumn) {
-        this._table._addDisabledColumn(this.index);
-      } else {
-        this._table._removeDisabledColumn(this.index);
-      }
-    }
+    this._disabledColumnInput.set(coerceBooleanProperty(value));
   }
   get disabledColumn(): boolean {
-    return this._disabledColumn;
+    return this._disabledColumn();
   }
-  private _disabledColumn = false;
+  private readonly _disabledColumnInput = signal(false);
+  private readonly _disabledColumn = computed(
+    () => this._type() === 'header' && this._disabledColumnInput(),
+  );
 
   /** @docs-private */
   @Output() readonly indexChange = new EventEmitter<number>();
@@ -112,18 +100,12 @@ export class NxComparisonTableCell implements NxSurfaceContext {
 
   /** Sets the type of the cell. Default: 'content'. */
   @Input() set type(value: NxComparisonTableRowType) {
-    if (this._type !== value) {
-      this._typeReactive.set(value);
-    }
+    this._type.set(value);
   }
   get type(): NxComparisonTableRowType {
-    return this._type;
+    return this._type();
   }
-  /** Backed by a signal so that `surface` and friends recompute when the type is set. */
-  private readonly _typeReactive = signal<NxComparisonTableRowType>('content');
-  private get _type(): NxComparisonTableRowType {
-    return this._typeReactive();
-  }
+  private readonly _type = signal<NxComparisonTableRowType>('content');
 
   /**
    * The surface this cell's content sits on. Header and footer cells share the
@@ -131,7 +113,7 @@ export class NxComparisonTableCell implements NxSurfaceContext {
    * @docs-private
    */
   readonly surface = computed<NxSurfaceType>(() => {
-    const type = this._typeReactive();
+    const type = this._type();
     return type === 'header' || type === 'footer' ? this._table._surface() : 'default';
   });
 
@@ -164,19 +146,16 @@ export class NxComparisonTableCell implements NxSurfaceContext {
   });
 
   /**
-   * Design fixes the size of price and headline content in header cells, so it's imposed on the
-   * projected component rather than picked by it — and both step down one notch while the sticky
-   * header is pinned, alongside the eyebrow collapsing, to keep the docked header compact. Other
-   * cell types impose nothing. Price and headline have separate scales, hence separate computeds.
-   * `NxComparisonTableHeaderTitle` / `NxComparisonTableHeaderPrice` turn these into the respective
-   * contexts, which is what keeps the imposed sizes off content outside the slots.
+   * The price and headline sizes design fixes for header cells; while the header is pinned the
+   * price drops from `2xl` to `l` and the headline one size. `undefined` for other cell types. The
+   * header slot directives provide them as context, so they do not reach content outside the slots.
    */
   readonly priceSize = computed<NxPriceSize | undefined>(() =>
-    this._type !== 'header' ? undefined : this._table._isHeaderStuck() ? 'l' : '2xl',
+    this._type() !== 'header' ? undefined : this._table._isHeaderStuck() ? 'l' : '2xl',
   );
 
   readonly headlineSize = computed<NxHeadlineSize | undefined>(() => {
-    if (this._type !== 'header') {
+    if (this._type() !== 'header') {
       return undefined;
     }
     const size = this._table.headlineSize();
@@ -187,33 +166,20 @@ export class NxComparisonTableCell implements NxSurfaceContext {
     this._table._disabledIndexes().has(this._indexReactive()),
   );
 
-  /**
-   * The cell's position among the VISIBLE product columns (raw index minus the hidden columns
-   * before it). The carousel pages in visible-column space, so the focus auto-pagination keys off
-   * this rather than the raw index. Exposed on the cell as `data-ct-col`.
-   */
-  readonly _visiblePosition = computed(() => {
-    const index = this._indexReactive();
-    const hiddenBefore = this._table._hiddenIndexes().filter((h: number) => h < index).length;
-    return index - hiddenBefore;
-  });
-
-  readonly _isFirst = computed(() => this._indexReactive() === 0);
-
-  readonly _isLast = computed(() => this._indexReactive() + 1 === this._table._infoColumnCount());
-
-  readonly _isCellHidden = computed(() =>
-    this._table._hiddenIndexes().includes(this._indexReactive()),
+  /** Exposed as `data-ct-col` (focus paging) and `--ct-col` (carousel clip). */
+  readonly _visiblePosition = computed(() =>
+    this._table._visibleColumnIndex(this._indexReactive()),
   );
 
-  /**
-   * Whether this cell's column is OUTSIDE the carousel's current page window — i.e. only partially
-   * shown in a peek sliver or fully scrolled off. Mirrors the in-view test the focus
-   * auto-pagination uses (`pos` within `[pageIndex, pageIndex + visibleColumnCount - 1]`), keyed off
-   * `_visiblePosition()` because the carousel pages in visible-column space. Content/footer cells
-   * use this to fade out (header cells keep their peek sliver as the "more columns" affordance), so
-   * only fully-visible columns' body content is shown. Always `false` when not overflowing.
-   */
+  readonly _isCellHidden = computed(() => this._table._hiddenIndexSet().has(this._indexReactive()));
+
+  readonly _isFirst = computed(() => !this._isCellHidden() && this._visiblePosition() === 0);
+
+  readonly _isLast = computed(
+    () => !this._isCellHidden() && this._visiblePosition() === this._table._infoColumnCount() - 1,
+  );
+
+  /** Peeking or paged off; content and footer cells fade, header cells keep the peek sliver. */
   readonly _isOutsidePage = computed(() => {
     if (!this._table._isOverflowing()) {
       return false;
@@ -226,16 +192,12 @@ export class NxComparisonTableCell implements NxSurfaceContext {
   readonly _hasPopularAbove = computed(() => {
     const popularCell = this._table._popularCell();
     return (
-      this._type === 'header' &&
+      this._type() === 'header' &&
       popularCell != null &&
       popularCell.forColumn - 1 === this._indexReactive()
     );
   });
 
-  /**
-   * Space-separated id list for the cell's `headers=` attribute (header + description +
-   * toggle-section ids), associating this cell with its header cells for assistive tech.
-   */
   readonly _headerIds = computed(() => {
     const headerCell = this._table
       ._headerCells()

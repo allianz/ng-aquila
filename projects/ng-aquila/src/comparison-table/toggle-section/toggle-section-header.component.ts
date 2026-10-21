@@ -49,15 +49,4 @@ export class NxToggleSectionHeaderComponent {
       this._toggleSection.toggleExpanded();
     }
   }
-
-  _onKeydown($event: KeyboardEvent) {
-    if ($event && ($event.key === 'Enter' || $event.key === ' ')) {
-      this.toggle();
-
-      // prevent page from scrolling down
-      if ($event.key === ' ') {
-        $event.preventDefault();
-      }
-    }
-  }
 }

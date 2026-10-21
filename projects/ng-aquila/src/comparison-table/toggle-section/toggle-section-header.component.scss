@@ -9,8 +9,6 @@
   border-top: v(comparison-table-border-width) solid v(comparison-table-border-color);
 }
 
-// On desktop/tablet the interactive element is the host <th class="…__toggle-section-header-cell">
-// in the table template; bold the label when that header is expanded.
 ::ng-deep
   .nx-comparison-table__toggle-section-header-cell[aria-expanded='true']
   .nx-comparison-table-toggle-section__header-content {
@@ -24,24 +22,17 @@
   justify-content: space-between;
   align-items: center;
 
-  // Animate the bold-on-expand on the SAME clock as the chevron and the row collapse, so the
-  // whole toggle-section interaction moves together instead of the weight snapping instantly.
   transition: font-weight v(comparison-table-toggle-section-animation-duration)
     v(comparison-table-toggle-section-animation-easing);
+  padding: v(comparison-table-toggle-section-header-padding);
+
+  &:dir(rtl) {
+    padding: v(comparison-table-toggle-section-header-padding-rtl);
+  }
 
   @media screen and (forced-colors: active) {
     color: buttonText;
   }
-}
-
-// we need this workaround with ng-deep because :host-context would not work with the toggle section header
-// which is outside of the flex-row container that sets the direction of the table
-::ng-deep nx-comparison-table[dir='ltr'] .nx-comparison-table-toggle-section__header-content {
-  padding: v(comparison-table-toggle-section-header-padding);
-}
-
-::ng-deep nx-comparison-table[dir='rtl'] .nx-comparison-table-toggle-section__header-content {
-  padding: v(comparison-table-toggle-section-header-padding-rtl);
 }
 
 .nx-expansion-panel__chevron {
@@ -49,7 +40,6 @@
   font-size: v(comparison-table-toggle-section-chevron-size);
   color: v(comparison-table-toggle-section-chevron-color);
   transform: rotate(0deg);
-  // Same clock as the header font-weight and the row collapse so the interaction moves as one.
   transition: transform v(comparison-table-toggle-section-animation-duration)
     v(comparison-table-toggle-section-animation-easing);
 
