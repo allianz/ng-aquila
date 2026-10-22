@@ -432,7 +432,7 @@ $accent-sel: '[data-accent-color]:not(.nx-button--danger)';
 :host(.nx-sidebar__toggle-button) {
   padding: v(icon-button-medium-padding);
   flex: 0 0 auto;
-  line-height: 1;
+  line-height: 1 !important;
 
   &.nx-button--small {
     width: v(button-small-height);

@@ -8,7 +8,7 @@ $icon-outline-size-xl: 160px;
 :host {
   speak: none;
   text-transform: none;
-  line-height: 1;
+  line-height: 1 !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
