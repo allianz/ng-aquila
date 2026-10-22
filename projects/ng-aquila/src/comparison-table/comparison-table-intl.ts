@@ -14,4 +14,10 @@ export class NxComparisonTableIntl {
 
   /** Aria label for the "next" navigation button in overflow mode. */
   nextAriaLabel = 'Next products';
+
+  /** Screen reader label of the `check` icon of a comparison table feature. */
+  featureIncludedLabel = 'Included';
+
+  /** Screen reader label of the `minus` and `cross` icons of a comparison table feature. */
+  featureNotIncludedLabel = 'Not included';
 }

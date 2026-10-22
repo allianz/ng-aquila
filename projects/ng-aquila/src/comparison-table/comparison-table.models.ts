@@ -42,3 +42,15 @@ export function normalizeComparisonTableColorScheme(
 ): NxSurfaceType {
   return colorScheme === 'plain' ? 'default' : colorScheme;
 }
+
+/**
+ * The icon shown by a comparison table feature. `null` renders the text only.
+ * `minus` and `cross` both mean "not included" — `minus` is the neutral style, `cross` the emphasised one.
+ */
+export type NxComparisonTableFeatureType = 'check' | 'minus' | 'cross' | null;
+
+/**
+ * Arrangement of icon and text in a comparison table feature.
+ * With `'horizontal'` the text starts next to the icon and wraps underneath it when it runs out of space.
+ */
+export type NxComparisonTableFeatureLayout = 'horizontal' | 'vertical';

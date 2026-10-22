@@ -1,0 +1,82 @@
+@use '../../shared-styles/index' as *;
+
+:host {
+  // Inline flow, not flex: wrapped lines must continue under the icon, not in a column beside it.
+  display: inline-block;
+  max-width: 100%;
+  text-align: start;
+  // Balance moves a lone short first word below the icon; hyphenation follows the page `lang`.
+  text-wrap: balance;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  color: v(comparison-table-feature-text-color);
+  font-size: v(comparison-table-feature-font-size);
+  line-height: v(comparison-table-feature-line-height);
+  font-weight: v(comparison-table-feature-font-weight);
+  letter-spacing: v(comparison-table-feature-letter-spacing);
+}
+
+:host(.is-vertical) {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: v(comparison-table-feature-gap-vertical);
+}
+
+.nx-comparison-table-feature__icon {
+  display: inline-flex;
+  vertical-align: top;
+  align-items: center;
+  justify-content: center;
+  width: v(comparison-table-feature-icon-container-size);
+  height: v(comparison-table-feature-icon-container-size);
+  font-size: v(comparison-table-feature-icon-size);
+
+  // On the icon, not the text: a text margin would indent the text when it wraps below the icon.
+  :host(:not(.is-vertical)) &:not(:has(+ .nx-comparison-table-feature__text:empty)) {
+    margin-inline-end: v(comparison-table-feature-gap-horizontal);
+  }
+
+  &.is-check {
+    color: v(comparison-table-feature-check-icon-color);
+  }
+  &.is-minus {
+    color: v(comparison-table-feature-minus-icon-color);
+  }
+  &.is-cross {
+    color: v(comparison-table-feature-cross-icon-color);
+  }
+
+  &.is-contained {
+    border-radius: v(comparison-table-feature-icon-border-radius);
+
+    &.is-check {
+      color: v(comparison-table-feature-check-contained-icon-color);
+      background-color: v(comparison-table-feature-check-contained-background-color);
+    }
+    &.is-minus {
+      color: v(comparison-table-feature-minus-contained-icon-color);
+      background-color: v(comparison-table-feature-minus-contained-background-color);
+    }
+    &.is-cross {
+      color: v(comparison-table-feature-cross-contained-icon-color);
+      background-color: v(comparison-table-feature-cross-contained-background-color);
+    }
+  }
+
+  @media screen and (forced-colors: active) {
+    &.is-contained {
+      border: 1px solid CanvasText;
+    }
+  }
+}
+
+.nx-comparison-table-feature__text {
+  &:empty {
+    display: none;
+  }
+
+  :host(.is-vertical) & {
+    width: 100%;
+  }
+}

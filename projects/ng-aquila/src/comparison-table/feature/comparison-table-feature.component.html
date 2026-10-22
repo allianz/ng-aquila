@@ -1,0 +1,15 @@
+@if (type()) {
+  <span
+    class="nx-comparison-table-feature__icon"
+    [class.is-check]="type() === 'check'"
+    [class.is-minus]="type() === 'minus'"
+    [class.is-cross]="type() === 'cross'"
+    [class.is-contained]="contained()"
+    [attr.role]="_iconAriaLabel() ? 'img' : null"
+    [attr.aria-label]="_iconAriaLabel() || null"
+    [attr.aria-hidden]="_iconAriaLabel() ? null : 'true'"
+  >
+    <nx-icon [name]="_iconName()" aria-hidden="true"></nx-icon>
+  </span>
+}
+<span class="nx-comparison-table-feature__text"><ng-content></ng-content></span>

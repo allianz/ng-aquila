@@ -2,6 +2,7 @@ import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableFeature,
   NxComparisonTableHeaderPrice,
   NxComparisonTableHeaderTitle,
   NxComparisonTableRowDirective,
@@ -9,7 +10,6 @@ import {
   NxComparisonTableSelectButton,
 } from '@allianz/ng-aquila/comparison-table';
 import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import { Component } from '@angular/core';
 
@@ -23,13 +23,13 @@ import { Component } from '@angular/core';
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
     NxComparisonTableCell,
+    NxComparisonTableFeature,
     NxComparisonTableHeaderTitle,
     NxComparisonTableHeaderPrice,
     NxComparisonTableSelectButton,
     NxComparisonTableRowGroupDirective,
     NxComparisonTableDescriptionCell,
     NxHeadlineComponent,
-    NxIconComponent,
   ],
 })
 export class ComparisonTableExpandableAreaExampleComponent {}

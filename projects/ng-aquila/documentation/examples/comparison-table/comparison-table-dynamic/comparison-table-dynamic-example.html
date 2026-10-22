@@ -48,7 +48,15 @@
             </nx-comparison-table-description-cell>
           }
           @for (cell of element['cells']; track $index) {
-            <nx-comparison-table-cell> {{ cell }} </nx-comparison-table-cell>
+            <nx-comparison-table-cell>
+              @if (element.features?.[$index]; as feature) {
+                <nx-comparison-table-feature [type]="feature" contained>{{
+                  cell
+                }}</nx-comparison-table-feature>
+              } @else {
+                {{ cell }}
+              }
+            </nx-comparison-table-cell>
           }
         </ng-container>
       }
@@ -101,7 +109,15 @@
               }
               >
               @for (cell of row['cells']; track $index) {
-                <nx-comparison-table-cell>{{ cell }}</nx-comparison-table-cell>
+                <nx-comparison-table-cell>
+                  @if (row.features?.[$index]; as feature) {
+                    <nx-comparison-table-feature [type]="feature" contained>{{
+                      cell
+                    }}</nx-comparison-table-feature>
+                  } @else {
+                    {{ cell }}
+                  }
+                </nx-comparison-table-cell>
               }
             </ng-container>
           }

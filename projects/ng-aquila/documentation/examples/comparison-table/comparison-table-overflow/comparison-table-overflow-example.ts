@@ -4,6 +4,7 @@ import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableFeature,
   NxComparisonTableHeaderPrice,
   NxComparisonTableHeaderTitle,
   NxComparisonTableIntersectionCell,
@@ -14,7 +15,6 @@ import {
   NxToggleSectionHeaderComponent,
 } from '@allianz/ng-aquila/comparison-table';
 import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import { NxBreakpoints } from '@allianz/ng-aquila/utils';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
     NxComparisonTableRowDirective,
     NxComparisonTableRowGroupDirective,
     NxComparisonTableCell,
+    NxComparisonTableFeature,
     NxComparisonTableHeaderTitle,
     NxComparisonTableHeaderPrice,
     NxComparisonTableDescriptionCell,
@@ -40,7 +41,6 @@ import { FormsModule } from '@angular/forms';
     NxToggleSectionDirective,
     NxToggleSectionHeaderComponent,
     NxHeadlineComponent,
-    NxIconComponent,
     FormsModule,
   ],
 })

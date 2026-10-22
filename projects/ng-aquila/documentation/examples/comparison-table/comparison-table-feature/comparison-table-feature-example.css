@@ -1,0 +1,14 @@
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+  align-items: baseline;
+  gap: 0 32px;
+  margin-bottom: 24px;
+}
+
+.preview {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 16px;
+  border: 1px dashed currentColor;
+}

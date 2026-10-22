@@ -85,6 +85,16 @@ surface, never `attention` or `emphasis`:
 
 <!-- example(comparison-table-color-scheme) -->
 
+#### Feature cell content
+
+`nx-comparison-table-feature` shows whether a product includes a feature. Set `type` to `check` for an included feature. For a feature that is not included, use `minus` for a neutral look that keeps the focus on the included features, or `cross` to call out the missing coverage. Add `contained` for the tinted round background. Leave out `type` for a text-only cell. The projected text is optional.
+
+With the default `layout="horizontal"` the text starts next to the icon and continues under it when it runs out of space. Use `layout="vertical"` to always place the text below the icon.
+
+The icon has a screen reader label ("Included" or "Not included") that can be localised through `NxComparisonTableIntl` for the whole app. Or override it per instance with `iconAriaLabel`, or set `iconAriaLabel=""` when the text already conveys the meaning.
+
+<!-- example(comparison-table-feature) -->
+
 #### Structuring rows
 
 The example below combines the three ways to structure the rows of a table. They are independent — leave out the blocks you do not need.

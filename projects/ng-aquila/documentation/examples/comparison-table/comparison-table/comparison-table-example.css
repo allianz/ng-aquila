@@ -40,14 +40,6 @@
   margin: 0;
 }
 
-.check-icon {
-  color: var(--success);
-}
-
-::ng-deep .is-selected .check-icon {
-  color: var(--success-02, --success);
-}
-
 @media only screen and (max-width: 703px) {
   .has-popover {
     text-align: left;

@@ -4,6 +4,7 @@ import {
   NxComparisonTableColorScheme,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableFeature,
   NxComparisonTableHeaderEyebrow,
   NxComparisonTableHeaderPrice,
   NxComparisonTableHeaderTitle,
@@ -18,7 +19,6 @@ import {
 import { NxEyebrowComponent } from '@allianz/ng-aquila/eyebrow';
 import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import { NxSurfaceAccentColor } from '@allianz/ng-aquila/surface';
 import {
@@ -38,6 +38,7 @@ import {
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
     NxComparisonTableCell,
+    NxComparisonTableFeature,
     NxComparisonTableDescriptionCell,
     NxComparisonTablePopularCell,
     NxComparisonTableSelectButton,
@@ -48,7 +49,6 @@ import {
     NxHeadlineComponent,
     NxPriceComponent,
     NxPlainButtonComponent,
-    NxIconComponent,
     NxFormfieldComponent,
     NxDropdownComponent,
     NxDropdownItemComponent,

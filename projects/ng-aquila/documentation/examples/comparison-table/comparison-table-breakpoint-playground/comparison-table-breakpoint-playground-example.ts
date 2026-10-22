@@ -3,6 +3,7 @@ import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableFeature,
   NxComparisonTableHeaderPrice,
   NxComparisonTableHeaderTitle,
   NxComparisonTableIntersectionCell,
@@ -19,7 +20,6 @@ import {
 } from '@allianz/ng-aquila/dropdown';
 import { NxFormfieldComponent } from '@allianz/ng-aquila/formfield';
 import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import { NxPriceComponent } from '@allianz/ng-aquila/price';
 import {
   ChangeDetectionStrategy,
@@ -40,6 +40,7 @@ import {
     NxComparisonTableRowDirective,
     NxComparisonTableRowGroupDirective,
     NxComparisonTableCell,
+    NxComparisonTableFeature,
     NxComparisonTableHeaderTitle,
     NxComparisonTableHeaderPrice,
     NxComparisonTableDescriptionCell,
@@ -48,7 +49,6 @@ import {
     NxToggleSectionDirective,
     NxToggleSectionHeaderComponent,
     NxHeadlineComponent,
-    NxIconComponent,
     NxFormfieldComponent,
     NxDropdownComponent,
     NxDropdownItemComponent,

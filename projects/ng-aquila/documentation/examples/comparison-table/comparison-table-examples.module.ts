@@ -23,6 +23,7 @@ import { ComparisonTableColumnsExampleComponent } from './comparison-table-colum
 import { ComparisonTableDynamicExampleComponent } from './comparison-table-dynamic/comparison-table-dynamic-example';
 import { ComparisonTableErrorExampleComponent } from './comparison-table-error/comparison-table-error-example';
 import { ComparisonTableExpandableAreaExampleComponent } from './comparison-table-expandable-area/comparison-table-expandable-area-example';
+import { ComparisonTableFeatureExampleComponent } from './comparison-table-feature/comparison-table-feature-example';
 import { ComparisonTableFormElementsExampleComponent } from './comparison-table-form-elements/comparison-table-form-elements-example';
 import { ComparisonTableHeaderLegacyExampleComponent } from './comparison-table-header-legacy/comparison-table-header-legacy-example';
 import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-table-non-sticky-header/comparison-table-non-sticky-header-example';
@@ -50,6 +51,7 @@ const EXAMPLES = [
   RecommendationTableExpertExampleComponent,
   ComparisonTableHeaderLegacyExampleComponent,
   ComparisonTableStaticExampleComponent,
+  ComparisonTableFeatureExampleComponent,
 ];
 
 @NgModule({
@@ -98,6 +100,7 @@ export class ComparisonExamplesModule {
       'comparison-table-header-legacy':
         ComparisonTableHeaderLegacyExampleComponent,
       'comparison-table-static': ComparisonTableStaticExampleComponent,
+      'comparison-table-feature': ComparisonTableFeatureExampleComponent,
     };
   }
 }

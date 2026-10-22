@@ -3,6 +3,7 @@ import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableFeature,
   NxComparisonTableHeaderPrice,
   NxComparisonTableHeaderTitle,
   NxComparisonTableRowDirective,
@@ -18,7 +19,6 @@ import {
   NxFormfieldSuffixDirective,
 } from '@allianz/ng-aquila/formfield';
 import { NxHeadlineComponent } from '@allianz/ng-aquila/headline';
-import { NxIconComponent } from '@allianz/ng-aquila/icon';
 import {
   NxPopoverMainContentDirective,
   NxPopoverTitleDirective,
@@ -38,11 +38,11 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
     NxComparisonTableCell,
+    NxComparisonTableFeature,
     NxComparisonTableHeaderTitle,
     NxComparisonTableHeaderPrice,
     NxComparisonTableSelectButton,
     NxComparisonTableDescriptionCell,
-    NxIconComponent,
     NxFormfieldComponent,
     NxFormfieldSuffixDirective,
     NxFormfieldErrorDirective,
