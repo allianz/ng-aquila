@@ -10,6 +10,7 @@ import {
   signal,
   Type,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import {
   ComponentFixture,
@@ -112,6 +113,7 @@ describe('NxFormfieldComponent', () => {
           NoteFormfield,
           NgModelFormfield,
           FloatingFormfield,
+          ShadowDomFormfield,
           CustomLabelAndInputFormfield,
           CustomLabelFormfield,
           OutlineFormfield,
@@ -360,6 +362,40 @@ describe('NxFormfieldComponent', () => {
         clickField();
 
         expect(onContainerClick).not.toHaveBeenCalled();
+      });
+
+      describe('inside a shadow root', () => {
+        let shadowRoot: ShadowRoot;
+
+        beforeEach(() => {
+          const shadowFixture = TestBed.createComponent(ShadowDomFormfield);
+          shadowFixture.detectChanges();
+          shadowRoot = shadowFixture.nativeElement.shadowRoot;
+          formfieldInstance = shadowFixture.componentInstance.textfieldInstance;
+        });
+
+        function clickShadowField() {
+          shadowRoot.querySelector<HTMLElement>('.nx-formfield__input')!.click();
+        }
+
+        it('forwards a click on the field to the control', () => {
+          const onContainerClick = stubOnContainerClick();
+
+          clickShadowField();
+
+          expect(onContainerClick).toHaveBeenCalled();
+        });
+
+        // There `document.activeElement` is the shadow host, so the focus check must read
+        // the active element from the formfield's own root.
+        it('does not forward a click while focus already sits in the control', () => {
+          const onContainerClick = stubOnContainerClick();
+          shadowRoot.querySelector<HTMLInputElement>('.c-input')!.focus();
+
+          clickShadowField();
+
+          expect(onContainerClick).not.toHaveBeenCalled();
+        });
       });
 
       // The floated label sits in the space the wrapper reserves above the field. If it grew
@@ -1379,6 +1415,19 @@ class NgModelFormfield extends FormfieldTest {
   imports: [ReactiveFormsModule, FormsModule, NxInputModule],
 })
 class FloatingFormfield extends FormfieldTest {}
+
+@Component({
+  selector: 'test-shadow-dom-formfield',
+  template: `
+    <nx-formfield>
+      <input nxInput [(ngModel)]="currentValue" />
+    </nx-formfield>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  encapsulation: ViewEncapsulation.ShadowDom,
+  imports: [FormsModule, NxInputModule],
+})
+class ShadowDomFormfield extends FormfieldTest {}
 
 @Component({
   selector: 'test-native-select-formfield',

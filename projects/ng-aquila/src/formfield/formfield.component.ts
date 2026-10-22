@@ -456,8 +456,11 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     if (this._control.disabled) {
       return;
     }
-    // Focus already sits in the control.
-    if ((event.currentTarget as HTMLElement).contains(document.activeElement)) {
+    // Focus already sits in the control. Read it from the container's own root: inside a
+    // shadow root, `document.activeElement` is the shadow host, never the focused control.
+    const container = event.currentTarget as HTMLElement;
+    const root = container.getRootNode() as Document | ShadowRoot;
+    if (container.contains(root.activeElement)) {
       return;
     }
     this._control.onContainerClick?.(event);
