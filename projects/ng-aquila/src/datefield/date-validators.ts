@@ -236,8 +236,8 @@ export class NxDateRangeValidators {
         dateAdapter.deserialize(control.value?.end),
       );
 
-      const startMismatchesFilter = !dateFilter(controlValueStart);
-      const endMismatchesFilter = !dateFilter(controlValueEnd);
+      const startMismatchesFilter = controlValueStart !== null && !dateFilter(controlValueStart);
+      const endMismatchesFilter = controlValueEnd !== null && !dateFilter(controlValueEnd);
 
       const errors: ValidationErrors = {};
       if (startMismatchesFilter) {
