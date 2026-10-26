@@ -1,10 +1,13 @@
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 import { injectSurface } from '@allianz/ng-aquila/surface';
 import { nxOptionalBooleanAttribute } from '@allianz/ng-aquila/utils';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
   computed,
+  contentChild,
   inject,
   input,
   LOCALE_ID,
@@ -36,9 +39,11 @@ interface FormattedPrice {
   host: {
     '[class]': '"nx-price--" + _size()',
     '[class.nx-price--inverse]': 'inverse()',
+    '[class.nx-price--vertical]': 'vertical()',
     '[class.nx-price--superscript]': '_effectiveSuperscript()',
     '[class.nx-price--on-accent-attention]': 'colorScheme() === "on-accent-attention"',
   },
+  imports: [NgTemplateOutlet],
   standalone: true,
 })
 export class NxPriceComponent {
@@ -74,6 +79,9 @@ export class NxPriceComponent {
     transform: nxOptionalBooleanAttribute,
     alias: 'inverse',
   });
+
+  /** Whether to stack the prefix, price and suffix vertically. */
+  readonly vertical = input(false, { transform: booleanAttribute });
 
   private readonly _surface = injectSurface();
 
@@ -113,6 +121,18 @@ export class NxPriceComponent {
 
   /** Optional suffix text displayed after the price (e.g., 'monthly'). */
   readonly suffix = input<string>();
+
+  private readonly _infoIcon = contentChild(NxInfoIconComponent);
+
+  protected readonly _infoIconPosition = computed<'prefix' | 'price' | 'suffix' | null>(() => {
+    if (!this._infoIcon()) {
+      return null;
+    }
+    if (this.suffix()) {
+      return 'suffix';
+    }
+    return this.vertical() && this.prefix() ? 'prefix' : 'price';
+  });
 
   readonly formattedPrice = computed<FormattedPrice>(() => {
     const value = this.value();

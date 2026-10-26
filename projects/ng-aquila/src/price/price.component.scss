@@ -7,6 +7,23 @@ $price-sizes: s, m, l, xl, 2xl, 3xl, 4xl, 5xl, 6xl;
   align-items: baseline;
 }
 
+:host.nx-price--vertical .nx-price__wrapper {
+  flex-direction: column;
+  align-items: flex-end;
+
+  .nx-price__prefix-secondary-container,
+  .nx-price__suffix-secondary-container {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.nx-price__prefix-secondary-container:has(nx-info-icon),
+.nx-price__suffix-secondary-container:has(nx-info-icon) {
+  display: flex;
+  align-items: center;
+}
+
 .nx-price__prefix-secondary,
 .nx-price__suffix-secondary {
   color: var(--price-secondary-color);
@@ -42,6 +59,11 @@ $price-sizes: s, m, l, xl, 2xl, 3xl, 4xl, 5xl, 6xl;
   }
 }
 
+.nx-price__info-icon {
+  display: flex;
+  align-self: flex-start;
+}
+
 .nx-price__currency,
 .nx-price__decimal {
   display: inline-block;
@@ -59,9 +81,26 @@ $price-sizes: s, m, l, xl, 2xl, 3xl, 4xl, 5xl, 6xl;
       gap: var(--price-secondary-#{$size}-gap-horizontal);
     }
 
+    &.nx-price--vertical .nx-price__wrapper {
+      gap: 0;
+
+      > :not(:first-child) {
+        margin-block-start: var(--price-secondary-#{$size}-gap-vertical);
+      }
+    }
+
     .nx-price__prefix-secondary,
     .nx-price__suffix-secondary {
       font: var(--price-secondary-#{$size}-font);
+    }
+
+    .nx-price__wrapper ::ng-deep nx-info-icon {
+      margin-inline-start: var(--price-info-icon-#{$size}-gap-horizontal);
+      --info-icon-size: var(--price-info-icon-#{$size}-size);
+    }
+
+    .nx-price__info-icon ::ng-deep nx-info-icon {
+      padding-top: var(--price-info-icon-#{$size}-gap-vertical);
     }
 
     .nx-price__value {

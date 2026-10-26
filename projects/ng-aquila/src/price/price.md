@@ -47,6 +47,18 @@ Use `superscript` to elevate and reduce the currency symbol and decimal portion 
 
 <!-- example(price-superscript) -->
 
+### Vertical layout
+
+Use `vertical` to stack the prefix, price and suffix.
+
+<!-- example(price-vertical) -->
+
+### Info icon
+
+Project an `nx-info-icon` to show an info icon next to the price. It is placed after the suffix if there is one. In `vertical` mode with a prefix but no suffix it is placed after the prefix. Otherwise it follows the price.
+
+<!-- example(price-info-icon) -->
+
 ### Inverse 
 
 Use the `inverse` input to apply inverse styling, suitable for dark backgrounds.

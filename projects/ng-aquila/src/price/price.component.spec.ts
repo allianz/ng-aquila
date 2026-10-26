@@ -1,3 +1,4 @@
+import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -39,6 +40,7 @@ abstract class PriceTest {
   prefix?: string;
   suffix?: string;
   superscript = false;
+  vertical = false;
   colorScheme: NxPriceColorScheme = 'default';
 }
 
@@ -300,6 +302,104 @@ describe('NxPriceComponent', () => {
       expect(formatted.integer).toBe('99');
       // Should still show decimals due to minimumFractionDigits: 2
       expect(formatted.decimal).toContain('99');
+    });
+  });
+
+  describe('vertical layout', () => {
+    it('should stack prefix, value and suffix in a column when vertical is true', () => {
+      createTestComponent(PriceWithSuperscriptComponent);
+      fixture.componentInstance.vertical = true;
+      fixture.detectChanges();
+
+      const wrapper = priceNativeElement.querySelector('.nx-price__wrapper')!;
+      expect(priceNativeElement).toHaveClass('nx-price--vertical');
+      expect(getComputedStyle(wrapper).flexDirection).toBe('column');
+    });
+
+    it('should lay out horizontally by default', () => {
+      createTestComponent(PriceWithSuperscriptComponent);
+
+      const wrapper = priceNativeElement.querySelector('.nx-price__wrapper')!;
+      expect(priceNativeElement).not.toHaveClass('nx-price--vertical');
+      expect(getComputedStyle(wrapper).flexDirection).toBe('row');
+    });
+  });
+
+  describe('info icon projection', () => {
+    function iconParent() {
+      return priceNativeElement.querySelector('.info')?.parentElement;
+    }
+
+    it('should render in the value when there is no suffix', () => {
+      createTestComponent(PriceWithInfoIconComponent);
+
+      expect(iconParent()).toHaveClass('nx-price__info-icon');
+      expect(iconParent()?.parentElement).toHaveClass('nx-price__value');
+      expect(getComputedStyle(iconParent()!).alignSelf).toBe('flex-start');
+    });
+
+    it('should not render the icon wrapper when nothing is projected', () => {
+      createTestComponent(PriceWithSuperscriptComponent);
+
+      expect(priceNativeElement.querySelector('.nx-price__info-icon')).toBeNull();
+    });
+
+    it('should render in the suffix when a suffix is set', () => {
+      createTestComponent(PriceWithInfoIconComponent);
+      fixture.componentInstance.suffix = 'monthly';
+      fixture.detectChanges();
+
+      expect(iconParent()).toHaveClass('nx-price__suffix-secondary-container');
+    });
+
+    it('should render in the prefix when vertical with a prefix and no suffix', () => {
+      createTestComponent(PriceWithInfoIconComponent);
+      fixture.componentInstance.vertical = true;
+      fixture.componentInstance.prefix = 'from';
+      fixture.detectChanges();
+
+      expect(iconParent()).toHaveClass('nx-price__prefix-secondary-container');
+    });
+
+    it('should prefer the suffix over the prefix when vertical with both', () => {
+      createTestComponent(PriceWithInfoIconComponent);
+      fixture.componentInstance.vertical = true;
+      fixture.componentInstance.prefix = 'from';
+      fixture.componentInstance.suffix = 'monthly';
+      fixture.detectChanges();
+
+      expect(iconParent()).toHaveClass('nx-price__suffix-secondary-container');
+    });
+
+    it('should render in the value when vertical without prefix or suffix', () => {
+      createTestComponent(PriceWithInfoIconComponent);
+      fixture.componentInstance.vertical = true;
+      fixture.detectChanges();
+
+      expect(iconParent()).toHaveClass('nx-price__info-icon');
+    });
+
+    it('should render in the value when horizontal with only a prefix', () => {
+      createTestComponent(PriceWithInfoIconComponent);
+      fixture.componentInstance.prefix = 'from';
+      fixture.detectChanges();
+
+      expect(iconParent()).toHaveClass('nx-price__info-icon');
+    });
+
+    it('should move the same icon element when the position changes', () => {
+      createTestComponent(PriceWithInfoIconComponent);
+      fixture.componentInstance.suffix = 'monthly';
+      fixture.detectChanges();
+      const icon = priceNativeElement.querySelector('.info');
+      expect(iconParent()).toHaveClass('nx-price__suffix-secondary-container');
+
+      fixture.componentInstance.suffix = undefined;
+      fixture.detectChanges();
+
+      expect(priceNativeElement.querySelectorAll('.info')).toHaveLength(1);
+      expect(priceNativeElement.querySelector('.info')).toBe(icon);
+      expect(iconParent()).toHaveClass('nx-price__info-icon');
     });
   });
 
@@ -583,11 +683,22 @@ class PriceWithPrefixSuffixComponent extends PriceTest {}
     [locale]="locale"
     [size]="size"
     [superscript]="superscript"
+    [vertical]="vertical"
   />`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NxPriceModule],
 })
 class PriceWithSuperscriptComponent extends PriceTest {}
+
+@Component({
+  selector: 'test-price-with-info-icon',
+  template: `<nx-price [value]="value" [prefix]="prefix" [suffix]="suffix" [vertical]="vertical"
+    ><nx-info-icon class="info">Info</nx-info-icon></nx-price
+  >`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxPriceModule, NxInfoIconComponent],
+})
+class PriceWithInfoIconComponent extends PriceTest {}
 
 @Component({
   selector: 'test-price-with-different-currency',
