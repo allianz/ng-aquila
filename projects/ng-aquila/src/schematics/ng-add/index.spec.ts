@@ -41,19 +41,6 @@ describe('ng-aquila: ng add', () => {
         testSetup.appTree.readContent('projects/' + testSetup.appTreeName + '/src/styles.css'),
       ).toContain('@import "@angular/cdk/a11y-prebuilt.css";');
     });
-
-    it('should not write Starter App files by default', () => {
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeName + '/src/app/app.component.ts',
-        ),
-      ).not.toContain('openConsentDialog()');
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeName + '/src/app/app.component.html',
-        ),
-      ).not.toContain('Aquila Insurance App');
-    });
   });
 
   describe('expert', () => {
@@ -90,44 +77,6 @@ describe('ng-aquila: ng add', () => {
       expect(testProjectConfig.targets.get('build')!.options!.styles).not.toContain(
         'node_modules/@allianz/ng-aquila/themes/aquila.css',
       );
-    });
-  });
-
-  xdescribe('starter app', () => {
-    beforeEach(async () => {
-      await testSetup.runMigration({ project: testSetup.appTreeName, starter: true });
-      testProjectConfig = await getTestProjectConfig();
-    });
-
-    it('should update Starter App files', () => {
-      const currentYear = new Date().getFullYear();
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeName + '/src/app/app.component.ts',
-        ),
-      ).toContain(`/** Copyright ${currentYear} Allianz */`);
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeName + '/src/app/app.component.html',
-        ),
-      ).toContain(`<!-- Copyright ${currentYear} Allianz -->`);
-    });
-
-    it('should create Retail version Starter App by default', () => {
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeName + '/src/app/app-module.ts',
-        ),
-      ).not.toContain('NxExpertModule');
-    });
-
-    it('should create Expert Starter App when requested', async () => {
-      await testSetup.runMigration({ project: testSetup.appTreeName, starter: false, type: 'b2b' });
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeName + '/src/app/app-module.ts',
-        ),
-      ).toContain('NxExpertModule');
     });
   });
 });
@@ -174,19 +123,6 @@ describe('ng-aquila: ng add standalone', () => {
         ),
       ).toContain('@import "@angular/cdk/a11y-prebuilt.css";');
     });
-
-    it('should not write Starter App files by default for standalone apps', () => {
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.ts',
-        ),
-      ).not.toContain('openConsentDialog()');
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.html',
-        ),
-      ).not.toContain('Aquila Insurance App');
-    });
   });
 
   describe('expert for standalone apps', () => {
@@ -227,48 +163,6 @@ describe('ng-aquila: ng add standalone', () => {
       expect(testProjectConfig.targets.get('build')!.options!.styles).not.toContain(
         'node_modules/@allianz/ng-aquila/themes/aquila.css',
       );
-    });
-  });
-
-  xdescribe('starter app for standalone apps', () => {
-    beforeEach(async () => {
-      await testSetup.runMigration({ project: testSetup.appTreeNameStandalone, starter: true });
-      testProjectConfig = await getTestProjectConfig();
-    });
-
-    it('should update Starter App files for standalone apps', () => {
-      const currentYear = new Date().getFullYear();
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.ts',
-        ),
-      ).toContain(`/** Copyright ${currentYear} Allianz */`);
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeNameStandalone + '/src/app/app.component.html',
-        ),
-      ).toContain(`<!-- Copyright ${currentYear} Allianz -->`);
-    });
-
-    it('should create Retail version Starter App by default for standalone apps', () => {
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeNameStandalone + '/src/app/app.config.ts',
-        ),
-      ).not.toContain('NxExpertModule');
-    });
-
-    it('should create Expert Starter App when requested for standalone apps', async () => {
-      await testSetup.runMigration({
-        project: testSetup.appTreeNameStandalone,
-        starter: true,
-        type: 'b2b',
-      });
-      expect(
-        testSetup.appTree.readContent(
-          'projects/' + testSetup.appTreeNameStandalone + '/src/app/app.config.ts',
-        ),
-      ).toContain('NxExpertModule');
     });
   });
 });

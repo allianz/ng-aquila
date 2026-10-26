@@ -1,34 +1,19 @@
 import {
-  findModuleFromOptions,
   getProjectFromWorkspace,
   getProjectStyleFile,
   getProjectTargetOptions,
-  isStandaloneApp,
 } from '@angular/cdk/schematics';
-import {
-  apply,
-  chain,
-  MergeStrategy,
-  mergeWith,
-  move,
-  noop,
-  Rule,
-  SchematicsException,
-  url,
-} from '@angular-devkit/schematics';
+import { chain, noop, Rule } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { addRootImport, readWorkspace, updateWorkspace } from '@schematics/angular/utility';
-import { buildDefaultPath } from '@schematics/angular/utility/workspace';
 import chalk from 'chalk';
 
-import { isAngularApplicationProject } from '../utils/utils';
 import { Schema } from './schema';
 
 export default function (options: Schema): Rule {
   return (tree, context) => {
     context.addTask(new NodePackageInstallTask());
     return chain([
-      // options?.starter ? addStarterApp(options) : noop(),
       options?.type === 'b2b' ? addExpertModule(options) : noop(),
       options.noTheme ? noop() : addAquilaTheme(options),
       addCdkStyles(options),
@@ -41,92 +26,6 @@ function addExpertModule(options: Schema): Rule {
     options.project,
     ({ code, external }) => code`${external('NxExpertModule', '@allianz/ng-aquila/config')}`,
   );
-}
-
-function addStarterApp(options: Schema): Rule {
-  return async (tree, context) => {
-    const workspace = await readWorkspace(tree);
-    const project = getProjectFromWorkspace(workspace, options.project);
-    const projectRoot = project.sourceRoot || '.';
-    const projectAppPath = buildDefaultPath(project);
-    let files = './files/standalone';
-
-    if (!isAngularApplicationProject(project)) {
-      throw new SchematicsException(
-        'Project is not an application or is using an unsupported builder',
-      );
-    }
-
-    const mainBuffer = tree.read(`${projectRoot}/main.ts`);
-    if (!mainBuffer) {
-      throw new SchematicsException('Incompatible project: cannot find main.ts');
-    }
-
-    const indexBuffer = tree.read(`${projectRoot}/index.html`);
-    if (!indexBuffer) {
-      throw new SchematicsException('Incompatible project: cannot find index.html');
-    }
-    if (!indexBuffer.toString().includes('<app-root')) {
-      throw new SchematicsException(
-        'Incompatible project: index.html does not include <app-root> element',
-      );
-    }
-
-    if (!isStandaloneApp(tree, projectRoot + '/main.ts')) {
-      files = './files/module';
-
-      if (!mainBuffer.toString().includes('AppModule')) {
-        throw new SchematicsException(
-          'Incompatible project: main.ts does not bootstrapp AppModule',
-        );
-      }
-
-      const modPath =
-        (await findModuleFromOptions(tree, {
-          name: options.project,
-          project: options.project,
-        })) || '';
-
-      const moduleBuffer = tree.read(modPath);
-      if (!moduleBuffer) {
-        throw new SchematicsException(
-          `Incompatible project: ${projectAppPath}/app.module.ts does not exist`,
-        );
-      }
-      // AppComponent not exist
-      // if (!moduleBuffer.toString().includes('AppComponent')) {
-      //     throw new SchematicsException(`Incompatible project: ${projectAppPath}/app.module.ts does not import AppComponent`);
-      // }
-    }
-
-    return chain([
-      mergeWith(apply(url(files), [move(projectAppPath)]), MergeStrategy.Overwrite),
-      rewriteCopyrightYear(projectAppPath, projectRoot),
-    ]);
-  };
-
-  function rewriteCopyrightYear(projectAppPath: string, projectRoot: string): Rule {
-    return async (tree, context) => {
-      const currentYear = new Date().getFullYear();
-      const copyrightTemplate = 'Copyright ALLIANZ';
-      const copyrightStamp = `Copyright ${currentYear} Allianz`;
-
-      const projectFiles = [
-        `${projectAppPath}/app.component.ts`,
-        `${projectAppPath}/app.component.html`,
-      ];
-
-      if (!isStandaloneApp(tree, projectRoot + '/main.ts')) {
-        projectFiles.push(`${projectAppPath}/app.module.ts`);
-      }
-
-      projectFiles.forEach((file) => {
-        let fileContent = tree.read(file)!.toString('utf-8');
-        fileContent = fileContent.replace(copyrightTemplate, copyrightStamp);
-        tree.overwrite(file, fileContent);
-      });
-    };
-  }
 }
 
 function addAquilaTheme(options: Schema): Rule {

@@ -30,7 +30,6 @@ export async function createApp(
   tree: Tree,
   options = {},
 ): Promise<UnitTestTree> {
-  // temporary fix to set  standalone: false that the starter app tests still work.
   return runner.runExternalSchematic('@schematics/angular', 'application', options, tree);
 }
 
