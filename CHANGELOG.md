@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.6.0 (2026-10-27)
+
+### Bug Fixes 🐛
+
+* **comparison-table:** design issues, improve performance ([6abc00d](https://github.com/allianz/ng-aquila/commit/6abc00d3a229957bf4134632485e648e23629fd2))
+* **icon:** change status-icon on warning large ([c252b33](https://github.com/allianz/ng-aquila/commit/c252b33b0cccb75743c6bf5889792a4ae2468f07))
+* **icon:** keep icon line-height under overrides spacing ([bfdd39f](https://github.com/allianz/ng-aquila/commit/bfdd39f9411668bbe10de1136ef6cf8810c0b574))
+* **natural-language-form:** omit empty for attribute on word label with dropdown ([6db89bd](https://github.com/allianz/ng-aquila/commit/6db89bde77244a1ac38addabd739339915b51514))
+* **popover:** return focus to the trigger before removing the popover ([5ac372b](https://github.com/allianz/ng-aquila/commit/5ac372bf83899526e40d420a8ba78cbd04dbda28))
+* **tooltip:** cancel pending show and hide timers on destroy ([70e4aef](https://github.com/allianz/ng-aquila/commit/70e4aefe18547fcecdd1d2e1d22e06b584639c51))
+
+
+### Features ✨
+
+* **badge:** add signal type for A1 ([ed8b68a](https://github.com/allianz/ng-aquila/commit/ed8b68a7c563a898a9e9ba8d29e26a89e63fac8b))
+* **comparison-table:** add feature cell content component ([9a0026f](https://github.com/allianz/ng-aquila/commit/9a0026f4f7620e82e8813b78663312479cd311b4))
+* **price:** add vertical layout and info icon projection ([5cf9cc3](https://github.com/allianz/ng-aquila/commit/5cf9cc3728fbd9812fb9d5af8b1a00db53854652))
+* **progress-indicator:** add a compact progress indicator ([c62e7fa](https://github.com/allianz/ng-aquila/commit/c62e7fa5eda6501a971c3a43b967a9bc754cd6ec))
+
 ## 22.5.0 (2026-10-09)
 
 
