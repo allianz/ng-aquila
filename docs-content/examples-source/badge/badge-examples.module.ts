@@ -9,6 +9,7 @@ import { BadgeCharacterNdbxExampleComponent } from './badge-character-ndbx/badge
 import { BadgeDisabledExampleComponent } from './badge-disabled/badge-disabled-example';
 import { BadgeInverseExampleComponent } from './badge-inverse/badge-inverse-example';
 import { BadgeProminenceExampleComponent } from './badge-prominence/badge-prominence-example';
+import { BadgeSignalExampleComponent } from './badge-signal/badge-signal-example';
 import { BadgeVibrantExampleComponent } from './badge-vibrant/badge-vibrant-example';
 
 const EXAMPLES = [
@@ -19,6 +20,7 @@ const EXAMPLES = [
   BadgeBrandExampleComponent,
   BadgeDisabledExampleComponent,
   BadgeInverseExampleComponent,
+  BadgeSignalExampleComponent,
   BadgeCharacterNdbxExampleComponent,
 ];
 
@@ -38,6 +40,7 @@ export class BadgeExamplesModule {
       'badge-accent-color': BadgeAccentColorExampleComponent,
       'badge-disabled': BadgeDisabledExampleComponent,
       'badge-inverse': BadgeInverseExampleComponent,
+      'badge-signal': BadgeSignalExampleComponent,
     };
   }
 }

@@ -119,7 +119,8 @@ badge is placed on (see <code>nxSurface</code>).</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the class name for the badge element.</p>
+        <p>Sets the type of the badge. <code>accent</code> is the A1 default; an empty value
+is the NDBX default (gray). With the A1 theme, a signal type takes precedence over <code>accentColor</code>.</p>
 </td>
 </tr>
    
@@ -193,10 +194,11 @@ badge is placed on (see <code>nxSurface</code>).</p>
 <h4 id="NxBadgeType" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
     <span header-link="NxBadgeType"></span>
     <code>NxBadgeType</code>
-</h4><p class="docs-api-type-alias-description"><p>Possible badge types.</p>
+</h4><p class="docs-api-type-alias-description"><p>Possible badge types. <code>accent</code> is the non-signal badge colored by <code>accentColor</code>.
+<code>active</code> and <code>negative</code> are deprecated NDBX names for <code>info</code> and <code>warning</code>.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
-    <code class="docs-api-type-alias-value">&#39;active&#39; | &#39;positive&#39; | &#39;critical&#39; | &#39;negative&#39; | &#39;&#39;</code>
+    <code class="docs-api-type-alias-value">&#39;accent&#39; | &#39;info&#39; | &#39;warning&#39; | &#39;positive&#39; | &#39;critical&#39; | &#39;active&#39; | &#39;negative&#39; | &#39;&#39;</code>
 </p>
    
 

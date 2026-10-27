@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  padding: 16px;
+}
+
+.example-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.example-item {
+  flex: 1;
+  min-width: 200px;
+}

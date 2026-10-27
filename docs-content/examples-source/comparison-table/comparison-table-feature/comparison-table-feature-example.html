@@ -1,0 +1,43 @@
+<div class="controls">
+  <nx-formfield label="Type">
+    <nx-dropdown [value]="type()" (valueChange)="type.set($event)">
+      @for (option of typeOptions; track option.value) {
+        <nx-dropdown-item [value]="option.value">{{
+          option.label
+        }}</nx-dropdown-item>
+      }
+    </nx-dropdown>
+  </nx-formfield>
+  <nx-formfield label="Layout">
+    <nx-dropdown [value]="layout()" (valueChange)="layout.set($event)">
+      @for (option of layoutOptions; track option) {
+        <nx-dropdown-item [value]="option">{{ option }}</nx-dropdown-item>
+      }
+    </nx-dropdown>
+  </nx-formfield>
+  <nx-formfield label="Cell width">
+    <nx-dropdown [value]="width()" (valueChange)="width.set($event)">
+      @for (option of widthOptions; track option) {
+        <nx-dropdown-item [value]="option">{{ option }}px</nx-dropdown-item>
+      }
+    </nx-dropdown>
+  </nx-formfield>
+  <nx-formfield label="Text">
+    <input nxInput [value]="text()" (input)="setText($event)" />
+  </nx-formfield>
+  <nx-checkbox
+    [checked]="contained()"
+    (checkedChange)="contained.set($event)"
+    [disabled]="type() === 'none'"
+    >Contained</nx-checkbox
+  >
+</div>
+
+<div class="preview" [style.width.px]="width()">
+  <nx-comparison-table-feature
+    [type]="featureType()"
+    [contained]="contained()"
+    [layout]="layout()"
+    >{{ text() }}</nx-comparison-table-feature
+  >
+</div>

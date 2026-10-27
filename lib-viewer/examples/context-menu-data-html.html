@@ -48,7 +48,9 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{ contract.id }}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;contract.status&quot;</span>&gt;</span>{{ contract.status }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-badge</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;contract.status&quot;</span>&gt;</span>{{
+            contract.statusText
+          }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-badge</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">button</span>

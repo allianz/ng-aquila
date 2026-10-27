@@ -13,6 +13,245 @@
     </h3>
      
 
+<h4 id="NxCompactProgressIndicatorComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxCompactProgressIndicatorComponent"></span>
+    <code>NxCompactProgressIndicatorComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-compact-progress-indicator</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.aria-describedby">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-describedby</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaDescribedBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Points the list of steps at an element describing it in more detail. Bind as
+<code>aria-describedby</code>.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.aria-label">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-label</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the accessible name of the list of steps, e.g. &quot;Order process&quot;. Bind as <code>aria-label</code>.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.aria-labelledby">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input{ alias:  <strong>aria-labelledby</strong> }</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                ariaLabelledBy: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Names the list of steps after an existing element instead of a literal string. Bind as
+<code>aria-labelledby</code>. Takes precedence over <code>aria-label</code>.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.currentStep">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                currentStep: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;number&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the 1-based index of the active step, exactly as on <code>nx-multi-progress-indicator</code>. Also
+drives the &quot;X of Y&quot; counter - without it, the counter falls back to whichever step sets its
+own <code>current</code>.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.expandLabel">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                expandLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Button label, read after the counter. Defaults to the intl's <code>expandLabel</code>.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.openedChange">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                openedChange: 
+                </span>
+                 
+                <span class="docs-api-property__type">OutputEmitterRef&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Emits whenever the panel opens or closes.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.colorScheme">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                colorScheme: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxMultiProgressIndicatorColorScheme&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.layout">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                layout: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;NxMultiProgressIndicatorLayout&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.numbered">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                numbered: 
+                </span>
+                 
+                <span class="docs-api-property__type">Signal&lt;boolean&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorComponent.opened">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                opened: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the panel is currently open.</p>
+</td>
+</tr>
+  
+</table> 
+
+<h5 class="docs-api-method-header">Methods</h5>
+ 
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">close()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Closes the panel. No-op when it is not open.</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">open()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Opens the panel. No-op when it is already open.</p>
+</div></div>
+   
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">toggle()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Opens the panel if it is closed, closes it otherwise.</p>
+</div></div>
+   
+   
+
 <h4 id="NxMultiProgressIndicatorComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxMultiProgressIndicatorComponent"></span>
     <code>NxMultiProgressIndicatorComponent</code></h4><p class="docs-api-directive-selectors">
@@ -150,7 +389,7 @@ setting its own <code>completed</code>/<code>current</code> input, e.g. to mark 
 step only, label beside the bullet). &quot;horizontal-labels-below&quot; bars every step and moves labels
 below the bullet. &quot;vertical&quot; stacks steps top to bottom with a bar between each one.
 &quot;vertical-no-labels&quot; and &quot;vertical-no-bars&quot; are &quot;vertical&quot; without a visible label or bar,
-respectively. A compact layout is not yet implemented.</p>
+respectively. For the compact layout, use <code>nx-compact-progress-indicator</code> instead.</p>
 </td>
 </tr>
    
@@ -279,9 +518,44 @@ link semantics entirely.</p>
             <span class="docs-api-class-selector-name">button[nxProgressIndicatorStepAction]</span>
         </code>
     
-</p> 
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
 
+
+<tr class="docs-api-properties-row" id="NxProgressIndicatorStepActionComponent.disabled">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                disabled: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p><code>FocusableOption</code>: a <code>FocusKeyManager</code> skips uncompleted steps.</p>
+</td>
+</tr>
+  
+</table> 
+
+<h5 class="docs-api-method-header">Methods</h5>
  
+
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">focus()</span>
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
    
 
 <h4 id="NxSingleProgressIndicatorComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
@@ -462,6 +736,113 @@ label(s)</p>
     </h3>
      
 
+<h4 id="NxCompactProgressIndicatorIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxCompactProgressIndicatorIntl"></span>
+    <code>NxCompactProgressIndicatorIntl</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">NxMultiProgressIndicatorIntl</span>
+    </span></h4><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorIntl.completedLabel">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                completedLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Visually-hidden prefix announced before a completed step's label</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorIntl.currentLabel">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                currentLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Visually-hidden prefix announced before the current step's label</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorIntl.expandLabel">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                expandLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Button label, read after the counter: &quot;2 of 3 steps&quot;</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorIntl.notCompletedLabel">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                notCompletedLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Visually-hidden prefix announced before the label of a step that is neither completed nor current</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxCompactProgressIndicatorIntl.stepCounterLabel">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                stepCounterLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;(current: number, total: number) =&gt; string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Builds the &quot;X of Y&quot; counter</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
 <h4 id="NxMultiProgressIndicatorIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxMultiProgressIndicatorIntl"></span>
     <code>NxMultiProgressIndicatorIntl</code></h4><h5 class="docs-api-method-header">Properties</h5>
@@ -504,6 +885,24 @@ label(s)</p>
     </td>
     <td class="docs-api-property-description">
         <p>Visually-hidden prefix announced before the current step's label</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxMultiProgressIndicatorIntl.notCompletedLabel">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                notCompletedLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">WritableSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Visually-hidden prefix announced before the label of a step that is neither completed nor current</p>
 </td>
 </tr>
   

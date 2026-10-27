@@ -18,7 +18,7 @@
   </div>
 
   <h3>Inverse attention</h3>
-  <div class="color-group">
+  <div class="color-group nx-margin-bottom-m">
     <nx-badge accentColor="yellow" prominence="attention" inverse
       >Yellow</nx-badge
     >
@@ -36,5 +36,32 @@
       >Green</nx-badge
     >
     <nx-badge accentColor="gray" prominence="attention" inverse>Gray</nx-badge>
+  </div>
+
+  <h3>Inverse signal subtle</h3>
+  <div class="color-group nx-margin-bottom-m">
+    <nx-badge type="info" inverse>Info</nx-badge>
+    <nx-badge type="warning" inverse>Warning</nx-badge>
+    <nx-badge type="critical" inverse>Critical</nx-badge>
+    <nx-badge type="positive" inverse>Positive</nx-badge>
+  </div>
+
+  <h3>Inverse signal attention</h3>
+  <div class="color-group nx-margin-bottom-m">
+    <nx-badge type="info" prominence="attention" inverse>Info</nx-badge>
+    <nx-badge type="warning" prominence="attention" inverse>Warning</nx-badge>
+    <nx-badge type="critical" prominence="attention" inverse>Critical</nx-badge>
+    <nx-badge type="positive" prominence="attention" inverse>Positive</nx-badge>
+  </div>
+
+  <h3>Inverse disabled</h3>
+  <div class="color-group">
+    <nx-badge accentColor="yellow" prominence="subtle" disabled inverse
+      >Disabled - Subtle</nx-badge
+    >
+    <nx-badge accentColor="yellow" prominence="attention" disabled inverse
+      >Disabled - Attention</nx-badge
+    >
+    <nx-badge type="critical" disabled inverse>Disabled - Signal</nx-badge>
   </div>
 </div>

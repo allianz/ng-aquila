@@ -1,0 +1,48 @@
+<span class="hljs-comment">&lt;!--
+  `routerLink` bound to `null` drops the `href` - see the accessibility notes.
+--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-compact-progress-indicator</span>
+  <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Order Process Steps&quot;</span>
+  [<span class="hljs-attr">currentStep</span>]=<span class="hljs-string">&quot;currentStep&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;currentStep &gt; 1 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Billing Address
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;currentStep &gt; 2 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Shipping Address
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;currentStep &gt; 3 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Gift Wrapping
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;currentStep &gt; 4 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Review Order
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+      [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">&quot;currentStep &gt; 5 ? &#x27;./&#x27; : null&quot;</span>
+      <span class="hljs-attr">nxProgressIndicatorStepAction</span>
+    &gt;</span>
+      Payment
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-progress-step</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-compact-progress-indicator</span>&gt;</span>

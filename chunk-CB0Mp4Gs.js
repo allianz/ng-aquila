@@ -1,1 +1,0 @@
-import{at as M}from"./chunk-s6oCE-mn.js";var e=new M(`ALLIANZ_ONE`);export{e as t};

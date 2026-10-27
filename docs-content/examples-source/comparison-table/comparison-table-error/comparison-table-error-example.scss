@@ -61,14 +61,6 @@
   }
 }
 
-.check-icon {
-  color: var(--success);
-}
-
-::ng-deep .is-selected .check-icon {
-  color: var(--success-02, --success);
-}
-
 #error-message {
   margin: 0;
 }

@@ -1,0 +1,1 @@
+import{ct as Lr}from"./chunk-oHjNR-Ea.js";var l=(()=>{class e{_listeners=[];notify(t,i){for(let s of this._listeners)s(t,i)}listen(t){return this._listeners.push(t),()=>{this._listeners=this._listeners.filter(i=>t!==i)}}ngOnDestroy(){this._listeners=[]}static ɵfac=function(i){return new(i||e)};static ɵprov=Lr({token:e,factory:e.ɵfac})}return e})();export{l as t};

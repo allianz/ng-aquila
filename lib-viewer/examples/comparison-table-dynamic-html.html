@@ -48,7 +48,15 @@
             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
           }
           @for (cell of element[&#x27;cells&#x27;]; track $index) {
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span> {{ cell }} <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+              @if (element.features?.[$index]; as feature) {
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-feature</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;feature&quot;</span> <span class="hljs-attr">contained</span>&gt;</span>{{
+                  cell
+                }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-feature</span>&gt;</span>
+              } @else {
+                {{ cell }}
+              }
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
           }
         <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
       }
@@ -101,7 +109,15 @@
               }
               &gt;
               @for (cell of row[&#x27;cells&#x27;]; track $index) {
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>{{ cell }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                  @if (row.features?.[$index]; as feature) {
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-feature</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;feature&quot;</span> <span class="hljs-attr">contained</span>&gt;</span>{{
+                      cell
+                    }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-feature</span>&gt;</span>
+                  } @else {
+                    {{ cell }}
+                  }
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
               }
             <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
           }

@@ -1,0 +1,50 @@
+<div class="example-row">
+  <div class="example-item">
+    <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-m">
+      Next to the price
+    </h4>
+    <nx-price [value]="value" [currency]="currency" prefix="from" size="3xl">
+      <nx-info-icon
+        buttonAriaLabel="Help"
+        popoverDirection="top"
+        popoverMaxWidth="250px"
+      >
+        <span>This popover appears on top with a maximum width of 250px.</span>
+      </nx-info-icon>
+    </nx-price>
+  </div>
+  <div class="example-item">
+    <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-m">
+      Next to the suffix
+    </h4>
+    <nx-price [value]="value" [currency]="currency" size="3xl" suffix="monthly">
+      <nx-info-icon
+        buttonAriaLabel="Help"
+        popoverDirection="top"
+        popoverMaxWidth="250px"
+      >
+        <span>This popover appears on top with a maximum width of 250px.</span>
+      </nx-info-icon>
+    </nx-price>
+  </div>
+  <div class="example-item">
+    <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-m">
+      Next to the prefix (vertical)
+    </h4>
+    <nx-price
+      [value]="value"
+      [currency]="currency"
+      size="3xl"
+      prefix="from"
+      vertical
+    >
+      <nx-info-icon
+        buttonAriaLabel="Help"
+        popoverDirection="top"
+        popoverMaxWidth="250px"
+      >
+        <span>This popover appears on top with a maximum width of 250px.</span>
+      </nx-info-icon>
+    </nx-price>
+  </div>
+</div>

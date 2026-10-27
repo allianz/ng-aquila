@@ -9,6 +9,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyProgressIndicatorIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">NxMultiProgressIndicatorIntl</span> {
   <span class="hljs-keyword">override</span> <span class="hljs-keyword">readonly</span> completedLabel = <span class="hljs-title function_">signal</span>(<span class="hljs-string">&#x27;Abgeschlossen: &#x27;</span>);
   <span class="hljs-keyword">override</span> <span class="hljs-keyword">readonly</span> currentLabel = <span class="hljs-title function_">signal</span>(<span class="hljs-string">&#x27;Aktuell: &#x27;</span>);
+  <span class="hljs-keyword">override</span> <span class="hljs-keyword">readonly</span> notCompletedLabel = <span class="hljs-title function_">signal</span>(<span class="hljs-string">&#x27;Nicht abgeschlossen: &#x27;</span>);
 }
 
 <span class="hljs-comment">/**

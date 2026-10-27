@@ -6,6 +6,8 @@ import {
   NxComparisonTableCell,
   NxComparisonTableComponent,
   NxComparisonTableDescriptionCell,
+  NxComparisonTableFeature,
+  NxComparisonTableFeatureType,
   NxComparisonTableHeaderPrice,
   NxComparisonTableHeaderTitle,
   NxComparisonTableRowDirective,
@@ -28,6 +30,7 @@ interface ContentCell {
   type: NxComparisonTableRowType;
   description?: string;
   cells: string[];
+  features?: NxComparisonTableFeatureType[];
 }
 interface ToggleSection {
   type: 'toggleSection';
@@ -45,6 +48,7 @@ type TableData = (ContentCell | ToggleSection)[];
     NxComparisonTableComponent,
     NxComparisonTableRowDirective,
     NxComparisonTableCell,
+    NxComparisonTableFeature,
     NxComparisonTableHeaderTitle,
     NxComparisonTableHeaderPrice,
     NxComparisonTableSelectButton,
@@ -89,6 +93,12 @@ export class ComparisonTableDynamicExampleComponent implements OnInit {
           type: 'content',
           description: 'This is a description cell',
           cells: ['This is a cell', 'This is a cell'],
+        },
+        {
+          type: 'content',
+          description: 'This is a feature row',
+          cells: ['', 'This is a feature'],
+          features: ['minus', 'check'],
         },
       ],
     },

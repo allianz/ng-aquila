@@ -11,14 +11,6 @@
   margin: 0;
 }
 
-.check-icon {
-  color: var(--success);
-}
-
-::ng-deep .is-selected .check-icon {
-  color: var(--success-02, --success);
-}
-
 .error-list {
   margin: 0;
   padding-left: 20px;

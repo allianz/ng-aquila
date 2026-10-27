@@ -121,12 +121,9 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Design fixes the size of price and headline content in header cells, so it's imposed on the
-projected component rather than picked by it — and both step down one notch while the sticky
-header is pinned, alongside the eyebrow collapsing, to keep the docked header compact. Other
-cell types impose nothing. Price and headline have separate scales, hence separate computeds.
-<code>NxComparisonTableHeaderTitle</code> / <code>NxComparisonTableHeaderPrice</code> turn these into the respective
-contexts, which is what keeps the imposed sizes off content outside the slots.</p>
+        <p>The price and headline sizes design fixes for header cells; while the header is pinned the
+price drops from <code>2xl</code> to <code>l</code> and the headline one size. <code>undefined</code> for other cell types. The
+header slot directives provide them as context, so they do not reach content outside the slots.</p>
 </td>
 </tr>
    
@@ -228,8 +225,7 @@ One design. Default: 'default'.</p>
     </td>
     <td class="docs-api-property-description">
         <p>Size for the <code>nx-comparison-table-header-title</code> slot of every header cell, overriding the
-projected <code>nxHeadline</code>'s own <code>size</code>. A docked header steps it down — see
-<code>NxComparisonTableCell.headlineSize</code>.</p>
+projected <code>nxHeadline</code>'s own <code>size</code>. A pinned header steps it down one size.</p>
 </td>
 </tr>
    
@@ -346,7 +342,7 @@ projected <code>nxHeadline</code>'s own <code>size</code>. A docked header steps
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>Sets the layout explicitely. If not specified, a layout will be set based on the viewport.</p>
+        <p>Sets the layout explicitly. If not specified, a layout will be set based on the viewport.</p>
 </td>
 </tr>
    
@@ -366,14 +362,16 @@ projected <code>nxHeadline</code>'s own <code>size</code>. A docked header steps
         </p>
     </td>
     <td class="docs-api-property-description">
-        <p>An event that is is dispatched each time selected index of the table has changed.</p>
+        <p>An event that is dispatched each time selected index of the table has changed.</p>
 </td>
 </tr>
    
 
 
 <tr class="docs-api-properties-row" id="NxComparisonTableComponent.viewTypeChange">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+                <span class="docs-api-output__badge">Output</span>
+                    <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 viewTypeChange: 
@@ -384,7 +382,8 @@ projected <code>nxHeadline</code>'s own <code>size</code>. A docked header steps
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>An event that is dispatched each time the view type of the table has changed.</p>
+</td>
 </tr>
   
 </table> 
@@ -398,7 +397,7 @@ projected <code>nxHeadline</code>'s own <code>size</code>. A docked header steps
             <span class="docs-api-method-name">scrollNext()</span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Advance the carousel by one product column toward the end. (Keeps the public name.)</p>
+    <div class="docs-api-method-description"><p>Advance the carousel by one product column toward the end.</p>
 </div></div>
    
 
@@ -408,7 +407,7 @@ projected <code>nxHeadline</code>'s own <code>size</code>. A docked header steps
             <span class="docs-api-method-name">scrollPrev()</span>
         </code>
     </div>
-    <div class="docs-api-method-description"><p>Move the carousel back by one product column toward the start. (Keeps the public name.)</p>
+    <div class="docs-api-method-description"><p>Move the carousel back by one product column toward the start.</p>
 </div></div>
    
    
@@ -446,6 +445,105 @@ projected <code>nxHeadline</code>'s own <code>size</code>. A docked header steps
     </td>
     <td class="docs-api-property-description">
         <p>Sets the Id of the description cell.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
+   
+
+<h4 id="NxComparisonTableFeature" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxComparisonTableFeature"></span>
+    <code>NxComparisonTableFeature</code></h4><p class="docs-api-class-description"><p>Shows whether a product includes a feature, as an icon with an optional text.</p>
+</p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label ">Selector:</span>
+    
+        <code class="docs-api__selector-container nx-margin-left-2xs">
+            <span class="docs-api-class-selector-name">nx-comparison-table-feature</span>
+        </code>
+    
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+
+<tr class="docs-api-properties-row" id="NxComparisonTableFeature.contained">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                contained: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignalWithTransform&lt;boolean, unknown&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the icon is shown on a tinted round background.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxComparisonTableFeature.iconAriaLabel">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                iconAriaLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;string&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Screen reader label of the icon. Defaults to the label for the type from <code>NxComparisonTableIntl</code>.
+Set to an empty string when the text already conveys the meaning.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxComparisonTableFeature.layout">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                layout: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxComparisonTableFeatureLayout&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Arrangement of icon and text. Default: <code>'horizontal'</code>.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxComparisonTableFeature.type">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+                <span class="docs-api-input__badge">Input</span></div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                type: 
+                </span>
+                 
+                <span class="docs-api-property__type">InputSignal&lt;NxComparisonTableFeatureType&gt;</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The icon to show. Without a type only the text is shown.</p>
 </td>
 </tr>
   
@@ -671,7 +769,7 @@ header it sits above. Only takes effect in the Allianz One design.</p>
 
 
 <tr class="docs-api-properties-row" id="NxComparisonTableSelectButton.iconFilled">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 iconFilled: 
@@ -682,13 +780,13 @@ header it sits above. Only takes effect in the Allianz One design.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <strong>Deletion target:</strong> 23.0.0</td>
 </tr>
    
 
 
 <tr class="docs-api-properties-row" id="NxComparisonTableSelectButton.iconOutlined">
-    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">
                 iconOutlined: 
@@ -699,7 +797,7 @@ header it sits above. Only takes effect in the Allianz One design.</p>
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <strong>Deletion target:</strong> 23.0.0</td>
 </tr>
   
 </table> 
@@ -1223,6 +1321,42 @@ components if the labels have changed after initialization.</p>
    
 
 
+<tr class="docs-api-properties-row" id="NxComparisonTableIntl.featureIncludedLabel">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                featureIncludedLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Screen reader label of the <code>check</code> icon of a comparison table feature.</p>
+</td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxComparisonTableIntl.featureNotIncludedLabel">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                featureNotIncludedLabel: 
+                </span>
+                 
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Screen reader label of the <code>minus</code> and <code>cross</code> icons of a comparison table feature.</p>
+</td>
+</tr>
+   
+
+
 <tr class="docs-api-properties-row" id="NxComparisonTableIntl.nextAriaLabel">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
@@ -1393,6 +1527,90 @@ components if the labels have changed after initialization.</p>
 </tr>
   
 </table>   
+   
+
+<h4 id="NxComparisonTableMobileColumnGroup" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxComparisonTableMobileColumnGroup"></span>
+    <code>NxComparisonTableMobileColumnGroup</code>
+</h4><p class="docs-api-interface-description"><p>Consecutive content rows that become columns of the transposed table: one top-level row, or all
+rows of a toggle section (row groups included; mobile has no row-group collapse).</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+
+<tr class="docs-api-properties-row" id="NxComparisonTableMobileColumnGroup.key">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                key: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxComparisonTableRowDirective | NxToggleSectionDirective</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxComparisonTableMobileColumnGroup.rows">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                rows: 
+                </span>
+                 
+                <span class="docs-api-property__type">readonly NxComparisonTableRowDirective[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxComparisonTableMobileColumnGroup.section">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                section: 
+                </span>
+                 
+                <span class="docs-api-property__type">NxToggleSectionDirective</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+
+<tr class="docs-api-properties-row" id="NxComparisonTableMobileColumnGroup.spacer">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">
+                spacer: 
+                </span>
+                 
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether a spacer column precedes the rows.</p>
+</td>
+</tr>
+  
+</table>   
   <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
         <span header-link="additional_type_aliases"></span>
         Additional type aliases
@@ -1417,6 +1635,28 @@ components if the labels have changed after initialization.</p>
 </p><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
     <code class="docs-api-type-alias-value">NxSurfaceType | &#39;plain&#39;</code>
+</p>
+   
+
+<h4 id="NxComparisonTableFeatureType" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxComparisonTableFeatureType"></span>
+    <code>NxComparisonTableFeatureType</code>
+</h4><p class="docs-api-type-alias-description"><p>The icon shown by a comparison table feature. <code>null</code> renders the text only.
+<code>minus</code> and <code>cross</code> both mean &quot;not included&quot; — <code>minus</code> is the neutral style, <code>cross</code> the emphasised one.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">&#39;check&#39; | &#39;minus&#39; | &#39;cross&#39; | null</code>
+</p>
+   
+
+<h4 id="NxComparisonTableFeatureLayout" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxComparisonTableFeatureLayout"></span>
+    <code>NxComparisonTableFeatureLayout</code>
+</h4><p class="docs-api-type-alias-description"><p>Arrangement of icon and text in a comparison table feature.
+With <code>'horizontal'</code> the text starts next to the icon and wraps underneath it when it runs out of space.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">&#39;horizontal&#39; | &#39;vertical&#39;</code>
 </p>
    
 

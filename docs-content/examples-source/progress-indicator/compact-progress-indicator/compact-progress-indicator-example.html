@@ -1,0 +1,48 @@
+<!--
+  `routerLink` bound to `null` drops the `href` - see the accessibility notes.
+-->
+<nx-compact-progress-indicator
+  aria-label="Order Process Steps"
+  [currentStep]="currentStep"
+>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="currentStep > 1 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Billing Address
+    </a>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="currentStep > 2 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Shipping Address
+    </a>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="currentStep > 3 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Gift Wrapping
+    </a>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="currentStep > 4 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Review Order
+    </a>
+  </nx-multi-progress-step>
+  <nx-multi-progress-step>
+    <a
+      [routerLink]="currentStep > 5 ? './' : null"
+      nxProgressIndicatorStepAction
+    >
+      Payment
+    </a>
+  </nx-multi-progress-step>
+</nx-compact-progress-indicator>

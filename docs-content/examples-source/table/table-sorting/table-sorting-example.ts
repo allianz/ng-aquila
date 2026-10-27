@@ -52,7 +52,7 @@ export class TableSortingExampleComponent {
       desc: 'This is a contract',
       website: 'www.example.com',
       endingAt: new Date('1/3/2020'),
-      status: 'negative',
+      status: 'warning',
       statusText: 'open',
     },
     {
@@ -61,7 +61,7 @@ export class TableSortingExampleComponent {
       desc: 'This is another contract',
       website: 'www.allianz.com',
       endingAt: new Date('4/2/2020'),
-      status: 'active',
+      status: 'info',
       statusText: 'processing',
     },
     {

@@ -1,0 +1,90 @@
+<button
+  nxIconButton="tertiary"
+  size="s"
+  [nxNotificationPanelTriggerFor]="panel1"
+  title="Notifications"
+  aria-label="Notifications"
+>
+  <nx-icon name="bell-o" aria-hidden="true"></nx-icon>
+</button>
+
+<button
+  nxButton="secondary"
+  size="s"
+  class="nx-margin-left-s"
+  (click)="addNotification()"
+  type="button"
+>
+  Add notification
+</button>
+
+<ng-template #panel1>
+  <nx-notification-panel>
+    @if (notifications().length) {
+      <nx-notification-header>
+        <h3 nxCopytext="medium" class="nx-font-weight-semibold">
+          Notifications
+        </h3>
+        <button nxPlainButton size="s" variant="secondary" type="button">
+          Mark all as read
+        </button>
+      </nx-notification-header>
+      @for (
+        notification of notifications();
+        track notification.id;
+        let i = $index
+      ) {
+        <div nxNotificationPanelItem clickable="false">
+          <nx-notification-item-metadata>
+            <nx-icon
+              size="s"
+              class="nx-margin-right-2xs"
+              name="calendar"
+              aria-hidden="true"
+            ></nx-icon
+            >{{ notification.category }} &middot; {{ notification.age }}
+          </nx-notification-item-metadata>
+          <nx-notification-item-content class="inline-delete">
+            <span>{{ notification.text }}</span>
+            <button
+              #removeButton
+              nxPlainButton
+              size="s"
+              type="button"
+              title="Remove"
+              aria-label="Remove"
+              (click)="removeNotification(i)"
+            >
+              <nx-icon name="trash-o" aria-hidden="true"></nx-icon>
+            </button>
+          </nx-notification-item-content>
+        </div>
+      }
+    } @else {
+      <div
+        #emptyState
+        class="notification-panel-empty"
+        role="status"
+        tabindex="-1"
+        cdkFocusInitial
+        (keydown)="keepFocusInEmptyState($event)"
+        aria-labelledby="empty-title"
+        aria-describedby="empty-text"
+      >
+        <nx-icon
+          name="product-energy"
+          contained="true"
+          emphasis="true"
+          size="2xl"
+          aria-hidden="true"
+        ></nx-icon>
+        <div class="notification-panel-empty__message">
+          <h3 id="empty-title" nxHeadline size="m">You're up to date.</h3>
+          <p id="empty-text" nxBodyText type="secondary" class="nx-margin-0">
+            No new notifications right now.
+          </p>
+        </div>
+      </div>
+    }
+  </nx-notification-panel>
+</ng-template>

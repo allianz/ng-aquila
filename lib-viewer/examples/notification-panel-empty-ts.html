@@ -1,0 +1,108 @@
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxButtonComponent</span>,
+  <span class="hljs-title class_">NxIconButtonComponent</span>,
+  <span class="hljs-title class_">NxPlainButtonComponent</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/button&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxCopytextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/copytext&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxHeadlineComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/headline&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxIconComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  <span class="hljs-title class_">NxNotificationItemContentDirective</span>,
+  <span class="hljs-title class_">NxNotificationItemHeaderDirective</span>,
+  <span class="hljs-title class_">NxNotificationItemMetadataDirective</span>,
+  <span class="hljs-title class_">NxNotificationPanelComponent</span>,
+  <span class="hljs-title class_">NxNotificationPanelItemComponent</span>,
+  <span class="hljs-title class_">NxNotificationPanelTriggerDirective</span>,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/notification-panel&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxBodyTextComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/text&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+  afterNextRender,
+  <span class="hljs-title class_">Component</span>,
+  <span class="hljs-title class_">ElementRef</span>,
+  inject,
+  <span class="hljs-title class_">Injector</span>,
+  signal,
+  viewChild,
+  viewChildren,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">ExampleNotification</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">category</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">age</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">text</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Empty state
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;notification-panel-empty-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./notification-panel-empty-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./notification-panel-empty-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-title class_">NxIconButtonComponent</span>,
+    <span class="hljs-title class_">NxButtonComponent</span>,
+    <span class="hljs-title class_">NxPlainButtonComponent</span>,
+    <span class="hljs-title class_">NxNotificationPanelTriggerDirective</span>,
+    <span class="hljs-title class_">NxIconComponent</span>,
+    <span class="hljs-title class_">NxNotificationPanelComponent</span>,
+    <span class="hljs-title class_">NxNotificationPanelItemComponent</span>,
+    <span class="hljs-title class_">NxNotificationItemHeaderDirective</span>,
+    <span class="hljs-title class_">NxNotificationItemMetadataDirective</span>,
+    <span class="hljs-title class_">NxNotificationItemContentDirective</span>,
+    <span class="hljs-title class_">NxCopytextComponent</span>,
+    <span class="hljs-title class_">NxHeadlineComponent</span>,
+    <span class="hljs-title class_">NxBodyTextComponent</span>,
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NotificationPanelEmptyExampleComponent</span> {
+  <span class="hljs-keyword">readonly</span> notifications = signal&lt;<span class="hljs-title class_">ExampleNotification</span>[]&gt;([]);
+  <span class="hljs-keyword">private</span> _nextId = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _injector = <span class="hljs-title function_">inject</span>(<span class="hljs-title class_">Injector</span>);
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _removeButtons = viewChildren&lt;
+    <span class="hljs-built_in">string</span>,
+    <span class="hljs-title class_">ElementRef</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;
+  &gt;(<span class="hljs-string">&#x27;removeButton&#x27;</span>, { <span class="hljs-attr">read</span>: <span class="hljs-title class_">ElementRef</span> });
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _emptyState = viewChild&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">ElementRef</span>&lt;<span class="hljs-title class_">HTMLElement</span>&gt;&gt;(
+    <span class="hljs-string">&#x27;emptyState&#x27;</span>,
+    { <span class="hljs-attr">read</span>: <span class="hljs-title class_">ElementRef</span> },
+  );
+
+  <span class="hljs-title function_">addNotification</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">notifications</span>.<span class="hljs-title function_">update</span>(<span class="hljs-function">(<span class="hljs-params">notifications</span>) =&gt;</span> [
+      ...notifications,
+      {
+        <span class="hljs-attr">id</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">_nextId</span>++,
+        <span class="hljs-attr">category</span>: <span class="hljs-string">&#x27;Offers&#x27;</span>,
+        <span class="hljs-attr">age</span>: <span class="hljs-string">&#x27;just now&#x27;</span>,
+        <span class="hljs-attr">text</span>: <span class="hljs-string">&#x27;A new offer has been created for your account.&#x27;</span>,
+      },
+    ]);
+  }
+
+  <span class="hljs-title function_">removeNotification</span>(<span class="hljs-params"><span class="hljs-attr">index</span>: <span class="hljs-built_in">number</span></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">notifications</span>.<span class="hljs-title function_">update</span>(<span class="hljs-function">(<span class="hljs-params">notifications</span>) =&gt;</span>
+      notifications.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">_, i</span>) =&gt;</span> i !== index),
+    );
+
+    <span class="hljs-comment">// The focused remove button is destroyed, so hand focus to the next one or the empty state.</span>
+    <span class="hljs-title function_">afterNextRender</span>(
+      <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> buttons = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_removeButtons</span>();
+        <span class="hljs-keyword">const</span> target = buttons.<span class="hljs-property">length</span>
+          ? buttons[<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(index, buttons.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>)]
+          : <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">_emptyState</span>();
+        target?.<span class="hljs-property">nativeElement</span>.<span class="hljs-title function_">focus</span>();
+      },
+      { <span class="hljs-attr">injector</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">_injector</span> },
+    );
+  }
+
+  <span class="hljs-comment">// Nothing else in the empty panel is tabbable, so keep focus here like the populated panel does.</span>
+  <span class="hljs-title function_">keepFocusInEmptyState</span>(<span class="hljs-params"><span class="hljs-attr">event</span>: <span class="hljs-title class_">KeyboardEvent</span></span>) {
+    <span class="hljs-keyword">if</span> (event.<span class="hljs-property">key</span> === <span class="hljs-string">&#x27;Tab&#x27;</span>) {
+      event.<span class="hljs-title function_">preventDefault</span>();
+    }
+  }
+}

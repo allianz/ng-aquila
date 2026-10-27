@@ -6,6 +6,8 @@
   <span class="hljs-title class_">NxComparisonTableCell</span>,
   <span class="hljs-title class_">NxComparisonTableComponent</span>,
   <span class="hljs-title class_">NxComparisonTableDescriptionCell</span>,
+  <span class="hljs-title class_">NxComparisonTableFeature</span>,
+  <span class="hljs-title class_">NxComparisonTableFeatureType</span>,
   <span class="hljs-title class_">NxComparisonTableHeaderPrice</span>,
   <span class="hljs-title class_">NxComparisonTableHeaderTitle</span>,
   <span class="hljs-title class_">NxComparisonTableRowDirective</span>,
@@ -28,6 +30,7 @@
   <span class="hljs-attr">type</span>: <span class="hljs-title class_">NxComparisonTableRowType</span>;
   <span class="hljs-attr">description</span>?: <span class="hljs-built_in">string</span>;
   <span class="hljs-attr">cells</span>: <span class="hljs-built_in">string</span>[];
+  <span class="hljs-attr">features</span>?: <span class="hljs-title class_">NxComparisonTableFeatureType</span>[];
 }
 <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ToggleSection</span> {
   <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;toggleSection&#x27;</span>;
@@ -45,6 +48,7 @@
     <span class="hljs-title class_">NxComparisonTableComponent</span>,
     <span class="hljs-title class_">NxComparisonTableRowDirective</span>,
     <span class="hljs-title class_">NxComparisonTableCell</span>,
+    <span class="hljs-title class_">NxComparisonTableFeature</span>,
     <span class="hljs-title class_">NxComparisonTableHeaderTitle</span>,
     <span class="hljs-title class_">NxComparisonTableHeaderPrice</span>,
     <span class="hljs-title class_">NxComparisonTableSelectButton</span>,
@@ -89,6 +93,12 @@
           <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;content&#x27;</span>,
           <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;This is a description cell&#x27;</span>,
           <span class="hljs-attr">cells</span>: [<span class="hljs-string">&#x27;This is a cell&#x27;</span>, <span class="hljs-string">&#x27;This is a cell&#x27;</span>],
+        },
+        {
+          <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;content&#x27;</span>,
+          <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;This is a feature row&#x27;</span>,
+          <span class="hljs-attr">cells</span>: [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;This is a feature&#x27;</span>],
+          <span class="hljs-attr">features</span>: [<span class="hljs-string">&#x27;minus&#x27;</span>, <span class="hljs-string">&#x27;check&#x27;</span>],
         },
       ],
     },

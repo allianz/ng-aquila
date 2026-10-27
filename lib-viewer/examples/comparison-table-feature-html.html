@@ -1,0 +1,43 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;controls&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Type&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;type()&quot;</span> (<span class="hljs-attr">valueChange</span>)=<span class="hljs-string">&quot;type.set($event)&quot;</span>&gt;</span>
+      @for (option of typeOptions; track option.value) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option.value&quot;</span>&gt;</span>{{
+          option.label
+        }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Layout&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;layout()&quot;</span> (<span class="hljs-attr">valueChange</span>)=<span class="hljs-string">&quot;layout.set($event)&quot;</span>&gt;</span>
+      @for (option of layoutOptions; track option) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>{{ option }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Cell width&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;width()&quot;</span> (<span class="hljs-attr">valueChange</span>)=<span class="hljs-string">&quot;width.set($event)&quot;</span>&gt;</span>
+      @for (option of widthOptions; track option) {
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option&quot;</span>&gt;</span>{{ option }}px<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Text&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;text()&quot;</span> (<span class="hljs-attr">input</span>)=<span class="hljs-string">&quot;setText($event)&quot;</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span>
+    [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;contained()&quot;</span>
+    (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">&quot;contained.set($event)&quot;</span>
+    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;type() === &#x27;none&#x27;&quot;</span>
+    &gt;</span>Contained&lt;/nx-checkbox
+  &gt;
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;preview&quot;</span> [<span class="hljs-attr">style.width.px</span>]=<span class="hljs-string">&quot;width()&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-feature</span>
+    [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;featureType()&quot;</span>
+    [<span class="hljs-attr">contained</span>]=<span class="hljs-string">&quot;contained()&quot;</span>
+    [<span class="hljs-attr">layout</span>]=<span class="hljs-string">&quot;layout()&quot;</span>
+    &gt;</span>{{ text() }}&lt;/nx-comparison-table-feature
+  &gt;
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
