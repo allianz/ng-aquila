@@ -1,0 +1,56 @@
+<div class="docs-api-method-card">
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">
+                {{~#if method.isDeprecated~}}
+                <div class="docs-api-deprecated-marker" {{> deprecationTitle doc=method}}> Deprecated </div>
+                {{~/if~}} {{method.name}}(
+                    {{~#if method.params~}}
+                        {{#each method.params as |parameter|}}
+                            {{parameter.name}}
+                            {{~#if parameter.isOptional}}?{{~/if}}
+                            {{~#if parameter.type}}:  
+                                <span class="docs-api-property__type">
+                                    {{escape parameter.type}}
+                                </span>
+                            {{~/if}}
+                            {{~#unless @last}}, {{~/unless}}
+                        {{/each}}
+                    {{~/if}})
+                {{~#if (and method.type (neq method.type "void"))~}} : <span class="docs-api-method-returns-type">{{escape method.type}}</span>
+                {{~/if~}}
+            </span>
+        </code>
+    </div>
+    <div class="docs-api-method-description">
+
+        {{~#if method.description~}} 
+                {{marked method.description}} {{~/if~}} {{~#if method.deprecated~}} {{marked method.deprecated}} {{~/if~}} {{~#if method.deletionTarget~}}
+                <strong>Deletion target:</strong> {{method.deletionTarget}} 
+        {{~/if~}}
+    </div>
+
+    {{~#if method.params~}}
+    <div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        {{#each method.params as |parameter|}}
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                {{parameter.name}} {{~#if parameter.isOptional~}}
+                <span class="docs-api-method-parameter-optional-marker">?</span>
+                {{~/if~}}:
+                <span class="docs-api-method-parameter-type">{{escape parameter.type}}</span>
+            </code>
+            {{~#if parameter.description}}
+            <div class="docs-api-method-parameter-description">{{marked parameter.description}}</div>
+            {{~/if}}
+        </div>
+        {{/each}}
+    </div>
+    {{~/if~}} {{~#if method.returns~}} {{~#if (and method.type method.returns.description (neq method.type "void"))~}}
+    <div class="docs-api-method-returns">
+        <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">{{escape method.type}}</code></p>
+        <p class="docs-api-method-returns-description"> {{marked method.returns.description}} </p>
+    </div>
+    {{~/if~}} {{~/if~}}
+</div>

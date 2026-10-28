@@ -1,0 +1,5 @@
+{{!-- Lists the content projection slots of every directive and component of one entry point. --}}
+
+<div class="docs-api">
+    {{#each doc.contentSlotClasses as |item|}} {{> contentSlots class=item groupName=../doc.packageName}} {{/each}}
+</div>

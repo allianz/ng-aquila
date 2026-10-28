@@ -62,8 +62,7 @@ Thumbs.db
 /projects/ng-aquila/src/phone-input/metadata.json
 
 # template html files seem to have hard time with prettier sometimes
-/projects/ngx-docs-cli/**/*.template.html
-/projects/ngx-docs-cli/**/macros.html
+/projects/ngx-docs-cli/**/*.hbs
 
 # browserslist config
 .browserslistrc

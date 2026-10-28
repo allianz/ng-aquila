@@ -5,7 +5,7 @@ import * as path from 'path';
 import { concat } from 'rxjs';
 import { auditTime, filter, switchMap, take, tap, toArray } from 'rxjs/operators';
 
-import dgeni from './dgeni/dgeni';
+import apiDocs from './api-docs/api-docs';
 import examples from './examples/examples';
 import guides from './guides/guides';
 import { processManifestData } from './manifest/run-manifest';
@@ -162,7 +162,7 @@ program
           // as we will collect (toArray) and therefore wait for completion
           // of the observable.
           concat(
-            dgeni.run(sourceFiles, path.join(destination, 'api')),
+            apiDocs.run(sourceFiles, path.join(destination, 'api')),
             overview.run(sourceFiles, path.join(destination, 'overview'), {
               ignorePrivateExamples: !cmd.privateExamples,
             }),
@@ -191,21 +191,29 @@ program
       );
   });
 
-program.command('api <dir>').action((dir, cmd) => {
-  console.log('dir', dir);
-  dgeni.run(dir, path.join('dist/api-docs', 'api')).toPromise();
-});
+program
+  .command('api <dir>')
+  .description(
+    'Generate only the API and slot pages of the sources in <dir> into ./dist/api-docs, without examples, guides or the manifest.',
+  )
+  .action((dir, cmd) => {
+    console.log('dir', dir);
+    apiDocs.run(dir, path.join('dist/api-docs', 'api')).subscribe();
+  });
 
-program.command('test-building <dir>').action((dir, cmd) => {
-  const rootPath = path.resolve(dir);
+program
+  .command('test-building <dir>')
+  .description('Check that <dir> exists. Placeholder, nothing is built yet.')
+  .action((dir, cmd) => {
+    const rootPath = path.resolve(dir);
 
-  if (fs.existsSync(rootPath) === false) {
-    console.error(chalk.red(`Given path '${rootPath}' doesn't exist!`));
-    process.exit(1);
-  }
+    if (fs.existsSync(rootPath) === false) {
+      console.error(chalk.red(`Given path '${rootPath}' doesn't exist!`));
+      process.exit(1);
+    }
 
-  console.log('test building');
-});
+    console.log('test building');
+  });
 
 program.parse(process.argv);
 

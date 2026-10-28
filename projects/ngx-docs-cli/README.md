@@ -12,7 +12,7 @@ The cli tool needs to know the path to the root level of your source code and yo
 
 #### `-s, --source-files [path]`
 
-Location of your library source files. Every subfolder with a markdown filed named after the folder name is treated as a component for the overview page. Also the API generation is created from this path using Dgeni.
+Location of your library source files. Every subfolder with a markdown filed named after the folder name is treated as a component for the overview page. Also the API tables are generated from this path, read with ts-morph.
 
 #### `-d, --documentation [path]`
 

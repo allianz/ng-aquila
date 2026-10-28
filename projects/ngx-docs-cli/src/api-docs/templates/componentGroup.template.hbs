@@ -1,0 +1,89 @@
+<div class="docs-api">
+
+    {{~#if doc.ngModule~}}
+    <p class="docs-api-module-import">
+        <code>
+            <span class="docs-api-module-import__import-span">import </span>
+            { {{doc.ngModule.name}} }
+            <span class="docs-api-module-import__from-span">from</span>
+            <span class="docs-api-module-import__path-span">'{{doc.moduleImportPath}}'</span>;
+        </code>
+    </p>
+        {{~else~}}
+            {{~#if doc.components~}}
+            <p class="docs-api-module-import">
+                <code>
+                    <span class="docs-api-module-import__import-span">import </span>
+                    { {{doc.components.[0].name}} }
+                    <span class="docs-api-module-import__from-span">from</span>
+                    <span class="docs-api-module-import__path-span">'{{doc.moduleImportPath}}'</span>;
+                </code>
+            </p>
+            {{~/if~}}
+        {{~/if~}}
+
+    {{~#if doc.services~}}
+    <h3 id="services" class="docs-header-link docs-api-h3">
+        <span header-link="services"></span>
+        Services
+    </h3>
+    {{#each doc.services as |service|}} {{> class class=service}} {{/each}} {{~/if~}} {{~#if doc.components~}}
+    <h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
+    </h3>
+    {{#each doc.components as |component|}} {{> class class=component}} {{/each}} {{~/if~}}{{~#if doc.directives~}}
+    <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
+    </h3>
+    {{#each doc.directives as |directive|}} {{> class class=directive}} {{/each}} {{~/if~}} {{~#if doc.additionalClasses~}}
+    <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+        <span header-link="additional_classes"></span>
+        Additional classes
+    </h3>
+    {{#each doc.additionalClasses as |other|}} {{> class class=other}} {{/each}} {{~/if~}} {{~#if doc.additionalInterfaces~}}
+    <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
+    </h3>
+    {{#each doc.additionalInterfaces as |item|}} {{> interface interface=item}} {{/each}} {{~/if~}} {{~#if doc.additionalFunctions~}}
+    <h3 id="additional_functions" class="docs-header-link docs-api-h3">
+        <span header-link="additional_functions"></span>
+        Additional functions
+    </h3>
+    {{!-- Since the function docs have a similar structure as method docs, we use the method template. --}}
+    {{#each doc.additionalFunctions as |item|}} {{> method method=item}} {{/each}} {{~/if~}} {{~#if doc.additionalTypeAliases~}}
+    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
+    </h3>
+    {{#each doc.additionalTypeAliases as |item|}} {{> typeAlias alias=item}} {{/each}} {{~/if~}}
+
+
+        {{~#if doc.testHarnesses.classes~}}
+            <h3 id="testing_class" class="docs-header-link docs-api-h3">
+                Testing Classes
+            </h3>
+            <p class="docs-api-module-import">
+                <code>
+                    <span class="docs-api-module-import__import-span">import</span>
+                    { {{doc.testHarnesses.classes.[0].name}} }
+                    <span class="docs-api-module-import__from-span">from</span>
+                    <span class="docs-api-module-import__path-span">'{{doc.moduleImportPath}}/testing' </span>;
+                </code>
+            </p>
+            {{#each doc.testHarnesses.classes as |item|}}
+                {{> class class=item}}
+            {{/each}} 
+        {{~/if~}}
+
+        {{~#if doc.testHarnesses.interfaces~}}
+            <h3 id="testing_interface" class="docs-header-link docs-api-h3">
+                Testing Interfaces
+            </h3>
+            {{#each doc.testHarnesses.interfaces as |item|}}
+                {{> interface interface=item}}
+            {{/each}} 
+        {{~/if~}}
+</div>
