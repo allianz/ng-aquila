@@ -68,3 +68,6 @@ Thumbs.db
 
 # MCP
 /projects/ng-aquila/mcp/generated
+
+# Figma Code Connect, kept local because it holds the internal Figma file URL
+/figma.config.json

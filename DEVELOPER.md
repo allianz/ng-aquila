@@ -12,6 +12,7 @@ This guide will tell you how to develop components for the library and how to ru
 -   [Start the documentation application](#start-the-documentation-application)
 -   [Builds](#builds)
 -   [Testing](#testing)
+-   [Figma Code Connect](#figma-code-connect)
 -   [Theming](#theming)
 -   [High contrast support](#high-contrast-support)
 
@@ -328,6 +329,57 @@ All build artifacts are placed into the `dist` folder. The library is built with
 The unit tests are run with
 
 `npm run test:lib`
+
+## Figma Code Connect
+
+[Code Connect](https://developers.figma.com/docs/code-connect/) shows our real component code in Figma Dev Mode, instead of the code Figma generates. Each mapping is a template file named `*.figma.ts` next to its component. The templates use an `<A1_FILE>` placeholder instead of the Figma file URL, which `figma.config.json` fills in.
+
+### Setup
+
+1. Create a Figma personal access token (Figma → Settings → Security → Personal access tokens) with the scopes **Code Connect: Write** and **File content: Read**. Export it in your shell config, never commit it:
+
+    ```shell
+    export FIGMA_ACCESS_TOKEN="<your token>"
+    ```
+
+2. Generate `figma.config.json` in the repository root. It is git-ignored, because it holds the internal Figma file URL. Ask the team for the URL and the label.
+
+    ```shell
+    npm run figma:gen-config -- --url=<A1 Figma file URL, without node-id> --label=<label>
+    ```
+
+    Without the flags, the script reads the environment variables `FIGMA_A1_FILE_URL` and `FIGMA_CODE_CONNECT_LABEL`, which the CI workflow uses.
+
+    Use the label exactly as the team gives it to you. A publish under a different label adds a second snippet in Dev Mode instead of replacing ours.
+
+### Preview
+
+The preview renders a template the way Dev Mode would show it. It reads the component from Figma but publishes nothing. Pass one or more template files, or none to preview all of them:
+
+```shell
+npm run figma:preview -- projects/ng-aquila/src/button/button.component.figma.ts
+
+# list the Figma properties of the component
+npm run figma:preview -- --inspect <files>
+
+# render one combination; unset properties use their Figma default
+npm run figma:preview -- <files> --props "Type=Secondary" "Size=S"
+
+# render the distinct results for one template; the CLI stops after 500 combinations,
+# so for larger components like the button, use --props for the cases you care about
+npm run figma:preview -- --unique <file>
+```
+
+The preview does not render nested components such as icons or indicators. Check those in Dev Mode.
+
+### Publish
+
+The `Figma Code Connect` workflow publishes all templates when a change to a `*.figma.ts` file reaches `main`. It needs the repository secrets `FIGMA_ACCESS_TOKEN` and `FIGMA_A1_FILE_URL`, and the repository variable `FIGMA_CODE_CONNECT_LABEL`. A published snippet is live for everyone in Dev Mode right away, so publish by hand only for testing, and check with a dry run first:
+
+```shell
+npm run figma:publish -- --dry-run
+npm run figma:publish -- --file projects/ng-aquila/src/button/button.component.figma.ts
+```
 
 ## Theming
 

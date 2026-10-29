@@ -1,0 +1,56 @@
+name: Figma Code Connect
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.figma.ts'
+  workflow_dispatch:
+
+# Publishes overwrite each other in Figma, so a newer run waits instead of racing an older one.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Write Figma config
+        env:
+          FIGMA_A1_FILE_URL: ${{ secrets.FIGMA_A1_FILE_URL }}
+          FIGMA_CODE_CONNECT_LABEL: ${{ vars.FIGMA_CODE_CONNECT_LABEL }}
+        run: npm run figma:gen-config
+
+      # The CLI exits 0 when Figma rejects nodes, so the step checks the log. The loop makes a CLI
+      # update that renames these messages fail loudly instead of passing silently.
+      - name: Publish
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+        shell: bash
+        run: |
+          for message in 'Successfully uploaded to Figma' 'Failed to upload' 'UI-created Code Connect mappings'; do
+            grep -q "$message" node_modules/@figma/code-connect/dist/connect/upload.js \
+              || { echo "The Code Connect CLI no longer logs '$message'. Update this check."; exit 1; }
+          done
+          npm run figma:publish 2>&1 | tee publish.log
+          if grep -q -e 'Failed to upload' -e 'UI-created Code Connect mappings' publish.log; then
+            exit 1
+          fi
+          grep -q 'Successfully uploaded to Figma' publish.log
