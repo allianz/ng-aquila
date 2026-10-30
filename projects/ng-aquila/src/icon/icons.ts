@@ -1,3 +1,4 @@
+import { _trustedHTML } from '@allianz/ng-aquila/utils';
 import { HttpClient } from '@angular/common/http';
 import { SecurityContext } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
@@ -22,7 +23,7 @@ export class NxSvgIcon {
 
   protected _svgElementFromString(str: string): SVGElement {
     const div = this._document.createElement('DIV');
-    div.innerHTML = str;
+    div.innerHTML = _trustedHTML(str) as unknown as string;
     const svg = div.querySelector('svg') as SVGElement;
 
     if (!svg) {

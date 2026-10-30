@@ -212,6 +212,8 @@ Custom icons can be registered via the `NxIconRegistry` injectable service. With
 💡 When registering multiple font sets,
 you can use `font` attribute to specify font set (`<nx-icon font="FONT_SET_NAME" name="ICON_NAME">`)
 
+💡 If your application enforces Trusted Types through a Content Security Policy, SVG icons are parsed through the `ng-aquila` Trusted Types policy, which you need to allow in your CSP. See the <a href="./guides/trusted-types">Trusted Types guide</a> for the required configuration.
+
 <div class="docs-private">
 💡 Allianz iconfont set name is **ndbx-icons**.
 </div>
