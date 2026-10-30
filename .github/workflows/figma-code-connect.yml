@@ -14,7 +14,8 @@ concurrency:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    environment: figma-publish
     permissions:
       contents: read
     steps:

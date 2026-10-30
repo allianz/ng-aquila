@@ -374,7 +374,7 @@ The preview does not render nested components such as icons or indicators. Check
 
 ### Publish
 
-The `Figma Code Connect` workflow publishes all templates when a change to a `*.figma.ts` file reaches `main`. It needs the repository secrets `FIGMA_ACCESS_TOKEN` and `FIGMA_A1_FILE_URL`, and the repository variable `FIGMA_CODE_CONNECT_LABEL`. A published snippet is live for everyone in Dev Mode right away, so publish by hand only for testing, and check with a dry run first:
+The `Figma Code Connect` workflow publishes all templates when a change to a `*.figma.ts` file reaches `main`. It reads the secrets `FIGMA_ACCESS_TOKEN` and `FIGMA_A1_FILE_URL` and the variable `FIGMA_CODE_CONNECT_LABEL` from the `figma-publish` environment, which only `main` can use. A published snippet is live for everyone in Dev Mode right away, so publish by hand only for testing, and check with a dry run first:
 
 ```shell
 npm run figma:publish -- --dry-run
