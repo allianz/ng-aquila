@@ -260,8 +260,9 @@ export class NxTimefieldComponent
 
   @ViewChild('list') timePickerList?: ElementRef<HTMLUListElement>;
   @ViewChild('toggleButton') toggleButton!: ElementRef<HTMLButtonElement>;
-  private readonly inputMinutes = viewChild<ElementRef<HTMLInputElement>>('inputMinutes');
-  private readonly inputHours = viewChild<ElementRef<HTMLInputElement>>('inputHours');
+  private readonly _inputMinutes = viewChild<ElementRef<HTMLInputElement>>('inputMinutes');
+  private readonly _inputHours = viewChild<ElementRef<HTMLInputElement>>('inputHours');
+  private readonly _timeInput = viewChild<ElementRef<HTMLElement>>('timeInput');
   @ViewChild(CdkConnectedOverlay) overlay?: CdkConnectedOverlay;
   @ViewChildren(NxTimefieldOption) timepickerOptions!: QueryList<NxTimefieldOption>;
 
@@ -510,7 +511,7 @@ export class NxTimefieldComponent
           this._hours(),
           this.placeholderHours(),
           2,
-          this.inputHours()?.nativeElement,
+          this._inputHours()?.nativeElement,
         )
       : null,
   );
@@ -525,7 +526,7 @@ export class NxTimefieldComponent
           this._minutes(),
           this.placeholderMinutes(),
           2,
-          this.inputMinutes()?.nativeElement,
+          this._inputMinutes()?.nativeElement,
         )
       : null,
   );
@@ -700,10 +701,8 @@ export class NxTimefieldComponent
    * Moves focus to the hours while they are empty, to the minutes otherwise.
    */
   _focusFirstEmptyPart(): void {
-    const part = (this.hours ? this.inputMinutes() : this.inputHours())?.nativeElement;
-    part?.focus();
     // Two digits already fill the part, so typing would be blocked without a selection.
-    part?.select();
+    this._focusPart(this.hours ? 'minutes' : 'hours', 'select');
   }
 
   _onInput(event: Event, type: string) {
@@ -711,7 +710,18 @@ export class NxTimefieldComponent
     if (type === 'hours') {
       this.hours = target.value;
       if (target.value.length === 2 && target.selectionStart === 2) {
-        this.inputMinutes()?.nativeElement.focus();
+        this._focusPart('minutes', 'select');
+      }
+      // If no second digit x could still make a valid hour (e.g. "2x" in 12h, "3x" in 24h),
+      // the hour is complete, so jump to the minutes.
+      if (
+        /^\d$/.test(target.value) &&
+        target.selectionStart === 1 &&
+        Number(target.value) * 10 > this._maxHours
+      ) {
+        this._onInputBlur('hours');
+        target.value = this.hours;
+        this._focusPart('minutes', 'select');
       }
       // user has entered the first digit again. for quicker typing select the second digit
       if (target.value.length === 2 && target.selectionStart === 1) {
@@ -719,11 +729,179 @@ export class NxTimefieldComponent
       }
     } else if (type === 'minutes') {
       this.minutes = target.value;
+      if (
+        /^\d$/.test(target.value) &&
+        target.selectionStart === 1 &&
+        Number(target.value) * 10 > this._maxMinutes
+      ) {
+        // the last field keeps focus, so format it as the blur would
+        this._onInputBlur('minutes');
+        target.value = this.minutes;
+        target.setSelectionRange(2, 2);
+      }
     }
     this._updateTime();
+    this._syncActiveOption();
+  }
+
+  protected _onInputKeydown(event: KeyboardEvent, type: 'hours' | 'minutes') {
+    if (this._handleEditingKey(event, type)) {
+      return;
+    }
+    this.handleKeyDown(event);
+  }
+
+  private _handleEditingKey(event: KeyboardEvent, type: 'hours' | 'minutes'): boolean {
+    const target = event.target as HTMLInputElement;
+    const hasNoSelection = target.selectionStart === target.selectionEnd;
+    const modifier = event.metaKey || event.ctrlKey;
+
+    if (modifier && event.key.toLowerCase() === 'a') {
+      event.preventDefault();
+      this._selectAll();
+      return true;
+    }
+    if (this.readonly() || this.disabled) {
+      return false;
+    }
+    if (modifier || event.altKey || event.shiftKey || !hasNoSelection) {
+      return false;
+    }
+
+    if (
+      event.key === 'ArrowRight' &&
+      type === 'hours' &&
+      target.selectionStart === target.value.length
+    ) {
+      event.preventDefault();
+      this._focusPart('minutes', 'start');
+      return true;
+    }
+    if (event.key === 'ArrowLeft' && type === 'minutes' && target.selectionStart === 0) {
+      event.preventDefault();
+      this._focusPart('hours', 'end');
+      return true;
+    }
+    if (event.key === 'Backspace' && type === 'minutes' && target.selectionStart === 0) {
+      event.preventDefault();
+      this._setParts(this.hours.slice(0, -1), this.minutes);
+      this._focusPart('hours', 'end');
+      return true;
+    }
+    return false;
+  }
+
+  protected _onTimeInputMousedown(event: MouseEvent) {
+    if (event.target instanceof HTMLInputElement) {
+      return;
+    }
+    event.preventDefault();
+    this._focusFirstEmptyPart();
+  }
+
+  protected _onContainerKeydown(event: KeyboardEvent) {
+    // keydown bubbles up from the inputs, only the select-all state targets the container itself
+    if (event.target !== this._timeInput()?.nativeElement || this.readonly() || this.disabled) {
+      return;
+    }
+    if (event.key === 'Delete' || event.key === 'Backspace') {
+      event.preventDefault();
+      this._setParts('', '');
+      this._focusPart('hours', 'start');
+    } else if (/^\d$/.test(event.key) && !event.ctrlKey && !event.metaKey && !event.altKey) {
+      event.preventDefault();
+      const hoursInput = this._inputHours()?.nativeElement;
+      if (hoursInput) {
+        this._setParts('', '');
+        this._focusPart('hours', 'start');
+        hoursInput.value = event.key;
+        hoursInput.setSelectionRange(1, 1);
+        hoursInput.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+
+  protected _onCopy(event: ClipboardEvent) {
+    if (event.target !== this._timeInput()?.nativeElement) {
+      return;
+    }
+    event.preventDefault();
+    if (this.hours || this.minutes) {
+      event.clipboardData?.setData('text/plain', `${this.hours}:${this.minutes}`);
+    }
+  }
+
+  protected _onPaste(event: ClipboardEvent) {
+    event.preventDefault();
+    if (this.readonly() || this.disabled) {
+      return;
+    }
+    const text = event.clipboardData?.getData('text') ?? '';
+    const separated = /^\s*(\d{1,2})\s*[:.]\s*(\d{1,2})\s*$/.exec(text);
+    const digits = text.replace(/\D/g, '');
+    const startsAtMinutes = event.target === this._inputMinutes()?.nativeElement;
+
+    if (separated) {
+      this._setParts(pad(separated[1]), pad(separated[2]));
+    } else if (!digits) {
+      return;
+    } else if (startsAtMinutes) {
+      this._setParts(this.hours, digits.slice(0, 2));
+    } else {
+      // if not all selected and digits length is less than or equal to 2, keep the existing minutes value
+      const replaceAll = event.target === this._timeInput()?.nativeElement;
+      const keepMinutes = !replaceAll && digits.length <= 2;
+      this._setParts(digits.slice(0, 2), keepMinutes ? this.minutes : digits.slice(2, 4));
+    }
+    this._focusPart(startsAtMinutes || this.hours.length === 2 ? 'minutes' : 'hours', 'end');
+  }
+
+  private _selectAll() {
+    const container = this._timeInput()?.nativeElement;
+    const selection = container?.ownerDocument.getSelection();
+    if (!container || !selection) {
+      return;
+    }
+    const range = container.ownerDocument.createRange();
+    range.selectNodeContents(container);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    container.focus();
+  }
+
+  private _setParts(hours: string, minutes: string) {
+    this.hours = hours;
+    this.minutes = minutes;
+    const hoursInput = this._inputHours()?.nativeElement;
+    const minutesInput = this._inputMinutes()?.nativeElement;
+    if (hoursInput) {
+      hoursInput.value = hours;
+    }
+    if (minutesInput) {
+      minutesInput.value = minutes;
+    }
+    this._updateTime();
+    this._syncActiveOption();
+  }
+
+  private _syncActiveOption() {
     const closestOption = this.findClosestOption(this.time);
     if (closestOption) {
       this._keyManager?.setActiveItem(closestOption);
+    }
+  }
+
+  private _focusPart(part: 'hours' | 'minutes', cursor: 'start' | 'end' | 'select') {
+    const input = (part === 'hours' ? this._inputHours() : this._inputMinutes())?.nativeElement;
+    if (!input) {
+      return;
+    }
+    this.focusMonitor.focusVia(input, 'keyboard');
+    if (cursor === 'select') {
+      input.select();
+    } else {
+      const position = cursor === 'start' ? 0 : input.value.length;
+      input.setSelectionRange(position, position);
     }
   }
 

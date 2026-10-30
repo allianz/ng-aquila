@@ -9,7 +9,15 @@
     [inline]="inline()"
   >
     <div role="group" [attr.aria-labelledby]="getLabelledBy()" class="time-group">
-      <div class="time-input">
+      <div
+        #timeInput
+        class="time-input"
+        tabindex="-1"
+        (mousedown)="_onTimeInputMousedown($event)"
+        (keydown)="_onContainerKeydown($event)"
+        (copy)="_onCopy($event)"
+        (paste)="_onPaste($event)"
+      >
         <input
           [id]="idHours"
           #inputHours
@@ -20,7 +28,7 @@
           autocomplete="off"
           role="combobox"
           (input)="_onInput($event, 'hours')"
-          (keydown)="handleKeyDown($event)"
+          (keydown)="_onInputKeydown($event, 'hours')"
           (focus)="_onFocus()"
           (blur)="_onInputBlur('hours')"
           [style.width]="_hourInputWidth()"
@@ -51,7 +59,7 @@
           (focus)="_onFocus()"
           (blur)="_onInputBlur('minutes')"
           [style.width]="_minuteInputWidth()"
-          (keydown)="handleKeyDown($event)"
+          (keydown)="_onInputKeydown($event, 'minutes')"
           [required]="required"
           [disabled]="disabled"
           [readonly]="readonly()"

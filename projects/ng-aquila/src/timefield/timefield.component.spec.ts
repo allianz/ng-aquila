@@ -971,6 +971,363 @@ describe('NxTimefieldComponent', () => {
     });
   });
 
+  describe('typing behaviour', () => {
+    function press(target: HTMLElement, key: string, init: KeyboardEventInit = {}) {
+      const event = new KeyboardEvent('keydown', {
+        key,
+        bubbles: true,
+        cancelable: true,
+        ...init,
+      });
+      target.dispatchEvent(event);
+      fixture.detectChanges();
+      return event;
+    }
+
+    function paste(target: HTMLElement, text: string) {
+      const clipboardData = new DataTransfer();
+      clipboardData.setData('text/plain', text);
+      target.dispatchEvent(
+        new ClipboardEvent('paste', { clipboardData, bubbles: true, cancelable: true }),
+      );
+      fixture.detectChanges();
+    }
+
+    beforeEach(() => createTestComponent(SimpleTimefield));
+
+    it('moves focus to the minutes when the hours are filled', () => {
+      inputElementHours.focus();
+      inputElementHours.value = '12';
+      inputElementHours.setSelectionRange(2, 2);
+      inputElementHours.dispatchEvent(new Event('input'));
+      expect(document.activeElement).toBe(inputElementMinutes);
+    });
+
+    it('advances to the minutes after a digit that cannot start a 12h hour', () => {
+      timefieldInstance.twelveHourFormat = true;
+      fixture.detectChanges();
+      inputElementHours.focus();
+      inputElementHours.value = '2';
+      inputElementHours.setSelectionRange(1, 1);
+      inputElementHours.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(inputElementHours.value).toBe('02');
+      expect(document.activeElement).toBe(inputElementMinutes);
+
+      inputElementHours.focus();
+      inputElementHours.value = '1';
+      inputElementHours.setSelectionRange(1, 1);
+      inputElementHours.dispatchEvent(new Event('input'));
+      expect(document.activeElement).toBe(inputElementHours);
+
+      inputElementHours.value = '3';
+      inputElementHours.setSelectionRange(1, 1);
+      inputElementHours.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(inputElementHours.value).toBe('03');
+      expect(document.activeElement).toBe(inputElementMinutes);
+    });
+
+    it('pads a minutes digit that cannot start a valid minute', () => {
+      inputElementMinutes.focus();
+      inputElementMinutes.value = '5';
+      inputElementMinutes.setSelectionRange(1, 1);
+      inputElementMinutes.dispatchEvent(new Event('input'));
+      expect(inputElementMinutes.value).toBe('5');
+
+      inputElementMinutes.value = '7';
+      inputElementMinutes.setSelectionRange(1, 1);
+      inputElementMinutes.dispatchEvent(new Event('input'));
+      expect(inputElementMinutes.value).toBe('07');
+      expect(timefieldInstance.minutes).toBe('07');
+      expect(document.activeElement).toBe(inputElementMinutes);
+    });
+
+    it('moves to the minutes after pasting two digits into the hours', () => {
+      inputElementHours.focus();
+      paste(inputElementHours, '12');
+      expect(inputElementHours.value).toBe('12');
+      expect(document.activeElement).toBe(inputElementMinutes);
+    });
+
+    it('keeps the minutes when pasting only hours', () => {
+      timefieldInstance.hours = '08';
+      timefieldInstance.minutes = '34';
+      fixture.detectChanges();
+      paste(inputElementHours, '12');
+      expect(inputElementHours.value).toBe('12');
+      expect(inputElementMinutes.value).toBe('34');
+      expect(timefieldInstance.time).toBe('12:34');
+    });
+
+    it('keeps the hours when pasting into the minutes', () => {
+      timefieldInstance.hours = '08';
+      fixture.detectChanges();
+      paste(inputElementMinutes, '45');
+      expect(inputElementHours.value).toBe('08');
+      expect(inputElementMinutes.value).toBe('45');
+      expect(timefieldInstance.time).toBe('08:45');
+    });
+
+    it('ignores pasted text without digits', () => {
+      timefieldInstance.hours = '08';
+      fixture.detectChanges();
+      paste(inputElementHours, 'abc');
+      expect(inputElementHours.value).toBe('08');
+    });
+
+    it('pads a pasted time with single digits', () => {
+      paste(inputElementHours, '9:5');
+      expect(timefieldInstance.time).toBe('09:05');
+    });
+
+    it('does not paste into a readonly timefield', () => {
+      timefieldInstance.hours = '08';
+      timefieldInstance.readonly.set(true);
+      fixture.detectChanges();
+      paste(inputElementHours, '12:30');
+      expect(inputElementHours.value).toBe('08');
+    });
+
+    it('copies a partial time as displayed after select all', () => {
+      timefieldInstance.hours = '12';
+      fixture.detectChanges();
+      inputElementHours.focus();
+      press(inputElementHours, 'a', { metaKey: true, ctrlKey: true });
+      const container = fixture.nativeElement.querySelector('.time-input') as HTMLElement;
+      const clipboardData = new DataTransfer();
+      container.dispatchEvent(
+        new ClipboardEvent('copy', { clipboardData, bubbles: true, cancelable: true }),
+      );
+      expect(clipboardData.getData('text/plain')).toBe('12:');
+    });
+
+    it('copies nothing from an empty timefield', () => {
+      inputElementHours.focus();
+      press(inputElementHours, 'a', { metaKey: true, ctrlKey: true });
+      const container = fixture.nativeElement.querySelector('.time-input') as HTMLElement;
+      const clipboardData = new DataTransfer();
+      const event = new ClipboardEvent('copy', { clipboardData, bubbles: true, cancelable: true });
+      container.dispatchEvent(event);
+      expect(event.defaultPrevented).toBe(true);
+      expect(clipboardData.getData('text/plain')).toBe('');
+    });
+
+    it('applies the auto-advance rules to a digit typed after select all', () => {
+      timefieldInstance.twelveHourFormat = true;
+      timefieldInstance.hours = '10';
+      timefieldInstance.minutes = '30';
+      fixture.detectChanges();
+      inputElementHours.focus();
+      press(inputElementHours, 'a', { metaKey: true, ctrlKey: true });
+      const container = fixture.nativeElement.querySelector('.time-input') as HTMLElement;
+
+      press(container, '3');
+      fixture.detectChanges();
+
+      expect(inputElementHours.value).toBe('03');
+      expect(inputElementMinutes.value).toBe('');
+      expect(document.activeElement).toBe(inputElementMinutes);
+    });
+
+    it('does not hijack Shift+ArrowRight at the end of the hours', () => {
+      timefieldInstance.hours = '12';
+      fixture.detectChanges();
+      inputElementHours.focus();
+      inputElementHours.setSelectionRange(2, 2);
+      expect(press(inputElementHours, 'ArrowRight', { shiftKey: true }).defaultPrevented).toBe(
+        false,
+      );
+      expect(document.activeElement).toBe(inputElementHours);
+    });
+
+    it('selects and copies the time of a readonly timefield', () => {
+      timefieldInstance.hours = '12';
+      timefieldInstance.minutes = '34';
+      timefieldInstance.readonly.set(true);
+      fixture.detectChanges();
+      inputElementHours.focus();
+      press(inputElementHours, 'a', { metaKey: true, ctrlKey: true });
+      const container = fixture.nativeElement.querySelector('.time-input') as HTMLElement;
+      expect(document.activeElement).toBe(container);
+
+      const clipboardData = new DataTransfer();
+      container.dispatchEvent(
+        new ClipboardEvent('copy', { clipboardData, bubbles: true, cancelable: true }),
+      );
+      expect(clipboardData.getData('text/plain')).toBe('12:34');
+
+      press(container, 'Delete');
+      expect(inputElementHours.value).toBe('12');
+    });
+
+    it('pads a digit that advances to the minutes even if the hours were already padded', () => {
+      timefieldInstance.twelveHourFormat = true;
+      timefieldInstance.hours = '02';
+      fixture.detectChanges();
+      inputElementHours.focus();
+      inputElementHours.select();
+      inputElementHours.value = '2';
+      inputElementHours.setSelectionRange(1, 1);
+      inputElementHours.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(inputElementHours.value).toBe('02');
+    });
+
+    it('replaces the whole time when pasting digits after select all', () => {
+      timefieldInstance.hours = '12';
+      timefieldInstance.minutes = '34';
+      fixture.detectChanges();
+      inputElementHours.focus();
+      press(inputElementHours, 'a', { metaKey: true, ctrlKey: true });
+      const container = fixture.nativeElement.querySelector('.time-input') as HTMLElement;
+
+      paste(container, '9');
+
+      expect(inputElementHours.value).toBe('9');
+      expect(inputElementMinutes.value).toBe('');
+    });
+
+    it('does not focus the container when clicking next to the inputs', () => {
+      timefieldInstance.hours = '12';
+      fixture.detectChanges();
+      const separator = fixture.nativeElement.querySelector(
+        '.nx-timefield-hours-separator',
+      ) as HTMLElement;
+      const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
+      separator.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(true);
+      expect(document.activeElement).toBe(inputElementMinutes);
+    });
+
+    it('lets a mousedown on an input place the caret natively', () => {
+      const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
+      inputElementHours.dispatchEvent(event);
+      expect(event.defaultPrevented).toBe(false);
+    });
+
+    it('pastes a time with a dot separator', () => {
+      paste(inputElementHours, '9.30');
+      expect(timefieldInstance.time).toBe('09:30');
+    });
+
+    it('moves the highlighted picker option when a time is pasted', () => {
+      createTestComponent(ConfigurableTimefield);
+      fixture.componentInstance.withTimepicker = true;
+      fixture.detectChanges();
+      getToggleButton().click();
+      fixture.detectChanges();
+
+      paste(inputElementHours, '15:30');
+
+      expect(timefieldInstance['_keyManager']?.activeItem?.value()).toBe('15:30');
+    });
+
+    it('does not edit a readonly timefield with the keyboard', () => {
+      timefieldInstance.hours = '12';
+      timefieldInstance.minutes = '34';
+      timefieldInstance.readonly.set(true);
+      fixture.detectChanges();
+      inputElementMinutes.focus();
+      inputElementMinutes.setSelectionRange(0, 0);
+      press(inputElementMinutes, 'Backspace');
+      expect(inputElementHours.value).toBe('12');
+    });
+
+    it('moves from hours to minutes with ArrowRight at the end of the hours', () => {
+      timefieldInstance.hours = '12';
+      fixture.detectChanges();
+      inputElementHours.focus();
+      inputElementHours.setSelectionRange(1, 1);
+      expect(press(inputElementHours, 'ArrowRight').defaultPrevented).toBe(false);
+      expect(document.activeElement).toBe(inputElementHours);
+
+      inputElementHours.setSelectionRange(2, 2);
+      expect(press(inputElementHours, 'ArrowRight').defaultPrevented).toBe(true);
+      expect(document.activeElement).toBe(inputElementMinutes);
+      expect(inputElementMinutes.selectionStart).toBe(0);
+    });
+
+    it('moves from minutes to hours with ArrowLeft at the start of the minutes', () => {
+      timefieldInstance.hours = '12';
+      timefieldInstance.minutes = '34';
+      fixture.detectChanges();
+      inputElementMinutes.focus();
+      inputElementMinutes.setSelectionRange(1, 1);
+      press(inputElementMinutes, 'ArrowLeft');
+      expect(document.activeElement).toBe(inputElementMinutes);
+
+      inputElementMinutes.setSelectionRange(0, 0);
+      press(inputElementMinutes, 'ArrowLeft');
+      expect(document.activeElement).toBe(inputElementHours);
+      expect(inputElementHours.selectionStart).toBe(2);
+    });
+
+    it('focuses the hours and deletes their last digit on Backspace at the start of the minutes', () => {
+      timefieldInstance.hours = '12';
+      timefieldInstance.minutes = '34';
+      fixture.detectChanges();
+      inputElementMinutes.focus();
+      inputElementMinutes.setSelectionRange(0, 0);
+
+      press(inputElementMinutes, 'Backspace');
+
+      expect(document.activeElement).toBe(inputElementHours);
+      expect(inputElementHours.value).toBe('1');
+      expect(inputElementMinutes.value).toBe('34');
+      expect(timefieldInstance.hours).toBe('1');
+    });
+
+    it('selects the whole time on select all and clears it on Delete', () => {
+      timefieldInstance.hours = '12';
+      timefieldInstance.minutes = '34';
+      fixture.detectChanges();
+      inputElementHours.focus();
+
+      expect(press(inputElementHours, 'a', { metaKey: true, ctrlKey: true }).defaultPrevented).toBe(
+        true,
+      );
+      const container = fixture.nativeElement.querySelector('.time-input') as HTMLElement;
+      expect(document.activeElement).toBe(container);
+
+      press(container, 'Delete');
+      expect(inputElementHours.value).toBe('');
+      expect(inputElementMinutes.value).toBe('');
+      expect(document.activeElement).toBe(inputElementHours);
+    });
+
+    it('copies the whole time after select all', () => {
+      timefieldInstance.hours = '12';
+      timefieldInstance.minutes = '34';
+      fixture.detectChanges();
+      inputElementHours.focus();
+      press(inputElementHours, 'a', { metaKey: true, ctrlKey: true });
+      const container = fixture.nativeElement.querySelector('.time-input') as HTMLElement;
+
+      const clipboardData = new DataTransfer();
+      container.dispatchEvent(
+        new ClipboardEvent('copy', { clipboardData, bubbles: true, cancelable: true }),
+      );
+      expect(clipboardData.getData('text/plain')).toBe('12:34');
+    });
+
+    it('pastes a full time across both inputs', () => {
+      paste(inputElementHours, '09:45');
+      expect(document.activeElement).toBe(inputElementMinutes);
+      expect(inputElementMinutes.selectionStart).toBe(2);
+      expect(inputElementMinutes.selectionEnd).toBe(2);
+      expect(inputElementHours.value).toBe('09');
+      expect(inputElementMinutes.value).toBe('45');
+      expect(timefieldInstance.time).toBe('09:45');
+    });
+
+    it('distributes pasted digits across both inputs', () => {
+      paste(inputElementHours, '1730');
+      expect(timefieldInstance.time).toBe('17:30');
+    });
+  });
+
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(SimpleTimefield);
