@@ -538,33 +538,6 @@ describe('NxPopoverTriggerDirective', () => {
       checkPopoverOpen(true);
     }));
 
-    it('should close popover when hit space key on close button', fakeAsync(() => {
-      createTestComponent(PopoverClickComponent);
-      click();
-      checkPopoverOpen(true);
-
-      getCloseIcon().dispatchEvent(new KeyboardEvent('keyup', { keyCode: SPACE, which: SPACE }));
-
-      fixture.detectChanges();
-      flush();
-
-      checkPopoverOpen(false);
-    }));
-
-    it('should close popover when hit enter on close button', fakeAsync(() => {
-      createTestComponent(PopoverClickComponent);
-      click();
-      checkPopoverOpen(true);
-
-      getCloseIcon().dispatchEvent(new KeyboardEvent('keyup', { keyCode: ENTER, which: ENTER }));
-
-      fixture.detectChanges();
-
-      flush();
-
-      checkPopoverOpen(false);
-    }));
-
     it('should call preventDefault if trigger is not button element', fakeAsync(() => {
       createTestComponent(PopoverDivTrigger);
       fixture.detectChanges();
@@ -937,8 +910,12 @@ describe('NxPopoverTriggerDirective', () => {
     describe('focus inside shadow DOM', () => {
       let trigger: HTMLElement;
 
-      function createKeyboardComponent<T extends PopoverTest>(component: Type<T>) {
+      function createKeyboardComponent<T extends PopoverTest>(
+        component: Type<T>,
+        properties: Partial<T> = {},
+      ) {
         fixture = TestBed.createComponent(component);
+        Object.assign(fixture.componentInstance, properties);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
         trigger = fixture.nativeElement.querySelector('.trigger');
@@ -959,7 +936,7 @@ describe('NxPopoverTriggerDirective', () => {
         await expectClosedWithFocusOn(trigger);
       });
 
-      it('returns focus when the overlay container lives inside a shadow root', async () => {
+      function moveOverlayContainerIntoShadowRoot() {
         const host = document.createElement('div');
         const container = overlayContainer.getContainerElement();
         document.body.appendChild(host);
@@ -968,6 +945,10 @@ describe('NxPopoverTriggerDirective', () => {
           document.body.appendChild(container);
           host.remove();
         });
+      }
+
+      it('returns focus when the overlay container lives inside a shadow root', async () => {
+        moveOverlayContainerIntoShadowRoot();
         createKeyboardComponent(PopoverKeyboardComponent);
         await openWithKeyboard(trigger, '{Enter}');
 
@@ -975,6 +956,27 @@ describe('NxPopoverTriggerDirective', () => {
 
         await expectClosedWithFocusOn(trigger);
       });
+
+      // The CDK focus trap only sees the shadow host, so it moves focus on to the close button.
+      it.each([
+        ['Enter', 'button'],
+        ['Enter', 'div'],
+        ['Space', 'div'],
+      ] as const)(
+        'stays open when the opening %s on a %s trigger is released on the close button',
+        async (key, triggerElement) => {
+          moveOverlayContainerIntoShadowRoot();
+          createKeyboardComponent(PopoverKeyboardComponent, { triggerElement });
+          trigger.focus();
+          await userEvent.keyboard(`{${key}>}`);
+          await vi.waitFor(() => expect(_getFocusedElementPierceShadowDom()).toBe(getCloseIcon()));
+
+          await userEvent.keyboard(`{/${key}}`);
+
+          await new Promise((resolve) => setTimeout(resolve, 50));
+          expect(getPopoverContent()).not.toBeNull();
+        },
+      );
     });
 
     it('returns focus when closed while focus is in a nested popover from lazy content', async () => {

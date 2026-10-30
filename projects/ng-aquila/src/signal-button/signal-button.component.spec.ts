@@ -13,6 +13,7 @@ import {
   waitForAsync,
 } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { userEvent } from 'vitest/browser';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import {
@@ -191,32 +192,22 @@ describe('NxSignalButtonComponent', () => {
       checkPopoverOpen(true);
     }));
 
-    it('should close popover when hit space key on close button', fakeAsync(() => {
+    it.each([
+      ['space', ' '],
+      ['enter', '{Enter}'],
+    ])('should close popover when hit %s on close button', async (_, key) => {
       createTestComponent(SignalButtonComponent);
-      click();
-      checkPopoverOpen(true);
-
-      getCloseIcon().dispatchEvent(new KeyboardEvent('keyup', { keyCode: SPACE, which: SPACE }));
-
+      buttonNativeElement.dispatchEvent(new Event('click'));
       fixture.detectChanges();
-      flush();
+      await vi.waitFor(() =>
+        expect(getPopoverContent()?.contains(document.activeElement)).toBe(true),
+      );
+      getCloseIcon().focus();
 
-      checkPopoverOpen(false);
-    }));
+      await userEvent.keyboard(key);
 
-    it('should close popover when hit enter on close button', fakeAsync(() => {
-      createTestComponent(SignalButtonComponent);
-      click();
-      checkPopoverOpen(true);
-
-      getCloseIcon().dispatchEvent(new KeyboardEvent('keyup', { keyCode: ENTER, which: ENTER }));
-
-      fixture.detectChanges();
-
-      flush();
-
-      checkPopoverOpen(false);
-    }));
+      await vi.waitFor(() => expect(getPopoverContent()).toBeNull());
+    });
 
     it('should not call preventDefault if trigger is button element', fakeAsync(() => {
       createTestComponent(SignalButtonComponent);

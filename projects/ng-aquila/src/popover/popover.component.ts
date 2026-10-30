@@ -8,7 +8,7 @@ import {
   NxSurfaceType,
 } from '@allianz/ng-aquila/surface';
 import { A11yModule, FocusOrigin } from '@angular/cdk/a11y';
-import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { SPACE } from '@angular/cdk/keycodes';
 import { NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
 import {
   booleanAttribute,
@@ -211,14 +211,6 @@ export class NxPopoverComponent implements OnDestroy, OnInit, NxSurfaceContext {
    */
   emitCloseButtonClick() {
     this.closeButtonClick.next();
-  }
-
-  /** @docs-private */
-  _onCloseKeyup($event: KeyboardEvent) {
-    if ($event && ($event.keyCode === ENTER || $event.keyCode === SPACE)) {
-      this.emitCloseButtonClick();
-    }
-    $event.preventDefault();
   }
 
   /** @docs-private */
