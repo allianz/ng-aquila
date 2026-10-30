@@ -47,7 +47,7 @@ import { Egg } from './egg';
 import { RabbitHole } from './rabbit-hole.service';
 import { NxvSearchInputComponent } from './search-input/search-input.component';
 import { NxvThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
-import { GridType, ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
+import { GridType, Theme, ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
 
 export class NxDocFeatures {
   themeSwitcher = false;
@@ -55,9 +55,11 @@ export class NxDocFeatures {
 
 export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_FEATURE_FLAGS');
 
-const HIDDEN_THEMES_PHRASES = ['scary', 'halloween'];
+const HIDDEN_THEMES_PHRASES = ['scary', 'scared', 'spooky', 'spooked', 'halloween'];
 const MAX_PHRASE_LENGTH = Math.max(...HIDDEN_THEMES_PHRASES.map((p) => p.length));
-const HALLOWEEN_FLYBY_DURATION = 20000;
+const HALLOWEEN_FLYBY_DURATION = 26000;
+
+const isHalloweenTheme = (theme: Theme) => theme.name.includes('halloween');
 
 @Component({
   selector: 'nxv-viewer',
@@ -108,6 +110,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
   readonly mobileSearchOpen = signal(false);
 
   protected readonly _showHalloweenFlyby = signal(false);
+  private readonly _halloweenFlybyReplays = signal(0);
 
   openMobileSearch() {
     this.mobileSearchOpen.set(true);
@@ -125,7 +128,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
   });
 
   protected readonly _isHalloweenTheme = computed(() =>
-    this._themeSwitcherService.selectedTheme().name.includes('halloween'),
+    isHalloweenTheme(this._themeSwitcherService.selectedTheme()),
   );
 
   private readonly _document = inject(DOCUMENT);
@@ -182,15 +185,35 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     });
 
     let typed = '';
+    let flybyRequestedByPhrase = false;
     fromEvent<KeyboardEvent>(this._document, 'keydown')
       .pipe(takeUntil(this._destroyed))
       .subscribe((event) => {
+        if (event.key === 'Escape') {
+          this._showHalloweenFlyby.set(false);
+          return;
+        }
         if (event.key.length !== 1) {
           return;
         }
         typed = (typed + event.key.toLowerCase()).slice(-MAX_PHRASE_LENGTH);
         if (HIDDEN_THEMES_PHRASES.some((phrase) => typed.endsWith(phrase))) {
-          if (this._themeSwitcherService.unlockHiddenThemes()) {
+          const wasLocked = this._themeSwitcherService.unlockHiddenThemes();
+          const halloweenTheme = this._themeSwitcherService
+            .themes()
+            .find((t) => t.hidden && isHalloweenTheme(t));
+          // without a visible switcher there would be no way back from a persisted theme
+          if (!halloweenTheme || !this.showThemingSwitcher) {
+            return;
+          }
+          if (!this._isHalloweenTheme()) {
+            flybyRequestedByPhrase = true;
+            this._themeSwitcherService.switchTheme(halloweenTheme);
+          } else if (!this._showHalloweenFlyby()) {
+            flybyRequestedByPhrase = true;
+            this._halloweenFlybyReplays.update((n) => n + 1);
+          }
+          if (wasLocked) {
             this._messageToast.openFromTemplate(this._hiddenThemeToast(), { duration: 8000 });
           }
         }
@@ -201,7 +224,14 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     });
 
     effect((onCleanup) => {
-      if (!this._isHalloweenTheme()) {
+      this._halloweenFlybyReplays();
+      const requested = flybyRequestedByPhrase;
+      flybyRequestedByPhrase = false;
+      // Typing the phrase is an explicit opt-in, so it overrides reduced motion; a stored theme on load is not.
+      const reducedMotion = this._document.defaultView?.matchMedia(
+        '(prefers-reduced-motion: reduce)',
+      ).matches;
+      if (!this._isHalloweenTheme() || (reducedMotion && !requested)) {
         return;
       }
       this._showHalloweenFlyby.set(true);

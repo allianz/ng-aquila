@@ -78,6 +78,10 @@ body.nxv-halloween {
   }
 }
 
+// relative to the creature's own size, with room for its rotated corners
+$flyby-offscreen-left: -130%;
+$flyby-offscreen-right: calc(100vw + 30%);
+
 @keyframes nxv-halloween-flyby {
   from {
     transform: translate(var(--x0), var(--y0)) rotate(var(--r0));
@@ -89,6 +93,64 @@ body.nxv-halloween {
 
   to {
     transform: translate(var(--x1), var(--y1)) rotate(var(--r1));
+  }
+}
+
+// laps: left to right up high, turn around offscreen, right to left lower down
+@keyframes nxv-halloween-cat-laps {
+  0% {
+    transform: translate($flyby-offscreen-left, 30vh) rotate(-6deg);
+  }
+
+  25% {
+    transform: translate(40vw, 14vh) rotate(6deg);
+  }
+
+  49.9% {
+    transform: translate($flyby-offscreen-right, 32vh) rotate(-6deg);
+  }
+
+  50% {
+    transform: translate($flyby-offscreen-right, 62vh) rotate(6deg) scaleX(-1);
+  }
+
+  75% {
+    transform: translate(40vw, 74vh) rotate(-6deg) scaleX(-1);
+  }
+
+  100% {
+    transform: translate($flyby-offscreen-left, 56vh) rotate(6deg) scaleX(-1);
+  }
+}
+
+// flies in from the right, hovers mid-screen, then takes off to the top left
+@keyframes nxv-halloween-cat-finale {
+  0% {
+    transform: translate($flyby-offscreen-right, 50vh) rotate(0deg) scaleX(-1);
+  }
+
+  30% {
+    transform: translate(calc(50vw - 50%), 38vh) rotate(-4deg) scaleX(-1);
+  }
+
+  40% {
+    transform: translate(calc(50vw - 50%), 34vh) rotate(3deg) scaleX(-1);
+  }
+
+  50% {
+    transform: translate(calc(50vw - 50%), 38vh) rotate(-3deg) scaleX(-1);
+  }
+
+  60% {
+    transform: translate(calc(50vw - 50%), 34vh) rotate(3deg) scaleX(-1);
+  }
+
+  70% {
+    transform: translate(calc(50vw - 50%), 37vh) rotate(-2deg) scaleX(-1);
+  }
+
+  100% {
+    transform: translate($flyby-offscreen-left, 8vh) rotate(-12deg) scaleX(-1);
   }
 }
 
@@ -115,21 +177,28 @@ body.nxv-halloween {
     }
   }
 
+  .documentation-halloween-flyby__cat {
+    font-size: 120px;
+    // no backwards fill on the finale: during its delay it would override the laps
+    animation:
+      nxv-halloween-cat-laps 8s linear 0.2s 2 backwards,
+      nxv-halloween-cat-finale 9s ease-in-out 16.2s forwards;
+  }
+
   // delay, x0, x1, y0, y1, r0, r1, font-size
   $flyby: (
-    (0.5s, -15vw, 115vw, 70vh, 20vh, -15deg, 15deg, 110px),
-    (1.5s, 115vw, -15vw, 25vh, 65vh, 20deg, -20deg, 90px),
-    (2.5s, -15vw, 115vw, 50vh, 85vh, 10deg, -25deg, 130px),
-    (3.5s, 115vw, -15vw, 85vh, 40vh, -20deg, 25deg, 100px),
-    (4.5s, -15vw, 115vw, 15vh, 55vh, 0deg, 0deg, 80px),
-    (5.5s, 115vw, -15vw, 60vh, 10vh, 15deg, -15deg, 120px),
-    (6.5s, -15vw, 115vw, 80vh, 45vh, -10deg, 20deg, 140px),
-    (7.5s, 115vw, -15vw, 35vh, 75vh, 25deg, -10deg, 95px),
-    (8.5s, -15vw, 115vw, 40vh, 10vh, -25deg, 10deg, 115px),
-    (9.5s, 115vw, -15vw, 90vh, 55vh, 10deg, -30deg, 85px),
-    (10.5s, -15vw, 115vw, 25vh, 70vh, 0deg, 20deg, 125px),
-    (11.5s, 115vw, -15vw, 55vh, 20vh, -15deg, 15deg, 105px),
-    (12.5s, -15vw, 115vw, 30vh, 12vh, -8deg, -8deg, 120px)
+    (0.5s, $flyby-offscreen-left, $flyby-offscreen-right, 70vh, 20vh, -15deg, 15deg, 110px),
+    (1.5s, $flyby-offscreen-right, $flyby-offscreen-left, 25vh, 65vh, 20deg, -20deg, 90px),
+    (2.5s, $flyby-offscreen-left, $flyby-offscreen-right, 50vh, 85vh, 10deg, -25deg, 130px),
+    (3.5s, $flyby-offscreen-right, $flyby-offscreen-left, 85vh, 40vh, -20deg, 25deg, 100px),
+    (4.5s, $flyby-offscreen-left, $flyby-offscreen-right, 15vh, 55vh, 0deg, 0deg, 80px),
+    (5.5s, $flyby-offscreen-right, $flyby-offscreen-left, 60vh, 10vh, 15deg, -15deg, 120px),
+    (6.5s, $flyby-offscreen-left, $flyby-offscreen-right, 80vh, 45vh, -10deg, 20deg, 140px),
+    (7.5s, $flyby-offscreen-right, $flyby-offscreen-left, 35vh, 75vh, 25deg, -10deg, 95px),
+    (8.5s, $flyby-offscreen-left, $flyby-offscreen-right, 40vh, 10vh, -25deg, 10deg, 115px),
+    (9.5s, $flyby-offscreen-right, $flyby-offscreen-left, 90vh, 55vh, 10deg, -30deg, 85px),
+    (10.5s, $flyby-offscreen-left, $flyby-offscreen-right, 25vh, 70vh, 0deg, 20deg, 125px),
+    (11.5s, $flyby-offscreen-right, $flyby-offscreen-left, 55vh, 20vh, -15deg, 15deg, 105px)
   );
 
   @for $i from 1 through length($flyby) {
@@ -145,10 +214,6 @@ body.nxv-halloween {
       --r1: #{nth($f, 7)};
       font-size: nth($f, 8);
     }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    display: none;
   }
 }
 
