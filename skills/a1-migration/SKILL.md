@@ -3,7 +3,7 @@ name: a1-migration
 description: 'Migrate an Angular application to the One Allianz (A1) Design System. Use when: migrating to A1 design system, applying One Allianz theme, migrating circle toggles to tiles, updating small stages, updating layout to left-alignment, A1 brand kit, ngx-brand-kit, ng-aquila migration, NDBX to A1.'
 argument-hint: 'Theme (optional): spacious | compact | dense'
 metadata:
-  version: 0.1.5
+  version: 0.1.6
 ---
 
 # A1 Design System Migration
@@ -16,6 +16,7 @@ metadata:
 - Replacing info buttons with popovers to use the new `NxInfoIconComponent`
 - Updating layout from center-aligned to left-aligned (A1 standard)
 - Adjusting `nx-small-stage` components, eyebrows and accent-color headlines
+- Moving `nxButton` / `nxIconButton` modifiers (`small`, `danger`, `negative`, `block`) into their own inputs
 
 ## How to Apply Changes
 - if css is required, add to the component's CSS file. If the component is standalone, add the CSS to the component's `styles` array in the `@Component` decorator.
@@ -24,7 +25,7 @@ metadata:
 
 ---
 
-**IMPORTANT:** Before starting, tell the user the skill version "0.1.5" and that it's in beta phase. This is important for tracking and future updates.
+**IMPORTANT:** Before starting, tell the user the skill version "0.1.6" and that it's in beta phase. This is important for tracking and future updates.
 
 ## Step 1: Apply A1 Theme
 
@@ -589,6 +590,59 @@ Only the first row is pixel-identical. The other two change the rendering, so lo
 
 ---
 
+## Step 9: Migrate Button Modifiers → Separate Inputs
+
+`nxButton` and `nxIconButton` take the size and the danger / negative / block modifiers as their own
+inputs. The old space-separated string still works, but the separate inputs are the documented API and
+can be bound individually.
+
+| In `nxButton="…"` / `nxIconButton="…"`                        | New                           |
+| ------------------------------------------------------------- | ----------------------------- |
+| `primary` `secondary` `tertiary` `cta` `emphasis` `attention` | stays: `nxButton="secondary"` |
+| `small` `small-medium` `medium` `large`                       | `size="…"`                    |
+| `danger`                                                      | `critical`                    |
+| `negative`                                                    | `inverse`                     |
+| `block`                                                       | `block`                       |
+
+A modifier that is already set through its own input is dropped, the input is kept as is. An existing
+`negative` / `[negative]` input keeps working; rename it to `inverse` by hand if you like, as that is
+the preferred A1 name.
+
+`nxPlainButton="danger"` has no effect any more — replace it with `nxPlainButton critical`.
+
+### Procedure
+
+1. Run the schematic from the project root:
+   ```bash
+   ng g @allianz/ng-aquila:migrate-button-api
+   ```
+   It rewrites static attributes in `.html` files and inline component templates, and logs a warning
+   with `file:line:col` for everything it cannot migrate.
+2. Migrate each warning by hand:
+   - **Dynamic binding**, e.g. ``[nxButton]="`secondary ${isNegative ? 'negative' : ''}`"`` →
+     `nxButton="secondary" [inverse]="isNegative"`. Bind `[size]`, `[critical]`, `[block]` the same way.
+   - **Template is not a plain string literal**, e.g. a template literal with `${…}` — migrate its
+     buttons by hand, following the table above.
+   - **Unknown modifier** — check for a typo; the button ignores unknown modifiers.
+
+**Before**:
+
+```html
+<button nxButton="secondary small danger block" type="button">Delete</button>
+```
+
+**After**:
+
+```html
+<button nxButton="secondary" size="small" critical block type="button">Delete</button>
+```
+
+### Notes
+
+- After applying this step, append `"buttons"` to the `a1Migration.steps` array in `package.json`.
+
+---
+
 ## Migration Tracking
 
 After completing each step, record the migration so adoption can be tracked across teams via GitHub search.
@@ -599,23 +653,23 @@ After **Step 1** (theme applied), add an `a1Migration` key to `package.json`. Af
 
 ```json
 "a1Migration": {
-  "skillVersion": "0.1.5",
+  "skillVersion": "0.1.6",
   "appliedAt": "YYYY-MM-DD",
   "theme": "<spacious|compact|dense>",
   "steps": ["theme"]
 }
 ```
 
-Append step names as they complete: `"theme"`, `"tiles"`, `"info-icons"`, `"layout"`, `"small-stage"`, `"context-menu-selection"`, `"file-uploader"`.
+Append step names as they complete: `"theme"`, `"tiles"`, `"info-icons"`, `"layout"`, `"small-stage"`, `"context-menu-selection"`, `"file-uploader"`, `"buttons"`, `"text"`.
 
 A fully migrated project looks like:
 
 ```json
 "a1Migration": {
-  "skillVersion": "0.1.5",
+  "skillVersion": "0.1.6",
   "appliedAt": "YYYY-MM-DD",
   "theme": "<spacious|compact|dense>",
-  "steps": ["theme", "tiles", "info-icons", "layout", "small-stage", "file-uploader"]
+  "steps": ["theme", "tiles", "info-icons", "layout", "small-stage", "context-menu-selection", "file-uploader", "buttons", "text"]
 }
 ```
 

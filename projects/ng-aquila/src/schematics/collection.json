@@ -17,6 +17,11 @@
       "private": true,
       "factory": "./ng-add/setup-project",
       "schema": "./ng-add/schema.json"
+    },
+    "migrate-button-api": {
+      "description": "Moves the size, danger, negative and block modifiers of nxButton / nxIconButton into their own inputs",
+      "factory": "./ng-generate/button-api/index",
+      "schema": "./ng-generate/button-api/schema.json"
     }
   }
 }

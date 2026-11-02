@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "ng-aquila-migrate-button-api",
+  "title": "ng-aquila migrate-button-api schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "path": {
+      "type": "string",
+      "description": "Directory to migrate. Defaults to the source root of the project."
+    }
+  },
+  "required": []
+}
