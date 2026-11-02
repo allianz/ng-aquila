@@ -128,6 +128,16 @@ The multi select is a separate component from the dropdown. It supports selectio
 
 <!-- example(dropdown-multi-select) -->
 
+### Multi select with groups
+
+Set `grouped` to pass a list of groups to `options` instead of a list of options. `selectGroupLabel` and `selectGroupOptions` define how to read the label and the options of a group. Like the other selectors, they accept a property name or a function, and default to `label` and `options`. The model stays a flat list of the selected values, so every option needs a unique value across all groups.
+
+While the panel is open, selected options move to the top of their group. The default filter matches the option label or the group label, so a matching group label shows the whole group. Groups without any matching option are hidden. A custom `filterFn` receives the group label as third argument.
+
+In grouped mode the type of `options` is inferred from your groups, not from the options inside them. Prefer property names for `selectLabel`, `selectValue` and `selectDisabled`; if you need a selector function, type its parameter as `any`. Selector functions for `selectGroupLabel` and `selectGroupOptions` can be typed with your group type.
+
+<!-- example(multi-select-group) -->
+
 ### Disabling items
 
 You can disable the whole dropdown as well as single dropdown items by setting their `disabled` property as shown in the example below:

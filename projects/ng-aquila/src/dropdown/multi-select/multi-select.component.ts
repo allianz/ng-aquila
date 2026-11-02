@@ -35,6 +35,7 @@ import {
   Injector,
   Input,
   input,
+  isDevMode,
   OnDestroy,
   Optional,
   Output,
@@ -67,10 +68,22 @@ import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 
 const OVERLAY_MIN_WIDTH = 260;
 
-export type NxMultiSelectFilterFn = (query: string, label: string) => boolean;
+/** `groupLabel` is only passed when the multi select is `grouped`. */
+export type NxMultiSelectFilterFn = (query: string, label: string, groupLabel?: string) => boolean;
 
-const _defaultFilterFn: NxMultiSelectFilterFn = (query, label) =>
-  label.toLowerCase().includes(query.toLowerCase());
+const _defaultFilterFn: NxMultiSelectFilterFn = (query, label, groupLabel) => {
+  const lowerCaseQuery = query.toLowerCase();
+  return (
+    label.toLowerCase().includes(lowerCaseQuery) ||
+    !!groupLabel?.toLowerCase().includes(lowerCaseQuery)
+  );
+};
+
+interface NxMultiSelectGroupView<S> {
+  id: string;
+  label: string;
+  options: S[];
+}
 
 /**
  * Multi Select component.
@@ -108,7 +121,7 @@ export class NxMultiSelectComponent<S, T>
   implements ControlValueAccessor, NxFormfieldControl<T[]>, DoCheck, OnDestroy, AfterViewInit
 {
   get value(): T[] {
-    return this.options
+    return this._flatOptions()
       .filter((option) => this._isOptionSelected(option))
       .map((option) => this._selectValue(option));
   }
@@ -202,10 +215,11 @@ export class NxMultiSelectComponent<S, T>
 
   /**
    * Function to be used when the user types into the search filter. The first argument is the user input,
-   * the second argument is the dropdown item value as displayed. The dropdown items will use this function
+   * the second argument is the dropdown item value as displayed. When `grouped` is set, the third argument
+   * is the label of the option's group. The dropdown items will use this function
    * to set their visibility state. A boolean should be returned.
    *
-   * Defaults to lower case inclusion.
+   * Defaults to lower case inclusion, matching either the option label or the group label.
    */
   @Input() set filterFn(value: NxMultiSelectFilterFn | null | undefined) {
     this.#filterFn = value;
@@ -240,7 +254,7 @@ export class NxMultiSelectComponent<S, T>
    * never touched by "select all", so they are excluded from this decision.
    */
   get _allSelected(): boolean {
-    const enabledOptions = this.options.filter((option) => !this._isDisabled(option));
+    const enabledOptions = this._flatOptions().filter((option) => !this._isDisabled(option));
     return (
       enabledOptions.length > 0 && enabledOptions.every((option) => this._isOptionSelected(option))
     );
@@ -252,7 +266,7 @@ export class NxMultiSelectComponent<S, T>
 
   /** Number of options that are both disabled and pre-selected (locked selections). */
   get _lockedSelectedCount(): number {
-    return this.options.filter(
+    return this._flatOptions().filter(
       (option) => this._isDisabled(option) && this._isOptionSelected(option),
     ).length;
   }
@@ -339,6 +353,8 @@ export class NxMultiSelectComponent<S, T>
 
   listItems: S[] = [];
 
+  protected _listGroups: NxMultiSelectGroupView<S>[] = [];
+
   selectedItems = new Set<T>();
 
   id = inject(IdGenerationService).nextId('nx-multi-select');
@@ -361,16 +377,49 @@ export class NxMultiSelectComponent<S, T>
   _overlayViewportMargin: number = 16;
 
   /**
-   * List of options to choose from.
+   * List of options to choose from, or list of groups when `grouped` is set.
    */
-  private _option: S[] = [];
   @Input() set options(value: S[]) {
-    this._option = value;
+    this._rawOptions.set(value);
     this.writeValue(this.ngControl?.value);
   }
-  get options() {
-    return this._option;
+  get options(): S[] {
+    return this._rawOptions();
   }
+  private readonly _rawOptions = signal<S[]>([]);
+
+  /**
+   * Whether `options` contains groups instead of options.
+   * Use `selectGroupLabel` and `selectGroupOptions` to define how to read a group.
+   */
+  readonly grouped = input(false, { transform: booleanAttribute });
+
+  /**
+   * Selector to get the label of a group. Only used when `grouped` is set.
+   * Can be either a property name or a selector function.
+   */
+  readonly selectGroupLabel = input<string | ((group: S) => string)>('label');
+
+  /**
+   * Selector to get the options of a group. Only used when `grouped` is set.
+   * Can be either a property name or a selector function.
+   */
+  readonly selectGroupOptions = input<string | ((group: S) => unknown[])>('options');
+
+  private readonly _groups = computed<NxMultiSelectGroupView<S>[]>(() => {
+    if (!this.grouped()) {
+      return [];
+    }
+    return this._rawOptions().map((group, index) => ({
+      id: `${this.id}-group-${index}`,
+      label: this._selectGroupLabel(group),
+      options: this._selectGroupOptions(group),
+    }));
+  });
+
+  private readonly _flatOptions = computed<S[]>(() =>
+    this.grouped() ? this._groups().flatMap((group) => group.options) : this._rawOptions(),
+  );
 
   /**
    * Placeholder for the filter input.
@@ -493,6 +542,38 @@ export class NxMultiSelectComponent<S, T>
     return selectLabel(option);
   }
 
+  private _selectGroupLabel(group: S): string {
+    const selectGroupLabel = this.selectGroupLabel();
+    const label: unknown =
+      typeof selectGroupLabel === 'string'
+        ? (group as { [key: string]: unknown })[selectGroupLabel]
+        : selectGroupLabel(group);
+
+    if (label == null) {
+      if (isDevMode()) {
+        console.warn('NxMultiSelect: Group has no label', group);
+      }
+      return '';
+    }
+    return String(label);
+  }
+
+  private _selectGroupOptions(group: S): S[] {
+    const selectGroupOptions = this.selectGroupOptions();
+    const options: unknown =
+      typeof selectGroupOptions === 'string'
+        ? (group as { [key: string]: unknown })[selectGroupOptions]
+        : selectGroupOptions(group);
+
+    if (!Array.isArray(options)) {
+      if (isDevMode()) {
+        console.warn('NxMultiSelect: Options of group are not an array', group);
+      }
+      return [];
+    }
+    return options;
+  }
+
   private _updatePositions() {
     if (this._formFieldComponent) {
       let offset;
@@ -576,8 +657,7 @@ export class NxMultiSelectComponent<S, T>
     this.getOverlayWidth();
 
     this._isOpen = true;
-    this.listItems = this.options.slice().sort(this.sortSelectedToTop);
-    this._divider = this.selectedItems.size - 1;
+    this._updateListItems('');
     this._openedBy = origin;
 
     this._cdr.markForCheck();
@@ -729,15 +809,7 @@ export class NxMultiSelectComponent<S, T>
 
   _onFilterChange(query: string | null | undefined) {
     this.filterChanges.next(query);
-    if (query) {
-      this.listItems = [...this.options]
-        .sort(this.sortSelectedToTop)
-        .filter((item) => this.filterFn(query, this._selectLabel(item)));
-    } else {
-      this.listItems = [...this.options].sort(this.sortSelectedToTop).slice();
-    }
-
-    this._divider = this.listItems.filter((element) => this._isOptionSelected(element)).length - 1;
+    this._updateListItems(query);
 
     if (this._isActiveItemFiltered) {
       setTimeout(() => {
@@ -748,8 +820,32 @@ export class NxMultiSelectComponent<S, T>
     this._optionsList?.nativeElement.scrollTo(0, 0);
   }
 
+  private _updateListItems(query: string | null | undefined) {
+    if (this.grouped()) {
+      // Selected options move up within their group instead of out of it.
+      this._listGroups = this._groups()
+        .map((group) => ({
+          ...group,
+          options: group.options
+            .filter(
+              (option) => !query || this.filterFn(query, this._selectLabel(option), group.label),
+            )
+            .sort(this.sortSelectedToTop),
+        }))
+        .filter((group) => group.options.length > 0);
+      this.listItems = this._listGroups.flatMap((group) => group.options);
+      this._divider = -1;
+      return;
+    }
+
+    this.listItems = this._flatOptions()
+      .filter((option) => !query || this.filterFn(query, this._selectLabel(option)))
+      .sort(this.sortSelectedToTop);
+    this._divider = this.listItems.filter((option) => this._isOptionSelected(option)).length - 1;
+  }
+
   _getValueText() {
-    return this.options
+    return this._flatOptions()
       .filter((option) => this._isOptionSelected(option))
       .map((option) => this._selectLabel(option))
       .join(', ');
@@ -827,7 +923,7 @@ export class NxMultiSelectComponent<S, T>
 
       if (Array.isArray(value)) {
         for (const item of value) {
-          const optionToBeSelected = this.options.find(
+          const optionToBeSelected = this._flatOptions().find(
             (option) => this._selectValue(option) === item,
           );
           if (optionToBeSelected) {

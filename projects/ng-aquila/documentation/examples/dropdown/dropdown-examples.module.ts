@@ -28,6 +28,7 @@ import { DropdownStandardExampleComponent } from './dropdown-standard/dropdown-s
 import { DropdownTemplateDrivenExampleComponent } from './dropdown-template-driven/dropdown-template-driven-example';
 import { DropdownVirtualViewportExampleComponent } from './dropdown-virtual-viewport/dropdown-virtual-viewport-example';
 import { MultiSelectExampleComponent } from './multi-select/multi-select-example';
+import { MultiSelectGroupExampleComponent } from './multi-select-group/multi-select-group-example';
 import { MultiSelectIntlExampleComponent } from './multi-select-intl/multi-select-intl-example';
 
 const EXAMPLES = [
@@ -51,6 +52,7 @@ const EXAMPLES = [
   DropdownScrollStrategyProviderExampleComponent,
   DropdownFocusOutExampleComponent,
   MultiSelectExampleComponent,
+  MultiSelectGroupExampleComponent,
   MultiSelectIntlExampleComponent,
   DropdownPanelgrowExampleComponent,
   DropdownSelectOnFocusExampleComponent,
@@ -92,6 +94,7 @@ export class DropdownExamplesModule {
       'dropdown-scroll-strategy-provider':
         DropdownScrollStrategyProviderExampleComponent,
       'multi-select': MultiSelectExampleComponent,
+      'multi-select-group': MultiSelectGroupExampleComponent,
       'multi-select-intl': MultiSelectIntlExampleComponent,
       'dropdown-panelgrow': DropdownPanelgrowExampleComponent,
       'dropdown-select-on-focus': DropdownSelectOnFocusExampleComponent,

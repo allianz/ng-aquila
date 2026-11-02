@@ -32,17 +32,24 @@ import {
   ChangeDetectionStrategy,
   Component,
   Directive,
+  NgZone,
   signal,
   Type,
   ViewChild,
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { NxDropdownIntl } from '../dropdown';
 import { NxDropdownModule } from '../dropdown.module';
-import { NxMultiSelectComponent } from './multi-select.component';
+import { NxMultiSelectComponent, NxMultiSelectFilterFn } from './multi-select.component';
 import { MultiSelectOptionHarness } from './multi-select-option.test-utils';
 
 class CustomIntl extends NxDropdownIntl {
@@ -63,6 +70,20 @@ class MultiSelectHarness extends ComponentHarness {
   getBackdrop = this.documentRootLocator.locatorFor('.cdk-overlay-backdrop');
 
   getOptions = this.documentRootLocator.locatorForAll(MultiSelectOptionHarness);
+
+  getGroups = this.documentRootLocator.locatorForAll('.panel .group');
+
+  getGroupLabels = this.documentRootLocator.locatorForAll('.panel .group-label');
+
+  async getGroupLabelTexts() {
+    const labels = await this.getGroupLabels();
+    return parallel(() => labels.map((label) => label.text()));
+  }
+
+  async getOptionLabelTexts() {
+    const options = await this.getOptions();
+    return parallel(() => options.map((option) => option.getLabelText()));
+  }
 
   getSelectAllButton = this.documentRootLocator.locatorForOptional('nx-multi-select-all');
 
@@ -1064,6 +1085,257 @@ describe('NxMultiSelectComponent', () => {
     });
   });
 
+  describe('grouped', () => {
+    let groupedInstance: GroupedMultiSelectComponent;
+
+    beforeEach(async () => {
+      await createTestComponent(GroupedMultiSelectComponent);
+      groupedInstance = testInstance as GroupedMultiSelectComponent;
+    });
+
+    it('renders the options under their group labels', async () => {
+      await multiSelectHarness.click();
+
+      expect(await multiSelectHarness.getGroupLabelTexts()).toEqual(['German', 'Swedish']);
+      expect(await multiSelectHarness.getOptionLabelTexts()).toEqual([
+        'BMW',
+        'Audi',
+        'Mercedes',
+        'Volvo',
+        'Saab',
+      ]);
+    });
+
+    it('labels each group with its group label', async () => {
+      await multiSelectHarness.click();
+
+      const [group] = await multiSelectHarness.getGroups();
+      const [label] = await multiSelectHarness.getGroupLabels();
+      expect(await group.getAttribute('role')).toBe('group');
+      expect(await group.getAttribute('aria-labelledby')).toBe(await label.getAttribute('id'));
+    });
+
+    it('updates the model with the values of options from different groups', async () => {
+      await multiSelectHarness.click();
+      await multiSelectHarness.clickOptions([1, 4]);
+
+      expect(testInstance.model).toEqual(['audi', 'saab']);
+      expect(await multiSelectHarness.getValueText()).toBe('Audi, Saab(2)');
+    });
+
+    it('shows the selected options of the model', async () => {
+      testInstance.model = ['volvo', 'bmw'];
+      fixture.detectChanges();
+
+      expect(await multiSelectHarness.getValueText()).toBe('BMW, Volvo(2)');
+    });
+
+    it('moves selected options to the top of their group', async () => {
+      testInstance.model = ['mercedes', 'saab'];
+      fixture.detectChanges();
+      await multiSelectHarness.click();
+
+      expect(await multiSelectHarness.getOptionLabelTexts()).toEqual([
+        'Mercedes',
+        'BMW',
+        'Audi',
+        'Saab',
+        'Volvo',
+      ]);
+      expect(await multiSelectHarness.getDivider()).toBeNull();
+    });
+
+    it('selects the options of all groups with "select all"', async () => {
+      await multiSelectHarness.click();
+      await multiSelectHarness.clickSelectAll();
+
+      expect(testInstance.model).toEqual(['bmw', 'audi', 'mercedes', 'volvo', 'saab']);
+    });
+
+    it('navigates across groups with the keyboard', async () => {
+      await multiSelectHarness.click();
+      for (let i = 0; i < 4; i++) {
+        await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+      }
+
+      const options = await multiSelectHarness.getOptions();
+      expect(await options[3].getLabelText()).toBe('Volvo');
+      expect(await options[3].isActive()).toBe(true);
+    });
+
+    describe('when filtering', () => {
+      beforeEach(async () => {
+        await multiSelectHarness.click();
+      });
+
+      it('hides groups without matching options', async () => {
+        await multiSelectHarness.setFilter('v');
+
+        expect(await multiSelectHarness.getGroupLabelTexts()).toEqual(['Swedish']);
+        expect(await multiSelectHarness.getOptionLabelTexts()).toEqual(['Volvo']);
+      });
+
+      it('shows all options of a group whose label matches', async () => {
+        await multiSelectHarness.setFilter('germ');
+
+        expect(await multiSelectHarness.getGroupLabelTexts()).toEqual(['German']);
+        expect(await multiSelectHarness.getOptionLabelTexts()).toEqual(['BMW', 'Audi', 'Mercedes']);
+      });
+
+      it('passes the group label to a custom filter function', async () => {
+        groupedInstance.filterFn = vi.fn((query: string, label: string) => label === query);
+        fixture.detectChanges();
+
+        await multiSelectHarness.setFilter('Saab');
+
+        expect(groupedInstance.filterFn).toHaveBeenCalledWith('Saab', 'Saab', 'Swedish');
+        expect(await multiSelectHarness.getOptionLabelTexts()).toEqual(['Saab']);
+      });
+
+      it('shows all groups again after clearing the filter', async () => {
+        await multiSelectHarness.setFilter('v');
+        await multiSelectHarness.clickClearFilter();
+
+        expect(await multiSelectHarness.getGroupLabelTexts()).toEqual(['German', 'Swedish']);
+      });
+    });
+
+    it('reads groups with selector functions', async () => {
+      groupedInstance.selectGroupLabel = (group: CarGroup) => group.name.toUpperCase();
+      groupedInstance.selectGroupOptions = (group: CarGroup) => group.brands.slice(0, 1);
+      fixture.detectChanges();
+      await multiSelectHarness.click();
+
+      expect(await multiSelectHarness.getGroupLabelTexts()).toEqual(['GERMAN', 'SWEDISH']);
+      expect(await multiSelectHarness.getOptionLabelTexts()).toEqual(['BMW', 'Volvo']);
+    });
+
+    it('warns and renders an empty label when a group has no label', async () => {
+      const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      groupedInstance.selectGroupLabel = 'missing';
+      fixture.detectChanges();
+      await multiSelectHarness.click();
+
+      expect(await multiSelectHarness.getGroupLabelTexts()).toEqual(['', '']);
+      expect(warn).toHaveBeenCalledWith(
+        'NxMultiSelect: Group has no label',
+        groupedInstance.options[0],
+      );
+    });
+
+    it('warns and skips the group when its options are not an array', async () => {
+      const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      groupedInstance.selectGroupOptions = 'name';
+      fixture.detectChanges();
+      await multiSelectHarness.click();
+
+      expect(await multiSelectHarness.getGroups()).toHaveLength(0);
+      expect(warn).toHaveBeenCalledWith(
+        'NxMultiSelect: Options of group are not an array',
+        groupedInstance.options[0],
+      );
+    });
+
+    it('has no accessibility violations in the grouped options list', async () => {
+      await multiSelectHarness.click();
+
+      // Scoped to the list: "select all" nests a focusable checkbox in an option (axe `nested-interactive`), also without groups.
+      await expect(document.querySelector('.panel .items')).toBeAccessible();
+    });
+
+    describe('with a disabled pre-selected option', () => {
+      beforeEach(async () => {
+        groupedInstance.selectDisabled = (brand: any) => brand.id === 'volvo';
+        testInstance.model = ['volvo'];
+        fixture.detectChanges();
+        await multiSelectHarness.click();
+      });
+
+      it('keeps the disabled option selected when selecting and clearing all', async () => {
+        await multiSelectHarness.clickSelectAll();
+        expect(testInstance.model).toEqual(['bmw', 'audi', 'mercedes', 'volvo', 'saab']);
+
+        await multiSelectHarness.clickSelectAll();
+        expect(testInstance.model).toEqual(['volvo']);
+      });
+
+      it('announces the locked selection', async () => {
+        expect(await multiSelectHarness.getLockedHintText()).toBe(
+          '1 option is pre-selected and cannot be changed.',
+        );
+      });
+    });
+
+    it('selects only the visible options with "select all" while filtered', async () => {
+      await multiSelectHarness.click();
+      await multiSelectHarness.setFilter('swe');
+      await multiSelectHarness.clickSelectAll();
+
+      expect(testInstance.model).toEqual(['volvo', 'saab']);
+    });
+
+    it('navigates in the displayed order after reopening with moved options', async () => {
+      testInstance.model = ['mercedes', 'saab'];
+      fixture.detectChanges();
+      await multiSelectHarness.click();
+      // Opening with a selection activates the first option, Mercedes.
+      for (let i = 0; i < 3; i++) {
+        await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+      }
+
+      const options = await multiSelectHarness.getOptions();
+      expect(await options[3].getLabelText()).toBe('Saab');
+      expect(await options[3].isActive()).toBe(true);
+    });
+
+    it('navigates in the displayed order after filtering moved options', async () => {
+      await multiSelectHarness.click();
+      await multiSelectHarness.clickOption(1);
+      // "German" matches, so the whole group stays visible with the selected Audi moved up.
+      await multiSelectHarness.setFilter('a');
+      await multiSelectHarness.pressKey('Home', HOME);
+      await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+
+      const options = await multiSelectHarness.getOptions();
+      expect(await multiSelectHarness.getOptionLabelTexts()).toEqual([
+        'Audi',
+        'BMW',
+        'Mercedes',
+        'Saab',
+      ]);
+      expect(await options[0].isActive()).toBe(true);
+    });
+  });
+
+  describe('grouped with reactive forms', () => {
+    let reactiveInstance: GroupedReactiveMultiSelectComponent;
+
+    beforeEach(async () => {
+      await createTestComponent(GroupedReactiveMultiSelectComponent);
+      reactiveInstance = testInstance as GroupedReactiveMultiSelectComponent;
+    });
+
+    it('shows the initial value of the control', async () => {
+      expect(await multiSelectHarness.getValueText()).toBe('Saab(1)');
+    });
+
+    it('updates the control when selecting an option', async () => {
+      await multiSelectHarness.click();
+      // Saab is selected and therefore first in its group.
+      await multiSelectHarness.clickOption(0);
+
+      expect(reactiveInstance.control.value).toEqual(['bmw', 'saab']);
+    });
+
+    it('shows a value set programmatically', async () => {
+      // Outside the zone, `whenStable` would not wait for the timeout in `writeValue`.
+      TestBed.inject(NgZone).run(() => reactiveInstance.control.setValue(['audi', 'volvo']));
+      fixture.detectChanges();
+
+      expect(await multiSelectHarness.getValueText()).toBe('Audi, Volvo(2)');
+    });
+  });
+
   describe('accessibility', () => {
     beforeEach(async () => {
       await createTestComponent(BasicMultiSelectComponent);
@@ -1516,6 +1788,88 @@ class ComplexMultiSelectComponent extends DropdownTest {
 
   selectLabel: string | ((option: ComplexOption) => string) = 'label';
   selectValue: string | ((option: ComplexOption) => any) = '';
+}
+
+interface CarBrand {
+  id: string;
+  label: string;
+}
+
+interface CarGroup {
+  name: string;
+  brands: CarBrand[];
+}
+
+function getCarGroups(): CarGroup[] {
+  return [
+    {
+      name: 'German',
+      brands: [
+        { id: 'bmw', label: 'BMW' },
+        { id: 'audi', label: 'Audi' },
+        { id: 'mercedes', label: 'Mercedes' },
+      ],
+    },
+    {
+      name: 'Swedish',
+      brands: [
+        { id: 'volvo', label: 'Volvo' },
+        { id: 'saab', label: 'Saab' },
+      ],
+    },
+  ];
+}
+
+@Component({
+  selector: 'test-grouped-reactive-multi-select-component',
+  template: `<nx-formfield label="Car brand" [appearance]="appearance">
+    <nx-multi-select
+      grouped
+      [formControl]="control"
+      [options]="options"
+      selectGroupLabel="name"
+      selectGroupOptions="brands"
+      selectLabel="label"
+      selectValue="id"
+    ></nx-multi-select>
+  </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxDropdownModule, ReactiveFormsModule, NxFormfieldModule],
+})
+class GroupedReactiveMultiSelectComponent extends DropdownTest {
+  options: CarGroup[] = getCarGroups();
+  control = new FormControl<string[]>(['saab']);
+}
+
+@Component({
+  selector: 'test-grouped-multi-select-component',
+  template: `<nx-formfield label="Car brand" [appearance]="appearance">
+    <nx-multi-select
+      grouped
+      [(ngModel)]="model"
+      [filter]="filter"
+      [filterFn]="filterFn"
+      [options]="options"
+      [selectGroupLabel]="selectGroupLabel"
+      [selectGroupOptions]="selectGroupOptions"
+      [selectLabel]="selectLabel"
+      [selectValue]="selectValue"
+      [selectDisabled]="selectDisabled"
+    ></nx-multi-select>
+  </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxDropdownModule, FormsModule, NxFormfieldModule],
+})
+class GroupedMultiSelectComponent extends DropdownTest {
+  options: CarGroup[] = getCarGroups();
+
+  filterFn: NxMultiSelectFilterFn | undefined;
+  selectDisabled: ((brand: any) => boolean) | undefined;
+  selectGroupLabel: string | ((group: CarGroup) => string) = 'name';
+  selectGroupOptions: string | ((group: CarGroup) => CarBrand[]) = 'brands';
+  // `S` is inferred from the groups, so selector functions for options can't be typed with the option type.
+  selectLabel = (brand: any): string => brand.label;
+  selectValue = (brand: any): string => brand.id;
 }
 
 @Component({

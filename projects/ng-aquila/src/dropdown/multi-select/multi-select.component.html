@@ -133,18 +133,38 @@
       [attr.role]="filter ? 'listbox' : 'presentation'"
       [attr.aria-multiselectable]="filter ? true : null"
     >
-      @for (option of listItems; track option; let i = $index) {
-        <nx-multi-select-option
-          class="item"
-          [class.divider]="_divider === i"
-          (selectedChange)="_onSelect(option, $event)"
-          [value]="_selectValue(option)"
-          [label]="_selectLabel(option)"
-          [selected]="_isOptionSelected(option)"
-          [disabled]="this._isDisabled(option)"
-          [appearance]="_appearance"
-          #option
-        ></nx-multi-select-option>
+      @if (grouped()) {
+        @for (group of _listGroups; track group.id) {
+          <div class="group" role="group" [attr.aria-labelledby]="group.id">
+            <div class="group-label" [id]="group.id" aria-hidden="true">{{ group.label }}</div>
+            @for (option of group.options; track option) {
+              <nx-multi-select-option
+                class="item"
+                (selectedChange)="_onSelect(option, $event)"
+                [value]="_selectValue(option)"
+                [label]="_selectLabel(option)"
+                [selected]="_isOptionSelected(option)"
+                [disabled]="this._isDisabled(option)"
+                [appearance]="_appearance"
+                #option
+              ></nx-multi-select-option>
+            }
+          </div>
+        }
+      } @else {
+        @for (option of listItems; track option; let i = $index) {
+          <nx-multi-select-option
+            class="item"
+            [class.divider]="_divider === i"
+            (selectedChange)="_onSelect(option, $event)"
+            [value]="_selectValue(option)"
+            [label]="_selectLabel(option)"
+            [selected]="_isOptionSelected(option)"
+            [disabled]="this._isDisabled(option)"
+            [appearance]="_appearance"
+            #option
+          ></nx-multi-select-option>
+        }
       }
     </div>
   </div>

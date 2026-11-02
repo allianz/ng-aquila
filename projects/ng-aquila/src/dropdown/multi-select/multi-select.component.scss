@@ -133,6 +133,27 @@
   padding: v(multi-select-panel-padding) 0;
 }
 
+// Not positioned, so the options keep `.items` as offsetParent for scrolling them into view.
+.group:not(:last-child)::after {
+  content: '';
+  display: block;
+  height: 1px;
+  margin: v(dropdown-group-divider-gap-vertical) v(multi-select-item-padding-horizon);
+  background-color: v(dropdown-group-divider);
+}
+
+.group-label {
+  @include type-style(dropdown-group-label);
+  padding: v(dropdown-group-label-padding);
+  color: v(dropdown-group-label-color);
+
+  .panel.is-outline & {
+    @include type-style(formfield-outline-label);
+    font-style: normal;
+    font-weight: v(dropdown-group-label-font-weight);
+  }
+}
+
 .filter-wrapper {
   padding: v(dropdown-filter-wrap-padding-vertical) v(dropdown-filter-wrap-padding-horizontal) 0
     v(dropdown-filter-wrap-padding-horizontal);
