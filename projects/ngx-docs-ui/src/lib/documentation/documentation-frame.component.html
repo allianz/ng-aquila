@@ -16,10 +16,12 @@
     <nx-header-row>
       <nx-header-brand>
         <nx-link>
-          <a [routerLink]="'/welcome'">
+          <a [routerLink]="'/welcome'" aria-label="Welcome page">
             <figure nxFigure>
               @if (_isHalloweenTheme()) {
-                <span class="documentation-header__halloween-logo" role="none">🎃</span>
+                <span class="documentation-header__festive-logo" role="none">🎃</span>
+              } @else if (_isDiwali()) {
+                <nxv-rangoli class="documentation-header__rangoli-logo"></nxv-rangoli>
               } @else {
                 <img
                   class="documentation-header__main-logo"
@@ -77,6 +79,9 @@
             </svg>
           </a>
         </nx-link>
+        @if (_isDiwali()) {
+          <span class="documentation-header__diya" aria-hidden="true">🪔</span>
+        }
       </nx-header-actions>
     </nx-header-row>
     <nx-header-row class="nx-mobile-navigation" [class.is-search-open]="mobileSearchOpen()">
@@ -241,4 +246,34 @@
   Boo! The spooky "A1 Halloween" theme has taken over... dare to stay? You can always escape via the
   theme switcher.
   <span aria-hidden="true">🦇🕸️</span>
+</ng-template>
+
+@if (_showDiwaliShow()) {
+  <div class="documentation-diwali-show" aria-hidden="true">
+    @for (firework of _diwaliFireworks; track firework) {
+      <span class="documentation-diwali-show__firework">
+        <i class="documentation-diwali-show__rocket"></i>
+        @for (spark of _diwaliSparks; track spark) {
+          <i class="documentation-diwali-show__spark"></i>
+        }
+      </span>
+    }
+    @for (diya of _diwaliDiyas; track diya) {
+      <span class="documentation-diwali-show__diya">🪔</span>
+    }
+    <div class="documentation-diwali-show__rangoli">
+      <nxv-rangoli></nxv-rangoli>
+      <p class="documentation-diwali-show__greeting">
+        <span lang="hi">शुभ दीपावली</span>
+        Happy Diwali!
+      </p>
+    </div>
+  </div>
+}
+
+<ng-template #diwaliToast>
+  <span class="cdk-visually-hidden">You found an easter egg! </span>
+  <span aria-hidden="true">🪔✨</span>
+  Happy Diwali! May the festival of lights bring you joy and green builds.
+  <span aria-hidden="true">🌼✨</span>
 </ng-template>

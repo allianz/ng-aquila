@@ -19,6 +19,37 @@
   }
 }
 
+// lets the fixed rangoli sit behind the page content but above the host background
+:host {
+  position: relative;
+  isolation: isolate;
+}
+
+// a quarter of the rangoli, centred on the top-right corner below the header
+.general-overview__rangoli {
+  --rangoli-radius: min(35vw, 300px);
+  display: none;
+  position: fixed;
+  top: var(--header-height, 52px);
+  right: 0;
+  z-index: -1;
+  width: var(--rangoli-radius);
+  height: var(--rangoli-radius);
+  overflow: hidden;
+  opacity: 0.18;
+  pointer-events: none;
+
+  nxv-rangoli {
+    width: calc(2 * var(--rangoli-radius));
+    height: calc(2 * var(--rangoli-radius));
+    margin-top: calc(-1 * var(--rangoli-radius));
+  }
+}
+
+:host-context(.nxv-diwali) .general-overview__rangoli {
+  display: block;
+}
+
 .status-explanation {
   display: grid;
   grid-template-columns: 0.2fr 1fr; /* Two equal columns */

@@ -30,6 +30,7 @@ import { ComponentDescriptor } from '../../../core/manifest';
 import { GithubLinkConfig } from '../../../core/types';
 import { NxvComponentIconComponent } from '../../../documentation/component-icon/component-icon.component';
 import { ManifestService } from '../../../service/manifest.service';
+import { NxvRangoliComponent } from '../../rangoli/rangoli.component';
 
 type A1FilterTag = 'a1Light' | 'densities' | 'a1Full' | 'ndbxOnly' | 'deprecated';
 
@@ -57,6 +58,7 @@ type A1FilterTag = 'a1Light' | 'densities' | 'a1Full' | 'ndbxOnly' | 'deprecated
     FormsModule,
     NxLinkComponent,
     NxvComponentIconComponent,
+    NxvRangoliComponent,
   ],
 })
 export class NxvOverviewComponent {

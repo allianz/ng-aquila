@@ -247,35 +247,389 @@ body.nxv-halloween {
     content: '🦇' / '';
   }
 
-  .nxv-example-viewer[data-halloween='1']::before {
+  .nxv-example-viewer[data-festive='1']::before {
     right: 120px;
     content: '👻';
     content: '👻' / '';
   }
 
-  .nxv-example-viewer[data-halloween='2']::before {
+  .nxv-example-viewer[data-festive='2']::before {
     right: auto;
     left: 48px;
     content: '🕷️';
     content: '🕷️' / '';
   }
 
-  .nxv-example-viewer[data-halloween='3']::before {
+  .nxv-example-viewer[data-festive='3']::before {
     right: 220px;
     content: '🍬';
     content: '🍬' / '';
   }
 
-  .nxv-example-viewer[data-halloween='4']::before {
+  .nxv-example-viewer[data-festive='4']::before {
     right: auto;
     left: 45%;
     content: '🦇';
     content: '🦇' / '';
   }
 
-  .nxv-example-viewer[data-halloween='5']::before {
+  .nxv-example-viewer[data-festive='5']::before {
     right: 64px;
     content: '💀';
     content: '💀' / '';
+  }
+}
+
+// Diwali decorations, toggled by the documentation frame via `nxv-diwali` on <body>
+@keyframes nxv-diwali-glow {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+
+  30%,
+  60% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+}
+
+@keyframes nxv-diwali-flicker {
+  0%,
+  100% {
+    filter: drop-shadow(0 -2px 6px #ffb627);
+    transform: translateY(-70%) scale(1);
+  }
+
+  50% {
+    filter: drop-shadow(0 -4px 12px #ff7a00);
+    transform: translateY(-70%) scale(1.06);
+  }
+}
+
+@keyframes nxv-diwali-bulb-glow {
+  from {
+    filter: drop-shadow(0 0 1px var(--glow));
+    opacity: 0.75;
+  }
+
+  to {
+    filter: drop-shadow(0 0 5px var(--glow));
+    opacity: 1;
+  }
+}
+
+body.nxv-diwali {
+  .nxv-example-viewer:not(.nxv-example-viewer--no-box) {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 32px;
+      font-size: 28px;
+      line-height: 1;
+      transform: translateY(-70%);
+      pointer-events: none;
+      animation: nxv-diwali-flicker 2.4s ease-in-out infinite;
+      content: '🪔';
+      content: '🪔' / '';
+    }
+  }
+
+  .nxv-example-viewer[data-festive='1']::before {
+    right: 120px;
+    content: '✨';
+    content: '✨' / '';
+  }
+
+  .nxv-example-viewer[data-festive='2']::before {
+    right: auto;
+    left: 48px;
+    content: '🌼';
+    content: '🌼' / '';
+  }
+
+  .nxv-example-viewer[data-festive='3']::before {
+    right: 220px;
+    animation-delay: -1.2s;
+  }
+
+  .nxv-example-viewer[data-festive='4']::before {
+    right: auto;
+    left: 45%;
+    content: '🌟';
+    content: '🌟' / '';
+  }
+
+  .nxv-example-viewer[data-festive='5']::before {
+    right: 64px;
+    content: '🪷';
+    content: '🪷' / '';
+  }
+
+  // string lights sagging below the header; the two bulb layers glow out of phase
+  .documentation-header::before,
+  .documentation-header::after {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    background-repeat: repeat-x;
+    background-size: 96px 24px;
+    pointer-events: none;
+    animation: nxv-diwali-bulb-glow 2.4s ease-in-out infinite alternate;
+    content: '';
+  }
+
+  .documentation-header::before {
+    --glow: #ff7a00;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='24'%3E%3Cpath d='M0 2Q24 18 48 2Q72 18 96 2' fill='none' stroke='%238a6a3a' stroke-width='1.2'/%3E%3Crect x='22.5' y='9' width='3' height='3' rx='.5' fill='%236b5a3a'/%3E%3Cellipse cx='24' cy='15' rx='3' ry='4' fill='%23ff7a00'/%3E%3Ccircle cx='23' cy='13.5' r='1' fill='%23fff' fill-opacity='.7'/%3E%3C/svg%3E");
+  }
+
+  .documentation-header::after {
+    --glow: #ffc107;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='24'%3E%3Crect x='70.5' y='9' width='3' height='3' rx='.5' fill='%236b5a3a'/%3E%3Cellipse cx='72' cy='15' rx='3' ry='4' fill='%23ffc107'/%3E%3Ccircle cx='71' cy='13.5' r='1' fill='%23fff' fill-opacity='.7'/%3E%3C/svg%3E");
+    animation-delay: -2.4s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nxv-example-viewer:not(.nxv-example-viewer--no-box)::before,
+    .documentation-header::before,
+    .documentation-header::after {
+      animation: none;
+    }
+  }
+}
+
+@keyframes nxv-diwali-rocket {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(100vh - var(--y) + 40px));
+  }
+
+  10%,
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nxv-diwali-spark {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(0) scale(1);
+    translate: 0 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateX(var(--radius)) scale(0.5);
+    translate: 0 60px;
+  }
+}
+
+@keyframes nxv-diwali-diya-float {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(-4deg);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-55vh) rotate(4deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-110vh) rotate(-4deg);
+  }
+}
+
+@keyframes nxv-diwali-rangoli {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  25%,
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+@keyframes nxv-diwali-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.documentation-diwali-show {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  overflow: hidden;
+  pointer-events: none;
+
+  &::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    background-image:
+      radial-gradient(ellipse 30% 60% at 20% 100%, #ffb627, transparent),
+      radial-gradient(ellipse 30% 70% at 55% 100%, #ff7a00, transparent),
+      radial-gradient(ellipse 25% 55% at 88% 100%, #e0218a, transparent);
+    filter: blur(32px);
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+    animation: nxv-diwali-glow 9s ease-in-out 1;
+    content: '';
+  }
+
+  &__firework {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+  }
+
+  &__rocket {
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 4px;
+    height: 22px;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, #ff9f1c, transparent);
+    animation: nxv-diwali-rocket 0.9s ease-out var(--delay) both;
+  }
+
+  &__spark {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 34px;
+    height: 5px;
+    border-radius: 3px;
+    background: linear-gradient(to right, transparent, var(--color));
+    box-shadow: 0 0 12px 2px var(--color);
+    transform-origin: 0 50%;
+    animation: nxv-diwali-spark 1.8s cubic-bezier(0.15, 0.7, 0.3, 1) calc(var(--delay) + 0.85s) both;
+  }
+
+  // rocket is the first child, so sparks start at child 2
+  @for $i from 0 through 15 {
+    &__spark:nth-child(#{$i + 2}) {
+      --angle: #{$i * 22.5deg};
+      --radius: 190px;
+      --color: var(--color-a);
+
+      @if $i % 2 == 1 {
+        --radius: 140px;
+        --color: var(--color-b);
+      }
+    }
+  }
+
+  // delay, x, y, color-a, color-b
+  $fireworks: (
+    (0.2s, 18vw, 22vh, #ff9f1c, #e0218a),
+    (1s, 72vw, 18vh, #00a896, #ff6b00),
+    (1.8s, 45vw, 30vh, #ff3d00, #7b2cbf),
+    (2.6s, 85vw, 40vh, #e0218a, #ffb627),
+    (3.4s, 10vw, 45vh, #ffb627, #7b2cbf),
+    (4.2s, 58vw, 15vh, #d6247a, #00a896),
+    (5s, 30vw, 35vh, #ff9f1c, #ff3d00),
+    (5.8s, 78vw, 28vh, #7b2cbf, #e0218a),
+    (6.6s, 50vw, 20vh, #ffb627, #00a896)
+  );
+
+  @for $i from 1 through length($fireworks) {
+    $f: nth($fireworks, $i);
+
+    &__firework:nth-child(#{$i}) {
+      --delay: #{nth($f, 1)};
+      --x: #{nth($f, 2)};
+      --y: #{nth($f, 3)};
+      --color-a: #{nth($f, 4)};
+      --color-b: #{nth($f, 5)};
+    }
+  }
+
+  &__diya {
+    position: absolute;
+    bottom: -80px;
+    left: var(--x);
+    font-size: 56px;
+    line-height: 1;
+    filter: drop-shadow(0 -4px 14px #ffb627);
+    animation: nxv-diwali-diya-float 9s ease-in var(--delay) both;
+  }
+
+  // the fireworks come first in the DOM, so the diyas are offset by their count
+  @each $i, $delay, $x in (1, 0.4s, 8vw), (2, 1.6s, 22vw), (3, 0.9s, 38vw), (4, 2.2s, 52vw),
+    (5, 1.2s, 66vw), (6, 2.8s, 80vw), (7, 0.6s, 92vw)
+  {
+    &__diya:nth-child(#{length($fireworks) + $i}) {
+      --delay: #{$delay};
+      --x: #{$x};
+    }
+  }
+
+  &__rangoli {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(60vmin, 420px);
+    text-align: center;
+    animation: nxv-diwali-rangoli 7s ease-in-out 8.6s both;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 24px rgba(255, 182, 39, 0.6));
+      animation: nxv-diwali-spin 24s linear infinite;
+    }
+  }
+
+  &__greeting {
+    margin: 16px 0 0;
+    color: #fff4e0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow:
+      0 0 12px #ff7a00,
+      0 0 24px #e0218a;
+
+    span {
+      display: block;
+      font-size: 2.5rem;
+    }
   }
 }

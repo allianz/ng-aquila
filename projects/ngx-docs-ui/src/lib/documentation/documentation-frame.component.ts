@@ -45,6 +45,7 @@ import { NxVersionSelectComponent } from './component-documentation/version-sele
 import { CssVarSidebarComponent } from './css-vars-sandbox/css-var-sidebar-component';
 import { Egg } from './egg';
 import { RabbitHole } from './rabbit-hole.service';
+import { NxvRangoliComponent } from './rangoli/rangoli.component';
 import { NxvSearchInputComponent } from './search-input/search-input.component';
 import { NxvThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 import { GridType, Theme, ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
@@ -56,8 +57,20 @@ export class NxDocFeatures {
 export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_FEATURE_FLAGS');
 
 const HIDDEN_THEMES_PHRASES = ['scary', 'scared', 'spooky', 'spooked', 'halloween'];
-const MAX_PHRASE_LENGTH = Math.max(...HIDDEN_THEMES_PHRASES.map((p) => p.length));
+const DIWALI_PHRASES = ['diwali', 'deepavali', 'deepawali', 'rangoli'];
+const MAX_PHRASE_LENGTH = Math.max(
+  ...[...HIDDEN_THEMES_PHRASES, ...DIWALI_PHRASES].map((p) => p.length),
+);
 const HALLOWEEN_FLYBY_DURATION = 26000;
+const DIWALI_SHOW_DURATION = 16000;
+// local time; the end date is exclusive
+const DIWALI_SEASON = { start: new Date(2026, 10, 1), end: new Date(2026, 10, 16) };
+const isDiwaliSeason = () => {
+  const now = new Date();
+  return now >= DIWALI_SEASON.start && now < DIWALI_SEASON.end;
+};
+
+const range = (n: number) => Array.from({ length: n }, (_, i) => i);
 
 const isHalloweenTheme = (theme: Theme) => theme.name.includes('halloween');
 
@@ -81,6 +94,7 @@ const isHalloweenTheme = (theme: Theme) => theme.name.includes('halloween');
     NxvThemeSwitcherComponent,
     NxVersionSelectComponent,
     NgComponentOutlet,
+    NxvRangoliComponent,
     NxButtonModule,
     NxIconModule,
     RouterOutlet,
@@ -106,11 +120,19 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
   cssVarSidebar = viewChild(CssVarSidebarComponent);
   mobileSearch = viewChild<NxvSearchInputComponent>('mobileSearch');
   private readonly _hiddenThemeToast = viewChild.required<TemplateRef<unknown>>('hiddenThemeToast');
+  private readonly _diwaliToast = viewChild.required<TemplateRef<unknown>>('diwaliToast');
 
   readonly mobileSearchOpen = signal(false);
 
   protected readonly _showHalloweenFlyby = signal(false);
   private readonly _halloweenFlybyReplays = signal(0);
+
+  protected readonly _showDiwaliShow = signal(false);
+  protected readonly _diwaliFireworks = range(9);
+  protected readonly _diwaliSparks = range(16);
+  protected readonly _diwaliDiyas = range(7);
+  private _diwaliShowTimeout?: ReturnType<typeof setTimeout>;
+  private _diwaliGreeted = false;
 
   openMobileSearch() {
     this.mobileSearchOpen.set(true);
@@ -130,6 +152,11 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
   protected readonly _isHalloweenTheme = computed(() =>
     isHalloweenTheme(this._themeSwitcherService.selectedTheme()),
   );
+
+  private readonly _isDiwaliSeason = isDiwaliSeason();
+
+  /** During the season, Diwali decorates every theme except Halloween, which has its own. */
+  protected readonly _isDiwali = computed(() => this._isDiwaliSeason && !this._isHalloweenTheme());
 
   private readonly _document = inject(DOCUMENT);
 
@@ -191,12 +218,16 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
       .subscribe((event) => {
         if (event.key === 'Escape') {
           this._showHalloweenFlyby.set(false);
+          this._stopDiwaliShow();
           return;
         }
         if (event.key.length !== 1) {
           return;
         }
         typed = (typed + event.key.toLowerCase()).slice(-MAX_PHRASE_LENGTH);
+        if (this._isDiwaliSeason && DIWALI_PHRASES.some((phrase) => typed.endsWith(phrase))) {
+          this._playDiwaliShow();
+        }
         if (HIDDEN_THEMES_PHRASES.some((phrase) => typed.endsWith(phrase))) {
           const wasLocked = this._themeSwitcherService.unlockHiddenThemes();
           const halloweenTheme = this._themeSwitcherService
@@ -221,6 +252,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
 
     effect(() => {
       this._document.body.classList.toggle('nxv-halloween', this._isHalloweenTheme());
+      this._document.body.classList.toggle('nxv-diwali', this._isDiwali());
     });
 
     effect((onCleanup) => {
@@ -268,6 +300,23 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     });
   }
 
+  private _playDiwaliShow() {
+    if (this._showDiwaliShow()) {
+      return;
+    }
+    this._showDiwaliShow.set(true);
+    this._diwaliShowTimeout = setTimeout(() => this._stopDiwaliShow(), DIWALI_SHOW_DURATION);
+    if (!this._diwaliGreeted) {
+      this._diwaliGreeted = true;
+      this._messageToast.openFromTemplate(this._diwaliToast(), { duration: 8000 });
+    }
+  }
+
+  private _stopDiwaliShow() {
+    clearTimeout(this._diwaliShowTimeout);
+    this._showDiwaliShow.set(false);
+  }
+
   ngAfterViewInit(): void {
     this.hideEggs();
   }
@@ -313,7 +362,8 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this._document.body.classList.remove('nxv-halloween');
+    this._document.body.classList.remove('nxv-halloween', 'nxv-diwali');
+    clearTimeout(this._diwaliShowTimeout);
     this._destroyed.next();
     this._destroyed.complete();
   }

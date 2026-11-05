@@ -28,7 +28,7 @@ interface ExampleConfig {
   privateExample?: boolean;
 }
 
-let nextHalloweenVariant = 0;
+let nextFestiveVariant = 0;
 
 @Component({
   selector: 'nxv-example-viewer',
@@ -48,7 +48,7 @@ let nextHalloweenVariant = 0;
   ],
 })
 export class ExampleViewerComponent {
-  protected readonly _halloweenVariant = nextHalloweenVariant++ % 6;
+  protected readonly _festiveVariant = nextFestiveVariant++ % 6;
   moduleId!: string;
   showSourceCode = false;
   exampleData!: ComponentExample;

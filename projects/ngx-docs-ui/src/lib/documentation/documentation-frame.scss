@@ -42,9 +42,14 @@ $toc-width: 200px;
       filter: brightness(0) invert(1);
     }
 
-    .documentation-header__halloween-logo {
+    .documentation-header__festive-logo {
       font-size: 2rem;
       line-height: 1;
+    }
+
+    .documentation-header__rangoli-logo {
+      width: 40px;
+      height: 40px;
     }
 
     @media (max-width: 703px) {
@@ -138,6 +143,14 @@ nx-header-navigation ::ng-deep .nx-header__link {
 .documentation-header__github-logo {
   margin: 4px;
   vertical-align: middle;
+}
+
+.documentation-header__diya {
+  margin-left: 8px;
+  font-size: 1.5rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
 ::ng-deep nx-sidebar.docs-sidebar {
