@@ -71,6 +71,7 @@ describe('PhoneInputComponent', () => {
         FormsModule,
         ReactiveFormsPhoneInput,
         PhoneInputInFormComponent,
+        UpdateOnBlurPhoneInput,
         I18nProviderTest,
         DefaultPhoneInput,
         ConfigurablePhoneInput,
@@ -459,6 +460,282 @@ describe('PhoneInputComponent', () => {
     });
   });
 
+  describe('number with calling code typed into the input', () => {
+    function typeNumber(value: string) {
+      const input = getInput().nativeElement;
+      input.value = value;
+      dispatchFakeEvent(input, 'input');
+      fixture.detectChanges();
+      flush();
+    }
+
+    function blurInput() {
+      dispatchFakeEvent(getInput().nativeElement, 'blur');
+      fixture.detectChanges();
+      flush();
+    }
+
+    it('keeps its own calling code in the model before blur', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+      typeNumber('+359 88 888 888');
+
+      expect(formControl.value).toBe('+35988888888');
+      expect(formControl.valid).toBe(true);
+    }));
+
+    it('moves the calling code into the dropdown on blur', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+      typeNumber('+359 88 888 888');
+      blurInput();
+
+      expect(phoneInputInstance.countryCode).toBe('BG');
+      expect(getRenderedValue().innerText).toBe('+359');
+      expect(getInput().nativeElement.value).toBe('88888888');
+      expect(formControl.value).toBe('+35988888888');
+    }));
+
+    it('formats the line number for the new country on blur', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+      typeNumber('+43 0664 1234567');
+      expect(formControl.value).toBe('+436641234567');
+      expect(phoneInputInstance.parsedValue()?.number).toBe('6641234567');
+
+      blurInput();
+
+      expect(phoneInputInstance.countryCode).toBe('AT');
+      expect(getInput().nativeElement.value).toBe('6641234567');
+      expect(formControl.value).toBe('+436641234567');
+    }));
+
+    it('keeps the leading zero of an Italian number', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+      typeNumber('+39 06 1234 5678');
+      expect(formControl.value).toBe('+390612345678');
+
+      blurInput();
+
+      expect(phoneInputInstance.countryCode).toBe('IT');
+      expect(getInput().nativeElement.value).toBe('0612345678');
+      expect(formControl.value).toBe('+390612345678');
+    }));
+
+    it('does not write the model again on blur when it did not change', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+      const values: (string | null)[] = [];
+      formControl.valueChanges.subscribe((value) => values.push(value));
+
+      typeNumber('+359 88 888 888');
+      blurInput();
+
+      expect(values).toEqual(['+35988888888']);
+    }));
+
+    it('commits the updated value to an updateOn blur control', fakeAsync(() => {
+      createTestComponent(UpdateOnBlurPhoneInput);
+      flush();
+      const formControl = (testInstance as UpdateOnBlurPhoneInput).formControl;
+      const input = getInput().nativeElement;
+      input.value = '+43 664 1234567';
+      dispatchFakeEvent(input, 'input');
+
+      blurInput();
+
+      // the formatter shortens the line number, so blur writes a new model value
+      expect(getInput().nativeElement.value).toBe('664123');
+      expect(formControl.value).toBe('+43664123');
+      expect(formControl.touched).toBe(true);
+    }));
+
+    it('clears the model when only a calling code was typed', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+      typeNumber('+49');
+      expect(formControl.value).toBe('');
+
+      blurInput();
+
+      expect(getInput().nativeElement.value).toBe('');
+      expect(formControl.value).toBe('');
+      expect(formControl.errors).toEqual({ required: true });
+    }));
+
+    it('keeps the selected country when it shares the calling code', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      phoneInputInstance._onCountryChange('CA');
+      fixture.detectChanges();
+      flush();
+
+      typeNumber('+1 416 555 1234');
+      blurInput();
+
+      expect(phoneInputInstance.countryCode).toBe('CA');
+    }));
+
+    it('picks the first country of a shared calling code otherwise', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+
+      typeNumber('+1 416 555 1234');
+      blurInput();
+
+      expect(phoneInputInstance.countryCode).toBe('US');
+    }));
+
+    it('keeps an unknown calling code in the input and reports it', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+
+      typeNumber('+999 123');
+      blurInput();
+
+      expect(phoneInputInstance.countryCode).toBe('DE');
+      expect(getInput().nativeElement.value).toBe('+999123');
+      expect(formControl.errors).toEqual({ nxPhoneInputParse: { text: '+999123' } });
+    }));
+
+    it('resolves the country when none was selected', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+      formControl.setValue('234');
+      fixture.detectChanges();
+      flush();
+
+      typeNumber('+359 88 888 888');
+      blurInput();
+
+      expect(phoneInputInstance.countryCode).toBe('BG');
+      expect(formControl.value).toBe('+35988888888');
+      expect(formControl.valid).toBe(true);
+    }));
+  });
+
+  it('should go back to the initial country after an unparseable value', fakeAsync(() => {
+    createTestComponent(ReactiveFormsPhoneInput);
+    flush();
+    const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+    formControl.setValue('');
+    fixture.detectChanges();
+    testInstance.countryCode = 'CA';
+    fixture.detectChanges();
+    flush();
+
+    formControl.setValue('234');
+    fixture.detectChanges();
+    formControl.setValue('');
+    fixture.detectChanges();
+    flush();
+
+    // CA shares +1 with US, which comes first in the metadata
+    expect(phoneInputInstance.countryCode).toBe('CA');
+  }));
+
+  it('should report empty only without a line number', fakeAsync(() => {
+    createTestComponent(ReactiveFormsPhoneInput);
+    flush();
+    const formfield = fixture.debugElement.query(By.directive(NxFormfieldComponent));
+    expect(phoneInputInstance.empty).toBe(false);
+    expect(formfield.nativeElement.classList).toContain('is-filled');
+
+    (testInstance as ReactiveFormsPhoneInput).formControl.setValue('');
+    fixture.detectChanges();
+    flush();
+
+    expect(phoneInputInstance.empty).toBe(true);
+    expect(formfield.nativeElement.classList).not.toContain('is-filled');
+  }));
+
+  describe('parsedValue', () => {
+    it('splits a programmatic value', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+
+      expect(phoneInputInstance.parsedValue()).toEqual({
+        callingCode: '+49',
+        countryCode: 'DE',
+        number: '123456',
+      });
+    }));
+
+    it('follows typing and country changes', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+
+      const input = getInput().nativeElement;
+      input.value = '(0151) 234-56';
+      dispatchFakeEvent(input, 'input');
+      fixture.detectChanges();
+      flush();
+      expect(phoneInputInstance.parsedValue()).toEqual({
+        callingCode: '+49',
+        countryCode: 'DE',
+        number: '15123456',
+      });
+
+      phoneInputInstance._onCountryChange('CA');
+      fixture.detectChanges();
+      flush();
+      expect(phoneInputInstance.parsedValue()).toEqual({
+        callingCode: '+1',
+        countryCode: 'CA',
+        number: '15123456',
+      });
+    }));
+
+    it('splits a typed number with calling code before blur', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+
+      const input = getInput().nativeElement;
+      input.value = '+359 88 888 888';
+      dispatchFakeEvent(input, 'input');
+      fixture.detectChanges();
+      flush();
+
+      expect(phoneInputInstance.parsedValue()).toEqual({
+        callingCode: '+359',
+        countryCode: 'BG',
+        number: '88888888',
+      });
+    }));
+
+    it('is null without a line number', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      flush();
+      (testInstance as ReactiveFormsPhoneInput).formControl.reset();
+      fixture.detectChanges();
+      flush();
+
+      expect(phoneInputInstance.parsedValue()).toBeNull();
+    }));
+
+    it('is null for an unparseable value', fakeAsync(() => {
+      createTestComponent(ReactiveFormsPhoneInput);
+      (testInstance as ReactiveFormsPhoneInput).formControl.setValue('234');
+      fixture.detectChanges();
+      flush();
+
+      expect(phoneInputInstance.parsedValue()).toBeNull();
+    }));
+  });
+
   it('should reset country code after reset of form', fakeAsync(() => {
     createTestComponent(ReactiveFormsPhoneInput);
     flush();
@@ -831,6 +1108,21 @@ class ConfigurablePhoneInput extends PhoneInputTest {
 })
 class ReactiveFormsPhoneInput extends PhoneInputTest {
   formControl = new FormControl('+49123456', Validators.required);
+}
+
+@Component({
+  selector: 'test-update-on-blur-phone-input',
+  template: `<nx-formfield label="Telephone number">
+    <nx-phone-input [formControl]="formControl" [inputFormatter]="formatter"></nx-phone-input>
+  </nx-formfield>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxPhoneInputModule, ReactiveFormsModule],
+})
+class UpdateOnBlurPhoneInput extends PhoneInputTest {
+  formControl = new FormControl('+49123456', { updateOn: 'blur' });
+  formatter(value: string) {
+    return value.slice(0, 6);
+  }
 }
 
 @Component({

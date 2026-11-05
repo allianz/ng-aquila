@@ -1,0 +1,8 @@
+<nx-formfield>
+  <nx-formfield-label>Phone number</nx-formfield-label>
+  <nx-phone-input [(ngModel)]="value"></nx-phone-input>
+  <nx-message context="info" nxFormfieldNote>
+    Model value: {{ value | json }}<br />
+    Parsed value: {{ phoneInput().parsedValue() | json }}
+  </nx-message>
+</nx-formfield>

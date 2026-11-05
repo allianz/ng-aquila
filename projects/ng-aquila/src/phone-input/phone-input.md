@@ -30,6 +30,14 @@ When using `ngModel` or reactive forms the component expects the control value t
 
 <!-- example(phone-input-forms) -->
 
+## Parsed value
+
+The model value is one string. If you need its parts separately, for example to store the calling code and the line number in different fields, read the `parsedValue` signal. It returns the current value of the component as an object like `{ callingCode: '+49', countryCode: 'DE', number: '89123456' }`. It is `null` while there is no line number or the value cannot be parsed. With `updateOn: 'blur'` or `'submit'` the form control gets the value later than `parsedValue` changes.
+
+Users can also type or paste a number that starts with `+` and a calling code into the line number field, e.g. `+49 89 123456`. The model value already uses that calling code while typing. On blur the component selects the matching country in the dropdown and keeps only the line number in the field. If several countries share the calling code, like `+1`, the selected country stays when it matches. Without a selected country, the country from the `countryCode` input stays when it matches. Otherwise the first country with that code is selected.
+
+<!-- example(phone-input-parsed-value) -->
+
 ## Disabled
 
 By adding the `disabled` attribute you can set the phone input into disabled mode. Alternatively you can disable the form control via the reactive forms form control.

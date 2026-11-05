@@ -12,6 +12,7 @@ import { PhoneInputFocusOutExampleComponent } from './phone-input-focus-out/phon
 import { PhoneInputFormattingExampleComponent } from './phone-input-formatting/phone-input-formatting-example';
 import { PhoneInputFormsExampleComponent } from './phone-input-forms/phone-input-forms-example';
 import { PhoneInputI18nExampleComponent } from './phone-input-i18n/phone-input-i18n-example';
+import { PhoneInputParsedValueExampleComponent } from './phone-input-parsed-value/phone-input-parsed-value-example';
 import { PhoneInputRetailExampleComponent } from './phone-input-retail/phone-input-retail-example';
 import { PhoneInputValidationExampleComponent } from './phone-input-validation/phone-input-validation-example';
 
@@ -25,6 +26,7 @@ const EXAMPLES = [
   PhoneInputFormsExampleComponent,
   PhoneInputCountryCodeExampleComponent,
   PhoneInputFocusOutExampleComponent,
+  PhoneInputParsedValueExampleComponent,
 ];
 
 @NgModule({
@@ -51,6 +53,7 @@ export class PhoneInputExamplesModule {
       'phone-input-forms': PhoneInputFormsExampleComponent,
       'phone-input-country-code': PhoneInputCountryCodeExampleComponent,
       'phone-input-focus-out': PhoneInputFocusOutExampleComponent,
+      'phone-input-parsed-value': PhoneInputParsedValueExampleComponent,
     };
   }
 }

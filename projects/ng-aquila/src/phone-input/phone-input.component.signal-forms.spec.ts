@@ -110,6 +110,24 @@ describe('NxPhoneInputComponent signal forms', () => {
       expect(host.phoneForm.value().value()).toBe('+49123');
       expect(input.value).toBe('123');
     }));
+
+    it('writes a typed number with calling code back after blur', fakeAsync(() => {
+      const fixture = TestBed.createComponent(BasicSignalFormHost);
+      const host = fixture.componentInstance;
+      fixture.detectChanges();
+      flush();
+
+      const input = getInput(fixture);
+      input.value = '+359 088 888 888';
+      dispatchFakeEvent(input, 'input');
+      dispatchFakeEvent(input, 'blur');
+      fixture.detectChanges();
+      flush();
+
+      expect(host.phoneForm.value().value()).toBe('+35988888888');
+      expect(input.value).toBe('88888888');
+      expect(fixture.nativeElement.querySelector('nx-phone-input').innerText).toContain('+359');
+    }));
   });
 
   describe('touched on blur', () => {

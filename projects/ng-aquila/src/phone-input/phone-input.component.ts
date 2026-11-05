@@ -14,6 +14,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
   DoCheck,
   ElementRef,
   EventEmitter,
@@ -23,6 +24,7 @@ import {
   Optional,
   Output,
   Self,
+  signal,
   ViewChild,
   viewChild,
 } from '@angular/core';
@@ -80,6 +82,16 @@ const nxPhoneInputParseValidator: ValidatorFn = (control) => {
   return parseNumber(value) ? null : { nxPhoneInputParse: { text: value } };
 };
 
+/** The phone input's current value split into its parts. */
+export interface NxPhoneInputParsedValue {
+  /** The calling code with a leading '+', e.g. '+49'. */
+  callingCode: string;
+  /** The country code, e.g. 'DE'. */
+  countryCode: string;
+  /** The line number without calling code and formatting characters, e.g. '89123456'. */
+  number: string;
+}
+
 @Component({
   selector: 'nx-phone-input',
   templateUrl: './phone-input.component.html',
@@ -116,14 +128,14 @@ export class NxPhoneInputComponent
 
   value: any;
 
-  _inputValue = '';
+  protected readonly _inputValue = signal('');
 
   _describedBy = '';
 
   readonly stateChanges = new Subject<void>();
 
   get empty() {
-    return !!this._inputValue;
+    return !this._inputValue();
   }
 
   focused = false;
@@ -183,16 +195,16 @@ export class NxPhoneInputComponent
    * If there is already a number in the input field changing this property has no effect.
    */
   @Input() set countryCode(value: string) {
-    if (this._inputValue) {
+    if (this._inputValue()) {
       return;
     }
     this._initialCountryCode = value;
-    this._countryCode = value;
+    this._countryCode.set(value);
   }
   get countryCode() {
-    return this._countryCode;
+    return this._countryCode();
   }
-  private _countryCode = 'DE';
+  private readonly _countryCode = signal('DE');
 
   /** Set the text at the top of the dropdown and aria-label of area code field. The default value is 'Area Code'. */
   @Input() set areaCodeLabel(value: string) {
@@ -242,7 +254,26 @@ export class NxPhoneInputComponent
   readonly controlType?: string = 'nx-phone-input';
 
   _sortedCountries!: NxDropdownOption[];
-  _countryCallingCode = getDialCodeByCountryCode(this.countryCode);
+  private readonly _countryCallingCode = computed(
+    () => getDialCodeByCountryCode(this._countryCode()) ?? '',
+  );
+
+  /**
+   * The current value split into calling code, country code and line number, e.g.
+   * `{ callingCode: '+49', countryCode: 'DE', number: '89123456' }`.
+   * It is `null` while there is no line number or the value cannot be parsed.
+   */
+  readonly parsedValue = computed<NxPhoneInputParsedValue | null>(() => {
+    const parsed = parseNumber(this.getModelValue());
+    if (!parsed?.number) {
+      return null;
+    }
+    return {
+      callingCode: '+' + parsed.countryCallingCode,
+      countryCode: this._resolveCountryCode(parsed.countryCallingCode),
+      number: parsed.number,
+    };
+  });
 
   private readonly _destroyed = new Subject<void>();
 
@@ -254,10 +285,7 @@ export class NxPhoneInputComponent
    */
   @Input() set inputFormatter(formatFn) {
     this._inputFormatter = formatFn;
-    this._inputValue = this._inputFormatter(
-      this._trimInputValue(this._inputValue),
-      this._countryCallingCode,
-    );
+    this._formatInputValue();
   }
   get inputFormatter() {
     return this._inputFormatter;
@@ -345,18 +373,16 @@ export class NxPhoneInputComponent
           '+' + getDialCodeByCountryCode(this.countryCode || this._initialCountryCode),
       );
       if (parsed) {
-        this._countryCallingCode = parsed.countryCallingCode;
-        this._inputValue = this.inputFormatter(parsed.number, parsed.countryCallingCode);
-        this._countryCode = getCountryCodeforCallingCode(parsed.countryCallingCode);
+        this._countryCode.set(this._resolveCountryCode(parsed.countryCallingCode));
+        this._inputValue.set(this.inputFormatter(parsed.number, parsed.countryCallingCode));
       } else {
-        this._inputValue = noWhitespaceNumber;
-        this._countryCode = '';
-        this._countryCallingCode = '';
+        this._inputValue.set(noWhitespaceNumber);
+        this._countryCode.set('');
       }
     } else {
       this.value = '';
-      this._inputValue = '';
-      this._countryCode = this._initialCountryCode;
+      this._inputValue.set('');
+      this._countryCode.set(this._initialCountryCode);
     }
     this._cdr.markForCheck();
   }
@@ -388,11 +414,20 @@ export class NxPhoneInputComponent
   }
 
   _onInputBlur() {
+    const modelValue = this.getModelValue();
+    const parsed = parseNumber(this._trimInputValue(this._inputValue()));
+    if (parsed) {
+      this._countryCode.set(this._resolveCountryCode(parsed.countryCallingCode));
+      this._inputValue.set(parsed.number);
+    }
+
+    this._formatInputValue();
+
+    if (this.getModelValue() !== modelValue) {
+      this.updateModel();
+    }
+    // Last, so that `updateOn: 'blur'` controls commit the updated model value.
     this._onTouched();
-    this._inputValue = this.inputFormatter(
-      this._trimInputValue(this._inputValue),
-      this._countryCallingCode,
-    );
 
     if (!this.disabled) {
       this.focused = false;
@@ -412,20 +447,18 @@ export class NxPhoneInputComponent
   }
 
   _onCountryChange(countryCode: string) {
-    this._countryCode = countryCode;
-    this._countryCallingCode = getDialCodeByCountryCode(this.countryCode);
-    this._inputValue = this.inputFormatter(
-      this._trimInputValue(this._inputValue),
-      this._countryCallingCode,
-    );
+    this._countryCode.set(countryCode);
+    this._formatInputValue();
 
     this._onInput();
   }
 
   updateModel() {
-    const hasNumber =
-      typeof this._inputValue === 'string' &&
-      this._removeLeadingZero(this._trimInputValue(this._inputValue)).length > 0;
+    const trimmed = this._trimInputValue(this._inputValue());
+    const parsed = parseNumber(trimmed);
+    const hasNumber = parsed
+      ? this._removeLeadingZero(parsed.number, parsed.countryCallingCode).length > 0
+      : this._removeLeadingZero(trimmed).length > 0;
 
     if (hasNumber) {
       this._onChange(this.getModelValue());
@@ -434,24 +467,51 @@ export class NxPhoneInputComponent
     }
   }
 
+  private _formatInputValue() {
+    this._inputValue.set(
+      this.inputFormatter(this._trimInputValue(this._inputValue()), this._countryCallingCode()),
+    );
+  }
+
+  /**
+   * Keeps the selected country, or the initial one while none is selected, when it shares
+   * the calling code, e.g. CA and US share +1.
+   */
+  private _resolveCountryCode(callingCode: string) {
+    const countryCode = this._countryCode() || this._initialCountryCode;
+    return getDialCodeByCountryCode(countryCode) === callingCode
+      ? countryCode
+      : getCountryCodeforCallingCode(callingCode);
+  }
+
   private _trimInputValue(value: string) {
     return (value ?? '').replace(/[\s()\-/]/g, '');
   }
 
-  private _removeLeadingZero(value: string) {
+  private _removeLeadingZero(value: string, callingCode = this._countryCallingCode()) {
     // It is valid for an Italian landline phone numbers to start with 0.
     const italyCountryCallingCode = '39';
-    const isItaly = this._countryCallingCode === italyCountryCallingCode;
+    const isItaly = callingCode === italyCountryCallingCode;
     // Without a calling code there is nothing to read the 0 as a trunk prefix against,
     // and the value has to round-trip so the input, the model and the
     // `nxPhoneInputParse` error text keep showing the same number.
-    const hasNoCountry = !this._countryCallingCode;
+    const hasNoCountry = !callingCode;
     return isItaly || hasNoCountry ? value : value.replace(/^0/, '');
   }
 
   /** Returns the combined string of selected calling code + input number */
   getModelValue() {
-    const number = this._removeLeadingZero(this._trimInputValue(this._inputValue));
+    const trimmed = this._trimInputValue(this._inputValue());
+    // A typed number brings its own calling code, which blur then moves into the dropdown.
+    if (trimmed.startsWith('+')) {
+      const parsed = parseNumber(trimmed);
+      return parsed
+        ? '+' +
+            parsed.countryCallingCode +
+            this._removeLeadingZero(parsed.number, parsed.countryCallingCode)
+        : trimmed;
+    }
+    const number = this._removeLeadingZero(trimmed);
     // No country selected yet (e.g. un-parsable number): there is no calling code to
     // prefix, so only the special characters are removed and the number stays unparseable.
     if (!this.countryCode) {
