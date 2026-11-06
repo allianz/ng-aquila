@@ -1,0 +1,1 @@
+import{pt as N}from"./chunk-CQWNvxX1.js";var e=new N(`ALLIANZ_ONE`);export{e as t};

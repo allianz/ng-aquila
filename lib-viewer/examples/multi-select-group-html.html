@@ -1,0 +1,18 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">floatLabel</span>=<span class="hljs-string">&quot;always&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Countries&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
+    <span class="hljs-attr">grouped</span>
+    <span class="hljs-attr">filter</span>
+    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Choose countries&quot;</span>
+    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;model&quot;</span>
+    [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;continents&quot;</span>
+    <span class="hljs-attr">selectGroupLabel</span>=<span class="hljs-string">&quot;name&quot;</span>
+    <span class="hljs-attr">selectGroupOptions</span>=<span class="hljs-string">&quot;countries&quot;</span>
+    <span class="hljs-attr">selectValue</span>=<span class="hljs-string">&quot;code&quot;</span>
+    <span class="hljs-attr">selectLabel</span>=<span class="hljs-string">&quot;name&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+  Selected countries:
+  <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>[{{ model.join(&#x27;, &#x27;) }}]<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

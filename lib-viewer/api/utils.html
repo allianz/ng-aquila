@@ -1,22 +1,16 @@
-       
-
 <div class="docs-api"><h3 id="services" class="docs-header-link docs-api-h3">
         <span header-link="services"></span>
         Services
     </h3>
-     
-
-<h4 id="IdGenerationService" class="docs-header-link docs-api-h4 docs-api-class-name">
+     <h4 id="IdGenerationService" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="IdGenerationService"></span>
     <code>IdGenerationService</code></h4><p class="docs-api-class-description"><p>Service to generate unique IDs using the Angular APP_ID as a namespace.
 If the APP_ID is the default 'ng', a random string is used instead.
 This helps prevent ID collisions in micro frontend scenarios.</p>
-</p> 
+</p>
 
 <h5 class="docs-api-method-header">Methods</h5>
- 
-
-<div class="docs-api-method-card">
+ <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">nextId(
@@ -45,18 +39,14 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
         <p class="docs-api-method-returns-description"> <p>A unique ID string</p>
  </p>
     </div></div>
-   
-   
-
-<h4 id="TextMeasurementService" class="docs-header-link docs-api-h4 docs-api-class-name">
+ 
+  <h4 id="TextMeasurementService" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="TextMeasurementService"></span>
     <code>TextMeasurementService</code></h4><p class="docs-api-class-description"><p>Service for measuring text width using canvas context.</p>
-</p> 
+</p>
 
 <h5 class="docs-api-method-header">Methods</h5>
- 
-
-<div class="docs-api-method-card">
+ <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">computeInputWidth(
@@ -127,10 +117,8 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
         <p class="docs-api-method-returns-description"> <p>A CSS width string in pixels</p>
  </p>
     </div></div>
-   
-   
-
-<h4 id="NxViewportService" class="docs-header-link docs-api-h4 docs-api-class-name">
+ 
+  <h4 id="NxViewportService" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxViewportService"></span>
     <code>NxViewportService</code></h4><p class="docs-api-class-description"><p>Service subscribing to window resize events and providing breakpoint matching functions.</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
@@ -140,8 +128,6 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
         <th class="docs-api-properties-th">Description</th>
     </tr>
      
-
-
 <tr class="docs-api-properties-row" id="NxViewportService.viewportChange$">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
@@ -156,13 +142,11 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
     <td class="docs-api-property-description">
         </td>
 </tr>
-  
-</table> 
+ 
+</table>
 
 <h5 class="docs-api-method-header">Methods</h5>
- 
-
-<div class="docs-api-method-card">
+ <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">between(
@@ -209,9 +193,7 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
         </div>
         
     </div></div>
-   
-
-<div class="docs-api-method-card">
+  <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">max(
@@ -246,9 +228,7 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
         </div>
         
     </div></div>
-   
-
-<div class="docs-api-method-card">
+  <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">min(
@@ -283,33 +263,29 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
         </div>
         
     </div></div>
-   
-  <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+ 
+ <h3 id="additional_classes" class="docs-header-link docs-api-h3">
         <span header-link="additional_classes"></span>
         Additional classes
     </h3>
-     
-
-<h4 id="ErrorStateMatcher" class="docs-header-link docs-api-h4 docs-api-class-name">
+     <h4 id="ErrorStateMatcher" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="ErrorStateMatcher"></span>
     <code>ErrorStateMatcher</code></h4><p class="docs-api-class-description"><p>Provider that defines when form controls have an error.</p>
-</p> 
+</p>
 
 <h5 class="docs-api-method-header">Methods</h5>
- 
-
-<div class="docs-api-method-card">
+ <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">isErrorState(
                             control:  
                                 <span class="docs-api-property__type">
-                                    NgControl | AbstractControl&lt;any, any, any&gt;
+                                    AbstractControl&lt;any, any, any&gt; | NgControl
                                 </span>,
                         
                             form:  
                                 <span class="docs-api-property__type">
-                                    NgForm | FormGroupDirective
+                                    FormGroupDirective | NgForm
                                 </span>
                         ): <span class="docs-api-method-returns-type">boolean</span></span>
         </code>
@@ -320,22 +296,20 @@ This helps prevent ID collisions in micro frontend scenarios.</p>
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 control:
-                <span class="docs-api-method-parameter-type">NgControl | AbstractControl&lt;any, any, any&gt;</span>
+                <span class="docs-api-method-parameter-type">AbstractControl&lt;any, any, any&gt; | NgControl</span>
             </code>
         </div>
         
         <div class="docs-api-parameter-container">
             <code class="docs-api-parameter-name">
                 form:
-                <span class="docs-api-method-parameter-type">NgForm | FormGroupDirective</span>
+                <span class="docs-api-method-parameter-type">FormGroupDirective | NgForm</span>
             </code>
         </div>
         
     </div></div>
-   
-   
-
-<h4 id="FakeScrollStrategy" class="docs-header-link docs-api-h4 docs-api-class-name">
+ 
+  <h4 id="FakeScrollStrategy" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="FakeScrollStrategy"></span>
     <code>FakeScrollStrategy</code></h4><p class="docs-api-class-description"><p>Helper ScrollStrategy to be used in tests to test overriding the default scroll strategy.</p>
 <p>Example usage:
@@ -359,8 +333,6 @@ expect((testInstance as ScrollStrategyOverrideComponent).scrollStrategy).toBe(fa
         <th class="docs-api-properties-th">Description</th>
     </tr>
      
-
-
 <tr class="docs-api-properties-row" id="FakeScrollStrategy.isEnabled">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
@@ -375,9 +347,7 @@ expect((testInstance as ScrollStrategyOverrideComponent).scrollStrategy).toBe(fa
     <td class="docs-api-property-description">
         </td>
 </tr>
-   
-
-
+  
 <tr class="docs-api-properties-row" id="FakeScrollStrategy.overlayRef">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
@@ -392,13 +362,11 @@ expect((testInstance as ScrollStrategyOverrideComponent).scrollStrategy).toBe(fa
     <td class="docs-api-property-description">
         </td>
 </tr>
-  
-</table> 
+ 
+</table>
 
 <h5 class="docs-api-method-header">Methods</h5>
- 
-
-<div class="docs-api-method-card">
+ <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">attach(
@@ -420,32 +388,26 @@ expect((testInstance as ScrollStrategyOverrideComponent).scrollStrategy).toBe(fa
         </div>
         
     </div></div>
-   
-
-<div class="docs-api-method-card">
+  <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">detach()</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
-   
-
-<div class="docs-api-method-card">
+  <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">disable()</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
-   
-
-<div class="docs-api-method-card">
+  <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
             <span class="docs-api-method-name">enable()</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>
-   
-  </div>
+ 
+ </div>

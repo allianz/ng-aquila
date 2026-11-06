@@ -2788,6 +2788,13 @@ body,
   --small-stage-expert-mobile-header-padding: 8px 0;
   --small-stage-multiple-images-bottom-display: unset;
   --rating-icon-color: var(--interactive-primary);
+  --rating-error-color: var(--danger);
+  --rating-error-hover-color: var(--danger-hover);
+  --rating-error-active-color: var(--danger-active);
+  --rating-inverse-error-color: var(--danger);
+  --rating-inverse-error-hover-color: var(--danger-hover);
+  --rating-inverse-error-active-color: var(--danger-active);
+  --rating-error-margin-top: 8px;
   --rating-icon-size-s: 24px;
   --rating-icon-size-m: 32px;
   --rating-icon-size-l: 40px;

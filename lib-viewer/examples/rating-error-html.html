@@ -1,0 +1,21 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;testForm&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-rating</span>
+    <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;rating&quot;</span>
+    <span class="hljs-attr">ariaRatingGroupLabel</span>=<span class="hljs-string">&quot;How do you like our service?&quot;</span>
+    <span class="hljs-attr">startLabel</span>=<span class="hljs-string">&quot;poor&quot;</span>
+    <span class="hljs-attr">endLabel</span>=<span class="hljs-string">&quot;great&quot;</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>Please rate us<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-rating</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+      <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-s&quot;</span>
+      <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary&quot;</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+      (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;testForm.reset({ rating: 0 })&quot;</span>
+    &gt;</span>
+      Reset value
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

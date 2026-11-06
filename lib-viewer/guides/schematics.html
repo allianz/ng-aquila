@@ -1,0 +1,121 @@
+<h1 class="docs-markdown--h1" id="schematics" tabindex="-1">Schematics</h1>
+<p class="docs-markdown--p">Besides <code>ng add</code> and the migrations that run during <code>ng update</code>, ng-aquila and ngx-brand-kit ship <code>ng generate</code> schematics. They are <strong>opt-in</strong>: they never run on their own, so you decide when your project changes.</p>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Schematic</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="./guides/schematics#apply-a1-theme"><code>@allianz/ngx-brand-kit:apply-a1-theme</code></a></td>
+<td>Switches your app from the NDBX theme to the A1 theme.</td>
+</tr>
+<tr>
+<td><a href="./guides/schematics#migrate-button-api"><code>@allianz/ng-aquila:migrate-button-api</code></a></td>
+<td>Moves the modifiers in the <code>nxButton</code> string into their own inputs.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="docs-markdown--h2" id="before-you-run-a-schematic" tabindex="-1">Before you run a schematic</h2>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">Run it from your workspace root, where <code>angular.json</code> lives.</li>
+<li class="docs-markdown--li">Commit your work first, so you can review the changes with <code>git diff</code>.</li>
+<li class="docs-markdown--li">Add <code>--dry-run</code> to see which files would change without writing them.</li>
+<li class="docs-markdown--li">If your workspace has several projects, pass <code>--project=&lt;name&gt;</code>.</li>
+</ul>
+<h2 class="docs-markdown--h2" id="apply-a1-theme" tabindex="-1">apply-a1-theme</h2>
+<p class="docs-markdown--p">Applies the <a href="https://ngx-ndbx.frameworks.allianz.io/guides/a1">A1 Design System</a> theme to your app. It is part of <code>@allianz/ngx-brand-kit</code>, so your app needs that package installed.</p>
+<pre><code class="language-sh">npx ng g @allianz/ngx-brand-kit:apply-a1-theme
+</code></pre>
+<p class="docs-markdown--p">It does the two steps from <a href="https://ngx-ndbx.frameworks.allianz.io/guides/a1#manually-applying-a1-theme">Manually applying A1 Theme</a> for you:</p>
+<ol>
+<li class="docs-markdown--li">In the <code>styles</code> of your build target in <code>angular.json</code>, it replaces the NDBX theme CSS with the A1 theme CSS for the density you pick.</li>
+<li class="docs-markdown--li">It adds <code>provideA1Theme()</code> to your <code>main.ts</code>, or <code>NxA1ThemeModule</code> to your <code>AppModule</code> in a module-based app.</li>
+</ol>
+<p class="docs-markdown--p">If your app uses the NDBX Expert theme, it also sets <code>gridType: 'functional'</code>.</p>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Option</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--type</code></td>
+<td><code>spacious</code>, <code>dense</code>, <code>compact</code></td>
+<td>Density of the theme. You are asked if you leave it out. <code>spacious</code> is for end-customer apps, <code>dense</code> for end-customer portals, <code>compact</code> for expert and internal apps.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="docs-markdown--h2" id="migrate-button-api" tabindex="-1">migrate-button-api</h2>
+<p class="docs-markdown--p"><code>nxButton</code> and <code>nxIconButton</code> now take size, danger, negative and block as their own inputs. The old space-separated string still works, but the separate inputs are the documented API and can each be bound on their own. This schematic rewrites the string for you.</p>
+<pre><code class="language-sh">npx ng g @allianz/ng-aquila:migrate-button-api
+</code></pre>
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- before --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small danger negative block&quot;</span>&gt;</span>Delete<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;</span>Delete<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- after --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">critical</span> <span class="hljs-attr">inverse</span> <span class="hljs-attr">block</span>&gt;</span>Delete<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span> <span class="hljs-attr">critical</span>&gt;</span>Delete<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>In <code>nxButton=&quot;…&quot;</code> / <code>nxIconButton=&quot;…&quot;</code></th>
+<th>Becomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>primary</code> <code>secondary</code> <code>tertiary</code> <code>cta</code> <code>emphasis</code> <code>attention</code></td>
+<td>stays: <code>nxButton=&quot;secondary&quot;</code></td>
+</tr>
+<tr>
+<td><code>small</code> <code>small-medium</code> <code>medium</code> <code>large</code></td>
+<td><code>size=&quot;…&quot;</code></td>
+</tr>
+<tr>
+<td><code>danger</code></td>
+<td><code>critical</code></td>
+</tr>
+<tr>
+<td><code>negative</code></td>
+<td><code>inverse</code></td>
+</tr>
+<tr>
+<td><code>block</code></td>
+<td><code>block</code></td>
+</tr>
+</tbody>
+</table>
+<p class="docs-markdown--p">On <code>nxPlainButton</code>, <code>danger</code> has no effect any more, so it becomes <code>critical</code>. If a modifier is already set through its input, for example <code>[size]=&quot;s&quot;</code>, the schematic drops the modifier from the string and keeps the input.</p>
+<p class="docs-markdown--p">It changes <code>.html</code> files and inline <code>template</code>s of your components.</p>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Option</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--path</code></td>
+<td>folder, from workspace root</td>
+<td>Folder to migrate. Defaults to the source root of the project. Fails if the folder doesn't exist.</td>
+</tr>
+</tbody>
+</table>
+<h3 class="docs-markdown--h3" id="what-you-migrate-by-hand" tabindex="-1">What you migrate by hand</h3>
+<p class="docs-markdown--p">The schematic logs a warning with <code>file:line:col</code> for every button it can't migrate. Go through the list once it finishes:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>Bound value</strong>, such as <code>[nxButton]=&quot;variant&quot;</code> or <code>nxButton=&quot;primary {{ size }}&quot;</code>: split it into the separate inputs, for example <code>nxButton=&quot;secondary&quot; [inverse]=&quot;isInverse&quot;</code>.</li>
+<li class="docs-markdown--li"><strong>Unknown modifier</strong>, such as <code>nxButton=&quot;secondary smal&quot;</code>: check for a typo. The button ignores unknown modifiers.</li>
+<li class="docs-markdown--li"><strong>Template that is not a plain string</strong>, such as a template literal with <code>${…}</code> or a constant: change its buttons by hand.</li>
+</ul>
+<p class="docs-markdown--p">A template that is imported from another file is not detected at all, so search those files for <code>nxButton</code> yourself.</p>

@@ -1,0 +1,50 @@
+<h1 class="docs-markdown--h1" id="trusted-types" tabindex="-1">Trusted Types</h1>
+<p class="docs-markdown--p"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API">Trusted Types</a> is a browser security feature that blocks assigning plain strings to DOM sinks like <code>innerHTML</code>, which helps prevent DOM-based cross-site scripting (XSS). You turn it on with a Content Security Policy (CSP).</p>
+<p class="docs-markdown--p">Aquila supports Trusted Types. Wherever the library has to write HTML to the DOM, it does so through its own Trusted Types policy named <code>ng-aquila</code>.</p>
+<h2 class="docs-markdown--h2" id="configuring-your-csp" tabindex="-1">Configuring your CSP</h2>
+<p class="docs-markdown--p">Allow the <code>ng-aquila</code> policy next to the policies of Angular and the Angular CDK:</p>
+<pre><code>Content-Security-Policy: trusted-types angular angular#components ng-aquila; require-trusted-types-for 'script';
+</code></pre>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Policy</th>
+<th>Registered by</th>
+<th>Needed for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>angular</code></td>
+<td><code>@angular/core</code></td>
+<td>Angular itself, e.g. sanitized <code>[innerHTML]</code> bindings</td>
+</tr>
+<tr>
+<td><code>angular#components</code></td>
+<td><code>@angular/cdk</code></td>
+<td>CDK and Angular Material features that write HTML</td>
+</tr>
+<tr>
+<td><code>ng-aquila</code></td>
+<td>Aquila</td>
+<td>Parsing SVG icons registered in <code>NxIconRegistry</code> (built-in and custom icons)</td>
+</tr>
+</tbody>
+</table>
+<h3 class="docs-markdown--h3" id="angular%23unsafe-bypass" tabindex="-1"><code>angular#unsafe-bypass</code></h3>
+<p class="docs-markdown--p">Angular needs the <code>angular#unsafe-bypass</code> policy whenever a value created with a <code>DomSanitizer</code> bypass method such as <code>bypassSecurityTrustHtml</code> or <code>bypassSecurityTrustResourceUrl</code> is used in a template binding. This applies to:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong><code>nx-video</code></strong>, which builds the YouTube embed URL with <code>bypassSecurityTrustResourceUrl</code> and binds it to the iframe <code>src</code>. See the <a href="./documentation/video/overview">video documentation</a>.</li>
+<li class="docs-markdown--li">Your own bindings that use a bypass method.</li>
+</ul>
+<p class="docs-markdown--p">Without the policy, the browser logs <code>Creating a TrustedTypePolicy named 'angular#unsafe-bypass' violates the following Content Security policy directive</code> when the video starts. The video still plays, because an iframe <code>src</code> is not a Trusted Types sink. To avoid the error, add the policy to your CSP:</p>
+<pre><code>Content-Security-Policy: trusted-types angular angular#components angular#unsafe-bypass ng-aquila; require-trusted-types-for 'script';
+</code></pre>
+<p class="docs-markdown--p">Only add it if you need it: it allows every bypassed value in your application, not just the ones from Aquila. See the <a href="https://angular.dev/best-practices/security#enforcing-trusted-types">Angular security guide</a> for details.</p>
+<p class="docs-markdown--p">If <code>ng-aquila</code> is missing from the CSP, the browser refuses to create the policy and logs an error, and icons fail to render with <code>This document requires 'TrustedHTML' assignment</code>.</p>
+<h2 class="docs-markdown--h2" id="what-the-policy-trusts" tabindex="-1">What the policy trusts</h2>
+<p class="docs-markdown--p">The <code>ng-aquila</code> policy only wraps markup the library has already decided to trust:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>Icon literals</strong> (<code>addSvgIconLiteral</code>) must be marked as trusted with <code>bypassSecurityTrustHtml</code> and are parsed as-is, so only register markup you control.</li>
+<li class="docs-markdown--li"><strong>Icons loaded by URL</strong> (<code>addSvgIcon</code>) are parsed as-is, the same way the Angular Material icon registry handles them. The URL itself has to be marked as a trusted resource URL, so only register URLs that serve SVGs you control.</li>
+</ul>

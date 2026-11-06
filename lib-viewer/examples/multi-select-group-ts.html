@@ -1,0 +1,55 @@
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxMultiSelectComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/dropdown&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NxFormfieldComponent</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Component</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">FormsModule</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Country</span> {
+  <span class="hljs-attr">code</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Continent</span> {
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">countries</span>: <span class="hljs-title class_">Country</span>[];
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title</span> Multi select with groups example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;multi-select-group-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./multi-select-group-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./multi-select-group-example.css&#x27;</span>],
+  <span class="hljs-attr">imports</span>: [<span class="hljs-title class_">NxFormfieldComponent</span>, <span class="hljs-title class_">NxMultiSelectComponent</span>, <span class="hljs-title class_">FormsModule</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MultiSelectGroupExampleComponent</span> {
+  <span class="hljs-attr">model</span>: <span class="hljs-built_in">string</span>[] = [<span class="hljs-string">&#x27;FR&#x27;</span>];
+
+  <span class="hljs-attr">continents</span>: <span class="hljs-title class_">Continent</span>[] = [
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Europe&#x27;</span>,
+      <span class="hljs-attr">countries</span>: [
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;DE&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Germany&#x27;</span> },
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;FR&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;France&#x27;</span> },
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;IT&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Italy&#x27;</span> },
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;ES&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Spain&#x27;</span> },
+      ],
+    },
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Asia&#x27;</span>,
+      <span class="hljs-attr">countries</span>: [
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;JP&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Japan&#x27;</span> },
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;IN&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;India&#x27;</span> },
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;TH&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Thailand&#x27;</span> },
+      ],
+    },
+    {
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;South America&#x27;</span>,
+      <span class="hljs-attr">countries</span>: [
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;BR&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Brazil&#x27;</span> },
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AR&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Argentina&#x27;</span> },
+        { <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;CL&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Chile&#x27;</span> },
+      ],
+    },
+  ];
+}

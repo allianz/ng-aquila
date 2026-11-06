@@ -115,6 +115,7 @@ Available color options are <code>yellow | orange | red | purple | aqua | blue |
 <p class="docs-markdown--p">Custom icons can be registered via the <code>NxIconRegistry</code> injectable service. With the <code>NxIconRegistry</code> you can associate icon names with SVG, URL and HTML strings and define a CSS font class. When you are registering an icon by URL please make sure to import the <code>HttpClientModule</code> from <code>@angular/common/http</code>.</p>
 <p class="docs-markdown--p">💡 When registering multiple font sets,
 you can use <code>font</code> attribute to specify font set (<code>&lt;nx-icon font=&quot;FONT_SET_NAME&quot; name=&quot;ICON_NAME&quot;&gt;</code>)</p>
+<p class="docs-markdown--p">💡 If your application enforces Trusted Types through a Content Security Policy, SVG icons are parsed through the <code>ng-aquila</code> Trusted Types policy, which you need to allow in your CSP. See the <a href="./guides/trusted-types">Trusted Types guide</a> for the required configuration.</p>
 <div class="docs-private">
 💡 Allianz iconfont set name is **ndbx-icons**.
 </div>

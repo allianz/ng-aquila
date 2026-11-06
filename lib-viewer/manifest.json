@@ -22,8 +22,8 @@
             {
               "name": "size",
               "values": [
-                "l",
-                "m"
+                "m",
+                "l"
               ]
             },
             {
@@ -99,8 +99,8 @@
             {
               "name": "size",
               "values": [
-                "l",
-                "m"
+                "m",
+                "l"
               ]
             },
             {
@@ -305,9 +305,9 @@
                 "orange",
                 "red",
                 "purple",
+                "teal",
                 "aqua",
                 "blue",
-                "teal",
                 "green",
                 "gray"
               ]
@@ -322,8 +322,6 @@
             {
               "name": "size",
               "values": [
-                "l",
-                "m",
                 "xsmall",
                 "small",
                 "small-medium",
@@ -331,6 +329,8 @@
                 "large",
                 "xlarge",
                 "s",
+                "m",
+                "l",
                 "xl"
               ]
             }
@@ -384,9 +384,9 @@
                 "orange",
                 "red",
                 "purple",
+                "teal",
                 "aqua",
                 "blue",
-                "teal",
                 "green",
                 "gray",
                 "brand"
@@ -607,9 +607,9 @@
                 "orange",
                 "red",
                 "purple",
+                "teal",
                 "aqua",
                 "blue",
-                "teal",
                 "green",
                 "gray"
               ]
@@ -636,12 +636,12 @@
             {
               "name": "size",
               "values": [
-                "m",
                 "small",
                 "small-medium",
                 "medium",
                 "large",
-                "s"
+                "s",
+                "m"
               ]
             }
           ],
@@ -674,9 +674,9 @@
                 "orange",
                 "red",
                 "purple",
+                "teal",
                 "aqua",
                 "blue",
-                "teal",
                 "green",
                 "gray"
               ]
@@ -703,12 +703,12 @@
             {
               "name": "size",
               "values": [
-                "m",
                 "small",
                 "small-medium",
                 "medium",
                 "large",
-                "s"
+                "s",
+                "m"
               ]
             }
           ],
@@ -743,10 +743,10 @@
             {
               "name": "size",
               "values": [
-                "m",
                 "small",
                 "medium",
-                "s"
+                "s",
+                "m"
               ]
             },
             {
@@ -1602,8 +1602,8 @@
             {
               "name": "scrollStrategy",
               "values": [
-                "reposition",
-                "close"
+                "close",
+                "reposition"
               ]
             }
           ],
@@ -1797,11 +1797,11 @@
             {
               "name": "size",
               "values": [
-                "m",
                 "small",
                 "medium",
                 "large",
-                "s"
+                "s",
+                "m"
               ]
             }
           ],
@@ -2197,8 +2197,8 @@
             {
               "name": "panelMinWidth",
               "values": [
-                "none",
-                "trigger"
+                "trigger",
+                "none"
               ]
             }
           ],
@@ -2245,6 +2245,7 @@
             "filter",
             "filterFn",
             "filterPlaceholder",
+            "grouped",
             "options",
             "panelGrow",
             "panelMaxWidth",
@@ -2252,6 +2253,8 @@
             "readonly",
             "required",
             "selectDisabled",
+            "selectGroupLabel",
+            "selectGroupOptions",
             "selectLabel",
             "selectValue"
           ],
@@ -2325,7 +2328,7 @@
         },
         {
           "name": "NxMultiSelectFilterFn",
-          "title": ""
+          "title": "`groupLabel` is only passed when the multi select is `grouped`."
         }
       ]
     },
@@ -2395,8 +2398,8 @@
             {
               "name": "size",
               "values": [
-                "m",
-                "s"
+                "s",
+                "m"
               ]
             }
           ],
@@ -2823,8 +2826,8 @@
             {
               "name": "size",
               "values": [
-                "m",
-                "s"
+                "s",
+                "m"
               ]
             },
             {
@@ -3114,9 +3117,9 @@
             {
               "name": "size",
               "values": [
-                "l",
-                "m",
                 "s",
+                "m",
+                "l",
                 "xl",
                 "2xl",
                 "3xl",
@@ -3195,9 +3198,9 @@
                 "orange",
                 "red",
                 "purple",
+                "teal",
                 "aqua",
                 "blue",
-                "teal",
                 "green",
                 "gray"
               ]
@@ -3205,20 +3208,20 @@
             {
               "name": "size",
               "values": [
-                "l",
-                "m",
-                "auto",
                 "s",
+                "m",
+                "l",
                 "xl",
+                "auto",
                 "2xl"
               ]
             },
             {
               "name": "type",
               "values": [
-                "auto",
                 "primary",
                 "secondary",
+                "auto",
                 "accent-attention",
                 "accent-subtle"
               ]
@@ -3242,11 +3245,11 @@
             {
               "name": "size",
               "values": [
-                "l",
-                "m",
-                "auto",
                 "s",
+                "m",
+                "l",
                 "xl",
+                "auto",
                 "2xl"
               ]
             },
@@ -3393,8 +3396,8 @@
             {
               "name": "size",
               "values": [
-                "m",
                 "s",
+                "m",
                 "800",
                 "1000",
                 "1200",
@@ -3699,8 +3702,8 @@
             {
               "name": "size",
               "values": [
-                "m",
-                "s"
+                "s",
+                "m"
               ]
             },
             {
@@ -4616,7 +4619,12 @@
           "title": ""
         }
       ],
-      "interface": [],
+      "interface": [
+        {
+          "name": "NxPhoneInputParsedValue",
+          "title": "The phone input's current value split into its parts."
+        }
+      ],
       "typeAlias": []
     },
     {
@@ -4712,8 +4720,8 @@
             {
               "name": "nxPopoverScrollStrategy",
               "values": [
-                "reposition",
-                "close"
+                "close",
+                "reposition"
               ]
             },
             {
@@ -4816,9 +4824,9 @@
             {
               "name": "size",
               "values": [
-                "l",
-                "m",
                 "s",
+                "m",
+                "l",
                 "xl",
                 "2xl",
                 "3xl",
@@ -5415,8 +5423,8 @@
             {
               "name": "size",
               "values": [
-                "m",
-                "s"
+                "s",
+                "m"
               ]
             }
           ],
@@ -5451,7 +5459,7 @@
     {
       "id": "rating",
       "ngModule": "NxRatingModule",
-      "hasSlots": false,
+      "hasSlots": true,
       "directive": [],
       "component": [
         {
@@ -5480,9 +5488,9 @@
             {
               "name": "size",
               "values": [
-                "l",
+                "s",
                 "m",
-                "s"
+                "l"
               ]
             }
           ],
@@ -5548,6 +5556,10 @@
         }
       ],
       "interface": [
+        {
+          "name": "Schema",
+          "title": ""
+        },
         {
           "name": "Schema",
           "title": ""
@@ -5868,8 +5880,8 @@
             {
               "name": "size",
               "values": [
-                "m",
-                "s"
+                "s",
+                "m"
               ]
             }
           ],
@@ -6086,12 +6098,12 @@
             {
               "name": "size",
               "values": [
-                "l",
-                "m",
                 "small",
                 "medium",
                 "large",
-                "s"
+                "s",
+                "m",
+                "l"
               ]
             }
           ],
@@ -6136,9 +6148,9 @@
                 "orange",
                 "red",
                 "purple",
+                "teal",
                 "aqua",
                 "blue",
-                "teal",
                 "green",
                 "gray"
               ]
@@ -6742,9 +6754,9 @@
                 "orange",
                 "red",
                 "purple",
+                "teal",
                 "aqua",
                 "blue",
-                "teal",
                 "green",
                 "gray"
               ]
@@ -6775,9 +6787,9 @@
             {
               "name": "size",
               "values": [
-                "l",
+                "s",
                 "m",
-                "s"
+                "l"
               ]
             },
             {
@@ -6814,9 +6826,9 @@
             {
               "name": "size",
               "values": [
-                "l",
+                "s",
                 "m",
-                "s"
+                "l"
               ]
             },
             {
@@ -7485,47 +7497,6 @@
   ],
   "components": [
     {
-      "id": "autocomplete",
-      "title": "Autocomplete",
-      "examples": [
-        {
-          "name": "autocomplete-basic",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-filtering",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-default-rendering",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-data-binding",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-panel-grow",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-outline",
-          "config": {}
-        },
-        {
-          "name": "autocomplete-scroll-strategy-provider",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/autocomplete.html",
-      "overviewFile": "lib-viewer/overview/autocomplete.html",
-      "slotsFile": "lib-viewer/slots/autocomplete.html",
-      "description": "Input with typeahead suggestions",
-      "a1Full": true,
-      "group": "Forms & Inputs"
-    },
-    {
       "id": "accordion",
       "title": "Accordion",
       "examples": [
@@ -7588,6 +7559,32 @@
       "group": "Layout"
     },
     {
+      "id": "action",
+      "title": "Action",
+      "examples": [
+        {
+          "name": "action",
+          "config": {}
+        },
+        {
+          "name": "action-with-router",
+          "config": {}
+        },
+        {
+          "name": "action-indicator",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/action.html",
+      "overviewFile": "lib-viewer/overview/action.html",
+      "slotsFile": "lib-viewer/slots/action.html",
+      "description": "Clickable action items for navigation or menus",
+      "alias": "menu",
+      "a1Full": true,
+      "group": "Actions"
+    },
+    {
       "id": "accessibility",
       "title": "Accessibility",
       "examples": [
@@ -7604,34 +7601,54 @@
       "a1Full": true
     },
     {
-      "id": "base",
-      "title": "Base Components",
+      "id": "avatar",
+      "title": "Avatar",
       "examples": [
         {
-          "name": "error",
+          "name": "avatar",
           "config": {}
         },
         {
-          "name": "error-inverse",
+          "name": "avatar-button",
           "config": {}
         },
         {
-          "name": "label",
+          "name": "avatar-disabled",
           "config": {}
         },
         {
-          "name": "label-info-icon",
+          "name": "avatar-size",
+          "config": {}
+        },
+        {
+          "name": "avatar-size-a1",
+          "config": {}
+        },
+        {
+          "name": "avatar-colors",
+          "config": {}
+        },
+        {
+          "name": "avatar-accent-colors",
+          "config": {}
+        },
+        {
+          "name": "avatar-inverse",
+          "config": {}
+        },
+        {
+          "name": "avatar-indicator",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/base.html",
-      "overviewFile": "lib-viewer/overview/base.html",
-      "slotsFile": "lib-viewer/slots/base.html",
-      "description": "Base label and error message components",
-      "alias": "label, error",
+      "apiFile": "lib-viewer/api/avatar.html",
+      "overviewFile": "lib-viewer/overview/avatar.html",
+      "slotsFile": "lib-viewer/slots/avatar.html",
+      "description": "User avatar display",
+      "a1Densities": true,
       "a1Full": true,
-      "group": "Layout"
+      "group": "Data Display"
     },
     {
       "id": "ag-grid",
@@ -7657,6 +7674,85 @@
         "Utilities",
         "Data Display"
       ]
+    },
+    {
+      "id": "breadcrumb",
+      "title": "Breadcrumb",
+      "examples": [
+        {
+          "name": "breadcrumb",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-link",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-type",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-context-menu",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-responsive",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-negative",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/breadcrumb.html",
+      "overviewFile": "lib-viewer/overview/breadcrumb.html",
+      "slotsFile": "lib-viewer/slots/breadcrumb.html",
+      "description": "Navigation breadcrumb trail",
+      "alias": "location",
+      "a1Full": true,
+      "group": "Navigation"
+    },
+    {
+      "id": "autocomplete",
+      "title": "Autocomplete",
+      "examples": [
+        {
+          "name": "autocomplete-basic",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-filtering",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-default-rendering",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-data-binding",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-panel-grow",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-outline",
+          "config": {}
+        },
+        {
+          "name": "autocomplete-scroll-strategy-provider",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/autocomplete.html",
+      "overviewFile": "lib-viewer/overview/autocomplete.html",
+      "slotsFile": "lib-viewer/slots/autocomplete.html",
+      "description": "Input with typeahead suggestions",
+      "a1Full": true,
+      "group": "Forms & Inputs"
     },
     {
       "id": "badge",
@@ -7713,118 +7809,111 @@
       "group": "Data Display"
     },
     {
-      "id": "action",
-      "title": "Action",
+      "id": "card",
+      "title": "Cards",
       "examples": [
         {
-          "name": "action",
+          "name": "card",
           "config": {}
         },
         {
-          "name": "action-with-router",
+          "name": "elevated-card",
           "config": {}
         },
         {
-          "name": "action-indicator",
+          "name": "highlight-card",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-basic",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-radio",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-product",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-states",
+          "config": {}
+        },
+        {
+          "name": "elevated-selectable-card",
+          "config": {}
+        },
+        {
+          "name": "highlight-selectable-card",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-reactive",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-dynamic",
+          "config": {}
+        },
+        {
+          "name": "clickable-card",
+          "config": {}
+        },
+        {
+          "name": "clickable-card-disabled",
+          "config": {}
+        },
+        {
+          "name": "clickable-card-raised-content",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-expert",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/action.html",
-      "overviewFile": "lib-viewer/overview/action.html",
-      "slotsFile": "lib-viewer/slots/action.html",
-      "description": "Clickable action items for navigation or menus",
-      "alias": "menu",
+      "apiFile": "lib-viewer/api/card.html",
+      "overviewFile": "lib-viewer/overview/card.html",
+      "slotsFile": "lib-viewer/slots/card.html",
+      "description": "Content card containers",
+      "alias": "card, selectable card",
       "a1Full": true,
-      "group": "Actions"
+      "group": [
+        "Data Display",
+        "Forms & Inputs"
+      ]
     },
     {
-      "id": "avatar",
-      "title": "Avatar",
+      "id": "base",
+      "title": "Base Components",
       "examples": [
         {
-          "name": "avatar",
+          "name": "error",
           "config": {}
         },
         {
-          "name": "avatar-button",
+          "name": "error-inverse",
           "config": {}
         },
         {
-          "name": "avatar-disabled",
+          "name": "label",
           "config": {}
         },
         {
-          "name": "avatar-size",
-          "config": {}
-        },
-        {
-          "name": "avatar-size-a1",
-          "config": {}
-        },
-        {
-          "name": "avatar-colors",
-          "config": {}
-        },
-        {
-          "name": "avatar-accent-colors",
-          "config": {}
-        },
-        {
-          "name": "avatar-inverse",
-          "config": {}
-        },
-        {
-          "name": "avatar-indicator",
+          "name": "label-info-icon",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/avatar.html",
-      "overviewFile": "lib-viewer/overview/avatar.html",
-      "slotsFile": "lib-viewer/slots/avatar.html",
-      "description": "User avatar display",
-      "a1Densities": true,
+      "apiFile": "lib-viewer/api/base.html",
+      "overviewFile": "lib-viewer/overview/base.html",
+      "slotsFile": "lib-viewer/slots/base.html",
+      "description": "Base label and error message components",
+      "alias": "label, error",
       "a1Full": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "breadcrumb",
-      "title": "Breadcrumb",
-      "examples": [
-        {
-          "name": "breadcrumb",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-link",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-type",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-context-menu",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-responsive",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-negative",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/breadcrumb.html",
-      "overviewFile": "lib-viewer/overview/breadcrumb.html",
-      "slotsFile": "lib-viewer/slots/breadcrumb.html",
-      "description": "Navigation breadcrumb trail",
-      "alias": "location",
-      "a1Full": true,
-      "group": "Navigation"
+      "group": "Layout"
     },
     {
       "id": "button",
@@ -7918,83 +8007,6 @@
       "group": "Actions"
     },
     {
-      "id": "card",
-      "title": "Cards",
-      "examples": [
-        {
-          "name": "card",
-          "config": {}
-        },
-        {
-          "name": "elevated-card",
-          "config": {}
-        },
-        {
-          "name": "highlight-card",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-basic",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-radio",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-product",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-states",
-          "config": {}
-        },
-        {
-          "name": "elevated-selectable-card",
-          "config": {}
-        },
-        {
-          "name": "highlight-selectable-card",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-reactive",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-dynamic",
-          "config": {}
-        },
-        {
-          "name": "clickable-card",
-          "config": {}
-        },
-        {
-          "name": "clickable-card-disabled",
-          "config": {}
-        },
-        {
-          "name": "clickable-card-raised-content",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-expert",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/card.html",
-      "overviewFile": "lib-viewer/overview/card.html",
-      "slotsFile": "lib-viewer/slots/card.html",
-      "description": "Content card containers",
-      "alias": "card, selectable card",
-      "a1Full": true,
-      "group": [
-        "Data Display",
-        "Forms & Inputs"
-      ]
-    },
-    {
       "id": "circle-toggle",
       "title": "Circle Toggle",
       "examples": [
@@ -8066,15 +8078,77 @@
       "group": "Forms & Inputs"
     },
     {
-      "id": "config",
-      "title": "Expert",
-      "examples": [],
-      "category": "general",
-      "apiFile": "lib-viewer/api/config.html",
-      "overviewFile": "lib-viewer/overview/config.html",
-      "slotsFile": "lib-viewer/slots/config.html",
-      "noApi": true,
-      "a1": false
+      "id": "checkbox",
+      "title": "Checkbox",
+      "examples": [
+        {
+          "name": "checkbox-states",
+          "config": {}
+        },
+        {
+          "name": "checkbox-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "checkbox-label-size",
+          "config": {}
+        },
+        {
+          "name": "checkbox-negative",
+          "config": {}
+        },
+        {
+          "name": "checkbox-template-driven",
+          "config": {}
+        },
+        {
+          "name": "checkbox-reactive",
+          "config": {}
+        },
+        {
+          "name": "checkbox-outputs",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-basic",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-reactive",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-layout",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-label-size",
+          "config": {}
+        },
+        {
+          "name": "checkbox-readonly",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-validation",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-dynamic",
+          "config": {}
+        },
+        {
+          "name": "checkbox-group-inheritance",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/checkbox.html",
+      "overviewFile": "lib-viewer/overview/checkbox.html",
+      "slotsFile": "lib-viewer/slots/checkbox.html",
+      "description": "Checkbox form control",
+      "a1Full": true,
+      "group": "Forms & Inputs"
     },
     {
       "id": "code-input",
@@ -8153,6 +8227,109 @@
       "group": "Data Display"
     },
     {
+      "id": "comparison-table",
+      "title": "Comparison Table",
+      "examples": [
+        {
+          "name": "comparison-table",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-overflow",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-breakpoint-playground",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-non-sticky-header",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-color-scheme",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-feature",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-rows",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-expandable-area",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-columns",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-error",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-dynamic",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-form-elements",
+          "config": {}
+        },
+        {
+          "name": "breakdown-table",
+          "config": {}
+        },
+        {
+          "name": "recommendation-table",
+          "config": {}
+        },
+        {
+          "name": "breakdown-table-expert",
+          "config": {}
+        },
+        {
+          "name": "recommendation-table-expert",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-header-legacy",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-static",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/comparison-table.html",
+      "overviewFile": "lib-viewer/overview/comparison-table.html",
+      "slotsFile": "lib-viewer/slots/comparison-table.html",
+      "description": "Product/feature comparison tables",
+      "a1Densities": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "divider",
+      "title": "Divider",
+      "examples": [
+        {
+          "name": "divider",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/divider.html",
+      "overviewFile": "lib-viewer/overview/divider.html",
+      "slotsFile": "lib-viewer/slots/divider.html",
+      "description": "Horizontal divider line",
+      "alias": "separator",
+      "a1Full": true,
+      "group": "Layout"
+    },
+    {
       "id": "data-display",
       "title": "Data Display",
       "examples": [
@@ -8195,6 +8372,17 @@
       "group": "Data Display"
     },
     {
+      "id": "config",
+      "title": "Expert",
+      "examples": [],
+      "category": "general",
+      "apiFile": "lib-viewer/api/config.html",
+      "overviewFile": "lib-viewer/overview/config.html",
+      "slotsFile": "lib-viewer/slots/config.html",
+      "noApi": true,
+      "a1": false
+    },
+    {
       "id": "eyebrow",
       "title": "Eyebrow",
       "examples": [
@@ -8218,6 +8406,88 @@
       "description": "Small text above headlines for additional context",
       "a1Full": true,
       "group": "Data Display"
+    },
+    {
+      "id": "context-menu",
+      "title": "Context Menu",
+      "examples": [
+        {
+          "name": "context-menu-basic",
+          "config": {}
+        },
+        {
+          "name": "context-menu-programmatic",
+          "config": {}
+        },
+        {
+          "name": "context-menu-icons",
+          "config": {}
+        },
+        {
+          "name": "context-menu-indicator",
+          "config": {}
+        },
+        {
+          "name": "context-menu-indicator-a1",
+          "config": {}
+        },
+        {
+          "name": "context-menu-group",
+          "config": {}
+        },
+        {
+          "name": "context-menu-nested",
+          "config": {}
+        },
+        {
+          "name": "context-menu-disabled",
+          "config": {}
+        },
+        {
+          "name": "context-menu-lazy",
+          "config": {}
+        },
+        {
+          "name": "context-menu-data",
+          "config": {}
+        },
+        {
+          "name": "context-menu-scroll-strategy",
+          "config": {}
+        },
+        {
+          "name": "context-menu-cursor-mode",
+          "config": {}
+        },
+        {
+          "name": "context-menu-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "context-menu-single-selectable",
+          "config": {}
+        },
+        {
+          "name": "context-menu-multi-selectable",
+          "config": {}
+        },
+        {
+          "name": "context-menu-selection",
+          "config": {}
+        },
+        {
+          "name": "context-menu-select-multiple",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/context-menu.html",
+      "overviewFile": "lib-viewer/overview/context-menu.html",
+      "slotsFile": "lib-viewer/slots/context-menu.html",
+      "description": "Right-click or trigger-based context menus",
+      "alias": "menu",
+      "a1Full": true,
+      "group": "Overlays"
     },
     {
       "id": "datefield",
@@ -8339,88 +8609,6 @@
       "group": "Forms & Inputs"
     },
     {
-      "id": "context-menu",
-      "title": "Context Menu",
-      "examples": [
-        {
-          "name": "context-menu-basic",
-          "config": {}
-        },
-        {
-          "name": "context-menu-programmatic",
-          "config": {}
-        },
-        {
-          "name": "context-menu-icons",
-          "config": {}
-        },
-        {
-          "name": "context-menu-indicator",
-          "config": {}
-        },
-        {
-          "name": "context-menu-indicator-a1",
-          "config": {}
-        },
-        {
-          "name": "context-menu-group",
-          "config": {}
-        },
-        {
-          "name": "context-menu-nested",
-          "config": {}
-        },
-        {
-          "name": "context-menu-disabled",
-          "config": {}
-        },
-        {
-          "name": "context-menu-lazy",
-          "config": {}
-        },
-        {
-          "name": "context-menu-data",
-          "config": {}
-        },
-        {
-          "name": "context-menu-scroll-strategy",
-          "config": {}
-        },
-        {
-          "name": "context-menu-cursor-mode",
-          "config": {}
-        },
-        {
-          "name": "context-menu-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "context-menu-single-selectable",
-          "config": {}
-        },
-        {
-          "name": "context-menu-multi-selectable",
-          "config": {}
-        },
-        {
-          "name": "context-menu-selection",
-          "config": {}
-        },
-        {
-          "name": "context-menu-select-multiple",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/context-menu.html",
-      "overviewFile": "lib-viewer/overview/context-menu.html",
-      "slotsFile": "lib-viewer/slots/context-menu.html",
-      "description": "Right-click or trigger-based context menus",
-      "alias": "menu",
-      "a1Full": true,
-      "group": "Overlays"
-    },
-    {
       "id": "dynamic-table",
       "title": "Dynamic Tables",
       "examples": [
@@ -8456,33 +8644,118 @@
       "group": "Data Display"
     },
     {
-      "id": "footer",
-      "title": "Footer",
+      "id": "dropdown",
+      "title": "Dropdown",
       "examples": [
         {
-          "name": "footer-basic",
+          "name": "dropdown-standard",
           "config": {}
         },
         {
-          "name": "footer-default-copyright",
+          "name": "dropdown-simple-binding",
           "config": {}
         },
         {
-          "name": "footer-divider",
+          "name": "dropdown-template-driven",
           "config": {}
         },
         {
-          "name": "footer-max-width",
+          "name": "dropdown-reactive",
+          "config": {}
+        },
+        {
+          "name": "dropdown-virtual-viewport",
+          "config": {}
+        },
+        {
+          "name": "dropdown-item-template",
+          "config": {}
+        },
+        {
+          "name": "dropdown-lazy",
+          "config": {}
+        },
+        {
+          "name": "dropdown-placeholder",
+          "config": {}
+        },
+        {
+          "name": "dropdown-panelgrow",
+          "config": {}
+        },
+        {
+          "name": "dropdown-rendering-items",
+          "config": {}
+        },
+        {
+          "name": "dropdown-custom-label",
+          "config": {}
+        },
+        {
+          "name": "dropdown-negative",
+          "config": {}
+        },
+        {
+          "name": "dropdown-filter",
+          "config": {}
+        },
+        {
+          "name": "dropdown-filter-custom",
+          "config": {}
+        },
+        {
+          "name": "dropdown-group",
+          "config": {}
+        },
+        {
+          "name": "dropdown-multi-select",
+          "config": {}
+        },
+        {
+          "name": "multi-select-group",
+          "config": {}
+        },
+        {
+          "name": "dropdown-disabled-items",
+          "config": {}
+        },
+        {
+          "name": "dropdown-outline",
+          "config": {}
+        },
+        {
+          "name": "multi-select",
+          "config": {}
+        },
+        {
+          "name": "dropdown-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "dropdown-default-options",
+          "config": {}
+        },
+        {
+          "name": "multi-select-intl",
+          "config": {}
+        },
+        {
+          "name": "dropdown-focus-out",
+          "config": {}
+        },
+        {
+          "name": "dropdown-select-on-focus",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/footer.html",
-      "overviewFile": "lib-viewer/overview/footer.html",
-      "slotsFile": "lib-viewer/slots/footer.html",
-      "description": "Page footer component",
-      "a1Full": true,
-      "group": "Navigation"
+      "apiFile": "lib-viewer/api/dropdown.html",
+      "overviewFile": "lib-viewer/overview/dropdown.html",
+      "slotsFile": "lib-viewer/slots/dropdown.html",
+      "description": "Select dropdown for single or multi-selection",
+      "alias": "select, multi select, combobox, picker",
+      "a1Densities": true,
+      "group": "Forms & Inputs"
     },
     {
       "id": "error-handling",
@@ -8513,95 +8786,33 @@
       "a1Full": true
     },
     {
-      "id": "divider",
-      "title": "Divider",
+      "id": "footer",
+      "title": "Footer",
       "examples": [
         {
-          "name": "divider",
+          "name": "footer-basic",
+          "config": {}
+        },
+        {
+          "name": "footer-default-copyright",
+          "config": {}
+        },
+        {
+          "name": "footer-divider",
+          "config": {}
+        },
+        {
+          "name": "footer-max-width",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/divider.html",
-      "overviewFile": "lib-viewer/overview/divider.html",
-      "slotsFile": "lib-viewer/slots/divider.html",
-      "description": "Horizontal divider line",
-      "alias": "separator",
+      "apiFile": "lib-viewer/api/footer.html",
+      "overviewFile": "lib-viewer/overview/footer.html",
+      "slotsFile": "lib-viewer/slots/footer.html",
+      "description": "Page footer component",
       "a1Full": true,
-      "group": "Layout"
-    },
-    {
-      "id": "checkbox",
-      "title": "Checkbox",
-      "examples": [
-        {
-          "name": "checkbox-states",
-          "config": {}
-        },
-        {
-          "name": "checkbox-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "checkbox-label-size",
-          "config": {}
-        },
-        {
-          "name": "checkbox-negative",
-          "config": {}
-        },
-        {
-          "name": "checkbox-template-driven",
-          "config": {}
-        },
-        {
-          "name": "checkbox-reactive",
-          "config": {}
-        },
-        {
-          "name": "checkbox-outputs",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-basic",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-reactive",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-layout",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-label-size",
-          "config": {}
-        },
-        {
-          "name": "checkbox-readonly",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-validation",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-dynamic",
-          "config": {}
-        },
-        {
-          "name": "checkbox-group-inheritance",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/checkbox.html",
-      "overviewFile": "lib-viewer/overview/checkbox.html",
-      "slotsFile": "lib-viewer/slots/checkbox.html",
-      "description": "Checkbox form control",
-      "a1Full": true,
-      "group": "Forms & Inputs"
+      "group": "Navigation"
     },
     {
       "id": "file-uploader",
@@ -8748,48 +8959,6 @@
       "alias": "file upload, attachment",
       "a1Full": true,
       "group": "Forms & Inputs"
-    },
-    {
-      "id": "header",
-      "title": "Header",
-      "examples": [
-        {
-          "name": "header",
-          "config": {}
-        },
-        {
-          "name": "header-two-rows",
-          "config": {}
-        },
-        {
-          "name": "header-icons",
-          "config": {}
-        },
-        {
-          "name": "header-cobranding",
-          "config": {}
-        },
-        {
-          "name": "header-icons-responsive",
-          "config": {}
-        },
-        {
-          "name": "header-two-rows-responsive",
-          "config": {}
-        },
-        {
-          "name": "header-with-side-navigation",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/header.html",
-      "overviewFile": "lib-viewer/overview/header.html",
-      "slotsFile": "lib-viewer/slots/header.html",
-      "description": "Application header/navigation bar",
-      "alias": "toolbar, navbar, app bar, navigation bar",
-      "a1Full": true,
-      "group": "Navigation"
     },
     {
       "id": "grid",
@@ -8985,6 +9154,106 @@
       "group": "Forms & Inputs"
     },
     {
+      "id": "header",
+      "title": "Header",
+      "examples": [
+        {
+          "name": "header",
+          "config": {}
+        },
+        {
+          "name": "header-two-rows",
+          "config": {}
+        },
+        {
+          "name": "header-icons",
+          "config": {}
+        },
+        {
+          "name": "header-cobranding",
+          "config": {}
+        },
+        {
+          "name": "header-icons-responsive",
+          "config": {}
+        },
+        {
+          "name": "header-two-rows-responsive",
+          "config": {}
+        },
+        {
+          "name": "header-with-side-navigation",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/header.html",
+      "overviewFile": "lib-viewer/overview/header.html",
+      "slotsFile": "lib-viewer/slots/header.html",
+      "description": "Application header/navigation bar",
+      "alias": "toolbar, navbar, app bar, navigation bar",
+      "a1Full": true,
+      "group": "Navigation"
+    },
+    {
+      "id": "indicator",
+      "title": "Indicator",
+      "examples": [
+        {
+          "name": "indicator",
+          "config": {}
+        },
+        {
+          "name": "indicator-sizes",
+          "config": {}
+        },
+        {
+          "name": "indicator-types",
+          "config": {}
+        },
+        {
+          "name": "indicator-positions",
+          "config": {}
+        },
+        {
+          "name": "action-indicator",
+          "config": {}
+        },
+        {
+          "name": "context-menu-indicator",
+          "config": {}
+        },
+        {
+          "name": "context-menu-indicator-a1",
+          "config": {}
+        },
+        {
+          "name": "button-icon-indicator",
+          "config": {}
+        },
+        {
+          "name": "avatar-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-with-indicator",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/indicator.html",
+      "overviewFile": "lib-viewer/overview/indicator.html",
+      "slotsFile": "lib-viewer/slots/indicator.html",
+      "description": "Status indicator dots",
+      "alias": "badge",
+      "a1Full": true,
+      "group": "Data Display"
+    },
+    {
       "id": "image",
       "title": "Images",
       "examples": [
@@ -9074,205 +9343,88 @@
       "group": "Data Display"
     },
     {
-      "id": "indicator",
-      "title": "Indicator",
+      "id": "link",
+      "title": "Link",
       "examples": [
         {
-          "name": "indicator",
+          "name": "link-default",
           "config": {}
         },
         {
-          "name": "indicator-sizes",
+          "name": "link-size",
           "config": {}
         },
         {
-          "name": "indicator-types",
+          "name": "link-type",
           "config": {}
         },
         {
-          "name": "indicator-positions",
+          "name": "link-prominence",
           "config": {}
         },
         {
-          "name": "action-indicator",
+          "name": "link-icons",
           "config": {}
         },
         {
-          "name": "context-menu-indicator",
+          "name": "link-black",
           "config": {}
         },
         {
-          "name": "context-menu-indicator-a1",
+          "name": "link-negative",
           "config": {}
         },
         {
-          "name": "button-icon-indicator",
+          "name": "link-multiple",
           "config": {}
         },
         {
-          "name": "avatar-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-with-indicator",
+          "name": "link-within-text",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/indicator.html",
-      "overviewFile": "lib-viewer/overview/indicator.html",
-      "slotsFile": "lib-viewer/slots/indicator.html",
-      "description": "Status indicator dots",
-      "alias": "badge",
+      "apiFile": "lib-viewer/api/link.html",
+      "overviewFile": "lib-viewer/overview/link.html",
+      "slotsFile": "lib-viewer/slots/link.html",
+      "description": "Styled link component",
       "a1Full": true,
-      "group": "Data Display"
+      "group": [
+        "Navigation",
+        "Actions"
+      ]
     },
     {
-      "id": "dropdown",
-      "title": "Dropdown",
+      "id": "layout",
+      "title": "Layout",
       "examples": [
         {
-          "name": "dropdown-standard",
+          "name": "margin-sizes",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "margin-usage",
           "config": {}
         },
         {
-          "name": "dropdown-simple-binding",
-          "config": {}
+          "name": "hidden-classes",
+          "config": {
+            "hideHeader": true
+          }
         },
         {
-          "name": "dropdown-template-driven",
-          "config": {}
-        },
-        {
-          "name": "dropdown-reactive",
-          "config": {}
-        },
-        {
-          "name": "dropdown-virtual-viewport",
-          "config": {}
-        },
-        {
-          "name": "dropdown-item-template",
-          "config": {}
-        },
-        {
-          "name": "dropdown-lazy",
-          "config": {}
-        },
-        {
-          "name": "dropdown-placeholder",
-          "config": {}
-        },
-        {
-          "name": "dropdown-panelgrow",
-          "config": {}
-        },
-        {
-          "name": "dropdown-rendering-items",
-          "config": {}
-        },
-        {
-          "name": "dropdown-custom-label",
-          "config": {}
-        },
-        {
-          "name": "dropdown-negative",
-          "config": {}
-        },
-        {
-          "name": "dropdown-filter",
-          "config": {}
-        },
-        {
-          "name": "dropdown-filter-custom",
-          "config": {}
-        },
-        {
-          "name": "dropdown-group",
-          "config": {}
-        },
-        {
-          "name": "dropdown-multi-select",
-          "config": {}
-        },
-        {
-          "name": "dropdown-disabled-items",
-          "config": {}
-        },
-        {
-          "name": "dropdown-outline",
-          "config": {}
-        },
-        {
-          "name": "multi-select",
-          "config": {}
-        },
-        {
-          "name": "dropdown-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "dropdown-default-options",
-          "config": {}
-        },
-        {
-          "name": "multi-select-intl",
-          "config": {}
-        },
-        {
-          "name": "dropdown-focus-out",
-          "config": {}
-        },
-        {
-          "name": "dropdown-select-on-focus",
+          "name": "viewport-change",
           "config": {}
         }
       ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/dropdown.html",
-      "overviewFile": "lib-viewer/overview/dropdown.html",
-      "slotsFile": "lib-viewer/slots/dropdown.html",
-      "description": "Select dropdown for single or multi-selection",
-      "alias": "select, multi select, combobox, picker",
-      "a1Densities": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "info-icon",
-      "title": "Info Icon",
-      "examples": [
-        {
-          "name": "info-icon",
-          "config": {}
-        },
-        {
-          "name": "info-icon-inline",
-          "config": {}
-        },
-        {
-          "name": "info-icon-inverse",
-          "config": {}
-        },
-        {
-          "name": "info-icon-modal",
-          "config": {}
-        },
-        {
-          "name": "info-icon-closeable",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/info-icon.html",
-      "overviewFile": "lib-viewer/overview/info-icon.html",
-      "slotsFile": "lib-viewer/slots/info-icon.html",
-      "description": "Icon button that reveals contextual information via a popover",
-      "a1Full": true,
-      "group": "Data Display"
+      "category": "general",
+      "apiFile": "lib-viewer/api/layout.html",
+      "overviewFile": "lib-viewer/overview/layout.html",
+      "slotsFile": "lib-viewer/slots/layout.html",
+      "noApi": true,
+      "a1Full": true
     },
     {
       "id": "input",
@@ -9324,109 +9476,99 @@
       "group": "Forms & Inputs"
     },
     {
-      "id": "layout",
-      "title": "Layout",
+      "id": "licence-plate",
+      "title": "Licence Plate",
       "examples": [
         {
-          "name": "margin-sizes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "margin-usage",
+          "name": "licence-plate-standard",
           "config": {}
         },
         {
-          "name": "hidden-classes",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "viewport-change",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/layout.html",
-      "overviewFile": "lib-viewer/overview/layout.html",
-      "slotsFile": "lib-viewer/slots/layout.html",
-      "noApi": true,
-      "a1Full": true
-    },
-    {
-      "id": "icon",
-      "title": "Icons",
-      "examples": [
-        {
-          "name": "icon-sizes",
+          "name": "licence-plate-seasonal",
           "config": {}
         },
         {
-          "name": "icon-type",
+          "name": "licence-plate-special",
           "config": {}
         },
         {
-          "name": "icon-emphasis",
+          "name": "licence-plate-euro",
           "config": {}
         },
         {
-          "name": "icon-contained",
+          "name": "licence-plate-other",
           "config": {}
         },
         {
-          "name": "icon-contained-sizes",
+          "name": "licence-plate-ngmodel",
           "config": {}
         },
         {
-          "name": "icon-attention-colors",
+          "name": "licence-plate-reactive",
           "config": {}
         },
         {
-          "name": "icon-filled",
+          "name": "licence-plate-disabled",
           "config": {}
         },
         {
-          "name": "icon-outline",
+          "name": "licence-plate-expert",
           "config": {}
         },
         {
-          "name": "status-icon",
-          "config": {}
-        },
-        {
-          "name": "status-icon-sizes",
-          "config": {}
-        },
-        {
-          "name": "status-icon-contained",
-          "config": {}
-        },
-        {
-          "name": "status-icon-inverse",
-          "config": {}
-        },
-        {
-          "name": "icon-essential-icons",
-          "config": {}
-        },
-        {
-          "name": "icon-essential-override",
-          "config": {}
-        },
-        {
-          "name": "icon-registry",
+          "name": "licence-plate-expert-states",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/icon.html",
-      "overviewFile": "lib-viewer/overview/icon.html",
-      "slotsFile": "lib-viewer/slots/icon.html",
-      "description": "SVG icon system",
+      "apiFile": "lib-viewer/api/licence-plate.html",
+      "overviewFile": "lib-viewer/overview/licence-plate.html",
+      "slotsFile": "lib-viewer/slots/licence-plate.html",
+      "description": "Vehicle licence plate input",
       "a1Full": true,
-      "group": "Data Display"
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "mask",
+      "title": "Input Mask",
+      "examples": [
+        {
+          "name": "mask",
+          "config": {}
+        },
+        {
+          "name": "iban-mask",
+          "config": {}
+        },
+        {
+          "name": "mask-separators",
+          "config": {}
+        },
+        {
+          "name": "mask-drop-characters",
+          "config": {}
+        },
+        {
+          "name": "mask-validation",
+          "config": {}
+        },
+        {
+          "name": "mask-case",
+          "config": {}
+        },
+        {
+          "name": "mask-deactivate",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/mask.html",
+      "overviewFile": "lib-viewer/overview/mask.html",
+      "slotsFile": "lib-viewer/slots/mask.html",
+      "description": "Input mask for formatted text entry",
+      "alias": "input mask, masked input",
+      "a1Full": true,
+      "group": "Forms & Inputs"
     },
     {
       "id": "list",
@@ -9486,272 +9628,6 @@
       "group": "Data Display"
     },
     {
-      "id": "link",
-      "title": "Link",
-      "examples": [
-        {
-          "name": "link-default",
-          "config": {}
-        },
-        {
-          "name": "link-size",
-          "config": {}
-        },
-        {
-          "name": "link-type",
-          "config": {}
-        },
-        {
-          "name": "link-prominence",
-          "config": {}
-        },
-        {
-          "name": "link-icons",
-          "config": {}
-        },
-        {
-          "name": "link-black",
-          "config": {}
-        },
-        {
-          "name": "link-negative",
-          "config": {}
-        },
-        {
-          "name": "link-multiple",
-          "config": {}
-        },
-        {
-          "name": "link-within-text",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/link.html",
-      "overviewFile": "lib-viewer/overview/link.html",
-      "slotsFile": "lib-viewer/slots/link.html",
-      "description": "Styled link component",
-      "a1Full": true,
-      "group": [
-        "Navigation",
-        "Actions"
-      ]
-    },
-    {
-      "id": "licence-plate",
-      "title": "Licence Plate",
-      "examples": [
-        {
-          "name": "licence-plate-standard",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-seasonal",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-special",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-euro",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-other",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-ngmodel",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-reactive",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-disabled",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-expert",
-          "config": {}
-        },
-        {
-          "name": "licence-plate-expert-states",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/licence-plate.html",
-      "overviewFile": "lib-viewer/overview/licence-plate.html",
-      "slotsFile": "lib-viewer/slots/licence-plate.html",
-      "description": "Vehicle licence plate input",
-      "a1Full": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "menu",
-      "title": "Menu",
-      "examples": [
-        {
-          "name": "menu-button",
-          "config": {}
-        },
-        {
-          "name": "menu-link",
-          "config": {}
-        },
-        {
-          "name": "menu-item",
-          "config": {}
-        },
-        {
-          "name": "menu-item-with-icons",
-          "config": {}
-        },
-        {
-          "name": "menu",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/menu.html",
-      "overviewFile": "lib-viewer/overview/menu.html",
-      "slotsFile": "lib-viewer/slots/menu.html",
-      "description": "Navigation menu component",
-      "a1Full": true,
-      "a1Densities": true,
-      "group": "Navigation"
-    },
-    {
-      "id": "mask",
-      "title": "Input Mask",
-      "examples": [
-        {
-          "name": "mask",
-          "config": {}
-        },
-        {
-          "name": "iban-mask",
-          "config": {}
-        },
-        {
-          "name": "mask-separators",
-          "config": {}
-        },
-        {
-          "name": "mask-drop-characters",
-          "config": {}
-        },
-        {
-          "name": "mask-validation",
-          "config": {}
-        },
-        {
-          "name": "mask-case",
-          "config": {}
-        },
-        {
-          "name": "mask-deactivate",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/mask.html",
-      "overviewFile": "lib-viewer/overview/mask.html",
-      "slotsFile": "lib-viewer/slots/mask.html",
-      "description": "Input mask for formatted text entry",
-      "alias": "input mask, masked input",
-      "a1Full": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "natural-language-form",
-      "title": "Natural Language Form",
-      "examples": [
-        {
-          "name": "natural-language-form-basic",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-extended",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-negative",
-          "config": {}
-        },
-        {
-          "name": "natural-language-form-sizes",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/natural-language-form.html",
-      "overviewFile": "lib-viewer/overview/natural-language-form.html",
-      "slotsFile": "lib-viewer/slots/natural-language-form.html",
-      "description": "Sentence-style form layout",
-      "alias": "text form, inline field",
-      "a1": false,
-      "a1Light": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "message",
-      "title": "Notifications",
-      "examples": [
-        {
-          "name": "message-plain",
-          "config": {}
-        },
-        {
-          "name": "message-contained",
-          "config": {}
-        },
-        {
-          "name": "message-contexts",
-          "config": {}
-        },
-        {
-          "name": "message-show-context-icon",
-          "config": {}
-        },
-        {
-          "name": "message-closable",
-          "config": {}
-        },
-        {
-          "name": "message-toast-opening",
-          "config": {}
-        },
-        {
-          "name": "message-toast-custom-settings",
-          "config": {}
-        },
-        {
-          "name": "message-toast-contexts",
-          "config": {}
-        },
-        {
-          "name": "message-banner",
-          "config": {}
-        },
-        {
-          "name": "message-banner-configuration",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/message.html",
-      "overviewFile": "lib-viewer/overview/message.html",
-      "slotsFile": "lib-viewer/slots/message.html",
-      "description": "Inline message banners (info, success, warning, error)",
-      "alias": "message banner, toast, snackbar, alert, info, error, warning, success, notification, message",
-      "a1Full": true,
-      "group": "Data Display"
-    },
-    {
       "id": "notification-panel",
       "title": "Notification panel",
       "examples": [
@@ -9787,6 +9663,40 @@
         "Data Display",
         "Overlays"
       ]
+    },
+    {
+      "id": "menu",
+      "title": "Menu",
+      "examples": [
+        {
+          "name": "menu-button",
+          "config": {}
+        },
+        {
+          "name": "menu-link",
+          "config": {}
+        },
+        {
+          "name": "menu-item",
+          "config": {}
+        },
+        {
+          "name": "menu-item-with-icons",
+          "config": {}
+        },
+        {
+          "name": "menu",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/menu.html",
+      "overviewFile": "lib-viewer/overview/menu.html",
+      "slotsFile": "lib-viewer/slots/menu.html",
+      "description": "Navigation menu component",
+      "a1Full": true,
+      "a1Densities": true,
+      "group": "Navigation"
     },
     {
       "id": "modal",
@@ -9866,72 +9776,119 @@
       "group": "Overlays"
     },
     {
-      "id": "overlay",
-      "title": "Overlay",
+      "id": "page-search",
+      "title": "Page Search",
       "examples": [
         {
-          "name": "overlay-positioning",
+          "name": "page-search-autocomplete",
           "config": {}
         },
         {
-          "name": "overlay-limiting-fallbacks",
+          "name": "page-search-input",
+          "config": {}
+        },
+        {
+          "name": "page-search-click",
+          "config": {}
+        },
+        {
+          "name": "page-search-hidden",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/overlay.html",
-      "overviewFile": "lib-viewer/overview/overlay.html",
-      "slotsFile": "lib-viewer/slots/overlay.html",
-      "description": "Programmatic overlay positioning service",
-      "a1Full": true,
-      "a1Light": true,
-      "a1Densities": true,
-      "group": [
-        "Utilities",
-        "Overlays"
-      ]
+      "apiFile": "lib-viewer/api/page-search.html",
+      "overviewFile": "lib-viewer/overview/page-search.html",
+      "slotsFile": "lib-viewer/slots/page-search.html",
+      "description": "In-page search functionality",
+      "alias": "search field, search, search bar",
+      "deprecated": true,
+      "group": "Layout"
     },
     {
-      "id": "pagination",
-      "title": "Pagination",
+      "id": "message",
+      "title": "Notifications",
       "examples": [
         {
-          "name": "pagination-advanced",
+          "name": "message-plain",
           "config": {}
         },
         {
-          "name": "pagination-advanced-controls",
+          "name": "message-contained",
           "config": {}
         },
         {
-          "name": "pagination-simple",
+          "name": "message-contexts",
           "config": {}
         },
         {
-          "name": "pagination-slider",
+          "name": "message-show-context-icon",
           "config": {}
         },
         {
-          "name": "pagination-localize",
+          "name": "message-closable",
           "config": {}
         },
         {
-          "name": "pagination-localize-advanced",
+          "name": "message-toast-opening",
           "config": {}
         },
         {
-          "name": "pagination-a11y",
+          "name": "message-toast-custom-settings",
+          "config": {}
+        },
+        {
+          "name": "message-toast-contexts",
+          "config": {}
+        },
+        {
+          "name": "message-banner",
+          "config": {}
+        },
+        {
+          "name": "message-banner-configuration",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/pagination.html",
-      "overviewFile": "lib-viewer/overview/pagination.html",
-      "slotsFile": "lib-viewer/slots/pagination.html",
-      "description": "Page navigation for paged content",
-      "alias": "pager, paginator",
+      "apiFile": "lib-viewer/api/message.html",
+      "overviewFile": "lib-viewer/overview/message.html",
+      "slotsFile": "lib-viewer/slots/message.html",
+      "description": "Inline message banners (info, success, warning, error)",
+      "alias": "message banner, toast, snackbar, alert, info, error, warning, success, notification, message",
       "a1Full": true,
-      "group": "Navigation"
+      "group": "Data Display"
+    },
+    {
+      "id": "natural-language-form",
+      "title": "Natural Language Form",
+      "examples": [
+        {
+          "name": "natural-language-form-basic",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-extended",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-negative",
+          "config": {}
+        },
+        {
+          "name": "natural-language-form-sizes",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/natural-language-form.html",
+      "overviewFile": "lib-viewer/overview/natural-language-form.html",
+      "slotsFile": "lib-viewer/slots/natural-language-form.html",
+      "description": "Sentence-style form layout",
+      "alias": "text form, inline field",
+      "a1": false,
+      "a1Light": true,
+      "group": "Forms & Inputs"
     },
     {
       "id": "number-stepper",
@@ -10016,87 +9973,178 @@
       "group": "Forms & Inputs"
     },
     {
-      "id": "page-search",
-      "title": "Page Search",
+      "id": "pagination",
+      "title": "Pagination",
       "examples": [
         {
-          "name": "page-search-autocomplete",
+          "name": "pagination-advanced",
           "config": {}
         },
         {
-          "name": "page-search-input",
+          "name": "pagination-advanced-controls",
           "config": {}
         },
         {
-          "name": "page-search-click",
+          "name": "pagination-simple",
           "config": {}
         },
         {
-          "name": "page-search-hidden",
+          "name": "pagination-slider",
+          "config": {}
+        },
+        {
+          "name": "pagination-localize",
+          "config": {}
+        },
+        {
+          "name": "pagination-localize-advanced",
+          "config": {}
+        },
+        {
+          "name": "pagination-a11y",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/page-search.html",
-      "overviewFile": "lib-viewer/overview/page-search.html",
-      "slotsFile": "lib-viewer/slots/page-search.html",
-      "description": "In-page search functionality",
-      "alias": "search field, search, search bar",
-      "deprecated": true,
-      "group": "Layout"
+      "apiFile": "lib-viewer/api/pagination.html",
+      "overviewFile": "lib-viewer/overview/pagination.html",
+      "slotsFile": "lib-viewer/slots/pagination.html",
+      "description": "Page navigation for paged content",
+      "alias": "pager, paginator",
+      "a1Full": true,
+      "group": "Navigation"
     },
     {
-      "id": "price",
-      "title": "Price",
+      "id": "icon",
+      "title": "Icons",
       "examples": [
         {
-          "name": "price-basic",
+          "name": "icon-sizes",
           "config": {}
         },
         {
-          "name": "price-locale",
+          "name": "icon-type",
           "config": {}
         },
         {
-          "name": "price-sizes",
+          "name": "icon-emphasis",
           "config": {}
         },
         {
-          "name": "price-prefix-suffix",
+          "name": "icon-contained",
           "config": {}
         },
         {
-          "name": "price-superscript",
+          "name": "icon-contained-sizes",
           "config": {}
         },
         {
-          "name": "price-vertical",
+          "name": "icon-attention-colors",
           "config": {}
         },
         {
-          "name": "price-info-icon",
+          "name": "icon-filled",
           "config": {}
         },
         {
-          "name": "price-inverse",
+          "name": "icon-outline",
           "config": {}
         },
         {
-          "name": "price-accent-attention",
+          "name": "status-icon",
           "config": {}
         },
         {
-          "name": "price-context",
+          "name": "status-icon-sizes",
+          "config": {}
+        },
+        {
+          "name": "status-icon-contained",
+          "config": {}
+        },
+        {
+          "name": "status-icon-inverse",
+          "config": {}
+        },
+        {
+          "name": "icon-essential-icons",
+          "config": {}
+        },
+        {
+          "name": "icon-essential-override",
+          "config": {}
+        },
+        {
+          "name": "icon-registry",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/price.html",
-      "overviewFile": "lib-viewer/overview/price.html",
-      "slotsFile": "lib-viewer/slots/price.html",
-      "description": "Formatted price display with locale-aware currency formatting",
+      "apiFile": "lib-viewer/api/icon.html",
+      "overviewFile": "lib-viewer/overview/icon.html",
+      "slotsFile": "lib-viewer/slots/icon.html",
+      "description": "SVG icon system",
       "a1Full": true,
       "group": "Data Display"
+    },
+    {
+      "id": "info-icon",
+      "title": "Info Icon",
+      "examples": [
+        {
+          "name": "info-icon",
+          "config": {}
+        },
+        {
+          "name": "info-icon-inline",
+          "config": {}
+        },
+        {
+          "name": "info-icon-inverse",
+          "config": {}
+        },
+        {
+          "name": "info-icon-modal",
+          "config": {}
+        },
+        {
+          "name": "info-icon-closeable",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/info-icon.html",
+      "overviewFile": "lib-viewer/overview/info-icon.html",
+      "slotsFile": "lib-viewer/slots/info-icon.html",
+      "description": "Icon button that reveals contextual information via a popover",
+      "a1Full": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "overlay",
+      "title": "Overlay",
+      "examples": [
+        {
+          "name": "overlay-positioning",
+          "config": {}
+        },
+        {
+          "name": "overlay-limiting-fallbacks",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/overlay.html",
+      "overviewFile": "lib-viewer/overview/overlay.html",
+      "slotsFile": "lib-viewer/slots/overlay.html",
+      "description": "Programmatic overlay positioning service",
+      "a1Full": true,
+      "a1Light": true,
+      "a1Densities": true,
+      "group": [
+        "Utilities",
+        "Overlays"
+      ]
     },
     {
       "id": "phone-input",
@@ -10112,6 +10160,10 @@
         },
         {
           "name": "phone-input-forms",
+          "config": {}
+        },
+        {
+          "name": "phone-input-parsed-value",
           "config": {}
         },
         {
@@ -10146,42 +10198,6 @@
       "description": "International phone number input",
       "a1Full": true,
       "group": "Forms & Inputs"
-    },
-    {
-      "id": "progressbar",
-      "title": "Progress Bar",
-      "examples": [
-        {
-          "name": "progressbar",
-          "config": {}
-        },
-        {
-          "name": "progressbar-basic",
-          "config": {}
-        },
-        {
-          "name": "progressbar-custom-range",
-          "config": {}
-        },
-        {
-          "name": "progressbar-positive",
-          "config": {}
-        },
-        {
-          "name": "progressbar-transparent",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/progressbar.html",
-      "overviewFile": "lib-viewer/overview/progressbar.html",
-      "slotsFile": "lib-viewer/slots/progressbar.html",
-      "description": "Progress bar indicator",
-      "alias": "progress, loading bar",
-      "a1Light": true,
-      "a1Densities": true,
-      "a1Full": true,
-      "group": "Data Display"
     },
     {
       "id": "popover",
@@ -10267,6 +10283,59 @@
       "group": "Overlays"
     },
     {
+      "id": "price",
+      "title": "Price",
+      "examples": [
+        {
+          "name": "price-basic",
+          "config": {}
+        },
+        {
+          "name": "price-locale",
+          "config": {}
+        },
+        {
+          "name": "price-sizes",
+          "config": {}
+        },
+        {
+          "name": "price-prefix-suffix",
+          "config": {}
+        },
+        {
+          "name": "price-superscript",
+          "config": {}
+        },
+        {
+          "name": "price-vertical",
+          "config": {}
+        },
+        {
+          "name": "price-info-icon",
+          "config": {}
+        },
+        {
+          "name": "price-inverse",
+          "config": {}
+        },
+        {
+          "name": "price-accent-attention",
+          "config": {}
+        },
+        {
+          "name": "price-context",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/price.html",
+      "overviewFile": "lib-viewer/overview/price.html",
+      "slotsFile": "lib-viewer/slots/price.html",
+      "description": "Formatted price display with locale-aware currency formatting",
+      "a1Full": true,
+      "group": "Data Display"
+    },
+    {
       "id": "product-tile",
       "title": "Product Tile",
       "examples": [
@@ -10328,50 +10397,40 @@
       ]
     },
     {
-      "id": "radio-toggle",
-      "title": "Segmented Toggle Button",
+      "id": "progressbar",
+      "title": "Progress Bar",
       "examples": [
         {
-          "name": "radio-toggle",
+          "name": "progressbar",
           "config": {}
         },
         {
-          "name": "radio-toggle-negative",
+          "name": "progressbar-basic",
           "config": {}
         },
         {
-          "name": "radio-toggle-custom",
+          "name": "progressbar-custom-range",
           "config": {}
         },
         {
-          "name": "radio-toggle-form",
+          "name": "progressbar-positive",
           "config": {}
         },
         {
-          "name": "radio-toggle-reactive",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-validation",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-size",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-readonly",
+          "name": "progressbar-transparent",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/radio-toggle.html",
-      "overviewFile": "lib-viewer/overview/radio-toggle.html",
-      "slotsFile": "lib-viewer/slots/radio-toggle.html",
-      "description": "Toggle-style radio button group",
-      "alias": "radio toggle, segmented control, button group, toggle group, Toggle Button",
+      "apiFile": "lib-viewer/api/progressbar.html",
+      "overviewFile": "lib-viewer/overview/progressbar.html",
+      "slotsFile": "lib-viewer/slots/progressbar.html",
+      "description": "Progress bar indicator",
+      "alias": "progress, loading bar",
+      "a1Light": true,
+      "a1Densities": true,
       "a1Full": true,
-      "group": "Forms & Inputs"
+      "group": "Data Display"
     },
     {
       "id": "radio-button",
@@ -10443,6 +10502,588 @@
       "group": "Forms & Inputs"
     },
     {
+      "id": "radio-toggle",
+      "title": "Segmented Toggle Button",
+      "examples": [
+        {
+          "name": "radio-toggle",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-negative",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-custom",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-form",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-reactive",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-validation",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-size",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-readonly",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/radio-toggle.html",
+      "overviewFile": "lib-viewer/overview/radio-toggle.html",
+      "slotsFile": "lib-viewer/slots/radio-toggle.html",
+      "description": "Toggle-style radio button group",
+      "alias": "radio toggle, segmented control, button group, toggle group, Toggle Button",
+      "a1Full": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "patterns",
+      "title": "Patterns",
+      "examples": [
+        {
+          "name": "text-area-character-limit",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "ai-autofill",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "a11y-skip-to-data-description",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "dropdown-fetch-on-filter",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "contained-list",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "search-field-input",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        },
+        {
+          "name": "search-field-autocomplete",
+          "config": {
+            "hideStackblitzButton": true
+          }
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/patterns.html",
+      "overviewFile": "lib-viewer/overview/patterns.html",
+      "slotsFile": "lib-viewer/slots/patterns.html",
+      "alias": "patterns",
+      "a1Full": true,
+      "private": true,
+      "noApi": true
+    },
+    {
+      "id": "rtl",
+      "title": "Right-to-left support",
+      "examples": [
+        {
+          "name": "rtl-basic",
+          "config": {}
+        },
+        {
+          "name": "rtl-dynamic",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/rtl.html",
+      "overviewFile": "lib-viewer/overview/rtl.html",
+      "slotsFile": "lib-viewer/slots/rtl.html",
+      "noApi": true,
+      "a1Full": true
+    },
+    {
+      "id": "sidepanel",
+      "title": "Sidepanel",
+      "examples": [
+        {
+          "name": "sidepanel-dark",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-light",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-floating",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-static",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-with-tabs",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-focus",
+          "config": {}
+        },
+        {
+          "name": "sidepanel-with-color-scheme",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidepanel.html",
+      "overviewFile": "lib-viewer/overview/sidepanel.html",
+      "slotsFile": "lib-viewer/slots/sidepanel.html",
+      "description": "Slide-in side panel",
+      "a1Full": true,
+      "alias": "sidebar, drawer, sheet, side sheet",
+      "a1Densities": true,
+      "group": "Overlays"
+    },
+    {
+      "id": "sidebar",
+      "title": "Side Navigation",
+      "examples": [
+        {
+          "name": "sidebar",
+          "config": {}
+        },
+        {
+          "name": "sidebar-group",
+          "config": {}
+        },
+        {
+          "name": "sidebar-resizeable",
+          "config": {}
+        },
+        {
+          "name": "sidebar-a1-resizeable",
+          "config": {}
+        },
+        {
+          "name": "sidebar-methods",
+          "config": {}
+        },
+        {
+          "name": "sidebar-color-scheme",
+          "config": {}
+        },
+        {
+          "name": "sidebar-footer",
+          "config": {}
+        },
+        {
+          "name": "sidebar-outputs",
+          "config": {}
+        },
+        {
+          "name": "sidebar-a1-outputs",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidebar.html",
+      "overviewFile": "lib-viewer/overview/sidebar.html",
+      "slotsFile": "lib-viewer/slots/sidebar.html",
+      "description": "Collapsible sidebar navigation",
+      "a1Full": true,
+      "alias": "sidenav, side navigation, side menu",
+      "a1Light": true,
+      "a1Densities": true,
+      "group": "Navigation"
+    },
+    {
+      "id": "slider",
+      "title": "Slider",
+      "examples": [
+        {
+          "name": "slider-basic",
+          "config": {}
+        },
+        {
+          "name": "slider-label-info",
+          "config": {}
+        },
+        {
+          "name": "slider-appendix",
+          "config": {}
+        },
+        {
+          "name": "slider-default",
+          "config": {}
+        },
+        {
+          "name": "slider-decimal",
+          "config": {}
+        },
+        {
+          "name": "slider-label",
+          "config": {}
+        },
+        {
+          "name": "slider-textual",
+          "config": {}
+        },
+        {
+          "name": "slider-disabled",
+          "config": {}
+        },
+        {
+          "name": "slider-inverse",
+          "config": {}
+        },
+        {
+          "name": "slider-inverted",
+          "config": {}
+        },
+        {
+          "name": "slider-template",
+          "config": {}
+        },
+        {
+          "name": "slider-reactive",
+          "config": {}
+        },
+        {
+          "name": "slider-thumb",
+          "config": {}
+        },
+        {
+          "name": "slider-labels",
+          "config": {}
+        },
+        {
+          "name": "slider-tick",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/slider.html",
+      "overviewFile": "lib-viewer/overview/slider.html",
+      "slotsFile": "lib-viewer/slots/slider.html",
+      "description": "Range slider input",
+      "alias": "number input, range",
+      "a1Full": true,
+      "a1Densities": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "selection",
+      "title": "Selection Indicators",
+      "examples": [
+        {
+          "name": "selection-indicator-default",
+          "config": {}
+        },
+        {
+          "name": "selection-indicator-inverse",
+          "config": {}
+        },
+        {
+          "name": "selection-indicator-on-selection",
+          "config": {}
+        },
+        {
+          "name": "selection-indicator-accent-brand",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/selection.html",
+      "overviewFile": "lib-viewer/overview/selection.html",
+      "slotsFile": "lib-viewer/slots/selection.html",
+      "description": "Purely presentational selection indicators (checkbox and radio) for use in custom UI",
+      "a1Full": true,
+      "group": "Utilities"
+    },
+    {
+      "id": "signal-button",
+      "title": "Signal Button",
+      "examples": [
+        {
+          "name": "signal-button-context",
+          "config": {}
+        },
+        {
+          "name": "signal-button-size",
+          "config": {}
+        },
+        {
+          "name": "signal-button-disabled",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/signal-button.html",
+      "overviewFile": "lib-viewer/overview/signal-button.html",
+      "slotsFile": "lib-viewer/slots/signal-button.html",
+      "description": "Button with integrated status signal",
+      "a1Full": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "small-stage",
+      "title": "Small stage",
+      "examples": [
+        {
+          "name": "small-stage",
+          "config": {}
+        },
+        {
+          "name": "small-stage-header",
+          "config": {}
+        },
+        {
+          "name": "small-stage-image",
+          "config": {}
+        },
+        {
+          "name": "small-stage-max-width",
+          "config": {}
+        },
+        {
+          "name": "small-stage-style",
+          "config": {}
+        },
+        {
+          "name": "small-stage-color-scheme",
+          "config": {}
+        },
+        {
+          "name": "small-stage-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-content-variation",
+          "config": {}
+        },
+        {
+          "name": "small-stage-w-bg",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-content-narrow",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/small-stage.html",
+      "overviewFile": "lib-viewer/overview/small-stage.html",
+      "slotsFile": "lib-viewer/slots/small-stage.html",
+      "description": "Hero/stage banner area",
+      "a1Full": true,
+      "alias": "page banner, hero, banner",
+      "a1Densities": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "surface",
+      "title": "Surface",
+      "examples": [
+        {
+          "name": "surface-basic",
+          "config": {}
+        },
+        {
+          "name": "surface-nesting",
+          "config": {}
+        },
+        {
+          "name": "surface-reset",
+          "config": {}
+        },
+        {
+          "name": "surface-css",
+          "config": {}
+        }
+      ],
+      "category": "utilities",
+      "apiFile": "lib-viewer/api/surface.html",
+      "overviewFile": "lib-viewer/overview/surface.html",
+      "slotsFile": "lib-viewer/slots/surface.html",
+      "a1Full": true
+    },
+    {
+      "id": "table",
+      "title": "Table",
+      "examples": [
+        {
+          "name": "table-native-sticky",
+          "config": {}
+        },
+        {
+          "name": "table",
+          "config": {}
+        },
+        {
+          "name": "table-condensed",
+          "config": {}
+        },
+        {
+          "name": "table-zebra",
+          "config": {}
+        },
+        {
+          "name": "table-sticky-column",
+          "config": {}
+        },
+        {
+          "name": "table-sticky-header",
+          "config": {}
+        },
+        {
+          "name": "table-column-hiding",
+          "config": {}
+        },
+        {
+          "name": "table-column-reorder",
+          "config": {}
+        },
+        {
+          "name": "table-sorting",
+          "config": {}
+        },
+        {
+          "name": "table-filter-sort-paginate",
+          "config": {}
+        },
+        {
+          "name": "table-single-select",
+          "config": {}
+        },
+        {
+          "name": "table-selecting",
+          "config": {}
+        },
+        {
+          "name": "table-expandable",
+          "config": {}
+        },
+        {
+          "name": "table-expandable-indent",
+          "config": {}
+        },
+        {
+          "name": "table-form-elements",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/table.html",
+      "overviewFile": "lib-viewer/overview/table.html",
+      "slotsFile": "lib-viewer/slots/table.html",
+      "description": "Data table with sorting and filtering",
+      "a1Full": true,
+      "a1Densities": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "spinner",
+      "title": "Spinner",
+      "examples": [
+        {
+          "name": "spinner-sizes",
+          "config": {}
+        },
+        {
+          "name": "spinner-inverse",
+          "config": {}
+        },
+        {
+          "name": "spinner-aria-announcement",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/spinner.html",
+      "overviewFile": "lib-viewer/overview/spinner.html",
+      "slotsFile": "lib-viewer/slots/spinner.html",
+      "description": "Loading spinner",
+      "a1Full": true,
+      "alias": "progress spinner, loading, loader",
+      "a1Densities": true,
+      "group": "Data Display"
+    },
+    {
+      "id": "text",
+      "title": "Text",
+      "examples": [
+        {
+          "name": "body-text-sizes",
+          "config": {}
+        },
+        {
+          "name": "body-text-type",
+          "config": {}
+        },
+        {
+          "name": "body-text-color-scheme",
+          "config": {}
+        },
+        {
+          "name": "utility-text-sizes",
+          "config": {}
+        },
+        {
+          "name": "utility-text-attention",
+          "config": {}
+        },
+        {
+          "name": "utility-text-color-scheme",
+          "config": {}
+        },
+        {
+          "name": "accent-color-basic",
+          "config": {}
+        },
+        {
+          "name": "accent-color-integration",
+          "config": {}
+        },
+        {
+          "name": "accent-color-negative",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/text.html",
+      "overviewFile": "lib-viewer/overview/text.html",
+      "slotsFile": "lib-viewer/slots/text.html",
+      "description": "Body text, utility text and inline text styling utilities",
+      "a1Full": true,
+      "group": "Data Display"
+    },
+    {
       "id": "rating",
       "title": "Rating",
       "examples": [
@@ -10475,6 +11116,10 @@
           "config": {}
         },
         {
+          "name": "rating-error",
+          "config": {}
+        },
+        {
           "name": "rating-sizes",
           "config": {}
         },
@@ -10493,26 +11138,6 @@
         "Forms & Inputs",
         "Actions"
       ]
-    },
-    {
-      "id": "rtl",
-      "title": "Right-to-left support",
-      "examples": [
-        {
-          "name": "rtl-basic",
-          "config": {}
-        },
-        {
-          "name": "rtl-dynamic",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/rtl.html",
-      "overviewFile": "lib-viewer/overview/rtl.html",
-      "slotsFile": "lib-viewer/slots/rtl.html",
-      "noApi": true,
-      "a1Full": true
     },
     {
       "id": "progress-indicator",
@@ -10653,609 +11278,15 @@
       "group": "Data Display"
     },
     {
-      "id": "sidebar",
-      "title": "Side Navigation",
-      "examples": [
-        {
-          "name": "sidebar",
-          "config": {}
-        },
-        {
-          "name": "sidebar-group",
-          "config": {}
-        },
-        {
-          "name": "sidebar-resizeable",
-          "config": {}
-        },
-        {
-          "name": "sidebar-a1-resizeable",
-          "config": {}
-        },
-        {
-          "name": "sidebar-methods",
-          "config": {}
-        },
-        {
-          "name": "sidebar-color-scheme",
-          "config": {}
-        },
-        {
-          "name": "sidebar-footer",
-          "config": {}
-        },
-        {
-          "name": "sidebar-outputs",
-          "config": {}
-        },
-        {
-          "name": "sidebar-a1-outputs",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/sidebar.html",
-      "overviewFile": "lib-viewer/overview/sidebar.html",
-      "slotsFile": "lib-viewer/slots/sidebar.html",
-      "description": "Collapsible sidebar navigation",
-      "a1Full": true,
-      "alias": "sidenav, side navigation, side menu",
-      "a1Light": true,
-      "a1Densities": true,
-      "group": "Navigation"
-    },
-    {
-      "id": "signal-button",
-      "title": "Signal Button",
-      "examples": [
-        {
-          "name": "signal-button-context",
-          "config": {}
-        },
-        {
-          "name": "signal-button-size",
-          "config": {}
-        },
-        {
-          "name": "signal-button-disabled",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/signal-button.html",
-      "overviewFile": "lib-viewer/overview/signal-button.html",
-      "slotsFile": "lib-viewer/slots/signal-button.html",
-      "description": "Button with integrated status signal",
-      "a1Full": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "sidepanel",
-      "title": "Sidepanel",
-      "examples": [
-        {
-          "name": "sidepanel-dark",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-light",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-floating",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-static",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-with-tabs",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-focus",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-with-color-scheme",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/sidepanel.html",
-      "overviewFile": "lib-viewer/overview/sidepanel.html",
-      "slotsFile": "lib-viewer/slots/sidepanel.html",
-      "description": "Slide-in side panel",
-      "a1Full": true,
-      "alias": "sidebar, drawer, sheet, side sheet",
-      "a1Densities": true,
-      "group": "Overlays"
-    },
-    {
-      "id": "selection",
-      "title": "Selection Indicators",
-      "examples": [
-        {
-          "name": "selection-indicator-default",
-          "config": {}
-        },
-        {
-          "name": "selection-indicator-inverse",
-          "config": {}
-        },
-        {
-          "name": "selection-indicator-on-selection",
-          "config": {}
-        },
-        {
-          "name": "selection-indicator-accent-brand",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/selection.html",
-      "overviewFile": "lib-viewer/overview/selection.html",
-      "slotsFile": "lib-viewer/slots/selection.html",
-      "description": "Purely presentational selection indicators (checkbox and radio) for use in custom UI",
-      "a1Full": true,
-      "group": "Utilities"
-    },
-    {
-      "id": "patterns",
-      "title": "Patterns",
-      "examples": [
-        {
-          "name": "text-area-character-limit",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "ai-autofill",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "a11y-skip-to-data-description",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "dropdown-fetch-on-filter",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "contained-list",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "search-field-input",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        },
-        {
-          "name": "search-field-autocomplete",
-          "config": {
-            "hideStackblitzButton": true
-          }
-        }
-      ],
+      "id": "theming",
+      "title": "Theming",
+      "examples": [],
       "category": "general",
-      "apiFile": "lib-viewer/api/patterns.html",
-      "overviewFile": "lib-viewer/overview/patterns.html",
-      "slotsFile": "lib-viewer/slots/patterns.html",
-      "alias": "patterns",
-      "a1Full": true,
-      "private": true,
-      "noApi": true
-    },
-    {
-      "id": "spinner",
-      "title": "Spinner",
-      "examples": [
-        {
-          "name": "spinner-sizes",
-          "config": {}
-        },
-        {
-          "name": "spinner-inverse",
-          "config": {}
-        },
-        {
-          "name": "spinner-aria-announcement",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/spinner.html",
-      "overviewFile": "lib-viewer/overview/spinner.html",
-      "slotsFile": "lib-viewer/slots/spinner.html",
-      "description": "Loading spinner",
-      "a1Full": true,
-      "alias": "progress spinner, loading, loader",
-      "a1Densities": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "slider",
-      "title": "Slider",
-      "examples": [
-        {
-          "name": "slider-basic",
-          "config": {}
-        },
-        {
-          "name": "slider-label-info",
-          "config": {}
-        },
-        {
-          "name": "slider-appendix",
-          "config": {}
-        },
-        {
-          "name": "slider-default",
-          "config": {}
-        },
-        {
-          "name": "slider-decimal",
-          "config": {}
-        },
-        {
-          "name": "slider-label",
-          "config": {}
-        },
-        {
-          "name": "slider-textual",
-          "config": {}
-        },
-        {
-          "name": "slider-disabled",
-          "config": {}
-        },
-        {
-          "name": "slider-inverse",
-          "config": {}
-        },
-        {
-          "name": "slider-inverted",
-          "config": {}
-        },
-        {
-          "name": "slider-template",
-          "config": {}
-        },
-        {
-          "name": "slider-reactive",
-          "config": {}
-        },
-        {
-          "name": "slider-thumb",
-          "config": {}
-        },
-        {
-          "name": "slider-labels",
-          "config": {}
-        },
-        {
-          "name": "slider-tick",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/slider.html",
-      "overviewFile": "lib-viewer/overview/slider.html",
-      "slotsFile": "lib-viewer/slots/slider.html",
-      "description": "Range slider input",
-      "alias": "number input, range",
-      "a1Full": true,
-      "a1Densities": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "switcher",
-      "title": "Switcher",
-      "examples": [
-        {
-          "name": "switcher-default",
-          "config": {}
-        },
-        {
-          "name": "switcher-large",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-small",
-          "config": {}
-        },
-        {
-          "name": "switcher-hint",
-          "config": {}
-        },
-        {
-          "name": "switcher-inverse",
-          "config": {}
-        },
-        {
-          "name": "switcher-label-left",
-          "config": {}
-        },
-        {
-          "name": "switcher-template-driven",
-          "config": {}
-        },
-        {
-          "name": "switcher-reactive-form",
-          "config": {}
-        },
-        {
-          "name": "switcher-disabled",
-          "config": {}
-        },
-        {
-          "name": "switcher-readonly",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/switcher.html",
-      "overviewFile": "lib-viewer/overview/switcher.html",
-      "slotsFile": "lib-viewer/slots/switcher.html",
-      "description": "Toggle switch control",
-      "alias": "slide toggle, checkbox, switch, toggle",
-      "a1Full": true,
-      "group": "Forms & Inputs"
-    },
-    {
-      "id": "tabs",
-      "title": "Tabs",
-      "examples": [
-        {
-          "name": "tabs-basic",
-          "config": {}
-        },
-        {
-          "name": "tabs-styling",
-          "config": {}
-        },
-        {
-          "name": "tabs-template",
-          "config": {}
-        },
-        {
-          "name": "tabs-lazy",
-          "config": {}
-        },
-        {
-          "name": "tabs-dynamic",
-          "config": {}
-        },
-        {
-          "name": "tabs-closable",
-          "config": {}
-        },
-        {
-          "name": "tabs-closable-confirm",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar",
-          "config": {}
-        },
-        {
-          "name": "tabs-negative",
-          "config": {}
-        },
-        {
-          "name": "tabs-disabled",
-          "config": {}
-        },
-        {
-          "name": "tabs-output-events",
-          "config": {}
-        },
-        {
-          "name": "tabs-responsive",
-          "config": {}
-        },
-        {
-          "name": "tabs-appearance",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-appearance",
-          "config": {}
-        },
-        {
-          "name": "tabs-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-with-indicator",
-          "config": {}
-        },
-        {
-          "name": "tabs-auto-manual-select",
-          "config": {}
-        },
-        {
-          "name": "tabs-localize",
-          "config": {}
-        },
-        {
-          "name": "tabs-injection-token",
-          "config": {}
-        },
-        {
-          "name": "tabs-nav-bar-injection-token",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tabs.html",
-      "overviewFile": "lib-viewer/overview/tabs.html",
-      "slotsFile": "lib-viewer/slots/tabs.html",
-      "description": "Tabbed content navigation",
-      "alias": "navigation tabs",
-      "a1Full": true,
-      "group": "Navigation"
-    },
-    {
-      "id": "surface",
-      "title": "Surface",
-      "examples": [
-        {
-          "name": "surface-basic",
-          "config": {}
-        },
-        {
-          "name": "surface-nesting",
-          "config": {}
-        },
-        {
-          "name": "surface-reset",
-          "config": {}
-        },
-        {
-          "name": "surface-css",
-          "config": {}
-        }
-      ],
-      "category": "utilities",
-      "apiFile": "lib-viewer/api/surface.html",
-      "overviewFile": "lib-viewer/overview/surface.html",
-      "slotsFile": "lib-viewer/slots/surface.html",
-      "a1Full": true
-    },
-    {
-      "id": "text",
-      "title": "Text",
-      "examples": [
-        {
-          "name": "body-text-sizes",
-          "config": {}
-        },
-        {
-          "name": "body-text-type",
-          "config": {}
-        },
-        {
-          "name": "body-text-color-scheme",
-          "config": {}
-        },
-        {
-          "name": "utility-text-sizes",
-          "config": {}
-        },
-        {
-          "name": "utility-text-attention",
-          "config": {}
-        },
-        {
-          "name": "utility-text-color-scheme",
-          "config": {}
-        },
-        {
-          "name": "accent-color-basic",
-          "config": {}
-        },
-        {
-          "name": "accent-color-integration",
-          "config": {}
-        },
-        {
-          "name": "accent-color-negative",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/text.html",
-      "overviewFile": "lib-viewer/overview/text.html",
-      "slotsFile": "lib-viewer/slots/text.html",
-      "description": "Body text, utility text and inline text styling utilities",
-      "a1Full": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "table",
-      "title": "Table",
-      "examples": [
-        {
-          "name": "table-native-sticky",
-          "config": {}
-        },
-        {
-          "name": "table",
-          "config": {}
-        },
-        {
-          "name": "table-condensed",
-          "config": {}
-        },
-        {
-          "name": "table-zebra",
-          "config": {}
-        },
-        {
-          "name": "table-sticky-column",
-          "config": {}
-        },
-        {
-          "name": "table-sticky-header",
-          "config": {}
-        },
-        {
-          "name": "table-column-hiding",
-          "config": {}
-        },
-        {
-          "name": "table-column-reorder",
-          "config": {}
-        },
-        {
-          "name": "table-sorting",
-          "config": {}
-        },
-        {
-          "name": "table-filter-sort-paginate",
-          "config": {}
-        },
-        {
-          "name": "table-single-select",
-          "config": {}
-        },
-        {
-          "name": "table-selecting",
-          "config": {}
-        },
-        {
-          "name": "table-expandable",
-          "config": {}
-        },
-        {
-          "name": "table-expandable-indent",
-          "config": {}
-        },
-        {
-          "name": "table-form-elements",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/table.html",
-      "overviewFile": "lib-viewer/overview/table.html",
-      "slotsFile": "lib-viewer/slots/table.html",
-      "description": "Data table with sorting and filtering",
-      "a1Full": true,
-      "a1Densities": true,
-      "group": "Data Display"
+      "apiFile": "lib-viewer/api/theming.html",
+      "overviewFile": "lib-viewer/overview/theming.html",
+      "slotsFile": "lib-viewer/slots/theming.html",
+      "noApi": true,
+      "a1Densities": true
     },
     {
       "id": "taglist",
@@ -11353,15 +11384,55 @@
       "group": "Data Display"
     },
     {
-      "id": "theming",
-      "title": "Theming",
-      "examples": [],
-      "category": "general",
-      "apiFile": "lib-viewer/api/theming.html",
-      "overviewFile": "lib-viewer/overview/theming.html",
-      "slotsFile": "lib-viewer/slots/theming.html",
-      "noApi": true,
-      "a1Densities": true
+      "id": "toggle-button",
+      "title": "Toggle Button (A1)",
+      "examples": [
+        {
+          "name": "toggle-button-basic",
+          "config": {}
+        },
+        {
+          "name": "toggle-button-layout",
+          "config": {}
+        },
+        {
+          "name": "toggle-button-readonly-disabled",
+          "config": {}
+        },
+        {
+          "name": "toggle-button-negative",
+          "config": {}
+        },
+        {
+          "name": "toggle-button-signal-forms",
+          "config": {}
+        },
+        {
+          "name": "toggle-button-template-driven",
+          "config": {}
+        },
+        {
+          "name": "toggle-button-reactive-forms",
+          "config": {}
+        },
+        {
+          "name": "toggle-button-error-state",
+          "config": {}
+        },
+        {
+          "name": "toggle-button-validation-error-state",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/toggle-button.html",
+      "overviewFile": "lib-viewer/overview/toggle-button.html",
+      "slotsFile": "lib-viewer/slots/toggle-button.html",
+      "description": "Radio-style group of buttons for a single choice out of many options",
+      "a1Full": true,
+      "alias": "toggle button group, choice button",
+      "components": null,
+      "group": "Forms & Inputs"
     },
     {
       "id": "tile",
@@ -11463,55 +11534,59 @@
       "group": "Navigation"
     },
     {
-      "id": "toggle-button",
-      "title": "Toggle Button (A1)",
+      "id": "tooltip",
+      "title": "Tooltip",
       "examples": [
         {
-          "name": "toggle-button-basic",
+          "name": "tooltip-basic",
           "config": {}
         },
         {
-          "name": "toggle-button-layout",
+          "name": "tooltip-positions",
           "config": {}
         },
         {
-          "name": "toggle-button-readonly-disabled",
+          "name": "tooltip-inverse",
           "config": {}
         },
         {
-          "name": "toggle-button-negative",
+          "name": "tooltip-fallbacks-table",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "tooltip-delay",
           "config": {}
         },
         {
-          "name": "toggle-button-signal-forms",
+          "name": "tooltip-disabled",
           "config": {}
         },
         {
-          "name": "toggle-button-template-driven",
+          "name": "tooltip-programmatic",
           "config": {}
         },
         {
-          "name": "toggle-button-reactive-forms",
+          "name": "tooltip-settings",
           "config": {}
         },
         {
-          "name": "toggle-button-error-state",
+          "name": "tooltip-scroll-strategy-provider",
           "config": {}
         },
         {
-          "name": "toggle-button-validation-error-state",
+          "name": "tooltip-trim-text",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/toggle-button.html",
-      "overviewFile": "lib-viewer/overview/toggle-button.html",
-      "slotsFile": "lib-viewer/slots/toggle-button.html",
-      "description": "Radio-style group of buttons for a single choice out of many options",
+      "apiFile": "lib-viewer/api/tooltip.html",
+      "overviewFile": "lib-viewer/overview/tooltip.html",
+      "slotsFile": "lib-viewer/slots/tooltip.html",
+      "description": "Simple text tooltip on hover",
       "a1Full": true,
-      "alias": "toggle button group, choice button",
-      "components": null,
-      "group": "Forms & Inputs"
+      "group": "Overlays"
     },
     {
       "id": "tree",
@@ -11540,6 +11615,170 @@
       "group": "Navigation"
     },
     {
+      "id": "tabs",
+      "title": "Tabs",
+      "examples": [
+        {
+          "name": "tabs-basic",
+          "config": {}
+        },
+        {
+          "name": "tabs-styling",
+          "config": {}
+        },
+        {
+          "name": "tabs-template",
+          "config": {}
+        },
+        {
+          "name": "tabs-lazy",
+          "config": {}
+        },
+        {
+          "name": "tabs-dynamic",
+          "config": {}
+        },
+        {
+          "name": "tabs-closable",
+          "config": {}
+        },
+        {
+          "name": "tabs-closable-confirm",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar",
+          "config": {}
+        },
+        {
+          "name": "tabs-negative",
+          "config": {}
+        },
+        {
+          "name": "tabs-disabled",
+          "config": {}
+        },
+        {
+          "name": "tabs-output-events",
+          "config": {}
+        },
+        {
+          "name": "tabs-responsive",
+          "config": {}
+        },
+        {
+          "name": "tabs-appearance",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-appearance",
+          "config": {}
+        },
+        {
+          "name": "tabs-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-with-indicator",
+          "config": {}
+        },
+        {
+          "name": "tabs-auto-manual-select",
+          "config": {}
+        },
+        {
+          "name": "tabs-localize",
+          "config": {}
+        },
+        {
+          "name": "tabs-injection-token",
+          "config": {}
+        },
+        {
+          "name": "tabs-nav-bar-injection-token",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tabs.html",
+      "overviewFile": "lib-viewer/overview/tabs.html",
+      "slotsFile": "lib-viewer/slots/tabs.html",
+      "description": "Tabbed content navigation",
+      "alias": "navigation tabs",
+      "a1Full": true,
+      "group": "Navigation"
+    },
+    {
+      "id": "video",
+      "title": "Video",
+      "examples": [
+        {
+          "name": "video",
+          "config": {}
+        },
+        {
+          "name": "video-custom",
+          "config": {}
+        },
+        {
+          "name": "video-advanced",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/video.html",
+      "overviewFile": "lib-viewer/overview/video.html",
+      "slotsFile": "lib-viewer/slots/video.html",
+      "description": "Video player component",
+      "a1": false,
+      "group": "Data Display"
+    },
+    {
+      "id": "web-components",
+      "title": "Web Components & ShadowDOM",
+      "examples": [
+        {
+          "name": "web-components-modal-shadow-dom",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/web-components.html",
+      "overviewFile": "lib-viewer/overview/web-components.html",
+      "slotsFile": "lib-viewer/slots/web-components.html",
+      "noApi": true,
+      "a1Full": true
+    },
+    {
+      "id": "virtual-scroll",
+      "title": "Virtual Scroll",
+      "examples": [
+        {
+          "name": "virtual-scroll-basic",
+          "config": {}
+        },
+        {
+          "name": "virtual-scroll-template",
+          "config": {}
+        },
+        {
+          "name": "virtual-scroll-events",
+          "config": {}
+        },
+        {
+          "name": "virtual-scroll-navigation",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/virtual-scroll.html",
+      "overviewFile": "lib-viewer/overview/virtual-scroll.html",
+      "slotsFile": "lib-viewer/slots/virtual-scroll.html",
+      "description": "Efficient rendering of large lists by virtualizing viewport items",
+      "a1Full": true,
+      "group": "Utilities"
+    },
+    {
       "id": "typography",
       "title": "Typography",
       "examples": [
@@ -11552,6 +11791,76 @@
       "apiFile": "lib-viewer/api/typography.html",
       "overviewFile": "lib-viewer/overview/typography.html",
       "slotsFile": "lib-viewer/slots/typography.html",
+      "noApi": true,
+      "a1Full": true
+    },
+    {
+      "id": "switcher",
+      "title": "Switcher",
+      "examples": [
+        {
+          "name": "switcher-default",
+          "config": {}
+        },
+        {
+          "name": "switcher-large",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-small",
+          "config": {}
+        },
+        {
+          "name": "switcher-hint",
+          "config": {}
+        },
+        {
+          "name": "switcher-inverse",
+          "config": {}
+        },
+        {
+          "name": "switcher-label-left",
+          "config": {}
+        },
+        {
+          "name": "switcher-template-driven",
+          "config": {}
+        },
+        {
+          "name": "switcher-reactive-form",
+          "config": {}
+        },
+        {
+          "name": "switcher-disabled",
+          "config": {}
+        },
+        {
+          "name": "switcher-readonly",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/switcher.html",
+      "overviewFile": "lib-viewer/overview/switcher.html",
+      "slotsFile": "lib-viewer/slots/switcher.html",
+      "description": "Toggle switch control",
+      "alias": "slide toggle, checkbox, switch, toggle",
+      "a1Full": true,
+      "group": "Forms & Inputs"
+    },
+    {
+      "id": "utils",
+      "title": "Type Guards",
+      "examples": [
+        {
+          "name": "utils-type-guards",
+          "config": {}
+        }
+      ],
+      "category": "utilities",
+      "apiFile": "lib-viewer/api/utils.html",
+      "overviewFile": "lib-viewer/overview/utils.html",
+      "slotsFile": "lib-viewer/slots/utils.html",
       "noApi": true,
       "a1Full": true
     },
@@ -11632,291 +11941,6 @@
       "alias": "timepicker, time input",
       "a1Full": true,
       "group": "Forms & Inputs"
-    },
-    {
-      "id": "small-stage",
-      "title": "Small stage",
-      "examples": [
-        {
-          "name": "small-stage",
-          "config": {}
-        },
-        {
-          "name": "small-stage-header",
-          "config": {}
-        },
-        {
-          "name": "small-stage-image",
-          "config": {}
-        },
-        {
-          "name": "small-stage-max-width",
-          "config": {}
-        },
-        {
-          "name": "small-stage-style",
-          "config": {}
-        },
-        {
-          "name": "small-stage-color-scheme",
-          "config": {}
-        },
-        {
-          "name": "small-stage-default",
-          "config": {}
-        },
-        {
-          "name": "small-stage-content-variation",
-          "config": {}
-        },
-        {
-          "name": "small-stage-w-bg",
-          "config": {}
-        },
-        {
-          "name": "small-stage-expert-default",
-          "config": {}
-        },
-        {
-          "name": "small-stage-expert-content-narrow",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/small-stage.html",
-      "overviewFile": "lib-viewer/overview/small-stage.html",
-      "slotsFile": "lib-viewer/slots/small-stage.html",
-      "description": "Hero/stage banner area",
-      "a1Full": true,
-      "alias": "page banner, hero, banner",
-      "a1Densities": true,
-      "group": "Data Display"
-    },
-    {
-      "id": "video",
-      "title": "Video",
-      "examples": [
-        {
-          "name": "video",
-          "config": {}
-        },
-        {
-          "name": "video-custom",
-          "config": {}
-        },
-        {
-          "name": "video-advanced",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/video.html",
-      "overviewFile": "lib-viewer/overview/video.html",
-      "slotsFile": "lib-viewer/slots/video.html",
-      "description": "Video player component",
-      "a1": false,
-      "group": "Data Display"
-    },
-    {
-      "id": "tooltip",
-      "title": "Tooltip",
-      "examples": [
-        {
-          "name": "tooltip-basic",
-          "config": {}
-        },
-        {
-          "name": "tooltip-positions",
-          "config": {}
-        },
-        {
-          "name": "tooltip-inverse",
-          "config": {}
-        },
-        {
-          "name": "tooltip-fallbacks-table",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "tooltip-delay",
-          "config": {}
-        },
-        {
-          "name": "tooltip-disabled",
-          "config": {}
-        },
-        {
-          "name": "tooltip-programmatic",
-          "config": {}
-        },
-        {
-          "name": "tooltip-settings",
-          "config": {}
-        },
-        {
-          "name": "tooltip-scroll-strategy-provider",
-          "config": {}
-        },
-        {
-          "name": "tooltip-trim-text",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/tooltip.html",
-      "overviewFile": "lib-viewer/overview/tooltip.html",
-      "slotsFile": "lib-viewer/slots/tooltip.html",
-      "description": "Simple text tooltip on hover",
-      "a1Full": true,
-      "group": "Overlays"
-    },
-    {
-      "id": "virtual-scroll",
-      "title": "Virtual Scroll",
-      "examples": [
-        {
-          "name": "virtual-scroll-basic",
-          "config": {}
-        },
-        {
-          "name": "virtual-scroll-template",
-          "config": {}
-        },
-        {
-          "name": "virtual-scroll-events",
-          "config": {}
-        },
-        {
-          "name": "virtual-scroll-navigation",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/virtual-scroll.html",
-      "overviewFile": "lib-viewer/overview/virtual-scroll.html",
-      "slotsFile": "lib-viewer/slots/virtual-scroll.html",
-      "description": "Efficient rendering of large lists by virtualizing viewport items",
-      "a1Full": true,
-      "group": "Utilities"
-    },
-    {
-      "id": "web-components",
-      "title": "Web Components & ShadowDOM",
-      "examples": [
-        {
-          "name": "web-components-modal-shadow-dom",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/web-components.html",
-      "overviewFile": "lib-viewer/overview/web-components.html",
-      "slotsFile": "lib-viewer/slots/web-components.html",
-      "noApi": true,
-      "a1Full": true
-    },
-    {
-      "id": "utils",
-      "title": "Type Guards",
-      "examples": [
-        {
-          "name": "utils-type-guards",
-          "config": {}
-        }
-      ],
-      "category": "utilities",
-      "apiFile": "lib-viewer/api/utils.html",
-      "overviewFile": "lib-viewer/overview/utils.html",
-      "slotsFile": "lib-viewer/slots/utils.html",
-      "noApi": true,
-      "a1Full": true
-    },
-    {
-      "id": "comparison-table",
-      "title": "Comparison Table",
-      "examples": [
-        {
-          "name": "comparison-table",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-overflow",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-breakpoint-playground",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-non-sticky-header",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-color-scheme",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-feature",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-rows",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-expandable-area",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-columns",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-error",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-dynamic",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-form-elements",
-          "config": {}
-        },
-        {
-          "name": "breakdown-table",
-          "config": {}
-        },
-        {
-          "name": "recommendation-table",
-          "config": {}
-        },
-        {
-          "name": "breakdown-table-expert",
-          "config": {}
-        },
-        {
-          "name": "recommendation-table-expert",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-header-legacy",
-          "config": {}
-        },
-        {
-          "name": "comparison-table-static",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/comparison-table.html",
-      "overviewFile": "lib-viewer/overview/comparison-table.html",
-      "slotsFile": "lib-viewer/slots/comparison-table.html",
-      "description": "Product/feature comparison tables",
-      "a1Densities": true,
-      "group": "Data Display"
     }
   ],
   "examples": [
@@ -14295,6 +14319,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/multi-select-###TYPE###.html"
+    },
+    {
+      "id": "multi-select-group",
+      "title": "Multi select with groups example",
+      "module": "dropdown",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/multi-select-group-###TYPE###.html"
     },
     {
       "id": "multi-select-intl",
@@ -17256,6 +17291,17 @@
       "url": "lib-viewer/examples/phone-input-i18n-###TYPE###.html"
     },
     {
+      "id": "phone-input-parsed-value",
+      "title": "Parsed value example",
+      "module": "phone-input",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/phone-input-parsed-value-###TYPE###.html"
+    },
+    {
       "id": "phone-input-retail",
       "title": "Retail variation",
       "module": "phone-input",
@@ -18365,6 +18411,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/rating-disabled-###TYPE###.html"
+    },
+    {
+      "id": "rating-error",
+      "title": "Rating Error Example",
+      "module": "rating",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/rating-error-###TYPE###.html"
     },
     {
       "id": "rating-negative",
@@ -20637,6 +20694,16 @@
       "id": "releases",
       "title": "Releases and updating",
       "file": "lib-viewer/guides/releases.html"
+    },
+    {
+      "id": "schematics",
+      "title": "Schematics",
+      "file": "lib-viewer/guides/schematics.html"
+    },
+    {
+      "id": "trusted-types",
+      "title": "Trusted Types",
+      "file": "lib-viewer/guides/trusted-types.html"
     },
     {
       "id": "CHANGELOG",

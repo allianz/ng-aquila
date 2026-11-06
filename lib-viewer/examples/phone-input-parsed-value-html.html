@@ -1,0 +1,8 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield-label</span>&gt;</span>Phone number<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield-label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-phone-input</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;value&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-phone-input</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;info&quot;</span> <span class="hljs-attr">nxFormfieldNote</span>&gt;</span>
+    Model value: {{ value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    Parsed value: {{ phoneInput().parsedValue() | json }}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

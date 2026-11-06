@@ -1,0 +1,18 @@
+<nx-formfield appearance="outline" floatLabel="always" label="Countries">
+  <nx-multi-select
+    grouped
+    filter
+    placeholder="Choose countries"
+    [(ngModel)]="model"
+    [options]="continents"
+    selectGroupLabel="name"
+    selectGroupOptions="countries"
+    selectValue="code"
+    selectLabel="name"
+  ></nx-multi-select>
+</nx-formfield>
+
+<div>
+  Selected countries:
+  <pre>[{{ model.join(', ') }}]</pre>
+</div>

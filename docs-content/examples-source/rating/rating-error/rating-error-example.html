@@ -1,0 +1,21 @@
+<form [formGroup]="testForm">
+  <nx-rating
+    formControlName="rating"
+    ariaRatingGroupLabel="How do you like our service?"
+    startLabel="poor"
+    endLabel="great"
+  >
+    <nx-error>Please rate us</nx-error>
+  </nx-rating>
+  <div class="nx-margin-top-s">
+    <button nxButton="primary" type="submit">Submit</button>
+    <button
+      class="nx-margin-left-s"
+      nxButton="secondary"
+      type="button"
+      (click)="testForm.reset({ rating: 0 })"
+    >
+      Reset value
+    </button>
+  </div>
+</form>
