@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RatingAccessibilityExampleComponent } from './rating-accessibility/rating-accessibility-example';
 import { RatingBasicExampleComponent } from './rating-basic/rating-basic-example';
 import { RatingDisabledExampleComponent } from './rating-disabled/rating-disabled-example';
+import { RatingErrorExampleComponent } from './rating-error/rating-error-example';
 import { RatingNegativeExampleComponent } from './rating-negative/rating-negative-example';
 import { RatingNonInteractiveExampleComponent } from './rating-non-interactive/rating-non-interactive-example';
 import { RatingReactiveExampleComponent } from './rating-reactive/rating-reactive-example';
@@ -17,6 +18,7 @@ const EXAMPLES = [
   RatingAccessibilityExampleComponent,
   RatingBasicExampleComponent,
   RatingDisabledExampleComponent,
+  RatingErrorExampleComponent,
   RatingNegativeExampleComponent,
   RatingReactiveExampleComponent,
   RatingSimpleExampleComponent,
@@ -41,6 +43,7 @@ export class RatingExamplesModule {
       'rating-accessibility': RatingAccessibilityExampleComponent,
       'rating-basic': RatingBasicExampleComponent,
       'rating-disabled': RatingDisabledExampleComponent,
+      'rating-error': RatingErrorExampleComponent,
       'rating-negative': RatingNegativeExampleComponent,
       'rating-reactive': RatingReactiveExampleComponent,
       'rating-simple': RatingSimpleExampleComponent,

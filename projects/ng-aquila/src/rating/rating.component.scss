@@ -55,6 +55,26 @@
   }
 }
 
+:host(.has-error) {
+  --nx-rating-error-color: #{v(rating-error-color)};
+  --nx-rating-error-hover-color: #{v(rating-error-hover-color)};
+  --nx-rating-error-active-color: #{v(rating-error-active-color)};
+
+  .nx-rating__icon {
+    color: var(--nx-rating-error-color);
+  }
+}
+
+:host(.has-error.nx-rating--negative) {
+  --nx-rating-error-color: #{v(rating-inverse-error-color)};
+  --nx-rating-error-hover-color: #{v(rating-inverse-error-hover-color)};
+  --nx-rating-error-active-color: #{v(rating-inverse-error-active-color)};
+}
+
+.nx-rating__error {
+  margin-top: v(rating-error-margin-top);
+}
+
 .nx-rating__container {
   display: flex;
 }
@@ -142,6 +162,17 @@
     }
     &:active {
       color: v(rating-inverse-active-color);
+    }
+  }
+}
+
+:host(.has-error:not(.nx-rating--disabled):not(.nx-rating--non-interactive)) {
+  .nx-rating__icon.nx-rating__icon--selected {
+    &:hover {
+      color: var(--nx-rating-error-hover-color);
+    }
+    &:active {
+      color: var(--nx-rating-error-active-color);
     }
   }
 }

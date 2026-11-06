@@ -1,5 +1,6 @@
+import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
-import { IdGenerationService } from '@allianz/ng-aquila/utils';
+import { ErrorStateMatcher, IdGenerationService } from '@allianz/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   BooleanInput,
@@ -14,18 +15,31 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  computed,
+  contentChildren,
+  DoCheck,
   ElementRef,
   EventEmitter,
   forwardRef,
   inject,
+  Injector,
   Input,
   input,
   OnDestroy,
+  OnInit,
   Output,
   QueryList,
+  signal,
   ViewChildren,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormControl,
+  FormGroupDirective,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+  NgForm,
+} from '@angular/forms';
 
 /** Types of rating sizes */
 export type RatingSize = 's' | 'm' | 'l';
@@ -46,11 +60,31 @@ export type RatingSize = 's' | 'm' | 'l';
     '[class.nx-rating--negative]': 'negative || inverse()',
     '[class.nx-rating--disabled]': 'disabled',
     '[class.nx-rating--non-interactive]': '!interactive()',
+    '[class.has-error]': '_errorState()',
     '[style.--iconColor]': 'iconColor',
   },
   imports: [NxIconModule],
 })
-export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
+export class NxRatingComponent
+  implements ControlValueAccessor, DoCheck, OnInit, AfterViewInit, OnDestroy
+{
+  protected readonly _errorState = signal(false);
+
+  private readonly _errorChildren = contentChildren(NxErrorComponent);
+
+  protected readonly _errorIds = computed(
+    () =>
+      this._errorChildren()
+        .map((error) => error.id)
+        .join(' ') || null,
+  );
+
+  private readonly _errorStateMatcher = inject(ErrorStateMatcher);
+  private readonly _parentForm = inject(NgForm, { optional: true });
+  private readonly _parentFormGroup = inject(FormGroupDirective, { optional: true });
+  private readonly _injector = inject(Injector);
+  private _ngControl: NgControl | null = null;
+
   /** @docs-private */
   readonly radioGroupName = inject(IdGenerationService).nextId('nx-rating');
 
@@ -186,13 +220,29 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
   /** @docs-private */
   @ViewChildren('input') radioInputs!: QueryList<ElementRef>;
 
-  private onTouchedCallback: () => void = () => {};
-  private onChangeCallback: (option: any) => any = (option: any) => {};
+  protected _onTouchedCallback: () => void = () => {};
+  private _onChangeCallback: (option: any) => any = (option: any) => {};
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,
     private readonly _focusMonitor: FocusMonitor,
   ) {}
+
+  ngOnInit(): void {
+    this._ngControl = this._injector.get(NgControl, null, { self: true });
+  }
+
+  ngDoCheck(): void {
+    if (!this._ngControl) {
+      return;
+    }
+    const parent = this._parentFormGroup || this._parentForm;
+    const control = this._ngControl.control as FormControl;
+    const newState = this.interactive() && this._errorStateMatcher.isErrorState(control, parent);
+    if (newState !== this._errorState()) {
+      this._errorState.set(newState);
+    }
+  }
 
   ngAfterViewInit(): void {
     this.radioInputs.forEach((input) => this._focusMonitor.monitor(input));
@@ -235,8 +285,8 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     if (!this.disabled) {
       this.value = value;
       this.valueChange.emit(value);
-      this.onTouchedCallback();
-      this.onChangeCallback(this.value);
+      this._onTouchedCallback();
+      this._onChangeCallback(this.value);
     }
   }
 
@@ -256,11 +306,11 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
   }
 
   registerOnChange(callback: (option: any) => any): void {
-    this.onChangeCallback = callback;
+    this._onChangeCallback = callback;
   }
 
   registerOnTouched(callback: () => void): void {
-    this.onTouchedCallback = callback;
+    this._onTouchedCallback = callback;
   }
 
   setDisabledState(isDisabled: boolean): void {

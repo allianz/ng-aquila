@@ -46,6 +46,11 @@ You can change the styling of the rating to inverse via the `inverse` property. 
 
 <!-- example(rating-reactive) -->
 
+#### Error state
+When used with `ngModel` or a form control, the rating shows an error state once the control is invalid and the `ErrorStateMatcher` reports an error. Project an `nx-error` into `nx-rating` to display the message; it is linked to the rating via `aria-describedby`.
+
+<!-- example(rating-error) -->
+
 #### Sizes
 
 <!-- example(rating-sizes) -->

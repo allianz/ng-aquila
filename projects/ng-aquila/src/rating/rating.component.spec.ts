@@ -1,3 +1,4 @@
+import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { ENTER } from '@angular/cdk/keycodes';
 import {
   ChangeDetectionStrategy,
@@ -8,7 +9,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
 import { dispatchKeyboardEvent, dispatchMouseEvent } from '../cdk-test-utils';
@@ -392,6 +400,95 @@ describe('NxRatingComponent', () => {
     });
   });
 
+  describe('validation', () => {
+    let errorFixture: ComponentFixture<ErrorRatingComponent>;
+    let ratingElement: HTMLElement;
+
+    beforeEach(() => {
+      errorFixture = TestBed.createComponent(ErrorRatingComponent);
+      errorFixture.detectChanges();
+      ratingElement = errorFixture.nativeElement.querySelector('nx-rating');
+    });
+
+    it('shows no error while the control is untouched', () => {
+      expect(ratingElement.classList).not.toContain('has-error');
+      expect(ratingElement.querySelector('nx-error')).toBeNull();
+    });
+
+    it('projects the nx-error and links it once the control is touched and invalid', () => {
+      errorFixture.componentInstance.control.markAsTouched();
+      errorFixture.detectChanges();
+      errorFixture.detectChanges();
+
+      const group = ratingElement.querySelector('[role="radiogroup"]')!;
+      const error = ratingElement.querySelector('nx-error')!;
+      expect(ratingElement.classList).toContain('has-error');
+      expect(group.getAttribute('aria-invalid')).toBe('true');
+      expect(
+        error.querySelector(`[id="${group.getAttribute('aria-describedby')}"]`),
+      ).not.toBeNull();
+    });
+
+    it('clears the error when a valid rating is selected', () => {
+      errorFixture.componentInstance.control.markAsTouched();
+      errorFixture.detectChanges();
+      errorFixture.detectChanges();
+      expect(ratingElement.classList).toContain('has-error');
+
+      ratingElement.querySelectorAll<HTMLInputElement>('input[type="radio"]')[2].click();
+      errorFixture.detectChanges();
+      errorFixture.detectChanges();
+
+      expect(ratingElement.classList).not.toContain('has-error');
+      expect(ratingElement.querySelector('nx-error')).toBeNull();
+    });
+
+    it('marks the control as touched when a radio input loses focus', () => {
+      const input = ratingElement.querySelector<HTMLInputElement>('input[type="radio"]')!;
+      input.dispatchEvent(new Event('blur'));
+      errorFixture.detectChanges();
+
+      expect(errorFixture.componentInstance.control.touched).toBe(true);
+    });
+
+    it('never shows an error when the rating is non-interactive', () => {
+      errorFixture.componentInstance.interactive = false;
+      errorFixture.componentInstance.control.markAsTouched();
+      errorFixture.detectChanges();
+      errorFixture.detectChanges();
+
+      expect(ratingElement.classList).not.toContain('has-error');
+      expect(ratingElement.querySelector('nx-error')).toBeNull();
+    });
+
+    it('shows the error after the parent form is submitted', () => {
+      const submitFixture = TestBed.createComponent(SubmitRatingComponent);
+      submitFixture.detectChanges();
+      const element: HTMLElement = submitFixture.nativeElement;
+      expect(element.querySelector('nx-error')).toBeNull();
+
+      element.querySelector('form')!.dispatchEvent(new Event('submit'));
+      submitFixture.detectChanges();
+      submitFixture.detectChanges();
+
+      expect(element.querySelector('nx-error')).not.toBeNull();
+    });
+
+    it('works with ngModel', async () => {
+      const modelFixture = TestBed.createComponent(NgModelRatingComponent);
+      modelFixture.detectChanges();
+      await modelFixture.whenStable();
+      const element: HTMLElement = modelFixture.nativeElement;
+      element
+        .querySelector<HTMLInputElement>('input[type="radio"]')!
+        .dispatchEvent(new Event('blur'));
+      modelFixture.detectChanges();
+      modelFixture.detectChanges();
+
+      expect(element.querySelector('nx-rating')!.classList).toContain('has-error');
+    });
+  });
+
   describe('sizes', () => {
     it('adds the class name for size to the icon', waitForAsync(() => {
       createTestComponent(SizeRatingComponent);
@@ -504,4 +601,41 @@ class SizeRatingComponent extends RatingTest {
 })
 class NonInteractiveRatingComponent extends RatingTest {
   value = 0;
+}
+
+@Component({
+  selector: 'test-error-rating-component',
+  template: `<nx-rating [formControl]="control" [interactive]="interactive">
+    <nx-error>Please rate</nx-error>
+  </nx-rating>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, NxRatingModule, NxErrorComponent],
+})
+class ErrorRatingComponent {
+  control = new FormControl(0, Validators.min(1));
+  interactive = true;
+}
+
+@Component({
+  selector: 'test-submit-rating-component',
+  template: `<form [formGroup]="form">
+    <nx-rating formControlName="rating"><nx-error>Please rate</nx-error></nx-rating>
+  </form>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [ReactiveFormsModule, NxRatingModule, NxErrorComponent],
+})
+class SubmitRatingComponent {
+  form = new FormGroup({ rating: new FormControl(0, Validators.min(1)) });
+}
+
+@Component({
+  selector: 'test-ng-model-rating-component',
+  template: `<nx-rating [(ngModel)]="value" required #model="ngModel">
+    <nx-error>Please rate</nx-error>
+  </nx-rating>`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [FormsModule, NxRatingModule, NxErrorComponent],
+})
+class NgModelRatingComponent {
+  value: number | null = null;
 }
