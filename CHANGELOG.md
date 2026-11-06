@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.7.0 (2026-11-06)
+
+
+### Bug Fixes 🐛
+
+* **icon:** add ng-aquila Trusted Types policy for NxIconRegistry ([6f82399](https://github.com/allianz/ng-aquila/commit/6f8239952708c06f3a4e8ce13133f9486429d8db))
+* **popover:** don't close when the opening key is released on the close button ([2135169](https://github.com/allianz/ng-aquila/commit/21351698e7c34c429c4c1ce87b28c941fc29f1ab))
+
+
+### Features ✨
+
+* **button:** add Figma Code Connect & add first template for the button ([c64bc58](https://github.com/allianz/ng-aquila/commit/c64bc588fbaa527e118630eba295f9998e0b2280))
+* **button:** add schematic to migrate to the new button API ([e5f3972](https://github.com/allianz/ng-aquila/commit/e5f39721f5277c401fba782f68d772267a8d201d))
+* **divider:** add a Figma Code Connect template ([2033af5](https://github.com/allianz/ng-aquila/commit/2033af5dabb6fb3f29df161c3ffee095910bc882))
+* **multi-select:** add option groups ([5b23a36](https://github.com/allianz/ng-aquila/commit/5b23a36e0b47a1dd90a6ffe36e50e7b2cbf7a9a4))
+* **phone-input:** add parsedValue and read a pasted calling code on blur ([5bfb169](https://github.com/allianz/ng-aquila/commit/5bfb169c84d585c8e7242cc5779a292e1d39f770))
+* **progressbar:** add a Figma Code Connect template ([228432a](https://github.com/allianz/ng-aquila/commit/228432aeb13520f438be78980d5037b1449207b4))
+* **rating:** add a Figma Code Connect template ([4c78e95](https://github.com/allianz/ng-aquila/commit/4c78e9547ee5ab1fc1050f6d925628099a0dd90b))
+* **rating:** add error state with nx-error support ([a1ab0e5](https://github.com/allianz/ng-aquila/commit/a1ab0e5977e45c66590ede4305d466df6d76cd91))
+* **spinner:** add a Figma Code Connect template ([770bce3](https://github.com/allianz/ng-aquila/commit/770bce3820e4aa7f9a23efb12008886a09c0be64))
+* **timefield:** improve typing behaviour ([80a9f2d](https://github.com/allianz/ng-aquila/commit/80a9f2d5b8369ca2accda7bd989055511faf2979))
+* **tooltip:** add a Figma Code Connect template ([4db7515](https://github.com/allianz/ng-aquila/commit/4db75156da706806906dd4335965dcf80d0b48dd))
+
 ## 22.6.0 (2026-10-27)
 
 ### Bug Fixes 🐛
