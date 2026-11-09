@@ -1,4 +1,5 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
+import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { injectSurface } from '@allianz/ng-aquila/surface';
 import {
   ErrorStateMatcher,
@@ -35,6 +36,7 @@ export type NxTileSelectionMode = 'single' | 'multi';
   selector: 'nx-tile-group',
   templateUrl: './tile-group.component.html',
   styleUrl: './tile-group.component.scss',
+  providers: [{ provide: NxAbstractControl, useExisting: forwardRef(() => NxTileGroupComponent) }],
   changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     '[class.nx-tile-group]': 'true',
@@ -49,7 +51,9 @@ export type NxTileSelectionMode = 'single' | 'multi';
     '(focusout)': '_onFocusOut($event)',
   },
 })
-export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDestroy {
+export class NxTileGroupComponent
+  implements ControlValueAccessor, DoCheck, OnDestroy, NxAbstractControl
+{
   readonly label = contentChild(NxLabelComponent, { descendants: true });
   readonly errors = contentChildren(NxErrorComponent, { descendants: true });
   readonly tiles = contentChildren<NxTileComponent>(forwardRef(() => NxTileComponent));
@@ -71,7 +75,7 @@ export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDe
   readonly disabledInput = input(false, { alias: 'disabled' });
 
   /** Whether the tile group is readonly. Default is false. */
-  readonly readonly = input(false);
+  readonly readonlyInput = input(false, { alias: 'readonly' });
 
   /** The value of the group. Should be a single value for single select, and an array of values for multi select. */
   readonly value = model<any | any[]>(null);
@@ -118,8 +122,10 @@ export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDe
   });
 
   readonly disabled = computed(() => this.accessorDisabled() || this.disabledInput());
+  readonly readonly = computed(() => this._controlReadonly() || this.readonlyInput());
 
   protected readonly accessorDisabled = signal(false);
+  private readonly _controlReadonly = signal(false);
   protected readonly injector = inject(Injector);
   readonly _errorState = signal(false);
 
@@ -183,6 +189,10 @@ export class NxTileGroupComponent implements ControlValueAccessor, DoCheck, OnDe
   }
   setDisabledState(isDisabled: boolean): void {
     this.accessorDisabled.set(isDisabled);
+  }
+
+  setReadonly(value: boolean): void {
+    this._controlReadonly.set(value);
   }
 
   ngDoCheck(): void {

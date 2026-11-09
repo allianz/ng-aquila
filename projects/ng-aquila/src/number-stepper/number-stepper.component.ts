@@ -2,6 +2,7 @@ import { NxErrorComponent } from '@allianz/ng-aquila/base';
 import { NxButtonModule } from '@allianz/ng-aquila/button';
 import { MappedStyles } from '@allianz/ng-aquila/core';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import {
   ErrorStateMatcher,
   IdGenerationService,
@@ -77,6 +78,10 @@ const CUSTOM_VALIDATOR = {
   useExisting: forwardRef(() => NxNumberStepperComponent),
   multi: true,
 };
+const ABSTRACT_CONTROL = {
+  provide: NxAbstractControl,
+  useExisting: forwardRef(() => NxNumberStepperComponent),
+};
 
 /**
  * `Input('size') classNames` defines the size of the number stepper.
@@ -100,12 +105,12 @@ const CUSTOM_VALIDATOR = {
     '[class.read-only]': 'readonly || inputFieldReadonly()',
     '[class.is-resize]': 'resize',
   },
-  providers: [CUSTOM_VALUE_ACCESSOR, CUSTOM_VALIDATOR],
+  providers: [CUSTOM_VALUE_ACCESSOR, CUSTOM_VALIDATOR, ABSTRACT_CONTROL],
   imports: [NxButtonModule, NxIconModule, NxAutoResizeDirective, NgClass],
 })
 export class NxNumberStepperComponent
   extends MappedStyles
-  implements ControlValueAccessor, Validator, OnDestroy, AfterViewInit, DoCheck
+  implements ControlValueAccessor, Validator, OnDestroy, AfterViewInit, DoCheck, NxAbstractControl
 {
   /** @docs-private */
   numberInputValue!: string;
@@ -412,6 +417,11 @@ export class NxNumberStepperComponent
   ngOnDestroy(): void {
     this._destroyed.next();
     this._destroyed.complete();
+  }
+
+  setReadonly(value: boolean): void {
+    this.readonly = value;
+    this._cdr.markForCheck();
   }
 
   private _updateErrorState() {

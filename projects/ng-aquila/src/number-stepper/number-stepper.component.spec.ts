@@ -1,4 +1,5 @@
 import { NxErrorComponent } from '@allianz/ng-aquila/base';
+import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -751,6 +752,17 @@ describe('NxNumberStepperComponent', () => {
       testInstance.readonly = true;
       fixture.detectChanges();
 
+      expect(upButton.disabled).toBe(true);
+      expect(downButton.disabled).toBe(true);
+    });
+
+    it('should set readonly programmatically with NxAbstractControl', () => {
+      createTestComponent(StepperOnPush);
+      stepperDebugElement.injector.get(NxAbstractControl).setReadonly(true);
+      fixture.detectChanges();
+
+      expect(stepperNativeElement).toHaveClass('read-only');
+      expect(inputElement.getAttribute('readonly')).not.toBeNull();
       expect(upButton.disabled).toBe(true);
       expect(downButton.disabled).toBe(true);
     });

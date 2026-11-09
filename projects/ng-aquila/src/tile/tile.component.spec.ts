@@ -1,5 +1,6 @@
 import { NxErrorComponent, NxLabelComponent } from '@allianz/ng-aquila/base';
 import { NxIconModule } from '@allianz/ng-aquila/icon';
+import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { NxSurface, NxSurfaceType } from '@allianz/ng-aquila/surface';
 import { NxTileGroupComponent } from '@allianz/ng-aquila/tile';
 import { ChangeDetectionStrategy, Component, inputBinding, signal, viewChild } from '@angular/core';
@@ -226,6 +227,39 @@ describe('NxTileComponent', () => {
     expect(testInstance.groupValue()).toBeNull();
     expect(tileInstances[0].selected()).toBe(false);
     expect(inputElements[0].checked).toBe(false);
+  });
+
+  it('should make all tiles readonly when the group is readonly', () => {
+    testInstance.groupReadonly.set(true);
+    testInstance.groupValue.set(null);
+    fixture.detectChanges();
+    const inputElements = getInputElements();
+    inputElements[0].click();
+    fixture.detectChanges();
+    expect(testInstance.group().readonly()).toBe(true);
+    expect(testInstance.groupValue()).toBeNull();
+    expect(inputElements[0].checked).toBe(false);
+    tileInstances.forEach((tile) => expect(tile.readonly()).toBe(true));
+    fixture.nativeElement
+      .querySelectorAll('nx-tile')
+      .forEach((tile: HTMLElement) => expect(tile).toHaveClass('is-readonly'));
+  });
+
+  it('should set readonly programmatically with NxAbstractControl', () => {
+    testInstance.groupValue.set(null);
+    fixture.detectChanges();
+    fixture.debugElement
+      .query(By.directive(NxTileGroupComponent))
+      .injector.get(NxAbstractControl)
+      .setReadonly(true);
+    fixture.detectChanges();
+    const inputElements = getInputElements();
+    inputElements[0].click();
+    fixture.detectChanges();
+    expect(testInstance.groupValue()).toBeNull();
+    expect(inputElements[0].checked).toBe(false);
+    expect(tileInstances[0].readonly()).toBe(true);
+    expect(fixture.nativeElement.querySelector('nx-tile')).toHaveClass('is-readonly');
   });
 
   it('should not select tile or update value when disabled', () => {
