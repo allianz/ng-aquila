@@ -1594,6 +1594,56 @@ describe('NxDialog', () => {
         expect(focused.classList).toContain('cdk-keyboard-focused');
       }));
 
+      it('should show the focus ring on a selector target when opened with the keyboard', fakeAsync(() => {
+        dispatchKeyboardEvent(document.body, 'keydown', A);
+
+        dialog.open(ButtonDialog, {
+          viewContainerRef: testViewContainerRef,
+          autoFocus: 'button',
+        });
+        viewContainerFixture.detectChanges();
+        tick(500);
+        flushMicrotasks();
+
+        const focused = _getFocusedElementPierceShadowDom()!;
+        expect(focused.tagName).toBe('BUTTON');
+        expect(focused.classList).toContain('cdk-keyboard-focused');
+      }));
+
+      it('should not show the focus ring on a selector target when opened with the mouse', fakeAsync(() => {
+        dispatchMousedown();
+
+        dialog.open(ButtonDialog, {
+          viewContainerRef: testViewContainerRef,
+          autoFocus: 'button',
+        });
+        viewContainerFixture.detectChanges();
+        tick(500);
+        flushMicrotasks();
+
+        const focused = _getFocusedElementPierceShadowDom()!;
+        expect(focused.tagName).toBe('BUTTON');
+        expect(focused.classList).toContain('cdk-mouse-focused');
+        expect(focused.classList).not.toContain('cdk-keyboard-focused');
+      }));
+
+      it('should not show the focus ring on a selector target when opened before any input', fakeAsync(() => {
+        expect(TestBed.inject(InputModalityDetector).mostRecentModality).toBeNull();
+
+        dialog.open(ButtonDialog, {
+          viewContainerRef: testViewContainerRef,
+          autoFocus: 'button',
+        });
+        viewContainerFixture.detectChanges();
+        tick(500);
+        flushMicrotasks();
+
+        const focused = _getFocusedElementPierceShadowDom()!;
+        expect(focused.tagName).toBe('BUTTON');
+        expect(focused.classList).toContain('cdk-program-focused');
+        expect(focused.classList).not.toContain('cdk-keyboard-focused');
+      }));
+
       it('should not show the focus ring on the trigger when closed with the mouse', fakeAsync(() => {
         dispatchMousedown();
         trigger.focus();

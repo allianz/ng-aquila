@@ -214,7 +214,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
    * interaction" case.
    */
   private _interactionFocusOrigin(): FocusOrigin {
-    return this._inputModalityDetector.mostRecentModality ?? 'keyboard';
+    return this._inputModalityDetector.mostRecentModality ?? 'program';
   }
 
   /** Moves the focus inside the focus trap. */
@@ -290,7 +290,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
         element.addEventListener('mousedown', callback);
       });
     }
-    element.focus(options);
+    this._focusMonitor.focusVia(element, this._interactionFocusOrigin(), options);
   }
 
   /** Restores focus to the element that was focused before the modal opened. */
