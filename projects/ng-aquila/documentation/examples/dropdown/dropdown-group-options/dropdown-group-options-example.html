@@ -1,0 +1,40 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12, 12, 6">
+      <nx-formfield label="Country">
+        <nx-dropdown
+          grouped
+          [showFilter]="true"
+          filterPlaceholder="Type to search countries"
+          [(ngModel)]="country"
+          [options]="continents"
+          selectGroupLabel="name"
+          selectGroupOptions="countries"
+          selectValue="code"
+          selectLabel="name"
+        ></nx-dropdown>
+      </nx-formfield>
+      <div>
+        Selected country:
+        <pre>{{ country }}</pre>
+      </div>
+    </div>
+
+    <div nxCol="12, 12, 6">
+      <nx-formfield label="Year of construction">
+        <nx-dropdown
+          grouped
+          virtualScroll
+          [showFilter]="true"
+          filterPlaceholder="Type to search years"
+          [(ngModel)]="year"
+          [options]="decades"
+        ></nx-dropdown>
+      </nx-formfield>
+      <div>
+        Selected year:
+        <pre>{{ year }}</pre>
+      </div>
+    </div>
+  </div>
+</div>

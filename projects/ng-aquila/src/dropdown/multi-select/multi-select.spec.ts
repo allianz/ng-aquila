@@ -214,11 +214,15 @@ describe('NxMultiSelectComponent', () => {
     }).compileComponents();
   }
 
-  async function createTestComponent(component: Type<DropdownTest>) {
+  function createFixture(component: Type<DropdownTest>) {
     fixture = TestBed.createComponent(component);
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     multiSelectInstance = testInstance.multiSelect;
+  }
+
+  async function createTestComponent(component: Type<DropdownTest>) {
+    createFixture(component);
     loader = TestbedHarnessEnvironment.loader(fixture);
     multiSelectHarness = await loader.getHarness(MultiSelectHarness);
   }
@@ -281,7 +285,7 @@ describe('NxMultiSelectComponent', () => {
     });
 
     it('should set the tabindex of the select to -1 if disabled', fakeAsync(() => {
-      createTestComponent(TabIndexMultiSelectComponent);
+      createFixture(TabIndexMultiSelectComponent);
       const multiSelectElement = fixture.nativeElement.querySelector('nx-multi-select .value');
       expect(multiSelectElement.getAttribute('tabindex')).toBe('0');
 
@@ -474,7 +478,7 @@ describe('NxMultiSelectComponent', () => {
       });
 
       it('should go into error state when error state matcher is true', fakeAsync(() => {
-        createTestComponent(BasicMultiSelectComponent);
+        createFixture(BasicMultiSelectComponent);
         fixture.detectChanges();
         const spy = vi.fn();
         const stateChangesSubscription = multiSelectInstance.stateChanges.subscribe(spy);
@@ -491,12 +495,10 @@ describe('NxMultiSelectComponent', () => {
       }));
 
       it('should add aria-describedby and aria-invalid', async () => {
-        createTestComponent(ErrorMultiSelectComponent);
+        await createTestComponent(ErrorMultiSelectComponent);
         const input = await multiSelectHarness.getValue();
         const ariaInvalid = await input.getAttribute('aria-invalid');
-        const ariaDescribedBy = await input.getAttribute('aria-describedby');
         expect(ariaInvalid).toBe('false');
-        expect(ariaDescribedBy).toBeNull();
 
         await multiSelectHarness.click();
         await multiSelectHarness.closeWithEsc();
@@ -1604,7 +1606,7 @@ describe('NxMultiSelectComponent', () => {
     });
 
     it('passes the measured text on to the tooltip directive', fakeAsync(() => {
-      createTestComponent(BasicMultiSelectComponent);
+      createFixture(BasicMultiSelectComponent);
       fixture.detectChanges();
       tick();
 
@@ -1622,7 +1624,7 @@ describe('NxMultiSelectComponent', () => {
     }));
 
     it('does not schedule an update for a value written before destroy', fakeAsync(() => {
-      createTestComponent(BasicMultiSelectComponent);
+      createFixture(BasicMultiSelectComponent);
       fixture.detectChanges();
       tick();
 

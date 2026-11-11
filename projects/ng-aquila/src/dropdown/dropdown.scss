@@ -65,6 +65,10 @@ $dropdown-border-size: nx-border-size(xs);
   border-radius: v(dropdown-panel-border-radius);
   overflow: hidden;
   min-width: 100%;
+  // Shrinks with the overlay pane when space is short, so the last options stay reachable.
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
   will-change: transform, opacity;
   transform-origin: top center;
 
@@ -109,7 +113,8 @@ $dropdown-border-size: nx-border-size(xs);
       );
     }
 
-    ::ng-deep .nx-dropdown-results__group-label {
+    ::ng-deep .nx-dropdown-results__group-label,
+    .nx-dropdown__virtual-group-label {
       @include type-style(formfield-outline-label);
       font-style: normal;
       font-weight: v(dropdown-group-label-font-weight);
@@ -156,6 +161,7 @@ $dropdown-border-size: nx-border-size(xs);
 }
 
 .nx-dropdown__panel-body {
+  min-height: 0;
   background-color: v(dropdown-panel-background-color);
   $dropdown-item-total-height: calc(
     v(dropdown-item-line-height) + (v(dropdown-item-padding-top) + v(dropdown-item-padding-bottom))
@@ -277,6 +283,8 @@ $dropdown-border-size: nx-border-size(xs);
 
 // When using virtual scroll, the panel body should not scroll - the viewport handles scrolling
 .nx-dropdown__panel-body:has(.nx-dropdown__virtual-viewport) {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   padding: 0;
   // Remove max-height from panel body - viewport will handle it
@@ -295,12 +303,38 @@ $dropdown-border-size: nx-border-size(xs);
     6 * ($dropdown-item-total-height) + $dropdown-panel-total-padding
   );
   max-height: $virtual-viewport-max-height;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 
   // Override the internal viewport to use max-height instead of height: 100%
   ::ng-deep .nx-virtual-viewport__viewport {
+    min-height: 0;
     height: auto;
     max-height: $virtual-viewport-max-height;
     padding-top: v(dropdown-panel-padding-top);
     padding-bottom: v(dropdown-panel-padding-bottom);
+  }
+}
+
+.nx-dropdown__virtual-group-label {
+  @include type-style(dropdown-group-label);
+  padding: v(dropdown-group-label-padding);
+  color: v(dropdown-group-label-color);
+
+  // Same spacing and divider as between two `nx-dropdown-group`s.
+  &.has-divider {
+    position: relative;
+    margin-top: calc(v(dropdown-group-divider-gap-vertical) * 2);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(v(dropdown-group-divider-gap-vertical) * -1);
+      left: v(dropdown-item-padding-right);
+      right: v(dropdown-item-padding-right);
+      height: 1px;
+      background-color: v(dropdown-group-divider);
+    }
   }
 }

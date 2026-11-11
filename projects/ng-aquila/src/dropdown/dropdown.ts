@@ -5,7 +5,11 @@ import { NxAbstractControl } from '@allianz/ng-aquila/shared';
 import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { ErrorStateMatcher, IdGenerationService, parseCssTimeToMs } from '@allianz/ng-aquila/utils';
-import { NxVirtualFor, NxVirtualViewportComponent } from '@allianz/ng-aquila/virtual-scroll';
+import {
+  NxVirtualFor,
+  NxVirtualGroupOutlet,
+  NxVirtualViewportComponent,
+} from '@allianz/ng-aquila/virtual-scroll';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { Dir, Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
@@ -100,7 +104,36 @@ import { NxDropdownItemChange, NxDropdownItemComponent } from './item/dropdown-i
 export interface NxDropdownOption {
   value: any;
   label?: string;
+  disabled?: boolean;
 }
+
+interface NxDropdownOptionView<S> extends NxDropdownOption {
+  disabled: boolean;
+  /** Index across all options, including the ones in other groups. */
+  index: number;
+  group?: NxDropdownGroupView<S>;
+  option: S;
+}
+
+interface NxDropdownGroupView<S> {
+  id: string;
+  label: string;
+  options: NxDropdownOptionView<S>[];
+}
+
+type NxDropdownVirtualRow<S> =
+  | {
+      option: NxDropdownOptionView<S>;
+      index: number;
+      /** Position and size of the set of options, counted per group if the option is in one. */
+      posinset: number;
+      setsize: number;
+      group?: undefined;
+    }
+  | { group: NxDropdownGroupView<S>; divider: boolean; option?: undefined };
+
+const _select = <S>(item: S, selector: string | ((item: S) => unknown)): unknown =>
+  typeof selector === 'string' ? (item as { [key: string]: unknown })[selector] : selector(item);
 
 /**
  * Context provided to custom item templates.
@@ -113,6 +146,8 @@ export interface NxDropdownItemTemplateContext<T = unknown> {
   index: number;
   /** Whether the item is currently selected */
   selected: boolean;
+  /** The option as passed to `options` */
+  option: unknown;
 }
 
 export type NxDropdownPanelMinWidth = 'trigger' | 'none';
@@ -149,7 +184,7 @@ export class NxDropdownIntl {
 export class NxDropdownSelectChange<T = any> {
   constructor(
     /** Reference to the select that emitted the change event. */
-    readonly source: NxDropdownComponent,
+    readonly source: NxDropdownComponent<any>,
     /** Current value of the select that emitted the event. */
     readonly value: T,
   ) {}
@@ -203,10 +238,16 @@ export const DROPDOWN_DEFAULT_OPTIONS = new InjectionToken<NxDropdownDefaultOpti
 export type FilterInputType =
   'text' | 'number' | 'tel' | 'search' | 'date' | 'datetime' | 'month' | 'email';
 
-export type NxDropdownFilterFn = (query: string, label: string) => boolean;
+/** `groupLabel` is only passed for items inside a group. */
+export type NxDropdownFilterFn = (query: string, label: string, groupLabel?: string) => boolean;
 
-const _defaultFilterFn: NxDropdownFilterFn = (query, label) =>
-  label.toLocaleLowerCase().includes(query.toLocaleLowerCase()); // TODO why not `toLowerCase()` as in multi-select?
+const _defaultFilterFn: NxDropdownFilterFn = (query, label, groupLabel) => {
+  const lowerCaseQuery = query.toLocaleLowerCase(); // TODO why not `toLowerCase()` as in multi-select?
+  return (
+    label.toLocaleLowerCase().includes(lowerCaseQuery) ||
+    !!groupLabel?.toLocaleLowerCase().includes(lowerCaseQuery)
+  );
+};
 
 export type NxDropdownCompareWithFn = (o1: any, o2: any) => boolean;
 
@@ -261,14 +302,16 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = (value) =>
     NxIconModule,
     CdkConnectedOverlay,
     Dir,
+    NxDropdownGroupComponent,
     NxDropdownItemComponent,
     NxTooltipModule,
     NxVirtualViewportComponent,
     NxVirtualFor,
+    NxVirtualGroupOutlet,
     NxCheckboxModule,
   ],
 })
-export class NxDropdownComponent
+export class NxDropdownComponent<S = NxDropdownOption>
   implements
     NxAbstractControl,
     NxDropdownControl,
@@ -377,18 +420,85 @@ export class NxDropdownComponent
   ariaDescribedby?: string;
 
   /**
-   * Array of options for the dropdown.
+   * Array of options for the dropdown, or array of groups when `grouped` is set.
+   * Use `selectValue` and `selectLabel` for options that are not an `NxDropdownOption`.
    */
-  @Input() set options(value: NxDropdownOption[]) {
+  @Input() set options(value: S[]) {
     this._options.set(value);
   }
-  get options(): NxDropdownOption[] | null {
+  get options(): S[] | null {
     return this._options();
   }
-  private readonly _options = signal<NxDropdownOption[] | null>(null);
+  private readonly _options = signal<S[] | null>(null);
+
+  /**
+   * Whether `options` contains groups instead of options.
+   * Use `selectGroupLabel` and `selectGroupOptions` to define how to read a group.
+   */
+  readonly grouped = input(false, { transform: booleanAttribute });
+
+  /**
+   * Selector to get the value of an option. Can be either a property name or a selector function.
+   * An empty string uses the whole option as value.
+   */
+  readonly selectValue = input<string | ((option: S) => any)>('value');
+
+  /**
+   * Selector to get the label of an option. Can be either a property name or a selector function.
+   * Options without a label display their formatted value.
+   */
+  readonly selectLabel = input<string | ((option: S) => string)>('label');
+
+  /**
+   * Selector to get the disabled state of an option. Can be either a property name or a selector function.
+   * An empty string disables no option.
+   */
+  readonly selectDisabled = input<string | ((option: S) => boolean)>('disabled');
+
+  /**
+   * Selector to get the label of a group. Only used when `grouped` is set.
+   * Can be either a property name or a selector function.
+   */
+  readonly selectGroupLabel = input<string | ((group: S) => string)>('label');
+
+  /**
+   * Selector to get the options of a group. Only used when `grouped` is set.
+   * Can be either a property name or a selector function.
+   */
+  readonly selectGroupOptions = input<string | ((group: S) => unknown[])>('options');
+
+  protected readonly _groups = computed<NxDropdownGroupView<S>[]>(() => {
+    const options = this._options();
+    if (!this.grouped() || !options) {
+      return [];
+    }
+    let index = 0;
+    return options.map((group, groupIndex) => {
+      const view: NxDropdownGroupView<S> = {
+        id: `${this.modalId}-group-${groupIndex}`,
+        label: this._readGroupLabel(group),
+        options: [],
+      };
+      view.options = this._readGroupOptions(group).map((option) =>
+        this._createOptionView(option, index++, view),
+      );
+      return view;
+    });
+  });
+
+  protected readonly _optionViews = computed<NxDropdownOptionView<S>[] | null>(() => {
+    const options = this._options();
+    if (!options) {
+      return null;
+    }
+    if (this.grouped()) {
+      return this._groups().flatMap((group) => group.options);
+    }
+    return options.map((option, index) => this._createOptionView(option, index));
+  });
 
   private readonly _optionsEffect = effect(() => {
-    this._options();
+    this._optionViews();
     if (this._isLazy) {
       this._initializeSelection();
     }
@@ -513,6 +623,10 @@ export class NxDropdownComponent
     transform: booleanAttribute,
   });
 
+  _isVirtual(): boolean {
+    return this.virtualScroll();
+  }
+
   /** Text displayed as placeholder for the filter. */
   readonly filterPlaceholder = input('');
 
@@ -520,7 +634,7 @@ export class NxDropdownComponent
   readonly overlayLabel = input('');
 
   /** Can be used as a fallback to the CdkOverlayOrigin */
-  readonly overlayFallbackOrigin = input<NxDropdownComponent>();
+  readonly overlayFallbackOrigin = input<NxDropdownComponent<any>>();
 
   /* panelMaxWidth accepts a number for pixel values or a string for any css value */
   readonly panelMaxWidth = input<string | number>();
@@ -727,10 +841,11 @@ export class NxDropdownComponent
 
   /**
    * Function to be used when the user types into the search filter. The first argument is the user input,
-   * the second argument is the dropdown item value as displayed. The dropdown items will use this function
-   * to set their visibility state. A boolean should be returned.
+   * the second argument is the dropdown item value as displayed. For items in a group, the third argument
+   * is the group label. The dropdown items will use this function to set their visibility state.
+   * A boolean should be returned.
    *
-   * Defaults to lower case inclusion.
+   * Defaults to lower case inclusion, matching either the item label or the group label.
    */
   @Input() set filterFn(value: NxDropdownFilterFn | null | undefined) {
     this.#filterFn = value;
@@ -802,17 +917,60 @@ export class NxDropdownComponent
   });
 
   /** Filtered options for virtual mode (respects filter) */
-  protected readonly _filteredOptions = computed(() => {
+  protected readonly _filteredOptions = computed<NxDropdownOptionView<S>[]>(() => {
     const filterValue = this._filterValue();
-    const options = this._options();
+    const options = this._optionViews();
     if (!this.virtualScroll() || !options) {
       return [];
     }
     if (!filterValue || !this.showFilter()) {
       return options;
     }
-    return options.filter((opt) => this.filterFn(filterValue, this._getLabel(opt)));
+    return options.filter((opt) =>
+      opt.group
+        ? this.filterFn(filterValue, this._getLabel(opt), opt.group.label)
+        : this.filterFn(filterValue, this._getLabel(opt)),
+    );
   });
+
+  /** Filtered options for virtual mode, with a header row in front of each group. */
+  protected readonly _virtualRows = computed<NxDropdownVirtualRow<S>[]>(() => {
+    const options = this._filteredOptions();
+    const rows: NxDropdownVirtualRow<S>[] = [];
+    let groupStart = 0;
+    let groupEnd = 0;
+    options.forEach((option, index) => {
+      if (index === groupEnd) {
+        groupStart = index;
+        groupEnd = index + 1;
+        while (groupEnd < options.length && options[groupEnd].group === option.group) {
+          groupEnd++;
+        }
+        if (option.group) {
+          rows.push({ group: option.group, divider: rows.length > 0 });
+        }
+      }
+      rows.push({
+        option,
+        index,
+        posinset: index - groupStart + 1,
+        setsize: groupEnd - groupStart,
+      });
+    });
+    return rows;
+  });
+
+  protected readonly _virtualRowGroup = (
+    row: NxDropdownVirtualRow<S>,
+  ): NxDropdownGroupView<S> | undefined => row.group ?? row.option.group;
+
+  /** Maps an index in `_filteredOptions` to its index in `_virtualRows`. */
+  private readonly _virtualRowIndices = computed(() =>
+    this._virtualRows().flatMap((row, rowIndex) => (row.option ? [rowIndex] : [])),
+  );
+
+  protected readonly _trackVirtualRow = (_: number, row: NxDropdownVirtualRow<S>): unknown =>
+    row.option ? row.option.value : row.group.id;
 
   /** Typeahead buffer (shared) */
   private _typeaheadBuffer = '';
@@ -1007,7 +1165,11 @@ export class NxDropdownComponent
   }
 
   /** Invoked when an option is clicked. */
-  _onSelect(option: NxDropdownItemComponent, isUserInput: boolean, item?: NxDropdownOption): void {
+  _onSelect(
+    option: NxDropdownItemComponent,
+    isUserInput: boolean,
+    item?: NxDropdownOptionView<S>,
+  ): void {
     const wasSelected = this._selectionModel.isSelected(option);
     const selectedOption = item || option;
 
@@ -1099,7 +1261,7 @@ export class NxDropdownComponent
       }
     };
 
-    const options = this._isLazy ? (this.options ?? []) : this.dropdownItems.toArray();
+    const options = this._isLazy ? (this._optionViews() ?? []) : this.dropdownItems.toArray();
     const option = options.find(filterFn);
 
     if (option) {
@@ -1128,7 +1290,7 @@ export class NxDropdownComponent
   /** Sorts the selected values in the selected based on their order in the panel. */
   private _sortValues() {
     if (this.isMultiSelect()) {
-      const options = this._isLazy ? (this.options ?? []) : this.dropdownItems.toArray();
+      const options = this._isLazy ? (this._optionViews() ?? []) : this.dropdownItems.toArray();
       this._selectionModel.sort(
         (a, b) =>
           options.findIndex((o) => o.value === a.value) -
@@ -1182,7 +1344,7 @@ export class NxDropdownComponent
       return;
     }
     if (this.virtualScroll()) {
-      this.virtualViewport()?.scrollToIndex(index, behavior);
+      this.virtualViewport()?.scrollToIndex(this._toVirtualRowIndex(index), behavior);
     } else {
       const items = this.dropdownItems?.toArray() ?? [];
       if (index >= 0 && index < items.length) {
@@ -1231,7 +1393,7 @@ export class NxDropdownComponent
     if (
       this.disabled ||
       this.readonly ||
-      !(this.dropdownItems?.length || this.options?.length) ||
+      !(this.dropdownItems?.length || this._optionViews()?.length) ||
       this._panelOpen
     ) {
       return;
@@ -1649,13 +1811,14 @@ export class NxDropdownComponent
 
   /** Creates the context object for custom item templates */
   _createItemTemplateContext(
-    option: NxDropdownOption,
+    option: NxDropdownOptionView<S>,
     index: number,
   ): NxDropdownItemTemplateContext {
     return {
       $implicit: option.value,
       index,
       selected: this._isValueSelected(option.value),
+      option: option.option,
     };
   }
 
@@ -1665,20 +1828,68 @@ export class NxDropdownComponent
   /** Extract label from NxDropdownOption for virtual scroll component */
   readonly _getOptionLabel = (option: NxDropdownOption): string => this._getLabel(option);
 
+  private _createOptionView(
+    option: S,
+    index: number,
+    group?: NxDropdownGroupView<S>,
+  ): NxDropdownOptionView<S> {
+    const selectValue = this.selectValue();
+    const selectLabel = this.selectLabel();
+    const selectDisabled = this.selectDisabled();
+    const label = selectLabel ? _select(option, selectLabel) : undefined;
+    return {
+      value: selectValue ? _select(option, selectValue) : option,
+      label: label == null ? undefined : String(label),
+      disabled: selectDisabled ? !!_select(option, selectDisabled) : false,
+      index,
+      group,
+      option,
+    };
+  }
+
+  private _readGroupLabel(group: S): string {
+    const label = _select(group, this.selectGroupLabel());
+    if (label == null) {
+      if (isDevMode()) {
+        console.warn('NxDropdown: Group has no label', group);
+      }
+      return '';
+    }
+    return String(label);
+  }
+
+  private _readGroupOptions(group: S): S[] {
+    const options = _select(group, this.selectGroupOptions());
+    if (!Array.isArray(options)) {
+      if (isDevMode()) {
+        console.warn('NxDropdown: Options of group are not an array', group);
+      }
+      return [];
+    }
+    return options;
+  }
+
   /** Check if a value is currently selected */
   _isValueSelected(value: unknown): boolean {
     return this._selectionModel.selected.some((s) => this.compareWith(s.value, value));
   }
 
   /** Handle selection change from nx-dropdown-item in virtual scroll mode */
-  _onVirtualSelect(event: NxDropdownItemChange, item: NxDropdownOption, index: number): void {
+  _onVirtualSelect(
+    event: NxDropdownItemChange,
+    item: NxDropdownOptionView<S>,
+    index: number,
+  ): void {
     if (event.isUserInput) {
       this._selectVirtualItem(item, index);
     }
   }
 
   /** Select/toggle a virtual item */
-  private _selectVirtualItem(option: NxDropdownOption, index: number): void {
+  private _selectVirtualItem(option: NxDropdownOptionView<S>, index: number): void {
+    if (option.disabled) {
+      return;
+    }
     const isSelected = this._isValueSelected(option.value);
     const isMultiSelect = this.isMultiSelect();
 
@@ -1720,7 +1931,7 @@ export class NxDropdownComponent
     }
 
     // Find the index of the first selected item
-    let activeIndex = 0;
+    let activeIndex = this._findEnabledVirtualIndex(0, 1);
     if (!this.isMultiSelect() && this._selectionModel.selected[0]) {
       const selectedValue = this._selectionModel.selected[0].value;
       const foundIndex = options.findIndex((opt) => this.compareWith(opt.value, selectedValue));
@@ -1732,9 +1943,36 @@ export class NxDropdownComponent
     this._virtualActiveIndex.set(activeIndex);
 
     // Scroll to the active item after viewport is ready
-    setTimeout(() => {
-      this.virtualViewport()?.scrollIntoView(activeIndex);
-    });
+    if (activeIndex >= 0) {
+      setTimeout(() => {
+        this._scrollVirtualOptionIntoView(activeIndex);
+      });
+    }
+  }
+
+  private _toVirtualRowIndex(index: number): number {
+    return this._virtualRowIndices()[index] ?? index;
+  }
+
+  private _scrollVirtualOptionIntoView(index: number): void {
+    const viewport = this.virtualViewport();
+    const rowIndex = this._toVirtualRowIndex(index);
+    if (this._virtualRows()[rowIndex - 1]?.group) {
+      // Bring the group header along when reaching the first option of a group.
+      viewport?.scrollIntoView(rowIndex - 1);
+    }
+    viewport?.scrollIntoView(rowIndex);
+  }
+
+  /** Index of the next enabled option in `step` direction, starting at `index`. */
+  private _findEnabledVirtualIndex(index: number, step: 1 | -1): number {
+    const options = this._filteredOptions();
+    for (let i = index; i >= 0 && i < options.length; i += step) {
+      if (!options[i].disabled) {
+        return i;
+      }
+    }
+    return -1;
   }
 
   /** Handle keyboard events in virtual scroll mode */
@@ -1794,38 +2032,34 @@ export class NxDropdownComponent
   }
 
   private _virtualArrowDown(): void {
-    const options = this._filteredOptions();
     const currentIndex = this._virtualActiveIndex();
-    const newIndex = Math.min(currentIndex + 1, options.length - 1);
+    const newIndex = this._findEnabledVirtualIndex(currentIndex + 1, 1);
 
-    if (newIndex !== currentIndex) {
-      this.virtualViewport()?.scrollIntoView(newIndex);
+    if (newIndex !== -1 && newIndex !== currentIndex) {
+      this._scrollVirtualOptionIntoView(newIndex);
       this._virtualActiveIndex.set(newIndex);
     }
   }
 
   private _virtualArrowUp(): void {
-    const options = this._filteredOptions();
     const currentIndex = this._virtualActiveIndex();
-    const newIndex = Math.max(currentIndex - 1, 0);
+    const newIndex = this._findEnabledVirtualIndex(currentIndex - 1, -1);
 
-    if (newIndex !== currentIndex) {
-      this.virtualViewport()?.scrollIntoView(newIndex);
+    if (newIndex !== -1 && newIndex !== currentIndex) {
+      this._scrollVirtualOptionIntoView(newIndex);
       this._virtualActiveIndex.set(newIndex);
     }
   }
 
   private _virtualHome(): void {
-    const options = this._filteredOptions();
     this.virtualViewport()?.scrollToIndex(0);
-    this._virtualActiveIndex.set(0);
+    this._virtualActiveIndex.set(this._findEnabledVirtualIndex(0, 1));
   }
 
   private _virtualEnd(): void {
-    const options = this._filteredOptions();
-    const lastIndex = options.length - 1;
-    this.virtualViewport()?.scrollToIndex(lastIndex);
-    this._virtualActiveIndex.set(lastIndex);
+    const lastIndex = this._filteredOptions().length - 1;
+    this.virtualViewport()?.scrollToIndex(this._toVirtualRowIndex(lastIndex));
+    this._virtualActiveIndex.set(this._findEnabledVirtualIndex(lastIndex, -1));
   }
 
   private _virtualSelect(): void {
@@ -1874,7 +2108,7 @@ export class NxDropdownComponent
     }
 
     if (matchIndex >= 0) {
-      this.virtualViewport()?.scrollIntoView(matchIndex);
+      this._scrollVirtualOptionIntoView(matchIndex);
       this._virtualActiveIndex.set(matchIndex);
     }
   }
@@ -1884,7 +2118,7 @@ export class NxDropdownComponent
    * Searches starting from startIndex + 1 and wraps around.
    */
   private _findTypeaheadMatch(
-    options: NxDropdownOption[],
+    options: NxDropdownOptionView<S>[],
     searchString: string,
     startIndex: number,
     prefixOnly: boolean,
@@ -1897,7 +2131,7 @@ export class NxDropdownComponent
       const option = options[index];
 
       // Skip disabled items
-      if (this._isOptionDisabled(option)) {
+      if (option.disabled) {
         continue;
       }
 
@@ -1915,24 +2149,16 @@ export class NxDropdownComponent
     return -1;
   }
 
-  /** Check if an option is disabled */
-  private _isOptionDisabled(option: NxDropdownOption): boolean {
-    // Options passed via the options input don't have a disabled property
-    // This is a safeguard for future extensibility
-    return (option as any).disabled === true;
-  }
-
   /** Handle filter changes in virtual scroll mode */
   _onVirtualFilter(query: string): void {
     this.filterChanges.next(query);
 
-    // Reset active index when filter changes
-    const options = this._filteredOptions();
-    if (options.length > 0) {
-      this._virtualActiveIndex.set(0);
-      this.virtualViewport()?.scrollToIndex(0);
+    const activeIndex = this._findEnabledVirtualIndex(0, 1);
+    this._virtualActiveIndex.set(activeIndex);
+    if (activeIndex >= 0) {
+      this._scrollVirtualOptionIntoView(activeIndex);
     } else {
-      this._virtualActiveIndex.set(-1);
+      this.virtualViewport()?.scrollToIndex(0);
     }
   }
 

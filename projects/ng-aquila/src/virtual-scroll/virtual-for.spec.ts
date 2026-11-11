@@ -1,7 +1,13 @@
-import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  provideZonelessChangeDetection,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 
-import { NxVirtualFor } from './virtual-for';
+import { NxVirtualFor, NxVirtualGroupOutlet } from './virtual-for';
 import { NxVirtualViewportComponent } from './virtual-scroll-viewport';
 
 interface TestItem {
@@ -85,6 +91,167 @@ class FunctionTrackByTestComponent {
 class ContextTestComponent {
   items = signal<TestItem[]>([]);
   viewport = viewChild.required(NxVirtualViewportComponent);
+}
+
+interface TestGroup {
+  id: number;
+  name: string;
+}
+
+@Component({
+  selector: 'test-group-test-component',
+  template: `
+    <nx-virtual-viewport [itemHeight]="40" [overscan]="2" style="height: 200px; display: block;">
+      <ng-template #group let-group>
+        <div class="test-group" role="group" [attr.aria-label]="group.name">
+          <ng-container nxVirtualGroupOutlet />
+        </div>
+      </ng-template>
+      <ng-template #altGroup let-group>
+        <section class="test-group alt-group" [attr.aria-label]="group.name">
+          <ng-container nxVirtualGroupOutlet />
+        </section>
+      </ng-template>
+      <div
+        *nxVirtualFor="
+          let item of items();
+          trackBy: 'id';
+          groupBy: groupOf;
+          groupTrackBy: groupKey;
+          groupTemplate: alt ? altGroup : group
+        "
+        class="test-item"
+      >
+        {{ item.name }}
+        <button type="button">{{ item.name }}</button>
+      </div>
+    </nx-virtual-viewport>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxVirtualViewportComponent, NxVirtualFor, NxVirtualGroupOutlet],
+})
+class GroupTestComponent {
+  /** Groups of ten items, items with an id of 95 or higher have no group. */
+  groups: TestGroup[] = Array.from({ length: 10 }, (_, i) => ({ id: i, name: `Group ${i}` }));
+  items = signal<TestItem[]>([]);
+  groupOf = (item: TestItem): TestGroup | null =>
+    item.id >= 95 ? null : this.groups[Math.floor(item.id / 10)];
+  groupKey: string = '';
+  alt = false;
+  viewport = viewChild.required(NxVirtualViewportComponent);
+  virtualFor = viewChild.required(NxVirtualFor);
+}
+
+@Component({
+  selector: 'test-group-without-outlet-test-component',
+  template: `
+    <nx-virtual-viewport [itemHeight]="40" style="height: 200px; display: block;">
+      <ng-template #group><div role="group"></div></ng-template>
+      <div
+        *nxVirtualFor="let item of items(); groupBy: groupOf; groupTemplate: group"
+        class="test-item"
+      >
+        {{ item.name }}
+      </div>
+    </nx-virtual-viewport>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxVirtualViewportComponent, NxVirtualFor],
+})
+class GroupWithoutOutletTestComponent {
+  items = signal<TestItem[]>(generateItems(100));
+  groupOf = () => 'group';
+  virtualFor = viewChild.required(NxVirtualFor);
+}
+
+@Component({
+  selector: 'test-group-outlet-in-control-flow-test-component',
+  template: `
+    <nx-virtual-viewport [itemHeight]="40" style="height: 200px; display: block;">
+      <ng-template #group let-group>
+        <div class="test-group" role="group" [attr.aria-label]="group">
+          @switch (outlet) {
+            @case ('first') {
+              <ng-container nxVirtualGroupOutlet />
+            }
+            @case ('second') {
+              <ng-container nxVirtualGroupOutlet />
+            }
+          }
+        </div>
+      </ng-template>
+      <div
+        *nxVirtualFor="let item of items(); groupBy: groupOf; groupTemplate: group"
+        class="test-item"
+      >
+        {{ item.name }}
+      </div>
+    </nx-virtual-viewport>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxVirtualViewportComponent, NxVirtualFor, NxVirtualGroupOutlet],
+})
+class GroupOutletInControlFlowTestComponent {
+  items = signal<TestItem[]>(generateItems(3));
+  outlet: 'first' | 'second' | 'none' = 'first';
+  groupOf = () => 'group';
+}
+
+@Component({
+  selector: 'test-misplaced-group-outlet-test-component',
+  template: `<ng-container nxVirtualGroupOutlet />`,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxVirtualGroupOutlet],
+})
+class MisplacedGroupOutletTestComponent {}
+
+@Component({
+  selector: 'test-positioned-group-test-component',
+  template: `
+    <nx-virtual-viewport [itemHeight]="40" style="height: 200px; display: block;">
+      <ng-template #group>
+        <div role="group" style="transform: translateZ(0)">
+          <ng-container nxVirtualGroupOutlet />
+        </div>
+      </ng-template>
+      <div *nxVirtualFor="let item of items(); groupBy: groupOf; groupTemplate: group">
+        {{ item.name }}
+      </div>
+    </nx-virtual-viewport>
+  `,
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NxVirtualViewportComponent, NxVirtualFor, NxVirtualGroupOutlet],
+})
+class PositionedGroupTestComponent {
+  items = signal<TestItem[]>(generateItems(3));
+  groupOf = () => 'group';
+}
+
+@Component({
+  selector: 'test-control-flow-root-test-component',
+  template: `
+    <nx-virtual-viewport [itemHeight]="40" style="height: 200px; display: block;">
+      <div *nxVirtualFor="let item of items(); trackBy: 'id'" class="test-item">
+        @if (item) {
+          <div style="height: 30px">{{ item.name }}</div>
+        }
+      </div>
+    </nx-virtual-viewport>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxVirtualViewportComponent, NxVirtualFor],
+})
+class ControlFlowRootTestComponent {
+  items = signal<TestItem[]>(generateItems(100));
+  virtualFor = viewChild.required(NxVirtualFor);
+}
+
+function animationFrames(count: number): Promise<void> {
+  return new Promise((resolve) => {
+    const next = (remaining: number) =>
+      remaining === 0 ? resolve() : requestAnimationFrame(() => next(remaining - 1));
+    next(count);
+  });
 }
 
 describe('NxVirtualFor', () => {
@@ -830,5 +997,362 @@ describe('NxVirtualFor', () => {
       firstItem = fixture.nativeElement.querySelector('.test-item');
       expect(firstItem.textContent.trim()).toBe('Replaced 0');
     }));
+  });
+
+  describe('groups', () => {
+    let fixture: ComponentFixture<GroupTestComponent>;
+    let component: GroupTestComponent;
+
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [GroupTestComponent],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(GroupTestComponent);
+      component = fixture.componentInstance;
+    });
+
+    function render(items: TestItem[]) {
+      component.items.set(items);
+      fixture.detectChanges();
+      tick();
+      fixture.detectChanges();
+    }
+
+    function scrollTo(scrollTop: number) {
+      const viewportEl = fixture.nativeElement.querySelector('.nx-virtual-viewport__viewport');
+      viewportEl.scrollTop = scrollTop;
+      component.virtualFor().updateForScroll(scrollTop, 200);
+      fixture.detectChanges();
+    }
+
+    function renderedGroups(): { name: string; items: string[] }[] {
+      return Array.from<HTMLElement>(fixture.nativeElement.querySelectorAll('.test-group')).map(
+        (group) => ({
+          name: group.getAttribute('aria-label')!,
+          items: Array.from(group.querySelectorAll('.test-item')).map((item) =>
+            item.firstChild!.textContent!.trim(),
+          ),
+        }),
+      );
+    }
+
+    function contentChildren(): HTMLElement[] {
+      return Array.from(
+        fixture.nativeElement.querySelector('.nx-virtual-viewport__content').children,
+      );
+    }
+
+    it('wraps the rendered items of a group in the group template', fakeAsync(() => {
+      render(generateItems(100));
+      expect(renderedGroups()).toEqual([
+        {
+          name: 'Group 0',
+          items: ['Item 0', 'Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+        },
+      ]);
+    }));
+
+    it('renders only the groups of the rendered items', fakeAsync(() => {
+      render(generateItems(100));
+      scrollTo(2000);
+      expect(renderedGroups()).toEqual([
+        { name: 'Group 4', items: ['Item 48', 'Item 49'] },
+        {
+          name: 'Group 5',
+          items: ['Item 50', 'Item 51', 'Item 52', 'Item 53', 'Item 54', 'Item 55', 'Item 56'],
+        },
+      ]);
+    }));
+
+    it('keeps the items in their order when scrolling back up', fakeAsync(() => {
+      render(generateItems(100));
+      scrollTo(2000);
+      scrollTo(1880);
+      const items = Array.from<HTMLElement>(fixture.nativeElement.querySelectorAll('.test-item'));
+      const indices = items.map((item) => Number(item.dataset['virtualIndex']));
+      expect(indices).toEqual([...indices].sort((a, b) => a - b));
+      expect(renderedGroups().map((group) => group.name)).toEqual(['Group 4', 'Group 5']);
+    }));
+
+    it('inserts a group that comes into view above in front of the others', fakeAsync(() => {
+      render(generateItems(100));
+      scrollTo(2200);
+      const group5 = fixture.nativeElement.querySelector('[aria-label="Group 5"]');
+      const item54 = fixture.nativeElement.querySelector('[data-virtual-index="54"]');
+      scrollTo(1920);
+      expect(contentChildren().map((child) => child.getAttribute('aria-label'))).toEqual([
+        'Group 4',
+        'Group 5',
+      ]);
+      expect(fixture.nativeElement.querySelector('[aria-label="Group 5"]')).toBe(group5);
+      expect(fixture.nativeElement.querySelector('[data-virtual-index="54"]')).toBe(item54);
+    }));
+
+    it('does not move views when scrolling down', fakeAsync(() => {
+      render(generateItems(100));
+      const removed: Node[] = [];
+      const observer = new MutationObserver((records) =>
+        records.forEach((record) => removed.push(...Array.from(record.removedNodes))),
+      );
+      observer.observe(fixture.nativeElement.querySelector('.nx-virtual-viewport__content'), {
+        childList: true,
+        subtree: true,
+      });
+      for (let scrollTop = 40; scrollTop <= 2400; scrollTop += 120) {
+        scrollTo(scrollTop);
+      }
+      observer.takeRecords().forEach((record) => removed.push(...Array.from(record.removedNodes)));
+      observer.disconnect();
+      expect(removed.length).toBeGreaterThan(0);
+      expect(removed.filter((node) => node.isConnected)).toEqual([]);
+    }));
+
+    it('keeps the focus in a rendered item when scrolling up', fakeAsync(() => {
+      render(generateItems(100));
+      scrollTo(2000);
+      const button = fixture.nativeElement.querySelector(
+        '[data-virtual-index="52"] button',
+      ) as HTMLButtonElement;
+      button.focus();
+      scrollTo(1880);
+      expect(document.activeElement).toBe(button);
+    }));
+
+    it('renders items without a group outside of the group templates', fakeAsync(() => {
+      render(generateItems(100));
+      scrollTo(3800);
+      const ungrouped = contentChildren()
+        .filter((child) => child.classList.contains('test-item'))
+        .map((item) => item.firstChild!.textContent!.trim());
+      expect(ungrouped).toEqual(['Item 95', 'Item 96', 'Item 97', 'Item 98', 'Item 99']);
+      expect(renderedGroups().map((group) => group.name)).toEqual(['Group 9']);
+    }));
+
+    it('positions grouped items like ungrouped ones', fakeAsync(() => {
+      render(generateItems(100));
+      const viewportTop = fixture.nativeElement
+        .querySelector('.nx-virtual-viewport__content')
+        .getBoundingClientRect().top;
+      const item = fixture.nativeElement.querySelector('[data-virtual-index="3"]');
+      expect(item.getBoundingClientRect().top - viewportTop).toBe(120);
+    }));
+
+    it('moves an item to its new group when the data changes', fakeAsync(() => {
+      render(generateItems(5));
+      component.groupOf = (item) => component.groups[item.id < 2 ? 0 : 1];
+      render(generateItems(5));
+      expect(renderedGroups()).toEqual([
+        { name: 'Group 0', items: ['Item 0', 'Item 1'] },
+        { name: 'Group 1', items: ['Item 2', 'Item 3', 'Item 4'] },
+      ]);
+    }));
+
+    it('warns once about a group that appears more than once and renders it in its first container', fakeAsync(() => {
+      const consoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      component.groupOf = (item) => component.groups[item.id === 1 ? 1 : 0];
+      render(generateItems(3));
+      render(generateItems(4));
+
+      expect(consoleWarn).toHaveBeenCalledTimes(1);
+      expect(consoleWarn).toHaveBeenCalledWith(
+        expect.stringMatching(/appears more than once/),
+        component.groups[0],
+      );
+      expect(renderedGroups()).toEqual([
+        { name: 'Group 0', items: ['Item 0', 'Item 2', 'Item 3'] },
+        { name: 'Group 1', items: ['Item 1'] },
+      ]);
+    }));
+
+    it('keeps the views when the data is replaced by equal data', fakeAsync(() => {
+      component.groupKey = 'id';
+      render(generateItems(100));
+      const nodes = contentChildren();
+      const items = Array.from(fixture.nativeElement.querySelectorAll('.test-item'));
+
+      component.groups = component.groups.map((group) => ({ ...group }));
+      render(generateItems(100));
+
+      expect(contentChildren()).toEqual(nodes);
+      contentChildren().forEach((child, i) => expect(child).toBe(nodes[i]));
+      Array.from(fixture.nativeElement.querySelectorAll('.test-item')).forEach((item, i) =>
+        expect(item).toBe(items[i]),
+      );
+    }));
+
+    it('updates the group of a kept group view', fakeAsync(() => {
+      component.groupKey = 'id';
+      render(generateItems(100));
+      const group = fixture.nativeElement.querySelector('.test-group');
+
+      component.groups = component.groups.map((g) => ({ ...g, name: `Renamed ${g.id}` }));
+      render(generateItems(100));
+
+      expect(fixture.nativeElement.querySelector('.test-group')).toBe(group);
+      expect(group.getAttribute('aria-label')).toBe('Renamed 0');
+    }));
+
+    it('recreates the groups when the group template changes', fakeAsync(() => {
+      render(generateItems(100));
+      component.alt = true;
+      fixture.detectChanges();
+      tick();
+      fixture.detectChanges();
+      expect(fixture.nativeElement.querySelectorAll('div.test-group')).toHaveLength(0);
+      expect(renderedGroups()).toEqual([
+        {
+          name: 'Group 0',
+          items: ['Item 0', 'Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+        },
+      ]);
+      expect(fixture.nativeElement.querySelector('.alt-group')).not.toBeNull();
+    }));
+
+    it('does not warn about the layout of a valid group template', fakeAsync(() => {
+      const consoleWarn = vi.spyOn(console, 'warn');
+      render(generateItems(100));
+      tick(16);
+      expect(consoleWarn).not.toHaveBeenCalled();
+    }));
+  });
+
+  describe('group template validation', () => {
+    it('throws for a group template without outlet once and renders without groups', fakeAsync(() => {
+      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+      TestBed.configureTestingModule({ imports: [GroupWithoutOutletTestComponent] });
+      const fixture = TestBed.createComponent(GroupWithoutOutletTestComponent);
+      fixture.detectChanges();
+      tick();
+      const viewportEl = fixture.nativeElement.querySelector('.nx-virtual-viewport__viewport');
+      for (const scrollTop of [400, 800, 1200]) {
+        viewportEl.scrollTop = scrollTop;
+        fixture.componentInstance.virtualFor().updateForScroll(scrollTop, 200);
+        fixture.detectChanges();
+      }
+      tick(16);
+
+      const outletErrors = consoleError.mock.calls.filter((args) =>
+        /needs an element with nxVirtualGroupOutlet/.test(
+          (args[1] as Error | undefined)?.message ?? '',
+        ),
+      );
+      expect(outletErrors).toHaveLength(1);
+      expect(fixture.nativeElement.querySelectorAll('[role="group"]')).toHaveLength(0);
+      expect(fixture.nativeElement.querySelectorAll('.test-item').length).toBeGreaterThan(0);
+    }));
+
+    it('accepts an outlet inside control flow', fakeAsync(() => {
+      TestBed.configureTestingModule({ imports: [GroupOutletInControlFlowTestComponent] });
+      const fixture = TestBed.createComponent(GroupOutletInControlFlowTestComponent);
+      fixture.detectChanges();
+      tick();
+      fixture.detectChanges();
+      const group = fixture.nativeElement.querySelector('.test-group');
+      expect(group.querySelectorAll('.test-item')).toHaveLength(3);
+    }));
+
+    it('moves the items to an outlet that replaces the previous one', fakeAsync(() => {
+      TestBed.configureTestingModule({ imports: [GroupOutletInControlFlowTestComponent] });
+      const fixture = TestBed.createComponent(GroupOutletInControlFlowTestComponent);
+      fixture.detectChanges();
+      tick();
+      fixture.detectChanges();
+
+      fixture.componentInstance.outlet = 'second';
+      fixture.detectChanges();
+      tick(16);
+      fixture.detectChanges();
+
+      const groups = fixture.nativeElement.querySelectorAll('.test-group');
+      expect(groups).toHaveLength(1);
+      expect(groups[0].querySelectorAll('.test-item')).toHaveLength(3);
+    }));
+
+    it('throws once and renders without groups when an outlet is removed', fakeAsync(() => {
+      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+      TestBed.configureTestingModule({ imports: [GroupOutletInControlFlowTestComponent] });
+      const fixture = TestBed.createComponent(GroupOutletInControlFlowTestComponent);
+      fixture.detectChanges();
+      tick();
+      fixture.detectChanges();
+
+      fixture.componentInstance.outlet = 'none';
+      fixture.detectChanges();
+      tick(16);
+      fixture.detectChanges();
+      tick(16);
+
+      const outletErrors = consoleError.mock.calls.filter((args) =>
+        /needs an element with nxVirtualGroupOutlet/.test(
+          (args[1] as Error | undefined)?.message ?? '',
+        ),
+      );
+      expect(outletErrors).toHaveLength(1);
+      expect(fixture.nativeElement.querySelectorAll('.test-group')).toHaveLength(0);
+      expect(fixture.nativeElement.querySelectorAll('.test-item')).toHaveLength(3);
+    }));
+
+    it('throws a clear error for an outlet outside of a group template', () => {
+      TestBed.configureTestingModule({ imports: [MisplacedGroupOutletTestComponent] });
+      expect(() => TestBed.createComponent(MisplacedGroupOutletTestComponent)).toThrowError(
+        /can only be used in the groupTemplate of nxVirtualFor/,
+      );
+    });
+
+    it('warns about a group template that creates a containing block', fakeAsync(() => {
+      const consoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      TestBed.configureTestingModule({ imports: [PositionedGroupTestComponent] });
+      const fixture = TestBed.createComponent(PositionedGroupTestComponent);
+      fixture.detectChanges();
+      tick();
+      fixture.detectChanges();
+      tick(16);
+      expect(consoleWarn).toHaveBeenCalledTimes(1);
+      expect(consoleWarn).toHaveBeenCalledWith(expect.stringMatching(/containing block/));
+    }));
+  });
+
+  describe('with a root element that wraps control flow', () => {
+    async function measureAfterScroll(): Promise<number> {
+      const fixture = TestBed.createComponent(ControlFlowRootTestComponent);
+      fixture.autoDetectChanges();
+      await fixture.whenStable();
+      await animationFrames(3);
+
+      const viewportEl = fixture.nativeElement.querySelector('.nx-virtual-viewport__viewport');
+      viewportEl.scrollTop = 1500;
+      viewportEl.dispatchEvent(new Event('scroll'));
+      await animationFrames(5);
+      return fixture.componentInstance.virtualFor().getHeightForIndex(60);
+    }
+
+    it('measures the rendered content of items that change detection did not check yet', fakeAsync(() => {
+      TestBed.configureTestingModule({ imports: [ControlFlowRootTestComponent] });
+      const fixture = TestBed.createComponent(ControlFlowRootTestComponent);
+      fixture.detectChanges();
+      tick(16);
+      fixture.detectChanges();
+
+      const virtualFor = fixture.componentInstance.virtualFor();
+      fixture.nativeElement.querySelector('.nx-virtual-viewport__viewport').scrollTop = 1500;
+      virtualFor.updateForScroll(1500, 200);
+      tick(16);
+
+      expect(virtualFor.getHeightForIndex(60)).toBe(30);
+    }));
+
+    it('measures the rendered content of items rendered by scrolling', async () => {
+      TestBed.configureTestingModule({ imports: [ControlFlowRootTestComponent] });
+      expect(await measureAfterScroll()).toBe(30);
+    });
+
+    it('measures the rendered content of items rendered by scrolling without zone.js', async () => {
+      TestBed.configureTestingModule({
+        imports: [ControlFlowRootTestComponent],
+        providers: [provideZonelessChangeDetection()],
+      });
+      expect(await measureAfterScroll()).toBe(30);
+    });
   });
 });

@@ -44,6 +44,14 @@ For large lists you can enable virtual-scrolling by using the `options` array in
 
 <!-- example(dropdown-virtual-viewport) -->
 
+#### Options of any shape
+
+By default, the `options` array contains `NxDropdownOption` objects with a `value`, an optional `label` and an optional `disabled`. For other shapes, set `selectValue`, `selectLabel` and `selectDisabled` to read the value, the label and the disabled state of an option. Like in the multi select, they accept a property name or a function. An empty `selectValue` uses the whole option as value. Options without a label display their formatted value.
+
+```html
+<nx-dropdown [options]="countries" selectValue="code" selectLabel="name"></nx-dropdown>
+```
+
 #### Custom Item Template
 
 When using the `options` array (with or without virtual scroll), you can customize how each item renders by providing a template with the `#nxDropdownItemTemplate` reference. The template context provides:
@@ -51,6 +59,7 @@ When using the `options` array (with or without virtual scroll), you can customi
 - `$implicit` - The option value (use `let-{name}` to access it)
 - `index` - The index in the filtered options array
 - `selected` - Whether the item is currently selected
+- `option` - The option as passed to `options`
 
 <!-- example(dropdown-item-template) -->
 
@@ -60,7 +69,7 @@ When using the `options` array (with or without virtual scroll), you can customi
   This approach is not recommend anymore. If you have a large dataset use <a href="./documentation/dropdown/overview#virtual-scrolling">virtual scrolling</a> instead.
 </div>
 
-The options can also be passed to the dropdown using the `options` input. Dropdowns with many options benefit from this approach, as they will only be rendered when the dropdown is open. Grouping of options is currently not supported.
+The options can also be passed to the dropdown using the `options` input. Dropdowns with many options benefit from this approach, as they will only be rendered when the dropdown is open.
 
 <!-- example(dropdown-lazy) -->
 
@@ -121,6 +130,16 @@ It might be necessary for your use case to group the items inside of a dropdown.
 ⚠️ Every item should have a unique value, regardless of which group it belongs to.
 
 <!-- example(dropdown-group) -->
+
+When filtering, the default filter matches the item label or the group label, so a matching group label shows the whole group. Groups without any matching item are hidden. A custom `filterFn` receives the group label as third argument.
+
+#### Groups via `options`
+
+Groups can also be passed to the `options` input, with or without virtual scrolling. Set `grouped` to pass a list of groups instead of a list of options. `selectGroupLabel` and `selectGroupOptions` define how to read the label and the options of a group. Like the other selectors, they accept a property name or a function, and default to `label` and `options`.
+
+In grouped mode the type of `options` is inferred from your groups, not from the options inside them. Prefer property names for `selectLabel`, `selectValue` and `selectDisabled`; if you need a selector function, type its parameter as `any`. Selector functions for `selectGroupLabel` and `selectGroupOptions` can be typed with your group type.
+
+<!-- example(dropdown-group-options) -->
 
 ### Multi select dropdown
 

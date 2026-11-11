@@ -5,7 +5,12 @@
   padding-bottom: calc(v(dropdown-group-divider-gap-vertical) * 2);
 }
 
-:host:not(:last-child) .nx-dropdown-results__group {
+:host(.nx-hidden) {
+  display: none;
+}
+
+// Unlike `:not(:last-child)`, this also drops the divider when all following siblings are filtered out.
+:host(:has(~ :not(.nx-hidden))) .nx-dropdown-results__group {
   position: relative;
 
   &::after {

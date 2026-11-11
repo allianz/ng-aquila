@@ -173,12 +173,16 @@ export class NxDropdownItemComponent
   private readonly contentElement!: ElementRef<HTMLElement>;
   private readonly _renderer = inject(Renderer2);
 
+  private readonly _unregisterFromGroup?: () => void;
+
   constructor(
     @Inject(NxDropdownControl) private readonly _dropdown: NxDropdownControl,
     /** @docs-private */ @Optional() readonly group: NxDropdownGroupComponent | null,
     private readonly _cdr: ChangeDetectorRef,
     private readonly _elementRef: ElementRef,
   ) {
+    this._unregisterFromGroup = group?._registerItem(this);
+
     // workaround because of https://github.com/angular/angular/issues/67454
     // that added significant performance regressions when signals are read in host bindings
     // TODO: remove this workaround once the issue is resolved by Angular
@@ -259,6 +263,7 @@ export class NxDropdownItemComponent
   }
 
   ngOnDestroy(): void {
+    this._unregisterFromGroup?.();
     this._destroyed.next();
     this._destroyed.complete();
     this._stateChanges.complete();
@@ -312,7 +317,12 @@ export class NxDropdownItemComponent
   }
 
   private _showOrHideByFilter(search: string) {
-    const constraint = this._dropdown.filterFn(search, this.viewValue);
+    if (this._dropdown._isVirtual?.()) {
+      return;
+    }
+    const constraint = this.group
+      ? this._dropdown.filterFn(search, this.viewValue, this.group.label())
+      : this._dropdown.filterFn(search, this.viewValue);
     this._hidden = !constraint;
     this._cdr.markForCheck();
   }

@@ -16,7 +16,10 @@ export abstract class NxDropdownControl extends NxFormfieldControl<any> {
 
   readonly _closedStream!: Observable<void>;
 
-  abstract filterFn(search: string, itemValue: string): boolean;
+  /** Virtual scrolling filters the options itself, so the items must not hide themselves. */
+  _isVirtual?(): boolean;
+
+  abstract filterFn(search: string, itemValue: string, groupLabel?: string): boolean;
 
   abstract valueFormatter(value: any): string;
 

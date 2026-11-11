@@ -51,6 +51,41 @@ Use the `trackBy` option on `*nxVirtualFor` to optimize rendering and height cac
 trackByFn = (index: number, item: MyItem) => item.id;
 ```
 
+### Groups
+
+To wrap items in a container per group, e.g. a `role="group"` for assistive technology, pass a `groupBy` function and a `groupTemplate`. Mark the place of the items in the template with `nxVirtualGroupOutlet`. `groupBy` returns the group of an item, or `null` for items without one. The items of each group share one container.
+
+`nxVirtualFor` doesn't reorder the data, so pass it in display order, with the items of each group next to each other. If your data comes unsorted, e.g. as a flat list from a backend, sort it by group first. In development mode, a warning is logged for a group that appears more than once. All indices, e.g. for `scrollToIndex()`, the visible range and `index` in the template context, refer to the list you pass in.
+
+Groups are compared by identity. If your groups are objects that are recreated with the data, e.g. a copy per item after parsing a response, pass `groupTrackBy` with a property name or function that identifies a group. Then a group's container and items are kept, and the template gets the new group object.
+
+Only the groups of the rendered items are in the DOM, and each one only contains its rendered items. Give the container an accessible name that doesn't depend on an element that might not be rendered, e.g. with `aria-label`.
+
+The items are positioned absolutely within the viewport, so the root element of the group template must only contain the outlet and must not create a containing block: no `position` other than `static`, and no `transform`, `perspective`, `filter`, `contain` or `will-change`. In development mode, a warning is logged otherwise.
+
+The outlet may be inside control flow, but every group always needs one. To hide the items of a group, remove them from the data.
+
+```html
+<nx-virtual-viewport>
+  <ng-template #groupTemplate let-group>
+    <div role="group" [attr.aria-label]="group.name">
+      <ng-container nxVirtualGroupOutlet />
+    </div>
+  </ng-template>
+  <div
+    *nxVirtualFor="
+      let item of items();
+      trackBy: 'id';
+      groupBy: groupOf;
+      groupTrackBy: 'id';
+      groupTemplate: groupTemplate
+    "
+  >
+    {{ item.name }}
+  </div>
+</nx-virtual-viewport>
+```
+
 ### Item Height and Performance
 
 The component uses a hybrid approach for item heights:

@@ -12,6 +12,7 @@ import { DropdownFilterExampleComponent } from './dropdown-filter/dropdown-filte
 import { DropdownFilterCustomExampleComponent } from './dropdown-filter-custom/dropdown-filter-custom-example';
 import { DropdownFocusOutExampleComponent } from './dropdown-focus-out/dropdown-focus-out-example';
 import { DropdownGroupExampleComponent } from './dropdown-group/dropdown-group-example';
+import { DropdownGroupOptionsExampleComponent } from './dropdown-group-options/dropdown-group-options-example';
 import { DropdownItemTemplateExampleComponent } from './dropdown-item-template/dropdown-item-template-example';
 import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-example';
 import { DropdownMultiSelectExampleComponent } from './dropdown-multi-select/dropdown-multi-select-example';
@@ -38,6 +39,7 @@ const EXAMPLES = [
   DropdownFilterExampleComponent,
   DropdownFilterCustomExampleComponent,
   DropdownGroupExampleComponent,
+  DropdownGroupOptionsExampleComponent,
   DropdownItemTemplateExampleComponent,
   DropdownMultiSelectExampleComponent,
   DropdownNegativeExampleComponent,
@@ -79,6 +81,7 @@ export class DropdownExamplesModule {
       'dropdown-filter': DropdownFilterExampleComponent,
       'dropdown-filter-custom': DropdownFilterCustomExampleComponent,
       'dropdown-group': DropdownGroupExampleComponent,
+      'dropdown-group-options': DropdownGroupOptionsExampleComponent,
       'dropdown-item-template': DropdownItemTemplateExampleComponent,
       'dropdown-multi-select': DropdownMultiSelectExampleComponent,
       'dropdown-negative': DropdownNegativeExampleComponent,

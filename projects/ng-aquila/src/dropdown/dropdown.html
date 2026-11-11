@@ -99,22 +99,48 @@
     >
       @if (!virtualScroll()) {
         <ng-content></ng-content>
-        @for (option of options; track option; let idx = $index) {
-          <nx-dropdown-item
-            (onSelectionChange)="_onSelect($event.item, $event.isUserInput, option)"
-            [value]="option.value"
-          >
-            @if (_itemTemplate()) {
-              <ng-container
-                *ngTemplateOutlet="
-                  _itemTemplate();
-                  context: _createItemTemplateContext(option, idx)
-                "
-              />
-            } @else {
-              {{ _getLabel(option) }}
-            }
-          </nx-dropdown-item>
+        @if (grouped()) {
+          @for (group of _groups(); track group.id) {
+            <nx-dropdown-group [label]="group.label">
+              @for (option of group.options; track option.option) {
+                <nx-dropdown-item
+                  (onSelectionChange)="_onSelect($event.item, $event.isUserInput, option)"
+                  [value]="option.value"
+                  [disabled]="option.disabled"
+                >
+                  @if (_itemTemplate()) {
+                    <ng-container
+                      *ngTemplateOutlet="
+                        _itemTemplate();
+                        context: _createItemTemplateContext(option, option.index)
+                      "
+                    />
+                  } @else {
+                    {{ _getLabel(option) }}
+                  }
+                </nx-dropdown-item>
+              }
+            </nx-dropdown-group>
+          }
+        } @else {
+          @for (option of _optionViews(); track option.option) {
+            <nx-dropdown-item
+              (onSelectionChange)="_onSelect($event.item, $event.isUserInput, option)"
+              [value]="option.value"
+              [disabled]="option.disabled"
+            >
+              @if (_itemTemplate()) {
+                <ng-container
+                  *ngTemplateOutlet="
+                    _itemTemplate();
+                    context: _createItemTemplateContext(option, option.index)
+                  "
+                />
+              } @else {
+                {{ _getLabel(option) }}
+              }
+            </nx-dropdown-item>
+          }
         }
       } @else {
         <nx-virtual-viewport
@@ -123,27 +149,53 @@
           [itemHeight]="44"
           [overscan]="20"
         >
-          <nx-dropdown-item
-            *nxVirtualFor="let item of _filteredOptions(); let index = index; trackBy: 'value'"
-            [id]="modalId + '-option-' + index"
-            [value]="item.value"
-            [attr.aria-setsize]="_filteredOptions().length"
-            [attr.aria-posinset]="index + 1"
-            [active]="_virtualActiveIndex() === index"
-            [selected]="_isValueSelected(item.value)"
-            (onSelectionChange)="_onVirtualSelect($event, item, index)"
+          <ng-template #virtualGroup let-group>
+            <div role="group" [attr.aria-label]="group.label">
+              <ng-container nxVirtualGroupOutlet />
+            </div>
+          </ng-template>
+          <div
+            *nxVirtualFor="
+              let row of _virtualRows();
+              trackBy: _trackVirtualRow;
+              groupBy: _virtualRowGroup;
+              groupTrackBy: 'id';
+              groupTemplate: virtualGroup
+            "
+            role="presentation"
           >
-            @if (_itemTemplate()) {
-              <ng-container
-                *ngTemplateOutlet="
-                  _itemTemplate();
-                  context: _createItemTemplateContext(item, index)
-                "
-              />
-            } @else {
-              {{ _getOptionLabel(item) }}
+            @if (row.option; as item) {
+              <nx-dropdown-item
+                [id]="modalId + '-option-' + row.index"
+                [value]="item.value"
+                [disabled]="item.disabled"
+                [attr.aria-setsize]="row.setsize"
+                [attr.aria-posinset]="row.posinset"
+                [active]="_virtualActiveIndex() === row.index"
+                [selected]="_isValueSelected(item.value)"
+                (onSelectionChange)="_onVirtualSelect($event, item, row.index)"
+              >
+                @if (_itemTemplate()) {
+                  <ng-container
+                    *ngTemplateOutlet="
+                      _itemTemplate();
+                      context: _createItemTemplateContext(item, row.index)
+                    "
+                  />
+                } @else {
+                  {{ _getOptionLabel(item) }}
+                }
+              </nx-dropdown-item>
+            } @else if (row.group; as group) {
+              <div
+                class="nx-dropdown__virtual-group-label"
+                [class.has-divider]="row.divider"
+                aria-hidden="true"
+              >
+                {{ group.label }}
+              </div>
             }
-          </nx-dropdown-item>
+          </div>
         </nx-virtual-viewport>
       }
     </div>
