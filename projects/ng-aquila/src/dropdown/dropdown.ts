@@ -431,6 +431,9 @@ export class NxDropdownComponent
   /** Whether the dropdown is disabled. */
   @Input() set disabled(value: BooleanInput) {
     this._disabled = coerceBooleanProperty(value);
+    if (this._disabled) {
+      this.closePanel();
+    }
   }
   get disabled(): boolean {
     return this._disabled;
