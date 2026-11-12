@@ -139,6 +139,23 @@ If you are using a template for the content of your dialog the data object will 
 
 <!-- example(modal-data-injection) -->
 
+### Injector, providers and component bindings
+
+Use `injector` to set the parent injector of the modal and its content. It takes precedence over `viewContainerRef.injector`.
+
+Use `providers` to add providers to the injector of the modal content without creating a child injector. They can override `NxModalRef`, `NX_MODAL_DATA`, `NxModalContainer`. In a template modal, providers can't depend on other services (`deps`, `inject()`) unless `injector` is passed. 
+
+<div class="docs-info">
+  <strong>Note: </strong>
+  When the modal closes, <code>ngOnDestroy</code> runs on everything the providers hand out, including an existing service passed with <code>useValue</code> or <code>useExisting</code>. To share an existing service with the modal, pass <code>injector</code> instead.
+</div>
+
+Use `bindings` to apply `inputBinding`, `outputBinding` and `twoWayBinding` when the content component is created.
+
+Alternatively, set inputs after opening with `setInput()` on `NxModalRef.componentRef`, Don't combine the two: `setInput()` and `inputBinding` or `twoWayBinding`.
+
+<!-- example(modal-component-bindings) -->
+
 ### Global Settings
 
 You can also overwrite the default dialog configuration by using the `NX_MODAL_DEFAULT_OPTIONS` injection token as shown in the code snippet below. Only the options you set are overridden; all other `NxModalConfig` defaults (such as `role` or `hasBackdrop`) are preserved.

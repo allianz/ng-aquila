@@ -272,9 +272,8 @@ export class NxDialogService implements OnDestroy {
    * @returns A promise resolving to a ComponentRef for the attached container.
    */
   private _attachModalContainer(overlay: OverlayRef, config: NxModalConfig): NxModalContainer {
-    const userInjector = config?.viewContainerRef?.injector;
     const injector = Injector.create({
-      parent: userInjector || this._injector,
+      parent: this._getParentInjector(config),
       providers: [{ provide: NxModalConfig, useValue: config }],
     });
 
@@ -334,18 +333,38 @@ export class NxDialogService implements OnDestroy {
     }
 
     if (componentOrTemplateRef instanceof TemplateRef) {
+      const injector = this._createInjector<T>(
+        config,
+        modalRef,
+        modalContainer,
+        config.injector ?? Injector.NULL,
+      );
       modalContainer.attachTemplatePortal(
-        new TemplatePortal<T>(componentOrTemplateRef, null!, {
-          $implicit: config.data,
-          modalRef,
-        } as any),
+        new TemplatePortal<T>(
+          componentOrTemplateRef,
+          null!,
+          { $implicit: config.data, modalRef } as any,
+          injector,
+        ),
       );
     } else {
-      const injector = this._createInjector<T>(config, modalRef, modalContainer);
+      const injector = this._createInjector<T>(
+        config,
+        modalRef,
+        modalContainer,
+        this._getParentInjector(config),
+      );
       const contentRef = modalContainer.attachComponentPortal<T>(
-        new ComponentPortal(componentOrTemplateRef, config.viewContainerRef, injector),
+        new ComponentPortal(
+          componentOrTemplateRef,
+          config.viewContainerRef,
+          injector,
+          null,
+          config.bindings,
+        ),
       );
       modalRef.componentInstance = contentRef.instance;
+      modalRef._componentRef = contentRef;
     }
 
     modalRef.updateSize(config.width, config.height).updatePosition(config.position);
@@ -359,19 +378,25 @@ export class NxDialogService implements OnDestroy {
    * @param config Config object that is used to construct the modal.
    * @param modalRef Reference to the modal.
    * @param modalContainer Modal container element that wraps all of the contents.
+   * @param parent Parent of the created injector.
    * @returns The custom injector that can be used inside the modal.
    */
   private _createInjector<T>(
     config: NxModalConfig,
     modalRef: NxModalRef<T>,
     modalContainer: NxModalContainer,
+    parent: Injector,
   ): Injector {
-    const userInjector = config?.viewContainerRef?.injector;
+    const userProviders =
+      typeof config.providers === 'function'
+        ? config.providers(modalRef, config, modalContainer)
+        : (config.providers ?? []);
 
     // The NxModalContainer is injected in the portal as the NxModalContainer and the dialog's
     // content are created out of the same ViewContainerRef and as such, are siblings for injector
     // purposes. To allow the hierarchy that is expected, the NxModalContainer is explicitly
     // added to the injection tokens.
+    // For a token provided twice, the last provider wins, so user providers can override these.
     const providers: StaticProvider[] = [
       { provide: NxModalContainer, useValue: modalContainer },
       { provide: NX_MODAL_DATA, useValue: config.data },
@@ -380,9 +405,16 @@ export class NxDialogService implements OnDestroy {
       // adapt to a surface the trigger happens to sit on. This has to be blocked here rather than on
       // NxModalContainer: the content's injector parent is the trigger's, not the container's.
       { provide: NX_SURFACE, useValue: undefined },
+      ...userProviders,
     ];
 
-    return Injector.create({ parent: userInjector || this._injector, providers });
+    const injector = Injector.create({ parent, providers });
+    modalRef.afterClosed().subscribe(() => injector.destroy());
+    return injector;
+  }
+
+  private _getParentInjector(config: NxModalConfig): Injector {
+    return config.injector ?? config.viewContainerRef?.injector ?? this._injector;
   }
 
   /**
@@ -522,5 +554,10 @@ function _applyConfigDefaults(
   // unset, the CDK overlay falls back to the CDK default (which may be `rtl`). Seeding the base `'ltr'` here would always force LTR and silently
   // break RTL apps, so we drop it and only honour an explicitly provided direction.
   delete baseDefaults.direction;
-  return { ...baseDefaults, ...defaultOptions, ...config };
+  // Per-call only: global bindings would fail for every component that lacks those inputs.
+  const sharedDefaults = { ...defaultOptions };
+  delete sharedDefaults.injector;
+  delete sharedDefaults.providers;
+  delete sharedDefaults.bindings;
+  return { ...baseDefaults, ...sharedDefaults, ...config };
 }

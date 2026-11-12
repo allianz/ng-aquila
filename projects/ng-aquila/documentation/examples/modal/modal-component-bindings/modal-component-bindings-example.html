@@ -1,0 +1,26 @@
+<button nxButton class="nx-margin-right-xs" (click)="open()">
+  open modal with bindings
+</button>
+<button
+  nxButton="secondary"
+  class="nx-margin-right-xs"
+  (click)="openWithComponentRef()"
+>
+  open modal with componentRef
+</button>
+<button nxButton="secondary" (click)="openTemplate(policyTemplate)">
+  open template modal with providers
+</button>
+
+<p nxCopytext class="nx-margin-top-s">
+  Policy holder (two-way): {{ holder() || '-' }}
+</p>
+<p nxCopytext>Confirmed policy: {{ confirmedPolicy() ?? '-' }}</p>
+
+<ng-template #policyTemplate>
+  <modal-component-bindings-content
+    [policyNumber]="policyNumber()"
+    [(holder)]="holder"
+    (confirmed)="confirmedPolicy.set($event)"
+  />
+</ng-template>

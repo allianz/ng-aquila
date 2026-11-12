@@ -1,6 +1,9 @@
 import { Direction } from '@angular/cdk/bidi';
 import { ScrollStrategy } from '@angular/cdk/overlay';
-import { ViewContainerRef } from '@angular/core';
+import { Binding, Injector, StaticProvider, ViewContainerRef } from '@angular/core';
+
+import type { NxModalContainer } from './modal-container.component';
+import type { NxModalRef } from './modal-ref';
 
 /** Valid ARIA roles for a modal element. */
 export type NxModalRole = 'dialog' | 'alertdialog';
@@ -35,6 +38,38 @@ export class NxModalConfig<D = any> {
    * content will be rendered.
    */
   viewContainerRef?: ViewContainerRef;
+
+  /**
+   * Parent injector of the modal and its content, for component and template modals.
+   * Takes precedence over `viewContainerRef.injector`.
+   * Only per `open()` call: ignored in `NX_MODAL_DEFAULT_OPTIONS`.
+   */
+  injector?: Injector;
+
+  /**
+   * Providers added to the injector of the modal content, as an array or a factory.
+   * Apply to component and template modals. In a template modal, they can't depend on other
+   * services unless `injector` is passed.
+   * Override `NxModalRef`, `NX_MODAL_DATA`, `NxModalContainer` and `NX_SURFACE` if they provide them.
+   * When the modal closes, `ngOnDestroy` runs on every value they hand out. Don't hand in an
+   * existing service (`useValue`, `useExisting`), as its cleanup would run while it's still in
+   * use. Share it through `injector` instead.
+   * Only per `open()` call: ignored in `NX_MODAL_DEFAULT_OPTIONS`.
+   */
+  providers?:
+    | StaticProvider[]
+    | ((
+        modalRef: NxModalRef<any>,
+        config: NxModalConfig<D>,
+        container: NxModalContainer,
+      ) => StaticProvider[]);
+
+  /**
+   * `inputBinding` / `outputBinding` / `twoWayBinding` applied when the content component is
+   * created. Ignored for template modals.
+   * Only per `open()` call: ignored in `NX_MODAL_DEFAULT_OPTIONS`.
+   */
+  bindings?: Binding[];
 
   /** ID for the modal. If omitted, a unique one will be generated. */
   id?: string;

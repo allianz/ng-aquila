@@ -1,5 +1,6 @@
 import { ESCAPE, hasModifierKey } from '@angular/cdk/keycodes';
 import { GlobalPositionStrategy, OverlayRef } from '@angular/cdk/overlay';
+import { ComponentRef } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 
@@ -19,6 +20,17 @@ export enum NxModalState {
 export class NxModalRef<T, R = any> {
   /** The instance of component opened into the modal. */
   componentInstance!: T;
+
+  /**
+   * `ComponentRef` of the modal content, e.g. for `setInput()`. `null` for template modals and
+   * after close.
+   */
+  get componentRef(): ComponentRef<T> | null {
+    return this._componentRef;
+  }
+
+  /** Set by `NxDialogService` when it attaches a component. */
+  _componentRef: ComponentRef<T> | null = null;
 
   /** Whether the user is allowed to close the modal. */
   disableClose?: boolean = this._containerInstance._config.disableClose;
@@ -87,6 +99,7 @@ export class NxModalRef<T, R = any> {
       this._afterClosed.next(this._result);
       this._afterClosed.complete();
       this.componentInstance = null!;
+      this._componentRef = null;
       this._overlayRef.dispose();
     });
 
