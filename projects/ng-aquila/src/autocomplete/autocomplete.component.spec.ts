@@ -237,6 +237,18 @@ describe('NxAutocompleteComponent:', () => {
     expect(component.testForm.get('autocomplete')!.value).toBe('AA');
   });
 
+  it('should close open suggestions when the form control is disabled', async () => {
+    createTestComponent(ReactiveAutocompleteComponent);
+    typeInput('A');
+    await fixture.whenStable();
+    expect(getAutocompletePanel()).not.toBeNull();
+
+    (testInstance as ReactiveAutocompleteComponent).testForm.get('autocomplete')!.disable();
+    await fixture.whenStable();
+
+    expect(getAutocompletePanel()).toBeNull();
+  });
+
   it('Should fit to content width', fakeAsync(() => {
     createTestComponent(BasicAutocompleteComponent);
     typeInput('A');

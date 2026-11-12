@@ -476,6 +476,9 @@ export class NxAutocompleteTriggerDirective
   // Implemented as part of ControlValueAccessor.
   setDisabledState(isDisabled: boolean) {
     this._element.nativeElement.disabled = isDisabled;
+    if (isDisabled) {
+      this.closePanel();
+    }
   }
 
   _handleKeydown(event: Event): void {
