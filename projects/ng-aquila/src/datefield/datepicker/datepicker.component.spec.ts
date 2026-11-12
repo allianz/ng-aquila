@@ -90,6 +90,20 @@ describe('NxDatepicker', () => {
         }
       });
 
+      it('should close the popup when disabled while open', fakeAsync(() => {
+        compileTestComponent();
+        testComponent.datepicker.open();
+        fixture.detectChanges();
+        flush();
+        expect(document.querySelector('nx-datepicker-content')).not.toBeNull();
+
+        testComponent.disabled = true;
+        fixture.detectChanges();
+        flush();
+
+        expect(document.querySelector('nx-datepicker-content')).toBeNull();
+      }));
+
       describe('popup direction', () => {
         it('is initialized with ltr by default', fakeAsync(() => {
           compileTestComponent();

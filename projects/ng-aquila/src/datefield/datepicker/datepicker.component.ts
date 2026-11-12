@@ -30,6 +30,7 @@ import {
   ComponentRef,
   computed,
   DOCUMENT,
+  effect,
   ElementRef,
   EventEmitter,
   Inject,
@@ -44,6 +45,7 @@ import {
   Optional,
   Output,
   signal,
+  untracked,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
@@ -338,6 +340,12 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     }
     this._dateAdapter = _dateAdapter;
 
+    effect(() => {
+      if (this.disabled()) {
+        untracked(() => this.close());
+      }
+    });
+
     this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
       this.close();
       this._destroyPopup();
@@ -472,6 +480,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
    */
   close(): void {
     const inRangeModeAndOnlyStartDateSelected =
+      !this.disabled() &&
       this.isRange() &&
       (this.selected as DateRange<D>)?.start &&
       !(this.selected as DateRange<D>)?.end;
