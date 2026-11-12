@@ -1449,6 +1449,21 @@ describe('NxDropdownComponent', () => {
       expect(testInstance.dropdownItems.toArray()[0].selected).toBe(true);
     }));
 
+    it('should close the panel when its form control is disabled', fakeAsync(() => {
+      createTestComponent(ReactiveBindingDropdownComponent);
+      openDropdownByClick();
+      expectDropdownOpen();
+
+      const control = (testInstance as ReactiveBindingDropdownComponent).testForm.controls.dropdown;
+      control.disable();
+      fixture.detectChanges();
+      flush();
+      fixture.detectChanges();
+
+      expectDropdownClose();
+      expect(control.value).toBe('BMW');
+    }));
+
     it('should support reactive forms binding', fakeAsync(() => {
       createTestComponent(ReactiveBindingDropdownComponent);
       openDropdownByClick();
