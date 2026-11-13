@@ -9,7 +9,7 @@
     <span [class.inverse-label]="inverse()">{{ type }}</span>
     @for (size of sizes; track size) {
       <span>
-        <!-- type can be "success", "warning", "info", "error" -->
+        <!-- type can be "positive", "warning", "info", "critical" -->
         <!-- size can be "s", "m", "l", "xl", "2xl" -->
         <nx-status-icon
           [type]="type"

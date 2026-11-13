@@ -150,6 +150,12 @@ The outline option should only be used with **product** icons.
 
 ### Status icon
 
+Set the status with `type`: `positive`, `warning`, `info` or `critical`.
+
+<div class="docs-deprecation-warning">
+<code>error</code> and <code>success</code> are deprecated aliases of <code>critical</code> and <code>positive</code>. They still work, but use the new names for new code.
+</div>
+
 <div class="docs-hide-a1">
 <!-- example(status-icon) -->
 </div>

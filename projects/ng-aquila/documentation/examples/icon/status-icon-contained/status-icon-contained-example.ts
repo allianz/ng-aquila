@@ -20,10 +20,10 @@ import { FormsModule } from '@angular/forms';
 export class StatusIconContainedExampleComponent {
   protected readonly inverse = signal(false);
   protected readonly types: NxStatusIconType[] = [
-    'success',
+    'positive',
     'warning',
     'info',
-    'error',
+    'critical',
   ];
   protected readonly sizes: NxStatusIconSize[] = ['s', 'm', 'l', 'xl', '2xl'];
 }

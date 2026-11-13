@@ -18,10 +18,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class StatusIconSizesExampleComponent {
   protected readonly types: NxStatusIconType[] = [
-    'success',
+    'positive',
     'warning',
     'info',
-    'error',
+    'critical',
   ];
   protected readonly sizes: NxStatusIconSize[] = ['s', 'm', 'l', 'xl', '2xl'];
 }

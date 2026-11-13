@@ -16,9 +16,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class StatusIconInverseExampleComponent {
   protected readonly types: NxStatusIconType[] = [
-    'success',
+    'positive',
     'warning',
     'info',
-    'error',
+    'critical',
   ];
 }

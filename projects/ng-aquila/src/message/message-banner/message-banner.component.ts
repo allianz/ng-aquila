@@ -10,7 +10,7 @@ import {
   signal,
 } from '@angular/core';
 
-import { NxMessageBase, ResolvedContext } from '../message-base';
+import { NxMessageBase } from '../message-base';
 
 /**
  * The contextual type of a message banner. Banners take every message context but `'regular'`.
@@ -18,14 +18,6 @@ import { NxMessageBase, ResolvedContext } from '../message-base';
  * `'error'` and `'success'` are deprecated: use `'critical'` and `'positive'` instead.
  */
 export type BANNER_CONTEXT = 'info' | 'critical' | 'positive' | 'warning' | 'error' | 'success';
-
-// `nx-status-icon` use error and success for the critical and positive contexts.
-const STATUS_ICON_TYPES: { readonly [k in ResolvedContext]?: NxStatusIconType } = {
-  info: 'info',
-  critical: 'error',
-  positive: 'success',
-  warning: 'warning',
-};
 
 /** Where the projected actions of a message banner sit relative to its content. */
 export type BANNER_ACTION_LAYOUT = 'horizontal' | 'vertical';
@@ -61,9 +53,10 @@ export class NxMessageBannerComponent extends NxMessageBase {
    */
   readonly actionLayout = input<BANNER_ACTION_LAYOUT>('horizontal');
 
-  protected readonly _statusIconType = computed<NxStatusIconType>(
-    () => STATUS_ICON_TYPES[this._effectiveContext()] ?? 'info',
-  );
+  protected readonly _statusIconType = computed<NxStatusIconType>(() => {
+    const context = this._effectiveContext();
+    return context === 'regular' ? 'info' : context;
+  });
 
   protected readonly _contextIconSize = computed<NxStatusIconSize>(() =>
     this._isA1() ? 'xl' : 's',

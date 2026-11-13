@@ -257,19 +257,44 @@ describe('NxSignalButtonComponent', () => {
       expect(getContextClass('warning')).toBeTruthy();
     }));
 
-    it('should set error context class', fakeAsync(() => {
+    it('should set the error context class for critical', fakeAsync(() => {
       createTestComponent(SignalButtonComponent);
-      signalButtonInstance.context = 'error';
+      signalButtonInstance.context = 'critical';
       click();
       expect(getContextClass('error')).toBeTruthy();
     }));
 
-    it('should set success context class', fakeAsync(() => {
+    it('should set the success context class for positive', fakeAsync(() => {
       createTestComponent(SignalButtonComponent);
-      signalButtonInstance.context = 'success';
+      signalButtonInstance.context = 'positive';
       click();
       expect(getContextClass('success')).toBeTruthy();
     }));
+
+    it('should default to positive', () => {
+      const signalButton = TestBed.createComponent(NxSignalButtonComponent);
+      signalButton.detectChanges();
+      expect(signalButton.componentInstance.context).toBe('positive');
+      expect(signalButton.nativeElement).toHaveClass('context-success');
+    });
+
+    it.each([
+      ['critical', 'error'],
+      ['positive', 'success'],
+    ] as const)('should render %s and its deprecated alias %s the same', (context, alias) => {
+      createTestComponent(SignalButtonComponent);
+      const host: HTMLElement = fixture.nativeElement.querySelector('nx-signal-button');
+      (testInstance as SignalButtonComponent).context = context;
+      fixture.detectChanges();
+      const className = host.className;
+      const iconClassName = host.querySelector('nx-status-icon')!.className;
+
+      (testInstance as SignalButtonComponent).context = alias;
+      fixture.detectChanges();
+      expect(host.className).toBe(className);
+      expect(host.querySelector('nx-status-icon')!.className).toBe(iconClassName);
+      expect(signalButtonInstance.context).toBe(alias);
+    });
 
     it('should set info context class', fakeAsync(() => {
       createTestComponent(SignalButtonComponent);
@@ -297,12 +322,12 @@ describe('NxSignalButtonComponent', () => {
 @Component({
   selector: 'test-signal-button-component',
   template: `<nx-signal-button [context]="context" [size]="size"
-    >This is the content of the success popover</nx-signal-button
+    >This is the content of the positive popover</nx-signal-button
   >`,
   changeDetection: ChangeDetectionStrategy.Eager,
   imports: [OverlayModule, NxSignalButtonModule, NxFormfieldModule, NxInputModule],
 })
 class SignalButtonComponent extends SignalButtonTestDirective {
-  context: NxSignalButtonContext = 'success';
+  context: NxSignalButtonContext = 'positive';
   size: NxSignalButtonSize = 'm';
 }

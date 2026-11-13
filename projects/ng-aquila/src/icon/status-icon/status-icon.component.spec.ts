@@ -26,6 +26,23 @@ describe('StatusIconComponent', () => {
     expect(fixture.nativeElement.querySelector('.nx-status-icon--info')).toBeTruthy();
   });
 
+  it.each([
+    ['critical', 'error'],
+    ['positive', 'success'],
+  ] as const)('should render %s and its deprecated alias %s the same', (type, alias) => {
+    testInstance.status = type;
+    fixture.detectChanges();
+    const host: HTMLElement = fixture.nativeElement.querySelector('nx-status-icon');
+    const className = host.className;
+    const iconName = host.querySelector('nx-icon')!.className;
+
+    testInstance.status = alias;
+    fixture.detectChanges();
+    expect(host.className).toBe(className);
+    expect(host.querySelector('nx-icon')!.className).toBe(iconName);
+    expect(host).toHaveClass(`nx-status-icon--${alias}`);
+  });
+
   it('should apply the contained class when contained is set', () => {
     testInstance.contained = true;
     fixture.detectChanges();

@@ -12,7 +12,19 @@ import {
 
 import { NxIconComponent } from '../icon.component';
 
-export type NxStatusIconType = 'success' | 'info' | 'error' | 'warning';
+/**
+ * The status type of a status icon.
+ *
+ * `'error'` and `'success'` are deprecated: use `'critical'` and `'positive'` instead.
+ */
+export type NxStatusIconType = 'critical' | 'positive' | 'warning' | 'info' | 'error' | 'success';
+
+type ResolvedStatusIconType = 'critical' | 'positive' | 'warning' | 'info';
+
+const TYPE_ALIASES: { readonly [k: string]: ResolvedStatusIconType } = {
+  error: 'critical',
+  success: 'positive',
+};
 
 export type NxStatusIconSize = 'auto' | 's' | 'm' | 'l' | 'xl' | '2xl';
 
@@ -23,10 +35,10 @@ export type NxStatusIconSize = 'auto' | 's' | 'm' | 'l' | 'xl' | '2xl';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NxIconComponent],
   host: {
-    '[class.nx-status-icon--error]': "type() === 'error'",
-    '[class.nx-status-icon--warning]': "type() === 'warning'",
-    '[class.nx-status-icon--success]': "type() === 'success'",
-    '[class.nx-status-icon--info]': "type() === 'info'",
+    '[class.nx-status-icon--error]': "_resolvedType() === 'critical'",
+    '[class.nx-status-icon--warning]': "_resolvedType() === 'warning'",
+    '[class.nx-status-icon--success]': "_resolvedType() === 'positive'",
+    '[class.nx-status-icon--info]': "_resolvedType() === 'info'",
     '[class.nx-status-icon--contained]': 'contained()',
     '[class.nx-status-icon--inverse]': 'inverse()',
     '[class.nx-status-icon--s]': "size() === 's'",
@@ -62,18 +74,22 @@ export class NxStatusIconComponent {
 
   private readonly _surface = injectSurface();
 
+  protected readonly _resolvedType = computed(
+    () => TYPE_ALIASES[this.type()] ?? (this.type() as ResolvedStatusIconType),
+  );
+
   /** Resolved inverse: an explicit input wins, then the surface the component sits on. */
   readonly inverse = computed(() => this.inverseInput() ?? this._surface().surface === 'attention');
 
-  private readonly statusListNdbx: { [key in NxStatusIconType]: any } = {
-    error: { icon: 'exclamation-triangle' },
+  private readonly statusListNdbx: { [key in ResolvedStatusIconType]: any } = {
+    critical: { icon: 'exclamation-triangle' },
     warning: { icon: 'exclamation-circle' },
-    success: { icon: 'check-circle' },
+    positive: { icon: 'check-circle' },
     info: { icon: 'info-circle' },
   };
 
-  private readonly statusListA1: { [key in NxStatusIconType]: any } = {
-    error: {
+  private readonly statusListA1: { [key in ResolvedStatusIconType]: any } = {
+    critical: {
       iconSmall: 'exclamation-circle',
       iconContainedSmall: 'exclamation-circle-o',
       iconLarge: 'product-important-info',
@@ -83,7 +99,7 @@ export class NxStatusIconComponent {
       iconContainedSmall: 'exclamation-triangle-o',
       iconLarge: 'product-danger',
     },
-    success: {
+    positive: {
       iconSmall: 'check-circle',
       iconContainedSmall: 'check',
       iconLarge: 'product-check',
@@ -98,10 +114,10 @@ export class NxStatusIconComponent {
   /** @docs-private */
   protected readonly icon = computed(() => {
     if (!this.a1Enabled()) {
-      return this.statusListNdbx[this.type()]?.icon;
+      return this.statusListNdbx[this._resolvedType()]?.icon;
     }
 
-    const status = this.statusListA1[this.type()];
+    const status = this.statusListA1[this._resolvedType()];
     const isSmall = ['auto', 's', 'm'].includes(this.size());
 
     if (!isSmall) {

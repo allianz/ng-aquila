@@ -10,7 +10,11 @@ The signal button can be used to open a popover with a message. With use of `pop
 
 ### Context
 
-The `context` is set to `success` per default, but the signal button can also be used with context `error`, `warning` or `info`.
+The `context` is set to `positive` per default, but the signal button can also be used with context `critical`, `warning` or `info`.
+
+<div class="docs-deprecation-warning">
+<code>error</code> and <code>success</code> are deprecated aliases of <code>critical</code> and <code>positive</code>. They still work, but use the new names for new code.
+</div>
 
 <!-- example(signal-button-context) -->
 

@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       <nx-spinner size="medium"></nx-spinner>
     }
     @if (isUploaded()) {
-      <nx-status-icon type="success" size="s" [attr.aria-label]="uploadedLabel() || null">
+      <nx-status-icon type="positive" size="s" [attr.aria-label]="uploadedLabel() || null">
       </nx-status-icon>
     }
   `,

@@ -14,8 +14,20 @@ import {
   Output,
 } from '@angular/core';
 
-/** The contextual type of a signal button. */
-export type NxSignalButtonContext = 'success' | 'warning' | 'error' | 'info';
+/**
+ * The contextual type of a signal button.
+ *
+ * `'error'` and `'success'` are deprecated: use `'critical'` and `'positive'` instead.
+ */
+export type NxSignalButtonContext =
+  'critical' | 'positive' | 'warning' | 'info' | 'error' | 'success';
+
+type ResolvedSignalButtonContext = 'critical' | 'positive' | 'warning' | 'info';
+
+const CONTEXT_ALIASES: { readonly [k: string]: ResolvedSignalButtonContext } = {
+  error: 'critical',
+  success: 'positive',
+};
 
 /** Type for the size of a signal button. */
 export type NxSignalButtonSize = 's' | 'm';
@@ -25,10 +37,10 @@ export type NxSignalButtonSize = 's' | 'm';
   templateUrl: './signal-button.component.html',
   styleUrls: ['./signal-button.component.scss'],
   host: {
-    '[class.context-success]': 'this._context === "success"',
-    '[class.context-warning]': 'this._context === "warning"',
-    '[class.context-error]': 'this._context === "error"',
-    '[class.context-info]': 'this._context === "info"',
+    '[class.context-success]': '_resolvedContext === "positive"',
+    '[class.context-warning]': '_resolvedContext === "warning"',
+    '[class.context-error]': '_resolvedContext === "critical"',
+    '[class.context-info]': '_resolvedContext === "info"',
     '[class.size-s]': 'this.size() === "s"',
   },
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -68,7 +80,11 @@ export class NxSignalButtonComponent {
   get context(): NxSignalButtonContext {
     return this._context;
   }
-  _context: NxSignalButtonContext = 'success';
+  _context: NxSignalButtonContext = 'positive';
+
+  protected get _resolvedContext(): ResolvedSignalButtonContext {
+    return CONTEXT_ALIASES[this._context] ?? (this._context as ResolvedSignalButtonContext);
+  }
 
   /**
    * Sets the size of the signal button.
