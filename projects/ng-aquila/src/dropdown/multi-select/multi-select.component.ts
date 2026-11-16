@@ -422,6 +422,14 @@ export class NxMultiSelectComponent<S, T>
   );
 
   /**
+   * Option for each value, so writing a value does not search all options for each selected value.
+   * Rebuilt when the options or `selectValue` change.
+   */
+  private readonly _optionsByValue = computed(
+    () => new Map<T, S>(this._flatOptions().map((option) => [this._selectValue(option), option])),
+  );
+
+  /**
    * Placeholder for the filter input.
    */
   readonly filterPlaceholder = input('Type to filter');
@@ -922,10 +930,9 @@ export class NxMultiSelectComponent<S, T>
       this.selectedItems.clear();
 
       if (Array.isArray(value)) {
+        const optionsByValue = this._optionsByValue();
         for (const item of value) {
-          const optionToBeSelected = this._flatOptions().find(
-            (option) => this._selectValue(option) === item,
-          );
+          const optionToBeSelected = optionsByValue.get(item);
           if (optionToBeSelected) {
             this._addOptionToSelection(optionToBeSelected);
           } else {

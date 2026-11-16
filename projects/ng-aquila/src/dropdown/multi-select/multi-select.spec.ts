@@ -1087,6 +1087,108 @@ describe('NxMultiSelectComponent', () => {
     });
   });
 
+  describe('writing a value', () => {
+    let complexInstance: ComplexMultiSelectComponent;
+
+    beforeEach(async () => {
+      await createTestComponent(ComplexMultiSelectComponent);
+      complexInstance = testInstance as ComplexMultiSelectComponent;
+    });
+
+    it('reads the value of each option a fixed number of times, however many are selected', fakeAsync(() => {
+      const selectValue = vi.fn((option: ComplexOption) => option.id);
+      complexInstance.selectValue = selectValue;
+      complexInstance.options = Array.from({ length: 100 }, (_, i) => ({
+        label: `Option ${i}`,
+        otherLabel: `${i}`,
+        id: i,
+      }));
+      fixture.detectChanges();
+      tick();
+      selectValue.mockClear();
+
+      const ids = complexInstance.options.map((option) => option.id);
+      multiSelectInstance.writeValue(ids);
+      tick();
+
+      // Once to find the option and once to add it to the selection; searching for each value took 5150 reads.
+      expect(selectValue.mock.calls.length).toBeLessThanOrEqual(2 * ids.length);
+      expect(multiSelectInstance.value).toEqual(ids);
+    }));
+
+    it('reuses the option lookup while the options stay the same', fakeAsync(() => {
+      const selectValue = vi.fn((option: ComplexOption) => option.id);
+      complexInstance.selectValue = selectValue;
+      complexInstance.options = Array.from({ length: 100 }, (_, i) => ({
+        label: `Option ${i}`,
+        otherLabel: `${i}`,
+        id: i,
+      }));
+      fixture.detectChanges();
+      tick();
+      const ids = complexInstance.options.map((option) => option.id);
+      multiSelectInstance.writeValue(ids);
+      tick();
+      selectValue.mockClear();
+
+      multiSelectInstance.writeValue(ids);
+      tick();
+
+      // Only to add each option to the selection.
+      expect(selectValue.mock.calls.length).toBeLessThanOrEqual(ids.length);
+      expect(multiSelectInstance.value).toEqual(ids);
+    }));
+
+    it('finds options that replaced the previous ones', fakeAsync(() => {
+      complexInstance.selectValue = 'id';
+      fixture.detectChanges();
+      tick();
+      multiSelectInstance.writeValue([1]);
+      tick();
+
+      complexInstance.options = [
+        { label: 'Banana', otherLabel: 'B', id: 4 },
+        { label: 'Kiwi', otherLabel: 'K', id: 5 },
+      ];
+      fixture.detectChanges();
+      multiSelectInstance.writeValue([5]);
+      tick();
+
+      expect(multiSelectInstance.value).toEqual([5]);
+    }));
+
+    it('finds options by the new value when selectValue changes', fakeAsync(() => {
+      complexInstance.selectValue = 'id';
+      fixture.detectChanges();
+      tick();
+      multiSelectInstance.writeValue([1]);
+      tick();
+
+      complexInstance.selectValue = 'label';
+      fixture.detectChanges();
+      multiSelectInstance.writeValue(['Cherry']);
+      tick();
+
+      expect(multiSelectInstance.value).toEqual(['Cherry']);
+    }));
+
+    it('warns about a value without an option and selects the others', fakeAsync(() => {
+      const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      complexInstance.selectValue = 'id';
+      fixture.detectChanges();
+      tick();
+
+      multiSelectInstance.writeValue([3, 42, 1]);
+      tick();
+
+      expect(multiSelectInstance.value).toEqual([1, 3]);
+      expect(warn).toHaveBeenCalledWith(
+        'NxMultiSelect: Model contains value that does not exist in given options',
+        42,
+      );
+    }));
+  });
+
   describe('grouped', () => {
     let groupedInstance: GroupedMultiSelectComponent;
 
