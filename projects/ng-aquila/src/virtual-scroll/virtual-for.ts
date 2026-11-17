@@ -15,6 +15,7 @@ import {
   OnDestroy,
   signal,
   TemplateRef,
+  untracked,
   ViewContainerRef,
   ViewRef,
 } from '@angular/core';
@@ -214,11 +215,8 @@ export class NxVirtualFor<T, G = unknown> implements VirtualForOf {
   /** Set of currently observed elements */
   private readonly _observedElements = new Set<Element>();
 
-  /** RAF request ID for measurement */
+  /** RAF request ID for measurement, set while a measurement is pending */
   private _measureRafId: number | null = null;
-
-  /** Pending measurement flag to prevent duplicate measurements */
-  private _measurementPending = false;
 
   /** Whether initialization is complete */
   private _initialized = false;
@@ -234,8 +232,9 @@ export class NxVirtualFor<T, G = unknown> implements VirtualForOf {
       this._rebuildPositionCache(data);
 
       if (this._initialized) {
-        // Force re-render on data changes even if range is the same
-        this._updateAndRender(true);
+        // Otherwise the effect reruns on every measurement, which writes `_positionCache` that the render reads.
+        // A signal read only during the render won't rerun the effect, so read new inputs above it.
+        untracked(() => this._updateAndRender(true));
       }
     });
 
@@ -579,6 +578,7 @@ export class NxVirtualFor<T, G = unknown> implements VirtualForOf {
 
     // Views are kept in item order in the DOM, so assistive technology reads them in order.
     let rootIndex = 0;
+    let hasUnmeasuredRows = false;
     const outletIndices = new Map<GroupView<G>, number>();
 
     for (let i = start; i < end; i++) {
@@ -635,11 +635,12 @@ export class NxVirtualFor<T, G = unknown> implements VirtualForOf {
         rootNode.style.width = '100%';
         rootNode.style.transform = `translateY(${offset}px)`;
         rootNode.setAttribute('data-virtual-index', String(i));
+        hasUnmeasuredRows ||= !this._observedElements.has(rootNode);
       }
     }
 
-    // Schedule measurement after rendering
-    if (this._initialized) {
+    // Measured rows are observed. Remeasuring them after every render never settles when rows share a key.
+    if (this._initialized && hasUnmeasuredRows) {
       this._scheduleMeasurement();
     }
   }
@@ -736,13 +737,7 @@ export class NxVirtualFor<T, G = unknown> implements VirtualForOf {
     this._ngZone.runOutsideAngular(() => {
       this._renderRafId = requestAnimationFrame(() => {
         this._renderRafId = null;
-        this._ngZone.run(() => {
-          try {
-            this._updateAndRender(true);
-          } catch (error) {
-            this._errorHandler.handleError(error);
-          }
-        });
+        this._ngZone.run(() => this._forceRender());
       });
     });
   }
@@ -804,11 +799,7 @@ export class NxVirtualFor<T, G = unknown> implements VirtualForOf {
    * Set up ResizeObserver to monitor item size changes
    */
   private _setupItemResizeObserver(): void {
-    this._itemResizeObserver = new ResizeObserver(() => {
-      if (!this._measurementPending) {
-        this._scheduleMeasurement();
-      }
-    });
+    this._itemResizeObserver = new ResizeObserver(() => this._scheduleMeasurement());
 
     this._destroyRef.onDestroy(() => {
       this._itemResizeObserver?.disconnect();
@@ -822,21 +813,14 @@ export class NxVirtualFor<T, G = unknown> implements VirtualForOf {
    * Schedule a measurement of visible items
    */
   private _scheduleMeasurement(): void {
-    if (this._measurementPending) {
+    if (this._measureRafId !== null) {
       return;
     }
 
-    this._measurementPending = true;
-
     this._ngZone.runOutsideAngular(() => {
-      if (this._measureRafId !== null) {
-        cancelAnimationFrame(this._measureRafId);
-      }
-
       this._measureRafId = requestAnimationFrame(() => {
         this._measureRafId = null;
         this._measureRenderedItems();
-        this._measurementPending = false;
       });
     });
   }
@@ -878,7 +862,8 @@ export class NxVirtualFor<T, G = unknown> implements VirtualForOf {
 
       // Add to resize observer if not already observed
       if (!this._observedElements.has(rootNode)) {
-        this._itemResizeObserver?.observe(rootNode);
+        // The measured offsetHeight is the border box; the default content box misses padding and border changes.
+        this._itemResizeObserver?.observe(rootNode, { box: 'border-box' });
         this._observedElements.add(rootNode);
       }
     }
@@ -910,30 +895,33 @@ export class NxVirtualFor<T, G = unknown> implements VirtualForOf {
 
         // 4. Adjust scroll position only when NOT actively scrolling
         // This prevents interrupting smooth scroll animations
-        let scrollAdjusted = false;
         if (!this._viewport.isScrollActive()) {
           if (wasAtBottom) {
             // Stay at bottom
             const newMaxScroll = newTotalHeight - viewportHeight;
             this._viewport.setScrollTop(Math.max(0, newMaxScroll));
-            scrollAdjusted = true;
           } else {
             // Anchor to maintain visual position
             const newAnchorOffset = this._positionCache()[anchorIndex]?.offset ?? 0;
             const scrollDelta = newAnchorOffset - oldAnchorOffset;
             if (scrollDelta !== 0) {
               this._viewport.setScrollTop(scrollTop + scrollDelta);
-              scrollAdjusted = true;
             }
           }
         }
 
-        // Only manually re-render if we didn't adjust scroll
-        // (scroll adjustment will trigger re-render via scroll event)
-        if (!scrollAdjusted) {
-          this._updateAndRender();
-        }
+        // 5. Forced, since neither the new heights nor a scroll adjustment have to change the range.
+        this._forceRender();
       });
+    }
+  }
+
+  /** Runs outside of change detection, so errors, e.g. a missing group outlet, are reported like there. */
+  private _forceRender(): void {
+    try {
+      this._updateAndRender(true);
+    } catch (error) {
+      this._errorHandler.handleError(error);
     }
   }
 }

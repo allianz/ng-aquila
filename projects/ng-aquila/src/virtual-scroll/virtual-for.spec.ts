@@ -246,6 +246,73 @@ class ControlFlowRootTestComponent {
   virtualFor = viewChild.required(NxVirtualFor);
 }
 
+interface SizedItem {
+  id: number;
+  height: number;
+}
+
+@Component({
+  selector: 'test-sized-items-test-component',
+  template: `
+    <nx-virtual-viewport
+      [itemHeight]="44"
+      [overscan]="overscan()"
+      style="height: 200px; display: block;"
+    >
+      <div
+        *nxVirtualFor="let item of items(); trackBy: 'id'"
+        [style.height.px]="rowHeight() ?? item.height"
+      ></div>
+    </nx-virtual-viewport>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxVirtualViewportComponent, NxVirtualFor],
+})
+class SizedItemsTestComponent {
+  items = signal<SizedItem[]>([]);
+  overscan = signal(20);
+  /** Resizes the rows without changing the data, so only the `ResizeObserver` sees it. */
+  rowHeight = signal<number | null>(null);
+  virtualFor = viewChild.required(NxVirtualFor);
+}
+
+@Component({
+  selector: 'test-duplicate-keys-test-component',
+  template: `
+    <nx-virtual-viewport [itemHeight]="44" style="height: 200px; display: block;">
+      <div *nxVirtualFor="let item of items; let first = first" [style.height.px]="first ? 56 : 44">
+        {{ item }}
+      </div>
+    </nx-virtual-viewport>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxVirtualViewportComponent, NxVirtualFor],
+})
+class DuplicateKeysTestComponent {
+  /** Without trackBy, both 'a' rows share a key and so a cached height. */
+  items = ['a', 'a', 'b'];
+  virtualFor = viewChild.required(NxVirtualFor);
+}
+
+@Component({
+  selector: 'test-padded-items-test-component',
+  template: `
+    <nx-virtual-viewport [itemHeight]="44" style="height: 400px; display: block;">
+      <div
+        *nxVirtualFor="let item of items(); trackBy: 'id'"
+        [style.padding]="item.selected ? '10px 0' : '0'"
+      >
+        <div style="height: 44px"></div>
+      </div>
+    </nx-virtual-viewport>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NxVirtualViewportComponent, NxVirtualFor],
+})
+class PaddedItemsTestComponent {
+  items = signal(Array.from({ length: 50 }, (_, id) => ({ id, selected: false })));
+}
+
 function animationFrames(count: number): Promise<void> {
   return new Promise((resolve) => {
     const next = (remaining: number) =>
@@ -1311,6 +1378,128 @@ describe('NxVirtualFor', () => {
       expect(consoleWarn).toHaveBeenCalledTimes(1);
       expect(consoleWarn).toHaveBeenCalledWith(expect.stringMatching(/containing block/));
     }));
+  });
+
+  describe('after measuring the real heights', () => {
+    async function render(items: SizedItem[], overscan = 20) {
+      TestBed.configureTestingModule({ imports: [SizedItemsTestComponent] });
+      const fixture = TestBed.createComponent(SizedItemsTestComponent);
+      fixture.componentInstance.items.set(items);
+      fixture.componentInstance.overscan.set(overscan);
+      fixture.autoDetectChanges();
+      await fixture.whenStable();
+      await animationFrames(5);
+      return fixture;
+    }
+
+    function renderedRows(fixture: ComponentFixture<SizedItemsTestComponent>) {
+      return Array.from<HTMLElement>(fixture.nativeElement.querySelectorAll('[data-virtual-index]'))
+        .sort((a, b) => Number(a.dataset['virtualIndex']) - Number(b.dataset['virtualIndex']))
+        .map((row) => ({
+          index: Number(row.dataset['virtualIndex']),
+          offset: Number(/translateY\((-?[\d.]+)px\)/.exec(row.style.transform)![1]),
+          height: row.offsetHeight,
+        }));
+    }
+
+    function expectRowsStacked(fixture: ComponentFixture<SizedItemsTestComponent>) {
+      const rows = renderedRows(fixture);
+      const virtualFor = fixture.componentInstance.virtualFor();
+      expect(rows[0].offset).toBe(virtualFor.getOffsetForIndex(rows[0].index));
+      rows.slice(1).forEach((row, i) => expect(row.offset).toBe(rows[i].offset + rows[i].height));
+    }
+
+    it('moves the rows to their measured offsets when the rendered range stays the same', async () => {
+      // All six rows are rendered before and after measuring, so the range doesn't change.
+      const fixture = await render([56, 44, 44, 44, 44, 44].map((height, id) => ({ id, height })));
+      expect(renderedRows(fixture).map((row) => row.offset)).toEqual([0, 56, 100, 144, 188, 232]);
+    });
+
+    it('moves the rows to their measured offsets after keeping the scroll position', async () => {
+      const fixture = await render(Array.from({ length: 200 }, (_, id) => ({ id, height: 50 })));
+      const viewportEl = fixture.nativeElement.querySelector('.nx-virtual-viewport__viewport');
+      viewportEl.scrollTop = 2000;
+      viewportEl.dispatchEvent(new Event('scroll'));
+      await animationFrames(10);
+      await fixture.whenStable();
+
+      expectRowsStacked(fixture);
+    });
+
+    async function resizeRows(fixture: ComponentFixture<SizedItemsTestComponent>, height: number) {
+      fixture.componentInstance.rowHeight.set(height);
+      await fixture.whenStable();
+      await animationFrames(10);
+      await fixture.whenStable();
+    }
+
+    it('measures the rows that a resize brings into the range', async () => {
+      const fixture = await render(
+        Array.from({ length: 200 }, (_, id) => ({ id, height: 44 })),
+        2,
+      );
+      await resizeRows(fixture, 20);
+
+      expect(renderedRows(fixture).length).toBe(12);
+      expectRowsStacked(fixture);
+    });
+
+    it('measures the rows that the scroll adjustment after a resize brings into the range', async () => {
+      const fixture = await render(
+        Array.from({ length: 200 }, (_, id) => ({ id, height: 44 })),
+        2,
+      );
+      const viewportEl = fixture.nativeElement.querySelector('.nx-virtual-viewport__viewport');
+      viewportEl.scrollTop = viewportEl.scrollHeight;
+      viewportEl.dispatchEvent(new Event('scroll'));
+      await animationFrames(10);
+      await fixture.whenStable();
+
+      // Staying at the bottom pulls the scroll position up, onto rows that weren't rendered.
+      await resizeRows(fixture, 20);
+
+      const rows = renderedRows(fixture);
+      expect(rows.at(-1)!.index).toBe(199);
+      expectRowsStacked(fixture);
+      expect(rows.at(-1)!.offset + rows.at(-1)!.height).toBe(viewportEl.scrollHeight);
+    });
+  });
+
+  it('measures rows whose padding changes without changing their content box', async () => {
+    TestBed.configureTestingModule({ imports: [PaddedItemsTestComponent] });
+    const fixture = TestBed.createComponent(PaddedItemsTestComponent);
+    fixture.autoDetectChanges();
+    await fixture.whenStable();
+    await animationFrames(10);
+
+    fixture.componentInstance.items.update((rows) =>
+      rows.map((row) => ({ ...row, selected: true })),
+    );
+    await fixture.whenStable();
+    await animationFrames(10);
+
+    const rows = Array.from<HTMLElement>(
+      fixture.nativeElement.querySelectorAll('[data-virtual-index]'),
+    ).sort((a, b) => Number(a.dataset['virtualIndex']) - Number(b.dataset['virtualIndex']));
+    const top = (row: HTMLElement) =>
+      Number(/translateY\((-?[\d.]+)px\)/.exec(row.style.transform)![1]);
+    rows.slice(1).forEach((row, i) => expect(top(row)).toBe(top(rows[i]) + rows[i].offsetHeight));
+  });
+
+  it('stops measuring when rows with the same key differ in height', async () => {
+    TestBed.configureTestingModule({ imports: [DuplicateKeysTestComponent] });
+    const fixture = TestBed.createComponent(DuplicateKeysTestComponent);
+    fixture.autoDetectChanges();
+    await fixture.whenStable();
+    await animationFrames(10);
+
+    const measure = vi.spyOn(
+      fixture.componentInstance.virtualFor() as any,
+      '_measureRenderedItems',
+    );
+    await animationFrames(10);
+
+    expect(measure).not.toHaveBeenCalled();
   });
 
   describe('with a root element that wraps control flow', () => {

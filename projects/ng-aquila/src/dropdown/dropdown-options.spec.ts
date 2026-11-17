@@ -529,6 +529,24 @@ describe('NxDropdownComponent with options', () => {
       expect(rows()).toEqual(['# German', 'BMW', 'Audi', '# Swedish', 'Volvo', 'Saab']);
     }));
 
+    it('places the options below the measured height of their group header', async () => {
+      TestBed.configureTestingModule({ imports: [VirtualGroupedDropdown] });
+      overlayContainer = TestBed.inject(OverlayContainer);
+      fixture = TestBed.createComponent(VirtualGroupedDropdown);
+      fixture.autoDetectChanges();
+      await fixture.whenStable();
+      (fixture.nativeElement.querySelector('.nx-dropdown__container') as HTMLElement).click();
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      await fixture.whenStable();
+
+      const [header, firstOption] = query('nx-virtual-viewport [data-virtual-index]').sort(
+        (a, b) => Number(a.dataset['virtualIndex']) - Number(b.dataset['virtualIndex']),
+      );
+      // The header is taller than the 44px estimate, otherwise nothing has to move.
+      expect(header.offsetHeight).toBeGreaterThan(44);
+      expect(firstOption.style.transform).toBe(`translateY(${header.offsetHeight}px)`);
+    });
+
     it('separates groups with a divider', fakeAsync(() => {
       create(VirtualGroupedDropdown);
       open();
