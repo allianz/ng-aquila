@@ -332,7 +332,7 @@ The unit tests are run with
 
 ## Figma Code Connect
 
-[Code Connect](https://developers.figma.com/docs/code-connect/) shows our real component code in Figma Dev Mode, instead of the code Figma generates. Each mapping is a template file named `*.figma.ts` next to its component. The templates use an `<A1_FILE>` placeholder instead of the Figma file URL, which `figma.config.json` fills in.
+[Code Connect](https://developers.figma.com/docs/code-connect/) shows our real component code in Figma Dev Mode, instead of the code Figma generates. Each mapping is a template file named `*.figma.ts` next to its component. The templates use an `<A1_FILE>` placeholder instead of the Figma file URL, which `figma.config.json` fills in. The icons live in a separate Figma library, so their URLs use `<A1_ICONS_FILE>`.
 
 ### Setup
 
@@ -342,13 +342,13 @@ The unit tests are run with
     export FIGMA_ACCESS_TOKEN="<your token>"
     ```
 
-2. Generate `figma.config.json` in the repository root. It is git-ignored, because it holds the internal Figma file URL. Ask the team for the URL and the label.
+2. Generate `figma.config.json` in the repository root. It is git-ignored, because it holds the internal Figma file URLs. Ask the team for the URLs and the label.
 
     ```shell
-    npm run figma:gen-config -- --url=<A1 Figma file URL, without node-id> --label=<label>
+    npm run figma:gen-config -- --url=<A1 Figma file URL> --icons-url=<A1 icons Figma file URL> --label=<label>
     ```
 
-    Without the flags, the script reads the environment variables `FIGMA_A1_FILE_URL` and `FIGMA_CODE_CONNECT_LABEL`, which the CI workflow uses.
+    Pass both URLs without `node-id`. Without the flags, the script reads the environment variables `FIGMA_A1_FILE_URL`, `FIGMA_A1_ICONS_FILE_URL` and `FIGMA_CODE_CONNECT_LABEL`, which the CI workflow uses.
 
     Use the label exactly as the team gives it to you. A publish under a different label adds a second snippet in Dev Mode instead of replacing ours.
 
@@ -372,9 +372,23 @@ npm run figma:preview -- --unique <file>
 
 The preview does not render nested components such as icons or indicators. Check those in Dev Mode.
 
+### Icons
+
+All icons share one template, `icon/icon.figma.batch.ts`. `icon/icon.figma.batch.json` lists one entry per icon in the Figma icon library. The icons rarely change, so the list is maintained by hand:
+
+```json
+{ "url": "<A1_ICONS_FILE>?node-id=8-471", "figmaName": "Archive", "name": "archive" }
+```
+
+-   `url`: the node id of the icon component in the icon library.
+-   `name`: the `nx-icon` name from the icon font. Most names follow the Figma name: lowercase, `&` becomes `and`, other special characters become `-`. "Outline" becomes `-o` and "Filled" is dropped. A plain name next to a "Filled" icon is the outline ("User" and "User Filled" become `user-o` and `user`). Illustrative icons usually have the `product-` prefix.
+-   `name: null` marks an icon that has no code equivalent. Its snippet shows a comment instead.
+
+The icon font has no multicolor icons. The Multicolor "Filetypes" icons map to the single-color filetype icons with the same name, because the Filetype Icon components use them. The other Multicolor groups are not in the list.
+
 ### Publish
 
-The `Figma Code Connect` workflow publishes all templates when a change to a `*.figma.ts` file reaches `main`. It reads the secrets `FIGMA_ACCESS_TOKEN` and `FIGMA_A1_FILE_URL` and the variable `FIGMA_CODE_CONNECT_LABEL` from the `figma-publish` environment, which only `main` can use. A published snippet is live for everyone in Dev Mode right away, so publish by hand only for testing, and check with a dry run first:
+The `Figma Code Connect` workflow publishes all templates when a change to a `*.figma.ts`, `*.figma.batch.ts` or `*.figma.batch.json` file reaches `main`. It reads the secrets `FIGMA_ACCESS_TOKEN`, `FIGMA_A1_FILE_URL` and `FIGMA_A1_ICONS_FILE_URL` and the variable `FIGMA_CODE_CONNECT_LABEL` from the `figma-publish` environment, which only `main` can use. A published snippet is live for everyone in Dev Mode right away, so publish by hand only for testing, and check with a dry run first:
 
 ```shell
 npm run figma:publish -- --dry-run

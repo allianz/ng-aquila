@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - '**/*.figma.ts'
+      - '**/*.figma.batch.ts'
+      - '**/*.figma.batch.json'
   workflow_dispatch:
 
 # Publishes overwrite each other in Figma, so a newer run waits instead of racing an older one.
@@ -36,6 +38,7 @@ jobs:
       - name: Write Figma config
         env:
           FIGMA_A1_FILE_URL: ${{ secrets.FIGMA_A1_FILE_URL }}
+          FIGMA_A1_ICONS_FILE_URL: ${{ secrets.FIGMA_A1_ICONS_FILE_URL }}
           FIGMA_CODE_CONNECT_LABEL: ${{ vars.FIGMA_CODE_CONNECT_LABEL }}
         run: npm run figma:gen-config
 

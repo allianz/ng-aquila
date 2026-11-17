@@ -1,0 +1,3335 @@
+{
+  "templateFile": "./icon.figma.batch.ts",
+  "components": [
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-59",
+      "figmaName": "Apartment Building Small",
+      "name": "apartment-building-small"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-61",
+      "figmaName": "Car Outline",
+      "name": "car-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-325",
+      "figmaName": "File New",
+      "name": "file"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-317",
+      "figmaName": "File Text",
+      "name": "file-text"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-69",
+      "figmaName": "File Arrow",
+      "name": "file-arrow"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-71",
+      "figmaName": "File Check Filled",
+      "name": "file-check"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-74",
+      "figmaName": "Policy Processing 1",
+      "name": "policy-processing-01"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-76",
+      "figmaName": "Policy Processing 2",
+      "name": "policy-processing-02"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-78",
+      "figmaName": "Policy Processing 3",
+      "name": "policy-processing-03"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-309",
+      "figmaName": "Filter",
+      "name": "filter"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-484",
+      "figmaName": "Setting Outline",
+      "name": "setting-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-485",
+      "figmaName": "Setting Filled",
+      "name": "setting"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-280",
+      "figmaName": "Save",
+      "name": "save-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-638",
+      "figmaName": "Print Outline",
+      "name": "print-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-637",
+      "figmaName": "Print Filled",
+      "name": "print"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-737",
+      "figmaName": "Download",
+      "name": "download"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-736",
+      "figmaName": "Export & Share",
+      "name": "export-and-share"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-725",
+      "figmaName": "Launch",
+      "name": "launch"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-735",
+      "figmaName": "Upload",
+      "name": "arrow-upload"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-471",
+      "figmaName": "Archive",
+      "name": "archive"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-65",
+      "figmaName": "Share",
+      "name": "share"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-95",
+      "figmaName": "Share Outline",
+      "name": "share-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-722",
+      "figmaName": "Refresh",
+      "name": "refresh"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-478",
+      "figmaName": "Clock-Back",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-480",
+      "figmaName": "Clock Outline",
+      "name": "clock-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-479",
+      "figmaName": "Clock Filled",
+      "name": "clock"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-721",
+      "figmaName": "Switch",
+      "name": "switch"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-734",
+      "figmaName": "Bolt Outline",
+      "name": "bolt-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-733",
+      "figmaName": "Bolt Filled",
+      "name": "bolt"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-963",
+      "figmaName": "Location Outline",
+      "name": "location-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-964",
+      "figmaName": "Location Filled",
+      "name": "location"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-55",
+      "figmaName": "User-Business",
+      "name": "user-business-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-109",
+      "figmaName": "User-Business Filled",
+      "name": "user-business"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-59",
+      "figmaName": "User",
+      "name": "user-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-111",
+      "figmaName": "User Filled",
+      "name": "user"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-114",
+      "figmaName": "Users Filled",
+      "name": "users"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-116",
+      "figmaName": "Users Outline",
+      "name": "users-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-118",
+      "figmaName": "Tenant",
+      "name": "tenant"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-766",
+      "figmaName": "Lock-Locked Outline",
+      "name": "lock-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-767",
+      "figmaName": "Lock-Locked Filled",
+      "name": "lock"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-764",
+      "figmaName": "Lock-Unlocked Outline",
+      "name": "lock-unlock-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-765",
+      "figmaName": "Lock-Unlocked Filled",
+      "name": "lock-unlock"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-768",
+      "figmaName": "Bookmark Outline",
+      "name": "bookmark-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-769",
+      "figmaName": "Bookmark Filled",
+      "name": "bookmark"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-406",
+      "figmaName": "Flag Outline",
+      "name": "flag-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-407",
+      "figmaName": "Flag Filled",
+      "name": "flag"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-732",
+      "figmaName": "Password-Show Outline",
+      "name": "password-show-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-731",
+      "figmaName": "Password-Show Filled",
+      "name": "password-show"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-730",
+      "figmaName": "Password-Hide Outline",
+      "name": "password-hide-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-729",
+      "figmaName": "Password-Hide Filled",
+      "name": "password-hide"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-644",
+      "figmaName": "Calendar Outline",
+      "name": "calendar"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-643",
+      "figmaName": "Calendar Filled",
+      "name": "calendar-default"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-642",
+      "figmaName": "Calendar-Add Outline",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-641",
+      "figmaName": "Calendar-Add Filled",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-640",
+      "figmaName": "Calendar-Checked Outline",
+      "name": "calendar-date-check-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-639",
+      "figmaName": "Calendar-Checked Filled",
+      "name": "calendar-date-check"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-136",
+      "figmaName": "Calendar-Delete-Date Outline",
+      "name": "calendar-delete-date-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-138",
+      "figmaName": "Calendar-Delete-Date Filled",
+      "name": "calendar-delete-date"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-486",
+      "figmaName": "Search",
+      "name": "search"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-483",
+      "figmaName": "Credit-Card Outline",
+      "name": "credit-card-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-482",
+      "figmaName": "Credit-Card Filled",
+      "name": "credit-card"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-476",
+      "figmaName": "In Progress",
+      "name": "in-progress"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8480-118",
+      "figmaName": "Power-On-Off (🚧 WIP)",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-475",
+      "figmaName": "Control-Play",
+      "name": "play"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-474",
+      "figmaName": "Control-Pause",
+      "name": "pause"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-148",
+      "figmaName": "Shield Filled",
+      "name": "shield"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-150",
+      "figmaName": "Shield Outline",
+      "name": "shield-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-152",
+      "figmaName": "Cookie Manager Filled",
+      "name": "cookie-manager"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-154",
+      "figmaName": "Cookie Manager Outline",
+      "name": "cookie-manager-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-156",
+      "figmaName": "Shield Warning Filled",
+      "name": "shield-warning"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-158",
+      "figmaName": "Shield Warning Outline",
+      "name": "shield-warning-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-160",
+      "figmaName": "Hand Click Request",
+      "name": "hand-click-request"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-162",
+      "figmaName": "Statistics Data Graph Outline",
+      "name": "statistics-data-graph-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-164",
+      "figmaName": "Statistics Data Graph Filled",
+      "name": "statistics-data-graph"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-166",
+      "figmaName": "QR Code",
+      "name": "qr-code"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-168",
+      "figmaName": "Heart Outline",
+      "name": "heart-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-170",
+      "figmaName": "Heart Filled",
+      "name": "heart"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5730-62",
+      "figmaName": "Range",
+      "name": "range"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-302",
+      "figmaName": "Minus-Circle Outline",
+      "name": "minus-circle-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-298",
+      "figmaName": "Minus-Circle Filled",
+      "name": "minus-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-291",
+      "figmaName": "Plus-Circle Outline",
+      "name": "plus-circle-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-287",
+      "figmaName": "Plus-Circle Filled",
+      "name": "plus-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-307",
+      "figmaName": "Minus",
+      "name": "minus"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-296",
+      "figmaName": "Plus",
+      "name": "plus"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-330",
+      "figmaName": "Edit Pen",
+      "name": "pen"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-334",
+      "figmaName": "Edit Compose",
+      "name": "edit"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-636",
+      "figmaName": "Trash Outline",
+      "name": "trash-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-635",
+      "figmaName": "Trash Filled",
+      "name": "trash"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-339",
+      "figmaName": "Duplicate",
+      "name": "duplicate"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-49",
+      "figmaName": "Interpunct",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-269",
+      "figmaName": "Interpunct Outline",
+      "name": "interpunct-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-259",
+      "figmaName": "Paste",
+      "name": "paste"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-723",
+      "figmaName": "Viewmode-List",
+      "name": "list"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-264",
+      "figmaName": "List Numbers",
+      "name": "list-numbers"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-266",
+      "figmaName": "Group",
+      "name": "group"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-724",
+      "figmaName": "Viewmode-Card",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-477",
+      "figmaName": "Paperclip",
+      "name": "paperclip"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-274",
+      "figmaName": "Link",
+      "name": "link"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-276",
+      "figmaName": "Unlink",
+      "name": "unlink"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-278",
+      "figmaName": "Pin",
+      "name": "pin"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-280",
+      "figmaName": "Undo",
+      "name": "undo"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-282",
+      "figmaName": "Redo",
+      "name": "redo"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-284",
+      "figmaName": "Pivot Table",
+      "name": "pivot-table"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-286",
+      "figmaName": "Columns",
+      "name": "columns"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-288",
+      "figmaName": "Add Column After",
+      "name": "add-column-after"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-290",
+      "figmaName": "Add Column Before",
+      "name": "add-column-before"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-292",
+      "figmaName": "Delete Column",
+      "name": "delete-column"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-294",
+      "figmaName": "Add Row After",
+      "name": "add-row-after"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-296",
+      "figmaName": "Add Row Before",
+      "name": "add-row-before"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-298",
+      "figmaName": "Delete Row",
+      "name": "delete-row"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-300",
+      "figmaName": "Add Table",
+      "name": "add-table"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-302",
+      "figmaName": "Delete Table",
+      "name": "delete-table"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-304",
+      "figmaName": "Divider Line",
+      "name": "divider-line"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-306",
+      "figmaName": "Image",
+      "name": "image"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-308",
+      "figmaName": "Quote",
+      "name": "quote"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-310",
+      "figmaName": "Text Alignment Center",
+      "name": "text-alignment-center"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-312",
+      "figmaName": "Text Alignment Left",
+      "name": "text-alignment-left"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-314",
+      "figmaName": "Text Alignment Right",
+      "name": "text-alignment-right"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-316",
+      "figmaName": "Text Alignment Justified",
+      "name": "text-alignment-justified"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-318",
+      "figmaName": "Text Alignment Indent Less",
+      "name": "text-alignment-indent-less"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-320",
+      "figmaName": "Text Alignment Indent More",
+      "name": "text-alignment-indent-more"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-322",
+      "figmaName": "Text Formatting Overarching",
+      "name": "text-formatting-overarching"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-324",
+      "figmaName": "Text Formatting Bold",
+      "name": "text-formatting-bold"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-326",
+      "figmaName": "Text Formatting Color",
+      "name": "text-formatting-color"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-328",
+      "figmaName": "Text Formatting Underlined",
+      "name": "text-formatting-underlined"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-330",
+      "figmaName": "Text Formatting Size",
+      "name": "text-formatting-size"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-332",
+      "figmaName": "Text Formatting Strikethrough",
+      "name": "text-formatting-strikethrough"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-334",
+      "figmaName": "Text Formatting Cursive",
+      "name": "text-formatting-cursive"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-336",
+      "figmaName": "Text Formatting Glyph",
+      "name": "text-formatting-glyph"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-338",
+      "figmaName": "Text Formatting Clear Formatting",
+      "name": "text-formatting-clear-formatting"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-340",
+      "figmaName": "Color Picker",
+      "name": "color-picker"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-342",
+      "figmaName": "Cut",
+      "name": "cut"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-344",
+      "figmaName": "Aggregation",
+      "name": "aggregation"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-451",
+      "figmaName": "EPS",
+      "name": "eps"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-442",
+      "figmaName": "IMG",
+      "name": "img"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-432",
+      "figmaName": "JPG",
+      "name": "jpg"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-422",
+      "figmaName": "MP3",
+      "name": "mp3"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-396",
+      "figmaName": "POD",
+      "name": "pod"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-384",
+      "figmaName": "PPT",
+      "name": "ppt"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-374",
+      "figmaName": "TIFF",
+      "name": "tiff"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-365",
+      "figmaName": "TXT",
+      "name": "txt"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-353",
+      "figmaName": "VID",
+      "name": "vid"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-344",
+      "figmaName": "XLS",
+      "name": "xls"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-409",
+      "figmaName": "PDF",
+      "name": "pdf"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-746",
+      "figmaName": "AVI",
+      "name": "avi"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-748",
+      "figmaName": "BMP",
+      "name": "bmp"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-750",
+      "figmaName": "CSV",
+      "name": "csv"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-752",
+      "figmaName": "DOC",
+      "name": "doc"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-754",
+      "figmaName": "DOCX",
+      "name": "docx"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-756",
+      "figmaName": "EML",
+      "name": "eml"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-758",
+      "figmaName": "FLV",
+      "name": "flv"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-760",
+      "figmaName": "HCP",
+      "name": "hcp"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-762",
+      "figmaName": "M4P",
+      "name": "m4p"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-764",
+      "figmaName": "M4V",
+      "name": "m4v"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-766",
+      "figmaName": "MOV",
+      "name": "mov"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-768",
+      "figmaName": "MP2",
+      "name": "mp2"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-770",
+      "figmaName": "MP4",
+      "name": "mp4"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-772",
+      "figmaName": "MPE",
+      "name": "mpe"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-774",
+      "figmaName": "MPG",
+      "name": "mpg"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-776",
+      "figmaName": "MPV",
+      "name": "mpv"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-778",
+      "figmaName": "MSG",
+      "name": "msg"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-780",
+      "figmaName": "OGG",
+      "name": "ogg"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-782",
+      "figmaName": "PNG",
+      "name": "png"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-784",
+      "figmaName": "QT",
+      "name": "qt"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-786",
+      "figmaName": "RTF",
+      "name": "rtf"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-788",
+      "figmaName": "SWF",
+      "name": "swf"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-790",
+      "figmaName": "WMV",
+      "name": "wmv"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-792",
+      "figmaName": "XLSX",
+      "name": "xlsx"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-794",
+      "figmaName": "XML",
+      "name": "xml"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-796",
+      "figmaName": "ZIP",
+      "name": "zip"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-259",
+      "figmaName": "Burger",
+      "name": "bars"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-1177",
+      "figmaName": "Grid",
+      "name": "applauncher"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-199",
+      "figmaName": "Context Horizontal",
+      "name": "ellipsis-h"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-194",
+      "figmaName": "Context Vertical",
+      "name": "ellipsis-v"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-728",
+      "figmaName": "Minimize",
+      "name": "minimize"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-727",
+      "figmaName": "Close",
+      "name": "close"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-208",
+      "figmaName": "Close-Circle Outline",
+      "name": "close-circle-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-204",
+      "figmaName": "Close-Circle Filled",
+      "name": "close-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-230",
+      "figmaName": "Unfold",
+      "name": "double-chevron-small"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-188",
+      "figmaName": "Slider Handle",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-268",
+      "figmaName": "Arrow Left",
+      "name": "arrow-left"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-266",
+      "figmaName": "Arrow Right",
+      "name": "arrow-right"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-278",
+      "figmaName": "Arrow Down",
+      "name": "arrow-down"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-264",
+      "figmaName": "Arrow Up",
+      "name": "arrow-up"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-274",
+      "figmaName": "Arrow First",
+      "name": "arrow-first"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-270",
+      "figmaName": "Arrow Last",
+      "name": "arrow-last"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-240",
+      "figmaName": "Chevron-Circle Left Outline",
+      "name": "chevron-left-circle-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-236",
+      "figmaName": "Chevron-Circle Left Filled",
+      "name": "chevron-left-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-223",
+      "figmaName": "Chevron-Circle Right Outline",
+      "name": "chevron-right-circle-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-219",
+      "figmaName": "Chevron-Circle Right Filled",
+      "name": "chevron-right-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-234",
+      "figmaName": "Chevron-Small Left",
+      "name": "chevron-left-small"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-217",
+      "figmaName": "Chevron-Small Right",
+      "name": "chevron-right-small"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-213",
+      "figmaName": "Chevron-Small Up",
+      "name": "chevron-up-small"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-251",
+      "figmaName": "Chevron-Small Down",
+      "name": "chevron-down-small"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-245",
+      "figmaName": "Chevron-Large Left",
+      "name": "chevron-left"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-228",
+      "figmaName": "Chevron-Large Right",
+      "name": "chevron-right"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-215",
+      "figmaName": "Chevron-Large Up",
+      "name": "chevron-up"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-253",
+      "figmaName": "Chevron-Large Down",
+      "name": "chevron-down"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-255",
+      "figmaName": "Chevron-Double Left",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-247",
+      "figmaName": "Chevron-Double Right",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-458",
+      "figmaName": "Home",
+      "name": "home"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-460",
+      "figmaName": "Side Panel Both Sides",
+      "name": "side-panel-both-sides"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-462",
+      "figmaName": "Side Panel Left",
+      "name": "side-panel-left"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-464",
+      "figmaName": "Side Panel Right",
+      "name": "side-panel-right"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-466",
+      "figmaName": "Cards",
+      "name": "card-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-468",
+      "figmaName": "Collapse Content",
+      "name": "collapse-content"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-470",
+      "figmaName": "Maximize",
+      "name": "maximize"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5730-58",
+      "figmaName": "Move",
+      "name": "move"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-968",
+      "figmaName": "Phone Outline",
+      "name": "phone-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-966",
+      "figmaName": "Phone Filled",
+      "name": "phone"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-385",
+      "figmaName": "Incoming Call Outline",
+      "name": "incoming-call-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-399",
+      "figmaName": "Incoming Call Filled",
+      "name": "incoming-call"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-392",
+      "figmaName": "Outgoing Call Outline",
+      "name": "outgoing-call-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-405",
+      "figmaName": "Outgoing Call Filled",
+      "name": "outgoing-call"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-967",
+      "figmaName": "Phone-Chat Outline",
+      "name": "phone-chat-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-965",
+      "figmaName": "Phone-Chat Filled",
+      "name": "phone-chat"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-962",
+      "figmaName": "Speach-Bubble Outline",
+      "name": "speech-bubble-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-961",
+      "figmaName": "Speach-Bubble Filled",
+      "name": "speech-bubble"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-959",
+      "figmaName": "Speach-Writing Outline",
+      "name": "speech-bubble-dots-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-960",
+      "figmaName": "Speach-Writing Filled",
+      "name": "speech-bubble-dots"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-958",
+      "figmaName": "Speach-Answer Outline",
+      "name": "chat-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-957",
+      "figmaName": "Speach-Answer Filled",
+      "name": "chat"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-163",
+      "figmaName": "Mail Outline",
+      "name": "mail-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-157",
+      "figmaName": "Mail Filled",
+      "name": "mail"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-473",
+      "figmaName": "Mail-Read Outline",
+      "name": "mail-read-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-472",
+      "figmaName": "Mail-Read Filled",
+      "name": "mail-read"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-63",
+      "figmaName": "Telegram",
+      "name": "telegram"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-172",
+      "figmaName": "Bell Outline",
+      "name": "bell-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-168",
+      "figmaName": "Bell Filled",
+      "name": "bell"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-182",
+      "figmaName": "Bell-Off Outline",
+      "name": "bell-off-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-177",
+      "figmaName": "Bell-Off Filled",
+      "name": "bell-off"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-955",
+      "figmaName": "Microphone-Mute Outline",
+      "name": "microphone-mute-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-954",
+      "figmaName": "Microphone-Mute Filled",
+      "name": "microphone-mute"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-956",
+      "figmaName": "Microphone-Active Outline",
+      "name": "microphone"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-953",
+      "figmaName": "Microphone-Active Filled",
+      "name": "microphone-default"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-952",
+      "figmaName": "Cobrowsing",
+      "name": "cobrowsing-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-951",
+      "figmaName": "Globe",
+      "name": "globe"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-518",
+      "figmaName": "Smartphone Outline",
+      "name": "smartphone-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-520",
+      "figmaName": "Smartphone Filled",
+      "name": "smartphone"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-540",
+      "figmaName": "Add Note",
+      "name": "add-note"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-542",
+      "figmaName": "Note",
+      "name": "note"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-556",
+      "figmaName": "E-Mail Read Outline",
+      "name": "e-mail-read-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-558",
+      "figmaName": "E-Mail Read Filled",
+      "name": "e-mail-read"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-566",
+      "figmaName": "Mark As Read",
+      "name": "mark-all-as-read"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-589",
+      "figmaName": "Speaker Off Outline",
+      "name": "speaker-off-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-591",
+      "figmaName": "Speaker On Outline",
+      "name": "speaker-on-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-593",
+      "figmaName": "Speaker Off Filled",
+      "name": "speaker-off"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-595",
+      "figmaName": "Speaker On Filled",
+      "name": "speaker-on"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-891",
+      "figmaName": "Exclamation Triangle Outline",
+      "name": "exclamation-triangle-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-886",
+      "figmaName": "Exclamation Triangle Filled",
+      "name": "exclamation-triangle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-902",
+      "figmaName": "Exclamation Circle Outline",
+      "name": "exclamation-circle-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-897",
+      "figmaName": "Exclamation Circle Filled",
+      "name": "exclamation-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-487",
+      "figmaName": "Info Outline",
+      "name": "info-circle-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-488",
+      "figmaName": "Info Filled",
+      "name": "info-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-470",
+      "figmaName": "Check Circle Unchecked Filled",
+      "name": "check-circle-unchecked"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-726",
+      "figmaName": "Check",
+      "name": "check"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-662",
+      "figmaName": "Check Circle Outline",
+      "name": "check-circle-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-481",
+      "figmaName": "Check Circle Checked Filled",
+      "name": "check-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-469",
+      "figmaName": "Help",
+      "name": "help-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-654",
+      "figmaName": "Help Circle Filled",
+      "name": "help"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-667",
+      "figmaName": "Not Allowed",
+      "name": "not-allowed"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-10",
+      "figmaName": "Star Outline",
+      "name": "star-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-4",
+      "figmaName": "Star Half",
+      "name": "star-half-full"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-8",
+      "figmaName": "Star Filled",
+      "name": "star"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-21",
+      "figmaName": "Sentiment Very Dissatisfied",
+      "name": "sentiment-very-dissatisfied"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-42",
+      "figmaName": "Sentiment Dissatisfied",
+      "name": "sentiment-dissatisfied"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-35",
+      "figmaName": "Sentiment Neutral",
+      "name": "sentiment-neutral"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-28",
+      "figmaName": "Sentiment Satisfied",
+      "name": "sentiment-satisfied"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-14",
+      "figmaName": "Sentiment Very Satisfied",
+      "name": "sentiment-very-satisfied"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-704",
+      "figmaName": "Hand Thumbs Down",
+      "name": "hand-thumbs-down"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-706",
+      "figmaName": "Hand Thumbs Up",
+      "name": "hand-thumbs-up"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-718",
+      "figmaName": "Messenger Circle",
+      "name": "messenger-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-720",
+      "figmaName": "Messenger",
+      "name": "messenger"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-722",
+      "figmaName": "Facebook Circle",
+      "name": "facebook-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-724",
+      "figmaName": "Facebook",
+      "name": "facebook"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-726",
+      "figmaName": "Google Circle",
+      "name": "google-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-728",
+      "figmaName": "Google Plus",
+      "name": "google-plus"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-730",
+      "figmaName": "Instagram Circle",
+      "name": "instagram-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-732",
+      "figmaName": "Instagram",
+      "name": "instagram"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-734",
+      "figmaName": "Linkedin Circle",
+      "name": "linkedin-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-736",
+      "figmaName": "Linkedin",
+      "name": "linkedin"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-738",
+      "figmaName": "Whatsapp Circle",
+      "name": "whatsapp-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-740",
+      "figmaName": "Whatsapp",
+      "name": "whatsapp"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-742",
+      "figmaName": "Xing Circle",
+      "name": "xing-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-744",
+      "figmaName": "Xing",
+      "name": "xing"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-746",
+      "figmaName": "Youtube Circle",
+      "name": "youtube-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-748",
+      "figmaName": "Youtube",
+      "name": "youtube"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-750",
+      "figmaName": "X Circle",
+      "name": "x-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-752",
+      "figmaName": "X",
+      "name": "x"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5730-50",
+      "figmaName": "Tiktok",
+      "name": "tiktok"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5730-51",
+      "figmaName": "Tiktok Circle",
+      "name": "tiktok-circle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6392",
+      "figmaName": "Strategy",
+      "name": "product-strategy"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8140",
+      "figmaName": "Exchange",
+      "name": "product-data-exchange"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9164",
+      "figmaName": "A-Z",
+      "name": "product-a-z"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7608",
+      "figmaName": "Job Processes",
+      "name": "product-job-processes"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9118",
+      "figmaName": "Arrow Direction Path",
+      "name": "product-arrow-direction-path"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6430",
+      "figmaName": "Stock Data Graph",
+      "name": "product-stock-data-graph"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6713",
+      "figmaName": "Share Chart",
+      "name": "product-share-chart"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6706",
+      "figmaName": "Share Graph Arrow Down",
+      "name": "product-share-graph-arrow-down"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6699",
+      "figmaName": "Share Graph Arrow Up",
+      "name": "product-share-graph-arrow-up"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7196",
+      "figmaName": "Pen",
+      "name": "product-pen"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6960",
+      "figmaName": "Plus Minus",
+      "name": "product-plus-minus"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6967",
+      "figmaName": "Plus",
+      "name": "product-plus"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8411",
+      "figmaName": "Cleanup Trash",
+      "name": "product-cleanup-trash"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6303",
+      "figmaName": "Target",
+      "name": "product-target"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8241",
+      "figmaName": "Diversity",
+      "name": "product-diversity"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7778",
+      "figmaName": "Hourglass",
+      "name": "product-hourglass"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7975",
+      "figmaName": "Hand Click Info",
+      "name": "product-hand-click-info"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7968",
+      "figmaName": "Hand Finger Pointing",
+      "name": "product-hand-finger-pointing"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7936",
+      "figmaName": "Hand Thumbs Up",
+      "name": "product-hand-thumbs-up"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7543",
+      "figmaName": "Light Bulb Idea Outline",
+      "name": "product-light-bulb-idea"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6846",
+      "figmaName": "Present",
+      "name": "product-present"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6815",
+      "figmaName": "Puzzle Pieces",
+      "name": "product-puzzle-pieces"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6826",
+      "figmaName": "Puzzle",
+      "name": "product-puzzle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8404",
+      "figmaName": "Clock",
+      "name": "product-clock"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6791",
+      "figmaName": "Repair",
+      "name": "product-repair"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6496",
+      "figmaName": "Star Event",
+      "name": "product-star-event"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6481",
+      "figmaName": "Stars Sky Galaxy",
+      "name": "product-stars-sky-galaxy"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8386",
+      "figmaName": "Cog Wheel",
+      "name": "product-cog-wheel"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8359",
+      "figmaName": "Cog Wheels",
+      "name": "product-cog-wheels"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6737",
+      "figmaName": "Search",
+      "name": "product-search"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1310-271",
+      "figmaName": "More Outline",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-872",
+      "figmaName": "Fountain Pen",
+      "name": "fountain-pen"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-934",
+      "figmaName": "Calendar Circle Left",
+      "name": "product-calendar-circle-left"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-936",
+      "figmaName": "Calendar Circle Right",
+      "name": "product-calendar-circle-right"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-938",
+      "figmaName": "Reminder",
+      "name": "product-reminder"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-940",
+      "figmaName": "Letter A",
+      "name": "product-letter-a"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5457-942",
+      "figmaName": "Letter B",
+      "name": "product-letter-b"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8506",
+      "figmaName": "Cat",
+      "name": "product-animal-cat"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8199",
+      "figmaName": "Dog",
+      "name": "product-animal-dog"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7785",
+      "figmaName": "Horse",
+      "name": "product-animal-horse"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8256",
+      "figmaName": "Deer",
+      "name": "product-animal-hunting-deer"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7003",
+      "figmaName": "Pet Owner Liability",
+      "name": "product-pet-owner-liability"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7207",
+      "figmaName": "Paw",
+      "name": "product-animal-paw"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9342",
+      "figmaName": "Health Paw",
+      "name": "product-health-paw"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-423",
+      "figmaName": "Health Horseshoe",
+      "name": "product-health-horseshoe"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7014",
+      "figmaName": "Pet Health Insurance",
+      "name": "product-pet-health-insurance"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9390",
+      "figmaName": "Shield Paw",
+      "name": "product-shield-paw"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8626",
+      "figmaName": "Car Mobility",
+      "name": "product-car-mobility"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7982",
+      "figmaName": "Guide Navigation",
+      "name": "product-guide-navigation"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7532",
+      "figmaName": "Locate Position",
+      "name": "product-locate-position"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9377",
+      "figmaName": "Compass",
+      "name": "product-compass"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8555",
+      "figmaName": "Car Trailer",
+      "name": "product-car-trailer"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8534",
+      "figmaName": "Caravan",
+      "name": "product-caravan"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9032",
+      "figmaName": "Bike",
+      "name": "product-bike"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8672",
+      "figmaName": "Car Accident",
+      "name": "product-car-accident"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8641",
+      "figmaName": "Car Front",
+      "name": "product-car-front"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6351",
+      "figmaName": "SUV Car",
+      "name": "product-SUV-car"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8615",
+      "figmaName": "Car Small",
+      "name": "product-car-small"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8699",
+      "figmaName": "Car",
+      "name": "product-car"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6503",
+      "figmaName": "Sports Car",
+      "name": "product-sports-car"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6261",
+      "figmaName": "Telematic Car Side",
+      "name": "product-telematic-car-side"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9236",
+      "figmaName": "Law Traffic",
+      "name": "product-law-traffic"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6278",
+      "figmaName": "Telematic Car Front",
+      "name": "product-telematic-car-front"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9465",
+      "figmaName": "Car Accident Abroad",
+      "name": "product-car-accident-abroad"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6071",
+      "figmaName": "Truck",
+      "name": "product-truck"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8051",
+      "figmaName": "Fork Lift Truck",
+      "name": "product-fork-lift-truck"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8161",
+      "figmaName": "Excavator",
+      "name": "product-excavator"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7473",
+      "figmaName": "Mobility",
+      "name": "product-mobility"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6117",
+      "figmaName": "Tractor",
+      "name": "tractor"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7403",
+      "figmaName": "Motorcycle",
+      "name": "product-motorcycle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6970",
+      "figmaName": "Plane",
+      "name": "product-plane"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6458",
+      "figmaName": "Steering Wheel",
+      "name": "product-steering-wheel"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6162",
+      "figmaName": "Tires Wheel",
+      "name": "product-tires-wheel"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8572",
+      "figmaName": "Car Tacho Fast",
+      "name": "product-car-tacho-fast"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7864",
+      "figmaName": "Helmet",
+      "name": "product-helmet"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6761",
+      "figmaName": "Rocket",
+      "name": "product-rocket"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6572",
+      "figmaName": "Sport Sailing Ship",
+      "name": "product-sport-sailing-ship"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7840",
+      "figmaName": "Help",
+      "name": "product-help"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-423",
+      "figmaName": "Car Truck",
+      "name": "product-car-truck"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-437",
+      "figmaName": "Car Towed",
+      "name": "product-car-towed"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-469",
+      "figmaName": "Bridge",
+      "name": "product-bridge"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-471",
+      "figmaName": "Car Key",
+      "name": "product-car-key"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-473",
+      "figmaName": "Adaptive Cruise Control",
+      "name": "product-adaptive-cruise-control"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-475",
+      "figmaName": "Autonomous Emergency Braking System",
+      "name": "product-autonomous-emergency-braking-system"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-477",
+      "figmaName": "Blind Spot Monitoring",
+      "name": "product-blind-spot-monitoring"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-479",
+      "figmaName": "Lane Assist",
+      "name": "product-lane-assist"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-481",
+      "figmaName": "Onsite Charge",
+      "name": "onsite-charge"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-483",
+      "figmaName": "Accompanied Driving",
+      "name": "product-accompanied-driving"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-485",
+      "figmaName": "Broken Car Window",
+      "name": "product-broken-car-window"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-487",
+      "figmaName": "Caravan And Motorcycle",
+      "name": "product-caravan-and-motorcycle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-489",
+      "figmaName": "Driver Protection",
+      "name": "product-driver-protection"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-491",
+      "figmaName": "Gap Coverage 1",
+      "name": "product-gap-coverage"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-493",
+      "figmaName": "Gap Coverage 2",
+      "name": "product-gap-coverage-b"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-495",
+      "figmaName": "New And Purchase Price Compensation",
+      "name": "product-new-and-purchase-price-compensation"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-497",
+      "figmaName": "Oldtimer",
+      "name": "product-oldtimer"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-499",
+      "figmaName": "Oldtimer Collection",
+      "name": "product-oldtimer-collection"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-501",
+      "figmaName": "Oldtimer Garage",
+      "name": "product-oldtimer-garage"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-503",
+      "figmaName": "Own Damage Coverage",
+      "name": "product-own-damage-coverage"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-505",
+      "figmaName": "Scooter",
+      "name": "product-scooter"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-507",
+      "figmaName": "Value Reduction",
+      "name": "product-value-reduction"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-509",
+      "figmaName": "Value Retention Guarantee",
+      "name": "product-value-retention-guarantee"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-511",
+      "figmaName": "Misfuelling",
+      "name": "product-misfuelling"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-505",
+      "figmaName": "Car Motorcycle",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7016-52",
+      "figmaName": "E-scooter",
+      "name": "product-e-scooter"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7016-67",
+      "figmaName": "Multi Car Cover",
+      "name": "product-multi-car-cover"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9213",
+      "figmaName": "Legal Protection",
+      "name": "product-legal-protection"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9280",
+      "figmaName": "Law Job",
+      "name": "product-law-job"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6670",
+      "figmaName": "Shield Hand",
+      "name": "product-shield-hand"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6681",
+      "figmaName": "Shield",
+      "name": "product-shield"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7558",
+      "figmaName": "Law",
+      "name": "product-law"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9096",
+      "figmaName": "Balance Scale",
+      "name": "product-balance-scale"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8214",
+      "figmaName": "Document Info",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6208",
+      "figmaName": "Thief",
+      "name": "product-thief"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-559",
+      "figmaName": "Shield Half Filled",
+      "name": "product-shield-half-filled"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-561",
+      "figmaName": "Shield Filled",
+      "name": "product-shield-filled"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-566",
+      "figmaName": "Shield Check",
+      "name": "product-shield-check"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-568",
+      "figmaName": "Shield Cross",
+      "name": "product-shield-cross"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9305",
+      "figmaName": "Law Internet",
+      "name": "product-law-internet"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9257",
+      "figmaName": "Law Key",
+      "name": "product-law-key"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9121",
+      "figmaName": "Apartment Building",
+      "name": "product-apartment-building"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7811",
+      "figmaName": "Home Outline",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7794",
+      "figmaName": "Home Office",
+      "name": "product-home-office"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7765",
+      "figmaName": "House Broken Window",
+      "name": "product-house-broken-window"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7754",
+      "figmaName": "House Fire",
+      "name": "product-house-fire"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7739",
+      "figmaName": "House Important Information",
+      "name": "product-house-important"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7730",
+      "figmaName": "House Money",
+      "name": "product-house-money"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7719",
+      "figmaName": "House Safe",
+      "name": "product-house-safe"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7708",
+      "figmaName": "House Water Damage",
+      "name": "product-house-water-damage"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5846-44",
+      "figmaName": "Outside Building",
+      "name": "product-outside-building"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7999",
+      "figmaName": "Garage",
+      "name": "product-garage"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5846-54",
+      "figmaName": "Pool",
+      "name": "product-pool"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-5990",
+      "figmaName": "Wall Balance",
+      "name": "product-wall-balance"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8943",
+      "figmaName": "Broken Glass",
+      "name": "product-broken-glass"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8920",
+      "figmaName": "Broken Window",
+      "name": "product-broken-window"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9425",
+      "figmaName": "Broken Mirror",
+      "name": "product-broken-mirror"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8909",
+      "figmaName": "Broom Clean",
+      "name": "product-broom-clean"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8119",
+      "figmaName": "Expensive Objects Jewelery",
+      "name": "product-expensive-objects-jewelery"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-5943",
+      "figmaName": "Watering Can",
+      "name": "product-watering-can"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6409",
+      "figmaName": "Stove Cooker",
+      "name": "product-stove-cooker"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-5963",
+      "figmaName": "Washer",
+      "name": "product-washer"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8303",
+      "figmaName": "Couch",
+      "name": "product-couch"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6833",
+      "figmaName": "Private Pension",
+      "name": "product-private-pension"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7185",
+      "figmaName": "Pension Rocker Chair",
+      "name": "product-pension-rocker-chair"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9064",
+      "figmaName": "Bed",
+      "name": "product-bed"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5846-130",
+      "figmaName": "Bathroom",
+      "name": "product-bathroom"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-5952",
+      "figmaName": "Water Tap",
+      "name": "product-water-tap"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9188",
+      "figmaName": "Oil Tank",
+      "name": "product-oil-tank"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5846-64",
+      "figmaName": "Hot Water Service",
+      "name": "product-hot-water-service"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5846-31",
+      "figmaName": "Water Tank",
+      "name": "product-water-tank"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9177",
+      "figmaName": "Shield House",
+      "name": "product-shield-house"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9448",
+      "figmaName": "Shield Key",
+      "name": "product-shield-key"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7593",
+      "figmaName": "Keys",
+      "name": "product-keys"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-601",
+      "figmaName": "Buildings And Content",
+      "name": "product-buildings-and-content"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-624",
+      "figmaName": "House Roof Damage",
+      "name": "product-house-roof-damage"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-626",
+      "figmaName": "House Lightning",
+      "name": "product-house-lightning"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-628",
+      "figmaName": "House Hail",
+      "name": "product-house-hail"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-630",
+      "figmaName": "House Storm",
+      "name": "product-house-storm"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-641",
+      "figmaName": "Ladder",
+      "name": "product-ladder"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-646",
+      "figmaName": "Window Closed",
+      "name": "product-window-closed"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-648",
+      "figmaName": "Window Storm Shutters",
+      "name": "product-window-storm-shutters"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-650",
+      "figmaName": "Chimney",
+      "name": "product-chimney"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-652",
+      "figmaName": "Fence",
+      "name": "product-fence"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-702",
+      "figmaName": "Lock Key",
+      "name": "product-lock-key"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7519",
+      "figmaName": "Lock",
+      "name": "product-lock"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8189",
+      "figmaName": "Door",
+      "name": "product-door"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-707",
+      "figmaName": "Door Closed",
+      "name": "product-door-closed"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-709",
+      "figmaName": "Cup",
+      "name": "product-cup"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-711",
+      "figmaName": "Landlord",
+      "name": "product-landlord"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-713",
+      "figmaName": "Tenant",
+      "name": "product-tenant"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-715",
+      "figmaName": "Shield Screwdriver",
+      "name": "product-shield-screwdriver"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5730-89",
+      "figmaName": "Dish",
+      "name": "product-restaurant"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5846-38",
+      "figmaName": "Shed",
+      "name": "product-shed"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5846-74",
+      "figmaName": "House Allianz",
+      "name": "product-house-allianz"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7111",
+      "figmaName": "People Communication External",
+      "name": "product-people-communication-external"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7074",
+      "figmaName": "People Communication Internal",
+      "name": "product-people-communication-internal"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7049",
+      "figmaName": "People Connect",
+      "name": "product-people-connect"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7036",
+      "figmaName": "People Love",
+      "name": "product-person-heart-people-love"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7027",
+      "figmaName": "Person Manager",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9047",
+      "figmaName": "Bereaved Dependent Pension",
+      "name": "product-bereaved-dependent-pension"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7496",
+      "figmaName": "Manager",
+      "name": "manager"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8077",
+      "figmaName": "Family",
+      "name": "product-family"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7148",
+      "figmaName": "People Collaboration",
+      "name": "product-people-collaboration"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6009",
+      "figmaName": "Voice Of The Customer",
+      "name": "product-voice-of-the-customer"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8890",
+      "figmaName": "Buggy",
+      "name": "product-buggy"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6381",
+      "figmaName": "Student School Graduation",
+      "name": "product-student-school-graduation"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-5912",
+      "figmaName": "Wheelchair",
+      "name": "product-wheelchair"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8710",
+      "figmaName": "Candle",
+      "name": "product-candle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7895",
+      "figmaName": "Health Bag Doctor",
+      "name": "product-health-bag-doctor"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6445",
+      "figmaName": "Stethoscope",
+      "name": "product-health-stethoscope"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7908",
+      "figmaName": "Health",
+      "name": "product-health"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7879",
+      "figmaName": "Heart Employee Engagement",
+      "name": "product-heart-employee-engagement"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7888",
+      "figmaName": "Heart",
+      "name": "product-heart"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8521",
+      "figmaName": "Care Insurance",
+      "name": "product-care-insurance"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7615",
+      "figmaName": "Injury Plaster",
+      "name": "product-injury-plaster"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6128",
+      "figmaName": "Tooth",
+      "name": "product-tooth"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8952",
+      "figmaName": "Brain",
+      "name": "product-brain"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1399-272",
+      "figmaName": "Eye Overview Sight",
+      "name": "product-eye-overview-sight"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6545",
+      "figmaName": "Sport Trainer",
+      "name": "product-sport-trainer"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6514",
+      "figmaName": "Sports",
+      "name": "product-sports"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6638",
+      "figmaName": "Soccer",
+      "name": "product-Soccer"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-337",
+      "figmaName": "Shield Person",
+      "name": "product-shield-person"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-339",
+      "figmaName": "Heart With Hands",
+      "name": "product-heart-with-hands"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-341",
+      "figmaName": "Security Inspector",
+      "name": "product-security-inspector"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6620",
+      "figmaName": "Social Media Facebook Messenger",
+      "name": "product-social-media-facebook-messenger"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6601",
+      "figmaName": "Social Media LinkedIn",
+      "name": "product-social-media-linkedin"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6631",
+      "figmaName": "Social Media Facebook",
+      "name": "product-social-media-facebook"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6583",
+      "figmaName": "Social Media WhatsApp",
+      "name": "product-social-media-whatsapp"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7486",
+      "figmaName": "Media",
+      "name": "product-media"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9111",
+      "figmaName": "At Icon",
+      "name": "product-at-sign"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-5841",
+      "figmaName": "World Globe",
+      "name": "product-world-globe"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-5832",
+      "figmaName": "World Wide Web",
+      "name": "product-world-wide-we"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8323",
+      "figmaName": "Communication",
+      "name": "product-communication"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6979",
+      "figmaName": "Phone Call",
+      "name": "product-phone-call"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7915",
+      "figmaName": "Headset Support",
+      "name": "product-headset-support"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7510",
+      "figmaName": "Mail Outline",
+      "name": "product-mail"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7578",
+      "figmaName": "Laptop",
+      "name": "product-laptop"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7565",
+      "figmaName": "Laptop Cog Wheel",
+      "name": "laptop-cog-wheel"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8312",
+      "figmaName": "Computer",
+      "name": "product-computer"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7392",
+      "figmaName": "Mouse",
+      "name": "product-mouse"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8799",
+      "figmaName": "Calculator",
+      "name": "product-calculator"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6659",
+      "figmaName": "Shopping Cart",
+      "name": "product-shopping-cart"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6688",
+      "figmaName": "Sharing Connect",
+      "name": "product-sharing-connect"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9017",
+      "figmaName": "Blog",
+      "name": "product-blog"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6316",
+      "figmaName": "Tablet iPad Apps",
+      "name": "product-tablet-ipad-apps"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6986",
+      "figmaName": "Phone",
+      "name": "product-smartphone"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8719",
+      "figmaName": "Camera",
+      "name": "product-camera"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6036",
+      "figmaName": "Video Camera",
+      "name": "product-video-camera"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6798",
+      "figmaName": "Radio",
+      "name": "product-radio"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6058",
+      "figmaName": "TV",
+      "name": "product-tv"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7386",
+      "figmaName": "Music",
+      "name": "product-music"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6952",
+      "figmaName": "Podcast",
+      "name": "product-podcast"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8846",
+      "figmaName": "Bullhorn",
+      "name": "product-bullhorn"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8182",
+      "figmaName": "Electric Plug",
+      "name": "product-electric-plug"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9077",
+      "figmaName": "Battery",
+      "name": "product-battery"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-759",
+      "figmaName": "Social Media X",
+      "name": "product-social-media-x"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-854",
+      "figmaName": "Energy",
+      "name": "product-energy"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-856",
+      "figmaName": "Social Media Instagram",
+      "name": "product-social-media-instagram"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-858",
+      "figmaName": "Social Media YouTube",
+      "name": "product-social-media-youtube"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-550",
+      "figmaName": "Projector Front",
+      "name": "product-projector-front"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-571",
+      "figmaName": "Projector Side",
+      "name": "product-projector-side"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7028-63",
+      "figmaName": "Social Media Spotify",
+      "name": "product-social-media-spotify"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=9943-40",
+      "figmaName": "Social Media Tiktok",
+      "name": null
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6051",
+      "figmaName": "Umbrella Protection",
+      "name": "product-umbrella-protection"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8073",
+      "figmaName": "Fire",
+      "name": "product-fire"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6195",
+      "figmaName": "Thunderstorm",
+      "name": "product-thunderstorm"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8397",
+      "figmaName": "Cloud",
+      "name": "product-cloud"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6227",
+      "figmaName": "Thermometer",
+      "name": "product-thermometer"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-5895",
+      "figmaName": "Wind Turbine Offshore",
+      "name": "product-wind-turbine-offshore"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-5878",
+      "figmaName": "Wind Turbine Onshore",
+      "name": "product-wind-turbine-onshore"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6905",
+      "figmaName": "Power Modules",
+      "name": "product-solar-power-modules"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7691",
+      "figmaName": "Hydro Power",
+      "name": "product-hydro-power"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=21-358",
+      "figmaName": "Power Pylon",
+      "name": "product-power-pylon"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8430",
+      "figmaName": "City",
+      "name": "product-city"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7377",
+      "figmaName": "Nature Leaf",
+      "name": "product-nature-leaf"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7989",
+      "figmaName": "Grapes",
+      "name": "grapes"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-908",
+      "figmaName": "Water Drops",
+      "name": "product-water-drops"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-910",
+      "figmaName": "Water",
+      "name": "product-water"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5846-16",
+      "figmaName": "Snowflake",
+      "name": "product-snowflake"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-912",
+      "figmaName": "Snow And Water",
+      "name": "product-snow-and-water"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-914",
+      "figmaName": "Icicle Melting",
+      "name": "product-icicle-melting"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-928",
+      "figmaName": "Sun",
+      "name": "product-sun"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-945",
+      "figmaName": "Vulcano",
+      "name": "product-vulcano"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-947",
+      "figmaName": "Vulcano Eruption",
+      "name": "product-volcano-eruption"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-949",
+      "figmaName": "Tree",
+      "name": "product-tree"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-951",
+      "figmaName": "Tree Snapped",
+      "name": "product-tree-snapped"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-953",
+      "figmaName": "Tree Wind",
+      "name": "product-tree-wind"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-955",
+      "figmaName": "Trees",
+      "name": "trees"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-517",
+      "figmaName": "Drought",
+      "name": "product-drought"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8468",
+      "figmaName": "Check",
+      "name": "product-check"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8283",
+      "figmaName": "Cross",
+      "name": "product-cross"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8274",
+      "figmaName": "Cross Triangle",
+      "name": "product-cross-triangle"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8263",
+      "figmaName": "Danger",
+      "name": "product-danger"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7672",
+      "figmaName": "Important Information",
+      "name": "product-important-info"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7829",
+      "figmaName": "Help Information",
+      "name": "product-help-information"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7818",
+      "figmaName": "Help Question",
+      "name": "product-help-question"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6863",
+      "figmaName": "Precaution",
+      "name": "product-precaution"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-466",
+      "figmaName": "Precaution Dollar",
+      "name": "product-precaution-dollar"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-482",
+      "figmaName": "Precaution Pound",
+      "name": "product-precaution-pound"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7458",
+      "figmaName": "Money Banknote",
+      "name": "product-money-banknote"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7425",
+      "figmaName": "Money Exchange",
+      "name": "product-money-exchange"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7414",
+      "figmaName": "Money Suitcase",
+      "name": "product-money-suitcase"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-435",
+      "figmaName": "Money Suitcase Dollar",
+      "name": "product-money-suitcase-dollar"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=7013-451",
+      "figmaName": "Money Suitcase Pound",
+      "name": "product-money-suitcase-pound"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8344",
+      "figmaName": "Coins Money",
+      "name": "product-coins-money"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8022",
+      "figmaName": "Fortune",
+      "name": "product-fortune"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7943",
+      "figmaName": "Hand Get Money",
+      "name": "product-hand-get-money"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8196",
+      "figmaName": "Dollar",
+      "name": "product-dollar"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6744",
+      "figmaName": "Save",
+      "name": "product-save"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8286",
+      "figmaName": "Credit Card",
+      "name": "product-credit-card"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7926",
+      "figmaName": "Hand Tray",
+      "name": "hand-tray"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7246",
+      "figmaName": "Partner Handshake",
+      "name": "product-partner-handshake"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7859",
+      "figmaName": "Helmet Construction",
+      "name": "helmet-construction"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7663",
+      "figmaName": "Income Precaution",
+      "name": "product-income-precaution"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8865",
+      "figmaName": "Building",
+      "name": "product-building"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6244",
+      "figmaName": "Thermal Power Plant",
+      "name": "product-thermal-power-plant"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7326",
+      "figmaName": "Office Chair",
+      "name": "product-office-chair"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-200",
+      "figmaName": "Shield Money",
+      "name": "product-shield-money"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-202",
+      "figmaName": "Shield Coins",
+      "name": "product-shield-coins"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-9000",
+      "figmaName": "Board Paper Note",
+      "name": "product-board-paper-note"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6370",
+      "figmaName": "Survey",
+      "name": "product-survey"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6135",
+      "figmaName": "To Do List",
+      "name": "product-to-do-list"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7271",
+      "figmaName": "Paper Lock",
+      "name": "product-paper-lock"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7348",
+      "figmaName": "Newspaper",
+      "name": "product-newspaper"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8455",
+      "figmaName": "Check Paper",
+      "name": "product-check-paper"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7640",
+      "figmaName": "Info Sheet",
+      "name": "product-info-sheet"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6722",
+      "figmaName": "Search Document",
+      "name": "product-search-document"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7290",
+      "figmaName": "Paper Document Outline",
+      "name": "product-paper-document"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7305",
+      "figmaName": "Pages Documents",
+      "name": "product-pages-documents"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8471",
+      "figmaName": "Certificate Papers",
+      "name": "certificate-papers"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6090",
+      "figmaName": "Travel",
+      "name": "product-travel"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8742",
+      "figmaName": "Calendar",
+      "name": "product-calendar"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8060",
+      "figmaName": "Folder",
+      "name": "product-folder"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-8971",
+      "figmaName": "Book",
+      "name": "product-book"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-7335",
+      "figmaName": "Notebook",
+      "name": "product-notebook"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1399-289",
+      "figmaName": "Certificate",
+      "name": "product-certificate"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-6778",
+      "figmaName": "Rewards",
+      "name": "product-rewards"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-972",
+      "figmaName": "Chat Avatar Man 1",
+      "name": "product-chat-avatar-man-1"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-974",
+      "figmaName": "Chat Avatar Man 2",
+      "name": "product-chat-avatar-man-2"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-976",
+      "figmaName": "Chat Avatar Man 3",
+      "name": "product-chat-avatar-man-3"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-978",
+      "figmaName": "Chat Avatar Man 4",
+      "name": "product-chat-avatar-man-4"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-980",
+      "figmaName": "Chat Avatar Man 5",
+      "name": "product-chat-avatar-man-5"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-982",
+      "figmaName": "Chat Avatar Man 6",
+      "name": "product-chat-avatar-man-6"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-984",
+      "figmaName": "Chat Avatar Man 7",
+      "name": "product-chat-avatar-man-7"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-986",
+      "figmaName": "Chat Avatar Neutral 1",
+      "name": "product-chat-avatar-neutral-1"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-988",
+      "figmaName": "Chat Avatar Neutral 2",
+      "name": "product-chat-avatar-neutral-2"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-990",
+      "figmaName": "Chat Avatar Neutral 3",
+      "name": "product-chat-avatar-neutral-3"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-992",
+      "figmaName": "Chat Avatar Woman 1",
+      "name": "product-chat-avatar-woman-1"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-994",
+      "figmaName": "Chat Avatar Woman 2",
+      "name": "product-chat-avatar-woman-2"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-996",
+      "figmaName": "Chat Avatar Woman 3",
+      "name": "product-chat-avatar-woman-3"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-998",
+      "figmaName": "Chat Avatar Woman 4",
+      "name": "product-chat-avatar-woman-4"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-1000",
+      "figmaName": "Chat Avatar Woman 5",
+      "name": "product-chat-avatar-woman-5"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-1002",
+      "figmaName": "Chat Avatar Woman 6",
+      "name": "product-chat-avatar-woman-6"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5468-1004",
+      "figmaName": "Chat Avatar Woman 7",
+      "name": "product-chat-avatar-woman-7"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-568",
+      "figmaName": "Chatbot Default",
+      "name": "chatbot-default-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-567",
+      "figmaName": "Chatbot Slightsmile",
+      "name": "chatbot-slightsmile-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-566",
+      "figmaName": "Chatbot Think",
+      "name": "chatbot-think-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-565",
+      "figmaName": "Chatbot Thrilled",
+      "name": "chatbot-thrilled-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=8-564",
+      "figmaName": "Chatbot Joy",
+      "name": "chatbot-joy-o"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-705",
+      "figmaName": "EPS",
+      "name": "eps"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-683",
+      "figmaName": "IMG",
+      "name": "img"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-661",
+      "figmaName": "JPG",
+      "name": "jpg"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-637",
+      "figmaName": "MP3",
+      "name": "mp3"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-586",
+      "figmaName": "POD",
+      "name": "pod"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-560",
+      "figmaName": "PPT",
+      "name": "ppt"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-536",
+      "figmaName": "TIFF",
+      "name": "tiff"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-515",
+      "figmaName": "TXT",
+      "name": "txt"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-493",
+      "figmaName": "VID",
+      "name": "vid"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-471",
+      "figmaName": "XLS",
+      "name": "xls"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=1-612",
+      "figmaName": "PDF",
+      "name": "pdf"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-904",
+      "figmaName": "AVI",
+      "name": "avi"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-908",
+      "figmaName": "BMP",
+      "name": "bmp"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-912",
+      "figmaName": "CSV",
+      "name": "csv"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-916",
+      "figmaName": "DOC",
+      "name": "doc"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-920",
+      "figmaName": "DOCX",
+      "name": "docx"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-924",
+      "figmaName": "EML",
+      "name": "eml"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-928",
+      "figmaName": "FLV",
+      "name": "flv"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-932",
+      "figmaName": "HCP",
+      "name": "hcp"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-936",
+      "figmaName": "M4P",
+      "name": "m4p"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-940",
+      "figmaName": "M4V",
+      "name": "m4v"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-944",
+      "figmaName": "MOV",
+      "name": "mov"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-948",
+      "figmaName": "MP2",
+      "name": "mp2"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-952",
+      "figmaName": "MP4",
+      "name": "mp4"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-956",
+      "figmaName": "MPE",
+      "name": "mpe"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-960",
+      "figmaName": "MPG",
+      "name": "mpg"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-964",
+      "figmaName": "MPV",
+      "name": "mpv"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-968",
+      "figmaName": "MSG",
+      "name": "msg"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-972",
+      "figmaName": "OGG",
+      "name": "ogg"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-976",
+      "figmaName": "PNG",
+      "name": "png"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-980",
+      "figmaName": "QT",
+      "name": "qt"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-984",
+      "figmaName": "RTF",
+      "name": "rtf"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-988",
+      "figmaName": "SWF",
+      "name": "swf"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-992",
+      "figmaName": "WMV",
+      "name": "wmv"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-996",
+      "figmaName": "XLSX",
+      "name": "xlsx"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-1000",
+      "figmaName": "XML",
+      "name": "xml"
+    },
+    {
+      "url": "<A1_ICONS_FILE>?node-id=5471-1004",
+      "figmaName": "ZIP",
+      "name": "zip"
+    }
+  ]
+}
