@@ -139,6 +139,12 @@ Form elements can also be added to the table:
 
 <!-- example(table-form-elements) -->
 
+### Expert: Column resize
+
+To let users adjust the width of a column, add an element with the `nxHeaderResize` directive inside an `nxHeaderCell`. Dragging the handle with the mouse or by touch resizes the column, with a minimum width of 50px.
+
+<!-- example(table-column-resize) -->
+
 </div>
 
 ### Accessibility

@@ -12,9 +12,7 @@ import { distinctUntilChanged, map, switchMap, takeUntil, tap } from 'rxjs/opera
 
 import { NxHeaderCellDirective } from '../header-cell.directive';
 
-/**
- * @deprecated because of accessibility concerns that can only be handled by applications and not a UI Library.
- */
+/** Adds a handle to a header cell to resize its column with the mouse or touch. */
 @Directive({
   selector: '[nxHeaderResize]',
   host: {

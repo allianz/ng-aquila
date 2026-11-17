@@ -10,6 +10,9 @@ import {
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+/**
+ * @title Column resize example
+ */
 @Component({
   selector: 'table-column-resize-example',
   templateUrl: './table-column-resize-example.html',
