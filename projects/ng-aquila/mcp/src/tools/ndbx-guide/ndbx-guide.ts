@@ -28,20 +28,53 @@ export const ndbxGuideToolConfig = {
 
 const sectionPath = path.resolve(__dirname, '../../../generated/sections.json');
 const sections: Array<SectionDoc> = JSON.parse(fs.readFileSync(sectionPath, 'utf-8'));
+const bestPractices = fs.readFileSync(
+  path.resolve(__dirname, '../../../static/best-practices.md'),
+  'utf-8',
+);
+
+const guides = [
+  ...sections
+    .filter((s) => s.category !== 'components')
+    .map((d) => ({
+      name: d.name.replace(/\.md$/, ''),
+      // a section's content excludes its heading, and the headings name the topics
+      headings: d.sections.map((s) => s.heading),
+      content: d.sections.map((s) => s.content).join('\n'),
+    })),
+  {
+    name: 'best-practices',
+    headings: [...bestPractices.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim().toLowerCase()),
+    content: bestPractices,
+  },
+];
+
+const guideSearch = new Fuse(guides, {
+  includeScore: true,
+  keys: [
+    { name: 'name', weight: 0.4 },
+    { name: 'headings', weight: 0.4 },
+    { name: 'content', weight: 0.2 },
+  ],
+  shouldSort: true,
+  // ignoreLocation: a topic can appear anywhere in a long guide, not only in its first characters
+  ignoreLocation: true,
+  threshold: 0.25,
+});
 
 function getNdbxGuide(query: string) {
-  const selectedDoc = ['getting-started.md', 'releases.md', 'FAQs.md'];
-  const filterDocs = sections
-    .filter((s) => selectedDoc.includes(s.name))
-    .map((d) => ({ name: d.name, content: d.sections.map((s) => s.content).join('\n') }));
-  const result = new Fuse(filterDocs, {
-    includeScore: true,
-    keys: ['name', 'content'],
-    shouldSort: true,
-    threshold: 0.8,
-  }).search(query);
-  if (!result || !result.length) {
-    return { content: [{ type: 'text', text: `documentation for '${query}' not found` }] };
+  const result = guideSearch.search(query);
+  if (!result.length) {
+    const topics = guides.map((d) => d.name).join(', ');
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Documentation for '${query}' not found. Available topics: ${topics}.`,
+        },
+      ],
+    };
   }
-  return { content: [{ type: 'text', text: filterDocs.length + result[0].item.content }] };
+  const { name, content } = result[0].item;
+  return { content: [{ type: 'text', text: `# ${name}\n\n${content}` }] };
 }

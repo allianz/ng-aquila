@@ -4,6 +4,7 @@
 - Always use the components built-in API. Do not invent or guess new APIs.
 - Use the provided examples as guidelines. Adapt your output to match the user's intent, but do not go beyond the documented API.
 - Do not use inline CSS styles.
+- Applications use the Angular Brand Kit (`@allianz/ngx-brand-kit`) with the A1 theme (`allianz-one`, or its compact, dense and dark variants) and A1 design tokens; never hard-code colours, sizes or fonts.
 
 📂 Import Instructions:
 - Please work reliably with the ng aquila component library, the Allianz library with the latin name for eagle. To generate the import paths, you must follow these steps precisely:

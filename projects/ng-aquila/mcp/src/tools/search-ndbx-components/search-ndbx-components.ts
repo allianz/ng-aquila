@@ -224,7 +224,7 @@ function normalizeNxName(name: string) {
   // 1. Trim and replace spaces with hyphens
   // 2. Remove 'nx-' prefix
   // 3. Remove 'Module' or 'Component' suffix
-  let result = name.trim().replace(/\s+/g, '-');
+  let result = name.trim().replace(/\s+/g, '-').toLowerCase();
 
   if (result.startsWith('nx-')) {
     result = result.slice(3);
@@ -232,14 +232,14 @@ function normalizeNxName(name: string) {
     result = result.slice(2);
   }
 
-  if (result.endsWith('Module')) {
+  if (result.endsWith('module')) {
     result = result.slice(0, -6);
   }
-  if (result.endsWith('Component')) {
+  if (result.endsWith('component')) {
     result = result.slice(0, -9);
   }
 
-  return result.toLowerCase();
+  return result;
 }
 
 /**
@@ -278,7 +278,22 @@ function findDefinitive<T extends DocWithAlias>(results: T[], q: string): T | nu
   const aliasMatch = results.find((doc) =>
     (doc.alias ?? []).some((a) => toSpaceCase(a.trim().toLowerCase()) === q),
   );
-  return aliasMatch ?? null;
+  if (aliasMatch) {
+    return aliasMatch;
+  }
+
+  // Separators are optional: 'comparisontable' finds 'comparison-table'
+  const compact = (s: string) => toSpaceCase(s.toLowerCase()).replace(/ /g, '');
+  const compactNames = results.filter(
+    (doc) => compact(doc.name.replace(/\.md$/i, '')) === compact(q),
+  );
+  if (compactNames.length === 1) {
+    return compactNames[0];
+  }
+  const compactAliases = results.filter((doc) =>
+    (doc.alias ?? []).some((a) => compact(a) === compact(q)),
+  );
+  return compactAliases.length === 1 ? compactAliases[0] : null;
 }
 
 function fusePhaseSearch<T extends DocWithAlias>(
@@ -329,12 +344,12 @@ function searchDocs<T extends DocWithAlias>(query: string, docs: Array<T>): Sear
   // Check result of phases in order (strictest → broadest).
   // Stop as soon as a phase produces results:
   //   0 results → continue to next phase
-  //   1 result  → definitive match
+  //   1 result  → definitive match in the strict phase only; a single fuzzy hit for an unknown name is a suggestion
   //   2+ results → try to resolve by exact name/alias; otherwise treat as ambiguous return as suggestions list
-  for (const phase of phases) {
+  for (const [index, phase] of phases.entries()) {
     const result = phase();
     if (result.length === 0) continue;
-    if (result.length === 1) return { definitive: result[0], similar: [] };
+    if (index === 0 && result.length === 1) return { definitive: result[0], similar: [] };
 
     // Multiple results → check if any has exact name/alias match to resolve to single definitive result
     const definitive = findDefinitive(result, q);

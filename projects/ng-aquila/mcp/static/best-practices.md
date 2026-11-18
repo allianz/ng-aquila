@@ -48,7 +48,7 @@ These guidelines help you build maintainable, performant, and accessible Angular
 
 ## Installation and Setup
 
-- Install with: `ng add @allianz/ngx-ndbx`
+- Install with: `ng add @allianz/ngx-brand-kit`
 - Import individual component modules only when needed to optimize bundle size.
 
 ## Autocomplete
