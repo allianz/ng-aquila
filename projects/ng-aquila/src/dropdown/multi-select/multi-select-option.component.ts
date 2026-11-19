@@ -36,7 +36,7 @@ import {
 export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyManagerOption {
   private _active = false;
 
-  id = inject(IdGenerationService).nextId('nx-multi-select-option');
+  @Input() id = inject(IdGenerationService).nextId('nx-multi-select-option');
 
   readonly appearance = input<AppearanceType>('auto');
 
@@ -68,7 +68,7 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable, ListKeyMa
   /**
    * Sets this option active highlighting it to the user.
    */
-  set active(value: boolean) {
+  @Input() set active(value: boolean) {
     this._active = value;
     this._cdr.markForCheck();
   }

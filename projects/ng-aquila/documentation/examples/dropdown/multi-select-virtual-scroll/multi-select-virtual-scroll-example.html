@@ -1,0 +1,16 @@
+<nx-formfield label="Cars">
+  <nx-multi-select
+    virtualScroll
+    filter
+    placeholder="Choose cars"
+    [(ngModel)]="model"
+    [options]="options"
+    selectValue="id"
+    selectLabel="name"
+  ></nx-multi-select>
+</nx-formfield>
+
+<div>
+  Selected cars:
+  <pre>[{{ model.join(', ') }}]</pre>
+</div>

@@ -36,6 +36,15 @@
       padding-bottom: 8px;
       max-height: 200px;
     }
+
+    .items.is-virtual {
+      padding-bottom: 0;
+
+      .virtual-viewport ::ng-deep .nx-virtual-viewport__viewport {
+        padding-bottom: 8px;
+        max-height: 200px;
+      }
+    }
   }
 
   &:focus {
@@ -142,10 +151,49 @@
   background-color: v(dropdown-group-divider);
 }
 
+.items.is-virtual {
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.virtual-viewport {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+
+  ::ng-deep .nx-virtual-viewport__viewport {
+    min-height: 0;
+    height: auto;
+    max-height: calc(
+      6 * (#{v(multi-select-item-line-height)} + (2 * v(multi-select-item-padding-vertical))) +
+        (2 * v(multi-select-panel-padding))
+    );
+    padding: v(multi-select-panel-padding) 0;
+  }
+}
+
 .group-label {
   @include type-style(dropdown-group-label);
   padding: v(dropdown-group-label-padding);
   color: v(dropdown-group-label-color);
+
+  // Same spacing and divider as between two groups without virtual scroll.
+  &.has-divider {
+    position: relative;
+    margin-top: calc(v(dropdown-group-divider-gap-vertical) * 2 + 1px);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(v(dropdown-group-divider-gap-vertical) * -1 - 1px);
+      left: v(multi-select-item-padding-horizon);
+      right: v(multi-select-item-padding-horizon);
+      height: 1px;
+      background-color: v(dropdown-group-divider);
+    }
+  }
 
   .panel.is-outline & {
     @include type-style(formfield-outline-label);

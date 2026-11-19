@@ -226,7 +226,7 @@ export const NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER = {
 
 /** Default options for dropdown that can be overridden globally. */
 export interface NxDropdownDefaultOptions {
-  /** Enable virtual scrolling for all dropdowns (default: false) */
+  /** Enable virtual scrolling for all dropdowns and multi selects (default: false) */
   virtualScroll?: boolean;
 }
 

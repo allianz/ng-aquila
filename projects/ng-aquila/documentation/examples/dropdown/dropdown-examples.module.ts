@@ -31,6 +31,7 @@ import { DropdownVirtualViewportExampleComponent } from './dropdown-virtual-view
 import { MultiSelectExampleComponent } from './multi-select/multi-select-example';
 import { MultiSelectGroupExampleComponent } from './multi-select-group/multi-select-group-example';
 import { MultiSelectIntlExampleComponent } from './multi-select-intl/multi-select-intl-example';
+import { MultiSelectVirtualScrollExampleComponent } from './multi-select-virtual-scroll/multi-select-virtual-scroll-example';
 
 const EXAMPLES = [
   DropdownCustomLabelExampleComponent,
@@ -56,6 +57,7 @@ const EXAMPLES = [
   MultiSelectExampleComponent,
   MultiSelectGroupExampleComponent,
   MultiSelectIntlExampleComponent,
+  MultiSelectVirtualScrollExampleComponent,
   DropdownPanelgrowExampleComponent,
   DropdownSelectOnFocusExampleComponent,
   DropdownVirtualViewportExampleComponent,
@@ -99,6 +101,7 @@ export class DropdownExamplesModule {
       'multi-select': MultiSelectExampleComponent,
       'multi-select-group': MultiSelectGroupExampleComponent,
       'multi-select-intl': MultiSelectIntlExampleComponent,
+      'multi-select-virtual-scroll': MultiSelectVirtualScrollExampleComponent,
       'dropdown-panelgrow': DropdownPanelgrowExampleComponent,
       'dropdown-select-on-focus': DropdownSelectOnFocusExampleComponent,
       'dropdown-virtual-viewport': DropdownVirtualViewportExampleComponent,

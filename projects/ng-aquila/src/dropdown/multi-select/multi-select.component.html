@@ -3,8 +3,6 @@
   [nxTooltipSelectable]="true"
   class="value"
   (click)="_open($event, 'mouse')"
-  (keydown.enter)="_open($event, 'keyboard')"
-  (keydown.space)="_open($event, 'keyboard')"
   cdkOverlayOrigin
   #trigger
   #origin="cdkOverlayOrigin"
@@ -92,6 +90,8 @@
           [label]="_intl.selectAll"
           [indeterminate]="_someSelected"
           [selected]="_allSelected"
+          [attr.aria-posinset]="_virtualListCountsSelectAll ? 1 : null"
+          [attr.aria-setsize]="_virtualListCountsSelectAll ? listItems.length + 1 : null"
           #selectAllCheckbox
         ></nx-multi-select-all>
       </div>
@@ -132,8 +132,53 @@
       [id]="_comboboxId"
       [attr.role]="filter ? 'listbox' : 'presentation'"
       [attr.aria-multiselectable]="filter ? true : null"
+      [class.is-virtual]="virtualScroll()"
     >
-      @if (grouped()) {
+      @if (virtualScroll()) {
+        <nx-virtual-viewport
+          #virtualViewport
+          class="virtual-viewport"
+          [itemHeight]="40"
+          [overscan]="20"
+        >
+          <ng-template #virtualGroup let-group>
+            <div role="group" [attr.aria-label]="group.label">
+              <ng-container nxVirtualGroupOutlet />
+            </div>
+          </ng-template>
+          <div
+            *nxVirtualFor="
+              let row of _virtualRows();
+              trackBy: _trackVirtualRow;
+              groupBy: _virtualRowGroup;
+              groupTrackBy: 'id';
+              groupTemplate: virtualGroup
+            "
+            role="presentation"
+          >
+            @if (row.group; as group) {
+              <div class="group-label" [class.has-divider]="row.divider" aria-hidden="true">
+                {{ group.label }}
+              </div>
+            } @else {
+              <nx-multi-select-option
+                class="item"
+                [class.divider]="row.divider"
+                [id]="_virtualOptionId(row.index)"
+                [active]="_isVirtualActive(row.index)"
+                (selectedChange)="_onSelect(row.option, $event)"
+                [value]="_selectValue(row.option)"
+                [label]="_selectLabel(row.option)"
+                [selected]="_isOptionSelected(row.option)"
+                [disabled]="_isDisabled(row.option)"
+                [appearance]="_appearance"
+                [attr.aria-posinset]="row.posinset"
+                [attr.aria-setsize]="row.setsize"
+              ></nx-multi-select-option>
+            }
+          </div>
+        </nx-virtual-viewport>
+      } @else if (grouped()) {
         @for (group of _listGroups; track group.id) {
           <div class="group" role="group" [attr.aria-labelledby]="group.id">
             <div class="group-label" [id]="group.id" aria-hidden="true">{{ group.label }}</div>

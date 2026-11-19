@@ -11,6 +11,11 @@ import { NxInputModule } from '@allianz/ng-aquila/input';
 import { NX_SURFACE } from '@allianz/ng-aquila/surface';
 import { NxTooltipModule } from '@allianz/ng-aquila/tooltip';
 import { ErrorStateMatcher, IdGenerationService, parseCssTimeToMs } from '@allianz/ng-aquila/utils';
+import {
+  NxVirtualFor,
+  NxVirtualGroupOutlet,
+  NxVirtualViewportComponent,
+} from '@allianz/ng-aquila/virtual-scroll';
 import { ActiveDescendantKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
@@ -39,11 +44,11 @@ import {
   OnDestroy,
   Optional,
   Output,
-  QueryList,
   Self,
   signal,
   ViewChild,
-  ViewChildren,
+  viewChild,
+  viewChildren,
   WritableSignal,
 } from '@angular/core';
 import {
@@ -57,7 +62,7 @@ import {
 import { Observable, Subject } from 'rxjs';
 import { filter, map, take, takeUntil } from 'rxjs/operators';
 
-import { NxDropdownIntl } from '../dropdown';
+import { DROPDOWN_DEFAULT_OPTIONS, NxDropdownIntl } from '../dropdown';
 import {
   getOverlayOffsetYForNonOutlineAppearance,
   getOverlayOffsetYForOutlineAppearance,
@@ -84,6 +89,29 @@ interface NxMultiSelectGroupView<S> {
   label: string;
   options: S[];
 }
+
+/** What is highlighted in the open panel: select all, the option with a value, or nothing. */
+type NxMultiSelectHighlight<T> = 'selectAll' | { value: T } | null;
+
+interface NxMultiSelectListItem<S> {
+  option: S;
+  /** Index in all options, before filtering and sorting. */
+  sourceIndex: number;
+}
+
+type NxMultiSelectVirtualRow<S> =
+  | {
+      option: S;
+      /** Index in `listItems`. */
+      index: number;
+      divider: boolean;
+      /** Position and size of the set of options, counted per group if the option is in one. */
+      posinset: number;
+      setsize: number;
+      optionGroup?: NxMultiSelectGroupView<S>;
+      group?: undefined;
+    }
+  | { group: NxMultiSelectGroupView<S>; divider: boolean; option?: undefined; index?: undefined };
 
 /**
  * Multi Select component.
@@ -115,6 +143,9 @@ interface NxMultiSelectGroupView<S> {
     FormsModule,
     NxMultiSelectOptionComponent,
     NxBadgeComponent,
+    NxVirtualViewportComponent,
+    NxVirtualFor,
+    NxVirtualGroupOutlet,
   ],
 })
 export class NxMultiSelectComponent<S, T>
@@ -271,18 +302,9 @@ export class NxMultiSelectComponent<S, T>
     ).length;
   }
 
-  private get _isActiveItemFiltered(): boolean {
-    return (
-      typeof this._keyManager.activeItem !== 'undefined' &&
-      !this.listItems.some(
-        (option) => this._selectValue(option) === this._keyManager.activeItem?.value,
-      )
-    );
-  }
-
-  @ViewChildren('selectAllCheckbox,option') private readonly _options!: QueryList<
+  private readonly _options = viewChildren<
     NxMultiSelectAllComponent<T> | NxMultiSelectOptionComponent<T>
-  >;
+  >('selectAllCheckbox,option');
   @ViewChild('selectAllCheckbox') private readonly _selectAll!: NxMultiSelectAllComponent<T>;
 
   /** Event emitted when the select panel has been toggled. */
@@ -316,6 +338,7 @@ export class NxMultiSelectComponent<S, T>
   @ViewChild('itemsList') private readonly _optionsList?: ElementRef;
   @ViewChild('panelHeader') private readonly _panelHeader?: ElementRef;
   @ViewChild('panelContent') private readonly _panelContent?: ElementRef;
+  private readonly _virtualViewport = viewChild<NxVirtualViewportComponent>('virtualViewport');
 
   @ViewChild(CdkConnectedOverlay, { static: true })
   private readonly _overlayDir?: CdkConnectedOverlay;
@@ -353,6 +376,9 @@ export class NxMultiSelectComponent<S, T>
 
   listItems: S[] = [];
 
+  /** Index of each of `listItems` in all options, so that a virtual option keeps its id while filtering. */
+  private _listItemSourceIndices: number[] = [];
+
   protected _listGroups: NxMultiSelectGroupView<S>[] = [];
 
   selectedItems = new Set<T>();
@@ -382,6 +408,11 @@ export class NxMultiSelectComponent<S, T>
   @Input() set options(value: S[]) {
     this._rawOptions.set(value);
     this.writeValue(this.ngControl?.value);
+    if (this._isOpen) {
+      const highlight = this._getHighlight();
+      this._updateListItems(this._filterValue);
+      this._restoreHighlight(highlight);
+    }
   }
   get options(): S[] {
     return this._rawOptions();
@@ -463,6 +494,31 @@ export class NxMultiSelectComponent<S, T>
   /* panelMaxWidth accepts a number for pixel values or a string for any css value */
   readonly panelMaxWidth = input<string | number>();
 
+  /**
+   * Enable virtual scrolling. Only the visible options are rendered, which keeps long lists fast.
+   */
+  readonly virtualScroll = input(
+    inject(DROPDOWN_DEFAULT_OPTIONS, { optional: true })?.virtualScroll ?? false,
+    { transform: booleanAttribute },
+  );
+
+  protected readonly _virtualRows = signal<NxMultiSelectVirtualRow<S>[]>([]);
+
+  /** Maps an index in `listItems` to its index in `_virtualRows`. */
+  private readonly _virtualRowIndices = computed(() =>
+    this._virtualRows().flatMap((row, rowIndex) => (row.group ? [] : [rowIndex])),
+  );
+
+  /** Active item in virtual scroll mode, counted like the items of the key manager: select all first. */
+  private readonly _virtualActiveIndex = signal(-1);
+
+  protected readonly _virtualRowGroup = (
+    row: NxMultiSelectVirtualRow<S>,
+  ): NxMultiSelectGroupView<S> | undefined => row.group ?? row.optionGroup;
+
+  protected readonly _trackVirtualRow = (_: number, row: NxMultiSelectVirtualRow<S>): string =>
+    row.group ? row.group.id : this._virtualOptionId(row.index);
+
   _isOpen = false;
   isClosing = false;
   private _closeAnimationTimeoutId: ReturnType<typeof setTimeout> | null = null;
@@ -497,6 +553,7 @@ export class NxMultiSelectComponent<S, T>
 
   ngOnDestroy(): void {
     this._isDestroyed = true;
+    this._clearVirtualTypeahead();
     this._tooltipUpdateRef?.destroy();
     this._clearCloseAnimationTimeout();
     this._destroyed.next();
@@ -665,6 +722,9 @@ export class NxMultiSelectComponent<S, T>
     this.getOverlayWidth();
 
     this._isOpen = true;
+    // The highlight of the last opening must not carry over, `_onAttach` sets the first one.
+    this._virtualActiveIndex.set(-1);
+    this._keyManager.updateActiveItem(-1);
     this._updateListItems('');
     this._openedBy = origin;
 
@@ -742,6 +802,11 @@ export class NxMultiSelectComponent<S, T>
     }
 
     if (!this._isOpen) {
+      // Checked first, as SPACE also counts as a character key.
+      if ((key === 'Enter' || key === ' ') && !altKey && !ctrlKey && !metaKey && !$event.shiftKey) {
+        this._open($event, 'keyboard');
+        return;
+      }
       if ((altKey && isArrowKey) || isArrowKey || key === 'Home') {
         this._open($event, 'keyboard');
         $event.preventDefault();
@@ -749,7 +814,13 @@ export class NxMultiSelectComponent<S, T>
       if (key === 'End') {
         this._open($event, 'keyboard');
         setTimeout(() => {
-          this._keyManager.setLastItemActive();
+          if (this.virtualScroll()) {
+            this._setVirtualActiveIndex(
+              this._findEnabledVirtualIndex(this._virtualItemCount() - 1, -1),
+            );
+          } else {
+            this._keyManager.setLastItemActive();
+          }
           this._cdr.markForCheck();
         });
         $event.preventDefault();
@@ -761,12 +832,12 @@ export class NxMultiSelectComponent<S, T>
           this._filterValue = key;
           this._onFilterChange(key);
         } else {
-          this._keyManager.onKeydown($event);
+          this._onNavigationKeydown($event);
         }
       }
     } else {
       if (key === 'ArrowUp' || key === 'ArrowDown' || key === 'Home' || key === 'End') {
-        this._keyManager.onKeydown($event);
+        this._onNavigationKeydown($event);
         this._scrollActiveOptionIntoView();
         $event.preventDefault();
       }
@@ -780,15 +851,15 @@ export class NxMultiSelectComponent<S, T>
       }
 
       if (key === 'Tab') {
-        this._keyManager.onKeydown($event);
+        this._onNavigationKeydown($event);
       }
 
       if (key === 'Enter' || (this._filterValue.trim() === '' && key === ' ')) {
-        this._keyManager.activeItem?.selectViaInteraction();
+        this._selectActiveItem();
         $event.preventDefault();
       }
       if (isCharacterKey) {
-        this._keyManager.onKeydown($event);
+        this._onNavigationKeydown($event);
       }
     }
   }
@@ -808,6 +879,16 @@ export class NxMultiSelectComponent<S, T>
   }
 
   _getAriaActiveDescendant(): string | null {
+    if (this.virtualScroll()) {
+      const index = this._virtualActiveIndex();
+      if (index < 0) {
+        return null;
+      }
+      return index < this._virtualOffset
+        ? (this._selectAll?.id ?? null)
+        : this._virtualOptionId(index - this._virtualOffset);
+    }
+
     if (this._keyManager.activeItem) {
       return this._keyManager.activeItem.id;
     }
@@ -819,37 +900,76 @@ export class NxMultiSelectComponent<S, T>
     this.filterChanges.next(query);
     this._updateListItems(query);
 
-    if (this._isActiveItemFiltered) {
-      setTimeout(() => {
-        this._keyManager.setActiveItem(1);
-      });
+    if (this.virtualScroll()) {
+      this._setFirstVirtualOptionActive();
+    } else {
+      // The rendered options are only queried after the next change detection.
+      setTimeout(() => this._setFirstOptionActive());
+      this._optionsList?.nativeElement.scrollTo(0, 0);
     }
-
-    this._optionsList?.nativeElement.scrollTo(0, 0);
   }
 
   private _updateListItems(query: string | null | undefined) {
+    const bySelected = (a: NxMultiSelectListItem<S>, b: NxMultiSelectListItem<S>) =>
+      this.sortSelectedToTop(a.option, b.option);
+    let items: NxMultiSelectListItem<S>[];
     if (this.grouped()) {
+      let sourceIndex = 0;
       // Selected options move up within their group instead of out of it.
-      this._listGroups = this._groups()
+      const groups = this._groups()
         .map((group) => ({
-          ...group,
-          options: group.options
+          group,
+          items: group.options
+            .map((option) => ({ option, sourceIndex: sourceIndex++ }))
             .filter(
-              (option) => !query || this.filterFn(query, this._selectLabel(option), group.label),
+              ({ option }) =>
+                !query || this.filterFn(query, this._selectLabel(option), group.label),
             )
-            .sort(this.sortSelectedToTop),
+            .sort(bySelected),
         }))
-        .filter((group) => group.options.length > 0);
-      this.listItems = this._listGroups.flatMap((group) => group.options);
+        .filter((group) => group.items.length > 0);
+      this._listGroups = groups.map((view) => ({
+        ...view.group,
+        options: view.items.map((item) => item.option),
+      }));
+      items = groups.flatMap((view) => view.items);
       this._divider = -1;
-      return;
+    } else {
+      items = this._flatOptions()
+        .map((option, sourceIndex) => ({ option, sourceIndex }))
+        .filter(({ option }) => !query || this.filterFn(query, this._selectLabel(option)))
+        .sort(bySelected);
+      this._divider = items.filter(({ option }) => this._isOptionSelected(option)).length - 1;
+    }
+    this.listItems = items.map((item) => item.option);
+    this._listItemSourceIndices = items.map((item) => item.sourceIndex);
+    this._virtualRows.set(this.virtualScroll() ? this._createVirtualRows() : []);
+  }
+
+  private _createVirtualRows(): NxMultiSelectVirtualRow<S>[] {
+    if (this.grouped()) {
+      let index = 0;
+      return this._listGroups.flatMap<NxMultiSelectVirtualRow<S>>((group, groupIndex) => [
+        { group, divider: groupIndex > 0 },
+        ...group.options.map((option, positionInGroup) => ({
+          option,
+          index: index++,
+          divider: false,
+          posinset: positionInGroup + 1,
+          setsize: group.options.length,
+          optionGroup: group,
+        })),
+      ]);
     }
 
-    this.listItems = this._flatOptions()
-      .filter((option) => !query || this.filterFn(query, this._selectLabel(option)))
-      .sort(this.sortSelectedToTop);
-    this._divider = this.listItems.filter((option) => this._isOptionSelected(option)).length - 1;
+    const offset = this._virtualListCountsSelectAll ? 1 : 0;
+    return this.listItems.map((option, index) => ({
+      option,
+      index,
+      divider: this._divider === index,
+      posinset: index + 1 + offset,
+      setsize: this.listItems.length + offset,
+    }));
   }
 
   _getValueText() {
@@ -876,7 +996,13 @@ export class NxMultiSelectComponent<S, T>
       } else {
         this._panelContent?.nativeElement.focus();
       }
-      if (this._selectAll && this.selectedItems.size > 0) {
+      if (this.virtualScroll()) {
+        // A letter typed on the closed trigger has already filtered and highlighted the first match.
+        if (!this._filterValue) {
+          const first = this._virtualOffset && this.selectedItems.size > 0 ? 1 : 0;
+          this._setVirtualActiveIndex(this._findEnabledVirtualIndex(first, 1), false);
+        }
+      } else if (this._selectAll && this.selectedItems.size > 0) {
         this._keyManager.setActiveItem(1);
       } else {
         this._keyManager.setFirstItemActive();
@@ -889,6 +1015,7 @@ export class NxMultiSelectComponent<S, T>
 
   _onDetach() {
     // clean up focus monitoring
+    this._clearVirtualTypeahead();
     this._close();
   }
 
@@ -1011,6 +1138,11 @@ export class NxMultiSelectComponent<S, T>
   }
 
   private _scrollActiveOptionIntoView() {
+    if (this.virtualScroll()) {
+      this._scrollVirtualActiveItemIntoView();
+      return;
+    }
+
     if (!this._keyManager.activeItem) {
       return;
     }
@@ -1031,6 +1163,316 @@ export class NxMultiSelectComponent<S, T>
     }
   }
 
+  /** Highlights the first enabled option of new rows, also when select all was highlighted, and scrolls to it. */
+  private _setFirstVirtualOptionActive() {
+    this._setVirtualActiveIndex(this._findEnabledVirtualIndex(this._virtualOffset, 1), false);
+    // The viewport only receives the new rows with the next change detection.
+    afterNextRender(
+      () => {
+        this._virtualViewport()?.scrollToIndex(0);
+        this._scrollVirtualActiveItemIntoView();
+      },
+      { injector: this._injector },
+    );
+  }
+
+  private _getHighlight(): NxMultiSelectHighlight<T> {
+    if (this.virtualScroll()) {
+      const index = this._virtualActiveIndex();
+      if (index < 0) {
+        return null;
+      }
+      return index < this._virtualOffset
+        ? 'selectAll'
+        : { value: this._selectValue(this.listItems[index - this._virtualOffset]) };
+    }
+    const item = this._keyManager.activeItem;
+    if (!item) {
+      return null;
+    }
+    return item instanceof NxMultiSelectAllComponent ? 'selectAll' : { value: item.value() as T };
+  }
+
+  /** Keeps the highlight on the same option or select all when the options are replaced, otherwise highlights the first one. */
+  private _restoreHighlight(highlight: NxMultiSelectHighlight<T>) {
+    if (this.virtualScroll()) {
+      const index = this._findVirtualIndex(highlight);
+      if (index < 0) {
+        this._setFirstVirtualOptionActive();
+        return;
+      }
+      this._setVirtualActiveIndex(index, false);
+      // The viewport only receives the new rows with the next change detection.
+      afterNextRender(() => this._scrollVirtualActiveItemIntoView(), { injector: this._injector });
+      return;
+    }
+
+    // The rendered options are only queried after the next change detection.
+    afterNextRender(
+      () => {
+        if (!this._isOpen) {
+          return;
+        }
+        const index = this._options().findIndex((item) => this._isHighlighted(item, highlight));
+        if (index < 0) {
+          this._setFirstOptionActive();
+        } else {
+          this._keyManager.setActiveItem(index);
+        }
+      },
+      { injector: this._injector },
+    );
+  }
+
+  private _findVirtualIndex(highlight: NxMultiSelectHighlight<T>): number {
+    if (highlight === 'selectAll') {
+      return this._virtualOffset > 0 ? 0 : -1;
+    }
+    if (!highlight) {
+      return -1;
+    }
+    const index = this.listItems.findIndex(
+      (option) => this._selectValue(option) === highlight.value && !this._isDisabled(option),
+    );
+    return index < 0 ? -1 : index + this._virtualOffset;
+  }
+
+  private _isHighlighted(
+    item: NxMultiSelectAllComponent<T> | NxMultiSelectOptionComponent<T>,
+    highlight: NxMultiSelectHighlight<T>,
+  ): boolean {
+    if (item instanceof NxMultiSelectAllComponent) {
+      return highlight === 'selectAll';
+    }
+    return (
+      highlight !== null &&
+      highlight !== 'selectAll' &&
+      !item.disabled &&
+      item.value() === highlight.value
+    );
+  }
+
+  private _setFirstOptionActive() {
+    const index = this._options().findIndex(
+      (item) => !(item instanceof NxMultiSelectAllComponent) && !item.disabled,
+    );
+    if (index === -1) {
+      this._keyManager.activeItem?.setInactiveStyles();
+      this._keyManager.updateActiveItem(-1);
+    } else {
+      this._keyManager.setActiveItem(index);
+    }
+    this._cdr.markForCheck();
+  }
+
+  private get _hasVirtualSelectAll(): boolean {
+    return this._isOutline && !this.disableSelectAll;
+  }
+
+  /** Whether select all counts as the first option, which only the flat list without filter does: groups count their own. */
+  protected get _virtualListCountsSelectAll(): boolean {
+    return this.virtualScroll() && !this.grouped() && !this.filter && this._hasVirtualSelectAll;
+  }
+
+  /** Number of items in front of the options in virtual scroll mode: the select all checkbox. */
+  private get _virtualOffset(): number {
+    return this._hasVirtualSelectAll ? 1 : 0;
+  }
+
+  /** Id of the virtual option at `index` in `listItems`. */
+  protected _virtualOptionId(index: number): string {
+    return `${this.id}-option-${this._listItemSourceIndices[index]}`;
+  }
+
+  protected _isVirtualActive(index: number): boolean {
+    return this._virtualActiveIndex() === index + this._virtualOffset;
+  }
+
+  private _virtualItemCount(): number {
+    return this._virtualOffset + this.listItems.length;
+  }
+
+  private _isVirtualItemDisabled(index: number): boolean {
+    const option = this.listItems[index - this._virtualOffset];
+    return option !== undefined && this._isDisabled(option);
+  }
+
+  private _virtualItemLabel(index: number): string {
+    return index < this._virtualOffset
+      ? this._intl.selectAll
+      : this._selectLabel(this.listItems[index - this._virtualOffset]);
+  }
+
+  /** Index of the next enabled item in `step` direction, starting at `index`, or -1. */
+  private _findEnabledVirtualIndex(index: number, step: 1 | -1): number {
+    const count = this._virtualItemCount();
+    for (let i = index; i >= 0 && i < count; i += step) {
+      if (!this._isVirtualItemDisabled(i)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  private _setVirtualActiveIndex(index: number, scroll = true) {
+    if (this._selectAll) {
+      this._selectAll.active = this._virtualOffset > 0 && index === 0;
+    }
+    this._virtualActiveIndex.set(index);
+    if (scroll) {
+      this._scrollVirtualActiveItemIntoView();
+    }
+    this._cdr.markForCheck();
+  }
+
+  private _scrollVirtualActiveItemIntoView() {
+    const viewport = this._virtualViewport();
+    const index = this._virtualActiveIndex();
+    if (!viewport || index < 0) {
+      return;
+    }
+    if (index < this._virtualOffset) {
+      viewport.scrollToIndex(0);
+      return;
+    }
+    const rowIndex = this._virtualRowIndices()[index - this._virtualOffset];
+    if (rowIndex === undefined) {
+      return;
+    }
+    if (this._virtualRows()[rowIndex - 1]?.group) {
+      // Bring the group header along when reaching the first option of a group.
+      viewport.scrollIntoView(rowIndex - 1);
+    }
+    viewport.scrollIntoView(rowIndex);
+  }
+
+  /** Handles the keys that move the highlight. */
+  private _onNavigationKeydown(event: KeyboardEvent) {
+    if (!this.virtualScroll()) {
+      this._keyManager.onKeydown(event);
+      return;
+    }
+
+    const { key } = event;
+    if (key === 'Tab') {
+      this._close();
+    } else if (key.length === 1) {
+      if (!event.altKey && !event.ctrlKey && !event.metaKey) {
+        this._typeVirtual(key);
+      }
+    } else if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
+      const active = this._virtualActiveIndex();
+      let target: number | undefined;
+      switch (key) {
+        case 'ArrowDown':
+          target = this._findEnabledVirtualIndex(active + 1, 1);
+          break;
+        case 'ArrowUp':
+          target = this._findEnabledVirtualIndex(active - 1, -1);
+          break;
+        case 'Home':
+          target = this._findEnabledVirtualIndex(0, 1);
+          break;
+        case 'End':
+          target = this._findEnabledVirtualIndex(this._virtualItemCount() - 1, -1);
+          break;
+      }
+      this._clearVirtualTypeahead();
+      // Like the key manager, stay on the current item at the ends of the list.
+      if (target !== undefined && target !== -1) {
+        this._setVirtualActiveIndex(target);
+      }
+    }
+  }
+
+  private _typeaheadBuffer = '';
+  private _typeaheadTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+  /** Highlights the next item that starts with the typed letters, once typing pauses. */
+  private _typeVirtual(key: string) {
+    this._typeaheadBuffer += key.toLocaleUpperCase();
+    if (this._typeaheadTimeoutId !== null) {
+      clearTimeout(this._typeaheadTimeoutId);
+    }
+    this._typeaheadTimeoutId = setTimeout(() => {
+      const search = this._typeaheadBuffer;
+      this._clearVirtualTypeahead();
+      const count = this._virtualItemCount();
+      const start = this._virtualActiveIndex();
+      for (let i = 1; i <= count; i++) {
+        const index = (start + i) % count;
+        if (
+          !this._isVirtualItemDisabled(index) &&
+          this._virtualItemLabel(index).toLocaleUpperCase().trim().startsWith(search)
+        ) {
+          this._setVirtualActiveIndex(index);
+          return;
+        }
+      }
+    }, 500);
+  }
+
+  private _clearVirtualTypeahead() {
+    this._typeaheadBuffer = '';
+    if (this._typeaheadTimeoutId !== null) {
+      clearTimeout(this._typeaheadTimeoutId);
+      this._typeaheadTimeoutId = null;
+    }
+  }
+
+  private _selectActiveItem() {
+    if (!this.virtualScroll()) {
+      this._keyManager.activeItem?.selectViaInteraction();
+      return;
+    }
+
+    const index = this._virtualActiveIndex();
+    if (index < 0) {
+      return;
+    }
+    if (index < this._virtualOffset) {
+      this._selectAll?.selectViaInteraction();
+      return;
+    }
+    const option = this.listItems[index - this._virtualOffset];
+    if (option !== undefined && !this._isDisabled(option)) {
+      this._onSelect(option, !this._isOptionSelected(option));
+      this._cdr.markForCheck();
+    }
+  }
+
+  /**
+   * Scrolls to the option at the given index, counted in the order the options are currently displayed.
+   * Only has an effect after the panel has opened. With virtual scrolling, the option is rendered asynchronously.
+   */
+  scrollToIndex(index: number, behavior: ScrollBehavior = 'auto'): void {
+    if (!this._isOpen || this.listItems[index] === undefined) {
+      return;
+    }
+
+    if (this.virtualScroll()) {
+      const rowIndex = this._virtualRowIndices()[index];
+      if (rowIndex !== undefined) {
+        this._virtualViewport()?.scrollToIndex(rowIndex, behavior);
+      }
+      return;
+    }
+
+    const items = this._options().filter(
+      (item): item is NxMultiSelectOptionComponent<T> =>
+        item instanceof NxMultiSelectOptionComponent,
+    );
+    items[index]?.elementRef.nativeElement.scrollIntoView({ block: 'nearest', behavior });
+  }
+
+  /** Scrolls to the option with the given value. */
+  scrollToValue(value: T, behavior: ScrollBehavior = 'auto'): void {
+    const index = this.listItems.findIndex((option) => this._selectValue(option) === value);
+    if (index !== -1) {
+      this.scrollToIndex(index, behavior);
+    }
+  }
+
   private _getOverlayAnimationDuration(): number {
     return parseCssTimeToMs(
       getComputedStyle(this._elementRef.nativeElement).getPropertyValue('--dropdown-anim-duration'),
@@ -1047,7 +1489,7 @@ export class NxMultiSelectComponent<S, T>
   private _initKeyManager() {
     this._keyManager = new ActiveDescendantKeyManager<
       NxMultiSelectAllComponent<T> | NxMultiSelectOptionComponent<T>
-    >(this._options)
+    >(this._options, this._injector)
       .withTypeAhead(500)
       .withHomeAndEnd()
       .withVerticalOrientation()

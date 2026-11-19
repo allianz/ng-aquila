@@ -47,6 +47,7 @@ import {
 } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
+import { dispatchKeyboardEvent } from '../../cdk-test-utils';
 import { NxDropdownIntl } from '../dropdown';
 import { NxDropdownModule } from '../dropdown.module';
 import { NxMultiSelectComponent, NxMultiSelectFilterFn } from './multi-select.component';
@@ -369,6 +370,55 @@ describe('NxMultiSelectComponent', () => {
         it('focuses the filter', async () => {
           const filter = await multiSelectHarness.getFilter();
           expect(await filter?.isFocused()).toBe(true);
+        });
+      });
+
+      it('shows new options that replace the old ones', async () => {
+        testInstance.options = ['Fiat', 'Seat'];
+        fixture.detectChanges();
+
+        const options = await multiSelectHarness.getOptions();
+        expect(options).toHaveLength(2);
+        expect(await options[0].getLabelText()).toBe('Fiat');
+      });
+
+      describe('replacing the options after highlighting one', () => {
+        async function activeLabel(): Promise<string | null> {
+          for (const option of await multiSelectHarness.getOptions()) {
+            if (await option.isActive()) {
+              return option.getLabelText();
+            }
+          }
+          return null;
+        }
+
+        beforeEach(async () => {
+          await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+          await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+        });
+
+        it('keeps the highlight on that option when options are added above it', async () => {
+          const highlighted = await activeLabel();
+          testInstance.options = ['Fiat', 'Seat', ...testInstance.options];
+          fixture.detectChanges();
+          expect(await activeLabel()).toBe(highlighted);
+        });
+
+        it('does not use the highlight of the last opening when options arrive while opening', async () => {
+          await multiSelectHarness.pressKey('Tab', TAB);
+          expect(await multiSelectHarness.isOpen()).toBe(false);
+          (fixture.nativeElement.querySelector('.value') as HTMLElement).click();
+          testInstance.options = [...testInstance.options];
+          fixture.detectChanges();
+          await fixture.whenStable();
+          expect(await activeLabel()).toBe(testInstance.options[0]);
+        });
+
+        it('highlights the first option when the highlighted one is gone', async () => {
+          const highlighted = await activeLabel();
+          testInstance.options = testInstance.options.filter((option) => option !== highlighted);
+          fixture.detectChanges();
+          expect(await activeLabel()).toBe(testInstance.options[0]);
         });
       });
 
@@ -756,6 +806,18 @@ describe('NxMultiSelectComponent', () => {
         await multiSelectHarness.click();
       });
 
+      it('does not select the option highlighted before closing when reopening with ENTER', async () => {
+        const model = testInstance.model;
+        await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+        await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+        await multiSelectHarness.pressKey('Tab', TAB);
+        expect(await multiSelectHarness.isOpen()).toBe(false);
+
+        await multiSelectHarness.pressKey('Enter');
+        expect(await multiSelectHarness.isOpen()).toBe(true);
+        expect(testInstance.model).toEqual(model);
+      });
+
       describe('and navigate to next option', () => {
         beforeEach(async () => {
           await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
@@ -840,6 +902,40 @@ describe('NxMultiSelectComponent', () => {
             const options = await multiSelectHarness.getOptions();
             expect(await options[0].isActive()).toBe(true);
           });
+        });
+
+        it('highlights the first matching option, even if the active one still matches', async () => {
+          await multiSelectHarness.setFilter('');
+          for (let i = 0; i < 4; i++) {
+            await multiSelectHarness.pressKey('ArrowDown', DOWN_ARROW);
+          }
+          await multiSelectHarness.setFilter('i');
+
+          const options = await multiSelectHarness.getOptions();
+          expect(await options[0].getLabelText()).toBe('Audi');
+          expect(await options[0].isActive()).toBe(true);
+          expect(await options[1].isActive()).toBe(false);
+        });
+
+        it('moves the highlight from "select all" to the first matching option', async () => {
+          await multiSelectHarness.setFilter('');
+          await multiSelectHarness.pressKey('Home', HOME);
+          await multiSelectHarness.setFilter('i');
+
+          const options = await multiSelectHarness.getOptions();
+          expect(await options[0].isActive()).toBe(true);
+          expect(
+            fixture.nativeElement.ownerDocument.querySelectorAll('nx-multi-select-all .is-active'),
+          ).toHaveLength(0);
+        });
+
+        it('highlights nothing and selects nothing with ENTER when no option matches', async () => {
+          const model = testInstance.model;
+          await multiSelectHarness.setFilter('zzz');
+          const filter = await multiSelectHarness.getFilter();
+          expect(await filter!.getAttribute('aria-activedescendant')).toBeNull();
+          await multiSelectHarness.pressKey('Enter');
+          expect(testInstance.model).toEqual(model);
         });
 
         describe('and clearing the filter', () => {
@@ -1601,6 +1697,45 @@ describe('NxMultiSelectComponent', () => {
       const options = await multiSelectHarness.getOptions();
       expect(await options[0].isActive()).toBe(true);
       expect(await options[0].getLabelText()).toBe('Audi');
+    });
+
+    describe('without filter', () => {
+      beforeEach(async () => {
+        await createTestComponent(BasicMultiSelectComponent);
+        testInstance.filter = false;
+        fixture.detectChanges();
+      });
+
+      async function activeLabel() {
+        for (const option of await multiSelectHarness.getOptions()) {
+          if (await option.isActive()) {
+            return option.getLabelText();
+          }
+        }
+        return null;
+      }
+
+      it('highlights the next option starting with the typed letter', async () => {
+        await multiSelectHarness.click();
+        await multiSelectHarness.pressKey('m');
+        expect(await activeLabel()).toBe('Mini');
+      });
+
+      it('highlights the option starting with the quickly typed letters', async () => {
+        await multiSelectHarness.click();
+        // Dispatched directly, the harness would wait for the typeahead to search after each key.
+        const panel = document.querySelector('.panel')!;
+        dispatchKeyboardEvent(panel, 'keydown', 0, 'm');
+        dispatchKeyboardEvent(panel, 'keydown', 0, 'e');
+        await fixture.whenStable();
+        expect(await activeLabel()).toBe('Mercedes');
+      });
+
+      it('opens on a typed letter and highlights the matching option', async () => {
+        await multiSelectHarness.pressKey('v');
+        expect(await multiSelectHarness.isOpen()).toBe(true);
+        expect(await activeLabel()).toBe('Volvo');
+      });
     });
   });
 

@@ -157,6 +157,14 @@ In grouped mode the type of `options` is inferred from your groups, not from the
 
 <!-- example(multi-select-group) -->
 
+### Multi select with virtual scrolling
+
+For large lists, set `virtualScroll` to only render the options in view. It works with and without `grouped`; each group is still exposed as a named group to assistive technology. Options outside the visible area are not in the DOM. To bring one into view, e.g. before querying it in a test, call `scrollToIndex(index)` or `scrollToValue(value)` after the panel has opened. The option is rendered asynchronously, so wait for it to appear rather than querying it right after the call. The index counts the options in the order they are currently displayed.
+
+Like the dropdown, the multi select can have virtual scrolling enabled globally via `DROPDOWN_DEFAULT_OPTIONS`, see [Default Options](./documentation/dropdown/overview#default-options).
+
+<!-- example(multi-select-virtual-scroll) -->
+
 ### Disabling items
 
 You can disable the whole dropdown as well as single dropdown items by setting their `disabled` property as shown in the example below:
@@ -196,7 +204,7 @@ Alternatively, the `NX_DROPDOWN_SCROLL_STRATEGY` injection token can be provided
 
 #### Default Options
 
-You can configure default options for all dropdowns using the `DROPDOWN_DEFAULT_OPTIONS` injection token. This is useful for enabling virtual scrolling globally.
+You can configure default options for all dropdowns and multi selects using the `DROPDOWN_DEFAULT_OPTIONS` injection token. This is useful for enabling virtual scrolling globally. Setting the `virtualScroll` input on a single component still takes precedence.
 
 <!-- example(dropdown-default-options) -->
 
