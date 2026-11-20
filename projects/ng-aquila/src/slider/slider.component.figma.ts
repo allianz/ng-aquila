@@ -35,14 +35,9 @@ const messageLayer =
     ? findNested(pattern, 'Plain Message')
     : undefined;
 
-const labelText = labelLayer?.getString('Text');
-const hint = hintLayer?.getString('Text');
-const optional = labelLayer?.getBoolean('Optional')
-  ? labelLayer.getString('↪️ Optional').replace(/^\((.*)\)$/, '$1')
-  : undefined;
-const showInfo = labelLayer?.getBoolean('Info Button') ?? false;
-// A plain label fits the `label` input. Anything richer needs a projected `nx-label`.
-const projectLabel = !!labelLayer && (!!optional || !!hint || showInfo);
+const hint = hintLayer?.getString('Text').trim();
+// The Label instance renders through its own template; `nx-label` takes the hint as an input.
+const labelTemplate = labelLayer?.hasCodeConnect() ? labelLayer.executeTemplate() : undefined;
 
 const showRangeLabels = slider?.getBoolean('Range Labels') ?? true;
 // Numeric range label text becomes the bound itself, any other text a label formatter.
@@ -73,31 +68,24 @@ const missingNote = missingParts.length
 const readonlyNote =
   state === 'readonly' ? '<!-- State "Read-Only" is not available in code yet -->\n' : '';
 
-const attributes = `${minAttribute}${maxAttribute}${showRangeLabels ? '' : '\n  [hideLabels]="true"'}${disabled ? '\n  [disabled]="true"' : ''}${
-  labelText && !projectLabel ? `\n  label="${labelText}"` : ''
-}\n  [(value)]="value"`;
+const attributes = `${minAttribute}${maxAttribute}${showRangeLabels ? '' : '\n  [hideLabels]="true"'}${disabled ? '\n  [disabled]="true"' : ''}\n  [(value)]="value"`;
 
-const label = projectLabel
+const hintNote = hint
   ? figma.html`
-  <nx-label${disabled ? ' disabled' : ''}${optional ? ` optionalLabel="${optional}"` : ''}${
-    hint ? ` hint="${hint}"` : ''
-  }>${labelText}${
-    showInfo
-      ? figma.html`
-    <nx-info-icon nxLabelInfo>…</nx-info-icon>
-  `
-      : ''
-  }</nx-label>`
+  <!-- Hint "${hint}": set it with hint="…" on nx-label -->`
+  : '';
+const label = labelLayer
+  ? labelTemplate
+    ? figma.html`${hintNote}
+  ${labelTemplate.example}`
+    : figma.html`${hintNote}
+  <!-- The Label has no Code Connect template. Use <nx-label>${labelLayer.getString('Text')}</nx-label> -->`
   : '';
 const error = messageLayer
   ? figma.html`
   <nx-error>${messageLayer.getString('Text')}</nx-error>`
   : '';
-const baseImports = [
-  ...(projectLabel ? ['NxLabelComponent'] : []),
-  ...(showInfo ? ['NxLabelInfoDirective'] : []),
-  ...(messageLayer ? ['NxErrorComponent'] : []),
-];
+const baseImports = messageLayer ? ['NxErrorComponent'] : [];
 
 export default {
   example: figma.html`${missingNote}${readonlyNote}<nx-slider${attributes}>${label}${error}
@@ -107,7 +95,6 @@ export default {
     ...(baseImports.length
       ? [`import { ${baseImports.join(', ')} } from '@allianz/ng-aquila/base';`]
       : []),
-    ...(showInfo ? ["import { NxInfoIconComponent } from '@allianz/ng-aquila/info-icon';"] : []),
   ],
   id: 'nx-slider',
   metadata: { nestable: true },
