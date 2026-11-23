@@ -756,6 +756,23 @@ describe('NxNumberStepperComponent', () => {
       expect(downButton.disabled).toBe(true);
     });
 
+    it('should not change the value with arrow keys when set readonly', () => {
+      createTestComponent(ConfigurableStepper);
+      inputElement.value = '1';
+      inputElement.dispatchEvent(new Event('input'));
+      testInstance.readonly = true;
+      fixture.detectChanges();
+      const initialValue = stepperInstance.value;
+
+      inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+      fixture.detectChanges();
+      expect(stepperInstance.value).toBe(initialValue);
+
+      inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+      expect(stepperInstance.value).toBe(initialValue);
+    });
+
     it('should set readonly programmatically with NxAbstractControl', () => {
       createTestComponent(StepperOnPush);
       stepperDebugElement.injector.get(NxAbstractControl).setReadonly(true);
@@ -796,6 +813,23 @@ describe('NxNumberStepperComponent', () => {
 
       expect(upButton.disabled).toBe(false);
       expect(downButton.disabled).toBe(false);
+    });
+
+    it('should not change the value with arrow keys when set inputFieldReadonly', () => {
+      createTestComponent(ConfigurableStepper);
+      inputElement.value = '1';
+      inputElement.dispatchEvent(new Event('input'));
+      testInstance.inputFieldReadonly = true;
+      fixture.detectChanges();
+      const initialValue = stepperInstance.value;
+
+      inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+      fixture.detectChanges();
+      expect(stepperInstance.value).toBe(initialValue);
+
+      inputElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+      fixture.detectChanges();
+      expect(stepperInstance.value).toBe(initialValue);
     });
   });
 

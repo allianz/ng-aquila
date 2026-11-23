@@ -490,8 +490,11 @@ export class NxNumberStepperComponent
 
   /** @docs-private */
   incrementOnKey(event: Event) {
-    this._increment();
     event.preventDefault();
+    if (this.readonly || this.inputFieldReadonly()) {
+      return;
+    }
+    this._increment();
   }
 
   /** @docs-private */
@@ -524,8 +527,11 @@ export class NxNumberStepperComponent
 
   /** @docs-private */
   decrementOnKey(event: Event) {
-    this._decrement();
     event.preventDefault();
+    if (this.readonly || this.inputFieldReadonly()) {
+      return;
+    }
+    this._decrement();
   }
 
   /** @docs-private */
