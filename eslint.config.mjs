@@ -80,6 +80,8 @@ export default tseslint.config(
       parserOptions: {
         projectService: true,
         tsconfigRootDir: __dirname,
+        // Since typescript-eslint 8.73, single-run mode (auto-enabled by CI=true) runs `ng lint` out of heap.
+        disallowAutomaticSingleRunInference: true,
       },
     },
     plugins: {
