@@ -17,14 +17,14 @@
     "Firefox ESR"
   ],
   "dependencies": {
-    "@angular/cdk": "^22.2.1",
-    "@angular/common": "^22.2.1",
-    "@angular/compiler": "^22.2.1",
-    "@angular/core": "^22.2.1",
-    "@angular/forms": "^22.2.1",
-    "@angular/platform-browser": "^22.2.1",
-    "@angular/router": "^22.2.1",
-    "@allianz/ng-aquila": "^22.3.0",
+    "@angular/cdk": "^22.3.0",
+    "@angular/common": "^22.3.0",
+    "@angular/compiler": "^22.3.0",
+    "@angular/core": "^22.3.0",
+    "@angular/forms": "^22.3.0",
+    "@angular/platform-browser": "^22.3.0",
+    "@angular/router": "^22.3.0",
+    "@allianz/ng-aquila": "^22.7.0",
     "@standard-schema/spec": "^1.1.0",
     "ag-grid-angular": "^33.3.2",
     "ag-grid-community": "^33.3.2",
@@ -34,13 +34,13 @@
     "dayjs": "^1.11.23",
     "decimal.js": "^10.6.0",
     "rxjs": "~7.8.2",
-    "tslib": "^2.8.1",
+    "tslib": "^2.9.1",
     "zone.js": "^0.16.3"
   },
   "devDependencies": {
-    "@angular/build": "^22.2.1",
-    "@angular/cli": "^22.2.1",
-    "@angular/compiler-cli": "^22.2.1",
+    "@angular/build": "^22.3.0",
+    "@angular/cli": "^22.3.0",
+    "@angular/compiler-cli": "^22.3.0",
     "typescript": "~6.0.3"
   }
 }
