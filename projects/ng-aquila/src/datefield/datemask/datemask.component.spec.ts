@@ -726,6 +726,73 @@ describe('DatemaskComponent', () => {
     });
   });
 
+  describe('readonly state', () => {
+    let test: DatemaskIncompleteTestForm;
+    let container: HTMLElement;
+
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        imports: [DatemaskIncompleteTestForm],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(DatemaskIncompleteTestForm);
+      component = fixture.componentInstance;
+      test = component as DatemaskIncompleteTestForm;
+      fixture.detectChanges();
+      nativeInputs = fixture.nativeElement.querySelectorAll('input');
+      container = fixture.nativeElement.querySelector('.datemask-container');
+      test.datemaskForm.controls.date.setValue(moment([2022, 5, 15]));
+      test.datemaskComponent().readonly = true;
+      fixture.detectChanges();
+      await fixture.whenStable();
+    });
+
+    function pasteIntoFirstInput(text: string) {
+      const clipboardData = new DataTransfer();
+      clipboardData.setData('text', text);
+      nativeInputs[0].dispatchEvent(new ClipboardEvent('paste', { clipboardData }));
+    }
+
+    function expectUnchanged() {
+      expect(Array.from(nativeInputs).map((input) => input.value)).toEqual(['15', '06', '2022']);
+      expect(test.datemaskForm.controls.date.value?.toString()).toBe(
+        moment([2022, 5, 15]).toString(),
+      );
+      expect(test.datemaskForm.controls.date.dirty).toBe(false);
+    }
+
+    for (const key of ['Delete', 'Backspace', '7']) {
+      it(`should not change the value on ${key} after select-all`, async () => {
+        container.dispatchEvent(new KeyboardEvent('keydown', { key }));
+        fixture.detectChanges();
+        await fixture.whenStable();
+
+        expectUnchanged();
+      });
+    }
+
+    it('should not change the value on paste', async () => {
+      pasteIntoFirstInput('01012000');
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expectUnchanged();
+    });
+
+    it('should not fill an empty datemask on paste', async () => {
+      test.datemaskForm.controls.date.setValue(null);
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      pasteIntoFirstInput('01012000');
+      fixture.detectChanges();
+      await fixture.whenStable();
+
+      expect(Array.from(nativeInputs).map((input) => input.value)).toEqual(['', '', '']);
+      expect(test.datemaskForm.controls.date.value).toBeNull();
+    });
+  });
+
   describe('disabled state', () => {
     beforeEach(async () => {
       await TestBed.configureTestingModule({

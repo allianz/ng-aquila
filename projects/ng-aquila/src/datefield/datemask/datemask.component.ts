@@ -684,6 +684,9 @@ export class NxDatemaskComponent<D>
       // as the event bubbles up from the inputs, we only want to handle it once
       return;
     }
+    if (this.readonly) {
+      return;
+    }
 
     if (event.key === 'Delete' || event.key === 'Backspace') {
       event.preventDefault();
@@ -925,6 +928,9 @@ export class NxDatemaskComponent<D>
 
   handlePaste(event: ClipboardEvent, inputIndex: number) {
     event.preventDefault();
+    if (this.readonly) {
+      return;
+    }
 
     const pastedText = event.clipboardData?.getData('text') || '';
     if (!pastedText) {
