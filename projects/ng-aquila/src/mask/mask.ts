@@ -170,6 +170,9 @@ export class NxMask {
   }
 
   private onPaste(event: ClipboardEvent) {
+    if (this.element.readOnly) {
+      return;
+    }
     const input: HTMLInputElement = event.target as HTMLInputElement;
     const pastedData = (event.clipboardData || (window as any).clipboardData).getData('text');
 
@@ -242,6 +245,10 @@ export class NxMask {
    * in onInput() it is then used to set the cursor position.
    */
   private onKeydown(event: KeyboardEvent) {
+    // handleDelete() edits the value itself, which bypasses the browser's readonly protection
+    if (this.element.readOnly) {
+      return;
+    }
     const keyCode = event.keyCode;
     const input: HTMLInputElement = event.target as HTMLInputElement;
     if (keyCode === BACKSPACE || keyCode === DELETE) {

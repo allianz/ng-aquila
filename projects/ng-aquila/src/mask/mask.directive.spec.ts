@@ -488,6 +488,45 @@ describe('NxMaskDirective', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
+    it('does not change a readonly value on backspace or delete', () => {
+      createTestComponent(ConfigurableMaskComponent);
+      setMask('00:00:00');
+      assertInputValue(nativeElement, '123456', '12:34:56');
+      nativeElement.readOnly = true;
+
+      for (const [keyCode, position] of [
+        [BACKSPACE, 8],
+        [DELETE, 7],
+      ]) {
+        nativeElement.setSelectionRange(position, position);
+        const keydownEvent = createKeyboardEvent('keydown', keyCode);
+        const spy = vi.spyOn(keydownEvent, 'preventDefault');
+        nativeElement.dispatchEvent(keydownEvent);
+        nativeElement.dispatchEvent(keydownEvent);
+        fixture.detectChanges();
+
+        expect(nativeElement.value).toBe('12:34:56');
+        expect(testInstance.modelVal).toBe('12:34:56');
+        expect(spy).not.toHaveBeenCalled();
+      }
+    });
+
+    it('ignores paste on a readonly input', () => {
+      createTestComponent(ConfigurableMaskComponent);
+      setMask('00:00:00');
+      assertInputValue(nativeElement, '12', '12:');
+      nativeElement.readOnly = true;
+
+      const data = new DataTransfer();
+      data.items.add('3456', 'text/plain');
+      nativeElement.setSelectionRange(3, 3);
+      nativeElement.dispatchEvent(new ClipboardEvent('paste', { clipboardData: data }));
+      nativeElement.readOnly = false;
+      assertInputValue(nativeElement, '123', '12:3');
+
+      expect(testInstance.modelVal).toBe('12:3');
+    });
+
     // See the `flushMicrotasks` note above: this component also starts with a non-empty
     // `modelVal` whose write-back has to be drained before typing into the input.
     it('updates ngModel on delete of space character for deactivated mask', fakeAsync(() => {
