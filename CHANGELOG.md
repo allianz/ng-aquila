@@ -2,6 +2,78 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.8.0 (2026-11-25)
+
+
+### Documentation 📚
+
+* **icon:** remove outdated HttpClient setup note ([c6a98a4](https://github.com/allianz/ng-aquila/commit/c6a98a48fafe048fe0bce85d4e2c272fd0846094))
+
+
+### Bug Fixes 🐛
+
+* **datemask:** prevent editing a readonly datemask ([5abbe52](https://github.com/allianz/ng-aquila/commit/5abbe52def416e60790bde1baef6bbf423ed639d))
+* **mask:** prevent editing a readonly input ([1833049](https://github.com/allianz/ng-aquila/commit/18330495f92a28cba9beee3bc4bff65d4cf9427e))
+* **mcp:** make ndbx-guide and search-ndbx-components return the right document ([4d2293e](https://github.com/allianz/ng-aquila/commit/4d2293e37403a6f228b942754b3b6033e4edc159))
+* **modal:** show focus ring on auto focus ([f52b086](https://github.com/allianz/ng-aquila/commit/f52b08654e09facddaf03608420aa031774b7320))
+* **multi-select:** write a value in linear time ([c8b52d1](https://github.com/allianz/ng-aquila/commit/c8b52d174619af995fd3d5bd965b46bfe1f03e86))
+* **number-stepper:** prevent value change with arrow keys when readonly ([039895c](https://github.com/allianz/ng-aquila/commit/039895cd609189a9f26372064765a0944d853ffa))
+* **slider:** render the label through its Figma Code Connect template ([be08b53](https://github.com/allianz/ng-aquila/commit/be08b5354f46705e8fc0438d5c47839fe0ec85f1))
+* **virtual-scroll:** move rows to their measured offsets ([b118dc0](https://github.com/allianz/ng-aquila/commit/b118dc05c27cbf166ac772013f07148329dd4876))
+
+
+### Features ✨
+
+* **dropdown:** add groups via options and virtual scrolling ([35279d3](https://github.com/allianz/ng-aquila/commit/35279d3662e2e4a829123d52e75020fff04a33d5))
+* **forms:** support setReadonly via NxAbstractControl ([fc2672f](https://github.com/allianz/ng-aquila/commit/fc2672f0a6b0f7ee2837748b0b1268826426d22f))
+* **modal:** add injector, providers, bindings and componentRef ([c9a2efc](https://github.com/allianz/ng-aquila/commit/c9a2efc9381a0ca14fd4a510f2acfd849a839bdf))
+* **multi-select:** add virtual scrolling ([2611154](https://github.com/allianz/ng-aquila/commit/2611154fcadeaa33afdf1244d9556e5688541d3f))
+* **signal-button:** add A1 critical and positive contexts ([02ed0a4](https://github.com/allianz/ng-aquila/commit/02ed0a4f024ed5c825a5a95c07771b7063b1be12))
+* **table:** undeprecate column resize for expert apps ([3437f64](https://github.com/allianz/ng-aquila/commit/3437f6498f603b9c9ccddce4ebf9aff6652747be))
+
+
+### Figma Code Connect
+
+* **badge:** add Figma Code Connect template ([e7734b9](https://github.com/allianz/ng-aquila/commit/e7734b90ac72bd00d3151fafd2b01e2642c9e850))
+* **button:** add a Figma Code Connect template for the plain button ([a0945b9](https://github.com/allianz/ng-aquila/commit/a0945b94c617e0e9c3b1fb7b0ea0a6bd1ac1ccc8))
+* **card:** add Figma Code Connect template ([bbc03ec](https://github.com/allianz/ng-aquila/commit/bbc03ec47759969f33867098ff11009b679d5677))
+* **code-input:** add Figma Code Connect template ([6be3a45](https://github.com/allianz/ng-aquila/commit/6be3a459e666bf1552db89bfbcaf23928171f527))
+* **data-display:** add Figma Code Connect template ([e303202](https://github.com/allianz/ng-aquila/commit/e3032024ac9714a5fd899b0eda9a39518b953629))
+* **datefield:** add Figma Code Connect template ([3cf8d07](https://github.com/allianz/ng-aquila/commit/3cf8d07d0528327a01abc148277b5b152969a3e5))
+* **icon:** add a Figma Code Connect batch template for the icons ([4963ee6](https://github.com/allianz/ng-aquila/commit/4963ee6e9b271a436fc172a5984de38edbec6afe))
+* **icon:** add Figma Code Connect templates for the contained icons ([34120ab](https://github.com/allianz/ng-aquila/commit/34120ab17dab44eed84e7c9a9d3929ec30c09f8e))
+* **icon:** add Figma Code Connect templates for the plain icons ([33a5426](https://github.com/allianz/ng-aquila/commit/33a5426ff8ac0666fd3e3ea821b2ce5fef20cc95))
+* **icon:** add Figma Code Connect templates for the signal icons ([99fd3b2](https://github.com/allianz/ng-aquila/commit/99fd3b2445ed93138bb918c758e7b92598e234ae))
+* **indicator:** add Figma Code Connect templates ([dd0f3dc](https://github.com/allianz/ng-aquila/commit/dd0f3dce941e5b72186382058bdac05a9b3ef09c))
+* **info-icon:** add a Figma Code Connect template ([3ea77ab](https://github.com/allianz/ng-aquila/commit/3ea77abf4ee5c5dfadfc5f9ee708512c9b79dbfd))
+* **input:** add Figma Code Connect template for the text area ([8f6cf8e](https://github.com/allianz/ng-aquila/commit/8f6cf8e284bdec48f0a534789dfea018b9fda572))
+* **input:** add Figma Code Connect template for the text input ([7f70cde](https://github.com/allianz/ng-aquila/commit/7f70cdea7100dca2da43b60ef0061b8220fb3700))
+* **label:** add Figma Code Connect template ([b0b8028](https://github.com/allianz/ng-aquila/commit/b0b80287255ad6c09b6426e8f0f1729050c4b08d))
+* **license-plate:** add Figma Code Connect templates ([286c6bf](https://github.com/allianz/ng-aquila/commit/286c6bffcd0e28db32cb8efa474fbf4ffa99b45e))
+* **license-plate:** add Figma Code Connect templates for inline variant ([86ce19d](https://github.com/allianz/ng-aquila/commit/86ce19d5be55250c1379ea59f533e105e3306b24))
+* **link:** add Figma Code Connect template ([ae17b49](https://github.com/allianz/ng-aquila/commit/ae17b49282b76579c5f8c4400a3f2e0700574756))
+* **list:** add Figma Code Connect templates for the list and its items ([7971f8b](https://github.com/allianz/ng-aquila/commit/7971f8bc74bdfcbf6bee2b647dae8c96fd7a3af0))
+* **message:** add Figma Code Connect template ([0508a41](https://github.com/allianz/ng-aquila/commit/0508a41489771282fdfb725800977a859bba71b3))
+* **message:** add Figma Code Connect template for the banner message ([d4235e7](https://github.com/allianz/ng-aquila/commit/d4235e7094c9113efe3ddfbc76c921720670ccbc))
+* **message:** add Figma Code Connect template for the contained message ([96bd101](https://github.com/allianz/ng-aquila/commit/96bd1012562d32d5f6da8a3e86e6408000f55b5c))
+* **modal:** add Figma Code Connect template ([ddf8ff8](https://github.com/allianz/ng-aquila/commit/ddf8ff8c6f1c9712144b4ffd8827cd342555ac59))
+* **notification-panel:** add Figma Code Connect template for item ([987b106](https://github.com/allianz/ng-aquila/commit/987b106839b893eac866e7a838754ee29f20b336))
+* **number-stepper:** add a Figma Code Connect template ([162ff10](https://github.com/allianz/ng-aquila/commit/162ff105b96c98ca735acd72cf06790c12d84ea6))
+* **popover:** add a Figma Code Connect template ([da608c1](https://github.com/allianz/ng-aquila/commit/da608c15fa2006c72668011827f54ad865100df8))
+* **progress-indicator:** add a Code Connect template for the compact stepper ([96024c4](https://github.com/allianz/ng-aquila/commit/96024c4f923a03e2daeeef7bf25d6d087da663be))
+* **progress-indicator:** add a Code Connect template for the single indicator ([56e29a1](https://github.com/allianz/ng-aquila/commit/56e29a1f5f2e407636ae3c84f1199a6a9e2da88d))
+* **progress-indicator:** add a Code Connect template for the vertical compact ([f39d15a](https://github.com/allianz/ng-aquila/commit/f39d15a1b1b66f36422a9b228889a4e752c7911b))
+* **progress-indicator:** add a Code Connect template for the vertical stepper ([57907b6](https://github.com/allianz/ng-aquila/commit/57907b6f89fe00d9c29894de4937c4c01073db65))
+* **progress-indicator:** add Code Connect templates for the horizontal steppers ([d081c6c](https://github.com/allianz/ng-aquila/commit/d081c6c56106dfc108763ef9690684bd177b529b))
+* **radio:** add a Figma Code Connect template ([eacd241](https://github.com/allianz/ng-aquila/commit/eacd241491ccd762d65d7a42048a53e3cce28a33))
+* **selectable-card:** add Figma Code Connect template ([f540902](https://github.com/allianz/ng-aquila/commit/f5409022e1395c9758cfef1902e4edc470a26ffd))
+* **signal-button:** add a Figma Code Connect template ([4b7b645](https://github.com/allianz/ng-aquila/commit/4b7b6452e43a1248404369482270d7db3c813fbc))
+* **slider:** add Figma Code Connect template ([ab07429](https://github.com/allianz/ng-aquila/commit/ab074298094ef9353310e42d93136201a5bff31e))
+* **switcher:** add Figma Code Connect template ([1c0aaa7](https://github.com/allianz/ng-aquila/commit/1c0aaa73767c0e3b4d7d1b6acf8f00fc3be48baa))
+* **timefield:** add Figma Code Connect template ([53c5418](https://github.com/allianz/ng-aquila/commit/53c5418b673f1555f3f60133a36da08dd2755240))
+* **toggle-button:** add Figma Code Connect templates for the button and the group ([ae49073](https://github.com/allianz/ng-aquila/commit/ae4907356db590c4cc7e5f6453beb2b9a72611f9))
+
+
 ## 22.7.0 (2026-11-06)
 
 
